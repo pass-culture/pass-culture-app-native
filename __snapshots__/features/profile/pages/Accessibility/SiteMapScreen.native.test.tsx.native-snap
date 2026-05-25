@@ -331,7 +331,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -363,39 +363,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Accueil"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Accueil
                         </Text>
@@ -456,7 +465,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -488,39 +497,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Recherche"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Recherche
                         </Text>
@@ -581,7 +599,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -613,39 +631,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Explore la carte"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Explore la carte
                         </Text>
@@ -706,7 +733,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -738,39 +765,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Concerts & festivals"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Concerts & festivals
                         </Text>
@@ -831,7 +867,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -863,39 +899,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Cinéma"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Cinéma
                         </Text>
@@ -956,7 +1001,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -988,39 +1033,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Films, séries et documentaires"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Films, séries et documentaires
                         </Text>
@@ -1081,7 +1135,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1113,39 +1167,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Livres"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Livres
                         </Text>
@@ -1206,7 +1269,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1238,39 +1301,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Musique"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Musique
                         </Text>
@@ -1331,7 +1403,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1363,39 +1435,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Arts & loisirs créatifs"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Arts & loisirs créatifs
                         </Text>
@@ -1456,7 +1537,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1488,39 +1569,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Spectacles"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Spectacles
                         </Text>
@@ -1581,7 +1671,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1613,39 +1703,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Musées & visites culturelles"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Musées & visites culturelles
                         </Text>
@@ -1706,7 +1805,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1738,39 +1837,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Jeux & jeux vidéos"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Jeux & jeux vidéos
                         </Text>
@@ -1831,7 +1939,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1863,39 +1971,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Médias & presse"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Médias & presse
                         </Text>
@@ -1956,7 +2073,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1988,39 +2105,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Cartes jeunes"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Cartes jeunes
                         </Text>
@@ -2081,7 +2207,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2113,39 +2239,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Conférences & rencontres"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Conférences & rencontres
                         </Text>
@@ -2206,7 +2341,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2238,39 +2373,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Évènements en ligne"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Évènements en ligne
                         </Text>
@@ -2331,7 +2475,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2363,39 +2507,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Réservations"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Réservations
                         </Text>
@@ -2456,7 +2609,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2488,39 +2641,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Favoris"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Favoris
                         </Text>
@@ -2581,7 +2743,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2613,39 +2775,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Profil"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Profil
                         </Text>
@@ -2706,7 +2877,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2738,39 +2909,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Créer un compte"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Créer un compte
                         </Text>
@@ -2831,7 +3011,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2863,39 +3043,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Se connecter"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Se connecter
                         </Text>
@@ -2956,7 +3145,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -2988,39 +3177,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Mes succès"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Mes succès
                         </Text>
@@ -3081,7 +3279,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3113,39 +3311,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Notifications"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Notifications
                         </Text>
@@ -3206,7 +3413,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3238,39 +3445,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Comment ça marche ?"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Comment ça marche ?
                         </Text>
@@ -3331,7 +3547,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3363,39 +3579,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Informations personnelles"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Informations personnelles
                         </Text>
@@ -3456,7 +3681,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3488,39 +3713,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Apparence"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Apparence
                         </Text>
@@ -3581,7 +3815,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3613,39 +3847,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Accessibilité"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Accessibilité
                         </Text>
@@ -3706,7 +3949,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3738,39 +3981,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Faire une suggestion"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Faire une suggestion
                         </Text>
@@ -3831,7 +4083,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3863,39 +4115,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Informations légales"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Informations légales
                         </Text>
@@ -3956,7 +4217,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -3988,39 +4249,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Confidentialité"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Confidentialité
                         </Text>
@@ -4081,7 +4351,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                         {
                           "busy": undefined,
                           "checked": undefined,
-                          "disabled": undefined,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -4113,39 +4383,48 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "flexShrink": 0,
                           "justifyContent": "center",
                           "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
                           "userSelect": "auto",
+                          "width": "auto",
                         }
                       }
                       testID="Débuggage"
                     >
                       <View
-                        size="default"
+                        gap={8}
+                        hasIcon={false}
+                        isMultiline={false}
                         style={
                           {
-                            "alignItems": "flex-start",
+                            "alignItems": "center",
                             "columnGap": 8,
                             "flexDirection": "row",
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
                           }
                         }
                       >
                         <Text
-                          size="default"
                           style={
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "minWidth": 0,
-                              "textDecorationLine": "underline",
-                            }
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              },
+                              {
+                                "color": "#161617",
+                                "flexBasis": undefined,
+                                "flexGrow": undefined,
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                                "textAlign": undefined,
+                              },
+                            ]
                           }
-                          testID="link-label"
-                          textColor="#161617"
                         >
                           Débuggage
                         </Text>

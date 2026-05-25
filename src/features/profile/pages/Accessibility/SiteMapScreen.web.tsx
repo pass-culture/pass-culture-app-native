@@ -4,12 +4,11 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
@@ -39,20 +38,18 @@ export function SiteMapScreen() {
                 groupLabel="Plan du site"
                 total={visibleSiteMapLinks.length}
                 index={parentIndex}
-                accessibilityLabel={item.wording}
-                accessibilityRole={AccessibilityRole.BUTTON}>
+                accessibilityLabel={item.wording}>
                 <ItemContainer>
                   <BulletContainer>
                     <Bullet />
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={Button}
-                      variant="tertiary"
+                      as={Link}
+                      label={item.wording}
                       color="neutral"
-                      wording={item.wording}
+                      size="small"
                       navigateTo={item.navigateTo}
-                      justifyContent="flex-start"
                     />
                   </ListText>
                 </ItemContainer>
@@ -65,20 +62,18 @@ export function SiteMapScreen() {
                 groupLabel={item.wording}
                 index={subIndex}
                 total={visibleSubPages.length}
-                accessibilityLabel={subPage.wording}
-                accessibilityRole={AccessibilityRole.BUTTON}>
+                accessibilityLabel={subPage.wording}>
                 <NestedItemContainer>
                   <BulletContainer>
                     <NestedBullet />
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
-                      as={Button}
-                      variant="tertiary"
+                      as={Link}
+                      label={subPage.wording}
                       color="neutral"
-                      wording={subPage.wording}
+                      size="small"
                       navigateTo={subPage.navigateTo}
-                      justifyContent="flex-start"
                     />
                   </ListText>
                 </NestedItemContainer>
