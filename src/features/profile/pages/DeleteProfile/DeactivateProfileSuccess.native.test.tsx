@@ -51,13 +51,13 @@ describe('DeactivateProfileSuccess component', () => {
     )
   })
 
-  it('should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button', async () => {
+  it('should log analytics and  redirect to LoginMethods page when clicking on "Réactiver mon compte" button', async () => {
     render(<DeactivateProfileSuccess />)
 
     await user.press(screen.getByText('Réactiver mon compte'))
 
     expect(analytics.logAccountReactivation).toHaveBeenCalledWith('deactivateprofilesuccess')
-    expect(navigate).toHaveBeenCalledWith('Login', {
+    expect(navigate).toHaveBeenCalledWith('LoginMethods', {
       from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS,
     })
   })

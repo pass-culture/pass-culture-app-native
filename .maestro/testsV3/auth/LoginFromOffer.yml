@@ -87,6 +87,7 @@ onFlowStart:
 - waitForAnimationToEnd
 
 - tapOn: 'Se connecter'
+- tapOn: 'Continuer avec mon e-mail'
 
 - assertVisible: 'Connecte-toi'
 - tapOn:

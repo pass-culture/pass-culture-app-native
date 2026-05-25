@@ -14,7 +14,11 @@ import { PreValidationSignupStep } from 'features/auth/enums'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { DeprecatedIdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import {
+  DeprecatedIdentityCheckStep,
+  IdentityCheckStep,
+  StepConfig,
+} from 'features/identityCheck/types'
 import {
   Referrals,
   StepperOrigin,
@@ -590,7 +594,6 @@ export const logEventAnalytics = {
         searchNbResults: nbHits,
       }
     ),
-
   logPinMapPressed: ({ venueType, venueId }: { venueType?: string | null; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, { venueId, venueType }),
   logPlaylistHorizontalScroll: (
@@ -668,7 +671,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
   logStepperDisplayed: (
     from: StepperOrigin,
-    step: IdentityCheckStepName | PreValidationSignupStep | 'Login',
+    step: IdentityCheckStep | PreValidationSignupStep | 'Login' | 'LoginMethods',
     type?: SSOType
   ) => analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step, type }),
   logSubscriptionUpdate: (params: SubscriptionAnalyticsParams) =>

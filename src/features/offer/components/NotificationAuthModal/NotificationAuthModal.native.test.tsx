@@ -27,13 +27,13 @@ describe('NotificationAuthModal', () => {
   })
 
   describe('sign in', () => {
-    it('should navigate to login page', async () => {
+    it('should navigate to LoginMethods page', async () => {
       renderNotificationAuthModal()
 
       const button = screen.getByText('Se connecter')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('Login', {
+      expect(navigate).toHaveBeenCalledWith('LoginMethods', {
         from: StepperOrigin.NOTIFICATION,
         offerId: OFFER_ID,
       })

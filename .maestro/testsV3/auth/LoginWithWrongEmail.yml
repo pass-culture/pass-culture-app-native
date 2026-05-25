@@ -9,7 +9,7 @@ onFlowStart:
 - runFlow: ../common/DeeplinkToProfile.yml
 
 - tapOn: 'Se connecter'
-
+- tapOn: 'Continuer avec mon e-mail'
 - assertVisible: 'Connecte-toi'
 - tapOn:
     id: 'Afficher le mot de passe'

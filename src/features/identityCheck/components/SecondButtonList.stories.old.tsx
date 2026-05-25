@@ -17,6 +17,6 @@ const Template = (props: React.ComponentProps<typeof SecondButtonList>) => (
 export const Default = () =>
   Template({
     label: 'test',
-    navigateTo: { screen: 'Login' },
+    navigateTo: { screen: 'LoginMethods' },
     leftIcon: Smartphone,
   })

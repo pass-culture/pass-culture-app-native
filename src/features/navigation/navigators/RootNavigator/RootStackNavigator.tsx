@@ -15,6 +15,7 @@ import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/Rein
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/pages/login/Login'
+import { LoginMethods } from 'features/auth/pages/login/LoginMethods'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
@@ -244,6 +245,7 @@ const rootScreens: RouteConfig[] = [
     options: { title: 'Notification rechargement anniversaire' },
   },
   { name: 'Login', component: Login, options: { title: 'Connexion' } },
+  { name: 'LoginMethods', component: LoginMethods, options: { title: 'Méthodes de connexion' } },
   { name: 'BannedCountryError', component: BannedCountryError },
   {
     name: 'ReinitializePassword',

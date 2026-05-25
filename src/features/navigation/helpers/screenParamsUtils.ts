@@ -14,6 +14,7 @@ type ScreensRequiringParsing = Extract<
   | 'ClubAdvices'
   | 'Home'
   | 'Login'
+  | 'LoginMethods'
   | 'Offer'
   | 'OfferPreview'
   | 'OfferVideoPreview'
@@ -110,6 +111,11 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
   },
   Login: {
+    displayForcedLoginHelpMessage: parseObject,
+    offerId: identityFn,
+    from: identityFn,
+  },
+  LoginMethods: {
     displayForcedLoginHelpMessage: parseObject,
     offerId: identityFn,
     from: identityFn,

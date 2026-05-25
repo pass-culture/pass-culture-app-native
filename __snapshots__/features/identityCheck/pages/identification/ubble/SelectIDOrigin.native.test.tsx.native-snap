@@ -503,18 +503,19 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "height": 1,
+                        "marginRight": 16,
                         "width": "100%",
                       }
                     }
+                    type="left"
                   />
                   <Text
                     style={
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginHorizontal": 12,
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
                       }
                     }
                   >
@@ -528,9 +529,11 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "height": 1,
+                        "marginLeft": 16,
                         "width": "100%",
                       }
                     }
+                    type="right"
                   />
                 </View>
               </View>

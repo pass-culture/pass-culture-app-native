@@ -21,16 +21,13 @@ const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
 
 const onStartPress = () => {
   void analytics.logOnboardingStarted({ type: 'start' })
-  setHasSeenTutorials()
+  void setHasSeenTutorials()
 }
 
 const onLoginPress = () => {
   void analytics.logOnboardingStarted({ type: 'login' })
-  void analytics.logHasExitedActivationFlow({
-    from: 'onboardingwelcome',
-    origin_detail: 'Login',
-  })
-  setHasSeenTutorials()
+  void analytics.logHasExitedActivationFlow({ from: 'onboardingwelcome', origin_detail: 'Login' })
+  void setHasSeenTutorials()
 }
 
 export const OnboardingWelcome: FunctionComponent = () => {

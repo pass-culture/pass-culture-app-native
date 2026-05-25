@@ -1,27 +1,27 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - tapOn: 'Se connecter'
+- tapOn: 'Continuer avec mon e-mail'
 - assertVisible: 'Connecte-toi'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - pressKey: back
+      - pressKey: back
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir en arrière"
+      - tapOn: 'Revenir en arrière'
 
 - runFlow:
     when:
       platform: Web
     commands:
-    - tapOn:
-        id: "Revenir en arrière"
-
+      - tapOn:
+          id: 'Revenir en arrière'
 
 - tapOn: 'Créer un compte'
 - assertVisible: 'Crée-toi un compte'
@@ -29,19 +29,19 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - pressKey: back
+      - pressKey: back
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir en arrière"
+      - tapOn: 'Revenir en arrière'
 
 - runFlow:
     when:
       platform: Web
     commands:
-    - tapOn:
-        id: "Revenir en arrière"
-    
+      - tapOn:
+          id: 'Revenir en arrière'
+
 - waitForAnimationToEnd

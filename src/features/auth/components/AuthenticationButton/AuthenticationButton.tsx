@@ -39,8 +39,8 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
-    params: RootStackParamList['SignupForm'] | RootStackParamList['Login']
-  } = { screen: isLogin ? 'Login' : 'SignupForm', params }
+    params: RootStackParamList['SignupForm'] | RootStackParamList['LoginMethods']
+  } = { screen: isLogin ? 'LoginMethods' : 'SignupForm', params }
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const wording = isLogin ? 'Se connecter' : 'Créer un compte'

@@ -2,6 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Mon profil'
 - tapOn: 'Se connecter'
+- tapOn: 'Continuer avec mon e-mail'
 
 - assertVisible: 'Connecte-toi'
 - tapOn:
