@@ -6,6 +6,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -19,7 +20,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
-
+  const externalLinksNumberOfLines = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
   return (
     <PageWithHeader
       title="Informations légales"
@@ -71,7 +75,7 @@ export function LegalNotices() {
             wording="Conditions Générales d’Utilisation"
             externalNav={{ url: env.CGU_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
+            numberOfLines={externalLinksNumberOfLines}
           />
           <ExternalTouchableLink
             as={Button}
@@ -80,7 +84,7 @@ export function LegalNotices() {
             wording="Charte des données personnelles"
             externalNav={{ url: env.PRIVACY_POLICY_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
+            numberOfLines={externalLinksNumberOfLines}
           />
           <ExternalTouchableLink
             as={Button}
@@ -89,7 +93,7 @@ export function LegalNotices() {
             wording="Charte d’utilisation et de bonne conduite"
             externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
+            numberOfLines={externalLinksNumberOfLines}
           />
         </Container>
       }

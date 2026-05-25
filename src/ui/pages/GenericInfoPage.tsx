@@ -83,6 +83,7 @@ type Props = PropsWithChildren<{
   buttonPrimary: ButtonProps
   buttonSecondary?: ButtonProps
   buttonTertiary?: ButtonProps
+  marginButton?: number
 }> &
   AnimationProps
 
@@ -101,6 +102,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   animationColoringMode,
   animationTargetLayerNames,
   animationTargetShapeNames,
+  marginButton = 0,
 }) => {
   const { designSystem } = useTheme()
   const isLandscape = useIsLandscape()
@@ -119,6 +121,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
     default: undefined,
     at200PercentZoom: 0,
   })
+
   const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
 
   return (
@@ -158,7 +161,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
           </ContainerWithCenteredContent>
 
-          <ButtonContainer gap={4} isLandscape={isLandscape}>
+          <ButtonContainer gap={4} isLandscape={isLandscape} marginButton={marginButton}>
             {buttonsSurtitle}
             {buttons}
           </ButtonContainer>
@@ -223,10 +226,13 @@ const ChildrenContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean }>(({ isLandscape, theme }) => ({
-  alignItems: 'center',
-  marginBottom: isLandscape ? getSpacing(40) : theme.designSystem.size.spacing.xxxl,
-}))
+const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean; marginButton: number }>(
+  ({ isLandscape, theme, marginButton }) => ({
+    alignItems: 'center',
+    marginBottom: isLandscape ? getSpacing(40) : theme.designSystem.size.spacing.xxxl,
+    marginTop: marginButton,
+  })
+)
 
 const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
   if (withSkipAction) {

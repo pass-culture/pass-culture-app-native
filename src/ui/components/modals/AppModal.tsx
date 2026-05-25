@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
   modal: { margin: 'auto', justifyContent: isWeb ? 'center' : 'flex-end' },
 })
 
-const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -233,6 +233,11 @@ export const AppModal: FunctionComponent<Props> = ({
     setFullscreenScrollViewRef,
   ])
 
+  const numberOfLines = useMobileFontScaleToDisplay({
+    default: titleNumberOfLines,
+    at200PercentZoom: undefined,
+  })
+
   return (
     <StyledModal
       accessibilityModal
@@ -271,7 +276,7 @@ export const AppModal: FunctionComponent<Props> = ({
           ) : (
             <ModalHeader
               title={title}
-              numberOfLines={titleNumberOfLines}
+              numberOfLines={numberOfLines}
               onLayout={updateHeaderHeight}
               titleID={titleId}
               modalSpacing={modalSpacing}
@@ -335,7 +340,7 @@ const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ the
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
-  maxHeight: '100%',
+  flex: 1,
   paddingBottom,
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))
@@ -383,7 +388,7 @@ const ModalContainer = styled.View<ModalContainerProps>(
       theme,
       height,
       desktopConstraints,
-      maxHeight: maxHeight ?? MAX_HEIGHT,
+      maxHeight,
       noPadding,
       noPaddingBottom,
       isLandscape,

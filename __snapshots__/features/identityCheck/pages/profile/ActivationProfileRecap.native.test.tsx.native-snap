@@ -167,6 +167,9 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -946,6 +949,9 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }

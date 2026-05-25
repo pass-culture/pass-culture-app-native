@@ -160,7 +160,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -362,7 +361,9 @@ pour réserver cette offre
         paddingBottom={8}
         style={
           {
-            "maxHeight": "100%",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -717,7 +718,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -919,7 +919,9 @@ pour réserver cette offre
         paddingBottom={8}
         style={
           {
-            "maxHeight": "100%",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -1274,7 +1276,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1476,7 +1477,9 @@ pour réserver cette offre
         paddingBottom={8}
         style={
           {
-            "maxHeight": "100%",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",

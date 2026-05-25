@@ -24,6 +24,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
@@ -47,6 +48,7 @@ export const SearchResults = () => {
   const { userLocation } = useLocation()
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
+  const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
@@ -144,6 +146,19 @@ export const SearchResults = () => {
     return <OfflinePage />
   }
 
+  const searchHeader = (
+    <Container>
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={addToHistory}
+        searchInHistory={setQueryHistoryMemoized}
+        withFilterButton={!isFocusOnSuggestions}
+        withArrow
+        shouldDisplayHeader={!isFocusOnSuggestions}
+      />
+    </Container>
+  )
+
   return (
     <Page>
       <Form.Flex>
@@ -152,16 +167,7 @@ export const SearchResults = () => {
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics analytics />
-          <Container>
-            <SearchHeader
-              searchInputID={searchInputID}
-              addSearchHistory={addToHistory}
-              searchInHistory={setQueryHistoryMemoized}
-              withFilterButton={!isFocusOnSuggestions}
-              withArrow
-              shouldDisplayHeader={!isFocusOnSuggestions}
-            />
-          </Container>
+          {isZoomedAt200 ? null : searchHeader}
           {isFocusOnSuggestions ? (
             <SearchSuggestions
               queryHistory={queryHistory}
@@ -170,6 +176,7 @@ export const SearchResults = () => {
               filteredHistory={filteredHistory}
               enableAIFakeDoor={enableAIFakeDoor}
               onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
+              header={isZoomedAt200 ? searchHeader : undefined}
             />
           ) : (
             <SearchResultsContent

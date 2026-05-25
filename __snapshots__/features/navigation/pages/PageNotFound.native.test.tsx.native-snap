@@ -204,11 +204,13 @@ exports[`<PageNotFound/> should render correctly 1`] = `
           <View
             gap={4}
             isLandscape={false}
+            marginButton={0}
             style={
               {
                 "alignItems": "center",
                 "gap": 16,
                 "marginBottom": 40,
+                "marginTop": 0,
               }
             }
           >

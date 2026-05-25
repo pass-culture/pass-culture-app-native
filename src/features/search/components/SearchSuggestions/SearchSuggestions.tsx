@@ -34,6 +34,7 @@ type SearchSuggestionsParams = {
   offerCategories?: SearchGroupNameEnumv2[]
   enableAIFakeDoor?: boolean
   onPressAIButton?: () => void
+  header?: React.ReactNode
 }
 export const SearchSuggestions = ({
   queryHistory,
@@ -44,6 +45,7 @@ export const SearchSuggestions = ({
   offerCategories,
   enableAIFakeDoor,
   onPressAIButton,
+  header,
 }: SearchSuggestionsParams) => {
   const { navigate, setOptions } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
@@ -135,6 +137,7 @@ export const SearchSuggestions = ({
       keyboardShouldPersistTaps="handled"
       onScroll={Keyboard.dismiss}
       scrollEventThrottle={16}>
+      {header}
       {enableAIFakeDoor ? (
         <ButtonContainer>
           <Button
