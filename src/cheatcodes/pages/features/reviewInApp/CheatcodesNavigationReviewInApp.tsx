@@ -10,7 +10,6 @@ import {
   resetCreditTrigger,
   resetHistory,
   resetOffersViewed,
-  seedFastCreditEligible,
   seedOffersViewedAtThresholdMinusOne,
   seedProfileStartedFast,
   seedProfileStartedSlow,
@@ -51,7 +50,11 @@ export const cheatcodesNavigationReviewInAppButtons: CheatcodeCategory[] = [
 
 const TRIGGERS: { source: ReviewTriggerSource; label: string; productionDelayHint: string }[] = [
   { source: 'booking_success', label: 'Booking success', productionDelayHint: '3s en prod' },
-  { source: 'credit_received', label: 'Credit received', productionDelayHint: '1s en prod (Home)' },
+  {
+    source: 'credit_received',
+    label: 'Credit received',
+    productionDelayHint: '2s en prod (BeneficiaryAccountCreated)',
+  },
   { source: 'booking_liked', label: 'Booking liked', productionDelayHint: '3s en prod' },
   { source: 'offers_viewed', label: 'Offers viewed (10th)', productionDelayHint: '2s en prod' },
 ]
@@ -148,12 +151,9 @@ export function CheatcodesNavigationReviewInApp(): React.JSX.Element {
       <Section gap={2}>
         <Typo.Title3>Trigger crédit rapide ⚡</Typo.Title3>
         <Typo.BodyAccentS>
-          Crédit reçu en moins de 24h après le début du profil → prompt à l’arrivée sur la Home.
+          Crédit reçu en moins de 24h après le début du profil → prompt sur la page de crédit
+          débloqué (BeneficiaryAccountCreated) après 2s.
         </Typo.BodyAccentS>
-        <Button
-          wording="Rendre éligible directement (prompt au prochain passage Home)"
-          onPress={wrap('Crédit rapide\u00a0: éligible', seedFastCreditEligible)}
-        />
         <Button
           wording="Simuler début profil il y a 1h (rapide)"
           onPress={wrap('Début profil à -1h', seedProfileStartedFast)}
@@ -226,11 +226,6 @@ const StateBlock: React.FC<{ state: ReviewInAppCheatcodeState | null }> = ({ sta
         }
       />
       <Row label="Début profil (trigger crédit)" value={formatDate(state.profileStartedAt)} />
-      <Row
-        label="Éligible crédit rapide"
-        value={state.isCreditReviewEligible ? 'Oui' : 'Non'}
-        emphasis={state.isCreditReviewEligible ? 'success' : undefined}
-      />
       {state.history.length > 0 ? (
         <ViewGap gap={1}>
           <Typo.BodyAccentS>Timestamps&nbsp;:</Typo.BodyAccentS>

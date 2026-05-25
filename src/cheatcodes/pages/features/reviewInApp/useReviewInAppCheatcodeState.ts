@@ -3,10 +3,7 @@ import InAppReview from 'react-native-in-app-review'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import {
-  CREDIT_REVIEW_ELIGIBLE_KEY,
-  PROFILE_STARTED_AT_KEY,
-} from 'libs/reviewInApp/creditReviewTrigger'
+import { PROFILE_STARTED_AT_KEY } from 'libs/reviewInApp/creditReviewTrigger'
 import { readOffersViewedCount } from 'libs/reviewInApp/offersViewedCounter'
 import { canRequestReview, readHistory } from 'libs/reviewInApp/reviewHistory'
 import {
@@ -28,14 +25,12 @@ export type ReviewInAppCheatcodeState = {
   offersViewedCount: number
   offersViewedThreshold: number
   profileStartedAt: number | null
-  isCreditReviewEligible: boolean
 }
 
 const computeState = (
   history: number[],
   offersViewedCount: number,
   profileStartedAt: number | null,
-  isCreditReviewEligible: boolean,
   isNativeAvailable: boolean,
   isKillSwitchOn: boolean,
   now: number
@@ -53,7 +48,6 @@ const computeState = (
     offersViewedCount,
     offersViewedThreshold: OFFERS_VIEWED_REVIEW_THRESHOLD,
     profileStartedAt,
-    isCreditReviewEligible,
   }
 }
 
@@ -66,18 +60,16 @@ export const useReviewInAppCheatcodeState = (): {
 
   const refresh = useCallback(async () => {
     const now = Date.now()
-    const [history, offersViewedCount, profileStartedAt, creditReviewEligible] = await Promise.all([
+    const [history, offersViewedCount, profileStartedAt] = await Promise.all([
       readHistory(now),
       readOffersViewedCount(),
       storage.readObject<number>(PROFILE_STARTED_AT_KEY),
-      storage.readObject<boolean>(CREDIT_REVIEW_ELIGIBLE_KEY),
     ])
     setState(
       computeState(
         history,
         offersViewedCount,
         typeof profileStartedAt === 'number' ? profileStartedAt : null,
-        creditReviewEligible === true,
         InAppReview.isAvailable(),
         isKillSwitchOn,
         now

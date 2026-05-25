@@ -1,7 +1,4 @@
-import {
-  CREDIT_REVIEW_ELIGIBLE_KEY,
-  PROFILE_STARTED_AT_KEY,
-} from 'libs/reviewInApp/creditReviewTrigger'
+import { PROFILE_STARTED_AT_KEY } from 'libs/reviewInApp/creditReviewTrigger'
 import { MIGRATION_DONE_KEY, runMigrationFromV1 } from 'libs/reviewInApp/migrateFromV1'
 import {
   incrementOffersViewedCount,
@@ -63,20 +60,12 @@ export const seedOffersViewedAtThresholdMinusOne = async (): Promise<void> => {
   await storage.saveObject(OFFERS_VIEWED_COUNT_STORAGE_KEY, OFFERS_VIEWED_REVIEW_THRESHOLD - 1)
 }
 
-// Directly mark the user as eligible for the credit review trigger.
-export const seedFastCreditEligible = async (): Promise<void> => {
-  await storage.clear(PROFILE_STARTED_AT_KEY)
-  await storage.saveObject(CREDIT_REVIEW_ELIGIBLE_KEY, true)
-}
-
-// Simulate a profile journey started 1h ago (fast credit -> eligible after credit).
+// Simulate a profile journey started 1h ago (fast credit candidate).
 export const seedProfileStartedFast = async (): Promise<void> => {
-  await storage.clear(CREDIT_REVIEW_ELIGIBLE_KEY)
   await storage.saveObject(PROFILE_STARTED_AT_KEY, Date.now() - 60 * 60 * 1000)
 }
 
-// Simulate a profile journey started 48h ago (slow credit -> not eligible).
+// Simulate a profile journey started 48h ago (slow credit, no prompt).
 export const seedProfileStartedSlow = async (): Promise<void> => {
-  await storage.clear(CREDIT_REVIEW_ELIGIBLE_KEY)
   await storage.saveObject(PROFILE_STARTED_AT_KEY, Date.now() - 48 * 60 * 60 * 1000)
 }

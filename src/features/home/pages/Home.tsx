@@ -19,7 +19,6 @@ import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
-import { useCreditReviewTrigger } from 'libs/reviewInApp/useCreditReviewTrigger'
 import { useBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
@@ -35,8 +34,6 @@ export const Home: FunctionComponent = () => {
   const { modules, id: homepageId } = useHomepageData()
   const { hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } = useLocation()
   const { isLoggedIn, user } = useAuthContext()
-
-  useCreditReviewTrigger()
 
   const {
     visible: onboardingSubscriptionModalVisible,
