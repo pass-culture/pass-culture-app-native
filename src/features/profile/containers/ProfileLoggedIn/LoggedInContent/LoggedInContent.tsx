@@ -1,8 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
@@ -31,12 +29,11 @@ export const LoggedInContent = ({ user }: Props) => {
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
   const { isGeolocSwitchActive, switchGeolocation } = useGeolocationSwitch()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { geolocPositionError } = useLocation()
 
   const sharedConfig = {
     ChatbotButton: shouldDisplayChatbotButton ? <ChatbotButton /> : null,
-    AppearanceButton: <AppearanceButton navigate={navigate} />,
+    AppearanceButton: <AppearanceButton />,
     LocationButton: (
       <LocationButton
         isGeolocSwitchActive={isGeolocSwitchActive}

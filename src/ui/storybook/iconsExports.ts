@@ -35,6 +35,7 @@ import { Connect } from 'ui/svg/icons/Connect'
 import { DarkThemeIllustration } from 'ui/svg/icons/darkTheme/DarkThemeIllustration'
 import { DefaultThemeIllustration } from 'ui/svg/icons/darkTheme/DefaultThemeIllustration'
 import { SystemThemeIllustration } from 'ui/svg/icons/darkTheme/SystemThemeIllustration'
+import { Diagram } from 'ui/svg/icons/Diagram'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
@@ -184,6 +185,7 @@ export const SecondaryAndBiggerIcons = {
   Code,
   Confidentiality,
   Confirmation,
+  Diagram,
   Duo,
   Earth,
   EmailIcon,
