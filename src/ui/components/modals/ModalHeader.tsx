@@ -32,7 +32,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   rightIcon,
   rightIconAccessibilityLabel = 'Fermer la modale',
   onRightIconPress,
-  numberOfLines,
+  numberOfLines = 2,
   modalSpacing,
   onLayout,
 }) => {
@@ -44,7 +44,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   const { top } = useSafeAreaInsets()
   const marginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
 
-  const titleNumberOfLines = useNumberOfLine(numberOfLines ?? 2)
+  const titleNumberOfLines = useNumberOfLine(numberOfLines)
 
   return (
     <Container

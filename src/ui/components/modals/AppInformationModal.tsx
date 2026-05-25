@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Modal, ScrollView, StyleSheet, useWindowDimensions } from 'react-native'
+import { Modal, ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -44,7 +44,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
       onRequestClose={onCloseIconPress}>
       <ClickAwayArea onPress={onCloseIconPress} />
       <ModalCenteredContent>
-        <Container accessibilityLabelledBy={titleID} gap={6} maxHeight={windowHeight * 0.8}>
+        <Container accessibilityLabelledBy={titleID} gap={6} maxHeight={windowHeight}>
           <ModalHeader
             title={title}
             titleID={titleID}
@@ -54,11 +54,10 @@ export const AppInformationModal: FunctionComponent<Props> = ({
             numberOfLines={adaptedNumberOfLinesTitle}
           />
           <Content
-            contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator
             bounces={false}
             testID="appInformationModalScrollView">
-            {children}
+            <ContentContainer>{children}</ContentContainer>
           </Content>
         </Container>
       </ModalCenteredContent>
@@ -95,10 +94,8 @@ const Content = styled(ScrollView)(({ theme }) => ({
   flexGrow: 0,
 }))
 
-const styles = StyleSheet.create({
-  contentContainer: {
-    alignItems: 'center',
-  },
+const ContentContainer = styled.View({
+  alignItems: 'center',
 })
 
 const ModalCenteredContent = styled.View({

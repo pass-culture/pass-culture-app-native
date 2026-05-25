@@ -360,7 +360,9 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
         paddingBottom={8}
         style={
           {
-            "maxHeight": "100%",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",

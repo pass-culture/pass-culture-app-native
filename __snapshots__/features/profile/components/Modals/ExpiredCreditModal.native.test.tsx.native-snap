@@ -69,7 +69,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
     <View
       accessibilityLabelledBy="testUuidV4"
       gap={6}
-      maxHeight={1067.2}
+      maxHeight={1334}
       style={
         {
           "alignItems": "center",
@@ -266,11 +266,6 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
       </View>
       <RCTScrollView
         bounces={false}
-        contentContainerStyle={
-          {
-            "alignItems": "center",
-          }
-        }
         showsVerticalScrollIndicator={true}
         style={
           {
@@ -289,22 +284,30 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
               }
             }
           >
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "alignItems": "center",
                 }
               }
             >
-              Pas de panique, l’aventure continue !
-              
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pas de panique, l’aventure continue !
+                
 
 
-              Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
-            </Text>
+                Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
+              </Text>
+            </View>
           </View>
         </View>
       </RCTScrollView>

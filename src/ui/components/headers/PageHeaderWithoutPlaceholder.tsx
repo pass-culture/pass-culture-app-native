@@ -11,7 +11,6 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-// eslint-disable-next-line no-restricted-imports
 
 interface Props {
   title?: string
