@@ -3,6 +3,7 @@ import { Modal, ScrollView, StyleSheet, useWindowDimensions } from 'react-native
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
@@ -28,6 +29,10 @@ export const AppInformationModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight } = useWindowDimensions()
   const titleID = uuidv4()
+  const adaptedNumberOfLinesTitle = useMobileFontScaleToDisplay({
+    default: numberOfLinesTitle,
+    at200PercentZoom: undefined,
+  })
 
   return (
     <Modal
@@ -46,7 +51,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onCloseIconPress}
-            numberOfLines={numberOfLinesTitle}
+            numberOfLines={adaptedNumberOfLinesTitle}
           />
           <Content
             contentContainerStyle={styles.contentContainer}
@@ -71,14 +76,14 @@ const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ th
   backgroundColor: theme.designSystem.color.background.overlay,
 }))
 
-const Container = styled(ViewGap)<{ maxHeight: number }>(({ theme, maxHeight }) => ({
+const Container = styled(ViewGap)<{ maxHeight: number }>(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
   alignSelf: 'center',
+  maxHeight: '100%',
   borderRadius: theme.designSystem.size.borderRadius.s,
   padding: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.xxl,
-  maxHeight,
   width: theme.isMobileViewport
     ? theme.appContentWidth - theme.designSystem.size.spacing.xxl
     : theme.breakpoints.sm - theme.designSystem.size.spacing.m,
