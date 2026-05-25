@@ -1,18 +1,10 @@
-// eslint-disable-next-line no-restricted-imports
 import React from 'react'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import {
-  AccountState,
-  FavoriteResponse,
-  OauthStateResponse,
-  SigninResponse,
-  SigninResponseV2,
-} from 'api/gen'
+import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponseV2 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
@@ -20,10 +12,8 @@ import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/type
 import { UserProfile } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics/provider'
-// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
@@ -37,29 +27,24 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { Login } from './Login'
 
 jest.mock('libs/network/NetInfoWrapper')
-
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/monitoring/services')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/usePreviousRouteName')
+
 const mockResetSearch = jest.fn()
-const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ resetSearch: mockResetSearch })),
 }))
+
+const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
-
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV2Signin')
-const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
-
-jest.useFakeTimers()
-
-jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -67,6 +52,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.useFakeTimers()
 const user = userEvent.setup()
 
 setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
@@ -79,9 +65,7 @@ describe('<Login/>', () => {
       oauthStateToken: 'oauth_state_token',
     })
     simulateSignin200(AccountState.ACTIVE)
-    mockMeApiCall({
-      showEligibleCard: false,
-    } as UserProfile)
+    mockMeApiCall({ showEligibleCard: false } as UserProfile)
     deviceInfoStoreActions.setDeviceInfo({
       deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
       source: 'iPhone 13',
@@ -120,101 +104,6 @@ describe('<Login/>', () => {
       },
       { credentials: 'omit' }
     )
-  })
-
-  it('should sign in when SSO button is clicked with device info', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-      accountState: AccountState.ACTIVE,
-    })
-
-    renderLogin()
-
-    await user.press(await screen.findByTestId('Se connecter avec Google'))
-
-    expect(apiPostOAuthAuthorize).toHaveBeenCalledWith(
-      {
-        authorizationCode: 'mockServerAuthCode',
-        oauthStateToken: 'oauth_state_token',
-        deviceInfo: {
-          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          os: 'iOS',
-          source: 'iPhone 13',
-        },
-      },
-      'google'
-    )
-  })
-
-  it('should show snackbar when SSO login fails because account is invalid', async () => {
-    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-      responseOptions: {
-        statusCode: 400,
-        data: {
-          code: 'SSO_ERROR',
-          general: [],
-        },
-      },
-    })
-
-    renderLogin()
-
-    await user.press(await screen.findByTestId('Se connecter avec Google'))
-
-    expect(
-      screen.getByText(
-        'La connexion avec ton compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
-      )
-    ).toBeOnTheScreen()
-  })
-
-  it('should show snackbar when Apple SSO login fails because account is invalid', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
-      responseOptions: {
-        statusCode: 400,
-        data: {
-          code: 'SSO_ERROR',
-          general: [],
-        },
-      },
-    })
-
-    renderLogin()
-
-    await user.press(await screen.findByText('Se connecter avec Apple'))
-
-    expect(
-      screen.getByText(
-        'La connexion avec ton compte Apple est refusée. Contacte le support pour plus d’informations depuis le Profil.'
-      )
-    ).toBeOnTheScreen()
-  })
-
-  it('should redirect to signup form when SSO login fails because user does not exist', async () => {
-    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
-      responseOptions: {
-        statusCode: 401,
-        data: {
-          code: 'SSO_EMAIL_NOT_FOUND',
-          general: [],
-          accountCreationToken: 'accountCreationToken',
-          email: 'user@gmail.com',
-        },
-      },
-    })
-
-    renderLogin()
-
-    await user.press(await screen.findByTestId('Se connecter avec Google'))
-
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
-      accountCreationToken: 'accountCreationToken',
-      email: 'user@gmail.com',
-      from: StepperOrigin.LOGIN,
-      ssoProvider: 'google',
-    })
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
@@ -256,9 +145,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home WHEN signin is successful with GOOGLE_SSO', async () => {
-    mockMeApiCall({
-      showEligibleCard: false,
-    } as UserProfile)
+    mockMeApiCall({ showEligibleCard: false } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -268,10 +155,8 @@ describe('<Login/>', () => {
   })
 
   it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
-    storage.saveObject('has_seen_eligible_card', true)
-    mockMeApiCall({
-      showEligibleCard: true,
-    } as UserProfile)
+    void storage.saveObject('has_seen_eligible_card', true)
+    mockMeApiCall({ showEligibleCard: true } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -281,9 +166,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
-    mockMeApiCall({
-      showEligibleCard: true,
-    } as UserProfile)
+    mockMeApiCall({ showEligibleCard: true } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -293,10 +176,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null', async () => {
-    mockMeApiCall({
-      showEligibleCard: true,
-      recreditAmountToShow: 3000,
-    } as UserProfile)
+    mockMeApiCall({ showEligibleCard: true, recreditAmountToShow: 3000 } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -306,10 +186,7 @@ describe('<Login/>', () => {
   })
 
   it('should not redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow to null', async () => {
-    mockMeApiCall({
-      showEligibleCard: true,
-      recreditAmountToShow: null,
-    } as UserProfile)
+    mockMeApiCall({ showEligibleCard: true, recreditAmountToShow: null } as UserProfile)
     renderLogin()
 
     await fillInputs()
@@ -482,15 +359,6 @@ describe('<Login/>', () => {
     expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(1, StepperOrigin.PROFILE, 'Login')
   })
 
-  it('should log analytics when clicking on "Créer un compte" button', async () => {
-    renderLogin()
-
-    const signupButton = screen.getByText('Créer un compte')
-    await user.press(signupButton)
-
-    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'login' })
-  })
-
   it('should log analytics when signing in', async () => {
     renderLogin()
     await screen.findByText('Connecte-toi')
@@ -499,23 +367,6 @@ describe('<Login/>', () => {
     await user.press(screen.getByText('Se connecter'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'email_login' })
-  })
-
-  it('should log analytics when signing in with SSO', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-      accountState: AccountState.ACTIVE,
-    })
-
-    renderLogin()
-
-    await user.press(await screen.findByTestId('Se connecter avec Google'))
-
-    expect(analytics.logLogin).toHaveBeenCalledWith({
-      method: 'fromLoginGoogle',
-      type: 'SSO_login',
-    })
   })
 
   it('should display forced login help message when the query param is given', async () => {
@@ -547,50 +398,6 @@ describe('<Login/>', () => {
     await screen.findByText('Connecte-toi')
 
     expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
-  })
-
-  describe('Apple SSO', () => {
-    it('should display Apple SSO button when Apple SSO feature flag is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-      renderLogin()
-
-      expect(await screen.findByText('Se connecter avec Apple')).toBeOnTheScreen()
-    })
-
-    it('should not display Apple SSO button when Apple SSO feature flag is disabled', async () => {
-      renderLogin()
-
-      await screen.findByText('Connecte-toi')
-
-      expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
-    })
-
-    it('should display both SSO buttons when apple sso feature flags is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-      renderLogin()
-
-      expect(await screen.findByTestId('Se connecter avec Google')).toBeOnTheScreen()
-      expect(screen.getByText('Se connecter avec Apple')).toBeOnTheScreen()
-    })
-
-    it('should always display separator', async () => {
-      renderLogin()
-
-      expect(await screen.findByText('ou')).toBeOnTheScreen()
-    })
-
-    it('should display sso identifier forgotten when APPLE SSO is enabled', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-      renderLogin()
-
-      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
-    })
-
-    it('should display sso identifier forgotten', async () => {
-      renderLogin()
-
-      expect(await screen.findByText('Je ne me souviens pas de mes identifiants')).toBeOnTheScreen()
-    })
   })
 
   describe('Login comes from adding an offer to favorite', () => {
@@ -655,13 +462,9 @@ describe('<Login/>', () => {
   })
 
   describe('Login with ReCatpcha', () => {
-    beforeAll(() => {
-      setSettingsMock()
-    })
+    beforeAll(() => setSettingsMock())
 
-    afterAll(() => {
-      setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
-    })
+    afterAll(() => setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } }))
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {
       renderLogin()
@@ -833,9 +636,7 @@ const fillInputs = async () => {
   const emailInput = screen.getByTestId('Entrée pour l’email')
   const passwordInput = screen.getByTestId('Mot de passe')
   fireEvent.changeText(emailInput, 'email@gmail.com')
-  await act(async () => {
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-  })
+  await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
 }
 
 function renderLogin() {
@@ -870,9 +671,7 @@ function simulateSigninWrongCredentials() {
   mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 400,
-      data: {
-        general: ['Identifiant ou Mot de passe incorrect'],
-      },
+      data: { general: ['Identifiant ou Mot de passe incorrect'] },
     },
   })
 }
@@ -892,10 +691,7 @@ function simulateSigninEmailNotValidated() {
   mockServer.postApi('/v2/signin', {
     responseOptions: {
       statusCode: 400,
-      data: {
-        code: 'EMAIL_NOT_VALIDATED',
-        general: ['L’email n’a pas été validé.'],
-      },
+      data: { code: 'EMAIL_NOT_VALIDATED', general: ['L’email n’a pas été validé.'] },
     },
   })
 }

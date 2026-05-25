@@ -22,8 +22,8 @@ import {
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
 } from './types'
 
-function navigateToLogin(params?: Record<string, unknown>) {
-  navigateFromRef('Login', params)
+function navigateToLoginMethods(params?: Record<string, unknown>) {
+  navigateFromRef('LoginMethods', params)
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
@@ -149,7 +149,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationStatus.status &&
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    navigateToLogin()
+    navigateToLoginMethods()
     return {}
   }
 

@@ -4,8 +4,8 @@ import React from 'react'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { VerticalPlaylistError } from 'shared/verticalPlaylist/components/VerticalPlaylistError'
 import { VerticalPlaylistOffersModule } from 'shared/verticalPlaylist/components/VerticalPlaylistOffersModule'
+import { VerticalPlaylistSearchOffers } from 'shared/verticalPlaylist/components/VerticalPlaylistSearchOffers'
 import { VerticalPlaylistSimilarsOffers } from 'shared/verticalPlaylist/components/VerticalPlaylistSimilarsOffers'
-import { VerticalPlaylistThematicSearchOffers } from 'shared/verticalPlaylist/components/VerticalPlaylistThematicSearchOffers'
 import { VerticalPlaylistVenueOffers } from 'shared/verticalPlaylist/components/VerticalPlaylistVenueOffers'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 
@@ -22,7 +22,9 @@ export const VerticalPlaylistOffers = () => {
       return <VerticalPlaylistSimilarsOffers module={params.module} />
 
     case VerticalPlaylist.ThematicSearchOffers:
-      return <VerticalPlaylistThematicSearchOffers module={params.module} />
+    case VerticalPlaylist.GtlPlaylistOffers:
+    case VerticalPlaylist.ArtistOffers:
+      return <VerticalPlaylistSearchOffers module={params.module} />
 
     case VerticalPlaylist.VenueOffers:
       return <VerticalPlaylistVenueOffers module={params.module} />

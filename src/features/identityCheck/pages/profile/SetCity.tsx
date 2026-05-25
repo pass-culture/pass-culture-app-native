@@ -4,6 +4,7 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -34,6 +35,7 @@ export const SetCity = () => {
   const origin = params?.origin
   const freeOfferId = params?.freeOfferId
 
+  const { user } = useAuthContext()
   const identityCheckAndRecapExistingDataConfig = { headerTitle: 'Profil' }
   const pageConfigByType = {
     [ProfileTypes.IDENTITY_CHECK]: identityCheckAndRecapExistingDataConfig,
@@ -43,6 +45,10 @@ export const SetCity = () => {
 
   const { navigate } = useNavigation<UseNavigationType>()
   const storedCity = useCity()
+
+  const defaultCity = user?.city
+    ? { name: user.city, code: '', postalCode: user.postalCode ?? undefined }
+    : storedCity
   const { setCity: setStoreCity } = cityActions
   const {
     control,
@@ -51,7 +57,7 @@ export const SetCity = () => {
   } = useForm<CityForm>({
     mode: 'onChange',
     resolver: yupResolver(cityResolver),
-    defaultValues: { city: storedCity ?? undefined },
+    defaultValues: { city: defaultCity ?? undefined },
   })
 
   const getAddressNavigationParams = () => {

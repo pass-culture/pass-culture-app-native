@@ -57,7 +57,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.'
       )
       navigation.reset({
-        routes: [{ name: 'Login', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
+        routes: [{ name: 'LoginMethods', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
       })
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {

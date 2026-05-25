@@ -435,10 +435,10 @@ describe('[api] helpers', () => {
       )
     })
 
-    it('should navigate to login when access and refresh tokens are invalid', async () => {
+    it('should navigate to LoginMethods when access and refresh tokens are invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
-      expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(navigateFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(result).toEqual({})
     })
   })

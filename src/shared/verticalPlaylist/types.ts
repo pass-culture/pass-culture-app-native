@@ -20,10 +20,12 @@ export type OffersVenue = {
 }
 
 export type VerticalPlaylistOffersSource =
+  | { type: VerticalPlaylist.ArtistOffers; module: ThematicSearchPlaylistData }
+  | { type: VerticalPlaylist.GtlPlaylistOffers; module: ThematicSearchPlaylistData }
   | { type: VerticalPlaylist.ModuleOffers; module: OffersModule }
   | { type: VerticalPlaylist.SimilarOffers; module: OffersSimilars }
-  | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
   | { type: VerticalPlaylist.ThematicSearchOffers; module: ThematicSearchPlaylistData }
+  | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
 
 export type VerticalPlaylistOffersData = {
   items: Offer[]

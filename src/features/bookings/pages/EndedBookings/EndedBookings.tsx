@@ -21,6 +21,8 @@ import { useReactionMutation } from 'features/reactions/queries/useReactionMutat
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { LIKE_REVIEW_DELAY_MS } from 'libs/reviewInApp/types'
+import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -40,6 +42,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   const { bookings: endedBookings } = bookings
 
   const { mutateAsync: addReaction } = useReactionMutation()
+  const { requestReview } = useReviewInApp()
 
   const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingListItemOfferResponse>()
   const [selectedBookingOfferEndedDateLabel, setSelectedBookingOfferEndedDateLabel] =
@@ -108,9 +111,12 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   const handleSaveReaction = useCallback(
     async ({ offerId, reactionType }: PostOneReactionRequest) => {
       await onSaveReaction?.({ offerId, reactionType })
+      if (reactionType === ReactionTypeEnum.LIKE) {
+        void requestReview('booking_liked', { delayMs: LIKE_REVIEW_DELAY_MS })
+      }
       hideReactionModal()
     },
-    [hideReactionModal, onSaveReaction]
+    [hideReactionModal, onSaveReaction, requestReview]
   )
 
   const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(

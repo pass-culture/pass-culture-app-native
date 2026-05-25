@@ -37,7 +37,7 @@ export const AppleSSOCallback = () => {
     if (context?.type === 'signup') {
       resetFromRef('SignupForm', context.params as RootStackParamList['SignupForm'])
     } else {
-      resetFromRef('Login', context?.params as RootStackParamList['Login'])
+      resetFromRef('LoginMethods', context?.params as RootStackParamList['LoginMethods'])
     }
   }, [context])
 

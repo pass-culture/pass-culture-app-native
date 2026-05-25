@@ -47,12 +47,12 @@ describe('NotConnectedFavorites component', () => {
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'favorite' })
   })
 
-  it('should navigate to Login when click on "Se connecter"', async () => {
+  it('should navigate to LoginMethods when click on "Se connecter"', async () => {
     render(<NotConnectedFavorites />)
 
     await user.press(screen.getByText(`Se connecter`))
 
-    expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.FAVORITE })
+    expect(navigate).toHaveBeenCalledWith('LoginMethods', { from: StepperOrigin.FAVORITE })
   })
 
   it('should log analytic "logSignInFromFavorite" when click on "Se connecter"', async () => {

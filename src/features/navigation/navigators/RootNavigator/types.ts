@@ -228,6 +228,12 @@ type VideoModulePageParams = {
   transcription: string
 }
 
+type LoginParams = {
+  displayForcedLoginHelpMessage?: boolean
+  offerId?: number
+  from?: StepperOrigin
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -265,7 +271,8 @@ export type RootStackParamList = {
   FraudulentSuspendedAccount: undefined
   LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
-  Login?: { displayForcedLoginHelpMessage?: boolean; offerId?: number; from?: StepperOrigin }
+  Login?: LoginParams
+  LoginMethods?: LoginParams
   Maintenance: undefined
   MandatoryUpdatePersonalData: undefined
   MovieCalendar: undefined

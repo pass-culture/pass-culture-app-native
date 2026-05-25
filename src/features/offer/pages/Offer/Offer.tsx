@@ -25,6 +25,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { useOffersViewedReviewTrigger } from 'libs/reviewInApp/useOffersViewedReviewTrigger'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
@@ -57,6 +58,8 @@ export function Offer() {
       reactionsCount: { likes: data.reactionsCount.likes },
     }),
   })
+
+  useOffersViewedReviewTrigger(offer?.id)
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategoriesQuery()
   const subcategoriesMapping = useSubcategoriesMapping()

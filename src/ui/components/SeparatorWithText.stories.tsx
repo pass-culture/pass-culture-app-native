@@ -1,9 +1,9 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { theme } from 'theme'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 
 const meta: Meta<typeof SeparatorWithText> = {
   title: 'ui/sections/SeparatorWithText',
@@ -22,7 +22,11 @@ const variantConfig: Variants<typeof SeparatorWithText> = [
   },
   {
     label: 'SeparatorWithText with custom background color',
-    props: { ...baseProps, backgroundColor: theme.designSystem.color.background.brandPrimary },
+    props: { ...baseProps, color: 'primary' },
+  },
+  {
+    label: 'SeparatorWithText with custom background color and icon',
+    props: { ...baseProps, color: 'primary', icon: StepperValidate },
   },
 ]
 

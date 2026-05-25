@@ -88,6 +88,6 @@ describe('<ChangeEmailExpiredLink />', () => {
     const resendEmailButton = screen.getByText('Se connecter')
     await user.press(resendEmailButton)
 
-    expect(navigate).toHaveBeenCalledWith('Login')
+    expect(navigate).toHaveBeenCalledWith('LoginMethods')
   })
 })

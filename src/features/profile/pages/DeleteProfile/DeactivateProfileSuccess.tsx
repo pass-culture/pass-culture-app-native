@@ -31,7 +31,10 @@ export function DeactivateProfileSuccess() {
       }}
       buttonSecondary={{
         wording: 'Réactiver mon compte',
-        navigateTo: { screen: 'Login', params: { from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS } },
+        navigateTo: {
+          screen: 'LoginMethods',
+          params: { from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS },
+        },
         onBeforeNavigate: () => analytics.logAccountReactivation('deactivateprofilesuccess'),
         icon: Again,
       }}>

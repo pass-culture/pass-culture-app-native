@@ -5,7 +5,7 @@ import { VerticalPlaylistOffersView } from 'shared/verticalPlaylist/components/V
 
 type Props = { module: ThematicSearchPlaylistData }
 
-export const VerticalPlaylistThematicSearchOffers = ({ module }: Props) => (
+export const VerticalPlaylistSearchOffers = ({ module }: Props) => (
   <VerticalPlaylistOffersView
     title={module.title}
     items={module.offers.hits}

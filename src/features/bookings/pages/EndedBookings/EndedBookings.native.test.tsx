@@ -1,5 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
+import InAppReview from 'react-native-in-app-review'
 
 import { BookingsListResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
@@ -8,10 +9,12 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { appendHistory, clearHistory } from 'libs/reviewInApp/reviewHistory'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 
@@ -47,6 +50,10 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('react-native-in-app-review')
+const mockIsAvailable = InAppReview.isAvailable as jest.Mock
+const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -76,6 +83,69 @@ describe('EndedBookings', () => {
     await user.press(screen.getByText('Valider la réaction'))
 
     expect(mockMutate).toHaveBeenCalledTimes(1)
+  })
+
+  describe('booking_liked review trigger', () => {
+    beforeEach(async () => {
+      mockIsAvailable.mockReturnValue(true)
+      mockRequestInAppReview.mockResolvedValue(true)
+      await clearHistory()
+    })
+
+    const submitReaction = async (reactionWording: string) => {
+      await user.press(await screen.findByLabelText('Réagis à ta réservation'))
+      await user.press(await screen.findByText(reactionWording))
+      await user.press(screen.getByText('Valider la réaction'))
+    }
+
+    it('calls RequestInAppReview after 3s when a Like is submitted and the flag is on', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_LIKE])
+      renderEndedBookings()
+
+      await submitReaction('J’aime')
+      await act(async () => {
+        jest.advanceTimersByTime(3000)
+      })
+
+      expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
+    })
+
+    it('does not call RequestInAppReview when the system was already prompted less than 30 days ago', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_LIKE])
+      await appendHistory(Date.now() - 10 * 24 * 60 * 60 * 1000)
+      renderEndedBookings()
+
+      await submitReaction('J’aime')
+      await act(async () => {
+        jest.advanceTimersByTime(3000)
+      })
+
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
+    })
+
+    it('does not call RequestInAppReview when the flag is off', async () => {
+      setFeatureFlags([])
+      renderEndedBookings()
+
+      await submitReaction('J’aime')
+      await act(async () => {
+        jest.advanceTimersByTime(3000)
+      })
+
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
+    })
+
+    it('does not call RequestInAppReview when the reaction is not a Like', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_LIKE])
+      renderEndedBookings()
+
+      await submitReaction('Je n’aime pas')
+      await act(async () => {
+        jest.advanceTimersByTime(3000)
+      })
+
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
+    })
   })
 })
 

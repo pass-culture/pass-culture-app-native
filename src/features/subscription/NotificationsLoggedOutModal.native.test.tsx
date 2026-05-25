@@ -70,14 +70,14 @@ describe('<NotificationsLoggedOutModal />', () => {
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should go to login page on press "Se connecter"', async () => {
+  it('should go to LoginMethods page on press "Se connecter"', async () => {
     renderModal(true)
 
     const authButton = screen.getByText('Se connecter')
 
     await user.press(authButton)
 
-    expect(navigate).toHaveBeenCalledWith('Login', { from: 'thematicHome' })
+    expect(navigate).toHaveBeenCalledWith('LoginMethods', { from: 'thematicHome' })
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {

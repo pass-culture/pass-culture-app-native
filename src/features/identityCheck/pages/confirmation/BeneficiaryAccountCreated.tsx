@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -7,6 +7,9 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { isFastCreditCandidate } from 'libs/reviewInApp/creditReviewTrigger'
+import { CREDIT_REVIEW_DELAY_MS } from 'libs/reviewInApp/types'
+import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
@@ -50,6 +53,21 @@ export function BeneficiaryAccountCreated() {
     showShareAppModal(ShareAppModalType.BENEFICIARY)
     resetRecreditAmountToShow()
   }, [resetRecreditAmountToShow, showShareAppModal])
+
+  const { requestReview } = useReviewInApp()
+
+  // Credit has just been granted: prompt for a store review if it arrived in less
+  // than 24h after the profile journey started. Firing here (rather than on the Home)
+  // avoids overlapping with the share-app modal opened right before navigation.
+  useEffect(() => {
+    const run = async () => {
+      if (await isFastCreditCandidate()) {
+        void requestReview('credit_received', { delayMs: CREDIT_REVIEW_DELAY_MS })
+      }
+    }
+    void run()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEnterKeyAction(navigateToHome)
 

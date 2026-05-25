@@ -3,8 +3,15 @@ import InAppReview from 'react-native-in-app-review'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { PROFILE_STARTED_AT_KEY } from 'libs/reviewInApp/creditReviewTrigger'
+import { readOffersViewedCount } from 'libs/reviewInApp/offersViewedCounter'
 import { canRequestReview, readHistory } from 'libs/reviewInApp/reviewHistory'
-import { REVIEW_LOCK_DURATION_MS, REVIEW_QUOTA_LIMIT } from 'libs/reviewInApp/types'
+import {
+  OFFERS_VIEWED_REVIEW_THRESHOLD,
+  REVIEW_LOCK_DURATION_MS,
+  REVIEW_QUOTA_LIMIT,
+} from 'libs/reviewInApp/types'
+import { storage } from 'libs/storage'
 
 export type ReviewInAppCheatcodeState = {
   isNativeAvailable: boolean
@@ -15,10 +22,15 @@ export type ReviewInAppCheatcodeState = {
   canRequest: boolean
   lastPromptAt: number | null
   lockUntil: number | null
+  offersViewedCount: number
+  offersViewedThreshold: number
+  profileStartedAt: number | null
 }
 
 const computeState = (
   history: number[],
+  offersViewedCount: number,
+  profileStartedAt: number | null,
   isNativeAvailable: boolean,
   isKillSwitchOn: boolean,
   now: number
@@ -33,6 +45,9 @@ const computeState = (
     canRequest: !isKillSwitchOn && isNativeAvailable && canRequestReview(history, now),
     lastPromptAt,
     lockUntil: lastPromptAt === null ? null : lastPromptAt + REVIEW_LOCK_DURATION_MS,
+    offersViewedCount,
+    offersViewedThreshold: OFFERS_VIEWED_REVIEW_THRESHOLD,
+    profileStartedAt,
   }
 }
 
@@ -45,8 +60,21 @@ export const useReviewInAppCheatcodeState = (): {
 
   const refresh = useCallback(async () => {
     const now = Date.now()
-    const history = await readHistory(now)
-    setState(computeState(history, InAppReview.isAvailable(), isKillSwitchOn, now))
+    const [history, offersViewedCount, profileStartedAt] = await Promise.all([
+      readHistory(now),
+      readOffersViewedCount(),
+      storage.readObject<number>(PROFILE_STARTED_AT_KEY),
+    ])
+    setState(
+      computeState(
+        history,
+        offersViewedCount,
+        typeof profileStartedAt === 'number' ? profileStartedAt : null,
+        InAppReview.isAvailable(),
+        isKillSwitchOn,
+        now
+      )
+    )
   }, [isKillSwitchOn])
 
   useEffect(() => {

@@ -2,9 +2,8 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Mon profil'
 - tapOn: 'Se connecter'
-
-- assertVisible: 'Connexion'
 - tapOn: 'Se connecter avec Google'
+- assertVisible: 'Connexion'
 
 - tapOn: # Sélection du 1er compte disponible dans la modale
     id: 'com.google.android.gms:id/container'

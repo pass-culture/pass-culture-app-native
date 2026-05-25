@@ -10,8 +10,11 @@ import { computeIdentificationMethod } from 'features/identityCheck/pages/helper
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
+import { shouldProvidePhoneNumber } from 'features/identityCheck/pages/profile/utils'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -28,13 +31,18 @@ type StepperInfo = {
 }
 
 type PartialIdentityCheckStep = Exclude<IdentityCheckStep, IdentityCheckStep.END>
+
 type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
+  const phoneNumberInProfileStepper = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
+  )
+  const storedProfileInfos = useStoredProfileInfos()
+
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
-  const storedProfileInfos = useStoredProfileInfos()
 
   const { data } = useGetStepperInfoQuery()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
@@ -64,9 +72,9 @@ export const useStepperInfo = (): StepperInfo => {
     !!user?.activityId
 
   const hasStoredProfileInfo =
-    !!storedProfileInfos?.address ||
-    !!storedProfileInfos?.name ||
-    !!storedProfileInfos?.status ||
+    !!storedProfileInfos?.address &&
+    !!storedProfileInfos?.name &&
+    !!storedProfileInfos?.status &&
     !!storedProfileInfos?.city
 
   const userAlreadyGaveInfos = hasUserCompletedInfo || hasStoredProfileInfo
@@ -80,6 +88,17 @@ export const useStepperInfo = (): StepperInfo => {
   const shouldDisplayValidateYourInformation =
     userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
 
+  const getFirstScreenForProfileStep = () => {
+    if (phoneNumberInProfileStepper && shouldProvidePhoneNumber(user)) return 'SetName'
+    return userAlreadyGaveInfos ? 'ProfileInformationValidationCreate' : 'SetName'
+  }
+
+  const getFirstScreenTypeForProfileStep = () => {
+    if (phoneNumberInProfileStepper && shouldProvidePhoneNumber(user))
+      return ProfileTypes.IDENTITY_CHECK
+    return userAlreadyGaveInfos ? ProfileTypes.RECAP_EXISTING_DATA : ProfileTypes.IDENTITY_CHECK
+  }
+
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
@@ -89,10 +108,8 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Profile} testID="profile-step-done" />,
         retry: () => <IconStepRetry Icon={Profile} testID="profile-retry-step" />,
       },
-      firstScreen: hasUserCompletedInfo ? 'ProfileInformationValidationCreate' : 'SetName',
-      firstScreenType: hasUserCompletedInfo
-        ? ProfileTypes.RECAP_EXISTING_DATA
-        : ProfileTypes.IDENTITY_CHECK,
+      firstScreen: getFirstScreenForProfileStep(),
+      firstScreenType: getFirstScreenTypeForProfileStep(),
       subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {

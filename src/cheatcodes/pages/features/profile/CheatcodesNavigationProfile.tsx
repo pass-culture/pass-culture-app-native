@@ -25,6 +25,7 @@ const profileCheatcodeCategory: CheatcodeCategory = {
       navigationTarget: { screen: 'ChangeEmailExpiredLink' },
     },
     { id: uuidv4(), title: 'Login', navigationTarget: { screen: 'Login' } },
+    { id: uuidv4(), title: 'LoginMethods', navigationTarget: { screen: 'LoginMethods' } },
     {
       id: uuidv4(),
       title: 'ChangeCity',

@@ -57,7 +57,7 @@ export const getSiteMapLinks = (
       },
       {
         wording: 'Se connecter',
-        navigateTo: { screen: 'Login' },
+        navigateTo: { screen: 'LoginMethods' },
         isLoggedIn: false,
       },
       {

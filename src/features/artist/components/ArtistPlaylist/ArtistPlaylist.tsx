@@ -8,6 +8,7 @@ import { ArtistResponse } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -20,7 +21,11 @@ import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
+
+const analyticsFrom = 'artist'
+const playlistTitle = 'Toutes ses offres disponibles'
 
 type ArtistPlaylistProps = {
   artist: ArtistResponse
@@ -60,12 +65,32 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
     []
   )
 
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistOffers' as const,
+    params: {
+      type: VerticalPlaylist.ArtistOffers,
+      module: {
+        title: playlistTitle,
+        offers: { hits: items },
+        entryId: 'all_offers',
+      },
+    },
+  }
+
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'artists',
+      moduleName: playlistTitle,
+      from: analyticsFrom,
+    })
+  }
+
   return items.length > 0 ? (
     <ObservedPlaylist onViewableItemsChanged={handleArtistOffersViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
-          title="Toutes ses offres disponibles"
+          title={playlistTitle}
           data={items}
           FlatListComponent={FlatList}
           renderItem={OfferPlaylistItem({
@@ -73,7 +98,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
             labelMapping,
             currency,
             euroToPacificFrancRate,
-            analyticsFrom: 'artist',
+            analyticsFrom,
             artistName: artist.name,
             theme,
             hasSmallLayout: true,
@@ -87,6 +112,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
           keyExtractor={keyExtractor}
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
+          seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
         />
       )}
     </ObservedPlaylist>

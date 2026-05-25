@@ -104,6 +104,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -579,6 +580,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   "borderTopRightRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 12,
@@ -661,18 +663,19 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "height": 1,
+                  "marginRight": 16,
                   "width": "100%",
                 }
               }
+              type="left"
             />
             <Text
               style={
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 12,
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
                 }
               }
             >
@@ -686,9 +689,11 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "height": 1,
+                  "marginLeft": 16,
                   "width": "100%",
                 }
               }
+              type="right"
             />
           </View>
           <View
@@ -738,6 +743,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -1009,6 +1015,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -1753,6 +1760,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                       "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 8,
                       "paddingLeft": 12,
@@ -1920,6 +1928,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -2981,6 +2990,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                         "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "paddingBottom": 8,
                         "paddingLeft": 12,
@@ -3149,6 +3159,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -3743,6 +3754,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -3872,6 +3884,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -4001,6 +4014,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -4146,6 +4160,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 8,
                       "paddingLeft": 12,
