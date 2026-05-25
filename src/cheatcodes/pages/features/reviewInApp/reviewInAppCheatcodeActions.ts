@@ -1,3 +1,4 @@
+import { PROFILE_STARTED_AT_KEY } from 'libs/reviewInApp/creditReviewTrigger'
 import { MIGRATION_DONE_KEY, runMigrationFromV1 } from 'libs/reviewInApp/migrateFromV1'
 import {
   incrementOffersViewedCount,
@@ -11,6 +12,8 @@ import {
   REVIEW_QUOTA_LIMIT,
 } from 'libs/reviewInApp/types'
 import { storage } from 'libs/storage'
+
+export { resetCreditReviewTrigger as resetCreditTrigger } from 'libs/reviewInApp/creditReviewTrigger'
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
@@ -55,4 +58,14 @@ export const resetOffersViewed = async (): Promise<void> => {
 
 export const seedOffersViewedAtThresholdMinusOne = async (): Promise<void> => {
   await storage.saveObject(OFFERS_VIEWED_COUNT_STORAGE_KEY, OFFERS_VIEWED_REVIEW_THRESHOLD - 1)
+}
+
+// Simulate a profile journey started 1h ago (fast credit candidate).
+export const seedProfileStartedFast = async (): Promise<void> => {
+  await storage.saveObject(PROFILE_STARTED_AT_KEY, Date.now() - 60 * 60 * 1000)
+}
+
+// Simulate a profile journey started 48h ago (slow credit, no prompt).
+export const seedProfileStartedSlow = async (): Promise<void> => {
+  await storage.saveObject(PROFILE_STARTED_AT_KEY, Date.now() - 48 * 60 * 60 * 1000)
 }

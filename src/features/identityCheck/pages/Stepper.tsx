@@ -9,11 +9,13 @@ import { useShowDisableActivation } from 'features/forceUpdate/helpers/useShowDi
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
+import { recordProfileCompletionStart } from 'libs/reviewInApp/creditReviewTrigger'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepButton } from 'ui/components/StepButton/StepButton'
@@ -103,6 +105,9 @@ export const Stepper = () => {
               type: step.firstScreenType,
             })}
             onPress={() => {
+              if (step.name === IdentityCheckStep.PROFILE) {
+                void recordProfileCompletionStart()
+              }
               void analytics.logIdentityCheckStep(step.name)
             }}
           />

@@ -7,9 +7,12 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import {
   incrementOffersViewed,
   replayMigrationFromV1,
+  resetCreditTrigger,
   resetHistory,
   resetOffersViewed,
   seedOffersViewedAtThresholdMinusOne,
+  seedProfileStartedFast,
+  seedProfileStartedSlow,
   seedPromptNow,
   seedPromptOutOfLock,
   seedQuotaSaturated,
@@ -47,7 +50,11 @@ export const cheatcodesNavigationReviewInAppButtons: CheatcodeCategory[] = [
 
 const TRIGGERS: { source: ReviewTriggerSource; label: string; productionDelayHint: string }[] = [
   { source: 'booking_success', label: 'Booking success', productionDelayHint: '3s en prod' },
-  { source: 'credit_received', label: 'Credit received', productionDelayHint: '1s en prod (Home)' },
+  {
+    source: 'credit_received',
+    label: 'Credit received',
+    productionDelayHint: '2s en prod (BeneficiaryAccountCreated)',
+  },
   { source: 'booking_liked', label: 'Booking liked', productionDelayHint: '3s en prod' },
   { source: 'offers_viewed', label: 'Offers viewed (10th)', productionDelayHint: '2s en prod' },
 ]
@@ -142,6 +149,28 @@ export function CheatcodesNavigationReviewInApp(): React.JSX.Element {
       <StyledSeparator />
 
       <Section gap={2}>
+        <Typo.Title3>Trigger crédit rapide ⚡</Typo.Title3>
+        <Typo.BodyAccentS>
+          Crédit reçu en moins de 24h après le début du profil → prompt sur la page de crédit
+          débloqué (BeneficiaryAccountCreated) après 2s.
+        </Typo.BodyAccentS>
+        <Button
+          wording="Simuler début profil il y a 1h (rapide)"
+          onPress={wrap('Début profil à -1h', seedProfileStartedFast)}
+        />
+        <Button
+          wording="Simuler début profil il y a 48h (lent)"
+          onPress={wrap('Début profil à -48h', seedProfileStartedSlow)}
+        />
+        <Button
+          wording="Réinitialiser le trigger crédit"
+          onPress={wrap('Trigger crédit réinitialisé', resetCreditTrigger)}
+        />
+      </Section>
+
+      <StyledSeparator />
+
+      <Section gap={2}>
         <Typo.Title3>Déclencher manuellement</Typo.Title3>
         <Typo.BodyAccentS>
           Appelle requestReview(source) avec un délai de {TRIGGER_DELAY_MS}ms.
@@ -196,6 +225,7 @@ const StateBlock: React.FC<{ state: ReviewInAppCheatcodeState | null }> = ({ sta
           state.offersViewedCount >= state.offersViewedThreshold - 1 ? 'success' : undefined
         }
       />
+      <Row label="Début profil (trigger crédit)" value={formatDate(state.profileStartedAt)} />
       {state.history.length > 0 ? (
         <ViewGap gap={1}>
           <Typo.BodyAccentS>Timestamps&nbsp;:</Typo.BodyAccentS>
