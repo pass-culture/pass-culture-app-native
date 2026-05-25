@@ -41,6 +41,7 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -62,7 +63,7 @@ export const SearchResults = () => {
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
   const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
-
+  const isLandscape = useIsLandscape()
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
@@ -232,7 +233,7 @@ export const SearchResults = () => {
         <Configure hitsPerPage={5} clickAnalytics analytics />
         {isFocusOnSuggestions ? (
           <React.Fragment>
-            {isZoomedAt200 ? null : searchHeader}
+            {isZoomedAt200 || isLandscape ? null : searchHeader}
             <SearchSuggestions
               queryHistory={queryHistory}
               addToHistory={addToHistory}
@@ -240,12 +241,12 @@ export const SearchResults = () => {
               filteredHistory={filteredHistory}
               enableAIFakeDoor={enableAIFakeDoor}
               onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
-              header={isZoomedAt200 ? searchHeader : undefined}
+              header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
             />
           </React.Fragment>
         ) : (
           <React.Fragment>
-            {isZoomedAt200 ? null : searchHeader}
+            {isZoomedAt200 || isLandscape ? null : searchHeader}
             <SearchResultsContent
               onEndReached={handleEndReached}
               onSearchResultsRefresh={() => refetch()}
@@ -261,7 +262,7 @@ export const SearchResults = () => {
               onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
               disabilities={disabilities}
               selectedFilter={selectedFilter}
-              header={isZoomedAt200 ? searchHeader : undefined}
+              header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
             />
           </React.Fragment>
         )}
