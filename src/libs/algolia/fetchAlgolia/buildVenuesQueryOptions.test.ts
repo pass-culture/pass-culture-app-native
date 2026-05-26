@@ -59,12 +59,30 @@ describe('buildVenuesQueryOptions', () => {
     })
   })
 
-  it('should filter venue having volunteering if provided', () => {
+  it('should filter venue having volunteering and not apply is_open_to_public filter when hasVolunteering is provided', () => {
     const params = { ...defaultParams, hasVolunteering: true }
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
-      facetFilters: [['has_volunteering_url:true'], ...defaultFacetFilters],
+      facetFilters: [['has_volunteering_url:true']],
+    })
+  })
+
+  it('should combine tags with has_volunteering_url and still omit is_open_to_public when hasVolunteering is true', () => {
+    const params = { ...defaultParams, tags: ['cinema'], hasVolunteering: true }
+    const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
+
+    expect(options).toEqual({
+      facetFilters: [['tags:cinema'], ['has_volunteering_url:true']],
+    })
+  })
+
+  it('should keep is_open_to_public filter when hasVolunteering is false', () => {
+    const params = { ...defaultParams, hasVolunteering: false }
+    const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
+
+    expect(options).toEqual({
+      facetFilters: defaultFacetFilters,
     })
   })
 })
