@@ -104,6 +104,8 @@ export const VerticalStepper = ({
   )
 }
 
+const BORDER_WIDTH = getSpacing(0.5)
+
 const Wrapper = styled.View(({ theme }) => ({
   alignItems: 'center',
   flex: 1,
@@ -113,14 +115,14 @@ const Wrapper = styled.View(({ theme }) => ({
 
 const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.border.default,
-  width: 2,
+  width: BORDER_WIDTH,
   borderRadius: theme.designSystem.size.borderRadius.s,
   flex: 1,
 }))
 
 const TopFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isFirst }) => ({
-  borderTopLeftRadius: isFirst ? 2 : 0,
-  borderTopRightRadius: isFirst ? 2 : 0,
+  borderTopLeftRadius: isFirst ? BORDER_WIDTH : 0,
+  borderTopRightRadius: isFirst ? BORDER_WIDTH : 0,
 }))
 
 const BottomFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isLast }) => ({

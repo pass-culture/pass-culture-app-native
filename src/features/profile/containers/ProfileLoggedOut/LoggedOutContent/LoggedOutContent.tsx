@@ -1,7 +1,5 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
@@ -20,12 +18,11 @@ type Props = { user: UserProfile | undefined }
 export const LoggedOutContent = ({ user }: Props) => {
   const shouldDisplayHelpButton = getShouldDisplayHelpButton({ user })
   const { isGeolocSwitchActive, switchGeolocation } = useGeolocationSwitch()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { geolocPositionError } = useLocation()
 
   const config = loggedOutContentConfig({
     HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
-    AppearanceButton: <AppearanceButton navigate={navigate} />,
+    AppearanceButton: <AppearanceButton />,
     LocationButton: (
       <LocationButton
         isGeolocSwitchActive={isGeolocSwitchActive}

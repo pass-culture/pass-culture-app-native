@@ -45,6 +45,7 @@ export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
   ENABLE_AI_FAKE_DOOR = 'enableAIFakeDoor',
   ENABLE_BONIFICATION = 'enableBonification',
+  ENABLE_HANDICAP_BONIFICIATION = 'enableHandicapBonification',
   ENABLE_CHATBOT = 'enableChatbot',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_MANDATORY_UPDATE_PERSONAL_DATA = 'enableMandatoryUpdatePersonalData',
