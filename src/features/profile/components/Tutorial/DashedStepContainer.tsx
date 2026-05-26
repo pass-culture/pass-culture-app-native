@@ -21,11 +21,18 @@ const getBackgroundColorByStatus = (
   theme: DefaultTheme
 ) => {
   switch (status) {
-    case QFBonificationStatus.granted:
-      return theme.designSystem.color.background.default
-    case QFBonificationStatus.started:
-      return theme.designSystem.color.background.disabled
-    default:
+    case QFBonificationStatus.eligible:
+    case QFBonificationStatus.custodian_not_found:
+    case QFBonificationStatus.not_in_tax_household:
+    case QFBonificationStatus.unknown_ko:
       return theme.designSystem.color.background.info
+    case QFBonificationStatus.started:
+    case QFBonificationStatus.too_many_retries:
+      return theme.designSystem.color.background.disabled
+    case QFBonificationStatus.granted:
+    case QFBonificationStatus.not_eligible:
+    case QFBonificationStatus.quotient_familial_too_high:
+    default:
+      return theme.designSystem.color.background.default
   }
 }
