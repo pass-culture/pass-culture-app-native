@@ -84,6 +84,9 @@ export const VideoModulePage: FunctionComponent = () => {
   const handleTranscriptionButtonPress = () => {
     setIsPlayingVideo(false)
     void analytics.logClickSeeVideoTranscription({ from: 'videoModal', moduleId, homeEntryId })
+    if (playerRef.current?.pauseVideo) {
+      playerRef.current.pauseVideo()
+    }
     showModal()
   }
 
