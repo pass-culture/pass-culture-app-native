@@ -8,7 +8,7 @@ import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor } from 'tests/utils'
+import { render, renderAsync, screen, waitFor } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
 import { AccountSecurityBuffer } from './AccountSecurityBuffer'
@@ -17,6 +17,7 @@ jest.unmock('jwt-decode')
 jest.mock('features/navigation/helpers/navigateToHome')
 
 const consoleError = console.error
+const spyOnError = jest.fn()
 const catchErrorSilently = async (fn: () => Promise<unknown>) => {
   try {
     console.error = jest.fn()
@@ -32,6 +33,8 @@ describe('<AccountSecurityBuffer/>', () => {
   beforeEach(() => {
     setFeatureFlags()
     useRoute
+      .mockReturnValueOnce({ params: ROUTE_PARAMS })
+      .mockReturnValueOnce({ params: ROUTE_PARAMS })
       .mockReturnValueOnce({ params: ROUTE_PARAMS })
       .mockReturnValueOnce({ params: ROUTE_PARAMS })
   })
@@ -98,20 +101,22 @@ describe('<AccountSecurityBuffer/>', () => {
         responseOptions: { statusCode: 500 },
       }
     )
-    const spy = jest.fn()
 
-    const Component = withErrorBoundary(AccountSecurityBuffer, {
-      fallback: <Typo.Body>Error</Typo.Body>,
-      onError: spy,
-    })
     await catchErrorSilently(async () => {
-      render(reactQueryProviderHOC(<Component />))
+      await renderAccountSecurityBufferWithErrorBoundary()
 
       await screen.findAllByText('Error')
     })
 
-    expect(spy).toHaveBeenCalledTimes(1)
+    expect(spyOnError).toHaveBeenCalledTimes(1)
   })
 })
 
 const renderAccountSecurityBuffer = () => render(reactQueryProviderHOC(<AccountSecurityBuffer />))
+
+const AccountSecurityBufferWithErrorBoundary = withErrorBoundary(AccountSecurityBuffer, {
+  fallback: <Typo.Body>Error</Typo.Body>,
+  onError: spyOnError,
+})
+const renderAccountSecurityBufferWithErrorBoundary = () =>
+  renderAsync(reactQueryProviderHOC(<AccountSecurityBufferWithErrorBoundary />))

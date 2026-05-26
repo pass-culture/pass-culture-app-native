@@ -62,3 +62,13 @@ jest.spyOn(Keyboard, 'addListener').mockImplementation(
       remove: jest.fn(),
     }) as unknown as EmitterSubscription
 )
+
+// Ensure document and window have dispatchEvent methods
+// This is needed for Node 25+ compatibility where these may not be properly initialized
+if (typeof document !== 'undefined' && !document.dispatchEvent) {
+  document.dispatchEvent = jest.fn()
+}
+
+if (typeof window !== 'undefined' && !window.dispatchEvent) {
+  window.dispatchEvent = jest.fn()
+}
