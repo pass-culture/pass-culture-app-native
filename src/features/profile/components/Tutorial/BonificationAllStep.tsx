@@ -79,14 +79,13 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
     navigate(...getSubscriptionHookConfig('BonificationExplanations'))
   }
 
-  const onPressHandicapBonificationButton = () => 'doNothing'
-
   const onPressFamilyQuotientBonificationButton = () => {
     if (bonificationTooManyRetries) navigateToBonificationRefused()
     else navigateToBonificationExplanations()
     resetBannerVisibility()
   }
 
+  const defaultDashedStepContainer = null
   const showBonificationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
   const iconBonificationButton =
     bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
@@ -158,7 +157,7 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                 ) : null}
               </DashedStepContainer>
               <SeparatorWithText label="ou" />
-              <DashedStepContainer bonificationStatus={bonificationStatus}>
+              <DashedStepContainer bonificationStatus={defaultDashedStepContainer}>
                 <BonficiationTitleContainer>
                   <StyledHandicapMotor />
                   <Typo.Button>Situation de handicap</Typo.Button>
@@ -179,18 +178,6 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                     />,
                   ]}
                 />
-                {showBonificationButton ? (
-                  <StyledButtonContainerFlexStart>
-                    <Button
-                      variant="tertiary"
-                      color="neutral"
-                      icon={PlainArrowNext}
-                      wording="Faire une demande"
-                      onPress={onPressHandicapBonificationButton}
-                      disabled
-                    />
-                  </StyledButtonContainerFlexStart>
-                ) : null}
               </DashedStepContainer>
             </View>
           </Container>
