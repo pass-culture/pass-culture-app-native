@@ -359,9 +359,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
