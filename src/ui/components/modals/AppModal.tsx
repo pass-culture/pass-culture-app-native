@@ -340,7 +340,7 @@ const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ the
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
-  flex: 1,
+  height: '100%',
   paddingBottom,
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))

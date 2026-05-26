@@ -259,9 +259,7 @@ exports[`<AppModal /> on big screen 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -548,9 +546,7 @@ exports[`<AppModal /> on small screen 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -791,9 +787,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -1080,9 +1074,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -1369,9 +1361,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -1764,9 +1754,7 @@ exports[`<AppModal /> with left icon render 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -2053,9 +2041,7 @@ exports[`<AppModal /> with minimal props 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -2449,9 +2435,7 @@ exports[`<AppModal /> with right icon render 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -2738,9 +2722,7 @@ exports[`<AppModal /> without children 1`] = `
         paddingBottom={8}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",

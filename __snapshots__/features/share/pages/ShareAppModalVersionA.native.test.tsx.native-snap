@@ -315,9 +315,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
         paddingBottom={5}
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 5,
             "width": "100%",
