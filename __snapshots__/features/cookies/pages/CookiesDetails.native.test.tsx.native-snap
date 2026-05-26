@@ -2235,19 +2235,21 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
             }
           >
             <View
-              iconSize={16}
+              fontScale={2}
+              iconSize={32}
               size="extraSmall"
               style={
                 {
-                  "paddingTop": 1.5999999999999996,
+                  "paddingTop": 3.1999999999999993,
                 }
               }
+              testID="link-icon-container"
             >
               <View
                 accessibilityLabel="Nouvelle fenêtre"
-                height={16}
+                height={32}
                 testID="link-icon"
-                width={16}
+                width={32}
               >
                 <Text>
                   link-icon-SVG-Mock

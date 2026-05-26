@@ -395,19 +395,21 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       }
                     >
                       <View
-                        iconSize={16}
+                        fontScale={2}
+                        iconSize={32}
                         size="small"
                         style={
                           {
-                            "paddingTop": 3.1999999999999993,
+                            "paddingTop": 6.399999999999999,
                           }
                         }
+                        testID="link-icon-container"
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={16}
+                          height={32}
                           testID="link-icon"
-                          width={16}
+                          width={32}
                         >
                           <Text>
                             link-icon-SVG-Mock
@@ -1794,19 +1796,21 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       }
                     >
                       <View
-                        iconSize={16}
+                        fontScale={2}
+                        iconSize={32}
                         size="small"
                         style={
                           {
-                            "paddingTop": 3.1999999999999993,
+                            "paddingTop": 6.399999999999999,
                           }
                         }
+                        testID="link-icon-container"
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={16}
+                          height={32}
                           testID="link-icon"
-                          width={16}
+                          width={32}
                         >
                           <Text>
                             link-icon-SVG-Mock
@@ -1973,19 +1977,21 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       }
                     >
                       <View
-                        iconSize={16}
+                        fontScale={2}
+                        iconSize={32}
                         size="small"
                         style={
                           {
-                            "paddingTop": 3.1999999999999993,
+                            "paddingTop": 6.399999999999999,
                           }
                         }
+                        testID="link-icon-container"
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={16}
+                          height={32}
                           testID="link-icon"
-                          width={16}
+                          width={32}
                         >
                           <Text>
                             link-icon-SVG-Mock
@@ -2099,19 +2105,21 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       }
                     >
                       <View
-                        iconSize={16}
+                        fontScale={2}
+                        iconSize={32}
                         size="small"
                         style={
                           {
-                            "paddingTop": 3.1999999999999993,
+                            "paddingTop": 6.399999999999999,
                           }
                         }
+                        testID="link-icon-container"
                       >
                         <View
                           accessibilityLabel="Nouvelle fenêtre"
-                          height={16}
+                          height={32}
                           testID="link-icon"
-                          width={16}
+                          width={32}
                         >
                           <Text>
                             link-icon-SVG-Mock

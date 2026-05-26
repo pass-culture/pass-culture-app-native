@@ -371,19 +371,21 @@ exports[`OnboardingWelcome should render correctly 1`] = `
               }
             >
               <View
-                iconSize={24}
+                fontScale={2}
+                iconSize={48}
                 size="default"
                 style={
                   {
-                    "paddingTop": 0.8000000000000007,
+                    "paddingTop": 1.6000000000000014,
                   }
                 }
+                testID="link-icon-container"
               >
                 <View
                   fill="#6123df"
-                  height={24}
+                  height={48}
                   testID="link-icon"
-                  width={24}
+                  width={48}
                 >
                   <Text>
                     link-icon-SVG-Mock

@@ -4,6 +4,7 @@
  */
 
 import React from 'react'
+import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
@@ -29,7 +30,8 @@ export function Link({
   const theme = useTheme()
   const linkTextColor = textColor ?? getLinkTextColor({ color, theme })
   const Icon = icon ?? (isExternal ? ExternalSiteFilled : undefined)
-  const iconSize = getIconSize({ size, theme })
+  const fontScale = PixelRatio.getFontScale()
+  const iconSize = getIconSize({ size, theme }) * fontScale
 
   return (
     <Container
@@ -37,7 +39,11 @@ export function Link({
       accessibilityLabel={accessibilityLabel ?? getAccessibilityLabel({ isExternal, label })}>
       <Content size={size}>
         {Icon ? (
-          <IconContainer iconSize={iconSize} size={size}>
+          <IconContainer
+            fontScale={fontScale}
+            iconSize={iconSize}
+            size={size}
+            testID="link-icon-container">
             <Icon color={linkTextColor} size={iconSize} testID="link-icon" />
           </IconContainer>
         ) : null}
@@ -69,15 +75,17 @@ const Content = styled.View<{ size: LinkSize }>(({ theme, size }) => ({
 }))
 
 const IconContainer = styled.View<{
+  fontScale: number
   iconSize: number
   size: LinkSize
-}>(({ theme, iconSize, size }) => {
+}>(({ theme, fontScale, iconSize, size }) => {
   const lineHeight = Number.parseFloat(
     theme.designSystem.typography[getLinkTypography(size)].lineHeight
   )
+  const scaledLineHeight = lineHeight * fontScale
 
   return {
-    paddingTop: Math.max((lineHeight - iconSize) / 2, 0),
+    paddingTop: Math.max((scaledLineHeight - iconSize) / 2, 0),
   }
 })
 

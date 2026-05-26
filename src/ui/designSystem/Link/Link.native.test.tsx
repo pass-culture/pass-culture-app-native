@@ -4,6 +4,7 @@
  */
 
 import React from 'react'
+import { PixelRatio } from 'react-native'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { render, screen, userEvent } from 'tests/utils'
@@ -17,9 +18,18 @@ import { Link } from './Link'
 jest.mock('features/navigation/helpers/openUrl')
 
 const user = userEvent.setup()
+const getFontScaleSpy = jest.spyOn(PixelRatio, 'getFontScale')
 jest.useFakeTimers()
 
 describe('<Link />', () => {
+  beforeEach(() => {
+    getFontScaleSpy.mockReturnValue(1)
+  })
+
+  afterEach(() => {
+    getFontScaleSpy.mockClear()
+  })
+
   it('should render an accessible link', () => {
     render(
       <ExternalTouchableLink
@@ -80,6 +90,30 @@ describe('<Link />', () => {
     render(<Link label="Documentation" isExternal />)
 
     expect(screen.getByTestId('link-icon')).toBeOnTheScreen()
+  })
+
+  it('should scale icon with font scale', () => {
+    getFontScaleSpy.mockReturnValueOnce(2)
+
+    render(<Link label="Documentation" isExternal />)
+
+    const baseIconSize = theme.designSystem.size.icon.m
+
+    expect(screen.getByTestId('link-icon')).toHaveProp('width', baseIconSize * 2)
+    expect(screen.getByTestId('link-icon')).toHaveProp('height', baseIconSize * 2)
+  })
+
+  it('should align scaled icon with scaled line height', () => {
+    getFontScaleSpy.mockReturnValueOnce(2)
+
+    render(<Link label="Documentation" isExternal />)
+
+    const iconSize = theme.designSystem.size.icon.m * 2
+    const lineHeight = Number.parseFloat(theme.designSystem.typography.link.lineHeight) * 2
+
+    expect(screen.getByTestId('link-icon-container')).toHaveStyle({
+      paddingTop: (lineHeight - iconSize) / 2,
+    })
   })
 
   it('should render custom icon', () => {
