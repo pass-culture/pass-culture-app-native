@@ -7,16 +7,25 @@ import {
   getVideoPlayerDimensions,
   RATIO169,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
-import { VideoPlayerProps } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics/provider'
+import { Offer } from 'shared/offer/types'
 
 import { YoutubePlayerRef } from './YoutubePlayer/types'
 import { YoutubePlayer } from './YoutubePlayer/YoutubePlayer'
 
-interface VideoPlayerNativeProps extends VideoPlayerProps {
+type VideoPlayerNativeProps = {
   playerRef: RefObject<YoutubePlayerRef | null>
+  youtubeVideoId: string
+  offer?: Offer
+  moduleId: string
+  moduleName: string
+  homeEntryId: string
+  onPressSeeOffer: () => void
+  isPlaying: boolean
+  onPlay: () => void
+  onPause: () => void
 }
 
 export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
@@ -26,12 +35,15 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   moduleName,
   homeEntryId,
   playerRef,
+  isPlaying,
   onPressSeeOffer,
+  onPlay,
+  onPause,
 }) => {
   const { appBarHeight } = useTheme()
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
-  const [isPlaying, setIsPlaying] = useState(true)
+
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const [showErrorView, setShowErrorView] = React.useState(false)
   const { isDesktopViewport, modal } = useTheme()
@@ -47,30 +59,40 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextAppState) => {
       if (nextAppState !== 'active') {
-        setIsPlaying(false)
+        onPause()
       }
     })
 
     return () => {
       subscription.remove()
     }
-  }, [])
+  }, [onPause])
 
   const playVideo = () => {
-    setIsPlaying(true)
+    onPlay()
     analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId, offerId: offer?.objectID })
   }
 
   const replayVideo = () => {
     playerRef.current?.seekTo(0, true)
-    setIsPlaying(true)
+    onPlay()
     setHasFinishPlaying(false)
   }
 
   const onChangeState = useCallback(
     async (state: string) => {
+      if (state === 'paused' && isPlaying) {
+        onPause()
+      }
+
+      if (state === 'playing' && !isPlaying) {
+        onPlay()
+      }
+
       if (state === 'ended') {
-        setIsPlaying(false)
+        if (isPlaying) {
+          onPause()
+        }
         setHasFinishPlaying(true)
         if (playerRef.current) {
           const [videoDuration, seenDuration] = await Promise.all([
@@ -85,9 +107,8 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
         }
       }
     },
-    [moduleId, playerRef]
+    [moduleId, onPause, onPlay, playerRef, isPlaying]
   )
-
   return (
     <StyledVideoPlayerContainer marginTop={headerHeight}>
       <StyledYoutubePlayer
