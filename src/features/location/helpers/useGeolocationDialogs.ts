@@ -4,6 +4,7 @@ import { Alert, Linking } from 'react-native'
 import { LocationState } from 'features/location/types'
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationActions } from 'libs/locationV2/location.store'
 
 type Props = {
   dismissModal: () => void
@@ -37,10 +38,14 @@ export const useGeolocationDialogs = ({
       setPlace(null)
       selectEverywhereMode()
       if (shouldOpenDirectlySettings) {
-        Linking.openSettings()
-      }
-      if (!shouldDirectlyValidate) {
+        void Linking.openSettings()
+      } else {
         dismissModal()
+        // 2 native modals can't be opened at the same time or the app will freeze, so we need to wait for the first one to be closed
+        // we keep the imperative approach to avoid using onModalHide that bursts the logic between files
+        setTimeout(() => {
+          locationActions.showPermissionModal()
+        }, 500)
       }
     } else if (permissionState === GeolocPermissionState.GRANTED && !hasGeolocPosition) {
       Alert.alert(

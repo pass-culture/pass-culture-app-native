@@ -69,74 +69,61 @@ describe('useGeolocationDialogs', () => {
       })
     })
 
-    it('should not call dismiss modal function when shouldDirectlyValidate is true', async () => {
-      const mockPropsNeverAskAgain = {
+    it('should reset place selection when permission state is GRANTED and shouldDirectlyValidate is true', async () => {
+      const mockPropsGranted = {
         ...mockProps,
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+        permissionState: GeolocPermissionState.GRANTED,
         shouldDirectlyValidate: true,
       }
-      const { result } = renderHook(() => useGeolocationDialogs(mockPropsNeverAskAgain))
+      const { result } = renderHook(() => useGeolocationDialogs(mockPropsGranted))
 
       await result.current.runGeolocationDialogs()
 
-      expect(mockProps.dismissModal).not.toHaveBeenCalled()
-    })
-  })
-
-  it('should reset place selection when permission state is GRANTED and shouldDirectlyValidate is true', async () => {
-    const mockPropsGranted = {
-      ...mockProps,
-      permissionState: GeolocPermissionState.GRANTED,
-      shouldDirectlyValidate: true,
-    }
-    const { result } = renderHook(() => useGeolocationDialogs(mockPropsGranted))
-
-    await result.current.runGeolocationDialogs()
-
-    expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, null)
-  })
-
-  it('should select around me mode when permission state is GRANTED and shouldDirectlyValidate is true', async () => {
-    const mockPropsGranted = {
-      ...mockProps,
-      permissionState: GeolocPermissionState.GRANTED,
-      shouldDirectlyValidate: true,
-    }
-    const { result } = renderHook(() => useGeolocationDialogs(mockPropsGranted))
-
-    await result.current.runGeolocationDialogs()
-
-    expect(mockProps.setSelectedLocationMode).toHaveBeenNthCalledWith(1, LocationMode.AROUND_ME)
-  })
-
-  it('should show alert and select everywhere mode when permission state is GRANTED but we do not have access to a position', async () => {
-    const mockPropsGrantedWithoutPosition = {
-      ...mockProps,
-      permissionState: GeolocPermissionState.GRANTED,
-      hasGeolocPosition: false,
-    }
-    const { result } = renderHook(() => useGeolocationDialogs(mockPropsGrantedWithoutPosition))
-
-    alertSpy.mockImplementationOnce((_title, _message, buttons) => {
-      buttons?.[0]?.onPress?.()
+      expect(mockProps.setPlace).toHaveBeenNthCalledWith(1, null)
     })
 
-    await result.current.runGeolocationDialogs()
+    it('should select around me mode when permission state is GRANTED and shouldDirectlyValidate is true', async () => {
+      const mockPropsGranted = {
+        ...mockProps,
+        permissionState: GeolocPermissionState.GRANTED,
+        shouldDirectlyValidate: true,
+      }
+      const { result } = renderHook(() => useGeolocationDialogs(mockPropsGranted))
 
-    expect(alertSpy).toHaveBeenCalledWith(
-      'Paramètres de localisation',
-      'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
-      [{ text: 'OK', onPress: expect.any(Function) }]
-    )
+      await result.current.runGeolocationDialogs()
 
-    expect(mockProps.setSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
-  })
+      expect(mockProps.setSelectedLocationMode).toHaveBeenNthCalledWith(1, LocationMode.AROUND_ME)
+    })
 
-  it('should call requestGeolocPermission when permission is DENIED', async () => {
-    const { result } = renderHook(() => useGeolocationDialogs(mockProps))
+    it('should show alert and select everywhere mode when permission state is GRANTED but we do not have access to a position', async () => {
+      const mockPropsGrantedWithoutPosition = {
+        ...mockProps,
+        permissionState: GeolocPermissionState.GRANTED,
+        hasGeolocPosition: false,
+      }
+      const { result } = renderHook(() => useGeolocationDialogs(mockPropsGrantedWithoutPosition))
 
-    await result.current.runGeolocationDialogs()
+      alertSpy.mockImplementationOnce((_title, _message, buttons) => {
+        buttons?.[0]?.onPress?.()
+      })
 
-    expect(mockProps.requestGeolocPermission).toHaveBeenCalledTimes(1)
+      await result.current.runGeolocationDialogs()
+
+      expect(alertSpy).toHaveBeenCalledWith(
+        'Paramètres de localisation',
+        'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
+        [{ text: 'OK', onPress: expect.any(Function) }]
+      )
+
+      expect(mockProps.setSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
+    })
+
+    it('should call requestGeolocPermission when permission is DENIED', async () => {
+      const { result } = renderHook(() => useGeolocationDialogs(mockProps))
+
+      await result.current.runGeolocationDialogs()
+
+      expect(mockProps.requestGeolocPermission).toHaveBeenCalledTimes(1)
+    })
   })
 })
