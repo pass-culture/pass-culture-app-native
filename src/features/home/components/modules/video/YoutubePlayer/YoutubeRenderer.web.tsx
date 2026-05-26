@@ -28,6 +28,7 @@ export const YoutubeRenderer = forwardRef<YoutubeRendererRef, YoutubeRendererPro
           Promise.resolve(internalPlayer?.getAvailablePlaybackRates() ?? []),
         seekTo: (seconds: number, allowSeekAhead: boolean) =>
           internalPlayer.seekTo(seconds, allowSeekAhead),
+        pauseVideo: () => internalPlayer.pauseVideo(),
       }
     })
 

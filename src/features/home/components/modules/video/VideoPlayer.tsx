@@ -1,5 +1,5 @@
 import React, { RefObject, useCallback, useEffect, useState } from 'react'
-import { useWindowDimensions, AppState } from 'react-native'
+import { useWindowDimensions, AppState, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -27,6 +27,8 @@ type VideoPlayerNativeProps = {
   onPlay: () => void
   onPause: () => void
 }
+
+const isWeb = Platform.OS === 'web'
 
 export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   youtubeVideoId,
@@ -113,7 +115,14 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
     <StyledVideoPlayerContainer marginTop={headerHeight}>
       <StyledYoutubePlayer
         ref={playerRef}
-        initialPlayerParams={{ controls: false, rel: false, iv_load_policy: 3 }}
+        initialPlayerParams={{
+          controls: false,
+          rel: false,
+          iv_load_policy: 3,
+          autoplay: 1,
+          // Autoplay with sound is prohibited until the user has interacted with the web page : https://developer.chrome.com/blog/autoplay?hl=fr
+          mute: isWeb ? 1 : 0,
+        }}
         height={playerHeight}
         width={playerWidth}
         play={isPlaying}
