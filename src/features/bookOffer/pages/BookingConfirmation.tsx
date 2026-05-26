@@ -3,11 +3,14 @@ import React, { useCallback, useEffect } from 'react'
 
 import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { QualtricsSurveyModal } from 'features/bookOffer/pages/QualtricsSurveyModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
@@ -48,11 +51,23 @@ export function BookingConfirmation() {
     })
   }, [params.bookingId, params.offerId, reset, trackBooking])
 
+  const isQualtricsSurveyEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY)
+
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
     hideModal: hideShareOfferModal,
   } = useModal(false)
+
+  const {
+    visible: qualtricsSurveyModalVisible,
+    showModal: showQualtricsSurveyModal,
+    hideModal: hideQualtricsSurveyModal,
+  } = useModal(false)
+
+  useEffect(() => {
+    showQualtricsSurveyModal()
+  }, [showQualtricsSurveyModal])
 
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', offerId: params.offerId })
@@ -110,6 +125,10 @@ export function BookingConfirmation() {
           dismissModal={hideShareOfferModal}
         />
       ) : null}
+      <QualtricsSurveyModal
+        visible={isQualtricsSurveyEnabled && qualtricsSurveyModalVisible}
+        hideModal={hideQualtricsSurveyModal}
+      />
     </React.Fragment>
   )
 }
