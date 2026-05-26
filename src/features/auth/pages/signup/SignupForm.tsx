@@ -74,7 +74,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabHookConfig('Profile'))
 
   const goToPreviousStep = () => {
-    if (isFirstStep) {
+    if (isFirstStep || isSSOSubscription) {
       goBackAndLeaveSignup()
     } else {
       if (isSecondStep) setParams({ accountCreationToken: undefined, email: undefined })
