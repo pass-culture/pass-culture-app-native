@@ -7,6 +7,7 @@ import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constan
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -30,7 +31,15 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
   const { top } = useCustomSafeInsets()
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
-
+  const titles = useMobileFontScaleToDisplay({
+    default: (
+      <React.Fragment>
+        {subtitle ? <Subtitle numberOfLines={1}>{subtitle}</Subtitle> : null}
+        <Title numberOfLines={2}>{title}</Title>
+      </React.Fragment>
+    ),
+    at200PercentZoom: undefined,
+  })
   return (
     <Container testID="animated-thematic-header">
       <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight || 0} />
@@ -43,8 +52,7 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
           style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
         />
         <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
-          {subtitle ? <Subtitle numberOfLines={1}>{subtitle}</Subtitle> : null}
-          <Title numberOfLines={2}>{title}</Title>
+          {titles}
         </AnimatedBlackBackground>
       </TextContainer>
     </Container>

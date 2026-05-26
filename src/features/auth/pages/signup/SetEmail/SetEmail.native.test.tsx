@@ -170,14 +170,14 @@ describe('<SetEmail />', () => {
     expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
   })
 
-  it('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
+  it('should navigate to LoginMethods with provided offerId when clicking on "Se connecter" button', async () => {
     const OFFER_ID = 1
     useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
     renderSetEmail()
 
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+    expect(navigate).toHaveBeenNthCalledWith(1, 'LoginMethods', {
       from: StepperOrigin.SIGNUP,
       offerId: OFFER_ID,
     })

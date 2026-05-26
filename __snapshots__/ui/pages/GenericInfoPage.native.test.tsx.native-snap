@@ -105,6 +105,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
               "flexDirection": "row",
+              "flexShrink": 0,
               "justifyContent": "center",
               "opacity": 1,
               "paddingBottom": 8,
@@ -216,6 +217,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
               "flexDirection": "row",
+              "flexShrink": 0,
               "justifyContent": "center",
               "opacity": 1,
               "paddingBottom": 2,
@@ -395,11 +397,13 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -446,6 +450,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
                 "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
+                "flexShrink": 0,
                 "justifyContent": "center",
                 "opacity": 1,
                 "paddingBottom": 8,
@@ -541,6 +546,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
                 "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
+                "flexShrink": 0,
                 "justifyContent": "center",
                 "opacity": 1,
                 "paddingBottom": 8,
@@ -636,6 +642,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "opacity": 1,
                   "paddingBottom": 2,

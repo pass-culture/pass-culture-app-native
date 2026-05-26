@@ -15,8 +15,8 @@ import { Apple } from 'ui/svg/icons/socialNetwork/Apple'
 
 type Props = {
   type: 'signup' | 'login'
-  // Used on native — called with auth result after Apple SDK returns
-  onSuccess?: ({
+  // Used on native - called with auth result after Apple SDK returns
+  onSuccess: ({
     authorizationCode,
     oauthStateToken,
     provider,
@@ -25,7 +25,7 @@ type Props = {
     oauthStateToken: string
     provider: 'apple'
   }) => void
-  // Used on web — saved to sessionStorage before redirect to Apple
+  // Used on web - saved to sessionStorage before redirect to Apple
   params?: RootStackParamList['Login' | 'SignupForm']
 }
 
@@ -48,9 +48,8 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
     // oauthStateToken will be set by loginToApple() after fetching it from the backend
     saveAppleSSOContext({ type, params, oauthStateToken: '' })
     return loginToApple({
-      onSuccess: ({ code, state }) => {
-        onSuccess?.({ authorizationCode: code, oauthStateToken: state, provider: 'apple' })
-      },
+      onSuccess: ({ code, state }) =>
+        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'apple' }),
       onError,
     })
   }

@@ -105,6 +105,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -173,6 +174,9 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -666,6 +670,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -839,6 +844,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -907,6 +913,9 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -1400,6 +1409,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -1573,6 +1583,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -1641,6 +1652,9 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -2134,6 +2148,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,

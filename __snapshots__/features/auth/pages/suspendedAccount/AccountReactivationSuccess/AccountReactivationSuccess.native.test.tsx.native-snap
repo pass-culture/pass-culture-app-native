@@ -188,11 +188,13 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -243,6 +245,7 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,

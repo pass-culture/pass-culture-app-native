@@ -38,9 +38,10 @@ exports[`ThematicHome should render correctly 1`] = `
       hide={false}
       style={
         {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
           "height": "100%",
-          "marginVertical": 24,
-          "overflow": "hidden",
         }
       }
     >
@@ -428,6 +429,7 @@ exports[`ThematicHome should render correctly 1`] = `
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -505,6 +507,7 @@ exports[`ThematicHome should render correctly 1`] = `
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -587,6 +590,7 @@ exports[`ThematicHome should render correctly 1`] = `
                   "borderTopRightRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "opacity": 1,
                   "paddingBottom": 8,

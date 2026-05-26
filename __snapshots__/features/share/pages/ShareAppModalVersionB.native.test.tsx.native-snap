@@ -122,7 +122,6 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
           "flexDirection": "column",
           "height": 429,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -237,6 +236,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
                 "flexDirection": "row",
+                "flexShrink": 0,
                 "justifyContent": "center",
                 "opacity": 1,
                 "paddingBottom": 8,
@@ -315,7 +315,9 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
         paddingBottom={5}
         style={
           {
-            "maxHeight": "100%",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 480,
             "paddingBottom": 5,
             "width": "100%",
@@ -431,6 +433,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                       "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "opacity": 1,
                       "paddingBottom": 8,
@@ -551,6 +554,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "opacity": 1,
                       "paddingBottom": 2,

@@ -27,20 +27,34 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   const { designSystem } = useTheme()
   const MARGIN_TOP_HEADER = designSystem.size.spacing.xl
+
+  const titles = useMobileFontScaleToDisplay({
+    at200PercentZoom: (
+      <TitlesContainer gap={designSystem.size.spacing.xs}>
+        {thematicHeader?.subtitle ? <Typo.Title4>{thematicHeader.subtitle}</Typo.Title4> : null}
+        <Typo.Title1>{thematicHeader?.title}</Typo.Title1>
+      </TitlesContainer>
+    ),
+
+    default: undefined,
+  })
 
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.THEMATIC_HOME)
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (
         <IntroductionContainer marginTopHeader={MARGIN_TOP_HEADER}>
+          {titles}
           {thematicHeader.introductionTitle && thematicHeader.introductionParagraph ? (
             <Introduction
               title={thematicHeader.introductionTitle}
@@ -50,20 +64,37 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         </IntroductionContainer>
       )
     }
-    return <HighlightThematicHomeHeader {...thematicHeader} />
+    return (
+      <React.Fragment>
+        {Platform.OS === 'web' ? null : (
+          <HeaderSpacerPlaceholder height={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT} />
+        )}
+        <HighlightThematicHomeHeader {...thematicHeader} />
+      </React.Fragment>
+    )
   }
 
   if (thematicHeader?.type === ThematicHeaderType.Category) {
     if (Platform.OS === 'ios') {
-      return <Placeholder marginTopHeader={MARGIN_TOP_HEADER} />
+      return (
+        <React.Fragment>
+          <Placeholder marginTopHeader={MARGIN_TOP_HEADER} />
+          {titles}
+        </React.Fragment>
+      )
     }
 
     return (
-      <CategoryThematicHomeHeader
-        title={thematicHeader?.title}
-        subtitle={thematicHeader?.subtitle}
-        color={thematicHeader?.color}
-      />
+      <React.Fragment>
+        {Platform.OS === 'web' ? null : (
+          <HeaderSpacerPlaceholder height={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT} />
+        )}
+        <CategoryThematicHomeHeader
+          title={thematicHeader?.title}
+          subtitle={thematicHeader?.subtitle}
+          color={thematicHeader?.color}
+        />
+      </React.Fragment>
     )
   }
 
@@ -182,6 +213,17 @@ export const ThematicHome: FunctionComponent = () => {
     from === 'chronicles' ? goBack() : navigate(...homeNavigationConfig)
   }
 
+  const getPlaceholderHeight = () => {
+    if (thematicHeader?.type === ThematicHeaderType.Category) {
+      return 0
+    }
+    return isLocated ? getSpacing(150) : getSpacing(200)
+  }
+  const Footer = useMobileFontScaleToDisplay({
+    default: undefined,
+    at200PercentZoom: <FooterPlaceholder height={getPlaceholderHeight()} />,
+  })
+
   return (
     <Page>
       <GenericHome
@@ -194,7 +236,9 @@ export const ThematicHome: FunctionComponent = () => {
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={videoModuleId}
+        footer={Footer}
       />
+
       {/* ThematicHomeHeader is called after Body to implement the BlurView for iOS */}
       <ThematicHomeHeader
         thematicHeader={thematicHeader}
@@ -214,6 +258,7 @@ export const ThematicHome: FunctionComponent = () => {
               />
             </AnimatedHeader>
           ) : null}
+
           {thematicHeader?.type === ThematicHeaderType.Category ? (
             <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
               <AnimatedCategoryThematicHomeHeader
@@ -229,12 +274,20 @@ export const ThematicHome: FunctionComponent = () => {
   )
 }
 
+const FooterPlaceholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))
+
 const AnimatedHeaderContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
   right: 0,
 })
+
+const TitlesContainer = styled(ViewGap)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
 const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
@@ -254,4 +307,8 @@ const IntroductionContainer = styled.View<{ marginTopHeader: number }>(({ margin
 
 const Placeholder = styled.View<{ marginTopHeader: number }>(({ marginTopHeader }) => ({
   height: getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT) + marginTopHeader,
+}))
+
+const HeaderSpacerPlaceholder = styled.View<{ height: number }>(({ height }) => ({
+  height: getSpacing(height),
 }))

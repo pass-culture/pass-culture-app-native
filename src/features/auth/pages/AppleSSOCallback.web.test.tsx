@@ -98,7 +98,7 @@ describe('AppleSSOCallback (web)', () => {
 
       expect(mockSignInAsync).not.toHaveBeenCalled()
       expect(mockClearAppleSSOContext).toHaveBeenCalledTimes(1)
-      expect(mockResetFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(mockResetFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(showErrorSpy).toHaveBeenCalledWith(
         'Une erreur est survenue avec Apple, veuillez réessayer.'
       )
@@ -130,12 +130,12 @@ describe('AppleSSOCallback (web)', () => {
   })
 
   describe('error navigation (navigateBack)', () => {
-    it('should reset to Login when Apple returns an error', () => {
+    it('should reset to LoginMethods when Apple returns an error', () => {
       mockRouteParams = { error: 'access_denied' }
 
       render(<AppleSSOCallback />)
 
-      expect(mockResetFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(mockResetFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(mockSignInAsync).not.toHaveBeenCalled()
     })
 
@@ -160,21 +160,21 @@ describe('AppleSSOCallback (web)', () => {
       expect(mockResetFromRef).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.SIGNUP })
     })
 
-    it('should reset to Login when no code is present', () => {
+    it('should reset to LoginMethods when no code is present', () => {
       mockRouteParams = { state: VALID_STATE }
 
       render(<AppleSSOCallback />)
 
-      expect(mockResetFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(mockResetFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(mockSignInAsync).not.toHaveBeenCalled()
     })
 
-    it('should reset to Login when no state is present', () => {
+    it('should reset to LoginMethods when no state is present', () => {
       mockRouteParams = { code: 'apple-code' }
 
       render(<AppleSSOCallback />)
 
-      expect(mockResetFromRef).toHaveBeenCalledWith('Login', undefined)
+      expect(mockResetFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(mockSignInAsync).not.toHaveBeenCalled()
     })
   })

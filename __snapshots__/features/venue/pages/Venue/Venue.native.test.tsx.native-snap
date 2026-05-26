@@ -292,6 +292,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 2,
@@ -420,6 +421,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 2,
@@ -1247,6 +1249,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     "backgroundColor": "transparent",
                                     "borderWidth": 0,
                                     "flexDirection": "row",
+                                    "flexShrink": 0,
                                     "justifyContent": "center",
                                     "opacity": 1,
                                     "paddingBottom": 2,
@@ -2311,6 +2314,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 8,
@@ -3090,6 +3094,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -3167,6 +3172,7 @@ d’options
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -3232,6 +3238,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -3401,6 +3408,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -3795,6 +3803,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 2,
@@ -3923,6 +3932,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 2,
@@ -4750,6 +4760,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     "backgroundColor": "transparent",
                                     "borderWidth": 0,
                                     "flexDirection": "row",
+                                    "flexShrink": 0,
                                     "justifyContent": "center",
                                     "opacity": 1,
                                     "paddingBottom": 2,
@@ -5814,6 +5825,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 8,
@@ -6593,6 +6605,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -6670,6 +6683,7 @@ d’options
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -6735,6 +6749,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -6904,6 +6919,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -7298,6 +7314,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 2,
@@ -7426,6 +7443,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 2,
@@ -7942,6 +7960,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                             "flexDirection": "row",
+                            "flexShrink": 0,
                             "justifyContent": "center",
                             "opacity": 1,
                             "paddingBottom": 2,
@@ -8062,6 +8081,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                             "flexDirection": "row",
+                            "flexShrink": 0,
                             "justifyContent": "center",
                             "opacity": 1,
                             "paddingBottom": 2,
@@ -8182,6 +8202,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                             "flexDirection": "row",
+                            "flexShrink": 0,
                             "justifyContent": "center",
                             "opacity": 1,
                             "paddingBottom": 2,
@@ -10148,6 +10169,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
+                        "flexShrink": 0,
                         "justifyContent": "center",
                         "opacity": 1,
                         "paddingBottom": 8,
@@ -10927,6 +10949,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -11004,6 +11027,7 @@ d’options
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -11069,6 +11093,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,
@@ -11238,6 +11263,7 @@ d’options
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,

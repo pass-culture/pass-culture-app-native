@@ -52,7 +52,7 @@ const variantConfig: Variants<typeof AdviceCard> = [
   },
   {
     label: 'AdviceCard with navigable header',
-    props: { ...baseProps, headerNavigateTo: { screen: 'Login' } },
+    props: { ...baseProps, headerNavigateTo: { screen: 'LoginMethods' } },
   },
 ]
 

@@ -15,6 +15,7 @@ onFlowStart:
 - runFlow: ../common/DeepLinkToFavorites.yml
 
 - tapOn: 'Se connecter'
+- tapOn: 'Continuer avec mon e-mail'
 
 - runFlow:
     when:

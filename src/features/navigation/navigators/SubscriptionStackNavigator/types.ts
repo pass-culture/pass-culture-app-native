@@ -21,6 +21,7 @@ export type SubscriptionStackParamList = {
   SetName?: ProfileScreenType
   SetCity?: ProfileScreenType
   SetAddress?: ProfileScreenType
+  SetPhoneNumber?: ProfileScreenType
   SetStatus?: ProfileScreenType
   SetProfileBookingError?: { offerId?: number }
   ActivationProfileRecap?: ProfileScreenType

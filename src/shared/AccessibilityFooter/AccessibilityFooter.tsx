@@ -10,6 +10,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
@@ -29,57 +30,69 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
           <ColoredPassCultureLogo />
         </LogoContainer>
         <LinksContainer gap={6}>
-          <InternalTouchableLink
-            navigateTo={getProfilePropConfig('Accessibility')}
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            size="small"
-            wording="Accessibilité&nbsp;: partiellement conforme"
-          />
-          <InternalTouchableLink
-            navigateTo={getProfilePropConfig('SiteMapScreen')}
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            size="small"
-            wording="Plan du site"
-          />
-          <InternalTouchableLink
-            navigateTo={getProfilePropConfig('LegalNotices')}
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            size="small"
-            wording="Informations légales"
-          />
-          <ExternalTouchableLink
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            size="small"
-            wording="Conditions Générales d’Utilisation"
-            externalNav={{ url: env.CGU_LINK }}
-            icon={ExternalSiteFilled}
-          />
-          <ExternalTouchableLink
-            as={Button}
-            size="small"
-            variant="tertiary"
-            color="neutral"
-            wording="Charte des données personnelles"
-            externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-            icon={ExternalSiteFilled}
-          />
-          <ExternalTouchableLink
-            as={Button}
-            size="small"
-            variant="tertiary"
-            color="neutral"
-            wording="Charte d’utilisation et de bonne conduite"
-            externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
-            icon={ExternalSiteFilled}
-          />
+          <ButtonContainerFlexStart>
+            <InternalTouchableLink
+              navigateTo={getProfilePropConfig('Accessibility')}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              size="small"
+              wording="Accessibilité&nbsp;: partiellement conforme"
+            />
+          </ButtonContainerFlexStart>
+          <ButtonContainerFlexStart>
+            <InternalTouchableLink
+              navigateTo={getProfilePropConfig('SiteMapScreen')}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              size="small"
+              wording="Plan du site"
+            />
+          </ButtonContainerFlexStart>
+          <ButtonContainerFlexStart>
+            <InternalTouchableLink
+              navigateTo={getProfilePropConfig('LegalNotices')}
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              size="small"
+              wording="Informations légales"
+            />
+          </ButtonContainerFlexStart>
+          <ButtonContainerFlexStart>
+            <ExternalTouchableLink
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              size="small"
+              wording="Conditions Générales d’Utilisation"
+              externalNav={{ url: env.CGU_LINK }}
+              icon={ExternalSiteFilled}
+            />
+          </ButtonContainerFlexStart>
+          <ButtonContainerFlexStart>
+            <ExternalTouchableLink
+              as={Button}
+              size="small"
+              variant="tertiary"
+              color="neutral"
+              wording="Charte des données personnelles"
+              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+              icon={ExternalSiteFilled}
+            />
+          </ButtonContainerFlexStart>
+          <ButtonContainerFlexStart>
+            <ExternalTouchableLink
+              as={Button}
+              size="small"
+              variant="tertiary"
+              color="neutral"
+              wording="Charte d’utilisation et de bonne conduite"
+              externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+              icon={ExternalSiteFilled}
+            />
+          </ButtonContainerFlexStart>
         </LinksContainer>
         <LogoContainer>
           <LogoFrenchRepublic />

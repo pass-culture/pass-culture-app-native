@@ -24,13 +24,13 @@ describe('LoggedOutHeader', () => {
     })
   })
 
-  it('should navigate to the Login page', async () => {
+  it('should navigate to the LoginMethods page', async () => {
     render(<LoggedOutHeader featureFlags={{ disableActivation: false, enableProfileV2: false }} />)
 
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
 
-    expect(navigate).toHaveBeenCalledWith('Login', {
+    expect(navigate).toHaveBeenCalledWith('LoginMethods', {
       from: StepperOrigin.PROFILE,
     })
   })

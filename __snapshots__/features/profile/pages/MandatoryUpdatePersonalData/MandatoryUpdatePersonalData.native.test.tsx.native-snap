@@ -235,6 +235,7 @@ C’est rapide, promis.
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -329,11 +330,13 @@ C’est rapide, promis.
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -384,6 +387,7 @@ C’est rapide, promis.
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,

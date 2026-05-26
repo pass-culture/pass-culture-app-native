@@ -330,11 +330,13 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -385,6 +387,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -487,6 +490,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -589,6 +593,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -1023,11 +1028,13 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -1078,6 +1085,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -1180,6 +1188,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -1614,11 +1623,13 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -1669,6 +1680,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -1771,6 +1783,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -1873,6 +1886,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,

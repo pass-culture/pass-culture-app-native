@@ -105,6 +105,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -173,6 +174,9 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -492,6 +496,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                           "flexDirection": "row",
+                          "flexShrink": 0,
                           "justifyContent": "center",
                           "paddingBottom": 2,
                           "paddingLeft": 2,
@@ -605,18 +610,19 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "height": 1,
+                        "marginRight": 16,
                         "width": "100%",
                       }
                     }
+                    type="left"
                   />
                   <Text
                     style={
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "marginHorizontal": 12,
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
                       }
                     }
                   >
@@ -630,9 +636,11 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "height": 1,
+                        "marginLeft": 16,
                         "width": "100%",
                       }
                     }
+                    type="right"
                   />
                 </View>
               </View>

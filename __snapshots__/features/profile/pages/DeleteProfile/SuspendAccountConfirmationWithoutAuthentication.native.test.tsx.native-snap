@@ -105,6 +105,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               "backgroundColor": "transparent",
               "borderWidth": 0,
               "flexDirection": "row",
+              "flexShrink": 0,
               "justifyContent": "center",
               "opacity": 1,
               "paddingBottom": 8,
@@ -527,11 +528,13 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -578,6 +581,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                 "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
+                "flexShrink": 0,
                 "justifyContent": "center",
                 "opacity": 1,
                 "paddingBottom": 8,
@@ -673,6 +677,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "opacity": 1,
                   "paddingBottom": 2,

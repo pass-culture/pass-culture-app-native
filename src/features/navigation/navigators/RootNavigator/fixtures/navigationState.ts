@@ -48,7 +48,7 @@ export const state2 = createState('stack', 1, [
       { name: 'ProfileStackNavigator' },
     ]),
   },
-  { name: 'Login' },
+  { name: 'LoginMethods' },
   { name: 'Offer' },
 ])
 

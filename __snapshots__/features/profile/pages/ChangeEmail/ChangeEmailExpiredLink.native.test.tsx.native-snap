@@ -193,11 +193,13 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -248,6 +250,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -350,6 +353,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
@@ -647,11 +651,13 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -702,6 +708,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -804,6 +811,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,

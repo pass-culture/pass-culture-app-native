@@ -160,7 +160,6 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -280,6 +279,7 @@ activer un rappel
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -361,7 +361,9 @@ activer un rappel
         paddingBottom={8}
         style={
           {
-            "maxHeight": "100%",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
@@ -467,6 +469,7 @@ activer un rappel
                             "borderTopRightRadius": 8,
                             "borderWidth": 1,
                             "flexDirection": "row",
+                            "flexShrink": 0,
                             "justifyContent": "center",
                             "paddingBottom": 8,
                             "paddingLeft": 12,

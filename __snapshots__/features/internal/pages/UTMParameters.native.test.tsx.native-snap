@@ -104,6 +104,7 @@ exports[`<UTMParameters /> should render correctly 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -172,6 +173,9 @@ exports[`<UTMParameters /> should render correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }

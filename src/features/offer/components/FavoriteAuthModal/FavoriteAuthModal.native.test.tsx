@@ -34,7 +34,7 @@ describe('FavoriteAuthModal', () => {
       const button = screen.getByText('Se connecter')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('Login', {
+      expect(navigate).toHaveBeenCalledWith('LoginMethods', {
         from: StepperOrigin.FAVORITE,
         offerId: OFFER_ID,
       })

@@ -24,6 +24,7 @@ const profile = {
   status: ActivityIdEnum.APPRENTICE,
   hasSchoolTypes: false,
   schoolType: null,
+  phoneNumber: '0601020304',
 }
 
 const postSubscriptionProfileSpy = jest
@@ -57,6 +58,7 @@ describe('usePostProfileMutation', () => {
       postalCode: '75000',
       firstName: 'first name',
       lastName: 'last name',
+      phoneNumber: '0601020304',
       activityId: ActivityIdEnum.APPRENTICE,
       schoolTypeId: null,
     })

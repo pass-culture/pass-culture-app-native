@@ -104,6 +104,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "paddingBottom": 8,
                   "paddingLeft": 8,
@@ -172,6 +173,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -3342,6 +3346,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -3568,181 +3573,117 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             <View />
           </RCTScrollView>
           <View
-            style={
+            accessibilityLabel="Conserver l’historique"
+            accessibilityRole="checkbox"
+            accessibilityState={
               {
-                "backgroundColor": "#ffffff",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "marginTop": 40,
-                "paddingBottom": 8,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 8,
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "cursor": "pointer",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Conserver l’historique"
           >
             <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              focusable={false}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "width": "100%",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "columnGap": 12,
+                  "flexDirection": "row",
+                }
               }
             >
               <View
-                accessibilityLabel="Conserver l’historique"
-                accessibilityRole="checkbox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": false,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
+                disabled={false}
+                isHover={false}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                state={
                   [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "cursor": "pointer",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
+                    "default",
                   ]
                 }
-                testID="Conserver l’historique"
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderColor": "#90949d",
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "justifyContent": "center",
+                    "width": 20,
+                  }
+                }
+                variant="default"
+              />
+              <View
+                style={
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  }
+                }
               >
-                <View
+                <Text
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
                   style={
                     {
-                      "alignItems": "center",
-                      "columnGap": 12,
-                      "flexDirection": "row",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  <View
-                    disabled={false}
-                    isHover={false}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    state={
-                      [
-                        "default",
-                      ]
-                    }
-                    style={
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 4,
-                        "borderBottomRightRadius": 4,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 4,
-                        "borderTopRightRadius": 4,
-                        "borderWidth": 2,
-                        "height": 20,
-                        "justifyContent": "center",
-                        "width": 20,
-                      }
-                    }
-                    variant="default"
-                  />
-                  <View
-                    style={
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <Text
-                      isHover={false}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      state={
-                        [
-                          "default",
-                        ]
-                      }
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
-                      }
-                    >
-                      Conserver l’historique
-                    </Text>
-                  </View>
-                </View>
+                  Conserver l’historique
+                </Text>
               </View>
             </View>
           </View>

@@ -101,6 +101,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
               "flexDirection": "row",
+              "flexShrink": 0,
               "justifyContent": "center",
               "opacity": 1,
               "paddingBottom": 8,
@@ -166,6 +167,9 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -690,6 +694,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                 "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
+                "flexShrink": 0,
                 "justifyContent": "center",
                 "opacity": 1,
                 "paddingBottom": 8,

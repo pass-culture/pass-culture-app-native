@@ -1,0 +1,132 @@
+import React from 'react'
+import styled, { useTheme } from 'styled-components/native'
+
+import { QFBonificationStatus } from 'api/gen'
+import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
+import { BlockDescriptionItem } from 'features/profile/components/Tutorial/BlockDescriptionItem'
+import { DashedStepContainer } from 'features/profile/components/Tutorial/DashedStepContainer'
+import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
+import { UserProfile } from 'features/share/types'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
+import { InternalStep } from 'ui/components/InternalStep/InternalStep'
+import { StepVariant } from 'ui/components/VerticalStepper/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
+import { Confirmation } from 'ui/svg/icons/Confirmation'
+import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
+import { Lock } from 'ui/svg/icons/Lock'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
+import { Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+
+type Props = { amount: string; isLoggedIn: boolean; user?: UserProfile }
+
+export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) => {
+  const { designSystem } = useTheme()
+  const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+  const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
+  const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
+  const showBonficationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
+  const onPressHandicapBonficationButton = () => 'doNothing'
+
+  return (
+    <React.Fragment>
+      <PlainMoreSeparator />
+      <InternalStep
+        key="optional"
+        variant={StepVariant.unknown}
+        iconComponent={<GreyHandicapMotor />}
+        addMoreSpacingToIcons>
+        <DashedStepContainer bonificationStatus={bonificationStatus}>
+          <ViewGap gap={4}>
+            <StyledBody>Bonus sous conditions</StyledBody>
+            <Typo.Title3>
+              Tu peux recevoir{SPACE}
+              <StyledTitle3>{amount} supplémentaires</StyledTitle3>
+            </Typo.Title3>
+            <RowView>
+              <CreditProgressBar progress={1} width="70%" />
+              <PlusContainer>
+                <StyledPlus>{'+'}</StyledPlus>
+              </PlusContainer>
+              <CreditProgressBar
+                progress={1}
+                width="20%"
+                innerText={amount}
+                color={designSystem.color.background.brandSecondary}
+              />
+            </RowView>
+            <AccessibleUnorderedList
+              withPadding
+              Separator={<Separator />}
+              items={[
+                <BlockDescriptionItem
+                  key={1}
+                  icon={<SmallLock />}
+                  text="Tu dois avoir débloqué le crédit de tes 18 ans."
+                />,
+                <BlockDescriptionItem
+                  key={2}
+                  icon={<SmallConfirmation />}
+                  text="Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH."
+                />,
+              ]}
+            />
+            {showBonficationButton ? (
+              <ButtonContainerFlexStart>
+                <Button
+                  variant="tertiary"
+                  color="neutral"
+                  icon={PlainArrowNext}
+                  wording="Faire une demande"
+                  onPress={onPressHandicapBonficationButton}
+                  disabled
+                />
+              </ButtonContainerFlexStart>
+            ) : null}
+          </ViewGap>
+        </DashedStepContainer>
+      </InternalStep>
+    </React.Fragment>
+  )
+}
+
+const PlusContainer = styled.View({
+  width: '10%',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.designSystem.color.text.brandSecondary,
+}))
+
+const StyledTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+  color: theme.designSystem.color.text.brandSecondary,
+}))
+
+const GreyHandicapMotor = styled(HandicapMotor).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.subtle,
+}))``
+
+const SmallLock = styled(Lock).attrs(({ theme }) => ({
+  size: theme.designSystem.size.icon.s,
+}))``
+
+const SmallConfirmation = styled(Confirmation).attrs(({ theme }) => ({
+  size: theme.designSystem.size.icon.s,
+}))``
+
+const RowView = styled.View({
+  flexDirection: 'row',
+})
+
+const Separator = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.l,
+}))
+
+const StyledPlus = styled(Typo.Title2).attrs(getNoHeadingAttrs)(({ theme }) => ({
+  color: theme.designSystem.color.text.brandSecondary,
+}))

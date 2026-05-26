@@ -40,6 +40,7 @@ import { ProfileInformationValidationCreate } from 'features/identityCheck/pages
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
+import { SetPhoneNumber } from 'features/identityCheck/pages/profile/SetPhoneNumber'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
@@ -115,6 +116,13 @@ const subscriptionStackNavigatorDefinition = {
       if: useIsSignedIn,
       linking: {
         path: 'creation-profil/adresse',
+      },
+    },
+    SetPhoneNumber: {
+      screen: SetPhoneNumber,
+      if: useIsSignedIn,
+      linking: {
+        path: 'creation-profil/telephone',
       },
     },
     SetStatus: {

@@ -132,6 +132,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
             "borderTopRightRadius": 8,
             "borderWidth": 1,
             "flexDirection": "row",
+            "flexShrink": 0,
             "justifyContent": "center",
             "opacity": 1,
             "paddingBottom": 8,

@@ -16,8 +16,8 @@ export function ChangeEmailExpiredLink() {
 
   const changeEmailExpiredLink = () => {
     resendEmailNumberOfHits++
-    analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
-    isLoggedIn ? navigate(...getProfileHookConfig('ChangeEmail')) : navigate('Login')
+    void analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
+    isLoggedIn ? navigate(...getProfileHookConfig('ChangeEmail')) : navigate('LoginMethods')
   }
 
   const upperBodyText =

@@ -69,6 +69,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
     <View
       accessibilityLabelledBy="testUuidV4"
       gap={6}
+      maxHeight={1334}
       style={
         {
           "alignItems": "center",
@@ -79,6 +80,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
           "borderTopLeftRadius": 4,
           "borderTopRightRadius": 4,
           "gap": 24,
+          "maxHeight": "100%",
           "paddingBottom": 32,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -194,6 +196,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -261,40 +264,53 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
+      <RCTScrollView
+        bounces={false}
+        showsVerticalScrollIndicator={true}
         style={
           {
-            "alignItems": "center",
+            "flexGrow": 0,
             "maxWidth": 500,
             "width": "100%",
           }
         }
+        testID="appInformationModalScrollView"
       >
-        <View
-          style={
-            {
-              "alignItems": "center",
-            }
-          }
-        >
-          <Text
+        <View>
+          <View
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "alignItems": "center",
               }
             }
           >
-            Pas de panique, l’aventure continue !
-            
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pas de panique, l’aventure continue !
+                
 
 
-            Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
-          </Text>
+                Tu peux toujours bénéficier des offres gratuites et exclusives sur le pass Culture.
+              </Text>
+            </View>
+          </View>
         </View>
-      </View>
+      </RCTScrollView>
     </View>
   </View>
 </Modal>

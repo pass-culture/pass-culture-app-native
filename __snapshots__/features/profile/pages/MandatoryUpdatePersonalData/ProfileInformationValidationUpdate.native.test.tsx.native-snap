@@ -68,6 +68,9 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           }
         }
@@ -423,6 +426,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                   "borderTopRightRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "opacity": 1,
                   "paddingBottom": 8,
@@ -514,6 +518,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
                   "borderTopRightRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
+                  "flexShrink": 0,
                   "justifyContent": "center",
                   "opacity": 1,
                   "paddingBottom": 8,

@@ -10,6 +10,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -123,6 +124,11 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     !isChecked.acceptCgu ||
     !isChecked.acceptDataCharter
 
+  const numberOfLines = useMobileFontScaleToDisplay({
+    default: 2,
+    at200PercentZoom: undefined,
+  })
+
   return (
     <SetContainer>
       <Form.MaxWidth>
@@ -152,7 +158,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
             wording="Conditions Générales d’Utilisation"
             externalNav={{ url: env.CGU_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
+            numberOfLines={numberOfLines}
           />
           <ExternalTouchableLink
             as={Button}
@@ -161,7 +167,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
             wording="Charte des données personnelles"
             externalNav={{ url: env.PRIVACY_POLICY_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
+            numberOfLines={numberOfLines}
           />
           <ExternalTouchableLink
             as={Button}
@@ -170,7 +176,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
             wording="Charte d’utilisation et de bonne conduite"
             externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
             icon={ExternalSiteFilled}
-            numberOfLines={2}
+            numberOfLines={numberOfLines}
           />
         </Container>
         <ButtonContainer>

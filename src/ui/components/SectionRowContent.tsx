@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
@@ -35,10 +35,7 @@ export const SectionRowContent = ({
   style,
   ...props
 }: SectionRowContentProps) => {
-  const titleNumberOfLines = useMobileFontScaleToDisplay({
-    default: numberOfLines,
-    at200PercentZoom: 3,
-  })
+  const titleNumberOfLines = useNumberOfLine(numberOfLines)
 
   const Title = renderTitle ? (
     renderTitle(title)

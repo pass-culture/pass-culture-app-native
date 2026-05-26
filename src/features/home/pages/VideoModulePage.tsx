@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { FlatList, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -42,6 +42,7 @@ export const VideoModulePage: FunctionComponent = () => {
   } = params
   const { goBack } = useGoBack(...homeNavigationConfig)
   const theme = useTheme()
+  const [isPlayingVideo, setIsPlayingVideo] = useState(true)
 
   const { headerTransition, onScroll } = useOpacityTransition()
 
@@ -81,6 +82,7 @@ export const VideoModulePage: FunctionComponent = () => {
   }
 
   const handleTranscriptionButtonPress = () => {
+    setIsPlayingVideo(false)
     void analytics.logClickSeeVideoTranscription({ from: 'videoModal', moduleId, homeEntryId })
     showModal()
   }
@@ -106,6 +108,9 @@ export const VideoModulePage: FunctionComponent = () => {
           homeEntryId={homeEntryId}
           playerRef={playerRef}
           onPressSeeOffer={handleLogHasDismissedModal}
+          isPlaying={isPlayingVideo}
+          onPlay={() => setIsPlayingVideo(true)}
+          onPause={() => setIsPlayingVideo(false)}
         />
 
         <TranscriptionButtonContainer>

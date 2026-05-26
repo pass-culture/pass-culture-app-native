@@ -187,11 +187,13 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
         <View
           gap={4}
           isLandscape={false}
+          marginButton={0}
           style={
             {
               "alignItems": "center",
               "gap": 16,
               "marginBottom": 40,
+              "marginTop": 0,
             }
           }
         >
@@ -242,6 +244,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
+                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -344,6 +347,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                       "flexDirection": "row",
+                      "flexShrink": 0,
                       "justifyContent": "center",
                       "paddingBottom": 2,
                       "paddingLeft": 2,
