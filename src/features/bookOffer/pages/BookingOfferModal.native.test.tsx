@@ -15,11 +15,12 @@ import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
-import { BookingOfferModalComponent } from './BookingOfferModal'
+import { BookingOfferModalComponent, BookingOfferModalComponentProps } from './BookingOfferModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -484,6 +485,29 @@ describe('<BookingOfferModalComponent />', () => {
         expect(analytics.logHasBookedCineScreeningOffer).toHaveBeenCalledTimes(1)
       })
     })
+
+    describe('qualtrics survey modal', () => {
+      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY]))
+
+      it('should render modal when booking modal is dismissed', async () => {
+        const { rerender } = renderBookingOfferModal({})
+
+        const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+        await user.press(dismissModalButton)
+
+        rerender(
+          <Component
+            isEndedUsedBooking={false}
+            visible={false}
+            offerId={20}
+            bookingDataMovieScreening={undefined}
+          />
+        )
+
+        expect(await screen.findByTestId('Répondre au questionnaire')).toBeOnTheScreen()
+      })
+    })
   })
 })
 
@@ -492,24 +516,15 @@ const renderBookingOfferModal = ({
   bookingDataMovieScreening,
   visible = true,
   isEndedUsedBooking,
-}: {
-  isEndedUsedBooking?: boolean
-  visible?: boolean
-  offerId?: number
-  bookingDataMovieScreening?: {
-    date: Date
-    hour: number
-    stockId: number
-  }
-}) => {
+}: Partial<BookingOfferModalComponentProps>) =>
   render(
-    reactQueryProviderHOC(
-      <BookingOfferModalComponent
-        isEndedUsedBooking={isEndedUsedBooking}
-        visible={visible}
-        offerId={offerId}
-        bookingDataMovieScreening={bookingDataMovieScreening}
-      />
-    )
+    <Component
+      isEndedUsedBooking={isEndedUsedBooking}
+      visible={visible}
+      offerId={offerId}
+      bookingDataMovieScreening={bookingDataMovieScreening}
+    />
   )
-}
+
+const Component = (props: BookingOfferModalComponentProps) =>
+  reactQueryProviderHOC(<BookingOfferModalComponent {...props} />)

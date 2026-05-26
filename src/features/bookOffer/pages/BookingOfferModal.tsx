@@ -30,7 +30,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-interface BookingOfferModalComponentProps {
+export type BookingOfferModalComponentProps = {
   visible: boolean
   offerId: number
   isEndedUsedBooking?: boolean

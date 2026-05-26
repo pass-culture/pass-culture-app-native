@@ -76,10 +76,13 @@ describe('<BookingConfirmation />', () => {
   })
 
   it('should not display correct amount left text when free user status', async () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      eligibility: EligibilityType.free,
-    })
+    mockAuthContextWithUser(
+      {
+        ...beneficiaryUser,
+        eligibility: EligibilityType.free,
+      },
+      { persist: true }
+    )
 
     render(<BookingConfirmation />)
 
@@ -217,5 +220,15 @@ describe('<BookingConfirmation />', () => {
         })
       }
     )
+  })
+
+  describe('qualtrics survey modal', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY]))
+
+    it('should render modal', async () => {
+      render(<BookingConfirmation />)
+
+      expect(await screen.findByTestId('Répondre au questionnaire')).toBeOnTheScreen()
+    })
   })
 })
