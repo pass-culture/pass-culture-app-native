@@ -12,8 +12,7 @@ const onboardingCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Onboarding 🚸 (mobile only)',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationOnboarding' },
+    screen: 'CheatcodesNavigationOnboarding',
   },
   subscreens: [
     {

@@ -38,8 +38,7 @@ const reviewInAppCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'In-App Review ⭐',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationReviewInApp' },
+    screen: 'CheatcodesNavigationReviewInApp',
   },
   subscreens: [],
 }

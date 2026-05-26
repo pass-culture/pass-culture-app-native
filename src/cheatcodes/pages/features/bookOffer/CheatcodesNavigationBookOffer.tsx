@@ -9,8 +9,7 @@ const bookOfferCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'BookOffer 🎫',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationBookOffer' },
+    screen: 'CheatcodesNavigationBookOffer',
   },
   subscreens: [
     {
