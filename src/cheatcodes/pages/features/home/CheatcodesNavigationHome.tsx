@@ -11,8 +11,7 @@ const homeCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Home 🏠',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationHome' },
+    screen: 'CheatcodesNavigationHome',
   },
   subscreens: [
     {

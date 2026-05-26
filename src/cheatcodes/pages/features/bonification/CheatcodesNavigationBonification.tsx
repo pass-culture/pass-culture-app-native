@@ -13,8 +13,7 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Bonification 💸',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationBonification' },
+    screen: 'CheatcodesNavigationBonification',
   },
   subscreens: [
     {

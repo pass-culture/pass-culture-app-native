@@ -3,6 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
 import {
+  AllNavParamList,
   RootStackParamList,
   UseNavigationType,
 } from 'features/navigation/navigators/RootNavigator/types'
@@ -10,11 +11,11 @@ import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helper
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
-const toLinkProps = <T extends keyof RootStackParamList>(
+const toLinkProps = <T extends keyof AllNavParamList>(
   screen: T,
-  params?: RootStackParamList[T]
-): LinkProps<RootStackParamList, T> => {
-  return { screen, params } as LinkProps<RootStackParamList, T>
+  params?: AllNavParamList[T]
+): LinkProps<AllNavParamList, T> => {
+  return { screen, params } as LinkProps<AllNavParamList, T>
 }
 
 export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps> = ({
@@ -27,15 +28,21 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   const { navigate, push, reset } = useNavigation<UseNavigationType>()
   const { screen, params, fromRef, withPush, withReset } = navigateTo
 
-  const linkConfig = navigateTo ? toLinkProps(screen, params) : toLinkProps('TabNavigator' as const)
+  const linkConfig = navigateTo
+    ? toLinkProps(screen as keyof AllNavParamList, params)
+    : toLinkProps('TabNavigator' as const)
 
-  const internalLinkProps = useLinkProps<RootStackParamList>(linkConfig)
+  const internalLinkProps = useLinkProps<AllNavParamList>(linkConfig)
 
   const handleNavigation = useCallback(() => {
     if (withReset) {
       fromRef
         ? resetFromRef(screen as keyof RootStackParamList, params)
-        : reset({ index: 0, routes: [{ name: screen, params }] })
+        : reset({
+            index: 0,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            routes: [{ name: screen as any, params }],
+          })
     } else if (withPush) {
       if (fromRef) {
         pushFromRef(screen as keyof RootStackParamList, params)

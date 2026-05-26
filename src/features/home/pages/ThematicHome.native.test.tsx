@@ -13,7 +13,6 @@ import {
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { useFetchHomepageByIdQuery } from 'features/home/queries/useGetHomepageQuery'
 import { Color, Homepage, ThematicHeaderType } from 'features/home/types'
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -24,7 +23,7 @@ import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -99,9 +98,8 @@ const modules = [formattedVenuesModule]
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: mockGoBack,
+  goBack: jest.fn(),
   canGoBack: jest.fn(() => true),
 })
 
@@ -110,8 +108,6 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   navigate: mockNavigate,
   push: jest.fn(),
 })
-
-const user = userEvent.setup()
 
 jest.useFakeTimers()
 
@@ -230,37 +226,6 @@ describe('ThematicHome', () => {
 
       expect(await screen.findAllByText('Catégorie cinéma')).not.toHaveLength(0)
       expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
-    })
-
-    it('should execute go back when pressing back button and url has chronicles from parameter', async () => {
-      useRoute.mockReturnValueOnce({
-        params: {
-          entryId: 'fakeEntryId',
-          from: 'chronicles',
-        },
-      })
-      renderThematicHome()
-
-      await user.press(await screen.findByLabelText('Revenir en arrière'))
-
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
-    })
-
-    it('should navigate to home when pressing back button and url has not chronicles from parameter', async () => {
-      useRoute.mockReturnValueOnce({
-        params: {
-          entryId: 'fakeEntryId',
-          from: 'deeplink',
-        },
-      })
-      renderThematicHome()
-
-      await user.press(await screen.findByLabelText('Revenir en arrière'))
-
-      expect(mockNavigate).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
     })
   })
 

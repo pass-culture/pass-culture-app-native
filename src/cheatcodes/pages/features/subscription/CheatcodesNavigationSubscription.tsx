@@ -18,8 +18,7 @@ const subscriptionCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Subscription 🔔',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationSubscription' },
+    screen: 'CheatcodesNavigationSubscription',
   },
   subscreens: [
     {

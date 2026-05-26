@@ -19,8 +19,7 @@ const achievementCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Achievements 🏆',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationAchievements' },
+    screen: 'CheatcodesNavigationAchievements',
   },
   subscreens: [
     {

@@ -15,8 +15,7 @@ const forceUpdateCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'ForceUpdate 🆙',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationForceUpdate' },
+    screen: 'CheatcodesNavigationForceUpdate',
   },
   subscreens: [
     {

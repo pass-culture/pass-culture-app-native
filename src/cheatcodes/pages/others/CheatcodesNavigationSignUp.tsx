@@ -26,8 +26,7 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'SignUp 🎨',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationSignUp' },
+    screen: 'CheatcodesNavigationSignUp',
   },
   subscreens: [
     { id: uuidv4(), title: 'AccountCreated', navigationTarget: { screen: 'AccountCreated' } },

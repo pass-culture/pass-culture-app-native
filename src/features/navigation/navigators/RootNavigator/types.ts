@@ -338,7 +338,8 @@ export type AllNavParamList = RootStackParamList &
   SearchStackParamList &
   ProfileStackParamList &
   OnboardingStackParamList &
-  SubscriptionStackParamList
+  SubscriptionStackParamList &
+  CheatcodesStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
@@ -379,7 +380,7 @@ type NavigateParams<RouteName extends keyof ParamListBase> =
     : [RouteName] | [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
 export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
-type AllNavigateParams = NavigateParams<keyof AllNavParamList>
+export type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 
 export type NavigationResultState = ReturnType<typeof getStateFromPath>
 

@@ -18,6 +18,7 @@ import 'react-native-gesture-handler/jestSetup'
   }
 } */
 jest.mock('libs/analytics/provider')
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 /* See the corresponding mock in libs/environment/__mocks__ */

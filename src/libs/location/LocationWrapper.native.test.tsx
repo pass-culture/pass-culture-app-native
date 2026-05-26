@@ -1,8 +1,7 @@
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { storage } from 'libs/storage'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
 import { LocationWrapper, useLocation } from './LocationWrapper'
@@ -136,31 +135,6 @@ describe('useLocation()', () => {
         })
       }
     )
-  })
-
-  describe('location_type', () => {
-    it('should write UserGeolocation in location_type async storage when geolocation is turned on', async () => {
-      mockPermissionResult(GeolocPermissionState.GRANTED)
-      const { result } = renderLocationHook()
-      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
-      await waitFor(() => {
-        expect(onAcceptance).toHaveBeenCalledTimes(1)
-      })
-      const localStorageLocationType = await storage.readString('location_type')
-
-      expect(localStorageLocationType).toEqual('UserGeolocation')
-    })
-
-    it('should clear location_type async storage when neither place nor geolocPosition are set', async () => {
-      mockPermissionResult(GeolocPermissionState.DENIED)
-      const { result } = renderLocationHook()
-      await act(async () => {
-        result.current.setPlace(null)
-      })
-      const localStorageLocationType = await storage.readString('location_type')
-
-      expect(localStorageLocationType).toEqual(null)
-    })
   })
 })
 

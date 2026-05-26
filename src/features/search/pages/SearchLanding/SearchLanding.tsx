@@ -22,6 +22,7 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
@@ -42,7 +43,7 @@ export const SearchLanding = () => {
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
   const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
-
+  const isLandscape = useIsLandscape()
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
@@ -71,7 +72,7 @@ export const SearchLanding = () => {
     if (isFocusOnSuggestions) {
       return (
         <React.Fragment>
-          {isZoomedAt200 ? null : searchHeader}
+          {isZoomedAt200 || isLandscape ? null : searchHeader}
           <SearchSuggestions
             queryHistory={queryHistory}
             addToHistory={addToHistory}
@@ -80,14 +81,14 @@ export const SearchLanding = () => {
             shouldNavigateToSearchResults
             enableAIFakeDoor={enableAIFakeDoor}
             onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
-            header={isZoomedAt200 ? searchHeader : undefined}
+            header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
           />
         </React.Fragment>
       )
     } else
       return (
         <React.Fragment>
-          {isZoomedAt200 ? (
+          {isZoomedAt200 || isLandscape ? (
             <LandingScrollView keyboardShouldPersistTaps="handled">
               {searchHeader}
               <CategoriesButtonsContainer>

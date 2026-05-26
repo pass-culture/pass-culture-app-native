@@ -19,8 +19,7 @@ const errorsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'Errors 👾',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationErrors' },
+    screen: 'CheatcodesNavigationErrors',
   },
   subscreens: [
     {
