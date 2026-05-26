@@ -1,5 +1,3 @@
-import { MutableRefObject } from 'react'
-
 import { GeolocPermissionState } from 'libs/location/location'
 import { RequestGeolocPermissionParams, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -8,7 +6,6 @@ export type LocationState = {
   hasGeolocPosition: boolean
   place: SuggestedPlace | null
   setPlace: (place: SuggestedPlace | null) => void
-  onModalHideRef: MutableRefObject<(() => void) | undefined>
   permissionState: GeolocPermissionState | null
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   showGeolocPermissionModal: () => void

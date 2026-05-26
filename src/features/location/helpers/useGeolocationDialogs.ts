@@ -13,8 +13,6 @@ type Props = {
   setSelectedLocationMode: LocationState['setSelectedLocationMode']
   permissionState: LocationState['permissionState']
   setPlace: LocationState['setPlace']
-  onModalHideRef: LocationState['onModalHideRef']
-  showGeolocPermissionModal: LocationState['showGeolocPermissionModal']
   requestGeolocPermission: LocationState['requestGeolocPermission']
   hasGeolocPosition: LocationState['hasGeolocPosition']
 }
@@ -27,8 +25,6 @@ export const useGeolocationDialogs = ({
   setSelectedLocationMode,
   permissionState,
   setPlace,
-  onModalHideRef,
-  showGeolocPermissionModal,
   requestGeolocPermission,
   hasGeolocPosition,
 }: Props) => {
@@ -42,11 +38,9 @@ export const useGeolocationDialogs = ({
       selectEverywhereMode()
       if (shouldOpenDirectlySettings) {
         Linking.openSettings()
-      } else {
-        if (!shouldDirectlyValidate) {
-          dismissModal()
-        }
-        onModalHideRef.current = showGeolocPermissionModal
+      }
+      if (!shouldDirectlyValidate) {
+        dismissModal()
       }
     } else if (permissionState === GeolocPermissionState.GRANTED && !hasGeolocPosition) {
       Alert.alert(
@@ -64,17 +58,15 @@ export const useGeolocationDialogs = ({
       })
     }
   }, [
-    permissionState,
-    setTempLocationMode,
-    setSelectedLocationMode,
-    setPlace,
-    shouldOpenDirectlySettings,
     dismissModal,
-    onModalHideRef,
-    showGeolocPermissionModal,
-    shouldDirectlyValidate,
-    requestGeolocPermission,
     hasGeolocPosition,
+    permissionState,
+    requestGeolocPermission,
+    setPlace,
+    setSelectedLocationMode,
+    setTempLocationMode,
+    shouldDirectlyValidate,
+    shouldOpenDirectlySettings,
   ])
 
   return { runGeolocationDialogs }

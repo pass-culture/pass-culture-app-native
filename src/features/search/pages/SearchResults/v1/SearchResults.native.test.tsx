@@ -205,7 +205,6 @@ const getAroundPlaceUserPosition = ({
   geolocPosition?: Position
 }): Partial<ILocationContext> => ({
   setPlace: jest.fn(),
-  onModalHideRef: { current: jest.fn() },
   setSelectedLocationMode: jest.fn(),
   userLocation: DEFAULT_USER_LOCATION,
   selectedLocationMode: LocationMode.AROUND_PLACE,

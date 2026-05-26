@@ -10,7 +10,6 @@ type Props = {
   setSelectedLocationMode: LocationState['setSelectedLocationMode']
   permissionState: LocationState['permissionState']
   setPlace: LocationState['setPlace']
-  onModalHideRef: LocationState['onModalHideRef']
   showGeolocPermissionModal: LocationState['showGeolocPermissionModal']
   requestGeolocPermission: LocationState['requestGeolocPermission']
   hasGeolocPosition: LocationState['hasGeolocPosition']
@@ -26,8 +25,6 @@ export const useLocationMode = ({
   setSelectedLocationMode,
   permissionState,
   setPlace,
-  onModalHideRef,
-  showGeolocPermissionModal,
   requestGeolocPermission,
   hasGeolocPosition,
   onSubmit,
@@ -40,8 +37,6 @@ export const useLocationMode = ({
     setSelectedLocationMode,
     permissionState,
     setPlace,
-    onModalHideRef,
-    showGeolocPermissionModal,
     requestGeolocPermission,
     hasGeolocPosition,
   })

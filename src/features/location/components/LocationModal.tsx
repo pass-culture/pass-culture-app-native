@@ -3,7 +3,9 @@ import styled from 'styled-components/native'
 
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LocationState } from 'features/location/types'
+import { GeolocPermissionState } from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
+import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -19,7 +21,6 @@ type LocationModalProps = {
   visible: boolean
   onSubmit: () => void
   onClose: () => void
-  onModalHideRef: LocationState['onModalHideRef']
   selectLocationMode: (mode: LocationMode) => () => void
   tempLocationMode: LocationState['tempLocationMode']
   hasGeolocPosition: LocationState['hasGeolocPosition']
@@ -61,7 +62,6 @@ export const LocationModal = ({
   tempLocationMode,
   onClose,
   selectLocationMode,
-  onModalHideRef,
   selectedPlace,
   tempAroundMeRadius,
   onTempAroundMeRadiusValueChange,
@@ -171,6 +171,12 @@ export const LocationModal = ({
     }
   }
 
+  const onModalHide = () => {
+    if (locationSelectors.selectPermissionState() === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      locationActions.showPermissionModal()
+    }
+  }
+
   return (
     <AppModal
       visible={visible}
@@ -178,7 +184,7 @@ export const LocationModal = ({
       noPadding
       isUpToStatusBar
       scrollEnabled={false}
-      onModalHide={onModalHideRef.current}
+      onModalHide={onModalHide}
       keyboardShouldPersistTaps="handled"
       customModalHeader={
         <HeaderContainer>

@@ -67,18 +67,6 @@ describe('useGeolocationDialogs', () => {
 
         expect(mockProps.dismissModal).toHaveBeenCalledTimes(1)
       })
-
-      it('should open geoloc permission modal when current modal closed', async () => {
-        const mockPropsNeverAskAgain = {
-          ...mockProps,
-          permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-        }
-        const { result } = renderHook(() => useGeolocationDialogs(mockPropsNeverAskAgain))
-
-        await result.current.runGeolocationDialogs()
-
-        expect(mockProps.onModalHideRef.current).toEqual(mockProps.showGeolocPermissionModal)
-      })
     })
 
     it('should not call dismiss modal function when shouldDirectlyValidate is true', async () => {

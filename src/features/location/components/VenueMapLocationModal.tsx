@@ -43,7 +43,6 @@ export const VenueMapLocationModal = ({
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
-    onModalHideRef,
   } = useLocation()
 
   const {
@@ -90,7 +89,6 @@ export const VenueMapLocationModal = ({
     shouldOpenDirectlySettings: true,
     setSelectedLocationMode,
     setPlace,
-    onModalHideRef,
     hasGeolocPosition,
     tempLocationMode,
     onSubmit,
@@ -118,7 +116,6 @@ export const VenueMapLocationModal = ({
       tempLocationMode={tempLocationMode}
       onClose={onClose}
       selectLocationMode={selectLocationMode}
-      onModalHideRef={onModalHideRef}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
