@@ -22,7 +22,6 @@ export const hasActiveSearchFilters = (args: FetchSearchResultsArgs): boolean =>
 }
 
 const TECHNICAL_PARAM_KEYS = new Set<keyof SearchQueryParameters>([
-  'query',
   'page',
   'hitsPerPage',
   'searchId',

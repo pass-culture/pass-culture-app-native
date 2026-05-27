@@ -13,7 +13,6 @@ type BuildArtistsQueryArgs = {
 
 export const buildArtistsQuery = ({ parameters }: BuildArtistsQueryArgs) => ({
   indexName: env.ALGOLIA_ARTISTS_INDEX_NAME,
-  query: '',
   ...(parameters.query ? { facetFilters: [[`name:${parameters.query}`]] } : []),
   ...buildHitsPerPage(100),
 })
