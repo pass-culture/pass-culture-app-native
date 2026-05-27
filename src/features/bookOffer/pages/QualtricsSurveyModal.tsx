@@ -8,11 +8,18 @@ import { Bulb } from 'ui/svg/icons/Bulb'
 import { Typo } from 'ui/theme'
 
 type Props = {
+  userId: number
+  offerId: number
   visible: boolean
   hideModal: () => void
 }
 
-export const QualtricsSurveyModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
+export const QualtricsSurveyModal: FunctionComponent<Props> = ({
+  userId,
+  offerId,
+  visible,
+  hideModal,
+}) => {
   return (
     <AppModalWithIllustration
       visible={visible}
@@ -29,7 +36,9 @@ export const QualtricsSurveyModal: FunctionComponent<Props> = ({ visible, hideMo
           as={Button}
           fullWidth
           wording="Répondre au questionnaire"
-          externalNav={{ url: 'https://passculture.qualtrics.com/jfe/form/SV_9M3POmHFECvQCc6' }}
+          externalNav={{
+            url: `https://passculture.qualtrics.com/jfe/form/SV_9M3POmHFECvQCc6?userId=${userId}&offerId=${offerId}`,
+          }}
         />
       </StyledButtonContainer>
     </AppModalWithIllustration>

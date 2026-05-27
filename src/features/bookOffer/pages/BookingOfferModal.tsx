@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components/native'
 import { ApiError } from 'api/ApiError'
 import { isApiError } from 'api/apiHelpers'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
 import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOfferModalHeader'
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
@@ -66,6 +67,8 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType
+
+  const { user: { id: userId = 0 } = {} } = useAuthContext()
 
   const isQualtricsSurveyEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY)
 
@@ -205,6 +208,8 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     </AppModal>
   ) : (
     <QualtricsSurveyModal
+      userId={userId}
+      offerId={offerId}
       visible={isQualtricsSurveyEnabled && qualtricsSurveyModalVisible}
       hideModal={hideQualtricsSurveyModal}
     />

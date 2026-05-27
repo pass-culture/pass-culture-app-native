@@ -126,6 +126,8 @@ export function BookingConfirmation() {
         />
       ) : null}
       <QualtricsSurveyModal
+        userId={user?.id ?? 0}
+        offerId={params.offerId}
         visible={isQualtricsSurveyEnabled && qualtricsSurveyModalVisible}
         hideModal={hideQualtricsSurveyModal}
       />

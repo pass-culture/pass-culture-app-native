@@ -4,6 +4,7 @@ import { Share } from 'react-native'
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { EligibilityType } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -47,6 +48,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockUseAuthContext = useAuthContext as jest.Mock
+
+const mockBeneficiaryUser = beneficiaryUser
+
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(),
+}))
+
 describe('<BookingConfirmation />', () => {
   beforeEach(async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING])
@@ -56,6 +65,13 @@ describe('<BookingConfirmation />', () => {
         offerId: mockOfferId,
         bookingId: 345,
       },
+    })
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      user: mockBeneficiaryUser,
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+      setIsLoggedIn: jest.fn(),
     })
   })
 
