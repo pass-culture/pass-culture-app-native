@@ -39,6 +39,8 @@ export const VideoModulePage: FunctionComponent = () => {
     isMultiOffer,
     videoTitle,
     transcription,
+    thematicHomeEntryId,
+    thematicHomeTitle,
   } = params
   const { goBack } = useGoBack(...homeNavigationConfig)
   const theme = useTheme()
@@ -58,6 +60,8 @@ export const VideoModulePage: FunctionComponent = () => {
     from: 'videoModal',
     homeEntryId,
   }
+
+  const hasThematicHomeEntry = !!(thematicHomeEntryId && thematicHomeTitle)
 
   const handleLogHasDismissedModal = async () => {
     const playerCurrentRef = playerRef.current
@@ -105,7 +109,7 @@ export const VideoModulePage: FunctionComponent = () => {
 
         <VideoPlayer
           youtubeVideoId={youtubeVideoId}
-          offer={isMultiOffer ? undefined : offers[0]}
+          offer={isMultiOffer && !hasThematicHomeEntry ? undefined : offers[0]}
           moduleId={moduleId}
           moduleName={moduleName}
           homeEntryId={homeEntryId}
@@ -130,7 +134,7 @@ export const VideoModulePage: FunctionComponent = () => {
 
         <FlatList
           ItemSeparatorComponent={ItemSeparatorComponent}
-          data={isMultiOffer ? offers : []}
+          data={isMultiOffer && !hasThematicHomeEntry ? offers : []}
           ListHeaderComponent={
             <VideoModuleHeader
               analyticsParams={analyticsParams}

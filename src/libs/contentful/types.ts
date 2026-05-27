@@ -198,6 +198,8 @@ type VideoFields = {
   eanList?: string[]
   additionalAlgoliaParameters?: AlgoliaParameters[]
   transcription: string
+  thematicHomeEntryId?: string
+  thematicHomeTitle?: string
 }
 
 type VenueMapBlockFields = {

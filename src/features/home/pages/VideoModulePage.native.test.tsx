@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
@@ -148,6 +148,38 @@ describe('VideoModulePage', () => {
         moduleId: 'module-123',
         seenDuration: 135,
         videoDuration: 267,
+      })
+    })
+  })
+
+  describe('When thematic home entry id and title defined', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({
+        params: {
+          ...mockParams,
+          thematicHomeEntryId: 'homeEntryId',
+          thematicHomeTitle: 'Si tu veux en voir en plus',
+        },
+      })
+
+      mockUseVideoOffersQuery.mockReturnValue({ offers: [...offersFixture] })
+    })
+
+    it('should display thematic home redirection button', async () => {
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      expect(screen.getByText('Si tu veux en voir en plus')).toBeOnTheScreen()
+    })
+
+    it('should redirect to thematic home when pressing redirection button', async () => {
+      render(reactQueryProviderHOC(<VideoModulePage />))
+
+      await user.press(screen.getByText('Si tu veux en voir en plus'))
+
+      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+        from: 'videoModule',
+        homeId: 'homeEntryId',
+        moduleId: 'module-123',
       })
     })
   })
