@@ -11,7 +11,7 @@
   "build": 10393000,
   "private": true,
   "engines": {
-    "node": ">=20.19"
+    "node": ">=25.9"
   },
   "homepage": ".",
   "scripts": {
@@ -382,5 +382,5 @@
     "./jsx-runtime": "./jsx-runtime.js",
     "./": "./"
   },
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "yarn@4.15.0"
 }
