@@ -33,9 +33,8 @@ describe('buildArtistsQuery', () => {
     })
 
     expect(query).toMatchObject({
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-      query: '',
-      attributesToRetrieve: ['artists'],
+      indexName: env.ALGOLIA_ARTISTS_INDEX_NAME,
+      facetFilters: [[`name:${mockParams.query}`]],
       hitsPerPage: 100,
     })
   })

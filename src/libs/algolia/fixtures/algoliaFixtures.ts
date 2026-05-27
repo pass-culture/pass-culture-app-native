@@ -2,6 +2,7 @@ import { SearchResponse } from 'algoliasearch/lite'
 import type { ReadonlyDeep } from 'type-fest'
 
 import { Activity, SubcategoryIdEnum } from 'api/gen'
+import { Artist } from 'features/venue/types'
 import { AlgoliaOffer, AlgoliaOfferWithArtistAndEan, AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { toMutable } from 'shared/types/toMutable'
@@ -1354,3 +1355,53 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
     objectID: '345517876',
   },
 ] as const satisfies ReadonlyDeep<Array<AlgoliaOffer>>)
+
+export const mockedAlgoliaArtistsResponse = toMutable({
+  hits: [
+    {
+      objectID: 'ffffc6dd-de1e-46d8-a8d8-636c237d048f',
+      id: 'ffffc6dd-de1e-46d8-a8d8-636c237d048f',
+      description: '',
+      image: '',
+      name: 'Bruno Martineau',
+    },
+    {
+      objectID: 'ffff111b-43d0-4510-819f-387a30d4e29a',
+      id: 'ffff111b-43d0-4510-819f-387a30d4e29a',
+      description: '',
+      image: '',
+      name: 'Susan Buck Morss',
+    },
+    {
+      objectID: 'fffef783-1f15-4487-a584-326fcfea35a5',
+      id: 'fffef783-1f15-4487-a584-326fcfea35a5',
+      description: 'artiste lyrique (née en 1955)',
+      image: '',
+      name: 'Christine Brewer',
+    },
+    {
+      objectID: 'fffef697-4e40-4d2d-86c8-371d2cd4f56d',
+      id: 'fffef697-4e40-4d2d-86c8-371d2cd4f56d',
+      description: '',
+      image: '',
+      name: 'Dominique Godfardt',
+    },
+    {
+      objectID: 'fffef509-68ec-40da-b4b9-2187a56b4f20',
+      id: 'fffef509-68ec-40da-b4b9-2187a56b4f20',
+      description: '',
+      image: '',
+      name: 'Giusanna Failla',
+    },
+    {
+      objectID: 'fffef136-98e8-4b40-91b8-dfd93b6f3603',
+      id: 'fffef136-98e8-4b40-91b8-dfd93b6f3603',
+      description: '',
+      image: '',
+      name: 'Eric Griez',
+    },
+  ],
+  query: '',
+  params:
+    'page=0&facetFilters=%5B%5B%22offer.category%3AMUSIQUE%22%2C%22offer.category%3AINSTRUMENT%22%5D%5D&numericFilters=%5B%5B%22offer.prices%3A+0+TO+300%22%5D%5D&hitsPerPage=6',
+} as const satisfies ReadonlyDeep<SearchResponse<Artist>>)
