@@ -4,7 +4,11 @@ import { useMemo } from 'react'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
-import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
+import {
+  SearchGroupNameEnumv2,
+  SearchGroupResponseModelv2,
+  SimilarOffersRequestQuery,
+} from 'api/gen'
 import { Position } from 'libs/location/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
@@ -25,6 +29,7 @@ type Props = (WithIncludeCategoryProps | WithExcludeCategoryProps) & {
   shouldFetch: boolean
   position?: Position
   searchGroupList?: SearchGroupResponseModelv2[]
+  retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum
 }
 
 export const getCategories = (
@@ -55,6 +60,7 @@ export const useSimilarOffersQuery = ({
   categoryIncluded,
   categoryExcluded,
   searchGroupList,
+  retrievalModel,
 }: Props) => {
   const searchGroupNames: SearchGroupNameEnumv2[] = useMemo(
     () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
@@ -62,7 +68,7 @@ export const useSimilarOffersQuery = ({
   )
 
   const { data: apiRecoResponse } = useQuery({
-    queryKey: [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames],
+    queryKey: [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames, retrievalModel],
     queryFn: async () => {
       try {
         return await api.getNativeV1RecommendationSimilarOffersofferId(
@@ -71,7 +77,8 @@ export const useSimilarOffersQuery = ({
           position?.latitude,
           undefined,
           undefined,
-          searchGroupNames
+          searchGroupNames,
+          retrievalModel
         )
       } catch (err) {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
@@ -89,6 +96,7 @@ export const useSimilarOffersQuery = ({
                 longitude: position?.longitude,
                 latitude: position?.latitude,
                 searchGroupNames: JSON.stringify(searchGroupNames),
+                retrievalModel,
                 statusCode,
                 errorMessage,
               },

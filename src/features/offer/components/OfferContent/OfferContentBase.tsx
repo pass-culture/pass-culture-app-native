@@ -140,7 +140,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
     apiRecoParamsOtherCategories,
-  } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
+    booksSameCategorySimilarOffers,
+    apiRecoParamsBooksSameCategory,
+  } = useOfferPlaylist({
+    offer,
+    offerCategory: subcategory.categoryId,
+    offerSearchGroup: subcategory.searchGroupName,
+    searchGroupList,
+  })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
   const [isBottomReached, setIsBottomReached] = useState(false)
@@ -365,6 +372,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       type: VerticalPlaylist.SimilarOffers,
       module: {
         offer,
+        offerCategory: subcategory.categoryId,
         offerSearchGroup: subcategory.searchGroupName,
         searchGroupList,
         type,
@@ -372,11 +380,16 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const onBeforeNavigate = (type) => {
-    const moduleName =
-      type === PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-        ? 'Dans la même catégorie'
-        : 'Ça peut aussi te plaire'
+  const onBeforeNavigate = (type: PlaylistType) => {
+    const moduleNameByPlaylistType: Record<PlaylistType, string> = {
+      [PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS]: 'Les fans aiment aussi',
+      [PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS]: 'Dans la même catégorie',
+      [PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS]: 'Ça peut aussi te plaire',
+      [PlaylistType.SAME_ARTIST_PLAYLIST]: '',
+      [PlaylistType.SEARCH_RESULTS]: '',
+      [PlaylistType.TOP_OFFERS]: '',
+    }
+    const moduleName = moduleNameByPlaylistType[type]
 
     void analytics.logClickSeeAll({
       type: 'offers',
@@ -506,6 +519,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsSameCategory={apiRecoParamsSameCategory}
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+            booksSameCategorySimilarOffers={booksSameCategorySimilarOffers}
+            apiRecoParamsBooksSameCategory={apiRecoParamsBooksSameCategory}
             onViewableItemsChanged={handleViewableItemsChanged}
             seeAllButton={{
               navigateToVerticalPlaylist,

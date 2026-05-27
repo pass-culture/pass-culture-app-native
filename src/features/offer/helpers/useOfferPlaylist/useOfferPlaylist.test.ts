@@ -1,4 +1,9 @@
-import { RecommendationApiParams, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  CategoryIdEnum,
+  RecommendationApiParams,
+  SearchGroupNameEnumv2,
+  SimilarOffersRequestQuery,
+} from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
@@ -41,6 +46,7 @@ describe('useOfferPlaylist', () => {
       const { result } = renderHook(() =>
         useOfferPlaylist({
           offer,
+          offerCategory: CategoryIdEnum.CINEMA,
           offerSearchGroup,
           searchGroupList,
         })
@@ -53,6 +59,7 @@ describe('useOfferPlaylist', () => {
       const { result } = renderHook(() =>
         useOfferPlaylist({
           offer,
+          offerCategory: CategoryIdEnum.CINEMA,
           offerSearchGroup,
           searchGroupList,
         })
@@ -65,6 +72,7 @@ describe('useOfferPlaylist', () => {
       const { result } = renderHook(() =>
         useOfferPlaylist({
           offer,
+          offerCategory: CategoryIdEnum.CINEMA,
           offerSearchGroup,
           searchGroupList,
         })
@@ -77,6 +85,7 @@ describe('useOfferPlaylist', () => {
       const { result } = renderHook(() =>
         useOfferPlaylist({
           offer,
+          offerCategory: CategoryIdEnum.CINEMA,
           offerSearchGroup,
           searchGroupList,
         })
@@ -89,6 +98,7 @@ describe('useOfferPlaylist', () => {
       renderHook(() =>
         useOfferPlaylist({
           offer,
+          offerCategory: CategoryIdEnum.CINEMA,
           offerSearchGroup,
           searchGroupList,
         })
@@ -107,6 +117,33 @@ describe('useOfferPlaylist', () => {
           categoryExcluded: SearchGroupNameEnumv2.CINEMA,
           offerId: offer.id,
           position: { longitude: 90.477, latitude: 90.477 },
+        })
+      )
+    })
+
+    it('should fetch books same category playlist with graph retrieval model for book offers', async () => {
+      renderHook(() =>
+        useOfferPlaylist({
+          offer,
+          offerCategory: CategoryIdEnum.LIVRE,
+          offerSearchGroup: SearchGroupNameEnumv2.LIVRES,
+          searchGroupList,
+        })
+      )
+
+      expect(useSimilarOffersSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          categoryIncluded: SearchGroupNameEnumv2.LIVRES,
+          offerId: offer.id,
+          retrievalModel: SimilarOffersRequestQuery.RetrievalModelEnum.Graph,
+          shouldFetch: true,
+        })
+      )
+      expect(useSimilarOffersSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          categoryExcluded: SearchGroupNameEnumv2.LIVRES,
+          offerId: offer.id,
+          shouldFetch: false,
         })
       )
     })

@@ -306,7 +306,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Les fans aiment aussi')).toBeOnTheScreen()
       })
     })
 

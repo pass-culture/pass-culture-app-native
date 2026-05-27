@@ -4208,6 +4208,11 @@ export interface SimilarOffersRequestQuery {
    */
   longitude?: number | null
   /**
+   * @type {string}
+   * @memberof SimilarOffersRequestQuery
+   */
+  retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum
+  /**
    * @type {Array<string> | null}
    * @memberof SimilarOffersRequestQuery
    */
@@ -4217,6 +4222,21 @@ export interface SimilarOffersRequestQuery {
    * @memberof SimilarOffersRequestQuery
    */
   subcategories?: Array<string> | null
+}
+/**
+ *
+ * @export
+ * @namespace SimilarOffersRequestQuery
+ */
+export namespace SimilarOffersRequestQuery {
+  /**
+   * @export
+   * @enum {string}
+   */
+  export enum RetrievalModelEnum {
+    Coreservation = <any> 'coreservation',
+    Graph = <any> 'graph',
+  }
 }
 /**
  * @export
@@ -5988,10 +6008,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @param {Array<string>} [categories] 
      * @param {Array<string>} [subcategories] 
      * @param {Array<string>} [search_group_names] 
+     * @param {string} [retrievalModel] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, options: any = {}): Promise<FetchArgs> {
+    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
       if (offer_id === null || offer_id === undefined) {
         throw new RequiredError(
@@ -6023,6 +6044,10 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
 
         if (search_group_names != null) {
             queryParameters['search_group_names'] = search_group_names;
+        }
+
+        if (retrievalModel != null) {
+            queryParameters['retrievalModel'] = retrievalModel;
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
@@ -7913,11 +7938,12 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {Array<string>} [categories] 
      * @param {Array<string>} [subcategories] 
      * @param {Array<string>} [search_group_names] 
+     * @param {string} [retrievalModel] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, options?: any): Promise<SimilarOffersResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, options)
+    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options?: any): Promise<SimilarOffersResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, retrievalModel, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8911,13 +8937,14 @@ export class DefaultApi extends BaseAPI {
     * @param {Array<string>} [categories] 
     * @param {Array<string>} [subcategories] 
     * @param {Array<string>} [search_group_names] 
+    * @param {string} [retrievalModel] 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, options?: any) {
+  public async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, options)
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, retrievalModel, options)
   }
   /**
     * 

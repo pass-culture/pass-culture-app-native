@@ -8,8 +8,10 @@ import { useFunctionOnce } from 'libs/hooks'
 type Props = {
   offerId: number
   nbSameCategorySimilarOffers: number
+  nbBooksSameCategorySimilarOffers?: number
   nbOtherCategoriesSimilarOffers: number
   apiRecoParamsSameCategory?: RecommendationApiParams
+  apiRecoParamsBooksSameCategory?: RecommendationApiParams
   apiRecoParamsOtherCategories?: RecommendationApiParams
   fromOfferId?: number
 }
@@ -17,23 +19,26 @@ type Props = {
 type UseLogPlaylistType = {
   logPlaylistHorizontalScroll: VoidFunction
   logSameCategoryPlaylistVerticalScroll: VoidFunction
+  logBooksSameCategoryPlaylistVerticalScroll: VoidFunction
   logOtherCategoriesPlaylistVerticalScroll: VoidFunction
 }
 
 export const useLogPlaylist = ({
   apiRecoParamsSameCategory,
   nbSameCategorySimilarOffers,
+  apiRecoParamsBooksSameCategory,
+  nbBooksSameCategorySimilarOffers = 0,
   apiRecoParamsOtherCategories,
   nbOtherCategoriesSimilarOffers,
   offerId,
   fromOfferId,
 }: Props): UseLogPlaylistType => {
   const logPlaylistHorizontalScroll = useCallback(() => {
-    analytics.logPlaylistHorizontalScroll(fromOfferId)
+    void analytics.logPlaylistHorizontalScroll(fromOfferId)
   }, [fromOfferId])
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
-    analytics.logPlaylistVerticalScroll({
+    void analytics.logPlaylistVerticalScroll({
       ...apiRecoParamsSameCategory,
       fromOfferId,
       offerId,
@@ -43,7 +48,7 @@ export const useLogPlaylist = ({
   })
 
   const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
-    analytics.logPlaylistVerticalScroll({
+    void analytics.logPlaylistVerticalScroll({
       ...apiRecoParamsOtherCategories,
       fromOfferId,
       offerId,
@@ -52,9 +57,20 @@ export const useLogPlaylist = ({
     })
   })
 
+  const logBooksSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
+    void analytics.logPlaylistVerticalScroll({
+      ...apiRecoParamsBooksSameCategory,
+      fromOfferId,
+      offerId,
+      playlistType: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
+      nbResults: nbBooksSameCategorySimilarOffers,
+    })
+  })
+
   return {
     logPlaylistHorizontalScroll,
     logSameCategoryPlaylistVerticalScroll,
+    logBooksSameCategoryPlaylistVerticalScroll,
     logOtherCategoriesPlaylistVerticalScroll,
   }
 }
