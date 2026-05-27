@@ -43,7 +43,7 @@ onFlowStart:
           element:
             text: '.*Instagram.*'
 
-- tapOn: '.*X.*'
+- tapOn: "Partager X - Ouvre dans une nouvelle fenêtre"
 - waitForAnimationToEnd
 - runFlow:
     when:
