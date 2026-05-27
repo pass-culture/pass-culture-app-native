@@ -5,13 +5,9 @@ import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { locationModalActions, useLocationModal } from 'libs/locationV2/locationModal.store'
 
-interface HomeLocationModalProps {
-  visible: boolean
-  dismissModal: () => void
-}
-
-export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalProps) => {
+export const HomeLocationModal = () => {
   const {
     hasGeolocPosition,
     placeQuery,
@@ -26,20 +22,15 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
     requestGeolocPermission,
   } = useLocation()
 
-  const { tempLocationMode, setTempLocationMode } = useLocationState({
-    visible,
-  })
+  const { visible } = useLocationModal()
+  const { submit, hide: dismissModal } = locationModalActions
 
   const onSubmit = () => {
-    setPlace(selectedPlace)
-    setSelectedLocationMode(tempLocationMode)
+    submit()
     analytics.logUserSetLocation('home')
-    dismissModal()
   }
 
-  const onClose = () => {
-    dismissModal()
-  }
+  const { tempLocationMode, setTempLocationMode } = useLocationState()
 
   const { selectLocationMode } = useLocationMode({
     dismissModal,
@@ -61,7 +52,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
       onSubmit={onSubmit}
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={tempLocationMode}
-      onClose={onClose}
+      onClose={dismissModal}
       selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Button } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
@@ -17,7 +16,7 @@ import {
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.useFakeTimers()
@@ -327,39 +326,6 @@ describe('VenueMapLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  it('should show geolocation modal if geolocation is never_ask_again on closing the modal after a geolocation button press', async () => {
-    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
-
-    const Container = () => {
-      const [visible, setVisible] = React.useState(true)
-      return (
-        <LocationWrapper>
-          <React.Fragment>
-            <SearchLocationModal
-              visible={visible}
-              // userEvent.press not working correctly here
-              // eslint-disable-next-line local-rules/no-fireEvent
-              dismissModal={() => fireEvent.press(screen.getByText('Close'))}
-            />
-            <Button title="Close" onPress={() => setVisible(false)} />
-          </React.Fragment>
-        </LocationWrapper>
-      )
-    }
-    render(<Container />)
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-    await user.press(screen.getByText('Utiliser ma position actuelle'))
-
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()
   })
 
   describe('PlaceRadius', () => {

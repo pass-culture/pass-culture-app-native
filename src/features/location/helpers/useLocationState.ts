@@ -1,19 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/search/constants'
-import { useLocation } from 'libs/location/location'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import {
+  locationModalActions,
+  useLocationModal,
+  useLocationModalConfiguration,
+} from 'libs/locationV2/locationModal.store'
 
-type Props = {
-  visible: boolean
-}
-
-export const useLocationState = ({ visible }: Props) => {
+export const useLocationState = () => {
   const { setPlaceQuery, setSelectedPlace, selectedLocationMode, place } = useLocation()
 
-  const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(DEFAULT_RADIUS)
-  const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(DEFAULT_RADIUS)
-  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const { radius: tempAroundMeRadius } = useLocationModalConfiguration(LocationMode.AROUND_ME)
+  const { radius: tempAroundPlaceRadius } = useLocationModalConfiguration(LocationMode.AROUND_PLACE)
+  const { locationMode: tempLocationMode, visible } = useLocationModal()
+  const {
+    setAroundMeRadius: setTempAroundMeRadius,
+    setAroundPlaceRadius: setTempAroundPlaceRadius,
+  } = locationModalActions
+
+  const { setLocationMode: setTempLocationMode } = locationModalActions
 
   useEffect(() => {
     if (visible) {
@@ -31,7 +37,6 @@ export const useLocationState = ({ visible }: Props) => {
   }, [visible])
 
   return {
-    selectedLocationMode,
     tempAroundMeRadius,
     setTempAroundMeRadius,
     tempAroundPlaceRadius,
