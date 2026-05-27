@@ -313,6 +313,8 @@ export type VideoModule = {
   offerIds?: string[]
   eanList?: string[]
   transcription: string
+  thematicHomeEntryId?: string
+  thematicHomeTitle?: string
 }
 
 export interface VideoModuleProps extends VideoModule {

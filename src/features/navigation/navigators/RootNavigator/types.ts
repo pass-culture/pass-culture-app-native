@@ -226,6 +226,8 @@ type VideoModulePageParams = {
   offerIds?: string[]
   eanList?: string[]
   transcription: string
+  thematicHomeEntryId?: string
+  thematicHomeTitle?: string
 }
 
 type LoginParams = {

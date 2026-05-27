@@ -4,12 +4,16 @@ import { LayoutChangeEvent, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
+import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ColorsType } from 'theme/types'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -33,6 +37,34 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
 
   const fillFromDesignSystem =
     designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
+
+  const renderOfferPart = () => {
+    if (!props.isMultiOffer && props.offers[0]) {
+      return (
+        <VideoOfferContainer
+          onLayout={(event: LayoutChangeEvent) => {
+            const { height } = event.nativeEvent.layout
+            setMonoOfferCardHeight(height)
+          }}>
+          <VideoMonoOfferTileWrapper>
+            <VideoMonoOfferTile
+              offer={props.offers[0]}
+              color={props.color}
+              analyticsParams={props.analyticsParams}
+            />
+          </VideoMonoOfferTileWrapper>
+        </VideoOfferContainer>
+      )
+    }
+
+    return (
+      <VideoOfferContainer>
+        <VideoMultiOfferPlaylist offers={props.offers} analyticsParams={props.analyticsParams} />
+      </VideoOfferContainer>
+    )
+  }
+
+  const hasThematicHomeEntry = !!(props.thematicHomeEntryId && props.thematicHomeTitle)
 
   return (
     <Container>
@@ -66,32 +98,36 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           </Thumbnail>
         </StyledTouchableHighlight>
         <ViewWithPaddingTop>
-          {!props.isMultiOffer && props.offers[0] ? (
+          {hasThematicHomeEntry ? (
             <VideoOfferContainer
               onLayout={(event: LayoutChangeEvent) => {
                 const { height } = event.nativeEvent.layout
                 setMonoOfferCardHeight(height)
               }}>
               <VideoMonoOfferTileWrapper>
-                <VideoMonoOfferTile
-                  offer={props.offers[0]}
-                  color={props.color}
-                  analyticsParams={props.analyticsParams}
-                />
+                <InternalTouchableLink
+                  navigateTo={{
+                    screen: 'ThematicHome',
+                    params: {
+                      homeId: props.thematicHomeEntryId,
+                      from: 'videoModule',
+                      moduleId: props.id,
+                    },
+                  }}
+                  accessibilityLabel={getComputedAccessibilityLabel(props.thematicHomeTitle)}
+                  accessibilityRole={accessibilityRoleInternalNavigation()}>
+                  <AttachedThematicCard title={props.thematicHomeTitle ?? ''} />
+                </InternalTouchableLink>
               </VideoMonoOfferTileWrapper>
             </VideoOfferContainer>
           ) : (
-            <VideoOfferContainer>
-              <VideoMultiOfferPlaylist
-                offers={props.offers}
-                analyticsParams={props.analyticsParams}
-              />
-            </VideoOfferContainer>
+            renderOfferPart()
           )}
           <ColorCategoryBackground
             colorCategoryBackgroundHeightUniqueOffer={COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER}
             backgroundColor={fillFromDesignSystem || videoModuleColorsMapping[props.color]}
             isMultiOffer={props.isMultiOffer}
+            hasThematicHomeEntry={hasThematicHomeEntry}
           />
         </ViewWithPaddingTop>
       </View>
@@ -161,15 +197,25 @@ const ColorCategoryBackground = styled.View<{
   colorCategoryBackgroundHeightUniqueOffer: number
   isMultiOffer: boolean
   backgroundColor: ColorsType
-}>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer, backgroundColor, theme }) => ({
-  height: isMultiOffer
-    ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
-    : colorCategoryBackgroundHeightUniqueOffer,
-  backgroundColor,
-  position: 'absolute',
-  width: '100%',
-  zIndex: theme.zIndex.background,
-}))
+  hasThematicHomeEntry: boolean
+}>(
+  ({
+    colorCategoryBackgroundHeightUniqueOffer,
+    isMultiOffer,
+    backgroundColor,
+    hasThematicHomeEntry,
+    theme,
+  }) => ({
+    height:
+      isMultiOffer && !hasThematicHomeEntry
+        ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
+        : colorCategoryBackgroundHeightUniqueOffer,
+    backgroundColor,
+    position: 'absolute',
+    width: '100%',
+    zIndex: theme.zIndex.background,
+  })
+)
 
 const VideoOfferContainer = styled.View(({ theme }) => ({
   overflow: 'visible',

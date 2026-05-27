@@ -208,6 +208,8 @@ export const screenParamsParser: ParamsParsers = {
     offerIds: identityFn,
     eanList: identityFn,
     transcription: identityFn,
+    thematicHomeEntryId: identityFn,
+    thematicHomeTitle: identityFn,
   },
 }
 

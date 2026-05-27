@@ -34,5 +34,7 @@ export const adaptVideoModule = (module: VideoContentModel): VideoModule | null 
     offerIds: module.fields.offerIds,
     eanList: module.fields.eanList,
     transcription: module.fields.transcription,
+    thematicHomeEntryId: module.fields.thematicHomeEntryId,
+    thematicHomeTitle: module.fields.thematicHomeTitle,
   }
 }
