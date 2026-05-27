@@ -58,6 +58,7 @@ export enum RemoteStoreFeatureFlags {
   SHOW_TECHNICAL_PROBLEM_BANNER = 'showTechnicalProblemBanner',
   WIP_ARTIST_PAGE = 'wipArtistPage',
   WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
+  WIP_ARTIST_SECTION_REFACTO = 'wipArtistSectionRefacto',
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_ENABLE_APPLE_SSO = 'wipEnableAppleSSO',
