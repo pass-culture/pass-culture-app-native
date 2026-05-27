@@ -13,13 +13,19 @@ import { Typo } from 'ui/theme'
 
 type Props = {
   selectedFilter: SelectSearchOffersParams['selectedFilter']
+  searchTabsMap: Record<SearchFilter, number>
   onFilterPress: (filter: SearchFilter) => void
 }
 
-export const SearchTab: FC<Props> = ({ selectedFilter, onFilterPress }) => {
+export const SearchTab: FC<Props> = ({ selectedFilter, searchTabsMap, onFilterPress }) => {
+  const activeFiltersCount = SEARCH_FILTERS.filter((filter) => searchTabsMap[filter] > 0).length
+  if (activeFiltersCount <= 1) return null
+
   return (
     <StyledSearchFilterTabContainer gap={1}>
       {SEARCH_FILTERS.map((searchFilter) => {
+        const hasHits = searchTabsMap[searchFilter]
+        if (!hasHits) return null
         const isCurrentSelected = selectedFilter === searchFilter
 
         return (
