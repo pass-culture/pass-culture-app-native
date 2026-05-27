@@ -14,6 +14,8 @@ type Props = {
   hideModal: () => void
 }
 
+const SURVEY_URL = 'https://passculture.qualtrics.com/jfe/form/SV_73XVjUQPO0bUiuq'
+
 export const QualtricsSurveyModal: FunctionComponent<Props> = ({
   userId,
   offerId,
@@ -37,7 +39,7 @@ export const QualtricsSurveyModal: FunctionComponent<Props> = ({
           fullWidth
           wording="Répondre au questionnaire"
           externalNav={{
-            url: `https://passculture.qualtrics.com/jfe/form/SV_9M3POmHFECvQCc6?userId=${userId}&offerId=${offerId}`,
+            url: `${SURVEY_URL}?userId=${userId}&offerId=${offerId}`,
           }}
         />
       </StyledButtonContainer>
