@@ -1,13 +1,10 @@
-import { uniqBy } from 'lodash'
-
 import { FetchSearchArtistsResponse } from 'features/search/queries/useSearchArtists/types'
 import { Artist } from 'features/venue/types'
 
-export const selectSearchArtists = (data: FetchSearchArtistsResponse): Artist[] => {
-  return uniqBy(
-    data.offerArtistsResponse.hits
-      .filter((offer) => offer.artists?.length)
-      .flatMap((offer) => offer.artists ?? []),
-    (artist) => artist.id
-  )
-}
+export const selectSearchArtists = (data: FetchSearchArtistsResponse | null): Artist[] =>
+  data?.artistsResponse.hits.map((artist) => ({
+    id: artist.objectID,
+    name: artist.name,
+    image: artist.image,
+    description: artist.description,
+  })) || []

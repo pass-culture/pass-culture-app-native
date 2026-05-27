@@ -3,23 +3,22 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { getDefaultSearchResponse } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/getDefaultSearchResponse'
 import { buildArtistsQuery } from 'libs/algolia/fetchAlgolia/fetchSearchResults/queries/buildArtistsQuery'
-import { Offer } from 'shared/offer/types'
+import { AlgoliaArtist } from 'libs/algolia/types'
 
 export const fetchSearchArtists = async (args: FetchSearchResultsArgs) => {
-  const queries = [buildArtistsQuery(args)]
-
+  const query = buildArtistsQuery(args)
   try {
-    const { results } = await client.searchForHits<Offer>({ requests: queries })
-    const [offerArtistsResponse] = results
+    const { results } = await client.searchForHits<AlgoliaArtist>({ requests: [query] })
+    const [artistsResponse] = results
 
     return {
-      offerArtistsResponse: offerArtistsResponse ?? getDefaultSearchResponse<Offer>(),
+      artistsResponse: artistsResponse ?? getDefaultSearchResponse<AlgoliaArtist>(),
     }
   } catch (error) {
     captureAlgoliaError(error)
 
     return {
-      offerArtistsResponse: getDefaultSearchResponse<Offer>(),
+      artistsResponse: getDefaultSearchResponse<AlgoliaArtist>(),
     }
   }
 }
