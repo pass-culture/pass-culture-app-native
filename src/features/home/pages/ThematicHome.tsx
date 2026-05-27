@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -19,7 +19,8 @@ import { HighlightThematicHomeHeader } from 'features/home/components/headers/Hi
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
-import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -140,6 +141,8 @@ export const ThematicHome: FunctionComponent = () => {
   } = useRoute<UseRouteType<'ThematicHome'>>()
   const { goBack } = useGoBack('ClubAdvices')
   const isFromDeeplink = from === 'deeplink'
+  const { navigate } = useNavigation<UseNavigationType>()
+
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
   const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
   const {
@@ -207,6 +210,10 @@ export const ThematicHome: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition, isFromDeeplink])
 
+  const handleBackPress = () => {
+    isFromDeeplink ? navigate(...homeNavigationConfig) : goBack()
+  }
+
   const getPlaceholderHeight = () => {
     if (thematicHeader?.type === ThematicHeaderType.Category) {
       return 0
@@ -238,7 +245,7 @@ export const ThematicHome: FunctionComponent = () => {
         thematicHeader={thematicHeader}
         headerTransition={headerTransition}
         homeId={homeId}
-        onBackPress={goBack}
+        onBackPress={handleBackPress}
       />
       {/* Animated header is called only for iOS */}
       {Platform.OS === 'ios' ? (
