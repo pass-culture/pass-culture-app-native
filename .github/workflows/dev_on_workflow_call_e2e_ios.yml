@@ -93,7 +93,7 @@ jobs:
       - name: Setup iOS Google services config
         run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
       - name: Add ssh key needed
-        uses: webfactory/ssh-agent@v0.9.1
+        uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
       - name: Disable staging reCAPTCHA for E2E
