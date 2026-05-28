@@ -15,10 +15,7 @@ export enum UserStatusType {
 export const getStatusType = (user: UserProfileResponse): UserStatusType => {
   const { status, birthDate, depositType } = user
 
-  if (!status?.statusType) {
-    logUserStatusTypeFallback({ user })
-    return UserStatusType.UNKNOWN
-  }
+  if (!user || !status) return UserStatusType.UNKNOWN
 
   const age = getAge(birthDate)
   const isEighteenOrMore = age && age >= 18
