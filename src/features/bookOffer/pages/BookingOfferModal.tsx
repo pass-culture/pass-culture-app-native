@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components/native'
 import { ApiError } from 'api/ApiError'
 import { isApiError } from 'api/apiHelpers'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
 import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOfferModalHeader'
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
@@ -13,20 +14,24 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { shouldDisplayPricesStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
+import { QualtricsSurveyModal } from 'features/bookOffer/pages/QualtricsSurveyModal'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
+import { useModal } from 'ui/components/modals/useModal'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-interface BookingOfferModalComponentProps {
+export type BookingOfferModalComponentProps = {
   visible: boolean
   offerId: number
   isEndedUsedBooking?: boolean
@@ -62,6 +67,10 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType
+
+  const { user: { id: userId = 0 } = {} } = useAuthContext()
+
+  const isQualtricsSurveyEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY)
 
   const onBookOfferSuccess = ({ bookingId }: { bookingId: number }) => {
     dismissModal()
@@ -154,6 +163,12 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     dispatch({ type: 'SELECT_STOCK', payload: bookingDataMovieScreening.stockId })
   }, [offerId, dispatch, bookingDataMovieScreening])
 
+  const {
+    visible: qualtricsSurveyModalVisible,
+    showModal: showQualtricsSurveyModal,
+    hideModal: hideQualtricsSurveyModal,
+  } = useModal(false)
+
   useEffect(() => {
     if (visible) {
       void analytics.logClickBookOffer({ offerId })
@@ -164,13 +179,13 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   const onClose = useCallback(async () => {
     dismissModal()
-
+    showQualtricsSurveyModal()
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
     void analytics.logCancelBookingFunnel(step, offerId)
-  }, [dismissModal, bookingState.offerId, offerId, dispatch, step])
+  }, [dismissModal, bookingState.offerId, offerId, dispatch, step, showQualtricsSurveyModal])
 
-  return (
+  return visible ? (
     <AppModal
       testID="modalWithPricesByCategories"
       noPadding
@@ -191,6 +206,13 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
       {children}
     </AppModal>
+  ) : (
+    <QualtricsSurveyModal
+      userId={userId}
+      offerId={offerId}
+      visible={isQualtricsSurveyEnabled && qualtricsSurveyModalVisible}
+      hideModal={hideQualtricsSurveyModal}
+    />
   )
 }
 

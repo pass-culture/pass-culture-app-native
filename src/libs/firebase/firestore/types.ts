@@ -54,6 +54,7 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_SEE_ALL_PLAYLIST = 'enableSeeAllPlaylist',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   ENABLE_VENUES_FROM_OFFER_INDEX = 'enableVenuesFromOfferIndex',
+  ENABLE_QUALTRICS_SURVEY = 'enableQualtricsSurvey',
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
   SHOW_TECHNICAL_PROBLEM_BANNER = 'showTechnicalProblemBanner',
   WIP_ARTIST_PAGE = 'wipArtistPage',
