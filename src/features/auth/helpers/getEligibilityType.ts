@@ -32,7 +32,9 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isFifteen = age === 15
   const isSixteen = age === 16
   const isSeventeen = age === 17
-  const isEighteenOrMore = age && age >= 18
+  const isEighteen = age && age === 18
+  const isNineteen = age && age === 19
+  const isEighteenOrNineteen = isEighteen || isNineteen
   const isUnderFifteen = age && age < 15
   const isOverEighteen = age && age > 18
 
@@ -50,12 +52,12 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isEligibleCreditV3_15 = isEligibleCreditV3_free && isFifteen
   const isEligibleCreditV3_16 = isEligibleCreditV3_free && isSixteen
   const isEligibleCreditV3_17 = eligibility === EligibilityType['age-17-18'] && isSeventeen
-  const isEligibleCreditV3_18 = eligibility === EligibilityType['age-17-18'] && isEighteenOrMore
+  const isEligibleCreditV3_18 = eligibility === EligibilityType['age-17-18'] && isEighteenOrNineteen
 
   // BONUS
   const isCreditV3 = depositType === DepositType.GRANT_17_18
   const isNotEligibleForBeneficiaryUpgrade = !isEligibleForBeneficiaryUpgrade
-  const isCreditV3_18 = isCreditV3 && isNotEligibleForBeneficiaryUpgrade && isEighteenOrMore
+  const isCreditV3_18 = isCreditV3 && isNotEligibleForBeneficiaryUpgrade && isEighteenOrNineteen
   const isNotEligibleBonus = qfBonificationStatus === QFBonificationStatus.not_eligible
   const isEligibleBonus = !isNotEligibleBonus && isCreditV3_18
 
