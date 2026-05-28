@@ -9,6 +9,11 @@ on:
       CACHE_BUCKET_NAME:
         type: string
         required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 jobs:
   web_proxy_deploy:
