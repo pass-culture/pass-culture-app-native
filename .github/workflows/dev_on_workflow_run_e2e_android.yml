@@ -2,15 +2,7 @@ name: '4 [on_workflow] Build and upload to Maestro Cloud (Android)'
 
 on:
   workflow_call:
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
 
 jobs:
   e2e-tests:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}

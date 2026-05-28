@@ -21,6 +21,3 @@ jobs:
       CHANNEL: ''
       REF: '${{ github.ref }}'
       CACHE_BUCKET_NAME: 'passculture-metier-ehp'
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}

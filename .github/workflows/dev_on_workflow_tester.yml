@@ -198,7 +198,7 @@ jobs:
         run: |
           NODE_OPTIONS='--max-old-space-size=8192' yarn build
 
-  e2e-ios:
+  e2e-android:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
     needs: build-web
     uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
@@ -207,8 +207,7 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-
-  e2e-android:
+  e2e-ios:
     if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
     needs: build-web
     uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
