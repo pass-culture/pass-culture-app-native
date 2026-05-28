@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { HistoryItemHighlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 
@@ -22,13 +23,15 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
     onPress(item)
   }, [item, onPress])
 
+  const numberOfLines = useNumberOfLine(1)
+
   return (
     <Container>
       <HistoryItemTouchable onPress={handlePress} accessibilityRole={AccessibilityRole.BUTTON}>
         <ClockIconContainer>
           <ClockFilledIcon />
         </ClockIconContainer>
-        <StyledText numberOfLines={1}>
+        <StyledText numberOfLines={numberOfLines}>
           {queryHistory === '' ? (
             <Typo.BodyItalic testID="withoutUsingHighlight">{item.query}</Typo.BodyItalic>
           ) : (

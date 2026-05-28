@@ -2,6 +2,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { GUTTER_DP, Typo } from 'ui/theme'
 
 interface SearchVenueItemDetailsProps {
@@ -15,10 +16,12 @@ export const SearchVenueItemDetails = ({
   name,
   shortAddress,
 }: SearchVenueItemDetailsProps) => {
+  const numberOfLines = useNumberOfLine(2)
+
   return (
     <Container maxWidth={width}>
-      <VenueName>{name}</VenueName>
-      <ShortAddressLabel>{shortAddress}</ShortAddressLabel>
+      <VenueName numberOfLines={numberOfLines}>{name}</VenueName>
+      <ShortAddressLabel numberOfLines={numberOfLines}>{shortAddress}</ShortAddressLabel>
     </Container>
   )
 }
@@ -28,10 +31,10 @@ const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
 }))
 
-const VenueName = styled(Typo.BodyAccent).attrs({
-  numberOfLines: 2,
-})({})
+const VenueName = styled(Typo.BodyAccent).attrs(({ numberOfLines }) => ({
+  numberOfLines,
+}))({})
 
-const ShortAddressLabel = styled(Typo.BodyAccentXs).attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({ flexShrink: 1, color: theme.designSystem.color.text.subtle }))
+const ShortAddressLabel = styled(Typo.BodyAccentXs).attrs(({ numberOfLines }) => ({
+  numberOfLines,
+}))(({ theme }) => ({ flexShrink: 1, color: theme.designSystem.color.text.subtle }))

@@ -24,6 +24,7 @@ import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
@@ -41,7 +42,7 @@ export const SearchFilter: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch('SearchResults')
   const logReinitializeFilters = useFunctionOnce(() => {
-    analytics.logReinitializeFilters(searchState.searchId)
+    void analytics.logReinitializeFilters(searchState.searchId)
   })
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { user } = useAuthContext()
@@ -107,6 +108,11 @@ export const SearchFilter: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user])
 
+  const shouldRenderInlineActions = useMobileFontScaleToDisplay({
+    default: false,
+    at200PercentZoom: true,
+  })
+
   const onClose = isMobileViewport ? onGoBack : undefined
   return (
     <PageWithHeader
@@ -139,16 +145,29 @@ export const SearchFilter: React.FC = () => {
           <SectionWrapper>
             <Section.Accessibility onClose={onClose} />
           </SectionWrapper>
+          {shouldRenderInlineActions ? (
+            <SectionWrapper>
+              <FilterPageButtons
+                onResetPress={onResetPress}
+                onSearchPress={onSearchPress}
+                isModal
+                filterBehaviour={FilterBehaviour.SEARCH}
+                isResetDisabled={hasDefaultValues}
+              />
+            </SectionWrapper>
+          ) : null}
         </VerticalUl>
       }
       fixedBottomChildren={
-        <FilterPageButtons
-          onResetPress={onResetPress}
-          onSearchPress={onSearchPress}
-          isModal
-          filterBehaviour={FilterBehaviour.SEARCH}
-          isResetDisabled={hasDefaultValues}
-        />
+        shouldRenderInlineActions ? null : (
+          <FilterPageButtons
+            onResetPress={onResetPress}
+            onSearchPress={onSearchPress}
+            isModal
+            filterBehaviour={FilterBehaviour.SEARCH}
+            isResetDisabled={hasDefaultValues}
+          />
+        )
       }
     />
   )

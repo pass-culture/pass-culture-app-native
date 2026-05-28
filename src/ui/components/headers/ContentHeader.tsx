@@ -3,7 +3,10 @@ import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -40,13 +43,18 @@ export const ContentHeader = ({
 
   const marginTopHeader = Platform.OS === 'ios' ? top : top + theme.designSystem.size.spacing.s
 
+  const height = useMobileFontScaleToDisplay({
+    default: headerHeight,
+    at200PercentZoom: undefined,
+  })
+
   return (
-    <HeaderContainer style={containerStyle} height={headerHeight}>
+    <HeaderContainer style={containerStyle} height={height}>
       {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
         // https://github.com/Kureev/react-native-blur/issues/511
         Platform.OS === 'android' ? null : (
-          <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
+          <BlurNativeContainer height={height} style={blurContainerNative}>
             <BlurryWrapper />
           </BlurNativeContainer>
         )
@@ -81,7 +89,7 @@ export const ContentHeader = ({
   )
 }
 
-const BlurNativeContainer = styled(Animated.View)<{ height: number }>(({ height }) => ({
+const BlurNativeContainer = styled(Animated.View)<{ height?: number }>(({ height }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -90,7 +98,7 @@ const BlurNativeContainer = styled(Animated.View)<{ height: number }>(({ height 
   overflow: 'hidden',
 }))
 
-const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, height }) => ({
+const HeaderContainer = styled(Animated.View)<{ height?: number }>(({ theme, height }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
