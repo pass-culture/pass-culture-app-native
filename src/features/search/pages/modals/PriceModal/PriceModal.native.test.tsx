@@ -82,19 +82,19 @@ describe('<PriceModal/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  describe('user with grant free credit type is CREDIT_V3_16', () => {
+  describe('user with grant free credit type is CREDIT_V3_FREE', () => {
     beforeEach(() => {
       mockedUseAuthContext.mockImplementation(() => ({
         user: {
           ...beneficiaryUser,
           eligibility: EligibilityType['free'],
-          creditType: UserCreditType.CREDIT_V3_16,
+          creditType: UserCreditType.CREDIT_V3_FREE,
         },
         isLoggedIn: true,
       }))
     })
 
-    it('should not display banner when user credit type is CREDIT_V3_16', async () => {
+    it('should not display banner when user credit type is CREDIT_V3_FREE', async () => {
       renderSearchPrice()
       await screen.findByLabelText('Rechercher')
 
