@@ -37,7 +37,7 @@ const beneficiaryUserWithEmptyCredit = {
 
 const freeBeneficiaryUser = {
   ...beneficiaryUser,
-  creditType: UserCreditType.CREDIT_V3_15,
+  creditType: UserCreditType.CREDIT_V3_FREE,
 }
 
 const eligibleUser = {

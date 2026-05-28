@@ -94,19 +94,10 @@ describe('LoggedInBeneficiaryHeader', () => {
     expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()
   })
 
-  it('should render BeneficiaryFreeHeader for CREDIT_V3_15', () => {
+  it('should render BeneficiaryFreeHeader for CREDIT_V3_FREE', () => {
     renderLoggedInBeneficiaryHeader({
       ...beneficiaryUser,
-      creditType: UserCreditType.CREDIT_V3_15,
-    })
-
-    expect(screen.getByTestId('beneficiary-free-header')).toBeOnTheScreen()
-  })
-
-  it('should render BeneficiaryFreeHeader for CREDIT_V3_16', () => {
-    renderLoggedInBeneficiaryHeader({
-      ...beneficiaryUser,
-      creditType: UserCreditType.CREDIT_V3_16,
+      creditType: UserCreditType.CREDIT_V3_FREE,
     })
 
     expect(screen.getByTestId('beneficiary-free-header')).toBeOnTheScreen()
@@ -130,13 +121,22 @@ describe('LoggedInBeneficiaryHeader', () => {
     expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()
   })
 
-  it('should render BeneficiaryHeader for unknown creditType (default)', () => {
+  it('should render GeneralPublicHeader for unknown creditType', () => {
     renderLoggedInBeneficiaryHeader({
       ...beneficiaryUser,
       creditType: UserCreditType.CREDIT_UNKNOWN,
     })
 
-    expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()
+    expect(screen.getByTestId('logged-in-general-public-header')).toBeOnTheScreen()
+  })
+
+  it('should render GeneralPublicHeader for no credit creditType', () => {
+    renderLoggedInBeneficiaryHeader({
+      ...beneficiaryUser,
+      creditType: UserCreditType.NO_CREDIT,
+    })
+
+    expect(screen.getByTestId('logged-in-general-public-header')).toBeOnTheScreen()
   })
 })
 
