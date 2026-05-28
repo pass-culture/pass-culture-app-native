@@ -7,6 +7,7 @@ import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useShowDisableActivation } from 'features/forceUpdate/helpers/useShowDisableActivation'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
+import { logIdentityCheckUnavailable } from 'features/identityCheck/pages/helpers/logIdentityCheckUnavailable'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { IdentityCheckStep } from 'features/identityCheck/types'
@@ -15,6 +16,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/navigators/Subscr
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { recordProfileCompletionStart } from 'libs/reviewInApp/creditReviewTrigger'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
@@ -48,13 +50,14 @@ export const Stepper = () => {
   const stepToComplete = steps[currentStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
-  const { refetchUser } = useAuthContext()
+  const { refetchUser, user } = useAuthContext()
 
   const { visible, showModal: showQuitIdentityCheckModal, hideModal } = useModal(false)
 
   useEffect(() => {
     const showMaintenance = () => {
       if (subscription?.nextSubscriptionStep === SubscriptionStep.maintenance) {
+        logIdentityCheckUnavailable({ source: 'Stepper', user, subscription, params })
         navigate(
           ...getSubscriptionHookConfig('IdentityCheckUnavailable', {
             withDMS: subscription?.maintenancePageType === MaintenancePageType['with-dms'],
@@ -76,6 +79,10 @@ export const Stepper = () => {
           }
         })
         .catch((error) => {
+          eventMonitoring.captureException(
+            'Stepper - refetchUser after subscription step completion',
+            { level: 'info', extra: { params, error, user, subscription } }
+          )
           showErrorSnackBar(extractApiErrorMessage(error))
         })
     }

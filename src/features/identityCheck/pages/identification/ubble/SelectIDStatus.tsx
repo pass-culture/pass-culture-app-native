@@ -4,7 +4,9 @@ import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
 import { MaintenancePageType } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
+import { logIdentityCheckUnavailable } from 'features/identityCheck/pages/helpers/logIdentityCheckUnavailable'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { useUbbleIdentificationMutation } from 'features/identityCheck/queries/useUbbleIdentificationMutation'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
@@ -24,6 +26,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDStatus: FunctionComponent = () => {
   const { data: subscription } = useGetStepperInfoQuery()
+  const { user } = useAuthContext()
   const { navigate, replace } = useNavigation<UseNavigationType>()
 
   const { mutateAsync: mutateUbbleIdentification } = useUbbleIdentificationMutation()
@@ -45,6 +48,13 @@ export const SelectIDStatus: FunctionComponent = () => {
         replace(...getSubscriptionHookConfig('IdentityCheckPending'))
       } else {
         const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
+        logIdentityCheckUnavailable({
+          source: 'SelectIDStatus',
+          error: err,
+          user,
+          subscription,
+          params: { withDMS },
+        })
         replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
       }
     }
