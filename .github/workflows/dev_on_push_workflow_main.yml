@@ -158,6 +158,9 @@ jobs:
       ENV: testing
       BUCKET_NAME: passculture-metier-ehp-testing-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-perf:
     needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
     if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
@@ -166,6 +169,9 @@ jobs:
       ENV: perf
       BUCKET_NAME: passculture-metier-ehp-perf-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-staging:
     needs: [yarn-tester]
     if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
@@ -174,6 +180,9 @@ jobs:
       ENV: staging
       BUCKET_NAME: passculture-metier-ehp-staging-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-testing:
     needs: [check-server-folder-changes, yarn-tester]
     if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
@@ -181,6 +190,9 @@ jobs:
     with:
       ENV: testing
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-perf:
     needs: [check-server-folder-changes, yarn-tester]
     if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
@@ -188,6 +200,9 @@ jobs:
     with:
       ENV: perf
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
     needs: [check-server-folder-changes-staging, deploy-web-staging, check-proxy-version-staging]
     if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
@@ -195,6 +210,9 @@ jobs:
     with:
       ENV: staging
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-integration:
     needs: [yarn-tester]
     if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
@@ -203,6 +221,9 @@ jobs:
       ENV: integration
       BUCKET_NAME: passculture-metier-ehp-integration-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-integration:
     needs:
       [
@@ -215,6 +236,9 @@ jobs:
     with:
       ENV: integration
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-production:
     needs: [yarn-tester]
     if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
@@ -223,6 +247,9 @@ jobs:
       ENV: production
       BUCKET_NAME: passculture-metier-prod-production-decliweb
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-production:
     needs:
       [
@@ -235,6 +262,9 @@ jobs:
     with:
       ENV: production
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   update-jira-issues:
     if: github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_update_jira_issues.yml
