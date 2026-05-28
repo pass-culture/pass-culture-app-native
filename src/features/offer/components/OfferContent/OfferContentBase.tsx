@@ -38,6 +38,7 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
@@ -381,19 +382,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   })
 
   const onBeforeNavigate = (type: PlaylistType) => {
-    const moduleNameByPlaylistType: Record<PlaylistType, string> = {
-      [PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS]: 'Les fans aiment aussi',
-      [PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS]: 'Dans la même catégorie',
-      [PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS]: 'Ça peut aussi te plaire',
-      [PlaylistType.SAME_ARTIST_PLAYLIST]: '',
-      [PlaylistType.SEARCH_RESULTS]: '',
-      [PlaylistType.TOP_OFFERS]: '',
-    }
-    const moduleName = moduleNameByPlaylistType[type]
+    const moduleName = OFFER_SIMILAR_PLAYLIST_TITLES[type]
+
+    if (!moduleName) return
 
     void analytics.logClickSeeAll({
       type: 'offers',
-      moduleName: moduleName,
+      moduleName,
       moduleId: offer.id.toString(),
       from: 'offer',
     })

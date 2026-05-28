@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
+import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
@@ -115,7 +116,7 @@ export function OfferPlaylistList({
 
   const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-    title: 'Les fans aiment aussi',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
     offers: sameCategorySimilarOffers,
     apiRecoParams: apiRecoParamsSameCategory,
     handleChangePlaylistDisplay: handleChangeSameCategoryPlaylistDisplay,
@@ -123,7 +124,7 @@ export function OfferPlaylistList({
 
   const booksSameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
-    title: 'Dans la même catégorie',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
     offers: booksSameCategorySimilarOffers,
     apiRecoParams: apiRecoParamsBooksSameCategory,
     handleChangePlaylistDisplay: handleChangeBooksSameCategoryPlaylistDisplay,
@@ -131,7 +132,7 @@ export function OfferPlaylistList({
 
   const otherCategoriesSimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-    title: 'Ça peut aussi te plaire',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS] ?? '',
     offers: otherCategoriesSimilarOffers,
     apiRecoParams: apiRecoParamsOtherCategories,
     handleChangePlaylistDisplay: handleChangeOtherCategoriesPlaylistDisplay,

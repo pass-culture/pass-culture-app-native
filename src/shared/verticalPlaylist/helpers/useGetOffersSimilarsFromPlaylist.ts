@@ -1,3 +1,4 @@
+import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
 import { PlaylistType } from 'features/offer/enums'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { SimilarOfferPlaylist } from 'shared/offer/types'
@@ -27,21 +28,21 @@ export const useGetOffersSimilarsFromPlaylist = ({
 
   const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylistWithHits = {
     type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-    title: 'Les fans aiment aussi',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
     offers: sameCategorySimilarOffers,
     nbHits: sameCategorySimilarOffers?.length,
   }
 
   const booksSameCategorySimilarOffersPlaylist: SimilarOfferPlaylistWithHits = {
     type: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
-    title: 'Dans la même catégorie',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
     offers: booksSameCategorySimilarOffers,
     nbHits: booksSameCategorySimilarOffers?.length,
   }
 
   const otherCategoriesSimilarOffersPlaylist: SimilarOfferPlaylistWithHits = {
     type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-    title: 'Ça peut aussi te plaire',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS] ?? '',
     offers: otherCategoriesSimilarOffers,
     nbHits: otherCategoriesSimilarOffers?.length,
   }
