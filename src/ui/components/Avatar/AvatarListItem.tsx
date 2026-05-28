@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
@@ -13,6 +14,8 @@ export type AvatarListItemProps = {
   onItemPress: (id: string, name: string) => void
   image?: string
   isFullWidth?: boolean
+  role?: string
+  accessibilityLabel?: string
 } & AvatarProps
 
 export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
@@ -22,11 +25,13 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   size,
   onItemPress,
   isFullWidth = false,
+  role,
+  accessibilityLabel,
   ...props
 }) => {
   return (
     <InternalTouchableLink
-      accessibilityLabel={name}
+      accessibilityLabel={accessibilityLabel ?? name}
       navigateTo={{ screen: 'Artist', params: { id: id.toString() } }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
       <StyledView gap={2} isFullWidth={isFullWidth}>
@@ -37,9 +42,12 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
             <DefaultAvatar testID="defaultArtistAvatar" />
           )}
         </Avatar>
-        <ArtistName numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
-          {name}
-        </ArtistName>
+        <View>
+          <ArtistName numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
+            {name}
+          </ArtistName>
+          {role ? <ArtistRole numberOfLines={2}>{role}</ArtistRole> : null}
+        </View>
       </StyledView>
     </InternalTouchableLink>
   )
@@ -52,6 +60,12 @@ const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number; isFullWidth: boo
     alignSelf: isFullWidth ? 'center' : 'self-start',
   })
 )
+
+const ArtistRole = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  textAlign: 'center',
+  alignSelf: 'center',
+  color: theme.designSystem.color.text.subtle,
+}))
 
 const StyledView = styled(ViewGap)<{ isFullWidth: boolean }>(({ isFullWidth }) => ({
   flexDirection: isFullWidth ? 'row' : 'column',

@@ -74,6 +74,8 @@ export type Artist = {
   id: string
   name: string
   image?: string
+  role?: string
+  accessibilityLabel?: string
 }
 
 export type VenueOffersArtists = { artists: Artist[] }
