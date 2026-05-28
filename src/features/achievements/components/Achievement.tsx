@@ -3,6 +3,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
 import { AchievementDetailsModal } from 'features/achievements/pages/AchievementDetailsModal'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -18,15 +22,19 @@ type AchievementProps = {
 export const Achievement: FC<AchievementProps> = ({ Illustration, name, title, isCompleted }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const { illustrations } = useTheme()
-
+  const numberOfLines = useNumberOfLine(2)
+  const height = useMobileFontScaleToDisplay({
+    default: getSpacing(55),
+    at200PercentZoom: undefined,
+  })
   return (
     <React.Fragment>
-      <StyledTouchableOpacity onPress={showModal}>
+      <StyledTouchableOpacity onPress={showModal} height={height}>
         <AchievementContainer isCompleted={!!isCompleted}>
           <IllustrationContainer>
             <Illustration size={illustrations.sizes.small} />
           </IllustrationContainer>
-          <TypoAchievementName numberOfLines={2} isCompleted={!!isCompleted}>
+          <TypoAchievementName numberOfLines={numberOfLines} isCompleted={!!isCompleted}>
             {title}
           </TypoAchievementName>
         </AchievementContainer>
@@ -36,10 +44,10 @@ export const Achievement: FC<AchievementProps> = ({ Illustration, name, title, i
   )
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ height?: number }>(({ height }) => ({
   flex: 0.5,
-  height: getSpacing(55),
-})
+  height,
+}))
 
 const AchievementContainer = styled.View<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
   paddingVertical: theme.designSystem.size.spacing.xl,

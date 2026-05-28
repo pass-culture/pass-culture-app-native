@@ -197,11 +197,17 @@ export const AppModal: FunctionComponent<Props> = ({
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
+  const isFullscreenAtZoom = useMobileFontScaleToDisplay({
+    default: false,
+    at200PercentZoom: !maxHeight,
+  })
+  const effectiveIsFullscreen = isFullscreen || isFullscreenAtZoom
+
   let maxContainerHeight = maxHeight
   let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
 
   // no fullscreen in desktop view
-  if (isFullscreen || isUpToStatusBar) {
+  if (effectiveIsFullscreen || isUpToStatusBar) {
     maxContainerHeight = windowHeight
     modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
   }
@@ -259,7 +265,7 @@ export const AppModal: FunctionComponent<Props> = ({
       propagateSwipe={propagateSwipe}>
       <KeyboardAvoidingViewWrapper>
         <ModalContainer
-          height={maxHeight ? undefined : modalContainerHeight}
+          height={modalContainerHeight}
           testID="modalContainer"
           maxHeight={maxContainerHeight}
           desktopConstraints={containerDesktopConstraints}
@@ -283,7 +289,7 @@ export const AppModal: FunctionComponent<Props> = ({
               {...iconProps}
             />
           )}
-          {isFullscreen || maxHeight || isUpToStatusBar ? (
+          {effectiveIsFullscreen || maxHeight || isUpToStatusBar ? (
             fullscreenModalBody
           ) : (
             <React.Fragment>
@@ -363,6 +369,7 @@ const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {
 export type ModalContainerProps = {
   theme: DefaultTheme
   height?: number
+  fullscreen?: boolean
   maxHeight?: number
   noPadding?: boolean
   noPaddingBottom?: boolean
@@ -375,6 +382,7 @@ export type ModalContainerProps = {
 const ModalContainer = styled.View<ModalContainerProps>(
   ({
     height,
+    fullscreen,
     desktopConstraints,
     maxHeight,
     noPadding,
@@ -384,17 +392,20 @@ const ModalContainer = styled.View<ModalContainerProps>(
     rightNootch,
     leftNootch,
   }) => {
-    return appModalContainerStyle({
-      theme,
-      height,
-      desktopConstraints,
-      maxHeight,
-      noPadding,
-      noPaddingBottom,
-      isLandscape,
-      rightNootch,
-      leftNootch,
-    })
+    return {
+      ...appModalContainerStyle({
+        theme,
+        height,
+        desktopConstraints,
+        maxHeight,
+        noPadding,
+        noPaddingBottom,
+        isLandscape,
+        rightNootch,
+        leftNootch,
+      }),
+      ...(fullscreen ? { height: '100%', maxHeight: '100%' } : {}),
+    }
   }
 )
 

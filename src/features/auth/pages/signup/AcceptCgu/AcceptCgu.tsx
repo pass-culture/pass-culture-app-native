@@ -10,7 +10,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -124,10 +124,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     !isChecked.acceptCgu ||
     !isChecked.acceptDataCharter
 
-  const numberOfLines = useMobileFontScaleToDisplay({
-    default: 2,
-    at200PercentZoom: undefined,
-  })
+  const numberOfLines = useNumberOfLine(2)
 
   return (
     <SetContainer>
