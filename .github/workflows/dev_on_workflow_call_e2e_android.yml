@@ -42,7 +42,7 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: actions/setup-node@v6
         with:
