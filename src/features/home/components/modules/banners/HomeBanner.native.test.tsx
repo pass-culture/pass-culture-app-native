@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { ApiError } from 'api/ApiError'
 import {
   BannerName,
   BannerResponse,
@@ -186,7 +185,7 @@ describe('<HomeBanner/>', () => {
       renderHomeBanner({})
 
       await waitFor(() =>
-        expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(ApiError))
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(TypeError))
       )
     })
 

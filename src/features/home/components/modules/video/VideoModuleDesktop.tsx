@@ -5,15 +5,19 @@ import { ImageBackground, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
+import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { Offer } from 'shared/offer/types'
 import { ColorsType } from 'theme/types'
 import { SeeAllInModalButton } from 'ui/components/SeeAllButton/SeeAllInModalButton'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -63,8 +67,25 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
     ) : null
   }
 
+  function renderMultiOffer() {
+    return (
+      <StyledMultiOfferList hasOnlyTwoOffers={hasOnlyTwoOffers}>
+        {props.offers.slice(0, 3).map((offer: Offer, index) => (
+          <React.Fragment key={offer.objectID}>
+            <StyledHorizontalOfferTile offer={offer} analyticsParams={props.analyticsParams} />
+            {index < nbOfSeparators ? (
+              <StyledSeparator hasOnlyTwoOffers={hasOnlyTwoOffers} />
+            ) : null}
+          </React.Fragment>
+        ))}
+      </StyledMultiOfferList>
+    )
+  }
+
   const fillFromDesignSystem =
     designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
+
+  const hasThematicHomeEntry = !!(props.thematicHomeEntryId && props.thematicHomeTitle)
 
   return (
     <React.Fragment>
@@ -83,7 +104,9 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
             isMultiOffer={props.isMultiOffer}
           />
         </ColorCategoryBackgroundWrapper>
-        <VideoOfferContainer isMultiOffer={props.isMultiOffer}>
+        <VideoOfferContainer
+          isMultiOffer={props.isMultiOffer}
+          hasThematicHomeEntry={hasThematicHomeEntry}>
           <StyledTouchableHighlight
             onPress={props.onVideoPlaceholderPress}
             testID="video-thumbnail"
@@ -101,25 +124,27 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
               </PlayerContainer>
             </Thumbnail>
           </StyledTouchableHighlight>
-          <StyledView>
-            {props.isMultiOffer ? (
-              <StyledMultiOfferList hasOnlyTwoOffers={hasOnlyTwoOffers}>
-                {props.offers.slice(0, 3).map((offer: Offer, index) => (
-                  <React.Fragment key={offer.objectID}>
-                    <StyledHorizontalOfferTile
-                      offer={offer}
-                      analyticsParams={props.analyticsParams}
-                    />
-                    {index < nbOfSeparators ? (
-                      <StyledSeparator hasOnlyTwoOffers={hasOnlyTwoOffers} />
-                    ) : null}
-                  </React.Fragment>
-                ))}
-              </StyledMultiOfferList>
-            ) : (
-              renderSoloOffer()
-            )}
-          </StyledView>
+          {hasThematicHomeEntry ? (
+            <StyledView>
+              <VideoMonoOfferTileWrapper>
+                <InternalTouchableLink
+                  navigateTo={{
+                    screen: 'ThematicHome',
+                    params: {
+                      homeId: props.thematicHomeEntryId,
+                      from: 'videoModule',
+                      moduleId: props.id,
+                    },
+                  }}
+                  accessibilityLabel={getComputedAccessibilityLabel(props.thematicHomeTitle)}
+                  accessibilityRole={accessibilityRoleInternalNavigation()}>
+                  <AttachedThematicCard title={props.thematicHomeTitle ?? ''} />
+                </InternalTouchableLink>
+              </VideoMonoOfferTileWrapper>
+            </StyledView>
+          ) : (
+            <StyledView>{props.isMultiOffer ? renderMultiOffer() : renderSoloOffer()}</StyledView>
+          )}
         </VideoOfferContainer>
       </View>
     </React.Fragment>
@@ -144,8 +169,9 @@ const BlackView = styled.View(({ theme }) => ({
 
 const VideoOfferContainer = styled.View<{
   isMultiOffer: boolean
-}>(({ theme, isMultiOffer }) => ({
-  ...(isMultiOffer
+  hasThematicHomeEntry: boolean
+}>(({ theme, isMultiOffer, hasThematicHomeEntry }) => ({
+  ...(isMultiOffer && !hasThematicHomeEntry
     ? { marginHorizontal: theme.contentPage.marginHorizontal }
     : { marginLeft: theme.contentPage.marginHorizontal }),
   flexDirection: 'row',

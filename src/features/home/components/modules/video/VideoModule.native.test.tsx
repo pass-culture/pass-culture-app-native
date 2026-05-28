@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
@@ -28,14 +28,14 @@ describe('VideoModule', () => {
 
   it('should render properly', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule()
+    renderVideoModule({})
 
     expect(await screen.findByText(offerFixture.offer.name)).toBeOnTheScreen()
   })
 
   it('should navigate to video module page when pressing video thumbnail', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule()
+    renderVideoModule({})
 
     const button = screen.getByTestId('video-thumbnail')
 
@@ -66,7 +66,7 @@ describe('VideoModule', () => {
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule()
+    renderVideoModule({})
 
     await screen.findByText(offerFixture.offer.name)
 
@@ -81,14 +81,14 @@ describe('VideoModule', () => {
 
   it('should not log ModuleDisplayedOnHomePage event when module is not rendered', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [] })
-    renderVideoModule()
+    renderVideoModule({})
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 
   it('should render multi offer component if multiples offers', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
-    renderVideoModule()
+    renderVideoModule({})
 
     const multiOfferList = screen.getByTestId('video-multi-offers-module-list')
 
@@ -99,14 +99,44 @@ describe('VideoModule', () => {
 
   it('should render one offer component when one offer', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule()
+    renderVideoModule({})
 
     expect(await screen.findByTestId('videoMonoOfferTile')).toBeOnTheScreen()
   })
 
+  it('should render thematic home redirection button when data defined', async () => {
+    mockUseVideoOffersQuery.mockReturnValueOnce({
+      offers: [offerFixture],
+    })
+    renderVideoModule({
+      thematicHomeEntryId: 'homeEntryId',
+      thematicHomeTitle: 'Si tu veux en voir en plus',
+    })
+
+    expect(await screen.findByText('Si tu veux en voir en plus')).toBeOnTheScreen()
+  })
+
+  it('should redirect to thematic home when pressing redirection button and data defined', async () => {
+    mockUseVideoOffersQuery.mockReturnValueOnce({
+      offers: [offerFixture],
+    })
+    renderVideoModule({
+      thematicHomeEntryId: 'homeEntryId',
+      thematicHomeTitle: 'Si tu veux en voir en plus',
+    })
+
+    await user.press(screen.getByText('Si tu veux en voir en plus'))
+
+    expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+      from: 'videoModule',
+      homeId: 'homeEntryId',
+      moduleId: '4ZzxHKDN7BvBAxVR6hFbU6',
+    })
+  })
+
   it('should render mobile design if mobile viewport', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule()
+    renderVideoModule({})
 
     const multiOfferList = screen.getByTestId('mobile-video-module')
 
@@ -117,7 +147,7 @@ describe('VideoModule', () => {
 
   it('should render desktop design if desktop viewport', async () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
-    renderVideoModule(true)
+    renderVideoModule({ isDesktopViewport: true })
 
     const multiOfferList = screen.getByTestId('desktop-video-module')
 
@@ -130,7 +160,7 @@ describe('VideoModule', () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2, offerFixture3, offerFixture4],
     })
-    renderVideoModule(true)
+    renderVideoModule({ isDesktopViewport: true })
 
     const seeAllButton = screen.getByLabelText(
       'Voir tout pour la sélection Lujipeka répond à vos questions !'
@@ -145,7 +175,7 @@ describe('VideoModule', () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2],
     })
-    renderVideoModule(true)
+    renderVideoModule({ isDesktopViewport: true })
 
     const seeAllButton = screen.queryByLabelText(
       'Voir tout pour la sélection Lujipeka répond à vos questions !'
@@ -200,10 +230,25 @@ const offerFixture4 = {
   },
 }
 
-function renderVideoModule(isDesktopViewport?: boolean) {
+type RenderVideoModuleType = Partial<ComponentProps<typeof VideoModule>> & {
+  isDesktopViewport?: boolean
+}
+
+function renderVideoModule({
+  isDesktopViewport,
+  thematicHomeEntryId,
+  thematicHomeTitle,
+}: RenderVideoModuleType) {
   render(
     reactQueryProviderHOC(
-      <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />
+      <VideoModule
+        {...videoModuleFixture}
+        index={1}
+        homeEntryId="abcd"
+        shouldShowModal={false}
+        thematicHomeEntryId={thematicHomeEntryId}
+        thematicHomeTitle={thematicHomeTitle}
+      />
     ),
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },

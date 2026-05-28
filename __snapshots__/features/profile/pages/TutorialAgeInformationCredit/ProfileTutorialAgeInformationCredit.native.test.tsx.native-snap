@@ -2403,7 +2403,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                     <View
                       style={
                         {
-                          "backgroundColor": "#f3edff",
+                          "backgroundColor": "#ffffff",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderColor": "#6123df",
@@ -2622,9 +2622,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                       />
                     </View>
                     <View
+                      bonificationStatus={null}
                       style={
                         {
-                          "backgroundColor": "#f3edff",
+                          "backgroundColor": "#ffffff",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderColor": "#6123df",
