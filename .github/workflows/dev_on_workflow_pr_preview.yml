@@ -99,12 +99,12 @@ jobs:
           PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account=${SERVICE_ACCOUNT} \
-            --project=${PROJECT_ID}
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}"
           SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
-          echo "FIREBASE_TOKEN=${SA_KEY_JSON}" >> "$GITHUB_OUTPUT"
+          echo "FIREBASE_TOKEN=${SA_KEY_JSON}" >> "${GITHUB_OUTPUT}"
           SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          echo "SA_KEY_ID=${SA_KEY_ID}" >> "$GITHUB_OUTPUT"
+          echo "SA_KEY_ID=${SA_KEY_ID}" >> "${GITHUB_OUTPUT}"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -128,8 +128,8 @@ jobs:
           PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
           gcloud iam service-accounts keys delete "${KEY_ID}" \
-            --iam-account=${SERVICE_ACCOUNT} \
-            --project=${PROJECT_ID} \
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}" \
             --quiet
           rm -f temporary-sa-key.json
 
