@@ -3,8 +3,6 @@ import { logUserEligibilityTypeFallback } from 'features/profile/helpers/logUser
 import { getAge } from 'shared/user/getAge'
 
 export enum UserEligibilityType {
-  NOT_ELIGIBLE = 'NOT_ELIGIBLE',
-  ELIGIBLE_BONUS = 'ELIGIBLE_BONUS',
   ELIGIBLE_CREDIT_V1_18 = 'ELIGIBLE_CREDIT_V1_18',
   ELIGIBLE_CREDIT_V2_15 = 'ELIGIBLE_CREDIT_V2_15',
   ELIGIBLE_CREDIT_V2_16 = 'ELIGIBLE_CREDIT_V2_16',
@@ -14,6 +12,9 @@ export enum UserEligibilityType {
   ELIGIBLE_CREDIT_V3_16 = 'ELIGIBLE_CREDIT_V3_16',
   ELIGIBLE_CREDIT_V3_17 = 'ELIGIBLE_CREDIT_V3_17',
   ELIGIBLE_CREDIT_V3_18 = 'ELIGIBLE_CREDIT_V3_18',
+  ELIGIBLE_BONUS = 'ELIGIBLE_BONUS',
+  NOT_ELIGIBLE = 'NOT_ELIGIBLE',
+  ELIGIBLE_UNKNOWN = 'ELIGIBLE_UNKNOWN',
 }
 
 export const getEligibilityType = (user: UserProfileResponse): UserEligibilityType => {
@@ -32,6 +33,8 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isSixteen = age === 16
   const isSeventeen = age === 17
   const isEighteenOrMore = age && age >= 18
+  const isUnderFifteen = age && age < 15
+  const isOverEighteen = age && age > 18
 
   // CREDIT_V1
   const isEligibleCreditV1_18 = isTooOldForThisTypeOfEligibility
@@ -56,6 +59,9 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isNotEligibleBonus = qfBonificationStatus === QFBonificationStatus.not_eligible
   const isEligibleBonus = !isNotEligibleBonus && isCreditV3_18
 
+  // NOT ELIGIBLE
+  const isNotEligible = isUnderFifteen || isOverEighteen
+
   if (isEligibleBonus) return UserEligibilityType.ELIGIBLE_BONUS
   if (isEligibleCreditV1_18) return UserEligibilityType.ELIGIBLE_CREDIT_V1_18
   if (isEligibleCreditV2_15) return UserEligibilityType.ELIGIBLE_CREDIT_V2_15
@@ -66,7 +72,8 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   if (isEligibleCreditV3_16) return UserEligibilityType.ELIGIBLE_CREDIT_V3_16
   if (isEligibleCreditV3_17) return UserEligibilityType.ELIGIBLE_CREDIT_V3_17
   if (isEligibleCreditV3_18) return UserEligibilityType.ELIGIBLE_CREDIT_V3_18
+  if (isNotEligible) return UserEligibilityType.NOT_ELIGIBLE
 
   logUserEligibilityTypeFallback({ user })
-  return UserEligibilityType.NOT_ELIGIBLE
+  return UserEligibilityType.ELIGIBLE_UNKNOWN
 }
