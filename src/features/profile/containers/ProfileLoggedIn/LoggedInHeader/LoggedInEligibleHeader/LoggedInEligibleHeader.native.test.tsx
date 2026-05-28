@@ -55,8 +55,14 @@ describe('LoggedInEligibleHeader', () => {
     expect(screen.getByTestId('eligible-header')).toBeOnTheScreen()
   })
 
-  it('should render PageHeader fallback for unknown eligibility', async () => {
+  it('should render PageHeader fallback for not eligible users', async () => {
     await renderLoggedInEligibleHeader(UserEligibilityType.NOT_ELIGIBLE)
+
+    expect(screen.getByText('Mon profil')).toBeOnTheScreen()
+  })
+
+  it('should render PageHeader fallback for unknown eligibility', async () => {
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_UNKNOWN)
 
     expect(screen.getByText('Mon profil')).toBeOnTheScreen()
   })

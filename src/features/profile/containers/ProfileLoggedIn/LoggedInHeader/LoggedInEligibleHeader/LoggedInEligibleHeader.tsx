@@ -40,6 +40,8 @@ export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }
       header = <EligibleFreeHeader {...commonProps} defaultAge={16} />
       break
 
+    case UserEligibilityType.NOT_ELIGIBLE:
+    case UserEligibilityType.ELIGIBLE_UNKNOWN:
     default:
       logHeaderFallback({ user, headerType: UserStatusType.ELIGIBLE })
       header = <PageHeader title="Mon profil" featureFlags={featureFlags} numberOfLines={3} />

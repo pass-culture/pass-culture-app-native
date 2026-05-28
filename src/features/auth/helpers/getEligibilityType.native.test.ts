@@ -23,18 +23,20 @@ describe('getEligibilityType', () => {
   })
 
   describe('NOT ELIGIBLE', () => {
-    it('should return NOT_ELIGIBLE by default', () => {
+    it('should return NOT_ELIGIBLE when user is under 15', () => {
+      mockedGetAge.mockReturnValueOnce(14)
+
       const result = getEligibilityType(buildUser())
 
       expect(result).toBe(UserEligibilityType.NOT_ELIGIBLE)
     })
 
-    it('should log fallback when eligibility type is not eligible', () => {
+    it('should return NOT_ELIGIBLE when user is over 18', () => {
+      mockedGetAge.mockReturnValueOnce(19)
+
       const result = getEligibilityType(buildUser())
 
       expect(result).toBe(UserEligibilityType.NOT_ELIGIBLE)
-
-      expect(logUserEligibilityTypeFallback).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -88,6 +90,22 @@ describe('getEligibilityType', () => {
       )
 
       expect(result).toBe(UserEligibilityType.ELIGIBLE_BONUS)
+    })
+  })
+
+  describe('ELIGIBLE UNKNOWN', () => {
+    it('should return ELIGIBLE_UNKNOWN by default', () => {
+      const result = getEligibilityType(buildUser())
+
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_UNKNOWN)
+    })
+
+    it('should log fallback when eligibility type is not eligible', () => {
+      const result = getEligibilityType(buildUser())
+
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_UNKNOWN)
+
+      expect(logUserEligibilityTypeFallback).toHaveBeenCalledTimes(1)
     })
   })
 })

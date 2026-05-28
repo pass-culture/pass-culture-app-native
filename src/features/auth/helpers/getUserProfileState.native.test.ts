@@ -34,7 +34,8 @@ describe('getUserProfileState', () => {
     mockedIsDepositExpired.mockReturnValue(false)
   })
 
-  it('should return GENERAL_PUBLIC + NO_CREDIT + NOT_ELIGIBLE by default', () => {
+  it('should return GENERAL_PUBLIC + NO_CREDIT + NOT_ELIGIBLE for users over 18', () => {
+    mockAge(19)
     const user = buildUser()
 
     expect(getUserProfileState(user)).toEqual({
@@ -222,7 +223,7 @@ describe('getUserProfileState', () => {
     })
   })
 
-  it('should return SUSPENDED + CREDIT_EXPIRED + NOT_ELIGIBLE when expired', () => {
+  it('should return SUSPENDED + CREDIT_EXPIRED + ELIGIBLE_UNKNOWN when expired', () => {
     mockedIsDepositExpired.mockReturnValueOnce(true)
 
     const user = buildUser({
@@ -234,7 +235,7 @@ describe('getUserProfileState', () => {
     expect(getUserProfileState(user)).toEqual({
       statusType: UserStatusType.SUSPENDED,
       creditType: UserCreditType.CREDIT_EXPIRED,
-      eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+      eligibilityType: UserEligibilityType.ELIGIBLE_UNKNOWN,
     })
   })
 })
