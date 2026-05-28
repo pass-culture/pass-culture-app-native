@@ -107,6 +107,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: testing
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-android-testing:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/testing')
@@ -114,6 +117,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: testing
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-testing:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/testing')
@@ -121,6 +127,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: testing
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-android-staging:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
@@ -128,6 +137,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: staging
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-staging:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
@@ -135,6 +147,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: staging
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-android-production:
     needs: hard-deploy-android-staging
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
@@ -142,6 +157,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: production
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-production:
     needs: hard-deploy-ios-staging
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
@@ -149,6 +167,9 @@ jobs:
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: production
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-testing:
     needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
     # see https://stackoverflow.com/a/66358138 for details
