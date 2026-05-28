@@ -1,4 +1,4 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { CategoryIdEnum, SearchGroupNameEnumv2 } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { PlaylistType } from 'features/offer/enums'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
@@ -11,6 +11,7 @@ const mockUseOfferPlaylist = useOfferPlaylist as jest.Mock
 
 const baseParams = {
   offer: mockOffer,
+  offerCategory: CategoryIdEnum.CINEMA,
   offerSearchGroup: SearchGroupNameEnumv2.CINEMA,
   searchGroupList: [],
 }
@@ -26,6 +27,25 @@ describe('useGetOffersSimilarsFromPlaylist', () => {
       useGetOffersSimilarsFromPlaylist({
         ...baseParams,
         type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      })
+    )
+
+    expect(result.current.items).toEqual([mockOffer, mockOffer])
+    expect(result.current.title).toBe('Les fans aiment aussi')
+  })
+
+  it('should return books same category playlist', () => {
+    mockUseOfferPlaylist.mockReturnValueOnce({
+      sameCategorySimilarOffers: [mockOffer],
+      booksSameCategorySimilarOffers: [mockOffer, mockOffer],
+      otherCategoriesSimilarOffers: [mockOffer],
+    })
+
+    const { result } = renderHook(() =>
+      useGetOffersSimilarsFromPlaylist({
+        ...baseParams,
+        offerCategory: CategoryIdEnum.LIVRE,
+        type: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
       })
     )
 
