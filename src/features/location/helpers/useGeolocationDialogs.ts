@@ -4,6 +4,7 @@ import { Alert, Linking } from 'react-native'
 import { LocationState } from 'features/location/types'
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationActions } from 'libs/locationV2/location.store'
 
 type Props = {
   dismissModal: () => void
@@ -13,8 +14,6 @@ type Props = {
   setSelectedLocationMode: LocationState['setSelectedLocationMode']
   permissionState: LocationState['permissionState']
   setPlace: LocationState['setPlace']
-  onModalHideRef: LocationState['onModalHideRef']
-  showGeolocPermissionModal: LocationState['showGeolocPermissionModal']
   requestGeolocPermission: LocationState['requestGeolocPermission']
   hasGeolocPosition: LocationState['hasGeolocPosition']
 }
@@ -27,8 +26,6 @@ export const useGeolocationDialogs = ({
   setSelectedLocationMode,
   permissionState,
   setPlace,
-  onModalHideRef,
-  showGeolocPermissionModal,
   requestGeolocPermission,
   hasGeolocPosition,
 }: Props) => {
@@ -41,12 +38,14 @@ export const useGeolocationDialogs = ({
       setPlace(null)
       selectEverywhereMode()
       if (shouldOpenDirectlySettings) {
-        Linking.openSettings()
+        void Linking.openSettings()
       } else {
-        if (!shouldDirectlyValidate) {
-          dismissModal()
-        }
-        onModalHideRef.current = showGeolocPermissionModal
+        dismissModal()
+        // 2 native modals can't be opened at the same time or the app will freeze, so we need to wait for the first one to be closed
+        // we keep the imperative approach to avoid using onModalHide that bursts the logic between files
+        setTimeout(() => {
+          locationActions.showPermissionModal()
+        }, 500)
       }
     } else if (permissionState === GeolocPermissionState.GRANTED && !hasGeolocPosition) {
       Alert.alert(
@@ -64,17 +63,15 @@ export const useGeolocationDialogs = ({
       })
     }
   }, [
-    permissionState,
-    setTempLocationMode,
-    setSelectedLocationMode,
-    setPlace,
-    shouldOpenDirectlySettings,
     dismissModal,
-    onModalHideRef,
-    showGeolocPermissionModal,
-    shouldDirectlyValidate,
-    requestGeolocPermission,
     hasGeolocPosition,
+    permissionState,
+    requestGeolocPermission,
+    setPlace,
+    setSelectedLocationMode,
+    setTempLocationMode,
+    shouldDirectlyValidate,
+    shouldOpenDirectlySettings,
   ])
 
   return { runGeolocationDialogs }

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useAppStateChange } from 'libs/appState'
@@ -26,7 +26,6 @@ const LocationContext = React.createContext<ILocationContext>({
   hasGeolocPosition: false,
   place: null,
   setPlace: () => {},
-  onModalHideRef: { current: undefined },
   geolocPosition: undefined,
   geolocPositionError: null,
   permissionState: null,
@@ -69,8 +68,6 @@ export const LocationWrapper = memo(function LocationWrapper({
     hidePermissionModal: hideGeolocPermissionModal,
   } = locationActions
 
-  const onModalHideRef = useRef<() => void>(() => null)
-
   // app state
   const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const place = usePlace()
@@ -102,7 +99,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       geolocPositionError,
       permissionState,
       hasGeolocPosition,
-      onModalHideRef,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,

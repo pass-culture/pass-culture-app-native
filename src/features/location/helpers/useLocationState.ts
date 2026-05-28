@@ -9,8 +9,7 @@ type Props = {
 }
 
 export const useLocationState = ({ visible }: Props) => {
-  const { setPlaceQuery, setSelectedPlace, onModalHideRef, selectedLocationMode, place } =
-    useLocation()
+  const { setPlaceQuery, setSelectedPlace, selectedLocationMode, place } = useLocation()
 
   const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(DEFAULT_RADIUS)
   const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(DEFAULT_RADIUS)
@@ -25,7 +24,6 @@ export const useLocationState = ({ visible }: Props) => {
 
   useEffect(() => {
     if (visible) {
-      onModalHideRef.current = undefined
       setPlaceQuery(place?.label ?? '')
       setSelectedPlace(place)
     }

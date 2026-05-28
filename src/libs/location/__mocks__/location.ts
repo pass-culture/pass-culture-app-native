@@ -30,7 +30,6 @@ const locationContext: ILocationContext = {
   showGeolocPermissionModal,
   onPressGeolocPermissionModalButton,
   hasGeolocPosition: true,
-  onModalHideRef: { current: undefined },
   place: null,
   setPlace,
   selectedLocationMode: LocationMode.AROUND_ME,

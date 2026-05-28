@@ -108,6 +108,7 @@ const locationStore = createStore({
   selectors: {
     selectState: () => (state) => state,
     selectLocationMode: () => (state) => state.locationMode,
+    selectPermissionState: () => (state) => state.permissionState,
     selectLocationConfiguration: (configurationKey: LocationMode) => (state) =>
       state.configuration[configurationKey],
     selectPlace: () => (state) => {
@@ -136,7 +137,7 @@ locationStore.store.subscribe(locationStore.selectors.selectLocationType, (locat
   firebaseAnalytics.setDefaultEventParameters({ locationType })
 )
 
-function isRejected(permission: GeolocPermissionState | null) {
+const isRejected = (permission: GeolocPermissionState | null) => {
   return (
     !permission ||
     permission === GeolocPermissionState.DENIED ||

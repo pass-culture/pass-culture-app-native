@@ -1,5 +1,3 @@
-import { MutableRefObject } from 'react'
-
 import { SuggestedPlace } from 'libs/place/types'
 
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
@@ -40,7 +38,6 @@ export type ILocationContext = {
   hasGeolocPosition: boolean
   place: SuggestedPlace | null
   setPlace: (place: SuggestedPlace | null) => void
-  onModalHideRef: MutableRefObject<(() => void) | undefined>
   geolocPosition: Position
   geolocPositionError: GeolocationError | null
   permissionState: GeolocPermissionState | null

@@ -33,7 +33,6 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     permissionState,
     showGeolocPermissionModal,
     requestGeolocPermission,
-    onModalHideRef,
   } = useLocation()
 
   const {
@@ -79,7 +78,6 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     setSelectedLocationMode,
     permissionState,
     setPlace,
-    onModalHideRef,
     showGeolocPermissionModal,
     requestGeolocPermission,
     hasGeolocPosition,
@@ -94,7 +92,6 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
       tempLocationMode={tempLocationMode}
       onClose={onClose}
       selectLocationMode={selectLocationMode}
-      onModalHideRef={onModalHideRef}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}

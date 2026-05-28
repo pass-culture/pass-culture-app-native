@@ -19,7 +19,6 @@ type LocationModalProps = {
   visible: boolean
   onSubmit: () => void
   onClose: () => void
-  onModalHideRef: LocationState['onModalHideRef']
   selectLocationMode: (mode: LocationMode) => () => void
   tempLocationMode: LocationState['tempLocationMode']
   hasGeolocPosition: LocationState['hasGeolocPosition']
@@ -61,7 +60,6 @@ export const LocationModal = ({
   tempLocationMode,
   onClose,
   selectLocationMode,
-  onModalHideRef,
   selectedPlace,
   tempAroundMeRadius,
   onTempAroundMeRadiusValueChange,
@@ -178,7 +176,6 @@ export const LocationModal = ({
       noPadding
       isUpToStatusBar
       scrollEnabled={false}
-      onModalHide={onModalHideRef.current}
       keyboardShouldPersistTaps="handled"
       customModalHeader={
         <HeaderContainer>

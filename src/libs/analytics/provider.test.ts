@@ -75,7 +75,6 @@ describe('analyticsProvider - logEvent', () => {
     it('should not send the same screen view twice within the dedup window', async () => {
       await analytics.logScreenView(SCREEN_NAME)
       await analytics.logScreenView(SCREEN_NAME)
-      await act(() => {})
 
       expect(firebaseAnalytics.logScreenView).toHaveBeenCalledTimes(1)
     })
@@ -83,7 +82,6 @@ describe('analyticsProvider - logEvent', () => {
     it('should send different screen views', async () => {
       await analytics.logScreenView('Home')
       await analytics.logScreenView('Offer')
-      await act(() => {})
 
       expect(firebaseAnalytics.logScreenView).toHaveBeenCalledTimes(2)
     })
