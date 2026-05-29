@@ -145,7 +145,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={432}
       isLandscape={false}
       leftNootch={16}
       maxHeight={1318}
@@ -160,7 +159,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 432,
           "justifyContent": "flex-start",
           "maxHeight": 1318,
           "maxWidth": 960,
