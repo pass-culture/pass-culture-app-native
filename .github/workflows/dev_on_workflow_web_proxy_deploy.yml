@@ -73,12 +73,13 @@ jobs:
       - name: Cleanup .yarn cache
         run: rm -rf server/.yarn/cache
 
-      - name: 'Push proxy for input env'
+      - name: Push proxy for input env
         env:
           ENV: ${{ inputs.ENV }}
+          CLOUDSDK_CORE_PROJECT: ${{ vars.WEB_PROXY_GCP_PROJECT_ID }}
         run: cd server && yarn run "deploy:$ENV" && cd ..
 
-      - name: 'Clear unused apps'
+      - name: Clear unused apps
         env:
           ENV: ${{ inputs.ENV }}
         run: |
