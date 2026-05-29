@@ -100,10 +100,10 @@ export const SearchResults = () => {
 
   const transformHits = useTransformOfferHits()
 
-  const isSearchEnabled = !hasActiveSearchFilters(queryParams)
+  const hasSelectedSearchFilters = !hasActiveSearchFilters(queryParams)
 
   const isArtistsQueryEnabled =
-    isSearchEnabled &&
+    hasSelectedSearchFilters &&
     enableArtistInSearchActive &&
     (selectedFilter === null || selectedFilter === 'Artistes')
   const {
@@ -132,7 +132,7 @@ export const SearchResults = () => {
   })
 
   const isVenuesQueryEnabled =
-    (isSearchEnabled && selectedFilter === null) || selectedFilter === 'Lieux'
+    (hasSelectedSearchFilters && selectedFilter === null) || selectedFilter === 'Lieux'
   const {
     data: venuesResponse,
     isLoading: isVenuesQueryLoading,
