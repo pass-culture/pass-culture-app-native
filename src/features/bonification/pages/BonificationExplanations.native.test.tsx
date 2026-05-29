@@ -6,6 +6,7 @@ import { BonificationExplanations } from 'features/bonification/pages/Bonificati
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -70,6 +71,33 @@ describe('BonificationExplanations', () => {
       screen.getByText(
         'Si tu habites en Nouvelle-Calédonie, tu ne pourras malheureusement pas bénéficier du bonus.'
       )
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
+  })
+
+  it('should show handicap information text when qf bonification is enabled and handicap bonification is disabled', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BONIFICATION])
+
+    render(<BonificationExplanations />)
+
+    expect(
+      screen.getByText(
+        'Si tu es en situation de handicap, un peu de patience, ton cas sera pris en compte prochainement.'
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should not show handicap information text when qf bonification and handicap bonification are enabled', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
+      RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICIATION,
+    ])
+
+    render(<BonificationExplanations />)
+
+    expect(
+      screen.queryByText(
+        'Si tu es en situation de handicap, un peu de patience, ton cas sera pris en compte prochainement.'
+      )
+    ).not.toBeOnTheScreen()
   })
 })
