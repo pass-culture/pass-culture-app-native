@@ -89,7 +89,7 @@ describe('BonificationExplanations', () => {
   it('should not show handicap information text when qf bonification and handicap bonification are enabled', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
-      RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICIATION,
+      RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION,
     ])
 
     render(<BonificationExplanations />)

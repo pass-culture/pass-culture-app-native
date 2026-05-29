@@ -42,7 +42,7 @@ export const BonificationExplanations = () => {
     euroToPacificFrancRate
   )
   const enableHandicapBonification = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICIATION
+    RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION
   )
   const { data: bonificationQfThreshold } = useBonificationQfThreshold()
   const qfThresholdInCents = (bonificationQfThreshold || 700) * 100

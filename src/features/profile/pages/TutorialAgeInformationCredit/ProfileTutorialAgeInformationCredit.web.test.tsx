@@ -26,7 +26,7 @@ describe('<ProfileTutorialAgeInformationCredit/>', () => {
       it('should not have basic accessibility issues', async () => {
         setFeatureFlags([
           RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
-          RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICIATION,
+          RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION,
         ])
         const { container } = render(<ProfileTutorialAgeInformationCredit />)
 
