@@ -7,12 +7,13 @@ const DEFAULT_NUMERIC_FILTERS = JSON.stringify([['offer.prices: 0 TO 300']])
 
 export const hasActiveSearchFilters = (args: FetchSearchResultsArgs): boolean => {
   const { parameters, buildLocationParameterParams, isUserUnderage, disabilitiesProperties } = args
+  const isUsedFromSearch = true
   const query = buildOfferSearchParameters(
     { ...parameters },
     buildLocationParameterParams,
     isUserUnderage,
     disabilitiesProperties,
-    true
+    isUsedFromSearch
   )
 
   const hasExtraFacetFilters = JSON.stringify(query.facetFilters) !== DEFAULT_FACET_FILTERS
