@@ -84,7 +84,7 @@ describe('metasResponseInterceptor', () => {
           setHeader,
         } as any
       )
-      expect(setHeader).toBeCalledWith('Cache-Control', 'public,no-cache')
+      expect(setHeader).toHaveBeenCalledWith('Cache-Control', 'public,no-cache')
       expect(unmodifiedResponseBuffer).toEqual(jsResponseBuffer)
     })
 
