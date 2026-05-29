@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v6
         with:
           ref: ${{ inputs.REF }}
       - uses: actions/setup-node@v6
