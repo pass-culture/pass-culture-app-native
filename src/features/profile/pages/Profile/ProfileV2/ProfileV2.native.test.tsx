@@ -40,6 +40,6 @@ describe('<ProfileV2/>', () => {
     mockUseFeatureFlagOptionsQuery.mockReturnValueOnce({ options: { message: 'désactivé' } })
     render(reactQueryProviderHOC(<ProfileV2 />))
 
-    expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+    expect(await screen.findByText('Oups, pas de réseau !')).toBeOnTheScreen()
   })
 })

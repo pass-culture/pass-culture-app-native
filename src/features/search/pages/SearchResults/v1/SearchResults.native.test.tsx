@@ -534,7 +534,7 @@ describe('<SearchResults/>', () => {
       render(reactQueryProviderHOC(<SearchResults />))
 
       await waitFor(() => {
-        expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+        expect(screen.getByText('Oups, pas de réseau !')).toBeOnTheScreen()
       })
     })
   })
