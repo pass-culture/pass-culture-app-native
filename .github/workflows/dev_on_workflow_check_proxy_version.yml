@@ -20,7 +20,7 @@ jobs:
       is_greater_or_equal_version: ${{ steps.proxy-rollback-protection.outputs.is_greater_or_equal_version }}
       base_tag: ${{ steps.proxy-base-tag.outputs.base_tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         if: inputs.WEBAPP_URL
         with:
           fetch-depth: 0
