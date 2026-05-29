@@ -132,6 +132,6 @@ describe('metas utils', () => {
     )
 
     expect(html).toEqual(TEST_HTML)
-    expect(logger.error).toBeCalledWith(new Error(`Wrong status code: 502`))
+    expect(logger.error).toHaveBeenCalledWith(new Error(`Wrong status code: 502`))
   })
 })
