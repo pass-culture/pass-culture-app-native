@@ -201,6 +201,10 @@ export const AppModal: FunctionComponent<Props> = ({
     default: false,
     at200PercentZoom: !maxHeight,
   })
+  const upToStatusBarTopOffset = useMobileFontScaleToDisplay({
+    default: top,
+    at200PercentZoom: top + designSystem.size.spacing.xxxxl,
+  })
   const effectiveIsFullscreen = isFullscreen || isFullscreenAtZoom
 
   let maxContainerHeight = maxHeight
@@ -208,8 +212,8 @@ export const AppModal: FunctionComponent<Props> = ({
 
   // no fullscreen in desktop view
   if (effectiveIsFullscreen || isUpToStatusBar) {
-    maxContainerHeight = windowHeight
-    modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
+    maxContainerHeight = isUpToStatusBar ? windowHeight - upToStatusBarTopOffset : windowHeight
+    modalContainerHeight = windowHeight
   }
 
   const fullscreenModalBody = useMemo(() => {
@@ -265,7 +269,7 @@ export const AppModal: FunctionComponent<Props> = ({
       propagateSwipe={propagateSwipe}>
       <KeyboardAvoidingViewWrapper>
         <ModalContainer
-          height={modalContainerHeight}
+          height={maxHeight || isUpToStatusBar ? undefined : modalContainerHeight}
           testID="modalContainer"
           maxHeight={maxContainerHeight}
           desktopConstraints={containerDesktopConstraints}

@@ -20,6 +20,7 @@ export const BookingOfferModalHeader = ({ modalLeftIconProps, onClose, title }: 
         rightIconAccessibilityLabel="Fermer la modale"
         rightIcon={Close}
         onRightIconPress={onClose}
+        withStatusBarMargin={false}
       />
     </HeaderContainer>
   )
