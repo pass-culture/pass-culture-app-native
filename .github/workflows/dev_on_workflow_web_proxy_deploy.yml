@@ -73,14 +73,16 @@ jobs:
       - name: Cleanup .yarn cache
         run: rm -rf server/.yarn/cache
 
-      - name: 'Push proxy for input env'
+      - name: Push proxy for input env
         env:
           ENV: ${{ inputs.ENV }}
+          CLOUDSDK_CORE_PROJECT: ${{ vars.WEB_PROXY_GCP_PROJECT_ID }}
         run: cd server && yarn run "deploy:$ENV" && cd ..
 
-      - name: 'Clear unused apps'
+      - name: Clear unused apps
         env:
           ENV: ${{ inputs.ENV }}
+          CLOUDSDK_CORE_PROJECT: ${{ vars.WEB_PROXY_GCP_PROJECT_ID }}
         run: |
           gcloud app versions list --service="web-proxy-$ENV" --format="table[no-heading](id)" \
             | grep -v "$(gcloud app versions list --service="web-proxy-$ENV" --hide-no-traffic --format="table[no-heading](id)")" \
