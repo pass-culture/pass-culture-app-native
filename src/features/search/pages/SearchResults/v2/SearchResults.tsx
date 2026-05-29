@@ -215,7 +215,7 @@ export const SearchResults = () => {
   })
 
   const searchTabsMap: Record<SearchFilter, number> = {
-    Offres: hits.offers.length + hits.duplicatedOffers.length,
+    Offres: hits.offers.length,
     Lieux: hits.venues.length + hits.venueNotOpenToPublic.length,
     Artistes: hits.artists.length,
   }
