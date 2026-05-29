@@ -19,7 +19,7 @@ export const OFFER: EntityType<OfferData> = {
     metaKeywords(entity) {
       const extraData = entity.extraData || {}
       const keywords = [
-        entity.subcategoryId.replaceAll('_', ' '),
+        entity.subcategoryId?.replaceAll('_', ' '),
         extraData.musicType,
         extraData.musicSubType,
         extraData.showType,

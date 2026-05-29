@@ -1,13 +1,25 @@
 import { Server } from 'http'
 import { AddressInfo } from 'net'
 
+import { http, HttpResponse } from 'msw'
+import { setupServer } from 'msw/node'
+
 import { env } from './libs/environment/__mocks__/serverEnv'
+
+const serverMock = setupServer(
+  http.get(env.APP_BUCKET_URL, () =>
+    HttpResponse.text('<html><body>Mocked Index</body></html>', {
+      headers: { 'Content-Type': 'text/html' },
+    })
+  )
+)
 
 describe('express server', () => {
   let server: Server
   let initialEnv: string | undefined
 
   beforeAll(async () => {
+    serverMock.listen()
     initialEnv = process.env.ENV
     process.env.ENV = 'testing'
     const { server: newServer } = await import('./index')
@@ -15,6 +27,7 @@ describe('express server', () => {
   })
 
   afterAll((done) => {
+    serverMock.close()
     process.env.ENV = initialEnv
     server.close(done)
   })
