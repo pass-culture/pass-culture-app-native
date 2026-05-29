@@ -24,6 +24,8 @@ appId: ${MAESTRO_APP_ID}
           id: 'Revenir en arrière'
 
 - tapOn: 'Créer un compte'
+- tapOn: 'S’inscrire avec mon e-mail'
+
 - assertVisible: 'Crée-toi un compte'
 - runFlow:
     when:
