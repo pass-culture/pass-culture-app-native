@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { AccessibilityInfo, findNodeHandle, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Markdown } from 'ui/components/Markdown/Markdown'
@@ -14,32 +14,70 @@ type Props = {
   children?: React.ReactNode
 }
 
-function truncateText(text: string, maxChars: number) {
-  if (text.length <= maxChars) return text
+function getCutIndex(text: string, maxChars: number) {
+  if (text.length <= maxChars) return text.length
   const truncated = text.slice(0, maxChars)
   const lastSpace = truncated.lastIndexOf(' ')
-  return truncated.slice(0, lastSpace) + '…'
+  return lastSpace > 0 ? lastSpace : maxChars
+}
+
+function getContinuationA11yLabel(text: string, cutIndex: number) {
+  const continuation = text.slice(cutIndex).trim()
+  if (!continuation) return text
+  return continuation
 }
 
 export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, children }: Props) {
   const [expanded, setExpanded] = useState(false)
+  const continuationFocusRef = useRef<View>(null)
+
   const isTruncated = text.length > maxChars
-  const collapsedText = truncateText(text, maxChars)
+  const cutIndex = getCutIndex(text, maxChars)
+
+  const firstPart = text.slice(0, cutIndex)
+  const secondPart = text.slice(cutIndex)
+  const collapsedText = `${firstPart}…`
+
+  const continuationA11yLabel = getContinuationA11yLabel(text, cutIndex)
 
   const buttonIcon = expanded ? ArrowUp : ArrowDown
   const buttonText = expanded ? 'Voir moins' : 'Voir plus'
-  const buttonAccessibleHint = expanded
-    ? 'Réduire le texte'
-    : 'Une fois déplié, revenir en arrière pour lire tout le texte'
+  const buttonAccessibleHint = expanded ? 'Réduire le texte' : 'Déplier le texte'
 
   const onPress = () => {
     setExpanded((prev) => !prev)
     if (onAdditionalPress) onAdditionalPress()
   }
 
+  useEffect(() => {
+    if (!expanded || !isTruncated) return
+
+    const timer = setTimeout(() => {
+      const reactTag = findNodeHandle(continuationFocusRef.current)
+      if (reactTag) {
+        AccessibilityInfo.setAccessibilityFocus(reactTag)
+      }
+    }, 150)
+
+    return () => clearTimeout(timer)
+  }, [expanded, isTruncated])
+
   return (
     <View>
-      {expanded ? <Markdown>{text}</Markdown> : <Markdown>{collapsedText}</Markdown>}
+      {expanded ? (
+        <View>
+          <Markdown>{firstPart}</Markdown>
+          <View
+            ref={continuationFocusRef}
+            accessible
+            accessibilityRole="text"
+            accessibilityLabel={continuationA11yLabel}>
+            <Markdown>{secondPart}</Markdown>
+          </View>
+        </View>
+      ) : (
+        <Markdown>{isTruncated ? collapsedText : text}</Markdown>
+      )}
 
       {expanded && children ? children : null}
 
