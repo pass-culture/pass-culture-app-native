@@ -18,6 +18,7 @@ import { useSync } from 'features/search/helpers/useSync/useSync'
 import { SearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTab'
 import { SearchResultsContent } from 'features/search/pages/SearchResults/v2/SearchResultsContent'
 import { getSearchListContent } from 'features/search/pages/SearchResults/v2/utils'
+import { hasActiveSearchFilters } from 'features/search/queries/helpers.ts'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
@@ -99,6 +100,12 @@ export const SearchResults = () => {
 
   const transformHits = useTransformOfferHits()
 
+  const isSearchEnabled = !hasActiveSearchFilters(queryParams)
+
+  const isArtistsQueryEnabled =
+    isSearchEnabled &&
+    enableArtistInSearchActive &&
+    (selectedFilter === null || selectedFilter === 'Artistes')
   const {
     data: artistsResponse = [],
     isLoading: isArtistsQueryLoading,
@@ -106,10 +113,10 @@ export const SearchResults = () => {
     isSuccess: isArtistsQuerySuccess,
   } = useSearchArtistsQuery(queryParams, {
     select: (data) => selectSearchArtists(data),
-    enabled:
-      enableArtistInSearchActive && (selectedFilter === null || selectedFilter === 'Artistes'),
+    enabled: isArtistsQueryEnabled,
   })
 
+  const isOffersQueryEnabled = selectedFilter === null || selectedFilter === 'Offres'
   const {
     data: offersResponse,
     hasNextPage,
@@ -121,8 +128,11 @@ export const SearchResults = () => {
     isSuccess: isOffersQuerySuccess,
   } = useSearchOffersQuery(queryParams, {
     select: (data) => selectSearchOffers({ data, transformHits }),
-    enabled: selectedFilter === null || selectedFilter === 'Offres',
+    enabled: isOffersQueryEnabled,
   })
+
+  const isVenuesQueryEnabled =
+    (isSearchEnabled && selectedFilter === null) || selectedFilter === 'Lieux'
   const {
     data: venuesResponse,
     isLoading: isVenuesQueryLoading,
@@ -130,7 +140,7 @@ export const SearchResults = () => {
     isSuccess: isVenuesQuerySuccess,
   } = useSearchVenuesQuery(queryParams, {
     select: (data) => selectSearchVenues(data),
-    enabled: selectedFilter === null || selectedFilter === 'Lieux',
+    enabled: isVenuesQueryEnabled,
   })
 
   const algoliaVenues = venuesResponse?.algoliaVenues ?? []
@@ -204,6 +214,12 @@ export const SearchResults = () => {
     nbHits: offersResponse?.nbHits ?? hits.offers.length,
   })
 
+  const searchTabsMap: Record<SearchFilter, number> = {
+    Offres: hits.offers.length + hits.duplicatedOffers.length,
+    Lieux: hits.venues.length + hits.venueNotOpenToPublic.length,
+    Artistes: hits.artists.length,
+  }
+
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -218,7 +234,11 @@ export const SearchResults = () => {
         withArrow
         shouldDisplayHeader={!isFocusOnSuggestions}>
         {isFocusOnSuggestions ? null : (
-          <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
+          <SearchTab
+            selectedFilter={selectedFilter}
+            searchTabsMap={searchTabsMap}
+            onFilterPress={handlePressFilter}
+          />
         )}
       </SearchHeader>
     </Container>

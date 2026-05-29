@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
+import { getSearchQueryKey } from 'features/search/queries/helpers.ts'
 import { FetchSearchVenuesResponse } from 'features/search/queries/useSearchVenuesQuery/types'
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { fetchSearchVenues } from 'libs/algolia/fetchAlgolia/fetchSearchVenues/fetchSearchVenues'
@@ -10,13 +11,12 @@ export const useSearchVenuesQuery = <TSelect = FetchSearchVenuesResponse>(
   params: FetchSearchResultsArgs,
   options?: CustomQueryOptions<FetchSearchVenuesResponse, TSelect>
 ) => {
-  const { buildLocationParameterParams, disabilitiesProperties, parameters } = params
+  const { buildLocationParameterParams, parameters } = params
   return useQuery({
     queryKey: [
       QueryKeys.SEARCH_RESULTS_VENUES,
       buildLocationParameterParams.userLocation,
-      disabilitiesProperties,
-      parameters,
+      getSearchQueryKey(parameters),
     ],
     queryFn: () => fetchSearchVenues(params),
     ...options,

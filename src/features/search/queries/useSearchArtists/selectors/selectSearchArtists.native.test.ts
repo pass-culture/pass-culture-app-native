@@ -2,60 +2,65 @@ import { FetchSearchArtistsResponse } from 'features/search/queries/useSearchArt
 
 import { selectSearchArtists } from './selectSearchArtists'
 
-const mockData = {
-  offerArtistsResponse: {
+const mockData: FetchSearchArtistsResponse = {
+  artistsResponse: {
     hits: [
       {
-        objectID: 'offer-1',
-        artists: [
-          { id: 'artist-a', name: 'Artist A' },
-          { id: 'artist-b', name: 'Artist B' },
-        ],
+        objectID: 'artist-a',
+        name: 'Artist A',
+        image: 'image-a.jpg',
+        description: 'Description A',
       },
       {
-        objectID: 'offer-2',
-        artists: [{ id: 'artist-a', name: 'Artist A' }],
-      },
-      {
-        objectID: 'offer-3',
-        artists: [],
-      },
-      {
-        objectID: 'offer-4',
-        artists: undefined,
+        objectID: 'artist-b',
+        name: 'Artist B',
+        image: 'image-b.jpg',
+        description: 'Description B',
       },
     ],
+    nbHits: 2,
+    page: 1,
+    nbPages: 1,
+    userData: null,
   },
-} as unknown as FetchSearchArtistsResponse
+}
 
 describe('selectSearchArtists', () => {
-  it('should return artists', () => {
+  it('should convert AlgoliaArtist type to Artist type', () => {
     const result = selectSearchArtists(mockData)
 
     expect(result).toHaveLength(2)
+    expect(result).toEqual([
+      {
+        id: 'artist-a',
+        name: 'Artist A',
+        image: 'image-a.jpg',
+        description: 'Description A',
+      },
+      {
+        id: 'artist-b',
+        name: 'Artist B',
+        image: 'image-b.jpg',
+        description: 'Description B',
+      },
+    ])
   })
 
-  describe('artists extraction', () => {
-    it('should flatten and deduplicate artists across hits', () => {
-      const result = selectSearchArtists(mockData)
+  it('should return an empty array when artistsResponse has no hits', () => {
+    const emptyData = {
+      artistsResponse: {
+        hits: [],
+        nbHits: 0,
+        page: 0,
+        nbPages: 0,
+        userData: null,
+      },
+    }
 
-      expect(result).toEqual([
-        { id: 'artist-a', name: 'Artist A' },
-        { id: 'artist-b', name: 'Artist B' },
-      ])
-    })
+    expect(selectSearchArtists(emptyData)).toEqual([])
+  })
 
-    it('should return an empty array when no offers contain artists', () => {
-      const emptyData = {
-        offerArtistsResponse: {
-          hits: [
-            { objectID: '1', artists: [] },
-            { objectID: '2', artists: undefined },
-          ],
-        },
-      } as unknown as FetchSearchArtistsResponse
-
-      expect(selectSearchArtists(emptyData)).toEqual([])
-    })
+  it('should return an empty array when data is null or undefined', () => {
+    expect(selectSearchArtists(null)).toEqual([])
   })
 })
