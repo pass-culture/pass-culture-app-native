@@ -22,7 +22,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
     beforeEach(() => {
       setFeatureFlags([
         RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
-        RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICIATION,
+        RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION,
       ])
     })
 

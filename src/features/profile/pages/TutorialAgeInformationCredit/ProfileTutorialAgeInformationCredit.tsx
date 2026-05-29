@@ -28,7 +28,7 @@ const headerTitle = 'Comment ça marche\u00a0?'
 
 export const ProfileTutorialAgeInformationCredit = () => {
   const enableHandicapBonification = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICIATION
+    RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION
   )
   const enableFamilyQuotientBonification = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_BONIFICATION

@@ -7,6 +7,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   useBonificationBonusAmount,
   useBonificationQfThreshold,
@@ -38,6 +40,9 @@ export const BonificationExplanations = () => {
     bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
+  )
+  const enableHandicapBonification = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION
   )
   const { data: bonificationQfThreshold } = useBonificationQfThreshold()
   const qfThresholdInCents = (bonificationQfThreshold || 700) * 100
@@ -100,10 +105,12 @@ export const BonificationExplanations = () => {
             externalNav={{ url: env.FAQ_LINK_CAF_QUOTIEN_FAMILIAL }}
             icon={ExternalSiteFilled}
           />
-          <StyledBodyS>
-            Si tu es en <Typo.BodyAccentS>situation de handicap</Typo.BodyAccentS>, un peu de
-            patience, ton cas sera pris en compte prochainement.
-          </StyledBodyS>
+          {enableHandicapBonification ? null : (
+            <StyledBodyS>
+              Si tu es en <Typo.BodyAccentS>situation de handicap</Typo.BodyAccentS>, un peu de
+              patience, ton cas sera pris en compte prochainement.
+            </StyledBodyS>
+          )}
         </ViewGap>
       }
     />
