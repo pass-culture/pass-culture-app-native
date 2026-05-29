@@ -1,5 +1,5 @@
 import { VenuesUserData } from 'features/search/types'
-import { AlgoliaVenue, AlgoliaVenueOfferListItem } from 'libs/algolia/types'
+import { AlgoliaVenue } from 'libs/algolia/types'
 
 export type FetchSearchVenuesResponse = {
   venuesResponse: { hits: AlgoliaVenue[]; userData?: VenuesUserData | null } | undefined
@@ -7,8 +7,7 @@ export type FetchSearchVenuesResponse = {
 }
 
 export type SelectedSearchVenues = {
-  algoliaVenues: AlgoliaVenue[]
-  venues: AlgoliaVenueOfferListItem[]
+  venues: AlgoliaVenue[]
   venuesUserData: VenuesUserData | null | undefined
   venueNotOpenToPublic: AlgoliaVenue[]
 }

@@ -47,13 +47,13 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
+const searchIdGenerated = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
-  const [searchIdGenerated] = useState(() => uuidv4())
   const [selectedFilter, setSelectedFilter] =
     useState<SelectSearchOffersParams['selectedFilter']>(null)
 
@@ -139,16 +139,16 @@ export const SearchResults = () => {
     isFetching: isVenuesQueryFetching,
     isSuccess: isVenuesQuerySuccess,
   } = useSearchVenuesQuery(queryParams, {
-    select: (data) => selectSearchVenues(data),
+    select: (venuesResponse) => selectSearchVenues(venuesResponse),
     enabled: isVenuesQueryEnabled,
   })
 
-  const algoliaVenues = venuesResponse?.algoliaVenues ?? []
+  const venues = venuesResponse?.venues ?? []
   const venueNotOpenToPublic = venuesResponse?.venueNotOpenToPublic ?? []
 
   const searchResultVenues = venueNotOpenToPublic[0]
-    ? [removeGeolocFromVenue(venueNotOpenToPublic[0]), ...algoliaVenues]
-    : algoliaVenues
+    ? [removeGeolocFromVenue(venueNotOpenToPublic[0]), ...venues]
+    : venues
 
   const hits: SearchOfferHits = {
     artists: artistsResponse,
@@ -168,7 +168,7 @@ export const SearchResults = () => {
     if (!searchState.searchId) {
       dispatch({ type: 'SET_SEARCH_ID', payload: searchIdGenerated })
     }
-  }, [searchState.searchId, searchIdGenerated, dispatch])
+  }, [searchState.searchId, dispatch])
 
   // Handler for modules with the new system
   const handleViewableItemsChanged = (items, moduleId, itemType, playlistIndex) => {
