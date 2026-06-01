@@ -11793,7 +11793,7 @@ __metadata:
     react-native-performance: "npm:^5.1.4"
     react-native-permissions: "npm:^5.4.1"
     react-native-qrcode-svg: "npm:^6.1.2"
-    react-native-reanimated: "npm:~4.1.7"
+    react-native-reanimated: "patch:react-native-reanimated@npm%3A4.1.7#~/.yarn/patches/react-native-reanimated-npm-4.1.7-30a13d0d8a.patch"
     react-native-reanimated-carousel: "npm:^4.0.2"
     react-native-safe-area-context: "npm:^5.5.1"
     react-native-screens: "npm:^4.11.1"
@@ -24216,7 +24216,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:~4.1.7":
+"react-native-reanimated@npm:4.1.7":
   version: 4.1.7
   resolution: "react-native-reanimated@npm:4.1.7"
   dependencies:
@@ -24227,6 +24227,20 @@ __metadata:
     react-native: 0.78 - 0.82
     react-native-worklets: 0.5 - 0.8
   checksum: 10/7635d929c138a8beb3411db54e9f8869fa3331c274cd50ef22289736f2b4a115292bc97ef13ea0e717764ab0470af50a38acd4cbb1371b44a56b2ecf449c5207
+  languageName: node
+  linkType: hard
+
+"react-native-reanimated@patch:react-native-reanimated@npm%3A4.1.7#~/.yarn/patches/react-native-reanimated-npm-4.1.7-30a13d0d8a.patch":
+  version: 4.1.7
+  resolution: "react-native-reanimated@patch:react-native-reanimated@npm%3A4.1.7#~/.yarn/patches/react-native-reanimated-npm-4.1.7-30a13d0d8a.patch::version=4.1.7&hash=a0785c"
+  dependencies:
+    react-native-is-edge-to-edge: "npm:^1.2.1"
+    semver: "npm:^7.7.2"
+  peerDependencies:
+    react: "*"
+    react-native: 0.78 - 0.82
+    react-native-worklets: 0.5 - 0.8
+  checksum: 10/f0fc21cf6d705b24180adc7677ceee60ac720246b3641df90ba443ed43ceb86874acd87ccd0c2bb0f78c1bbb617393e6d672348dbb12787b7600d4f9e7e2d10f
   languageName: node
   linkType: hard
 
