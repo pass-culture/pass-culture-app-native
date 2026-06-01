@@ -8,6 +8,8 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
 
@@ -22,6 +24,7 @@ export const VideoEndView: React.FC<{
 }> = ({ onPressReplay, offer, onPressSeeOffer, style, moduleId, moduleName, homeEntryId }) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
+  const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   return (
     <VideoEndViewContainer style={style}>
@@ -49,6 +52,7 @@ export const VideoEndView: React.FC<{
                     moduleId,
                     moduleName,
                     homeEntryId,
+                    displayAdvice: proAdvicesOnOfferSegment === 'A',
                   })
                 }}
                 navigateTo={{

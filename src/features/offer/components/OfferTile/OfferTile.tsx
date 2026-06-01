@@ -11,6 +11,8 @@ import { useLocation } from 'libs/location/location'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { NAVIGATION_METHOD } from 'shared/constants'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -43,6 +45,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const { offerId, name, date, price, categoryId, thumbUrl, offerLocation, subcategoryId } = props
 
@@ -85,6 +88,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       searchId,
       index,
       artistName,
+      displayAdvice: proAdvicesOnOfferSegment === 'A',
     })
   }
 

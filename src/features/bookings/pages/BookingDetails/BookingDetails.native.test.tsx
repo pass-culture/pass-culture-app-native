@@ -19,6 +19,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import * as useBookingByIdQueryAPI from 'queries/bookings/useBookingByIdQuery'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -48,6 +49,8 @@ jest.mock('queries/bookings/useBookingsQuery', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 const user = userEvent.setup()
 
@@ -197,6 +200,7 @@ describe('BookingDetails', () => {
 
     it('should redirect to the Offer page and log event', async () => {
       const booking = ongoingBookingV2
+      useABSegmentSpy.mockReturnValueOnce('B')
       renderBookingDetailsWithBookingById(booking)
 
       const text = screen.getByText('Voir l’offre')
@@ -213,6 +217,7 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
+        displayAdvice: false,
       })
     })
 

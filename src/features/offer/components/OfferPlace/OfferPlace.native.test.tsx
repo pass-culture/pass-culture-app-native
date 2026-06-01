@@ -316,6 +316,7 @@ describe('<OfferPlace />', () => {
       fromMultivenueOfferId: '146112',
       offerId: '2',
       isHeadline: false,
+      displayAdvice: false,
     })
   })
 

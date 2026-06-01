@@ -55,6 +55,7 @@ type Props = {
   proAdvices?: AdviceCardData[]
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
+  proAdvicesSegment?: string
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -71,6 +72,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   proAdvices,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
+  proAdvicesSegment,
   onVideoConsentPress,
   onShowOfferArtistsModal,
 }) => {
@@ -272,6 +274,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         subcategory={subcategory}
         distance={distance}
         isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
+        proAdvicesSegment={proAdvicesSegment}
       />
     </Container>
   )

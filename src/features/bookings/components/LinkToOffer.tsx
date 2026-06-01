@@ -5,6 +5,8 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -18,6 +20,7 @@ export const LinkToOffer = ({
 }) => {
   const netInfo = useNetInfoContext()
   const prePopulateOffer = usePrePopulateOffer()
+  const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const onNavigateToOfferPress = () => {
     if (netInfo.isConnected) {
@@ -29,7 +32,11 @@ export const LinkToOffer = ({
         offerId: offer.id,
       })
 
-      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
+      triggerConsultOfferLog({
+        offerId: offer.id,
+        from: 'bookings',
+        displayAdvice: proAdvicesOnOfferSegment === 'A',
+      })
     } else {
       showErrorSnackBar(
         'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.'
