@@ -6,68 +6,99 @@
 import React from 'react'
 import webStyled, { CSSObject, DefaultTheme, useTheme } from 'styled-components'
 
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import {
-  ExternalTouchableLinkProps,
-  InternalTouchableLinkProps,
-} from 'ui/components/touchableLink/types'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 import { getIconSize } from './getIconSize'
+import { getLinkGap } from './getLinkGap'
 import { getLinkTextColor } from './getLinkTextColor'
 import { getLinkTypography } from './getLinkTypography'
 import { LinkAnchor } from './LinkAnchor.web'
 import { LinkProps, LinkSize } from './types'
 
+type LinkAnchorComponentProps = React.ComponentProps<typeof LinkAnchor> & {
+  style?: unknown
+}
+
 export const Link = ({
   label,
+  wording,
   size = 'default',
   color = 'brand',
-  showIcon = true,
-  accessibilityLabel,
+  icon,
+  isExternal = false,
+  isInsideText = false,
+  textColor,
   testID,
-  ...navigationProps
+  accessibilityLabel,
+  ...props
 }: LinkProps) => {
+  const computedLabel = label ?? wording ?? ''
   const theme = useTheme()
-  const isExternal = 'externalNav' in navigationProps
+  const Icon = icon ?? (isExternal ? ExternalSiteFilled : undefined)
   const iconSize = getIconSize({ size, theme })
-  const iconColor = getLinkTextColor({ color, theme })
-  const computedAccessibilityLabel =
-    accessibilityLabel ?? (isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label)
-  const content = (
-    <InlineContent>
-      {showIcon || isExternal ? (
-        <ExternalSiteFilled color={iconColor} size={iconSize} testID="link-icon" aria-hidden />
-      ) : null}
-      <Text data-testid="link-label" size={size} color={color}>
-        {label}
-      </Text>
-    </InlineContent>
-  )
+  const iconColor = textColor ?? getLinkTextColor({ color, theme })
+  const { href, style: _style, ...anchorProps } = props as unknown as LinkAnchorComponentProps
 
-  if (isExternal) {
+  if (isInsideText) {
+    const InlineIcon = icon ?? (isExternal ? ExternalSiteFilled : undefined)
+
     return (
-      <ExternalTouchableLink
-        {...(navigationProps as ExternalTouchableLinkProps)}
-        as={Anchor}
+      <InlineTextContainer
+        {...anchorProps}
+        accessibilityLabel={
+          accessibilityLabel ??
+          getInsideTextAccessibilityLabel({
+            accessibilityRole: anchorProps.accessibilityRole,
+            isExternal,
+            label: computedLabel,
+          })
+        }
         color={color}
-        accessibilityLabel={computedAccessibilityLabel}
-        testID={testID}>
-        {content}
-      </ExternalTouchableLink>
+        href={href ?? '#'}
+        testID={testID}
+        $textColor={textColor}
+        $size={size}>
+        {InlineIcon ? (
+          <InlineIcon color={iconColor} size={iconSize} testID="link-icon" aria-hidden />
+        ) : null}
+        <InlineTextLabel>{computedLabel}</InlineTextLabel>
+      </InlineTextContainer>
     )
   }
 
   return (
-    <StyledInternalTouchableLink
-      {...(navigationProps as InternalTouchableLinkProps)}
+    <Container
+      {...anchorProps}
+      accessibilityLabel={
+        accessibilityLabel ?? getAccessibilityLabel({ isExternal, label: computedLabel })
+      }
       color={color}
-      accessibilityLabel={computedAccessibilityLabel}
+      href={href ?? '#'}
       testID={testID}>
-      {content}
-    </StyledInternalTouchableLink>
+      <InlineContent size={size}>
+        {Icon ? <Icon color={iconColor} size={iconSize} testID="link-icon" aria-hidden /> : null}
+        <Text data-testid="link-label" size={size} color={color} textColor={textColor}>
+          {computedLabel}
+        </Text>
+      </InlineContent>
+    </Container>
   )
+}
+
+function getAccessibilityLabel({ isExternal, label }: { isExternal: boolean; label: string }) {
+  return isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label
+}
+
+function getInsideTextAccessibilityLabel({
+  accessibilityRole,
+  isExternal,
+  label,
+}: {
+  accessibilityRole?: LinkProps['accessibilityRole'] | string
+  isExternal: boolean
+  label: string
+}) {
+  return isExternal || accessibilityRole === 'link' ? `${label}, lien externe` : label
 }
 
 const getContainerStyle = ({
@@ -90,25 +121,57 @@ const getContainerStyle = ({
   },
 })
 
-const Anchor = webStyled(LinkAnchor)<{
+const Container = webStyled(LinkAnchor)<{
   color: LinkProps['color']
 }>(getContainerStyle)
 
-const StyledInternalTouchableLink = webStyled(InternalTouchableLink)<{
-  color: LinkProps['color']
-}>(getContainerStyle)
-
-const InlineContent = webStyled.span(({ theme }) => ({
+const InlineContent = webStyled.span<{ size: LinkSize }>(({ theme, size }) => ({
   alignItems: 'center',
-  columnGap: theme.designSystem.size.spacing.s,
+  columnGap: getLinkGap({ size, theme }),
   display: 'inline-flex',
   flexDirection: 'row',
 }))
 
-const Text = webStyled.span<{ size: LinkSize; color: LinkProps['color'] }>(
-  ({ theme, size, color = 'brand' }) => ({
-    color: getLinkTextColor({ color, theme }),
-    textDecoration: 'underline',
-    ...theme.designSystem.typography[getLinkTypography(size)],
-  })
-)
+const Text = webStyled.span<{
+  size: LinkSize
+  color: LinkProps['color']
+  textColor?: LinkProps['textColor']
+}>(({ theme, size, color = 'brand', textColor }) => ({
+  color: textColor ?? getLinkTextColor({ color, theme }),
+  textDecoration: 'underline',
+  ...theme.designSystem.typography[getLinkTypography(size)],
+}))
+
+const InlineTextContainer = webStyled(LinkAnchor)<{
+  color: LinkProps['color']
+  $textColor?: LinkProps['textColor']
+  $size: LinkSize
+}>(({ theme, color = 'brand', $textColor, $size }) => ({
+  backgroundColor: 'transparent',
+  border: 'none',
+  boxSizing: 'border-box',
+  color: $textColor ?? getLinkTextColor({ color, theme }),
+  cursor: 'pointer',
+  display: 'inline',
+  margin: 0,
+  outline: 'none',
+  padding: 0,
+  textDecoration: 'underline',
+  whiteSpace: 'nowrap',
+  ...theme.designSystem.typography[getLinkTypography($size)],
+  ['& svg']: {
+    marginRight: theme.designSystem.size.spacing.xs,
+    transform: 'translateY(-0.05em)',
+    verticalAlign: 'middle',
+  },
+  ['&:hover']: {
+    color: $textColor ?? getLinkTextColor({ color, hovered: true, theme }),
+  },
+  ['&:visited']: {
+    color: $textColor ?? getLinkTextColor({ color, visited: true, theme }),
+  },
+}))
+
+const InlineTextLabel = webStyled.span({
+  whiteSpace: 'normal',
+})

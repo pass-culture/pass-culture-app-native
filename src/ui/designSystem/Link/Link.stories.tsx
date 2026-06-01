@@ -8,6 +8,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { Link } from './Link'
 
@@ -20,13 +21,13 @@ export default meta
 const variantConfig: Variants<typeof Link> = [
   {
     label: 'Brand default',
-    props: { label: 'Label explicite du lien', externalNav: { url: 'https://passculture.app' } },
+    props: { label: 'Label explicite du lien', isExternal: true },
   },
   {
     label: 'Brand small',
     props: {
       label: 'Label explicite du lien',
-      externalNav: { url: 'https://passculture.app' },
+      isExternal: true,
       size: 'small',
     },
   },
@@ -34,7 +35,7 @@ const variantConfig: Variants<typeof Link> = [
     label: 'Brand extraSmall',
     props: {
       label: 'Label explicite du lien',
-      externalNav: { url: 'https://passculture.app' },
+      isExternal: true,
       size: 'extraSmall',
     },
   },
@@ -42,16 +43,14 @@ const variantConfig: Variants<typeof Link> = [
     label: 'Neutral default',
     props: {
       label: 'Label explicite du lien',
-      navigateTo: { screen: 'TabNavigator', params: { screen: 'Home' } },
       color: 'neutral',
     },
   },
   {
-    label: 'Without icon',
+    label: 'Custom icon',
     props: {
       label: 'Label explicite du lien',
-      navigateTo: { screen: 'TabNavigator', params: { screen: 'Home' } },
-      showIcon: false,
+      icon: PlainArrowNext,
     },
   },
 ]

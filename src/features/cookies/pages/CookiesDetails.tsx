@@ -6,11 +6,10 @@ import { CookiesChoiceSettings } from 'features/cookies/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { Accordion } from 'ui/components/Accordion'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Link } from 'ui/designSystem/Link/Link'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
@@ -38,13 +37,13 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
           On te redemandera bien sûr ton consentement si notre politique évolue.
         </Typo.Body>
         <StyledBodyAccentXs>
-          Pour plus d’informations, nous t’invitons à consulter notre
-          {SPACE}
+          Pour plus d’informations, nous t’invitons à consulter notre&nbsp;
           <ExternalTouchableLink
-            as={LinkInsideText}
+            as={Link}
+            isInsideText
             wording="politique de gestion des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
-            typography="BodyAccentXs"
+            size="extraSmall"
             accessibilityRole={AccessibilityRole.LINK}
           />
         </StyledBodyAccentXs>

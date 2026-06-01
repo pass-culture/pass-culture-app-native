@@ -306,8 +306,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                La présente déclaration d’accessibilité s’applique à
-                 
+                La présente déclaration d’accessibilité s’applique à 
                 <Text
                   accessibilityLabel="l’application Android, lien externe"
                   accessibilityRole="link"
@@ -318,15 +317,14 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
-                      "lineHeight": 22,
+                      "lineHeight": 25.6,
                       "textDecorationLine": "underline",
                     }
                   }
                 >
                   l’application Android
                 </Text>
-                 
-                version 
+                 version 
                 1.386.1
                  du pass Culture.
               </Text>
@@ -374,8 +372,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 L’application pass Culture sur 
                 Android
-                 est
-                 
+                 est 
                 <Text
                   style={
                     {
@@ -388,8 +385,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 >
                   partiellement conforme
                 </Text>
-                 
-                avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
+                 avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
               </Text>
             </View>
             <View
@@ -1534,8 +1530,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005 :
-                 
+                Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005 : 
                 <Text
                   style={
                     {
@@ -1573,8 +1568,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   }
                 }
               >
-                Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
-                 
+                Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée : 
                 <Text
                   accessibilityLabel="contacter le support, lien externe"
                   accessibilityRole="link"
@@ -1585,7 +1579,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
-                      "lineHeight": 22,
+                      "lineHeight": 25.6,
                       "textDecorationLine": "underline",
                     }
                   }
@@ -1655,8 +1649,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                     }
                   }
                 >
-                  Écrire un message au
-                   
+                  Écrire un message au 
                   <Text
                     accessibilityLabel="Défenseur des droits, lien externe"
                     accessibilityRole="link"
@@ -1667,7 +1660,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                         "cursor": "pointer",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
-                        "lineHeight": 22,
+                        "lineHeight": 25.6,
                         "textDecorationLine": "underline",
                       }
                     }
@@ -1685,8 +1678,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                     }
                   }
                 >
-                  Contacter le délégué du
-                   
+                  Contacter le délégué du 
                   <Text
                     accessibilityLabel="Défenseur des droits dans votre région, lien externe"
                     accessibilityRole="link"
@@ -1697,7 +1689,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                         "cursor": "pointer",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
-                        "lineHeight": 22,
+                        "lineHeight": 25.6,
                         "textDecorationLine": "underline",
                       }
                     }

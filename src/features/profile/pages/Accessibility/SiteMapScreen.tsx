@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -8,8 +9,10 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 
@@ -46,14 +49,7 @@ export function SiteMapScreen() {
                     <Bullet />
                   </BulletContainer>
                   <ListText>
-                    <InternalTouchableLink
-                      as={Button}
-                      variant="tertiary"
-                      color="neutral"
-                      wording={item.wording}
-                      navigateTo={item.navigateTo}
-                      justifyContent="flex-start"
-                    />
+                    <SiteMapLink wording={item.wording} navigateTo={item.navigateTo} />
                   </ListText>
                 </ItemContainer>
               </Li>
@@ -72,14 +68,7 @@ export function SiteMapScreen() {
                     <NestedBullet />
                   </BulletContainer>
                   <ListText>
-                    <InternalTouchableLink
-                      as={Button}
-                      variant="tertiary"
-                      color="neutral"
-                      wording={subPage.wording}
-                      navigateTo={subPage.navigateTo}
-                      justifyContent="flex-start"
-                    />
+                    <SiteMapLink wording={subPage.wording} navigateTo={subPage.navigateTo} />
                   </ListText>
                 </NestedItemContainer>
               </Li>
@@ -89,6 +78,37 @@ export function SiteMapScreen() {
           })}
         </StyledVerticalUl>
       }
+    />
+  )
+}
+
+function SiteMapLink({
+  wording,
+  navigateTo,
+}: {
+  wording: string
+  navigateTo: InternalTouchableLinkProps['navigateTo']
+}) {
+  if (Platform.OS === 'web') {
+    return (
+      <InternalTouchableLink
+        as={Link}
+        label={wording}
+        color="neutral"
+        size="small"
+        navigateTo={navigateTo}
+      />
+    )
+  }
+
+  return (
+    <InternalTouchableLink
+      as={Button}
+      variant="tertiary"
+      color="neutral"
+      wording={wording}
+      navigateTo={navigateTo}
+      justifyContent="flex-start"
     />
   )
 }

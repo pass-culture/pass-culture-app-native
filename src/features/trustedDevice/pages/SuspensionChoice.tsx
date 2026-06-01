@@ -16,16 +16,15 @@ import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { Link } from 'ui/designSystem/Link/Link'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserError } from 'ui/svg/UserError'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 
 export const SuspensionChoice = () => {
   const { params } = useRoute<UseRouteType<'SuspensionChoice'>>()
@@ -91,9 +90,11 @@ export const SuspensionChoice = () => {
           total={3}
           accessibilityRole={AccessibilityRole.LINK}>
           <Typo.Body>
-            tes réservations seront annulées sauf pour certains cas précisés dans les{SPACE}
+            tes réservations seront annulées sauf pour certains cas précisés dans les&nbsp;
             <ExternalTouchableLink
-              as={LinkInsideTextBlack}
+              as={Link}
+              isInsideText
+              color="neutral"
               wording="conditions générales d’utilisation"
               externalNav={{ url: env.CGU_LINK }}
               accessibilityRole={AccessibilityRole.LINK}
@@ -121,10 +122,6 @@ export const SuspensionChoice = () => {
     </GenericInfoPage>
   )
 }
-
-const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,

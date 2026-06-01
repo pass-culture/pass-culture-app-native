@@ -7,15 +7,15 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
-import { LINE_BREAK, SPACE } from 'ui/theme/constants'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
@@ -32,10 +32,10 @@ export function LegalNotices() {
         <Container gap={5}>
           <Typo.Title4 {...getHeadingAttrs(2)}>ÉDITEUR SAS pass Culture</Typo.Title4>
           <Typo.Body>
-            Éditeur du site&nbsp;:
-            {SPACE}
+            Éditeur du site&nbsp;:&nbsp;
             <ExternalTouchableLink
-              as={LinkInsideText}
+              as={Link}
+              isInsideText
               wording="https://passculture.app/accueil"
               externalNav={{ url: 'https://passculture.app/accueil' }}
               icon={ExternalSiteFilled}
@@ -58,15 +58,14 @@ export function LegalNotices() {
             Hébergeur&nbsp;: Google Cloud Platform
             {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
           </Typo.Body>
-          <Typo.Body>
-            <ExternalTouchableLink
-              as={LinkInsideText}
-              wording="Contacter le support"
-              externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-              accessibilityRole={AccessibilityRole.LINK}
-              onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
-            />
-          </Typo.Body>
+          <ExternalTouchableLink
+            as={Link}
+            label="Contacter le support"
+            externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+            accessibilityRole={AccessibilityRole.LINK}
+            isExternal
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
+          />
           <Separator.Horizontal />
           <ExternalTouchableLink
             as={Button}

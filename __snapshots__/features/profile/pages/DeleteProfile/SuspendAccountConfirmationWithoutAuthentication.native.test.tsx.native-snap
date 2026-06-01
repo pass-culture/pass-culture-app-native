@@ -302,7 +302,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               }
             >
               <View
-                accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les conditions générales d’utilisation"
+                accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les  conditions générales d’utilisation"
                 accessibilityRole="link"
                 accessible={true}
                 style={
@@ -363,12 +363,10 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                         }
                       }
                     >
-                      tes réservations seront annulées sauf pour certains cas précisés dans les
-                       
+                      tes réservations seront annulées sauf pour certains cas précisés dans les 
                       <Text
                         accessibilityLabel="conditions générales d’utilisation, lien externe"
                         accessibilityRole="link"
-                        color="#161617"
                         onPress={[Function]}
                         style={
                           {
@@ -376,7 +374,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                             "cursor": "pointer",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
-                            "lineHeight": 22,
+                            "lineHeight": 25.6,
                             "textDecorationLine": "underline",
                           }
                         }
