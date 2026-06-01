@@ -22,7 +22,7 @@ export type Metadata = Record<string, NestedMetadata>
 export type OfferData = {
   id: number
   name: string
-  subcategoryId: string
+  subcategoryId?: string
   metadata: Metadata
   description?: string | null
   image?: {

@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "strict": true,
     "composite": true,
     "rootDir": ".",
@@ -7,10 +9,10 @@
     "declarationMap": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "module": "commonjs",
     "noEmitOnError": true,
     "removeComments": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "target": "es2021",
     "outDir": "build",
     "types": [
