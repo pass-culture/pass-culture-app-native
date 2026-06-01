@@ -166,9 +166,13 @@ export const Venue: FunctionComponent = () => {
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
-      void analytics.logConsultVenue({ venueId: venue.id.toString(), from: params.from })
+      void analytics.logConsultVenue({
+        venueId: venue.id.toString(),
+        from: params.from,
+        displayAdvice: proAdvicesSegment === 'A',
+      })
     }
-  }, [params.from, venue?.id])
+  }, [params.from, proAdvicesSegment, venue?.id])
 
   const isCTADisplayed =
     venue?.activity !== Activity.CINEMA &&

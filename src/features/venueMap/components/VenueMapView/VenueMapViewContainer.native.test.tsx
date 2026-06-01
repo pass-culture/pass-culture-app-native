@@ -317,6 +317,7 @@ describe('VenueMapViewContainer', () => {
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
       venueId: venuesFixture[0].venueId.toString(),
       from: 'venueMap',
+      displayAdvice: false,
     })
   })
 

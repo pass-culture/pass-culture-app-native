@@ -446,7 +446,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               isMultiArtistsEnabled={isMultiArtistsEnabled}
               onShowOfferArtistsModal={onShowOfferArtistsModal}
               proAdvicesCount={proAdvicesCount}
-              proAdvices={proAdvices}>
+              proAdvices={proAdvices}
+              proAdvicesSegment={proAdvicesSegment}>
               {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>

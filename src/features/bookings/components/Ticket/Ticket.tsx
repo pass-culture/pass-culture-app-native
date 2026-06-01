@@ -17,6 +17,8 @@ import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -43,6 +45,7 @@ export const Ticket = ({
   ticket,
 }: TicketProps) => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
+  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const { mutate: archiveBooking } = useArchiveBookingMutation({
     bookingId: booking.id,
@@ -79,7 +82,11 @@ export const Ticket = ({
   const venueBlockAddress = getAddress(offer.address)
 
   const handleOnSeeVenuePress = async () => {
-    await analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'bookings' })
+    await analytics.logConsultVenue({
+      venueId: offer.venue.id.toString(),
+      from: 'bookings',
+      displayAdvice: proAdvicesOnVenueSegment === 'A',
+    })
     navigate('Venue', { id: offer.venue.id })
   }
   const expirationDateFormated = ({ prefix }: { prefix: string }) => {

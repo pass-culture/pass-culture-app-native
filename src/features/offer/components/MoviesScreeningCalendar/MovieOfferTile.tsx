@@ -17,6 +17,8 @@ import { formatDuration } from 'features/offer/helpers/formatDuration/formatDura
 import { VenueOffers } from 'features/venue/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 
@@ -51,6 +53,8 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
     movieScreeningUserData,
   } = useOfferCTAButton(offer, subcategoriesMapping[offer.subcategoryId], bookingData)
 
+  const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
+
   const eventCardData = selectedDateScreenings(
     offer.venue.id,
     () => {
@@ -59,6 +63,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
         offerId: Number(offerScreeningOnSelectedDates?.objectID),
         from: 'venue',
         venueId: offer.venue.id,
+        displayAdvice: proAdvicesOnOfferSegment === 'A',
       })
     },
     movieScreeningUserData

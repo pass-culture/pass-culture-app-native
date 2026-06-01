@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext, LocationMode } from 'libs/location/types'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -39,6 +40,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -61,6 +64,7 @@ describe('VenueTile component', () => {
       from: 'home',
       moduleName: 'le nom du module',
       moduleId: 'module-id',
+      displayAdvice: false,
     })
   })
 
@@ -75,6 +79,22 @@ describe('VenueTile component', () => {
       moduleName: 'le nom du module',
       moduleId: 'module-id',
       homeEntryId: 'abcd',
+      displayAdvice: false,
+    })
+  })
+
+  it('should log analytics event ConsultVenue when pressing on the venue tile with pro advice AB testing segment A', async () => {
+    useABSegmentSpy.mockReturnValueOnce('A')
+    renderVenueTile()
+
+    await user.press(screen.getByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma'))
+
+    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+      venueId: venue.id.toString(),
+      from: 'home',
+      moduleName: 'le nom du module',
+      moduleId: 'module-id',
+      displayAdvice: true,
     })
   })
 
