@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
@@ -16,12 +16,12 @@ import {
   LocationWrapper,
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.useFakeTimers()
-jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const mockRadiusPlace = 37
 const mockAroundMeRadius = 73
@@ -76,6 +76,8 @@ const user = userEvent.setup()
 describe('SearchLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderSearchLocationModal()
+    await user.press(screen.getByText('Open modal'))
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -85,6 +87,8 @@ describe('SearchLocationModal', () => {
 
   it('should trigger logEvent "logUserSetLocation" on onSubmit', async () => {
     renderSearchLocationModal()
+    await user.press(screen.getByText('Open modal'))
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -108,6 +112,7 @@ describe('SearchLocationModal', () => {
 
   it('should hide modal on close modal button press', async () => {
     renderSearchLocationModal()
+    await user.press(screen.getByText('Open modal'))
 
     await user.press(screen.getByLabelText('Fermer la modale'))
 
@@ -121,6 +126,8 @@ describe('SearchLocationModal', () => {
     mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
     renderSearchLocationModal()
+    await user.press(screen.getByText('Open modal'))
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -138,6 +145,8 @@ describe('SearchLocationModal', () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
+    await user.press(screen.getByText('Open modal'))
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -149,6 +158,8 @@ describe('SearchLocationModal', () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
     renderSearchLocationModal()
+    await user.press(screen.getByText('Open modal'))
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -162,30 +173,25 @@ describe('SearchLocationModal', () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
     const Container = () => {
-      const [visible, setVisible] = React.useState(true)
       return (
         <LocationWrapper>
           <React.Fragment>
-            <SearchLocationModal
-              visible={visible}
-              // userEvent.press not working correctly here
-              // eslint-disable-next-line local-rules/no-fireEvent
-              dismissModal={async () => fireEvent.press(screen.getByText('Close'))}
-            />
-            <Button title="Close" onPress={() => setVisible(false)} />
+            <SearchLocationModal />
+            <Button title="Close" onPress={locationModalActions.hide} />
           </React.Fragment>
         </LocationWrapper>
       )
     }
     render(<Container />)
+    locationModalActions.show()
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME * 10)
     })
 
     expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()
@@ -194,6 +200,7 @@ describe('SearchLocationModal', () => {
   describe('PlaceRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
       renderSearchLocationModal()
+      await user.press(screen.getByText('Open modal'))
 
       const openLocationModalButton = screen.getByText('Choisir une zone géographique')
       await user.press(openLocationModalButton)
@@ -212,6 +219,8 @@ describe('SearchLocationModal', () => {
 
     it('should call searchContext dispatch with mockRadiusPlace when pressing "Valider la localisation"', async () => {
       renderSearchLocationModal()
+      await user.press(screen.getByText('Open modal'))
+
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -247,6 +256,8 @@ describe('SearchLocationModal', () => {
     it('should display default radius even if an AroundMeRadius was set previously', async () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       renderSearchLocationModal()
+      await user.press(screen.getByText('Open modal'))
+
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -277,6 +288,8 @@ describe('SearchLocationModal', () => {
     it("should display default radius if it wasn't set previously", async () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       renderSearchLocationModal()
+      await user.press(screen.getByText('Open modal'))
+
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -295,6 +308,8 @@ describe('SearchLocationModal', () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
       renderSearchLocationModal()
+      await user.press(screen.getByText('Open modal'))
+
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -320,6 +335,8 @@ describe('SearchLocationModal', () => {
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
       renderSearchLocationModal()
+      await user.press(screen.getByText('Open modal'))
+
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -358,18 +375,10 @@ describe('SearchLocationModal', () => {
 function renderSearchLocationModal() {
   render(
     <LocationWrapper>
-      <SearchLocationModalWithMockButton />
+      <React.Fragment>
+        <Button title="Open modal" onPress={locationModalActions.show} />
+        <SearchLocationModal />
+      </React.Fragment>
     </LocationWrapper>
-  )
-}
-
-const SearchLocationModalWithMockButton = () => {
-  const [visible, setVisible] = useState<boolean>(true)
-
-  return (
-    <React.Fragment>
-      <Button title="Open modal" onPress={() => setVisible(true)} />
-      <SearchLocationModal visible={visible} dismissModal={() => setVisible(false)} />
-    </React.Fragment>
   )
 }

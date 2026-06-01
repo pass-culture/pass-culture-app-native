@@ -29,7 +29,7 @@ describe('LocationWidget', () => {
 
     await user.press(button)
 
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
+    expect(screen.getByTestId('location-modal')).toBeOnTheScreen()
   })
 
   it('should show tooltip after 1 second and hide 8 seconds after it appeared', async () => {

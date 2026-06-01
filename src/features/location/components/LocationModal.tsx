@@ -177,6 +177,7 @@ export const LocationModal = ({
       isUpToStatusBar
       scrollEnabled={false}
       keyboardShouldPersistTaps="handled"
+      testID="location-modal"
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
