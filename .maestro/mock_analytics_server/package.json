@@ -11,5 +11,8 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "typescript": "^5.3.3"
+  },
+  "resolutions": {
+    "qs": "^6.15.2"
   }
 }
