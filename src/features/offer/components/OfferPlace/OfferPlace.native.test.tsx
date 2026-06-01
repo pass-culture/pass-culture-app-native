@@ -408,6 +408,7 @@ describe('<OfferPlace />', () => {
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
         venueId: mockOffer.venue.id.toString(),
         from: 'offer',
+        displayAdvice: false,
       })
     })
   })

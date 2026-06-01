@@ -33,6 +33,8 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
@@ -94,6 +96,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -213,7 +216,10 @@ export const OfferBody: FunctionComponent<Props> = ({
           showTopComponent={hasVenuePage}
           TopComponent={
             isCinemaOffer || !isOfferAtSameAddressAsVenue ? null : (
-              <OfferVenueButton venue={offer.venue} />
+              <OfferVenueButton
+                venue={offer.venue}
+                proAdvicesOnVenueSegment={proAdvicesOnVenueSegment}
+              />
             )
           }
           showBottomComponent={summaryInfoItems.length > 0}
@@ -274,7 +280,8 @@ export const OfferBody: FunctionComponent<Props> = ({
         subcategory={subcategory}
         distance={distance}
         isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
-        proAdvicesSegment={proAdvicesSegment}
+        proAdvicesOnOfferSegment={proAdvicesSegment}
+        proAdvicesOnVenueSegment={proAdvicesOnVenueSegment}
       />
     </Container>
   )

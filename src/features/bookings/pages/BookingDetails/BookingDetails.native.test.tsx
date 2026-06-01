@@ -62,6 +62,7 @@ describe('BookingDetails', () => {
 
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    useABSegmentSpy.mockReturnValue('B')
   })
 
   describe('BookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOING is on', () => {
@@ -200,7 +201,7 @@ describe('BookingDetails', () => {
 
     it('should redirect to the Offer page and log event', async () => {
       const booking = ongoingBookingV2
-      useABSegmentSpy.mockReturnValueOnce('B')
+
       renderBookingDetailsWithBookingById(booking)
 
       const text = screen.getByText('Voir l’offre')

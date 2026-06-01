@@ -22,6 +22,8 @@ import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { Button } from 'ui/designSystem/Button/Button'
 import { AISearch } from 'ui/svg/icons/AISearch'
 
@@ -56,6 +58,7 @@ export const SearchSuggestions = ({
   const shouldDisplayArtistsSuggestions = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
+  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   useEffect(() => {
     setOptions({
@@ -121,7 +124,11 @@ export const SearchSuggestions = ({
 
   const onVenuePress = async (venueId: number) => {
     hideSuggestions()
-    await analytics.logConsultVenue({ venueId: venueId.toString(), from: 'searchAutoComplete' })
+    await analytics.logConsultVenue({
+      venueId: venueId.toString(),
+      from: 'searchAutoComplete',
+      displayAdvice: proAdvicesOnVenueSegment === 'A',
+    })
     navigate('Venue', { id: venueId })
   }
 

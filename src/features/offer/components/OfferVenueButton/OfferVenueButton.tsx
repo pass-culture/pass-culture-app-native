@@ -10,9 +10,10 @@ import { Typo } from 'ui/theme'
 
 interface Props {
   venue: OfferVenueResponse
+  proAdvicesOnVenueSegment?: string
 }
 
-export function OfferVenueButton({ venue }: Readonly<Props>) {
+export function OfferVenueButton({ venue, proAdvicesOnVenueSegment }: Readonly<Props>) {
   const { designSystem, icons } = useTheme()
 
   return (
@@ -26,7 +27,11 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
       }
       navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
       onBeforeNavigate={() =>
-        analytics.logConsultVenue({ venueId: venue.id.toString(), from: 'offer' })
+        analytics.logConsultVenue({
+          venueId: venue.id.toString(),
+          from: 'offer',
+          displayAdvice: proAdvicesOnVenueSegment === 'A',
+        })
       }
       accessibilityLabel={`Accéder à la page du lieu ${venue.name}`}
     />

@@ -19,7 +19,8 @@ export type OfferPlaceProps = {
   subcategory: Subcategory
   isOfferAtSameAddressAsVenue: boolean
   distance?: string | null
-  proAdvicesSegment?: string
+  proAdvicesOnOfferSegment?: string
+  proAdvicesOnVenueSegment?: string
 }
 
 type PartialVenue = Pick<
@@ -47,7 +48,8 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   subcategory,
   distance,
   isOfferAtSameAddressAsVenue,
-  proAdvicesSegment,
+  proAdvicesOnOfferSegment,
+  proAdvicesOnVenueSegment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
@@ -61,7 +63,11 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
     ? async () => {
         // We pre-populate the query-cache with the data from the search result for a smooth transition
         queryClient.setQueryData([QueryKeys.VENUE, offer.venue.id], mergeVenueData(offer.venue))
-        await analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'offer' })
+        await analytics.logConsultVenue({
+          venueId: offer.venue.id.toString(),
+          from: 'offer',
+          displayAdvice: proAdvicesOnVenueSegment === 'A',
+        })
         navigate('Venue', { id: offer.venue.id })
       }
     : undefined
@@ -81,7 +87,7 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
           subcategory={subcategory}
           handleOnSeeVenuePress={handleOnSeeVenuePress}
           isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
-          proAdvicesSegment={proAdvicesSegment}
+          proAdvicesSegment={proAdvicesOnOfferSegment}
         />
       )}
     </OfferPlaceWrapper>
