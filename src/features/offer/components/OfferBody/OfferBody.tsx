@@ -10,6 +10,7 @@ import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
@@ -84,6 +85,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
+  const enableOfferArtistSectionRefacto = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO
+  )
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -150,6 +154,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { offerId: offer.id } })
   }
 
+  const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
+    void analytics.logConsultArtist({ artistId, artistName, from: 'offer' })
+  }
+
   const fullAddressOffer = formatFullAddress(
     offer.address?.street,
     offer.address?.postalCode,
@@ -173,7 +181,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             <GroupTags tags={tags} />
             <ViewGap gap={2}>
               <OfferTitle offerName={offer.name} />
-              {artists.length > 0 ? (
+              {artists.length > 0 && !enableOfferArtistSectionRefacto ? (
                 <OfferArtists
                   artists={artists}
                   isMultiArtistsEnabled={isMultiArtistsEnabled}
@@ -219,6 +227,17 @@ export const OfferBody: FunctionComponent<Props> = ({
             metadata={metadata}
             hasMetadata={hasMetadata}
             shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
+          />
+        </MarginContainer>
+      ) : null}
+
+      {enableOfferArtistSectionRefacto && artists.length > 0 ? (
+        <MarginContainer gap={0}>
+          <OfferArtistsSection
+            artists={artists}
+            offerCategoryId={subcategory.categoryId}
+            offerSubcategoryId={offer.subcategoryId}
+            onPlaylistItemPress={handleOnArtistPlaylistItemPress}
           />
         </MarginContainer>
       ) : null}

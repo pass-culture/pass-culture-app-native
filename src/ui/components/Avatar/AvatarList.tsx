@@ -43,6 +43,8 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
         image={item.image}
         name={item.name}
         onItemPress={onItemPress}
+        role={item.role}
+        accessibilityLabel={item.accessibilityLabel}
         {...mergedAvatarConfig}
       />
     ),
