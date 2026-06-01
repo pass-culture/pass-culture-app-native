@@ -12,7 +12,6 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Link } from 'ui/designSystem/Link/Link'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -32,18 +31,17 @@ export function LegalNotices() {
       scrollChildren={
         <Container gap={5}>
           <Typo.Title4 {...getHeadingAttrs(2)}>ÉDITEUR SAS pass Culture</Typo.Title4>
-          <TextWithLink
-            beforeText={'Éditeur du site\u00a0:'}
-            linkLabel="https://passculture.app/accueil"
-            renderLink={(linkProps) => (
-              <ExternalTouchableLink
-                as={Link}
-                externalNav={{ url: 'https://passculture.app/accueil' }}
-                isExternal
-                {...linkProps}
-              />
-            )}
-          />
+          <Typo.Body>
+            Éditeur du site&nbsp;:&nbsp;
+            <ExternalTouchableLink
+              as={Link}
+              isInsideText
+              wording="https://passculture.app/accueil"
+              externalNav={{ url: 'https://passculture.app/accueil' }}
+              icon={ExternalSiteFilled}
+              accessibilityRole={AccessibilityRole.LINK}
+            />
+          </Typo.Body>
           {/* eslint-disable-next-line local-rules/no-euro-usage */}
           <Typo.Body>
             Société par actions simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€

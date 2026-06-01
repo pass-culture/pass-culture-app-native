@@ -56,6 +56,31 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: initial;
 }
 
+.c5 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+}
+
 .c6 {
   flex-direction: row;
   align-items: center;
@@ -81,32 +106,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   cursor: initial;
 }
 
-.c7 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c7:disabled {
-  cursor: initial;
-}
-
-.c5 {
+.c4 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -115,34 +115,38 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
 }
 
 .c2 {
-  align-items: center;
-  column-gap: 8px;
-  display: inline-flex;
-  flex-direction: row;
-  width: fit-content;
-}
-
-.c2:hover span {
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
   color: #320096;
-}
-
-.c2:visited span {
-  color: #25026c;
-}
-
-.c3 {
-  align-items: center;
-  column-gap: 8px;
-  display: inline-flex;
-  flex-direction: row;
-}
-
-.c4 {
-  color: #320096;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  outline: none;
+  padding: 0;
   text-decoration: underline;
+  white-space: nowrap;
   font-family: Montserrat-SemiBold;
   font-size: 1rem;
   line-height: 1.6rem;
+}
+
+.c2 svg {
+  margin-right: 4px;
+  transform: translateY(-0.05em);
+  vertical-align: middle;
+}
+
+.c2:hover {
+  color: #320096;
+}
+
+.c2:visited {
+  color: #320096;
+}
+
+.c3 {
+  white-space: normal;
 }
 
 <div>
@@ -244,14 +248,11 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-borderRightColor-q65h00 r-borderRightWidth-18p6if4 r-marginInline-14mg64r"
                 />
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1kbdv8c r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-rowGap-rakygo r-justifyContent-1777fci"
+                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                  dir="ltr"
                 >
-                  <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                    dir="ltr"
-                  >
-                    Déjà un compte ?
-                  </div>
+                  Déjà un compte ?
+                   
                   <a
                     aria-label="Se connecter"
                     class="c2"
@@ -262,24 +263,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                     <span
                       class="c3"
                     >
-                      <div
-                        class="css-view-175oi2r"
-                        data-testid="link-icon"
-                      >
-                        <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
-                        >
-                          link-icon-SVG-Mock
-                        </div>
-                      </div>
-                      <span
-                        class="c4"
-                        color="brand"
-                        data-testid="link-label"
-                      >
-                        Se connecter
-                      </span>
+                      Se connecter
                     </span>
                   </a>
                 </div>
@@ -327,7 +311,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c5"
+                          class="c4"
                           for="testUuidV4"
                         >
                           <div
@@ -1115,7 +1099,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   >
                     <button
                       aria-label="Débuggage"
-                      class="c6"
+                      class="c5"
                       data-testid="Débuggage"
                       tabindex="0"
                       type="button"
@@ -1171,7 +1155,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <button
                     aria-label="Accessibilité : partiellement conforme"
-                    class="c6"
+                    class="c5"
                     data-testid="Accessibilité : partiellement conforme"
                     tabindex="0"
                     type="button"
@@ -1194,7 +1178,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <button
                     aria-label="Plan du site"
-                    class="c6"
+                    class="c5"
                     data-testid="Plan du site"
                     tabindex="0"
                     type="button"
@@ -1217,7 +1201,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <button
                     aria-label="Informations légales"
-                    class="c6"
+                    class="c5"
                     data-testid="Informations légales"
                     tabindex="0"
                     type="button"
@@ -1240,7 +1224,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <a
                     aria-label="Conditions Générales d’Utilisation"
-                    class="c7"
+                    class="c6"
                     data-testid="Conditions Générales d’Utilisation"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -1281,7 +1265,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c7"
+                    class="c6"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -1322,7 +1306,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                 >
                   <a
                     aria-label="Charte d’utilisation et de bonne conduite"
-                    class="c7"
+                    class="c6"
                     data-testid="Charte d’utilisation et de bonne conduite"
                     href="https://passculture.code-of-conduct"
                     tabindex="0"
@@ -1445,6 +1429,31 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   cursor: initial;
 }
 
+.c5 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+}
+
 .c6 {
   flex-direction: row;
   align-items: center;
@@ -1470,32 +1479,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   cursor: initial;
 }
 
-.c7 {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  display: inline-flex;
-  overflow: hidden;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c7:disabled {
-  cursor: initial;
-}
-
-.c5 {
+.c4 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -1504,34 +1488,38 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
 }
 
 .c2 {
-  align-items: center;
-  column-gap: 8px;
-  display: inline-flex;
-  flex-direction: row;
-  width: fit-content;
-}
-
-.c2:hover span {
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
   color: #320096;
-}
-
-.c2:visited span {
-  color: #25026c;
-}
-
-.c3 {
-  align-items: center;
-  column-gap: 8px;
-  display: inline-flex;
-  flex-direction: row;
-}
-
-.c4 {
-  color: #320096;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  outline: none;
+  padding: 0;
   text-decoration: underline;
+  white-space: nowrap;
   font-family: Montserrat-SemiBold;
   font-size: 1rem;
   line-height: 1.6rem;
+}
+
+.c2 svg {
+  margin-right: 4px;
+  transform: translateY(-0.05em);
+  vertical-align: middle;
+}
+
+.c2:hover {
+  color: #320096;
+}
+
+.c2:visited {
+  color: #320096;
+}
+
+.c3 {
+  white-space: normal;
 }
 
 <div>
@@ -1633,14 +1621,11 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-height-1472mwg"
                 />
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1kbdv8c r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-rowGap-rakygo r-justifyContent-1777fci"
+                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                  dir="ltr"
                 >
-                  <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                    dir="ltr"
-                  >
-                    Déjà un compte ?
-                  </div>
+                  Déjà un compte ?
+                   
                   <a
                     aria-label="Se connecter"
                     class="c2"
@@ -1651,24 +1636,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                     <span
                       class="c3"
                     >
-                      <div
-                        class="css-view-175oi2r"
-                        data-testid="link-icon"
-                      >
-                        <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
-                        >
-                          link-icon-SVG-Mock
-                        </div>
-                      </div>
-                      <span
-                        class="c4"
-                        color="brand"
-                        data-testid="link-label"
-                      >
-                        Se connecter
-                      </span>
+                      Se connecter
                     </span>
                   </a>
                 </div>
@@ -1716,7 +1684,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c5"
+                          class="c4"
                           for="testUuidV4"
                         >
                           <div
@@ -2504,7 +2472,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   >
                     <button
                       aria-label="Débuggage"
-                      class="c6"
+                      class="c5"
                       data-testid="Débuggage"
                       tabindex="0"
                       type="button"
@@ -2560,7 +2528,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <button
                     aria-label="Accessibilité : partiellement conforme"
-                    class="c6"
+                    class="c5"
                     data-testid="Accessibilité : partiellement conforme"
                     tabindex="0"
                     type="button"
@@ -2583,7 +2551,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <button
                     aria-label="Plan du site"
-                    class="c6"
+                    class="c5"
                     data-testid="Plan du site"
                     tabindex="0"
                     type="button"
@@ -2606,7 +2574,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <button
                     aria-label="Informations légales"
-                    class="c6"
+                    class="c5"
                     data-testid="Informations légales"
                     tabindex="0"
                     type="button"
@@ -2629,7 +2597,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <a
                     aria-label="Conditions Générales d’Utilisation"
-                    class="c7"
+                    class="c6"
                     data-testid="Conditions Générales d’Utilisation"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -2670,7 +2638,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c7"
+                    class="c6"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -2711,7 +2679,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                 >
                   <a
                     aria-label="Charte d’utilisation et de bonne conduite"
-                    class="c7"
+                    class="c6"
                     data-testid="Charte d’utilisation et de bonne conduite"
                     href="https://passculture.code-of-conduct"
                     tabindex="0"

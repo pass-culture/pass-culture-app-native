@@ -9,7 +9,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 import { getIconSize } from './getIconSize'
 import { getLinkGap } from './getLinkGap'
@@ -19,24 +18,59 @@ import { LinkProps, LinkSize } from './types'
 
 export function Link({
   label,
+  wording,
   size = 'default',
   color = 'brand',
   icon,
   isExternal = false,
+  isInsideText = false,
   textColor,
   accessibilityLabel,
+  accessibilityRole,
+  onPress,
+  onLongPress,
+  testID,
   ...props
 }: LinkProps) {
+  const computedLabel = label ?? wording ?? ''
   const theme = useTheme()
   const linkTextColor = textColor ?? getLinkTextColor({ color, theme })
-  const Icon = icon ?? (isExternal ? ExternalSiteFilled : undefined)
+  const Icon = icon
   const fontScale = PixelRatio.getFontScale()
   const iconSize = getIconSize({ size, theme }) * fontScale
+  const computedAccessibilityLabel =
+    accessibilityLabel ?? getAccessibilityLabel({ isExternal, label: computedLabel })
+
+  if (isInsideText) {
+    return (
+      <InlineText
+        onPress={onPress}
+        onLongPress={onLongPress}
+        accessibilityRole={accessibilityRole}
+        accessibilityLabel={
+          accessibilityLabel ??
+          getInsideTextAccessibilityLabel({
+            accessibilityRole,
+            isExternal,
+            label: computedLabel,
+          })
+        }
+        testID={testID}
+        $size={size}
+        $textColor={linkTextColor}>
+        {computedLabel}
+      </InlineText>
+    )
+  }
 
   return (
     <Container
       {...props}
-      accessibilityLabel={accessibilityLabel ?? getAccessibilityLabel({ isExternal, label })}>
+      onPress={onPress}
+      onLongPress={onLongPress}
+      accessibilityRole={accessibilityRole}
+      accessibilityLabel={computedAccessibilityLabel}
+      testID={testID}>
       <Content size={size}>
         {Icon ? (
           <IconContainer
@@ -48,7 +82,7 @@ export function Link({
           </IconContainer>
         ) : null}
         <StyledText testID="link-label" size={size} textColor={linkTextColor}>
-          {label}
+          {computedLabel}
         </StyledText>
       </Content>
     </Container>
@@ -57,6 +91,18 @@ export function Link({
 
 function getAccessibilityLabel({ isExternal, label }: { isExternal: boolean; label: string }) {
   return isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label
+}
+
+function getInsideTextAccessibilityLabel({
+  accessibilityRole,
+  isExternal,
+  label,
+}: {
+  accessibilityRole?: LinkProps['accessibilityRole']
+  isExternal: boolean
+  label: string
+}) {
+  return isExternal || accessibilityRole === 'link' ? `${label}, lien externe` : label
 }
 
 const Container = styled(TouchableOpacity)({
@@ -97,5 +143,15 @@ const StyledText = styled.Text<{
   color: textColor,
   flexShrink: 1,
   minWidth: 0,
+  textDecorationLine: 'underline',
+}))
+
+const InlineText = styled.Text<{
+  $size: LinkSize
+  $textColor: ColorsType
+}>(({ theme, $size, $textColor }) => ({
+  ...theme.designSystem.typography[getLinkTypography($size)],
+  color: $textColor,
+  cursor: 'pointer',
   textDecorationLine: 'underline',
 }))

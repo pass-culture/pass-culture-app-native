@@ -1,15 +1,14 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
-import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Link } from 'ui/designSystem/Link/Link'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
@@ -42,7 +41,9 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
           À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour
           anonymiser tes données. Tu peux en savoir plus en{SPACE}
           <ExternalTouchableLink
-            as={LinkInsideTextBlack}
+            as={Link}
+            isInsideText
+            color="neutral"
             wording="consultant cette page."
             externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
             accessibilityRole={AccessibilityRole.LINK}
@@ -56,7 +57,3 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
     </GenericInfoPage>
   )
 }
-
-const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))``

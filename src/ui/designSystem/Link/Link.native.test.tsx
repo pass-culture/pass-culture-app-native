@@ -11,7 +11,7 @@ import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Connect } from 'ui/svg/icons/Connect'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 import { Link } from './Link'
 
@@ -78,6 +78,22 @@ describe('<Link />', () => {
     })
   })
 
+  it('should render an inline text link', () => {
+    render(<Link label="Documentation" isInsideText accessibilityRole="link" />)
+
+    expect(screen.getByLabelText('Documentation, lien externe')).toBeOnTheScreen()
+  })
+
+  it('should use inline text typography', () => {
+    render(<Link label="Documentation" isInsideText size="extraSmall" testID="inline-link" />)
+
+    expect(screen.getByTestId('inline-link')).toHaveStyle({
+      fontFamily: theme.designSystem.typography.linkXs.fontFamily,
+      fontSize: Number.parseFloat(theme.designSystem.typography.linkXs.fontSize),
+      lineHeight: Number.parseFloat(theme.designSystem.typography.linkXs.lineHeight),
+    })
+  })
+
   it('should use neutral color when color is neutral', () => {
     render(<Link label="Documentation" color="neutral" />)
 
@@ -86,16 +102,16 @@ describe('<Link />', () => {
     })
   })
 
-  it('should render default external icon', () => {
+  it('should not render default external icon', () => {
     render(<Link label="Documentation" isExternal />)
 
-    expect(screen.getByTestId('link-icon')).toBeOnTheScreen()
+    expect(screen.queryByTestId('link-icon')).not.toBeOnTheScreen()
   })
 
   it('should scale icon with font scale', () => {
     getFontScaleSpy.mockReturnValueOnce(2)
 
-    render(<Link label="Documentation" isExternal />)
+    render(<Link label="Documentation" icon={ExternalSiteFilled} />)
 
     const baseIconSize = theme.designSystem.size.icon.m
 
@@ -106,7 +122,7 @@ describe('<Link />', () => {
   it('should align scaled icon with scaled line height', () => {
     getFontScaleSpy.mockReturnValueOnce(2)
 
-    render(<Link label="Documentation" isExternal />)
+    render(<Link label="Documentation" icon={ExternalSiteFilled} />)
 
     const iconSize = theme.designSystem.size.icon.m * 2
     const lineHeight = Number.parseFloat(theme.designSystem.typography.link.lineHeight) * 2
@@ -122,7 +138,7 @@ describe('<Link />', () => {
         as={Link}
         label="Documentation"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-        icon={Connect}
+        icon={ExternalSiteFilled}
       />
     )
 

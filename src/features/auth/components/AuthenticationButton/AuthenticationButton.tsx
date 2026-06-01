@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import {
   RootNavigateParams,
@@ -9,9 +9,8 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Link } from 'ui/designSystem/Link/Link'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
-import { Connect } from 'ui/svg/icons/Connect'
-import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
+import { Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 
 type LoginProps = {
   type: 'login'
@@ -35,7 +34,6 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   params = {},
   onAdditionalPress: onPress,
 }) => {
-  const { designSystem } = useTheme()
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
@@ -44,27 +42,24 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const wording = isLogin ? 'Se connecter' : 'Créer un compte'
-  const color = linkColor ?? designSystem.color.icon.brandPrimary
 
   return (
-    <AuthenticationTextWithLink
-      beforeText={text}
-      linkLabel={wording}
-      icon={isLogin ? Connect : ProfileFilled}
-      textColor={color}
-      renderLink={(linkProps) => (
-        <InternalTouchableLink
-          as={Link}
-          navigateTo={nextNavigation}
-          onBeforeNavigate={onPress}
-          accessibilityRole={AccessibilityRole.BUTTON}
-          {...linkProps}
-        />
-      )}
-    />
+    <StyledBody>
+      {text}
+      {SPACE}
+      <InternalTouchableLink
+        as={Link}
+        isInsideText
+        navigateTo={nextNavigation}
+        wording={wording}
+        textColor={linkColor}
+        onBeforeNavigate={onPress}
+        accessibilityRole={AccessibilityRole.BUTTON}
+      />
+    </StyledBody>
   )
 }
 
-const AuthenticationTextWithLink = styled(TextWithLink)({
-  justifyContent: 'center',
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
 })

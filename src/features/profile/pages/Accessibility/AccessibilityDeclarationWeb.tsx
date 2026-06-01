@@ -18,7 +18,6 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Link } from 'ui/designSystem/Link/Link'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
@@ -64,14 +63,17 @@ export function AccessibilityDeclarationWeb() {
             47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie
             et les actions suivantes&nbsp;: Cette déclaration d’accessibilité s’applique au
           </Typo.Body>
-          <TextWithLink
-            beforeText="site internet"
-            linkLabel="https://passculture.app/"
-            size="small"
-            renderLink={(linkProps) => (
-              <ExternalTouchableLink as={Link} externalNav={webappUrl} isExternal {...linkProps} />
-            )}
-          />
+          <Typo.Body>
+            site internet&nbsp;
+            <ExternalTouchableLink
+              as={Link}
+              isInsideText
+              isExternal
+              wording="https://passculture.app/"
+              externalNav={webappUrl}
+              accessibilityRole={AccessibilityRole.LINK}
+            />
+          </Typo.Body>
           <StyledSeparator />
           <ViewGap gap={6}>
             <TitleText>État de conformité</TitleText>
@@ -335,23 +337,19 @@ export function AccessibilityDeclarationWeb() {
             responsable de l’application pour être orienté vers une alternative accessible ou
             obtenir le contenu sous une
           </Typo.Body>
-          <TextWithLink
-            beforeText="autre forme."
-            linkLabel="Contacter le support"
-            size="small"
-            renderLink={(linkProps) => (
-              <ExternalTouchableLink
-                as={Link}
-                externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-                accessibilityRole={AccessibilityRole.LINK}
-                isExternal
-                onBeforeNavigate={() =>
-                  analytics.logHasClickedContactForm('AccessibilityDeclaration')
-                }
-                {...linkProps}
-              />
-            )}
-          />
+          <Typo.Body>
+            autre forme.&nbsp;
+            <ExternalTouchableLink
+              as={Link}
+              isInsideText
+              wording="Contacter le support"
+              externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+              accessibilityRole={AccessibilityRole.LINK}
+              onBeforeNavigate={() =>
+                analytics.logHasClickedContactForm('AccessibilityDeclaration')
+              }
+            />
+          </Typo.Body>
 
           <StyledSeparator />
 
@@ -365,32 +363,26 @@ export function AccessibilityDeclarationWeb() {
               obtenu de réponse satisfaisante.
             </Typo.Body>
             <ViewGap gap={3}>
-              <TextWithLink
-                beforeText="Écrire un message au"
-                linkLabel="Défenseur des droits"
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={rightsDefenderUrl}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
-              />
-              <TextWithLink
-                beforeText="Contacter le délégué du"
-                linkLabel="Défenseur des droits dans votre région"
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={rightsDelegateUrl}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
-              />
+              <Typo.Body>
+                Écrire un message au&nbsp;
+                <ExternalTouchableLink
+                  as={Link}
+                  isInsideText
+                  wording="Défenseur des droits"
+                  externalNav={rightsDefenderUrl}
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              </Typo.Body>
+              <Typo.Body>
+                Contacter le délégué du&nbsp;
+                <ExternalTouchableLink
+                  as={Link}
+                  isInsideText
+                  wording="Défenseur des droits dans votre région"
+                  externalNav={rightsDelegateUrl}
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              </Typo.Body>
               <Typo.Body>
                 Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
                 droits Libre réponse 71120 75342 Paris CEDEX 07

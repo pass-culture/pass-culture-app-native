@@ -9,7 +9,7 @@ import React from 'react'
 import { render, screen } from 'tests/utils/web'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Connect } from 'ui/svg/icons/Connect'
+import { Profile } from 'ui/svg/icons/Profile'
 
 import { Link } from './Link'
 
@@ -82,7 +82,7 @@ describe('<Link />', () => {
         as={Link}
         label="Documentation"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-        icon={Connect}
+        icon={Profile}
       />
     )
 

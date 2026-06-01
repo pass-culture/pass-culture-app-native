@@ -523,139 +523,37 @@ activer un rappel
                     </View>
                   </View>
                 </View>
-                <View
+                <Text
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "columnGap": 4,
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                        "rowGap": 0,
-                      },
-                      {
-                        "justifyContent": "center",
-                      },
-                    ]
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textAlign": "center",
+                    }
                   }
                 >
+                  Déjà un compte ?
+                   
                   <Text
-                    color="default"
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    Déjà un compte ?
-                  </Text>
-                  <View
                     accessibilityLabel="Se connecter"
                     accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                    onPress={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "flexShrink": 1,
-                            "maxWidth": "100%",
-                            "minWidth": 0,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Se connecter"
-                  >
-                    <View
-                      size="default"
-                      style={
-                        {
-                          "alignItems": "flex-start",
-                          "columnGap": 8,
-                          "flexDirection": "row",
-                          "flexShrink": 1,
-                          "maxWidth": "100%",
-                          "minWidth": 0,
-                        }
+                      {
+                        "color": "#320096",
+                        "cursor": "pointer",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "textDecorationLine": "underline",
                       }
-                    >
-                      <View
-                        fontScale={2}
-                        iconSize={48}
-                        size="default"
-                        style={
-                          {
-                            "paddingTop": 1.6000000000000014,
-                          }
-                        }
-                        testID="link-icon-container"
-                      >
-                        <View
-                          fill="#320096"
-                          height={48}
-                          testID="link-icon"
-                          width={48}
-                        >
-                          <Text>
-                            link-icon-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        size="default"
-                        style={
-                          {
-                            "color": "#320096",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                            "minWidth": 0,
-                            "textDecorationLine": "underline",
-                          }
-                        }
-                        testID="link-label"
-                        textColor="#320096"
-                      >
-                        Se connecter
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                    }
+                  >
+                    Se connecter
+                  </Text>
+                </Text>
               </View>
             </View>
           </View>

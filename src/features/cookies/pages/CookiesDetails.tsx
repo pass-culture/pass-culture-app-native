@@ -3,12 +3,12 @@ import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookiesChoiceSettings } from 'features/cookies/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { Accordion } from 'ui/components/Accordion'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Link } from 'ui/designSystem/Link/Link'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -36,21 +36,17 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
         <Typo.Body>
           On te redemandera bien sûr ton consentement si notre politique évolue.
         </Typo.Body>
-        <TextWithLink
-          beforeText="Pour plus d’informations, nous t’invitons à consulter notre"
-          linkLabel="politique de gestion des cookies"
-          size="extraSmall"
-          typography="BodyAccentXs"
-          keepLastWordWithLink
-          renderLink={(linkProps) => (
-            <ExternalTouchableLink
-              as={Link}
-              externalNav={{ url: env.COOKIES_POLICY_LINK }}
-              isExternal
-              {...linkProps}
-            />
-          )}
-        />
+        <StyledBodyAccentXs>
+          Pour plus d’informations, nous t’invitons à consulter notre&nbsp;
+          <ExternalTouchableLink
+            as={Link}
+            isInsideText
+            wording="politique de gestion des cookies"
+            externalNav={{ url: env.COOKIES_POLICY_LINK }}
+            size="extraSmall"
+            accessibilityRole={AccessibilityRole.LINK}
+          />
+        </StyledBodyAccentXs>
       </ViewGap>
     </StyledView>
   )
@@ -71,6 +67,10 @@ const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element 
 const AccordionContainer = styled.View(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
   overflow: 'hidden',
+}))
+
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const CookiesSettingsContainer = styled.View(({ theme }) => ({

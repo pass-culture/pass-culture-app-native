@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
@@ -13,10 +12,8 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Link } from 'ui/designSystem/Link/Link'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -60,32 +57,25 @@ export function AccessibilityDeclarationMobileBase({
               Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à
               l’article 47 de la loi n° 2005-102 du 11 février 2005.
             </Typo.Body>
-            <View>
-              <Typo.Body>La présente déclaration d’accessibilité</Typo.Body>
-              <TextWithLink
-                beforeText="s’applique à"
-                linkLabel={`l’application ${platformName}`}
-                afterText={`version ${appVersion} du pass Culture.`}
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={storeLink}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
+            <Typo.Body>
+              La présente déclaration d’accessibilité s’applique à&nbsp;
+              <ExternalTouchableLink
+                as={Link}
+                isInsideText
+                wording={`l’application ${platformName}`}
+                externalNav={storeLink}
+                accessibilityRole={AccessibilityRole.LINK}
               />
-            </View>
+              &nbsp;version&nbsp;{appVersion} du pass Culture.
+            </Typo.Body>
           </ViewGap>
           <StyledSeparator />
           <ViewGap gap={6}>
             <TitleText>État de conformité</TitleText>
             <Typo.Body>
-              L’application pass Culture sur {platformName} est{SPACE}
+              L’application pass Culture sur {platformName} est&nbsp;
               <Typo.BodyAccent>partiellement conforme</Typo.BodyAccent>
-              {SPACE}
-              avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en
+              &nbsp;avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en
               France et en Europe, en raison des non-conformités énumérées dans la section
               «&nbsp;Résultats des tests&nbsp;».
             </Typo.Body>
@@ -204,8 +194,7 @@ export function AccessibilityDeclarationMobileBase({
             <TitleText>Retour d’information et contact</TitleText>
             <Typo.Body>
               Il est important de rappeler qu’en vertu de l’article 11 de la loi de février
-              2005&nbsp;:
-              {SPACE}
+              2005&nbsp;:&nbsp;
               <Typo.BodyItalic>
                 «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
                 handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son
@@ -218,29 +207,21 @@ export function AccessibilityDeclarationMobileBase({
               handicapée, que le contenu fasse l’objet d’une dérogation ou non.
             </Typo.Body>
 
-            <View>
-              <Typo.Body>
-                Le pass Culture invite les personnes qui rencontreraient des difficultés à la
-                contacter afin qu’une assistance puisse
-              </Typo.Body>
-              <TextWithLink
-                beforeText="être apportée&nbsp;:"
-                linkLabel="contacter le support"
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-                    accessibilityRole={AccessibilityRole.LINK}
-                    isExternal
-                    onBeforeNavigate={() =>
-                      analytics.logHasClickedContactForm('AccessibilityDeclaration')
-                    }
-                    {...linkProps}
-                  />
-                )}
+            <Typo.Body>
+              Le pass Culture invite les personnes qui rencontreraient des difficultés à la
+              contacter afin qu’une assistance puisse être apportée&nbsp;:&nbsp;
+              <ExternalTouchableLink
+                as={Link}
+                isInsideText
+                wording="contacter le support"
+                externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+                accessibilityRole={AccessibilityRole.LINK}
+                justifyContent="flex-start"
+                onBeforeNavigate={() =>
+                  analytics.logHasClickedContactForm('AccessibilityDeclaration')
+                }
               />
-            </View>
+            </Typo.Body>
           </ViewGap>
           <StyledSeparator />
           <ViewGap gap={6}>
@@ -252,32 +233,26 @@ export function AccessibilityDeclarationMobileBase({
               doléances ou une demande de saisine au Défenseur des droits.
             </Typo.Body>
             <ViewGap gap={3}>
-              <TextWithLink
-                beforeText="Écrire un message au"
-                linkLabel="Défenseur des droits"
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={rightsDefenderUrl}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
-              />
-              <TextWithLink
-                beforeText="Contacter le délégué du"
-                linkLabel="Défenseur des droits dans votre région"
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={rightsDelegateUrl}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
-              />
+              <Typo.Body>
+                Écrire un message au&nbsp;
+                <ExternalTouchableLink
+                  as={Link}
+                  isInsideText
+                  wording="Défenseur des droits"
+                  externalNav={rightsDefenderUrl}
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              </Typo.Body>
+              <Typo.Body>
+                Contacter le délégué du&nbsp;
+                <ExternalTouchableLink
+                  as={Link}
+                  isInsideText
+                  wording="Défenseur des droits dans votre région"
+                  externalNav={rightsDelegateUrl}
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              </Typo.Body>
               <Typo.Body>
                 Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
                 droits Libre réponse 71120 75342 Paris CEDEX 07

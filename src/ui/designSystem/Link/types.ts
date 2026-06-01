@@ -13,11 +13,13 @@ export type LinkSize = 'default' | 'small' | 'extraSmall'
 export type LinkColor = 'brand' | 'neutral'
 
 export type LinkBaseProps = {
-  label: string
+  label?: string
+  wording?: string
   size?: LinkSize
   color?: LinkColor
   icon?: React.FunctionComponent<AccessibleIcon>
   isExternal?: boolean
+  isInsideText?: boolean
   textColor?: ColorsType
   testID?: string
 }

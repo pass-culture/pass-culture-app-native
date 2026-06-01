@@ -413,7 +413,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur Démarche Numérique"
+                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur  Démarche Numérique"
                 accessibilityRole="link"
                 accessible={true}
                 style={
@@ -450,145 +450,39 @@ exports[`RecommendedPaths should render correctly 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <View
+                  <Text
                     style={
                       {
+                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                         "marginLeft": 12,
                       }
                     }
                   >
-                    <View
+                    en remplissant un formulaire sur 
+                    <Text
+                      accessibilityLabel="Démarche Numérique, lien externe"
+                      accessibilityRole="link"
+                      onPress={[Function]}
                       style={
                         {
-                          "alignItems": "center",
-                          "columnGap": 4,
-                          "flexDirection": "row",
-                          "flexWrap": "wrap",
-                          "rowGap": 0,
+                          "color": "#6123df",
+                          "cursor": "pointer",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "textDecorationLine": "underline",
                         }
                       }
                     >
-                      <Text
-                        color="default"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        en remplissant un formulaire sur
-                      </Text>
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre : Démarche Numérique"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Nouvelle fenêtre : Démarche Numérique"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <View
-                            fontScale={2}
-                            iconSize={32}
-                            size="small"
-                            style={
-                              {
-                                "paddingTop": 6.399999999999999,
-                              }
-                            }
-                            testID="link-icon-container"
-                          >
-                            <View
-                              accessibilityLabel="Nouvelle fenêtre"
-                              height={32}
-                              testID="link-icon"
-                              width={32}
-                            >
-                              <Text>
-                                link-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#6123df",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#6123df"
-                          >
-                            Démarche Numérique
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                      Démarche Numérique
+                    </Text>
+                  </Text>
                 </View>
               </View>
             </View>

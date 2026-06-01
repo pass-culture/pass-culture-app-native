@@ -20,7 +20,6 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { Link } from 'ui/designSystem/Link/Link'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -89,23 +88,18 @@ export const SuspensionChoice = () => {
           groupLabel={groupLabel}
           index={0}
           total={3}
-          accessibilityRole={AccessibilityRole.LINK}
-          accessibilityLabel="tes réservations seront annulées sauf pour certains cas précisés dans les conditions générales d’utilisation"
-          childrenContainer="view">
-          <TextWithLink
-            beforeText="tes réservations seront annulées sauf pour certains cas précisés dans les"
-            linkLabel="conditions générales d’utilisation"
-            keepLastWordWithLink
-            color="neutral"
-            renderLink={(linkProps) => (
-              <ExternalTouchableLink
-                as={Link}
-                externalNav={{ url: env.CGU_LINK }}
-                isExternal
-                {...linkProps}
-              />
-            )}
-          />
+          accessibilityRole={AccessibilityRole.LINK}>
+          <Typo.Body>
+            tes réservations seront annulées sauf pour certains cas précisés dans les&nbsp;
+            <ExternalTouchableLink
+              as={Link}
+              isInsideText
+              color="neutral"
+              wording="conditions générales d’utilisation"
+              externalNav={{ url: env.CGU_LINK }}
+              accessibilityRole={AccessibilityRole.LINK}
+            />
+          </Typo.Body>
         </BulletListItem>
         <BulletListItem
           index={1}

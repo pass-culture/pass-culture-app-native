@@ -31,7 +31,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Link } from 'ui/designSystem/Link/Link'
 import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -187,22 +186,17 @@ export const ConsentSettings = () => {
               <Typo.Body>
                 On te redemandera bien sûr ton consentement si notre politique évolue.
               </Typo.Body>
-              <StyledTextWithLink
-                beforeText="Pour plus d’informations, nous t’invitons à consulter notre"
-                linkLabel="politique de gestion des cookies"
-                size="extraSmall"
-                surroundingTextColor="subtle"
-                typography="BodyAccentXs"
-                keepLastWordWithLink
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={{ url: env.COOKIES_POLICY_LINK }}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
-              />
+              <StyledBodyAccentXsWithMargin>
+                Pour plus d’informations, nous t’invitons à consulter notre&nbsp;
+                <ExternalTouchableLink
+                  as={Link}
+                  isInsideText
+                  wording="politique de gestion des cookies"
+                  externalNav={{ url: env.COOKIES_POLICY_LINK }}
+                  size="extraSmall"
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              </StyledBodyAccentXsWithMargin>
               <SaveButton
                 wording="Enregistrer mes choix"
                 accessibilityRole={AccessibilityRole.BUTTON}
@@ -264,7 +258,7 @@ const ModalContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const StyledTextWithLink = styled(TextWithLink)(({ theme }) => ({
+const StyledBodyAccentXsWithMargin = styled(StyledBodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))

@@ -8,7 +8,6 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { Link } from 'ui/designSystem/Link/Link'
-import { TextWithLink } from 'ui/designSystem/TextWithLink/TextWithLink'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
@@ -47,21 +46,15 @@ export function RecommendedPaths() {
               groupLabel={groupLabel}
               index={2}
               total={3}
-              accessibilityRole={AccessibilityRole.LINK}
-              accessibilityLabel="en remplissant un formulaire sur Démarche Numérique"
-              childrenContainer="view">
-              <TextWithLink
-                beforeText="en remplissant un formulaire sur"
-                linkLabel="Démarche Numérique"
-                size="small"
-                renderLink={(linkProps) => (
-                  <ExternalTouchableLink
-                    as={Link}
-                    externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
-                    isExternal
-                    {...linkProps}
-                  />
-                )}
+              text="en remplissant un formulaire sur&nbsp;"
+              accessibilityRole={AccessibilityRole.LINK}>
+              <ExternalTouchableLink
+                as={Link}
+                isInsideText
+                size="extraSmall"
+                wording="Démarche Numérique"
+                externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </BulletListItem>
           </StyledVerticalUl>
