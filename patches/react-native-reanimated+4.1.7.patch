@@ -1,0 +1,16 @@
+diff --git a/node_modules/react-native-reanimated/lib/module/layoutReanimation/web/domUtils.js b/node_modules/react-native-reanimated/lib/module/layoutReanimation/web/domUtils.js
+index ee9e030..23177f6 100644
+--- a/node_modules/react-native-reanimated/lib/module/layoutReanimation/web/domUtils.js
++++ b/node_modules/react-native-reanimated/lib/module/layoutReanimation/web/domUtils.js
+@@ -135,7 +135,10 @@ function checkIfScreenWasChanged(mutationTarget) {
+   return mutationTarget[reactFiberKey]?.child?.memoizedProps?.navigation !== undefined;
+ }
+ export function addHTMLMutationObserver() {
+-  if (isObserverSet || !IS_WINDOW_AVAILABLE) {
++  // `document.body` can be null while `window` exists (e.g. during page teardown/unload),
++  // which makes `observer.observe(document.body, ...)` throw. Bail out before setting
++  // `isObserverSet` so the observer can still be installed on a later mount.
++  if (isObserverSet || !IS_WINDOW_AVAILABLE || !document.body) {
+     return;
+   }
+   isObserverSet = true;
