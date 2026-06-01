@@ -178,11 +178,7 @@ describe('<LoginMethods/>', () => {
 
       expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
 
-      expect(
-        screen.getByText(
-          'L’inscription avec ce compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
-        )
-      ).toBeOnTheScreen()
+      expect(screen.getByText('Erreur lors de la tentative de connexion')).toBeOnTheScreen()
     })
   })
 

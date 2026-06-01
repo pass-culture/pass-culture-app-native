@@ -258,7 +258,16 @@ const rootScreens: RouteConfig[] = [
     component: SignupMethods,
     options: { title: 'Méthodes de création de compte' },
   },
-  { name: 'SignupForm', component: SignupForm, options: { title: 'Création de compte' } },
+  {
+    name: '_DeeplinkOnlySignupMethods1',
+    component: SignupMethods,
+    options: { title: 'Méthodes de création de compte' },
+  },
+  {
+    name: 'SignupForm',
+    component: SignupForm,
+    options: { title: 'Création de compte' },
+  },
   {
     name: '_DeeplinkOnlySignupForm1',
     component: SignupForm,

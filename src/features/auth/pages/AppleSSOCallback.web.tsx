@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 
 import { AccountState } from 'api/gen'
-import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
+import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import { resetFromRef } from 'features/navigation/navigationRef'
@@ -42,41 +42,35 @@ export const AppleSSOCallback = () => {
   }, [context])
 
   const handleFailure = useCallback(
-    (error: SignInResponseFailure) => {
-      const failureCode = error.content?.code
+    (response: SignInResponseFailure) => {
+      const failureCode = response.content?.code
 
       eventMonitoring.captureException(
         new Error(`Apple SSO sign-in failed: ${failureCode ?? 'unknown'}`),
         {
           extra: {
-            statusCode: error.statusCode,
+            statusCode: response.statusCode,
             code: failureCode,
-            content: error.content,
-            provider: error.provider,
+            content: response.content,
+            provider: response.provider,
           },
         }
       )
 
       if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
         resetFromRef('SignupMethods', {
-          accountCreationToken: error.content?.accountCreationToken,
-          email: error.content?.email,
+          accountCreationToken: response.content?.accountCreationToken,
+          email: response.content?.email,
           from: context?.type === 'signup' ? StepperOrigin.SIGNUP : StepperOrigin.LOGIN,
           ssoProvider: 'apple',
         })
-      } else if (failureCode === 'SSO_ERROR') {
-        showErrorSnackBar(
-          getSSOErrorMessage('apple', context?.type === 'signup' ? 'signup' : 'login')
-        )
-        navigateBack()
-      } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
-        showErrorSnackBar('Erreur réseau. Tu peux réessayer une fois la connexion réétablie.')
-        navigateBack()
-      } else if (error.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
-        showErrorSnackBar('Nombre de tentatives dépassé. Réessaye dans 1 minute.')
-        navigateBack()
       } else {
-        showErrorSnackBar('Une erreur est survenue avec Apple, veuillez réessayer.')
+        showErrorSnackBar(
+          getSnackbarSSOErrorMessage({
+            response: response,
+            context: context?.type === 'signup' ? 'signup' : 'login',
+          })
+        )
         navigateBack()
       }
     },

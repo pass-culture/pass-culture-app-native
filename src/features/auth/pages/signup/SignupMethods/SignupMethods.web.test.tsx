@@ -23,9 +23,7 @@ describe('<SignupMethods/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-      const { container } = render(
-        reactQueryProviderHOC(<SignupMethods onSSOEmailNotFoundError={jest.fn()} />)
-      )
+      const { container } = render(reactQueryProviderHOC(<SignupMethods />))
 
       const results = await checkAccessibilityFor(container)
 

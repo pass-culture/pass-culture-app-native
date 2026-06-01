@@ -27,7 +27,6 @@ const defaultProps = {
   isSSOSubscription: false,
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
-  onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),
 }
 
