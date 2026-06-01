@@ -20,8 +20,6 @@ import { SignupMethods } from './SignupMethods'
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
 
-const onSSOEmailNotFoundError = jest.fn()
-
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ resetSearch: jest.fn() }),
 }))
@@ -113,11 +111,7 @@ describe('<SignupMethods />', () => {
 
       expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
 
-      expect(
-        screen.getByText(
-          'L’inscription avec ce compte Google est refusée. Contacte le support pour plus d’informations depuis le Profil.'
-        )
-      ).toBeOnTheScreen()
+      expect(screen.getByText('Erreur lors de la tentative de connexion')).toBeOnTheScreen()
     })
   })
 
@@ -161,7 +155,6 @@ describe('<SignupMethods />', () => {
 
       await user.press(screen.getByText('S’inscrire avec Google'))
 
-      expect(onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupForm', {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
@@ -237,7 +230,6 @@ describe('<SignupMethods />', () => {
 
       await user.press(screen.getByText('S’inscrire avec Apple'))
 
-      expect(onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupForm', {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
@@ -289,15 +281,13 @@ describe('<SignupMethods />', () => {
 
       await user.press(screen.getByText('Se connecter'))
 
-      expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'SignupMethods' })
+      expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'signupMethods' })
     })
   })
 })
 
 const renderSignupMethods = async () => {
-  await renderAsync(
-    reactQueryProviderHOC(<SignupMethods onSSOEmailNotFoundError={onSSOEmailNotFoundError} />)
-  )
+  await renderAsync(reactQueryProviderHOC(<SignupMethods />))
 }
 
 const pressSSOButton = async () => {

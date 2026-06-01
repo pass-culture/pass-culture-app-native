@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
-import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
+import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { SignInResponseFailure } from 'features/auth/types'
 import {
   StepperOrigin,
@@ -26,30 +26,18 @@ import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = { onSSOEmailNotFoundError: () => void }
-
-const DEFAULT_ERROR_MESSAGE = 'Erreur lors de la tentative de connexion'
-
-const SSO_ERROR_MESSAGES: Partial<Record<string, string>> = {
-  NETWORK_REQUEST_FAILED: 'Erreur réseau. Tu peux réessayer une fois la connexion réétablie.',
-  TOO_MANY_ATTEMPTS: 'Nombre de tentatives dépassé. Réessaye dans 1 minute.',
-}
-
-export const SignupMethods: FunctionComponent<Props> = ({ onSSOEmailNotFoundError }) => {
+export const SignupMethods: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'SignupMethods'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
 
   const onLogLoginAnalytics = useCallback(() => {
-    void analytics.logLoginClicked({ from: 'SignupMethods' })
+    void analytics.logLoginClicked({ from: 'signupMethods' })
   }, [])
 
   const onSSOSignUpFailure = useCallback(
     (response: SignInResponseFailure) => {
-      const failureCode = response.content?.code
-
-      if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
-        onSSOEmailNotFoundError()
+      if (response.content?.code === 'SSO_EMAIL_NOT_FOUND') {
         return navigate('SignupForm', {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
@@ -57,20 +45,9 @@ export const SignupMethods: FunctionComponent<Props> = ({ onSSOEmailNotFoundErro
           ssoProvider: response.provider,
         })
       }
-
-      if (failureCode === 'SSO_ERROR') {
-        return showErrorSnackBar(getSSOErrorMessage(response.provider, 'signup'))
-      }
-
-      const isRateLimited = response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS'
-      const key = isRateLimited ? 'TOO_MANY_ATTEMPTS' : failureCode
-      const APIMessage = key && SSO_ERROR_MESSAGES[key]
-      const SSOMessage = getSSOErrorMessage(response.provider, 'signup')
-      const message = APIMessage ?? SSOMessage ?? DEFAULT_ERROR_MESSAGE
-
-      showErrorSnackBar(message)
+      showErrorSnackBar(getSnackbarSSOErrorMessage({ response, context: 'signup' }))
     },
-    [navigate, onSSOEmailNotFoundError]
+    [navigate]
   )
 
   return (

@@ -87,7 +87,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           ssoProvider: response.provider,
         })
       } else if (failureCode === 'SSO_ERROR') {
-        showErrorSnackBar(getSSOErrorMessage(response.provider, 'login'))
+        showErrorSnackBar(getSSOErrorMessage({ provider: response.provider, context: 'login' }))
       } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         const email = getValues('email')?.trim()
         if (!email) {
