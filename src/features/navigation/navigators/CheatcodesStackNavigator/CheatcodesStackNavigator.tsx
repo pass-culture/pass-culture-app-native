@@ -19,6 +19,7 @@ import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/feat
 import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenance/CheatcodesScreenMaintenance'
+import { CheatcodesNavigationOfferCtaPoc } from 'cheatcodes/pages/features/offerCtaPoc/CheatcodesNavigationOfferCtaPoc'
 import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
@@ -120,6 +121,12 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: withAsyncErrorBoundary(CheatcodesNavigationNewIdentificationFlow),
       linking: {
         path: 'cheatcodes/identity-check/new-identification-flow',
+      },
+    },
+    CheatcodesNavigationOfferCtaPoc: {
+      screen: CheatcodesNavigationOfferCtaPoc,
+      linking: {
+        path: 'cheatcodes/offer-cta-poc',
       },
     },
     CheatcodesNavigationOnboarding: {

@@ -13,6 +13,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationIdentityCheck: undefined
   CheatcodesNavigationInternal: undefined
   CheatcodesNavigationNewIdentificationFlow: undefined
+  CheatcodesNavigationOfferCtaPoc: undefined
   CheatcodesNavigationOnboarding: undefined
   CheatcodesNavigationProfile: undefined
   CheatcodesNavigationProfileTutorial: undefined
