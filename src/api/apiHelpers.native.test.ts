@@ -37,7 +37,7 @@ const respondWith = async (
   statusText?: string,
   headers?: HeadersInit
 ): Promise<Response> => {
-  return new Response(JSON.stringify(body), {
+  return new Response(status === 204 ? null : JSON.stringify(body), {
     headers: {
       'content-type': 'application/json',
       ...headers,
@@ -96,7 +96,8 @@ describe('[api] helpers', () => {
           'request-id': 'testUuidV4',
         },
       })
-      expect(response).toEqual(await respondWith('apiResponse'))
+      expect(response.status).toBe(200)
+      expect(await response.json()).toEqual('apiResponse')
     })
 
     it('should call fetch with populated header when route is in NotAuthenticatedCalls', async () => {
@@ -114,7 +115,8 @@ describe('[api] helpers', () => {
           'request-id': 'testUuidV4',
         },
       })
-      expect(response).toEqual(await respondWith('apiResponse'))
+      expect(response.status).toBe(200)
+      expect(await response.json()).toEqual('apiResponse')
     })
 
     it('needs authentication response when refresh token fails', async () => {
@@ -127,8 +129,10 @@ describe('[api] helpers', () => {
       mockGetTokenStatus.mockReturnValueOnce('expired')
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
+      const expectedResponse = createNeedsAuthenticationResponse(apiUrl)
 
-      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+      expect(response.status).toBe(expectedResponse.status)
+      expect(response.url).toBe(expectedResponse.url)
     })
 
     it('forces user to login when refresh token is expired', async () => {
@@ -140,7 +144,10 @@ describe('[api] helpers', () => {
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+      const expectedResponse = createNeedsAuthenticationResponse(apiUrl)
+
+      expect(response.status).toBe(expectedResponse.status)
+      expect(response.url).toBe(expectedResponse.url)
     })
 
     it('regenerates the access token and fetch the real url after when the access token is expired', async () => {
@@ -247,8 +254,10 @@ describe('[api] helpers', () => {
       mockGetRefreshToken.mockResolvedValueOnce(null)
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
+      const expectedResponse = createNeedsAuthenticationResponse(apiUrl)
 
-      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+      expect(response.status).toBe(expectedResponse.status)
+      expect(response.url).toBe(expectedResponse.url)
       expect(mockFetch).not.toHaveBeenCalled()
     })
 
@@ -257,8 +266,10 @@ describe('[api] helpers', () => {
       mockGetRefreshToken.mockRejectedValueOnce(new Error())
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
+      const expectedResponse = createNeedsAuthenticationResponse(apiUrl)
 
-      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+      expect(response.status).toBe(expectedResponse.status)
+      expect(response.url).toBe(expectedResponse.url)
     })
 
     it('log exception to sentry when cannot get refresh token', async () => {

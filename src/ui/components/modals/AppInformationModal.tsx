@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { Modal } from 'react-native'
+import { Modal, ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
@@ -26,7 +27,13 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   onCloseIconPress,
   testIdSuffix,
 }) => {
+  const { height: windowHeight } = useWindowDimensions()
   const titleID = uuidv4()
+  const adaptedNumberOfLinesTitle = useMobileFontScaleToDisplay({
+    default: numberOfLinesTitle,
+    at200PercentZoom: undefined,
+  })
+
   return (
     <Modal
       animationType="fade"
@@ -37,16 +44,21 @@ export const AppInformationModal: FunctionComponent<Props> = ({
       onRequestClose={onCloseIconPress}>
       <ClickAwayArea onPress={onCloseIconPress} />
       <ModalCenteredContent>
-        <Container accessibilityLabelledBy={titleID} gap={6}>
+        <Container accessibilityLabelledBy={titleID} gap={6} maxHeight={windowHeight}>
           <ModalHeader
             title={title}
             titleID={titleID}
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onCloseIconPress}
-            numberOfLines={numberOfLinesTitle}
+            numberOfLines={adaptedNumberOfLinesTitle}
           />
-          <Content>{children}</Content>
+          <Content
+            showsVerticalScrollIndicator
+            bounces={false}
+            testID="appInformationModalScrollView">
+            <ContentContainer>{children}</ContentContainer>
+          </Content>
         </Container>
       </ModalCenteredContent>
     </Modal>
@@ -63,10 +75,11 @@ const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ th
   backgroundColor: theme.designSystem.color.background.overlay,
 }))
 
-const Container = styled(ViewGap)(({ theme }) => ({
+const Container = styled(ViewGap)<{ maxHeight: number }>(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
   alignSelf: 'center',
+  maxHeight: '100%',
   borderRadius: theme.designSystem.size.borderRadius.s,
   padding: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.xxl,
@@ -75,11 +88,15 @@ const Container = styled(ViewGap)(({ theme }) => ({
     : theme.breakpoints.sm - theme.designSystem.size.spacing.m,
 }))
 
-const Content = styled.View(({ theme }) => ({
+const Content = styled(ScrollView)(({ theme }) => ({
   width: '100%',
-  alignItems: 'center',
   maxWidth: theme.contentPage.maxWidth,
+  flexGrow: 0,
 }))
+
+const ContentContainer = styled.View({
+  alignItems: 'center',
+})
 
 const ModalCenteredContent = styled.View({
   height: '100%',

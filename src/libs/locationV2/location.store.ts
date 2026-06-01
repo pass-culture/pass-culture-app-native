@@ -1,3 +1,5 @@
+import { LocationType } from 'libs/analytics/types'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { GeolocPermissionState } from 'libs/location/location'
 import { GeoCoordinates, GeolocationError, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -106,6 +108,7 @@ const locationStore = createStore({
   selectors: {
     selectState: () => (state) => state,
     selectLocationMode: () => (state) => state.locationMode,
+    selectPermissionState: () => (state) => state.permissionState,
     selectLocationConfiguration: (configurationKey: LocationMode) => (state) =>
       state.configuration[configurationKey],
     selectPlace: () => (state) => {
@@ -117,11 +120,24 @@ const locationStore = createStore({
       ({ configuration, locationMode }) =>
         configuration[locationMode].geolocation,
     selectIsGeolocated: () => (state) => !!state.configuration[LocationMode.AROUND_ME].geolocation,
+    selectLocationType: () => (state) => {
+      const LocationModeToLocationTypeMap = {
+        [LocationMode.AROUND_PLACE]: 'UserSpecificLocation',
+        [LocationMode.AROUND_ME]: 'UserGeolocation',
+        [LocationMode.EVERYWHERE]: 'undefined',
+      } as const satisfies Record<LocationMode, LocationType>
+
+      return LocationModeToLocationTypeMap[state.locationMode]
+    },
   },
   options: { persist: false },
 })
 
-function isRejected(permission: GeolocPermissionState | null) {
+locationStore.store.subscribe(locationStore.selectors.selectLocationType, (locationType) =>
+  firebaseAnalytics.setDefaultEventParameters({ locationType })
+)
+
+const isRejected = (permission: GeolocPermissionState | null) => {
   return (
     !permission ||
     permission === GeolocPermissionState.DENIED ||

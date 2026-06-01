@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 // eslint-disable-next-line no-restricted-imports
 import { create } from 'zustand'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
+import { createJSONStorage, devtools, persist, subscribeWithSelector } from 'zustand/middleware'
 
 import {
   AnyFunction,
@@ -31,7 +31,9 @@ export function createStore<
   })
 
   const store = create<State>()(
-    devtools(options?.persist ? persistedStore : defaultStore, { enabled: false, name })
+    subscribeWithSelector(
+      devtools(options?.persist ? persistedStore : defaultStore, { enabled: false, name })
+    )
   )
 
   const actions = createActions(store.setState)

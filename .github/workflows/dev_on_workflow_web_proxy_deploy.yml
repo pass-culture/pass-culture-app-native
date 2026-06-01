@@ -14,17 +14,17 @@ on:
         required: true
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
-      GCP_PROD_SERVICE_ACCOUNT:
-      GCP_PROD_WORKLOAD_IDENTITY_PROVIDER:
 
 jobs:
   web_proxy_deploy:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-${{ inputs.ENV }}
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@v3'
         with:
@@ -38,8 +38,8 @@ jobs:
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           cleanup_credentials: false
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v3'
       - name: Cache the proxy node_modules
@@ -63,24 +63,26 @@ jobs:
         with:
           secrets: |-
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: Switch to google prod account for prod
-        if: ${{ inputs.ENV == 'production' }}
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
-        with:
-          workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
+#      - name: Switch to google prod account for prod
+#        if: ${{ inputs.ENV == 'production' }}
+#        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+#        with:
+#          workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
+#          service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
 
       - name: Cleanup .yarn cache
         run: rm -rf server/.yarn/cache
 
-      - name: 'Push proxy for input env'
+      - name: Push proxy for input env
         env:
           ENV: ${{ inputs.ENV }}
+          CLOUDSDK_CORE_PROJECT: ${{ vars.WEB_PROXY_GCP_PROJECT_ID }}
         run: cd server && yarn run "deploy:$ENV" && cd ..
 
-      - name: 'Clear unused apps'
+      - name: Clear unused apps
         env:
           ENV: ${{ inputs.ENV }}
+          CLOUDSDK_CORE_PROJECT: ${{ vars.WEB_PROXY_GCP_PROJECT_ID }}
         run: |
           gcloud app versions list --service="web-proxy-$ENV" --format="table[no-heading](id)" \
             | grep -v "$(gcloud app versions list --service="web-proxy-$ENV" --hide-no-traffic --format="table[no-heading](id)")" \

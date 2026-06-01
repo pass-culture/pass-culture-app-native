@@ -3,6 +3,10 @@ import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -33,19 +37,24 @@ export const ContentHeader = ({
   const { top } = useSafeAreaInsets()
   const headerHeight = theme.appBarHeight + top
   const { containerStyle, blurContainerNative } = getAnimationState(theme, headerTransition)
-
+  const numberOfLinesTitle = useNumberOfLine(2)
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
   const marginTopHeader = Platform.OS === 'ios' ? top : top + theme.designSystem.size.spacing.s
 
+  const height = useMobileFontScaleToDisplay({
+    default: headerHeight,
+    at200PercentZoom: undefined,
+  })
+
   return (
-    <HeaderContainer style={containerStyle} height={headerHeight}>
+    <HeaderContainer style={containerStyle} height={height}>
       {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
         // https://github.com/Kureev/react-native-blur/issues/511
         Platform.OS === 'android' ? null : (
-          <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
+          <BlurNativeContainer height={height} style={blurContainerNative}>
             <BlurryWrapper />
           </BlurNativeContainer>
         )
@@ -69,7 +78,8 @@ export const ContentHeader = ({
             style={{
               opacity: customHeaderTitleTransition ?? headerTransition,
             }} // Utilisation de l'interpolation effective
-            accessibilityHidden={ariaHiddenTitle}>
+            accessibilityHidden={ariaHiddenTitle}
+            numberOfLinesTitle={numberOfLinesTitle}>
             <Body>{headerTitle}</Body>
           </Title>
         </TitleContainer>
@@ -79,7 +89,7 @@ export const ContentHeader = ({
   )
 }
 
-const BlurNativeContainer = styled(Animated.View)<{ height: number }>(({ height }) => ({
+const BlurNativeContainer = styled(Animated.View)<{ height?: number }>(({ height }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -88,7 +98,7 @@ const BlurNativeContainer = styled(Animated.View)<{ height: number }>(({ height 
   overflow: 'hidden',
 }))
 
-const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, height }) => ({
+const HeaderContainer = styled(Animated.View)<{ height?: number }>(({ theme, height }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -105,9 +115,11 @@ const TitleContainer = styled.View({
   justifyContent: 'center',
 })
 
-const Title = styled(Animated.Text).attrs({
-  numberOfLines: 2,
-})({
+const Title = styled(Animated.Text).attrs<{ numberOfLinesTitle?: number }>(
+  ({ numberOfLinesTitle }) => ({
+    numberOfLines: numberOfLinesTitle,
+  })
+)({
   flexShrink: 1,
   textAlign: 'center',
   ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),

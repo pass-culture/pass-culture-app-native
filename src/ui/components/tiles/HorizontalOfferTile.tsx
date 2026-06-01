@@ -19,6 +19,7 @@ import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
@@ -160,6 +161,8 @@ export const HorizontalOfferTile = ({
     interactionTagLabel,
   })
 
+  const numberOfLine = useNumberOfLine(1)
+
   return (
     <Container
       navigateTo={{
@@ -189,7 +192,7 @@ export const HorizontalOfferTile = ({
               generatedSubtitles?.map((subtitle, index) => (
                 <Body
                   ellipsizeMode="tail"
-                  numberOfLines={1}
+                  numberOfLines={numberOfLine}
                   testID="native-category-value"
                   key={subtitle ? `${subtitle}_${index}` : index}>
                   {subtitle}

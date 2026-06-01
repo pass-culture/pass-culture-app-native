@@ -5,8 +5,10 @@ import { getOnboardingHookConfig } from 'features/navigation/navigators/Onboardi
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import Geolocation from 'ui/animations/geolocalisation.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { getSpacing } from 'ui/theme'
 
 export const OnboardingGeolocation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -30,6 +32,10 @@ export const OnboardingGeolocation = () => {
       animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       title="Découvre les offres près de chez toi"
       subtitle="Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
+      marginButton={useMobileFontScaleToDisplay({
+        default: 0,
+        at200PercentZoom: getSpacing(25),
+      })}
       buttonPrimary={{
         wording: 'Continuer',
         onPress: onGeolocationButtonPress,

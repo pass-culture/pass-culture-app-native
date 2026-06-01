@@ -21,6 +21,7 @@ export type YoutubeRendererRef = {
   getPlaybackRate: () => Promise<number>
   getAvailablePlaybackRates: () => Promise<number[]>
   seekTo: (seconds: number, allowSeekAhead: boolean) => void
+  pauseVideo?: () => void
 }
 
 export type YoutubePlayerRef = YoutubeRendererRef & {

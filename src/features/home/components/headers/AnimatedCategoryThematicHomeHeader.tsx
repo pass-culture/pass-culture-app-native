@@ -5,6 +5,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HomeGradient } from 'ui/svg/HomeGradient'
 import { getSpacing, Typo } from 'ui/theme'
@@ -32,6 +36,15 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
       : colorValue
   )
 
+  const isZoomed = useMobileFontScaleToDisplay({
+    default: false,
+    at200PercentZoom: true,
+  })
+  const Container = isZoomed ? ZoomContainer : DefaultContainer
+  const TextContainer = isZoomed ? ZoomTextContainer : DefaultTextContainer
+  const numberOfLinesTitle = useNumberOfLine(2)
+  const numberOfLinesSubtitle = useNumberOfLine(1)
+
   return (
     <Container>
       <HomeGradient
@@ -43,10 +56,10 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
         <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
           {subtitle ? (
             <ViewGap gap={1}>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
+              <Subtitle numberOfLines={numberOfLinesSubtitle}>{subtitle}</Subtitle>
             </ViewGap>
           ) : null}
-          <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+          {isZoomed ? null : <Typo.Title1 numberOfLines={numberOfLinesTitle}>{title}</Typo.Title1>}
         </AnimatedBackground>
       </TextContainer>
       <AnimatedBackgroundSubscribeButton
@@ -72,7 +85,7 @@ export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThema
   )
 }
 
-const Container = styled.View({
+const DefaultContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -80,7 +93,10 @@ const Container = styled.View({
   height: getSpacing(MOBILE_HEADER_HEIGHT),
 })
 
-const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
+const ZoomContainer = styled.View({})
+const ZoomTextContainer = styled.View({})
+
+const DefaultTextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
 const SubscribeButtonContainer = styled.View(({ theme }) => ({
   position: 'absolute',

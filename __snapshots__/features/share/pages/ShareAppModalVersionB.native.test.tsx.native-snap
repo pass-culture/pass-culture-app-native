@@ -122,7 +122,6 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
           "flexDirection": "column",
           "height": 429,
           "justifyContent": "flex-start",
-          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -316,7 +315,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
         paddingBottom={5}
         style={
           {
-            "maxHeight": "100%",
+            "height": "100%",
             "maxWidth": 480,
             "paddingBottom": 5,
             "width": "100%",

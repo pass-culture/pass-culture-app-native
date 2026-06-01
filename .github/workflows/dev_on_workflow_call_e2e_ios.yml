@@ -29,7 +29,7 @@ jobs:
     runs-on: macos-26-xlarge
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -132,7 +132,7 @@ jobs:
           fi
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> "$GITHUB_OUTPUT"
       - name: Upload and run ios tests with Maestro cloud
-        uses: mobile-dev-inc/action-maestro-cloud@v2.0.1
+        uses: mobile-dev-inc/action-maestro-cloud@v3
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
           project-id: proj_01javz1ncreqb9dcshv3y4da44
@@ -140,8 +140,8 @@ jobs:
           name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
           workspace: .maestro/testsV3/
           device-locale: fr_FR
-          device-os: iOS-17-5
-          device-model: iPhone-11
+          device-os: iOS-26-2
+          device-model: iPhone-17-Pro-Max
           include-tags: ${{ inputs.test_tags }}
           async: true
           env: |

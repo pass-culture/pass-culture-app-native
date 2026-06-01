@@ -1,4 +1,9 @@
-import { OfferResponse, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
+import {
+  CategoryIdEnum,
+  OfferResponse,
+  SearchGroupNameEnumv2,
+  SearchGroupResponseModelv2,
+} from 'api/gen'
 import { OffersModule } from 'features/home/types'
 import { PlaylistType } from 'features/offer/enums'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
@@ -9,6 +14,7 @@ import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 
 export type OffersSimilars = {
   offer: OfferResponse
+  offerCategory: CategoryIdEnum
   offerSearchGroup: SearchGroupNameEnumv2
   searchGroupList: SearchGroupResponseModelv2[]
   type: PlaylistType

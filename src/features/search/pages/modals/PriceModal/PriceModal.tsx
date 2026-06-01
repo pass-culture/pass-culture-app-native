@@ -100,11 +100,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
 
   const isLoggedInAndBeneficiary = isLoggedIn && isCurrentBeneficiary(user)
-  const GRANT_FREE_OR_EMPTY_TYPES = [
-    UserCreditType.CREDIT_V3_15,
-    UserCreditType.CREDIT_V3_16,
-    UserCreditType.CREDIT_EMPTY,
-  ]
+  const GRANT_FREE_OR_EMPTY_TYPES = [UserCreditType.CREDIT_V3_FREE, UserCreditType.CREDIT_EMPTY]
   const creditTypeIsNotGrantFreeOrEmpty =
     user && !GRANT_FREE_OR_EMPTY_TYPES.includes(user.creditType)
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false

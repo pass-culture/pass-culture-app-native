@@ -24,6 +24,7 @@ import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Typo } from 'ui/theme'
 
@@ -206,8 +207,9 @@ export function AutocompleteOfferItem({
 
   const testID = `autocompleteOfferItem_${hit.objectID}`
 
+  const numberOfLines = useNumberOfLine(1)
   return (
-    <SuggestionContainer hit={hit} onPress={onPress} testID={testID}>
+    <SuggestionContainer hit={hit} onPress={onPress} testID={testID} numberOfLines={numberOfLines}>
       {shouldDisplayCategorySuggestion && categoryToDisplay ? (
         <Suggestion categoryToDisplay={categoryToDisplay} />
       ) : undefined}
@@ -220,7 +222,8 @@ const SuggestionContainer: FunctionComponent<{
   onPress: () => void
   testID: string
   children: ReactNode
-}> = ({ hit, onPress, testID, children }) => (
+  numberOfLines?: number
+}> = ({ hit, onPress, testID, children, numberOfLines }) => (
   <AutocompleteItemTouchable
     testID={testID}
     onPress={onPress}
@@ -228,7 +231,7 @@ const SuggestionContainer: FunctionComponent<{
     <MagnifyingGlassIconContainer>
       <MagnifyingGlassFilledIcon />
     </MagnifyingGlassIconContainer>
-    <StyledText numberOfLines={1} ellipsizeMode="tail">
+    <StyledText numberOfLines={numberOfLines} ellipsizeMode="tail">
       <SuggestionHitHighlight suggestionHit={hit} attribute="query" />
       {children}
     </StyledText>

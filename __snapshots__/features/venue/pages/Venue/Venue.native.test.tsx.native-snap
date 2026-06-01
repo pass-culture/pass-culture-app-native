@@ -3172,6 +3172,7 @@ d’options
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -6682,6 +6683,7 @@ d’options
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,
@@ -11025,6 +11027,7 @@ d’options
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
+          numberOfLinesTitle={2}
           style={
             {
               "flexShrink": 1,

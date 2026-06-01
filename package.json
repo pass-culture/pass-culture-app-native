@@ -7,11 +7,11 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.393.0",
-  "build": 10393000,
+  "version": "1.394.0",
+  "build": 10394000,
   "private": true,
   "engines": {
-    "node": ">=20.19"
+    "node": ">=25.9"
   },
   "homepage": ".",
   "scripts": {
@@ -70,7 +70,7 @@
     "test:lint:changed": "./scripts/lint_changed.sh",
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
-    "test:unit": "TZ=UTC JEST=true node --no-experimental-fetch --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
+    "test:unit": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
     "test:unit:ci": "JEST_SILENT_REPORTER_DOTS=true yarn test:unit --maxWorkers=6 --coverage --ci --reporters=jest-junit --reporters=jest-silent-reporter",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
     "test:unit:web": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --config jest.web.config.js --forceExit --logHeapUsage",
@@ -206,7 +206,7 @@
     "@babel/runtime": "^7.26.10",
     "@bam.tech/eslint-plugin": "^1.0.1",
     "@chanzuckerberg/axe-storybook-testing": "^10.0.0",
-    "@chromatic-com/storybook": "^4.0.1",
+    "@chromatic-com/storybook": "^5.1.2",
     "@hot-updater/bare": "^0.20.11",
     "@hot-updater/firebase": "^0.20.11",
     "@hot-updater/sentry-plugin": "^0.20.11",
@@ -217,13 +217,13 @@
     "@react-native/eslint-config": "0.80.2",
     "@react-native/metro-config": "0.80.2",
     "@react-native/typescript-config": "0.80.2",
-    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-commonjs": "^29.0.2",
     "@sentry/vite-plugin": "^5.1.1",
-    "@storybook/addon-a11y": "^9.1.17",
-    "@storybook/addon-docs": "^9.1.17",
-    "@storybook/addon-links": "^9.1.17",
-    "@storybook/react-native-web-vite": "^9.1.17",
-    "@storybook/react-vite": "^9.1.17",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-links": "^10.3.5",
+    "@storybook/react-native-web-vite": "^10.3.5",
+    "@storybook/react-vite": "^10.3.5",
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react": "^16.3.0",
@@ -280,7 +280,7 @@
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-native": "^3.8.1",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "eslint-plugin-storybook": "9.1.17",
+    "eslint-plugin-storybook": "10.3.5",
     "eslint-plugin-testing-library": "^6.2.0",
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "eslint-plugin-unused-imports": "^3.0.0",
@@ -305,7 +305,7 @@
     "react-native-svg-web": "^1.0.9",
     "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "19.1.0",
-    "storybook": "^9.1.19",
+    "storybook": "^10.3.5",
     "timezone-mock": "^1.2.1",
     "ts-node": "^10.8.0",
     "type-fest": "^4.15.0",
@@ -360,7 +360,7 @@
     "picomatch@>= 4.0.0, <4.0.4": "^4.0.4",
     "playwright@< 1.55.1": "^1.55.1",
     "postcss@< 8.5.10": "^8.5.10",
-    "protobufjs@<= 7.5.5": "^7.5.6",
+    "protobufjs@< 7.5.5": "^7.5.5",
     "qs@< 6.14.1": "^6.14.1",
     "query-string": "^7.1.*",
     "react-is": "^19.0.0",
@@ -382,5 +382,5 @@
     "./jsx-runtime": "./jsx-runtime.js",
     "./": "./"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@4.15.0"
 }

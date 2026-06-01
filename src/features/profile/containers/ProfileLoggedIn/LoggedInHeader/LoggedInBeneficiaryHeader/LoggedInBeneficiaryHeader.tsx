@@ -7,6 +7,7 @@ import { getShouldShowBonificationBanner } from 'features/bonification/getShould
 import { BeneficiaryEmptyHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/BeneficiaryEmptyHeader'
 import { BeneficiaryFreeHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/BeneficiaryFreeHeader'
 import { BeneficiaryHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/BeneficiaryHeader'
+import { LoggedInGeneralPublicHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInGeneralPublicHeader/LoggedInGeneralPublicHeader'
 import { logHeaderFallback } from 'features/profile/helpers/logHeaderFallback'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfile } from 'features/share/types'
@@ -38,8 +39,7 @@ export const LoggedInBeneficiaryHeader = ({ user, featureFlags, bonificationInfo
       header = <BeneficiaryEmptyHeader featureFlags={featureFlags} user={user} />
       break
 
-    case UserCreditType.CREDIT_V3_15:
-    case UserCreditType.CREDIT_V3_16:
+    case UserCreditType.CREDIT_V3_FREE:
       header = <BeneficiaryFreeHeader featureFlags={featureFlags} user={user} />
       break
 
@@ -53,9 +53,11 @@ export const LoggedInBeneficiaryHeader = ({ user, featureFlags, bonificationInfo
       header = <BeneficiaryHeader featureFlags={featureFlags} user={user} />
       break
 
+    case UserCreditType.CREDIT_UNKNOWN:
+    case UserCreditType.NO_CREDIT:
     default:
       logHeaderFallback({ headerType: UserStatusType.BENEFICIARY, user })
-      header = <BeneficiaryHeader featureFlags={featureFlags} user={user} />
+      header = <LoggedInGeneralPublicHeader featureFlags={featureFlags} user={user} />
   }
 
   return (

@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
+import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
@@ -32,6 +33,8 @@ export type OfferPlaylistListProps = {
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
   apiRecoParamsOtherCategories?: RecommendationApiParams
+  booksSameCategorySimilarOffers?: Offer[]
+  apiRecoParamsBooksSameCategory?: RecommendationApiParams
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
@@ -59,6 +62,8 @@ export function OfferPlaylistList({
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
+  booksSameCategorySimilarOffers,
+  apiRecoParamsBooksSameCategory,
   onViewableItemsChanged,
   seeAllButton,
   proAdvicesSegment,
@@ -75,21 +80,29 @@ export function OfferPlaylistList({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
-  const { logSameCategoryPlaylistVerticalScroll, logOtherCategoriesPlaylistVerticalScroll } =
-    useLogPlaylist({
-      offerId: offer.id,
-      apiRecoParamsSameCategory,
-      nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
-      apiRecoParamsOtherCategories,
-      nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
-      fromOfferId,
-    })
+  const {
+    logSameCategoryPlaylistVerticalScroll,
+    logBooksSameCategoryPlaylistVerticalScroll,
+    logOtherCategoriesPlaylistVerticalScroll,
+  } = useLogPlaylist({
+    offerId: offer.id,
+    apiRecoParamsSameCategory,
+    nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
+    apiRecoParamsBooksSameCategory,
+    nbBooksSameCategorySimilarOffers: booksSameCategorySimilarOffers?.length ?? 0,
+    apiRecoParamsOtherCategories,
+    nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
+    fromOfferId,
+  })
 
   const handleChangeOtherCategoriesPlaylistDisplay = useLogScrollHandler(
     logOtherCategoriesPlaylistVerticalScroll
   )
   const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
     logSameCategoryPlaylistVerticalScroll
+  )
+  const handleChangeBooksSameCategoryPlaylistDisplay = useLogScrollHandler(
+    logBooksSameCategoryPlaylistVerticalScroll
   )
 
   const trackingOnHorizontalScroll = (
@@ -103,15 +116,23 @@ export function OfferPlaylistList({
 
   const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-    title: 'Dans la même catégorie',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
     offers: sameCategorySimilarOffers,
     apiRecoParams: apiRecoParamsSameCategory,
     handleChangePlaylistDisplay: handleChangeSameCategoryPlaylistDisplay,
   }
 
+  const booksSameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
+    type: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
+    offers: booksSameCategorySimilarOffers,
+    apiRecoParams: apiRecoParamsBooksSameCategory,
+    handleChangePlaylistDisplay: handleChangeBooksSameCategoryPlaylistDisplay,
+  }
+
   const otherCategoriesSimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-    title: 'Ça peut aussi te plaire',
+    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS] ?? '',
     offers: otherCategoriesSimilarOffers,
     apiRecoParams: apiRecoParamsOtherCategories,
     handleChangePlaylistDisplay: handleChangeOtherCategoriesPlaylistDisplay,
@@ -119,11 +140,14 @@ export function OfferPlaylistList({
 
   const similarOffersPlaylist: SimilarOfferPlaylist[] = [
     sameCategorySimilarOffersPlaylist,
+    booksSameCategorySimilarOffersPlaylist,
     otherCategoriesSimilarOffersPlaylist,
   ]
 
   const shouldDisplayPlaylist =
-    isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
+    isArrayNotEmpty(sameCategorySimilarOffers) ||
+    isArrayNotEmpty(booksSameCategorySimilarOffers) ||
+    isArrayNotEmpty(otherCategoriesSimilarOffers)
 
   const handleOfferPlaylistViewableItemsChanged = useCallback(
     (playlistType: string, playlistIndex: number) =>

@@ -26,13 +26,13 @@ export const buildVenuesQueryOptions = (
   }
 
   if (hasVolunteering) {
+    // Volunteering playlist is allowed to surface venues not open to public
     const hasVolunteeringPredicate = [`${VENUES_FACETS_ENUM.VENUE_HAS_VOLUNTEERING}:true`]
     facetFilters.push(hasVolunteeringPredicate)
+  } else {
+    const isOpenToPublicPredicate = [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]
+    facetFilters.push(isOpenToPublicPredicate)
   }
-
-  // We want to show on home page only venues that have at least one offer that is searchable in algolia
-  const isOpenToPublicPredicate = [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]
-  facetFilters.push(isOpenToPublicPredicate)
 
   return {
     ...buildLocationParameter(buildLocationParameterParams),

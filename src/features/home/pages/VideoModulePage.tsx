@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { FlatList, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -39,9 +39,12 @@ export const VideoModulePage: FunctionComponent = () => {
     isMultiOffer,
     videoTitle,
     transcription,
+    thematicHomeEntryId,
+    thematicHomeTitle,
   } = params
   const { goBack } = useGoBack(...homeNavigationConfig)
   const theme = useTheme()
+  const [isPlayingVideo, setIsPlayingVideo] = useState(true)
 
   const { headerTransition, onScroll } = useOpacityTransition()
 
@@ -57,6 +60,8 @@ export const VideoModulePage: FunctionComponent = () => {
     from: 'videoModal',
     homeEntryId,
   }
+
+  const hasThematicHomeEntry = !!(thematicHomeEntryId && thematicHomeTitle)
 
   const handleLogHasDismissedModal = async () => {
     const playerCurrentRef = playerRef.current
@@ -81,7 +86,11 @@ export const VideoModulePage: FunctionComponent = () => {
   }
 
   const handleTranscriptionButtonPress = () => {
+    setIsPlayingVideo(false)
     void analytics.logClickSeeVideoTranscription({ from: 'videoModal', moduleId, homeEntryId })
+    if (playerRef.current?.pauseVideo) {
+      playerRef.current.pauseVideo()
+    }
     showModal()
   }
 
@@ -100,12 +109,15 @@ export const VideoModulePage: FunctionComponent = () => {
 
         <VideoPlayer
           youtubeVideoId={youtubeVideoId}
-          offer={isMultiOffer ? undefined : offers[0]}
+          offer={isMultiOffer && !hasThematicHomeEntry ? undefined : offers[0]}
           moduleId={moduleId}
           moduleName={moduleName}
           homeEntryId={homeEntryId}
           playerRef={playerRef}
           onPressSeeOffer={handleLogHasDismissedModal}
+          isPlaying={isPlayingVideo}
+          onPlay={() => setIsPlayingVideo(true)}
+          onPause={() => setIsPlayingVideo(false)}
         />
 
         <TranscriptionButtonContainer>
@@ -122,7 +134,7 @@ export const VideoModulePage: FunctionComponent = () => {
 
         <FlatList
           ItemSeparatorComponent={ItemSeparatorComponent}
-          data={isMultiOffer ? offers : []}
+          data={isMultiOffer && !hasThematicHomeEntry ? offers : []}
           ListHeaderComponent={
             <VideoModuleHeader
               analyticsParams={analyticsParams}

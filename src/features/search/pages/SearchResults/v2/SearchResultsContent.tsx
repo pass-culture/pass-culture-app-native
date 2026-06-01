@@ -59,6 +59,7 @@ type Props = {
   searchListContent: SearchListContent
   disabilities: DisabilitiesProperties
   selectedFilter: SelectSearchOffersParams['selectedFilter']
+  header?: React.ReactNode
 }
 
 const ANIMATION_DURATION = 700
@@ -90,6 +91,7 @@ export const SearchResultsContent: FC<Props> = ({
   searchListContent,
   disabilities,
   selectedFilter,
+  header,
 }) => {
   const {
     hits: { artists, venues },
@@ -197,32 +199,35 @@ export const SearchResultsContent: FC<Props> = ({
           keyExtractor={keyExtractor}
           getItemType={(item: SearchResultItem) => item.type}
           ListHeaderComponent={
-            <SearchResultsListHeader
-              nbHits={nbHits}
-              title={title}
-              userData={userData}
-              venuesSection={
-                shouldDisplayVenueSection ? (
-                  <VenueSection
-                    venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-                    onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
-                    withMargins={false}
-                  />
-                ) : undefined
-              }
-              artistSection={
-                shouldDisplayArtistSection ? (
-                  <StyledArtistSection
-                    artists={artists}
-                    searchId={searchState.searchId}
-                    withMargins={false}
-                  />
-                ) : undefined
-              }
-              shouldDisplayGridList={shouldDisplayGridList}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
-            />
+            <React.Fragment>
+              {header}
+              <SearchResultsListHeader
+                nbHits={nbHits}
+                title={title}
+                userData={userData}
+                venuesSection={
+                  shouldDisplayVenueSection ? (
+                    <VenueSection
+                      venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+                      onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
+                      withMargins={false}
+                    />
+                  ) : undefined
+                }
+                artistSection={
+                  shouldDisplayArtistSection ? (
+                    <StyledArtistSection
+                      artists={artists}
+                      searchId={searchState.searchId}
+                      withMargins={false}
+                    />
+                  ) : undefined
+                }
+                shouldDisplayGridList={shouldDisplayGridList}
+                enableAIFakeDoor={enableAIFakeDoor}
+                onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
+              />
+            </React.Fragment>
           }
           ItemSeparatorComponent={isGridLayout || isVenuesContent ? undefined : LineSeparator}
           renderItem={renderItem}

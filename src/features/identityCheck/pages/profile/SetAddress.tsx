@@ -68,16 +68,14 @@ export const SetAddress = () => {
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(defaultAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
-  const defaultCity = user?.city ?? storedCity?.name
-  const defaultPostalCode = user?.postalCode ?? storedCity?.postalCode
   const {
     data: addresses = [],
     isLoading,
     isError,
   } = useAddressesQuery({
     query: debouncedQuery,
-    cityCode: defaultCity ?? '',
-    postalCode: defaultPostalCode ?? '',
+    cityCode: storedCity?.code ?? '',
+    postalCode: storedCity?.postalCode ?? '',
     enabled: !!idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })

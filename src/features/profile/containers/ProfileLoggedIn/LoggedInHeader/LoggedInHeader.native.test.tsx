@@ -4,12 +4,18 @@ import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser, nonBeneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { LoggedInHeader } from './LoggedInHeader'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery', () => ({
+  useFeatureFlagOptionsQuery: jest.fn(),
+}))
+
+const mockUseFeatureFlagOptionsQuery = useFeatureFlagOptionsQuery as jest.Mock
 
 const featureFlags = {
   disableActivation: false,
@@ -17,6 +23,10 @@ const featureFlags = {
 }
 
 describe('LoggedInHeader', () => {
+  beforeAll(() =>
+    mockUseFeatureFlagOptionsQuery.mockReturnValue({ options: { message: 'désactivé' } })
+  )
+
   it('should render LoggedInEligibleHeader when user is ELIGIBLE', () => {
     const eligibleUser = { ...nonBeneficiaryUser, statusType: UserStatusType.ELIGIBLE }
     renderLoggedInHeader({ user: eligibleUser })

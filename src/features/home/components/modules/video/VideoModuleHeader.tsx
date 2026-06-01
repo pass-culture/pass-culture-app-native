@@ -2,11 +2,15 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { Offer } from 'shared/offer/types'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
@@ -32,7 +36,12 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
     videoDescription,
     offerTitle,
     color,
+    thematicHomeEntryId,
+    thematicHomeTitle,
+    moduleId,
   } = params
+
+  const hasThematicHomeEntry = !!(thematicHomeEntryId && thematicHomeTitle)
 
   return (
     <React.Fragment>
@@ -56,7 +65,7 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
         <Typo.Title4 {...getHeadingAttrs(2)}>{offerTitle}</Typo.Title4>
       </OfferTitleContainer>
 
-      {!isMultiOffer && offers[0] ? (
+      {!isMultiOffer && offers[0] && !hasThematicHomeEntry ? (
         <VideoMonoOfferTileContainer>
           <VideoMonoOfferTile
             offer={offers[0]}
@@ -64,6 +73,24 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
             analyticsParams={analyticsParams}
             onPressOffer={handleLogHasDismissedModal}
           />
+        </VideoMonoOfferTileContainer>
+      ) : null}
+
+      {hasThematicHomeEntry ? (
+        <VideoMonoOfferTileContainer>
+          <InternalTouchableLink
+            navigateTo={{
+              screen: 'ThematicHome',
+              params: {
+                homeId: thematicHomeEntryId,
+                from: 'videoModule',
+                moduleId,
+              },
+            }}
+            accessibilityLabel={getComputedAccessibilityLabel(thematicHomeTitle)}
+            accessibilityRole={accessibilityRoleInternalNavigation()}>
+            <AttachedThematicCard title={thematicHomeTitle ?? ''} />
+          </InternalTouchableLink>
         </VideoMonoOfferTileContainer>
       ) : null}
     </React.Fragment>

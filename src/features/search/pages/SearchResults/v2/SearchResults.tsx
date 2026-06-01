@@ -38,8 +38,10 @@ import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemo
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -60,7 +62,8 @@ export const SearchResults = () => {
     useSearchHistory()
   const { user } = useAuthContext()
   const { visible, showModal, hideModal } = useModal(false)
-
+  const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
+  const isLandscape = useIsLandscape()
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
@@ -205,6 +208,22 @@ export const SearchResults = () => {
     return <OfflinePage />
   }
 
+  const searchHeader = (
+    <Container>
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={addToHistory}
+        searchInHistory={setQueryHistoryMemoized}
+        withFilterButton={!isFocusOnSuggestions}
+        withArrow
+        shouldDisplayHeader={!isFocusOnSuggestions}>
+        {isFocusOnSuggestions ? null : (
+          <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
+        )}
+      </SearchHeader>
+    </Container>
+  )
+
   return (
     <Page>
       <InstantSearch
@@ -212,45 +231,40 @@ export const SearchResults = () => {
         indexName={suggestionsIndex}
         insights={{ insightsClient: AlgoliaSearchInsights }}>
         <Configure hitsPerPage={5} clickAnalytics analytics />
-        <Container>
-          <SearchHeader
-            searchInputID={searchInputID}
-            addSearchHistory={addToHistory}
-            searchInHistory={setQueryHistoryMemoized}
-            withFilterButton={!isFocusOnSuggestions}
-            withArrow
-            shouldDisplayHeader={!isFocusOnSuggestions}>
-            {isFocusOnSuggestions ? null : (
-              <SearchTab selectedFilter={selectedFilter} onFilterPress={handlePressFilter} />
-            )}
-          </SearchHeader>
-        </Container>
         {isFocusOnSuggestions ? (
-          <SearchSuggestions
-            queryHistory={queryHistory}
-            addToHistory={addToHistory}
-            removeFromHistory={removeFromHistory}
-            filteredHistory={filteredHistory}
-            enableAIFakeDoor={enableAIFakeDoor}
-            onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
-          />
+          <React.Fragment>
+            {isZoomedAt200 || isLandscape ? null : searchHeader}
+            <SearchSuggestions
+              queryHistory={queryHistory}
+              addToHistory={addToHistory}
+              removeFromHistory={removeFromHistory}
+              filteredHistory={filteredHistory}
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
+              header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
+            />
+          </React.Fragment>
         ) : (
-          <SearchResultsContent
-            onEndReached={handleEndReached}
-            onSearchResultsRefresh={() => refetch()}
-            searchListContent={searchListContent}
-            isFetching={isArtistsQueryFetching && isOffersQueryFetching && isVenuesQueryFetching}
-            isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
-            isRefetching={isOffersQueryRefetching}
-            isSuccess={isArtistsQuerySuccess && isOffersQuerySuccess && isVenuesQuerySuccess}
-            userData={offersResponse?.userData}
-            venuesUserData={venuesResponse?.venuesUserData ?? undefined}
-            onViewableItemsChanged={handleViewableItemsChanged}
-            enableAIFakeDoor={enableAIFakeDoor}
-            onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
-            disabilities={disabilities}
-            selectedFilter={selectedFilter}
-          />
+          <React.Fragment>
+            {isZoomedAt200 || isLandscape ? null : searchHeader}
+            <SearchResultsContent
+              onEndReached={handleEndReached}
+              onSearchResultsRefresh={() => refetch()}
+              searchListContent={searchListContent}
+              isFetching={isArtistsQueryFetching && isOffersQueryFetching && isVenuesQueryFetching}
+              isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
+              isRefetching={isOffersQueryRefetching}
+              isSuccess={isArtistsQuerySuccess && isOffersQuerySuccess && isVenuesQuerySuccess}
+              userData={offersResponse?.userData}
+              venuesUserData={venuesResponse?.venuesUserData ?? undefined}
+              onViewableItemsChanged={handleViewableItemsChanged}
+              enableAIFakeDoor={enableAIFakeDoor}
+              onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
+              disabilities={disabilities}
+              selectedFilter={selectedFilter}
+              header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
+            />
+          </React.Fragment>
         )}
       </InstantSearch>
 

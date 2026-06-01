@@ -46,7 +46,8 @@ case "$target" in
     if [ "$platform" = "web" ]; then
       TAGS="--include-tags web"
     else
-      TAGS="--include-tags local"
+      TAGS=""
+      maestro_cloud_api_key=$(parse_env_variable MAESTRO_CLOUD_API_KEY .maestro/.env.secret)
     fi
     run_tracking_tests=false
     run_cloud_commands=false
@@ -54,16 +55,16 @@ case "$target" in
     ;;
 
   "cloud")
-    if [ "$platform" = "ios" ]; then
-      TAGS=""
-    else
-      TAGS=""
-    fi
+    TAGS=""
     run_tracking_tests=false
     run_cloud_commands=true
     api_key=$(parse_env_variable ROBIN_API_KEY .maestro/.env.secret)
     project_id=$(parse_env_variable ROBIN_PROJECT_ID .maestro/.env.secret)
-    cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/testsV3/ --device-locale fr_FR --android-api-level 34 --timeout 120 --ios-version 17"
+    if [ "$platform" = "ios" ]; then
+      cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/testsV3/ --device-locale fr_FR --device-os iOS-26-2 --timeout 120 --device-model iPhone-17-Pro-Max"
+    elif [ "$platform" = "android" ]; then
+      cloud_arguments="--api-key=$api_key --project-id=$project_id --flows .maestro/testsV3/ --device-locale fr_FR --device-os android-36 --timeout 120 --device-model pixel_9"
+    fi
     ;;
 esac
 

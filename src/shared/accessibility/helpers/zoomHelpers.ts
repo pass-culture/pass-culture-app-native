@@ -83,3 +83,10 @@ export const useWebZoomToDisplay = <T>({
   const isZoomedWeb = zoomPercent && zoomPercent > WEB_ZOOM_THRESHOLD
   return isZoomedWeb ? at200PercentZoom : at100PercentZoom
 }
+
+export const useNumberOfLine = (defaultValue: number): number | undefined => {
+  return useMobileFontScaleToDisplay({
+    default: defaultValue,
+    at200PercentZoom: undefined,
+  })
+}

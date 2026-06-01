@@ -20,10 +20,12 @@ jobs:
     name: 'Install runtime environment and dependencies Soft deploy'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    environment:
+      name: app-native-${{ inputs.ENV }}
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -45,18 +47,19 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Yarn install
         run: yarn install
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Authentification to Google
+        id: openid-auth
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -65,17 +68,8 @@ jobs:
             ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: Get Secret for App Distribution from Secret Manager (EHP only)
-        id: 'firebase_secret'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
-        with:
-          secrets: |-
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: ${{ inputs.ENV != 'production' }}
-      - name: Export firebase secret to file
-        run: |
-          echo '${{steps.firebase_secret.outputs.FIREBASE_TOKEN}}' > firebase_credentials.json
-      - name: 'Render Sentry Template'
+
+      - name: Render Sentry Template
         id: render_template
         uses: chuhlomin/render-template@v1.10
         with:
@@ -83,22 +77,49 @@ jobs:
           vars: |
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
+
+      - name: Create service account key
+        id: create-sa-key
+        env:
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
+        run: |
+          gcloud iam service-accounts keys create temporary-sa-key.json \
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}"
+          SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
+          echo "SA_KEY_ID=${SA_KEY_ID}" >> "$GITHUB_OUTPUT"
+
       - name: Deploy soft android for ${{ inputs.ENV }}
-        run: |
-          bundle exec fastlane android deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
+          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+        run: |
+          bundle exec fastlane android deploy ota: --env "${ENV}"
+
       - name: Deploy soft ios App for ${{ inputs.ENV }}
-        run: |
-          bundle exec fastlane ios deploy ota: --env "$ENV"
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
+          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+        run: |
+          bundle exec fastlane ios deploy ota: --env "${ENV}"
+
+      - name: Delete service account key
+        if: always()
+        env:
+          KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
+        run: |
+          gcloud iam service-accounts keys delete "${KEY_ID}" \
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}" \
+            --quiet
+          rm -f temporary-sa-key.json
 
   slack_notify:
     runs-on: ubuntu-24.04

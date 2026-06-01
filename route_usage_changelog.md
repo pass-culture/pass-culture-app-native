@@ -1,20 +1,20 @@
-# v1.393.0
+# v1.394.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
-- /native/v1/me/reminders/{reminder_id}
+Pathname not found for deleteNativeV1MeRemindersreminderId
 - /native/v1/account/suspend/token_validation/{token}
-- /native/v1/account/suspension_date
-- /native/v1/account/suspension_status
+Pathname not found for getNativeV1AccountSuspensionDate
+Pathname not found for getNativeV1AccountSuspensionStatus
 - /native/v1/artists/{artist_id}
-- /native/v1/banner
+Pathname not found for getNativeV1Banner
 - /native/v1/countries
-Pathname not found for getNativeV1CulturalSurveyQuestions
+- /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
 - /native/v1/me
 - /native/v1/me/favorites
 - /native/v1/me/reminders
-- /native/v1/oauth/state
+Pathname not found for getNativeV1OauthState
 - /native/v1/offer/{offer_id}/chronicles
 - /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
@@ -22,7 +22,6 @@ Pathname not found for getNativeV1CulturalSurveyQuestions
 - /native/v1/settings
 - /native/v1/subcategories/v2
 - /native/v1/subscription/activity_types
-- /native/v1/subscription/profile
 - /native/v1/venue/{venue_id}/advices
 - /native/v2/bookings
 - /native/v2/bookings/{booking_id}
@@ -32,6 +31,7 @@ Pathname not found for getNativeV1CulturalSurveyQuestions
 - /native/v2/subscription/stepper
 - /native/v2/venue/{venue_id}
 - /native/v3/offer/{offer_id}
+- /native/v3/subscription/stepper
 - /native/v1/profile
 - /native/v1/account
 - /native/v1/account/anonymize
@@ -80,9 +80,9 @@ Pathname not found for getNativeV1CulturalSurveyQuestions
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offer/{offer_id}
 - /native/v1/reaction/available
+- /native/v1/subscription/profile
 - /native/v1/venue/{venue_id}
 - /native/v2/offer/{offer_id}
-- /native/v3/subscription/stepper
 - /native/v1/profile
 - /native/v1/reaction
 - /native/v1/refresh_access_token

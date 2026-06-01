@@ -18,6 +18,7 @@ import 'react-native-gesture-handler/jestSetup'
   }
 } */
 jest.mock('libs/analytics/provider')
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
@@ -38,6 +39,15 @@ jest.mock('react-native-orientation-locker')
 jest.mock('shared/accessibility/helpers/zoomHelpers', () => ({
   useMobileFontScale: () => ({ mobileFontScale: 1 }),
   useMobileFontScaleToDisplay: ({ default: at100PercentZoom }) => at100PercentZoom,
+  useNumberOfLine: (defaultValue: number) => defaultValue,
+  useNumberOfLinesForZoom: (defaultValue: number) => defaultValue,
+  useNumberOfLinesForZoomTitleSubtitle: (
+    titleDefaultValue: number,
+    subtitleDefaultValue: number
+  ) => ({
+    title: titleDefaultValue,
+    subtitle: subtitleDefaultValue,
+  }),
   useWebZoomToDisplay: ({ default: at100PercentZoom }) => at100PercentZoom,
   useZoomInPercent: () => 100,
 }))
@@ -53,3 +63,13 @@ jest.spyOn(Keyboard, 'addListener').mockImplementation(
       remove: jest.fn(),
     }) as unknown as EmitterSubscription
 )
+
+// Ensure document and window have dispatchEvent methods
+// This is needed for Node 25+ compatibility where these may not be properly initialized
+if (typeof document !== 'undefined' && !document.dispatchEvent) {
+  document.dispatchEvent = jest.fn()
+}
+
+if (typeof window !== 'undefined' && !window.dispatchEvent) {
+  window.dispatchEvent = jest.fn()
+}

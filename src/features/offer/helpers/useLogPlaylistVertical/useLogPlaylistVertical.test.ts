@@ -79,6 +79,50 @@ describe('useLogPlaylist', () => {
     })
   })
 
+  it('should logBooksSameCategoryPlaylistVerticalScroll correctly', () => {
+    const { result } = renderHook(() =>
+      useLogPlaylist({
+        offerId: 1,
+        nbSameCategorySimilarOffers: 0,
+        nbBooksSameCategorySimilarOffers: 5,
+        nbOtherCategoriesSimilarOffers: 0,
+        apiRecoParamsBooksSameCategory: apiRecoParams,
+        fromOfferId: 2,
+      })
+    )
+
+    result.current.logBooksSameCategoryPlaylistVerticalScroll()
+
+    expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+      ...apiRecoParams,
+      fromOfferId: 2,
+      offerId: 1,
+      playlistType: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
+      nbResults: 5,
+    })
+  })
+
+  it('should log only once logBooksSameCategoryPlaylistVerticalScroll', () => {
+    const { result } = renderHook(() =>
+      useLogPlaylist({
+        offerId: 1,
+        nbSameCategorySimilarOffers: 0,
+        nbBooksSameCategorySimilarOffers: 5,
+        nbOtherCategoriesSimilarOffers: 0,
+        apiRecoParamsBooksSameCategory: apiRecoParams,
+        fromOfferId: 2,
+      })
+    )
+
+    result.current.logBooksSameCategoryPlaylistVerticalScroll()
+
+    expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+
+    result.current.logBooksSameCategoryPlaylistVerticalScroll()
+
+    expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+  })
+
   it('should log only once logOtherCategoriesPlaylistVerticalScroll', () => {
     const { result } = renderHook(() =>
       useLogPlaylist({

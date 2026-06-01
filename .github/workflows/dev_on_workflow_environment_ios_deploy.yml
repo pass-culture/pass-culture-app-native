@@ -20,6 +20,8 @@ jobs:
     name: 'Install runtime environment and dependencies iOS deploy'
     runs-on: macos-26
     timeout-minutes: 60
+    environment:
+      name: app-native-${{ inputs.ENV }}
     steps:
       - name: Is deployment targeting ehp or production
         id: cloudenv
@@ -31,7 +33,11 @@ jobs:
           else
             echo "cloud_env=prod" >> "$GITHUB_OUTPUT"
           fi
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - name: Set up Cloud SDK to get gsutils
+        uses: google-github-actions/setup-gcloud@v3
+        with:
+          version: '>= 416.0.0'
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -55,8 +61,8 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload-identity-provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service-account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Yarn install
         run: yarn install
       - uses: ruby/setup-ruby@v1
@@ -73,10 +79,11 @@ jobs:
       - name: Install cocoapods
         run: cd ios/ && bundle exec pod install
       - name: Authentification to Google
+        id: openid-auth
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get Secret from Secret Manager
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v3'
@@ -90,16 +97,6 @@ jobs:
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
-      - name: Get Secret for App Distribution from Secret Manager (EHP only)
-        id: 'app_distribution_secret'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
-        with:
-          secrets: |-
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: ${{ inputs.ENV != 'production' }}
-      - name: Export firebase secret to file
-        run: |
-          echo '${{steps.app_distribution_secret.outputs.FIREBASE_TOKEN}}' > app_distribution_credentials.json
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -111,13 +108,20 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
-      - name: Deploy hard ios for ${{ inputs.ENV }}
+
+      - name: Create service account key
+        id: create-sa-key
+        env:
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
         run: |
-          if [ "$ENV" != "production" ]; then
-            bundle exec fastlane ios deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env "$ENV" --verbose
-          else
-            bundle exec fastlane ios deploy --env "$ENV" --verbose
-          fi
+          gcloud iam service-accounts keys create temporary-sa-key.json \
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}"
+          SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
+          echo "SA_KEY_ID=${SA_KEY_ID}" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy hard ios for ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
@@ -126,8 +130,28 @@ jobs:
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
           MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
-          GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
+          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
           ENV: ${{ inputs.ENV }}
+        run: |
+          if [ "${ENV}" != "production" ]; then
+            bundle exec fastlane ios deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env "${ENV}" --verbose
+          else
+            bundle exec fastlane ios deploy --env "${ENV}" --verbose
+          fi
+
+      - name: Delete service account key
+        if: always()
+        env:
+          KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
+          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
+        run: |
+          gcloud iam service-accounts keys delete "${KEY_ID}" \
+            --iam-account="${SERVICE_ACCOUNT}" \
+            --project="${PROJECT_ID}" \
+            --quiet
+          rm -f temporary-sa-key.json
+
       - name: Create Sentry sourcemaps
         env:
           ENV: ${{ inputs.ENV }}

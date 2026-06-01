@@ -13,7 +13,6 @@ import {
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { useFetchHomepageByIdQuery } from 'features/home/queries/useGetHomepageQuery'
 import { Color, Homepage, ThematicHeaderType } from 'features/home/types'
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -99,6 +98,11 @@ const modules = [formattedVenuesModule]
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
+
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
@@ -111,9 +115,9 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   push: jest.fn(),
 })
 
-const user = userEvent.setup()
-
 jest.useFakeTimers()
+
+const user = userEvent.setup()
 
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
@@ -246,7 +250,7 @@ describe('ThematicHome', () => {
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
-    it('should navigate to home when pressing back button and url has not chronicles from parameter', async () => {
+    it('should execute go back when pressing back button and url has deeplink from parameter', async () => {
       useRoute.mockReturnValueOnce({
         params: {
           entryId: 'fakeEntryId',
@@ -257,10 +261,17 @@ describe('ThematicHome', () => {
 
       await user.press(await screen.findByLabelText('Revenir en arrière'))
 
-      expect(mockNavigate).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+      expect(mockNavigate).toHaveBeenCalledTimes(1)
+    })
+
+    it('should execute go back when pressing back button without from parameter', async () => {
+      useRoute.mockReturnValueOnce({ params: { entryId: 'fakeEntryId' } })
+
+      renderThematicHome()
+
+      await user.press(await screen.findByLabelText('Revenir en arrière'))
+
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })
 

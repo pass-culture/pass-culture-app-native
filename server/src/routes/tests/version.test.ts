@@ -12,7 +12,7 @@ const version = JSON.parse(
 const mockSend = jest.fn()
 const req = {} as Request
 const res = {
-  send: mockSend
+  send: mockSend,
 } as Partial<Response>
 
 describe('version', () => {
@@ -26,9 +26,9 @@ describe('version', () => {
       server.close()
     })
 
-    it("should return version", async () => {
+    it('should return version', async () => {
       await getVersion(req, res as Response)
-      expect(mockSend).toBeCalledWith(version)
+      expect(mockSend).toHaveBeenCalledWith(version)
     })
   })
 })

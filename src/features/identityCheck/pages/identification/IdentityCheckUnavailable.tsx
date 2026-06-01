@@ -19,7 +19,7 @@ export function IdentityCheckUnavailable() {
   const { visible, showModal, hideModal } = useModal(false)
 
   const showDMSModal = () => {
-    analytics.logStartDMSTransmission()
+    void analytics.logStartDMSTransmission()
     showModal()
   }
 

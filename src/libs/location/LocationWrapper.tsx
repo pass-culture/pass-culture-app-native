@@ -1,7 +1,6 @@
-import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { analytics } from 'libs/analytics/provider'
 import { useAppStateChange } from 'libs/appState'
 import { LocationMode, ILocationContext } from 'libs/location/types'
 import {
@@ -19,7 +18,6 @@ import {
   useUserLocation,
 } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
-import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
 
@@ -28,7 +26,6 @@ const LocationContext = React.createContext<ILocationContext>({
   hasGeolocPosition: false,
   place: null,
   setPlace: () => {},
-  onModalHideRef: { current: undefined },
   geolocPosition: undefined,
   geolocPositionError: null,
   permissionState: null,
@@ -71,8 +68,6 @@ export const LocationWrapper = memo(function LocationWrapper({
     hidePermissionModal: hideGeolocPermissionModal,
   } = locationActions
 
-  const onModalHideRef = useRef<() => void>(() => null)
-
   // app state
   const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const place = usePlace()
@@ -96,21 +91,6 @@ export const LocationWrapper = memo(function LocationWrapper({
 
   useAppStateChange(contextualCheckPermission, undefined, [])
 
-  useEffect(() => {
-    switch (true) {
-      case !!place:
-        void storage.saveString('location_type', 'UserSpecificLocation')
-        break
-      case hasGeolocPosition:
-        void storage.saveString('location_type', 'UserGeolocation')
-        break
-      default:
-        void storage.clear('location_type')
-        break
-    }
-    analytics.setEventLocationType()
-  }, [hasGeolocPosition, place])
-
   const userLocation = useUserLocation()
 
   const value = useMemo(
@@ -119,7 +99,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       geolocPositionError,
       permissionState,
       hasGeolocPosition,
-      onModalHideRef,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,

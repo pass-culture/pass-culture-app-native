@@ -12,8 +12,7 @@ const culturalSurveyCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'CulturalSurvey 🎨',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationCulturalSurvey' },
+    screen: 'CheatcodesNavigationCulturalSurvey',
   },
   subscreens: [
     {

@@ -38,6 +38,7 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
@@ -140,7 +141,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
     apiRecoParamsOtherCategories,
-  } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
+    booksSameCategorySimilarOffers,
+    apiRecoParamsBooksSameCategory,
+  } = useOfferPlaylist({
+    offer,
+    offerCategory: subcategory.categoryId,
+    offerSearchGroup: subcategory.searchGroupName,
+    searchGroupList,
+  })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
   const [isBottomReached, setIsBottomReached] = useState(false)
@@ -365,6 +373,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       type: VerticalPlaylist.SimilarOffers,
       module: {
         offer,
+        offerCategory: subcategory.categoryId,
         offerSearchGroup: subcategory.searchGroupName,
         searchGroupList,
         type,
@@ -372,15 +381,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const onBeforeNavigate = (type) => {
-    const moduleName =
-      type === PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-        ? 'Dans la même catégorie'
-        : 'Ça peut aussi te plaire'
+  const onBeforeNavigate = (type: PlaylistType) => {
+    const moduleName = OFFER_SIMILAR_PLAYLIST_TITLES[type]
+
+    if (!moduleName) return
 
     void analytics.logClickSeeAll({
       type: 'offers',
-      moduleName: moduleName,
+      moduleName,
       moduleId: offer.id.toString(),
       from: 'offer',
     })
@@ -506,6 +514,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsSameCategory={apiRecoParamsSameCategory}
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+            booksSameCategorySimilarOffers={booksSameCategorySimilarOffers}
+            apiRecoParamsBooksSameCategory={apiRecoParamsBooksSameCategory}
             onViewableItemsChanged={handleViewableItemsChanged}
             seeAllButton={{
               navigateToVerticalPlaylist,

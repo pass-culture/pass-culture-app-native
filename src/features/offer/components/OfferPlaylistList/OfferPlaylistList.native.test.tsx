@@ -42,7 +42,7 @@ describe('<OfferPlaylistList />', () => {
 
         await act(() => {})
 
-        await expect(screen.queryByLabelText('Dans la même catégorie')).not.toBeOnTheScreen()
+        await expect(screen.queryByLabelText('Les fans aiment aussi')).not.toBeOnTheScreen()
       })
 
       it('should display same category playlist when offer has it', async () => {
@@ -51,9 +51,9 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
-        await screen.findByLabelText('Dans la même catégorie')
+        await screen.findByLabelText('Les fans aiment aussi')
 
-        expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Les fans aiment aussi')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {
@@ -70,6 +70,19 @@ describe('<OfferPlaylistList />', () => {
           id: 102280,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         })
+      })
+    })
+
+    describe('Books same category playlist', () => {
+      it('should display books same category playlist when offer has it', async () => {
+        renderOfferPlaylistList({
+          ...offerPlaylistListProps,
+          booksSameCategorySimilarOffers: mockSearchHits,
+        })
+
+        await screen.findByLabelText('Dans la même catégorie')
+
+        expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
       })
     })
 
@@ -116,6 +129,7 @@ const renderOfferPlaylistList = ({
   offer = mockOffer,
   sameCategorySimilarOffers,
   otherCategoriesSimilarOffers,
+  booksSameCategorySimilarOffers,
 }: OfferPlaylistListProps) =>
   render(
     reactQueryProviderHOC(
@@ -123,6 +137,7 @@ const renderOfferPlaylistList = ({
         offer={offer}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+        booksSameCategorySimilarOffers={booksSameCategorySimilarOffers}
         onViewableItemsChanged={mockPlaylistViewableItemsChanged}
         seeAllButton={{ navigateToVerticalPlaylist: jest.fn(), onBeforeNavigate: jest.fn() }}
       />

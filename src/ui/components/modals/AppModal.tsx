@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
   modal: { margin: 'auto', justifyContent: isWeb ? 'center' : 'flex-end' },
 })
 
-const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -197,11 +197,17 @@ export const AppModal: FunctionComponent<Props> = ({
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
+  const isFullscreenAtZoom = useMobileFontScaleToDisplay({
+    default: false,
+    at200PercentZoom: !maxHeight,
+  })
+  const effectiveIsFullscreen = isFullscreen || isFullscreenAtZoom
+
   let maxContainerHeight = maxHeight
   let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
 
   // no fullscreen in desktop view
-  if (isFullscreen || isUpToStatusBar) {
+  if (effectiveIsFullscreen || isUpToStatusBar) {
     maxContainerHeight = windowHeight
     modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
   }
@@ -233,6 +239,11 @@ export const AppModal: FunctionComponent<Props> = ({
     setFullscreenScrollViewRef,
   ])
 
+  const numberOfLines = useMobileFontScaleToDisplay({
+    default: titleNumberOfLines,
+    at200PercentZoom: undefined,
+  })
+
   return (
     <StyledModal
       accessibilityModal
@@ -254,7 +265,7 @@ export const AppModal: FunctionComponent<Props> = ({
       propagateSwipe={propagateSwipe}>
       <KeyboardAvoidingViewWrapper>
         <ModalContainer
-          height={maxHeight ? undefined : modalContainerHeight}
+          height={modalContainerHeight}
           testID="modalContainer"
           maxHeight={maxContainerHeight}
           desktopConstraints={containerDesktopConstraints}
@@ -271,14 +282,14 @@ export const AppModal: FunctionComponent<Props> = ({
           ) : (
             <ModalHeader
               title={title}
-              numberOfLines={titleNumberOfLines}
+              numberOfLines={numberOfLines}
               onLayout={updateHeaderHeight}
               titleID={titleId}
               modalSpacing={modalSpacing}
               {...iconProps}
             />
           )}
-          {isFullscreen || maxHeight || isUpToStatusBar ? (
+          {effectiveIsFullscreen || maxHeight || isUpToStatusBar ? (
             fullscreenModalBody
           ) : (
             <React.Fragment>
@@ -335,7 +346,7 @@ const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ the
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
-  maxHeight: '100%',
+  height: '100%',
   paddingBottom,
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))
@@ -358,6 +369,7 @@ const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {
 export type ModalContainerProps = {
   theme: DefaultTheme
   height?: number
+  fullscreen?: boolean
   maxHeight?: number
   noPadding?: boolean
   noPaddingBottom?: boolean
@@ -370,6 +382,7 @@ export type ModalContainerProps = {
 const ModalContainer = styled.View<ModalContainerProps>(
   ({
     height,
+    fullscreen,
     desktopConstraints,
     maxHeight,
     noPadding,
@@ -379,17 +392,20 @@ const ModalContainer = styled.View<ModalContainerProps>(
     rightNootch,
     leftNootch,
   }) => {
-    return appModalContainerStyle({
-      theme,
-      height,
-      desktopConstraints,
-      maxHeight: maxHeight ?? MAX_HEIGHT,
-      noPadding,
-      noPaddingBottom,
-      isLandscape,
-      rightNootch,
-      leftNootch,
-    })
+    return {
+      ...appModalContainerStyle({
+        theme,
+        height,
+        desktopConstraints,
+        maxHeight,
+        noPadding,
+        noPaddingBottom,
+        isLandscape,
+        rightNootch,
+        leftNootch,
+      }),
+      ...(fullscreen ? { height: '100%', maxHeight: '100%' } : {}),
+    }
   }
 )
 

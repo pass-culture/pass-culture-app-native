@@ -1,6 +1,6 @@
 import { onlineManager } from '@tanstack/react-query'
 
-import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
+import { SearchGroupNameEnumv2, SimilarOffersRequestQuery, SimilarOffersResponse } from 'api/gen'
 import { getCategories, useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'
 import { env } from 'libs/environment/fixtures'
 import { EmptyResponse } from 'libs/fetch'
@@ -140,6 +140,30 @@ describe('useSimilarOffersQuery', () => {
       })
     })
 
+    it('should call similar offers API with retrieval model when provided', async () => {
+      renderHook(
+        () =>
+          useSimilarOffersQuery({
+            offerId: mockOfferId,
+            shouldFetch: true,
+            categoryIncluded: SearchGroupNameEnumv2.LIVRES,
+            retrievalModel: SimilarOffersRequestQuery.RetrievalModelEnum.Graph,
+            position: null,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
+          1,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?search_group_names=LIVRES&retrievalModel=graph`,
+          expect.objectContaining({ method: 'GET' })
+        )
+      })
+    })
+
     it('should not call similar offers API when offer id provided, user share his position and shouldFetch is false', () => {
       renderHook(
         () =>
@@ -208,6 +232,7 @@ describe('useSimilarOffersQuery', () => {
             latitude: undefined,
             longitude: undefined,
             offerId: 1,
+            retrievalModel: undefined,
             statusCode: 400,
             errorMessage:
               'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?search_group_names=CINEMA, code: 400',

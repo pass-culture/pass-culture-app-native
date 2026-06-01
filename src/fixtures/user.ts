@@ -195,7 +195,7 @@ export const eligibleUserFromAPI: UserProfileResponse = {
 export const eligibleUserV2: UserProfile = {
   ...baseEligibleUser,
   statusType: UserStatusType.ELIGIBLE,
-  creditType: UserCreditType.CREDIT_V3_16,
+  creditType: UserCreditType.CREDIT_V3_FREE,
   eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
 }
 

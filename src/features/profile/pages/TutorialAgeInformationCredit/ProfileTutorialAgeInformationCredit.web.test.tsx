@@ -1,22 +1,40 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
 
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { checkAccessibilityFor, render, act } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<ProfileTutorialAgeInformationCredit/>', () => {
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
-      setFeatureFlags([])
-      const { container } = render(<ProfileTutorialAgeInformationCredit />)
+    describe('with bonification disabled', () => {
+      it('should not have basic accessibility issues', async () => {
+        setFeatureFlags([])
+        const { container } = render(<ProfileTutorialAgeInformationCredit />)
 
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
+        await act(async () => {
+          const results = await checkAccessibilityFor(container)
 
-        expect(results).toHaveNoViolations()
+          expect(results).toHaveNoViolations()
+        })
+      })
+    })
+
+    describe('with bonification enabled', () => {
+      it('should not have basic accessibility issues', async () => {
+        setFeatureFlags([
+          RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
+          RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION,
+        ])
+        const { container } = render(<ProfileTutorialAgeInformationCredit />)
+
+        await act(async () => {
+          const results = await checkAccessibilityFor(container)
+
+          expect(results).toHaveNoViolations()
+        })
       })
     })
   })

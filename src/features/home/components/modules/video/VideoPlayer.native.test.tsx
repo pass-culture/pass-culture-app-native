@@ -26,6 +26,7 @@ const mockRef = {
     getAvailablePlaybackRates: jest.fn(),
     seekTo: jest.fn(),
     unload: jest.fn(),
+    pauseVideo: jest.fn(),
   },
 }
 
@@ -122,6 +123,9 @@ function renderVideoPlayer() {
         homeEntryId="xyz"
         playerRef={mockRef}
         onPressSeeOffer={jest.fn()}
+        onPause={jest.fn()}
+        onPlay={jest.fn()}
+        isPlaying
       />
     )
   )

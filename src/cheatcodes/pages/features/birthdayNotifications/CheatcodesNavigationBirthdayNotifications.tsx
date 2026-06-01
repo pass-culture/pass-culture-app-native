@@ -9,8 +9,7 @@ const birthdayNotificationsCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
   title: 'BirthdayNotifications 🎂',
   navigationTarget: {
-    screen: 'CheatcodesStackNavigator',
-    params: { screen: 'CheatcodesNavigationBirthdayNotifications' },
+    screen: 'CheatcodesNavigationBirthdayNotifications',
   },
   subscreens: [
     {

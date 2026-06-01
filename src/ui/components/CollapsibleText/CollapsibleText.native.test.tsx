@@ -7,6 +7,9 @@ import { CollapsibleText } from './CollapsibleText'
 
 const LONG_TEXT = 'LONG Lorem ipsum dolor sit amet.'.repeat(30)
 const SHORT_TEXT = 'SHORT Lorem ipsum dolor sit amet.'
+const CUT_INDEX = LONG_TEXT.slice(0, 100).lastIndexOf(' ')
+const FIRST_PART = LONG_TEXT.slice(0, CUT_INDEX)
+const SECOND_PART = LONG_TEXT.slice(CUT_INDEX).trim()
 
 const user = userEvent.setup()
 
@@ -44,8 +47,9 @@ describe('CollapsibleText', () => {
     const button = screen.getByText('Voir plus')
     await user.press(button)
 
-    expect(screen.getByText(LONG_TEXT)).toBeOnTheScreen()
     expect(screen.getByText('Voir moins')).toBeOnTheScreen()
+    expect(screen.getByText(FIRST_PART)).toBeOnTheScreen()
+    expect(screen.getByLabelText(SECOND_PART)).toBeOnTheScreen()
   })
 
   it('should collapse text again when clicking on "Voir moins"', async () => {

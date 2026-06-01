@@ -2,12 +2,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { MOBILE_HEADER_HEIGHT } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
 import { DeeplinksGeneratorForm } from 'features/internal/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/internal/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
+import { getSpacing } from 'ui/theme'
 
 const linksInitialState: Array<string> = []
 
@@ -45,6 +48,11 @@ export const DeeplinksGenerator = () => {
   const rehydratedHistory = useCallback((history: string[]) => {
     setLinks(history)
   }, [])
+
+  const Container = useMobileFontScaleToDisplay({
+    default: ContainerDefault,
+    at200PercentZoom: ContainerZoom,
+  })
 
   return (
     <Page>
@@ -91,9 +99,15 @@ const Right = styled.View({
   flex: 1,
 })
 
-const Container = styled.View(({ theme }) => ({
+const ContainerDefault = styled.View(({ theme }) => ({
   flex: 1,
   marginTop: theme.designSystem.size.spacing.xl,
+  paddingTop: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.l,
+}))
+const ContainerZoom = styled.ScrollView(({ theme }) => ({
+  flex: 1,
+  marginTop: getSpacing(MOBILE_HEADER_HEIGHT),
   paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.l,
 }))

@@ -13,15 +13,17 @@ permissions:
 jobs:
   deploy-new-testing-tag:
     runs-on: ubuntu-24.04
+    environment:
+      name: app-native-testing
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Enable Corepack (Yarn 3.x)
+      - name: Enable Corepack (Yarn 4.x)
         run: |
           corepack enable
-          corepack prepare yarn@3.6.4 --activate
+          corepack prepare yarn@4.13.0 --activate
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -37,8 +39,8 @@ jobs:
       - name: 'Authentification to Google'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Authenticate through github app ghactionci
         uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: github-app-token

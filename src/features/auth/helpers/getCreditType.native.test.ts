@@ -28,19 +28,11 @@ describe('getCreditType', () => {
     mockedIsDepositExpired.mockReturnValue(false)
   })
 
-  describe('CREDIT UNKNOWN', () => {
-    it('should return CREDIT_UNKNOWN by default', () => {
+  describe('NO_CREDIT', () => {
+    it('should return NO_CREDIT by default', () => {
       const result = getCreditType(buildUser())
 
-      expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
-    })
-
-    it('should log fallback when credit type is unknown', () => {
-      const result = getCreditType(buildUser())
-
-      expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
-
-      expect(logUserCreditTypeFallback).toHaveBeenCalledTimes(1)
+      expect(result).toBe(UserCreditType.NO_CREDIT)
     })
   })
 
@@ -74,18 +66,18 @@ describe('getCreditType', () => {
   })
 
   describe('CREDIT V3', () => {
-    it('should return CREDIT_V3_15', () => {
+    it('should return CREDIT_V3_FREE when user is fifteen with free deposit', () => {
       mockedGetAge.mockReturnValueOnce(15)
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_FREE }))
 
-      expect(result).toBe(UserCreditType.CREDIT_V3_15)
+      expect(result).toBe(UserCreditType.CREDIT_V3_FREE)
     })
 
-    it('should return CREDIT_V3_16', () => {
+    it('should return CREDIT_V3_FREE when user is sixteen with free deposit', () => {
       mockedGetAge.mockReturnValueOnce(16)
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_FREE }))
 
-      expect(result).toBe(UserCreditType.CREDIT_V3_16)
+      expect(result).toBe(UserCreditType.CREDIT_V3_FREE)
     })
 
     it('should return CREDIT_V3_17', () => {
@@ -111,6 +103,17 @@ describe('getCreditType', () => {
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_18 }))
 
       expect(result).toBe(UserCreditType.CREDIT_EXPIRED)
+    })
+  })
+
+  describe('CREDIT UNKNOWN', () => {
+    it('should log fallback when credit type is unknown', () => {
+      mockedGetAge.mockReturnValueOnce(14)
+      const result = getCreditType(buildUser({ depositType: DepositType.GRANT_15_17 }))
+
+      expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
+
+      expect(logUserCreditTypeFallback).toHaveBeenCalledTimes(1)
     })
   })
 })

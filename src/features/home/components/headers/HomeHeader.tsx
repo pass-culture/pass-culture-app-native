@@ -39,8 +39,7 @@ export const HomeHeader: FunctionComponent = function () {
         !user ||
         !isCurrentOrFormerBeneficiary(user) ||
         user.eligibility === EligibilityType.free ||
-        user?.creditType === UserCreditType.CREDIT_V3_15 ||
-        user?.creditType === UserCreditType.CREDIT_V3_16 ||
+        user?.creditType === UserCreditType.CREDIT_V3_FREE ||
         (!isCurrentBeneficiary(user) && user.isEligibleForBeneficiaryUpgrade)
 
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
