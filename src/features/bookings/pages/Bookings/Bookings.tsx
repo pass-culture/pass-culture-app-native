@@ -123,7 +123,7 @@ export const Bookings = () => {
 
   return (
     <Container>
-      <PageHeader title="Mes réservations" numberOfLines={numberOfLines} />
+      <PageHeader title="Mes réservations" numberOfLines={numberOfLines} withMargins />
       <TabLayout
         tabPanels={tabPanels}
         defaultTab={params?.activeTab ?? BookingsTab.CURRENT}

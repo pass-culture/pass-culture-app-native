@@ -7,7 +7,6 @@ import {
 
 describe('getBannerActivationType', () => {
   const featureFlagsDefault = {
-    enableProfileV2: false,
     disableActivation: false,
   }
 

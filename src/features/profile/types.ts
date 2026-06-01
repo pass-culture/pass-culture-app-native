@@ -8,7 +8,6 @@ export type NotificationsSettingsState = {
 
 export type ProfileFeatureFlagsProps = {
   featureFlags: {
-    enableProfileV2: boolean
     disableActivation: boolean
   }
 }

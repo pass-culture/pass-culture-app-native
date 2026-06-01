@@ -17,7 +17,6 @@ const mockUseFeatureFlagOptionsQuery = useFeatureFlagOptionsQuery as jest.Mock
 
 const featureFlags = {
   disableActivation: false,
-  enableProfileV2: true,
 }
 
 describe('LoggedInEligibleHeader', () => {

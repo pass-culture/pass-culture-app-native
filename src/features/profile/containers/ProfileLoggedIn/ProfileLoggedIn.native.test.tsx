@@ -25,10 +25,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-setFeatureFlags([
-  RemoteStoreFeatureFlags.ENABLE_PROFILE_V2,
-  RemoteStoreFeatureFlags.DISABLE_ACTIVATION,
-])
+setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
 
 describe('<ProfileLoggedIn />', () => {
   it('should match snapshot', async () => {
@@ -52,7 +49,6 @@ const renderProfileLoggedIn = async ({ user }: { user: typeof beneficiaryUser })
     reactQueryProviderHOC(
       <ProfileLoggedIn
         featureFlags={{
-          enableProfileV2: true,
           disableActivation: false,
         }}
         user={user}

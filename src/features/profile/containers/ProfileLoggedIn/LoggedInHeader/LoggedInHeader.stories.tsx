@@ -26,7 +26,6 @@ export default meta
 const commonProps = {
   featureFlags: {
     disableActivation: false,
-    enableProfileV2: true,
   },
 }
 
