@@ -142,7 +142,7 @@ describe('<ProfileV1 />', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderProfile()
 
-    expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+    expect(screen.getByText('Oups, pas de réseau !')).toBeOnTheScreen()
   })
 
   describe('user settings section', () => {
