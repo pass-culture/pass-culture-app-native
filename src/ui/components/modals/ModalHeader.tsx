@@ -21,6 +21,7 @@ type ModalHeaderProps = {
   numberOfLines?: number
   modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
+  withStatusBarMargin?: boolean
 } & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
@@ -35,6 +36,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   numberOfLines = 2,
   modalSpacing,
   onLayout,
+  withStatusBarMargin,
 }) => {
   const RightIcon =
     !!rightIcon &&
@@ -42,7 +44,8 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       testID: 'rightIcon',
     }))``
   const { top } = useSafeAreaInsets()
-  const marginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
+  const statusBarMarginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
+  const marginTop = withStatusBarMargin ? statusBarMarginTop : 0
 
   const titleNumberOfLines = useNumberOfLine(numberOfLines)
 

@@ -63,7 +63,7 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
   },
 ]
 
-export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) {
+export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) => {
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
   const selectedStock = useBookingStock()
@@ -198,7 +198,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
         Icon={Error}
       />
       <Container>
-        <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>{' '}
+        <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
       </Container>
       <BookingInformationsContainer>
         <BookingInformations />

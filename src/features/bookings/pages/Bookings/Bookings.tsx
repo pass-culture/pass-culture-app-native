@@ -1,5 +1,6 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
+import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
@@ -27,7 +28,6 @@ import {
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 const checkBookingPage = async () => {
   const hasSeenBookingPage = await storage.readObject<boolean>('has_seen_booking_page')
@@ -116,8 +116,13 @@ export const Bookings = () => {
   const shouldDisplayPastille = numberOfReactableBookings > 0
   const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
+  const Container = useMobileFontScaleToDisplay({
+    default: DefaultStepContainer,
+    at200PercentZoom: ZoomContainer,
+  })
+
   return (
-    <Container gap={6}>
+    <Container>
       <PageHeader title="Mes réservations" numberOfLines={numberOfLines} />
       <TabLayout
         tabPanels={tabPanels}
@@ -140,7 +145,14 @@ export const Bookings = () => {
   )
 }
 
-const Container = styled(ViewGap)(({ theme }) => ({
+const ZoomContainer = styled(ScrollView)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   flex: 1,
+  gap: 6,
+}))
+
+const DefaultStepContainer = styled.View(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.default,
+  flex: 1,
+  gap: 6,
 }))
