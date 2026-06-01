@@ -51,13 +51,13 @@ jobs:
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
 
       - name: Setup java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '17'
           distribution: 'temurin'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
         with:
           cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
 
