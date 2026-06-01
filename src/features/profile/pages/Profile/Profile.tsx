@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { ProfileV1 } from 'features/profile/pages/Profile/ProfileV1/ProfileV1'
-import { ProfileV2 } from 'features/profile/pages/Profile/ProfileV2/ProfileV2'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { ProfileOffline } from 'features/profile/containers/ProfileOffline/ProfileOffline'
+import { ProfileOnline } from 'features/profile/containers/ProfileOnline/ProfileOnline'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 
 export const Profile = () => {
-  const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
-  return enableProfileV2 ? <ProfileV2 /> : <ProfileV1 />
+  const { isConnected } = useNetInfoContext()
+  return isConnected ? <ProfileOnline /> : <ProfileOffline />
 }

@@ -26,16 +26,7 @@ describe('<ProfileLoggedOut />', () => {
   )
 
   it('should match snapshot', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ProfileLoggedOut
-          featureFlags={{
-            enableProfileV2: true,
-            disableActivation: false,
-          }}
-        />
-      )
-    )
+    render(reactQueryProviderHOC(<ProfileLoggedOut />))
 
     await screen.findByTestId('profile-logged-out')
 

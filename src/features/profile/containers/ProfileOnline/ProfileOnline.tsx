@@ -32,7 +32,6 @@ export const ProfileOnline = () => {
 
   const featureFlags = {
     disableActivation: useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION),
-    enableProfileV2: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2),
   }
 
   const logProfileScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
@@ -49,7 +48,7 @@ export const ProfileOnline = () => {
           {isUserLoggedIn ? (
             <ProfileLoggedIn featureFlags={featureFlags} user={user} />
           ) : (
-            <ProfileLoggedOut featureFlags={featureFlags} user={user} />
+            <ProfileLoggedOut user={user} />
           )}
         </Main>
         <Footer />
