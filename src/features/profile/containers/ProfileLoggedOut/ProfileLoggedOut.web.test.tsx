@@ -27,16 +27,7 @@ describe('<ProfileLoggedOut />', () => {
 })
 
 const renderProfileLoggedOut = async () => {
-  const renderResult = render(
-    reactQueryProviderHOC(
-      <ProfileLoggedOut
-        featureFlags={{
-          enableProfileV2: true,
-          disableActivation: false,
-        }}
-      />
-    )
-  )
+  const renderResult = render(reactQueryProviderHOC(<ProfileLoggedOut />))
   await screen.findByTestId('profile-logged-out')
   return renderResult
 }

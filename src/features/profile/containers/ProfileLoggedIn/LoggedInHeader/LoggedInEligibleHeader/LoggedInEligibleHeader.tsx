@@ -44,7 +44,7 @@ export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }
     case UserEligibilityType.ELIGIBLE_UNKNOWN:
     default:
       logHeaderFallback({ user, headerType: UserStatusType.ELIGIBLE })
-      header = <PageHeader title="Mon profil" featureFlags={featureFlags} numberOfLines={3} />
+      header = <PageHeader title="Mon profil" numberOfLines={3} />
   }
 
   return <View testID="logged-in-eligible-header">{header}</View>

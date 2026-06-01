@@ -21,7 +21,7 @@ export const EligibleHeader = ({ featureFlags, user, subscriptionInfos }: Props)
   return (
     <ViewGap gap={6} testID="eligible-header">
       <ViewGap gap={2}>
-        <PageHeader title={headerTitle} featureFlags={featureFlags} numberOfLines={3} />
+        <PageHeader title={headerTitle} numberOfLines={3} />
         <EligibleMessage
           eligibilityEndDatetime={eligibilityEndDatetime}
           updatedAt={subscriptionInfos?.subscriptionMessage?.updatedAt}

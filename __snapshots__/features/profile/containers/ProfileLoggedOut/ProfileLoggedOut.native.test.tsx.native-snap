@@ -5,13 +5,12 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
   testID="profile-logged-out"
 >
   <View
-    enableProfileV2={true}
     style={
       {
         "flexDirection": "row",
         "justifyContent": "space-between",
-        "marginHorizontal": 0,
-        "marginTop": 0,
+        "marginHorizontal": 24,
+        "marginTop": 24,
         "zIndex": 1,
       }
     }
@@ -48,7 +47,6 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
     }
   />
   <View
-    enableProfileV2={true}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -59,7 +57,6 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         "borderTopRightRadius": 8,
         "borderWidth": 1,
         "marginBottom": 8,
-        "marginHorizontal": 0,
         "paddingBottom": 24,
         "paddingLeft": 24,
         "paddingRight": 24,

@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
-import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { analytics } from 'libs/analytics/provider'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -15,11 +14,11 @@ const onBeforeNavigate = () => {
   void analytics.logSignUpClicked({ from: 'profile' })
 }
 
-export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
+export const LoggedOutHeader = () => {
   const { isDesktopViewport, designSystem } = useTheme()
 
   return (
-    <HeaderWithGreyContainer title="Mon profil" featureFlags={featureFlags}>
+    <HeaderWithGreyContainer title="Mon profil">
       <Typo.Body>
         Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18
         ans&nbsp;?

@@ -31,13 +31,12 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
         }
       >
         <View
-          enableProfileV2={true}
           style={
             {
               "flexDirection": "row",
               "justifyContent": "space-between",
-              "marginHorizontal": 0,
-              "marginTop": 0,
+              "marginHorizontal": 24,
+              "marginTop": 24,
               "zIndex": 1,
             }
           }
