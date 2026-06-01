@@ -122,7 +122,7 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'AB Tests 🧪',
       navigationTarget: {
-        screen: 'CheatcodesABTest',
+        screen: 'CheatcodesScreenABTest',
       },
       subscreens: [],
     },

@@ -30,7 +30,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenRemoteBanners: undefined
   CheatcodesScreenTrustedDeviceInfos: undefined
   // Others
-  CheatcodesABTest: undefined
+  CheatcodesScreenABTest: undefined
   CheatcodeScreenLoadingPage: undefined
   CheatcodesNavigationAccountManagement: undefined
   CheatcodesNavigationErrors: undefined
