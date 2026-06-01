@@ -68,14 +68,14 @@ describe('OnboardingAgeInformation', () => {
   })
 
   it.each(AGES)(
-    'should navigate to SignupForm when pressing "Créer un compte" for %s-year-old',
+    'should navigate to SignupMethods when pressing "Créer un compte" for %s-year-old',
     async (age) => {
       renderOnboardingAgeInformation({ age })
       const signupButton = screen.getByTestId('Créer un compte')
 
       await user.press(signupButton)
 
-      expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      expect(navigate).toHaveBeenCalledWith('SignupMethods', {
         from: StepperOrigin.TUTORIAL,
       })
     }

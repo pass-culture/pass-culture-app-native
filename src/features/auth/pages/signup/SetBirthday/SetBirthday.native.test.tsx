@@ -26,7 +26,6 @@ const props = {
     password: '',
     birthdate: '',
   },
-  onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),
 }
 

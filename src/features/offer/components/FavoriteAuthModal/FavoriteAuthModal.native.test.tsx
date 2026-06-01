@@ -57,7 +57,7 @@ describe('FavoriteAuthModal', () => {
       const button = screen.getByText('Créer un compte')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      expect(navigate).toHaveBeenCalledWith('SignupMethods', {
         from: StepperOrigin.FAVORITE,
         offerId: OFFER_ID,
       })

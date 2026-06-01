@@ -22,6 +22,7 @@ import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnde
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
+import { SignupMethods } from 'features/auth/pages/signup/SignupMethods/SignupMethods'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
@@ -252,7 +253,21 @@ const rootScreens: RouteConfig[] = [
     component: ReinitializePassword,
     options: { title: 'Réinitialiser le mot de passe' },
   },
-  { name: 'SignupForm', component: SignupForm, options: { title: 'Création de compte' } },
+  {
+    name: 'SignupMethods',
+    component: SignupMethods,
+    options: { title: 'Méthodes de création de compte' },
+  },
+  {
+    name: '_DeeplinkOnlySignupMethods1',
+    component: SignupMethods,
+    options: { title: 'Méthodes de création de compte' },
+  },
+  {
+    name: 'SignupForm',
+    component: SignupForm,
+    options: { title: 'Création de compte' },
+  },
   {
     name: '_DeeplinkOnlySignupForm1',
     component: SignupForm,

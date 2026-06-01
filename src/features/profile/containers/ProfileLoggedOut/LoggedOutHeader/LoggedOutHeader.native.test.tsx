@@ -13,13 +13,13 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('LoggedOutHeader', () => {
-  it('should navigate to the SignupForm page', async () => {
+  it('should navigate to the SignupMethods page', async () => {
     render(<LoggedOutHeader featureFlags={{ disableActivation: false, enableProfileV2: false }} />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {
       from: StepperOrigin.PROFILE,
     })
   })

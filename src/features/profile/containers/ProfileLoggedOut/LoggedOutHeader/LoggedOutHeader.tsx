@@ -17,7 +17,6 @@ const onBeforeNavigate = () => {
 
 export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
   const { isDesktopViewport, designSystem } = useTheme()
-
   return (
     <HeaderWithGreyContainer title="Mon profil" featureFlags={featureFlags}>
       <Typo.Body>
@@ -29,16 +28,11 @@ export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
           as={Button}
           fullWidth
           wording="Créer un compte"
-          navigateTo={{
-            screen: 'SignupForm',
-            params: { from: StepperOrigin.PROFILE },
-          }}
+          navigateTo={{ screen: 'SignupMethods', params: { from: StepperOrigin.PROFILE } }}
           onBeforeNavigate={onBeforeNavigate}
           fitContentWidth={isDesktopViewport}
         />
-
         {isDesktopViewport ? <VerticalSeparator /> : <Placeholder />}
-
         <AuthenticationButton
           type="login"
           linkColor={designSystem.color.text.brandSecondary}

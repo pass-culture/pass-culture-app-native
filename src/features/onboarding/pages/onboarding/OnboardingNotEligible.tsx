@@ -26,7 +26,7 @@ export const OnboardingNotEligible = () => {
       buttonPrimary={{
         wording: 'Créer un compte',
         navigateTo: {
-          screen: 'SignupForm',
+          screen: 'SignupMethods',
           params: { from: StepperOrigin.ONBOARDING_NOT_ELIGIBLE },
         },
       }}

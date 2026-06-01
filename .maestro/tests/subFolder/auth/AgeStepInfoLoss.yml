@@ -4,6 +4,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Créer un compte'
 
 - assertVisible: 'Crée-toi un compte'
+- tapOn: 'S’inscrire avec mon e-mail'
 - tapOn:
     id: 'Entrée pour l’email'
 - inputText: ${MAESTRO_UNREGISTERED_EMAIL}
@@ -12,12 +13,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Crée-toi un compte' # Pour fermer le clavier iOS
+      - tapOn: 'Crée-toi un compte' # Pour fermer le clavier iOS
 - tapOn: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
 - tapOn: 'Continuer vers l’étape Mot de passe'
 
@@ -29,12 +30,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - hideKeyboard
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: 'Choisis un mot de passe' # Pour fermer le clavier iOS
+      - tapOn: 'Choisis un mot de passe' # Pour fermer le clavier iOS
 - tapOn: 'Continuer vers l’étape Date de naissance'
 
 - assertVisible: 'Renseigne ta date de naissance'

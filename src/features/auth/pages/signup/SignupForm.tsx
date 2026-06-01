@@ -74,7 +74,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabHookConfig('Profile'))
 
   const goToPreviousStep = () => {
-    if (isFirstStep) {
+    if (isFirstStep || isSSOSubscription) {
       goBackAndLeaveSignup()
     } else {
       if (isSecondStep) setParams({ accountCreationToken: undefined, email: undefined })
@@ -129,7 +129,6 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
   const { mutateAsync: ssoSignup } = useSSOSignupMutation(signupData.ssoProvider)
 
-  const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
   const onDefaultEmailSignup = useCallback(() => {
     setSignupData((previousSignupData) => ({
       ...previousSignupData,
@@ -229,7 +228,6 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
               isSSOSubscription={isSSOSubscription}
               goToNextStep={goToNextStep}
               signUp={signUp}
-              onSSOEmailNotFoundError={onSSOEmailNotFoundError}
               onDefaultEmailSignup={onDefaultEmailSignup}
             />
             <QuitSignupModal

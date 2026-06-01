@@ -49,7 +49,7 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
           as={Button}
           wording="Créer un compte"
           navigateTo={{
-            screen: 'SignupForm',
+            screen: 'SignupMethods',
             params: { from: StepperOrigin.NOTIFICATION, offerId },
           }}
           onBeforeNavigate={signUp}

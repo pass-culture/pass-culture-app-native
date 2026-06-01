@@ -21,13 +21,13 @@ describe('<AuthenticationButton />', () => {
     expect(navigate).toHaveBeenCalledWith('LoginMethods', {})
   })
 
-  it('should navigate to the SignupForm page when is type signup', async () => {
+  it('should navigate to the SignupMethods page when is type signup', async () => {
     render(<AuthenticationButton type="signup" />)
 
     const connectButton = screen.getByText('Créer un compte')
     await user.press(connectButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {})
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {})
   })
 
   it('should navigate to the LoginMethods page with additional params when defined for login', async () => {
@@ -39,12 +39,12 @@ describe('<AuthenticationButton />', () => {
     expect(navigate).toHaveBeenCalledWith('LoginMethods', NAV_PARAMS_LOGIN)
   })
 
-  it('should navigate to the SignupForm page with additional params when defined for signup', async () => {
+  it('should navigate to the SignupMethods page with additional params when defined for signup', async () => {
     render(<AuthenticationButton type="signup" params={NAV_PARAMS_SIGNUP} />)
 
     const connectButton = screen.getByText('Créer un compte')
     await user.press(connectButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', NAV_PARAMS_SIGNUP)
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', NAV_PARAMS_SIGNUP)
   })
 })
