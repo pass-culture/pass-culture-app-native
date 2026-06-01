@@ -10,67 +10,69 @@ describe('<PasswordSecurityRules />', () => {
   it('should display 5 rules', async () => {
     render(<PasswordSecurityRules password="" />)
 
-    expect(screen.getByText('12 caractères')).toBeOnTheScreen()
-    expect(screen.getByText('1 majuscule')).toBeOnTheScreen()
-    expect(screen.getByText('1 minuscule')).toBeOnTheScreen()
-    expect(screen.getByText('1 chiffre')).toBeOnTheScreen()
-    expect(screen.getByText('1 caractère spécial (!@#$%^&*...)')).toBeOnTheScreen()
+    expect(screen.getByText('12 caractères', { includeHiddenElements: true })).toBeOnTheScreen()
+    expect(screen.getByText('1 majuscule', { includeHiddenElements: true })).toBeOnTheScreen()
+    expect(screen.getByText('1 minuscule', { includeHiddenElements: true })).toBeOnTheScreen()
+    expect(screen.getByText('1 chiffre', { includeHiddenElements: true })).toBeOnTheScreen()
+    expect(
+      screen.getByText('1 caractère spécial (!@#$%^&*...)', { includeHiddenElements: true })
+    ).toBeOnTheScreen()
   })
 
   it('should not validate any rules if input is empty', () => {
     render(<PasswordSecurityRules password="" />)
-    const closeIcons = screen.getAllByTestId('rule-icon-close')
+    const closeIcons = screen.getAllByTestId('rule-icon-close', { includeHiddenElements: true })
 
     expect(closeIcons).toHaveLength(5)
   })
 
   it('should validate capital rule', () => {
     render(<PasswordSecurityRules password="A" />)
-    const checkIcons = screen.getAllByTestId('rule-icon-check')
+    const checkIcons = screen.getAllByTestId('rule-icon-check', { includeHiddenElements: true })
 
     expect(checkIcons).toHaveLength(1)
 
-    const closeIcons = screen.getAllByTestId('rule-icon-close')
+    const closeIcons = screen.getAllByTestId('rule-icon-close', { includeHiddenElements: true })
 
     expect(closeIcons).toHaveLength(4)
   })
 
   it('should validate lowercase rule', () => {
     render(<PasswordSecurityRules password="a" />)
-    const checkIcons = screen.getAllByTestId('rule-icon-check')
+    const checkIcons = screen.getAllByTestId('rule-icon-check', { includeHiddenElements: true })
 
     expect(checkIcons).toHaveLength(1)
 
-    const closeIcons = screen.getAllByTestId('rule-icon-close')
+    const closeIcons = screen.getAllByTestId('rule-icon-close', { includeHiddenElements: true })
 
     expect(closeIcons).toHaveLength(4)
   })
 
   it('should validate number rule', () => {
     render(<PasswordSecurityRules password="1" />)
-    const checkIcons = screen.getAllByTestId('rule-icon-check')
+    const checkIcons = screen.getAllByTestId('rule-icon-check', { includeHiddenElements: true })
 
     expect(checkIcons).toHaveLength(1)
 
-    const closeIcons = screen.getAllByTestId('rule-icon-close')
+    const closeIcons = screen.getAllByTestId('rule-icon-close', { includeHiddenElements: true })
 
     expect(closeIcons).toHaveLength(4)
   })
 
   it('should validate special character rule', () => {
     render(<PasswordSecurityRules password="!" />)
-    const checkIcons = screen.getAllByTestId('rule-icon-check')
+    const checkIcons = screen.getAllByTestId('rule-icon-check', { includeHiddenElements: true })
 
     expect(checkIcons).toHaveLength(1)
 
-    const closeIcons = screen.getAllByTestId('rule-icon-close')
+    const closeIcons = screen.getAllByTestId('rule-icon-close', { includeHiddenElements: true })
 
     expect(closeIcons).toHaveLength(4)
   })
 
   it('should validate every rule if password is correct', () => {
     render(<PasswordSecurityRules password="ABCDefgh1234!!!!" />)
-    const checkIcons = screen.getAllByTestId('rule-icon-check')
+    const checkIcons = screen.getAllByTestId('rule-icon-check', { includeHiddenElements: true })
 
     expect(checkIcons).toHaveLength(5)
   })

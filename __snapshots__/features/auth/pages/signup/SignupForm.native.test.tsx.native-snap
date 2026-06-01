@@ -1389,7 +1389,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
-                  accessibilityLabel="Champs de texte - Mot de passe - Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
+                  accessibilityLabel="Champs de texte - Mot de passe - 12 caractères - au minimum, 1 majuscule - au minimum, 1 minuscule - au minimum, 1 chiffre - au minimum, 1 caractère spécial (!@#$%^&*...) - au minimum"
                   accessibilityRequired={false}
                   autoCapitalize="none"
                   autoComplete="current-password"
@@ -1495,9 +1495,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial
             </Text>
             <View
-              accessibilityAtomic={false}
-              accessibilityRole="none"
+              accessibilityElementsHidden={true}
+              accessible={false}
               gap={1}
+              importantForAccessibility="no-hide-descendants"
               isVisible={true}
               style={
                 {

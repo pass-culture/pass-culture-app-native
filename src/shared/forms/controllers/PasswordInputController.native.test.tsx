@@ -62,7 +62,7 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByTestId('Mot de passe')
       fireEvent.changeText(input, 'a')
 
-      expect(screen.getByText(rules)).toBeOnTheScreen()
+      expect(screen.getByText(rules, { includeHiddenElements: true })).toBeOnTheScreen()
     })
   })
 
@@ -74,9 +74,12 @@ describe('<PasswordInputController />', () => {
       '1 chiffre',
       '1 caractère spécial (!@#$%^&*...)',
     ])('should show password validation rules', (rules) => {
-      renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
+      renderPasswordInputController({
+        withSecurityRules: true,
+        securityRulesAlwaysVisible: true,
+      })
 
-      expect(screen.getByText(rules)).toBeOnTheScreen()
+      expect(screen.getByText(rules, { includeHiddenElements: true })).toBeOnTheScreen()
     })
   })
 })
