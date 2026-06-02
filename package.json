@@ -306,7 +306,7 @@
     "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "19.1.0",
     "storybook": "^10.3.5",
-    "timezone-mock": "^1.2.1",
+    "timezone-mock": "^1.4.2",
     "ts-node": "^10.8.0",
     "type-fest": "^4.15.0",
     "typescript": "5.0.4",
