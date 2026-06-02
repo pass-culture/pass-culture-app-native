@@ -7,7 +7,10 @@ export const mapQuestionIdToPageTitle = (id: CulturalSurveyQuestionEnum | undefi
     case CulturalSurveyQuestionEnum.SPECTACLES:
       return 'Tes sorties'
     case CulturalSurveyQuestionEnum.ACTIVITES:
+    case CulturalSurveyQuestionEnum.LIVRES:
+    case CulturalSurveyQuestionEnum.MUSIQUES:
       return 'Tes activités'
+    case CulturalSurveyQuestionEnum.PROJECTIONS:
     default:
       return ''
   }
