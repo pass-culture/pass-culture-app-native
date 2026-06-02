@@ -2,37 +2,53 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
+import { getTabPropConfig } from 'features/navigation/TabBar/getTabPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { SearchView } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK, SPACE } from 'ui/theme/constants'
+import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const webappUrl = { url: WEBAPP_V2_URL }
-const homeUrl = { url: `${WEBAPP_V2_URL}/accueil` }
-const signupUrl = { url: `${WEBAPP_V2_URL}/creation-compte` }
-const loginUrl = { url: `${WEBAPP_V2_URL}/connexion` }
-const identityCheckUrl = { url: `${WEBAPP_V2_URL}/verification-identite` }
-const profileUrl = { url: `${WEBAPP_V2_URL}/profil` }
-const changePasswordUrl = { url: `${WEBAPP_V2_URL}/profil/modification-mot-de-passe` }
-const searchUrl = { url: `${WEBAPP_V2_URL}/recherche` }
-const filterUrl = { url: `${WEBAPP_V2_URL}/filtres` }
-const searchResultsUrl = { url: `${WEBAPP_V2_URL}/recherche?view="Results"` }
-const favoritesUrl = { url: `${WEBAPP_V2_URL}/favoris` }
-const offerUrl = { url: `${WEBAPP_V2_URL}/offre/1916` }
-const accessibilityUrl = { url: `${WEBAPP_V2_URL}/accessibilite/declaration` }
 const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
+const auditedPages: { wording: string; navigateTo: InternalNavigationProps['navigateTo'] }[] = [
+  { wording: 'Accueil', navigateTo: getTabPropConfig('Home') },
+  { wording: 'Connexion', navigateTo: { screen: 'Login' } },
+  { wording: 'Inscription - Date de naissance', navigateTo: { screen: 'SignupForm' } },
+  { wording: 'Vérification d’identité', navigateTo: { screen: 'SubscriptionStackNavigator' } },
+  { wording: 'Profil', navigateTo: getTabPropConfig('Profile') },
+  { wording: 'Modification de mot de passe', navigateTo: getProfilePropConfig('ChangePassword') },
+  {
+    wording: 'Recherche',
+    navigateTo: getTabPropConfig('SearchStackNavigator', { screen: SearchView.Landing }),
+  },
+  { wording: 'Filtres', navigateTo: { screen: 'SearchFilter' } },
+  {
+    wording: 'Résultats de recherche',
+    navigateTo: getTabPropConfig('SearchStackNavigator', { screen: SearchView.Results }),
+  },
+  { wording: 'Favoris', navigateTo: getTabPropConfig('Favorites') },
+  { wording: 'Détails d’une offre', navigateTo: { screen: 'Offer', params: { id: 1916 } } },
+  {
+    wording: 'Déclaration d’accessibilité',
+    navigateTo: getProfilePropConfig('AccessibilityDeclarationWeb'),
+  },
+]
 
 export function AccessibilityDeclarationWeb() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
@@ -45,12 +61,14 @@ export function AccessibilityDeclarationWeb() {
           <Typo.Body>
             Le pass Culture s’engage à rendre son site internet accessible conformément à l’article
             47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie
-            et les actions suivantes&nbsp;:
+            et les actions suivantes&nbsp;: Cette déclaration d’accessibilité s’applique au
           </Typo.Body>
           <Typo.Body>
-            Cette déclaration d’accessibilité s’applique au site internet{SPACE}
+            site internet&nbsp;
             <ExternalTouchableLink
-              as={LinkInsideText}
+              as={Link}
+              isInsideText
+              isExternal
               wording="https://passculture.app/"
               externalNav={webappUrl}
               accessibilityRole={AccessibilityRole.LINK}
@@ -292,146 +310,41 @@ export function AccessibilityDeclarationWeb() {
           </SubtitleText>
           <StyledView>
             <VerticalUl>
-              <BulletListItem groupLabel="Pages auditées" index={0} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Accueil"
-                    externalNav={homeUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
+              {auditedPages.map(({ wording, navigateTo }, index) => (
+                <BulletListItem
+                  key={wording}
+                  groupLabel="Pages auditées"
+                  index={index}
+                  total={auditedPages.length}
+                  accessibilityRole={AccessibilityRole.LINK}
+                  accessibilityLabel={wording}
+                  childrenContainer="view">
+                  <InternalTouchableLink
+                    as={Link}
+                    label={wording}
+                    navigateTo={navigateTo}
+                    size="small"
+                    color="neutral"
                   />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={1} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Connexion"
-                    externalNav={loginUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={2} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Inscription - Date de naissance"
-                    externalNav={signupUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={3} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Vérification d’identité"
-                    externalNav={identityCheckUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={4} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Profil"
-                    externalNav={profileUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={5} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Modification de mot de passe"
-                    externalNav={changePasswordUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={6} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Recherche"
-                    externalNav={searchUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={7} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Filtres"
-                    externalNav={filterUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={8} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Résultats de recherche"
-                    externalNav={searchResultsUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={9} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Favoris"
-                    externalNav={favoritesUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={10} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Détails d’une offre"
-                    externalNav={offerUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
-              <BulletListItem groupLabel="Pages auditées" index={11} total={12}>
-                <Typo.BodyXs>
-                  <ExternalTouchableLink
-                    as={LinkInsideText}
-                    wording="Déclaration d’accessibilité"
-                    externalNav={accessibilityUrl}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                </Typo.BodyXs>
-              </BulletListItem>
+                </BulletListItem>
+              ))}
             </VerticalUl>
           </StyledView>
           <StyledSeparator />
-          <TitleText>
-            Retour d’information et contact
-            {DOUBLE_LINE_BREAK}
-            <Typo.Body>
-              Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le
-              responsable de l’application pour être orienté vers une alternative accessible ou
-              obtenir le contenu sous une autre forme.
-            </Typo.Body>
-          </TitleText>
-
+          <TitleText>Retour d’information et contact</TitleText>
           <Typo.Body>
+            Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le
+            responsable de l’application pour être orienté vers une alternative accessible ou
+            obtenir le contenu sous une
+          </Typo.Body>
+          <Typo.Body>
+            autre forme.&nbsp;
             <ExternalTouchableLink
-              as={LinkInsideText}
+              as={Link}
+              isInsideText
               wording="Contacter le support"
               externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
               accessibilityRole={AccessibilityRole.LINK}
-              justifyContent="flex-start"
               onBeforeNavigate={() =>
                 analytics.logHasClickedContactForm('AccessibilityDeclaration')
               }
@@ -451,18 +364,20 @@ export function AccessibilityDeclarationWeb() {
             </Typo.Body>
             <ViewGap gap={3}>
               <Typo.Body>
-                Écrire un message au{SPACE}
+                Écrire un message au&nbsp;
                 <ExternalTouchableLink
-                  as={LinkInsideText}
+                  as={Link}
+                  isInsideText
                   wording="Défenseur des droits"
                   externalNav={rightsDefenderUrl}
                   accessibilityRole={AccessibilityRole.LINK}
                 />
               </Typo.Body>
               <Typo.Body>
-                Contacter le délégué du{SPACE}
+                Contacter le délégué du&nbsp;
                 <ExternalTouchableLink
-                  as={LinkInsideText}
+                  as={Link}
+                  isInsideText
                   wording="Défenseur des droits dans votre région"
                   externalNav={rightsDelegateUrl}
                   accessibilityRole={AccessibilityRole.LINK}

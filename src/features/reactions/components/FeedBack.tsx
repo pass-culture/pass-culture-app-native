@@ -6,9 +6,9 @@ import { AppState, AppStateStatus, StyleProp, ViewStyle } from 'react-native'
 import { ReactionTypeEnum } from 'api/gen'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Link } from 'ui/designSystem/Link/Link'
 import { Typo } from 'ui/theme'
 
 type Props = {
@@ -95,9 +95,10 @@ export function FeedBack({
         <Typo.BodyAccent>{thanksMessage}</Typo.BodyAccent>
         <ExternalTouchableLink
           wording={ctaWording}
-          as={LinkInsideText}
+          as={Link}
+          isInsideText
           externalNav={{ url }}
-          typography="BodyAccentXs"
+          size="extraSmall"
           accessibilityRole={AccessibilityRole.LINK}
         />
       </ViewGap>

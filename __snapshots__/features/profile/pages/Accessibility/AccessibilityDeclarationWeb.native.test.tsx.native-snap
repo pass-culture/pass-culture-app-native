@@ -286,7 +286,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               }
             >
-              Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les actions suivantes :
+              Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les actions suivantes : Cette déclaration d’accessibilité s’applique au
             </Text>
             <Text
               style={
@@ -298,8 +298,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               }
             >
-              Cette déclaration d’accessibilité s’applique au site internet
-               
+              site internet 
               <Text
                 accessibilityLabel="https://passculture.app/, lien externe"
                 accessibilityRole="link"
@@ -310,7 +309,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     "cursor": "pointer",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
-                    "lineHeight": 22,
+                    "lineHeight": 25.6,
                     "textDecorationLine": "underline",
                   }
                 }
@@ -2292,6 +2291,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 1 sur 12 - Accueil"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2327,53 +2327,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Accueil"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Accueil"
                       >
-                        <Text
-                          accessibilityLabel="Accueil, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Accueil
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Accueil
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 2 sur 12 - Connexion"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2409,53 +2459,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Connexion"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Connexion"
                       >
-                        <Text
-                          accessibilityLabel="Connexion, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Connexion
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Connexion
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 3 sur 12 - Inscription - Date de naissance"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2491,53 +2591,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Inscription - Date de naissance"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Inscription - Date de naissance"
                       >
-                        <Text
-                          accessibilityLabel="Inscription - Date de naissance, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Inscription - Date de naissance
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Inscription - Date de naissance
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 4 sur 12 - Vérification d’identité"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2573,53 +2723,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Vérification d’identité"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Vérification d’identité"
                       >
-                        <Text
-                          accessibilityLabel="Vérification d’identité, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Vérification d’identité
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Vérification d’identité
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 5 sur 12 - Profil"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2655,53 +2855,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Profil"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Profil"
                       >
-                        <Text
-                          accessibilityLabel="Profil, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Profil
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Profil
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 6 sur 12 - Modification de mot de passe"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2737,53 +2987,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Modification de mot de passe"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Modification de mot de passe"
                       >
-                        <Text
-                          accessibilityLabel="Modification de mot de passe, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Modification de mot de passe
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Modification de mot de passe
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 7 sur 12 - Recherche"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2819,53 +3119,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Recherche"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Recherche"
                       >
-                        <Text
-                          accessibilityLabel="Recherche, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Recherche
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Recherche
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 8 sur 12 - Filtres"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2901,53 +3251,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Filtres"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Filtres"
                       >
-                        <Text
-                          accessibilityLabel="Filtres, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Filtres
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Filtres
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 9 sur 12 - Résultats de recherche"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -2983,53 +3383,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Résultats de recherche"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Résultats de recherche"
                       >
-                        <Text
-                          accessibilityLabel="Résultats de recherche, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Résultats de recherche
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Résultats de recherche
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 10 sur 12 - Favoris"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -3065,53 +3515,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Favoris"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Favoris"
                       >
-                        <Text
-                          accessibilityLabel="Favoris, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Favoris
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Favoris
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 11 sur 12 - Détails d’une offre"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -3147,53 +3647,103 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Détails d’une offre"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Détails d’une offre"
                       >
-                        <Text
-                          accessibilityLabel="Détails d’une offre, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Détails d’une offre
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Détails d’une offre
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
                 <View
                   accessibilityLabel="Pages auditées – Liste - Élément 12 sur 12 - Déclaration d’accessibilité"
+                  accessibilityRole="link"
                   accessible={true}
                   style={
                     {
@@ -3229,49 +3779,98 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#161617",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
                           "marginLeft": 12,
                         }
                       }
                     >
-                      <Text
-                        style={
+                      <View
+                        accessibilityLabel="Déclaration d’accessibilité"
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "flexShrink": 1,
+                                "maxWidth": "100%",
+                                "minWidth": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                        testID="Déclaration d’accessibilité"
                       >
-                        <Text
-                          accessibilityLabel="Déclaration d’accessibilité, lien externe"
-                          accessibilityRole="link"
-                          onPress={[Function]}
+                        <View
+                          size="small"
                           style={
                             {
-                              "color": "#6123df",
-                              "cursor": "pointer",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 22,
-                              "textDecorationLine": "underline",
+                              "alignItems": "flex-start",
+                              "columnGap": 4,
+                              "flexDirection": "row",
+                              "flexShrink": 1,
+                              "maxWidth": "100%",
+                              "minWidth": 0,
                             }
                           }
                         >
-                          Déclaration d’accessibilité
-                        </Text>
-                      </Text>
-                    </Text>
+                          <Text
+                            size="small"
+                            style={
+                              {
+                                "color": "#161617",
+                                "flexShrink": 1,
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                                "minWidth": 0,
+                                "textDecorationLine": "underline",
+                              }
+                            }
+                            testID="link-label"
+                            textColor="#161617"
+                          >
+                            Déclaration d’accessibilité
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -3298,21 +3897,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               }
             >
               Retour d’information et contact
-              
-
-
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de l’application pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.
-              </Text>
             </Text>
             <Text
               style={
@@ -3324,6 +3908,19 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               }
             >
+              Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de l’application pour être orienté vers une alternative accessible ou obtenir le contenu sous une
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                }
+              }
+            >
+              autre forme. 
               <Text
                 accessibilityLabel="Contacter le support, lien externe"
                 accessibilityRole="link"
@@ -3334,7 +3931,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     "cursor": "pointer",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
-                    "lineHeight": 22,
+                    "lineHeight": 25.6,
                     "textDecorationLine": "underline",
                   }
                 }
@@ -3407,8 +4004,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  Écrire un message au
-                   
+                  Écrire un message au 
                   <Text
                     accessibilityLabel="Défenseur des droits, lien externe"
                     accessibilityRole="link"
@@ -3419,7 +4015,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         "cursor": "pointer",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
-                        "lineHeight": 22,
+                        "lineHeight": 25.6,
                         "textDecorationLine": "underline",
                       }
                     }
@@ -3437,8 +4033,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  Contacter le délégué du
-                   
+                  Contacter le délégué du 
                   <Text
                     accessibilityLabel="Défenseur des droits dans votre région, lien externe"
                     accessibilityRole="link"
@@ -3449,7 +4044,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         "cursor": "pointer",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
-                        "lineHeight": 22,
+                        "lineHeight": 25.6,
                         "textDecorationLine": "underline",
                       }
                     }

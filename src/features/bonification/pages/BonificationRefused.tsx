@@ -12,11 +12,11 @@ import { getSubscriptionPropConfig } from 'features/navigation/navigators/Subscr
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { plural } from 'libs/plural'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner, BannerLink } from 'ui/designSystem/Banner/Banner'
+import { Link } from 'ui/designSystem/Link/Link'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -121,8 +121,8 @@ export const PAGE_CONFIG: PageConfigMap = {
         Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu
         souhaites obtenir plus d’informations, tu peux{SPACE}
         <ExternalTouchableLink
-          as={LinkInsideText}
-          typography="BodyAccent"
+          as={Link}
+          isInsideText
           wording="contacter notre support"
           externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
           accessibilityRole={AccessibilityRole.LINK}

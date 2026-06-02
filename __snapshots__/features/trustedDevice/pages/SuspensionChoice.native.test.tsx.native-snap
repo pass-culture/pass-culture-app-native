@@ -309,7 +309,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               }
             >
               <View
-                accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les conditions générales d’utilisation"
+                accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les  conditions générales d’utilisation"
                 accessibilityRole="link"
                 accessible={true}
                 style={
@@ -370,12 +370,10 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                         }
                       }
                     >
-                      tes réservations seront annulées sauf pour certains cas précisés dans les
-                       
+                      tes réservations seront annulées sauf pour certains cas précisés dans les 
                       <Text
                         accessibilityLabel="conditions générales d’utilisation, lien externe"
                         accessibilityRole="link"
-                        color="#161617"
                         onPress={[Function]}
                         style={
                           {
@@ -383,7 +381,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                             "cursor": "pointer",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
-                            "lineHeight": 22,
+                            "lineHeight": 25.6,
                             "textDecorationLine": "underline",
                           }
                         }

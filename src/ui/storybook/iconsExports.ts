@@ -31,7 +31,6 @@ import { CloseFilled } from 'ui/svg/icons/CloseFilled'
 import { Code } from 'ui/svg/icons/Code'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
-import { Connect } from 'ui/svg/icons/Connect'
 import { DarkThemeIllustration } from 'ui/svg/icons/darkTheme/DarkThemeIllustration'
 import { DefaultThemeIllustration } from 'ui/svg/icons/darkTheme/DefaultThemeIllustration'
 import { SystemThemeIllustration } from 'ui/svg/icons/darkTheme/SystemThemeIllustration'
@@ -251,7 +250,6 @@ export const TertiaryAndSmallerIcons = {
   CheckboxMarkChecked,
   CheckboxMarkIndeterminate,
   ClockFilled,
-  Connect,
   Digital,
   Duplicate,
   EditPen,
