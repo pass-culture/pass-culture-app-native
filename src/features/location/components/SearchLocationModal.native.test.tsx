@@ -8,6 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
@@ -176,6 +177,7 @@ describe('SearchLocationModal', () => {
       return (
         <LocationWrapper>
           <React.Fragment>
+            <GeolocationActivationModal />
             <SearchLocationModal />
             <Button title="Close" onPress={locationModalActions.hide} />
           </React.Fragment>
@@ -377,6 +379,7 @@ function renderSearchLocationModal() {
   render(
     <LocationWrapper>
       <React.Fragment>
+        <GeolocationActivationModal />
         <Button title="Open modal" onPress={locationModalActions.show} />
         <SearchLocationModal />
       </React.Fragment>

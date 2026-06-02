@@ -2,6 +2,7 @@ import React from 'react'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics/provider'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
@@ -148,6 +149,7 @@ describe('HomeLocationModal', () => {
       return (
         <LocationWrapper>
           <React.Fragment>
+            <GeolocationActivationModal />
             <HomeLocationModal />
             <Button wording="Close" onPress={locationModalActions.hide} />
           </React.Fragment>
@@ -177,7 +179,10 @@ describe('HomeLocationModal', () => {
 function renderHomeLocationModal() {
   render(
     <LocationWrapper>
-      <HomeLocationModal />
+      <React.Fragment>
+        <GeolocationActivationModal />
+        <HomeLocationModal />
+      </React.Fragment>
     </LocationWrapper>
   )
 }
