@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { memo, useContext, useEffect, useMemo } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useAppStateChange } from 'libs/appState'
@@ -17,7 +17,11 @@ import {
   usePlace,
   useUserLocation,
 } from 'libs/locationV2/location.store'
-import { SuggestedPlace } from 'libs/place/types'
+import {
+  locationModalActions,
+  useLocationModal,
+  useLocationModalPlace,
+} from 'libs/locationV2/locationModal.store'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
 
@@ -62,7 +66,9 @@ export const LocationWrapper = memo(function LocationWrapper({
     geolocationError: geolocPositionError,
     isPermissionModalVisible: isGeolocPermissionModalVisible,
   } = useLocationV2()
-  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const { geolocation: geolocPosition, radius: aroundMeRadius } = useLocationConfiguration(
+    LocationMode.AROUND_ME
+  )
   const {
     showPermissionModal: showGeolocPermissionModal,
     hidePermissionModal: hideGeolocPermissionModal,
@@ -73,16 +79,15 @@ export const LocationWrapper = memo(function LocationWrapper({
   const place = usePlace()
   const { setPlace, setAroundPlaceRadius, setAroundMeRadius } = locationActions
 
-  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
-
   // modal state
-  const [placeQuery, setPlaceQuery] = useState('') // search input value
-  const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null) // selected suggested place
+  const selectedPlace = useLocationModalPlace()
+  const { setAddressInputValue: setPlaceQuery, setPlace: setSelectedPlace } = locationModalActions
+  const { addressInputValue: placeQuery } = useLocationModal()
 
-  const onResetPlace = useCallback(() => {
-    setSelectedPlace(null)
-    setPlaceQuery('')
-  }, [])
+  const onResetPlace = () => {
+    locationModalActions.setPlace(null)
+    locationModalActions.setAddressInputValue('')
+  }
 
   useEffect(() => {
     void contextualCheckPermission()
@@ -119,24 +124,23 @@ export const LocationWrapper = memo(function LocationWrapper({
       userLocation,
     }),
     [
+      aroundMeRadius,
+      aroundPlaceRadius,
       geolocPosition,
       geolocPositionError,
-      permissionState,
       hasGeolocPosition,
+      permissionState,
       place,
-      setPlace,
-      showGeolocPermissionModal,
-      selectedLocationMode,
-      setSelectedLocationMode,
-      onResetPlace,
-      selectedPlace,
-      setSelectedPlace,
       placeQuery,
-      setPlaceQuery,
-      aroundPlaceRadius,
-      setAroundPlaceRadius,
-      aroundMeRadius,
+      selectedLocationMode,
+      selectedPlace,
       setAroundMeRadius,
+      setAroundPlaceRadius,
+      setPlace,
+      setPlaceQuery,
+      setSelectedLocationMode,
+      setSelectedPlace,
+      showGeolocPermissionModal,
       userLocation,
     ]
   )

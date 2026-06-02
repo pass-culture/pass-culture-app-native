@@ -85,7 +85,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
       ]
     }
     swipeThreshold={100}
-    testID="modal"
+    testID="location-modal"
     transparent={true}
     visible={true}
   >

@@ -8,13 +8,9 @@ import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { locationModalActions, useLocationModal } from 'libs/locationV2/locationModal.store'
 
-interface LocationModalProps {
-  visible: boolean
-  dismissModal: () => void
-}
-
-export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
+export const SearchLocationModal = () => {
   const { dispatch } = useSearch()
 
   const {
@@ -35,6 +31,8 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     requestGeolocPermission,
   } = useLocation()
 
+  const { visible } = useLocationModal()
+
   const {
     tempLocationMode,
     tempAroundPlaceRadius,
@@ -42,9 +40,9 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     setTempAroundMeRadius,
     setTempAroundPlaceRadius,
     setTempLocationMode,
-  } = useLocationState({
-    visible,
-  })
+  } = useLocationState()
+
+  const dismissModal = locationModalActions.hide
 
   const { onSubmit, onClose } = getLocationSubmit({
     dismissModal,

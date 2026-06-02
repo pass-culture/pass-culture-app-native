@@ -9,10 +9,10 @@ import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
@@ -41,12 +41,6 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
 
-  const {
-    visible: locationModalVisible,
-    showModal: showLocationModal,
-    hideModal: hideLocationModal,
-  } = useModal()
-
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   const locationIcon = isWidgetHighlighted ? (
@@ -66,17 +60,13 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
     <React.Fragment>
       <StyledTouchable
         testID={computedAccessibilityLabel}
-        onPress={showLocationModal}
+        onPress={locationModalActions.show}
         accessibilityLabel={computedAccessibilityLabel}
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
         <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
         <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
       </StyledTouchable>
-      {shouldShowHomeLocationModal ? (
-        <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
-      ) : (
-        <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
-      )}
+      {shouldShowHomeLocationModal ? <HomeLocationModal /> : <SearchLocationModal />}
       {enableTooltip ? (
         <StyledTooltip
           label="Configure ta position et découvre les offres dans la zone géographique de ton choix."

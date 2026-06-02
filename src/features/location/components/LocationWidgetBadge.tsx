@@ -7,9 +7,9 @@ import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
@@ -21,12 +21,6 @@ export const LocationWidgetBadge = () => {
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
 
-  const {
-    visible: locationModalVisible,
-    showModal: showLocationModal,
-    hideModal: hideLocationModal,
-  } = useModal()
-
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   const computedAccessibilityLabel = getComputedAccessibilityLabel(
@@ -37,7 +31,7 @@ export const LocationWidgetBadge = () => {
   return (
     <Container highlighted={isWidgetHighlighted}>
       <LocationButton
-        onPress={showLocationModal}
+        onPress={locationModalActions.show}
         accessibilityRole={AccessibilityRole.BUTTON}
         accessibilityLabel={computedAccessibilityLabel}>
         {isWidgetHighlighted ? (
@@ -47,7 +41,7 @@ export const LocationWidgetBadge = () => {
         )}
         <LocationTitle numberOfLines={numberOfLines}>{locationTitle}</LocationTitle>
       </LocationButton>
-      <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      <SearchLocationModal />
     </Container>
   )
 }

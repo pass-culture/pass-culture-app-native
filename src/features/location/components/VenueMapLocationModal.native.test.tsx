@@ -16,6 +16,7 @@ import {
   LocationWrapper,
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -331,20 +332,12 @@ describe('VenueMapLocationModal', () => {
 
   it('should show geolocation modal if geolocation is never_ask_again on closing the modal after a geolocation button press', async () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
+    locationModalActions.show()
 
     const Container = () => {
-      const [visible, setVisible] = React.useState(true)
       return (
         <LocationWrapper>
-          <React.Fragment>
-            <SearchLocationModal
-              visible={visible}
-              // userEvent.press not working correctly here
-              // eslint-disable-next-line local-rules/no-fireEvent
-              dismissModal={() => fireEvent.press(screen.getByText('Close'))}
-            />
-            <Button title="Close" onPress={() => setVisible(false)} />
-          </React.Fragment>
+          <SearchLocationModal />
         </LocationWrapper>
       )
     }

@@ -1,8 +1,9 @@
 import { Linking } from 'react-native'
 
+import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { GeolocPermissionState, checkGeolocPermission } from 'libs/location/location'
 import { GeolocationError, RequestGeolocPermissionParams } from 'libs/location/types'
 import { locationActions } from 'libs/locationV2/location.store'
 

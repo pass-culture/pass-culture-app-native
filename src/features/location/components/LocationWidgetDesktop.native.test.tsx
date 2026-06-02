@@ -10,15 +10,6 @@ import { act, render, screen, userEvent } from 'tests/utils'
 jest.unmock('@react-navigation/native')
 jest.mock('libs/splashscreen/splashscreen')
 
-const mockShowModal = jest.fn()
-jest.mock('ui/components/modals/useModal', () => ({
-  useModal: () => ({
-    visible: false,
-    showModal: mockShowModal,
-    hideModal: jest.fn(),
-  }),
-}))
-
 jest.mock('libs/location/location')
 const mockUseLocation = useLocation as jest.Mock
 
@@ -27,18 +18,13 @@ jest.useFakeTimers()
 
 describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: true,
-      place: { label: 'test' },
-      isCurrentLocationMode: jest.fn(),
-    })
     renderLocationWidgetDesktop()
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis le titre')
 
     await user.press(button)
 
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
+    expect(screen.getByTestId('location-modal')).toBeOnTheScreen()
   })
 
   it.each`

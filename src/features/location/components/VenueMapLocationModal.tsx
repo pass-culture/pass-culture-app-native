@@ -52,9 +52,7 @@ export const VenueMapLocationModal = ({
     setTempAroundPlaceRadius,
     setTempAroundMeRadius,
     setTempLocationMode,
-  } = useLocationState({
-    visible,
-  })
+  } = useLocationState()
 
   const { navigate } = useNavigation<UseNavigationType>()
 
