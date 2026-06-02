@@ -44,6 +44,7 @@ describe('VideoEndView', () => {
         moduleName: 'salut à tous c’est lujipeka',
         homeEntryId: 'xyz',
         isHeadline: false,
+        displayAdvice: false,
       })
     )
   })

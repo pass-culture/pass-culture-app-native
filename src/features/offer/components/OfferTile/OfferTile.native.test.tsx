@@ -8,6 +8,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { NAVIGATION_METHOD } from 'shared/constants'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -21,6 +22,8 @@ mockUseNavigation.mockReturnValue({
   navigate: mockNavigate,
   push: mockPush,
 })
+
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 const OFFER = mockedAlgoliaResponse.hits[0].offer
 const OFFER_LOCATION = mockedAlgoliaResponse.hits[0]._geoloc
@@ -133,6 +136,21 @@ describe('OfferTile component', () => {
         from: 'home',
         moduleName: props.moduleName,
         isHeadline: false,
+        displayAdvice: false,
+      })
+    })
+
+    it('should log ConsultOffer that user opened the offer and pro advices AB testing segment is A', async () => {
+      useABSegmentSpy.mockReturnValueOnce('A')
+      render(reactQueryProviderHOC(<OfferTile {...props} />))
+      await user.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: String(OFFER_ID),
+        from: 'home',
+        moduleName: props.moduleName,
+        isHeadline: false,
+        displayAdvice: true,
       })
     })
 
@@ -159,6 +177,7 @@ describe('OfferTile component', () => {
         fromOfferId: '1',
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         isHeadline: false,
+        displayAdvice: false,
       })
     })
 
@@ -172,6 +191,7 @@ describe('OfferTile component', () => {
         moduleName: props.moduleName,
         homeEntryId: 'abcd',
         isHeadline: false,
+        displayAdvice: false,
       })
     })
 
@@ -203,6 +223,7 @@ describe('OfferTile component', () => {
         venueId: 1,
         searchId,
         isHeadline: false,
+        displayAdvice: false,
       })
     })
 
@@ -232,6 +253,7 @@ describe('OfferTile component', () => {
         playlistType: undefined,
         venueId: undefined,
         isHeadline: false,
+        displayAdvice: false,
       })
     })
 
@@ -262,6 +284,7 @@ describe('OfferTile component', () => {
         moduleId: undefined,
         venueId: undefined,
         isHeadline: false,
+        displayAdvice: false,
       })
     })
   })

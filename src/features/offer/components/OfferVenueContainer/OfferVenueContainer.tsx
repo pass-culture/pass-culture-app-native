@@ -25,6 +25,7 @@ type Props = {
   handleOnSeeVenuePress?: VoidFunction
   isOfferAtSameAddressAsVenue: boolean
   distance?: string | null
+  proAdvicesSegment?: string
 }
 
 export const OfferVenueContainer: FC<Props> = ({
@@ -33,6 +34,7 @@ export const OfferVenueContainer: FC<Props> = ({
   subcategory,
   handleOnSeeVenuePress,
   isOfferAtSameAddressAsVenue,
+  proAdvicesSegment,
 }) => {
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -104,6 +106,7 @@ export const OfferVenueContainer: FC<Props> = ({
       offerId: nextOfferId,
       from: 'offer',
       fromMultivenueOfferId: offer.id,
+      displayAdvice: proAdvicesSegment === 'A',
     })
     navigate('Offer', {
       fromOfferId: offer.id,

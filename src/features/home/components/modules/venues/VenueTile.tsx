@@ -15,6 +15,8 @@ import { useLocation } from 'libs/location/location'
 import { mapActivityToIcon } from 'libs/parsers/activity'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ImageTile } from 'ui/components/ImageTile'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Tag } from 'ui/designSystem/Tag/Tag'
@@ -45,6 +47,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const queryClient = useQueryClient()
   const { designSystem } = useTheme()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const distance = getDistance(
     { lat: venue.latitude, lng: venue.longitude },
@@ -63,6 +66,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
       from: 'home',
       homeEntryId: props.homeEntryId,
       originDetails: props.originDetails,
+      displayAdvice: proAdvicesOnVenueSegment === 'A',
     })
   }
 
