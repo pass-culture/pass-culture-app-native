@@ -14,6 +14,7 @@ gem 'addressable', '>= 2.9.0'
 gem 'rexml', '>= 3.3.9'
 gem 'aws-sdk-s3', '>= 1.208.0'
 gem 'faraday', '>= 1.10.5'
+gem 'jwt', '>= 3.2.0'
 
 # Ruby 3.4.0 has removed some libraries from the standard library.
 gem 'bigdecimal'
