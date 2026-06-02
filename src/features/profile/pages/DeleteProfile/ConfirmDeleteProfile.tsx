@@ -9,9 +9,9 @@ import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { Link } from 'ui/designSystem/Link/Link'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
@@ -76,7 +76,9 @@ export function ConfirmDeleteProfile() {
           accessibilityRole={AccessibilityRole.LINK}>
           {LINE_BREAK}
           <ExternalTouchableLink
-            as={LinkInsideTextBlack}
+            as={Link}
+            isInsideText
+            color="neutral"
             wording="conditions générales d’utilisation"
             externalNav={{ url: env.CGU_LINK }}
             accessibilityRole={AccessibilityRole.LINK}
@@ -103,10 +105,6 @@ export function ConfirmDeleteProfile() {
     </GenericInfoPage>
   )
 }
-
-const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,

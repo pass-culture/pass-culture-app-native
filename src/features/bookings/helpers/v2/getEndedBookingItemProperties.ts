@@ -15,6 +15,7 @@ type EndedBookingItem = {
   categoryId: CategoryIdEnum
   netInfo: NetInfoState
   prePopulateOffer: (offer: PartialOffer) => void
+  proAdvicesOnOfferSegment?: string
 }
 
 export const getEndedBookingItemProperties = ({
@@ -22,6 +23,7 @@ export const getEndedBookingItemProperties = ({
   categoryId,
   netInfo,
   prePopulateOffer,
+  proAdvicesOnOfferSegment,
 }: EndedBookingItem) => {
   const { dateUsed, cancellationDate, cancellationReason, stock } = booking
   const { offer } = stock
@@ -56,6 +58,7 @@ export const getEndedBookingItemProperties = ({
       triggerConsultOfferLog({
         offerId: offer.id,
         from: 'endedbookings',
+        displayAdvice: proAdvicesOnOfferSegment === 'A',
       })
     } else {
       showErrorSnackBar(

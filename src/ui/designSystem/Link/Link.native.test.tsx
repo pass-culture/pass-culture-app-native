@@ -4,37 +4,62 @@
  */
 
 import React from 'react'
+import { PixelRatio } from 'react-native'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 import { Link } from './Link'
 
 jest.mock('features/navigation/helpers/openUrl')
 
 const user = userEvent.setup()
+const getFontScaleSpy = jest.spyOn(PixelRatio, 'getFontScale')
 jest.useFakeTimers()
 
 describe('<Link />', () => {
-  it('should render an accessible link', () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} />)
+  beforeEach(() => {
+    getFontScaleSpy.mockReturnValue(1)
+  })
 
-    expect(screen.getByRole(AccessibilityRole.LINK)).toBeOnTheScreen()
+  afterEach(() => {
+    getFontScaleSpy.mockClear()
+  })
+
+  it('should render an accessible link', () => {
+    render(
+      <ExternalTouchableLink
+        as={Link}
+        label="Documentation"
+        externalNav={{ url: 'https://example.com' }}
+        isExternal
+      />
+    )
+
     expect(screen.getByLabelText('Nouvelle fenêtre\u00a0: Documentation')).toBeOnTheScreen()
   })
 
   it('should open href when pressed', async () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} />)
+    render(
+      <ExternalTouchableLink
+        as={Link}
+        label="Documentation"
+        externalNav={{ url: 'https://example.com' }}
+        isExternal
+      />
+    )
 
-    await user.press(screen.getByRole(AccessibilityRole.LINK))
+    await user.press(screen.getByText('Documentation'))
 
     expect(openUrl).toHaveBeenCalledWith('https://example.com', undefined, true)
   })
 
   it('should use link small typography when size is small', () => {
-    render(<Link label="Documentation" externalNav={{ url: 'https://example.com' }} size="small" />)
+    render(<Link label="Documentation" size="small" />)
 
     expect(screen.getByTestId('link-label')).toHaveStyle({
       fontFamily: theme.designSystem.typography.linkS.fontFamily,
@@ -44,9 +69,7 @@ describe('<Link />', () => {
   })
 
   it('should use link extra small typography when size is extraSmall', () => {
-    render(
-      <Link label="Documentation" externalNav={{ url: 'https://example.com' }} size="extraSmall" />
-    )
+    render(<Link label="Documentation" size="extraSmall" />)
 
     expect(screen.getByTestId('link-label')).toHaveStyle({
       fontFamily: theme.designSystem.typography.linkXs.fontFamily,
@@ -55,25 +78,70 @@ describe('<Link />', () => {
     })
   })
 
+  it('should render an inline text link', () => {
+    render(<Link label="Documentation" isInsideText accessibilityRole="link" />)
+
+    expect(screen.getByLabelText('Documentation, lien externe')).toBeOnTheScreen()
+  })
+
+  it('should use inline text typography', () => {
+    render(<Link label="Documentation" isInsideText size="extraSmall" testID="inline-link" />)
+
+    expect(screen.getByTestId('inline-link')).toHaveStyle({
+      fontFamily: theme.designSystem.typography.linkXs.fontFamily,
+      fontSize: Number.parseFloat(theme.designSystem.typography.linkXs.fontSize),
+      lineHeight: Number.parseFloat(theme.designSystem.typography.linkXs.lineHeight),
+    })
+  })
+
   it('should use neutral color when color is neutral', () => {
-    render(
-      <Link label="Documentation" externalNav={{ url: 'https://example.com' }} color="neutral" />
-    )
+    render(<Link label="Documentation" color="neutral" />)
 
     expect(screen.getByTestId('link-label')).toHaveStyle({
       color: theme.designSystem.color.text.default,
     })
   })
 
-  it('should hide icon when showIcon is false and link does not open in a new tab', () => {
+  it('should not render default external icon', () => {
+    render(<Link label="Documentation" isExternal />)
+
+    expect(screen.queryByTestId('link-icon')).not.toBeOnTheScreen()
+  })
+
+  it('should scale icon with font scale', () => {
+    getFontScaleSpy.mockReturnValueOnce(2)
+
+    render(<Link label="Documentation" icon={ExternalSiteFilled} />)
+
+    const baseIconSize = theme.designSystem.size.icon.m
+
+    expect(screen.getByTestId('link-icon')).toHaveProp('width', baseIconSize * 2)
+    expect(screen.getByTestId('link-icon')).toHaveProp('height', baseIconSize * 2)
+  })
+
+  it('should align scaled icon with scaled line height', () => {
+    getFontScaleSpy.mockReturnValueOnce(2)
+
+    render(<Link label="Documentation" icon={ExternalSiteFilled} />)
+
+    const iconSize = theme.designSystem.size.icon.m * 2
+    const lineHeight = Number.parseFloat(theme.designSystem.typography.link.lineHeight) * 2
+
+    expect(screen.getByTestId('link-icon-container')).toHaveStyle({
+      paddingTop: (lineHeight - iconSize) / 2,
+    })
+  })
+
+  it('should render custom icon', () => {
     render(
-      <Link
+      <InternalTouchableLink
+        as={Link}
         label="Documentation"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-        showIcon={false}
+        icon={ExternalSiteFilled}
       />
     )
 
-    expect(screen.queryByTestId('link-icon')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('link-icon')).toBeOnTheScreen()
   })
 })

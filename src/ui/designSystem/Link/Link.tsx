@@ -4,74 +4,136 @@
  */
 
 import React from 'react'
+import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import {
-  ExternalTouchableLinkProps,
-  InternalTouchableLinkProps,
-} from 'ui/components/touchableLink/types'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { getIconSize } from './getIconSize'
+import { getLinkGap } from './getLinkGap'
 import { getLinkTextColor } from './getLinkTextColor'
 import { getLinkTypography } from './getLinkTypography'
 import { LinkProps, LinkSize } from './types'
 
 export function Link({
   label,
+  wording,
   size = 'default',
   color = 'brand',
-  showIcon = true,
+  icon,
+  isExternal = false,
+  isInsideText = false,
+  textColor,
   accessibilityLabel,
+  accessibilityRole,
+  onPress,
+  onLongPress,
   testID,
-  ...navigationProps
+  ...props
 }: LinkProps) {
+  const computedLabel = label ?? wording ?? ''
   const theme = useTheme()
-  const isExternal = 'externalNav' in navigationProps
-  const textColor = getLinkTextColor({ color, theme })
-  const iconSize = getIconSize({ size, theme })
+  const linkTextColor = textColor ?? getLinkTextColor({ color, theme })
+  const Icon = icon
+  const fontScale = PixelRatio.getFontScale()
+  const iconSize = getIconSize({ size, theme }) * fontScale
   const computedAccessibilityLabel =
-    accessibilityLabel ?? (isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label)
-  const content = (
-    <Content>
-      {showIcon || isExternal ? (
-        <Icon color={textColor} size={iconSize} testID="link-icon" />
-      ) : null}
-      <StyledText testID="link-label" size={size} textColor={textColor}>
-        {label}
-      </StyledText>
-    </Content>
-  )
+    accessibilityLabel ?? getAccessibilityLabel({ isExternal, label: computedLabel })
 
-  if (isExternal) {
+  if (isInsideText) {
     return (
-      <StyledExternalTouchableLink
-        {...(navigationProps as ExternalTouchableLinkProps)}
-        accessibilityLabel={computedAccessibilityLabel}
-        testID={testID}>
-        {content}
-      </StyledExternalTouchableLink>
+      <InlineText
+        onPress={onPress}
+        onLongPress={onLongPress}
+        accessibilityRole={accessibilityRole}
+        accessibilityLabel={
+          accessibilityLabel ??
+          getInsideTextAccessibilityLabel({
+            accessibilityRole,
+            isExternal,
+            label: computedLabel,
+          })
+        }
+        testID={testID}
+        $size={size}
+        $textColor={linkTextColor}>
+        {computedLabel}
+      </InlineText>
     )
   }
 
   return (
-    <StyledInternalTouchableLink
-      {...(navigationProps as InternalTouchableLinkProps)}
+    <Container
+      {...props}
+      onPress={onPress}
+      onLongPress={onLongPress}
+      accessibilityRole={accessibilityRole}
       accessibilityLabel={computedAccessibilityLabel}
       testID={testID}>
-      {content}
-    </StyledInternalTouchableLink>
+      <Content size={size}>
+        {Icon ? (
+          <IconContainer
+            fontScale={fontScale}
+            iconSize={iconSize}
+            size={size}
+            testID="link-icon-container">
+            <Icon color={linkTextColor} size={iconSize} testID="link-icon" />
+          </IconContainer>
+        ) : null}
+        <StyledText testID="link-label" size={size} textColor={linkTextColor}>
+          {computedLabel}
+        </StyledText>
+      </Content>
+    </Container>
   )
 }
 
-const Content = styled.View(({ theme }) => ({
+function getAccessibilityLabel({ isExternal, label }: { isExternal: boolean; label: string }) {
+  return isExternal ? `Nouvelle fenêtre\u00a0: ${label}` : label
+}
+
+function getInsideTextAccessibilityLabel({
+  accessibilityRole,
+  isExternal,
+  label,
+}: {
+  accessibilityRole?: LinkProps['accessibilityRole']
+  isExternal: boolean
+  label: string
+}) {
+  return isExternal || accessibilityRole === 'link' ? `${label}, lien externe` : label
+}
+
+const Container = styled(TouchableOpacity)({
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
+})
+
+const Content = styled.View<{ size: LinkSize }>(({ theme, size }) => ({
   flexDirection: 'row',
-  alignItems: 'center',
-  columnGap: theme.designSystem.size.spacing.s,
+  alignItems: 'flex-start',
+  columnGap: getLinkGap({ size, theme }),
+  flexShrink: 1,
+  maxWidth: '100%',
+  minWidth: 0,
 }))
+
+const IconContainer = styled.View<{
+  fontScale: number
+  iconSize: number
+  size: LinkSize
+}>(({ theme, fontScale, iconSize, size }) => {
+  const lineHeight = Number.parseFloat(
+    theme.designSystem.typography[getLinkTypography(size)].lineHeight
+  )
+  const scaledLineHeight = lineHeight * fontScale
+
+  return {
+    paddingTop: Math.max((scaledLineHeight - iconSize) / 2, 0),
+  }
+})
 
 const StyledText = styled.Text<{
   size: LinkSize
@@ -79,20 +141,17 @@ const StyledText = styled.Text<{
 }>(({ theme, size, textColor }) => ({
   ...theme.designSystem.typography[getLinkTypography(size)],
   color: textColor,
+  flexShrink: 1,
+  minWidth: 0,
   textDecorationLine: 'underline',
 }))
 
-const Icon = styled(ExternalSiteFilled).attrs<{ color: ColorsType; size: number }>(
-  ({ color, size }) => ({
-    color,
-    size,
-  })
-)``
-
-const StyledExternalTouchableLink = styled(ExternalTouchableLink)({
-  alignSelf: 'flex-start',
-})
-
-const StyledInternalTouchableLink = styled(InternalTouchableLink)({
-  alignSelf: 'flex-start',
-})
+const InlineText = styled.Text<{
+  $size: LinkSize
+  $textColor: ColorsType
+}>(({ theme, $size, $textColor }) => ({
+  ...theme.designSystem.typography[getLinkTypography($size)],
+  color: $textColor,
+  cursor: 'pointer',
+  textDecorationLine: 'underline',
+}))

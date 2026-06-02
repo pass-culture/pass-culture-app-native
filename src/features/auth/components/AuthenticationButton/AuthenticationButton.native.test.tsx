@@ -11,6 +11,8 @@ const NAV_PARAMS_SIGNUP = { offerId: 1, from: StepperOrigin.HOME }
 const user = userEvent.setup()
 jest.useFakeTimers()
 
+jest.mock('features/navigation/helpers/openUrl')
+
 describe('<AuthenticationButton />', () => {
   it('should navigate to the LoginMethods page when is type login', async () => {
     render(<AuthenticationButton type="login" />)

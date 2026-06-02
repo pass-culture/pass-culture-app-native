@@ -94,7 +94,11 @@ describe('<BookingDetailsContent />', () => {
     const venueBlock = screen.getByText('Maison de la Brique')
     await user.press(venueBlock)
 
-    expect(analytics.logConsultVenue).toHaveBeenCalledWith({ venueId: '2185', from: 'bookings' })
+    expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+      venueId: '2185',
+      from: 'bookings',
+      displayAdvice: false,
+    })
   })
 
   it('should not navigate to Venue page when venue is not OpenToPublic', async () => {

@@ -7,12 +7,12 @@ import { getSubscriptionHookConfig } from 'features/navigation/navigators/Subscr
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -80,8 +80,9 @@ export const BonificationRequiredInformation = () => {
             Toi ou tes représentants légaux pouvez en savoir plus sur cette collecte de données et
             vos droits (accès, opposition, rectification) en consultant {SPACE}
             <ExternalTouchableLink
-              as={LinkInsideText}
-              typography="BodyAccentXs"
+              as={Link}
+              isInsideText
+              size="extraSmall"
               wording="notre charte dédiée"
               externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
               accessibilityRole={AccessibilityRole.LINK}

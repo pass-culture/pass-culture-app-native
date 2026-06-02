@@ -316,6 +316,7 @@ describe('<OfferPlace />', () => {
       fromMultivenueOfferId: '146112',
       offerId: '2',
       isHeadline: false,
+      displayAdvice: false,
     })
   })
 
@@ -407,6 +408,7 @@ describe('<OfferPlace />', () => {
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
         venueId: mockOffer.venue.id.toString(),
         from: 'offer',
+        displayAdvice: false,
       })
     })
   })

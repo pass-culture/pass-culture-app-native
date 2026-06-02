@@ -2,14 +2,13 @@
 
 exports[`Bookings should render correctly 1`] = `
 <View
-  gap={6}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "gap": 24,
+      "gap": 6,
     }
   }
 >

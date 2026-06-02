@@ -11,5 +11,10 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "typescript": "^5.3.3"
+  },
+  "resolutions": {
+    "diff@>= 4.0.0, < 4.0.4": "^4.0.4",
+    "path-to-regexp@>= 8.0.0, < 8.4.0": "^8.4.0",
+    "qs": "^6.15.2"
   }
 }

@@ -413,7 +413,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur  Démarche Numérique"
+                accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur  Démarche Numérique"
                 accessibilityRole="link"
                 accessible={true}
                 style={
@@ -464,7 +464,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
                       }
                     }
                   >
-                    en remplissant un formulaire sur 
+                    en remplissant un formulaire sur 
                     <Text
                       accessibilityLabel="Démarche Numérique, lien externe"
                       accessibilityRole="link"

@@ -10,6 +10,7 @@ import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
@@ -32,6 +33,8 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
@@ -54,6 +57,7 @@ type Props = {
   proAdvices?: AdviceCardData[]
   hasVideoCookiesConsent?: boolean
   isMultiArtistsEnabled?: boolean
+  proAdvicesSegment?: string
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -70,6 +74,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   proAdvices,
   hasVideoCookiesConsent,
   isMultiArtistsEnabled,
+  proAdvicesSegment,
   onVideoConsentPress,
   onShowOfferArtistsModal,
 }) => {
@@ -84,10 +89,14 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
+  const enableOfferArtistSectionRefacto = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO
+  )
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -150,6 +159,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { offerId: offer.id } })
   }
 
+  const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
+    void analytics.logConsultArtist({ artistId, artistName, from: 'offer' })
+  }
+
   const fullAddressOffer = formatFullAddress(
     offer.address?.street,
     offer.address?.postalCode,
@@ -173,7 +186,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             <GroupTags tags={tags} />
             <ViewGap gap={2}>
               <OfferTitle offerName={offer.name} />
-              {artists.length > 0 ? (
+              {artists.length > 0 && !enableOfferArtistSectionRefacto ? (
                 <OfferArtists
                   artists={artists}
                   isMultiArtistsEnabled={isMultiArtistsEnabled}
@@ -203,7 +216,10 @@ export const OfferBody: FunctionComponent<Props> = ({
           showTopComponent={hasVenuePage}
           TopComponent={
             isCinemaOffer || !isOfferAtSameAddressAsVenue ? null : (
-              <OfferVenueButton venue={offer.venue} />
+              <OfferVenueButton
+                venue={offer.venue}
+                proAdvicesOnVenueSegment={proAdvicesOnVenueSegment}
+              />
             )
           }
           showBottomComponent={summaryInfoItems.length > 0}
@@ -219,6 +235,17 @@ export const OfferBody: FunctionComponent<Props> = ({
             metadata={metadata}
             hasMetadata={hasMetadata}
             shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
+          />
+        </MarginContainer>
+      ) : null}
+
+      {enableOfferArtistSectionRefacto && artists.length > 0 ? (
+        <MarginContainer gap={0}>
+          <OfferArtistsSection
+            artists={artists}
+            offerCategoryId={subcategory.categoryId}
+            offerSubcategoryId={offer.subcategoryId}
+            onPlaylistItemPress={handleOnArtistPlaylistItemPress}
           />
         </MarginContainer>
       ) : null}
@@ -253,6 +280,8 @@ export const OfferBody: FunctionComponent<Props> = ({
         subcategory={subcategory}
         distance={distance}
         isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
+        proAdvicesOnOfferSegment={proAdvicesSegment}
+        proAdvicesOnVenueSegment={proAdvicesOnVenueSegment}
       />
     </Container>
   )

@@ -7,14 +7,13 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -59,24 +58,24 @@ export function AccessibilityDeclarationMobileBase({
               l’article 47 de la loi n° 2005-102 du 11 février 2005.
             </Typo.Body>
             <Typo.Body>
-              La présente déclaration d’accessibilité s’applique à{SPACE}
+              La présente déclaration d’accessibilité s’applique à&nbsp;
               <ExternalTouchableLink
-                as={LinkInsideText}
+                as={Link}
+                isInsideText
                 wording={`l’application ${platformName}`}
                 externalNav={storeLink}
                 accessibilityRole={AccessibilityRole.LINK}
               />
-              {SPACE}version {appVersion} du pass Culture.
+              &nbsp;version&nbsp;{appVersion} du pass Culture.
             </Typo.Body>
           </ViewGap>
           <StyledSeparator />
           <ViewGap gap={6}>
             <TitleText>État de conformité</TitleText>
             <Typo.Body>
-              L’application pass Culture sur {platformName} est{SPACE}
+              L’application pass Culture sur {platformName} est&nbsp;
               <Typo.BodyAccent>partiellement conforme</Typo.BodyAccent>
-              {SPACE}
-              avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en
+              &nbsp;avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en
               France et en Europe, en raison des non-conformités énumérées dans la section
               «&nbsp;Résultats des tests&nbsp;».
             </Typo.Body>
@@ -195,8 +194,7 @@ export function AccessibilityDeclarationMobileBase({
             <TitleText>Retour d’information et contact</TitleText>
             <Typo.Body>
               Il est important de rappeler qu’en vertu de l’article 11 de la loi de février
-              2005&nbsp;:
-              {SPACE}
+              2005&nbsp;:&nbsp;
               <Typo.BodyItalic>
                 «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
                 handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son
@@ -208,11 +206,13 @@ export function AccessibilityDeclarationMobileBase({
               un délai raisonnable, aux informations et fonctionnalités recherchées par la personne
               handicapée, que le contenu fasse l’objet d’une dérogation ou non.
             </Typo.Body>
+
             <Typo.Body>
               Le pass Culture invite les personnes qui rencontreraient des difficultés à la
-              contacter afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
+              contacter afin qu’une assistance puisse être apportée&nbsp;:&nbsp;
               <ExternalTouchableLink
-                as={LinkInsideText}
+                as={Link}
+                isInsideText
                 wording="contacter le support"
                 externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
                 accessibilityRole={AccessibilityRole.LINK}
@@ -234,18 +234,20 @@ export function AccessibilityDeclarationMobileBase({
             </Typo.Body>
             <ViewGap gap={3}>
               <Typo.Body>
-                Écrire un message au{SPACE}
+                Écrire un message au&nbsp;
                 <ExternalTouchableLink
-                  as={LinkInsideText}
+                  as={Link}
+                  isInsideText
                   wording="Défenseur des droits"
                   externalNav={rightsDefenderUrl}
                   accessibilityRole={AccessibilityRole.LINK}
                 />
               </Typo.Body>
               <Typo.Body>
-                Contacter le délégué du{SPACE}
+                Contacter le délégué du&nbsp;
                 <ExternalTouchableLink
-                  as={LinkInsideText}
+                  as={Link}
+                  isInsideText
                   wording="Défenseur des droits dans votre région"
                   externalNav={rightsDelegateUrl}
                   accessibilityRole={AccessibilityRole.LINK}

@@ -19,4 +19,4 @@ const rootFolder = dirname(__dirname)
 app.use(express.static(join(rootFolder, 'public'), options))
 
 app.get('/version.txt', getVersion)
-app.use('*', webAppProxyMiddleware)
+app.use('*path', webAppProxyMiddleware)

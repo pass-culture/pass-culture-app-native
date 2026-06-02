@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useLocationForLocationWidgetDesktop } from 'features/location/components/useLocationForLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
@@ -16,17 +16,9 @@ import { getSpacing, Typo } from 'ui/theme'
 const TOOLTIP_WIDTH = getSpacing(58)
 const WIDGET_HEIGHT = getSpacing(5 + 1) // textSize + padding
 
-type LocationWidgetWrapperDesktopChildrenProps = {
-  visible: boolean
-  dismissModal: VoidFunction
-}
-
 type LocationWidgetWrapperDesktopProps = {
   screenOrigin: ScreenOrigin
-  children: ({
-    visible,
-    dismissModal,
-  }: LocationWidgetWrapperDesktopChildrenProps) => React.ReactNode
+  children: React.ReactNode
 }
 
 /**
@@ -34,10 +26,9 @@ type LocationWidgetWrapperDesktopProps = {
  * that will use modal props defined in
  * -> so children has to be a modal
  */
-export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktopProps> = ({
-  children,
-  screenOrigin,
-}) => {
+export const LocationWidgetWrapperDesktop: React.FC<
+  PropsWithChildren<LocationWidgetWrapperDesktopProps>
+> = ({ screenOrigin, children }) => {
   const { designSystem } = useTheme()
   const {
     title: locationTitle,
@@ -54,15 +45,9 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
     enableTooltip,
   } = useLocationWidgetTooltip(screenOrigin)
 
-  const {
-    visible: locationModalVisible,
-    showModal: showLocationModal,
-    hideModal: hideLocationModal,
-  } = useModal()
-
   const onPressLocationButton = () => {
     hideTooltip()
-    showLocationModal()
+    locationModalActions.show()
   }
 
   const locationIcon = isWidgetHighlighted ? (
@@ -92,7 +77,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
           <ArrowDown size={designSystem.size.icon.s} />
         </NotShrunk>
       </LocationButton>
-      {children({ visible: locationModalVisible, dismissModal: hideLocationModal })}
+      {children}
     </React.Fragment>
   )
 }

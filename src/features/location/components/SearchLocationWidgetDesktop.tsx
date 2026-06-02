@@ -7,9 +7,7 @@ import { ScreenOrigin } from 'features/location/enums'
 export const SearchLocationWidgetDesktop = () => {
   return (
     <LocationWidgetWrapperDesktop screenOrigin={ScreenOrigin.SEARCH}>
-      {({ visible, dismissModal }) => (
-        <SearchLocationModal visible={visible} dismissModal={dismissModal} />
-      )}
+      <SearchLocationModal />
     </LocationWidgetWrapperDesktop>
   )
 }

@@ -303,12 +303,30 @@ describe('<Venue />', () => {
     it.each([['deeplink'], ['venueMap']])(
       'should log consult venue when URL from param equal to %s',
       async (from) => {
+        abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'B')
         renderVenue(venueId, from as Referrals)
 
         await waitFor(() => {
           expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
             venueId: venueId.toString(),
             from,
+            displayAdvice: false,
+          })
+        })
+      }
+    )
+
+    it.each([['deeplink'], ['venueMap']])(
+      'should log consult venue when URL from param equal to %s and pro advices segment AB Testing is A',
+      async (from) => {
+        abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'A')
+        renderVenue(venueId, from as Referrals)
+
+        await waitFor(() => {
+          expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+            venueId: venueId.toString(),
+            from,
+            displayAdvice: true,
           })
         })
       }

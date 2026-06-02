@@ -1,6 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
-import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
@@ -29,7 +28,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export type BookingOfferModalComponentProps = {
   visible: boolean
@@ -133,8 +131,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
     useModalContent(onPressBookOffer, isPending, isEndedUsedBooking, bookingDataMovieScreening)
 
-  const { height } = useWindowDimensions()
-  const { top } = useCustomSafeInsets()
   const { modal } = useTheme()
 
   const hasPricesStep = shouldDisplayPricesStep(
@@ -191,8 +187,8 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       noPadding
       visible={visible}
       title={title}
-      maxHeight={height - top}
       modalSpacing={modal.spacing.MD}
+      isUpToStatusBar
       customModalHeader={
         <BookingOfferModalHeader
           onClose={onClose}

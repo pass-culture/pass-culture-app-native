@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 
 import { env } from '../src/libs/environment/serverEnv'
@@ -11,23 +11,22 @@ import {
 
 export const server = setupServer(
   // offer
-  rest.get(`${env.API_BASE_URL}/native/v3/offer/${OFFER_RESPONSE_SNAPSHOT.id}`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(OFFER_RESPONSE_SNAPSHOT))
+  http.get(`${env.API_BASE_URL}/native/v3/offer/${OFFER_RESPONSE_SNAPSHOT.id}`, () =>
+    HttpResponse.json(OFFER_RESPONSE_SNAPSHOT)
   ),
   // 404 offer
-  rest.get(`${env.API_BASE_URL}/native/v3/offer/0`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json({}))
-  ),
+  http.get(`${env.API_BASE_URL}/native/v3/offer/0`, () => HttpResponse.json({})),
   // 502 offer
-  rest.get(`${env.API_BASE_URL}/native/v3/offer/502`, (req, res, ctx) => res(ctx.status(502))),
+  http.get(
+    `${env.API_BASE_URL}/native/v3/offer/502`,
+    () => new HttpResponse(null, { status: 502 })
+  ),
   // venue
-  rest.get(
-    `${env.API_BASE_URL}/native/v2/venue/${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`,
-    (req, res, ctx) => res(ctx.status(200), ctx.json(VENUE_WITH_BANNER_RESPONSE_SNAPSHOT))
+  http.get(`${env.API_BASE_URL}/native/v2/venue/${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`, () =>
+    HttpResponse.json(VENUE_WITH_BANNER_RESPONSE_SNAPSHOT)
   ),
   // venue alternative
-  rest.get(
-    `${env.API_BASE_URL}/native/v2/venue/${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`,
-    (req, res, ctx) => res(ctx.status(200), ctx.json(VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT))
+  http.get(`${env.API_BASE_URL}/native/v2/venue/${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`, () =>
+    HttpResponse.json(VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT)
   )
 )

@@ -51,6 +51,7 @@ describe('VideoMultiOfferTile', () => {
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: mockOffer.objectID,
+      displayAdvice: false,
       ...mockAnalyticsParams,
     })
   })

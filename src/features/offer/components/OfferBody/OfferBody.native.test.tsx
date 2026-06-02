@@ -715,6 +715,99 @@ describe('<OfferBody />', () => {
     })
   })
 
+  describe('When wipArtistSectionRefacto FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
+        RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO,
+      ])
+    })
+
+    it('should display new artist section', () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [
+          { id: '1', name: 'Stephen King' },
+          { id: '2', name: 'Robert McCammon' },
+        ],
+      }
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+        isMultiArtistsEnabled: true,
+      })
+
+      expect(screen.getByText('Écrivains')).toBeOnTheScreen()
+    })
+
+    it('should trigger ConsultArtist log when pressing artist playlist item', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [
+          { id: '1', name: 'Stephen King' },
+          { id: '2', name: 'Robert McCammon' },
+        ],
+      }
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+        isMultiArtistsEnabled: true,
+      })
+
+      await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
+
+      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistId: '1',
+        artistName: 'Stephen King',
+        from: 'offer',
+      })
+    })
+
+    it('should redirect to artist page when pressing artist playlist item', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [
+          { id: '1', name: 'Stephen King' },
+          { id: '2', name: 'Robert McCammon' },
+        ],
+      }
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+        isMultiArtistsEnabled: true,
+      })
+
+      await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
+
+      expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
+    })
+
+    it('should not display old artist displaying', () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [
+          { id: '1', name: 'Stephen King' },
+          { id: '2', name: 'Robert McCammon' },
+        ],
+      }
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+        isMultiArtistsEnabled: true,
+      })
+
+      expect(screen.queryByLabelText('de Stephen King, Robert McCammon')).not.toBeOnTheScreen()
+    })
+  })
+
   type RenderOfferBodyType = Partial<ComponentProps<typeof OfferBody>> & {
     isDesktopViewport?: boolean
   }

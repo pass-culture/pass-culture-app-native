@@ -85,7 +85,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
       ]
     }
     swipeThreshold={100}
-    testID="modal"
+    testID="location-modal"
     transparent={true}
     visible={true}
   >
@@ -168,10 +168,9 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
       swipeThreshold={100}
     >
       <View
-        height={1318}
         isLandscape={false}
         leftNootch={16}
-        maxHeight={1334}
+        maxHeight={1318}
         noPadding={true}
         rightNootch={16}
         style={
@@ -183,9 +182,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             "borderTopLeftRadius": 16,
             "borderTopRightRadius": 16,
             "flexDirection": "column",
-            "height": 1318,
             "justifyContent": "flex-start",
-            "maxHeight": 1334,
+            "maxHeight": 1318,
             "maxWidth": 960,
             "paddingBottom": 32,
             "paddingLeft": 0,

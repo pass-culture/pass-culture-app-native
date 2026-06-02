@@ -1,6 +1,6 @@
 import { LocationType } from 'libs/analytics/types'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
-import { GeolocPermissionState } from 'libs/location/location'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { GeoCoordinates, GeolocationError, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { createStore } from 'libs/store/createStore'

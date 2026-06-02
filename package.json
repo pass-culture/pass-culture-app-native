@@ -168,7 +168,7 @@
     "react-native-performance": "^5.1.4",
     "react-native-permissions": "^5.4.1",
     "react-native-qrcode-svg": "^6.1.2",
-    "react-native-reanimated": "~4.1.7",
+    "react-native-reanimated": "patch:react-native-reanimated@npm%3A4.1.7#~/.yarn/patches/react-native-reanimated-npm-4.1.7-30a13d0d8a.patch",
     "react-native-reanimated-carousel": "^4.0.2",
     "react-native-safe-area-context": "^5.5.1",
     "react-native-screens": "^4.11.1",

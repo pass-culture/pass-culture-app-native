@@ -321,7 +321,6 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                 <Text
                   accessibilityLabel="consultant cette page., lien externe"
                   accessibilityRole="link"
-                  color="#161617"
                   onPress={[Function]}
                   style={
                     {
@@ -329,7 +328,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
-                      "lineHeight": 22,
+                      "lineHeight": 25.6,
                       "textDecorationLine": "underline",
                     }
                   }

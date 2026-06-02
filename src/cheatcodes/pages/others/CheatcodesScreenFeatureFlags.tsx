@@ -9,9 +9,9 @@ import {
 } from 'cheatcodes/queries/useCheatcodesFeatureFlagQuery'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
-import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Link } from 'ui/designSystem/Link/Link'
 import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
@@ -40,7 +40,9 @@ export const CheatcodesScreenFeatureFlags = () => {
     <CheatcodesTemplateScreen title={title} flexDirection="column">
       {showTestingFeatureFlags ? (
         <ExternalTouchableLink
-          as={LinkInsideTextBlack}
+          as={Link}
+          isInsideText
+          color="neutral"
           buttonHeight="extraSmall"
           wording="Voir les feature flags testing"
           externalNav={{
@@ -51,7 +53,9 @@ export const CheatcodesScreenFeatureFlags = () => {
       ) : null}
       {showStagingFeatureFlags ? (
         <ExternalTouchableLink
-          as={LinkInsideTextBlack}
+          as={Link}
+          isInsideText
+          color="neutral"
           buttonHeight="extraSmall"
           wording="Voir les feature flags staging"
           externalNav={{
@@ -62,7 +66,9 @@ export const CheatcodesScreenFeatureFlags = () => {
       ) : null}
       {showProductionFeatureFlags ? (
         <ExternalTouchableLink
-          as={LinkInsideTextBlack}
+          as={Link}
+          isInsideText
+          color="neutral"
           buttonHeight="extraSmall"
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/feature-flags' }}
@@ -120,10 +126,6 @@ const StyledTitle4 = styled(Typo.Title4)<{ active: boolean }>(({ theme, active }
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.s,
 }))
-
-const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))``
 
 const Value = styled(Typo.Body)({
   flexShrink: 1,

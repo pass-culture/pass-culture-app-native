@@ -11,6 +11,8 @@ import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getE
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategory } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
@@ -36,6 +38,7 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { isEvent, categoryId } = useSubcategory(subcategoryId)
+  const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const { accessibilityLabel, isBookingEligibleForArchive, handlePressOffer, navigateTo } =
     getEndedBookingItemProperties({
@@ -43,6 +46,7 @@ export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> =
       categoryId,
       netInfo,
       prePopulateOffer,
+      proAdvicesOnOfferSegment,
     })
 
   const shouldShowReactionButton =

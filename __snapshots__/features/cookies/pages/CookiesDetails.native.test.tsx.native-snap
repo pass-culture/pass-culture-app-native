@@ -2136,8 +2136,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         }
       }
     >
-      Pour plus d’informations, nous t’invitons à consulter notre
-       
+      Pour plus d’informations, nous t’invitons à consulter notre 
       <Text
         accessibilityLabel="politique de gestion des cookies, lien externe"
         accessibilityRole="link"

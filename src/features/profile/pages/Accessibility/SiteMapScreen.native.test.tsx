@@ -8,6 +8,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { SiteMapScreen } from './SiteMapScreen'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/jwt/jwt')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')

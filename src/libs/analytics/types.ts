@@ -46,4 +46,5 @@ export type ConsultOfferLogParams = {
   isHeadline?: boolean
   adviceType?: 'book_club' | 'cine_club' | 'pro'
   originDetails?: string
+  displayAdvice?: boolean
 }
