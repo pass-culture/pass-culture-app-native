@@ -36,9 +36,9 @@ export function LegalNotices() {
             <ExternalTouchableLink
               as={Link}
               isInsideText
+              isExternal
               wording="https://passculture.app/accueil"
               externalNav={{ url: 'https://passculture.app/accueil' }}
-              icon={ExternalSiteFilled}
               accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>

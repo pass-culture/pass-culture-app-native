@@ -10,7 +10,6 @@ import { ColorsType } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Link } from 'ui/designSystem/Link/Link'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 
 type LoginProps = {
   type: 'login'
@@ -44,21 +43,27 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   const wording = isLogin ? 'Se connecter' : 'Créer un compte'
 
   return (
-    <StyledBody>
-      {text}
-      {SPACE}
+    <AuthenticationContainer>
+      <StyledBody>{text}</StyledBody>
       <InternalTouchableLink
         as={Link}
-        isInsideText
         navigateTo={nextNavigation}
-        wording={wording}
+        label={wording}
         textColor={linkColor}
         onBeforeNavigate={onPress}
         accessibilityRole={AccessibilityRole.BUTTON}
       />
-    </StyledBody>
+    </AuthenticationContainer>
   )
 }
+
+const AuthenticationContainer = styled.View(({ theme }) => ({
+  alignItems: 'center',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  gap: theme.designSystem.size.spacing.xs,
+  justifyContent: 'center',
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
