@@ -2,14 +2,18 @@ import React from 'react'
 
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+
 describe('ArtistTopOffers', () => {
   beforeEach(() => {
+    jest.clearAllMocks()
     setFeatureFlags()
   })
 
@@ -23,13 +27,60 @@ describe('ArtistTopOffers', () => {
       )
     )
 
-    expect(screen.getByText('Ses oeuvres populaires')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Ses oeuvres populaires')).toBeOnTheScreen()
+    expect(screen.getByText('Manga one piece t91')).toBeOnTheScreen()
+  })
+
+  it('should display top offers in an horizontal carousel', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    expect(screen.getByTestId('offersModuleList').props.horizontal).toBe(true)
+  })
+
+  it('should trigger analytics when we click on "Voir tout" button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Voir tout'))
+
+    expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+      type: 'artists',
+      moduleName: 'Ses oeuvres populaires',
+      from: 'artist',
+    })
+  })
+
+  it('should display at most 4 top offers', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    expect(screen.getByText('Manga Série "One piece" - Tome 3')).toBeOnTheScreen()
+    expect(screen.queryByText('Manga Série "One piece" - Tome 4')).not.toBeOnTheScreen()
   })
 
   it('should not display top offers when there is not some offer from this artist', async () => {
     render(reactQueryProviderHOC(<ArtistTopOffers artistName="Céline Dion" items={[]} />))
 
-    expect(screen.queryByText('Ses oeuvres populaires')).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText('Ses oeuvres populaires')).not.toBeOnTheScreen()
   })
 
   it('should display subtitles when bookFormat is defined', () => {
@@ -45,7 +96,7 @@ describe('ArtistTopOffers', () => {
     expect(screen.getByText('Poche')).toBeOnTheScreen()
   })
 
-  it('should not display subtitles when bookFormat is not defined', () => {
+  it('should display subcategory label when bookFormat is not defined', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
@@ -55,6 +106,6 @@ describe('ArtistTopOffers', () => {
       )
     )
 
-    expect(screen.queryByText('Broché')).not.toBeOnTheScreen()
+    expect(screen.getByText('Livre')).toBeOnTheScreen()
   })
 })

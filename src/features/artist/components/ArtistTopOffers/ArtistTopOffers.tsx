@@ -1,12 +1,23 @@
 import React, { FunctionComponent } from 'react'
-import { FlatList } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import { FlatList } from 'react-native-gesture-handler'
+import { useTheme } from 'styled-components/native'
 
+import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
+import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { analytics } from 'libs/analytics/provider'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
+import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { useCategoryIdMapping } from 'libs/subcategories'
+import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
-import { Separator } from 'ui/components/Separator'
-import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Typo } from 'ui/theme'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+
+const MAX_TOP_OFFERS = 4
+const playlistTitle = 'Ses oeuvres populaires'
 
 type Props = {
   artistName: string
@@ -15,42 +26,57 @@ type Props = {
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
-const renderItem = ({
-  item,
-  artistName,
-}: {
-  item: AlgoliaOfferWithArtistAndEan
-  artistName: string
-}) => {
-  const subtitles = item.offer.bookFormat ? [item.offer.bookFormat] : undefined
-  return (
-    <HorizontalOfferTile
-      offer={item}
-      analyticsParams={{
-        from: 'artist',
-        artistName,
-      }}
-      subtitles={subtitles}
-    />
-  )
-}
-
 export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items }) => {
-  const { contentPage } = useTheme()
+  const theme = useTheme()
+  const currency = useGetCurrencyToDisplay()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const categoryMapping = useCategoryIdMapping()
+  const labelMapping = useSubcategoryOfferLabelMapping()
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
+  const topOffers = items.slice(0, MAX_TOP_OFFERS)
 
-  return items.length > 0 ? (
-    <FlatList
-      data={items}
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistOffers' as const,
+    params: {
+      type: VerticalPlaylist.ArtistOffers,
+      module: {
+        title: playlistTitle,
+        offers: { hits: topOffers },
+        entryId: 'top_offers',
+      },
+    },
+  }
+
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'artists',
+      moduleName: playlistTitle,
+      from: 'artist',
+    })
+  }
+
+  return topOffers.length > 0 ? (
+    <PassPlaylist
+      playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
+      title={playlistTitle}
+      data={topOffers}
+      FlatListComponent={FlatList}
+      renderItem={OfferPlaylistItem({
+        categoryMapping,
+        labelMapping,
+        currency,
+        euroToPacificFrancRate,
+        analyticsFrom: 'artist',
+        artistName,
+        theme,
+        hasSmallLayout: true,
+        priceDisplay: (item: Offer) =>
+          getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+      })}
+      itemWidth={itemWidth}
+      itemHeight={itemHeight}
       keyExtractor={keyExtractor}
-      ListHeaderComponent={<StyledTitle3>Ses oeuvres populaires</StyledTitle3>}
-      ItemSeparatorComponent={Separator.HorizontalWithMargin}
-      contentContainerStyle={{ marginHorizontal: contentPage.marginHorizontal }}
-      scrollEnabled={false}
-      renderItem={({ item }) => renderItem({ item, artistName })}
+      seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
     />
   ) : null
 }
-
-const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
-}))
