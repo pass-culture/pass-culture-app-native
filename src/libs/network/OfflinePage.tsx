@@ -14,8 +14,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const OfflinePage = () => {
-  const { isLoggedIn, user } = useAuthContext()
-  const isUserLoggedIn = isLoggedIn && user
+  const { isLoggedIn } = useAuthContext()
 
   return (
     <Container>
@@ -28,7 +27,7 @@ export const OfflinePage = () => {
             Tu n’es pas connecté à internet. Vérifie ta connexion Wi-Fi ou tes données mobiles.
           </StyledBody>
         </StyledViewGap>
-        {isUserLoggedIn ? (
+        {isLoggedIn ? (
           <ViewGap gap={8}>
             <TagContainer>
               <Tag Icon={Connect} label="Tes billets sont disponibles hors ligne" />

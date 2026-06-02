@@ -16,14 +16,14 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('<OfflinePage />', () => {
   it('should match snapshot with default message', () => {
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined })
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
     render(<OfflinePage />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should match snapshot with button', () => {
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
     render(<OfflinePage />)
 
     expect(screen).toMatchSnapshot()

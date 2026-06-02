@@ -44,6 +44,7 @@ import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/Che
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
+import { CheatcodesScreenOffline } from 'cheatcodes/pages/others/CheatcodesScreenOffline'
 import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/CheatcodesScreenPageWithHeader'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -186,6 +187,12 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenMaintenance,
       linking: {
         path: 'cheatcodes/maintenance',
+      },
+    },
+    CheatcodesScreenOffline: {
+      screen: CheatcodesScreenOffline,
+      linking: {
+        path: 'cheatcodes/offline',
       },
     },
     CheatcodesScreenNotEligibleEduConnect: {
