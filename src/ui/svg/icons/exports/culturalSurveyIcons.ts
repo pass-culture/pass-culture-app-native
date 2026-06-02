@@ -34,6 +34,7 @@ import { Theater } from 'ui/svg/icons/venueAndCategories/Theater'
 import { Turntable } from 'ui/svg/icons/venueAndCategories/Turntable'
 import { Video } from 'ui/svg/icons/venueAndCategories/Video'
 import { VideoGame } from 'ui/svg/icons/venueAndCategories/VideoGame'
+import { Wrong as None } from 'ui/svg/icons/Wrong'
 
 export const culturalSurveyIcons = {
   Accordion,
@@ -72,4 +73,5 @@ export const culturalSurveyIcons = {
   Turntable,
   Video,
   VideoGame,
+  None,
 }
