@@ -3,12 +3,15 @@ import React from 'react'
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
-import { useLocationState } from 'features/location/helpers/useLocationState'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
-import { locationModalActions, useLocationModal } from 'libs/locationV2/locationModal.store'
+import {
+  locationModalActions,
+  useLocationModal,
+  useLocationModalConfiguration,
+} from 'libs/locationV2/locationModal.store'
 
 export const SearchLocationModal = () => {
   const { dispatch } = useSearch()
@@ -31,16 +34,13 @@ export const SearchLocationModal = () => {
     requestGeolocPermission,
   } = useLocation()
 
-  const { visible } = useLocationModal()
-
+  const { locationMode, visible } = useLocationModal()
+  const { radius: tempAroundMeRadius } = useLocationModalConfiguration(LocationMode.AROUND_ME)
+  const { radius: tempAroundPlaceRadius } = useLocationModalConfiguration(LocationMode.AROUND_PLACE)
   const {
-    tempLocationMode,
-    tempAroundPlaceRadius,
-    tempAroundMeRadius,
-    setTempAroundMeRadius,
-    setTempAroundPlaceRadius,
-    setTempLocationMode,
-  } = useLocationState()
+    setAroundMeRadius: setTempAroundMeRadius,
+    setAroundPlaceRadius: setTempAroundPlaceRadius,
+  } = locationModalActions
 
   const dismissModal = locationModalActions.hide
 
@@ -48,16 +48,16 @@ export const SearchLocationModal = () => {
     dismissModal,
     from: 'search',
     dispatch,
-    tempLocationMode,
+    tempLocationMode: locationMode,
     setSelectedLocationMode,
     setPlace,
     tempAroundPlaceRadius,
     tempAroundMeRadius,
     selectedPlace,
     setAroundPlaceRadius,
-    setTempAroundMeRadius,
+    setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
     setAroundMeRadius,
-    setTempAroundPlaceRadius,
+    setTempAroundPlaceRadius: locationModalActions.setAroundPlaceRadius,
     aroundMeRadius,
     aroundPlaceRadius,
   })
@@ -72,14 +72,14 @@ export const SearchLocationModal = () => {
 
   const { selectLocationMode } = useLocationMode({
     dismissModal,
-    setTempLocationMode,
+    setTempLocationMode: locationModalActions.setLocationMode,
     setSelectedLocationMode,
     permissionState,
     setPlace,
     showGeolocPermissionModal,
     requestGeolocPermission,
     hasGeolocPosition,
-    tempLocationMode,
+    tempLocationMode: locationMode,
     onSubmit,
   })
   return (
@@ -87,7 +87,7 @@ export const SearchLocationModal = () => {
       visible={visible}
       onSubmit={onSubmit}
       hasGeolocPosition={hasGeolocPosition}
-      tempLocationMode={tempLocationMode}
+      tempLocationMode={locationMode}
       onClose={onClose}
       selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
@@ -100,7 +100,7 @@ export const SearchLocationModal = () => {
       onTempAroundMeRadiusValueChange={onTempAroundMeRadiusValueChange}
       onTempAroundPlaceRadiusValueChange={onTempAroundPlaceRadiusValueChange}
       tempAroundMeRadius={tempAroundMeRadius}
-      isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
+      isSubmitDisabled={!selectedPlace && locationMode !== LocationMode.AROUND_ME}
       shouldDisplayEverywhereSection
     />
   )
