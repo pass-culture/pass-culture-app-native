@@ -17,9 +17,8 @@ export const useLocationState = () => {
   const {
     setAroundMeRadius: setTempAroundMeRadius,
     setAroundPlaceRadius: setTempAroundPlaceRadius,
+    setLocationMode: setTempLocationMode,
   } = locationModalActions
-
-  const { setLocationMode: setTempLocationMode } = locationModalActions
 
   useEffect(() => {
     if (visible) {

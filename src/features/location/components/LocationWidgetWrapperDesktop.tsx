@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -26,10 +26,9 @@ type LocationWidgetWrapperDesktopProps = {
  * that will use modal props defined in
  * -> so children has to be a modal
  */
-export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktopProps> = ({
-  children,
-  screenOrigin,
-}) => {
+export const LocationWidgetWrapperDesktop: React.FC<
+  PropsWithChildren<LocationWidgetWrapperDesktopProps>
+> = ({ screenOrigin, children }) => {
   const { designSystem } = useTheme()
   const {
     title: locationTitle,

@@ -191,7 +191,8 @@ describe('SearchLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME * 10)
+      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
     expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()
