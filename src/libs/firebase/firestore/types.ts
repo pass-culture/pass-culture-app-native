@@ -57,6 +57,7 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_QUALTRICS_SURVEY = 'enableQualtricsSurvey',
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
   SHOW_TECHNICAL_PROBLEM_BANNER = 'showTechnicalProblemBanner',
+  WIP_ARTIST_CATEGORY_PLAYLISTS = 'wipArtistCategoryPlaylists',
   WIP_ARTIST_PAGE = 'wipArtistPage',
   WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
   WIP_ARTIST_SECTION_REFACTO = 'wipArtistSectionRefacto',
