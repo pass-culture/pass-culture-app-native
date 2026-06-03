@@ -80,11 +80,12 @@ export const getHomepageId = (
   return homePageRemoteConfig[homepageType]
 }
 
-export const useHomepageData = (): Homepage => {
+export const useHomepageData = () => {
   const { isLoggedIn, user } = useAuthContext()
   const { data: userHasBookings } = useUserHasBookingsQueryV2(isLoggedIn)
   const onboardingRole = useUserRoleFromOnboarding()
   const { data: remoteConfig } = useRemoteConfigQuery()
+
   const homepageId = getHomepageId(
     {
       isLoggedIn: isLoggedIn && !!user,
@@ -95,10 +96,12 @@ export const useHomepageData = (): Homepage => {
     },
     remoteConfig
   )
-  return useGetHomepageById(homepageId)
+
+  const { homepage, error } = useGetHomepageById(homepageId)
+  return { homepage, error }
 }
 
-export const useGetHomepageById = (homepageId: string): Homepage => {
-  const { data } = useFetchHomepageByIdQuery(homepageId)
-  return data ?? EMPTY_HOMEPAGE
+export const useGetHomepageById = (homepageId: string) => {
+  const query = useFetchHomepageByIdQuery(homepageId)
+  return { homepage: query.data ?? EMPTY_HOMEPAGE, error: query.error }
 }

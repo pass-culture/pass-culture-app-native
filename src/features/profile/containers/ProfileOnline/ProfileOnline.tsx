@@ -65,6 +65,6 @@ const ScrollContainer = styled(ScrollView).attrs(({ theme }) => ({
   contentContainerStyle: {
     flexGrow: 1,
     paddingHorizontal: theme.contentPage.marginHorizontal,
-    paddingVertical: theme.contentPage.marginVertical,
+    paddingVertical: theme.contentPage.marginVertical, // Ça pousse le tag il faudrait trouver une solution plus propre pour éviter ça
   },
 }))``

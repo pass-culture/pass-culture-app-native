@@ -148,11 +148,11 @@ export const Bookings = () => {
 const ZoomContainer = styled(ScrollView)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   flex: 1,
-  gap: 6,
+  gap: 6, // Ça pousse le tag il faudrait trouver une solution plus propre pour éviter ça
 }))
 
 const DefaultStepContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   flex: 1,
-  gap: 6,
+  gap: 6, // Ça pousse le tag il faudrait trouver une solution plus propre pour éviter ça
 }))

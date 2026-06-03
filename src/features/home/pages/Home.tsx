@@ -20,18 +20,24 @@ import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
 import { useBookingsV2Query } from 'queries/bookings/useBookingsQuery'
+import { isServerError } from 'shared/isServerError/isServerError'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
-const Header = () => (
+type Props = { hasServerError: boolean }
+
+const Header = ({ hasServerError }: Props) => (
   <ListHeaderContainer>
-    <HomeHeader />
+    <HomeHeader hasServerError={hasServerError} />
   </ListHeaderContainer>
 )
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, id: homepageId } = useHomepageData()
+  const { homepage, error } = useHomepageData()
+  const { modules, id: homepageId } = homepage
+  const hasServerError = isServerError(error)
+
   const { hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } = useLocation()
   const { isLoggedIn, user } = useAuthContext()
 
@@ -107,7 +113,7 @@ export const Home: FunctionComponent = () => {
       <GenericHome
         modules={modules}
         homeId={homepageId ?? ''}
-        Header={<Header />}
+        Header={<Header hasServerError={hasServerError} />}
         HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}
         statusBar={<StatusBarBlurredBackground />}

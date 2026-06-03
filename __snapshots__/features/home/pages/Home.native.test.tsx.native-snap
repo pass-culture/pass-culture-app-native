@@ -43,7 +43,9 @@ exports[`Home page should render correctly 1`] = `
         <View
           testID="listHeader"
         >
-          <Header />
+          <Header
+            hasServerError={false}
+          />
           <Styled(View)>
             <HomeBanner
               isLoggedIn={false}

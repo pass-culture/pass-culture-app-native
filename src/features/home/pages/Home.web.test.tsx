@@ -31,6 +31,11 @@ jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
   isLoading: false,
 })
 
+mockUseHomepageData.mockReturnValue({
+  homepage: { modules: [formattedBusinessModule], id: 'fakeEntryId' },
+  error: null,
+})
+
 describe('<Home/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
@@ -38,15 +43,6 @@ describe('<Home/>', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockUseHomepageData.mockReturnValueOnce({
-        modules: [formattedBusinessModule],
-        homeEntryId: 'fakeEntryId',
-      })
-      mockUseHomepageData.mockReturnValueOnce({
-        modules: [formattedBusinessModule],
-        homeEntryId: 'fakeEntryId',
-      }) // Adding useWhichModalToShow to Home.tsx caused an extra render
-
       const { container } = render(<Home />, {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
