@@ -1009,6 +1009,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               gap={4}
               isModal={true}
+              isZoomed={false}
               style={
                 {
                   "alignItems": "center",
@@ -1160,6 +1161,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </View>
               </View>
               <View
+                isZoomed={false}
                 style={
                   {
                     "flexBasis": 0,

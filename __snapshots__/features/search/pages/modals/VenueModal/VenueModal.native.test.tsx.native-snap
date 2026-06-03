@@ -621,6 +621,7 @@ exports[`VenueModal should render correctly 1`] = `
             <View
               gap={4}
               isModal={true}
+              isZoomed={false}
               style={
                 {
                   "alignItems": "center",
@@ -772,6 +773,7 @@ exports[`VenueModal should render correctly 1`] = `
                 </View>
               </View>
               <View
+                isZoomed={false}
                 style={
                   {
                     "flexBasis": 0,

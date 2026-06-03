@@ -1032,6 +1032,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             <View
               gap={4}
               isModal={true}
+              isZoomed={false}
               style={
                 {
                   "alignItems": "center",
@@ -1183,6 +1184,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                isZoomed={false}
                 style={
                   {
                     "flexBasis": 0,

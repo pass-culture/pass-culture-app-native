@@ -546,6 +546,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
             <View
               gap={4}
               isModal={true}
+              isZoomed={false}
               style={
                 {
                   "alignItems": "center",
@@ -697,6 +698,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </View>
               </View>
               <View
+                isZoomed={false}
                 style={
                   {
                     "flexBasis": 0,
