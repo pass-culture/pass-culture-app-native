@@ -2,49 +2,61 @@ import { ArtistType, CategoryIdEnum } from 'api/gen'
 import { getArtistRole } from 'features/artist/helpers/getArtistRole'
 
 describe('getArtistRole', () => {
-  describe('when role config is a simple string', () => {
-    it('should return "Auteur" for author artist type', () => {
-      expect(getArtistRole(ArtistType.author)).toEqual('Auteur')
+  describe('Independent roles of the category', () => {
+    it('should return singular role by default', () => {
+      expect(getArtistRole(ArtistType.film_actor)).toEqual('Acteur')
     })
 
-    it('should return "Acteur" for film actor artist type even if a category is provided', () => {
-      expect(getArtistRole(ArtistType.film_actor, CategoryIdEnum.SPECTACLE)).toEqual('Acteur')
-    })
-
-    it('should return "Metteur en scène" for stage director artist type', () => {
-      expect(getArtistRole(ArtistType.stage_director)).toEqual('Metteur en scène')
+    it('should return plural role if specified', () => {
+      expect(getArtistRole(ArtistType.film_actor, undefined, true)).toEqual('Acteurs')
     })
   })
 
-  describe('when role config depends on the category (performer)', () => {
-    it('should return "Interprète" when category is SPECTACLE', () => {
-      const result = getArtistRole(ArtistType.performer, CategoryIdEnum.SPECTACLE)
+  describe('Roles dependent on the category', () => {
+    describe('Singular role', () => {
+      it('should return "Interprète" for a SPECTACLE performer', () => {
+        expect(getArtistRole(ArtistType.performer, CategoryIdEnum.SPECTACLE)).toEqual('Interprète')
+      })
 
-      expect(result).toEqual('Interprète')
+      it('should return "Artiste" for a MUSIQUE_LIVE performer', () => {
+        expect(getArtistRole(ArtistType.performer, CategoryIdEnum.MUSIQUE_LIVE)).toEqual('Artiste')
+      })
+
+      it('should return "Artiste" for a MUSIQUE_ENREGISTREE performer', () => {
+        expect(getArtistRole(ArtistType.performer, CategoryIdEnum.MUSIQUE_ENREGISTREE)).toEqual(
+          'Artiste'
+        )
+      })
     })
 
-    it('should return "Artiste" when category is MUSIQUE_LIVE', () => {
-      const result = getArtistRole(ArtistType.performer, CategoryIdEnum.MUSIQUE_LIVE)
+    describe('Plural role', () => {
+      it('should return "Interprètes" for a SPECTACLE performer', () => {
+        expect(getArtistRole(ArtistType.performer, CategoryIdEnum.SPECTACLE, true)).toEqual(
+          'Interprètes'
+        )
+      })
 
-      expect(result).toEqual('Artiste')
+      it('should return "Artistes" for a MUSIQUE_LIVE performer', () => {
+        expect(getArtistRole(ArtistType.performer, CategoryIdEnum.MUSIQUE_LIVE, true)).toEqual(
+          'Artistes'
+        )
+      })
+
+      it('should return "Artistes" for a MUSIQUE_ENREGISTREE performer', () => {
+        expect(
+          getArtistRole(ArtistType.performer, CategoryIdEnum.MUSIQUE_ENREGISTREE, true)
+        ).toEqual('Artistes')
+      })
     })
+  })
 
-    it('should return "Artiste" when category is MUSIQUE_ENREGISTREE', () => {
-      const result = getArtistRole(ArtistType.performer, CategoryIdEnum.MUSIQUE_ENREGISTREE)
+  it('should return "Artiste(s)" for a category not linked to a role', () => {
+    expect(getArtistRole(ArtistType.performer, CategoryIdEnum.CINEMA)).toBe('Artiste')
+    expect(getArtistRole(ArtistType.performer, CategoryIdEnum.CINEMA, true)).toBe('Artistes')
+  })
 
-      expect(result).toEqual('Artiste')
-    })
-
-    it('should return the fallback "Artiste" if the category is not defined in the mapping', () => {
-      const result = getArtistRole(ArtistType.performer, CategoryIdEnum.CONFERENCE)
-
-      expect(result).toEqual('Artiste')
-    })
-
-    it('should return the fallback "Artiste" if no category is provided', () => {
-      const result = getArtistRole(ArtistType.performer)
-
-      expect(result).toEqual('Artiste')
-    })
+  it('should return "Artiste(s)" for a category linked to a role but not specified', () => {
+    expect(getArtistRole(ArtistType.performer, undefined)).toBe('Artiste')
+    expect(getArtistRole(ArtistType.performer, undefined, true)).toBe('Artistes')
   })
 })
