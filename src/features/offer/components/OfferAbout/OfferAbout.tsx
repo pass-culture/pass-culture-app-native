@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
-import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
 import { OfferMetadataItemProps } from 'features/offer/components/OfferMetadataItem/OfferMetadataItem'
 import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/OfferMetadataList'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -17,12 +16,7 @@ type Props = {
   shouldDisplayAccessibilitySection: boolean
 }
 
-export const OfferAbout: FunctionComponent<Props> = ({
-  offer,
-  metadata,
-  hasMetadata,
-  shouldDisplayAccessibilitySection,
-}) => {
+export const OfferAbout: FunctionComponent<Props> = ({ offer, metadata, hasMetadata }) => {
   return (
     <ViewGap gap={2}>
       <Typo.Title3 {...getHeadingAttrs(2)}>À propos</Typo.Title3>
@@ -35,9 +29,6 @@ export const OfferAbout: FunctionComponent<Props> = ({
               <Typo.BodyAccent>Description&nbsp;:</Typo.BodyAccent>
               <CollapsibleText text={offer.description} />
             </View>
-          ) : null}
-          {shouldDisplayAccessibilitySection ? (
-            <OfferAccessibility accessibility={offer.accessibility} />
           ) : null}
         </ViewGap>
       </ViewGap>

@@ -97,38 +97,4 @@ describe('<OfferAbout />', () => {
       expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
     })
   })
-
-  describe('Accessibility section', () => {
-    it('should display accessibility when disabilities are defined', () => {
-      render(
-        <OfferAbout
-          offer={offerResponseSnap}
-          metadata={[]}
-          hasMetadata={false}
-          shouldDisplayAccessibilitySection
-        />
-      )
-
-      expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
-    })
-
-    it('should not display accessibility when disabilities are not defined', () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        accessibility: {},
-      }
-
-      render(
-        <OfferAbout
-          offer={offer}
-          metadata={[]}
-          hasMetadata={false}
-          shouldDisplayAccessibilitySection={false}
-        />
-      )
-
-      expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
-    })
-  })
 })
