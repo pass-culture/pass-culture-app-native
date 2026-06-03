@@ -4,13 +4,17 @@ import React from 'react'
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
-import { useLocationState } from 'features/location/helpers/useLocationState'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import {
+  locationModalActions,
+  useLocationModal,
+  useLocationModalConfiguration,
+} from 'libs/locationV2/locationModal.store'
 
 interface LocationModalProps {
   visible: boolean
@@ -45,29 +49,24 @@ export const VenueMapLocationModal = ({
     showGeolocPermissionModal,
   } = useLocation()
 
-  const {
-    tempLocationMode,
-    tempAroundPlaceRadius,
-    tempAroundMeRadius,
-    setTempAroundPlaceRadius,
-    setTempAroundMeRadius,
-    setTempLocationMode,
-  } = useLocationState()
+  const { radius: tempAroundMeRadius } = useLocationModalConfiguration(LocationMode.AROUND_ME)
+  const { radius: tempAroundPlaceRadius } = useLocationModalConfiguration(LocationMode.AROUND_PLACE)
+  const { locationMode } = useLocationModal()
 
   const { navigate } = useNavigation<UseNavigationType>()
 
   const locationSubmitProps = getLocationSubmit({
     dismissModal,
     from: 'venueMap',
-    tempLocationMode,
+    tempLocationMode: locationMode,
     tempAroundPlaceRadius,
     tempAroundMeRadius,
     selectedPlace,
     aroundMeRadius,
     setSelectedLocationMode,
     setPlace,
-    setTempAroundPlaceRadius,
-    setTempAroundMeRadius,
+    setTempAroundPlaceRadius: locationModalActions.setAroundPlaceRadius,
+    setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
     setAroundPlaceRadius,
     setAroundMeRadius,
     aroundPlaceRadius,
@@ -79,8 +78,8 @@ export const VenueMapLocationModal = ({
     onTempAroundMeRadiusValueChange,
   } = useRadiusChange({
     visible,
-    setTempAroundPlaceRadius,
-    setTempAroundMeRadius,
+    setTempAroundPlaceRadius: locationModalActions.setAroundPlaceRadius,
+    setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
   })
   const { selectLocationMode } = useLocationMode({
     dismissModal,
@@ -88,17 +87,17 @@ export const VenueMapLocationModal = ({
     setSelectedLocationMode,
     setPlace,
     hasGeolocPosition,
-    tempLocationMode,
+    tempLocationMode: locationMode,
     onSubmit,
     permissionState,
     requestGeolocPermission,
-    setTempLocationMode,
+    setTempLocationMode: locationModalActions.setLocationMode,
     showGeolocPermissionModal,
   })
 
   const handleSubmit = () => {
     removeSelectedVenue()
-    setTempLocationModeProp?.(tempLocationMode)
+    setTempLocationModeProp?.(locationMode)
     onSubmit()
     if (!shouldOpenMapInTab) {
       analytics.logConsultVenueMap({ from: openedFrom })
@@ -111,7 +110,7 @@ export const VenueMapLocationModal = ({
       visible={visible}
       onSubmit={handleSubmit}
       hasGeolocPosition={hasGeolocPosition}
-      tempLocationMode={tempLocationMode}
+      tempLocationMode={locationMode}
       onClose={onClose}
       selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
@@ -120,7 +119,7 @@ export const VenueMapLocationModal = ({
       setPlaceQuery={setPlaceQuery}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider
-      isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
+      isSubmitDisabled={!selectedPlace && locationMode !== LocationMode.AROUND_ME}
       tempAroundPlaceRadius={tempAroundPlaceRadius}
       onTempAroundMeRadiusValueChange={onTempAroundMeRadiusValueChange}
       onTempAroundPlaceRadiusValueChange={onTempAroundPlaceRadiusValueChange}
