@@ -19,41 +19,20 @@ describe('<OfferAbout />', () => {
   ]
 
   it('should display about section', () => {
-    render(
-      <OfferAbout
-        offer={offerResponseSnap}
-        metadata={metadata}
-        hasMetadata
-        shouldDisplayAccessibilitySection
-      />
-    )
+    render(<OfferAbout offer={offerResponseSnap} metadata={metadata} hasMetadata />)
 
     expect(screen.getByText('À propos')).toBeOnTheScreen()
   })
 
   describe('Metadata', () => {
     it('should display metadata', () => {
-      render(
-        <OfferAbout
-          offer={offerResponseSnap}
-          metadata={metadata}
-          hasMetadata
-          shouldDisplayAccessibilitySection={false}
-        />
-      )
+      render(<OfferAbout offer={offerResponseSnap} metadata={metadata} hasMetadata />)
 
       expect(screen.getByText('Mickey')).toBeOnTheScreen()
     })
 
     it('should not display metadata', () => {
-      render(
-        <OfferAbout
-          offer={offerResponseSnap}
-          metadata={[]}
-          hasMetadata={false}
-          shouldDisplayAccessibilitySection={false}
-        />
-      )
+      render(<OfferAbout offer={offerResponseSnap} metadata={[]} hasMetadata={false} />)
 
       expect(screen.queryByText('Mickey')).not.toBeOnTheScreen()
     })
@@ -66,14 +45,7 @@ describe('<OfferAbout />', () => {
         description: 'Cette offre est super cool cool cool cool cool cool',
       }
 
-      render(
-        <OfferAbout
-          offer={offer}
-          metadata={metadata}
-          hasMetadata
-          shouldDisplayAccessibilitySection
-        />
-      )
+      render(<OfferAbout offer={offer} metadata={metadata} hasMetadata />)
 
       expect(
         screen.getByText('Cette offre est super cool cool cool cool cool cool')
@@ -85,14 +57,7 @@ describe('<OfferAbout />', () => {
         ...offerResponseSnap,
         description: null,
       }
-      render(
-        <OfferAbout
-          offer={offer}
-          metadata={metadata}
-          hasMetadata
-          shouldDisplayAccessibilitySection
-        />
-      )
+      render(<OfferAbout offer={offer} metadata={metadata} hasMetadata />)
 
       expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
     })

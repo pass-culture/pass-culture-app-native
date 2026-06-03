@@ -133,8 +133,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     isNullOrUndefined(offer.accessibility.motorDisability)
   )
 
-  const shouldDisplayAboutSection =
-    shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
+  const shouldDisplayAboutSection = !!offer.description || hasMetadata
 
   const handleArtistLinkPress = (artists: OfferArtist[]) => {
     if (artists.length === 0) return
@@ -231,12 +230,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       {shouldDisplayAboutSection ? (
         <MarginContainer gap={0}>
-          <OfferAbout
-            offer={offer}
-            metadata={metadata}
-            hasMetadata={hasMetadata}
-            shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
-          />
+          <OfferAbout offer={offer} metadata={metadata} hasMetadata={hasMetadata} />
         </MarginContainer>
       ) : null}
 

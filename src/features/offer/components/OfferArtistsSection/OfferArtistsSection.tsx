@@ -46,13 +46,9 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   })
 
   const handleFilterPress = (role: string) => {
-    setSelectedFilterRoles((prev) => {
-      if (prev.length === 0) {
-        return [role]
-      }
-
-      return prev.includes(role) ? prev.filter((id) => id !== role) : [...prev, role]
-    })
+    setSelectedFilterRoles((prev) =>
+      prev.includes(role) ? prev.filter((id) => id !== role) : [...prev, role]
+    )
   }
 
   const soloArtist = artists[0]
@@ -106,7 +102,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
             </ButtonsContainer>
           ) : null}
           <AvatarList
-            data={filteredFormattedArtists.length > 0 ? filteredFormattedArtists : formattedArtists}
+            data={selectedFilterRoles.length > 0 ? filteredFormattedArtists : formattedArtists}
             avatarConfig={{ size: AVATAR_MEDIUM }}
             onItemPress={onPlaylistItemPress}
             withMargins={false}

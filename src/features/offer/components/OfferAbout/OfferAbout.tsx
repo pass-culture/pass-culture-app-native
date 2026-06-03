@@ -13,7 +13,6 @@ type Props = {
   offer: OfferResponse
   metadata: OfferMetadataItemProps[]
   hasMetadata: boolean
-  shouldDisplayAccessibilitySection: boolean
 }
 
 export const OfferAbout: FunctionComponent<Props> = ({ offer, metadata, hasMetadata }) => {
