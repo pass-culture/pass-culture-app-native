@@ -90,7 +90,10 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
       ) : (
         <React.Fragment>
           {filterButtons.length > 1 ? (
-            <ButtonsContainer testID="filterButtons">
+            <ButtonsContainer
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              testID="filterButtons">
               {filterButtons.map(({ role, label }) => (
                 <SingleFilterButton
                   key={role}
@@ -124,10 +127,10 @@ const ArtistImage = styled(FastImage)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.subtle,
 }))
 
-const ButtonsContainer = styled.View(({ theme }) => ({
-  flex: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-  columnGap: theme.designSystem.size.spacing.xs,
-  marginVertical: theme.designSystem.size.spacing.l,
-}))
+const ButtonsContainer = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: theme.designSystem.size.spacing.s,
+  },
+}))``
