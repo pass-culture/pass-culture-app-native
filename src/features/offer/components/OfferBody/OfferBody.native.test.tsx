@@ -742,7 +742,7 @@ describe('<OfferBody />', () => {
       expect(screen.getByText('Écrivains')).toBeOnTheScreen()
     })
 
-    it('should trigger ConsultArtist log when pressing artist playlist item', async () => {
+    it('should trigger ConsultArtist log when pressing artist playlist item and offer has several artists', async () => {
       const offer: OfferResponse = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -750,6 +750,28 @@ describe('<OfferBody />', () => {
           { id: '1', name: 'Stephen King' },
           { id: '2', name: 'Robert McCammon' },
         ],
+      }
+
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+        isMultiArtistsEnabled: true,
+      })
+
+      await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
+
+      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistId: '1',
+        artistName: 'Stephen King',
+        from: 'offer',
+      })
+    })
+
+    it('should trigger ConsultArtist log when pressing artist playlist item and offer has single artist', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [{ id: '1', name: 'Stephen King' }],
       }
 
       renderOfferBody({

@@ -30,7 +30,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
 }) => {
   const numberOfLines = useNumberOfLine(2)
   const subtitleComponent = title ? (
-    <Subtitle testID="subtitileWithTitle" numberOfLines={numberOfLines}>
+    <Subtitle testID="subtitleWithTitle" numberOfLines={numberOfLines}>
       {subtitle}
     </Subtitle>
   ) : (
