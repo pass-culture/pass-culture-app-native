@@ -46,7 +46,11 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
           <ArtistName numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
             {name}
           </ArtistName>
-          {role ? <ArtistRole numberOfLines={2}>{role}</ArtistRole> : null}
+          {role ? (
+            <ArtistRole numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
+              {role}
+            </ArtistRole>
+          ) : null}
         </View>
       </StyledView>
     </InternalTouchableLink>
@@ -61,11 +65,14 @@ const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number; isFullWidth: boo
   })
 )
 
-const ArtistRole = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  textAlign: 'center',
-  alignSelf: 'center',
-  color: theme.designSystem.color.text.subtle,
-}))
+const ArtistRole = styled(Typo.BodyAccentXs)<{ maxWidth: number; isFullWidth: boolean }>(
+  ({ theme, maxWidth, isFullWidth }) => ({
+    textAlign: 'center',
+    maxWidth: isFullWidth ? '100%' : maxWidth,
+    alignSelf: 'center',
+    color: theme.designSystem.color.text.subtle,
+  })
+)
 
 const StyledView = styled(ViewGap)<{ isFullWidth: boolean }>(({ isFullWidth }) => ({
   flexDirection: isFullWidth ? 'row' : 'column',
