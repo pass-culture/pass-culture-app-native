@@ -43,4 +43,18 @@ describe('<AvatarListItem />', () => {
 
     expect(screen.getByLabelText('Oda')).toBeOnTheScreen()
   })
+
+  it('should not use link when avatar has an empty string as id', () => {
+    render(
+      <AvatarListItem
+        id=""
+        name="Oda"
+        onItemPress={jest.fn()}
+        role="Auteur"
+        accessibilityLabel="Accéder à la page artiste de Oda"
+      />
+    )
+
+    expect(screen.queryByLabelText('Accéder à la page artiste de Oda')).not.toBeOnTheScreen()
+  })
 })
