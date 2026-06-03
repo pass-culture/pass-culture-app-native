@@ -22,7 +22,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <Page>
-      <PageHeader title="Mes favoris" />
+      <PageHeader title="Mes favoris" withMargins />
       <FavoritesResults />
     </Page>
   )

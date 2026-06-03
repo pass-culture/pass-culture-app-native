@@ -22,7 +22,6 @@ exports[`Bookings should render correctly 1`] = `
     }
   />
   <View
-    enableProfileV2={false}
     style={
       {
         "flexDirection": "row",
@@ -32,6 +31,7 @@ exports[`Bookings should render correctly 1`] = `
         "zIndex": 1,
       }
     }
+    withMargins={true}
   >
     <View
       style={

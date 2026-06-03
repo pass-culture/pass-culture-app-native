@@ -8,9 +8,9 @@ import { UserProfile } from 'features/share/types'
 
 type Props = { user?: UserProfile } & ProfileFeatureFlagsProps
 
-export const ProfileLoggedOut = ({ featureFlags, user }: Props) => (
+export const ProfileLoggedOut = ({ user }: Props) => (
   <View testID="profile-logged-out">
-    <LoggedOutHeader featureFlags={featureFlags} />
+    <LoggedOutHeader />
     <LoggedOutContent user={user} />
   </View>
 )

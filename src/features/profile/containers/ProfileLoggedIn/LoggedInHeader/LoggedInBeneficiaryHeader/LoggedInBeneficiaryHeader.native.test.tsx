@@ -19,7 +19,6 @@ const mockAge = (age: number) => mockedGetAge.mockReturnValue(age)
 
 const featureFlags = {
   disableActivation: false,
-  enableProfileV2: true,
 }
 
 describe('LoggedInBeneficiaryHeader', () => {

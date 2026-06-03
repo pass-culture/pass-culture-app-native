@@ -11,7 +11,6 @@ import { LoggedInExBeneficiaryHeader } from 'features/profile/containers/Profile
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpired'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
-import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfile } from 'features/share/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { getAge } from 'shared/user/getAge'
@@ -20,9 +19,9 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
-type Props = { user: UserProfile } & ProfileFeatureFlagsProps
+type Props = { user: UserProfile }
 
-export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
+export const BeneficiaryEmptyHeader = ({ user }: Props) => {
   const { data: remoteConfigData } = useRemoteConfigQuery()
   const {
     firstName,
@@ -68,19 +67,13 @@ export const BeneficiaryEmptyHeader = ({ user, featureFlags }: Props) => {
   })
 
   if (isEighteenYearsOldOrMore) {
-    return (
-      <LoggedInExBeneficiaryHeader
-        user={user}
-        featureFlags={featureFlags}
-        remoteConfigData={remoteConfigData}
-      />
-    )
+    return <LoggedInExBeneficiaryHeader user={user} remoteConfigData={remoteConfigData} />
   }
 
   return (
     <ViewGap gap={6} testID="beneficiary-empty-header">
       <ViewGap gap={2}>
-        <PageHeader title={title} featureFlags={featureFlags} numberOfLines={3} />
+        <PageHeader title={title} numberOfLines={3} />
         <Subtitle {...subtitleProps} />
       </ViewGap>
       <ContainerHeader gap={6}>

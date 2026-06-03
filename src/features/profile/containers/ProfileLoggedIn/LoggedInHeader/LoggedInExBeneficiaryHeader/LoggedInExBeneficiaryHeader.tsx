@@ -5,7 +5,6 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpired'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
-import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfile } from 'features/share/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -13,9 +12,9 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 type Props = {
   user: UserProfile
   remoteConfigData: { homeEntryIdFreeOffers: string }
-} & ProfileFeatureFlagsProps
+}
 
-export const LoggedInExBeneficiaryHeader = ({ user, featureFlags, remoteConfigData }: Props) => {
+export const LoggedInExBeneficiaryHeader = ({ user, remoteConfigData }: Props) => {
   const { firstName, lastName, domainsCredit, depositExpirationDate, eligibility, statusType } =
     user
   const headerTitle = getProfileHeaderTitle({ firstName, lastName })
@@ -32,7 +31,7 @@ export const LoggedInExBeneficiaryHeader = ({ user, featureFlags, remoteConfigDa
   return (
     <ViewGap gap={6} testID="logged-in-ex-beneficiary-header">
       <ViewGap gap={2}>
-        <PageHeader title={headerTitle} featureFlags={featureFlags} numberOfLines={3} />
+        <PageHeader title={headerTitle} numberOfLines={3} />
         <Subtitle {...subtitleProps} />
       </ViewGap>
       <ExBeneficiaryBanner remoteConfigData={remoteConfigData} />

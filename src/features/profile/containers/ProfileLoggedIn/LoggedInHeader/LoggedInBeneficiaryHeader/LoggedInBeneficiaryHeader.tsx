@@ -36,11 +36,11 @@ export const LoggedInBeneficiaryHeader = ({ user, featureFlags, bonificationInfo
 
   switch (creditType) {
     case UserCreditType.CREDIT_EMPTY:
-      header = <BeneficiaryEmptyHeader featureFlags={featureFlags} user={user} />
+      header = <BeneficiaryEmptyHeader user={user} />
       break
 
     case UserCreditType.CREDIT_V3_FREE:
-      header = <BeneficiaryFreeHeader featureFlags={featureFlags} user={user} />
+      header = <BeneficiaryFreeHeader user={user} />
       break
 
     case UserCreditType.CREDIT_V1_18:
@@ -50,7 +50,7 @@ export const LoggedInBeneficiaryHeader = ({ user, featureFlags, bonificationInfo
     case UserCreditType.CREDIT_V2_18:
     case UserCreditType.CREDIT_V3_17:
     case UserCreditType.CREDIT_V3_18:
-      header = <BeneficiaryHeader featureFlags={featureFlags} user={user} />
+      header = <BeneficiaryHeader user={user} />
       break
 
     case UserCreditType.CREDIT_UNKNOWN:
