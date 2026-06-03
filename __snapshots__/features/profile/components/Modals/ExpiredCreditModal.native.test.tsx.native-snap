@@ -115,6 +115,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,

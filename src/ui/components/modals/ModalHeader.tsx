@@ -44,8 +44,12 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       testID: 'rightIcon',
     }))``
   const { top } = useSafeAreaInsets()
-  const statusBarMarginTop = useMobileFontScaleToDisplay({ default: 0, at200PercentZoom: top })
-  const marginTop = withStatusBarMargin ? statusBarMarginTop : 0
+  const marginTop = useMobileFontScaleToDisplay({
+    default: withStatusBarMargin ? top : 0,
+    at200PercentZoom: top,
+  })
+
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 
   const titleNumberOfLines = useNumberOfLine(numberOfLines)
 
@@ -67,7 +71,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
           />
         ) : null}
       </HeaderActionContainer>
-      <TitleContainer>
+      <TitleContainer isZoomed={isZoomed}>
         <Title numberOfLines={titleNumberOfLines} nativeID={titleID} testID="modalHeaderTitle">
           {title}
         </Title>
@@ -99,10 +103,10 @@ const Container = styled(View)<{ modalSpacing?: ModalSpacing; marginTop: number 
   })
 )
 
-const TitleContainer = styled.View(({ theme }) => ({
+const TitleContainer = styled.View<{ isZoomed: boolean }>(({ theme, isZoomed }) => ({
   justifyContent: 'center',
+  flex: isZoomed ? undefined : 1,
   paddingHorizontal: theme.designSystem.size.spacing.m,
-  flex: 1,
   zIndex: theme.zIndex.modalHeader,
 }))
 

@@ -53,15 +53,17 @@ export const SearchInVenueModal = ({
         </HeaderContainer>
       }
       fixedModalBottom={
-        <SearchFixedModalBottomContainer>
-          <Container>
-            <Button
-              wording="Lancer la recherche"
-              onPress={doApplySearch}
-              disabled={isSearchButtonDisabled}
-            />
-          </Container>
-        </SearchFixedModalBottomContainer>
+        theme.isDesktopViewport ? undefined : (
+          <SearchFixedModalBottomContainer>
+            <Container>
+              <Button
+                wording="Lancer la recherche"
+                onPress={doApplySearch}
+                disabled={isSearchButtonDisabled}
+              />
+            </Container>
+          </SearchFixedModalBottomContainer>
+        )
       }>
       <SearchInputContainer>
         <SearchInput
@@ -73,6 +75,15 @@ export const SearchInVenueModal = ({
           testID="searchInput"
         />
       </SearchInputContainer>
+      {theme.isDesktopViewport ? (
+        <Container>
+          <Button
+            wording="Lancer la recherche"
+            onPress={doApplySearch}
+            disabled={isSearchButtonDisabled}
+          />
+        </Container>
+      ) : null}
     </AppModal>
   )
 }

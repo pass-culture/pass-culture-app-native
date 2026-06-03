@@ -197,6 +197,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -361,7 +362,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }

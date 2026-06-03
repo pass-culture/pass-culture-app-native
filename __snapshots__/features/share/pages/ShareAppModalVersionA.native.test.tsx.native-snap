@@ -159,6 +159,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -316,7 +317,6 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 5,
             "width": "100%",
           }
