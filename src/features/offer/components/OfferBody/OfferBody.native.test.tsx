@@ -482,6 +482,38 @@ describe('<OfferBody />', () => {
     })
   })
 
+  describe('Accessibility section', () => {
+    it('should display accessibility when disabilities are defined', () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        description: 'Cette offre est super cool cool cool cool cool cool',
+        extraData: {
+          speaker: 'Toto',
+        },
+        accessibility: {
+          audioDisability: true,
+          mentalDisability: true,
+          motorDisability: false,
+          visualDisability: true,
+        },
+      }
+      renderOfferBody({ offer })
+
+      expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+    })
+
+    it('should not display accessibility when disabilities are not defined', () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        accessibility: {},
+      }
+
+      renderOfferBody({ offer })
+
+      expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
+    })
+  })
+
   describe('ProposedBy section', () => {
     const offerWithDifferentAddress: OfferResponse = {
       ...offerResponseSnap,

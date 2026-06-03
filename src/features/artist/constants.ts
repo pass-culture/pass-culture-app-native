@@ -2,17 +2,37 @@ import { ArtistType, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { ArtistRoleLabelConfig, ArtistSectionTitle } from 'features/artist/types'
 
 export const artistRoleLabelMapping: Record<ArtistType, ArtistRoleLabelConfig> = {
-  [ArtistType.author]: 'Auteur',
-  [ArtistType.film_actor]: 'Acteur',
-  [ArtistType.film_director]: 'Réalisateur',
-  [ArtistType.performer]: {
-    [CategoryIdEnum.SPECTACLE]: 'Interprète',
-    [CategoryIdEnum.MUSIQUE_LIVE]: 'Artiste',
-    [CategoryIdEnum.MUSIQUE_ENREGISTREE]: 'Artiste',
+  [ArtistType.author]: {
+    singular: 'Auteur',
+    plural: 'Auteurs',
   },
-  [ArtistType.stage_director]: 'Metteur en scène',
+  [ArtistType.film_actor]: {
+    singular: 'Acteur',
+    plural: 'Acteurs',
+  },
+  [ArtistType.film_director]: {
+    singular: 'Réalisateur',
+    plural: 'Réalisateurs',
+  },
+  [ArtistType.stage_director]: {
+    singular: 'Metteur en scène',
+    plural: 'Metteurs en scène',
+  },
+  [ArtistType.performer]: {
+    [CategoryIdEnum.SPECTACLE]: {
+      singular: 'Interprète',
+      plural: 'Interprètes',
+    },
+    [CategoryIdEnum.MUSIQUE_LIVE]: {
+      singular: 'Artiste',
+      plural: 'Artistes',
+    },
+    [CategoryIdEnum.MUSIQUE_ENREGISTREE]: {
+      singular: 'Artiste',
+      plural: 'Artistes',
+    },
+  },
 }
-
 export const ARTIST_SECTION_TITLES = {
   artist: { singular: 'Artiste', plural: 'Artistes' },
   distribution: { singular: 'Distribution', plural: 'Distribution' },

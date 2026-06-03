@@ -7,10 +7,11 @@ import { render, screen, userEvent } from 'tests/utils'
 
 const mockArtist = { id: '1', name: 'Edith Piaf' }
 const mockMultiArtists = [
-  { id: '1', name: 'Sam Worthington' },
-  { id: '2', name: 'Zoe Saldana' },
-  { id: '3', name: 'Sigourney Weaver' },
+  { id: '1', name: 'Sam Worthington', role: ArtistType.film_actor },
+  { id: '2', name: 'Zoe Saldana', role: ArtistType.film_actor },
+  { id: '3', name: 'Sigourney Weaver', role: ArtistType.film_actor },
 ]
+const mockFilmDirector = { id: '4', name: 'James Cameron', role: ArtistType.film_director }
 
 const user = userEvent.setup()
 
@@ -98,6 +99,19 @@ describe('<OfferArtistsSection />', () => {
 
       expect(screen.getAllByText('Artiste')[0]).toBeOnTheScreen()
     })
+
+    it('should not display filter buttons', () => {
+      render(
+        <OfferArtistsSection
+          artists={[mockArtist]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      expect(screen.queryByTestId('filterButtons')).not.toBeOnTheScreen()
+    })
   })
 
   describe('When multi artists', () => {
@@ -127,6 +141,92 @@ describe('<OfferArtistsSection />', () => {
       )
 
       expect(screen.getByText('Artistes')).toBeOnTheScreen()
+    })
+
+    it('should not display filter buttons when there are only artists with the same role', () => {
+      render(
+        <OfferArtistsSection
+          artists={mockMultiArtists}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      expect(screen.queryByTestId('filterButtons')).not.toBeOnTheScreen()
+    })
+
+    it('should display filter buttons when there are artists with different roles', () => {
+      render(
+        <OfferArtistsSection
+          artists={[...mockMultiArtists, mockFilmDirector]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      expect(screen.getByText('Acteurs (3)')).toBeOnTheScreen()
+      expect(screen.getByText('Réalisateur (1)')).toBeOnTheScreen()
+    })
+
+    it('should display all artists by default', () => {
+      render(
+        <OfferArtistsSection
+          artists={[...mockMultiArtists, mockFilmDirector]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      expect(screen.getByText('Sam Worthington')).toBeOnTheScreen()
+      expect(screen.getByText('Zoe Saldana')).toBeOnTheScreen()
+      expect(screen.getByText('Sigourney Weaver')).toBeOnTheScreen()
+      expect(screen.getByText('James Cameron')).toBeOnTheScreen()
+    })
+
+    it('should filter artists when pressing filter button', async () => {
+      render(
+        <OfferArtistsSection
+          artists={[...mockMultiArtists, mockFilmDirector]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      await user.press(screen.getByText('Réalisateur (1)'))
+
+      expect(screen.getByText('James Cameron')).toBeOnTheScreen()
+      expect(screen.queryByText('Sam Worthington')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Zoe Saldana')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Sigourney Weaver')).not.toBeOnTheScreen()
+    })
+
+    it('should display all artists when pressing filter button then deselected', async () => {
+      render(
+        <OfferArtistsSection
+          artists={[...mockMultiArtists, mockFilmDirector]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      await user.press(screen.getByText('Réalisateur (1)'))
+
+      expect(screen.getByText('James Cameron')).toBeOnTheScreen()
+      expect(screen.queryByText('Sam Worthington')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Zoe Saldana')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Sigourney Weaver')).not.toBeOnTheScreen()
+
+      await user.press(screen.getByText('Réalisateur (1)'))
+
+      expect(screen.getByText('Sam Worthington')).toBeOnTheScreen()
+      expect(screen.getByText('Zoe Saldana')).toBeOnTheScreen()
+      expect(screen.getByText('Sigourney Weaver')).toBeOnTheScreen()
+      expect(screen.getByText('James Cameron')).toBeOnTheScreen()
     })
   })
 })

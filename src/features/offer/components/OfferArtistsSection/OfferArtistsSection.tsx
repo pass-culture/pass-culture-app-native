@@ -1,10 +1,12 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { styled, useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferArtist, SubcategoryIdEnum } from 'api/gen'
 import { formatArtists } from 'features/artist/helpers/formatArtists'
 import { getArtistRole } from 'features/artist/helpers/getArtistRole'
 import { getArtistSectionTitle } from 'features/artist/helpers/getArtistSectionTitle'
+import { getArtistsFilterButtons } from 'features/offer/helpers/getArtistsFilterButtons/getArtistsFilterButtons'
+import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { Avatar } from 'ui/components/Avatar/Avatar'
@@ -34,6 +36,20 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   const { designSystem } = useTheme()
   const sectionTitle = getArtistSectionTitle(offerSubcategoryId)
   const formattedArtists = formatArtists(artists, offerCategoryId)
+  const filterButtons = getArtistsFilterButtons(artists, offerCategoryId)
+
+  const [selectedFilterRoles, setSelectedFilterRoles] = useState<string[]>([])
+
+  const filteredFormattedArtists = formattedArtists.filter((artist) => {
+    if (!artist.role) return false
+    return selectedFilterRoles.includes(artist.role)
+  })
+
+  const handleFilterPress = (role: string) => {
+    setSelectedFilterRoles((prev) =>
+      prev.includes(role) ? prev.filter((id) => id !== role) : [...prev, role]
+    )
+  }
 
   const soloArtist = artists[0]
 
@@ -68,12 +84,30 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
           />
         </InternalTouchableLink>
       ) : (
-        <AvatarList
-          data={formattedArtists}
-          avatarConfig={{ size: AVATAR_MEDIUM }}
-          onItemPress={onPlaylistItemPress}
-          withMargins={false}
-        />
+        <React.Fragment>
+          {filterButtons.length > 1 ? (
+            <ButtonsContainer
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              testID="filterButtons">
+              {filterButtons.map(({ role, label }) => (
+                <SingleFilterButton
+                  key={role}
+                  testID={role}
+                  label={label}
+                  isSelected={selectedFilterRoles.includes(role)}
+                  onPress={() => handleFilterPress(role)}
+                />
+              ))}
+            </ButtonsContainer>
+          ) : null}
+          <AvatarList
+            data={selectedFilterRoles.length > 0 ? filteredFormattedArtists : formattedArtists}
+            avatarConfig={{ size: AVATAR_MEDIUM }}
+            onItemPress={onPlaylistItemPress}
+            withMargins={false}
+          />
+        </React.Fragment>
       )}
     </ViewGap>
   )
@@ -88,3 +122,11 @@ const ArtistImage = styled(FastImage)(({ theme }) => ({
   borderWidth: 1,
   borderColor: theme.designSystem.color.border.subtle,
 }))
+
+const ButtonsContainer = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: theme.designSystem.size.spacing.s,
+  },
+}))``
