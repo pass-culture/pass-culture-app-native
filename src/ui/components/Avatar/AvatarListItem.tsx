@@ -29,41 +29,56 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   accessibilityLabel,
   ...props
 }) => {
+  const content = (
+    <StyledView gap={2} isFullWidth={isFullWidth}>
+      <Avatar size={size} {...props}>
+        {image ? (
+          <StyledImage url={image} testID="artistAvatar" />
+        ) : (
+          <DefaultAvatar testID="defaultArtistAvatar" />
+        )}
+      </Avatar>
+      <View>
+        <ArtistName
+          numberOfLines={2}
+          maxWidth={size ?? 0}
+          isFullWidth={isFullWidth}
+          isDisabled={!id}>
+          {name}
+        </ArtistName>
+        {role ? (
+          <ArtistRole numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
+            {role}
+          </ArtistRole>
+        ) : null}
+      </View>
+    </StyledView>
+  )
+
+  if (!id) {
+    return content
+  }
+
   return (
     <InternalTouchableLink
       accessibilityLabel={accessibilityLabel ?? name}
       navigateTo={{ screen: 'Artist', params: { id: id.toString() } }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
-      <StyledView gap={2} isFullWidth={isFullWidth}>
-        <Avatar size={size} {...props}>
-          {image ? (
-            <StyledImage url={image} testID="artistAvatar" />
-          ) : (
-            <DefaultAvatar testID="defaultArtistAvatar" />
-          )}
-        </Avatar>
-        <View>
-          <ArtistName numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
-            {name}
-          </ArtistName>
-          {role ? (
-            <ArtistRole numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
-              {role}
-            </ArtistRole>
-          ) : null}
-        </View>
-      </StyledView>
+      {content}
     </InternalTouchableLink>
   )
 }
 
-const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number; isFullWidth: boolean }>(
-  ({ maxWidth, isFullWidth }) => ({
-    textAlign: 'center',
-    maxWidth: isFullWidth ? '100%' : maxWidth,
-    alignSelf: isFullWidth ? 'center' : 'self-start',
-  })
-)
+const ArtistName = styled(Typo.BodyAccentS)<{
+  maxWidth: number
+  isFullWidth: boolean
+  isDisabled: boolean
+}>(({ maxWidth, isFullWidth, isDisabled, theme }) => ({
+  textAlign: 'center',
+  maxWidth: isFullWidth ? '100%' : maxWidth,
+  alignSelf: 'center',
+  color: isDisabled ? theme.designSystem.color.text.subtle : theme.designSystem.color.text.default,
+}))
 
 const ArtistRole = styled(Typo.BodyAccentXs)<{ maxWidth: number; isFullWidth: boolean }>(
   ({ theme, maxWidth, isFullWidth }) => ({
