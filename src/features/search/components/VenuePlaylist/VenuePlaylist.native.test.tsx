@@ -8,6 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -64,6 +65,27 @@ describe('<VenuePlaylist />', () => {
     )
 
     expect(screen.queryByText('Voir sur la carte')).toBeNull()
+  })
+
+  it('should display see all button when there are several venues in the playlist', () => {
+    render(<VenuePlaylist venuePlaylistTitle="Test Playlist" venues={mockedAlgoliaVenuesItems} />)
+
+    expect(screen.getByLabelText('Voir tout pour la sélection Test Playlist')).toBeOnTheScreen()
+  })
+
+  it('should not display see all button when there is only one venue in the playlist', () => {
+    render(
+      <VenuePlaylist
+        venuePlaylistTitle="Test Playlist"
+        venues={[mockAlgoliaVenues[0] as AlgoliaVenue].map(
+          convertAlgoliaVenue2AlgoliaVenueOfferListItem
+        )}
+      />
+    )
+
+    expect(
+      screen.queryByLabelText('Voir tout pour la sélection Test Playlist')
+    ).not.toBeOnTheScreen()
   })
 
   describe('When wipVenueMap feature flag activated', () => {

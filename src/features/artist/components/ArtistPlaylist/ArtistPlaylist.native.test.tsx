@@ -48,6 +48,40 @@ describe('ArtistPlaylist', () => {
     )
   })
 
+  it('should display see all button when there are several offers from this artist', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    expect(
+      await screen.findByLabelText('Voir tout pour la sélection Toutes ses offres disponibles')
+    ).toBeOnTheScreen()
+  })
+
+  it('should not display see all button when there is only one offer from this artist', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[mockedAlgoliaOffersWithSameArtistResponse[0]]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findByLabelText('Toutes ses offres disponibles')
+
+    expect(
+      screen.queryByLabelText('Voir tout pour la sélection Toutes ses offres disponibles')
+    ).not.toBeOnTheScreen()
+  })
+
   it('should use bookFormat if available in playlist item', async () => {
     render(
       reactQueryProviderHOC(

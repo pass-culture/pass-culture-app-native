@@ -97,9 +97,11 @@ export const PassPlaylist = ({
               withTag={showNewTag}
             />
           </TitleContainer>
-          <SeeAllButtonContainer withMargin={withMargin}>
-            <SeeAllButton playlistTitle={title} data={seeAllButton} />
-          </SeeAllButtonContainer>
+          {data.length > 1 ? (
+            <SeeAllButtonContainer withMargin={withMargin}>
+              <SeeAllButton playlistTitle={title} data={seeAllButton} />
+            </SeeAllButtonContainer>
+          ) : null}
           {showNewTag ? (
             <TagContainer>
               <Tag label="Nouveau" variant={TagVariant.NEW} />
