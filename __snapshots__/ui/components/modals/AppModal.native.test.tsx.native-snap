@@ -203,7 +203,6 @@ exports[`<AppModal /> on big screen 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -260,7 +259,8 @@ exports[`<AppModal /> on big screen 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -453,6 +453,7 @@ exports[`<AppModal /> on small screen 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 400,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -490,7 +491,6 @@ exports[`<AppModal /> on small screen 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -547,7 +547,8 @@ exports[`<AppModal /> on small screen 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -694,6 +695,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -731,7 +733,6 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -788,7 +789,8 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -981,6 +983,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1018,7 +1021,6 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1075,7 +1077,8 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1268,6 +1271,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1305,7 +1309,6 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1362,7 +1365,8 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1555,6 +1559,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1698,7 +1703,6 @@ exports[`<AppModal /> with left icon render 1`] = `
           </View>
         </View>
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1755,7 +1759,8 @@ exports[`<AppModal /> with left icon render 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1948,6 +1953,7 @@ exports[`<AppModal /> with minimal props 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1985,7 +1991,6 @@ exports[`<AppModal /> with minimal props 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2042,7 +2047,8 @@ exports[`<AppModal /> with minimal props 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -2235,6 +2241,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -2272,7 +2279,6 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2436,7 +2442,8 @@ exports[`<AppModal /> with right icon render 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -2629,6 +2636,7 @@ exports[`<AppModal /> without children 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -2666,7 +2674,6 @@ exports[`<AppModal /> without children 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2723,7 +2730,8 @@ exports[`<AppModal /> without children 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }

@@ -115,7 +115,6 @@ exports[`GeolocationActivationModal should render properly 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
