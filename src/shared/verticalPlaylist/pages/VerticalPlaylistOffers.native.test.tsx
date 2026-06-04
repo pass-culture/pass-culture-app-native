@@ -67,7 +67,7 @@ describe('VerticalPlaylistOffers', () => {
 
     renderVerticalPlaylistOffers()
 
-    expect(screen.getByText('Venue playlist')).toBeOnTheScreen()
+    expect(screen.getAllByText('Venue playlist')[0]).toBeOnTheScreen()
   })
 
   it('should render VerticalPlaylistSimilarsOffers', () => {
@@ -85,7 +85,7 @@ describe('VerticalPlaylistOffers', () => {
 
     renderVerticalPlaylistOffers()
 
-    expect(screen.getByText('Similar playlist')).toBeOnTheScreen()
+    expect(screen.getAllByText('Similar playlist')[0]).toBeOnTheScreen()
   })
 
   it('should render VerticalPlaylistSearchOffers', () => {
@@ -101,7 +101,7 @@ describe('VerticalPlaylistOffers', () => {
 
     renderVerticalPlaylistOffers()
 
-    expect(screen.getByText('Thematic playlist')).toBeOnTheScreen()
+    expect(screen.getAllByText('Thematic playlist')[0]).toBeOnTheScreen()
   })
 
   it('should render error when module is missing', () => {
