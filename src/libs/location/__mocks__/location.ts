@@ -26,7 +26,6 @@ const locationContext: ILocationContext = {
   geolocPositionError: null,
   permissionState: GeolocPermissionState.GRANTED,
   requestGeolocPermission,
-  triggerPositionUpdate,
   showGeolocPermissionModal,
   onPressGeolocPermissionModalButton,
   hasGeolocPosition: true,

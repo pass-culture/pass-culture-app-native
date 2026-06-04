@@ -22,6 +22,7 @@ import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { LocationWrapper } from 'libs/location/location'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -38,11 +39,12 @@ globalThisShim()
 
 export function App() {
   useEffect(() => {
-    eventMonitoring.init({ enabled: !__DEV__ })
+    void eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
   useEffect(() => {
     initAlgoliaAnalytics()
+    initLocationPermission()
     const setDeviceInfo = async () => {
       const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
       if (existingDeviceInfo.deviceId) return
@@ -55,7 +57,7 @@ export function App() {
   // Unregister service workers (to make sure all sw cache is removed)
   useEffect(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
+      void navigator.serviceWorker.getRegistrations().then((registrations) => {
         registrations.forEach((registration) => registration.unregister())
       })
     }

@@ -1,6 +1,12 @@
+import { act } from 'react'
+
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  contextualRequestGeolocPermission,
+  initLocationPermission,
+} from 'libs/locationV2/location.methods'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
@@ -34,7 +40,9 @@ describe('useLocation()', () => {
     it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns GRANTED', async () => {
       mockPermissionResult(GeolocPermissionState.GRANTED)
       const { result } = renderLocationHook()
-      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      await act(async () => {
+        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
@@ -48,7 +56,9 @@ describe('useLocation()', () => {
     it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns DENIED', async () => {
       mockPermissionResult(GeolocPermissionState.DENIED)
       const { result } = renderLocationHook()
-      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      await act(async () => {
+        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
@@ -62,7 +72,9 @@ describe('useLocation()', () => {
     it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns NEVER_ASK_AGAIN', async () => {
       mockPermissionResult(GeolocPermissionState.NEVER_ASK_AGAIN)
       const { result } = renderLocationHook()
-      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      await act(async () => {
+        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
@@ -76,7 +88,9 @@ describe('useLocation()', () => {
     it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns NEED_ASK_POSITION_DIRECTLY and position is not null', async () => {
       mockPermissionResult(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
       const { result } = renderLocationHook()
-      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      await act(async () => {
+        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
@@ -91,7 +105,9 @@ describe('useLocation()', () => {
       mockGetGeolocPositionFail()
       mockPermissionResult(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
       const { result } = renderLocationHook()
-      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      await act(async () => {
+        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
@@ -111,6 +127,10 @@ describe('useLocation()', () => {
       async (params: { permission: GeolocPermissionState }) => {
         const { permission } = params
         mockPermissionResult(permission)
+
+        await act(async () => {
+          initLocationPermission()
+        })
         renderLocationHook()
 
         await waitFor(() => {
@@ -128,6 +148,11 @@ describe('useLocation()', () => {
       async (params: { permission: GeolocPermissionState }) => {
         const { permission } = params
         mockPermissionResult(permission)
+
+        await act(async () => {
+          initLocationPermission()
+        })
+
         renderLocationHook()
 
         await waitFor(() => {
