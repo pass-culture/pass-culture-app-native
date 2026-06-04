@@ -17,7 +17,7 @@ export const SignupBanner: FunctionComponent = () => {
 
   const onSystemBannerPress = () => {
     onBeforeNavigate()
-    navigate('SignupForm', { from: StepperOrigin.HOME })
+    navigate('SignupMethods', { from: StepperOrigin.HOME })
   }
 
   return (

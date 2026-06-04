@@ -115,6 +115,7 @@ export enum StepperOrigin {
   FORGOTTEN_PASSWORD = 'forgottenPassword',
   HOME = 'home',
   LOGIN = 'login',
+  LOGIN_METHODS = 'LoginMethods',
   NOTIFICATION = 'notification',
   OFFER = 'offer',
   ONBOARDING_GENERAL_PUBLIC_WELCOME = 'OnboardingGeneralPublicWelcome',
@@ -123,6 +124,7 @@ export enum StepperOrigin {
   PROFILE = 'profile',
   RESET_PASSWORD_EMAIL_SENT = 'resetPasswordEmailSent',
   SIGNUP = 'signup',
+  SIGNUP_METHODS = 'SignupMethods',
   THEMATIC_HOME = 'thematicHome',
   TUTORIAL = 'Tutorial',
   VALIDATE_EMAIL_CHANGE = 'validateEmailChange',
@@ -167,7 +169,7 @@ type AfterSignupEmailValidationBufferParams = {
   email: string
 }
 
-type SignupFormParams =
+type SignupParams =
   | {
       accountCreationToken?: string
       email?: string
@@ -310,8 +312,10 @@ export type RootStackParamList = {
   SearchFilter?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
-  SignupForm: SignupFormParams
-  _DeeplinkOnlySignupForm1: SignupFormParams
+  SignupMethods: SignupParams
+  _DeeplinkOnlySignupMethods1: SignupParams
+  SignupForm: SignupParams
+  _DeeplinkOnlySignupForm1: SignupParams
   SubscriptionStackNavigator?: NavigatorScreenParams<SubscriptionStackParamList>
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: NavigatorScreenParams<TabParamList>

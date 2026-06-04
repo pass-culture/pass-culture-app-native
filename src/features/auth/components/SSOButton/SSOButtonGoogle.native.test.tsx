@@ -160,6 +160,18 @@ describe('<SSOButton />', () => {
     })
   })
 
+  it('should display signup wording', () => {
+    renderSSOButton('signup')
+
+    expect(screen.getByText('S’inscrire avec Google')).toBeOnTheScreen()
+  })
+
+  it('should display login wording', () => {
+    renderSSOButton('login')
+
+    expect(screen.getByText('Se connecter avec Google')).toBeOnTheScreen()
+  })
+
   describe('When shouldLogInfo remote config is false', () => {
     beforeEach(() => {
       queryClient.setQueryData([QueryKeys.REMOTE_CONFIG], {

@@ -7,6 +7,6 @@ export type AppleLoginOptions = {
 
 export type AppleSSOContext = {
   type: 'login' | 'signup'
-  params?: RootStackParamList['Login' | 'SignupForm']
+  params?: RootStackParamList['LoginMethods' | 'SignupMethods']
   oauthStateToken: string
 }

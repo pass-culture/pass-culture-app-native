@@ -25,18 +25,18 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   from,
 }) => {
   const closeModal = useCallback(() => {
-    analytics.logQuitAuthenticationModal(offerId)
+    void analytics.logQuitAuthenticationModal(offerId)
     hideModal()
   }, [hideModal, offerId])
 
   const signUp = useCallback(() => {
-    analytics.logSignUpFromAuthenticationModal(offerId)
-    analytics.logSignUpClicked({ from: 'offer_booking' })
+    void analytics.logSignUpFromAuthenticationModal(offerId)
+    void analytics.logSignUpClicked({ from: 'offer_booking' })
     hideModal()
   }, [hideModal, offerId])
 
   const signIn = useCallback(() => {
-    analytics.logSignInFromAuthenticationModal(offerId)
+    void analytics.logSignInFromAuthenticationModal(offerId)
     hideModal()
   }, [hideModal, offerId])
 
@@ -55,7 +55,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
           fullWidth
           wording="Créer un compte"
           navigateTo={{
-            screen: 'SignupForm',
+            screen: 'SignupMethods',
             params: { offerId, from },
           }}
           onBeforeNavigate={signUp}

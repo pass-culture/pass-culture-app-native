@@ -50,14 +50,14 @@ describe('<NotificationsLoggedOutModal />', () => {
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should go to sign up page on press "Créer un compte"', async () => {
+  it('should go to SignupMethods page on press "Créer un compte"', async () => {
     renderModal(true)
 
     const authButton = screen.getByText('Créer un compte')
 
     await user.press(authButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', { from: 'thematicHome' })
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', { from: 'thematicHome' })
   })
 
   it('should dismiss modal on press "Se connecter"', async () => {

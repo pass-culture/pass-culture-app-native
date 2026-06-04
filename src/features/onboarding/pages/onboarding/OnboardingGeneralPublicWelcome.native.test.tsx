@@ -29,13 +29,13 @@ describe('OnboardingGeneralPublicWelcome', () => {
     })
   })
 
-  it('should navigate to SignupForm when pressing "Créer un compte"', async () => {
+  it('should navigate to SignupMethods when pressing "Créer un compte"', async () => {
     render(<OnboardingGeneralPublicWelcome />)
 
     const signupButton = screen.getByText('Créer un compte')
     await userEvent.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {
       from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME,
     })
   })

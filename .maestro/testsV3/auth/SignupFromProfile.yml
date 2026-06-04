@@ -10,6 +10,7 @@ onFlowStart:
 
 - assertVisible: 'Mon profil'
 - tapOn: 'Créer un compte'
+- tapOn: 'S’inscrire avec mon e-mail'
 
 - assertVisible: 'Crée-toi un compte'
 - tapOn:

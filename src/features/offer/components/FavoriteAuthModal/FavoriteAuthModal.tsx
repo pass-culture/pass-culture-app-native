@@ -48,7 +48,7 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
           as={Button}
           wording="Créer un compte"
           navigateTo={{
-            screen: 'SignupForm',
+            screen: 'SignupMethods',
             params: { from: StepperOrigin.FAVORITE, offerId },
           }}
           onBeforeNavigate={signUp}
