@@ -124,7 +124,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     isCinemaOffer,
   })
 
-  const metadata = getOfferMetadata(extraData)
+  const metadata = getOfferMetadata(extraData, subcategory.categoryId, artists.length > 0)
   const hasMetadata = metadata.length > 0
   const shouldDisplayAccessibilitySection = !(
     isNullOrUndefined(offer.accessibility.visualDisability) &&
