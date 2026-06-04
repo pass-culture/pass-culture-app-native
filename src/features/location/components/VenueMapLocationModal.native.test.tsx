@@ -8,6 +8,7 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
@@ -337,7 +338,10 @@ describe('VenueMapLocationModal', () => {
     const Container = () => {
       return (
         <LocationWrapper>
-          <SearchLocationModal />
+          <React.Fragment>
+            <GeolocationActivationModal />
+            <SearchLocationModal />
+          </React.Fragment>
         </LocationWrapper>
       )
     }

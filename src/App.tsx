@@ -25,6 +25,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { LocationWrapper } from 'libs/location/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
@@ -89,27 +90,30 @@ const App: FunctionComponent = function () {
                   <FirestoreNetworkObserver />
                   <AuthWrapper>
                     <LocationWrapper>
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchWrapper>
-                            <SnackBarWrapper>
-                              <CulturalSurveyContextProvider>
-                                <SubscriptionContextProvider>
-                                  <SplashScreenProvider>
-                                    <ShareAppWrapper>
-                                      <OfflineModeContainer>
-                                        <ScreenErrorProvider>
-                                          <AppNavigationContainer />
-                                        </ScreenErrorProvider>
-                                      </OfflineModeContainer>
-                                    </ShareAppWrapper>
-                                  </SplashScreenProvider>
-                                </SubscriptionContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarWrapper>
-                          </SearchWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
+                      <React.Fragment>
+                        <GeolocationActivationModal />
+                        <AccessibilityFiltersWrapper>
+                          <FavoritesWrapper>
+                            <SearchWrapper>
+                              <SnackBarWrapper>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <ShareAppWrapper>
+                                        <OfflineModeContainer>
+                                          <ScreenErrorProvider>
+                                            <AppNavigationContainer />
+                                          </ScreenErrorProvider>
+                                        </OfflineModeContainer>
+                                      </ShareAppWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarWrapper>
+                            </SearchWrapper>
+                          </FavoritesWrapper>
+                        </AccessibilityFiltersWrapper>
+                      </React.Fragment>
                     </LocationWrapper>
                   </AuthWrapper>
                 </NetInfoWrapper>

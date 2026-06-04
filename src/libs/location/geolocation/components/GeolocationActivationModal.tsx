@@ -2,19 +2,14 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { onPressGeolocPermissionModalButton } from 'libs/locationV2/location.methods'
+import { locationActions, useLocationV2 } from 'libs/locationV2/location.store'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
-
-type Props = {
-  hideGeolocPermissionModal: () => void
-  isGeolocPermissionModalVisible: boolean
-  onPressGeolocPermissionModalButton: () => void
-}
 
 const informationText = Platform.select({
   android: 'Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.',
@@ -23,12 +18,10 @@ const informationText = Platform.select({
 })
 const isNative = Platform.OS === 'android' || Platform.OS === 'ios'
 
-export const GeolocationActivationModal: React.FC<Props> = ({
-  isGeolocPermissionModalVisible,
-  hideGeolocPermissionModal,
-  onPressGeolocPermissionModalButton,
-}) => {
+export const GeolocationActivationModal: React.FC = () => {
   const { permissionState } = useLocation()
+  const { isPermissionModalVisible } = useLocationV2()
+
   const callToActionMessage =
     permissionState === GeolocPermissionState.GRANTED
       ? 'Désactiver la géolocalisation'
@@ -36,8 +29,8 @@ export const GeolocationActivationModal: React.FC<Props> = ({
   return (
     <AppInformationModal
       title="Paramètres de localisation"
-      visible={isGeolocPermissionModalVisible}
-      onCloseIconPress={hideGeolocPermissionModal}
+      visible={isPermissionModalVisible}
+      onCloseIconPress={locationActions.hidePermissionModal}
       testIdSuffix="geoloc-permission-modal">
       {/** Special case where theme.icons.sizes is not used */}
       <LocationPointer />
@@ -50,10 +43,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
           <Button
             fullWidth
             wording={callToActionMessage}
-            onPress={() => {
-              analytics.logOpenLocationSettings()
-              onPressGeolocPermissionModalButton()
-            }}
+            onPress={onPressGeolocPermissionModalButton}
           />
         </ButtonWrapper>
       ) : null}

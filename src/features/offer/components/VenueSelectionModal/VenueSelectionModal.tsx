@@ -10,9 +10,9 @@ import {
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import { locationActions } from 'libs/locationV2/location.store'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { useModal } from 'ui/components/modals/useModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -60,17 +60,7 @@ export function VenueSelectionModal({
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { top } = useCustomSafeInsets()
   const { designSystem } = useTheme()
-  const {
-    permissionState,
-    requestGeolocPermission,
-    onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
-  } = useLocation()
-
-  const {
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-    visible: isGeolocPermissionModalVisible,
-  } = useModal(false)
+  const { permissionState, requestGeolocPermission } = useLocation()
 
   const handleSubmit = useCallback(() => {
     if (selectedVenue !== undefined) {
@@ -78,18 +68,13 @@ export function VenueSelectionModal({
     }
   }, [onSubmit, selectedVenue])
 
-  const onPressGeolocPermissionModalButton = useCallback(() => {
-    hideGeolocPermissionModal()
-    onPressGeolocPermissionModalButtonDefault()
-  }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
-
   const onPressGeolocationBanner = useCallback(async () => {
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      showGeolocPermissionModal()
+      locationActions.showPermissionModal()
     } else {
       await requestGeolocPermission()
     }
-  }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
+  }, [permissionState, requestGeolocPermission])
   const HEIGHT_CONTAINER = designSystem.size.spacing.xl
 
   const customHeader = useMemo(() => {
@@ -152,11 +137,7 @@ export function VenueSelectionModal({
         headerMessage={headerMessage}
         onPressGeolocationBanner={onPressGeolocationBanner}
       />
-      <GeolocationActivationModal
-        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
+      <GeolocationActivationModal />
     </AppModal>
   )
 }

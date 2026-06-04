@@ -1,5 +1,6 @@
 import { Linking } from 'react-native'
 
+import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
@@ -57,6 +58,7 @@ export const contextualCheckPermission = async () => {
 export const onPressGeolocPermissionModalButton = () => {
   void Linking.openSettings()
   locationActions.hidePermissionModal()
+  void analytics.logOpenLocationSettings()
 }
 
 const isGranted = (permission: GeolocPermissionState) => {
