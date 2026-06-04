@@ -160,6 +160,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -197,7 +198,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -361,7 +361,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -839,6 +840,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -876,7 +878,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1040,7 +1041,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1518,6 +1520,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1555,7 +1558,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1719,7 +1721,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -2197,6 +2200,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -2234,7 +2238,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2398,7 +2401,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -2876,6 +2880,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -2913,7 +2918,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -3077,7 +3081,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -3555,6 +3560,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -3592,7 +3598,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -3756,7 +3761,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }

@@ -160,6 +160,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -197,7 +198,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -361,7 +361,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }

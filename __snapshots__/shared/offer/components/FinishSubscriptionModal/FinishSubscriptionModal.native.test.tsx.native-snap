@@ -160,6 +160,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -197,7 +198,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -362,7 +362,8 @@ pour réserver cette offre
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -716,6 +717,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -753,7 +755,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -918,7 +919,8 @@ pour réserver cette offre
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1272,6 +1274,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -1309,7 +1312,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           }
         />
         <View
-          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1474,7 +1476,8 @@ pour réserver cette offre
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
+            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
