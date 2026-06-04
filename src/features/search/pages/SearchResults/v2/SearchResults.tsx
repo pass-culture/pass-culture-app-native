@@ -62,11 +62,11 @@ export const SearchResults = () => {
 
   const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
-  const [selectedSearchTab, setSelectedSeachTab] =
+  const [selectedSearchTab, setSelectedSearchTab] =
     useState<SelectSearchOffersParams['selectedFilter']>(undefined)
 
   const handleTabPress = (tab: SearchFilter) =>
-    setSelectedSeachTab(tab === selectedSearchTab ? undefined : tab)
+    setSelectedSearchTab(tab === selectedSearchTab ? undefined : tab)
 
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
     useLocation()

@@ -24,7 +24,11 @@ tags:
       - assertVisible: '.*résultats'
 - runFlow:
     when:
-      notVisible: 'Les artistes'
+      notVisible:
+        and:
+          - 'Les artistes'
+          - 'Les lieux culturels'
+          - 'Les offres'
     commands:
       - assertVisible: 'Pas de résultat'
 

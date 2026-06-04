@@ -10,7 +10,7 @@ import { VenuePlaylist } from 'features/search/pages/SearchResults/v2/components
 import { hasActiveSearchFilters } from 'features/search/queries/helpers'
 import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
-import { FetchSearchResultsArgs } from 'features/search/types'
+import { FetchSearchResultsArgs, SearchListProps } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { useLocation } from 'libs/location/location'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -45,7 +45,12 @@ export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters 
   })
 
   // Handler for modules with the new system
-  const handleViewableItemsChanged = (items, moduleId, itemType, playlistIndex) => {
+  const handleViewableItemsChanged: SearchListProps['onViewableVenuePlaylistItemsChanged'] = (
+    items,
+    moduleId,
+    itemType,
+    playlistIndex
+  ) => {
     pageTracking.trackViewableItems({
       moduleId,
       itemType,
@@ -57,7 +62,7 @@ export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters 
 
   const handleVenuePlaylistViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
     if (!isFocused) return
-    handleViewableItemsChanged?.(items, 'searchResultsVenuePlaylist', 'venue', 0)
+    handleViewableItemsChanged(items, 'searchResultsVenuePlaylist', 'venue', 0)
   }
 
   if (!searchResultVenues.length || hasSelectedSearchFilters) return null
