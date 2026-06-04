@@ -7,7 +7,7 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { AlgoliaOffer } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
-export const SEARCH_FILTERS = ['Offres', 'Lieux', 'Artistes'] as const
+const SEARCH_FILTERS = ['Offres', 'Lieux', 'Artistes'] as const
 export type SearchFilter = (typeof SEARCH_FILTERS)[number]
 
 export type FetchSearchOffersResponse = {
@@ -33,5 +33,5 @@ export type SelectedSearchOffers = {
 export type SelectSearchOffersParams = {
   data: InfiniteData<FetchSearchOffersResponse>
   transformHits: ReturnType<typeof useTransformOfferHits>
-  selectedFilter?: SearchFilter | null
+  selectedFilter?: SearchFilter
 }

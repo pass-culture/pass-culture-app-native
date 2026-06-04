@@ -6,14 +6,15 @@ import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileW
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, SearchResultOffer } from 'features/search/types'
+import { GridListLayout } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { Offer } from 'shared/offer/types'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { RATIO_HOME_IMAGE } from 'ui/theme'
 
 type SearchOfferItemWrapper = {
-  item: SearchResultOffer
+  item: Offer
   index: number
 }
 
@@ -43,7 +44,7 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
     <React.Fragment>
       {isGridLayout ? (
         <OfferTileWrapper
-          item={item.data}
+          item={item}
           analyticsFrom="searchresults"
           height={tileWidth / RATIO_HOME_IMAGE}
           width={tileWidth}
@@ -53,7 +54,7 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
         />
       ) : (
         <HorizontalOfferTile
-          offer={item.data}
+          offer={item}
           analyticsParams={{
             query,
             index,

@@ -12,25 +12,18 @@ import { SearchHeader } from 'features/search/components/SearchHeader/SearchHead
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
-import { removeGeolocFromVenue } from 'features/search/helpers/searchList/removeGeolocFromVenue'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
-import { SearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTab'
-import { SearchResultsContent } from 'features/search/pages/SearchResults/v2/SearchResultsContent'
-import { getSearchListContent } from 'features/search/pages/SearchResults/v2/utils'
-import { hasActiveSearchFilters } from 'features/search/queries/helpers.ts'
-import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
-import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
-import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
+import { AllSearchResultsList } from 'features/search/pages/SearchResults/v2/components/SearchLists/AllSearchResultsList'
+import { ArtistsList } from 'features/search/pages/SearchResults/v2/components/SearchLists/ArtistsList'
+import { OffersList } from 'features/search/pages/SearchResults/v2/components/SearchLists/OffersList'
+import { VenuesList } from 'features/search/pages/SearchResults/v2/components/SearchLists/VenuesList'
+import { SearchTabs } from 'features/search/pages/SearchResults/v2/components/SearchTabs/SearchTabs'
+import { hasActiveSearchFilters } from 'features/search/queries/helpers'
 import {
   SearchFilter,
   SelectSearchOffersParams,
 } from 'features/search/queries/useSearchOffersQuery/types'
-import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
-import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
-import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
-import { SearchOfferHits } from 'features/search/types'
-import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -41,7 +34,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
@@ -54,8 +46,6 @@ export const SearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
-  const [selectedFilter, setSelectedFilter] =
-    useState<SelectSearchOffersParams['selectedFilter']>(null)
 
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
@@ -70,21 +60,23 @@ export const SearchResults = () => {
     [setQueryHistory]
   )
 
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
-
-  const enableArtistInSearchActive = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH
-  )
   const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
+  const [selectedSearchTab, setSelectedSeachTab] =
+    useState<SelectSearchOffersParams['selectedFilter']>(undefined)
+
+  const handleTabPress = (tab: SearchFilter) =>
+    setSelectedSeachTab(tab === selectedSearchTab ? undefined : tab)
+
+  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
+    useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const {
     data: { aroundPrecision },
   } = useRemoteConfigQuery()
 
-  const queryParams = {
+  const searchFilters = {
     parameters: { page: 0, ...searchState },
     buildLocationParameterParams: {
       userLocation,
@@ -98,70 +90,7 @@ export const SearchResults = () => {
     isUserUnderage,
   }
 
-  const transformHits = useTransformOfferHits()
-
-  const hasSelectedSearchFilters = !hasActiveSearchFilters(queryParams)
-
-  const isArtistsQueryEnabled =
-    hasSelectedSearchFilters &&
-    enableArtistInSearchActive &&
-    (selectedFilter === null || selectedFilter === 'Artistes')
-  const {
-    data: artistsResponse = [],
-    isLoading: isArtistsQueryLoading,
-    isFetching: isArtistsQueryFetching,
-    isSuccess: isArtistsQuerySuccess,
-  } = useSearchArtistsQuery(queryParams, {
-    select: (data) => selectSearchArtists(data),
-    enabled: isArtistsQueryEnabled,
-  })
-
-  const isOffersQueryEnabled = selectedFilter === null || selectedFilter === 'Offres'
-  const {
-    data: offersResponse,
-    hasNextPage,
-    fetchNextPage,
-    isFetching: isOffersQueryFetching,
-    refetch,
-    isRefetching: isOffersQueryRefetching,
-    isLoading: isOffersQueryLoading,
-    isSuccess: isOffersQuerySuccess,
-  } = useSearchOffersQuery(queryParams, {
-    select: (data) => selectSearchOffers({ data, transformHits }),
-    enabled: isOffersQueryEnabled,
-  })
-
-  const isVenuesQueryEnabled =
-    (hasSelectedSearchFilters && selectedFilter === null) || selectedFilter === 'Lieux'
-  const {
-    data: venuesResponse,
-    isLoading: isVenuesQueryLoading,
-    isFetching: isVenuesQueryFetching,
-    isSuccess: isVenuesQuerySuccess,
-  } = useSearchVenuesQuery(queryParams, {
-    select: (venuesResponse) => selectSearchVenues(venuesResponse),
-    enabled: isVenuesQueryEnabled,
-  })
-
-  const venues = venuesResponse?.venues ?? []
-  const venueNotOpenToPublic = venuesResponse?.venueNotOpenToPublic ?? []
-
-  const searchResultVenues = venueNotOpenToPublic[0]
-    ? [removeGeolocFromVenue(venueNotOpenToPublic[0]), ...venues]
-    : venues
-
-  const hits: SearchOfferHits = {
-    artists: artistsResponse,
-    duplicatedOffers: offersResponse?.duplicatedOffers ?? [],
-    offers: offersResponse?.offers ?? [],
-    venues: searchResultVenues,
-    venueNotOpenToPublic,
-  }
-
-  const pageTracking = usePageTracking({
-    pageName: 'SearchResults',
-    pageLocation: 'searchresults',
-  })
+  const hasSelectedSearchFilters = hasActiveSearchFilters(searchFilters)
 
   useEffect(() => {
     // searchId generation when search results is the app entry point (deeplinks generator)
@@ -170,30 +99,6 @@ export const SearchResults = () => {
     }
   }, [searchState.searchId, dispatch])
 
-  // Handler for modules with the new system
-  const handleViewableItemsChanged = (items, moduleId, itemType, playlistIndex) => {
-    pageTracking.trackViewableItems({
-      moduleId,
-      itemType,
-      viewableItems: items,
-      searchId: searchState.searchId,
-      playlistIndex,
-    })
-  }
-
-  const handleEndReached = async () => {
-    if (!(offersResponse && hasNextPage)) {
-      return
-    }
-    const page = offersResponse.lastPage?.offersResponse.page ?? 0
-
-    if (page > 0) {
-      const currentSearchId = searchState.searchId ?? searchIdGenerated
-      void analytics.logSearchScrollToPage(page, currentSearchId)
-    }
-    await fetchNextPage()
-  }
-
   const handleAIFakeDoorPress = (from: 'search' | 'searchAutoComplete') => {
     void analytics.logHasClickedFakeDoorCTA({
       featureName: 'conversational_search_AI',
@@ -201,23 +106,6 @@ export const SearchResults = () => {
       searchId: searchState.searchId ?? searchIdGenerated,
     })
     showModal()
-  }
-
-  const handlePressFilter = (filter: SearchFilter) =>
-    setSelectedFilter((prev) => {
-      return prev === filter ? null : filter
-    })
-
-  const searchListContent = getSearchListContent({
-    selectedFilter,
-    hits,
-    nbHits: offersResponse?.nbHits ?? hits.offers.length,
-  })
-
-  const searchTabsMap: Record<SearchFilter, number> = {
-    Offres: hits.offers.length,
-    Lieux: hits.venues.length + hits.venueNotOpenToPublic.length,
-    Artistes: hits.artists.length,
   }
 
   if (!netInfo.isConnected) {
@@ -233,11 +121,11 @@ export const SearchResults = () => {
         withFilterButton={!isFocusOnSuggestions}
         withArrow
         shouldDisplayHeader={!isFocusOnSuggestions}>
-        {isFocusOnSuggestions ? null : (
-          <SearchTab
-            selectedFilter={selectedFilter}
-            searchTabsMap={searchTabsMap}
-            onFilterPress={handlePressFilter}
+        {isFocusOnSuggestions || hasSelectedSearchFilters ? null : (
+          <SearchTabs
+            searchFilters={searchFilters}
+            onTabPress={handleTabPress}
+            selectedSearchTab={selectedSearchTab}
           />
         )}
       </SearchHeader>
@@ -267,23 +155,25 @@ export const SearchResults = () => {
         ) : (
           <React.Fragment>
             {isZoomedAt200 || isLandscape ? null : searchHeader}
-            <SearchResultsContent
-              onEndReached={handleEndReached}
-              onSearchResultsRefresh={() => refetch()}
-              searchListContent={searchListContent}
-              isFetching={isArtistsQueryFetching && isOffersQueryFetching && isVenuesQueryFetching}
-              isLoading={isArtistsQueryLoading && isOffersQueryLoading && isVenuesQueryLoading}
-              isRefetching={isOffersQueryRefetching}
-              isSuccess={isArtistsQuerySuccess && isOffersQuerySuccess && isVenuesQuerySuccess}
-              userData={offersResponse?.userData}
-              venuesUserData={venuesResponse?.venuesUserData ?? undefined}
-              onViewableItemsChanged={handleViewableItemsChanged}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
-              disabilities={disabilities}
-              selectedFilter={selectedFilter}
-              header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
-            />
+            {(() => {
+              switch (selectedSearchTab) {
+                case 'Offres':
+                  return <OffersList searchFilters={searchFilters} />
+                case 'Lieux':
+                  return <VenuesList searchFilters={searchFilters} />
+                case 'Artistes':
+                  return <ArtistsList searchFilters={searchFilters} />
+                default:
+                  return (
+                    <AllSearchResultsList
+                      enableAIFakeDoor={enableAIFakeDoor}
+                      onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
+                      header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
+                      searchFilters={searchFilters}
+                    />
+                  )
+              }
+            })()}
           </React.Fragment>
         )}
       </InstantSearch>
