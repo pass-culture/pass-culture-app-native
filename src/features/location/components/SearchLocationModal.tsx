@@ -2,7 +2,7 @@ import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
-import { useLocationMode } from 'features/location/helpers/useLocationMode'
+import { createSelectLocationMode } from 'features/location/helpers/selectLocationMode'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -29,9 +29,6 @@ export const SearchLocationModal = () => {
     aroundMeRadius,
     setPlace,
     aroundPlaceRadius,
-    permissionState,
-    showGeolocPermissionModal,
-    requestGeolocPermission,
   } = useLocation()
 
   const { locationMode, visible } = useLocationModal()
@@ -70,18 +67,10 @@ export const SearchLocationModal = () => {
     setTempAroundMeRadius,
   })
 
-  const { selectLocationMode } = useLocationMode({
-    dismissModal,
-    setTempLocationMode: locationModalActions.setLocationMode,
-    setSelectedLocationMode,
-    permissionState,
-    setPlace,
-    showGeolocPermissionModal,
-    requestGeolocPermission,
-    hasGeolocPosition,
-    tempLocationMode: locationMode,
+  const selectLocationMode = createSelectLocationMode({
     onSubmit,
   })
+
   return (
     <LocationModal
       visible={visible}

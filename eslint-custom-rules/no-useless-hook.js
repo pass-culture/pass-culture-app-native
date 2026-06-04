@@ -21,16 +21,22 @@ const isHookName = (name) => {
   return startsWithUse && hasEnoughCharacters && hasUppercaseAfterUse
 }
 
+const IGNORED_HOOKS = ['useMemo', 'useCallback']
+
 const hasHookCall = (context) => {
   const sourceCode = context.getSourceCode()
   return sourceCode.ast.body.some((node) =>
     sourceCode
       .getTokens(node)
-      .some(
-        (token) =>
-          sourceCode.getNodeByRangeIndex(token.range[0])?.type === 'CallExpression' &&
-          isHookName(sourceCode.getNodeByRangeIndex(token.range[0])?.callee?.name)
-      )
+      .some((token) => {
+        const nodeAtRange = sourceCode.getNodeByRangeIndex(token.range[0])
+        const calleeName = nodeAtRange?.callee?.name
+        return (
+          nodeAtRange?.type === 'CallExpression' &&
+          isHookName(calleeName) &&
+          !IGNORED_HOOKS.includes(calleeName)
+        )
+      })
   )
 }
 
@@ -59,7 +65,8 @@ const hasCorrespondingFileWithHooks = (context) => {
 
     try {
       const content = fs.readFileSync(file, 'utf8')
-      return /use[A-Z][a-zA-Z]*\s*\([^)]*\)/.test(content)
+      const matches = content.match(/use[A-Z][a-zA-Z]*/g) || []
+      return matches.some((match) => !IGNORED_HOOKS.includes(match))
     } catch (error) {
       console.error(`Error reading file ${file}:`, error)
       return false

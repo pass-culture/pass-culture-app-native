@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { useLocationMode } from 'features/location/helpers/useLocationMode'
+import { createSelectLocationMode } from 'features/location/helpers/selectLocationMode'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { locationModalActions, useLocationModal } from 'libs/locationV2/locationModal.store'
@@ -13,12 +13,7 @@ export const HomeLocationModal = () => {
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    setPlace,
     onResetPlace,
-    setSelectedLocationMode,
-    permissionState,
-    showGeolocPermissionModal,
-    requestGeolocPermission,
   } = useLocation()
 
   const { visible, locationMode } = useLocationModal()
@@ -28,17 +23,8 @@ export const HomeLocationModal = () => {
     void analytics.logUserSetLocation('home')
   }
 
-  const { selectLocationMode } = useLocationMode({
-    dismissModal: locationModalActions.hide,
+  const selectLocationMode = createSelectLocationMode({
     shouldDirectlyValidate: true,
-    hasGeolocPosition,
-    permissionState,
-    setTempLocationMode: locationModalActions.setLocationMode,
-    setSelectedLocationMode,
-    setPlace,
-    showGeolocPermissionModal,
-    requestGeolocPermission,
-    tempLocationMode: locationMode,
     onSubmit,
   })
 

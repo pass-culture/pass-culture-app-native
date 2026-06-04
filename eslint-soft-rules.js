@@ -9,6 +9,7 @@ const softRules = {
   },
   archi: {
     'boundaries/element-types': ['warn', boundariesRule],
+    'local-rules/no-useless-hook': 'warn',
   },
   reactRules: {
     'react-hooks/config': 'warn',
