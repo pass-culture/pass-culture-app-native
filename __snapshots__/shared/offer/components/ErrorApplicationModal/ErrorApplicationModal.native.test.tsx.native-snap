@@ -197,6 +197,7 @@ exports[`<ErrorApplicationModal /> should match previous snapshot 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -362,7 +363,6 @@ ton crédit
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }

@@ -23,12 +23,12 @@ import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { KeyboardAvoidingViewWrapper } from 'ui/pages/components/KeyboardAvoidingViewWrapper'
 import { Spacer, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { ModalHeader } from './ModalHeader'
 import { ModalIconProps, ModalSwipeDirection } from './types'
 
 type Props = {
@@ -197,23 +197,13 @@ export const AppModal: FunctionComponent<Props> = ({
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
-  const isFullscreenAtZoom = useMobileFontScaleToDisplay({
-    default: false,
-    at200PercentZoom: !maxHeight,
-  })
-  const upToStatusBarTopOffset = useMobileFontScaleToDisplay({
-    default: top,
-    at200PercentZoom: top + designSystem.size.spacing.xxxxl,
-  })
-  const effectiveIsFullscreen = isFullscreen || isFullscreenAtZoom
-
   let maxContainerHeight = maxHeight
   let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
 
   // no fullscreen in desktop view
-  if (effectiveIsFullscreen || isUpToStatusBar) {
-    maxContainerHeight = isUpToStatusBar ? windowHeight - upToStatusBarTopOffset : windowHeight
-    modalContainerHeight = windowHeight
+  if (isFullscreen || isUpToStatusBar) {
+    maxContainerHeight = windowHeight
+    modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
   }
 
   const fullscreenModalBody = useMemo(() => {
@@ -269,7 +259,7 @@ export const AppModal: FunctionComponent<Props> = ({
       propagateSwipe={propagateSwipe}>
       <KeyboardAvoidingViewWrapper>
         <ModalContainer
-          height={maxHeight || isUpToStatusBar ? undefined : modalContainerHeight}
+          height={maxHeight ? undefined : modalContainerHeight}
           testID="modalContainer"
           maxHeight={maxContainerHeight}
           desktopConstraints={containerDesktopConstraints}
@@ -293,7 +283,7 @@ export const AppModal: FunctionComponent<Props> = ({
               {...iconProps}
             />
           )}
-          {effectiveIsFullscreen || maxHeight || isUpToStatusBar ? (
+          {isFullscreen || maxHeight || isUpToStatusBar ? (
             fullscreenModalBody
           ) : (
             <React.Fragment>
@@ -349,7 +339,6 @@ const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ the
   marginBottom: theme.designSystem.size.spacing.xxxxl,
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
-  maxWidth: getSpacing(120),
   height: '100%',
   paddingBottom,
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
@@ -373,7 +362,6 @@ const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {
 export type ModalContainerProps = {
   theme: DefaultTheme
   height?: number
-  fullscreen?: boolean
   maxHeight?: number
   noPadding?: boolean
   noPaddingBottom?: boolean
@@ -386,7 +374,6 @@ export type ModalContainerProps = {
 const ModalContainer = styled.View<ModalContainerProps>(
   ({
     height,
-    fullscreen,
     desktopConstraints,
     maxHeight,
     noPadding,
@@ -396,20 +383,17 @@ const ModalContainer = styled.View<ModalContainerProps>(
     rightNootch,
     leftNootch,
   }) => {
-    return {
-      ...appModalContainerStyle({
-        theme,
-        height,
-        desktopConstraints,
-        maxHeight,
-        noPadding,
-        noPaddingBottom,
-        isLandscape,
-        rightNootch,
-        leftNootch,
-      }),
-      ...(fullscreen ? { height: '100%', maxHeight: '100%' } : {}),
-    }
+    return appModalContainerStyle({
+      theme,
+      height,
+      desktopConstraints,
+      maxHeight,
+      noPadding,
+      noPaddingBottom,
+      isLandscape,
+      rightNootch,
+      leftNootch,
+    })
   }
 )
 

@@ -145,9 +145,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
+      height={1318}
       isLandscape={false}
       leftNootch={16}
-      maxHeight={1318}
+      maxHeight={1334}
       noPadding={true}
       rightNootch={16}
       style={
@@ -159,8 +160,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
+          "height": 1318,
           "justifyContent": "flex-start",
-          "maxHeight": 1318,
+          "maxHeight": 1334,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 0,
@@ -2270,6 +2272,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             <View
               gap={4}
               isModal={true}
+              isZoomed={false}
               style={
                 {
                   "alignItems": "center",
@@ -2421,6 +2424,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
+                isZoomed={false}
                 style={
                   {
                     "flexBasis": 0,

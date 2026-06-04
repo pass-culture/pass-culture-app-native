@@ -203,6 +203,7 @@ exports[`<AppModal /> on big screen 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -260,7 +261,6 @@ exports[`<AppModal /> on big screen 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -490,6 +490,7 @@ exports[`<AppModal /> on small screen 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -547,7 +548,6 @@ exports[`<AppModal /> on small screen 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -731,6 +731,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -788,7 +789,6 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1018,6 +1018,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1075,7 +1076,6 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1305,6 +1305,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1362,7 +1363,6 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1698,6 +1698,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           </View>
         </View>
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -1755,7 +1756,6 @@ exports[`<AppModal /> with left icon render 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -1985,6 +1985,7 @@ exports[`<AppModal /> with minimal props 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2042,7 +2043,6 @@ exports[`<AppModal /> with minimal props 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -2272,6 +2272,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2436,7 +2437,6 @@ exports[`<AppModal /> with right icon render 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }
@@ -2666,6 +2666,7 @@ exports[`<AppModal /> without children 1`] = `
           }
         />
         <View
+          isZoomed={false}
           style={
             {
               "flexBasis": 0,
@@ -2723,7 +2724,6 @@ exports[`<AppModal /> without children 1`] = `
         style={
           {
             "height": "100%",
-            "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",
           }

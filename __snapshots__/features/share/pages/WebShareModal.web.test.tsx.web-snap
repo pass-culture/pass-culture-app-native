@@ -210,7 +210,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   data-testid="spacerBetweenHeaderAndContent"
                 />
                 <div
-                  class="css-view-175oi2r r-height-1pi2tsx r-maxWidth-iz080l r-paddingBottom-xd6kpl r-width-13qz1uu"
+                  class="css-view-175oi2r r-height-1pi2tsx r-paddingBottom-xd6kpl r-width-13qz1uu"
                 >
                   <div
                     class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"

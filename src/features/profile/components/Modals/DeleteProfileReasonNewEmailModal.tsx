@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
@@ -12,13 +13,15 @@ type Props = {
 }
 
 export const DeleteProfileReasonNewEmailModal: React.FC<Props> = ({ isVisible, hideModal }) => {
+  const isFullScreen = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   return (
     <AppModal
       title="Modifie ton adresse e-mail sur ce compte"
       visible={isVisible}
       rightIcon={Close}
       onRightIconPress={hideModal}
-      rightIconAccessibilityLabel="Fermer la modale">
+      rightIconAccessibilityLabel="Fermer la modale"
+      isFullscreen={isFullScreen}>
       <StyledBody>Tu ne peux créer qu’un seul compte pass Culture à ton nom.</StyledBody>
       <StyledBody>
         Pour modifier ton adresse e-mail, suis les instructions sur cette page.
