@@ -188,7 +188,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       visible={visible}
       title={title}
       modalSpacing={modal.spacing.MD}
-      isUpToStatusBar
       customModalHeader={
         <BookingOfferModalHeader
           onClose={onClose}
