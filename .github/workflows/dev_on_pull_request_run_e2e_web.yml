@@ -96,7 +96,7 @@ jobs:
 
       - name: Logs & screenshots from errors (Download link ⬇️)
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: maestro-artifacts
           path: /home/runner/.maestro/tests/
