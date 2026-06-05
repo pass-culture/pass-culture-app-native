@@ -1,20 +1,20 @@
-# v1.394.0
+# v1.395.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
-- /native/v1/me/favorites/{favorite_id}
-Pathname not found for deleteNativeV1MeRemindersreminderId
+Pathname not found for deleteNativeV1MeFavoritesfavoriteId
+- /native/v1/me/reminders/{reminder_id}
 - /native/v1/account/suspend/token_validation/{token}
-Pathname not found for getNativeV1AccountSuspensionDate
-Pathname not found for getNativeV1AccountSuspensionStatus
+- /native/v1/account/suspension_date
+- /native/v1/account/suspension_status
 - /native/v1/artists/{artist_id}
-Pathname not found for getNativeV1Banner
+- /native/v1/banner
 - /native/v1/countries
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
 - /native/v1/me
 - /native/v1/me/favorites
 - /native/v1/me/reminders
-Pathname not found for getNativeV1OauthState
+- /native/v1/oauth/state
 - /native/v1/offer/{offer_id}/chronicles
 - /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
