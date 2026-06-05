@@ -2,7 +2,7 @@ import { SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
 import { ARTIST_CATEGORY_PLAYLISTS } from 'features/artist/constants'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 
-export type DisplayableArtistPlaylist = {
+type DisplayableArtistPlaylist = {
   entryId: string
   items: AlgoliaOfferWithArtistAndEan[]
   playlistIndex: number
