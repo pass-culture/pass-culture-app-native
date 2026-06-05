@@ -45,7 +45,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
-describe('<SSOButton />', () => {
+describe('<SSOButtonGoogle />', () => {
   beforeEach(() => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
@@ -79,7 +79,8 @@ describe('<SSOButton />', () => {
           source: 'iPhone 13',
         },
       },
-      'google'
+      'google',
+      { credentials: 'omit' }
     )
   })
 

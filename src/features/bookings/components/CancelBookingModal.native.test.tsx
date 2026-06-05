@@ -129,7 +129,7 @@ describe('<CancelBookingModal />', () => {
     }
 
     mockServer.postApi(`/v1/bookings/${booking.id}/cancel`, {
-      responseOptions: { statusCode: 401, data: response },
+      responseOptions: { statusCode: 501, data: response },
     })
 
     renderCancelBookingModal(booking)
