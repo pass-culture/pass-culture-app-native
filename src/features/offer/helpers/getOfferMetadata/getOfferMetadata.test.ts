@@ -1,3 +1,4 @@
+import { CategoryIdEnum } from 'api/gen'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 
 describe('getOfferMetadata', () => {
@@ -47,5 +48,40 @@ describe('getOfferMetadata', () => {
     const result = getOfferMetadata(extraData)
 
     expect(result).toEqual([{ label: '', value: 'Interdection au moins de 18 ans' }])
+  })
+
+  it('should not return Distribution metadata for cinema offers when artists are displayed', () => {
+    const extraData = { cast: ['Actor1', 'Actor2'] }
+    const result = getOfferMetadata(extraData, CategoryIdEnum.CINEMA, true)
+
+    expect(result).toEqual([])
+  })
+
+  it('should keep Distribution metadata for cinema offers when no artists are displayed', () => {
+    const extraData = { cast: ['Actor1', 'Actor2'] }
+    const result = getOfferMetadata(extraData, CategoryIdEnum.CINEMA, false)
+
+    expect(result).toEqual([{ label: 'Distribution', value: 'Actor1, Actor2' }])
+  })
+
+  it('should keep other cinema metadata while removing Distribution when artists are displayed', () => {
+    const extraData = {
+      certificate: 'Tous publics',
+      releaseDate: '2023-01-01',
+      cast: ['Actor1', 'Actor2'],
+    }
+    const result = getOfferMetadata(extraData, CategoryIdEnum.CINEMA, true)
+
+    expect(result).toEqual([
+      { label: '', value: 'Tous publics' },
+      { label: 'Date de sortie', value: '01 janvier 2023' },
+    ])
+  })
+
+  it('should keep Distribution metadata for non-cinema offers even when artists are displayed', () => {
+    const extraData = { cast: ['Actor1', 'Actor2'] }
+    const result = getOfferMetadata(extraData, CategoryIdEnum.SPECTACLE, true)
+
+    expect(result).toEqual([{ label: 'Distribution', value: 'Actor1, Actor2' }])
   })
 })
