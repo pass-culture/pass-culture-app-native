@@ -14,7 +14,8 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { shouldDisplayPricesStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
-import { QualtricsSurveyModal } from 'features/bookOffer/pages/QualtricsSurveyModal'
+import { checkHasAlreadySeenSurvey } from 'features/bookOffer/pages/qualtricsSurveyModals/checkHasAlreadySeenSurvey'
+import { BookingCanceledSurveyModal } from 'features/bookOffer/pages/qualtricsSurveyModals/QualtricsSurveyModal'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
@@ -179,11 +180,19 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   const onClose = useCallback(async () => {
     dismissModal()
-    showQualtricsSurveyModal()
+    await checkHasAlreadySeenSurvey(showQualtricsSurveyModal, !!offer?.isEvent, 'cancelled')
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
     void analytics.logCancelBookingFunnel(step, offerId)
-  }, [dismissModal, bookingState.offerId, offerId, dispatch, step, showQualtricsSurveyModal])
+  }, [
+    dismissModal,
+    showQualtricsSurveyModal,
+    offer?.isEvent,
+    bookingState.offerId,
+    offerId,
+    dispatch,
+    step,
+  ])
 
   return visible ? (
     <AppModal
@@ -207,7 +216,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       {children}
     </AppModal>
   ) : (
-    <QualtricsSurveyModal
+    <BookingCanceledSurveyModal
       userId={userId}
       offerId={offerId}
       visible={isQualtricsSurveyEnabled && qualtricsSurveyModalVisible}

@@ -1,9 +1,10 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
+import React, { FC, useCallback, useEffect } from 'react'
 
 import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { QualtricsSurveyModal } from 'features/bookOffer/pages/QualtricsSurveyModal'
+import { checkHasAlreadySeenSurvey } from 'features/bookOffer/pages/qualtricsSurveyModals/checkHasAlreadySeenSurvey'
+import { BookingCompletedSurveyModal } from 'features/bookOffer/pages/qualtricsSurveyModals/QualtricsSurveyModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -24,7 +25,7 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { LINE_BREAK } from 'ui/theme/constants'
 
-export function BookingConfirmation() {
+export const BookingConfirmation: FC = () => {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
   const { user } = useAuthContext()
   const { data: offer } = useOfferQuery({ offerId: params.offerId })
@@ -66,8 +67,8 @@ export function BookingConfirmation() {
   } = useModal(false)
 
   useEffect(() => {
-    showQualtricsSurveyModal()
-  }, [showQualtricsSurveyModal])
+    void checkHasAlreadySeenSurvey(showQualtricsSurveyModal, !!offer?.isEvent, 'confirm')
+  }, [offer?.isEvent, showQualtricsSurveyModal])
 
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', offerId: params.offerId })
@@ -125,7 +126,7 @@ export function BookingConfirmation() {
           dismissModal={hideShareOfferModal}
         />
       ) : null}
-      <QualtricsSurveyModal
+      <BookingCompletedSurveyModal
         userId={user?.id ?? 0}
         offerId={params.offerId}
         visible={isQualtricsSurveyEnabled && qualtricsSurveyModalVisible}
