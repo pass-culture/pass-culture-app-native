@@ -1,13 +1,10 @@
-import React, { memo, useContext, useEffect, useMemo } from 'react'
+import React, { memo, useContext, useMemo } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { useAppStateChange } from 'libs/appState'
 import { LocationMode, ILocationContext } from 'libs/location/types'
 import {
-  contextualCheckPermission,
   contextualRequestGeolocPermission,
   onPressGeolocPermissionModalButton,
-  triggerPositionUpdate,
 } from 'libs/locationV2/location.methods'
 import {
   locationActions,
@@ -32,7 +29,6 @@ const LocationContext = React.createContext<ILocationContext>({
   geolocPositionError: null,
   permissionState: null,
   requestGeolocPermission: async () => {},
-  triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
   selectedLocationMode: LocationMode.EVERYWHERE,
@@ -84,13 +80,6 @@ export const LocationWrapper = memo(function LocationWrapper({
     locationModalActions.setAddressInputValue('')
   }
 
-  useEffect(() => {
-    void contextualCheckPermission()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useAppStateChange(contextualCheckPermission, undefined, [])
-
   const userLocation = useUserLocation()
 
   const value = useMemo(
@@ -100,7 +89,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       permissionState,
       hasGeolocPosition,
       requestGeolocPermission: contextualRequestGeolocPermission,
-      triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
       place,
       setPlace,

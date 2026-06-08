@@ -10,6 +10,7 @@ import {
   GeolocPermissionState,
   LocationWrapper,
 } from 'libs/location/location'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -57,6 +58,7 @@ describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     act(() => {
       locationModalActions.show()
+      initLocationPermission()
     })
     renderHomeLocationModal()
 
@@ -70,6 +72,7 @@ describe('HomeLocationModal', () => {
   it('should trigger logEvent "logUserSetLocation" on onSubmit', async () => {
     act(() => {
       locationModalActions.show()
+      initLocationPermission()
     })
     renderHomeLocationModal()
     await act(async () => {
@@ -96,6 +99,7 @@ describe('HomeLocationModal', () => {
   it('should hide modal on close modal button press', async () => {
     act(() => {
       locationModalActions.show()
+      initLocationPermission()
     })
     renderHomeLocationModal()
     await act(async () => {
@@ -113,6 +117,7 @@ describe('HomeLocationModal', () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
     act(() => {
       locationModalActions.show()
+      initLocationPermission()
     })
 
     renderHomeLocationModal()
@@ -127,6 +132,7 @@ describe('HomeLocationModal', () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
     act(() => {
       locationModalActions.show()
+      initLocationPermission()
     })
 
     renderHomeLocationModal()
@@ -143,6 +149,7 @@ describe('HomeLocationModal', () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
     act(() => {
       locationModalActions.show()
+      initLocationPermission()
     })
 
     const Container = () => {

@@ -17,6 +17,7 @@ import {
   LocationWrapper,
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -75,6 +76,10 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
 const user = userEvent.setup()
 
 describe('SearchLocationModal', () => {
+  beforeEach(() => {
+    initLocationPermission()
+  })
+
   it('should render correctly if modal visible', async () => {
     renderSearchLocationModal()
     await user.press(screen.getByText('Open modal'))
@@ -184,6 +189,8 @@ describe('SearchLocationModal', () => {
         </LocationWrapper>
       )
     }
+    initLocationPermission()
+
     render(<Container />)
     locationModalActions.show()
 

@@ -17,6 +17,7 @@ import {
   LocationWrapper,
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -79,6 +80,10 @@ const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue
 const user = userEvent.setup()
 
 describe('VenueMapLocationModal', () => {
+  beforeEach(() => {
+    initLocationPermission()
+  })
+
   it('should render correctly if modal visible', async () => {
     renderVenueMapLocationModal({})
     await act(async () => {
@@ -346,6 +351,9 @@ describe('VenueMapLocationModal', () => {
       )
     }
     render(<Container />)
+
+    initLocationPermission()
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
