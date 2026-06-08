@@ -210,14 +210,16 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             <TitleContainer>
               <Typo.Title3 {...getHeadingAttrs(2)}>{playlistTitle}</Typo.Title3>
             </TitleContainer>
-            <SeeAllButton
-              playlistTitle={playlistTitle}
-              data={{
-                onBeforeNavigate: onSeeAllBeforeNavigate,
-                navigateToVerticalPlaylist,
-                hideSearchSeeAll: true,
-              }}
-            />
+            {artists.length > 1 ? (
+              <SeeAllButton
+                playlistTitle={playlistTitle}
+                data={{
+                  onBeforeNavigate: onSeeAllBeforeNavigate,
+                  navigateToVerticalPlaylist,
+                  hideSearchSeeAll: true,
+                }}
+              />
+            ) : null}
           </SeeAllButtonContainer>
           <ObservedPlaylist onViewableItemsChanged={handleArtistsViewableItemsChanged}>
             {({ listRef, handleViewableItemsChanged }) => (

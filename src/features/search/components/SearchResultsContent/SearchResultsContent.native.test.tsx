@@ -883,5 +883,31 @@ describe('SearchResultsContent component', () => {
         searchId,
       })
     })
+
+    it('should display see all button when there are several artists in the playlist', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      expect(
+        await screen.findByLabelText('Voir tout pour la sélection Les artistes')
+      ).toBeOnTheScreen()
+    })
+
+    it('should not display see all button when there is only one artist in the playlist', async () => {
+      renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        hits: {
+          ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS.hits,
+          artists: [{ id: '1', name: 'Artist 1' }],
+        },
+      })
+
+      await initSearchResultsFlashlist()
+
+      expect(
+        screen.queryByLabelText('Voir tout pour la sélection Les artistes')
+      ).not.toBeOnTheScreen()
+    })
   })
 })

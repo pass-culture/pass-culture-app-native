@@ -223,12 +223,40 @@ describe('<VenueOffers />', () => {
         })
       })
 
-      it('should not display artists playlist when venue offers have artists', async () => {
+      it('should not display artists playlist when venue offers have not artists', async () => {
         renderVenueOffers({})
 
         await screen.findByLabelText('Toutes les offres')
 
         expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
+      })
+
+      it('should display see all button when there are several artists in the playlist', async () => {
+        renderVenueOffers({
+          venueArtists: venueOffersArtistsMock,
+        })
+
+        expect(
+          await screen.findByLabelText(
+            'Voir tout pour la sélection Les artistes disponibles dans ce lieu'
+          )
+        ).toBeOnTheScreen()
+      })
+
+      // { artists: VenueOffersArtistsResponseSnap }
+
+      it('should not display see all button when there is only one artist in the playlist', async () => {
+        renderVenueOffers({
+          venueArtists: { artists: [VenueOffersArtistsResponseSnap[0]] },
+        })
+
+        await screen.findByText('Les artistes disponibles dans ce lieu')
+
+        expect(
+          screen.queryByLabelText(
+            'Voir tout pour la sélection Les artistes disponibles dans ce lieu'
+          )
+        ).not.toBeOnTheScreen()
       })
     })
 

@@ -35,7 +35,7 @@ describe('<VerticalPlaylistOffersView />', () => {
       )
     )
 
-    await screen.findByText('My title')
+    await screen.findAllByText('My title')
 
     expect(screen).toMatchSnapshot()
   })
@@ -53,8 +53,10 @@ describe('<VerticalPlaylistOffersView />', () => {
       )
     )
 
-    expect(await screen.findByText('My title')).toBeOnTheScreen()
-    expect(await screen.findByText('My subtitle')).toBeOnTheScreen()
-    expect(await screen.findByText('3 offres')).toBeOnTheScreen()
+    await screen.findAllByText('My title')
+
+    expect(screen.getAllByText('My title')[0]).toBeOnTheScreen()
+    expect(screen.getByText('My subtitle')).toBeOnTheScreen()
+    expect(screen.getByText('3 offres')).toBeOnTheScreen()
   })
 })
