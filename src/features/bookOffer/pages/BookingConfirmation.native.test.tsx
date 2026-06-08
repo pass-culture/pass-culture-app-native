@@ -5,6 +5,7 @@ import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -23,8 +24,6 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
-jest.mock('queries/offer/useOfferQuery')
-
 jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
@@ -37,6 +36,15 @@ const isAvailable = jest.spyOn(reactNativeInAppReview, 'isAvailable')
 const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
 
 const mockOfferId = 1337
+jest.mock('queries/offer/useOfferQuery', () => ({
+  useOfferQuery: () => ({
+    data: {
+      ...mockBaseOffer,
+      id: 1337,
+      isEvent: true,
+    },
+  }),
+}))
 
 jest.useFakeTimers()
 
@@ -58,6 +66,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('<BookingConfirmation />', () => {
   beforeEach(async () => {
+    void storage.clear('has_seen_qualtrics_survey')
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_REVIEW_TRIGGER_BOOKING])
     await clearHistory()
     useRoute.mockReturnValue({
@@ -239,12 +248,22 @@ describe('<BookingConfirmation />', () => {
   })
 
   describe('qualtrics survey modal', () => {
-    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY]))
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_QUALTRICS_SURVEY])
+    })
 
     it('should render modal', async () => {
       render(<BookingConfirmation />)
 
-      expect(await screen.findByTestId('Répondre au questionnaire')).toBeOnTheScreen()
+      expect(await screen.findByTestId('Donner mon avis')).toBeOnTheScreen()
+    })
+
+    it('should not render modal when user has already seen it', async () => {
+      await storage.saveObject('has_seen_qualtrics_survey', { confirm: true })
+
+      render(<BookingConfirmation />)
+
+      expect(screen.queryByTestId('Donner mon avis')).not.toBeOnTheScreen()
     })
   })
 })

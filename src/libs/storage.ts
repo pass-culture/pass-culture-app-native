@@ -15,6 +15,7 @@ export type StorageKey =
   | 'has_seen_eligible_card'
   | 'has_seen_onboarding_subscription'
   | 'has_seen_push_notifications_modal_once'
+  | 'has_seen_qualtrics_survey'
   | 'has_seen_tutorials'
   | 'logged_in_session_count'
   | 'offers_viewed_count'
