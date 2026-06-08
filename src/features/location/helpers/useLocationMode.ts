@@ -1,71 +1,64 @@
-import { useGeolocationDialogs } from 'features/location/helpers/useGeolocationDialogs'
-import { LocationState, LocationSubmit } from 'features/location/types'
+import { Alert, Linking } from 'react-native'
+
+import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { contextualRequestGeolocPermission } from 'libs/locationV2/location.methods'
+import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 
-type Props = {
-  dismissModal: () => void
-  shouldOpenDirectlySettings?: boolean
-  shouldDirectlyValidate?: boolean
-  setTempLocationMode: LocationState['setTempLocationMode']
-  setSelectedLocationMode: LocationState['setSelectedLocationMode']
-  permissionState: LocationState['permissionState']
-  setPlace: LocationState['setPlace']
-  showGeolocPermissionModal: LocationState['showGeolocPermissionModal']
-  requestGeolocPermission: LocationState['requestGeolocPermission']
-  hasGeolocPosition: LocationState['hasGeolocPosition']
-  onSubmit: LocationSubmit['onSubmit']
-  tempLocationMode: LocationState['tempLocationMode']
-}
-
-export const useLocationMode = ({
-  dismissModal,
-  shouldOpenDirectlySettings,
-  shouldDirectlyValidate,
-  setTempLocationMode,
-  setSelectedLocationMode,
-  permissionState,
-  setPlace,
-  requestGeolocPermission,
-  hasGeolocPosition,
-  onSubmit,
-}: Props) => {
-  const { runGeolocationDialogs } = useGeolocationDialogs({
-    dismissModal,
+export const selectLocationMode = async (
+  selectedMode: LocationMode,
+  {
     shouldOpenDirectlySettings,
     shouldDirectlyValidate,
-    setTempLocationMode,
-    setSelectedLocationMode,
-    permissionState,
-    setPlace,
-    requestGeolocPermission,
-    hasGeolocPosition,
-  })
+  }: { shouldOpenDirectlySettings?: boolean; shouldDirectlyValidate?: boolean } = {}
+) => {
+  const permissionState = locationSelectors.selectPermissionState()
+  const hasGeolocPosition = locationSelectors.selectIsGeolocated()
 
-  const selectLocationMode = (mode: LocationMode) => () => {
-    switch (mode) {
-      case LocationMode.AROUND_ME:
-        runGeolocationDialogs()
-        if (shouldDirectlyValidate) {
-          dismissModal()
-        }
-        break
-
-      case LocationMode.EVERYWHERE:
-        setTempLocationMode(LocationMode.EVERYWHERE)
-        if (shouldDirectlyValidate) {
-          setSelectedLocationMode(LocationMode.EVERYWHERE)
-          setPlace(null)
-          dismissModal()
-        } else {
-          onSubmit(LocationMode.EVERYWHERE)
-        }
-        break
-
-      default:
-        setTempLocationMode(mode)
-        break
+  if (selectedMode === LocationMode.AROUND_ME) {
+    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      locationActions.setPlace(null)
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
+      if (shouldOpenDirectlySettings) {
+        void Linking.openSettings()
+      } else {
+        locationModalActions.hide()
+        // 2 native modals can't be opened at the same time or the app will freeze, so we need to wait for the first one to be closed
+        // we keep the imperative approach to avoid using onModalHide that bursts the logic between files
+        setTimeout(() => {
+          locationActions.showPermissionModal()
+        }, 500)
+      }
+    } else if (permissionState === GeolocPermissionState.GRANTED && !hasGeolocPosition) {
+      Alert.alert(
+        'Paramètres de localisation',
+        'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
+        [{ text: 'OK', onPress: () => locationActions.setLocationMode(LocationMode.EVERYWHERE) }]
+      )
+    } else if (permissionState === GeolocPermissionState.GRANTED && shouldDirectlyValidate) {
+      locationActions.setPlace(null)
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
+    } else {
+      await contextualRequestGeolocPermission({
+        onAcceptance: () =>
+          shouldDirectlyValidate
+            ? locationActions.setLocationMode(LocationMode.AROUND_ME)
+            : locationModalActions.setLocationMode(LocationMode.AROUND_ME),
+        onRefusal: () => locationActions.setLocationMode(LocationMode.EVERYWHERE),
+      })
+    }
+    if (shouldDirectlyValidate) {
+      locationModalActions.hide()
     }
   }
 
-  return { selectLocationMode }
+  if (selectedMode === LocationMode.EVERYWHERE) {
+    if (shouldDirectlyValidate) {
+      locationActions.setPlace(null)
+      locationModalActions.hide()
+    }
+  }
+
+  locationActions.setLocationMode(selectedMode)
 }
