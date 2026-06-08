@@ -3,6 +3,7 @@ import React, { FC, PropsWithChildren } from 'react'
 import { NoSearchResult } from 'features/search/components/NoSearchResult/NoSearchResult'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
+import { hasActiveSearchFilters } from 'features/search/queries/helpers'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
@@ -31,7 +32,13 @@ export const NoSearchResultContainer: FC<
     select: (artistsResponse) => !!artistsResponse?.artistsResponse.nbHits,
   })
 
-  if (!hasOffersData && !hasVenuesData && !hasArtistsData)
+  const hasSelectedSearchFilters = hasActiveSearchFilters(searchFilters)
+
+  const hasSearchResults = hasSelectedSearchFilters
+    ? hasOffersData
+    : hasOffersData || hasVenuesData || hasArtistsData
+
+  if (!hasSearchResults)
     return (
       <NoSearchResult
         setSelectedLocationMode={locationActions.setLocationMode}
