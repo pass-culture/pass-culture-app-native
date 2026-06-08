@@ -229,7 +229,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             >
               <Text
                 accessibilityRole="header"
-                numberOfLines={2}
                 style={
                   {
                     "color": "#161617",

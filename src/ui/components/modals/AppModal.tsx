@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
@@ -233,6 +234,8 @@ export const AppModal: FunctionComponent<Props> = ({
     setFullscreenScrollViewRef,
   ])
 
+  const numberOfLines = useNumberOfLine(titleNumberOfLines ?? 2)
+
   return (
     <StyledModal
       accessibilityModal
@@ -271,7 +274,7 @@ export const AppModal: FunctionComponent<Props> = ({
           ) : (
             <ModalHeader
               title={title}
-              numberOfLines={titleNumberOfLines}
+              numberOfLines={numberOfLines}
               onLayout={updateHeaderHeight}
               titleID={titleId}
               modalSpacing={modalSpacing}

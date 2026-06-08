@@ -29,7 +29,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   rightIcon,
   rightIconAccessibilityLabel = 'Fermer la modale',
   onRightIconPress,
-  numberOfLines = 2,
+  numberOfLines,
   modalSpacing,
   onLayout,
 }) => {

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -21,6 +22,7 @@ export const AdvicesWritersModal: FunctionComponent<Props> = ({
   modalWording,
   buttonWording,
 }) => {
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   return (
     <AppModal
       animationOutTiming={1}
@@ -28,6 +30,7 @@ export const AdvicesWritersModal: FunctionComponent<Props> = ({
       title={'Qui écrit les avis\u00a0?'}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
+      isUpToStatusBar={isZoomed}
       onRightIconPress={closeModal}>
       <ViewGap gap={6}>
         <Typo.Body>{modalWording}</Typo.Body>
