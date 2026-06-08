@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
 import { Color, OffersModuleParameters, VenuesModule } from 'features/home/types'
@@ -338,6 +338,8 @@ export type RootStackParamList = {
     subtitle?: string
     venueId?: number
     similarToArtistId?: string
+    offerId?: number
+    offerCategoryId?: CategoryIdEnum
   }
   VerticalPlaylistOffers: VerticalPlaylistOffersSource
   VerticalPlaylistVenues: { module: VenuesModule }
