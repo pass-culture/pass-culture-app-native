@@ -26,6 +26,7 @@ describe('<Artist />', () => {
 
   beforeEach(() => {
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.getApi(`/v1/artists/${mockArtist.id}/similar`, { artists: [] })
     setFeatureFlags()
   })
 

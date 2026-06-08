@@ -4209,6 +4209,38 @@ export interface SigninResponseV2 {
 }
 /**
  * @export
+ * @interface SimilarArtistItem
+ */
+export interface SimilarArtistItem {
+  /**
+   * @type {string}
+   * @memberof SimilarArtistItem
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof SimilarArtistItem
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof SimilarArtistItem
+   */
+  name: string
+}
+/**
+ * @export
+ * @interface SimilarArtistsResponse
+ */
+export interface SimilarArtistsResponse {
+  /**
+   * @type {Array<SimilarArtistItem>}
+   * @memberof SimilarArtistsResponse
+   */
+  artists: Array<SimilarArtistItem>
+}
+/**
+ * @export
  * @interface SimilarOffersRequestQuery
  */
 export interface SimilarOffersRequestQuery {
@@ -5635,6 +5667,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         )
       }
       let pathname = `/native/v1/artists/{artist_id}`.replace(
+        `{${'artist_id'}}`,
+        encodeURIComponent(String(artist_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_similar_artists <GET>
+     * @param {string} artist_id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1ArtistsartistIdSimilar(artist_id: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'artist_id' is not null or undefined
+      if (artist_id === null || artist_id === undefined) {
+        throw new RequiredError(
+          'artist_id',
+          'Required parameter artist_id was null or undefined when calling getNativeV1ArtistsartistIdSimilar.'
+        )
+      }
+      let pathname = `/native/v1/artists/{artist_id}/similar`.replace(
         `{${'artist_id'}}`,
         encodeURIComponent(String(artist_id))
       )
@@ -7772,7 +7831,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response)
     },
     /**
-     * 
+     *
+     * @summary get_similar_artists <GET>
+     * @param {string} artist_id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1ArtistsartistIdSimilar(artist_id: string, options?: any): Promise<SimilarArtistsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ArtistsartistIdSimilar(artist_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary get_banner <GET>
      * @param {boolean} [isGeolocated] 
      * @param {*} [options] Override http request option.
@@ -8771,7 +8842,19 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).getNativeV1ArtistsartistId(artist_id, options)
   }
   /**
-    * 
+    *
+    * @summary get_similar_artists <GET>
+    * @param {string} artist_id
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1ArtistsartistIdSimilar(artist_id: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1ArtistsartistIdSimilar(artist_id, options)
+  }
+  /**
+    *
     * @summary get_banner <GET>
     * @param {boolean} [isGeolocated] 
     * @param {*} [options] Override http request option.

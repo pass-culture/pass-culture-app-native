@@ -16,6 +16,7 @@ export type AvatarListItemProps = {
   isFullWidth?: boolean
   role?: string
   accessibilityLabel?: string
+  withPush?: boolean
 } & AvatarProps
 
 export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
@@ -27,6 +28,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   isFullWidth = false,
   role,
   accessibilityLabel,
+  withPush,
   ...props
 }) => {
   const content = (
@@ -62,7 +64,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   return (
     <InternalTouchableLink
       accessibilityLabel={accessibilityLabel ?? name}
-      navigateTo={{ screen: 'Artist', params: { id: id.toString() } }}
+      navigateTo={{ screen: 'Artist', params: { id: id.toString() }, withPush }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
       {content}
     </InternalTouchableLink>
