@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { SearchResultArtist } from 'features/search/types'
+import { Artist } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { AvatarListItem } from 'ui/components/Avatar/AvatarListItem'
 import { AVATAR_SMALL } from 'ui/theme/constants'
 
 type SearchArtistItemWrapperProps = {
-  item: SearchResultArtist
+  item: Artist
 }
 export const SearchArtistItemWrapper: FC<SearchArtistItemWrapperProps> = ({ item }) => {
   const {
@@ -25,9 +25,9 @@ export const SearchArtistItemWrapper: FC<SearchArtistItemWrapperProps> = ({ item
 
   return (
     <AvatarListItem
-      id={item.data.id}
-      image={item.data.image}
-      name={item.data.name}
+      id={item.id}
+      image={item.image}
+      name={item.name}
       onItemPress={handleOnArtistPlaylistItemPress}
       size={AVATAR_SMALL}
       isFullWidth

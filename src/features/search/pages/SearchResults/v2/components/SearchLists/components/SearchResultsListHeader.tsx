@@ -1,18 +1,19 @@
-import { SearchResponse } from 'algoliasearch/lite'
 import React from 'react'
 import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
+import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout } from 'features/search/types'
+import { FetchSearchResultsArgs, GridListLayout } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
-import { Offer } from 'shared/offer/types'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
 import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
@@ -21,30 +22,36 @@ import { Error } from 'ui/svg/icons/Error'
 import { Typo } from 'ui/theme'
 
 type SearchListHeaderProps = ScrollViewProps & {
-  nbHits: number
   title: string
-  userData: SearchResponse<Offer[]>['userData']
   venuesSection?: React.ReactNode
   artistSection?: React.ReactNode
   shouldDisplayGridList?: boolean
   enableAIFakeDoor?: boolean
   onPressAIFakeDoorBanner: () => void
+  searchFilters: FetchSearchResultsArgs
 }
 
 export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
-  nbHits,
   title,
-  userData,
   venuesSection,
   artistSection,
   shouldDisplayGridList,
   enableAIFakeDoor,
   onPressAIFakeDoorBanner,
+  searchFilters,
 }) => {
   const { geolocPosition, showGeolocPermissionModal } = useLocation()
   const {
     searchState: { offerCategories },
   } = useSearch()
+
+  const transformHits = useTransformOfferHits()
+
+  const { data: offersResponse } = useSearchOffersQuery(searchFilters, {
+    select: (offersResponse) => selectSearchOffers({ data: offersResponse, transformHits }),
+  })
+  const nbHits = offersResponse?.nbHits || 0
+  const userData = offersResponse?.userData
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''

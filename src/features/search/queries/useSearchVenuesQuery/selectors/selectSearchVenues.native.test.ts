@@ -28,8 +28,7 @@ describe('selectSearchVenues', () => {
   it('should return venues', () => {
     const result = selectSearchVenues(mockResponse)
 
-    expect(result.algoliaVenues).toEqual([mockVenueOpen])
-    expect(result.venues).toEqual([expect.objectContaining({ objectID: 'v1', name: 'Venue Open' })])
+    expect(result.venues).toEqual([mockVenueOpen])
   })
 
   it('should always return venuesUserData', () => {
@@ -49,7 +48,6 @@ describe('selectSearchVenues', () => {
     it('should handle undefined or empty responses', () => {
       const result = selectSearchVenues(emptyResponse)
 
-      expect(result.algoliaVenues).toEqual([])
       expect(result.venues).toEqual([])
       expect(result.venuesUserData).toBeUndefined()
       expect(result.venueNotOpenToPublic).toEqual([])

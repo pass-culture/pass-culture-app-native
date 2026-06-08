@@ -4,11 +4,11 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
-import { SearchResultVenue } from 'features/search/types'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { MARGIN_DP } from 'ui/theme'
 
 type SearchVenueItemWrapper = {
-  item: SearchResultVenue
+  item: AlgoliaVenue
   index: number
 }
 
@@ -26,7 +26,7 @@ export const SearchVenueItemWrapper: FC<SearchVenueItemWrapper> = ({ item, index
   return (
     <SearchVenueItemContainer>
       <SearchVenueItem
-        venue={item.data}
+        venue={item}
         height={tiles.sizes.medium.height}
         width={tileWidth}
         index={index}
