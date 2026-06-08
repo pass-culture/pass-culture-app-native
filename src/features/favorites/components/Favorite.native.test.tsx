@@ -11,7 +11,7 @@ import { beneficiaryUserV2 } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { LocationMode, UseLocationReturnType } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
@@ -58,10 +58,10 @@ const AROUND_ME_POSITION = {
   place: null,
 }
 
-const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(
+const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
   () => EVERYWHERE_USER_POSITION
 )
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

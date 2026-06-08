@@ -11,11 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import {
-  checkGeolocPermission,
-  GeolocPermissionState,
-  LocationWrapper,
-} from 'libs/location/location'
+import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
@@ -180,13 +176,11 @@ describe('SearchLocationModal', () => {
 
     const Container = () => {
       return (
-        <LocationWrapper>
-          <React.Fragment>
-            <GeolocationActivationModal />
-            <SearchLocationModal />
-            <Button title="Close" onPress={locationModalActions.hide} />
-          </React.Fragment>
-        </LocationWrapper>
+        <React.Fragment>
+          <GeolocationActivationModal />
+          <SearchLocationModal />
+          <Button title="Close" onPress={locationModalActions.hide} />
+        </React.Fragment>
       )
     }
     initLocationPermission()
@@ -384,12 +378,10 @@ describe('SearchLocationModal', () => {
 
 function renderSearchLocationModal() {
   render(
-    <LocationWrapper>
-      <React.Fragment>
-        <GeolocationActivationModal />
-        <Button title="Open modal" onPress={locationModalActions.show} />
-        <SearchLocationModal />
-      </React.Fragment>
-    </LocationWrapper>
+    <React.Fragment>
+      <GeolocationActivationModal />
+      <Button title="Open modal" onPress={locationModalActions.show} />
+      <SearchLocationModal />
+    </React.Fragment>
   )
 }

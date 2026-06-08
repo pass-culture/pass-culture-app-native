@@ -5,8 +5,8 @@ import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { useLocation } from 'libs/location/useLocation'
 import {
   locationModalActions,
   useLocationModal,

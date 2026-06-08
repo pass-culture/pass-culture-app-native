@@ -6,7 +6,7 @@ import { renderHook } from 'tests/utils'
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     geolocPosition: mockPosition,
     userLocation: mockPosition,

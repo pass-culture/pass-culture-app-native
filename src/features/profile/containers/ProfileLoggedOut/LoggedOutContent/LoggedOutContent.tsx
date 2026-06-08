@@ -11,7 +11,7 @@ import { loggedOutContentConfig } from 'features/profile/containers/ProfileLogge
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
 import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
 import { UserProfile } from 'features/share/types'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 
 type Props = { user: UserProfile | undefined }
 

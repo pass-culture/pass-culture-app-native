@@ -10,7 +10,7 @@ import { SearchState } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location/location'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils/web'
@@ -20,12 +20,12 @@ const searchId = uuidv4()
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
-const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
+const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(() => ({
   geolocPosition: mockPosition,
   selectedLocationMode: LocationMode.EVERYWHERE,
   onModalHideRef: { current: jest.fn() },
 }))
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

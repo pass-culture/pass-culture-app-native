@@ -23,7 +23,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     userLocation: mockUserLocation,
     selectedLocationMode: mockLocationMode,

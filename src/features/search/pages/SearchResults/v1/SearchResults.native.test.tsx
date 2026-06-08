@@ -18,8 +18,8 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ILocationContext, Position } from 'libs/location/location'
-import { LocationMode } from 'libs/location/types'
+import { Position } from 'libs/location/location'
+import { LocationMode, UseLocationReturnType } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -203,7 +203,7 @@ const getAroundPlaceUserPosition = ({
   geolocPosition,
 }: {
   geolocPosition?: Position
-}): Partial<ILocationContext> => ({
+}): Partial<UseLocationReturnType> => ({
   setPlace: jest.fn(),
   setSelectedLocationMode: jest.fn(),
   userLocation: DEFAULT_USER_LOCATION,
@@ -215,7 +215,7 @@ const getAroundPlaceUserPosition = ({
 })
 
 const mockUseLocation = jest.fn(() => getAroundPlaceUserPosition({}))
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

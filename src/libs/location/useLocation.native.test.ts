@@ -10,8 +10,8 @@ import {
 import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
-import { LocationWrapper, useLocation } from './LocationWrapper'
 import { GeolocationError } from './types'
+import { useLocation } from './useLocation'
 
 jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
@@ -39,7 +39,7 @@ describe('useLocation()', () => {
 
     it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns GRANTED', async () => {
       mockPermissionResult(GeolocPermissionState.GRANTED)
-      const { result } = renderLocationHook()
+      const { result } = renderUseLocation()
       await act(async () => {
         await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
@@ -55,7 +55,7 @@ describe('useLocation()', () => {
 
     it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns DENIED', async () => {
       mockPermissionResult(GeolocPermissionState.DENIED)
-      const { result } = renderLocationHook()
+      const { result } = renderUseLocation()
       await act(async () => {
         await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
@@ -71,7 +71,7 @@ describe('useLocation()', () => {
 
     it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns NEVER_ASK_AGAIN', async () => {
       mockPermissionResult(GeolocPermissionState.NEVER_ASK_AGAIN)
-      const { result } = renderLocationHook()
+      const { result } = renderUseLocation()
       await act(async () => {
         await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
@@ -87,7 +87,7 @@ describe('useLocation()', () => {
 
     it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns NEED_ASK_POSITION_DIRECTLY and position is not null', async () => {
       mockPermissionResult(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
-      const { result } = renderLocationHook()
+      const { result } = renderUseLocation()
       await act(async () => {
         await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
@@ -104,7 +104,7 @@ describe('useLocation()', () => {
     it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns NEED_ASK_POSITION_DIRECTLY and position is null', async () => {
       mockGetGeolocPositionFail()
       mockPermissionResult(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
-      const { result } = renderLocationHook()
+      const { result } = renderUseLocation()
       await act(async () => {
         await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
@@ -131,7 +131,7 @@ describe('useLocation()', () => {
         await act(async () => {
           initLocationPermission()
         })
-        renderLocationHook()
+        renderUseLocation()
 
         await waitFor(() => {
           expect(getGeolocPositionMock).toHaveBeenCalledTimes(1)
@@ -153,7 +153,7 @@ describe('useLocation()', () => {
           initLocationPermission()
         })
 
-        renderLocationHook()
+        renderUseLocation()
 
         await waitFor(() => {
           expect(getGeolocPositionMock).not.toHaveBeenCalled()
@@ -163,17 +163,17 @@ describe('useLocation()', () => {
   })
 })
 
-function mockGetGeolocPositionSuccess() {
+const mockGetGeolocPositionSuccess = () => {
   getGeolocPositionMock.mockResolvedValue(MOCK_POSITION)
 }
 
-function mockGetGeolocPositionFail() {
+const mockGetGeolocPositionFail = () => {
   getGeolocPositionMock.mockRejectedValue({
     type: GeolocPositionError.POSITION_UNAVAILABLE,
     message: 'error message',
   } as GeolocationError)
 }
 
-function renderLocationHook() {
-  return renderHook(useLocation, { wrapper: LocationWrapper })
+const renderUseLocation = () => {
+  return renderHook(useLocation)
 }

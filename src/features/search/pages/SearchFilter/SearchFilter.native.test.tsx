@@ -9,7 +9,7 @@ import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates } from 'libs/location/location'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -42,8 +42,10 @@ const initialMockUseLocation = {
   aroundPlaceRadius: DEFAULT_RADIUS,
   setPlace: jest.fn(),
 }
-const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => initialMockUseLocation)
-jest.mock('libs/location/LocationWrapper', () => ({
+const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
+  () => initialMockUseLocation
+)
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

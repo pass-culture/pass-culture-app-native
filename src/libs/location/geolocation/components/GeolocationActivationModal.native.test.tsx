@@ -9,7 +9,7 @@ import { render, screen, userEvent } from 'tests/utils'
 const onPressGeolocPermissionModalButton = jest.spyOn(locationActions, 'showPermissionModal')
 
 let mockPermissionState = GeolocPermissionState.GRANTED
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
   }),

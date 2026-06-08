@@ -10,7 +10,8 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { ILocationContext, useLocation } from 'libs/location/location'
+import { useLocation } from 'libs/location/location'
+import { UseLocationReturnType } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -53,7 +54,7 @@ describe('<VenueTopComponent />', () => {
     mockUseLocation.mockReturnValueOnce({
       userLocation,
       hasGeolocPosition: true,
-    } as ILocationContext)
+    } as UseLocationReturnType)
     const locatedVenue: VenueResponse = {
       ...venueOpenToPublic,
       latitude: 30,
@@ -83,7 +84,7 @@ describe('<VenueTopComponent />', () => {
   it('should not display distance between user and venue when geolocation is not activated', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
-    } as ILocationContext)
+    } as UseLocationReturnType)
     const locatedVenue: VenueResponse = {
       ...venueOpenToPublic,
       latitude: 30,
@@ -179,7 +180,7 @@ describe('<VenueTopComponent />', () => {
       mockUseLocation.mockReturnValueOnce({
         userLocation,
         hasGeolocPosition: true,
-      } as ILocationContext)
+      } as UseLocationReturnType)
       const locatedVenue: VenueResponse = {
         ...venueDataTest,
         latitude: 30,

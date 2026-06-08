@@ -3,7 +3,7 @@ import React from 'react'
 import { LocationModal } from 'features/location/components/LocationModal'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 import { locationModalActions, useLocationModal } from 'libs/locationV2/locationModal.store'
 
 export const HomeLocationModal = () => {

@@ -1,6 +1,6 @@
 import { getLocalizationCompliance } from 'features/home/components/modules/business/helpers/getLocalizationCompliance'
 import { LocationCircleArea } from 'features/home/types'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 
 export function useShouldDisplayBusinessModule(
   targetNotConnectedUsersOnly: boolean | undefined,

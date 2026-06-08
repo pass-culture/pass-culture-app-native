@@ -8,8 +8,8 @@ import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { useLocation } from 'libs/location/useLocation'
 import {
   locationModalActions,
   useLocationModal,

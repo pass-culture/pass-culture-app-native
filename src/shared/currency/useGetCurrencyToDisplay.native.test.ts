@@ -3,7 +3,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useLocation } from 'libs/location/location'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
 import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
@@ -19,7 +19,7 @@ const mockUseAuthContext = jest.mocked(useAuthContext)
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockUseGeolocation.mockReturnValue({ userLocation: null } as ILocationContext)
+    mockUseGeolocation.mockReturnValue({ userLocation: null } as UseLocationReturnType)
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       user: undefined,
@@ -41,7 +41,7 @@ describe('useGetCurrencyToDisplay', () => {
         userLocation: null,
         selectedLocationMode: LocationMode.EVERYWHERE,
         selectedPlace: null,
-      } as ILocationContext)
+      } as UseLocationReturnType)
     })
 
     it('should return Euro when displayFormat is "short"', () => {
@@ -86,7 +86,7 @@ describe('useGetCurrencyToDisplay', () => {
           info: 'Nouvelle-Calédonie',
           geolocation: NOUMEA_DEFAULT_POSITION,
         },
-      } as ILocationContext)
+      } as UseLocationReturnType)
     })
 
     it('should return Euro when displayFormat is "short"', () => {
@@ -113,7 +113,7 @@ describe('useGetCurrencyToDisplay', () => {
           info: 'Paris',
           geolocation: PARIS_DEFAULT_POSITION,
         },
-      } as ILocationContext)
+      } as UseLocationReturnType)
     })
 
     it('should return Euro when displayFormat is "short"', () => {
@@ -140,7 +140,7 @@ describe('useGetCurrencyToDisplay', () => {
           info: 'Nouvelle-Calédonie',
           geolocation: NOUMEA_DEFAULT_POSITION,
         },
-      } as ILocationContext)
+      } as UseLocationReturnType)
     })
 
     it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {
