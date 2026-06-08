@@ -4,7 +4,7 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -29,10 +29,10 @@ const AROUND_ME_POSITION = {
   place: null,
 }
 
-const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(
+const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
   () => EVERYWHERE_USER_POSITION
 )
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

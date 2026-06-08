@@ -11,7 +11,7 @@ import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/of
 import { ProAdvicesBase } from 'features/proAdvices/pages/ProAdvicesBase'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 

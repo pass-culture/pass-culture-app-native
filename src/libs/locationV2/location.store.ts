@@ -112,7 +112,7 @@ const locationStore = createStore({
     selectLocationConfiguration: (configurationKey: LocationMode) => (state) =>
       state.configuration[configurationKey],
     selectPlace: () => (state) => {
-      const { radius: _, ...place } = state.configuration[LocationMode.AROUND_PLACE]
+      const place = state.configuration[LocationMode.AROUND_PLACE]
       return place.label ? place : null
     },
     selectUserLocation:

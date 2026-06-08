@@ -9,7 +9,7 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 

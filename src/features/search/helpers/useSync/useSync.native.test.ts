@@ -65,7 +65,7 @@ const everywhereUseLocation = {
 }
 
 const mockUseLocation = jest.fn(() => everywhereUseLocation)
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 mockUseLocation.mockReturnValue(everywhereUseLocation)

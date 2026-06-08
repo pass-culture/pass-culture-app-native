@@ -7,7 +7,7 @@ import { getLocalizationCompliance } from 'features/home/components/modules/busi
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'

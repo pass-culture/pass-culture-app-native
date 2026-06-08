@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 import { onPressGeolocPermissionModalButton } from 'libs/locationV2/location.methods'
 import { locationActions, useLocationV2 } from 'libs/locationV2/location.store'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'

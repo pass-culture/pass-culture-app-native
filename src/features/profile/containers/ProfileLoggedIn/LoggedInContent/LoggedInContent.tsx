@@ -17,7 +17,7 @@ import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwi
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/LocationWrapper'
+import { useLocation } from 'libs/location/useLocation'
 
 type Props = { user: UserProfile | undefined }
 

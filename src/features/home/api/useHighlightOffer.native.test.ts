@@ -4,7 +4,7 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { useLocation } from 'libs/location/location'
-import { ILocationContext } from 'libs/location/types'
+import { UseLocationReturnType } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
@@ -74,7 +74,7 @@ describe('useHighlightOffer', () => {
       mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
         userLocation: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-      } as ILocationContext)
+      } as UseLocationReturnType)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -91,7 +91,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: 1, longitude: 1 },
-      } as ILocationContext)
+      } as UseLocationReturnType)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -108,7 +108,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: undefined,
-      } as ILocationContext)
+      } as UseLocationReturnType)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -125,7 +125,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-      } as ILocationContext)
+      } as UseLocationReturnType)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({

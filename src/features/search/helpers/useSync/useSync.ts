@@ -10,8 +10,8 @@ import {
   syncLocationFromParams,
 } from 'features/search/helpers/useSync/synchronizeStates'
 import { SearchState } from 'features/search/types'
-import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { useLocation } from 'libs/location/useLocation'
 
 /**
  * Synchronizes URL parameters with application state.

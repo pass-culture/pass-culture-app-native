@@ -185,7 +185,7 @@ const mockSetSelectedLocationMode = jest.fn()
 const mockHasGeolocPosition = true
 const mockSelectedLocationMode = LocationMode.AROUND_ME
 
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     setPlace: mockSetPlace,
     place: mockedPlace,

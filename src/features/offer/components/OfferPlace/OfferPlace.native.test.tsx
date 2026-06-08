@@ -9,7 +9,7 @@ import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlac
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -94,7 +94,7 @@ const AROUND_ME_POSITION = {
   place: null,
 }
 
-const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
+const mockUseLocation = jest.fn((): Partial<UseLocationReturnType> => EVERYWHERE_USER_POSITION)
 jest.mock('libs/location/location', () => ({
   useLocation: () => mockUseLocation(),
 }))

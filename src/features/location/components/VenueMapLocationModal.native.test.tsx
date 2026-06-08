@@ -11,11 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import {
-  checkGeolocPermission,
-  GeolocPermissionState,
-  LocationWrapper,
-} from 'libs/location/location'
+import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
@@ -342,12 +338,10 @@ describe('VenueMapLocationModal', () => {
 
     const Container = () => {
       return (
-        <LocationWrapper>
-          <React.Fragment>
-            <GeolocationActivationModal />
-            <SearchLocationModal />
-          </React.Fragment>
-        </LocationWrapper>
+        <React.Fragment>
+          <GeolocationActivationModal />
+          <SearchLocationModal />
+        </React.Fragment>
       )
     }
     render(<Container />)
@@ -480,12 +474,10 @@ function renderVenueMapLocationModal({
   setTempLocationMode?: React.Dispatch<React.SetStateAction<LocationMode>>
 }) {
   render(
-    <LocationWrapper>
-      <VenueMapLocationModalWithMockButton
-        shouldOpenMapInTab={shouldOpenMapInTab}
-        setTempLocationMode={setTempLocationMode}
-      />
-    </LocationWrapper>
+    <VenueMapLocationModalWithMockButton
+      shouldOpenMapInTab={shouldOpenMapInTab}
+      setTempLocationMode={setTempLocationMode}
+    />
   )
 }
 

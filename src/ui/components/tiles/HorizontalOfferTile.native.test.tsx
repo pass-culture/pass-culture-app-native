@@ -74,7 +74,7 @@ const AROUND_PLACE_POSITION: Props = {
 }
 
 const mockUseLocation = jest.fn(() => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

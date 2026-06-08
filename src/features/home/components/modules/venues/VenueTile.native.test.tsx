@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -35,8 +35,8 @@ const AROUND_ME_POSITION = {
   geolocPosition: DEFAULT_USER_LOCATION,
 }
 
-const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/LocationWrapper', () => ({
+const mockUseLocation = jest.fn((): Partial<UseLocationReturnType> => EVERYWHERE_USER_POSITION)
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
