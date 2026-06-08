@@ -14,7 +14,6 @@ const mockFormatDate = formatDateToLastUpdatedAtMessage as jest.Mock
 const mockEligibilityDate = getEligibilityEndDatetime as jest.Mock
 
 const defaultFeatureFlags = {
-  enableProfileV2: true,
   disableActivation: false,
 }
 

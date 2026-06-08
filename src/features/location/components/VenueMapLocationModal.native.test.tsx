@@ -8,6 +8,7 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
@@ -16,6 +17,7 @@ import {
   LocationWrapper,
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -78,6 +80,10 @@ const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue
 const user = userEvent.setup()
 
 describe('VenueMapLocationModal', () => {
+  beforeEach(() => {
+    initLocationPermission()
+  })
+
   it('should render correctly if modal visible', async () => {
     renderVenueMapLocationModal({})
     await act(async () => {
@@ -337,11 +343,17 @@ describe('VenueMapLocationModal', () => {
     const Container = () => {
       return (
         <LocationWrapper>
-          <SearchLocationModal />
+          <React.Fragment>
+            <GeolocationActivationModal />
+            <SearchLocationModal />
+          </React.Fragment>
         </LocationWrapper>
       )
     }
     render(<Container />)
+
+    initLocationPermission()
+
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })

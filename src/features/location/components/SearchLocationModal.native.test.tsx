@@ -8,6 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
@@ -16,6 +17,7 @@ import {
   LocationWrapper,
 } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -74,6 +76,10 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
 const user = userEvent.setup()
 
 describe('SearchLocationModal', () => {
+  beforeEach(() => {
+    initLocationPermission()
+  })
+
   it('should render correctly if modal visible', async () => {
     renderSearchLocationModal()
     await user.press(screen.getByText('Open modal'))
@@ -176,12 +182,15 @@ describe('SearchLocationModal', () => {
       return (
         <LocationWrapper>
           <React.Fragment>
+            <GeolocationActivationModal />
             <SearchLocationModal />
             <Button title="Close" onPress={locationModalActions.hide} />
           </React.Fragment>
         </LocationWrapper>
       )
     }
+    initLocationPermission()
+
     render(<Container />)
     locationModalActions.show()
 
@@ -377,6 +386,7 @@ function renderSearchLocationModal() {
   render(
     <LocationWrapper>
       <React.Fragment>
+        <GeolocationActivationModal />
         <Button title="Open modal" onPress={locationModalActions.show} />
         <SearchLocationModal />
       </React.Fragment>

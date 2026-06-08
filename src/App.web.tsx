@@ -20,7 +20,9 @@ import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { LocationWrapper } from 'libs/location/location'
+import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -37,11 +39,12 @@ globalThisShim()
 
 export function App() {
   useEffect(() => {
-    eventMonitoring.init({ enabled: !__DEV__ })
+    void eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
   useEffect(() => {
     initAlgoliaAnalytics()
+    initLocationPermission()
     const setDeviceInfo = async () => {
       const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
       if (existingDeviceInfo.deviceId) return
@@ -54,7 +57,7 @@ export function App() {
   // Unregister service workers (to make sure all sw cache is removed)
   useEffect(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
+      void navigator.serviceWorker.getRegistrations().then((registrations) => {
         registrations.forEach((registration) => registration.unregister())
       })
     }
@@ -71,24 +74,27 @@ export function App() {
                 <AuthWrapper>
                   <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
                     <LocationWrapper>
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchWrapper>
-                            <SnackBarWrapper>
-                              <CulturalSurveyContextProvider>
-                                <SubscriptionContextProvider>
-                                  <AppWebHead />
-                                  <ScreenErrorProvider>
-                                    <Suspense fallback={<LoadingPage />}>
-                                      <AppNavigationContainer />
-                                    </Suspense>
-                                  </ScreenErrorProvider>
-                                </SubscriptionContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarWrapper>
-                          </SearchWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
+                      <React.Fragment>
+                        <GeolocationActivationModal />
+                        <AccessibilityFiltersWrapper>
+                          <FavoritesWrapper>
+                            <SearchWrapper>
+                              <SnackBarWrapper>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <AppWebHead />
+                                    <ScreenErrorProvider>
+                                      <Suspense fallback={<LoadingPage />}>
+                                        <AppNavigationContainer />
+                                      </Suspense>
+                                    </ScreenErrorProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarWrapper>
+                            </SearchWrapper>
+                          </FavoritesWrapper>
+                        </AccessibilityFiltersWrapper>
+                      </React.Fragment>
                     </LocationWrapper>
                   </ErrorBoundary>
                 </AuthWrapper>

@@ -1633,12 +1633,12 @@ export interface CulturalSurveyAnswer {
    */
   id: CulturalSurveyAnswerEnum
   /**
-   * @type {CulturalSurveyQuestionEnum}
+   * @type {CulturalSurveyQuestionEnum | null}
    * @memberof CulturalSurveyAnswer
    */
   sub_question?: CulturalSurveyQuestionEnum | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof CulturalSurveyAnswer
    */
   subtitle?: string | null
@@ -1696,6 +1696,24 @@ export enum CulturalSurveyAnswerEnum {
   'PROJECTION_CONFERENCE' = 'PROJECTION_CONFERENCE',
   'PROJECTION_JEU' = 'PROJECTION_JEU',
   'PROJECTION_AUTRE' = 'PROJECTION_AUTRE',
+  'MANGAS' = 'MANGAS',
+  'ROMANCE' = 'ROMANCE',
+  'FANTASY' = 'FANTASY',
+  'THRILLER' = 'THRILLER',
+  'ROMANS' = 'ROMANS',
+  'SOCIETE' = 'SOCIETE',
+  'PHILOSOPHIE' = 'PHILOSOPHIE',
+  'CULTURE' = 'CULTURE',
+  'HISTOIRE' = 'HISTOIRE',
+  'LIVRES_AUCUN' = 'LIVRES_AUCUN',
+  'RAP' = 'RAP',
+  'POP' = 'POP',
+  'ELECTRO' = 'ELECTRO',
+  'METAL' = 'METAL',
+  'FILMS' = 'FILMS',
+  'JAZZ' = 'JAZZ',
+  'CLASSIQUE' = 'CLASSIQUE',
+  'MUSIQUES_AUCUN' = 'MUSIQUES_AUCUN',
 }
 /**
  * @export
@@ -1740,6 +1758,8 @@ export enum CulturalSurveyQuestionEnum {
   'SPECTACLES' = 'SPECTACLES',
   'ACTIVITES' = 'ACTIVITES',
   'PROJECTIONS' = 'PROJECTIONS',
+  'LIVRES' = 'LIVRES',
+  'MUSIQUES' = 'MUSIQUES',
 }
 /**
  * @export

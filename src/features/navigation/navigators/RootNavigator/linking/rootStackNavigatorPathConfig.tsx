@@ -81,6 +81,10 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
   ResetPasswordExpiredLink: {
     path: 'email-modification-mot-de-passe-expire',
   },
+  SignupMethods: {
+    path: 'creation-compte-methodes',
+    alias: ['creation-compte/methodes'],
+  },
   SignupForm: {
     path: 'creation-compte',
     alias: ['creation-compte/email'],

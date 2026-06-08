@@ -36,7 +36,7 @@ describe('<AuthenticationModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to signup page when clicking on "Créer un compte" button', async () => {
+  it('should navigate to SignupMethods page when clicking on "Créer un compte" button', async () => {
     render(
       <AuthenticationModal
         visible
@@ -49,7 +49,7 @@ describe('<AuthenticationModal />', () => {
     const signupButton = screen.getByLabelText('Créer un compte')
     await user.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {
       offerId: OFFER_ID,
       from: StepperOrigin.BOOKING,
     })

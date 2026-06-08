@@ -147,7 +147,7 @@ describe('AppleSSOCallback (web)', () => {
       expect(mockClearAppleSSOContext).toHaveBeenCalledTimes(1)
     })
 
-    it('should reset to SignupForm when context type is signup and there is an error', () => {
+    it('should reset to SignupMethods when context type is signup and there is an error', () => {
       mockLoadAppleSSOContext.mockReturnValueOnce({
         type: 'signup',
         params: { from: StepperOrigin.SIGNUP },
@@ -157,7 +157,7 @@ describe('AppleSSOCallback (web)', () => {
 
       render(<AppleSSOCallback />)
 
-      expect(mockResetFromRef).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.SIGNUP })
+      expect(mockResetFromRef).toHaveBeenCalledWith('SignupMethods', { from: StepperOrigin.SIGNUP })
     })
 
     it('should reset to LoginMethods when no code is present', () => {
@@ -190,7 +190,7 @@ describe('AppleSSOCallback (web)', () => {
   })
 
   describe('handleFailure (SSO_EMAIL_NOT_FOUND)', () => {
-    it('should reset to SignupForm with from LOGIN when context type is login', () => {
+    it('should reset to SignupMethods with from LOGIN when context type is login', () => {
       mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'login', oauthStateToken: VALID_STATE })
       mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
@@ -208,7 +208,7 @@ describe('AppleSSOCallback (web)', () => {
         },
       })
 
-      expect(mockResetFromRef).toHaveBeenCalledWith('SignupForm', {
+      expect(mockResetFromRef).toHaveBeenCalledWith('SignupMethods', {
         accountCreationToken: 'token-123',
         email: 'user@apple.com',
         from: StepperOrigin.LOGIN,
@@ -216,7 +216,7 @@ describe('AppleSSOCallback (web)', () => {
       })
     })
 
-    it('should reset to SignupForm with from SIGNUP when context type is signup', () => {
+    it('should reset to SignupMethods with from SIGNUP when context type is signup', () => {
       mockLoadAppleSSOContext.mockReturnValueOnce({ type: 'signup', oauthStateToken: VALID_STATE })
       mockRouteParams = { code: 'apple-code', state: VALID_STATE }
 
@@ -234,7 +234,7 @@ describe('AppleSSOCallback (web)', () => {
         },
       })
 
-      expect(mockResetFromRef).toHaveBeenCalledWith('SignupForm', {
+      expect(mockResetFromRef).toHaveBeenCalledWith('SignupMethods', {
         accountCreationToken: 'token-456',
         email: 'user@apple.com',
         from: StepperOrigin.SIGNUP,

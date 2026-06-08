@@ -1,13 +1,10 @@
-import React, { memo, useContext, useEffect, useMemo } from 'react'
+import React, { memo, useContext, useMemo } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { useAppStateChange } from 'libs/appState'
 import { LocationMode, ILocationContext } from 'libs/location/types'
 import {
-  contextualCheckPermission,
   contextualRequestGeolocPermission,
   onPressGeolocPermissionModalButton,
-  triggerPositionUpdate,
 } from 'libs/locationV2/location.methods'
 import {
   locationActions,
@@ -23,8 +20,6 @@ import {
   useLocationModalPlace,
 } from 'libs/locationV2/locationModal.store'
 
-import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
-
 /* eslint-disable @typescript-eslint/no-empty-function */
 const LocationContext = React.createContext<ILocationContext>({
   hasGeolocPosition: false,
@@ -34,7 +29,6 @@ const LocationContext = React.createContext<ILocationContext>({
   geolocPositionError: null,
   permissionState: null,
   requestGeolocPermission: async () => {},
-  triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
   selectedLocationMode: LocationMode.EVERYWHERE,
@@ -61,23 +55,20 @@ export const LocationWrapper = memo(function LocationWrapper({
   const setSelectedLocationMode = locationActions.setLocationMode
 
   const hasGeolocPosition = useIsGeolocated()
-  const {
-    permissionState,
-    geolocationError: geolocPositionError,
-    isPermissionModalVisible: isGeolocPermissionModalVisible,
-  } = useLocationV2()
+  const { permissionState, geolocationError: geolocPositionError } = useLocationV2()
   const { geolocation: geolocPosition, radius: aroundMeRadius } = useLocationConfiguration(
     LocationMode.AROUND_ME
   )
-  const {
-    showPermissionModal: showGeolocPermissionModal,
-    hidePermissionModal: hideGeolocPermissionModal,
-  } = locationActions
 
   // app state
   const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const place = usePlace()
-  const { setPlace, setAroundPlaceRadius, setAroundMeRadius } = locationActions
+  const {
+    setPlace,
+    setAroundPlaceRadius,
+    setAroundMeRadius,
+    showPermissionModal: showGeolocPermissionModal,
+  } = locationActions
 
   // modal state
   const selectedPlace = useLocationModalPlace()
@@ -89,13 +80,6 @@ export const LocationWrapper = memo(function LocationWrapper({
     locationModalActions.setAddressInputValue('')
   }
 
-  useEffect(() => {
-    void contextualCheckPermission()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useAppStateChange(contextualCheckPermission, undefined, [])
-
   const userLocation = useUserLocation()
 
   const value = useMemo(
@@ -105,7 +89,6 @@ export const LocationWrapper = memo(function LocationWrapper({
       permissionState,
       hasGeolocPosition,
       requestGeolocPermission: contextualRequestGeolocPermission,
-      triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
       place,
       setPlace,
@@ -144,16 +127,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       userLocation,
     ]
   )
-  return (
-    <LocationContext.Provider value={value}>
-      {children}
-      <GeolocationActivationModal
-        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
-    </LocationContext.Provider>
-  )
+  return <LocationContext.Provider value={value}>{children}</LocationContext.Provider>
 })
 
 export function useLocation(): ILocationContext {

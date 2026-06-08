@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { FilterBehaviour } from 'features/search/enums'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { StickyBottomGradient } from 'ui/components/StickyBottomGradient/StickyBottomGradient'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -39,10 +40,12 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
     }
   }
 
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
+
   return (
     <Wrapper>
       {displayGradient ? <StickyBottomGradient /> : null}
-      <Container isModal={isModal} gap={4}>
+      <Container isModal={isModal} gap={4} isZoomed={isZoomed}>
         <ResetButtonWrapper>
           <Button
             wording="Réinitialiser"
@@ -54,13 +57,13 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
             size="small"
           />
         </ResetButtonWrapper>
-        <SearchButtonWrapper>
+        <SearchButtonWrapper isZoomed={isZoomed}>
           <Button
             wording={searchButtonText}
             onPress={onSearchPress}
             disabled={isSearchDisabled}
             color="brand"
-            fullWidth
+            fullWidth={!isZoomed}
           />
         </SearchButtonWrapper>
       </Container>
@@ -72,9 +75,13 @@ const Wrapper = styled.View({
   position: 'relative',
 })
 
-const Container = styled(ViewGap)<{ isModal: boolean }>(({ isModal, theme }) => {
+const Container = styled(ViewGap)<{ isModal: boolean; isZoomed: boolean }>(({
+  isModal,
+  isZoomed,
+  theme,
+}) => {
   return {
-    flexDirection: 'row',
+    flexDirection: isZoomed ? 'column' : 'row',
     alignItems: 'center',
     width: '100%',
     alignSelf: 'stretch',
@@ -90,9 +97,18 @@ const ResetButtonWrapper = styled.View({
   flexShrink: 0,
 })
 
-const SearchButtonWrapper = styled.View({
-  flexGrow: 1,
-  flexShrink: 1,
-  flexBasis: 0,
-  minWidth: 0,
-})
+const SearchButtonWrapper = styled.View<{ isZoomed: boolean }>(({ isZoomed }) => ({
+  ...(isZoomed
+    ? {
+        width: 'auto',
+        flexGrow: 0,
+        flexShrink: 0,
+        flexBasis: 'auto',
+      }
+    : {
+        flexGrow: 1,
+        flexShrink: 1,
+        flexBasis: 0,
+        minWidth: 0,
+      }),
+}))

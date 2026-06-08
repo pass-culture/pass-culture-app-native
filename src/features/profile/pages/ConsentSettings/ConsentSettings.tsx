@@ -21,6 +21,7 @@ import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieCho
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -158,6 +159,8 @@ export const ConsentSettings = () => {
     return scrollYRef.current
   }).current
 
+  const isFullscreen = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
+
   return (
     <React.Fragment>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
@@ -210,6 +213,7 @@ export const ConsentSettings = () => {
       <AppModal
         title=""
         visible={visible}
+        isFullscreen={isFullscreen}
         customModalHeader={
           <ModalHeader
             title="Quitter sans enregistrer&nbsp;?"

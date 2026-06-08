@@ -42,7 +42,6 @@ export type ILocationContext = {
   geolocPositionError: GeolocationError | null
   permissionState: GeolocPermissionState | null
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
-  triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void
   onPressGeolocPermissionModalButton: () => void
   selectedLocationMode: LocationMode

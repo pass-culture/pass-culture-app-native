@@ -22,10 +22,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 jest.useFakeTimers()
 
 describe('<ProfileOnline />', () => {
-  setFeatureFlags([
-    RemoteStoreFeatureFlags.ENABLE_PROFILE_V2,
-    RemoteStoreFeatureFlags.DISABLE_ACTIVATION,
-  ])
+  setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
 
   it('should display ProfileLoggedIn when user is logged in', async () => {
     mockAuthContextWithUser(beneficiaryUser)

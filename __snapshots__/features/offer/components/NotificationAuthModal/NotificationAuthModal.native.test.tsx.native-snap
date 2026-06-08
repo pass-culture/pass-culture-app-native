@@ -160,6 +160,7 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
           "flexDirection": "column",
           "height": 432,
           "justifyContent": "flex-start",
+          "maxHeight": 650,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 24,
@@ -361,7 +362,7 @@ activer un rappel
         paddingBottom={8}
         style={
           {
-            "height": "100%",
+            "maxHeight": "100%",
             "maxWidth": 480,
             "paddingBottom": 8,
             "width": "100%",

@@ -1,5 +1,6 @@
-import { Linking } from 'react-native'
+import { AppState, AppStateStatus, Linking } from 'react-native'
 
+import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
@@ -7,7 +8,7 @@ import { requestGeolocPermission } from 'libs/location/geolocation/requestGeoloc
 import { GeolocationError, RequestGeolocPermissionParams } from 'libs/location/types'
 import { locationActions } from 'libs/locationV2/location.store'
 
-export const triggerPositionUpdate = async () => {
+const triggerPositionUpdate = async () => {
   try {
     const newPosition = await getGeolocPosition()
     locationActions.setGeolocPosition(newPosition)
@@ -24,7 +25,7 @@ export const triggerPositionUpdate = async () => {
 const getPermissionState = async (permission: GeolocPermissionState) => {
   if (shouldTriggerPositionUpdate(permission)) {
     const newPosition = await triggerPositionUpdate()
-    if (isNeedAskPosition(permission)) {
+    if (permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY) {
       return newPosition === null
         ? GeolocPermissionState.NEVER_ASK_AGAIN
         : GeolocPermissionState.GRANTED
@@ -38,13 +39,13 @@ export const contextualRequestGeolocPermission = async (params?: RequestGeolocPe
   params?.onSubmit?.()
 
   const permission = await getPermissionState(await requestGeolocPermission())
-
-  if (isGranted(permission)) {
-    !!params?.onAcceptance && params.onAcceptance()
-  } else {
-    !!params?.onRefusal && params.onRefusal()
-  }
   locationActions.setPermissionState(permission)
+
+  if (permission === GeolocPermissionState.GRANTED) {
+    params?.onAcceptance?.()
+    return
+  }
+  params?.onRefusal?.()
 }
 
 // in case user updates his preferences in his phone settings we check if his local
@@ -54,19 +55,24 @@ export const contextualCheckPermission = async () => {
   locationActions.setPermissionState(permission)
 }
 
+export const initLocationPermission = () => {
+  let currentState = AppState.currentState
+
+  void contextualCheckPermission()
+  return AppState.addEventListener('change', (nextState: AppStateStatus) => {
+    if (currentState.match(/inactive|background/) && nextState.match(/active/)) {
+      void contextualCheckPermission()
+    }
+    currentState = nextState
+  })
+}
+
 export const onPressGeolocPermissionModalButton = () => {
   void Linking.openSettings()
   locationActions.hidePermissionModal()
+  void analytics.logOpenLocationSettings()
 }
 
-const isGranted = (permission: GeolocPermissionState) => {
-  return permission === GeolocPermissionState.GRANTED
-}
-
-const isNeedAskPosition = (permission: GeolocPermissionState) => {
-  return permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY
-}
-
-const shouldTriggerPositionUpdate = (permission: GeolocPermissionState) => {
-  return isGranted(permission) || isNeedAskPosition(permission)
-}
+const shouldTriggerPositionUpdate = (permission: GeolocPermissionState) =>
+  permission === GeolocPermissionState.GRANTED ||
+  permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY

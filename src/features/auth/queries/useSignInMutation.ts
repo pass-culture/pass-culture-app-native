@@ -27,7 +27,7 @@ export const useSignInMutation = ({
   setErrorMessage,
   onFailure,
 }: {
-  params: RootStackParamList['Login' | 'SignupForm']
+  params: RootStackParamList['LoginMethods' | 'SignupMethods']
   doNotNavigateOnSigninSuccess?: boolean
   analyticsMethod?: LoginRoutineMethod
   analyticsType?: LoginType
@@ -76,7 +76,7 @@ export const useSignInMutation = ({
 }
 
 const useHandleSigninSuccess = (
-  params?: RootStackParamList['Login' | 'SignupForm'],
+  params: RootStackParamList['LoginMethods' | 'SignupMethods'],
   doNotNavigateOnSigninSuccess?: boolean,
   setErrorMessage?: (message: string) => void
 ) => {

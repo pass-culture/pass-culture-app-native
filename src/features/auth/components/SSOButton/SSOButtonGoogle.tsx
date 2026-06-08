@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const SSOButtonGoogle = ({ type, onSignInFailure }: Props) => {
-  const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const { params } = useRoute<UseRouteType<'SignupMethods'>>()
   const isSignupButton = type === 'signup'
   const { mutate: signIn } = useSignInMutation({
     params,

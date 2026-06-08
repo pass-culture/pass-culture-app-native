@@ -145,9 +145,10 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
     swipeThreshold={100}
   >
     <View
+      height={1318}
       isLandscape={false}
       leftNootch={16}
-      maxHeight={1318}
+      maxHeight={1334}
       noPadding={true}
       rightNootch={16}
       style={
@@ -159,8 +160,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
+          "height": 1318,
           "justifyContent": "flex-start",
-          "maxHeight": 1318,
+          "maxHeight": 1334,
           "maxWidth": 960,
           "paddingBottom": 32,
           "paddingLeft": 0,
@@ -544,6 +546,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
             <View
               gap={4}
               isModal={true}
+              isZoomed={false}
               style={
                 {
                   "alignItems": "center",
@@ -695,6 +698,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </View>
               </View>
               <View
+                isZoomed={false}
                 style={
                   {
                     "flexBasis": 0,

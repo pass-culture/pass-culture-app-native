@@ -30,7 +30,6 @@ describe('<ProfileLoggedOut />', () => {
       reactQueryProviderHOC(
         <ProfileLoggedOut
           featureFlags={{
-            enableProfileV2: true,
             disableActivation: false,
           }}
         />

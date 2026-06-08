@@ -75,7 +75,11 @@ export const HomeHeader: FunctionComponent = function () {
     }
 
     return (
-      <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={numberOfLines}>
+      <PageHeader
+        title={welcomeTitle}
+        subtitle={getSubtitle()}
+        numberOfLines={numberOfLines}
+        withMargins>
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )

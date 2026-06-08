@@ -163,14 +163,20 @@ describe('getDefaultScreenParams', () => {
     })
   })
 
-  it.each(['Offer', 'Venue', 'Home', 'Profile', 'SignupForm', 'ThematicHome', 'ThematicSearch'])(
-    'should return an object with from param set to "deeplink" when screen is %s',
-    (screen) => {
-      const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)
+  it.each([
+    'Offer',
+    'Venue',
+    'Home',
+    'Profile',
+    'SignupForm',
+    'SignupMethods',
+    'ThematicHome',
+    'ThematicSearch',
+  ])('should return an object with from param set to "deeplink" when screen is %s', (screen) => {
+    const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)
 
-      expect(defaultParams).toEqual({
-        from: 'deeplink',
-      })
-    }
-  )
+    expect(defaultParams).toEqual({
+      from: 'deeplink',
+    })
+  })
 })

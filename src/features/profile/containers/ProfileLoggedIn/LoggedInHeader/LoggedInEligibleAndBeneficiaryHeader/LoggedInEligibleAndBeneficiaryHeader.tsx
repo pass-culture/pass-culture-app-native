@@ -51,7 +51,7 @@ export const LoggedInEligibleAndBeneficiaryHeader = ({
   return (
     <ViewGap gap={6} testID="logged-in-eligible-and-beneficiary-header">
       <ViewGap gap={2}>
-        <PageHeader title={title} featureFlags={featureFlags} numberOfLines={3} />
+        <PageHeader title={title} numberOfLines={3} />
         <Subtitle {...subtitleProps} />
       </ViewGap>
       <ContainerHeader gap={6}>

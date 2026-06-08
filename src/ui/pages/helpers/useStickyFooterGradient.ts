@@ -94,7 +94,7 @@ export function useStickyFooterGradient({
 
   return {
     gradientRef,
-    bottomChildrenViewHeight,
+    bottomChildrenViewHeight: hasFixedBottomChildren ? bottomChildrenViewHeight : 0,
     onFixedBottomChildrenViewLayout,
     onChildrenScrollViewLayout,
     onChildrenScrollViewContentSizeChange,

@@ -3,8 +3,8 @@ import React from 'react'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates, GeolocPermissionState } from 'libs/location/location'
+import { locationActions } from 'libs/locationV2/location.store'
 import { render, screen, userEvent } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
@@ -235,13 +235,7 @@ describe('<VenueSelectionModal />', () => {
     })
 
     it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', async () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: false,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
+      const showPermissionModal = jest.spyOn(locationActions, 'showPermissionModal')
 
       render(
         <VenueSelectionModal
@@ -265,17 +259,11 @@ describe('<VenueSelectionModal />', () => {
 
       await user.press(button)
 
-      expect(mockShowModal).toHaveBeenCalledWith()
+      expect(showPermissionModal).toHaveBeenCalledWith()
     })
 
     it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
-      const mockHideModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: jest.fn(),
-        hideModal: mockHideModal,
-        toggleModal: jest.fn(),
-      })
+      const hidePermissionModal = jest.spyOn(locationActions, 'hidePermissionModal')
 
       render(
         <VenueSelectionModal
@@ -301,7 +289,7 @@ describe('<VenueSelectionModal />', () => {
 
       await user.press(screen.getByText('Activer la géolocalisation'))
 
-      expect(mockHideModal).toHaveBeenCalledWith()
+      expect(hidePermissionModal).toHaveBeenCalledWith()
     })
   })
 

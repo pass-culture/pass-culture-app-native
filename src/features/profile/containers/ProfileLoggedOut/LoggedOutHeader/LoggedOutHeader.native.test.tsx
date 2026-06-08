@@ -14,18 +14,18 @@ jest.useFakeTimers()
 
 describe('LoggedOutHeader', () => {
   it('should navigate to the SignupForm page', async () => {
-    render(<LoggedOutHeader featureFlags={{ disableActivation: false, enableProfileV2: false }} />)
+    render(<LoggedOutHeader />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupMethods', {
       from: StepperOrigin.PROFILE,
     })
   })
 
   it('should navigate to the LoginMethods page', async () => {
-    render(<LoggedOutHeader featureFlags={{ disableActivation: false, enableProfileV2: false }} />)
+    render(<LoggedOutHeader />)
 
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
@@ -36,7 +36,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte"', async () => {
-    render(<LoggedOutHeader featureFlags={{ disableActivation: false, enableProfileV2: false }} />)
+    render(<LoggedOutHeader />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -46,7 +46,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should not display subtitle', () => {
-    render(<LoggedOutHeader featureFlags={{ disableActivation: false, enableProfileV2: false }} />)
+    render(<LoggedOutHeader />)
 
     const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 

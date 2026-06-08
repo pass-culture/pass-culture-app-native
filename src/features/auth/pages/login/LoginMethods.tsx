@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonAppleBase } from 'features/auth/components/SSOButton/SSOButtonAppleBase'
 import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
-import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
+import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import {
@@ -36,7 +36,7 @@ export const LoginMethods = () => {
   const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
 
   const onLogSignUpAnalytics = useCallback(() => {
-    void analytics.logSignUpClicked({ from: 'login' })
+    void analytics.logSignUpClicked({ from: 'loginMethods' })
   }, [])
 
   useEffect(() => {
@@ -54,24 +54,17 @@ export const LoginMethods = () => {
     }
   }, [params?.displayForcedLoginHelpMessage])
 
-  const handleSigninFailure = useCallback(
+  const onSSOSignInFailure = useCallback(
     (response: SignInResponseFailure) => {
-      const failureCode = response.content?.code
-
-      if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
+      if (response.content?.code === 'SSO_EMAIL_NOT_FOUND') {
         return navigate('SignupForm', {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
-          from: StepperOrigin.LOGIN,
+          from: StepperOrigin.LOGIN_METHODS,
           ssoProvider: response.provider,
         })
       }
-
-      if (failureCode === 'SSO_ERROR') {
-        return showErrorSnackBar(getSSOErrorMessage(response.provider, 'login'))
-      }
-
-      showErrorSnackBar('Erreur lors de la tentative de connexion')
+      showErrorSnackBar(getSnackbarSSOErrorMessage({ response, context: 'login' }))
     },
     [navigate]
   )
@@ -79,7 +72,7 @@ export const LoginMethods = () => {
   const { mutate: signInGoogle } = useSignInMutation({
     params,
     doNotNavigateOnSigninSuccess: false,
-    onFailure: handleSigninFailure,
+    onFailure: onSSOSignInFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginGoogle',
   })
@@ -87,7 +80,7 @@ export const LoginMethods = () => {
   const { mutate: signInApple } = useSignInMutation({
     params,
     doNotNavigateOnSigninSuccess: false,
-    onFailure: handleSigninFailure,
+    onFailure: onSSOSignInFailure,
     analyticsType: 'SSO_login',
     analyticsMethod: 'fromLoginApple',
   })

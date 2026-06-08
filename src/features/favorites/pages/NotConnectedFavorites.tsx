@@ -45,7 +45,7 @@ export const NotConnectedFavorites = () => {
               key={1}
               as={Button}
               wording="Créer un compte"
-              navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
+              navigateTo={{ screen: 'SignupMethods', params: { from: StepperOrigin.FAVORITE } }}
               onBeforeNavigate={onBeforeSignupNavigate}
               fullWidth
             />

@@ -31,7 +31,6 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
         }
       >
         <View
-          enableProfileV2={true}
           style={
             {
               "flexDirection": "row",
@@ -41,6 +40,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
               "zIndex": 1,
             }
           }
+          withMargins={false}
         >
           <View
             style={

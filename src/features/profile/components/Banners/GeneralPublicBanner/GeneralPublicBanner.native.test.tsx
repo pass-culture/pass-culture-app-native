@@ -3,8 +3,6 @@ import { Linking } from 'react-native'
 
 import { UserProfile } from 'features/share/types'
 import { underageBeneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -22,15 +20,10 @@ jest.mock('features/identityCheck/queries/useGetStepperInfoQuery', () => ({
 }))
 
 const featureFlags = {
-  enableProfileV2: true,
   disableActivation: false,
 }
 
 describe('GeneralPublicBanner', () => {
-  beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PROFILE_V2])
-  })
-
   it('should return null if user is undefined', () => {
     render(
       reactQueryProviderHOC(

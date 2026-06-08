@@ -288,136 +288,130 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           Crée-toi un compte
         </Text>
         <View
+          gap={5}
           style={
             {
-              "marginVertical": 40,
+              "gap": 20,
+              "marginVertical": 24,
             }
           }
         >
           <View
             style={
               {
-                "marginBottom": 32,
+                "alignItems": "flex-start",
+                "width": "100%",
               }
             }
           >
-            <View
-              style={
-                {
-                  "alignItems": "flex-start",
-                  "width": "100%",
-                }
-              }
-            >
-              <View>
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
-                  style={
-                    {
-                      "alignItems": "flex-end",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
-                      }
-                    >
-                      Adresse e-mail
-                    </Text>
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "marginTop": 2,
-                        }
-                      }
-                    >
-                      Exemple : tonadresse@email.com
-                    </Text>
-                  </View>
-                </View>
-              </View>
+            <View>
               <View
-                isDisabled={false}
-                isError={false}
-                isFocused={false}
-                isHover={false}
-                size="small"
+                accessibilityElementsHidden={true}
+                importantForAccessibility="no"
                 style={
                   {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
+                    "alignItems": "flex-end",
                     "flexDirection": "row",
-                    "height": 40,
-                    "marginTop": 4,
-                    "paddingBottom": 0,
-                    "paddingLeft": 9,
-                    "paddingRight": 9,
-                    "paddingTop": 0,
+                    "justifyContent": "space-between",
                     "width": "100%",
                   }
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  accessibilityLabel="Champs de texte - Adresse e-mail - Exemple : tonadresse@email.com"
-                  accessibilityRequired={false}
-                  autoCapitalize="none"
-                  autoComplete="email"
-                  editable={true}
-                  isEmpty={true}
-                  keyboardType="email-address"
-                  multiline={false}
-                  nativeID="Entrée pour l’email"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder=""
-                  placeholderTextColor="#696a6f"
-                  returnKeyType="next"
-                  style={
-                    {
-                      "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat",
-                      "fontSize": 16,
-                      "fontStyle": "italic",
-                      "fontWeight": "500",
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
+                <View>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
-                  }
-                  testID="Entrée pour l’email"
-                  textAlignVertical="center"
-                  value=""
-                />
+                  >
+                    Adresse e-mail
+                  </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "marginTop": 2,
+                      }
+                    }
+                  >
+                    Exemple : tonadresse@email.com
+                  </Text>
+                </View>
               </View>
+            </View>
+            <View
+              isDisabled={false}
+              isError={false}
+              isFocused={false}
+              isHover={false}
+              size="small"
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#90949d",
+                  "borderStyle": "solid",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "marginTop": 4,
+                  "paddingBottom": 0,
+                  "paddingLeft": 9,
+                  "paddingRight": 9,
+                  "paddingTop": 0,
+                  "width": "100%",
+                }
+              }
+              testID="styled-input-container"
+            >
+              <TextInput
+                accessibilityLabel="Champs de texte - Adresse e-mail - Exemple : tonadresse@email.com"
+                accessibilityRequired={false}
+                autoCapitalize="none"
+                autoComplete="email"
+                editable={true}
+                isEmpty={true}
+                keyboardType="email-address"
+                multiline={false}
+                nativeID="Entrée pour l’email"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                placeholderTextColor="#696a6f"
+                returnKeyType="next"
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat",
+                    "fontSize": 16,
+                    "fontStyle": "italic",
+                    "fontWeight": "500",
+                    "height": "100%",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  }
+                }
+                testID="Entrée pour l’email"
+                textAlignVertical="center"
+                value=""
+              />
             </View>
           </View>
           <View
@@ -639,319 +633,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             </Text>
           </View>
         </View>
-        <View
-          gap={4}
-          style={
-            {
-              "gap": 16,
-              "marginBottom": 40,
-              "marginTop": 16,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "paddingHorizontal": 4,
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "backgroundColor": "#cbcdd2",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 1,
-                  "marginRight": 16,
-                  "width": "100%",
-                }
-              }
-              type="left"
-            />
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 14,
-                  "lineHeight": 22.4,
-                }
-              }
-            >
-              ou
-            </Text>
-            <View
-              style={
-                {
-                  "backgroundColor": "#cbcdd2",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 1,
-                  "marginLeft": 16,
-                  "width": "100%",
-                }
-              }
-              type="right"
-            />
-          </View>
-          <View
-            accessibilityLabel="S’inscrire avec Google"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "alignSelf": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                    "justifyContent": "center",
-                    "paddingBottom": 8,
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "paddingTop": 8,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="S’inscrire avec Google"
-          >
-            <View
-              fullWidth={true}
-              gap={8}
-              hasIcon={true}
-              isMultiline={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 8,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
-                  }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {},
-                  }
-                }
-                jestInlineStyle={
-                  {
-                    "flexShrink": 0,
-                  }
-                }
-                nativeID="1"
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={22}
-                  width={22}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 22,
-                    },
-                    {
-                      "color": "#161617",
-                      "flexBasis": undefined,
-                      "flexGrow": undefined,
-                      "flexShrink": 1,
-                      "maxWidth": "100%",
-                      "minWidth": 0,
-                      "textAlign": undefined,
-                    },
-                  ]
-                }
-              >
-                S’inscrire avec Google
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            {
-              "marginBottom": 24,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-                "gap": 4,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textAlign": "center",
-                }
-              }
-            >
-              Déjà un compte ?
-            </Text>
-            <View
-              accessibilityLabel="Se connecter"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "flexShrink": 1,
-                      "maxWidth": "100%",
-                      "minWidth": 0,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Se connecter"
-            >
-              <View
-                size="default"
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "columnGap": 8,
-                    "flexDirection": "row",
-                    "flexShrink": 1,
-                    "maxWidth": "100%",
-                    "minWidth": 0,
-                  }
-                }
-              >
-                <Text
-                  size="default"
-                  style={
-                    {
-                      "color": "#320096",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "minWidth": 0,
-                      "textDecorationLine": "underline",
-                    }
-                  }
-                  testID="link-label"
-                  textColor="#320096"
-                >
-                  Se connecter
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   </RCTScrollView>
@@ -1107,7 +788,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                   "flexShrink": 0,
                 }
               }
-              nativeID="2"
+              nativeID="1"
               style={
                 [
                   {
@@ -2023,7 +1704,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "flexShrink": 0,
                 }
               }
-              nativeID="4"
+              nativeID="2"
               style={
                 [
                   {
@@ -3257,7 +2938,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   "flexShrink": 0,
                 }
               }
-              nativeID="6"
+              nativeID="3"
               style={
                 [
                   {
@@ -3855,7 +3536,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "flexShrink": 0,
                     }
                   }
-                  nativeID="8"
+                  nativeID="4"
                   style={
                     [
                       {
@@ -3985,7 +3666,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "flexShrink": 0,
                     }
                   }
-                  nativeID="9"
+                  nativeID="5"
                   style={
                     [
                       {
@@ -4115,7 +3796,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                       "flexShrink": 0,
                     }
                   }
-                  nativeID="10"
+                  nativeID="6"
                   style={
                     [
                       {
