@@ -47,6 +47,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
             wording="consultant cette page."
             externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
             accessibilityRole={AccessibilityRole.LINK}
+            size="small"
           />
         </Typo.BodyS>
         <Typo.BodyS>

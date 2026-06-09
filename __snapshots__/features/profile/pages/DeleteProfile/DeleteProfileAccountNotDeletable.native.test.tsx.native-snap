@@ -326,8 +326,8 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
                       "color": "#161617",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
                       "textDecorationLine": "underline",
                     }
                   }
