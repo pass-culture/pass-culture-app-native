@@ -166,8 +166,8 @@ describe('<OfferArtistsSection />', () => {
         />
       )
 
-      expect(screen.getByText('Acteurs (3)')).toBeOnTheScreen()
-      expect(screen.getByText('Réalisateur (1)')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Acteurs')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Réalisateur')).toBeOnTheScreen()
     })
 
     it('should display all artists by default', () => {
@@ -196,7 +196,7 @@ describe('<OfferArtistsSection />', () => {
         />
       )
 
-      await user.press(screen.getByText('Réalisateur (1)'))
+      await user.press(screen.getByLabelText('Réalisateur'))
 
       expect(screen.getByText('James Cameron')).toBeOnTheScreen()
       expect(screen.queryByText('Sam Worthington')).not.toBeOnTheScreen()
@@ -214,14 +214,14 @@ describe('<OfferArtistsSection />', () => {
         />
       )
 
-      await user.press(screen.getByText('Réalisateur (1)'))
+      await user.press(screen.getByLabelText('Réalisateur'))
 
       expect(screen.getByText('James Cameron')).toBeOnTheScreen()
       expect(screen.queryByText('Sam Worthington')).not.toBeOnTheScreen()
       expect(screen.queryByText('Zoe Saldana')).not.toBeOnTheScreen()
       expect(screen.queryByText('Sigourney Weaver')).not.toBeOnTheScreen()
 
-      await user.press(screen.getByText('Réalisateur (1)'))
+      await user.press(screen.getByLabelText('Réalisateur : Filtre sélectionné'))
 
       expect(screen.getByText('Sam Worthington')).toBeOnTheScreen()
       expect(screen.getByText('Zoe Saldana')).toBeOnTheScreen()
