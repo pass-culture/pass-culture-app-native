@@ -14,7 +14,6 @@ export const loggedInNonBeneficiaryContentConfig = ({
   AppearanceButton,
   ChatbotButton,
   HelpButton,
-  LocationButton,
   SocialNetwork,
   BugReportButton,
 }: LoggedInContentParams): LoggedInContentConfig[] => [
@@ -25,7 +24,6 @@ export const loggedInNonBeneficiaryContentConfig = ({
   {
     section: 'Paramètres',
     items: [
-      { component: LocationButton, key: 'LocationButton' },
       { component: AppearanceButton, key: 'AppearanceButton' },
       {
         title: 'Notifications et thèmes suivis',

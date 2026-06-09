@@ -16,8 +16,6 @@ type LoggedOutContentParams = {
 } & {
   AppearanceButton: React.ReactNode
 } & {
-  LocationButton: React.ReactNode
-} & {
   ShareBanner: React.ReactNode
 } & {
   SocialNetwork: React.ReactNode
@@ -28,7 +26,6 @@ type LoggedOutContentParams = {
 export const loggedOutContentConfig = ({
   AppearanceButton,
   HelpButton,
-  LocationButton,
   ShareBanner,
   SocialNetwork,
   BugReportButton,
@@ -36,7 +33,6 @@ export const loggedOutContentConfig = ({
   {
     section: 'Paramètres',
     items: [
-      { component: LocationButton, key: 'LocationButton' },
       { component: AppearanceButton, key: 'AppearanceButton' },
       {
         title: 'Notifications et thèmes suivis',

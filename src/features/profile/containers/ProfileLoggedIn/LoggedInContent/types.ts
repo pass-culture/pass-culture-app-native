@@ -12,8 +12,6 @@ export type LoggedInContentParams = {
 } & {
   AppearanceButton: React.ReactNode
 } & {
-  LocationButton: React.ReactNode
-} & {
   ShareBanner: React.ReactNode | null
 } & {
   SocialNetwork: React.ReactNode
