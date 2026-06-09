@@ -119,8 +119,9 @@ const Container = styled(ViewGap)(({ theme }) => ({
 const LinksContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : 'flex-start',
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
-  justifyContent: 'center',
+  flexWrap: theme.isDesktopViewport ? 'wrap' : undefined,
   flex: theme.isDesktopViewport ? 1 : undefined,
+  justifyContent: 'center',
   marginHorizontal: getSpacing(theme.isDesktopViewport ? 25 : 0),
 }))
 
