@@ -17,7 +17,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Typo } from 'ui/theme'
-import { AVATAR_MEDIUM } from 'ui/theme/constants'
+import { AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -67,10 +67,10 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
           <InfoHeader
             title={soloArtist.name}
             subtitle={soloArtist.role ? getArtistRole(soloArtist.role, offerCategoryId) : undefined}
-            defaultThumbnailSize={AVATAR_MEDIUM}
+            defaultThumbnailSize={AVATAR_SMALL}
             thumbnailComponent={
               <Avatar
-                size={AVATAR_MEDIUM}
+                size={AVATAR_SMALL}
                 rounded={false}
                 borderRadius={designSystem.size.borderRadius.pill}>
                 {soloArtist.image ? (

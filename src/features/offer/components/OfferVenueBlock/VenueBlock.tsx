@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { Tag } from 'ui/designSystem/Tag/Tag'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   venueId: number
@@ -21,8 +20,6 @@ type Props = {
   shouldShowDistances?: boolean
 }
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(14)
-
 export const VenueBlock: FunctionComponent<Props> = ({
   venueId,
   venueImageUrl = '',
@@ -35,6 +32,7 @@ export const VenueBlock: FunctionComponent<Props> = ({
   shouldShowDistances = true,
   isOfferAtSameAddressAsVenue,
 }) => {
+  const { designSystem } = useTheme()
   const shouldDisplayDistanceTag = shouldShowDistances && distance
   const isClickableVenueLink = isOfferAtSameAddressAsVenue && hasVenuePage
 
@@ -42,7 +40,7 @@ export const VenueBlock: FunctionComponent<Props> = ({
     <VenueInfoHeader
       title={title}
       subtitle={subtitle}
-      imageSize={thumbnailSize ?? VENUE_THUMBNAIL_SIZE}
+      imageSize={thumbnailSize ?? designSystem.size.image.s}
       imageURL={venueImageUrl}
       showArrow={showArrow}
     />
