@@ -87,6 +87,21 @@ describe('<OfferArtistsSection />', () => {
       expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
 
+    it('should not have redirection to artist page when artist has not id', () => {
+      render(
+        <OfferArtistsSection
+          artists={[{ ...mockArtist, id: undefined }]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+        />
+      )
+
+      expect(
+        screen.queryByLabelText('Accéder à la page artiste de Edith Piaf')
+      ).not.toBeOnTheScreen()
+    })
+
     it('should display singular section title', () => {
       render(
         <OfferArtistsSection

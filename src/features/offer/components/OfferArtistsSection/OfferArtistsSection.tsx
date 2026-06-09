@@ -53,36 +53,48 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
 
   const soloArtist = artists[0]
 
+  const soloArtistContent = (rightComponent?: React.ReactNode) => (
+    <InfoHeader
+      title={soloArtist?.name}
+      subtitle={soloArtist?.role ? getArtistRole(soloArtist.role, offerCategoryId) : undefined}
+      defaultThumbnailSize={AVATAR_SMALL}
+      thumbnailComponent={
+        <Avatar
+          size={AVATAR_SMALL}
+          rounded={false}
+          borderRadius={designSystem.size.borderRadius.pill}>
+          {soloArtist?.image ? (
+            <ArtistImage url={soloArtist.image} testID="ArtistImage" />
+          ) : (
+            <DefaultAvatar testID="defaultArtistAvatar" />
+          )}
+        </Avatar>
+      }
+      rightComponent={rightComponent}
+    />
+  )
+
+  const soloArtistPart = () => {
+    return soloArtist?.id ? (
+      <InternalTouchableLink
+        navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
+        accessibilityLabel={`Accéder à la page artiste de ${soloArtist.name}`}
+        accessibilityRole={accessibilityRoleInternalNavigation()}
+        onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
+        {soloArtistContent(<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />)}
+      </InternalTouchableLink>
+    ) : (
+      soloArtistContent()
+    )
+  }
+
   return (
     <ViewGap gap={4}>
       <Typo.Title4 {...getHeadingAttrs(2)}>
         {artists.length === 1 ? sectionTitle.singular : sectionTitle.plural}
       </Typo.Title4>
       {artists.length === 1 && soloArtist ? (
-        <InternalTouchableLink
-          navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
-          accessibilityLabel={`Accéder à la page artiste de ${soloArtist.name}`}
-          accessibilityRole={accessibilityRoleInternalNavigation()}
-          onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
-          <InfoHeader
-            title={soloArtist.name}
-            subtitle={soloArtist.role ? getArtistRole(soloArtist.role, offerCategoryId) : undefined}
-            defaultThumbnailSize={AVATAR_SMALL}
-            thumbnailComponent={
-              <Avatar
-                size={AVATAR_SMALL}
-                rounded={false}
-                borderRadius={designSystem.size.borderRadius.pill}>
-                {soloArtist.image ? (
-                  <ArtistImage url={soloArtist.image} testID="ArtistImage" />
-                ) : (
-                  <DefaultAvatar testID="defaultArtistAvatar" />
-                )}
-              </Avatar>
-            }
-            rightComponent={<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />}
-          />
-        </InternalTouchableLink>
+        soloArtistPart()
       ) : (
         <React.Fragment>
           {filterButtons.length > 1 ? (
