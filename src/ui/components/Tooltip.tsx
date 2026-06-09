@@ -1,5 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { ComponentProps, FunctionComponent, useCallback, useEffect, useRef } from 'react'
+import { AccessibilityInfo, findNodeHandle } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -32,10 +33,20 @@ export const Tooltip: FunctionComponent<Props> = ({
 }) => {
   const containerRef = useRef<AnimatedViewRefType>(null)
   useEffect(() => {
-    if (isVisible) {
-      containerRef.current?.fadeIn?.()
-    }
-  }, [isVisible])
+    if (!isVisible) return
+
+    void containerRef.current?.fadeIn?.()
+    AccessibilityInfo.announceForAccessibility(label)
+
+    const timeout = setTimeout(() => {
+      const node = findNodeHandle(containerRef.current)
+      if (node) {
+        AccessibilityInfo.setAccessibilityFocus(node)
+      }
+    }, FADE_IN_DURATION)
+
+    return () => clearTimeout(timeout)
+  }, [isVisible, label])
 
   // Hide tooltip when navigating away
   useFocusEffect(
@@ -55,6 +66,7 @@ export const Tooltip: FunctionComponent<Props> = ({
       style={style}
       ref={containerRef}
       accessibilityRole={AccessibilityRole.TOOLTIP}
+      accessibilityLiveRegion="assertive"
       pointerDirection={pointerDirection}>
       <StyledPointer pointerDirection={pointerDirection} />
       <Background>

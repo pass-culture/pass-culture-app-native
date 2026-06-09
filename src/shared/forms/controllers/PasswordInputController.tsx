@@ -3,8 +3,8 @@ import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import {
-  PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL,
   PasswordSecurityRules,
+  getPasswordRulesAccessibilityLabel,
 } from 'features/auth/components/PasswordSecurityRules'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
@@ -30,18 +30,18 @@ export const PasswordInputController = <
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   const passwordInputErrorId = uuidv4()
 
-  const securityRulesAccessibilityLabel = withSecurityRules
-    ? PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL
-    : undefined
-
   return (
     <Controller
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => {
+        const securityRulesAccessibilityLabel = withSecurityRules
+          ? getPasswordRulesAccessibilityLabel(value)
+          : undefined
+
         const computedAccessibilityHint = getComputedAccessibilityLabel(
           securityRulesAccessibilityLabel,
-          error?.message
+          error?.message ? `erreur\u00a0 ${error.message}` : undefined
         )
 
         return (

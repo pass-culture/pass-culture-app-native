@@ -35,7 +35,7 @@ describe('SetPassword Page', () => {
   it('should display security rules', () => {
     render(<SetPassword {...props} />)
 
-    expect(screen.getByText('12 caractères')).toBeOnTheScreen()
+    expect(screen.getByText('12 caractères', { includeHiddenElements: true })).toBeOnTheScreen()
   })
 
   it('should not display "Obligatoire"', () => {
