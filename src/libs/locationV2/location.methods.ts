@@ -5,8 +5,8 @@ import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPerm
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { GeolocationError, RequestGeolocPermissionParams } from 'libs/location/types'
-import { locationActions } from 'libs/locationV2/location.store'
+import { GeolocationError, LocationMode, RequestGeolocPermissionParams } from 'libs/location/types'
+import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 
 const triggerPositionUpdate = async () => {
   try {
@@ -53,6 +53,9 @@ export const contextualRequestGeolocPermission = async (params?: RequestGeolocPe
 export const contextualCheckPermission = async () => {
   const permission = await getPermissionState(await checkGeolocPermission())
   locationActions.setPermissionState(permission)
+  if (permission !== GeolocPermissionState.GRANTED || !locationSelectors.selectIsGeolocated()) {
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
+  }
 }
 
 export const initLocationPermission = () => {
