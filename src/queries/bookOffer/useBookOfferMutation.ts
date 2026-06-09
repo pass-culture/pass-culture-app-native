@@ -7,6 +7,7 @@ import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { QueryKeys } from 'libs/queryKeys'
 import { prefetchBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
+import { prefetchBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 
 interface BookingMutationContext {
   previousBookings: Array<BookingsResponseV2>
@@ -36,7 +37,9 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
         }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])
-      await prefetchBookingByIdQuery(data.bookingId)
+
+      await Promise.all([prefetchBookingByIdQuery(data.bookingId), prefetchBookingsV2Query()])
+
       Adjust.logEvent(AdjustEvents.BOOK_OFFER)
       onSuccess(data)
     },
