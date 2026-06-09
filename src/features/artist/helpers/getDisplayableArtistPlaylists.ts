@@ -1,4 +1,4 @@
-import { SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ARTIST_CATEGORY_PLAYLISTS } from 'features/artist/constants'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 
@@ -15,9 +15,8 @@ export const getDisplayableArtistPlaylists = (
 ): DisplayableArtistPlaylist[] =>
   ARTIST_CATEGORY_PLAYLISTS.reduce<DisplayableArtistPlaylist[]>(
     (artistPlaylists, { includedSubcategoryIds, label, searchGroupName }) => {
-      const playlistSubcategoryIds: readonly SubcategoryIdEnumv2[] = includedSubcategoryIds
       const playlistItems = items.filter((item) =>
-        playlistSubcategoryIds.includes(item.offer.subcategoryId as unknown as SubcategoryIdEnumv2)
+        includedSubcategoryIds.some((subcategoryId) => subcategoryId === item.offer.subcategoryId)
       )
 
       if (playlistItems.length === 0) return artistPlaylists

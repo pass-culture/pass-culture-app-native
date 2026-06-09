@@ -105,9 +105,7 @@ describe('ArtistPlaylist', () => {
       )
     )
 
-    expect(
-      await screen.findByLabelText('Voir tout pour la sélection Toutes ses offres disponibles')
-    ).toBeOnTheScreen()
+    expect(await screen.findByLabelText('Voir tout pour la sélection Livres')).toBeOnTheScreen()
   })
 
   it('should not display see all button when there is only one offer from this artist', async () => {
@@ -121,11 +119,9 @@ describe('ArtistPlaylist', () => {
       )
     )
 
-    await screen.findByLabelText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Livres')
 
-    expect(
-      screen.queryByLabelText('Voir tout pour la sélection Toutes ses offres disponibles')
-    ).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText('Voir tout pour la sélection Livres')).not.toBeOnTheScreen()
   })
 
   it('should use bookFormat if available in playlist item', async () => {
