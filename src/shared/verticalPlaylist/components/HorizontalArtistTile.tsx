@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Artist } from 'features/venue/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -30,7 +31,7 @@ export const HorizontalArtistTile = ({ artist }: ArtistItemProps) => {
 
   if (!artist.id) return content
 
-  const accessibilityLabel = artist.role ? `${artist.name} - ${artist.role}` : artist.name
+  const accessibilityLabel = getComputedAccessibilityLabel(artist.name, artist.role)
 
   return (
     <InternalTouchableLink
