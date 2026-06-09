@@ -88,7 +88,6 @@ exports[`ChatbotContainer should render webview correctly 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
               "flexDirection": "row",
-              "flexShrink": 0,
               "justifyContent": "center",
               "opacity": 1,
               "paddingBottom": 8,
