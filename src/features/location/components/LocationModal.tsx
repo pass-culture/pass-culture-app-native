@@ -19,7 +19,7 @@ type LocationModalProps = {
   visible: boolean
   onSubmit: () => void
   onClose: () => void
-  selectLocationMode: (mode: LocationMode) => () => void
+  selectLocationMode: (mode: LocationMode) => void
   tempLocationMode: LocationState['tempLocationMode']
   hasGeolocPosition: LocationState['hasGeolocPosition']
   selectedPlace: LocationState['selectedPlace']
@@ -165,7 +165,7 @@ export const LocationModal = ({
   const handleChange = (label: string) => {
     const mode = LABEL_TO_MODE_MAP[label]
     if (mode) {
-      selectLocationMode(mode)()
+      selectLocationMode(mode)
     }
   }
 

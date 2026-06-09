@@ -82,12 +82,58 @@ describe('no-useless-hook', () => {
         `,
         filename: 'src/hooks/usehook.ts',
       },
+      {
+        code: `
+          function useMyHook() {
+            const val = useMemo(() => 'hello', [])
+            const [state] = useState(val)
+            return state
+          }
+        `,
+        filename: 'src/hooks/useMyHook.ts',
+      },
+      {
+        code: `
+          function useMyHook() {
+            return useCustomHook()
+          }
+        `,
+        filename: 'src/hooks/useMyHook.ts',
+      },
     ],
     invalid: [
       {
         code: `
           function useMyHook() {
             return 'hello'
+          }
+        `,
+        filename: 'src/hooks/useMyHook.ts',
+        errors: [
+          {
+            message:
+              '"useMyHook" is named like a hook but doesn\'t use any hooks. Rename it without the "use" prefix.',
+          },
+        ],
+      },
+      {
+        code: `
+          function useMyHook() {
+            return useMemo(() => 'hello', [])
+          }
+        `,
+        filename: 'src/hooks/useMyHook.ts',
+        errors: [
+          {
+            message:
+              '"useMyHook" is named like a hook but doesn\'t use any hooks. Rename it without the "use" prefix.',
+          },
+        ],
+      },
+      {
+        code: `
+          function useMyHook() {
+            return useCallback(() => 'hello', [])
           }
         `,
         filename: 'src/hooks/useMyHook.ts',

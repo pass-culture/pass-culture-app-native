@@ -81,6 +81,7 @@ const locationModalStore = createStore({
       const { radius: _, ...place } = state.configuration[LocationMode.AROUND_PLACE]
       return place.label ? place : null
     },
+    selectIsVisible: () => (state) => state.visible,
   },
 })
 
