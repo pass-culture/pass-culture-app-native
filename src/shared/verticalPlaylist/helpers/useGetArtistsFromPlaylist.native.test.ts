@@ -98,6 +98,7 @@ describe('useGetArtistsFromPlaylist', () => {
   })
 
   it('should return artists from offer when available', () => {
+    mockUseSearchArtistsQuery.mockReturnValueOnce({ data: [{ id: 3 }] })
     const { result } = renderHook(() => useGetArtistsFromPlaylist(paramsWithOffer), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })

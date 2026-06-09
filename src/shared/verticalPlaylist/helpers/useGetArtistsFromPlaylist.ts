@@ -32,7 +32,7 @@ export const useGetArtistsFromPlaylist = ({
   const isSearch = !isSimilar && !isVenue && !isOffer
 
   const { data: offer } = useOfferQuery({
-    offerId,
+    offerId: offerId ?? 0,
   })
 
   const { searchState } = useSearch()
