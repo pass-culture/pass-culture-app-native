@@ -33,12 +33,15 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 
 onlineManager.setOnline(false)
 
+const MAX_AGE_TWENTY_FOUR_DAYS = 1000 * 60 * 60 * 24 * 24
+
 export const ReactQueryClientProvider = ({ children }: { children: React.JSX.Element }) => {
   usePrefetchQueries()
   return (
     <PersistQueryClientProvider
       client={queryClient}
       persistOptions={{
+        maxAge: MAX_AGE_TWENTY_FOUR_DAYS,
         persister,
         dehydrateOptions: {
           shouldDehydrateQuery: (query) =>

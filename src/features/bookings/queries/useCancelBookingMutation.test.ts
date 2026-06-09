@@ -11,18 +11,24 @@ const BOOKING_OFFER_ID = 1
 
 const onSuccess = jest.fn()
 const onError = jest.fn()
+
 const invalidateQueriesMock = jest.fn()
+const removeQueriesMock = jest.fn()
 
 let queryClient: QueryClient
+
 const setupQueryClient = (client: QueryClient) => {
   queryClient = client
   queryClient.invalidateQueries = invalidateQueriesMock
+  queryClient.removeQueries = removeQueriesMock
 }
 
 jest.mock('libs/jwt/jwt')
 
-describe('[hook] useCancelBookingMutation', () => {
-  it('invalidates me and bookings after successfully cancel a booking', async () => {
+describe('useCancelBookingMutation', () => {
+  beforeEach(() => jest.clearAllMocks())
+
+  it('invalidates and removes booking after successfully cancel a booking', async () => {
     mockServer.postApi(`/v1/bookings/${BOOKING_OFFER_ID}/cancel`, {})
 
     const { result } = renderUseCancelBookingMutation()
@@ -32,12 +38,27 @@ describe('[hook] useCancelBookingMutation', () => {
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(onSuccess).toHaveBeenCalledTimes(1)
-    expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.USER_PROFILE] })
-    expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.BOOKINGSV2] })
-    expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.BOOKINGSLIST] })
+
+    expect(removeQueriesMock).toHaveBeenCalledWith({
+      queryKey: [QueryKeys.BOOKINGSV2, BOOKING_OFFER_ID],
+    })
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith({
+      queryKey: [QueryKeys.USER_PROFILE],
+    })
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith({
+      queryKey: [QueryKeys.BOOKINGSV2],
+      refetchType: 'all',
+      exact: true,
+    })
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith({
+      queryKey: [QueryKeys.BOOKINGSLIST],
+    })
   })
 
-  it('call onError input after cancel a booking on error', async () => {
+  it('calls onError when cancel booking fails', async () => {
     mockServer.postApi(`/v1/bookings/${BOOKING_OFFER_ID}/cancel`, {
       responseOptions: { statusCode: 400 },
     })

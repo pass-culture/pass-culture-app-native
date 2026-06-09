@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { BookingsResponseV2, BookOfferResponse, OfferResponse } from 'api/gen'
+import { BookingResponse, BookingsResponseV2, BookOfferResponse, OfferResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixtures/mockSubcategory'
@@ -132,6 +132,9 @@ describe('<OfferCTAButton />', () => {
         mockServer.getApi<OfferResponse>(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockServer.getApi<BookingsResponseV2>('/v2/bookings', expectedResponse)
         mockServer.postApi<BookOfferResponse>(`/v1/bookings`, { bookingId: 123 })
+        mockServer.getApi<BookingResponse>(`/v2/bookings/123`, {
+          responseOptions: { data: { ...mockedBookingV2Api, id: 123 } },
+        })
       })
 
       it('should directly book and redirect to the offer when pressing button to book the offer if offer digital and free', async () => {
