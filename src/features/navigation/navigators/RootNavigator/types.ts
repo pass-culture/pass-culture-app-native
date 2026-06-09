@@ -333,7 +333,12 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
-  VerticalPlaylistArtists: { title: string; subtitle?: string; venueId?: number }
+  VerticalPlaylistArtists: {
+    title: string
+    subtitle?: string
+    venueId?: number
+    similarToArtistId?: string
+  }
   VerticalPlaylistOffers: VerticalPlaylistOffersSource
   VerticalPlaylistVenues: { module: VenuesModule }
   VideoModulePage: VideoModulePageParams

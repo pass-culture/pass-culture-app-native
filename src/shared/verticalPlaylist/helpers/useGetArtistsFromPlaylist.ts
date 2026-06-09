@@ -1,4 +1,6 @@
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { useSimilarArtistsQuery } from 'features/artist/queries/useSimilarArtistsQuery'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
@@ -14,9 +16,17 @@ import { VerticalPlaylistArtistsData } from 'shared/verticalPlaylist/types'
 
 const NO_ARTISTS: Artist[] = []
 
-export const useGetArtistsFromPlaylist = ({ params }): VerticalPlaylistArtistsData => {
-  const { title, subtitle, venueId } = params
-  const isVenue = !!venueId
+type UseGetArtistsFromPlaylistProps = {
+  params: RootStackParamList['VerticalPlaylistArtists']
+}
+
+export const useGetArtistsFromPlaylist = ({
+  params,
+}: UseGetArtistsFromPlaylistProps): VerticalPlaylistArtistsData => {
+  const { title, subtitle, venueId, similarToArtistId } = params
+  const isSimilar = !!similarToArtistId
+  const isVenue = !isSimilar && !!venueId
+  const isSearch = !isSimilar && !isVenue
 
   const { searchState } = useSearch()
 
@@ -43,7 +53,7 @@ export const useGetArtistsFromPlaylist = ({ params }): VerticalPlaylistArtistsDa
     isUserUnderage,
   }
 
-  const { data: venue } = useVenueQuery(venueId, { enabled: isVenue })
+  const { data: venue } = useVenueQuery(venueId ?? 0, { enabled: isVenue })
 
   const venueSearchParams = useVenueSearchParameters(venue)
   const { data: venueOffers } = useVenueOffersQuery({
@@ -58,18 +68,29 @@ export const useGetArtistsFromPlaylist = ({ params }): VerticalPlaylistArtistsDa
 
   const venueOffersHits = venueOffers?.hits
   const artistsFromRemoteConfig = remoteConfig.artistPageSubcategories.subcategories
-  const { data: venueArtists } = venueId
+  const { data: venueArtists } = isVenue
     ? getVenueOffersArtists(artistsFromRemoteConfig, venueOffersHits)
     : { data: { artists: [] } }
 
   const query = useSearchArtistsQuery(queryParams, {
-    enabled: !venueId,
+    enabled: isSearch,
     select: (data) => selectSearchArtists(data),
+  })
+
+  const { data: similarArtistsList } = useSimilarArtistsQuery(similarToArtistId ?? '', {
+    enabled: isSimilar,
   })
 
   const artistsFromVenue = venueArtists?.artists
   const searchArtistsList = query.data
-  const items = venueId ? (artistsFromVenue ?? NO_ARTISTS) : (searchArtistsList ?? NO_ARTISTS)
+
+  const getItems = (): Artist[] => {
+    if (isSimilar) return similarArtistsList ?? NO_ARTISTS
+    if (isVenue) return artistsFromVenue ?? NO_ARTISTS
+    return searchArtistsList ?? NO_ARTISTS
+  }
+
+  const items = getItems()
   const nbItems = items.length
 
   return {

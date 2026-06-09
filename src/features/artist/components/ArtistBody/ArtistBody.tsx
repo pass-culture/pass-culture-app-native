@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { ArtistResponse } from 'api/gen'
 import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
+import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
@@ -162,6 +163,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
             items={artistPlaylist}
             onViewableItemsChanged={onViewableItemsChanged}
           />
+          <ArtistSimilarArtists artistId={artist.id} />
         </ViewGap>
       </ContentContainer>
 
