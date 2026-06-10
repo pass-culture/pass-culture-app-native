@@ -7,12 +7,14 @@ import { getArtistRole } from 'features/artist/helpers/getArtistRole'
 import { getArtistSectionTitle } from 'features/artist/helpers/getArtistSectionTitle'
 import { getArtistsFilterButtons } from 'features/offer/helpers/getArtistsFilterButtons/getArtistsFilterButtons'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
+import { analytics } from 'libs/analytics/provider'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
+import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
@@ -24,6 +26,7 @@ interface Props {
   artists: OfferArtist[]
   offerCategoryId: CategoryIdEnum
   offerSubcategoryId: SubcategoryIdEnum
+  offerId: number
   onPlaylistItemPress: (artistId: string, artistName: string) => void
 }
 
@@ -31,6 +34,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   artists,
   offerCategoryId,
   offerSubcategoryId,
+  offerId,
   onPlaylistItemPress,
 }) => {
   const { designSystem } = useTheme()
@@ -51,13 +55,41 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
     )
   }
 
+  const title = artists.length === 1 ? sectionTitle.singular : sectionTitle.plural
+
+  const onSeeAllBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'artists',
+      moduleName: title,
+      from: 'offer',
+    })
+  }
+
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistArtists' as const,
+    params: { title, subtitle: undefined, offerId },
+  }
+
   const soloArtist = artists[0]
 
   return (
     <ViewGap gap={4}>
-      <Typo.Title4 {...getHeadingAttrs(2)}>
-        {artists.length === 1 ? sectionTitle.singular : sectionTitle.plural}
-      </Typo.Title4>
+      <SeeAllButtonContainer gap={3}>
+        <TitleContainer>
+          <Typo.Title4 {...getHeadingAttrs(2)}>{title}</Typo.Title4>
+        </TitleContainer>
+        {artists.length > 1 ? (
+          <SeeAllButton
+            playlistTitle={title}
+            data={{
+              onBeforeNavigate: onSeeAllBeforeNavigate,
+              navigateToVerticalPlaylist,
+              hideSearchSeeAll: true,
+            }}
+          />
+        ) : null}
+      </SeeAllButtonContainer>
+
       {artists.length === 1 && soloArtist ? (
         <InternalTouchableLink
           navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
@@ -130,3 +162,13 @@ const ButtonsContainer = styled.ScrollView.attrs(({ theme }) => ({
     columnGap: theme.designSystem.size.spacing.s,
   },
 }))``
+
+const TitleContainer = styled.View({
+  flex: 1,
+})
+
+const SeeAllButtonContainer = styled(ViewGap)({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+})
