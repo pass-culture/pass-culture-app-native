@@ -3,19 +3,19 @@ tags:
   - auth
   - fix
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
-      file: ../common/generateUser.js
+      file: ../common/helpers/generateUser.js
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
         age: 18
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkToHome.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
 
-- runFlow: ../common/GoToSearchFromTabBar.yml
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
 
 - assertVisible: 'Rechercher'
 
@@ -116,4 +116,4 @@ onFlowStart:
     commands:
       - tapOn: 'Plus tard'
 
-- runFlow: ../common/StopApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml

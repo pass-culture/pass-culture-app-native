@@ -2,7 +2,7 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - cookies
 ---
-- runFlow: ../common/LaunchApp.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow:
     when:
       visible: 'Autorisez-vous.*'
