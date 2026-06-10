@@ -209,10 +209,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               style={
                 {
                   "alignItems": "center",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "flexShrink": 0,
                   "justifyContent": "flex-start",
                   "paddingLeft": 12,
                   "paddingRight": 12,
@@ -227,6 +225,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               style={
                 {
                   "color": "#161617",
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -241,10 +240,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               style={
                 {
                   "alignItems": "center",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "flexShrink": 0,
                   "justifyContent": "flex-end",
                   "paddingLeft": 12,
                   "paddingRight": 12,

@@ -3,6 +3,10 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -29,7 +33,10 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
 }) => {
   const { top } = useCustomSafeInsets()
   const { isDesktopViewport, designSystem } = useTheme()
-  const headerHeight = getSpacing(18) + (isDesktopViewport ? top : 0)
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
+  const headerheightAddition = isDesktopViewport ? top : 0
+  const headerHeight = isZoomed ? undefined : getSpacing(18) + headerheightAddition
+  const numberOfLine = useNumberOfLine(1)
 
   return (
     <Header>
@@ -46,7 +53,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
             />
           ) : null}
         </ButtonContainer>
-        <StyledTitle4 numberOfLines={1} nativeID={titleId} {...getHeadingAttrs(1)}>
+        <StyledTitle4 numberOfLines={numberOfLine} nativeID={titleId} {...getHeadingAttrs(1)}>
           {title}
         </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
@@ -65,7 +72,7 @@ const Header = styled.View.attrs<{ children: React.ReactNode }>({
   width: '100%',
 })
 
-const HeaderContent = styled.View<{ height: number }>(({ height, theme }) => ({
+const HeaderContent = styled.View<{ height?: number }>(({ height, theme }) => ({
   zIndex: theme.zIndex.header,
   alignItems: 'center',
   flexDirection: 'row',
@@ -77,8 +84,8 @@ const HeaderContent = styled.View<{ height: number }>(({ height, theme }) => ({
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left', theme }) => ({
     alignItems: 'center',
-    flex: 1,
     flexDirection: 'row',
+    flexShrink: 0,
     justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
     paddingLeft: theme.designSystem.size.spacing.m,
     paddingRight: theme.designSystem.size.spacing.m,
@@ -87,6 +94,7 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
 
 const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
+  flexShrink: 1,
 })
 
 const StyledCloseButton = styledButton(CloseButton)(({ theme }) => ({

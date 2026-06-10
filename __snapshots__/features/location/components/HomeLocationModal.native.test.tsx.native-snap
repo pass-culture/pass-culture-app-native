@@ -232,7 +232,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
             >
               <Text
                 accessibilityRole="header"
-                numberOfLines={2}
                 style={
                   {
                     "color": "#161617",
