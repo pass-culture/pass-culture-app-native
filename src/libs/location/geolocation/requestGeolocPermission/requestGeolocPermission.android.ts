@@ -1,4 +1,5 @@
 import { PermissionsAndroid } from 'react-native'
+import { promptForEnableLocationIfNeeded } from 'react-native-android-location-enabler'
 
 import { AskGeolocPermission } from 'libs/location/types'
 
@@ -11,7 +12,12 @@ export const requestGeolocPermission: AskGeolocPermission = async () => {
 
   switch (status) {
     case PermissionsAndroid.RESULTS.GRANTED:
-      return GeolocPermissionState.GRANTED
+      try {
+        await promptForEnableLocationIfNeeded()
+        return GeolocPermissionState.GRANTED
+      } catch {
+        return GeolocPermissionState.DENIED
+      }
     case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
       return GeolocPermissionState.NEVER_ASK_AGAIN
     default:
