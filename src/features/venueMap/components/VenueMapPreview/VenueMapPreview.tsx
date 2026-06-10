@@ -32,7 +32,6 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
 }) => {
   const { designSystem } = useTheme()
   const Wrapper = noBorder ? InternalTouchableLink : Container
-  const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing.xxxxl
 
   return (
     <Wrapper {...touchableProps}>
@@ -43,7 +42,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
       <StyledVenueInfoHeader
         title={venueName}
         subtitle={address}
-        imageSize={VENUE_THUMBNAIL_SIZE}
+        imageSize={designSystem.size.image.s}
         showArrow={withRightArrow}
         imageURL={bannerUrl}
       />

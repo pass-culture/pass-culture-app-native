@@ -22,7 +22,7 @@ export const DEFAULT_INLINE_BUTTON_HEIGHT = getSpacing(4)
 
 //avatars
 export const AVATAR_XSMALL = getSpacing(8)
-export const AVATAR_SMALL = getSpacing(13.5)
+export const AVATAR_SMALL = getSpacing(14)
 export const AVATAR_MEDIUM = getSpacing(18)
 export const AVATAR_LARGE = getSpacing(26)
 

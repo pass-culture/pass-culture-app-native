@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { BookingResponse, TicketResponse, WithdrawalTypeEnum } from 'api/gen'
@@ -23,8 +24,6 @@ import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { IdCard } from 'ui/svg/icons/IdCard'
 
-const VENUE_THUMBNAIL_SIZE = 60
-
 type TicketProps = {
   properties: BookingProperties
   booking: BookingResponse
@@ -46,6 +45,7 @@ export const Ticket = ({
 }: TicketProps) => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
   const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
+  const { designSystem } = useTheme()
 
   const { mutate: archiveBooking } = useArchiveBookingMutation({
     bookingId: booking.id,
@@ -132,7 +132,7 @@ export const Ticket = ({
               venue={booking.stock.offer.venue}
               address={displayVenueAddress ? booking.stock.offer.address : undefined}
               offerId={offer.id}
-              thumbnailSize={VENUE_THUMBNAIL_SIZE}
+              thumbnailSize={designSystem.size.image.s}
               addressLabel={venueBlockAddress?.label ?? undefined}
               onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
             />
