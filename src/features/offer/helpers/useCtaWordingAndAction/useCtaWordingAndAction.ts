@@ -19,7 +19,7 @@ import {
   isEligible,
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
-import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
@@ -126,7 +126,7 @@ export const getCtaWordingAndAction = ({
 
   const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
 
-  const isUserFreeStatus = getIsUserEligible(user?.eligibilityType)
+  const isUserFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)

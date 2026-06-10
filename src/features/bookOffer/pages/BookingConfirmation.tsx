@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FC, useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { checkHasAlreadySeenSurvey } from 'features/bookOffer/pages/qualtricsSurveyModals/checkHasAlreadySeenSurvey'
 import { BookingCompletedSurveyModal } from 'features/bookOffer/pages/qualtricsSurveyModals/QualtricsSurveyModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
@@ -92,7 +92,7 @@ export const BookingConfirmation: FC = () => {
     euroToPacificFrancRate
   )
 
-  const amountLeftText = getIsUserEligible(user?.eligibilityType)
+  const amountLeftText = getIsUserEligibleFree(user?.eligibilityType)
     ? ''
     : `Il te reste encore ${amountLeftWithCurrency} à dépenser sur le pass Culture.${LINE_BREAK}`
 

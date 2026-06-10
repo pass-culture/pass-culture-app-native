@@ -7,7 +7,7 @@ import {
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
-import { getIsUserEligible } from 'features/auth/helpers/getIsUserEligible'
+import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
@@ -42,7 +42,7 @@ export const HomeHeader: FunctionComponent = function () {
         !user ||
         !isCurrentOrFormerBeneficiary(user) ||
         user?.creditType === UserCreditType.CREDIT_V3_FREE ||
-        getIsUserEligible(user?.eligibilityType) ||
+        getIsUserEligibleFree(user?.eligibilityType) ||
         (!isCurrentBeneficiary(user) && shouldDisplayActivationFlow)
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
