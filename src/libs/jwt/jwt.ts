@@ -8,9 +8,6 @@ interface AccessToken {
   jti: string
   nbf: number
   type: string
-  user_claims?: {
-    user_id?: number
-  }
 }
 
 export const decodeToken = (token: string) => {
