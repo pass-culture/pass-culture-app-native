@@ -58,4 +58,7 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   borderRadius: theme.designSystem.size.borderRadius.xl,
   ...customFocusOutline({ theme }),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default }),
+  '&:focus-visible': {
+    paddingVertical: theme.designSystem.size.spacing.xxs,
+  },
 }))
