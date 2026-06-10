@@ -3,6 +3,8 @@ import { QueryClient } from '@tanstack/react-query'
 import { BookingsResponseV2, BookOfferResponse } from 'api/gen'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
+import { prefetchBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
+import { prefetchBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,6 +19,17 @@ const setup = (queryClient: QueryClient) => {
     email: 'email@domain.ext',
   })
 }
+
+jest.mock('queries/bookings/useBookingByIdQuery', () => ({
+  ...jest.requireActual('queries/bookings/useBookingByIdQuery'),
+  prefetchBookingByIdQuery: jest.fn(),
+}))
+
+jest.mock('queries/bookings/useBookingsQuery', () => ({
+  ...jest.requireActual('queries/bookings/useBookingsQuery'),
+  prefetchBookingsV2Query: jest.fn(),
+}))
+
 jest.mock('libs/jwt/jwt')
 
 describe('useBookOfferMutation', () => {
@@ -53,6 +66,22 @@ describe('useBookOfferMutation', () => {
       expect(props.onError).toHaveBeenCalledTimes(1)
       expect(queryCache.find({ queryKey: ['userProfile'] })?.state.isInvalidated).toBeFalsy()
     })
+  })
+
+  it('prefetches booking details and bookings list after successful booking', async () => {
+    const bookingId = 123
+
+    mockServer.postApi<BookOfferResponse>('/v1/bookings', { bookingId })
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
+
+    const { result } = renderUseBookOfferMutation()
+
+    result.current.mutate({ quantity: 1, stockId: 10 })
+
+    await waitFor(() => expect(props.onSuccess).toHaveBeenCalledTimes(1))
+
+    expect(prefetchBookingByIdQuery).toHaveBeenCalledWith(bookingId)
+    expect(prefetchBookingsV2Query).toHaveBeenCalledTimes(1)
   })
 
   describe('Adjust event', () => {

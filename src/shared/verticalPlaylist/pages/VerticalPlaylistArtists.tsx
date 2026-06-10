@@ -1,15 +1,16 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { HorizontalArtistTile } from 'shared/verticalPlaylist/components/HorizontalArtistTile'
 import { LineSeparator } from 'shared/verticalPlaylist/components/LineSeparator'
 import { useGetArtistsFromPlaylist } from 'shared/verticalPlaylist/helpers/useGetArtistsFromPlaylist'
-import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,12 +19,13 @@ export const VerticalPlaylistArtists = () => {
   const headerHeight = useGetHeaderHeight()
   const { contentPage } = useTheme()
   const { params } = useRoute<UseRouteType<'VerticalPlaylistArtists'>>()
+  const { goBack } = useNavigation<UseNavigationType>()
+  const { headerTransition, onScroll } = useOpacityTransition()
   const { title, subtitle, items, nbItems } = useGetArtistsFromPlaylist({ params })
   const renderItem = ({ item }) => <HorizontalArtistTile artist={item} />
 
   return (
     <Page>
-      <PageHeaderWithoutPlaceholder />
       <FlatList
         data={items}
         keyExtractor={(item) => item.id}
@@ -44,7 +46,10 @@ export const VerticalPlaylistArtists = () => {
           paddingHorizontal: contentPage.marginHorizontal,
           paddingVertical: contentPage.marginVertical,
         }}
+        onScroll={onScroll}
       />
+      {/* On native header is called after Body to implement the BlurView for iOS */}
+      <ContentHeader headerTitle={title} onBackPress={goBack} headerTransition={headerTransition} />
     </Page>
   )
 }

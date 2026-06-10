@@ -1,10 +1,10 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { FlatList, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
-import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { VenueHit } from 'libs/algolia/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -12,7 +12,8 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { VerticalPlaylistError } from 'shared/verticalPlaylist/components/VerticalPlaylistError'
 import { useGetVenuesFromPlaylist } from 'shared/verticalPlaylist/helpers/useGetVenuesFromPlaylist'
-import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -22,6 +23,8 @@ export const VerticalPlaylistVenues = () => {
   const { title, subtitle, items, nbItems, hasDataError } = useGetVenuesFromPlaylist({
     module: params.module,
   })
+  const { goBack } = useNavigation<UseNavigationType>()
+  const { headerTransition, onScroll } = useOpacityTransition()
 
   const headerHeight = useGetHeaderHeight()
   const { designSystem, breakpoints, tiles } = useTheme()
@@ -65,7 +68,6 @@ export const VerticalPlaylistVenues = () => {
 
   return (
     <Page>
-      <PageHeaderWithoutPlaceholder />
       <StyledFlatList
         numColumns={layout.numColumns}
         columnWrapperStyle={layout.columnWrapperStyle}
@@ -85,7 +87,11 @@ export const VerticalPlaylistVenues = () => {
           </React.Fragment>
         }
         ListFooterComponent={<Spacer.BottomScreen />}
+        onScroll={onScroll}
       />
+
+      {/* On native header is called after Body to implement the BlurView for iOS */}
+      <ContentHeader headerTitle={title} onBackPress={goBack} headerTransition={headerTransition} />
     </Page>
   )
 }

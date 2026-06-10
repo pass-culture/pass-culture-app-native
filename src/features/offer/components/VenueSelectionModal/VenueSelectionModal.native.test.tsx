@@ -19,7 +19,7 @@ const defaultUseLocation = {
   requestGeolocPermission: mockRequestGeolocPermission,
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

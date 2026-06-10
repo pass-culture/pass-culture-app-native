@@ -60,6 +60,6 @@ describe('<Favorites/>', () => {
 
     render(reactQueryProviderHOC(<Favorites />))
 
-    expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+    expect(await screen.findByText('Oups, pas de réseau !')).toBeOnTheScreen()
   })
 })

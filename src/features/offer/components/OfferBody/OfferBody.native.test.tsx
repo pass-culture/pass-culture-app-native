@@ -36,7 +36,7 @@ const Kourou: SuggestedPlace = {
 }
 
 let mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     userLocation: mockPosition,
     geolocPosition: mockPosition,

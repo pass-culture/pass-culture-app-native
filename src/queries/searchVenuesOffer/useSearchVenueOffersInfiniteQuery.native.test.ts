@@ -15,7 +15,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     userLocation: mockUserLocation,
     selectedLocationMode: mockLocationMode,

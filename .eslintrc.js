@@ -45,7 +45,6 @@ module.exports = {
     'local-rules/queries-only-in-use-query-functions': 'error',
     'local-rules/queries-must-be-in-queries-folder': 'error',
     'react-hooks/rules-of-hooks': 'error',
-    'local-rules/no-useless-hook': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',

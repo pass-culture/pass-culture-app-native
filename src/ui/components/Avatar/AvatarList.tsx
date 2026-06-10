@@ -16,6 +16,7 @@ type AvatarListProps = {
   onViewableItemsChanged?: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
   listRef?: Ref<FlatList>
   withMargins?: boolean
+  withPush?: boolean
 }
 
 const AVATAR_DEFAULT_CONFIG = {
@@ -30,6 +31,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
   listRef,
   onViewableItemsChanged,
   withMargins,
+  withPush,
 }) => {
   const mergedAvatarConfig = mergeWith(
     avatarConfig,
@@ -45,10 +47,11 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
         onItemPress={onItemPress}
         role={item.role}
         accessibilityLabel={item.accessibilityLabel}
+        withPush={withPush}
         {...mergedAvatarConfig}
       />
     ),
-    [onItemPress, mergedAvatarConfig]
+    [onItemPress, mergedAvatarConfig, withPush]
   )
 
   const size = mergedAvatarConfig.size

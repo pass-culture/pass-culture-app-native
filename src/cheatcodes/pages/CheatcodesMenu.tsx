@@ -190,8 +190,16 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
-      title: 'Snackbar d’erreur',
+      title: 'Snackbar d’erreur 🔴',
       onPress: onPressSnackbar,
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
+      title: 'Offline 📵',
+      navigationTarget: {
+        screen: 'CheatcodesScreenOffline',
+      },
       subscreens: [],
     },
   ]

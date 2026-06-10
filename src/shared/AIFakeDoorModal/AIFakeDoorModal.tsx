@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components/native'
 
 import { Position } from 'libs/location/types'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { buildAISurveyURL } from 'shared/AIFakeDoorModal/buildAISurveyURL'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -63,12 +64,13 @@ export const AIFakeDoorModal = ({ visible, close, userLocation, userCity }: Prop
         ),
         buttonVariant: 'primary',
       }
-
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   return (
     <AppModal
       title="Encore un peu de patience..."
       visible={visible}
       rightIcon={Close}
+      isUpToStatusBar={isZoomed}
       rightIconAccessibilityLabel="Fermer la fenêtre"
       onRightIconPress={close}>
       <Container gap={4}>

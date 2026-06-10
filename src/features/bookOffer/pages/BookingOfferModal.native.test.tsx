@@ -16,6 +16,7 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { storage } from 'libs/storage'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -27,7 +28,7 @@ jest.mock('libs/firebase/analytics/analytics')
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-const mockOffer = { ...baseOffer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
+const mockOffer = { ...baseOffer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE, isEvent: true }
 
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
   bookingState: { offerId: mockOffer.id, step: Step.DATE } as BookingState,
@@ -127,6 +128,7 @@ jest.useFakeTimers()
 describe('<BookingOfferModalComponent />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    void storage.clear('has_seen_qualtrics_survey')
   })
 
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
@@ -493,9 +495,7 @@ describe('<BookingOfferModalComponent />', () => {
         const { rerender } = renderBookingOfferModal({})
 
         const dismissModalButton = screen.getByTestId('Fermer la modale')
-
         await user.press(dismissModalButton)
-
         rerender(
           <Component
             isEndedUsedBooking={false}
@@ -505,7 +505,26 @@ describe('<BookingOfferModalComponent />', () => {
           />
         )
 
-        expect(await screen.findByTestId('Répondre au questionnaire')).toBeOnTheScreen()
+        expect(await screen.findByTestId('Donner mon avis')).toBeOnTheScreen()
+      })
+
+      it('should not render modal when user has already seen it', async () => {
+        await storage.saveObject('has_seen_qualtrics_survey', { cancelled: 'true' })
+
+        const { rerender } = renderBookingOfferModal({})
+        const dismissModalButton = screen.getByTestId('Fermer la modale')
+        await user.press(dismissModalButton)
+        await storage.saveObject('has_seen_qualtrics_survey', { cancelled: 'true' })
+        rerender(
+          <Component
+            isEndedUsedBooking={false}
+            visible={false}
+            offerId={20}
+            bookingDataMovieScreening={undefined}
+          />
+        )
+
+        expect(screen.queryByTestId('Donner mon avis')).not.toBeOnTheScreen()
       })
     })
   })

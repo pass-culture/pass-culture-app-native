@@ -167,14 +167,16 @@ export const VenuePlaylist: React.FC<Props> = ({
             <TitleContainer>
               <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
             </TitleContainer>
-            <SeeAllButton
-              playlistTitle={venuePlaylistTitle}
-              data={{
-                onBeforeNavigate,
-                navigateToVerticalPlaylist,
-                hideSearchSeeAll: true,
-              }}
-            />
+            {venues.length > 1 ? (
+              <SeeAllButton
+                playlistTitle={venuePlaylistTitle}
+                data={{
+                  onBeforeNavigate,
+                  navigateToVerticalPlaylist,
+                  hideSearchSeeAll: true,
+                }}
+              />
+            ) : null}
           </SeeAllButtonContainer>
           {shouldDisplaySeeOnMapButton ? (
             <ButtonContainer>

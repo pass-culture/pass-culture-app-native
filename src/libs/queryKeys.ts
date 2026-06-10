@@ -53,6 +53,7 @@ export enum QueryKeys {
   SEARCH_RESULTS_VENUES = 'searchResultsVenues',
   SETTINGS = 'settings',
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',
+  SIMILAR_ARTISTS = 'similarArtists',
   SIMILAR_OFFERS_IDS = 'similarOffersIds',
   STEPPER_INFO = 'stepperInfo',
   SUBCATEGORIES = 'subcategories',

@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 
+import { getSearchQueryKey } from 'features/search/queries/helpers.ts'
 import { FetchSearchOffersResponse } from 'features/search/queries/useSearchOffersQuery/types'
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { fetchSearchOffers } from 'libs/algolia/fetchAlgolia/fetchSearchOffers/fetchSearchOffers'
@@ -18,7 +19,7 @@ export const useSearchOffersQuery = <TSelect = FetchSearchOffersResponse>(
       QueryKeys.SEARCH_RESULTS_OFFERS,
       buildLocationParameterParams.userLocation,
       disabilitiesProperties,
-      parameters,
+      getSearchQueryKey(parameters),
     ],
     queryFn: ({ pageParam }) =>
       fetchSearchOffers({

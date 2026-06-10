@@ -232,7 +232,6 @@ exports[`VenueModal should render correctly 1`] = `
             >
               <Text
                 accessibilityRole="header"
-                numberOfLines={2}
                 style={
                   {
                     "color": "#161617",
@@ -299,7 +298,6 @@ exports[`VenueModal should render correctly 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
-                        "flexShrink": 0,
                         "justifyContent": "center",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -682,7 +680,6 @@ exports[`VenueModal should render correctly 1`] = `
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                           "flexDirection": "row",
-                          "flexShrink": 0,
                           "justifyContent": "center",
                           "paddingBottom": 2,
                           "paddingLeft": 2,
@@ -829,7 +826,6 @@ exports[`VenueModal should render correctly 1`] = `
                           "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "flexShrink": 0,
                           "justifyContent": "center",
                           "paddingBottom": 8,
                           "paddingLeft": 12,

@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ArtistType, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockArtist = { id: '1', name: 'Edith Piaf' }
@@ -26,6 +27,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -39,6 +41,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -52,6 +55,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -65,6 +69,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -79,6 +84,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -94,6 +100,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -107,6 +114,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -122,6 +130,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -137,6 +146,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -150,6 +160,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -163,6 +174,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -177,6 +189,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -193,6 +206,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -211,6 +225,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 
@@ -227,6 +242,73 @@ describe('<OfferArtistsSection />', () => {
       expect(screen.getByText('Zoe Saldana')).toBeOnTheScreen()
       expect(screen.getByText('Sigourney Weaver')).toBeOnTheScreen()
       expect(screen.getByText('James Cameron')).toBeOnTheScreen()
+    })
+
+    it('should display see all button when there are several artists', () => {
+      render(
+        <OfferArtistsSection
+          artists={mockMultiArtists}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+          offerId={1}
+        />
+      )
+
+      expect(screen.getByText('Voir tout')).toBeOnTheScreen()
+    })
+
+    it('should not display see all button when there is only one artist', () => {
+      render(
+        <OfferArtistsSection
+          artists={[mockArtist]}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+          offerId={1}
+        />
+      )
+
+      expect(screen.queryByText('Voir tout')).not.toBeOnTheScreen()
+    })
+
+    it('should trigger ClickSeeAll log when pressing see all button', async () => {
+      render(
+        <OfferArtistsSection
+          artists={mockMultiArtists}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+          offerId={1}
+        />
+      )
+
+      await user.press(screen.getByText('Voir tout'))
+
+      expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+        from: 'offer',
+        moduleName: 'Artistes',
+        type: 'artists',
+      })
+    })
+
+    it('should redirect to VerticalPlaylistArtists when pressing see all button', async () => {
+      render(
+        <OfferArtistsSection
+          artists={mockMultiArtists}
+          offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
+          offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+          onPlaylistItemPress={jest.fn()}
+          offerId={1}
+        />
+      )
+
+      await user.press(screen.getByText('Voir tout'))
+
+      expect(navigate).toHaveBeenCalledWith('VerticalPlaylistArtists', {
+        offerId: 1,
+        title: 'Artistes',
+      })
     })
   })
 })

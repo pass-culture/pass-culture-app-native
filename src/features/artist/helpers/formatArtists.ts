@@ -2,7 +2,7 @@ import { CategoryIdEnum, OfferArtist } from 'api/gen'
 import { getArtistRole } from 'features/artist/helpers/getArtistRole'
 import { Artist } from 'features/venue/types'
 
-export function formatArtists(artists: OfferArtist[], offerCategoryId: CategoryIdEnum): Artist[] {
+export function formatArtists(artists: OfferArtist[], offerCategoryId?: CategoryIdEnum): Artist[] {
   return artists.flatMap((artist) => {
     return {
       id: artist.id ?? '',

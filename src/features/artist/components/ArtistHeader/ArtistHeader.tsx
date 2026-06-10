@@ -23,10 +23,14 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
           <DefaultAvatar testID="defaultArtistAvatar" size={50} />
         )}
       </Avatar>
-      <Typo.Title1>{name}</Typo.Title1>
+      <ArtistName>{name}</ArtistName>
     </ArtistHeaderWrapper>
   )
 }
+
+const ArtistName = styled(Typo.Title1)({
+  textAlign: 'center',
+})
 
 const StyledImage = styled(FastImage)({
   width: '100%',

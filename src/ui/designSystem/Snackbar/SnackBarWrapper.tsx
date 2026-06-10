@@ -17,27 +17,53 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { isDesktopViewport } = useTheme()
   const snackbarsProps = useSnackbarProps()
   const { top } = useSafeAreaInsets()
+  const hasSnackbar = snackbarsProps.length > 0
 
   return (
     <React.Fragment>
-      {snackbarsProps.length > 0 ? (
-        <Container top={top} pointerEvents="box-none">
-          {snackbarsProps.map(({ onClose, label, animationDuration, type, id }, index) => (
-            <Animated.View
-              pointerEvents="box-none"
-              style={{ zIndex: 1000 + index }}
-              key={id}
-              layout={LinearTransition.duration(500).springify()}>
-              <SnackBar
-                variant={isDesktopViewport ? 'large' : 'default'}
-                id={id}
-                onClose={onClose}
-                label={label}
-                animationDuration={animationDuration}
-                type={type}
-              />
-            </Animated.View>
-          ))}
+      {hasSnackbar ? (
+        <Container top={top} pointerEvents="box-none" accessibilityViewIsModal>
+          {snackbarsProps.map(
+            (
+              {
+                onClose,
+                label,
+                animationDuration,
+                type,
+                id,
+                accessibilityLabel,
+                accessibilityHint,
+                accessibilityActions,
+                onAccessibilityTap,
+                onAccessibilityAction,
+              },
+              index
+            ) => (
+              <Animated.View
+                pointerEvents="box-none"
+                accessible
+                accessibilityRole="alert"
+                accessibilityLiveRegion="assertive"
+                accessibilityLabel={accessibilityLabel}
+                accessibilityHint={accessibilityHint}
+                accessibilityActions={accessibilityActions}
+                onAccessibilityTap={onAccessibilityTap}
+                onAccessibilityAction={onAccessibilityAction}
+                importantForAccessibility="yes"
+                style={{ zIndex: 1000 + index }}
+                key={id}
+                layout={LinearTransition.duration(500).springify()}>
+                <SnackBar
+                  variant={isDesktopViewport ? 'large' : 'default'}
+                  id={id}
+                  onClose={onClose}
+                  label={label}
+                  animationDuration={animationDuration}
+                  type={type}
+                />
+              </Animated.View>
+            )
+          )}
         </Container>
       ) : null}
       {children}

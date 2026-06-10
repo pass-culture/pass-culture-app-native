@@ -16,7 +16,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location/location'
-import { ILocationContext, LocationMode } from 'libs/location/types'
+import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { act, render, screen } from 'tests/utils'
@@ -33,12 +33,12 @@ const mockUsePreviousRouteName: jest.Mock<Route<string> | null> = usePreviousRou
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
-const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
+const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(() => ({
   geolocPosition: mockPosition,
   selectedLocationMode: LocationMode.EVERYWHERE,
   onModalHideRef: { current: jest.fn() },
 }))
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

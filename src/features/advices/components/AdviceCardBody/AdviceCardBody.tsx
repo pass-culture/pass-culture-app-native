@@ -83,6 +83,7 @@ const BottomCardContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  flexWrap: 'wrap',
 })
 
 const PublicationDate = styled(Typo.BodyAccentXs)(({ theme }) => ({

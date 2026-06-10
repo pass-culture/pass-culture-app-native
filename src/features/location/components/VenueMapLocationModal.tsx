@@ -3,13 +3,13 @@ import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
-import { useLocationMode } from 'features/location/helpers/useLocationMode'
+import { createSelectLocationMode } from 'features/location/helpers/selectLocationMode'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
+import { useLocation } from 'libs/location/useLocation'
 import {
   locationModalActions,
   useLocationModal,
@@ -44,9 +44,6 @@ export const VenueMapLocationModal = ({
     setAroundMeRadius,
     aroundPlaceRadius,
     setPlace,
-    permissionState,
-    requestGeolocPermission,
-    showGeolocPermissionModal,
   } = useLocation()
 
   const { radius: tempAroundMeRadius } = useLocationModalConfiguration(LocationMode.AROUND_ME)
@@ -81,18 +78,9 @@ export const VenueMapLocationModal = ({
     setTempAroundPlaceRadius: locationModalActions.setAroundPlaceRadius,
     setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
   })
-  const { selectLocationMode } = useLocationMode({
-    dismissModal,
+  const selectLocationMode = createSelectLocationMode({
     shouldOpenDirectlySettings: true,
-    setSelectedLocationMode,
-    setPlace,
-    hasGeolocPosition,
-    tempLocationMode: locationMode,
     onSubmit,
-    permissionState,
-    requestGeolocPermission,
-    setTempLocationMode: locationModalActions.setLocationMode,
-    showGeolocPermissionModal,
   })
 
   const handleSubmit = () => {
@@ -100,7 +88,7 @@ export const VenueMapLocationModal = ({
     setTempLocationModeProp?.(locationMode)
     onSubmit()
     if (!shouldOpenMapInTab) {
-      analytics.logConsultVenueMap({ from: openedFrom })
+      void analytics.logConsultVenueMap({ from: openedFrom })
       navigate('VenueMap')
     }
   }

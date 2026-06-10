@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -49,8 +48,22 @@ function containsSpecialCharacter(password: string): boolean {
   return SPECIAL_CHARACTER_REGEX.test(password)
 }
 
-export const PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL =
+const PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL =
   'Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial'
+
+function getRuleLabel(title: string, isValidated: boolean) {
+  return `${title} ${isValidated ? '- critère validé' : '- au minimum'}`
+}
+
+export function getPasswordRulesAccessibilityLabel(password: string): string {
+  return [
+    getRuleLabel('12 caractères', isLongEnough(password)),
+    getRuleLabel('1 majuscule', containsCapital(password)),
+    getRuleLabel('1 minuscule', containsLowercase(password)),
+    getRuleLabel('1 chiffre', containsNumber(password)),
+    getRuleLabel('1 caractère spécial (!@#$%^&*...)', containsSpecialCharacter(password)),
+  ].join(', ')
+}
 
 export const PasswordSecurityRules: FunctionComponent<Props> = ({
   password,
@@ -65,8 +78,9 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
       {visible ? (
         <RulesContainer
           isVisible={visible}
-          accessibilityRole={AccessibilityRole.STATUS}
-          accessibilityAtomic={false}
+          accessible={false}
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
           gap={1}>
           <PasswordRule title="12 caractères" isValidated={isLongEnough(password)} />
           <PasswordRule title="1 majuscule" isValidated={containsCapital(password)} />

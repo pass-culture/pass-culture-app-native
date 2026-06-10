@@ -5,7 +5,6 @@ import { AppearanceButton } from 'features/profile/components/AppearanceButton/A
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
 import { HelpButtonRow } from 'features/profile/components/Buttons/HelpButton/HelpButtonRow'
-import { LocationButton } from 'features/profile/components/Buttons/LocationButton/LocationButton'
 import { ProfileContentLayout } from 'features/profile/components/ProfileContentLayout/ProfileContentLayout'
 import { ShareBanner } from 'features/profile/components/ShareBanner/ShareBanner'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -13,11 +12,9 @@ import { loggedInBeneficiaryContentConfig } from 'features/profile/containers/Pr
 import { loggedInNonBeneficiaryContentConfig } from 'features/profile/containers/ProfileLoggedIn/LoggedInContent/LoggedInNonBeneficiaryContent/loggedInNonBeneficiaryContentConfig'
 import { CHATBOT_ELIGIBLE_STATUSES } from 'features/profile/helpers/chatbotEligibleStatuses'
 import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDisplayHelpButton'
-import { useGeolocationSwitch } from 'features/profile/helpers/useGeolocationSwitch'
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/LocationWrapper'
 
 type Props = { user: UserProfile | undefined }
 
@@ -28,19 +25,9 @@ export const LoggedInContent = ({ user }: Props) => {
   const isEligibleForChatbot = !!user?.statusType && CHATBOT_ELIGIBLE_STATUSES.has(user?.statusType)
   const shouldDisplayChatbotButton = isChatbotFeatureEnabled && isEligibleForChatbot
 
-  const { isGeolocSwitchActive, switchGeolocation } = useGeolocationSwitch()
-  const { geolocPositionError } = useLocation()
-
   const sharedConfig = {
     ChatbotButton: shouldDisplayChatbotButton ? <ChatbotButton /> : null,
     AppearanceButton: <AppearanceButton />,
-    LocationButton: (
-      <LocationButton
-        isGeolocSwitchActive={isGeolocSwitchActive}
-        geolocPositionError={geolocPositionError}
-        switchGeolocation={switchGeolocation}
-      />
-    ),
     HelpButton: shouldDisplayHelpButton ? <HelpButtonRow birthDate={user?.birthDate} /> : null,
     ShareBanner: <ShareBanner />,
     SocialNetwork: <SocialNetwork />,

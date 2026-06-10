@@ -123,7 +123,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                     "flexDirection": "row",
-                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1766,8 +1765,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       style={
                         {
-                          "alignItems": "center",
-                          "flexDirection": "row",
+                          "flexShrink": 1,
                         }
                       }
                     >
@@ -1811,7 +1809,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                                 "flexDirection": "row",
-                                "flexShrink": 0,
                                 "justifyContent": "center",
                                 "paddingBottom": 2,
                                 "paddingLeft": 2,

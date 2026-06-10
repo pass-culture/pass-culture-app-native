@@ -232,7 +232,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
             >
               <Text
                 accessibilityRole="header"
-                numberOfLines={2}
                 style={
                   {
                     "color": "#161617",
@@ -299,7 +298,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                         "flexDirection": "row",
-                        "flexShrink": 0,
                         "justifyContent": "center",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1012,7 +1010,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
-                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,

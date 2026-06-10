@@ -5,5 +5,5 @@ export {
   GeolocPermissionState,
   GeolocPositionError,
 } from './geolocation/enums'
-export { useLocation, LocationWrapper } from './LocationWrapper'
-export type { GeoCoordinates, GeolocationError, ILocationContext, Position } from './types'
+export { useLocation } from './useLocation'
+export type { GeoCoordinates, GeolocationError, Position } from './types'

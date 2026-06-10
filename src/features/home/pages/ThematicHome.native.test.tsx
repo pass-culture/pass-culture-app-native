@@ -18,8 +18,8 @@ import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/help
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeolocPermissionState, ILocationContext } from 'libs/location/location'
-import { LocationMode } from 'libs/location/types'
+import { GeolocPermissionState } from 'libs/location/location'
+import { LocationMode, UseLocationReturnType } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -67,7 +67,7 @@ const mockUseFetchHomepageByIdQueryValue: UseQueryResult<Homepage, Error> = {
 
 mockUseHomepageData.mockReturnValue(mockUseFetchHomepageByIdQueryValue)
 
-const defaultUseLocation: Partial<ILocationContext> = {
+const defaultUseLocation: Partial<UseLocationReturnType> = {
   userLocation: {
     latitude: 2,
     longitude: 2,
@@ -78,7 +78,7 @@ const defaultUseLocation: Partial<ILocationContext> = {
   onResetPlace: jest.fn(),
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
 

@@ -79,7 +79,7 @@ describe('GenericHome', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       renderGenericHome({})
 
-      expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+      expect(await screen.findByText('Oups, pas de réseau !')).toBeOnTheScreen()
     })
   })
 })

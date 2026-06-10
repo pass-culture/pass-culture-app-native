@@ -11,6 +11,7 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { AdviceCardData } from 'features/advices/types'
 import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
 import { getScrollMetrics } from 'features/proAdvices/helpers/getScrollMetrics'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
@@ -105,12 +106,12 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
     },
     [advices.length]
   )
-
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   return (
     <React.Fragment>
       <AdvicesWebMetaHeader title={title} />
       <AdvicesHeader headerTransition={headerTransition} title={title} handleGoBack={goBack} />
-      <Container>
+      <Container isZoomed={isZoomed}>
         {children}
         <StyledAdviceCardList
           data={advices}
@@ -164,11 +165,12 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ isZoomed: boolean }>(({ isZoomed }) => ({
   flex: 1,
   flexDirection: 'row',
   columnGap: getSpacing(18),
-})
+  ...(isZoomed ? { marginTop: getSpacing(18) } : {}),
+}))
 
 const StyledAdviceCardList = styled(AdviceCardList)({
   flex: 1,

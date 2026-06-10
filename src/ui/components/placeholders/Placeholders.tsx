@@ -5,7 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { FavoriteButtonsContainer } from 'features/favorites/components/Favorite'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, LENGTH_XS, LENGTH_XXS } from 'ui/theme'
+import { AVATAR_SMALL } from 'ui/theme/constants'
 
 const imageWidth = getSpacing(16)
 const imageHeight = getSpacing(24) // ratio 2/3
@@ -154,6 +155,30 @@ export const FavoriteHitPlaceholder = () => {
   )
 }
 
+export const VenueHitPlaceholder = () => {
+  return (
+    <ViewGap gap={2}>
+      <BasePlaceholder height={LENGTH_XXS} width={LENGTH_XS} />
+      <View>
+        <TextPlaceholder width={getSpacing(35)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
+      </View>
+    </ViewGap>
+  )
+}
+
+export const ArtistHitPlaceholder = () => {
+  return (
+    <Row gap={4}>
+      <BasePlaceholder height={AVATAR_SMALL} width={AVATAR_SMALL} radius={AVATAR_SMALL * 0.5} />
+      <TextContainer>
+        <TextPlaceholder width={getSpacing(35)} marginBottom={2} />
+        <TextPlaceholder width={getSpacing(30)} />
+      </TextContainer>
+    </Row>
+  )
+}
+
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.xl,
@@ -184,3 +209,7 @@ const TitleContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.s,
 }))
+
+const TextContainer = styled.View({
+  justifyContent: 'center',
+})

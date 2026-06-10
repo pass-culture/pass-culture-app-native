@@ -1,8 +1,9 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
+import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
@@ -13,9 +14,10 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'shared/verticalPlaylist/components/LineSeparator'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
-import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Page } from 'ui/pages/Page'
 import { RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
@@ -41,6 +43,8 @@ export const VerticalPlaylistOffersView = ({
   searchQuery,
   analyticsFrom,
 }: Props) => {
+  const { goBack } = useNavigation<UseNavigationType>()
+  const { headerTransition, onScroll } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
   const { width } = useWindowDimensions()
   const { searchState } = useSearch()
@@ -109,7 +113,6 @@ export const VerticalPlaylistOffersView = ({
 
   return (
     <Page>
-      <PageHeaderWithoutPlaceholder />
       <FlatList
         data={items}
         keyExtractor={(item) => item.objectID}
@@ -140,7 +143,11 @@ export const VerticalPlaylistOffersView = ({
           paddingHorizontal: contentPage.marginHorizontal,
           paddingVertical: contentPage.marginVertical,
         }}
+        onScroll={onScroll}
       />
+
+      {/* On native header is called after Body to implement the BlurView for iOS */}
+      <ContentHeader headerTitle={title} onBackPress={goBack} headerTransition={headerTransition} />
     </Page>
   )
 }

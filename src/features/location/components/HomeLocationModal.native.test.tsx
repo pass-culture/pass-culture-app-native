@@ -5,11 +5,7 @@ import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import {
-  checkGeolocPermission,
-  GeolocPermissionState,
-  LocationWrapper,
-} from 'libs/location/location'
+import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { initLocationPermission } from 'libs/locationV2/location.methods'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { SuggestedPlace } from 'libs/place/types'
@@ -154,13 +150,11 @@ describe('HomeLocationModal', () => {
 
     const Container = () => {
       return (
-        <LocationWrapper>
-          <React.Fragment>
-            <GeolocationActivationModal />
-            <HomeLocationModal />
-            <Button wording="Close" onPress={locationModalActions.hide} />
-          </React.Fragment>
-        </LocationWrapper>
+        <React.Fragment>
+          <GeolocationActivationModal />
+          <HomeLocationModal />
+          <Button wording="Close" onPress={locationModalActions.hide} />
+        </React.Fragment>
       )
     }
     render(<Container />)
@@ -185,11 +179,9 @@ describe('HomeLocationModal', () => {
 
 function renderHomeLocationModal() {
   render(
-    <LocationWrapper>
-      <React.Fragment>
-        <GeolocationActivationModal />
-        <HomeLocationModal />
-      </React.Fragment>
-    </LocationWrapper>
+    <React.Fragment>
+      <GeolocationActivationModal />
+      <HomeLocationModal />
+    </React.Fragment>
   )
 }

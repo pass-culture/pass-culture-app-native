@@ -245,7 +245,6 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
                     "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
-                    "flexShrink": 0,
                     "justifyContent": "center",
                     "paddingBottom": 8,
                     "paddingLeft": 12,

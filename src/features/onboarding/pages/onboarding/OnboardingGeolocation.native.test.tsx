@@ -8,7 +8,7 @@ import { render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockRequestGeolocPermission = jest.fn()
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({ requestGeolocPermission: mockRequestGeolocPermission }),
 }))
 

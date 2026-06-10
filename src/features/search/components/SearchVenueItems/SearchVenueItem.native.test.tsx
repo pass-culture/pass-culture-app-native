@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { Activity } from 'api/gen'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
-import { ILocationContext } from 'libs/location/location'
+import { UseLocationReturnType } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -74,7 +74,7 @@ const MUNICIPALITY_AROUND_PLACE_POSITION = {
   geolocPosition: undefined,
 }
 
-const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
+const mockUseLocation = jest.fn((): Partial<UseLocationReturnType> => EVERYWHERE_USER_POSITION)
 jest.mock('libs/location/location', () => ({
   useLocation: () => mockUseLocation(),
 }))

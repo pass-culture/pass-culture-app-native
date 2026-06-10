@@ -20,12 +20,17 @@ const variantConfig: Variants<typeof HorizontalArtistTile> = [
         name: 'Artist 1',
         image:
           'https://cdn.phototourl.com/free/2026-03-24-5f1a4c71-c6d5-45b2-94b4-2273fe731437.jpg',
+        role: 'Acteur',
       },
     },
   },
   {
     label: 'Without artist image',
     props: { artist: { id: '2', name: 'Artist 2' } },
+  },
+  {
+    label: 'Without id',
+    props: { artist: { id: '', name: 'Artist 3' } },
   },
 ]
 

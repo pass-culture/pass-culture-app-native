@@ -185,7 +185,7 @@ const mockSetSelectedLocationMode = jest.fn()
 const mockHasGeolocPosition = true
 const mockSelectedLocationMode = LocationMode.AROUND_ME
 
-jest.mock('libs/location/LocationWrapper', () => ({
+jest.mock('libs/location/useLocation', () => ({
   useLocation: () => ({
     setPlace: mockSetPlace,
     place: mockedPlace,
@@ -491,7 +491,7 @@ describe('<SearchLanding />', () => {
       mockUseNetInfoContext.mockReturnValue({ isConnected: false })
       render(reactQueryProviderHOC(<SearchLanding />))
 
-      expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+      expect(await screen.findByText('Oups, pas de réseau !')).toBeOnTheScreen()
     })
   })
 

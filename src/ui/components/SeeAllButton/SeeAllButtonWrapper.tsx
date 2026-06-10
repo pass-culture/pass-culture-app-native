@@ -12,8 +12,7 @@ export const SeeAllButtonWrapper: React.FC<PropsWithChildren> = ({ children }) =
 }
 
 const Container = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
+  flexShrink: 1,
 })
 
 const TitleSeparator = styled.View(({ theme }) => ({

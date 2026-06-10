@@ -240,6 +240,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             artists={artists}
             offerCategoryId={subcategory.categoryId}
             offerSubcategoryId={offer.subcategoryId}
+            offerId={offer.id}
             onPlaylistItemPress={handleOnArtistPlaylistItemPress}
           />
         </MarginContainer>

@@ -1,0 +1,160 @@
+import React from 'react'
+import { ScrollViewProps, View } from 'react-native'
+import styled from 'styled-components/native'
+
+import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
+import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
+import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
+import { FetchSearchResultsArgs, GridListLayout } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { analytics } from 'libs/analytics/provider'
+import { useLocation } from 'libs/location/location'
+import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
+import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
+import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
+import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
+import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
+import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Error } from 'ui/svg/icons/Error'
+import { Typo } from 'ui/theme'
+
+type SearchListHeaderProps = ScrollViewProps & {
+  title: string
+  venuesSection?: React.ReactNode
+  artistSection?: React.ReactNode
+  shouldDisplayGridList?: boolean
+  enableAIFakeDoor?: boolean
+  onPressAIFakeDoorBanner: () => void
+  searchFilters: FetchSearchResultsArgs
+}
+
+export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
+  title,
+  venuesSection,
+  artistSection,
+  shouldDisplayGridList,
+  enableAIFakeDoor,
+  onPressAIFakeDoorBanner,
+  searchFilters,
+}) => {
+  const { geolocPosition, showGeolocPermissionModal } = useLocation()
+  const {
+    searchState: { offerCategories },
+  } = useSearch()
+
+  const transformHits = useTransformOfferHits()
+
+  const { data: offersResponse } = useSearchOffersQuery(searchFilters, {
+    select: (offersResponse) => selectSearchOffers({ data: offersResponse, transformHits }),
+  })
+  const nbHits = offersResponse?.nbHits || 0
+  const userData = offersResponse?.userData
+
+  const shouldDisplayAvailableUserDataMessage = userData?.length > 0
+  const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
+
+  const selectedGridListLayout = useGridListLayout()
+
+  const onPress = () => {
+    void analytics.logActivateGeolocfromSearchResults()
+    showGeolocPermissionModal()
+  }
+
+  const shouldDisplayGeolocationBanner =
+    geolocPosition === null &&
+    offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
+    nbHits > 0 &&
+    !shouldDisplayAvailableUserDataMessage
+
+  const onGridListButtonPress = (layout: GridListLayout) => {
+    gridListLayoutActions.setLayout(layout)
+    void analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
+  }
+
+  const getLayoutButtonProps = (layout: GridListLayout) => ({
+    layout,
+    isSelected: selectedGridListLayout === layout,
+    onPress: () => onGridListButtonPress(layout),
+  })
+
+  return (
+    <View testID="searchListHeader">
+      {enableAIFakeDoor ? (
+        <AIFakeDoorBannerContainer>
+          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
+        </AIFakeDoorBannerContainer>
+      ) : null}
+      {shouldDisplayGeolocationBanner ? (
+        <GeolocationBannerContainer>
+          <GeolocationBanner
+            title="Géolocalise-toi"
+            subtitle="Pour trouver des offres autour de toi"
+            analyticsFrom="search"
+            onPress={onPress}
+          />
+        </GeolocationBannerContainer>
+      ) : null}
+      {shouldDisplayAvailableUserDataMessage ? (
+        <BannerOfferNotPresentContainer
+          testID="banner-container"
+          accessibilityRole={AccessibilityRole.STATUS}
+          nbHits={nbHits}>
+          <Banner label={unavailableOfferMessage} Icon={Error} />
+        </BannerOfferNotPresentContainer>
+      ) : null}
+      {artistSection}
+      {venuesSection}
+      {nbHits ? (
+        <HeaderSectionContainer>
+          <TitleContainer>
+            <Title>{title}</Title>
+            <NumberOfItems nbItems={nbHits} />
+          </TitleContainer>
+          {shouldDisplayGridList ? (
+            <GridListMenu testID="grid-list-menu">
+              <ListLayoutButton {...getLayoutButtonProps(GridListLayout.LIST)} />
+              <GridLayoutButton {...getLayoutButtonProps(GridListLayout.GRID)} />
+            </GridListMenu>
+          ) : null}
+        </HeaderSectionContainer>
+      ) : null}
+    </View>
+  )
+}
+
+const GridListMenu = styled(View)(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  alignItems: 'flex-start',
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const HeaderSectionContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const TitleContainer = styled.View({
+  flex: 1,
+  flexDirection: 'column',
+})
+
+const GeolocationBannerContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
+
+const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits, theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
+  ...(nbHits > 0 && { paddingBottom: theme.designSystem.size.spacing.l }),
+}))
+
+const Title = styled(Typo.Title3)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const AIFakeDoorBannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

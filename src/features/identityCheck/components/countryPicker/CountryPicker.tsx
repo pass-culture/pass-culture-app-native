@@ -7,6 +7,7 @@ import { formatCallingCode } from 'features/identityCheck/components/countryPick
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
+import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { WHITELISTED_COUNTRIES } from 'shared/countries/constants'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -37,6 +38,8 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     'Ouvrir la modale de choix de l’indicatif téléphonique'
   )
 
+  const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
+
   return (
     <React.Fragment>
       <StyledTouchable
@@ -52,6 +55,7 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
       <AppModal
         title="Choix de l’indicatif téléphonique"
         visible={visible}
+        isUpToStatusBar={isZoomed}
         rightIconAccessibilityLabel="Fermer la modale de choix de l’indicatif téléphonique"
         rightIcon={Close}
         onRightIconPress={hideModal}>

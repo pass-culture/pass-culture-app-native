@@ -62,13 +62,13 @@ export const HomeHeader: FunctionComponent = function () {
           <Spacer.TopScreen />
           <HeaderContainer>
             <TitleContainer>
-              <Title testID="web-location-widget">
-                <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
-                <StyledSeparator height={height} />
-                <LocationWidgetDesktop />
-              </Title>
+              <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
               <Subtitle>{getSubtitle()}</Subtitle>
             </TitleContainer>
+            <LocationWidgetDesktopContainer testID="web-location-widget">
+              <StyledSeparator height={height} />
+              <LocationWidgetDesktop />
+            </LocationWidgetDesktopContainer>
           </HeaderContainer>
         </React.Fragment>
       )
@@ -99,13 +99,15 @@ export const HomeHeader: FunctionComponent = function () {
 
 const HeaderContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
   marginTop: theme.designSystem.size.spacing.xl,
   marginHorizontal: theme.contentPage.marginHorizontal,
   zIndex: theme.zIndex.header,
 }))
 
 const TitleContainer = styled.View({
-  width: '100%',
+  flex: 1,
 })
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
@@ -114,13 +116,14 @@ const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const TitleLabel = styled(Typo.Title1)({
-  maxWidth: '70%',
+  maxWidth: '100%',
 })
 
-const Title = styled.View(({ theme }) => ({
+const LocationWidgetDesktopContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   zIndex: theme.zIndex.locationWidget,
+  marginLeft: theme.designSystem.size.spacing.s,
 }))
 
 const StyledSeparator = styled(Separator.Vertical)(({ theme }) => ({

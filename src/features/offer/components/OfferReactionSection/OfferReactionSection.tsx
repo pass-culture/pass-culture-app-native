@@ -137,4 +137,5 @@ const TagContainer = styled.View({
 const ProAdvicesCounterContainer = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
+  flexWrap: 'wrap',
 })

@@ -209,10 +209,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               style={
                 {
                   "alignItems": "center",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "flexShrink": 0,
                   "justifyContent": "flex-start",
                   "paddingLeft": 12,
                   "paddingRight": 12,
@@ -227,6 +225,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               style={
                 {
                   "color": "#161617",
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -241,10 +240,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               style={
                 {
                   "alignItems": "center",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "flexShrink": 0,
                   "justifyContent": "flex-end",
                   "paddingLeft": 12,
                   "paddingRight": 12,
@@ -1071,7 +1068,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                           "flexDirection": "row",
-                          "flexShrink": 0,
                           "justifyContent": "center",
                           "paddingBottom": 2,
                           "paddingLeft": 2,
@@ -1218,7 +1214,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                           "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "flexShrink": 0,
                           "justifyContent": "center",
                           "paddingBottom": 8,
                           "paddingLeft": 12,
