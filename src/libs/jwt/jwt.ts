@@ -18,12 +18,6 @@ export const decodeToken = (token: string) => {
   }
 }
 
-export const getUserIdFromAccessToken = (accessToken: string) => {
-  const tokenContent = decodeToken(accessToken)
-
-  return tokenContent?.user_claims?.user_id ?? null
-}
-
 type TokenStatus = 'valid' | 'expired' | 'unknown'
 
 const TOKEN_EXPIRATION_BUFFER_MS = 1 * 60 * 1000 // 1 minute buffer in milliseconds
