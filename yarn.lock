@@ -11824,7 +11824,7 @@ __metadata:
     storybook: "npm:^10.3.5"
     styled-components: "npm:^6.1.19"
     supercluster: "npm:^8.0.1"
-    timezone-mock: "npm:^1.2.1"
+    timezone-mock: "npm:^1.4.2"
     ts-node: "npm:^10.8.0"
     type-fest: "npm:^4.15.0"
     typescript: "npm:5.0.4"
@@ -26456,10 +26456,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"timezone-mock@npm:^1.2.1":
-  version: 1.2.2
-  resolution: "timezone-mock@npm:1.2.2"
-  checksum: 10/cbca3f02885b5734a882aef2d9be693ad3f943912b3dd0046f53dec7b15b27d61330a62f6759d08fa67068634d58eefcf9e8c0bcc7ecba291052604844f198e0
+"timezone-mock@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "timezone-mock@npm:1.4.2"
+  checksum: 10/177e60f1966376d0700e65b23e6e769bd01689ebf9e34e8673c0ff96599af6a37f13a7f10ab05bb6392e8b93d543ae2b5d7f0deecb5912add042234350749cd2
   languageName: node
   linkType: hard
 
