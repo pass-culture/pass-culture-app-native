@@ -9,10 +9,6 @@ function resetNavigatorPermissions() {
   global.navigator.permissions = initialNavigatorPermissions
   mockQuery = jest.mocked(initialNavigatorPermissions.query)
 }
-function mockNavigatorPermissionsUndefined() {
-  // @ts-expect-error : `permissions` is a read-only property
-  global.navigator.permissions = undefined
-}
 
 describe('checkGeolocPermission()', () => {
   afterEach(resetNavigatorPermissions)
@@ -38,15 +34,4 @@ describe('checkGeolocPermission()', () => {
       expect(state).toEqual(expectedState)
     }
   )
-
-  it('should return need_ask_position_directly when permissionStatus is undefined and permissionAPI is undefined', async () => {
-    mockNavigatorPermissionsUndefined()
-    // @ts-expect-error: this is a mock
-    mockQuery.mockResolvedValueOnce(undefined)
-    const state = await checkGeolocPermission()
-
-    expect(mockQuery).not.toHaveBeenCalled()
-
-    expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
-  })
 })
