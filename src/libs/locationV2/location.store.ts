@@ -130,7 +130,7 @@ const locationStore = createStore({
       return LocationModeToLocationTypeMap[state.locationMode]
     },
   },
-  options: { persist: false },
+  options: { persist: true },
 })
 
 locationStore.store.subscribe(locationStore.selectors.selectLocationType, (locationType) =>
