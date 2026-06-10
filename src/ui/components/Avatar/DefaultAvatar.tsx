@@ -6,7 +6,7 @@ import { Profile } from 'ui/svg/icons/Profile'
 export const DefaultAvatar = styled.View.attrs<{
   colors?: string[]
   size?: number
-}>(({ theme, size = theme.designSystem.size.icon.m }) => ({
+}>(({ theme, size = theme.designSystem.size.icon.l }) => ({
   children: <Profile color={theme.designSystem.color.icon.subtle} size={size} />,
 }))(({ theme }) => ({
   width: '100%',

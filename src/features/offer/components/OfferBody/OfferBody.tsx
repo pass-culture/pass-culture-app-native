@@ -39,7 +39,7 @@ import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -292,7 +292,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 const Container = styled.View(({ theme }) => ({
   flexShrink: 1,
   width: '100%',
-  gap: theme.isDesktopViewport ? getSpacing(16) : theme.designSystem.size.spacing.xxl,
+  gap: theme.designSystem.size.spacing.xxl,
   marginBottom: theme.isDesktopViewport ? 0 : theme.designSystem.size.spacing.xxl,
 }))
 
