@@ -22,11 +22,18 @@ const playlistTitle = 'Ses oeuvres populaires'
 type Props = {
   artistName: string
   items: AlgoliaOfferWithArtistAndEan[]
+  proAdvicesSegment?: string
+  enableProAdvicesTag?: boolean
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
-export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items }) => {
+export const ArtistTopOffers: FunctionComponent<Props> = ({
+  artistName,
+  items,
+  proAdvicesSegment,
+  enableProAdvicesTag,
+}) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
@@ -72,6 +79,8 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
         hasSmallLayout: true,
         priceDisplay: (item: Offer) =>
           getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+        proAdvicesSegment,
+        enableProAdvicesTag,
       })}
       itemWidth={itemWidth}
       itemHeight={itemHeight}

@@ -100,6 +100,7 @@ describe('<OfferArtistsSection />', () => {
           offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
           offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
           onPlaylistItemPress={jest.fn()}
+          offerId={1}
         />
       )
 

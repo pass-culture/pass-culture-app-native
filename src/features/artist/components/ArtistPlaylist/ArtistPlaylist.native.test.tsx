@@ -178,8 +178,6 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should display pro advices tag when defined and pro advices AB testing segment is A and wipProReviewsPlaylist FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST])
-    useABSegmentSpy.mockReturnValueOnce('A')
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
@@ -191,6 +189,8 @@ describe('ArtistPlaylist', () => {
             },
           ]}
           onViewableItemsChanged={jest.fn()}
+          proAdvicesSegment="A"
+          enableProAdvicesTag
         />
       )
     )
