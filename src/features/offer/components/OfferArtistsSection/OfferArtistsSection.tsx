@@ -118,6 +118,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
             avatarConfig={{ size: AVATAR_MEDIUM }}
             onItemPress={onPlaylistItemPress}
             withMargins={false}
+            keyExtractor={(item) => `${item.id}-${item.role ?? ''}`}
           />
         </React.Fragment>
       )}
