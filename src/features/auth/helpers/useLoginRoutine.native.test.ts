@@ -48,6 +48,7 @@ const scheduleAccessTokenRemovalSpy = jest.spyOn(
 )
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/auth/context/AuthContext')
 
 jest.useFakeTimers()
 

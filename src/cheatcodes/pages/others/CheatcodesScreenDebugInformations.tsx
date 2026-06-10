@@ -28,7 +28,7 @@ const getUserId = async () => {
     return null
   }
   const tokenContent = decodeToken(accessToken)
-  return tokenContent?.user_claims?.user_id ?? null
+  return tokenContent ? parseInt(tokenContent.sub) : null
 }
 
 async function checkForAppUpdate() {

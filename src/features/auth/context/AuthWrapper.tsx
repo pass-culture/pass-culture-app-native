@@ -57,7 +57,7 @@ export const AuthWrapper = memo(function AuthWrapper({
           return
         case 'valid':
           setIsLoggedIn(true)
-          connectServicesRequiringUserId(accessToken)
+          connectServicesRequiringUserId(accessToken, user?.id)
           if (refreshToken) {
             eventMonitoring.setExtras({
               refreshTokenExpirationDate:
@@ -83,7 +83,7 @@ export const AuthWrapper = memo(function AuthWrapper({
     } finally {
       setLoading(false)
     }
-  }, [connectServicesRequiringUserId])
+  }, [connectServicesRequiringUserId, user?.id])
 
   useEffect(() => {
     readTokenAndConnectUser()
@@ -92,7 +92,7 @@ export const AuthWrapper = memo(function AuthWrapper({
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
       if (navigationTimeoutRef.current) clearTimeout(navigationTimeoutRef.current)
     }
-  }, [readTokenAndConnectUser])
+  }, [readTokenAndConnectUser, user])
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
