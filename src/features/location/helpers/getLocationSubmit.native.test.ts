@@ -15,14 +15,6 @@ const mockProps = {
 } as const
 
 describe('getLocationSubmit', () => {
-  it('should call dismissModal on onClose', () => {
-    const result = getLocationSubmit(mockProps)
-
-    result.onClose()
-
-    expect(mockProps.dismissModal).toHaveBeenCalledTimes(1)
-  })
-
   describe('When on onSubmit with location mode is AROUND_PLACE', () => {
     it('should call setSelectedLocationMode with AROUND_PLACE', () => {
       const result = getLocationSubmit(mockProps)

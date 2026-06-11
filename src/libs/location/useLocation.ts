@@ -11,11 +11,7 @@ import {
   usePlace,
   useUserLocation,
 } from 'libs/locationV2/location.store'
-import {
-  locationModalActions,
-  useLocationModal,
-  useLocationModalPlace,
-} from 'libs/locationV2/locationModal.store'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 
 /**
  * @deprecated Use {@link libs/locationV2/location.store}, {@link libs/locationV2/locationModal.store}, {@link libs/locationV2/location.methods} instead
@@ -39,9 +35,6 @@ export const useLocation = (): UseLocationReturnType => {
     showPermissionModal: showGeolocPermissionModal,
   } = locationActions
 
-  const selectedPlace = useLocationModalPlace()
-  const { addressInputValue: placeQuery } = useLocationModal()
-
   const onResetPlace = () => {
     locationModalActions.setPlace(null)
     locationModalActions.setAddressInputValue('')
@@ -62,9 +55,8 @@ export const useLocation = (): UseLocationReturnType => {
     selectedLocationMode,
     setSelectedLocationMode: locationActions.setLocationMode,
     onResetPlace,
-    selectedPlace,
+    selectedPlace: place,
     setSelectedPlace: locationModalActions.setPlace,
-    placeQuery,
     setPlaceQuery: locationModalActions.setAddressInputValue,
     aroundPlaceRadius,
     setAroundPlaceRadius,

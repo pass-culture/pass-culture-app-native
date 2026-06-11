@@ -10,9 +10,7 @@ describe('CategoriesListDumb', () => {
         sortedCategories={[]}
         shouldDisplayVenueMap={false}
         isMapWithoutPositionAndNotLocated={false}
-        showVenueMapLocationModal={jest.fn()}
-        venueMapLocationModalVisible={false}
-        hideVenueMapLocationModal={jest.fn()}
+        onPressVenueMap={jest.fn()}
         onPressAIFakeDoorBanner={jest.fn()}
       />
     )

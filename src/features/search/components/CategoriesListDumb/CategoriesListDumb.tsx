@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -16,13 +15,11 @@ type Props = {
   sortedCategories: ListCategoryButtonProps
   shouldDisplayVenueMap: boolean
   isMapWithoutPositionAndNotLocated: boolean
-  showVenueMapLocationModal: () => void
-  venueMapLocationModalVisible: boolean
-  hideVenueMapLocationModal: () => void
   onPressAIFakeDoorBanner: () => void
   enableAIFakeDoor?: boolean
   enableNewCategoryBlocks?: boolean
   children?: never
+  onPressVenueMap: () => void
 }
 
 const CATEGORY_BUTTON_HEIGHT = getSpacing(36)
@@ -38,15 +35,12 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
   shouldDisplayVenueMap,
   isMapWithoutPositionAndNotLocated,
-  showVenueMapLocationModal,
-  venueMapLocationModalVisible,
-  hideVenueMapLocationModal,
   enableAIFakeDoor,
   enableNewCategoryBlocks,
   onPressAIFakeDoorBanner,
+  onPressVenueMap,
 }) => {
   const { designSystem } = useTheme()
-
   const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
     at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
@@ -67,15 +61,10 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
         <Container>
           <ContainerVenueMapBlock enableAIFakeDoor={enableAIFakeDoor}>
             <VenueMapBlock
-              onPress={isMapWithoutPositionAndNotLocated ? showVenueMapLocationModal : undefined}
+              onPress={isMapWithoutPositionAndNotLocated ? onPressVenueMap : undefined}
               from="searchLanding"
             />
           </ContainerVenueMapBlock>
-          <VenueMapLocationModal
-            visible={venueMapLocationModalVisible}
-            dismissModal={hideVenueMapLocationModal}
-            openedFrom="searchLanding"
-          />
         </Container>
       ) : null}
       <CategoriesTitleV2 />

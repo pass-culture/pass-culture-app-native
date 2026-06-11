@@ -8,19 +8,15 @@ import {
   locationModalActions,
   useCanSubmitLocationModal,
   useLocationModal,
+  useLocationModalAddressInputValue,
+  useLocationModalPlace,
 } from 'libs/locationV2/locationModal.store'
 
 export const HomeLocationModal = () => {
-  const {
-    hasGeolocPosition,
-    placeQuery,
-    setPlaceQuery,
-    selectedPlace,
-    setSelectedPlace,
-    onResetPlace,
-  } = useLocation()
-
-  const { visible, locationMode } = useLocationModal()
+  const { hasGeolocPosition, setPlaceQuery, setSelectedPlace, onResetPlace } = useLocation()
+  const selectedPlace = useLocationModalPlace()
+  const placeQuery = useLocationModalAddressInputValue()
+  const { locationMode } = useLocationModal()
   const canSubmit = useCanSubmitLocationModal()
 
   const onSubmit = () => {
@@ -32,11 +28,9 @@ export const HomeLocationModal = () => {
 
   return (
     <LocationModal
-      visible={visible}
       onSubmit={onSubmit}
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={locationMode}
-      onClose={locationModalActions.hide}
       selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}

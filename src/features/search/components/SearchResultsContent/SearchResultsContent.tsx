@@ -1,4 +1,4 @@
-import { useFocusEffect, useIsFocused } from '@react-navigation/native'
+import { useFocusEffect, useIsFocused, useNavigation } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
 import { SearchResponse } from 'algoliasearch'
 import { debounce } from 'lodash'
@@ -7,8 +7,8 @@ import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -52,7 +52,6 @@ import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { useModal } from 'ui/components/modals/useModal'
 import {
   HeaderSearchResultsPlaceholder,
   HitPlaceholder,
@@ -139,7 +138,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   const [isSearchListTab, setIsSearchListTab] = useState(true)
   const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
-  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const initialRegion = useVenueMapStore((state) => state.initialRegion)
 
@@ -160,6 +159,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
       }
       setRegion(region)
     }, [geolocPosition, selectedPlace, width, height, initialRegion])
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      if (selectedLocationMode === LocationMode.EVERYWHERE) {
+        setDefaultTab(Tab.SEARCHLIST)
+      }
+    }, [selectedLocationMode])
   )
 
   useFocusEffect(
@@ -201,12 +208,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
-  const {
-    visible: venueMapLocationModalVisible,
-    showModal: showVenueMapLocationModal,
-    hideModal: hideVenueMapLocationModal,
-  } = useModal(false)
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
@@ -227,12 +228,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
       setDefaultTab(Tab.SEARCHLIST)
     }
   }, [selectedLocationMode])
-
-  useEffect(() => {
-    if (selectedLocationMode === LocationMode.EVERYWHERE && !venueMapLocationModalVisible) {
-      setDefaultTab(Tab.SEARCHLIST)
-    }
-  }, [selectedLocationMode, venueMapLocationModalVisible])
 
   // This useEffect monitors changes to `searchState`. When `searchState` is updated, it
   // generates a string representation of the filters excluding location data. If the new
@@ -288,7 +283,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     removeSelectedVenue()
     setDefaultTab(Tab.MAP)
     if (selectedLocationMode === LocationMode.EVERYWHERE) {
-      showVenueMapLocationModal()
+      navigate('VenueMapLocationModal', { openedFrom: 'search', shouldOpenMapInTab: true })
       return
     }
 
@@ -297,17 +292,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
       searchId: searchState.searchId,
     })
     setIsSearchListTab(false)
-  }
-
-  const dismissVenueMapLocationModal = () => {
-    if (
-      selectedLocationMode === LocationMode.EVERYWHERE &&
-      tempLocationMode === LocationMode.EVERYWHERE
-    ) {
-      setDefaultTab(Tab.SEARCHLIST)
-    }
-
-    hideVenueMapLocationModal()
   }
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
@@ -417,13 +401,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           <Spacer.BottomScreen />
         </ScrollToTopContainer>
       ) : null}
-      <VenueMapLocationModal
-        visible={venueMapLocationModalVisible}
-        dismissModal={dismissVenueMapLocationModal}
-        setTempLocationMode={setTempLocationMode}
-        openedFrom="search"
-        shouldOpenMapInTab
-      />
     </React.Fragment>
   )
 }

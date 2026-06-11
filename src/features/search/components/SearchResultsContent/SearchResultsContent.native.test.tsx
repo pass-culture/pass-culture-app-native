@@ -827,12 +827,15 @@ describe('SearchResultsContent component', () => {
         mockUseLocation.mockReturnValue(everywhereUseLocation)
       })
 
-      it('should open venue map location modal when pressing map tab', async () => {
+      it('should navigate to venue map location modal when pressing map tab', async () => {
         renderSearchResultContent()
 
         await user.press(await screen.findByText('Carte'))
 
-        expect(await screen.findByText('Localisation')).toBeOnTheScreen()
+        expect(navigate).toHaveBeenCalledWith('VenueMapLocationModal', {
+          openedFrom: 'search',
+          shouldOpenMapInTab: true,
+        })
       })
 
       it('should not display venue map when pressing map tab', async () => {

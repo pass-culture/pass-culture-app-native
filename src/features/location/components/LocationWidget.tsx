@@ -1,15 +1,14 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -28,6 +27,7 @@ type Props = {
 
 export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { place, selectedLocationMode } = useLocation()
   const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
@@ -50,27 +50,28 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
 
   const numberOfLines = useMobileFontScaleToDisplay({ default: 3, at200PercentZoom: 5 })
 
+  const onPress = () => {
+    navigate(shouldShowHomeLocationModal ? 'HomeLocationModal' : 'SearchLocationModal')
+  }
+
   return (
-    <React.Fragment>
-      <WidgetContainer>
-        <StyledTouchable
-          testID={computedAccessibilityLabel}
-          onPress={locationModalActions.show}
-          accessibilityLabel={computedAccessibilityLabel}
-          {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
-          <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
-          <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
-        </StyledTouchable>
-        {enableTooltip ? (
-          <StyledTooltip
-            label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-            isVisible={isTooltipVisible}
-            onHide={hideTooltip}
-          />
-        ) : null}
-      </WidgetContainer>
-      {shouldShowHomeLocationModal ? <HomeLocationModal /> : <SearchLocationModal />}
-    </React.Fragment>
+    <WidgetContainer>
+      <StyledTouchable
+        testID={computedAccessibilityLabel}
+        onPress={onPress}
+        accessibilityLabel={computedAccessibilityLabel}
+        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
+        <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
+        <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
+      </StyledTouchable>
+      {enableTooltip ? (
+        <StyledTooltip
+          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+          isVisible={isTooltipVisible}
+          onHide={hideTooltip}
+        />
+      ) : null}
+    </WidgetContainer>
   )
 }
 

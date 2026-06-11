@@ -344,6 +344,9 @@ export type RootStackParamList = {
   VerticalPlaylistOffers: VerticalPlaylistOffersSource
   VerticalPlaylistVenues: { module: VenuesModule }
   VideoModulePage: VideoModulePageParams
+  HomeLocationModal: undefined
+  SearchLocationModal: undefined
+  VenueMapLocationModal: { openedFrom: Referrals; shouldOpenMapInTab?: boolean }
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

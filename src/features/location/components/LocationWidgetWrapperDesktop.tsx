@@ -1,11 +1,15 @@
-import React, { PropsWithChildren } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useLocationForLocationWidgetDesktop } from 'features/location/components/useLocationForLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
-import { locationModalActions } from 'libs/locationV2/locationModal.store'
+import {
+  RootScreenNames,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -18,30 +22,28 @@ const WIDGET_HEIGHT = getSpacing(5 + 1) // textSize + padding
 
 type LocationWidgetWrapperDesktopProps = {
   screenOrigin: ScreenOrigin
-  children: React.ReactNode
 }
 
-/**
- * The UI is the same so we just need a children as function
- * that will use modal props defined in
- * -> so children has to be a modal
- */
-export const LocationWidgetWrapperDesktop: React.FC<
-  PropsWithChildren<LocationWidgetWrapperDesktopProps>
-> = ({ screenOrigin, children }) => {
+export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktopProps> = ({
+  screenOrigin,
+}) => {
   const { designSystem } = useTheme()
   const {
     title: locationTitle,
     isWidgetHighlighted,
     testId,
   } = useLocationForLocationWidgetDesktop()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
     useLocationWidgetTooltip(screenOrigin)
 
+  const locationModalScreen: RootScreenNames =
+    screenOrigin === ScreenOrigin.HOME ? 'HomeLocationModal' : 'SearchLocationModal'
+
   const onPressLocationButton = () => {
     hideTooltip()
-    locationModalActions.show()
+    navigate(locationModalScreen)
   }
 
   const locationIcon = isWidgetHighlighted ? (
@@ -51,29 +53,26 @@ export const LocationWidgetWrapperDesktop: React.FC<
   )
 
   return (
-    <React.Fragment>
-      <WidgetContainer>
-        {enableTooltip ? (
-          <StyledTooltip
-            label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-            isVisible={isTooltipVisible}
-            onHide={hideTooltip}
-          />
-        ) : null}
-        <LocationButton
-          {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
-          onPress={onPressLocationButton}
-          testID={testId}
-          accessibilityLabel={testId}>
-          <NotShrunk>{locationIcon}</NotShrunk>
-          <LocationTitle>{locationTitle}</LocationTitle>
-          <NotShrunk>
-            <ArrowDown size={designSystem.size.icon.s} />
-          </NotShrunk>
-        </LocationButton>
-      </WidgetContainer>
-      {children}
-    </React.Fragment>
+    <WidgetContainer>
+      {enableTooltip ? (
+        <StyledTooltip
+          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+          isVisible={isTooltipVisible}
+          onHide={hideTooltip}
+        />
+      ) : null}
+      <LocationButton
+        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
+        onPress={onPressLocationButton}
+        testID={testId}
+        accessibilityLabel={testId}>
+        <NotShrunk>{locationIcon}</NotShrunk>
+        <LocationTitle>{locationTitle}</LocationTitle>
+        <NotShrunk>
+          <ArrowDown size={designSystem.size.icon.s} />
+        </NotShrunk>
+      </LocationButton>
+    </WidgetContainer>
   )
 }
 

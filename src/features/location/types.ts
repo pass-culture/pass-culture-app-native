@@ -30,5 +30,4 @@ export type LocationState = {
 
 export type LocationSubmit = {
   onSubmit: (mode?: LocationMode) => void
-  onClose: () => void
 }

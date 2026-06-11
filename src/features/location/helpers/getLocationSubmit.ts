@@ -5,7 +5,6 @@ import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 
 type Props = {
-  dismissModal: () => void
   from: 'search' | 'venueMap'
   dispatch?: React.Dispatch<Action>
   tempLocationMode: LocationState['tempLocationMode']
@@ -23,7 +22,6 @@ type Props = {
 }
 
 export const getLocationSubmit = ({
-  dismissModal,
   from,
   dispatch,
   tempLocationMode,
@@ -36,8 +34,6 @@ export const getLocationSubmit = ({
   setTempAroundMeRadius,
   setAroundMeRadius,
   setTempAroundPlaceRadius,
-  aroundMeRadius,
-  aroundPlaceRadius,
 }: Props): LocationSubmit => {
   const onSubmit = (mode?: LocationMode) => {
     const chosenLocationMode = mode ?? tempLocationMode
@@ -57,7 +53,7 @@ export const getLocationSubmit = ({
               },
             })
           }
-          analytics.logUserSetLocation(from)
+          void analytics.logUserSetLocation(from)
         }
         break
 
@@ -83,15 +79,7 @@ export const getLocationSubmit = ({
 
         break
     }
-
-    dismissModal()
   }
 
-  const onClose = () => {
-    setTempAroundMeRadius(aroundMeRadius)
-    setTempAroundPlaceRadius(aroundPlaceRadius)
-    dismissModal()
-  }
-
-  return { onSubmit, onClose }
+  return { onSubmit }
 }

@@ -14,7 +14,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen, userEvent } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -165,14 +164,7 @@ describe('<VenuePlaylist />', () => {
       expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [])
     })
 
-    it('should open venue map location modal when pressing Voir sur la carte button and user location is not located', async () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: false,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
+    it('should navigate to venue map location modal when pressing Voir sur la carte button and user location is not located', async () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
@@ -185,7 +177,9 @@ describe('<VenuePlaylist />', () => {
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('VenueMapLocationModal', {
+        openedFrom: 'searchPlaylist',
+      })
     })
 
     it('should navigate to venue map when pressing Voir sur la carte button and user is located', async () => {

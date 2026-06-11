@@ -35,7 +35,7 @@ const locationModalStore = createStore({
       }))
 
     return {
-      show: () => {
+      sync: () => {
         const locationState = locationSelectors.selectState()
         set({
           addressInputValue: locationState.configuration[LocationMode.AROUND_PLACE].label,

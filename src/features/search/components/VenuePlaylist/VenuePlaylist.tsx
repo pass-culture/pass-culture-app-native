@@ -6,7 +6,6 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { SearchStackParamList } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
@@ -22,7 +21,6 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
-import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { Separator } from 'ui/components/Separator'
@@ -113,12 +111,6 @@ export const VenuePlaylist: React.FC<Props> = ({
 
   const logAllTilesSeenOnce = useFunctionOnce(() => analytics.logAllTilesSeen({ searchId }))
 
-  const {
-    showModal: showVenueMapLocationModal,
-    visible: venueMapLocationModalVisible,
-    hideModal: hideVenueMapLocationModal,
-  } = useModal()
-
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const searchGroupLabel = searchGroup
     ? (searchGroupLabelMapping[searchGroup] as ContentfulLabelCategories)
@@ -130,7 +122,7 @@ export const VenuePlaylist: React.FC<Props> = ({
     setVenuesFilters(offerCategory ? getActivitiesFromSearchGroup(offerCategory) : [])
 
     if (isMapWithoutPositionAndNotLocated) {
-      showVenueMapLocationModal()
+      navigate('VenueMapLocationModal', { openedFrom: 'searchPlaylist' })
       return
     }
 
@@ -211,11 +203,6 @@ export const VenuePlaylist: React.FC<Props> = ({
         />
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
-      <VenueMapLocationModal
-        visible={venueMapLocationModalVisible}
-        dismissModal={hideVenueMapLocationModal}
-        openedFrom="searchPlaylist"
-      />
     </React.Fragment>
   )
 }

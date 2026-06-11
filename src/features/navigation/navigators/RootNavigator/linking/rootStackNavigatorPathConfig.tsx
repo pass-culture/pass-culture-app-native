@@ -192,6 +192,15 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
     parse: screenParamsParser.VenuePreviewCarousel,
     alias: ['venue/:id/apercu', 'lieu/apercu', 'venue/apercu'],
   },
+  HomeLocationModal: {
+    path: 'modale-de-localisation-accueil',
+  },
+  SearchLocationModal: {
+    path: 'modale-de-localisation-recherche',
+  },
+  VenueMapLocationModal: {
+    path: 'modale-de-localisation-carte',
+  },
 }
 
 export const rootStackNavigatorPathConfig = {
