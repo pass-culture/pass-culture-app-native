@@ -25,9 +25,14 @@ export function createStore<
 }: StoreConfig<State, Actions, Selectors>): Store<State, Actions, Selectors> {
   const defaultStore = () => defaultState
 
+  const persistKeys = options?.persistKeys
+
   const persistedStore = persist(defaultStore, {
     name,
     storage: createJSONStorage(() => AsyncStorage),
+    partialize: persistKeys
+      ? (state) => Object.fromEntries(persistKeys.map((key) => [key, state[key]]))
+      : (state) => state,
   })
 
   const store = create<State>()(
