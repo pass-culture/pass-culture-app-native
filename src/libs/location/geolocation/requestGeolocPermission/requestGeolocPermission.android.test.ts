@@ -10,26 +10,42 @@ jest.mock('react-native-android-location-enabler', () => ({
 }))
 const mockPromptForEnableLocationIfNeeded = jest.mocked(promptForEnableLocationIfNeeded)
 
-const requestSpy = jest.spyOn(PermissionsAndroid, 'request')
+const requestMultipleSpy = jest.spyOn(PermissionsAndroid, 'requestMultiple')
+
+const FINE = PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+const COARSE = PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
+
+const mockStatuses = (fineStatus: string, coarseStatus: string) =>
+  requestMultipleSpy.mockResolvedValueOnce({
+    [FINE]: fineStatus,
+    [COARSE]: coarseStatus,
+  } as Awaited<ReturnType<typeof PermissionsAndroid.requestMultiple>>)
 
 describe('requestGeolocPermission android', () => {
   beforeAll(() => (Platform.OS = 'android'))
 
-  it('should ask for android permission and return right state if granted', async () => {
-    requestSpy.mockResolvedValueOnce(PermissionsAndroid.RESULTS.GRANTED)
+  it('should ask for android fine and coarse permissions and return granted state if fine location is granted', async () => {
+    mockStatuses(PermissionsAndroid.RESULTS.GRANTED, PermissionsAndroid.RESULTS.GRANTED)
     mockPromptForEnableLocationIfNeeded.mockResolvedValueOnce('already-enabled')
 
     const permissionState = await requestGeolocPermission()
 
-    expect(PermissionsAndroid.request).toHaveBeenCalledWith(
-      PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
-    )
+    expect(PermissionsAndroid.requestMultiple).toHaveBeenCalledWith([FINE, COARSE])
     expect(promptForEnableLocationIfNeeded).toHaveBeenCalledWith()
     expect(permissionState).toEqual(GeolocPermissionState.GRANTED)
   })
 
+  it('should return granted state if user only grants approximate (coarse) location', async () => {
+    mockStatuses(PermissionsAndroid.RESULTS.DENIED, PermissionsAndroid.RESULTS.GRANTED)
+    mockPromptForEnableLocationIfNeeded.mockResolvedValueOnce('already-enabled')
+
+    const permissionState = await requestGeolocPermission()
+
+    expect(permissionState).toEqual(GeolocPermissionState.GRANTED)
+  })
+
   it('should return denied state if permission granted but user refuses to enable location', async () => {
-    requestSpy.mockResolvedValueOnce(PermissionsAndroid.RESULTS.GRANTED)
+    mockStatuses(PermissionsAndroid.RESULTS.GRANTED, PermissionsAndroid.RESULTS.GRANTED)
     mockPromptForEnableLocationIfNeeded.mockRejectedValueOnce(new Error('denied'))
 
     const permissionState = await requestGeolocPermission()
@@ -38,7 +54,7 @@ describe('requestGeolocPermission android', () => {
   })
 
   it('should return right state if permission not granted', async () => {
-    requestSpy.mockResolvedValueOnce(PermissionsAndroid.RESULTS.DENIED)
+    mockStatuses(PermissionsAndroid.RESULTS.DENIED, PermissionsAndroid.RESULTS.DENIED)
 
     const permissionState = await requestGeolocPermission()
 
@@ -46,7 +62,10 @@ describe('requestGeolocPermission android', () => {
   })
 
   it('should return right state if permission not granted and ask for never_ask_again', async () => {
-    requestSpy.mockResolvedValueOnce(PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN)
+    mockStatuses(
+      PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN,
+      PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN
+    )
 
     const permissionState = await requestGeolocPermission()
 
