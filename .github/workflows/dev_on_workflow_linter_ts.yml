@@ -23,13 +23,13 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
       - name: 'Cache the node_modules'
-        uses: pass-culture-github-actions/cache@v1.0.0
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
           path: |
             node_modules
@@ -37,9 +37,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+
       - run: yarn test:lint
 
   yarn_typescript:
@@ -48,14 +46,14 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
           path: |
             node_modules
@@ -63,7 +61,4 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:types

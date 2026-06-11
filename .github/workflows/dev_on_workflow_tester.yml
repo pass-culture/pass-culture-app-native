@@ -37,19 +37,19 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
           path: |
             node_modules
@@ -57,14 +57,12 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - uses: pass-culture-github-actions/cache@v1.0.0
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
           path: .jest/cache
           key: v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   yarn_test_native:
@@ -78,29 +76,27 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
-      - uses: pass-culture-github-actions/cache@v1.0.0
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: .jest/cache
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
@@ -108,16 +104,14 @@ jobs:
       - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
-      - name: Cache the coverage report
+      - name: Upload coverage report
         id: coverage-modules-cache
-        uses: pass-culture-github-actions/gcs-cache@v1.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          path: |
-            coverage/${{ matrix.shard }}.json
-          restore-keys: |
-            v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
-          key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+          name: coverage-report-${{ matrix.shard }}
+          path: coverage/*.json
+          include-hidden-files: true
+          retention-days: 1
 
   report-coverage:
     runs-on: ubuntu-24.04
@@ -126,7 +120,7 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
@@ -134,32 +128,29 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get Secret
         id: 'sonar_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
       - name: Set up Cloud SDK to get gsutils
-        uses: 'google-github-actions/setup-gcloud@v3'
+        uses: 'google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db' #v3.1.0'
         with:
           version: '>= 416.0.0'
-      - name: 'Get from bucket the differents coverages'
-        env:
-          CACHE_BUCKET_NAME: ${{ inputs.CACHE_BUCKET_NAME }}
-        run: |
-          mkdir coverage
-          gsutil cp "gs://$CACHE_BUCKET_NAME/pass-culture/pass-culture-app-native/v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-*" coverage
-          for file in coverage/*tar; do tar --use-compress-program='zstd --long=30' -xf "$file"; done 
-          rm -f coverage/*.tar
-      - name: 'Merge each coverage into one'
+      - name: Download coverage reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          path: coverage
+          pattern: coverage-report-*
+          merge-multiple: true
+      - name: Merge coverage reports
         run: |
           npx nyc merge coverage coverage/coverage-final.json
           npx nyc report -t coverage --report-dir coverage --reporter=clover --reporter=lcov
-          rm coverage/[0-9].json
       - name: SonarCloud scan - App & Webapp
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
@@ -172,8 +163,8 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
       - name: 'OpenID Connect Authentication'
@@ -183,9 +174,8 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: pass-culture-github-actions/cache@v1.0.0
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
@@ -223,8 +213,8 @@ jobs:
     steps:
       - name: Enable Corepack
         run: corepack enable
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
       - name: 'OpenID Connect Authentication'
@@ -234,9 +224,8 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the proxy node_modules
         id: yarn-modules-cache-proxy
-        uses: pass-culture-github-actions/cache@v1.0.0
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
@@ -250,62 +239,14 @@ jobs:
         run: cd server && (yarn test:unit:ci || yarn test:unit:ci || yarn test:unit:ci) && cd ..
       - name: Get secrets for SonarCloud
         id: 'sonar_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
       - name: SonarCloud scan - Proxy
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: server
-  slack_notify:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 60
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
-    needs:
-      - yarn_test_native
-      - yarn_test_proxy
-      - yarn_test_web
-    steps:
-      - name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
-        with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Get secrets for Slack
-        id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
-        with:
-          secrets: |-
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
-      - uses: technote-space/workflow-conclusion-action@v3
-        if: ${{ always() }}
-      - name: Post to a Slack channel
-        id: slack
-        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
-        uses: slackapi/slack-github-action@v1.27.0
-        with:
-          # channel #alertes-deploiement-native
-          channel-id: 'C0309RP8K42'
-          payload: |
-            {
-              "attachments": [
-                  {
-                      "mrkdwn_in": ["text"],
-                      "color": "#A30002",
-                      "author_name": "${{github.actor}}",
-                      "author_link": "https://github.com/${{github.actor}}",
-                      "author_icon": "https://github.com/${{github.actor}}.png",
-                      "title": "PCAPPNATIVE Deployment",
-                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Les tests sur master ont échoué :boom:"
-                  }
-              ],
-              "unfurl_links": false,
-              "unfurl_media": false
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}

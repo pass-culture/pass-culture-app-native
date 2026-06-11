@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@9a5f036470496551365fe9c26afbd4febe20a8cb
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
       - name: Enable Corepack
         run: corepack enable
-      - uses: pass-culture-github-actions/cache@v1.0.0
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         id: yarn-modules-cache
         with:
           path: |
@@ -30,9 +30,6 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          bucket: ${{ secrets.CACHE_BUCKET_NAME }}
-          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
       - name: Yarn install
         run: yarn install
@@ -45,7 +42,7 @@ jobs:
 
       - name: Get secrets for Maestro
         id: maestro_secrets
-        uses: google-github-actions/get-secretmanager-secrets@v3
+        uses: google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262 #v3.0.0
         with:
           secrets: |-
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
@@ -96,7 +93,7 @@ jobs:
 
       - name: Logs & screenshots from errors (Download link ⬇️)
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
         with:
           name: maestro-artifacts
           path: /home/runner/.maestro/tests/
@@ -114,19 +111,21 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
       - name: Post to a Slack channel
         id: slack
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@45a88b9581bfab2566dc881e2cd66d334e621e2c #v3.0.3
         with:
           # channel #equipe-e2e-jeunes
-          channel-id: 'C05MH81G9LY'
+          method: chat.postMessage
+          token: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
           payload: |
-            {
-              "attachments": [
+            channel: 'C05MH81G9LY'
+            text: "Le smoke test Web sur la branche `${{ github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.run_e2e_web.result == 'failure') && 1 || 0] }}"
+            attachments: [
                   {
                       "mrkdwn_in": ["text"],
                       "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.run_e2e_web.result == 'failure') && 1 || 0] }}",
@@ -134,12 +133,8 @@ jobs:
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "SMOKETEST E2E-WEB",
-                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le smoke test Web sur la branche `${{ github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.run_e2e_web.result == 'failure') && 1 || 0] }}"
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
                   }
-              ],
-              "unfurl_links": false,
-              "unfurl_media": false
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+            ]
+            unfurl_links: false
+            unfurl_media: false
