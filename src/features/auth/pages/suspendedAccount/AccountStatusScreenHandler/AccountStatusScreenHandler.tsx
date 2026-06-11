@@ -36,11 +36,12 @@ export const AccountStatusScreenHandler = () => {
 
   useEffect(() => {
     return () => {
-      if (
+      const excludedRoutesFromSignOut =
         currentRoute?.name &&
         !['AccountReactivationSuccess', 'AccountStatusScreenHandler'].includes(currentRoute?.name)
-      ) {
-        signOut()
+
+      if (excludedRoutesFromSignOut) {
+        void signOut()
       }
     }
   }, [signOut, currentRoute?.name])

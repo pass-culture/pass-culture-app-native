@@ -7,6 +7,7 @@ import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
 import {
   RootStackParamList,
@@ -49,16 +50,19 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     setIsLoading(true)
     try {
       await mutate()
+
       // A technical constraint requires disconnection for the moment. Possible improvement later
       if (isLoggedIn) {
         await signOut()
       }
+
       showSuccessSnackBar(
         'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.'
       )
-      navigation.reset({
-        routes: [{ name: 'LoginMethods', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
-      })
+
+      // We use resetFromRef instead of reset because signOut() may unmount the current screen
+      // (RootNavigator rebuild). resetFromRef ensures navigation still works after logout.
+      resetFromRef('LoginMethods', { from: StepperOrigin.VALIDATE_EMAIL_CHANGE })
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
