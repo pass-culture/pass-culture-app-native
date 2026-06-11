@@ -1,4 +1,4 @@
-import { AppState, AppStateStatus, Linking } from 'react-native'
+import { AppState, Linking } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
@@ -8,66 +8,48 @@ import { requestGeolocPermission } from 'libs/location/geolocation/requestGeoloc
 import { GeolocationError, LocationMode, RequestGeolocPermissionParams } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 
-const triggerPositionUpdate = async () => {
-  try {
-    const newPosition = await getGeolocPosition()
-    locationActions.setGeolocPosition(newPosition)
-    locationActions.setGeolocationError(null)
-    return newPosition
-  } catch (e) {
-    const newPositionError = e as { cause: GeolocationError } | null
-    locationActions.setGeolocPosition(null)
-    locationActions.setGeolocationError(newPositionError?.cause ?? null)
-    return null
-  }
-}
-
-const getPermissionState = async (permission: GeolocPermissionState) => {
-  if (shouldTriggerPositionUpdate(permission)) {
-    const newPosition = await triggerPositionUpdate()
-    if (permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY) {
-      return newPosition === null
-        ? GeolocPermissionState.NEVER_ASK_AGAIN
-        : GeolocPermissionState.GRANTED
+export const initLocationPermission = () => {
+  void syncPermissionsAndLocation()
+  return AppState.addEventListener('change', (state) => {
+    if (state === 'active') {
+      void syncPermissionsAndLocation()
     }
-  }
-  return permission
+  })
 }
 
-// this function is used to set OS permissions according to user choice on native geolocation popup
-export const contextualRequestGeolocPermission = async (params?: RequestGeolocPermissionParams) => {
-  params?.onSubmit?.()
-
-  const permission = await getPermissionState(await requestGeolocPermission())
-  locationActions.setPermissionState(permission)
-
-  if (permission === GeolocPermissionState.GRANTED) {
-    params?.onAcceptance?.()
-    return
-  }
-  params?.onRefusal?.()
+export const syncPermissionsAndLocation = async () => {
+  await syncPermissions()
+  await syncLocationMode()
+  await syncLocation()
 }
 
-// in case user updates his preferences in his phone settings we check if his local
-// storage choice is consistent with phone permissions, and update position if not
-export const contextualCheckPermission = async () => {
-  const permission = await getPermissionState(await checkGeolocPermission())
+const syncPermissions = async () => {
+  const permission = await checkGeolocPermission()
   locationActions.setPermissionState(permission)
-  if (permission !== GeolocPermissionState.GRANTED || !locationSelectors.selectIsGeolocated()) {
+}
+
+const syncLocationMode = async () => {
+  if (
+    locationSelectors.selectPermissionState() !== GeolocPermissionState.GRANTED &&
+    locationSelectors.selectLocationMode() === LocationMode.AROUND_ME
+  ) {
     locationActions.setLocationMode(LocationMode.EVERYWHERE)
   }
 }
 
-export const initLocationPermission = () => {
-  let currentState = AppState.currentState
-
-  void contextualCheckPermission()
-  return AppState.addEventListener('change', (nextState: AppStateStatus) => {
-    if (currentState.match(/inactive|background/) && nextState.match(/active/)) {
-      void contextualCheckPermission()
+const syncLocation = async () => {
+  const permission = locationSelectors.selectPermissionState()
+  if (permission === GeolocPermissionState.GRANTED) {
+    try {
+      const newPosition = await getGeolocPosition()
+      locationActions.setGeolocPosition(newPosition)
+      locationActions.setGeolocationError(null)
+    } catch (e) {
+      const newPositionError = e as { cause: GeolocationError } | null
+      locationActions.setGeolocPosition(null)
+      locationActions.setGeolocationError(newPositionError?.cause ?? null)
     }
-    currentState = nextState
-  })
+  }
 }
 
 export const onPressGeolocPermissionModalButton = () => {
@@ -76,6 +58,18 @@ export const onPressGeolocPermissionModalButton = () => {
   void analytics.logOpenLocationSettings()
 }
 
-const shouldTriggerPositionUpdate = (permission: GeolocPermissionState) =>
-  permission === GeolocPermissionState.GRANTED ||
-  permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY
+// this function is used to set OS permissions according to user choice on native geolocation popup
+export const contextualRequestGeolocPermission = async (params?: RequestGeolocPermissionParams) => {
+  params?.onSubmit?.()
+
+  const permission = await requestGeolocPermission()
+  locationActions.setPermissionState(permission)
+
+  await syncLocation()
+
+  if (permission === GeolocPermissionState.GRANTED) {
+    params?.onAcceptance?.()
+    return
+  }
+  params?.onRefusal?.()
+}
