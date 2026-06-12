@@ -52,28 +52,35 @@ export const LocationWidgetWrapperDesktop: React.FC<
 
   return (
     <React.Fragment>
-      {enableTooltip ? (
-        <StyledTooltip
-          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-          isVisible={isTooltipVisible}
-          onHide={hideTooltip}
-        />
-      ) : null}
-      <LocationButton
-        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
-        onPress={onPressLocationButton}
-        testID={testId}
-        accessibilityLabel={testId}>
-        <NotShrunk>{locationIcon}</NotShrunk>
-        <LocationTitle>{locationTitle}</LocationTitle>
-        <NotShrunk>
-          <ArrowDown size={designSystem.size.icon.s} />
-        </NotShrunk>
-      </LocationButton>
+      <WidgetContainer>
+        {enableTooltip ? (
+          <StyledTooltip
+            label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+            isVisible={isTooltipVisible}
+            onHide={hideTooltip}
+          />
+        ) : null}
+        <LocationButton
+          {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
+          onPress={onPressLocationButton}
+          testID={testId}
+          accessibilityLabel={testId}>
+          <NotShrunk>{locationIcon}</NotShrunk>
+          <LocationTitle>{locationTitle}</LocationTitle>
+          <NotShrunk>
+            <ArrowDown size={designSystem.size.icon.s} />
+          </NotShrunk>
+        </LocationButton>
+      </WidgetContainer>
       {children}
     </React.Fragment>
   )
 }
+
+const WidgetContainer = styled.View({
+  position: 'relative',
+  alignSelf: 'center',
+})
 
 const StyledTooltip = styled(Tooltip)(({ theme }) => ({
   position: 'absolute',

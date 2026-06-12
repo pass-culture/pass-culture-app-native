@@ -52,34 +52,39 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
 
   return (
     <React.Fragment>
-      <StyledTouchable
-        testID={computedAccessibilityLabel}
-        onPress={locationModalActions.show}
-        accessibilityLabel={computedAccessibilityLabel}
-        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
-        <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
-        <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
-      </StyledTouchable>
+      <WidgetContainer>
+        <StyledTouchable
+          testID={computedAccessibilityLabel}
+          onPress={locationModalActions.show}
+          accessibilityLabel={computedAccessibilityLabel}
+          {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
+          <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
+          <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
+        </StyledTouchable>
+        {enableTooltip ? (
+          <StyledTooltip
+            label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+            isVisible={isTooltipVisible}
+            onHide={hideTooltip}
+          />
+        ) : null}
+      </WidgetContainer>
       {shouldShowHomeLocationModal ? <HomeLocationModal /> : <SearchLocationModal />}
-      {enableTooltip ? (
-        <StyledTooltip
-          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-          isVisible={isTooltipVisible}
-          onHide={hideTooltip}
-        />
-      ) : null}
     </React.Fragment>
   )
 }
 
-const StyledTooltip = styled(Tooltip)(({ theme }) => {
-  return {
-    position: 'absolute',
-    top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
-    right: 0,
-    width: TOOLTIP_WIDTH,
-  }
+const WidgetContainer = styled.View({
+  position: 'relative',
+  alignSelf: 'center',
 })
+
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+  position: 'absolute',
+  top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
+  right: 0,
+  width: TOOLTIP_WIDTH,
+}))
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   alignItems: 'center',
