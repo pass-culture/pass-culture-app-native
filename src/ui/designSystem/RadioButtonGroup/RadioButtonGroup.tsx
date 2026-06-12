@@ -94,7 +94,6 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
       const isOptionDisabled = item.disabled ?? disabled
       return (
         <RadioButton
-          key={item.key}
           label={item.label}
           disabled={isOptionDisabled}
           error={error}
