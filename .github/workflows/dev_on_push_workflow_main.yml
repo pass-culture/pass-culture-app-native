@@ -16,7 +16,7 @@ jobs:
   actionlint-check:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
       - uses: pass-culture/common-workflows/actions/actionlint-check@f4db7db202ff3cddc97fcbf08c3821ebc78b10fb
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
@@ -278,7 +278,7 @@ jobs:
         deploy-web-production,
         check-proxy-version-production,
       ]
-    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-production.outputs.proxy_base_tag
+    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true'
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: production

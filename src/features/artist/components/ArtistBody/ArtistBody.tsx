@@ -16,8 +16,12 @@ import { getShareArtist } from 'features/share/helpers/getShareArtist'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
+import { AB_TESTS } from 'shared/useABSegment/abTests'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -71,6 +75,8 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
   const { appBarHeight } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
+  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
 
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -157,11 +163,18 @@ export const ArtistBody: FunctionComponent<Props> = ({
               </Description>
             ) : null}
           </ViewGap>
-          <ArtistTopOffers artistName={name} items={artistTopOffers} />
+          <ArtistTopOffers
+            artistName={name}
+            items={artistTopOffers}
+            proAdvicesSegment={proAdvicesSegment}
+            enableProAdvicesTag={enableProAdvicesTag}
+          />
           <ArtistPlaylist
             artist={artist}
             items={artistPlaylist}
             onViewableItemsChanged={onViewableItemsChanged}
+            proAdvicesSegment={proAdvicesSegment}
+            enableProAdvicesTag={enableProAdvicesTag}
           />
           <ArtistSimilarArtists artistId={artist.id} />
         </ViewGap>

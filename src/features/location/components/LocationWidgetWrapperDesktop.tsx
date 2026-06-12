@@ -36,14 +36,8 @@ export const LocationWidgetWrapperDesktop: React.FC<
     testId,
   } = useLocationForLocationWidgetDesktop()
 
-  const {
-    isTooltipVisible,
-    widgetWidth,
-    hideTooltip,
-    onWidgetLayout,
-    touchableRef,
-    enableTooltip,
-  } = useLocationWidgetTooltip(screenOrigin)
+  const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
+    useLocationWidgetTooltip(screenOrigin)
 
   const onPressLocationButton = () => {
     hideTooltip()
@@ -63,7 +57,6 @@ export const LocationWidgetWrapperDesktop: React.FC<
           label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
           isVisible={isTooltipVisible}
           onHide={hideTooltip}
-          widgetWidth={widgetWidth}
         />
       ) : null}
       <LocationButton
@@ -82,10 +75,10 @@ export const LocationWidgetWrapperDesktop: React.FC<
   )
 }
 
-const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widgetWidth }) => ({
+const StyledTooltip = styled(Tooltip)(({ theme }) => ({
   position: 'absolute',
   top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
-  left: (widgetWidth ?? 0) / 2,
+  right: 0,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
 }))

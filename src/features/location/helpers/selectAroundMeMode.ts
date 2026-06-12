@@ -1,4 +1,4 @@
-import { Alert, Linking } from 'react-native'
+import { Linking } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState } from 'libs/location/location'
@@ -16,7 +16,6 @@ export const selectAroundMeMode = async ({
   shouldDirectlyValidate,
 }: Params = {}) => {
   const permissionState = locationSelectors.selectPermissionState()
-  const isGeolocated = locationSelectors.selectIsGeolocated()
 
   if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
     locationActions.setPlace(null)
@@ -32,12 +31,6 @@ export const selectAroundMeMode = async ({
         locationActions.showPermissionModal()
       }, 500)
     }
-  } else if (permissionState === GeolocPermissionState.GRANTED && !isGeolocated) {
-    Alert.alert(
-      'Paramètres de localisation',
-      'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
-      [{ text: 'OK', onPress: () => locationActions.setLocationMode(LocationMode.EVERYWHERE) }]
-    )
   } else if (permissionState === GeolocPermissionState.GRANTED && shouldDirectlyValidate) {
     locationActions.setPlace(null)
     locationActions.setLocationMode(LocationMode.AROUND_ME)

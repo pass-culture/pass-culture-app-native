@@ -8,7 +8,7 @@ describe('getArtistsFilterButtons', () => {
     expect(result).toEqual([])
   })
 
-  it('should ignore artists who do not have a role or an id', () => {
+  it('should ignore artists who do not have a role', () => {
     const mockArtists: OfferArtist[] = [
       { id: '1', name: 'Valid Actor', role: ArtistType.film_actor },
       { id: undefined, name: 'Missing Id', role: ArtistType.film_director },
@@ -17,7 +17,10 @@ describe('getArtistsFilterButtons', () => {
 
     const result = getArtistsFilterButtons(mockArtists, CategoryIdEnum.CINEMA)
 
-    expect(result).toEqual([{ label: 'Acteur (1)', role: 'Acteur' }])
+    expect(result).toEqual([
+      { label: 'Acteur', role: 'Acteur' },
+      { label: 'Réalisateur', role: 'Réalisateur' },
+    ])
   })
 
   it('should correctly format labels to singular when a role group has only one artist', () => {
@@ -29,8 +32,8 @@ describe('getArtistsFilterButtons', () => {
     const result = getArtistsFilterButtons(mockArtists, CategoryIdEnum.CINEMA)
 
     expect(result).toEqual([
-      { role: 'Acteur', label: 'Acteur (1)' },
-      { role: 'Réalisateur', label: 'Réalisateur (1)' },
+      { role: 'Acteur', label: 'Acteur' },
+      { role: 'Réalisateur', label: 'Réalisateur' },
     ])
   })
 
@@ -42,6 +45,6 @@ describe('getArtistsFilterButtons', () => {
 
     const result = getArtistsFilterButtons(mockArtists, CategoryIdEnum.CINEMA)
 
-    expect(result).toEqual([{ role: 'Acteur', label: 'Acteurs (2)' }])
+    expect(result).toEqual([{ role: 'Acteur', label: 'Acteurs' }])
   })
 })

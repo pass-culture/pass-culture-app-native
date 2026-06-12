@@ -13,7 +13,7 @@ export function DeleteProfileSuccess() {
   const signOut = useLogoutRoutine()
 
   useEffect(() => {
-    signOut()
+    void signOut()
   }, [signOut])
 
   return (

@@ -3,8 +3,9 @@ import { Mutate, StoreApi, UseBoundStore } from 'zustand'
 export type AnyFunction = (...args: never[]) => unknown
 
 export type CurriedAnyFunction<State> = (...args: never[]) => (state: State) => unknown
-type Options = {
+type Options<State> = {
   persist?: boolean
+  persistKeys?: readonly (keyof State)[]
 }
 type ReplaceSelectByUse<T extends string> = T extends `select${infer U}` ? `use${U}` : never
 type StoreType<State> = UseBoundStore<
@@ -20,7 +21,7 @@ export type StoreConfig<
   defaultState: State
   actions: (setState: StoreType<State>['setState']) => Actions
   selectors?: Selectors
-  options?: Options
+  options?: Options<State>
 }
 
 export type SelectorsWithState<

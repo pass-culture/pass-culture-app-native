@@ -17,6 +17,7 @@ type AvatarListProps = {
   listRef?: Ref<FlatList>
   withMargins?: boolean
   withPush?: boolean
+  keyExtractor?: (item: Artist) => string
 }
 
 const AVATAR_DEFAULT_CONFIG = {
@@ -32,6 +33,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
   onViewableItemsChanged,
   withMargins,
   withPush,
+  keyExtractor,
 }) => {
   const mergedAvatarConfig = mergeWith(
     avatarConfig,
@@ -66,7 +68,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
   return (
     <Playlist
       data={data}
-      keyExtractor={(item) => item.id}
+      keyExtractor={keyExtractor ?? ((item) => item.id)}
       renderItem={renderAvatar}
       itemHeight={size}
       itemWidth={size}

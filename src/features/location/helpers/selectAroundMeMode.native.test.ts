@@ -1,4 +1,4 @@
-import { Alert, Linking } from 'react-native'
+import { Linking } from 'react-native'
 
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -9,7 +9,6 @@ import { locationModalSelectors } from 'libs/locationV2/locationModal.store'
 import { selectAroundMeMode } from './selectAroundMeMode'
 
 const openSettingsSpy = jest.spyOn(Linking, 'openSettings')
-const alertSpy = jest.spyOn(Alert, 'alert')
 const contextualRequestGeolocPermissionSpy = jest.spyOn(
   locationMethodsModule,
   'contextualRequestGeolocPermission'
@@ -62,25 +61,6 @@ describe('selectAroundMeMode', () => {
       await selectAroundMeMode({ shouldDirectlyValidate: true })
 
       expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
-    })
-
-    it('should show alert and select everywhere mode when we do not have access to a position', async () => {
-      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
-      locationActions.setGeolocPosition(null)
-
-      alertSpy.mockImplementationOnce((_title, _message, buttons) => {
-        buttons?.[0]?.onPress?.()
-      })
-
-      await selectAroundMeMode()
-
-      expect(alertSpy).toHaveBeenCalledWith(
-        'Paramètres de localisation',
-        'Nous n’avons pas pu récupérer ta position. Vérifie que la localisation est bien activée sur ton téléphone.',
-        [{ text: 'OK', onPress: expect.any(Function) }]
-      )
-
-      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
     })
 
     describe('When permission is DENIED', () => {
