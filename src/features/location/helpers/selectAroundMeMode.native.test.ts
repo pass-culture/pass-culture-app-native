@@ -1,5 +1,7 @@
 import { Linking } from 'react-native'
 
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import * as locationMethodsModule from 'libs/locationV2/location.methods'
@@ -7,6 +9,12 @@ import { locationActions, locationSelectors } from 'libs/locationV2/location.sto
 import { locationModalSelectors } from 'libs/locationV2/locationModal.store'
 
 import { selectAroundMeMode } from './selectAroundMeMode'
+
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+
+const getGeolocPositionMock = jest.mocked(getGeolocPosition)
+const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
 
 const openSettingsSpy = jest.spyOn(Linking, 'openSettings')
 const contextualRequestGeolocPermissionSpy = jest.spyOn(
@@ -48,28 +56,26 @@ describe('selectAroundMeMode', () => {
   })
 
   describe('When permission is GRANTED', () => {
-    it('should reset place selection when shouldDirectlyValidate is true', async () => {
-      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
-      await selectAroundMeMode({ shouldDirectlyValidate: true })
-
-      expect(locationSelectors.selectPlace()).toBe(null)
+    beforeEach(() => {
+      mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
+      getGeolocPositionMock.mockResolvedValue({ latitude: 48.8566, longitude: 2.3522 })
     })
 
-    it('should select around me mode when shouldDirectlyValidate and user is geolocated', async () => {
+    it('should select around me mode when submitting', async () => {
       locationActions.setPermissionState(GeolocPermissionState.GRANTED)
       locationActions.setGeolocPosition({ latitude: 48.8566, longitude: 2.3522 })
-      await selectAroundMeMode({ shouldDirectlyValidate: true })
+      await selectAroundMeMode()
 
-      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
+      expect(locationModalSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
     })
+  })
 
-    describe('When permission is DENIED', () => {
-      it('should call requestGeolocPermission', async () => {
-        locationActions.setPermissionState(GeolocPermissionState.DENIED)
-        void selectAroundMeMode()
+  describe('When permission is DENIED', () => {
+    it('should call requestGeolocPermission', async () => {
+      locationActions.setPermissionState(GeolocPermissionState.DENIED)
+      void selectAroundMeMode()
 
-        expect(contextualRequestGeolocPermissionSpy).toHaveBeenCalledTimes(1)
-      })
+      expect(contextualRequestGeolocPermissionSpy).toHaveBeenCalledTimes(1)
     })
   })
 })
