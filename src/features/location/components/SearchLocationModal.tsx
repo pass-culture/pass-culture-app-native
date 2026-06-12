@@ -9,6 +9,7 @@ import { LocationMode } from 'libs/location/types'
 import { useLocation } from 'libs/location/useLocation'
 import {
   locationModalActions,
+  useCanSubmitLocationModal,
   useLocationModal,
   useLocationModalConfiguration,
 } from 'libs/locationV2/locationModal.store'
@@ -67,9 +68,9 @@ export const SearchLocationModal = () => {
     setTempAroundMeRadius,
   })
 
-  const selectLocationMode = createSelectLocationMode({
-    onSubmit,
-  })
+  const canSubmit = useCanSubmitLocationModal()
+
+  const selectLocationMode = createSelectLocationMode()
 
   return (
     <LocationModal
@@ -89,7 +90,7 @@ export const SearchLocationModal = () => {
       onTempAroundMeRadiusValueChange={onTempAroundMeRadiusValueChange}
       onTempAroundPlaceRadiusValueChange={onTempAroundPlaceRadiusValueChange}
       tempAroundMeRadius={tempAroundMeRadius}
-      isSubmitDisabled={!selectedPlace && locationMode !== LocationMode.AROUND_ME}
+      isSubmitDisabled={!canSubmit}
       shouldDisplayEverywhereSection
     />
   )

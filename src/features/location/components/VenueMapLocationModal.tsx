@@ -12,6 +12,7 @@ import { LocationMode } from 'libs/location/types'
 import { useLocation } from 'libs/location/useLocation'
 import {
   locationModalActions,
+  useCanSubmitLocationModal,
   useLocationModal,
   useLocationModalConfiguration,
 } from 'libs/locationV2/locationModal.store'
@@ -69,6 +70,7 @@ export const VenueMapLocationModal = ({
     aroundPlaceRadius,
   })
   const { onSubmit, onClose } = locationSubmitProps
+  const canSubmit = useCanSubmitLocationModal()
 
   const {
     onTempAroundRadiusPlaceValueChange: onTempAroundPlaceRadiusValueChange,
@@ -80,7 +82,6 @@ export const VenueMapLocationModal = ({
   })
   const selectLocationMode = createSelectLocationMode({
     shouldOpenDirectlySettings: true,
-    onSubmit,
   })
 
   const handleSubmit = () => {
@@ -107,7 +108,7 @@ export const VenueMapLocationModal = ({
       setPlaceQuery={setPlaceQuery}
       onResetPlace={onResetPlace}
       shouldShowRadiusSlider
-      isSubmitDisabled={!selectedPlace && locationMode !== LocationMode.AROUND_ME}
+      isSubmitDisabled={!canSubmit}
       tempAroundPlaceRadius={tempAroundPlaceRadius}
       onTempAroundMeRadiusValueChange={onTempAroundMeRadiusValueChange}
       onTempAroundPlaceRadiusValueChange={onTempAroundPlaceRadiusValueChange}
