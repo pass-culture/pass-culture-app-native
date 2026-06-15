@@ -9,7 +9,6 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
-import { mockArtists } from 'features/artist/fixtures/mockArtist'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -320,18 +319,6 @@ describe('<Offer />', () => {
         expect(screen.queryByText('Les avis des pros')).not.toBeOnTheScreen()
       })
     })
-  })
-
-  it('should open artists modal when offer has several artists and wipArtistPage and wipOfferMultiArtists FFs', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
-      RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS,
-    ])
-    renderOfferPage({ mockOffer: { ...offerResponseSnap, artists: mockArtists } })
-
-    await user.press(screen.getByLabelText('Ouvrir la liste des artistes'))
-
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
   describe('video section', () => {

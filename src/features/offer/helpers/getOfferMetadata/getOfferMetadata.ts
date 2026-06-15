@@ -27,7 +27,7 @@ export function getOfferMetadata(
   hasArtists?: boolean
 ): OfferMetadataItemProps[] {
   const castValue = extraData?.cast?.join(', ')
-  // For cinema offers, the cast is already displayed through the OfferArtists
+  // For cinema offers, the cast is already displayed through the artist section
   // component, so the textual "Distribution" metadata would be a duplicate.
   // It is only hidden when artists are actually rendered (hasArtists), otherwise
   // the distribution information would disappear entirely from the page.

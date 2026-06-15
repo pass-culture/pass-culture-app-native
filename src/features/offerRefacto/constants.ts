@@ -1,4 +1,4 @@
-import { ArtistType, SubcategoryIdEnumv2 } from 'api/gen'
+import { SubcategoryIdEnumv2 } from 'api/gen'
 import { BatchEvent } from 'libs/react-native-batch'
 import { getSpacing } from 'ui/theme'
 
@@ -22,9 +22,5 @@ export const BATCH_EVENT_BY_SUBCATEGORY: Partial<Record<SubcategoryIdEnumv2, Bat
   [SubcategoryIdEnumv2.EVENEMENT_MUSIQUE]: BatchEvent.hasSeenConcertForSurvey,
   [SubcategoryIdEnumv2.ABO_CONCERT]: BatchEvent.hasSeenConcertForSurvey,
 }
-
-export const OF_ROLES = [ArtistType.author, ArtistType.stage_director]
-
-export const WITH_ROLES = [ArtistType.performer]
 
 export const DEFAULT_CTA_WORDING = 'Réserver l’offre'

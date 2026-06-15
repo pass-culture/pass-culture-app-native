@@ -25,8 +25,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  isMultiArtistsEnabled,
-  onShowOfferArtistsModal,
   HeaderComponent,
   CTAsComponent,
   proAdvicesCount,
@@ -86,8 +84,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
-          isMultiArtistsEnabled={isMultiArtistsEnabled}
-          onShowOfferArtistsModal={onShowOfferArtistsModal}
           HeaderComponent={HeaderComponent}
           CTAsComponent={CTAsComponent}
           proAdvicesSegment={proAdvicesSegment}>

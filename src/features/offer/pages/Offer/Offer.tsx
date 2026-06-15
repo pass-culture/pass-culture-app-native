@@ -1,8 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 
-import { OfferArtist, ReactionTypeEnum } from 'api/gen'
+import { ReactionTypeEnum } from 'api/gen'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { useOfferProAdvicesQuery } from 'features/advices/queries/useOfferProAdvicesQuery'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -13,7 +13,6 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/
 import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
-import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
@@ -44,7 +43,6 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
@@ -80,11 +78,6 @@ export function Offer() {
     hideModal: hideChroniclesWritersModal,
     showModal: showChroniclesWritersModal,
   } = useModal(false)
-  const {
-    visible: offerArtistsModalVisible,
-    hideModal: hideOfferArtistsModal,
-    showModal: showOfferArtistsModal,
-  } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQueryV2(
     offer?.id ?? -1,
     !!offer?.id && isLoggedIn
@@ -93,8 +86,6 @@ export function Offer() {
   const categoryId = offer?.subcategoryId
     ? subcategoriesMapping[offer?.subcategoryId]?.categoryId
     : ''
-  const [selectedArtists, setSelectedArtists] = useState<OfferArtist[]>([])
-
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
       saveReaction({ reactions: [{ offerId, reactionType }] })
@@ -132,14 +123,6 @@ export function Offer() {
       accepted: [...currentConsent.accepted, CookieNameEnum.VIDEO_PLAYBACK],
     })
   }
-
-  const handleShowOfferArtistsModal = useCallback(
-    (artistsToDisplay: OfferArtist[]) => {
-      setSelectedArtists(artistsToDisplay)
-      showOfferArtistsModal()
-    },
-    [showOfferArtistsModal]
-  )
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
@@ -198,15 +181,6 @@ export function Offer() {
             buttonWording={adviceVariantInfo.buttonWording}
           />
         ) : null}
-        {selectedArtists.length > 1 ? (
-          <OfferArtistsModal
-            isVisible={offerArtistsModalVisible}
-            closeModal={hideOfferArtistsModal}
-            artists={selectedArtists}
-            navigateTo={{ screen: 'Artist' }}
-            offerId={offer.id}
-          />
-        ) : null}
       </View>
 
       <OfferContent
@@ -223,8 +197,6 @@ export function Offer() {
         onShowClubAdviceWritersModal={handleOnShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
-        isMultiArtistsEnabled={isMultiArtistsEnabled}
-        onShowOfferArtistsModal={handleShowOfferArtistsModal}
         proAdvicesCount={proAdvices?.nbResults}
         proAdvicesSegment={proAdvicesSegment}
       />
