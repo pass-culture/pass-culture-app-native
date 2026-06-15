@@ -74,7 +74,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_NEW_CATEGORY_BLOCKS = 'wipNewCategoryBlocks',
   WIP_NEW_SEARCH_RESULTS_PAGE = 'wipNewSearchResultsPage',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
-  WIP_OFFER_MULTI_ARTISTS = 'wipOfferMultiArtists',
   WIP_OFFER_REFACTO = 'wipOfferRefacto',
   WIP_PHONE_NUMBER_IN_PROFILE_STEPPER = 'wipPhoneNumberInProfileStepper',
   WIP_PRO_REVIEWS_NEW_TAG = 'wipProReviewsNewTag',

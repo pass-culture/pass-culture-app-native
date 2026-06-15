@@ -10,7 +10,6 @@ import {
   BookingResponse,
   FavoriteRequest,
   FavoriteResponse,
-  OfferArtist,
   OfferResponse,
   RecommendationApiParams,
   SubcategoryResponseModelv2,
@@ -31,11 +30,6 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 export type HasEnoughCreditType =
   | { hasEnoughCredit: true; message?: never }
   | { hasEnoughCredit: false; message?: string }
-
-export type ArtistsLine = {
-  prefix: string
-  artists: OfferArtist[]
-}
 
 export type UseOfferHeaderParams = {
   offer: OfferResponse

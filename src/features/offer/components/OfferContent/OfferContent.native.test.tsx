@@ -1076,7 +1076,6 @@ function renderOfferContent({
           onShowClubAdviceWritersModal={jest.fn()}
           hasVideoCookiesConsent
           onVideoConsentPress={jest.fn()}
-          onShowOfferArtistsModal={jest.fn()}
         />
       </NavigationContainer>
     ),

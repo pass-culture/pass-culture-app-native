@@ -2,7 +2,6 @@ import * as reactNavigation from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 
 import {
-  ArtistType,
   CategoryIdEnum,
   HomepageLabelNameEnumv2,
   NativeCategoryIdEnumv2,
@@ -153,97 +152,6 @@ describe('<OfferBody />', () => {
         })
       )
     )
-  })
-
-  it('should display artists', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      artists: [
-        { id: '4', name: 'Marion Cotillard' },
-        { id: '5', name: 'Leonardo DiCaprio' },
-      ],
-    }
-    renderOfferBody({
-      offer,
-    })
-
-    expect(await screen.findByText('Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
-  })
-
-  it('should display cinema director before cinema actors', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      artists: [
-        { id: '2', name: 'Élodie Fontan', role: ArtistType.film_actor },
-        { id: '1', name: 'Philippe Lacheau', role: ArtistType.film_director },
-        { id: '3', name: 'Jamel Debbouze', role: ArtistType.film_actor },
-      ],
-    }
-
-    renderOfferBody({ offer })
-
-    expect(await screen.findByText('de')).toBeOnTheScreen()
-    expect(screen.getByText('Philippe Lacheau')).toBeOnTheScreen()
-    expect(screen.getByText('avec')).toBeOnTheScreen()
-    expect(screen.getByText('Élodie Fontan, Jamel Debbouze')).toBeOnTheScreen()
-  })
-
-  it('should display only cinema director when there is no actor', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      artists: [{ id: '1', name: 'Philippe Lacheau', role: ArtistType.film_director }],
-    }
-
-    renderOfferBody({ offer })
-
-    expect(await screen.findByText('de')).toBeOnTheScreen()
-    expect(screen.getByText('Philippe Lacheau')).toBeOnTheScreen()
-    expect(screen.queryByText('avec')).not.toBeOnTheScreen()
-  })
-
-  it('should display only cinema actors when there is no director', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      artists: [
-        { id: '2', name: 'Élodie Fontan', role: ArtistType.film_actor },
-        { id: '3', name: 'Jamel Debbouze', role: ArtistType.film_actor },
-      ],
-    }
-
-    renderOfferBody({ offer })
-
-    expect(await screen.findByText('avec')).toBeOnTheScreen()
-    expect(screen.getByText('Élodie Fontan, Jamel Debbouze')).toBeOnTheScreen()
-    expect(screen.queryByText('de')).not.toBeOnTheScreen()
-  })
-
-  it('should expose an accessibility label with the cinema prefix', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      artists: [{ name: 'Philippe Lacheau', role: ArtistType.film_director }],
-    }
-
-    renderOfferBody({ offer })
-
-    expect(await screen.findByLabelText('de Philippe Lacheau')).toBeOnTheScreen()
-  })
-
-  it('should not display artists when array is empty', () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      artists: [],
-    }
-    renderOfferBody({
-      offer,
-    })
-
-    expect(screen.queryByText('de')).not.toBeOnTheScreen()
   })
 
   it('should display prices', async () => {
@@ -570,172 +478,6 @@ describe('<OfferBody />', () => {
     })
   })
 
-  describe('Artists button', () => {
-    it('should redirect to artist page when FF is enabled', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [{ id: '1', name: 'Stephen King' }],
-      }
-
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      await user.press(await screen.findByText('Stephen King'))
-
-      expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
-    })
-
-    it('should not redirect to artist page if artist has not id when FF is enabled', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [{ name: 'Stephen King' }],
-      }
-
-      setFeatureFlags()
-
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      await user.press(await screen.findByText('Stephen King'))
-
-      expect(mockNavigate).not.toHaveBeenCalled()
-    })
-
-    it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [{ id: '1', name: 'Stephen King' }],
-      }
-
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      await user.press(await screen.findByText('Stephen King'))
-
-      expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
-        offerId: offerResponseSnap.id.toString(),
-        artistName: 'Stephen King',
-        artistId: '1',
-        from: 'offer',
-      })
-    })
-
-    it('should not log ConsultArtist when pressing artist name if offer has several artists and FF is enabled', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [
-          { id: '1', name: 'Stephen King' },
-          { id: '2', name: 'Robert McCammon' },
-        ],
-      }
-
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      await user.press(await screen.findByText('Stephen King, Robert McCammon'))
-
-      expect(analytics.logConsultArtist).not.toHaveBeenCalled()
-    })
-
-    it('should not redirect to artist page when FF is disabled', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [{ id: '1', name: 'Stephen King' }],
-      }
-
-      setFeatureFlags()
-
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      await user.press(await screen.findByText('Stephen King'))
-
-      expect(mockNavigate).not.toHaveBeenCalled()
-    })
-
-    it('should can not press artists names if offer has several artists and wipOfferMultiArtists FF deactivated', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [
-          { id: '1', name: 'Stephen King' },
-          { id: '2', name: 'Robert McCammon' },
-        ],
-      }
-
-      const mockOnShowOfferArtistsModal = jest.fn()
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-        onShowOfferArtistsModal: mockOnShowOfferArtistsModal,
-      })
-
-      await screen.findByText('Stephen King, Robert McCammon')
-
-      expect(screen.queryByLabelText('Ouvrir la liste des artistes')).not.toBeOnTheScreen()
-    })
-
-    describe('When wipOfferMultiArtists FF activated', () => {
-      it('should trigger artists modal opening when pressing artists names if offer has several artists', async () => {
-        const offer: OfferResponse = {
-          ...offerResponseSnap,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          artists: [
-            { id: '1', name: 'Stephen King' },
-            { id: '2', name: 'Robert McCammon' },
-          ],
-        }
-
-        const mockOnShowOfferArtistsModal = jest.fn()
-        renderOfferBody({
-          offer,
-          subcategory: mockSubcategoryBook,
-          isMultiArtistsEnabled: true,
-          onShowOfferArtistsModal: mockOnShowOfferArtistsModal,
-        })
-
-        await user.press(await screen.findByLabelText('Ouvrir la liste des artistes'))
-
-        expect(mockOnShowOfferArtistsModal).toHaveBeenCalledTimes(1)
-      })
-
-      it('should open artist page when pressing artist name if offer has only one artist', async () => {
-        const offer: OfferResponse = {
-          ...offerResponseSnap,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          artists: [{ id: '1', name: 'Stephen King' }],
-        }
-
-        const mockOnShowOfferArtistsModal = jest.fn()
-        renderOfferBody({
-          offer,
-          subcategory: mockSubcategoryBook,
-          isMultiArtistsEnabled: true,
-          onShowOfferArtistsModal: mockOnShowOfferArtistsModal,
-        })
-
-        await user.press(await screen.findByLabelText('Accéder à la page de Stephen King'))
-
-        expect(mockNavigate).toHaveBeenCalledTimes(1)
-      })
-    })
-  })
-
   it('should redirect to cookies management when pressing manage cookies button', async () => {
     renderOfferBody({})
 
@@ -768,7 +510,6 @@ describe('<OfferBody />', () => {
       renderOfferBody({
         offer,
         subcategory: mockSubcategoryBook,
-        isMultiArtistsEnabled: true,
       })
 
       expect(screen.getByText('Écrivains')).toBeOnTheScreen()
@@ -787,7 +528,6 @@ describe('<OfferBody />', () => {
       renderOfferBody({
         offer,
         subcategory: mockSubcategoryBook,
-        isMultiArtistsEnabled: true,
       })
 
       await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
@@ -809,7 +549,6 @@ describe('<OfferBody />', () => {
       renderOfferBody({
         offer,
         subcategory: mockSubcategoryBook,
-        isMultiArtistsEnabled: true,
       })
 
       await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
@@ -834,7 +573,6 @@ describe('<OfferBody />', () => {
       renderOfferBody({
         offer,
         subcategory: mockSubcategoryBook,
-        isMultiArtistsEnabled: true,
       })
 
       await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
@@ -855,7 +593,6 @@ describe('<OfferBody />', () => {
       renderOfferBody({
         offer,
         subcategory: mockSubcategoryBook,
-        isMultiArtistsEnabled: true,
       })
 
       expect(screen.queryByLabelText('de Stephen King, Robert McCammon')).not.toBeOnTheScreen()
@@ -872,8 +609,6 @@ describe('<OfferBody />', () => {
     isDesktopViewport,
     distance,
     hasVideoCookiesConsent,
-    isMultiArtistsEnabled,
-    onShowOfferArtistsModal = jest.fn(),
     children,
   }: RenderOfferBodyType) {
     render(
@@ -884,9 +619,7 @@ describe('<OfferBody />', () => {
           distance={distance}
           adviceVariantInfo={adviceVariantInfoFixture}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
-          onVideoConsentPress={jest.fn()}
-          onShowOfferArtistsModal={onShowOfferArtistsModal}
-          isMultiArtistsEnabled={isMultiArtistsEnabled}>
+          onVideoConsentPress={jest.fn()}>
           {children}
         </OfferBody>
       ),

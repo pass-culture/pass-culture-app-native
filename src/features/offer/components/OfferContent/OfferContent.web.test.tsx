@@ -179,7 +179,6 @@ const renderOfferContent = ({
         adviceVariantInfo={adviceVariantInfoFixture}
         onShowClubAdviceWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
-        onShowOfferArtistsModal={jest.fn()}
       />,
       setupQueryClient
     ),
