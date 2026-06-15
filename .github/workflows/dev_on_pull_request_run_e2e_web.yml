@@ -14,25 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
-        with:
-          node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
-      - name: Enable Corepack
-        run: corepack enable
-      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
-        id: yarn-modules-cache
-        with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Yarn install
-        run: yarn install
+      - uses: actions/checkout@v6
 
       - name: Authentification to Google
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
@@ -45,51 +27,46 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262 #v3.0.0
         with:
           secrets: |-
+            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
             MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
             MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
 
-      - name: Determine latest Maestro version
+      - name: Generate Maestro Web upload name
+        id: generate_name
         run: |
-          MAESTRO_VERSION="$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')"
-          echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> "$GITHUB_ENV"
+          DATE="$(date +"%d/%m/%Y")"
+          COMMIT_HASH="$(git rev-parse --short=8 HEAD)"
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            CUSTOM_NAME="[Nightly][Web] Release du ${DATE} au soir (${COMMIT_HASH})"
+          else
+            CUSTOM_NAME="[Web] Staging du ${DATE} (${COMMIT_HASH})"
+          fi
+          echo "CUSTOM_NAME=$CUSTOM_NAME" >> "$GITHUB_OUTPUT"
 
-      - name: Cleanup Maestro CLI
-        run: |
-          echo "Cleaning up any previous Maestro CLI installation..."
-          rm -rf "$HOME/.maestro"
-
-      - name: Install latest Maestro CLI
-        run: |
-          echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
-          curl --location --silent "https://get.maestro.mobile.dev" | bash
-          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
-          export PATH="$HOME/.maestro/bin:$PATH"
-          maestro --version
-        env:
-          MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
-
-      - name: Start a web staging server
-        run: yarn start:web:staging --host > /dev/null 2>&1 &
-
-      - name: Run Maestro E2E Web Tests
-        env:
-          MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
-          MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
-          MAESTRO_E2E_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_E2E_API_KEY }}
-          MAESTRO_E2E_ENDPOINT: ${{ steps.maestro_secrets.outputs.MAESTRO_E2E_ENDPOINT }}
-          MAESTRO_VALID_IOS_EMAIL: dev-tests-e2e-ios@passculture.team
-          MAESTRO_VALID_ANDROID_EMAIL: dev-tests-e2e-android@passculture.team
-          MAESTRO_INVALID_EMAIL: dev-tests-e2e-invalid@passculture.team
-          MAESTRO_UNREGISTERED_EMAIL: dev-tests-unregistered+e2e@passculture.team
-          MAESTRO_RUN_TRACKING_TESTS: false
-          MAESTRO_RUN_CLOUD_COMMANDS: false
-          MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
-        run: |
-          echo "Running Maestro tests from your branch on web Staging build"
-          export PATH="$HOME/.maestro/bin:$PATH"
-          yarn test:e2e:web:staging --headless
+      - name: Upload and run web tests with Maestro Cloud
+        uses: mobile-dev-inc/action-maestro-cloud@v3.0.1
+        with:
+          api-key: ${{ steps.maestro_secrets.outputs.ROBIN_API_KEY }}
+          project-id: proj_01javz1ncreqb9dcshv3y4da44
+          name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
+          device-os: web
+          device-locale: fr_FR
+          workspace: .maestro/testsV3/
+          include-tags: web
+          async: true
+          env: |
+            MAESTRO_PASSWORD=${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
+            MAESTRO_VALID_IOS_EMAIL=dev-tests-e2e-ios@passculture.team
+            MAESTRO_VALID_ANDROID_EMAIL=dev-tests-e2e-android@passculture.team
+            MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
+            MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
+            MAESTRO_RUN_TRACKING_TESTS=false
+            MAESTRO_RUN_CLOUD_COMMANDS=true
+            MAESTRO_CLOUD_API_KEY=${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
+            MAESTRO_E2E_API_KEY=${{ steps.maestro_secrets.outputs.MAESTRO_E2E_API_KEY }}
+            MAESTRO_E2E_ENDPOINT=${{ steps.maestro_secrets.outputs.MAESTRO_E2E_ENDPOINT }}
 
   slack_notify:
     runs-on: ubuntu-24.04
