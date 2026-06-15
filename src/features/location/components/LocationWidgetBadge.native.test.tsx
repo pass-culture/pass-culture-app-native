@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationWidgetBadge } from 'features/location/components/LocationWidgetBadge'
 import { useLocation } from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
@@ -20,7 +21,7 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('LocationWidgetBadge', () => {
-  it('should show modal when pressing widget', async () => {
+  it('should navigate to search location modal when pressing widget', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'test' },
@@ -31,7 +32,7 @@ describe('LocationWidgetBadge', () => {
 
     await user.press(button)
 
-    expect(screen.getByTestId('location-modal')).toBeOnTheScreen()
+    expect(navigate).toHaveBeenCalledWith('SearchLocationModal')
   })
 
   it.each`

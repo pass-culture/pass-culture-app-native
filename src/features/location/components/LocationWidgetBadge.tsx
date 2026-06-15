@@ -1,13 +1,13 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -15,6 +15,7 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
 
 export const LocationWidgetBadge = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
   const { place, selectedLocationMode } = useLocation()
@@ -28,10 +29,14 @@ export const LocationWidgetBadge = () => {
     'Ouvrir la modale de localisation'
   )
 
+  const onPress = () => {
+    navigate('SearchLocationModal')
+  }
+
   return (
     <Container highlighted={isWidgetHighlighted}>
       <LocationButton
-        onPress={locationModalActions.show}
+        onPress={onPress}
         accessibilityRole={AccessibilityRole.BUTTON}
         accessibilityLabel={computedAccessibilityLabel}>
         {isWidgetHighlighted ? (
@@ -41,7 +46,6 @@ export const LocationWidgetBadge = () => {
         )}
         <LocationTitle numberOfLines={numberOfLines}>{locationTitle}</LocationTitle>
       </LocationButton>
-      <SearchLocationModal />
     </Container>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { goBack } from '__mocks__/@react-navigation/native'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
@@ -7,11 +8,10 @@ import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/g
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { initLocationPermission } from 'libs/locationV2/location.methods'
-import { locationModalActions } from 'libs/locationV2/locationModal.store'
+import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { Button } from 'ui/designSystem/Button/Button'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()
 
@@ -51,11 +51,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 
 describe('HomeLocationModal', () => {
+  beforeEach(() => {
+    initLocationPermission()
+  })
+
   it('should render correctly if modal visible', async () => {
-    act(() => {
-      locationModalActions.show()
-      initLocationPermission()
-    })
     renderHomeLocationModal()
 
     await act(async () => {
@@ -66,10 +66,6 @@ describe('HomeLocationModal', () => {
   })
 
   it('should trigger logEvent "logUserSetLocation" on onSubmit', async () => {
-    act(() => {
-      locationModalActions.show()
-      initLocationPermission()
-    })
     renderHomeLocationModal()
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
@@ -92,11 +88,7 @@ describe('HomeLocationModal', () => {
     expect(analytics.logUserSetLocation).toHaveBeenCalledWith('home')
   })
 
-  it('should hide modal on close modal button press', async () => {
-    act(() => {
-      locationModalActions.show()
-      initLocationPermission()
-    })
+  it('should go back on close modal button press', async () => {
     renderHomeLocationModal()
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
@@ -104,17 +96,11 @@ describe('HomeLocationModal', () => {
 
     await user.press(screen.getByLabelText('Fermer la modale'))
 
-    await waitFor(() => {
-      expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
-    })
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-    act(() => {
-      locationModalActions.show()
-      initLocationPermission()
-    })
 
     renderHomeLocationModal()
     await act(async () => {
@@ -126,10 +112,6 @@ describe('HomeLocationModal', () => {
 
   it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
-    act(() => {
-      locationModalActions.show()
-      initLocationPermission()
-    })
 
     renderHomeLocationModal()
     await act(async () => {
@@ -141,23 +123,10 @@ describe('HomeLocationModal', () => {
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
 
-  it('should show geolocation modal if geolocation is never_ask_again on closing the modal after a geolocation button press', async () => {
-    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
-    act(() => {
-      locationModalActions.show()
-      initLocationPermission()
-    })
+  it('should show geolocation modal if geolocation is never_ask_again and geolocation button pressed', async () => {
+    locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
 
-    const Container = () => {
-      return (
-        <React.Fragment>
-          <GeolocationActivationModal />
-          <HomeLocationModal />
-          <Button wording="Close" onPress={locationModalActions.hide} />
-        </React.Fragment>
-      )
-    }
-    render(<Container />)
+    renderHomeLocationModal()
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -167,10 +136,6 @@ describe('HomeLocationModal', () => {
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    await waitFor(() => {
-      expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
     })
 
     expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()

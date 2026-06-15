@@ -40,7 +40,6 @@ export const useLocation = jest.fn().mockReturnValue({
   onResetPlace,
   selectedPlace: null,
   setSelectedPlace,
-  placeQuery: '',
   setPlaceQuery,
   aroundPlaceRadius: DEFAULT_RADIUS,
   setAroundPlaceRadius,

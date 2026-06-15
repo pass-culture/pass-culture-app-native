@@ -1,12 +1,15 @@
-import React, { useMemo } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
+import { ModalScreenWrapper } from 'features/location/components/ModalScreenWrapper'
 import { LocationState } from 'features/location/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { LocationLabel, LocationMode } from 'libs/location/types'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
-import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
@@ -14,11 +17,11 @@ import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
+import { Spacer } from 'ui/theme'
 
 type LocationModalProps = {
-  visible: boolean
-  onSubmit: () => void
-  onClose: () => void
+  onSubmit?: () => void
+  onClose?: () => void
   selectLocationMode: (mode: LocationMode) => void
   tempLocationMode: LocationState['tempLocationMode']
   hasGeolocPosition: LocationState['hasGeolocPosition']
@@ -54,7 +57,6 @@ const MODE_TO_LABEL_MAP: Record<LocationMode, string> = {
 }
 
 export const LocationModal = ({
-  visible,
   onSubmit,
   hasGeolocPosition,
   tempLocationMode,
@@ -75,6 +77,22 @@ export const LocationModal = ({
   shouldDisplayEverywhereSection,
 }: LocationModalProps) => {
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
+  const { goBack } = useNavigation<UseNavigationType>()
+
+  useEffect(() => {
+    locationModalActions.sync()
+  }, [])
+
+  const handleSubmit = () => {
+    locationModalActions.submit()
+    onSubmit?.()
+    goBack()
+  }
+
+  const handleClose = () => {
+    onClose?.()
+    goBack()
+  }
 
   const shouldShowAroundPlaceRadiusSlider =
     shouldShowRadiusSlider &&
@@ -170,47 +188,48 @@ export const LocationModal = ({
   }
 
   return (
-    <AppModal
-      visible={visible}
-      title=""
-      noPadding
-      isUpToStatusBar
-      scrollEnabled={false}
-      keyboardShouldPersistTaps="handled"
-      testID="location-modal"
-      customModalHeader={
-        <HeaderContainer>
-          <ModalHeader
-            title="Localisation"
-            rightIconAccessibilityLabel="Fermer la modale"
-            rightIcon={Close}
-            onRightIconPress={onClose}
-          />
-        </HeaderContainer>
-      }
-      fixedModalBottom={
-        <LocationModalFooter
-          onSubmit={() => onSubmit()}
-          isSubmitDisabled={isSubmitDisabled}
-          buttonWording={buttonWording}
-        />
-      }>
-      <StyledScrollView>
-        <RadioButtonGroup
-          label={groupLabel}
-          options={options}
-          value={currentValue}
-          onChange={handleChange}
-          variant="detailed"
-        />
-      </StyledScrollView>
-    </AppModal>
+    <ModalScreenWrapper onClose={handleClose}>
+      {(closeWithTransition) => (
+        <React.Fragment>
+          <HeaderContainer>
+            <ModalHeader
+              title="Localisation"
+              rightIconAccessibilityLabel="Fermer la modale"
+              rightIcon={Close}
+              onRightIconPress={closeWithTransition}
+            />
+          </HeaderContainer>
+          <StyledScrollView>
+            <RadioButtonGroup
+              label={groupLabel}
+              options={options}
+              value={currentValue}
+              onChange={handleChange}
+              variant="detailed"
+            />
+          </StyledScrollView>
+          <FooterContainer>
+            <LocationModalFooter
+              onSubmit={handleSubmit}
+              isSubmitDisabled={isSubmitDisabled}
+              buttonWording={buttonWording}
+            />
+          </FooterContainer>
+          <Spacer.BottomScreen />
+        </React.Fragment>
+      )}
+    </ModalScreenWrapper>
   )
 }
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  flex: 1,
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   marginTop: theme.designSystem.size.spacing.xl,
+}))
+
+const FooterContainer = styled.View(({ theme }) => ({
+  paddingBottom: theme.modal.spacing.LG,
 }))
 
 const HeaderContainer = styled.View(({ theme }) => ({

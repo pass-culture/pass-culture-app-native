@@ -18,12 +18,7 @@ export const selectAroundMeMode = async ({ shouldOpenDirectlySettings }: Params 
       void Linking.openSettings()
       void analytics.logOpenLocationSettings()
     } else {
-      locationModalActions.hide()
-      // 2 native modals can't be opened at the same time or the app will freeze, so we need to wait for the first one to be closed
-      // we keep the imperative approach to avoid using onModalHide that bursts the logic between files
-      setTimeout(() => {
-        locationActions.showPermissionModal()
-      }, 500)
+      locationActions.showPermissionModal()
     }
   } else {
     await contextualRequestGeolocPermission({

@@ -11,7 +11,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 const trackingProps = {
   index: 1,
@@ -38,9 +37,6 @@ jest.mock('libs/location/location', () => ({
 }))
 
 const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
-
-const mockShowModal = jest.fn()
-const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -83,13 +79,7 @@ describe('TrendsModule', () => {
     expect(removeSelectedVenueSpy).toHaveBeenCalledTimes(1)
   })
 
-  it('should open venue map location modal when pressing venue map block content type and user location is everywhere', async () => {
-    useModalAPISpy.mockReturnValueOnce({
-      visible: false,
-      showModal: mockShowModal,
-      hideModal: jest.fn(),
-      toggleModal: jest.fn(),
-    })
+  it('should navigate to venue map location modal when pressing venue map block content type and user location is everywhere', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       selectedLocationMode: LocationMode.EVERYWHERE,
@@ -100,7 +90,7 @@ describe('TrendsModule', () => {
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('VenueMapLocationModal', { openedFrom: 'trend_block' })
   })
 
   it('should redirect to thematic home when pressing trend block content type', async () => {
@@ -124,12 +114,6 @@ describe('TrendsModule', () => {
   })
 
   it('should not log analytics when pressing venue map block content type and user location is everywhere', async () => {
-    useModalAPISpy.mockReturnValueOnce({
-      visible: false,
-      showModal: mockShowModal,
-      hideModal: jest.fn(),
-      toggleModal: jest.fn(),
-    })
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       selectedLocationMode: LocationMode.EVERYWHERE,

@@ -9,7 +9,7 @@ import {
 } from 'features/auth/helpers/checkStatusType'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { LocationWidget } from 'features/location/components/LocationWidget'
-import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
+import { LocationWidgetWrapperDesktop } from 'features/location/components/LocationWidgetWrapperDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -67,7 +67,7 @@ export const HomeHeader: FunctionComponent = function () {
             </TitleContainer>
             <LocationWidgetDesktopContainer testID="web-location-widget">
               <StyledSeparator height={height} />
-              <LocationWidgetDesktop />
+              <LocationWidgetWrapperDesktop screenOrigin={ScreenOrigin.HOME} />
             </LocationWidgetDesktopContainer>
           </HeaderContainer>
         </React.Fragment>
