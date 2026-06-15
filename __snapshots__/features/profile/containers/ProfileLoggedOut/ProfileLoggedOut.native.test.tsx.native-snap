@@ -943,23 +943,6 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
                     Signaler un bug
                   </Text>
                 </View>
-                <View
-                  style={
-                    {
-                      "alignItems": "flex-end",
-                    }
-                  }
-                >
-                  <View
-                    height={20}
-                    testID="section-row-navigable-icon"
-                    width={20}
-                  >
-                    <Text>
-                      section-row-navigable-icon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
               </View>
             </View>
           </View>
