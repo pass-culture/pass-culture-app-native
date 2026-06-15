@@ -11,6 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import * as Keychain from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
+import { logoutStoreActions, logoutStoreSelectors } from 'shared/store/logoutStore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
@@ -94,6 +95,14 @@ describe('useLoginRoutine', () => {
     await act(loginFunction(result.current))
 
     await waitFor(() => expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken))
+  })
+
+  it('should lift the logout guard so the API layer can redirect to login again', async () => {
+    logoutStoreActions.setIsLoggingOut(true)
+    const { result } = renderUseLoginRoutine()
+    await act(loginFunction(result.current))
+
+    expect(logoutStoreSelectors.selectIsLoggingOut()).toBe(false)
   })
 
   describe('connectServicesRequiringUserId', () => {

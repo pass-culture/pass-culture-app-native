@@ -11,6 +11,7 @@ import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+import { logoutStoreSelectors } from 'shared/store/logoutStore'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
@@ -149,7 +150,11 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationStatus.status &&
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    navigateToLoginMethods()
+    // During an intentional logout the tokens are cleared on purpose: requests still
+    // in flight end up here, and the login page must not open on its own.
+    if (!logoutStoreSelectors.selectIsLoggingOut()) {
+      navigateToLoginMethods()
+    }
     return {}
   }
 

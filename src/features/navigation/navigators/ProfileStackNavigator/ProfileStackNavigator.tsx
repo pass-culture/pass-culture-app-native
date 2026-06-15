@@ -158,17 +158,17 @@ const profileStackNavigatorPathDefinition = {
         path: 'profile/suppression/confirmation',
       },
     },
-    // FIXME(PC-00000): Why is it not in the routes
+    // No `if: useIsSignedIn` on the deletion success screens: they are displayed at the
+    // very moment the app logs the user out (they call signOut on mount), so gating them
+    // on the logged-in state would remove them from the navigator before/while shown.
     DeleteProfileSuccess: {
       screen: DeleteProfileSuccess,
-      if: useIsSignedIn,
       linking: {
         path: 'profile/suppression/succes',
       },
     },
     DeactivateProfileSuccess: {
       screen: DeactivateProfileSuccess,
-      if: useIsSignedIn,
       linking: {
         path: 'profile/desactivation/succes',
       },

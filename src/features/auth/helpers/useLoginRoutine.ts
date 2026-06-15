@@ -7,6 +7,7 @@ import { LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { saveRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
+import { logoutStoreActions } from 'shared/store/logoutStore'
 
 export type LoginRoutine = (
   response: SigninResponseV2,
@@ -26,6 +27,9 @@ export function useLoginRoutine(): LoginRoutine {
    */
 
   return async (response, method, analyticsType) => {
+    // A new session starts: lift the logout guard so the API layer can redirect to
+    // the login page again if the session breaks (e.g. expired refresh token).
+    logoutStoreActions.setIsLoggingOut(false)
     connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
