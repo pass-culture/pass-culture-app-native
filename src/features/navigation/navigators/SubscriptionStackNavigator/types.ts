@@ -70,6 +70,7 @@ export type SubscriptionStackParamList = {
   BonificationRecap: undefined
   BonificationRefused?: { bonificationRefusedType: BonificationRefusedType }
   BonificationTitle: undefined
+  BonificationIncorrectLink: undefined
 } & CulturalSurveyRootStackParamList
 
 export type SubscriptionStackRouteName = keyof SubscriptionStackParamList
