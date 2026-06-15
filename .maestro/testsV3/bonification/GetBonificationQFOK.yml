@@ -1,0 +1,113 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - bonification
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+
+- assertVisible: 'Bonus de 50 €'
+
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
+
+- assertVisible: 'Bonus de 50 €'
+
+- tapOn: 'Comment ça marche ?'
+
+- scrollUntilVisible:
+    element: 'Des questions sur ton crédit ?'
+
+- tapOn: 'Vérifier maintenant'
+
+- assertVisible: 'Quel est ce bonus et comment en bénéficier ?'
+
+- tapOn: 'Continuer'
+
+- assertVisible: "Quelles sont les informations requises d'un de tes parents ou représentants légaux ?"
+
+- tapOn: 'Commencer'
+
+- assertVisible: 'Quels sont les noms et prénoms de ton représentant légal ?'
+
+- tapOn: 'Champs de texte - Prénom - Obligatoire'
+
+- inputRandomPersonName
+
+- tapOn: 'Nom de naissance' # afin de perdre le focus du champ de texte
+
+- tapOn: 'Champs de texte - Nom de naissance - Le nom avant tout changement - Obligatoire'
+
+- inputRandomPersonName
+
+- tapOn: 'Nom de naissance'
+
+- tapOn: "Champs de texte - Nom d'usage - Le nom utilisé au quotidien"
+
+- inputRandomPersonName
+
+- tapOn: 'Nom de naissance'
+
+- tapOn: 'Je ne connais pas son nom de naissance'
+
+- runFlow:
+    file: ../common/navigation/TapOnBack.yml
+
+- tapOn: 'Continuer vers la civilité'
+
+- assertVisible: 'Quelle est la civilité de ton représentant légal ?'
+
+- tapOn: 'Civilité - Madame - non sélectionné'
+
+- tapOn: 'Continuer vers la date de naissance'
+
+- repeat:
+    times: 3
+    commands:
+      - swipe: # years
+          start: 67%, 59%
+          end: 67%, 95%
+
+- tapOn: 'Continuer vers le lieu de naissance'
+
+- assertVisible: 'Quel est le lieu de naissance de ton représentant légal ?'
+
+- tapOn: 'Champs de texte - Pays de naissance - Exemple : France - Obligatoire'
+
+- inputText: 'France'
+
+- tapOn: 'Proposition de pays 1 : France'
+
+- tapOn: 'Pays de naissance'
+
+- tapOn: 'Je ne connais pas son lieu de naissance'
+
+- runFlow:
+    file: ../common/navigation/TapOnBack.yml
+
+- tapOn: 'Champs de texte - Commune de naissance - Exemple : Paris - Obligatoire'
+
+- inputText: 'Paris'
+
+- tapOn: 'Pays de naissance'
+
+- tapOn: 'Proposition de ville 1 : Paris (75)'
+
+- tapOn: 'Continuer vers le résumé'
+
+- assertVisible: "Vérifie les infos avant d'envoyer ta demande"
+
+- scroll
+
+- tapOn: 'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées'
+
+- tapOn: 'Confirmer'
+
+- assertVisible: '.*Bonjour.*'
