@@ -2,8 +2,8 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - onboarding
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/AcceptCookies.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/cookies/AcceptCookies.yml
 - assertVisible: "Bienvenue sur\_le\_pass\_Culture"
 - tapOn: "C’est parti\_!"
 

@@ -2,11 +2,11 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - auth
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkToProfile.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToProfile.yml
 
 - tapOn: 'Se connecter'
 - tapOn: 'Continuer avec mon e-mail'
