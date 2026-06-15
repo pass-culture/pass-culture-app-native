@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ServerErrorTag } from 'shared/ServerErrorTag/ServerErrorTag'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   subtitle?: string
   children?: React.ReactNode
   withMargins?: boolean
+  hasServerError?: boolean
 }
 
 export const PageHeader = ({
@@ -16,12 +18,14 @@ export const PageHeader = ({
   numberOfLines = 1,
   subtitle,
   withMargins = false,
+  hasServerError = false,
   children,
 }: Props) => {
   return (
     <React.Fragment>
       {withMargins ? <Spacer.TopScreen /> : null}
       <HeaderContainer withMargins={withMargins}>
+        {hasServerError ? <ServerErrorTag /> : null}
         <TitleContainer>
           <TitleText numberOfLines={numberOfLines}>{title}</TitleText>
           {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}

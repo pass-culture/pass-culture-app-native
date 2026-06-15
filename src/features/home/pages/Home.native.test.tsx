@@ -48,8 +48,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 useRoute.mockReturnValue({ params: undefined })
 
 mockUseHomepageData.mockReturnValue({
-  modules: [formattedVenuesModule],
-  homeEntryId: 'fakeEntryId',
+  homepage: { modules: [formattedVenuesModule], id: 'fakeEntryId' },
+  error: null,
 })
 
 jest.useFakeTimers()
@@ -66,8 +66,8 @@ describe('Home page', () => {
   it('should render correctly', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
     mockUseHomepageData.mockReturnValueOnce({
-      modules: [formattedVenuesModule],
-      id: 'fakeEntryId',
+      homepage: { modules: [formattedVenuesModule], id: 'fakeEntryId' },
+      error: null,
     })
     renderHome()
     await screen.findByText('Bienvenue !')
@@ -80,8 +80,8 @@ describe('Home page', () => {
   it('should log ConsultHome', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
     mockUseHomepageData.mockReturnValueOnce({
-      modules: [formattedVenuesModule],
-      id: 'fakeEntryId',
+      homepage: { modules: [formattedVenuesModule], id: 'fakeEntryId' },
+      error: null,
     })
     renderHome()
     await screen.findByText('Bienvenue !')

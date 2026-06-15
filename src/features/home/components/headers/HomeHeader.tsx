@@ -15,12 +15,15 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { ServerErrorTag } from 'shared/ServerErrorTag/ServerErrorTag'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
-export const HomeHeader: FunctionComponent = function () {
+type Props = { hasServerError?: boolean }
+
+export const HomeHeader: FunctionComponent<Props> = function ({ hasServerError }) {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport, designSystem } = useTheme()
@@ -60,6 +63,7 @@ export const HomeHeader: FunctionComponent = function () {
       return (
         <React.Fragment>
           <Spacer.TopScreen />
+          {hasServerError ? <ServerErrorTag /> : null}
           <HeaderContainer>
             <TitleContainer>
               <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
@@ -79,7 +83,8 @@ export const HomeHeader: FunctionComponent = function () {
         title={welcomeTitle}
         subtitle={getSubtitle()}
         numberOfLines={numberOfLines}
-        withMargins>
+        withMargins
+        hasServerError={hasServerError}>
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
@@ -92,6 +97,7 @@ export const HomeHeader: FunctionComponent = function () {
     currency,
     euroToPacificFrancRate,
     height,
+    hasServerError,
   ])
 
   return Header

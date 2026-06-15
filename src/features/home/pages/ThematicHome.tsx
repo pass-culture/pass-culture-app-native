@@ -144,7 +144,8 @@ export const ThematicHome: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
-  const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
+  const { homepage } = useGetHomepageById(requestHomeId)
+  const { id: homeId, modules, thematicHeader } = homepage
   const {
     userLocation,
     hasGeolocPosition,

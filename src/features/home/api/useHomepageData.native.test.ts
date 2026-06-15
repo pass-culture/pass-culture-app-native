@@ -91,7 +91,7 @@ describe('useHomepageModules', () => {
     const expectedResult = homepageList[0]
 
     await waitFor(() => {
-      expect(result.current).toEqual(expectedResult)
+      expect(result.current).toEqual({ homepage: expectedResult, error: null })
     })
   })
 })
