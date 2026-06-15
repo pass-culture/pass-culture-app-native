@@ -930,7 +930,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       }
                     >
                       <View
-                        accessibilityLabel="position dans le monde"
                         height={32}
                         width={32}
                       >
