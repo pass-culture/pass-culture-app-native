@@ -1,19 +1,20 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - profile
+  - fix
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
-      file: ../common/generateUser.js
+      file: ../common/helpers/generateUser.js
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
         age: 18
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
-- runFlow: ../common/GoToProfileFromTabBar.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
     element: 'Partager le pass Culture'
@@ -23,11 +24,17 @@ onFlowStart:
 - tapOn: 'Plan du site'
 - assertVisible: 'Plan du site'
 - runFlow:
-    file: ../common/TapOnBack.yml
+    file: ../common/navigation/TapOnBack.yml
 
 - tapOn:
     text: 'Nouvelle fenêtre : Les engagements du pass Culture'
     index: 0
+- runFlow:
+    when:
+      platform: iOS
+      visible: 'Fermer'
+    commands:
+    - tapOn: 'Fermer'
 - assertVisible: 'Accessibilité'
 - assertVisible: "L'accessibilité au pass Culture"
 - runFlow:
@@ -60,25 +67,25 @@ onFlowStart:
 - tapOn: 'Déclaration d’accessibilité - Android'
 - assertVisible: 'Déclaration d’accessibilité - Android'
 - runFlow:
-    file: ../common/TapOnBack.yml
+    file: ../common/navigation/TapOnBack.yml
 
 - tapOn: 'Déclaration d’accessibilité - iOS'
 - assertVisible: 'Déclaration d’accessibilité - iOS'
 - runFlow:
-    file: ../common/TapOnBack.yml
+    file: ../common/navigation/TapOnBack.yml
 
 - tapOn: 'Déclaration d’accessibilité - web'
 - assertVisible: 'Déclaration d’accessibilité web'
 - runFlow:
-    file: ../common/TapOnBack.yml
+    file: ../common/navigation/TapOnBack.yml
 
 - tapOn: 'Parcours recommandés - web'
 - assertVisible: 'Parcours recommandés web'
 
 - runFlow:
-    file: ../common/TapOnBack.yml
+    file: ../common/navigation/TapOnBack.yml
 
 - runFlow:
-    file: ../common/TapOnBack.yml
+    file: ../common/navigation/TapOnBack.yml
 
-- runFlow: ../common/StopApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml

@@ -81,9 +81,9 @@ describe('Search Results V2', () => {
 
     render(reactQueryProviderHOC(<SearchResultsV2 />))
 
-    expect(screen.getByTestId('offers-search-tab')).toBeOnTheScreen()
-    expect(screen.getByTestId('artists-search-tab')).toBeOnTheScreen()
-    expect(screen.getByTestId('venues-search-tab')).toBeOnTheScreen()
+    expect(screen.getByTestId('Offres-search-tab')).toBeOnTheScreen()
+    expect(screen.getByTestId('Artistes-search-tab')).toBeOnTheScreen()
+    expect(screen.getByTestId('Lieux-search-tab')).toBeOnTheScreen()
   })
 
   it('should not display search tabs when `isFocusOnSuggestions` is true', () => {

@@ -2,18 +2,18 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - profile
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
-      file: ../common/generateUser.js
+      file: ../common/helpers/generateUser.js
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
         age: 18
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
-- runFlow: ../common/GoToProfileFromTabBar.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
 - tapOn: 'Informations personnelles'
 
@@ -41,13 +41,13 @@ onFlowStart:
 - tapOn: 'Revenir en arrière'
 
 - tapOn: 'Je n’utilise plus l’application'
-- runFlow: ../common/DeletionNotAllowed.yml
+- runFlow: ../common/assertions/DeletionNotAllowed.yml
 
 - tapOn: 'Je n’ai plus de crédit ou très peu de crédit restant'
-- runFlow: ../common/DeletionNotAllowed.yml
+- runFlow: ../common/assertions/DeletionNotAllowed.yml
 
 - tapOn: 'Je souhaite supprimer mes données personnelles'
-- runFlow: ../common/DeletionNotAllowed.yml
+- runFlow: ../common/assertions/DeletionNotAllowed.yml
 
 - scrollUntilVisible:
     element: 'Autre'
@@ -65,4 +65,4 @@ onFlowStart:
 - assertVisible: 'Contacter le support'
 - tapOn: 'Retourner au profil'
 
-- runFlow: ../common/StopApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml

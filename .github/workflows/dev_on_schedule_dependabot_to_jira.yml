@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
 
       - name: Authenticate to Google Cloud
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
@@ -48,7 +48,7 @@ jobs:
 
       - name: Get Jira Secrets
         id: secrets
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
             JIRA_USER_EMAIL:passculture-metier-ehp/passculture-app-native-jira-user-email
@@ -67,7 +67,7 @@ jobs:
 
       # Auth GitHub App pour accéder aux alertes Dependabot
       - name: Authenticate through GitHub App
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 #v3.2.0
         id: github-app-token
         with:
           app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
@@ -77,7 +77,7 @@ jobs:
           permission-vulnerability-alerts: read
 
       - name: Create Jira tickets for yesterday's alerts
-        uses: actions/github-script@v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #v9.0.0
         env:
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}

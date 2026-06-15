@@ -9,17 +9,11 @@ import { locationModalActions } from 'libs/locationV2/locationModal.store'
 
 type Params = {
   shouldOpenDirectlySettings?: boolean
-  shouldDirectlyValidate?: boolean
 }
-export const selectAroundMeMode = async ({
-  shouldOpenDirectlySettings,
-  shouldDirectlyValidate,
-}: Params = {}) => {
+export const selectAroundMeMode = async ({ shouldOpenDirectlySettings }: Params = {}) => {
   const permissionState = locationSelectors.selectPermissionState()
 
   if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-    locationActions.setPlace(null)
-    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     if (shouldOpenDirectlySettings) {
       void Linking.openSettings()
       void analytics.logOpenLocationSettings()
@@ -31,19 +25,9 @@ export const selectAroundMeMode = async ({
         locationActions.showPermissionModal()
       }, 500)
     }
-  } else if (permissionState === GeolocPermissionState.GRANTED && shouldDirectlyValidate) {
-    locationActions.setPlace(null)
-    locationActions.setLocationMode(LocationMode.AROUND_ME)
   } else {
     await contextualRequestGeolocPermission({
-      onAcceptance: () =>
-        shouldDirectlyValidate
-          ? locationActions.setLocationMode(LocationMode.AROUND_ME)
-          : locationModalActions.setLocationMode(LocationMode.AROUND_ME),
-      onRefusal: () => locationActions.setLocationMode(LocationMode.EVERYWHERE),
+      onAcceptance: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
     })
-  }
-  if (shouldDirectlyValidate) {
-    locationModalActions.hide()
   }
 }

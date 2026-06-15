@@ -1,35 +1,53 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { ArtistsSearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTabs/ArtistsSearchTab'
-import { OffersSearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTabs/OffersSearchTab'
+import { SearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTabs/SearchTab'
 import { SearchTabProps } from 'features/search/pages/SearchResults/v2/components/SearchTabs/types'
-import { VenuesSearchTab } from 'features/search/pages/SearchResults/v2/components/SearchTabs/VenuesSearchTab'
+import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { SearchFilter } from 'features/search/queries/useSearchOffersQuery/types'
+import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
+import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = Omit<SearchTabProps, 'isSelected'> & {
   selectedSearchTab: SearchFilter | undefined
 }
 
-const SEARCH_TABS_MAP = {
-  Offres: OffersSearchTab,
-  Lieux: VenuesSearchTab,
-  Artistes: ArtistsSearchTab,
-}
-
 export const SearchTabs: FC<Props> = ({ searchFilters, selectedSearchTab, onTabPress }) => {
+  const { data: hasOffersData } = useSearchOffersQuery(searchFilters, {
+    select: (offersResponse) => !!offersResponse.pages[0]?.offersResponse.nbHits,
+  })
+
+  const { data: hasVenuesData } = useSearchVenuesQuery(searchFilters, {
+    select: (venuesResponse) =>
+      !!(
+        (venuesResponse?.venuesResponse?.hits.length ?? 0) +
+        (venuesResponse.venueNotOpenToPublic?.hits.length ?? 0)
+      ),
+  })
+
+  const { data: hasArtistsData } = useSearchArtistsQuery(searchFilters, {
+    select: (artistsResponse) => !!artistsResponse?.artistsResponse.nbHits,
+  })
+
+  const searchTabs = [
+    hasOffersData && 'Offres',
+    hasVenuesData && 'Lieux',
+    hasArtistsData && 'Artistes',
+  ].filter((tab): tab is SearchFilter => Boolean(tab))
+
+  if (searchTabs.length <= 1) return null
+
   return (
     <StyledSearchTabContainer gap={1}>
-      {Object.keys(SEARCH_TABS_MAP).map((type) => {
-        const TabComponent = SEARCH_TABS_MAP[type]
-
+      {searchTabs.map((searchTab) => {
         return (
-          <TabComponent
-            key={type}
-            isSelected={selectedSearchTab === type}
-            onTabPress={onTabPress}
-            searchFilters={searchFilters}
+          <SearchTab
+            testID={`${searchTab}-search-tab`}
+            key={`${searchTab}-search-tab`}
+            isSelected={selectedSearchTab === searchTab}
+            onPress={() => onTabPress(searchTab)}
+            title={searchTab}
           />
         )
       })}

@@ -849,7 +849,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": true,
+                  "disabled": false,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -863,7 +863,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                 }
               }
               accessible={true}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -880,10 +880,10 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                     {
                       "alignItems": "center",
                       "alignSelf": "center",
-                      "backgroundColor": "#f1f1f4",
+                      "backgroundColor": "#6123df",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#6123df",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -929,7 +929,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                         "lineHeight": 22,
                       },
                       {
-                        "color": "#696a6f",
+                        "color": "#ffffff",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,

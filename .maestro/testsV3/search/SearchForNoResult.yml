@@ -2,14 +2,14 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - search
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkToHome.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
 
-- runFlow: ../common/GoToSearchFromTabBar.yml
-- runFlow: ../common/GoToSearchFromTabBar.yml
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
 
 - assertVisible: 'Rechercher'
 
@@ -43,4 +43,4 @@ onFlowStart:
 
 - tapOn: 'Rechercher'
 
-- runFlow: ../common/StopApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml

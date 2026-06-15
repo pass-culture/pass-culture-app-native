@@ -10,8 +10,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
@@ -19,8 +17,6 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
@@ -39,6 +35,8 @@ type ArtistCategoryPlaylistProps = {
     artistId: string,
     playlistIndex?: number
   ) => void
+  proAdvicesSegment?: string
+  enableProAdvicesTag?: boolean
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
@@ -50,6 +48,8 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   playlistIndex,
   title,
   onViewableItemsChanged,
+  proAdvicesSegment,
+  enableProAdvicesTag,
 }) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
@@ -58,8 +58,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   const labelMapping = useSubcategoryOfferLabelMapping()
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const isFocused = useIsFocused()
-  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
-  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
 
   const handleArtistOffersViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
     if (!isFocused) return

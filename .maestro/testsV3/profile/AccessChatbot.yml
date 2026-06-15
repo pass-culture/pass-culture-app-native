@@ -2,18 +2,18 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - profile
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
-      file: ../common/generateUser.js
+      file: ../common/helpers/generateUser.js
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
         age: 18
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
-- runFlow: ../common/GoToProfileFromTabBar.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
     element:
@@ -37,4 +37,4 @@ onFlowStart:
             - tapOn: 'Revenir en arrière'
       - assertVisible: 'Poser une question'
 
-- runFlow: ../common/StopApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml

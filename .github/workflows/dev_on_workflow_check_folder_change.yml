@@ -25,12 +25,12 @@ jobs:
     outputs:
       folder_changed: ${{ steps.folder-check-changed-files.outputs.any_modified }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
         with:
           fetch-depth: 0
           fetch-tags: ${{ inputs.fetch-tags }}
       - id: folder-check-changed-files
-        uses: tj-actions/changed-files@v47
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 #v47.0.6
         with:
           base_sha: ${{ inputs.base_sha }}
           files: |

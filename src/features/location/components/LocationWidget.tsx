@@ -30,14 +30,8 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
   const { place, selectedLocationMode } = useLocation()
-  const {
-    isTooltipVisible,
-    hideTooltip,
-    widgetWidth,
-    onWidgetLayout,
-    touchableRef,
-    enableTooltip,
-  } = useLocationWidgetTooltip(screenOrigin)
+  const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
+    useLocationWidgetTooltip(screenOrigin)
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
 
@@ -72,19 +66,17 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
           label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
           isVisible={isTooltipVisible}
           onHide={hideTooltip}
-          widgetWidth={widgetWidth}
         />
       ) : null}
     </React.Fragment>
   )
 }
 
-const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth, theme }) => {
-  const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = theme.designSystem.size.spacing.xl
+const StyledTooltip = styled(Tooltip)(({ theme }) => {
   return {
     position: 'absolute',
     top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
-    right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
+    right: 0,
     width: TOOLTIP_WIDTH,
   }
 })

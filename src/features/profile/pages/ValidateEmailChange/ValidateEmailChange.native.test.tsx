@@ -7,6 +7,7 @@ import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
 import {
   RootStackParamList,
@@ -53,6 +54,10 @@ const navigation = {
   RootStackParamList & ProfileStackParamList,
   'ValidateEmailChange'
 >
+
+jest.mock('features/navigation/navigationRef', () => ({
+  resetFromRef: jest.fn(),
+}))
 
 type RootAndProfileRouteProp = RouteProp<
   RootStackParamList & ProfileStackParamList,
@@ -114,8 +119,8 @@ describe('ValidateEmailChange', () => {
 
     await user.press(screen.getByText('Valider l’adresse e-mail'))
 
-    expect(navigation.reset).toHaveBeenNthCalledWith(1, {
-      routes: [{ name: 'LoginMethods', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
+    expect(resetFromRef).toHaveBeenCalledWith('LoginMethods', {
+      from: StepperOrigin.VALIDATE_EMAIL_CHANGE,
     })
   })
 

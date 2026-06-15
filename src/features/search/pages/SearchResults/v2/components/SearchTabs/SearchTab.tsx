@@ -1,15 +1,14 @@
 import React, { FC, ComponentProps } from 'react'
 import styled from 'styled-components/native'
 
+import { SearchFilter } from 'features/search/queries/useSearchOffersQuery/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Checkmark } from 'ui/svg/icons/Checkmark'
 import { Typo } from 'ui/theme'
 
-export const SearchTab: FC<ComponentProps<typeof StyledSearchFilterTab> & { title: string }> = ({
-  isSelected,
-  title,
-  ...props
-}) => {
+export const SearchTab: FC<
+  ComponentProps<typeof StyledSearchFilterTab> & { title: SearchFilter }
+> = ({ isSelected, title, ...props }) => {
   return (
     <StyledSearchFilterTab isSelected={isSelected} {...props}>
       {isSelected ? <Checkmark /> : null}

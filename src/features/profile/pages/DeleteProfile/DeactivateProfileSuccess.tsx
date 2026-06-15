@@ -18,7 +18,7 @@ export function DeactivateProfileSuccess() {
   const { data: reactivationLimit } = useAccountUnsuspensionLimit()
 
   useEffect(() => {
-    signOut()
+    void signOut()
   }, [signOut])
 
   return (

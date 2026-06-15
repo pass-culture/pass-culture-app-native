@@ -1,26 +1,34 @@
-import { PermissionsAndroid } from 'react-native'
+import { PermissionsAndroid, PermissionStatus } from 'react-native'
 import { promptForEnableLocationIfNeeded } from 'react-native-android-location-enabler'
 
 import { AskGeolocPermission } from 'libs/location/types'
 
 import { GeolocPermissionState } from '../enums'
 
-export const requestGeolocPermission: AskGeolocPermission = async () => {
-  const status = await PermissionsAndroid.request(
-    PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
-  )
+const { ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION } = PermissionsAndroid.PERMISSIONS
+const { GRANTED, NEVER_ASK_AGAIN } = PermissionsAndroid.RESULTS
 
-  switch (status) {
-    case PermissionsAndroid.RESULTS.GRANTED:
-      try {
-        await promptForEnableLocationIfNeeded()
-        return GeolocPermissionState.GRANTED
-      } catch {
-        return GeolocPermissionState.DENIED
-      }
-    case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
-      return GeolocPermissionState.NEVER_ASK_AGAIN
-    default:
-      return GeolocPermissionState.DENIED
+export const requestGeolocPermission: AskGeolocPermission = async () => {
+  const statuses = await requestLocationPermissions()
+
+  if (statuses.includes(GRANTED)) return enableLocationIfNeeded()
+  if (statuses.includes(NEVER_ASK_AGAIN)) return GeolocPermissionState.NEVER_ASK_AGAIN
+  return GeolocPermissionState.DENIED
+}
+
+const enableLocationIfNeeded = async (): Promise<GeolocPermissionState> => {
+  try {
+    await promptForEnableLocationIfNeeded()
+    return GeolocPermissionState.GRANTED
+  } catch {
+    return GeolocPermissionState.DENIED
   }
+}
+
+const requestLocationPermissions = async (): Promise<PermissionStatus[]> => {
+  const statuses = await PermissionsAndroid.requestMultiple([
+    ACCESS_FINE_LOCATION,
+    ACCESS_COARSE_LOCATION,
+  ])
+  return [statuses[ACCESS_FINE_LOCATION], statuses[ACCESS_COARSE_LOCATION]]
 }

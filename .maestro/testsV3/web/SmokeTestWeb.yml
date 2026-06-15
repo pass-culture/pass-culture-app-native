@@ -7,12 +7,12 @@ tags:
     visible: 'Respect de ta vie privée'
     timeout: 60000
 
-- runFlow: ../common/AcceptCookies.yml
+- runFlow: ../common/cookies/AcceptCookies.yml
 
 - assertVisible: "Bienvenue\_!"
 - assertVisible: 'Débloque ton crédit'
 
-- runFlow: ../common/GoToSearchFromTabBar.yml
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
 - assertVisible: 'Parcours les catégories'
 - tapOn: 'CINÉMA'
 - assertVisible: 'Cinéma'
@@ -28,11 +28,11 @@ tags:
     commands:
       - assertVisible: 'Pas de résultat'
 
-- runFlow: ../common/GoToFavoritesFromTabBar.yml
+- runFlow: ../common/navigation/GoToFavoritesFromTabBar.yml
 - assertVisible: 'Identifie-toi pour retrouver tes favoris'
 - assertVisible: 'Créer un compte'
 - assertVisible: 'Se connecter'
 
-- runFlow: ../common/GoToProfileFromTabBar.yml
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
 - stopApp
