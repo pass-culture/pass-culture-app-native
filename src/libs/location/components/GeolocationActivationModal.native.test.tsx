@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { GeolocPermissionState } from 'libs/location/location'
 import { locationActions } from 'libs/locationV2/location.store'
 import { render, screen, userEvent } from 'tests/utils'

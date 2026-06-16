@@ -1,6 +1,6 @@
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { requestGeolocPermission } from 'libs/locationV2/location.methods'
+import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 

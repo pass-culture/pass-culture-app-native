@@ -8,9 +8,9 @@ import {
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
-import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
-import { requestGeolocPermission } from 'libs/locationV2/location.methods'
+import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { locationActions } from 'libs/locationV2/location.store'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
