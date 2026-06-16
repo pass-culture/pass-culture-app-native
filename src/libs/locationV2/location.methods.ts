@@ -19,8 +19,10 @@ export const initLocationPermission = () => {
 
 export const syncPermissionsAndLocation = async () => {
   await syncPermissions()
-  await syncLocationMode()
-  await syncLocation()
+
+  syncLocationMode()
+  void syncLocation()
+  hidePermissionModalIfPermissionGranted()
 }
 
 const syncPermissions = async () => {
@@ -28,7 +30,15 @@ const syncPermissions = async () => {
   locationActions.setPermissionState(permission)
 }
 
-const syncLocationMode = async () => {
+const hidePermissionModalIfPermissionGranted = () => {
+  const permission = locationSelectors.selectPermissionState()
+  const isPermissionModalVisible = locationSelectors.selectIsPermissionModalVisible()
+  if (permission === GeolocPermissionState.GRANTED && isPermissionModalVisible) {
+    locationActions.hidePermissionModal()
+  }
+}
+
+const syncLocationMode = () => {
   if (
     locationSelectors.selectPermissionState() !== GeolocPermissionState.GRANTED &&
     locationSelectors.selectLocationMode() === LocationMode.AROUND_ME
@@ -62,5 +72,11 @@ export const requestGeolocPermission = async (params: { onSuccess?: () => void }
   const permission = await requestOSGeolocPermission()
   locationActions.setPermissionState(permission)
   await syncLocation()
-  if (permission === GeolocPermissionState.GRANTED) params.onSuccess?.()
+
+  if (permission === GeolocPermissionState.GRANTED) {
+    return params.onSuccess?.()
+  }
+  if (permission === GeolocPermissionState.NEVER_ASK_AGAIN) {
+    locationActions.showPermissionModal()
+  }
 }

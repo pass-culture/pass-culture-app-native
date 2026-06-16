@@ -129,6 +129,7 @@ const locationStore = createStore({
 
       return LocationModeToLocationTypeMap[state.locationMode]
     },
+    selectIsPermissionModalVisible: () => (state) => state.isPermissionModalVisible,
   },
   options: { persist: true, persistKeys: ['locationMode', 'configuration'] },
 })
