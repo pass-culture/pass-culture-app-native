@@ -23,7 +23,7 @@ const libsThatHaveJSFilesContainingJSX = [
 
 const packageJson = require('./package.json')
 
-function getGitInfo(command) {
+const getGitInfo = (command) => {
   try {
     return execSync(command).toString().trim()
   } catch (e) {
@@ -146,6 +146,12 @@ export default ({ mode }) => {
       rolldownOptions: {
         resolve: {
           extensions: allExtensions,
+        },
+        moduleTypes: {
+          '.js': 'jsx',
+        },
+        transform: {
+          jsx: { runtime: 'automatic' },
         },
       },
     },
