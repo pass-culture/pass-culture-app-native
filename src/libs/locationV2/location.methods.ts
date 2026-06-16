@@ -5,7 +5,7 @@ import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPerm
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { GeolocationError, LocationMode } from 'libs/location/types'
+import { GeolocationError } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 
 export const initLocationPermission = () => {
@@ -18,33 +18,9 @@ export const initLocationPermission = () => {
 }
 
 export const syncPermissionsAndLocation = async () => {
-  await syncPermissions()
-
-  syncLocationMode()
-  void syncLocation()
-  hidePermissionModalIfPermissionGranted()
-}
-
-const syncPermissions = async () => {
   const permission = await checkGeolocPermission()
   locationActions.setPermissionState(permission)
-}
-
-const hidePermissionModalIfPermissionGranted = () => {
-  const permission = locationSelectors.selectPermissionState()
-  const isPermissionModalVisible = locationSelectors.selectIsPermissionModalVisible()
-  if (permission === GeolocPermissionState.GRANTED && isPermissionModalVisible) {
-    locationActions.hidePermissionModal()
-  }
-}
-
-const syncLocationMode = () => {
-  if (
-    locationSelectors.selectPermissionState() !== GeolocPermissionState.GRANTED &&
-    locationSelectors.selectLocationMode() === LocationMode.AROUND_ME
-  ) {
-    locationActions.setLocationMode(LocationMode.EVERYWHERE)
-  }
+  void syncLocation()
 }
 
 const syncLocation = async () => {

@@ -95,11 +95,18 @@ const locationStore = createStore({
         setConfiguration(LocationMode.AROUND_ME, { geolocation }),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),
       setPermissionState: (permissionState: GeolocPermissionState | null) => {
-        if (isRejected(permissionState)) {
-          setConfiguration(LocationMode.AROUND_ME, { geolocation: null })
-          set({ geolocationError: null, locationMode: LocationMode.EVERYWHERE })
-        }
-        set({ permissionState })
+        set((state) => {
+          const permissionsGrantedWhilePermissionModalOpen =
+            permissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
+          const permissionsRejectedWhileAroundMe =
+            state.locationMode === LocationMode.AROUND_ME && isRejected(permissionState)
+
+          return {
+            permissionState,
+            ...(permissionsGrantedWhilePermissionModalOpen && { isPermissionModalVisible: false }),
+            ...(permissionsRejectedWhileAroundMe && { locationMode: LocationMode.EVERYWHERE }),
+          }
+        })
       },
       showPermissionModal: () => set({ isPermissionModalVisible: true }),
       hidePermissionModal: () => set({ isPermissionModalVisible: false }),

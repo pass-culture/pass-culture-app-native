@@ -66,6 +66,22 @@ describe('location methods', () => {
           expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
         })
       })
+
+      it('should hide permission modal if permission is GRANTED', async () => {
+        locationActions.setLocationMode(LocationMode.EVERYWHERE)
+        mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
+
+        initLocationPermission()
+        locationActions.showPermissionModal()
+
+        AppState.__triggerChange('inactive')
+        mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+        AppState.__triggerChange('active')
+
+        await waitFor(() => {
+          expect(locationSelectors.selectIsPermissionModalVisible()).toBe(false)
+        })
+      })
     })
   })
 })
