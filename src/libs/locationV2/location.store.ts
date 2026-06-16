@@ -95,18 +95,15 @@ const locationStore = createStore({
         setConfiguration(LocationMode.AROUND_ME, { geolocation }),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),
       setPermissionState: (permissionState: GeolocPermissionState | null) => {
-        set((state) => {
-          const permissionsGrantedWhilePermissionModalOpen =
-            permissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
-          const permissionsRejectedWhileAroundMe =
-            state.locationMode === LocationMode.AROUND_ME && isRejected(permissionState)
-
-          return {
-            permissionState,
-            ...(permissionsGrantedWhilePermissionModalOpen && { isPermissionModalVisible: false }),
-            ...(permissionsRejectedWhileAroundMe && { locationMode: LocationMode.EVERYWHERE }),
-          }
-        })
+        set((state) => ({
+          permissionState,
+          ...(permissionsGrantedWhilePermissionModalOpen(state) && {
+            isPermissionModalVisible: false,
+          }),
+          ...(permissionsRejectedWhileAroundMe(state) && {
+            locationMode: LocationMode.EVERYWHERE,
+          }),
+        }))
       },
       showPermissionModal: () => set({ isPermissionModalVisible: true }),
       hidePermissionModal: () => set({ isPermissionModalVisible: false }),
@@ -152,6 +149,12 @@ const isRejected = (permission: GeolocPermissionState | null) => {
     permission === GeolocPermissionState.NEVER_ASK_AGAIN
   )
 }
+
+const permissionsGrantedWhilePermissionModalOpen = (state: LocationState) =>
+  state.permissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
+
+const permissionsRejectedWhileAroundMe = (state: LocationState) =>
+  state.locationMode === LocationMode.AROUND_ME && isRejected(state.permissionState)
 
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors
