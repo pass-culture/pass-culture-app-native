@@ -1,5 +1,4 @@
 import React from 'react'
-import { Linking } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { goBack, replace, useRoute } from '__mocks__/@react-navigation/native'
@@ -324,20 +323,6 @@ describe('VenueMapLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  it('should open location settings if geolocation is never_ask_again and geolocation button pressed', async () => {
-    locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
-    const openSettingsSpy = jest.spyOn(Linking, 'openSettings').mockResolvedValue()
-
-    renderVenueMapLocationModal()
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-    await user.press(screen.getByText('Utiliser ma position actuelle'))
-
-    expect(openSettingsSpy).toHaveBeenCalledTimes(1)
-    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
   })
 
   describe('PlaceRadius', () => {

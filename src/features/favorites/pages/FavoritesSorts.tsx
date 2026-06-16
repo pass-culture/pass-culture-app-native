@@ -7,6 +7,7 @@ import {
   getLabelFromSortBy,
   getSortByFromLabel,
 } from 'features/favorites/helpers/sortOptions'
+import { FavoriteSortBy } from 'features/favorites/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
@@ -27,10 +28,17 @@ export const FavoritesSorts: React.FC = () => {
   const currentLabel = getLabelFromSortBy(stagedSelectedSortBy)
   const hasGeolocError = !!geolocPositionError
 
+  const onSortBySelection = async (sortBy: FavoriteSortBy) => {
+    if (sortBy === 'AROUND_ME') {
+      return requestGeolocPermission({ onSuccess: () => setStagedSelectedSortBy(sortBy) })
+    }
+    return setStagedSelectedSortBy(sortBy)
+  }
+
   const handleSortChange = (label: string) => {
     const sortBy = getSortByFromLabel(label)
     if (sortBy) {
-      void requestGeolocPermission({ onSuccess: () => setStagedSelectedSortBy(sortBy) })
+      void onSortBySelection(sortBy)
     }
   }
 

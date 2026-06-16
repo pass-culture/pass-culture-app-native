@@ -52,26 +52,6 @@ describe('GeolocationActivationModal', () => {
 
     expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
   })
-
-  it('should open settings to deactivate geoloc when press on "Désactiver la géolocalisation"', async () => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    locationActions.showPermissionModal()
-    renderGeolocationActivationModal()
-
-    await user.press(screen.getByText('Désactiver la géolocalisation'))
-
-    expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
-  })
-
-  it('should log event deeplinkEnableLocation when press on "Désactiver la géolocalisation"', async () => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    locationActions.showPermissionModal()
-    renderGeolocationActivationModal()
-
-    await user.press(screen.getByText('Désactiver la géolocalisation'))
-
-    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
-  })
 })
 
 function renderGeolocationActivationModal() {

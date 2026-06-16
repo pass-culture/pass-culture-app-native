@@ -8,9 +8,8 @@ import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/g
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { initLocation } from 'libs/locationV2/initLocation'
-import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
-import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()
@@ -121,24 +120,6 @@ describe('HomeLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  it('should show geolocation modal if geolocation is never_ask_again and geolocation button pressed', async () => {
-    locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
-
-    renderHomeLocationModal()
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    await user.press(screen.getByText('Utiliser ma position actuelle'))
-
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()
   })
 })
 

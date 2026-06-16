@@ -4,6 +4,7 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates, GeolocPermissionState } from 'libs/location/location'
 import { locationActions } from 'libs/locationV2/location.store'
+import * as requestGeolocPermissionModule from 'libs/locationV2/requestGeolocPermission'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
@@ -11,12 +12,14 @@ import { VenueSelectionModal } from './VenueSelectionModal'
 jest.mock('libs/firebase/analytics/analytics')
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
-const mockRequestGeolocPermission = jest.fn()
+const mockRequestGeolocPermission = jest.spyOn(
+  requestGeolocPermissionModule,
+  'requestGeolocPermission'
+)
 const defaultUseLocation = {
   geolocPosition: DEFAULT_POSITION,
   permissionState: GeolocPermissionState.GRANTED,
   onPressGeolocPermissionModalButton: jest.fn(),
-  requestGeolocPermission: mockRequestGeolocPermission,
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/useLocation', () => ({

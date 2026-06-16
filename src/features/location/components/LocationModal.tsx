@@ -179,19 +179,6 @@ export const LocationModal = ({
 
   const currentValue = tempLocationMode ? MODE_TO_LABEL_MAP[tempLocationMode] : ''
 
-  const handleChange = async (label: string) => {
-    const mode = LABEL_TO_MODE_MAP[label]
-    if (mode) {
-      if (mode === LocationMode.AROUND_ME) {
-        await requestGeolocPermission({
-          onSuccess: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
-        })
-      } else {
-        locationModalActions.setLocationMode(mode)
-      }
-    }
-  }
-
   return (
     <ModalScreenWrapper onClose={handleClose}>
       {(closeWithTransition) => (
@@ -225,6 +212,19 @@ export const LocationModal = ({
       )}
     </ModalScreenWrapper>
   )
+}
+
+const handleChange = async (label: string) => {
+  const mode = LABEL_TO_MODE_MAP[label]
+  if (mode) {
+    if (mode === LocationMode.AROUND_ME) {
+      await requestGeolocPermission({
+        onSuccess: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
+      })
+    } else {
+      locationModalActions.setLocationMode(mode)
+    }
+  }
 }
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({

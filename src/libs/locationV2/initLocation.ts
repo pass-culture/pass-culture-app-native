@@ -1,6 +1,6 @@
 import { AppState } from 'react-native'
 
-import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/__mocks__/checkGeolocPermission'
+import { checkGeolocPermission } from 'libs/location/location'
 import { locationActions } from 'libs/locationV2/location.store'
 import { syncLocation } from 'libs/locationV2/syncLocation'
 

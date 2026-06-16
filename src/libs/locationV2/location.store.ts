@@ -97,7 +97,7 @@ const locationStore = createStore({
       setPermissionState: (permissionState: GeolocPermissionState | null) => {
         set((state) => ({
           permissionState,
-          ...(permissionsGrantedWhilePermissionModalOpen(state) && {
+          ...(permissionsGrantedWhilePermissionModalOpen(state, permissionState) && {
             isPermissionModalVisible: false,
           }),
           ...(permissionsRejectedWhileAroundMe(state) && {
@@ -150,8 +150,10 @@ const isRejected = (permission: GeolocPermissionState | null) => {
   )
 }
 
-const permissionsGrantedWhilePermissionModalOpen = (state: LocationState) =>
-  state.permissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
+const permissionsGrantedWhilePermissionModalOpen = (
+  state: LocationState,
+  newPermissionState: GeolocPermissionState | null
+) => newPermissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
 
 const permissionsRejectedWhileAroundMe = (state: LocationState) =>
   state.locationMode === LocationMode.AROUND_ME && isRejected(state.permissionState)
