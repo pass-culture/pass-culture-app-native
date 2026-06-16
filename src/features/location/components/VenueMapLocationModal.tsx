@@ -3,7 +3,6 @@ import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
-import { createSelectLocationMode } from 'features/location/helpers/selectLocationMode'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
@@ -70,8 +69,6 @@ export const VenueMapLocationModal = () => {
     setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
   })
 
-  const selectLocationMode = createSelectLocationMode()
-
   const handleSubmit = () => {
     removeSelectedVenue()
     onSubmit()
@@ -86,7 +83,6 @@ export const VenueMapLocationModal = () => {
       onSubmit={handleSubmit}
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={locationMode}
-      selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}

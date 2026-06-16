@@ -8,6 +8,7 @@ import { LocationState } from 'features/location/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
+import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -22,7 +23,6 @@ import { Spacer } from 'ui/theme'
 type LocationModalProps = {
   onSubmit?: () => void
   onClose?: () => void
-  selectLocationMode: (mode: LocationMode) => void
   tempLocationMode: LocationState['tempLocationMode']
   hasGeolocPosition: LocationState['hasGeolocPosition']
   selectedPlace: LocationState['selectedPlace']
@@ -61,7 +61,6 @@ export const LocationModal = ({
   hasGeolocPosition,
   tempLocationMode,
   onClose,
-  selectLocationMode,
   selectedPlace,
   tempAroundMeRadius,
   onTempAroundMeRadiusValueChange,
@@ -180,10 +179,16 @@ export const LocationModal = ({
 
   const currentValue = tempLocationMode ? MODE_TO_LABEL_MAP[tempLocationMode] : ''
 
-  const handleChange = (label: string) => {
+  const handleChange = async (label: string) => {
     const mode = LABEL_TO_MODE_MAP[label]
     if (mode) {
-      selectLocationMode(mode)
+      if (mode === LocationMode.AROUND_ME) {
+        await requestGeolocPermission({
+          onSuccess: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
+        })
+      } else {
+        locationModalActions.setLocationMode(mode)
+      }
     }
   }
 

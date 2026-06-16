@@ -2,7 +2,6 @@ import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
-import { createSelectLocationMode } from 'features/location/helpers/selectLocationMode'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationMode } from 'libs/location/types'
@@ -67,14 +66,12 @@ export const SearchLocationModal = () => {
   })
 
   const canSubmit = useCanSubmitLocationModal()
-  const selectLocationMode = createSelectLocationMode()
 
   return (
     <LocationModal
       onSubmit={submitLocation}
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={locationMode}
-      selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}
       placeQuery={placeQuery}
