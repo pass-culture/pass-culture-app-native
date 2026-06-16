@@ -5,7 +5,7 @@ import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPerm
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { GeolocationError, LocationMode, RequestGeolocPermissionParams } from 'libs/location/types'
+import { GeolocationError, LocationMode } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 
 export const initLocationPermission = () => {
@@ -58,18 +58,9 @@ export const onPressGeolocPermissionModalButton = () => {
   void analytics.logOpenLocationSettings()
 }
 
-// this function is used to set OS permissions according to user choice on native geolocation popup
-export const requestGeolocPermission = async (params?: RequestGeolocPermissionParams) => {
-  params?.onSubmit?.()
-
+export const requestGeolocPermission = async (params: { onSuccess?: () => void } = {}) => {
   const permission = await requestOSGeolocPermission()
   locationActions.setPermissionState(permission)
-
   await syncLocation()
-
-  if (permission === GeolocPermissionState.GRANTED) {
-    params?.onAcceptance?.()
-    return
-  }
-  params?.onRefusal?.()
+  if (permission === GeolocPermissionState.GRANTED) params.onSuccess?.()
 }

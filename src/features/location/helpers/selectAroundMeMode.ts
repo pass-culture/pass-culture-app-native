@@ -11,7 +11,7 @@ export const selectAroundMeMode = async () => {
     locationActions.showPermissionModal()
   } else {
     await requestGeolocPermission({
-      onAcceptance: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
+      onSuccess: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
     })
   }
 }

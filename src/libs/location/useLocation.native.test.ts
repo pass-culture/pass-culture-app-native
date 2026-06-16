@@ -21,63 +21,55 @@ function mockPermissionResult(state: GeolocPermissionState) {
   mockRequestOSGeolocPermission.mockResolvedValue(state)
 }
 
-const onSubmit = jest.fn()
-const onAcceptance = jest.fn()
-const onRefusal = jest.fn()
+const onSuccess = jest.fn()
 
 const MOCK_POSITION = { latitude: 90, longitude: 90 }
 
 describe('useLocation()', () => {
-  describe('requestGeolocPermission()', () => {
+  describe('requestGeolocPermission', () => {
     beforeEach(() => {
       mockGetGeolocPositionSuccess()
     })
 
-    it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns GRANTED', async () => {
+    it('should call onSuccess() when requestGeolocPermission() returns GRANTED', async () => {
       mockPermissionResult(GeolocPermissionState.GRANTED)
       const { result } = renderUseLocation()
       await act(async () => {
-        await requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+        await requestGeolocPermission({ onSuccess })
       })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
         expect(result.current.geolocPosition).toBe(MOCK_POSITION)
-        expect(onSubmit).toHaveBeenCalledTimes(1)
-        expect(onRefusal).not.toHaveBeenCalled()
-        expect(onAcceptance).toHaveBeenCalledTimes(1)
+        expect(onSuccess).toHaveBeenCalledTimes(1)
       })
     })
 
-    it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns DENIED', async () => {
+    it('should not call onSuccess() when requestGeolocPermission() returns DENIED', async () => {
       mockPermissionResult(GeolocPermissionState.DENIED)
       const { result } = renderUseLocation()
       await act(async () => {
-        await requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+        await requestGeolocPermission({ onSuccess })
       })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
         expect(result.current.geolocPosition).toBe(null)
-        expect(onSubmit).toHaveBeenCalledTimes(1)
-        expect(onRefusal).toHaveBeenCalledTimes(1)
-        expect(onAcceptance).not.toHaveBeenCalled()
+        expect(onSuccess).not.toHaveBeenCalled()
       })
     })
 
-    it('should call onSubmit() and onRefusal() when requestGeolocPermission() returns NEVER_ASK_AGAIN', async () => {
+    it('should not call onSuccess() when requestGeolocPermission() returns NEVER_ASK_AGAIN', async () => {
       mockPermissionResult(GeolocPermissionState.NEVER_ASK_AGAIN)
       const { result } = renderUseLocation()
       await act(async () => {
-        await requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+        await requestGeolocPermission({ onSuccess })
       })
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
         expect(result.current.geolocPosition).toBe(null)
-        expect(onSubmit).toHaveBeenCalledTimes(1)
-        expect(onRefusal).toHaveBeenCalledTimes(1)
-        expect(onAcceptance).not.toHaveBeenCalled()
+        expect(onSuccess).not.toHaveBeenCalled()
       })
     })
 

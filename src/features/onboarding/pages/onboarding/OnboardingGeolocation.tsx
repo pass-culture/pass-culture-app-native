@@ -18,9 +18,9 @@ export const OnboardingGeolocation = () => {
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {
+    navigateToNextScreen()
     await requestGeolocPermission({
-      onSubmit: navigateToNextScreen,
-      onAcceptance: analytics.logHasActivateGeolocFromTutorial,
+      onSuccess: analytics.logHasActivateGeolocFromTutorial,
     })
   }, [navigateToNextScreen])
 
