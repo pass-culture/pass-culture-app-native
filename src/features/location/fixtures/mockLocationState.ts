@@ -12,7 +12,6 @@ export const mockLocationState: LocationState = {
   onResetPlace: jest.fn(),
   setPlace: jest.fn(),
   permissionState: GeolocPermissionState.GRANTED,
-  requestGeolocPermission: jest.fn(),
   aroundPlaceRadius: 1000,
   setAroundPlaceRadius: jest.fn(),
   aroundMeRadius: 5000,

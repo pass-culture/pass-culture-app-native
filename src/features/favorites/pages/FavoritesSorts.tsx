@@ -12,6 +12,7 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import { requestGeolocPermission } from 'libs/locationV2/location.methods'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -20,13 +21,8 @@ const sortOptions = buildSortRadioOptions()
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Favorites'))
-  const {
-    geolocPosition,
-    geolocPositionError,
-    permissionState,
-    requestGeolocPermission,
-    showGeolocPermissionModal,
-  } = useLocation()
+  const { geolocPosition, geolocPositionError, permissionState, showGeolocPermissionModal } =
+    useLocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
 

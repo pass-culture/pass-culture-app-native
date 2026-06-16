@@ -16,7 +16,7 @@ const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
 
 const contextualRequestGeolocPermissionSpy = jest.spyOn(
   locationMethodsModule,
-  'contextualRequestGeolocPermission'
+  'requestGeolocPermission'
 )
 
 describe('selectAroundMeMode', () => {

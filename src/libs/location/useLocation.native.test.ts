@@ -2,11 +2,8 @@ import { act } from 'react'
 
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
-import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import {
-  contextualRequestGeolocPermission,
-  initLocationPermission,
-} from 'libs/locationV2/location.methods'
+import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { requestGeolocPermission, initLocationPermission } from 'libs/locationV2/location.methods'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState } from './geolocation/enums'
@@ -18,10 +15,10 @@ jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission
 
 const getGeolocPositionMock = jest.mocked(getGeolocPosition)
 const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
-const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
+const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 function mockPermissionResult(state: GeolocPermissionState) {
   mockCheckGeolocPermission.mockResolvedValue(state)
-  mockRequestGeolocPermission.mockResolvedValue(state)
+  mockRequestOSGeolocPermission.mockResolvedValue(state)
 }
 
 const onSubmit = jest.fn()
@@ -40,7 +37,7 @@ describe('useLocation()', () => {
       mockPermissionResult(GeolocPermissionState.GRANTED)
       const { result } = renderUseLocation()
       await act(async () => {
-        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+        await requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
 
       await waitFor(() => {
@@ -56,7 +53,7 @@ describe('useLocation()', () => {
       mockPermissionResult(GeolocPermissionState.DENIED)
       const { result } = renderUseLocation()
       await act(async () => {
-        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+        await requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
 
       await waitFor(() => {
@@ -72,7 +69,7 @@ describe('useLocation()', () => {
       mockPermissionResult(GeolocPermissionState.NEVER_ASK_AGAIN)
       const { result } = renderUseLocation()
       await act(async () => {
-        await contextualRequestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+        await requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
       })
 
       await waitFor(() => {

@@ -1,5 +1,5 @@
 import { GeolocPermissionState } from 'libs/location/location'
-import { RequestGeolocPermissionParams, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 
 export type LocationState = {
@@ -7,7 +7,6 @@ export type LocationState = {
   place: SuggestedPlace | null
   setPlace: (place: SuggestedPlace | null) => void
   permissionState: GeolocPermissionState | null
-  requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   showGeolocPermissionModal: () => void
   selectedLocationMode: LocationMode
   setSelectedLocationMode: (locationMode: LocationMode) => void

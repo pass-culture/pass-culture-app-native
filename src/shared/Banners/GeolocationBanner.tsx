@@ -2,6 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import { requestGeolocPermission } from 'libs/locationV2/location.methods'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 
@@ -18,7 +19,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
   analyticsFrom,
   onPress,
 }) => {
-  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
+  const { permissionState, showGeolocPermissionModal } = useLocation()
 
   const onPressGeolocationBanner = useCallback(async () => {
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
@@ -26,7 +27,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
     } else {
       await requestGeolocPermission()
     }
-  }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
+  }, [permissionState, showGeolocPermissionModal])
 
   return (
     <SystemBanner

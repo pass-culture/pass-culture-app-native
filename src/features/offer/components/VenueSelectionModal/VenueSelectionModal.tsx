@@ -10,6 +10,7 @@ import {
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import { requestGeolocPermission } from 'libs/locationV2/location.methods'
 import { locationActions } from 'libs/locationV2/location.store'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -60,7 +61,7 @@ export function VenueSelectionModal({
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { top } = useCustomSafeInsets()
   const { designSystem } = useTheme()
-  const { permissionState, requestGeolocPermission } = useLocation()
+  const { permissionState } = useLocation()
 
   const handleSubmit = useCallback(() => {
     if (selectedVenue !== undefined) {
@@ -74,7 +75,7 @@ export function VenueSelectionModal({
     } else {
       await requestGeolocPermission()
     }
-  }, [permissionState, requestGeolocPermission])
+  }, [permissionState])
   const HEIGHT_CONTAINER = designSystem.size.spacing.xl
 
   const customHeader = useMemo(() => {
