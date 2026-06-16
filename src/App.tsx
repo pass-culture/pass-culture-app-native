@@ -26,7 +26,7 @@ import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
-import { initLocationPermission } from 'libs/locationV2/location.methods'
+import { initLocation } from 'libs/locationV2/location.methods'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
@@ -62,7 +62,7 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     initAlgoliaAnalytics()
-    initLocationPermission()
+    initLocation()
     BatchPush.refreshToken() //  Synchronizes the user's iOS token with Batch. Should be called at each app launch. No effect on Android.
     void BatchMessaging.setFontOverride(
       'Montserrat-Regular',

@@ -21,7 +21,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
-import { initLocationPermission } from 'libs/locationV2/location.methods'
+import { initLocation } from 'libs/locationV2/location.methods'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -43,7 +43,7 @@ export function App() {
 
   useEffect(() => {
     initAlgoliaAnalytics()
-    initLocationPermission()
+    initLocation()
     const setDeviceInfo = async () => {
       const existingDeviceInfo = deviceInfoStoreSelectors.selectDeviceInfo()
       if (existingDeviceInfo.deviceId) return

@@ -7,7 +7,7 @@ import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/locat
 import { GeolocationError } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 
-export const initLocationPermission = () => {
+export const initLocation = () => {
   void syncPermissionsAndLocation()
   return AppState.addEventListener('change', (state) => {
     if (state === 'active') {

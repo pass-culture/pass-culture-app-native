@@ -13,7 +13,7 @@ import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/g
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { initLocationPermission } from 'libs/locationV2/location.methods'
+import { initLocation } from 'libs/locationV2/location.methods'
 import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -73,7 +73,7 @@ const user = userEvent.setup()
 
 describe('SearchLocationModal', () => {
   beforeEach(() => {
-    initLocationPermission()
+    initLocation()
   })
 
   it('should render correctly if modal visible', async () => {

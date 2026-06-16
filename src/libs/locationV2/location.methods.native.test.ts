@@ -3,7 +3,7 @@ import { AppState } from 'react-native'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { LocationMode } from 'libs/location/types'
-import { initLocationPermission } from 'libs/locationV2/location.methods'
+import { initLocation } from 'libs/locationV2/location.methods'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 import { waitFor } from 'tests/utils'
 
@@ -11,13 +11,13 @@ jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission
 const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
 
 describe('location methods', () => {
-  describe('initLocationPermission', () => {
+  describe('initLocation', () => {
     describe('when app starts', () => {
       it('should set location mode to EVERYWHERE if permission is not GRANTED', async () => {
         locationActions.setLocationMode(LocationMode.AROUND_ME)
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
-        initLocationPermission()
+        initLocation()
 
         await waitFor(() => {
           expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
@@ -28,7 +28,7 @@ describe('location methods', () => {
         locationActions.setLocationMode(LocationMode.AROUND_ME)
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
-        initLocationPermission()
+        initLocation()
 
         await waitFor(() => {
           expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
@@ -41,7 +41,7 @@ describe('location methods', () => {
         locationActions.setLocationMode(LocationMode.AROUND_ME)
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
-        initLocationPermission()
+        initLocation()
 
         AppState.__triggerChange('inactive')
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
@@ -56,7 +56,7 @@ describe('location methods', () => {
         locationActions.setLocationMode(LocationMode.AROUND_ME)
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
-        initLocationPermission()
+        initLocation()
 
         AppState.__triggerChange('inactive')
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
@@ -71,7 +71,7 @@ describe('location methods', () => {
         locationActions.setLocationMode(LocationMode.EVERYWHERE)
         mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
-        initLocationPermission()
+        initLocation()
         locationActions.showPermissionModal()
 
         AppState.__triggerChange('inactive')

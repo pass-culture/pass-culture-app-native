@@ -3,7 +3,7 @@ import { act } from 'react'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { requestGeolocPermission, initLocationPermission } from 'libs/locationV2/location.methods'
+import { requestGeolocPermission, initLocation } from 'libs/locationV2/location.methods'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState } from './geolocation/enums'
@@ -77,7 +77,7 @@ describe('useLocation()', () => {
       mockPermissionResult(GeolocPermissionState.GRANTED)
 
       await act(async () => {
-        initLocationPermission()
+        initLocation()
       })
       renderUseLocation()
 
@@ -97,7 +97,7 @@ describe('useLocation()', () => {
         mockPermissionResult(permission)
 
         await act(async () => {
-          initLocationPermission()
+          initLocation()
         })
 
         renderUseLocation()
