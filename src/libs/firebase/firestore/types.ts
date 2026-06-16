@@ -59,6 +59,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ARTIST_CATEGORY_PLAYLISTS = 'wipArtistCategoryPlaylists',
   WIP_ARTIST_PAGE = 'wipArtistPage',
   WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
+  WIP_ARTIST_RECOMMENDATION_PLAYLIST = 'wipArtistRecommendationPlaylist',
   WIP_ARTIST_SECTION_REFACTO = 'wipArtistSectionRefacto',
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
