@@ -69,9 +69,8 @@ export const VenueMapLocationModal = () => {
     setTempAroundPlaceRadius: locationModalActions.setAroundPlaceRadius,
     setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
   })
-  const selectLocationMode = createSelectLocationMode({
-    shouldOpenDirectlySettings: true,
-  })
+
+  const selectLocationMode = createSelectLocationMode()
 
   const handleSubmit = () => {
     removeSelectedVenue()

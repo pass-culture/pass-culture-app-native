@@ -1,5 +1,3 @@
-import { Linking } from 'react-native'
-
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/location'
@@ -16,7 +14,6 @@ jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermis
 const getGeolocPositionMock = jest.mocked(getGeolocPosition)
 const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
 
-const openSettingsSpy = jest.spyOn(Linking, 'openSettings')
 const contextualRequestGeolocPermissionSpy = jest.spyOn(
   locationMethodsModule,
   'contextualRequestGeolocPermission'
@@ -40,16 +37,9 @@ describe('selectAroundMeMode', () => {
       expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
     })
 
-    it('should open settings when shouldOpenDirectlySettings is true', async () => {
+    it('should call dismiss modal function', async () => {
       locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
-      await selectAroundMeMode({ shouldOpenDirectlySettings: true })
-
-      expect(openSettingsSpy).toHaveBeenCalledTimes(1)
-    })
-
-    it('should call dismiss modal function when shouldOpenDirectlySettings is false', async () => {
-      locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
-      await selectAroundMeMode({ shouldOpenDirectlySettings: false })
+      await selectAroundMeMode()
 
       expect(locationModalSelectors.selectIsVisible()).toBe(false)
     })
