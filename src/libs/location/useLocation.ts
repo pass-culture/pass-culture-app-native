@@ -1,5 +1,4 @@
 import { UseLocationReturnType, LocationMode } from 'libs/location/types'
-import { onPressGeolocPermissionModalButton } from 'libs/locationV2/location.methods'
 import {
   locationActions,
   useIsGeolocated,
@@ -44,7 +43,6 @@ export const useLocation = (): UseLocationReturnType => {
     geolocPositionError,
     permissionState,
     hasGeolocPosition,
-    onPressGeolocPermissionModalButton,
     place,
     setPlace,
     showGeolocPermissionModal,

@@ -16,7 +16,6 @@ export type {
 export const requestGeolocPermission = jest.fn()
 export const triggerPositionUpdate = jest.fn()
 export const showGeolocPermissionModal = jest.fn()
-export const onPressGeolocPermissionModalButton = jest.fn()
 const setPlace = jest.fn()
 const setSelectedLocationMode = jest.fn()
 const onResetPlace = jest.fn()
@@ -31,7 +30,6 @@ export const useLocation = jest.fn().mockReturnValue({
   permissionState: GeolocPermissionState.GRANTED,
   requestGeolocPermission,
   showGeolocPermissionModal,
-  onPressGeolocPermissionModalButton,
   hasGeolocPosition: true,
   place: null,
   setPlace,

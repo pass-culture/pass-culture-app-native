@@ -1,6 +1,5 @@
-import { AppState, Linking } from 'react-native'
+import { AppState } from 'react-native'
 
-import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
@@ -17,7 +16,7 @@ export const initLocationPermission = () => {
   })
 }
 
-export const syncPermissionsAndLocation = async () => {
+const syncPermissionsAndLocation = async () => {
   const permission = await checkGeolocPermission()
   locationActions.setPermissionState(permission)
   void syncLocation()
@@ -36,12 +35,6 @@ const syncLocation = async () => {
       locationActions.setGeolocationError(newPositionError?.cause ?? null)
     }
   }
-}
-
-export const onPressGeolocPermissionModalButton = () => {
-  void Linking.openSettings()
-  locationActions.hidePermissionModal()
-  void analytics.logOpenLocationSettings()
 }
 
 export const requestGeolocPermission = async (params: { onSuccess?: () => void } = {}) => {
