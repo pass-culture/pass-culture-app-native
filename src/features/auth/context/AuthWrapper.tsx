@@ -94,7 +94,7 @@ export const AuthWrapper = memo(function AuthWrapper({
     }
   }, [readTokenAndConnectUser, user])
 
-  useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
+  useAppStateChange(readTokenAndConnectUser, undefined, [isLoggedIn])
 
   const value = useMemo(
     () => ({ isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading }),
