@@ -60,8 +60,7 @@ export const AuthWrapper = memo(function AuthWrapper({
           connectServicesRequiringUserId(accessToken, user?.id)
           if (refreshToken) {
             eventMonitoring.setExtras({
-              refreshTokenExpirationDate:
-                getTokenExpirationDate(refreshToken) ?? "can't get refresh token expiration date",
+              refreshTokenExpirationDate: getTokenExpirationDate(refreshToken),
             })
             const remainingLifetimeInMs = computeTokenRemainingLifetimeInMs(refreshToken)
             if (

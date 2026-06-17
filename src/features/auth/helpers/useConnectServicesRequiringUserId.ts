@@ -15,9 +15,6 @@ export const useConnectServicesRequiringUserId = () => {
       setUserIdToCookiesChoice(userId)
     }
     if (accessToken)
-      eventMonitoring.setExtras({
-        accessTokenExpirationDate:
-          getTokenExpirationDate(accessToken) ?? "can't get access token expiration date",
-      })
+      eventMonitoring.setExtras({ accessTokenExpirationDate: getTokenExpirationDate(accessToken) })
   }
 }
