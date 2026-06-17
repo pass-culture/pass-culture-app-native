@@ -7,6 +7,15 @@ import { Appearance } from './Appearance'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
+jest.mock('react-native-orientation-locker', () => ({
+  lockToPortrait: jest.fn(),
+  unlockAllOrientations: jest.fn(),
+  addOrientationListener: jest.fn(),
+  removeOrientationListener: jest.fn(),
+  addLockListener: jest.fn(),
+  removeLockListener: jest.fn(),
+}))
+
 describe('Appearance', () => {
   it('should not have basic accessibility issues', async () => {
     const { container } = renderAppearance()

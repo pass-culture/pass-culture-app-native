@@ -11,6 +11,15 @@ import { Appearance } from './Appearance'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native-orientation-locker', () => ({
+  lockToPortrait: jest.fn(),
+  unlockAllOrientations: jest.fn(),
+  addOrientationListener: jest.fn(),
+  removeOrientationListener: jest.fn(),
+  addLockListener: jest.fn(),
+  removeLockListener: jest.fn(),
+}))
+
 const useColorSchemeSpy = jest.spyOn(ReactNative, 'useColorScheme')
 const logUpdateAppThemeSpy = jest.spyOn(analytics, 'logUpdateAppTheme')
 const user = userEvent.setup()
