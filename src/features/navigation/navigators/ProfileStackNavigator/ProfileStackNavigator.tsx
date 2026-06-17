@@ -158,9 +158,6 @@ const profileStackNavigatorPathDefinition = {
         path: 'profile/suppression/confirmation',
       },
     },
-    // No `if: useIsSignedIn` on the deletion success screens: they are displayed at the
-    // very moment the app logs the user out (they call signOut on mount), so gating them
-    // on the logged-in state would remove them from the navigator before/while shown.
     DeleteProfileSuccess: {
       screen: DeleteProfileSuccess,
       linking: {

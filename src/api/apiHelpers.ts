@@ -150,8 +150,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationStatus.status &&
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    // During an intentional logout the tokens are cleared on purpose: requests still
-    // in flight end up here, and the login page must not open on its own.
+    // Skip the auto-redirect when the logout is intentional (tokens cleared on purpose).
     if (!logoutStoreSelectors.selectIsLoggingOut()) {
       navigateToLoginMethods()
     }

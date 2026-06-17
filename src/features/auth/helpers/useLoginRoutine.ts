@@ -27,8 +27,6 @@ export function useLoginRoutine(): LoginRoutine {
    */
 
   return async (response, method, analyticsType) => {
-    // A new session starts: lift the logout guard so the API layer can redirect to
-    // the login page again if the session breaks (e.g. expired refresh token).
     logoutStoreActions.setIsLoggingOut(false)
     connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)

@@ -130,11 +130,19 @@ describe('useLogoutRoutine', () => {
   })
 
   it('should mark the logout as in progress to prevent automatic navigation to login page', async () => {
+    const setIsLoggingOutSpy = jest.spyOn(logoutStoreActions, 'setIsLoggingOut')
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
+
+    expect(setIsLoggingOutSpy).toHaveBeenNthCalledWith(1, true)
+  })
+
+  it('should lift the logout guard once the routine is done', async () => {
     logoutStoreActions.setIsLoggingOut(false)
     const { result } = renderUseLogoutRoutine()
     await result.current()
 
-    expect(logoutStoreSelectors.selectIsLoggingOut()).toBe(true)
+    expect(logoutStoreSelectors.selectIsLoggingOut()).toBe(false)
   })
 
   it('should logout from Google account', async () => {

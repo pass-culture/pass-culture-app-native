@@ -18,11 +18,7 @@ export function useLogoutRoutine(): () => Promise<void> {
 
   return useCallback(async () => {
     try {
-      // Prevent the API layer from opening the login page when authenticated calls
-      // still in flight fail because the tokens are being cleared on purpose.
       logoutStoreActions.setIsLoggingOut(true)
-      // Disable the `enabled: isLoggedIn` queries before touching the cache or the
-      // tokens, otherwise their still-active observers refetch without tokens.
       setIsLoggedIn(false)
 
       handleBatchProfileReset()
@@ -47,6 +43,7 @@ export function useLogoutRoutine(): () => Promise<void> {
       eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
+      logoutStoreActions.setIsLoggingOut(false)
     }
   }, [queryClient, setIsLoggedIn])
 }

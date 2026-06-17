@@ -6,10 +6,8 @@ type State = {
 
 const defaultState: State = { isLoggingOut: false }
 
-// Tracks intentional logouts outside of React. When the user logs out, the tokens are
-// cleared on purpose: authenticated calls still in flight then fail to refresh their
-// access token, and the API layer must not interpret this as a broken session by
-// forcing a navigation to the login page.
+// Tracks an intentional logout so the API layer doesn't redirect to login on the 401s
+// triggered by clearing the tokens on purpose.
 const logoutStore = createStore({
   name: 'logout',
   defaultState,
