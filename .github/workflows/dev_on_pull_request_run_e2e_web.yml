@@ -91,13 +91,6 @@ jobs:
           export PATH="$HOME/.maestro/bin:$PATH"
           yarn test:e2e:web:staging --headless
 
-      - name: Logs & screenshots from errors (Download link ⬇️)
-        if: failure()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
-        with:
-          name: maestro-artifacts
-          path: /home/runner/.maestro/tests/
-
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 5

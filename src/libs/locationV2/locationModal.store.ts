@@ -35,7 +35,7 @@ const locationModalStore = createStore({
       }))
 
     return {
-      show: () => {
+      sync: () => {
         const locationState = locationSelectors.selectState()
         set({
           addressInputValue: locationState.configuration[LocationMode.AROUND_PLACE].label,
@@ -75,6 +75,7 @@ const locationModalStore = createStore({
     }
   },
   selectors: {
+    selectLocationMode: () => (state) => state.locationMode,
     selectLocationModalConfiguration: (configurationKey: LocationMode) => (state) =>
       state.configuration[configurationKey],
     selectPlace: () => (state) => {
@@ -82,6 +83,13 @@ const locationModalStore = createStore({
       return place.label ? place : null
     },
     selectIsVisible: () => (state) => state.visible,
+    selectAddressInputValue: () => (state) => state.addressInputValue,
+    selectCanSubmit: () => (state) => {
+      if (state.locationMode === LocationMode.AROUND_PLACE) {
+        return !!state.configuration[LocationMode.AROUND_PLACE].label
+      }
+      return true
+    },
   },
 })
 
@@ -92,4 +100,6 @@ export const {
   useStore: useLocationModal,
   useLocationModalConfiguration,
   usePlace: useLocationModalPlace,
+  useAddressInputValue: useLocationModalAddressInputValue,
+  useCanSubmit: useCanSubmitLocationModal,
 } = locationModalStore.hooks

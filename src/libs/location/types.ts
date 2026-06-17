@@ -49,7 +49,6 @@ export type UseLocationReturnType = {
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: (place: SuggestedPlace | null) => void
   onResetPlace: () => void
-  placeQuery: string
   setPlaceQuery: (placeQuery: string) => void
   aroundPlaceRadius: number
   setAroundPlaceRadius: (radius: number) => void

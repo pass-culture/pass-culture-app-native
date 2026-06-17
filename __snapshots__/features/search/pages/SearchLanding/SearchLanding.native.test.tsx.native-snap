@@ -152,97 +152,106 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               testID="InsideLocationWidget"
             >
               <View
-                accessibilityLabel="Ma position - Ouvrir la modale de localisation"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onLayout={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "marginLeft": 8,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "alignSelf": "center",
+                    "position": "relative",
+                  }
                 }
-                testID="Ma position - Ouvrir la modale de localisation"
               >
                 <View
-                  isActive={true}
-                  style={
+                  accessibilityLabel="Ma position - Ouvrir la modale de localisation"
+                  accessibilityRole="button"
+                  accessibilityState={
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 999,
-                      "borderBottomRightRadius": 999,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 999,
-                      "borderTopRightRadius": 999,
-                      "borderWidth": 2,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "width": 40,
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onLayout={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "marginLeft": 8,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Ma position - Ouvrir la modale de localisation"
                 >
                   <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  numberOfLines={3}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "maxWidth": 100,
-                      "paddingTop": 4,
-                      "textAlign": "center",
+                    isActive={true}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 999,
+                        "borderBottomRightRadius": 999,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 999,
+                        "borderTopRightRadius": 999,
+                        "borderWidth": 2,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": 40,
+                      }
                     }
-                  }
-                >
-                  Ma position
-                </Text>
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    numberOfLines={3}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "maxWidth": 100,
+                        "paddingTop": 4,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Ma position
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

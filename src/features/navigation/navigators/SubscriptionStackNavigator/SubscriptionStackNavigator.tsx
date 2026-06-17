@@ -5,6 +5,7 @@ import { BonificationBirthDate } from 'features/bonification/pages/BonificationB
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
 import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
+import { BonificationIncorrectLink } from 'features/bonification/pages/BonificationIncorrectLink'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { BonificationRefused } from 'features/bonification/pages/BonificationRefused'
@@ -328,6 +329,13 @@ const subscriptionStackNavigatorDefinition = {
       if: useIsSignedIn,
       linking: {
         path: 'bonification/erreur',
+      },
+    },
+    BonificationIncorrectLink: {
+      screen: BonificationIncorrectLink,
+      if: useIsSignedIn,
+      linking: {
+        path: 'bonification/lien-incorrect',
       },
     },
     BonificationRefused: {

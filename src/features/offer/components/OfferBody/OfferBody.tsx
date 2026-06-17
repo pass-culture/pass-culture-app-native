@@ -3,14 +3,13 @@ import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, OfferArtist, OfferResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
-import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
@@ -48,7 +47,6 @@ type Props = {
   children: ReactNode
   adviceVariantInfo?: AdviceVariantInfo
   onVideoConsentPress: () => void
-  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   likesCount?: number
   clubAdvicesCount?: number | null
   proAdvicesCount?: number
@@ -57,7 +55,6 @@ type Props = {
   clubAdvices?: AdviceCardData[]
   proAdvices?: AdviceCardData[]
   hasVideoCookiesConsent?: boolean
-  isMultiArtistsEnabled?: boolean
   proAdvicesSegment?: string
 }
 
@@ -74,10 +71,8 @@ export const OfferBody: FunctionComponent<Props> = ({
   clubAdvices,
   proAdvices,
   hasVideoCookiesConsent,
-  isMultiArtistsEnabled,
   proAdvicesSegment,
   onVideoConsentPress,
-  onShowOfferArtistsModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
@@ -88,7 +83,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     }
   }, [params])
 
-  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const enableOfferArtistSectionRefacto = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO
@@ -114,9 +108,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     { fractionDigits: 2 }
   )
 
-  const hasAccessToArtistPage =
-    enableArtistPage &&
-    (artists.length > 1 ? isMultiArtistsEnabled : artists.length === 1 && !!artists[0]?.id)
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
@@ -134,26 +125,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   )
 
   const shouldDisplayAboutSection = !!offer.description || hasMetadata
-
-  const handleArtistLinkPress = (artists: OfferArtist[]) => {
-    if (artists.length === 0) return
-
-    if (artists.length === 1) {
-      const artist = artists[0]
-      if (artist && artist.id) {
-        void analytics.logConsultArtist({
-          offerId: offer.id.toString(),
-          artistId: artist.id,
-          artistName: artist.name,
-          from: 'offer',
-        })
-        navigate('Artist', { id: artist.id })
-      }
-      return
-    }
-
-    onShowOfferArtistsModal(artists)
-  }
 
   const handleManageCookiesPress = () => {
     navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { offerId: offer.id } })
@@ -184,16 +155,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <GroupWithoutGap>
           <ViewGap gap={4}>
             <GroupTags tags={tags} />
-            <ViewGap gap={2}>
-              <OfferTitle offerName={offer.name} />
-              {artists.length > 0 && !enableOfferArtistSectionRefacto ? (
-                <OfferArtists
-                  artists={artists}
-                  isMultiArtistsEnabled={isMultiArtistsEnabled}
-                  onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
-                />
-              ) : null}
-            </ViewGap>
+            <OfferTitle offerName={offer.name} />
           </ViewGap>
         </GroupWithoutGap>
 

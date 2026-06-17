@@ -7,18 +7,8 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen, userEvent } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { CategoriesList } from './CategoriesList'
-
-const mockShowModal = jest.fn()
-const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
-useModalAPISpy.mockReturnValue({
-  visible: false,
-  showModal: mockShowModal,
-  hideModal: jest.fn(),
-  toggleModal: jest.fn(),
-})
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockSearchState = initialSearchState
@@ -140,7 +130,7 @@ describe('CategoriesList', () => {
     }
   )
 
-  it('should open venue map location modal when pressing on venue map block', async () => {
+  it('should navigate to venue map location modal when pressing on venue map block', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.EVERYWHERE,
@@ -152,6 +142,6 @@ describe('CategoriesList', () => {
 
     await user.press(screen.getByText('Explore la carte'))
 
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('VenueMapLocationModal', { openedFrom: 'searchLanding' })
   })
 })

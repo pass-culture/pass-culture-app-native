@@ -2,6 +2,8 @@ import { UseQueryResult } from '@tanstack/react-query'
 
 import { BannerName, CurrencyEnum, SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -36,7 +38,8 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
   user: {
     ...nonBeneficiaryUser,
-    isEligibleForBeneficiaryUpgrade: false,
+    creditType: UserCreditType.CREDIT_V3_18,
+    eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
     currency: CurrencyEnum.EUR,
   },
 })
@@ -88,7 +91,8 @@ describe('useActivationBanner', () => {
         isUserLoading: false,
         user: {
           ...beneficiaryUser,
-          isEligibleForBeneficiaryUpgrade: true,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+          creditType: UserCreditType.CREDIT_V3_17,
           currency: CurrencyEnum.EUR,
         },
       })
@@ -128,7 +132,8 @@ describe('useActivationBanner', () => {
         isUserLoading: false,
         user: {
           ...beneficiaryUser,
-          isEligibleForBeneficiaryUpgrade: false,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+          creditType: UserCreditType.CREDIT_V3_18,
           currency: CurrencyEnum.XPF,
         },
       })

@@ -21,7 +21,7 @@ import {
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferArtist, OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
+import { OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
@@ -74,7 +74,6 @@ type OfferContentBaseProps = OfferContentProps &
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
     onShowClubAdviceWritersModal: () => void
-    onShowOfferArtistsModal: (artists: OfferArtist[]) => void
     onVideoConsentPress?: () => void
     clubAdvices?: AdviceCardData[]
     likesCount?: number
@@ -106,8 +105,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  isMultiArtistsEnabled,
-  onShowOfferArtistsModal,
   HeaderComponent,
   CTAsComponent,
   proAdvicesCount,
@@ -443,8 +440,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               adviceVariantInfo={adviceVariantInfo}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
-              isMultiArtistsEnabled={isMultiArtistsEnabled}
-              onShowOfferArtistsModal={onShowOfferArtistsModal}
               proAdvicesCount={proAdvicesCount}
               proAdvices={proAdvices}
               proAdvicesSegment={proAdvicesSegment}>

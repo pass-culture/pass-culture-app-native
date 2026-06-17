@@ -10,7 +10,7 @@ export const queryClient = new QueryClient({
     queries: {
       retry: 0,
       throwOnError: true,
-      refetchOnWindowFocus: !(__DEV__ || env.ENV !== 'testing'),
+      refetchOnWindowFocus: !(__DEV__ || env.ENV === 'testing'),
     },
   },
 })

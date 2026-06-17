@@ -43,9 +43,7 @@ const fixtureSortedCategories: ComponentProps<typeof CategoriesListDumb>['sorted
 
 const initialProps: ComponentProps<typeof CategoriesListDumb> = {
   sortedCategories: fixtureSortedCategories,
-  showVenueMapLocationModal: jest.fn(),
-  venueMapLocationModalVisible: false,
-  hideVenueMapLocationModal: jest.fn(),
+  onPressVenueMap: jest.fn(),
   shouldDisplayVenueMap: false,
   isMapWithoutPositionAndNotLocated: false,
   onPressAIFakeDoorBanner: jest.fn(),

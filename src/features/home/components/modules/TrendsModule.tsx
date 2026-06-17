@@ -1,16 +1,16 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Trend } from 'features/home/components/Trend'
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
-import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { LocationMode } from 'libs/location/types'
-import { useModal } from 'ui/components/modals/useModal'
 
 type Trends = {
   index: number
@@ -24,18 +24,14 @@ const isWeb = Platform.OS === 'web'
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
   const { width } = useWindowDimensions()
   const { selectedLocationMode } = useShouldDisplayVenueMap()
-  const {
-    showModal: showVenueMapLocationModal,
-    visible: venueMapLocationModalVisible,
-    hideModal: hideVenueMapLocationModal,
-  } = useModal()
   const { designSystem } = useTheme()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const isSmallScreen = width < 375
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
 
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage({
+    void analytics.logModuleDisplayedOnHomepage({
       moduleId,
       moduleType: ContentTypes.TRENDS,
       index,
@@ -59,12 +55,12 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
         enableNavigate: shouldOpenMapDirectly,
         onBeforeNavigate: () => {
           removeSelectedVenue()
-          handleLogTrendsBlockClicked(props)
+          void handleLogTrendsBlockClicked(props)
           if (shouldOpenMapDirectly) {
-            analytics.logConsultVenueMap({ from: 'trend_block' })
+            void analytics.logConsultVenueMap({ from: 'trend_block' })
             return
           }
-          showVenueMapLocationModal()
+          navigate('VenueMapLocationModal', { openedFrom: 'trend_block' })
         },
       }
     }
@@ -75,7 +71,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
         params: { homeId: props.homeEntryId, moduleId: props.id, from: 'trend_block' },
       },
       onBeforeNavigate: () => {
-        handleLogTrendsBlockClicked(props)
+        void handleLogTrendsBlockClicked(props)
       },
     }
   }
@@ -104,12 +100,6 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
           {renderTrends(items, moduleId, getNavigationProps)}
         </ScrollContainer>
       )}
-
-      <VenueMapLocationModal
-        visible={venueMapLocationModalVisible}
-        dismissModal={hideVenueMapLocationModal}
-        openedFrom="trend_block"
-      />
     </React.Fragment>
   )
 }

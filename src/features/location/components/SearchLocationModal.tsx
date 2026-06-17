@@ -9,8 +9,11 @@ import { LocationMode } from 'libs/location/types'
 import { useLocation } from 'libs/location/useLocation'
 import {
   locationModalActions,
+  useCanSubmitLocationModal,
   useLocationModal,
+  useLocationModalAddressInputValue,
   useLocationModalConfiguration,
+  useLocationModalPlace,
 } from 'libs/locationV2/locationModal.store'
 
 export const SearchLocationModal = () => {
@@ -18,9 +21,7 @@ export const SearchLocationModal = () => {
 
   const {
     hasGeolocPosition,
-    placeQuery,
     setPlaceQuery,
-    selectedPlace,
     setSelectedPlace,
     onResetPlace,
     setSelectedLocationMode,
@@ -31,7 +32,9 @@ export const SearchLocationModal = () => {
     aroundPlaceRadius,
   } = useLocation()
 
-  const { locationMode, visible } = useLocationModal()
+  const { locationMode } = useLocationModal()
+  const selectedPlace = useLocationModalPlace()
+  const placeQuery = useLocationModalAddressInputValue()
   const { radius: tempAroundMeRadius } = useLocationModalConfiguration(LocationMode.AROUND_ME)
   const { radius: tempAroundPlaceRadius } = useLocationModalConfiguration(LocationMode.AROUND_PLACE)
   const {
@@ -39,10 +42,7 @@ export const SearchLocationModal = () => {
     setAroundPlaceRadius: setTempAroundPlaceRadius,
   } = locationModalActions
 
-  const dismissModal = locationModalActions.hide
-
-  const { onSubmit, onClose } = getLocationSubmit({
-    dismissModal,
+  const { onSubmit: submitLocation } = getLocationSubmit({
     from: 'search',
     dispatch,
     tempLocationMode: locationMode,
@@ -62,22 +62,18 @@ export const SearchLocationModal = () => {
     onTempAroundRadiusPlaceValueChange: onTempAroundPlaceRadiusValueChange,
     onTempAroundMeRadiusValueChange,
   } = useRadiusChange({
-    visible,
     setTempAroundPlaceRadius,
     setTempAroundMeRadius,
   })
 
-  const selectLocationMode = createSelectLocationMode({
-    onSubmit,
-  })
+  const canSubmit = useCanSubmitLocationModal()
+  const selectLocationMode = createSelectLocationMode()
 
   return (
     <LocationModal
-      visible={visible}
-      onSubmit={onSubmit}
+      onSubmit={submitLocation}
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={locationMode}
-      onClose={onClose}
       selectLocationMode={selectLocationMode}
       selectedPlace={selectedPlace}
       setSelectedPlace={setSelectedPlace}
@@ -89,7 +85,7 @@ export const SearchLocationModal = () => {
       onTempAroundMeRadiusValueChange={onTempAroundMeRadiusValueChange}
       onTempAroundPlaceRadiusValueChange={onTempAroundPlaceRadiusValueChange}
       tempAroundMeRadius={tempAroundMeRadius}
-      isSubmitDisabled={!selectedPlace && locationMode !== LocationMode.AROUND_ME}
+      isSubmitDisabled={!canSubmit}
       shouldDisplayEverywhereSection
     />
   )

@@ -13,7 +13,6 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/
 import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
-import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { OfferCTAs } from 'features/offerRefacto/components/OfferCTAs/OfferCTAs'
 import { OfferHeader as RefactoOfferHeader } from 'features/offerRefacto/components/OfferHeader/OfferHeader'
@@ -45,7 +44,6 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
@@ -78,11 +76,6 @@ export function Offer() {
     visible: chroniclesWritersModalVisible,
     hideModal: hideChroniclesWritersModal,
     showModal: showChroniclesWritersModal,
-  } = useModal(false)
-  const {
-    visible: offerArtistsModalVisible,
-    hideModal: hideOfferArtistsModal,
-    showModal: showOfferArtistsModal,
   } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQueryV2(offer?.id ?? -1, !!offer?.id)
   const { mutate: saveReaction } = useReactionMutation()
@@ -185,15 +178,6 @@ export function Offer() {
             buttonWording={adviceVariantInfo.buttonWording}
           />
         ) : null}
-        {offer.artists.length > 1 ? (
-          <OfferArtistsModal
-            isVisible={offerArtistsModalVisible}
-            closeModal={hideOfferArtistsModal}
-            artists={offer.artists}
-            navigateTo={{ screen: 'Artist' }}
-            offerId={offer.id}
-          />
-        ) : null}
       </View>
 
       <OfferContent
@@ -210,8 +194,6 @@ export function Offer() {
         onShowClubAdviceWritersModal={handleOnShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
-        isMultiArtistsEnabled={isMultiArtistsEnabled}
-        onShowOfferArtistsModal={showOfferArtistsModal}
         HeaderComponent={RefactoOfferHeader}
         CTAsComponent={OfferCTAs}
         proAdvicesCount={proAdvices?.nbResults}

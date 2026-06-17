@@ -42,6 +42,9 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
+import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
+import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { AccessibleTabBar } from 'features/navigation/navigators/RootNavigator/Header/AccessibleTabBar'
 import { withAuthProtection } from 'features/navigation/navigators/RootNavigator/linking/withAuthProtection'
 import { RootScreenNames } from 'features/navigation/navigators/RootNavigator/types'
@@ -93,6 +96,11 @@ type RouteConfig = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
   options?: NativeStackNavigationOptions
+}
+
+const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
+  presentation: Platform.OS === 'ios' ? 'modal' : 'transparentModal',
+  animation: 'slide_from_bottom',
 }
 
 const rootScreens: RouteConfig[] = [
@@ -393,6 +401,21 @@ const rootScreens: RouteConfig[] = [
     name: 'VideoModulePage',
     component: VideoModulePage,
     options: { title: 'Vidéo' },
+  },
+  {
+    name: 'HomeLocationModal',
+    component: HomeLocationModal,
+    options: MODAL_SCREEN_OPTIONS,
+  },
+  {
+    name: 'SearchLocationModal',
+    component: SearchLocationModal,
+    options: MODAL_SCREEN_OPTIONS,
+  },
+  {
+    name: 'VenueMapLocationModal',
+    component: VenueMapLocationModal,
+    options: MODAL_SCREEN_OPTIONS,
   },
 ]
 

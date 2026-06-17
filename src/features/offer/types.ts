@@ -4,7 +4,6 @@ import { Animated, LayoutChangeEvent } from 'react-native'
 import {
   CategoryIdEnum,
   FavoriteResponse,
-  OfferArtist,
   OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
@@ -94,7 +93,6 @@ export type OfferContentProps = {
   adviceVariantInfo?: AdviceVariantInfo
   subcategory: Subcategory
   onShowClubAdviceWritersModal: () => void
-  onShowOfferArtistsModal: (artists: OfferArtist[]) => void
   clubAdvices?: AdviceCardData[]
   proAdvices?: AdviceCardData[]
   headlineOffersCount?: number
@@ -103,7 +101,6 @@ export type OfferContentProps = {
   userId?: number
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
-  isMultiArtistsEnabled?: boolean
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   CTAsComponent?: ComponentType<OfferCTAsComponentProps>
   proAdvicesCount?: number

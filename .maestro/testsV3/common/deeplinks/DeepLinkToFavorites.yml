@@ -5,15 +5,15 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
       - openLink:
-          link: ${output.links.staging.android.profile}
+          link: ${output.links.staging.android.favorites}
           autoVerify: true
 - runFlow:
     when:
       platform: iOS
     commands:
       - openLink:
-          link: ${output.links.staging.ios.profile}
+          link: ${output.links.staging.ios.favorites}
           autoVerify: true
 - waitForAnimationToEnd
-- runFlow: ../common/AcceptCookies.yml
-- assertVisible: 'Mon profil'
+- runFlow: ../cookies/AcceptCookies.yml
+- assertVisible: '.*favoris.*'

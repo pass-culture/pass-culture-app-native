@@ -17,7 +17,7 @@ const WorldPositionSvg: React.FunctionComponent<AccessibleIcon> = ({
       width={size}
       height={size}
       viewBox="0 0 48 48"
-      accessibilityLabel={accessibilityLabel ?? `position dans le monde`}
+      accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <Path
         fill={color}

@@ -2,18 +2,18 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - profile
 onFlowStart:
-  - runScript: ../common/DeepLink.js
+  - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
-      file: ../common/generateUser.js
+      file: ../common/helpers/generateUser.js
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
         age: 18
 ---
-- runFlow: ../common/LaunchApp.yml
-- runFlow: ../common/StopApp.yml
-- runFlow: ../common/DeeplinkBeneficiaryUser.yml
-- runFlow: ../common/GoToProfileFromTabBar.yml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
     element: 'Suivre le pass Culture'
@@ -28,4 +28,4 @@ onFlowStart:
 - assertVisible: '.*politique de gestion des cookies'
 - tapOn: 'Enregistrer mes choix'
 
-- runFlow: ../common/StopApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml

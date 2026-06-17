@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { ScreenOrigin } from 'features/location/enums'
 
@@ -11,7 +12,16 @@ const meta: Meta<typeof LocationWidget> = {
 }
 export default meta
 
-const Template = () => <LocationWidget screenOrigin={ScreenOrigin.HOME} />
+const StoryContainer = styled.View({
+  width: '100%',
+  alignItems: 'center',
+})
+
+const Template = () => (
+  <StoryContainer>
+    <LocationWidget screenOrigin={ScreenOrigin.HOME} />
+  </StoryContainer>
+)
 
 export const Default = {
   name: 'LocationWidget',

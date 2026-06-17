@@ -57,7 +57,7 @@ const UnmemoizedSearchVenueItem = ({
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, {
     ...venue,
-    distance,
+    distance: distance ? `à ${distance}` : undefined,
   })
 
   const hasVenueImage = !!venue.banner_url

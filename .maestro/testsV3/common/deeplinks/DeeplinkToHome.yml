@@ -14,5 +14,5 @@ appId: ${MAESTRO_APP_ID}
     - openLink:
         link: ${output.links.staging.ios.home}
         autoVerify: true
-- runFlow: ../common/AcceptCookies.yml
+- runFlow: ../cookies/AcceptCookies.yml
 - assertVisible: "Bienvenue\_!"

@@ -31,7 +31,7 @@ describe('<UbbleWebview/>', () => {
     })
   }),
     describe('Identification URL', () => {
-      it('should redirect to Error page when identification url is not valid', async () => {
+      it('should redirect to incorrect link page when identification url is not valid', async () => {
         mockServer.postApi<IdentificationSessionResponse>('/v1/ubble_identification', {
           identificationUrl: "javascript:alert('hello')",
         })
@@ -46,7 +46,7 @@ describe('<UbbleWebview/>', () => {
         await act(async () => {
           expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
             params: undefined,
-            screen: 'BonificationError',
+            screen: 'BonificationIncorrectLink',
           })
         })
       })
