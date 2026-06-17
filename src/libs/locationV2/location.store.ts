@@ -134,6 +134,7 @@ const locationStore = createStore({
       return LocationModeToLocationTypeMap[state.locationMode]
     },
     selectIsPermissionModalVisible: () => (state) => state.isPermissionModalVisible,
+    selectLocationLabel: () => (state) => state.configuration[state.locationMode].label,
   },
   options: { persist: true, persistKeys: ['locationMode', 'configuration'] },
 })
@@ -166,4 +167,5 @@ export const {
   useUserLocation,
   useIsGeolocated,
   usePlace,
+  useLocationLabel,
 } = locationStore.hooks

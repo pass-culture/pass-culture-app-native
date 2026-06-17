@@ -4,11 +4,11 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ScreenOrigin } from 'features/location/enums'
-import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationLabel } from 'libs/locationV2/location.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -29,11 +29,11 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { place, selectedLocationMode } = useLocation()
+  const { selectedLocationMode } = useLocation()
   const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
     useLocationWidgetTooltip(screenOrigin)
 
-  const locationTitle = getLocationTitle(place, selectedLocationMode)
+  const locationTitle = useLocationLabel()
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
