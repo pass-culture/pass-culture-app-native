@@ -3,8 +3,8 @@ import { Share } from 'react-native'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
-import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -104,7 +104,7 @@ describe('<BookingConfirmation />', () => {
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        eligibility: EligibilityType.free,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
       },
       { persist: true }
     )
