@@ -294,4 +294,21 @@ describe('adaptOffersPlaylistParameters', () => {
       isWithClub: true,
     })
   })
+
+  it('should return algolia parameters when artist id provided', () => {
+    const parameters = {
+      artistId: 'dc9babd-4cd3-4971-ae5c-6f7775748807',
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      artistId: 'dc9babd-4cd3-4971-ae5c-6f7775748807',
+    })
+  })
 })

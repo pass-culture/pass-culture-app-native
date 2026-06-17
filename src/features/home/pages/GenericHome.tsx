@@ -24,6 +24,7 @@ import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
+  isArtistPlaylistModule,
   isOffersModule,
   isVenuesModule,
   ModuleViewableItemsChangedHandler,
@@ -76,7 +77,11 @@ const renderModule = (
       item={item}
       index={index}
       homeEntryId={homeId}
-      data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
+      data={
+        isOffersModule(item) || isArtistPlaylistModule(item) || isVenuesModule(item)
+          ? item.data
+          : undefined
+      }
       videoModuleId={videoModuleId}
       onModuleViewableItemsChanged={handleViewableItemsChanged}
     />
@@ -146,7 +151,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
 }) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.HOME)
   useMarkScreenInteractive()
-  const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
+  const offersModulesData = useGetOffersDataQuery([
+    ...modules.filter(isOffersModule),
+    ...modules.filter(isArtistPlaylistModule),
+  ])
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)
