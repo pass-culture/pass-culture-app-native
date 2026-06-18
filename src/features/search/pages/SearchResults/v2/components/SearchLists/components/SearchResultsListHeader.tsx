@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollViewProps, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -11,7 +11,6 @@ import { FetchSearchResultsArgs, GridListLayout } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/location'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
@@ -40,7 +39,7 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
   onPressAIFakeDoorBanner,
   searchFilters,
 }) => {
-  const { geolocPosition, showGeolocPermissionModal } = useLocation()
+  const { designSystem } = useTheme()
   const {
     searchState: { offerCategories },
   } = useSearch()
@@ -60,11 +59,9 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
 
   const onPress = () => {
     void analytics.logActivateGeolocfromSearchResults()
-    showGeolocPermissionModal()
   }
 
   const shouldDisplayGeolocationBanner =
-    geolocPosition === null &&
     offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
@@ -88,14 +85,13 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
         </AIFakeDoorBannerContainer>
       ) : null}
       {shouldDisplayGeolocationBanner ? (
-        <GeolocationBannerContainer>
-          <GeolocationBanner
-            title="Géolocalise-toi"
-            subtitle="Pour trouver des offres autour de toi"
-            analyticsFrom="search"
-            onPress={onPress}
-          />
-        </GeolocationBannerContainer>
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi"
+          analyticsFrom="search"
+          onPress={onPress}
+          style={{ marginVertical: designSystem.size.spacing.l }}
+        />
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
@@ -141,10 +137,6 @@ const TitleContainer = styled.View({
   flex: 1,
   flexDirection: 'column',
 })
-
-const GeolocationBannerContainer = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.l,
-}))
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits, theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,

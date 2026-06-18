@@ -24,8 +24,15 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { GeolocPermissionState, Position } from 'libs/location/location'
+import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { GeoCoordinates, GeolocPermissionState, Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  locationSelectors,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -78,7 +85,7 @@ const mockedPlace: SuggestedPlace = {
 const mockSetSelectedLocationMode = jest.fn()
 const mockSetPlace = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
-const mockedPosition = { latitude: 2, longitude: 40 } as Position
+const mockedPosition: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockedNoPosition = null as Position
 const DEFAULT_RADIUS = 50
 const everywhereUseLocation = {
@@ -119,6 +126,11 @@ const mockUseLocation = jest.fn(() => everywhereUseLocation)
 jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
+
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
+
+jest.mock('libs/locationV2/syncLocation')
 
 jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
@@ -216,6 +228,7 @@ jest.mock('features/navigation/helpers/usePreviousRouteName', () => ({
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
     useRemoteConfigSpy.mockReturnValue(remoteConfigResponseFixture)
   })
 
@@ -265,6 +278,7 @@ describe('SearchResultsContent component', () => {
 
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
+      locationActions.setGeolocPosition(mockedPosition)
       mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
       renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
@@ -302,6 +316,9 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
+    mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
     mockUseLocation.mockReturnValueOnce({
       ...everywhereUseLocation,
       userLocation: null,
@@ -312,7 +329,7 @@ describe('SearchResultsContent component', () => {
 
     await user.press(await screen.findByText('Géolocalise-toi'))
 
-    await waitFor(() => expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true))
   })
 
   it('should not log PerformSearch when there is not search query execution', async () => {
@@ -601,6 +618,8 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     mockUseLocation.mockReturnValueOnce({
       ...everywhereUseLocation,
       userLocation: null,
@@ -617,7 +636,9 @@ describe('SearchResultsContent component', () => {
   })
 
   describe('should display geolocation incitation button', () => {
-    beforeAll(() => {
+    beforeEach(() => {
+      useLocationV2.setState(defaultLocationState)
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
       mockUseLocation.mockReturnValue({
         ...everywhereUseLocation,
         userLocation: null,
