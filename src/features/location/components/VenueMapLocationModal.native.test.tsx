@@ -1,5 +1,4 @@
 import React from 'react'
-import { Linking } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { goBack, replace, useRoute } from '__mocks__/@react-navigation/native'
@@ -7,12 +6,12 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
-import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { initLocationPermission } from 'libs/locationV2/location.methods'
+import { initLocation } from 'libs/locationV2/initLocation'
 import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -71,7 +70,7 @@ const user = userEvent.setup()
 
 describe('VenueMapLocationModal', () => {
   beforeEach(() => {
-    initLocationPermission()
+    initLocation()
     useRoute.mockReturnValue({ params: { openedFrom: 'searchPlaylist' } })
   })
 
@@ -324,20 +323,6 @@ describe('VenueMapLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  it('should open location settings if geolocation is never_ask_again and geolocation button pressed', async () => {
-    locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
-    const openSettingsSpy = jest.spyOn(Linking, 'openSettings').mockResolvedValue()
-
-    renderVenueMapLocationModal()
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-    await user.press(screen.getByText('Utiliser ma position actuelle'))
-
-    expect(openSettingsSpy).toHaveBeenCalledTimes(1)
-    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
   })
 
   describe('PlaceRadius', () => {

@@ -2,15 +2,16 @@ import React from 'react'
 
 import { OnboardingGeolocation } from 'features/onboarding/pages/onboarding/OnboardingGeolocation'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import * as requestGeolocPermissionModule from 'libs/locationV2/requestGeolocPermission'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockRequestGeolocPermission = jest.fn()
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({ requestGeolocPermission: mockRequestGeolocPermission }),
-}))
+const mockRequestGeolocPermission = jest.spyOn(
+  requestGeolocPermissionModule,
+  'requestGeolocPermission'
+)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

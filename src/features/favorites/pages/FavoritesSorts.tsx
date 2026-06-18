@@ -11,7 +11,8 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
-import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import { useLocation } from 'libs/location/location'
+import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -20,13 +21,7 @@ const sortOptions = buildSortRadioOptions()
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Favorites'))
-  const {
-    geolocPosition,
-    geolocPositionError,
-    permissionState,
-    requestGeolocPermission,
-    showGeolocPermissionModal,
-  } = useLocation()
+  const { geolocPositionError } = useLocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
 
@@ -34,23 +29,10 @@ export const FavoritesSorts: React.FC = () => {
   const hasGeolocError = !!geolocPositionError
 
   const onSortBySelection = async (sortBy: FavoriteSortBy) => {
-    const updateSortBySelection = () => {
-      setStagedSelectedSortBy(sortBy)
-    }
-
     if (sortBy === 'AROUND_ME') {
-      if (!geolocPosition && permissionState === GeolocPermissionState.GRANTED) {
-        return
-      }
-      if (geolocPosition) {
-        return updateSortBySelection()
-      }
-      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-        return showGeolocPermissionModal()
-      }
-      return requestGeolocPermission({ onAcceptance: updateSortBySelection })
+      return requestGeolocPermission({ onSuccess: () => setStagedSelectedSortBy(sortBy) })
     }
-    return updateSortBySelection()
+    return setStagedSelectedSortBy(sortBy)
   }
 
   const handleSortChange = (label: string) => {

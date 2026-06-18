@@ -32,7 +32,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "removeComments": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
   },
   "exclude": [
     "build/**",

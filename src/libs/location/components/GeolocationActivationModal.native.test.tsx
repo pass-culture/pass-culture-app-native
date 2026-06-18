@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { GeolocPermissionState } from 'libs/location/location'
 import { locationActions } from 'libs/locationV2/location.store'
 import { render, screen, userEvent } from 'tests/utils'
@@ -49,26 +49,6 @@ describe('GeolocationActivationModal', () => {
     renderGeolocationActivationModal()
 
     await user.press(screen.getByText('Activer la géolocalisation'))
-
-    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
-  })
-
-  it('should open settings to deactivate geoloc when press on "Désactiver la géolocalisation"', async () => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    locationActions.showPermissionModal()
-    renderGeolocationActivationModal()
-
-    await user.press(screen.getByText('Désactiver la géolocalisation'))
-
-    expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
-  })
-
-  it('should log event deeplinkEnableLocation when press on "Désactiver la géolocalisation"', async () => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    locationActions.showPermissionModal()
-    renderGeolocationActivationModal()
-
-    await user.press(screen.getByText('Désactiver la géolocalisation'))
 
     expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
   })

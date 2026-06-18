@@ -1,11 +1,9 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import {
-  requestGeolocPermission,
-  showGeolocPermissionModal,
-} from 'libs/location/__mocks__/location'
+import { showGeolocPermissionModal } from 'libs/location/__mocks__/location'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import * as requestGeolocPermissionModule from 'libs/locationV2/requestGeolocPermission'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -14,6 +12,12 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/location/location')
 const mockUseLocation = useLocation as jest.Mock
+
+jest.mock('libs/locationV2/requestGeolocPermission')
+const mockRequestGeolocPermission = jest.spyOn(
+  requestGeolocPermissionModule,
+  'requestGeolocPermission'
+)
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -63,7 +67,6 @@ describe('<GeolocationBanner />', () => {
   it('should ask for permission when pressing button and permission is denied', async () => {
     mockUseLocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.DENIED,
-      requestGeolocPermission,
     })
     render(
       reactQueryProviderHOC(
@@ -78,7 +81,7 @@ describe('<GeolocationBanner />', () => {
 
     await user.press(button)
 
-    expect(requestGeolocPermission).toHaveBeenCalledWith()
+    expect(mockRequestGeolocPermission).toHaveBeenCalledWith()
   })
 
   it('should call onPress externaly when specified', async () => {

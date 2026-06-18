@@ -5,6 +5,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
   GeolocPositionError,
   GeolocPermissionState,
@@ -22,12 +23,16 @@ const defaultUseLocation = {
   geolocPositionError: mockPositionError,
   triggerPositionUpdate: jest.fn(),
   showGeolocPermissionModal: jest.fn(),
-  requestGeolocPermission: jest.fn(),
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/useLocation', () => ({
   useLocation: () => mockUseLocation(),
 }))
+
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -108,6 +113,7 @@ describe('<FavoritesSorts/>', () => {
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
     mockUseLocation.mockReturnValueOnce(defaultUseLocation)
+    mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
     renderFavoritesSort()
 
     await user.press(screen.getByText('Proximité géographique'))

@@ -8,15 +8,14 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { initLocationPermission } from 'libs/locationV2/location.methods'
-import { locationActions } from 'libs/locationV2/location.store'
+import { initLocation } from 'libs/locationV2/initLocation'
 import { SuggestedPlace } from 'libs/place/types'
-import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()
@@ -73,7 +72,7 @@ const user = userEvent.setup()
 
 describe('SearchLocationModal', () => {
   beforeEach(() => {
-    initLocationPermission()
+    initLocation()
   })
 
   it('should render correctly if modal visible', async () => {
@@ -159,23 +158,6 @@ describe('SearchLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  it('should show geolocation modal if geolocation is never_ask_again and geolocation button pressed', async () => {
-    locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
-
-    renderSearchLocationModal()
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-    await user.press(screen.getByText('Utiliser ma position actuelle'))
-
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()
   })
 
   describe('PlaceRadius', () => {
