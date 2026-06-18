@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
+import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
@@ -58,6 +59,45 @@ describe('ArtistPlaylist', () => {
     expect(screen.getAllByText('Concert')[0]).toBeOnTheScreen()
     expect(screen.getByText('Livre papier')).toBeOnTheScreen()
     expect(screen.getByText('Festival livre')).toBeOnTheScreen()
+  })
+
+  it('should trigger ConsultOffer log with good parameters when pressing a playlist item', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Concert',
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+            }),
+            buildArtistOffer({
+              objectID: '2',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+            buildArtistOffer({
+              objectID: '3',
+              name: 'Festival livre',
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
+            }),
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Livre papier'))
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      artistName: 'Céline Dion',
+      displayAdvice: false,
+      from: 'artist',
+      isHeadline: false,
+      offerId: '2',
+      playlistType: PlaylistType.ARTIST_CATEGORY_PLAYLIST,
+    })
   })
 
   it('should not display playlists for offers excluded from artist category mapping', async () => {
