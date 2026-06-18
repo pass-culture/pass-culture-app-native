@@ -127,13 +127,14 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistOffers' as const,
     params: {
-      type: VerticalPlaylist.ModuleOffers,
+      type: VerticalPlaylist.ModuleArtistPlaylist,
       module: {
         id: moduleId,
         type: HomepageModuleType.ArtistPlaylistModule,
         title: moduleName,
         offersModuleParameters,
         displayParameters,
+        artistId,
       },
     },
   }

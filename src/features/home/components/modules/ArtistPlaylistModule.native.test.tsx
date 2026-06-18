@@ -77,7 +77,7 @@ describe('ArtistPlaylistModule', () => {
     await user.press(screen.getByText('Voir tout'))
 
     expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffers', {
-      type: VerticalPlaylist.ModuleOffers,
+      type: VerticalPlaylist.ModuleArtistPlaylist,
       module: {
         id: 'fakeModuleId',
         title: 'Module title',
@@ -88,6 +88,7 @@ describe('ArtistPlaylistModule', () => {
           minOffers: 0,
           title: 'Module title',
         },
+        artistId: '1',
       },
     })
   })

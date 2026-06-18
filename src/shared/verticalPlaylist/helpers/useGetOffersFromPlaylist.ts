@@ -1,5 +1,5 @@
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
-import { OffersModule } from 'features/home/types'
+import { ArtistPlaylistModule, OffersModule } from 'features/home/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenueHit } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
@@ -12,20 +12,13 @@ const isOfferModule = (items: Offer[] | VenueHit[]): items is Offer[] => {
 
 const NO_OFFERS: Offer[] = []
 
-export const useGetOffersFromPlaylist = ({
-  type,
-  id,
-  title,
-  offersModuleParameters,
-  displayParameters,
-  data,
-  recommendationParameters,
-}: OffersModule): VerticalPlaylistOffersData => {
-  const modules = [
-    { type, id, title, offersModuleParameters, displayParameters, data, recommendationParameters },
-  ]
+export const useGetOffersFromPlaylist = (
+  module: OffersModule | ArtistPlaylistModule
+): VerticalPlaylistOffersData => {
+  const { title, displayParameters } = module
+
   const { searchState } = useSearch()
-  const moduleData = useGetOffersDataQuery(modules)
+  const moduleData = useGetOffersDataQuery([module])
   const rawItems = moduleData?.[0]?.playlistItems ?? NO_OFFERS
   const items = isOfferModule(rawItems) ? rawItems : NO_OFFERS
 
