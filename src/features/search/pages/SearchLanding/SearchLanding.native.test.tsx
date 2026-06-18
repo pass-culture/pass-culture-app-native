@@ -16,11 +16,16 @@ import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -180,29 +185,6 @@ const mockedPlace: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-const mockSetPlace = jest.fn()
-const mockSetSelectedLocationMode = jest.fn()
-const mockHasGeolocPosition = true
-const mockSelectedLocationMode = LocationMode.AROUND_ME
-
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    setPlace: mockSetPlace,
-    place: mockedPlace,
-    onModalHideRef: jest.fn(),
-    isCurrentLocationMode: jest.fn(),
-    setSelectedLocationMode: mockSetSelectedLocationMode,
-    hasGeolocPosition: mockHasGeolocPosition,
-    selectedLocationMode: mockSelectedLocationMode, // to have the venue map block display
-    setSelectedPlace: jest.fn(),
-    setAroundMeRadius: jest.fn(),
-    aroundMeRadius: 50,
-    aroundPlaceRadius: 50,
-    userLocation: { latitude: 48.8566, longitude: 2.3522 },
-    geolocPosition: { latitude: 48.8566, longitude: 2.3522 },
-  }),
-}))
-
 const mockedEmptyHistory = {
   filteredHistory: [],
   queryHistory: '',
@@ -226,6 +208,12 @@ jest.useFakeTimers()
 describe('<SearchLanding />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    act(() => {
+      locationActions.setGeolocPosition({ latitude: 48.8566, longitude: 2.3522 })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
+      locationActions.setPlace(mockedPlace)
+    })
     mockUseSearchHistory.mockReset()
     mockUseSearchHistory.mockReturnValue({
       filteredHistory: mockedSearchHistory,

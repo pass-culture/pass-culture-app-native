@@ -3,12 +3,13 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationWidgetBadge } from 'features/location/components/LocationWidgetBadge'
-import { useLocation } from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { act, render, screen, userEvent } from 'tests/utils'
-
-jest.mock('libs/location/location')
-const mockUseLocation = useLocation as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -21,11 +22,11 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('LocationWidgetBadge', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
+
   it('should navigate to search location modal when pressing widget', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: true,
-      place: { label: 'test' },
-    })
     render(<LocationWidgetBadge />)
 
     const button = screen.getByLabelText('France entière - Ouvrir la modale de localisation')
@@ -35,53 +36,39 @@ describe('LocationWidgetBadge', () => {
     expect(navigate).toHaveBeenCalledWith('SearchLocationModal')
   })
 
-  it.each`
-    hasGeolocPosition | place
-    ${true}           | ${null}
-    ${true}           | ${undefined}
-  `(
-    `should render a filled location pointer and the text ${LocationLabel.aroundMeLabel} if the user is geolocated`,
-    async ({ hasGeolocPosition, place }) => {
-      mockUseLocation.mockReturnValueOnce({
-        hasGeolocPosition,
-        place,
-        selectedLocationMode: LocationMode.AROUND_ME,
-      })
+  it(`should render a filled location pointer and the text ${LocationLabel.aroundMeLabel} if the user is geolocated`, async () => {
+    await act(async () => {
+      locationActions.setGeolocPosition({ latitude: 48.8566, longitude: 2.3522 })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
+    })
 
-      render(<LocationWidgetBadge />)
+    render(<LocationWidgetBadge />)
 
-      expect(screen.getByTestId('location pointer highlighted')).toBeOnTheScreen()
-      expect(screen.getByText(LocationLabel.aroundMeLabel)).toBeOnTheScreen()
-    }
-  )
+    expect(screen.getByTestId('location pointer highlighted')).toBeOnTheScreen()
+    expect(screen.getByText(LocationLabel.aroundMeLabel)).toBeOnTheScreen()
+  })
 
-  it.each`
-    hasGeolocPosition | place
-    ${false}          | ${null}
-    ${false}          | ${undefined}
-  `(
-    `should render a location pointer(not filled ) and the text ${LocationLabel.everywhereLabel} if the user is not geolocated and has not selected a custom position`,
-    async ({ hasGeolocPosition, place }) => {
-      mockUseLocation.mockReturnValueOnce({
-        hasGeolocPosition,
-        place,
-        geolocPosition: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-      })
+  it(`should render a location pointer(not filled ) and the text ${LocationLabel.everywhereLabel} if the user is not geolocated and has not selected a custom position`, async () => {
+    await act(async () => {
+      locationActions.setGeolocPosition(null)
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
+    })
 
-      render(<LocationWidgetBadge />)
+    render(<LocationWidgetBadge />)
 
-      expect(screen.getByTestId('location pointer default')).toBeOnTheScreen()
-      expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
-    }
-  )
+    expect(screen.getByTestId('location pointer default')).toBeOnTheScreen()
+    expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
+  })
 
   it('should render a filled location pointer and label of the place if the user has selected a place', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: true,
-      place: { label: 'my place' },
-      geolocPosition: null,
-      selectedLocationMode: LocationMode.AROUND_PLACE,
+    await act(async () => {
+      locationActions.setPlace({
+        label: 'my place',
+        info: '',
+        type: 'locality',
+        geolocation: { latitude: 0, longitude: 0 },
+      })
+      locationActions.setLocationMode(LocationMode.AROUND_PLACE)
     })
 
     render(<LocationWidgetBadge />)
