@@ -4,13 +4,18 @@ import { api } from 'api/api'
 import { OfferChronicles } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useClubAdvicesQuery<
+export const useClubAdvicesQuery = <
   TData = Awaited<ReturnType<typeof api.getNativeV1OfferofferIdChronicles>>,
->({ offerId, select }: { offerId: number; select?: (data: OfferChronicles) => TData }) {
-  return useQuery({
+>({
+  offerId,
+  select,
+}: {
+  offerId: number
+  select?: (data: OfferChronicles) => TData
+}) =>
+  useQuery({
     queryKey: [QueryKeys.CLUB_ADVICES, offerId],
     queryFn: () => api.getNativeV1OfferofferIdChronicles(offerId),
     enabled: !!offerId,
     select,
   })
-}

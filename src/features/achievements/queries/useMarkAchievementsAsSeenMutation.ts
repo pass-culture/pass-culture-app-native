@@ -14,7 +14,7 @@ export function useAchievementsMarkAsSeenMutation(
       api.postNativeV1AchievementsMarkAsSeen({ achievementIds }),
 
     onSuccess: () => {
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({
         queryKey: [QueryKeys.USER_PROFILE],
       }) // To re-fetch the user's achievements
 
