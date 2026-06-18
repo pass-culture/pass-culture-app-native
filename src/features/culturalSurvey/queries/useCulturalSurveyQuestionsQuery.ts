@@ -14,5 +14,6 @@ export const useCulturalSurveyQuestionsQuery = () => {
     queryFn: () => api.getNativeV1CulturalSurveyQuestions(),
     staleTime: STALE_TIME_CULTURAL_SURVEY_QUESTIONS,
     enabled: isLoggedIn,
+    meta: { private: true },
   })
 }

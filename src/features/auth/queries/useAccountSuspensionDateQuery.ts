@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useAccountSuspensionDateQuery = () =>
+export const useAccountSuspensionDateQuery = (enabled?: boolean) =>
   useQuery({
     queryKey: [QueryKeys.ACCOUNT_SUSPENSION_DATE],
     queryFn: async () => {
@@ -13,4 +13,6 @@ export const useAccountSuspensionDateQuery = () =>
         return null
       }
     },
+    enabled: enabled ?? false,
+    meta: { private: true },
   })

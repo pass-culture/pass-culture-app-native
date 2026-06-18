@@ -18,7 +18,7 @@ export const bookingsV2QueryOptions = () => ({
   queryFn: () => api.getNativeV2Bookings(),
   staleTime: STALE_TIME_BOOKINGS,
   gcTime: GC_TIME_TWENTY_FOUR_DAYS,
-  meta: { persist: true },
+  meta: { persist: true, private: true },
 })
 
 export const useBookingsV2Query = <TSelect = BookingsResponseV2>(

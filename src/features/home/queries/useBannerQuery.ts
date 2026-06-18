@@ -12,5 +12,6 @@ export const useBannerQuery = (hasGeolocPosition: boolean) => {
     queryFn: () => api.getNativeV1Banner(hasGeolocPosition),
     enabled: isLoggedIn,
     retry: 0,
+    meta: { private: true },
   })
 }

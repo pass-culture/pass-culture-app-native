@@ -11,7 +11,7 @@ const GC_TIME_TWENTY_FOUR_DAYS = 1000 * 60 * 60 * 24 * 24
 const bookingByIdQueryOptions = (id: number) => ({
   queryKey: [QueryKeys.BOOKINGSV2, id],
   queryFn: () => api.getNativeV2BookingsbookingId(id),
-  meta: { persist: true },
+  meta: { persist: true, private: true },
   gcTime: GC_TIME_TWENTY_FOUR_DAYS,
 })
 

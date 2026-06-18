@@ -6,7 +6,10 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
-import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
+import {
+  checkHasCurrentEmailChange,
+  useCheckHasCurrentEmailChangeQuery,
+} from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
@@ -15,6 +18,8 @@ import { ChangeEmailContent } from './ChangeEmailContent'
 export function ChangeEmail() {
   const { params } = useRoute<UseRouteType<'ChangeEmail'>>()
   const { replace } = useNavigation<UseNavigationType>()
+  const { isLoggedIn, user } = useAuthContext()
+
   const { hideModal, showModal, visible } = useModal(false)
 
   useEffect(() => {
@@ -27,15 +32,18 @@ export function ChangeEmail() {
       return replace(...getProfileHookConfig('ChangeEmail', { showModal: false }))
   }
 
-  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery()
-  const { user } = useAuthContext()
+  const { data: hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery({
+    enabled: isLoggedIn,
+    meta: { private: true },
+    select: (data) => checkHasCurrentEmailChange(data),
+  })
 
   return (
     <React.Fragment>
       <PageWithHeader
         title="Modifier mon e-mail"
         scrollChildren={
-          <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
+          <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange ?? false} user={user} />
         }
       />
       <DeleteProfileReasonNewEmailModal isVisible={visible} hideModal={handleHideModal} />

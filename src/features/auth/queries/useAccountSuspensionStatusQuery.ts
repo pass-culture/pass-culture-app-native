@@ -3,10 +3,9 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useAccountSuspensionStatusQuery = () => {
-  return useQuery({
+export const useAccountSuspensionStatusQuery = (enabled?: boolean) =>
+  useQuery({
     queryKey: [QueryKeys.ACCOUNT_SUSPENSION_STATUS],
-
     queryFn: async () => {
       try {
         return await api.getNativeV1AccountSuspensionStatus()
@@ -14,5 +13,6 @@ export const useAccountSuspensionStatusQuery = () => {
         return null
       }
     },
+    enabled: enabled ?? false,
+    meta: { private: true },
   })
-}

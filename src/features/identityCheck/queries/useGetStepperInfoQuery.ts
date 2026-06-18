@@ -23,5 +23,6 @@ export const useGetStepperInfoQuery = (): UseQueryResult<
         ? api.getNativeV3SubscriptionStepper()
         : api.getNativeV2SubscriptionStepper(),
     enabled: isLoggedIn,
+    meta: { private: true },
   })
 }

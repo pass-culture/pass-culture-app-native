@@ -18,5 +18,6 @@ export const useGetRemindersQuery = <TData = GetRemindersResponse>(
     select,
     enabled: isLoggedIn,
     staleTime: STALE_TIME_REMINDERS,
+    meta: { private: true },
   })
 }

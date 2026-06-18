@@ -44,6 +44,7 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
+    meta: { private: true },
     staleTime: 1000 * 60 * 5,
     enabled:
       isLoggedIn &&

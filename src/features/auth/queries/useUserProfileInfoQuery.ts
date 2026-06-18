@@ -34,7 +34,7 @@ export const useUserProfileInfoQuery = (isLoggedIn: boolean, options = {}) => {
     queryFn: () => api.getNativeV1Me(),
     enabled: !!netInfo.isConnected && isLoggedIn,
     staleTime: STALE_TIME_USER_PROFILE,
-    meta: { persist: true },
+    meta: { persist: true, private: true },
     select: sanitizeUser,
     ...options,
   })

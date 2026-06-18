@@ -1,6 +1,7 @@
 import { useIsFocused } from '@react-navigation/native'
 
 import { PlaylistRequestBody, RecommendationApiParams, SubcategoryIdEnumv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { useHomeRecommendedIdsQuery } from 'features/home/queries/recommendation/useHomeRecommendedIdsQuery'
@@ -54,6 +55,7 @@ export const useHomeRecommendedOffers = (
 ): { offers: Offer[]; recommendationApiParams?: RecommendationApiParams } => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const isFocused = useIsFocused()
+  const { isLoggedIn } = useAuthContext()
 
   const categoriesFromContentful = (recommendationParameters?.categories ?? []).map(
     getCategoriesFacetFilters
@@ -86,7 +88,15 @@ export const useHomeRecommendedOffers = (
   const ids = data?.playlistRecommendedOffers ?? []
   return {
     offers:
-      useAlgoliaSimilarOffersQuery(ids, true, [QueryKeys.RECOMMENDATION_HITS, moduleId, ids]) || [],
+      useAlgoliaSimilarOffersQuery(
+        ids,
+        true,
+        [QueryKeys.RECOMMENDATION_HITS, moduleId, ids],
+        isLoggedIn,
+        {
+          private: true,
+        }
+      ) || [],
     recommendationApiParams: data?.params,
   }
 }

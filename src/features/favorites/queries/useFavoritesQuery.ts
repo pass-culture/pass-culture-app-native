@@ -15,5 +15,6 @@ export const useFavoritesQuery = () => {
     queryFn: () => api.getNativeV1MeFavorites(),
     enabled: isLoggedIn,
     staleTime: STALE_TIME_FAVORITES,
+    meta: { private: true },
   })
 }

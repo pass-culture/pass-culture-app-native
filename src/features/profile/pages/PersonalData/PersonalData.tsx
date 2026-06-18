@@ -8,7 +8,10 @@ import { ProfileNavigateParams } from 'features/navigation/navigators/RootNaviga
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { EditableField } from 'features/profile/components/EditableFiled/EditableField'
-import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
+import {
+  checkHasCurrentEmailChange,
+  useCheckHasCurrentEmailChangeQuery,
+} from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -24,7 +27,7 @@ function onEmailChangeClick() {
 }
 
 export function PersonalData() {
-  const { user } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const fullname = [user?.firstName, user?.lastName].filter(Boolean).join(' ').trim()
@@ -34,7 +37,11 @@ export function PersonalData() {
       ? `${user.street}, ${user.postalCode}, ${user.city}`
       : ''
 
-  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery()
+  const { data: hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery({
+    enabled: isLoggedIn,
+    meta: { private: true },
+    select: (data) => checkHasCurrentEmailChange(data),
+  })
 
   const updateEmailRoute = useMemo<ProfileNavigateParams[0]>(() => {
     if (hasCurrentEmailChange) return 'TrackEmailChange'
