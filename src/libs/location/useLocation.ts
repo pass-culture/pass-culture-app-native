@@ -31,11 +31,6 @@ export const useLocation = (): UseLocationReturnType => {
     showPermissionModal: showGeolocPermissionModal,
   } = locationActions
 
-  const onResetPlace = () => {
-    locationModalActions.setPlace(null)
-    locationModalActions.setAddressInputValue('')
-  }
-
   const userLocation = useUserLocation()
 
   return {
@@ -48,7 +43,7 @@ export const useLocation = (): UseLocationReturnType => {
     showGeolocPermissionModal,
     selectedLocationMode,
     setSelectedLocationMode: locationActions.setLocationMode,
-    onResetPlace,
+    onResetPlace: locationModalActions.resetPlace,
     selectedPlace: place,
     setSelectedPlace: locationModalActions.setPlace,
     setPlaceQuery: locationModalActions.setAddressInputValue,
