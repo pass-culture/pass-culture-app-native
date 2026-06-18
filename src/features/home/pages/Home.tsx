@@ -15,8 +15,6 @@ import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/location'
-import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
 import { useBookingsV2Query } from 'queries/bookings/useBookingsQuery'
@@ -32,7 +30,6 @@ const Header = () => (
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id: homepageId } = useHomepageData()
-  const { hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } = useLocation()
   const { isLoggedIn, user } = useAuthContext()
 
   const {
@@ -71,20 +68,6 @@ export const Home: FunctionComponent = () => {
       analytics.logConsultHome({ homeEntryId: homepageId })
     }
   }, [homepageId])
-
-  useEffect(() => {
-    if (
-      selectedLocationMode === LocationMode.EVERYWHERE ||
-      selectedLocationMode === LocationMode.AROUND_ME
-    ) {
-      if (hasGeolocPosition) {
-        setSelectedLocationMode(LocationMode.AROUND_ME)
-      } else {
-        setSelectedLocationMode(LocationMode.EVERYWHERE)
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasGeolocPosition])
 
   useEffect(() => {
     const editor = BatchProfile.editor()
