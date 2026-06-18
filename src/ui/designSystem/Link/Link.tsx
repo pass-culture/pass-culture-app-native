@@ -12,6 +12,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { getIconSize } from './getIconSize'
 import { getLinkGap } from './getLinkGap'
+import { getLinkIconColor } from './getLinkIconColor'
 import { getLinkTextColor } from './getLinkTextColor'
 import { getLinkTypography } from './getLinkTypography'
 import { LinkProps, LinkSize } from './types'
@@ -35,6 +36,7 @@ export function Link({
   const computedLabel = label ?? wording ?? ''
   const theme = useTheme()
   const linkTextColor = textColor ?? getLinkTextColor({ color, theme })
+  const linkIconColor = getLinkIconColor({ color, theme })
   const Icon = icon
   const fontScale = PixelRatio.getFontScale()
   const iconSize = getIconSize({ size, theme }) * fontScale
@@ -78,7 +80,7 @@ export function Link({
             iconSize={iconSize}
             size={size}
             testID="link-icon-container">
-            <Icon color={linkTextColor} size={iconSize} testID="link-icon" />
+            <Icon color={linkIconColor} size={iconSize} testID="link-icon" />
           </IconContainer>
         ) : null}
         <StyledText testID="link-label" size={size} textColor={linkTextColor}>
