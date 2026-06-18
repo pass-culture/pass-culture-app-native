@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
-import { QueryKeys } from 'libs/queryKeys'
 
 export const useAccountUnsuspendMutation = (
   onSuccess: () => void,
@@ -12,20 +11,11 @@ export const useAccountUnsuspendMutation = (
   return useMutation({
     mutationFn: () => api.postNativeV1AccountUnsuspend(),
     onSuccess: () => {
-      queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
-        queryClient.invalidateQueries({
-          queryKey: [queryKey],
-        })
-      )
+      queryClient.removeQueries({
+        predicate: (query) => !!query.meta?.private,
+      })
       onSuccess()
     },
     onError,
   })
 }
-
-const queriesToInvalidateOnUnsuspend: QueryKeys[] = [
-  QueryKeys.USER_PROFILE,
-  QueryKeys.NEXT_SUBSCRIPTION_STEP,
-  QueryKeys.FAVORITES,
-  QueryKeys.FAVORITES_COUNT,
-]
