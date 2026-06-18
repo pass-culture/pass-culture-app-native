@@ -145,14 +145,7 @@ export const ThematicHome: FunctionComponent = () => {
 
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
   const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
-  const {
-    userLocation,
-    hasGeolocPosition,
-    selectedLocationMode,
-    setSelectedLocationMode,
-    setPlace,
-    onResetPlace,
-  } = useLocation()
+  const { userLocation, setSelectedLocationMode, setPlace } = useLocation()
   const isLocated = !!userLocation
 
   const { onScroll, headerTransition, gradientTranslation, viewTranslation, imageAnimatedHeight } =
@@ -189,26 +182,8 @@ export const ThematicHome: FunctionComponent = () => {
         },
         info: '',
       })
-      return
     }
-    switch (true) {
-      case isFromDeeplink && hasGeolocPosition:
-        setSelectedLocationMode(LocationMode.AROUND_ME)
-        setPlace(null)
-        onResetPlace()
-        break
-      case selectedLocationMode === LocationMode.AROUND_PLACE:
-        setSelectedLocationMode(LocationMode.AROUND_PLACE)
-        break
-      case selectedLocationMode === LocationMode.AROUND_ME || hasGeolocPosition:
-        setSelectedLocationMode(LocationMode.AROUND_ME)
-        break
-      default:
-        setSelectedLocationMode(LocationMode.EVERYWHERE)
-        break
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasGeolocPosition, isFromDeeplink])
+  }, [hasLocationUrlParams, latitude, longitude, setPlace, setSelectedLocationMode])
 
   const handleBackPress = () => {
     isFromDeeplink ? navigate(...homeNavigationConfig) : goBack()
