@@ -68,6 +68,9 @@ export const buildObjectIdsPredicate = (objectIds: string[]) => {
 export const buildEanPredicate = (eanList: string[]) =>
   eanList.map((ean) => `${FACETS_FILTERS_ENUM.OFFER_EAN}:${ean}`)
 
+export const buildArtistIdPredicate = (artistId: string) =>
+  `${FACETS_FILTERS_ENUM.ARTISTS_ID}:${artistId}`
+
 export const buildArtistNamePredicate = (artistName: string) =>
   `${FACETS_FILTERS_ENUM.ARTISTS_NAME}:${artistName}`
 

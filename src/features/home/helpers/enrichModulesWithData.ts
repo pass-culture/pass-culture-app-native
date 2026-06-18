@@ -1,4 +1,10 @@
-import { HomepageModule, ModuleData, isOffersModule, isVenuesModule } from 'features/home/types'
+import {
+  HomepageModule,
+  ModuleData,
+  isArtistPlaylistModule,
+  isOffersModule,
+  isVenuesModule,
+} from 'features/home/types'
 
 export function enrichModulesWithData(
   modules: HomepageModule[],
@@ -7,6 +13,12 @@ export function enrichModulesWithData(
 ): HomepageModule[] {
   return modules.map((module) => {
     if (isOffersModule(module)) {
+      return {
+        ...module,
+        data: offersData.find((mod) => mod.moduleId === module.id),
+      }
+    }
+    if (isArtistPlaylistModule(module)) {
       return {
         ...module,
         data: offersData.find((mod) => mod.moduleId === module.id),

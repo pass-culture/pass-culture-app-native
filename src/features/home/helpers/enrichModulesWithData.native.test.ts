@@ -1,4 +1,5 @@
 import {
+  formattedArtitPlaylistModule,
   formattedBusinessModule,
   formattedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
@@ -17,11 +18,16 @@ const defaultOfferData: ModuleData[] = [
 const expectedResult = [
   { ...formattedOffersModule, data: defaultOfferData[0] },
   formattedBusinessModule,
+  { ...formattedArtitPlaylistModule, data: defaultOfferData[0] },
 ]
 
 describe('enrichModulesWithData', () => {
-  it('should enrich offers and venues modules with their corresponding data', () => {
-    const modules: HomepageModule[] = [formattedOffersModule, formattedBusinessModule]
+  it('should enrich offers, venues and artist playlist modules with their corresponding data', () => {
+    const modules: HomepageModule[] = [
+      formattedOffersModule,
+      formattedBusinessModule,
+      formattedArtitPlaylistModule,
+    ]
 
     const result = enrichModulesWithData(modules, defaultOfferData, [])
 

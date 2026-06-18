@@ -1,5 +1,6 @@
 export enum VerticalPlaylist {
   GtlPlaylistOffers = 'gtlPlaylistOffers',
+  ModuleArtistPlaylist = 'moduleArtistPlaylist',
   ModuleOffers = 'moduleOffers',
   ModuleVenues = 'moduleVenues',
   SimilarOffers = 'similarOffers',

@@ -16,6 +16,7 @@ export const VerticalPlaylistOffers = () => {
 
   switch (params.type) {
     case VerticalPlaylist.ModuleOffers:
+    case VerticalPlaylist.ModuleArtistPlaylist:
       return <VerticalPlaylistOffersModule module={params.module} />
 
     case VerticalPlaylist.SimilarOffers:

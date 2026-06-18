@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { OffersModule } from 'features/home/types'
+import { ArtistPlaylistModule, OffersModule } from 'features/home/types'
 import { VerticalPlaylistOffersView } from 'shared/verticalPlaylist/components/VerticalPlaylistOffersView'
 import { useGetOffersFromPlaylist } from 'shared/verticalPlaylist/helpers/useGetOffersFromPlaylist'
 
-type Props = { module: OffersModule }
+type Props = { module: OffersModule | ArtistPlaylistModule }
 
 export const VerticalPlaylistOffersModule = ({ module }: Props) => {
   const data = useGetOffersFromPlaylist(module)

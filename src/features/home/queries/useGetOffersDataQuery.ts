@@ -2,7 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
-import { OfferModuleParamsInfo, OffersModule } from 'features/home/types'
+import {
+  ArtistPlaylistModule,
+  HomepageModuleType,
+  OfferModuleParamsInfo,
+  OffersModule,
+} from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
@@ -19,7 +24,7 @@ const isPlaylistOffersParamsArrayWithoutUndefined = (
   params: unknown
 ): params is PlaylistOffersParams[] => params !== undefined
 
-export const useGetOffersDataQuery = (modules: OffersModule[]) => {
+export const useGetOffersDataQuery = (modules: (OffersModule | ArtistPlaylistModule)[]) => {
   const { userLocation } = useLocation()
   const transformHits = useTransformOfferHits()
 
@@ -30,7 +35,11 @@ export const useGetOffersDataQuery = (modules: OffersModule[]) => {
 
   const offersParameters = modules.map((module) => {
     const adaptedPlaylistParameters = module.offersModuleParameters
-      .map((offerModuleParameter) => adaptPlaylistParameters(offerModuleParameter))
+      .map((offerModuleParameter) => ({
+        ...adaptPlaylistParameters(offerModuleParameter),
+        artistId:
+          module.type === HomepageModuleType.ArtistPlaylistModule ? module.artistId : undefined,
+      }))
       .filter(isPlaylistOffersParameters)
     offersModuleIds.push(module.id)
     return {

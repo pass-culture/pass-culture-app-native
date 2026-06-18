@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from 'react'
 import { ViewToken } from 'react-native'
 
+import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
@@ -19,6 +20,7 @@ import {
 } from 'features/home/types'
 
 const modules = {
+  [HomepageModuleType.ArtistPlaylistModule]: ArtistPlaylistModule,
   [HomepageModuleType.BusinessModule]: BusinessModule,
   [HomepageModuleType.CategoryListModule]: CategoryListModule,
   [HomepageModuleType.HighlightOfferModule]: HighlightOfferModule,
