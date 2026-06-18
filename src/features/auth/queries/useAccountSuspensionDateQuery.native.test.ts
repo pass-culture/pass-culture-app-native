@@ -21,7 +21,7 @@ function simulateSuspensionDateActiveAccount() {
 describe('useAccountSuspensionDate', () => {
   it('should return suspension date if it exists', async () => {
     simulateSuspensionDate200()
-    const { result } = renderSuspensionDateHook()
+    const { result } = renderSuspensionDateHook(true)
 
     await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
@@ -30,7 +30,7 @@ describe('useAccountSuspensionDate', () => {
 
   it('should return undefined for unsuspended user', async () => {
     simulateSuspensionDateActiveAccount()
-    const { result, unmount } = renderSuspensionDateHook()
+    const { result, unmount } = renderSuspensionDateHook(true)
 
     expect(result.current.data).toBeUndefined()
 
@@ -38,7 +38,7 @@ describe('useAccountSuspensionDate', () => {
   })
 })
 
-const renderSuspensionDateHook = () =>
-  renderHook(() => useAccountSuspensionDateQuery(), {
+const renderSuspensionDateHook = (enabled: boolean) =>
+  renderHook(() => useAccountSuspensionDateQuery(enabled), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

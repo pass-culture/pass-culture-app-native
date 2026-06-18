@@ -21,17 +21,16 @@ jest.mock('libs/jwt/jwt')
 describe('useAccountSuspensionStatus', () => {
   it('should return suspension status if it exists', async () => {
     simulateSuspensionStatus200()
-    const { result } = renderSuspensionDateHook()
+    const { result } = renderSuspensionDateHook(true)
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current.data?.status).toBe(expectedResponse.status)
   })
 
-  // TODO(PC-36587): unskip this test
-  it.skip('should return undefined if error', async () => {
+  it('should return undefined if error', async () => {
     simulateSuspensionStatusError()
-    const { result } = renderSuspensionDateHook()
+    const { result } = renderSuspensionDateHook(true)
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
@@ -39,7 +38,7 @@ describe('useAccountSuspensionStatus', () => {
   })
 })
 
-const renderSuspensionDateHook = () =>
-  renderHook(() => useAccountSuspensionStatusQuery(), {
+const renderSuspensionDateHook = (enabled: boolean) =>
+  renderHook(() => useAccountSuspensionStatusQuery(enabled), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

@@ -15,9 +15,7 @@ import { Offer } from 'shared/offer/types'
 export const useAlgoliaSimilarOffersQuery = (
   ids: string[],
   shouldPreserveIdsOrder?: boolean,
-  queryKey?: UseQueryOptions['queryKey'],
-  enabled?: boolean,
-  meta?: Record<string, unknown>
+  queryKey?: UseQueryOptions['queryKey']
 ): Offer[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -25,8 +23,7 @@ export const useAlgoliaSimilarOffersQuery = (
   const { data: hits } = useQuery({
     queryKey: queryKey ?? [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
     queryFn: () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
-    enabled: ids.length > 0 && enabled,
-    meta: meta ?? {},
+    enabled: ids.length > 0,
   })
 
   return useMemo(() => {
