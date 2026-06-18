@@ -22,7 +22,6 @@ jest.mock('libs/location/useLocation', () => ({
     geolocPositionError: mockPositionError,
     triggerPositionUpdate: jest.fn(),
     showGeolocPermissionModal: jest.fn(),
-    requestGeolocPermission: jest.fn(),
   }),
 }))
 

@@ -100,7 +100,6 @@ const everywhereUseLocation = {
   isCurrentLocationMode: jest.fn(),
   setSelectedLocationMode: mockSetSelectedLocationMode,
   showGeolocPermissionModal: mockShowGeolocPermissionModal,
-  requestGeolocPermission: jest.fn(),
   triggerPositionUpdate: jest.fn(),
   onPressGeolocPermissionModalButton: jest.fn(),
   onResetPlace: jest.fn(),

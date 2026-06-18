@@ -97,8 +97,8 @@ export const Appearance = () => {
               subtitle="L’affichage en mode paysage peut être moins optimal"
               isActive={!isOrientationLocked}
               toggle={() => {
-                toggleIsOrientationLocked()
-                debouncedLogChangeOrientationToggle(!isOrientationLocked)
+                void toggleIsOrientationLocked()
+                void debouncedLogChangeOrientationToggle(!isOrientationLocked)
               }}
             />
           )}

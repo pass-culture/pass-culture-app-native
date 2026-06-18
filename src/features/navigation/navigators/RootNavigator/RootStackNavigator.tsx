@@ -99,7 +99,7 @@ type RouteConfig = {
 }
 
 const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
-  presentation: Platform.OS === 'ios' ? 'modal' : 'transparentModal',
+  presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal',
   animation: 'slide_from_bottom',
 }
 

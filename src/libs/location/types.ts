@@ -26,11 +26,6 @@ export type GeoCoordinates = {
 // A position is either not yet asked (undefined), refused (null) or accepted and retrieved (coordinates)
 export type Position = GeoCoordinates | null | undefined
 
-export type RequestGeolocPermissionParams = {
-  onAcceptance?: () => void
-  onRefusal?: () => void
-  onSubmit?: () => void
-}
 export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
@@ -41,9 +36,7 @@ export type UseLocationReturnType = {
   geolocPosition: Position
   geolocPositionError: GeolocationError | null
   permissionState: GeolocPermissionState | null
-  requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   showGeolocPermissionModal: () => void
-  onPressGeolocPermissionModalButton: () => void
   selectedLocationMode: LocationMode
   setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null

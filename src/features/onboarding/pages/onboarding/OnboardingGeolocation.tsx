@@ -4,7 +4,7 @@ import React, { useCallback } from 'react'
 import { getOnboardingHookConfig } from 'features/navigation/navigators/OnboardingStackNavigator/getOnboardingHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/location'
+import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import Geolocation from 'ui/animations/geolocalisation.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -12,18 +12,17 @@ import { getSpacing } from 'ui/theme'
 
 export const OnboardingGeolocation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { requestGeolocPermission } = useLocation()
 
   const navigateToNextScreen = useCallback(() => {
     navigate(...getOnboardingHookConfig('OnboardingAgeSelectionFork'))
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {
+    navigateToNextScreen()
     await requestGeolocPermission({
-      onSubmit: navigateToNextScreen,
-      onAcceptance: analytics.logHasActivateGeolocFromTutorial,
+      onSuccess: analytics.logHasActivateGeolocFromTutorial,
     })
-  }, [navigateToNextScreen, requestGeolocPermission])
+  }, [navigateToNextScreen])
 
   return (
     <GenericInfoPage

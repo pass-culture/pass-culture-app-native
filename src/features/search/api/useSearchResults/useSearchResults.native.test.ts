@@ -30,7 +30,6 @@ const defaultUseLocation = {
   geolocPositionError: mockPositionError,
   triggerPositionUpdate: jest.fn(),
   showGeolocPermissionModal: jest.fn(),
-  requestGeolocPermission: jest.fn(),
   userLocation: mockUserLocation,
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)

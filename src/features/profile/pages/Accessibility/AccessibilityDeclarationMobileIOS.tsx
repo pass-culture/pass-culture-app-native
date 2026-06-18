@@ -6,20 +6,18 @@ import { env } from 'libs/environment/env'
 export function AccessibilityDeclarationMobileIOS() {
   return (
     <AccessibilityDeclarationMobileBase
-      appVersion="1.386.1"
+      appVersion="1.395.0"
       platformName="iOS"
       osVersion="18.5"
       storeLink={{ url: `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}` }}
-      auditDate="16/04/2026"
-      conformityEN="62,50%"
-      conformityRAAM="86,05%"
-      averageConformityRAAM="97,15%"
+      auditDate="16/06/2026"
+      conformityEN="81,63%"
+      conformityRAAM="90,91%"
+      averageConformityRAAM="97,88%"
       nonAccessibleContent={[
-        'Critère 3.5 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, une alternative\u00a0?',
-        'Critère 5.1.a - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance\u00a0?',
+        'Critère 5.1.c - Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance\u00a0?',
         'Critère 5.4 - Dans chaque écran, les messages de statut sont-ils correctement restitués par les technologies d’assistance\u00a0?',
         'Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins\u00a0?',
-        'Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur\u00a0?',
         'Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple\u00a0?',
       ]}
       toolsUsed={[

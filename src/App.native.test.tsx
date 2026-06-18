@@ -9,6 +9,15 @@ import { render, waitFor } from 'tests/utils'
 
 import { App } from './App'
 
+jest.mock('react-native-orientation-locker', () => ({
+  addOrientationListener: jest.fn(),
+  removeOrientationListener: jest.fn(),
+  getDeviceOrientation: jest.fn(() => 'PORTRAIT'),
+  lockToPortrait: jest.fn(),
+  lockToLandscape: jest.fn(),
+  unlockAllOrientations: jest.fn(),
+}))
+
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))

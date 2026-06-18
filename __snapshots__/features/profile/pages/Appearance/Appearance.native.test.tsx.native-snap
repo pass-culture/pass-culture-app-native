@@ -354,12 +354,12 @@ exports[`Appearance should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Permettre l’orientation - Interrupteur à bascule - non coché"
+                      accessibilityLabel="Permettre l’orientation - Interrupteur à bascule - coché"
                       accessibilityRole="switch"
                       accessibilityState={
                         {
                           "busy": undefined,
-                          "checked": false,
+                          "checked": true,
                           "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
@@ -389,13 +389,13 @@ exports[`Appearance should render correctly 1`] = `
                           "userSelect": "auto",
                         }
                       }
-                      testID="Permettre l’orientation - Interrupteur à bascule - non coché"
+                      testID="Permettre l’orientation - Interrupteur à bascule - coché"
                     >
                       <View
-                        active={false}
+                        active={true}
                         style={
                           {
-                            "backgroundColor": "#696a6f",
+                            "backgroundColor": "#15884f",
                             "borderBottomLeftRadius": 32,
                             "borderBottomRightRadius": 32,
                             "borderTopLeftRadius": 32,
@@ -423,14 +423,23 @@ exports[`Appearance should render correctly 1`] = `
                               "justifyContent": "center",
                               "transform": [
                                 {
-                                  "translateX": 2,
+                                  "translateX": 30,
                                 },
                               ],
                               "width": 32,
                             }
                           }
                           toggleSize={32}
-                        />
+                        >
+                          <View
+                            height={16}
+                            width={16}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
                       </View>
                     </View>
                   </View>

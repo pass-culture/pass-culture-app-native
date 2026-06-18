@@ -95,11 +95,15 @@ const locationStore = createStore({
         setConfiguration(LocationMode.AROUND_ME, { geolocation }),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),
       setPermissionState: (permissionState: GeolocPermissionState | null) => {
-        if (isRejected(permissionState)) {
-          setConfiguration(LocationMode.AROUND_ME, { geolocation: null })
-          set({ geolocationError: null, locationMode: LocationMode.EVERYWHERE })
-        }
-        set({ permissionState })
+        set((state) => ({
+          permissionState,
+          ...(permissionsGrantedWhilePermissionModalOpen(state, permissionState) && {
+            isPermissionModalVisible: false,
+          }),
+          ...(permissionsRejectedWhileAroundMe(state) && {
+            locationMode: LocationMode.EVERYWHERE,
+          }),
+        }))
       },
       showPermissionModal: () => set({ isPermissionModalVisible: true }),
       hidePermissionModal: () => set({ isPermissionModalVisible: false }),
@@ -129,6 +133,8 @@ const locationStore = createStore({
 
       return LocationModeToLocationTypeMap[state.locationMode]
     },
+    selectIsPermissionModalVisible: () => (state) => state.isPermissionModalVisible,
+    selectLocationLabel: () => (state) => state.configuration[state.locationMode].label,
   },
   options: { persist: true, persistKeys: ['locationMode', 'configuration'] },
 })
@@ -145,6 +151,14 @@ const isRejected = (permission: GeolocPermissionState | null) => {
   )
 }
 
+const permissionsGrantedWhilePermissionModalOpen = (
+  state: LocationState,
+  newPermissionState: GeolocPermissionState | null
+) => newPermissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
+
+const permissionsRejectedWhileAroundMe = (state: LocationState) =>
+  state.locationMode === LocationMode.AROUND_ME && isRejected(state.permissionState)
+
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors
 export const {
@@ -153,4 +167,5 @@ export const {
   useUserLocation,
   useIsGeolocated,
   usePlace,
+  useLocationLabel,
 } = locationStore.hooks
