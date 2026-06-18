@@ -1,7 +1,10 @@
 import { Chunk, findAll, FindChunksArgs } from 'highlight-words-core'
 import React from 'react'
 
-import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Link } from 'ui/designSystem/Link/Link'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 type ParsedDescription = Array<string | React.ReactNode>
 type ChunkType = { highlight: boolean; start: number; end: number }
@@ -73,7 +76,16 @@ export const highlightLinks = (description: string, withIcon?: boolean): ParsedD
   return chunks.map(({ start, end, highlight }, index) => {
     const url = normalizeURL(description.slice(start, end))
     return highlight ? (
-      <ExternalLink key={`external-link-${index}`} url={url} withIcon={withIcon} />
+      <ExternalTouchableLink
+        key={`external-link-${index}`}
+        as={Link}
+        externalNav={{ url }}
+        wording={url}
+        isExternal
+        isInsideText
+        icon={withIcon === false ? undefined : ExternalSiteFilled}
+        accessibilityRole={AccessibilityRole.LINK}
+      />
     ) : (
       description.slice(start, end)
     )

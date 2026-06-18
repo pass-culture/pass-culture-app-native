@@ -10,6 +10,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 import { getIconSize } from './getIconSize'
 import { getLinkGap } from './getLinkGap'
+import { getLinkIconColor } from './getLinkIconColor'
 import { getLinkTextColor } from './getLinkTextColor'
 import { getLinkTypography } from './getLinkTypography'
 import { LinkAnchor } from './LinkAnchor.web'
@@ -36,7 +37,7 @@ export const Link = ({
   const theme = useTheme()
   const Icon = icon ?? (isExternal ? ExternalSiteFilled : undefined)
   const iconSize = getIconSize({ size, theme })
-  const iconColor = textColor ?? getLinkTextColor({ color, theme })
+  const iconColor = getLinkIconColor({ color, theme })
   const { href, style: _style, ...anchorProps } = props as unknown as LinkAnchorComponentProps
 
   if (isInsideText) {
@@ -107,19 +108,32 @@ const getContainerStyle = ({
 }: {
   theme: DefaultTheme
   color: LinkProps['color']
-}): CSSObject => ({
-  alignItems: 'center',
-  columnGap: theme.designSystem.size.spacing.s,
-  display: 'inline-flex',
-  flexDirection: 'row',
-  width: 'fit-content',
-  ['&:hover span']: {
-    color: getLinkTextColor({ color: color ?? 'brand', hovered: true, theme }),
-  },
-  ['&:visited span']: {
-    color: getLinkTextColor({ color: color ?? 'brand', visited: true, theme }),
-  },
-})
+}): CSSObject => {
+  const hoverColor = getLinkTextColor({ color: color ?? 'brand', hovered: true, theme })
+  const visitedColor = getLinkTextColor({ color: color ?? 'brand', visited: true, theme })
+  const hoverIconColor = getLinkIconColor({ color: color ?? 'brand', hovered: true, theme })
+  const visitedIconColor = getLinkIconColor({ color: color ?? 'brand', visited: true, theme })
+
+  return {
+    alignItems: 'center',
+    columnGap: theme.designSystem.size.spacing.s,
+    display: 'inline-flex',
+    flexDirection: 'row',
+    width: 'fit-content',
+    ['&:hover span']: {
+      color: hoverColor,
+    },
+    ['&:hover svg path']: {
+      fill: hoverIconColor,
+    },
+    ['&:visited span']: {
+      color: visitedColor,
+    },
+    ['&:visited svg path']: {
+      fill: visitedIconColor,
+    },
+  }
+}
 
 const Container = webStyled(LinkAnchor)<{
   color: LinkProps['color']
@@ -146,31 +160,44 @@ const InlineTextContainer = webStyled(LinkAnchor)<{
   color: LinkProps['color']
   $textColor?: LinkProps['textColor']
   $size: LinkSize
-}>(({ theme, color = 'brand', $textColor, $size }) => ({
-  backgroundColor: 'transparent',
-  border: 'none',
-  boxSizing: 'border-box',
-  color: $textColor ?? getLinkTextColor({ color, theme }),
-  cursor: 'pointer',
-  display: 'inline',
-  margin: 0,
-  outline: 'none',
-  padding: 0,
-  textDecoration: 'underline',
-  whiteSpace: 'nowrap',
-  ...theme.designSystem.typography[getLinkTypography($size)],
-  ['& svg']: {
-    marginRight: theme.designSystem.size.spacing.xs,
-    transform: 'translateY(-0.05em)',
-    verticalAlign: 'middle',
-  },
-  ['&:hover']: {
-    color: $textColor ?? getLinkTextColor({ color, hovered: true, theme }),
-  },
-  ['&:visited']: {
-    color: $textColor ?? getLinkTextColor({ color, visited: true, theme }),
-  },
-}))
+}>(({ theme, color = 'brand', $textColor, $size }) => {
+  const hoverColor = $textColor ?? getLinkTextColor({ color, hovered: true, theme })
+  const visitedColor = $textColor ?? getLinkTextColor({ color, visited: true, theme })
+  const hoverIconColor = getLinkIconColor({ color, hovered: true, theme })
+  const visitedIconColor = getLinkIconColor({ color, visited: true, theme })
+
+  return {
+    backgroundColor: 'transparent',
+    border: 'none',
+    boxSizing: 'border-box',
+    color: $textColor ?? getLinkTextColor({ color, theme }),
+    cursor: 'pointer',
+    display: 'inline',
+    margin: 0,
+    outline: 'none',
+    padding: 0,
+    textDecoration: 'underline',
+    whiteSpace: 'nowrap',
+    ...theme.designSystem.typography[getLinkTypography($size)],
+    ['& svg']: {
+      marginRight: theme.designSystem.size.spacing.xs,
+      transform: 'translateY(-0.05em)',
+      verticalAlign: 'middle',
+    },
+    ['&:hover']: {
+      color: hoverColor,
+    },
+    ['&:hover svg path']: {
+      fill: hoverIconColor,
+    },
+    ['&:visited']: {
+      color: visitedColor,
+    },
+    ['&:visited svg path']: {
+      fill: visitedIconColor,
+    },
+  }
+})
 
 const InlineTextLabel = webStyled.span({
   whiteSpace: 'normal',
