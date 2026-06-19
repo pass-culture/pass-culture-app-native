@@ -27,6 +27,12 @@ describe('OfferCaption component', () => {
     expect(screen.getByText('Dès le 2 mars 2020')).toBeOnTheScreen()
   })
 
+  it('should display offer distance when provided', () => {
+    render(<OfferCaption {...props} distance="10 km" />)
+
+    expect(screen.getByText('à 10 km • Dès le 2 mars 2020')).toBeOnTheScreen()
+  })
+
   it('should display offer title', () => {
     render(<OfferCaption {...props} />)
 
