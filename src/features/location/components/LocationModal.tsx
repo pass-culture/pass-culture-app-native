@@ -6,6 +6,7 @@ import { LocationModalFooter } from 'features/location/components/LocationModalF
 import { ModalScreenWrapper } from 'features/location/components/ModalScreenWrapper'
 import { LocationState } from 'features/location/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { analytics } from 'libs/analytics/provider'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { locationModalActions } from 'libs/locationV2/locationModal.store'
 import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
@@ -38,6 +39,7 @@ type LocationModalProps = {
   onTempAroundMeRadiusValueChange?: (newValues: number[]) => void
   tempAroundPlaceRadius?: LocationState['tempAroundPlaceRadius']
   onTempAroundPlaceRadiusValueChange?: (newValues: number[]) => void
+  from: 'home' | 'search' | 'venueMap'
 }
 
 const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
@@ -74,6 +76,7 @@ export const LocationModal = ({
   buttonWording,
   isSubmitDisabled,
   shouldDisplayEverywhereSection,
+  from,
 }: LocationModalProps) => {
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
   const { goBack } = useNavigation<UseNavigationType>()
@@ -84,6 +87,7 @@ export const LocationModal = ({
 
   const handleSubmit = () => {
     locationModalActions.submit()
+    void analytics.logUserSetLocation(from)
     onSubmit?.()
     goBack()
   }

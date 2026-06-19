@@ -26,7 +26,3 @@ export type LocationState = {
   tempLocationMode: LocationMode
   setTempLocationMode: (locationMode: LocationMode) => void
 }
-
-export type LocationSubmit = {
-  onSubmit: (mode?: LocationMode) => void
-}

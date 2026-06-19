@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/useLocation'
 import {
-  locationModalActions,
   useCanSubmitLocationModal,
   useLocationModal,
   useLocationModalAddressInputValue,
@@ -18,14 +16,9 @@ export const HomeLocationModal = () => {
   const { locationMode } = useLocationModal()
   const canSubmit = useCanSubmitLocationModal()
 
-  const onSubmit = () => {
-    locationModalActions.submit()
-    void analytics.logUserSetLocation('home')
-  }
-
   return (
     <LocationModal
-      onSubmit={onSubmit}
+      from="home"
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={locationMode}
       selectedPlace={selectedPlace}

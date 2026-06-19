@@ -1,11 +1,9 @@
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
-import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationMode } from 'libs/location/types'
-import { useLocation } from 'libs/location/useLocation'
+import { useIsGeolocated } from 'libs/locationV2/location.store'
 import {
   locationModalActions,
   useCanSubmitLocationModal,
@@ -16,20 +14,7 @@ import {
 } from 'libs/locationV2/locationModal.store'
 
 export const SearchLocationModal = () => {
-  const { dispatch } = useSearch()
-
-  const {
-    hasGeolocPosition,
-    setPlaceQuery,
-    setSelectedPlace,
-    onResetPlace,
-    setSelectedLocationMode,
-    setAroundPlaceRadius,
-    setAroundMeRadius,
-    aroundMeRadius,
-    setPlace,
-    aroundPlaceRadius,
-  } = useLocation()
+  const hasGeolocPosition = useIsGeolocated()
 
   const { locationMode } = useLocationModal()
   const selectedPlace = useLocationModalPlace()
@@ -41,22 +26,6 @@ export const SearchLocationModal = () => {
     setAroundPlaceRadius: setTempAroundPlaceRadius,
   } = locationModalActions
 
-  const { onSubmit: submitLocation } = getLocationSubmit({
-    from: 'search',
-    dispatch,
-    tempLocationMode: locationMode,
-    setSelectedLocationMode,
-    setPlace,
-    tempAroundPlaceRadius,
-    tempAroundMeRadius,
-    selectedPlace,
-    setAroundPlaceRadius,
-    setTempAroundMeRadius: locationModalActions.setAroundMeRadius,
-    setAroundMeRadius,
-    setTempAroundPlaceRadius: locationModalActions.setAroundPlaceRadius,
-    aroundMeRadius,
-    aroundPlaceRadius,
-  })
   const {
     onTempAroundRadiusPlaceValueChange: onTempAroundPlaceRadiusValueChange,
     onTempAroundMeRadiusValueChange,
@@ -69,14 +38,14 @@ export const SearchLocationModal = () => {
 
   return (
     <LocationModal
-      onSubmit={submitLocation}
+      from="search"
       hasGeolocPosition={hasGeolocPosition}
       tempLocationMode={locationMode}
       selectedPlace={selectedPlace}
-      setSelectedPlace={setSelectedPlace}
+      setSelectedPlace={locationModalActions.setPlace}
       placeQuery={placeQuery}
-      setPlaceQuery={setPlaceQuery}
-      onResetPlace={onResetPlace}
+      setPlaceQuery={locationModalActions.setAddressInputValue}
+      onResetPlace={locationModalActions.resetPlace}
       shouldShowRadiusSlider
       tempAroundPlaceRadius={tempAroundPlaceRadius}
       onTempAroundMeRadiusValueChange={onTempAroundMeRadiusValueChange}

@@ -37,9 +37,19 @@ const locationModalStore = createStore({
     return {
       sync: () => {
         const locationState = locationSelectors.selectState()
+        const isAroundPlace = locationState.locationMode === LocationMode.AROUND_PLACE
+
         set({
-          addressInputValue: locationState.configuration[LocationMode.AROUND_PLACE].label,
           ...locationState,
+          configuration: {
+            ...locationState.configuration,
+            [LocationMode.AROUND_PLACE]: isAroundPlace
+              ? locationState.configuration[LocationMode.AROUND_PLACE]
+              : defaultLocationState.configuration[LocationMode.AROUND_PLACE],
+          },
+          addressInputValue: isAroundPlace
+            ? locationState.configuration[LocationMode.AROUND_PLACE].label
+            : '',
           visible: true,
         })
       },
@@ -62,6 +72,15 @@ const locationModalStore = createStore({
       setAroundPlaceRadius: (radius: number) =>
         setConfiguration(LocationMode.AROUND_PLACE, { radius }),
       setLocationMode: (locationMode: LocationMode) => set({ locationMode }),
+      resetPlace: () =>
+        set({
+          addressInputValue: '',
+          configuration: {
+            ...defaultLocationState.configuration,
+            [LocationMode.AROUND_PLACE]:
+              defaultLocationState.configuration[LocationMode.AROUND_PLACE],
+          },
+        }),
       updateConfig: (
         mode: LocationMode,
         data: Partial<LocationState['configuration'][LocationMode]>

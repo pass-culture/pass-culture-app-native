@@ -69,12 +69,6 @@ jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
 mockAuthContextWithUser(mockUser)
 
-jest.mock('features/location/helpers/getLocationSubmit', () => ({
-  getLocationSubmit: () => ({
-    setTempAroundMeRadius: jest.fn(),
-  }),
-}))
-
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
