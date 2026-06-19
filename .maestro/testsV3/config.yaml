@@ -1,5 +1,6 @@
 flows:
   - onboarding/*
+  - bonification/*
   - cookies/*
   - auth/*
   - profile/*
