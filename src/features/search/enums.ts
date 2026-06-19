@@ -1,9 +1,7 @@
-import type { ImageSourcePropType } from 'react-native'
-
 import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
+import { categoryIllustrationUrls } from 'features/search/constants/categoryIllustrationUrls'
 import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 import { BackgroundColorKey, BorderColorKey, IllustrationColorKey } from 'theme/types'
-import { illustrations } from 'ui/designSystem/illustrations'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
 import { Books } from 'ui/svg/icons/categories/Books'
 import { CDVinylsOnlineMusic } from 'ui/svg/icons/categories/CDVinylsOnlineMusic'
@@ -54,6 +52,7 @@ export const SearchCategoriesIllustrations = {
 export type CategoryCriteria = {
   icon: React.FC<AccessibleIcon>
   illustration: React.FC<AccessibleIcon>
+  illustrationUrl?: never
   facetFilter: SearchGroupNameEnumv2
   searchLandingPosition: number
   filterModalPosition: number
@@ -63,7 +62,7 @@ export type CategoryCriteria = {
 
 export type NewCategoryCriteria = {
   icon: React.FC<AccessibleIcon>
-  illustration: ImageSourcePropType
+  illustrationUrl?: string
   facetFilter: SearchGroupNameEnumv2
   searchLandingPosition: number
   filterModalPosition: number
@@ -240,7 +239,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
-    illustration: illustrations.passCard,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.CARTES_JEUNES],
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     searchLandingPosition: 11,
     filterModalPosition: 1,
@@ -249,7 +248,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
-    illustration: illustrations.mic,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     searchLandingPosition: 1,
     filterModalPosition: 2,
@@ -258,7 +257,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.CINEMA]: {
     icon: categoriesIcons.Cinema,
-    illustration: illustrations.camera,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.CINEMA],
     facetFilter: SearchGroupNameEnumv2.CINEMA,
     searchLandingPosition: 2,
     filterModalPosition: 3,
@@ -267,7 +266,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
     icon: categoriesIcons.Cinema,
-    illustration: illustrations.popcorn,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES],
     facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
     searchLandingPosition: 3,
     filterModalPosition: 4,
@@ -276,7 +275,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.LIVRES]: {
     icon: categoriesIcons.Book,
-    illustration: illustrations.book,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.LIVRES],
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     searchLandingPosition: 4,
     filterModalPosition: 5,
@@ -285,7 +284,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.MUSIQUE]: {
     icon: categoriesIcons.Disk,
-    illustration: illustrations.musicSheet,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.MUSIQUE],
     facetFilter: SearchGroupNameEnumv2.MUSIQUE,
     searchLandingPosition: 5,
     filterModalPosition: 6,
@@ -294,7 +293,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Palette,
-    illustration: illustrations.paintingPalette,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     searchLandingPosition: 6,
     filterModalPosition: 7,
@@ -303,7 +302,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
     icon: categoriesIcons.Show,
-    illustration: illustrations.spotlight,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.SPECTACLES],
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     searchLandingPosition: 7,
     filterModalPosition: 8,
@@ -312,7 +311,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
-    illustration: illustrations.vase,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES],
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     searchLandingPosition: 8,
     filterModalPosition: 9,
@@ -321,7 +320,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
-    illustration: illustrations.videogame,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     searchLandingPosition: 9,
     filterModalPosition: 10,
@@ -330,7 +329,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
-    illustration: illustrations.newspaper,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.MEDIA_PRESSE],
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     searchLandingPosition: 10,
     filterModalPosition: 11,
@@ -339,7 +338,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
-    illustration: illustrations.notebook,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.RENCONTRES_CONFERENCES],
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     searchLandingPosition: 12,
     filterModalPosition: 12,
@@ -348,7 +347,7 @@ export const NEW_CATEGORY_CRITERIA: NewCategoryCriteriaWithNone = {
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
-    illustration: illustrations.computer,
+    illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
     searchLandingPosition: 13,
     filterModalPosition: 13,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,

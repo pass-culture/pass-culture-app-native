@@ -75,6 +75,7 @@ export const env: Environment = {
   HOT_UPDATER_FIREBASE_PROJECT_ID: 'pc-native-testing',
   HOT_UPDATER_FIREBASE_STORAGE_BUCKET: 'pc-native-testing.appspot.com',
   HOT_UPDATER_FUNCTION_URL: 'https://hot-updater-5zhbbjibjq-ew.a.run.app',
+  ILLUSTRATIONS_BASE_URL: 'https://storage.googleapis.com/pass-culture-app-jeunes-assets-testing',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
   IOS_KEYCHAIN_SERVICE_KEY: 'rn_keychain_service_key',
