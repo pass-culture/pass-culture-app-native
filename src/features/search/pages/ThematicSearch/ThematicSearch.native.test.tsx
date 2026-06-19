@@ -13,6 +13,7 @@ import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
+import { QueryKeys } from 'libs/queryKeys'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -213,7 +214,7 @@ describe('<ThematicSearch/>', () => {
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
           adaptPlaylistParameters: expect.any(Function),
-          queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
+          queryKey: QueryKeys.THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS,
           isUserUnderage: false,
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
           searchGroupLabel: 'Livres',

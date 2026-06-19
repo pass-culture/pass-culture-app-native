@@ -8,20 +8,25 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/jwt/jwt')
 
 const expectedResponse = { date: '2022-05-11T10:29:25.332786Z' }
-function simulateSuspensionDate200() {
+const simulateSuspensionDate200 = () => {
   mockServer.getApi<UserSuspensionDateResponse>('/v1/account/suspension_date', expectedResponse)
 }
 
-function simulateSuspensionDateActiveAccount() {
+const simulateSuspensionDateActiveAccount = () => {
   mockServer.getApi<UserSuspensionDateResponse>('/v1/account/suspension_date', {
     responseOptions: { statusCode: 403 },
   })
 }
 
+const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
+
 describe('useAccountSuspensionDate', () => {
   it('should return suspension date if it exists', async () => {
     simulateSuspensionDate200()
-    const { result } = renderSuspensionDateHook(true)
+    const { result } = renderSuspensionDateHook()
 
     await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
@@ -30,7 +35,7 @@ describe('useAccountSuspensionDate', () => {
 
   it('should return undefined for unsuspended user', async () => {
     simulateSuspensionDateActiveAccount()
-    const { result, unmount } = renderSuspensionDateHook(true)
+    const { result, unmount } = renderSuspensionDateHook()
 
     expect(result.current.data).toBeUndefined()
 
@@ -38,7 +43,7 @@ describe('useAccountSuspensionDate', () => {
   })
 })
 
-const renderSuspensionDateHook = (enabled: boolean) =>
-  renderHook(() => useAccountSuspensionDateQuery(enabled), {
+const renderSuspensionDateHook = () =>
+  renderHook(() => useAccountSuspensionDateQuery(), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

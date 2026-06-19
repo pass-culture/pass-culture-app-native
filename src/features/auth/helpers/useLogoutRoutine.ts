@@ -22,8 +22,8 @@ export const logoutActions = async (
   setIsLoggedIn: (isLoggedIn: boolean) => void,
   queryClient: QueryClient
 ) => {
+  setIsLoggedIn(false)
   try {
-    setIsLoggedIn(false)
     handleBatchProfileReset()
 
     queryClient.removeQueries({
@@ -39,8 +39,6 @@ export const logoutActions = async (
     eventMonitoring.setUser(null)
   } catch (err) {
     eventMonitoring.captureException(err)
-  } finally {
-    setIsLoggedIn(false)
   }
 }
 

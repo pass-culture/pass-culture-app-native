@@ -27,5 +27,5 @@ export type UseGetOffersByGtlQueryArgs = {
   selectedLocationMode: LocationMode
   isUserUnderage: boolean
   adaptPlaylistParameters: (parameters: OffersModuleParameters) => PlaylistOffersParams
-  queryKey: keyof typeof QueryKeys
+  queryKey: QueryKeys
 }

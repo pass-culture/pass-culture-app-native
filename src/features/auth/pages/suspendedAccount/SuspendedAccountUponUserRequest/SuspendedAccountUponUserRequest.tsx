@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useAccountSuspensionDateQuery } from 'features/auth/queries/useAccountSuspensionDateQuery'
 import { useAccountUnsuspendMutation } from 'features/auth/queries/useAccountUnsuspendMutation'
@@ -25,8 +24,7 @@ const addDaysToDate = (date: Date, days: number) => {
 export const SuspendedAccountUponUserRequest = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { data: accountUnsuspensionLimit } = useAccountUnsuspensionLimit()
-  const { isLoggedIn } = useAuthContext()
-  const { data: accountSuspensionDate } = useAccountSuspensionDateQuery(isLoggedIn)
+  const { data: accountSuspensionDate } = useAccountSuspensionDateQuery()
   const signOut = useLogoutRoutine()
 
   function onAccountUnsuspendSuccess() {

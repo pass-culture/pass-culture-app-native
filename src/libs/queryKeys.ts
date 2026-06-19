@@ -60,5 +60,3 @@ export enum QueryKeys {
   THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS = 'thematicSearchBooksGtlPlaylists',
   PREVIEW = 'preview',
 }
-
-export enum MutationKeys {}

@@ -8,6 +8,7 @@ import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOffer, HitOffer, LocationMode, PlaylistOffersParams } from 'libs/algolia/types'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -109,7 +110,7 @@ const renderUseGetFormattedAndFilteredOffersByGtl = (
           selectedLocationMode: LocationMode.AROUND_ME,
           isUserUnderage: false,
           adaptPlaylistParameters: mockAdaptPlaylistParameters,
-          queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
+          queryKey: QueryKeys.THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS,
         },
         transformHits
       ),

@@ -7,6 +7,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOffer, HitOffer, PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { LocationMode, Position } from 'libs/location/types'
+import { QueryKeys } from 'libs/queryKeys'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -228,7 +229,7 @@ const renderUseGtlPlaylistsQuery = ({
         selectedLocationMode: LocationMode.AROUND_ME,
         isUserUnderage: false,
         adaptPlaylistParameters: mockAdaptPlaylistParameters,
-        queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
+        queryKey: QueryKeys.THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS,
         transformHits,
       }),
     {

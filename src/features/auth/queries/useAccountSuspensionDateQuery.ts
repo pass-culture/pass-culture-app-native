@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useAccountSuspensionDateQuery = (enabled?: boolean) =>
-  useQuery({
+export const useAccountSuspensionDateQuery = () => {
+  const { isLoggedIn } = useAuthContext()
+  return useQuery({
     queryKey: [QueryKeys.ACCOUNT_SUSPENSION_DATE],
     queryFn: async () => {
       try {
@@ -13,6 +15,7 @@ export const useAccountSuspensionDateQuery = (enabled?: boolean) =>
         return null
       }
     },
-    enabled: enabled ?? false,
+    enabled: isLoggedIn,
     meta: { private: true },
   })
+}

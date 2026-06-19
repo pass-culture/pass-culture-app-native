@@ -11,6 +11,11 @@ jest.mock('libs/jwt/jwt')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
+
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
