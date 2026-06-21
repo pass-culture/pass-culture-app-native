@@ -1,12 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { useAccountSuspensionDateQuery } from 'features/auth/queries/useAccountSuspensionDateQuery'
 import { useAccountUnsuspendMutation } from 'features/auth/queries/useAccountUnsuspendMutation'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { accountQueries } from 'features/trustedDevice/queries/useAccountSuspendTokenValidationQuery'
 import { analytics } from 'libs/analytics/provider'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'
 import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
@@ -24,7 +25,8 @@ const addDaysToDate = (date: Date, days: number) => {
 export const SuspendedAccountUponUserRequest = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { data: accountUnsuspensionLimit } = useAccountUnsuspensionLimit()
-  const { data: accountSuspensionDate } = useAccountSuspensionDateQuery()
+  // eslint-disable-next-line local-rules/queries-only-in-use-query-functions, local-rules/no-queries-outside-query-files
+  const { data: accountSuspensionDate } = useQuery(accountQueries.suspensionDate())
   const signOut = useLogoutRoutine()
 
   function onAccountUnsuspendSuccess() {
