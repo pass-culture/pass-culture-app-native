@@ -26,12 +26,13 @@ export enum TileContentType {
 
 function getOfferAccessibilityLabel(offer: Offer) {
   const { name, categoryLabel: category, distance, date, price, isDuo, interactionTagLabel } = offer
+  const distanceLabel = distance ? `à ${distance}` : undefined
   const duoLabel = isDuo ? 'Duo - Possibilité de réserver 2 places.' : undefined
   return getComputedAccessibilityLabel(
     category,
     interactionTagLabel,
     name,
-    distance,
+    distanceLabel,
     price,
     date,
     duoLabel
