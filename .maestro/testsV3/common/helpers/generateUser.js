@@ -3,7 +3,7 @@ const response = http.post(`${MAESTRO_E2E_ENDPOINT}`, {
     'Content-Type': 'application/json',
     'x-api-key': `${MAESTRO_E2E_API_KEY}`,
   },
-  body: JSON.stringify({id_provider, step, age}),
+  body: JSON.stringify({ id_provider, step, age }),
 })
 
 if (response.status !== 200) {
@@ -11,6 +11,8 @@ if (response.status !== 200) {
 }
 
 const userData = json(response.body)
+
+output.userId = userData.id
 
 const email = userData.email
 const token = userData.access_token
