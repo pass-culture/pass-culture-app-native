@@ -19,8 +19,8 @@ import { DetailedRadioProps, RadioStateObject } from 'ui/designSystem/RadioButto
 import { SelectableAsset } from 'ui/designSystem/SelectableAsset'
 import { SelectableSizing } from 'ui/designSystem/types'
 
-const LAYOUT_TRANSITION = LinearTransition.duration(250)
 const isWeb = Platform.OS === 'web'
+const layoutTransition = isWeb ? undefined : LinearTransition.duration(250)
 
 export const RadioButtonDetailed = ({
   label,
@@ -47,7 +47,7 @@ export const RadioButtonDetailed = ({
   }
 
   return (
-    <AnimatedRadioWrapper layout={isWeb ? undefined : LAYOUT_TRANSITION}>
+    <AnimatedRadioWrapper layout={layoutTransition}>
       <RadioButtonContainer
         radioState={radioState}
         variant="detailed"
@@ -77,7 +77,7 @@ export const RadioButtonDetailed = ({
           <Animated.View
             entering={FadeIn.duration(200)}
             exiting={FadeOut.duration(150)}
-            layout={isWeb ? undefined : LAYOUT_TRANSITION}>
+            layout={layoutTransition}>
             <CollapsedContainer>{collapsed}</CollapsedContainer>
           </Animated.View>
         ) : null}
