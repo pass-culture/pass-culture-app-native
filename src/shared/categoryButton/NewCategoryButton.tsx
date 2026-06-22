@@ -78,7 +78,7 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
             ))}
           </LabelContainer>
           {illustrationUrlToDisplay ? (
-            <RemoteCategoryIcon
+            <RemoteCategoryIllustration
               source={{ uri: illustrationUrlToDisplay }}
               resizeMode={FastImage.resizeMode.contain}
             />
@@ -152,7 +152,7 @@ const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) =
   paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
-const RemoteCategoryIcon = styled(FastImage)({
+const RemoteCategoryIllustration = styled(FastImage)({
   position: 'absolute',
   right: 0,
   top: CATEGORY_ICON_TOP,

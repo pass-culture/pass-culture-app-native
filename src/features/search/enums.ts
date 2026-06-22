@@ -1,5 +1,8 @@
 import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
-import { categoryIllustrationUrls } from 'features/search/constants/categoryIllustrationUrls'
+import {
+  categoryIllustrationUrls,
+  CategoryIllustrationUrl,
+} from 'features/search/constants/categoryIllustrationUrls'
 import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 import { BackgroundColorKey, BorderColorKey, IllustrationColorKey } from 'theme/types'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
@@ -62,7 +65,7 @@ export type CategoryCriteria = {
 
 export type NewCategoryCriteria = {
   icon: React.FC<AccessibleIcon>
-  illustrationUrl?: string
+  illustrationUrl?: CategoryIllustrationUrl
   facetFilter: SearchGroupNameEnumv2
   searchLandingPosition: number
   filterModalPosition: number
