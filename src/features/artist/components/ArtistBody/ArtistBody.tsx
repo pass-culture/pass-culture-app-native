@@ -77,6 +77,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { headerTransition, onScroll } = useOpacityTransition()
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
+  const enablePlaylistByCategory = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
+  )
 
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -169,13 +172,15 @@ export const ArtistBody: FunctionComponent<Props> = ({
             proAdvicesSegment={proAdvicesSegment}
             enableProAdvicesTag={enableProAdvicesTag}
           />
-          <ArtistPlaylist
-            artist={artist}
-            items={artistPlaylist}
-            onViewableItemsChanged={onViewableItemsChanged}
-            proAdvicesSegment={proAdvicesSegment}
-            enableProAdvicesTag={enableProAdvicesTag}
-          />
+          {enablePlaylistByCategory ? (
+            <ArtistPlaylist
+              artist={artist}
+              items={artistPlaylist}
+              onViewableItemsChanged={onViewableItemsChanged}
+              proAdvicesSegment={proAdvicesSegment}
+              enableProAdvicesTag={enableProAdvicesTag}
+            />
+          ) : null}
           <ArtistSimilarArtists artistId={artist.id} />
         </ViewGap>
       </ContentContainer>
