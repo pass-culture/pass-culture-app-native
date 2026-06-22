@@ -34,11 +34,11 @@ onFlowStart:
 
 - assertVisible: 'Quel est ce bonus et comment en bénéficier ?'
 
-- tapOn: 'Continuer'
+- tapOn: '.*Continuer.*'
 
 - assertVisible: "Munis-toi des informations suivantes pour faire ta demande :"
 
-- tapOn: 'Commencer'
+- tapOn: '.*Commencer.*'
 
 - assertVisible: 'Quels sont les noms et prénoms de ton représentant légal ?'
 
@@ -47,19 +47,28 @@ onFlowStart:
 - inputText:
     text: ${faker.name().firstName()}
 
-- tapOn: 'Nom de naissance' # afin de perdre le focus du champ de texte
+- tapOn: '.*Nom de naissance.*' # afin de perdre le focus du champ de texte
 
 - tapOn: 'Champs de texte - Nom de naissance - Le nom avant tout changement - Obligatoire'
 
 - inputText:
     text: ${faker.name().lastName()}
 
-- tapOn: 'Nom de naissance'
+- tapOn: '.*représentant légal.*'
 
 - tapOn: 'Je ne connais pas son nom de naissance'
 
 - runFlow:
-    file: ../common/navigation/TapOnBack.yml
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - pressKey: back
 
 - tapOn: 'Continuer vers la civilité'
 
@@ -86,18 +95,27 @@ onFlowStart:
 
 - tapOn: 'Proposition de pays 1 : France'
 
-- tapOn: 'Pays de naissance'
+- tapOn: '.*représentant légal.*'
 
 - tapOn: 'Je ne connais pas son lieu de naissance'
 
 - runFlow:
-    file: ../common/navigation/TapOnBack.yml
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - pressKey: back
 
 - tapOn: 'Champs de texte - Commune de naissance - Exemple : Paris - Obligatoire'
 
 - inputText: 'Paris'
 
-- tapOn: 'Pays de naissance'
+- tapOn: '.*représentant légal.*'
 
 - tapOn: 'Proposition de ville 1 : Paris (75)'
 
