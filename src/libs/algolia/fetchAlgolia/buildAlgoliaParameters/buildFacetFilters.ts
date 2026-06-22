@@ -3,6 +3,7 @@ import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildAccessibiltyFiltersPredicate,
   buildAllocineIdPredicate,
+  buildArtistIdPredicate,
   buildArtistNamePredicate,
   buildEanPredicate,
   buildHeadlinePredicate,
@@ -42,6 +43,7 @@ export const buildFacetFilters = ({
   tags,
   gtls,
   disabilitiesProperties,
+  artistId,
 }: Pick<
   SearchQueryParameters,
   | 'venue'
@@ -61,6 +63,7 @@ export const buildFacetFilters = ({
   | 'eanList'
   | 'artistName'
   | 'objectIds'
+  | 'artistId'
 > & {
   isUserUnderage: boolean
   disabilitiesProperties: DisabilitiesProperties
@@ -106,6 +109,11 @@ export const buildFacetFilters = ({
   if (eanList && eanList?.length > 0) {
     const eanIdsPredicate = buildEanPredicate(eanList)
     facetFilters.push(eanIdsPredicate)
+  }
+
+  if (artistId) {
+    const artistIdPredicate = buildArtistIdPredicate(artistId)
+    facetFilters.push([artistIdPredicate])
   }
 
   if (artistName) {

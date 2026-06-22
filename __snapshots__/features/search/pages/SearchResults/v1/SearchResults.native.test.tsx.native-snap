@@ -793,7 +793,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Livre - La nuit des temps - 900+ km - 28 €"
+                  accessibilityLabel="Livre - La nuit des temps - à 900+ km - 28 €"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -843,7 +843,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Livre - La nuit des temps - 900+ km - 28 €"
+                  testID="Livre - La nuit des temps - à 900+ km - 28 €"
                 >
                   <View
                     style={
@@ -1142,7 +1142,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Concert - I want something more - 900+ km - 23 €"
+                  accessibilityLabel="Concert - I want something more - à 900+ km - 23 €"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -1192,7 +1192,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Concert - I want something more - 900+ km - 23 €"
+                  testID="Concert - I want something more - à 900+ km - 23 €"
                 >
                   <View
                     style={
@@ -1487,7 +1487,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Concert - Un lit sous une rivière - 49 km - 34 € - Duo - Possibilité de réserver 2 places."
+                  accessibilityLabel="Concert - Un lit sous une rivière - à 49 km - 34 € - Duo - Possibilité de réserver 2 places."
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -1537,7 +1537,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Concert - Un lit sous une rivière - 49 km - 34 € - Duo - Possibilité de réserver 2 places."
+                  testID="Concert - Un lit sous une rivière - à 49 km - 34 € - Duo - Possibilité de réserver 2 places."
                 >
                   <View
                     style={
@@ -1831,7 +1831,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Concert - I want something more - 49 km - 28 €"
+                  accessibilityLabel="Concert - I want something more - à 49 km - 28 €"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -1881,7 +1881,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Concert - I want something more - 49 km - 28 €"
+                  testID="Concert - I want something more - à 49 km - 28 €"
                 >
                   <View
                     style={

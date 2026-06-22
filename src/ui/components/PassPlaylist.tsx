@@ -1,5 +1,5 @@
 import { FlashList } from '@shopify/flash-list'
-import React, { ComponentProps, Ref } from 'react'
+import React, { ComponentProps, ReactNode, Ref } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -60,6 +60,7 @@ type Props = Pick<
         hidePlaylistSeeAll?: boolean
         hideSearchSeeAll?: boolean
       }
+  playlistHeader?: ReactNode
 }
 
 export const PassPlaylist = ({
@@ -83,6 +84,7 @@ export const PassPlaylist = ({
   withMargin = true,
   contentContainerStyle,
   showNewTag,
+  playlistHeader,
   ...props
 }: Props) => {
   return (
@@ -115,6 +117,7 @@ export const PassPlaylist = ({
           </NumberOfItemsContainer>
         ) : null}
       </ViewGap>
+      {playlistHeader}
       <Playlist
         testID="offersModuleList"
         data={data}

@@ -1,13 +1,14 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { ModalScreenWrapper } from 'features/location/components/ModalScreenWrapper'
-import { LocationState } from 'features/location/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { analytics } from 'libs/analytics/provider'
 import { LocationLabel, LocationMode } from 'libs/location/types'
-import { locationModalActions } from 'libs/locationV2/locationModal.store'
+import { useIsGeolocated } from 'libs/locationV2/location.store'
+import { locationModalActions, locationModalStore } from 'libs/locationV2/locationModal.store'
 import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -23,21 +24,10 @@ import { Spacer } from 'ui/theme'
 type LocationModalProps = {
   onSubmit?: () => void
   onClose?: () => void
-  tempLocationMode: LocationState['tempLocationMode']
-  hasGeolocPosition: LocationState['hasGeolocPosition']
-  selectedPlace: LocationState['selectedPlace']
-  setSelectedPlace: LocationState['setSelectedPlace']
-  placeQuery: LocationState['placeQuery']
-  setPlaceQuery: LocationState['setPlaceQuery']
-  onResetPlace: LocationState['onResetPlace']
-  shouldDisplayEverywhereSection: boolean
-  isSubmitDisabled: boolean
-  shouldShowRadiusSlider: boolean
+  shouldHideEverywhereSection?: boolean
+  shouldShowRadiusSlider?: boolean
   buttonWording?: string
-  tempAroundMeRadius?: LocationState['tempAroundMeRadius']
-  onTempAroundMeRadiusValueChange?: (newValues: number[]) => void
-  tempAroundPlaceRadius?: LocationState['tempAroundPlaceRadius']
-  onTempAroundPlaceRadiusValueChange?: (newValues: number[]) => void
+  from: 'home' | 'search' | 'venueMap'
 }
 
 const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
@@ -58,25 +48,38 @@ const MODE_TO_LABEL_MAP: Record<LocationMode, string> = {
 
 export const LocationModal = ({
   onSubmit,
-  hasGeolocPosition,
-  tempLocationMode,
   onClose,
-  selectedPlace,
-  tempAroundMeRadius,
-  onTempAroundMeRadiusValueChange,
-  setSelectedPlace,
-  placeQuery,
-  setPlaceQuery,
-  onResetPlace,
-  tempAroundPlaceRadius,
-  onTempAroundPlaceRadiusValueChange,
   shouldShowRadiusSlider,
   buttonWording,
-  isSubmitDisabled,
-  shouldDisplayEverywhereSection,
+  shouldHideEverywhereSection,
+  from,
 }: LocationModalProps) => {
-  const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
+  const locationMode = locationModalStore.hooks.useLocationMode()
+  const selectedPlace = locationModalStore.hooks.usePlace()
+  const isSubmitDisabled = locationModalStore.hooks.useIsSubmitDisabled()
+  const addressInputValue = locationModalStore.hooks.useAddressInputValue()
+  const { radius: aroundMeRadius } = locationModalStore.hooks.useConfiguration(
+    LocationMode.AROUND_ME
+  )
+  const { radius: aroundPlaceRadius } = locationModalStore.hooks.useConfiguration(
+    LocationMode.AROUND_PLACE
+  )
+  const isGeolocated = useIsGeolocated()
   const { goBack } = useNavigation<UseNavigationType>()
+
+  const isCurrentLocationMode = (target: LocationMode) => locationMode === target
+
+  const onTempAroundPlaceRadiusValueChange = (newValues: number[]) => {
+    if (newValues?.[0]) {
+      locationModalActions.setAroundPlaceRadius(newValues[0])
+    }
+  }
+
+  const onTempAroundMeRadiusValueChange = (newValues: number[]) => {
+    if (newValues?.[0]) {
+      locationModalActions.setAroundMeRadius(newValues[0])
+    }
+  }
 
   useEffect(() => {
     locationModalActions.sync()
@@ -84,6 +87,7 @@ export const LocationModal = ({
 
   const handleSubmit = () => {
     locationModalActions.submit()
+    void analytics.logUserSetLocation(from)
     onSubmit?.()
     goBack()
   }
@@ -94,90 +98,66 @@ export const LocationModal = ({
   }
 
   const shouldShowAroundPlaceRadiusSlider =
-    shouldShowRadiusSlider &&
-    tempAroundPlaceRadius &&
-    onTempAroundPlaceRadiusValueChange &&
-    selectedPlace
+    shouldShowRadiusSlider && isCurrentLocationMode(LocationMode.AROUND_PLACE)
 
   const shouldShowAroundMeRadiusSlider =
-    shouldShowRadiusSlider &&
-    tempAroundMeRadius &&
-    onTempAroundMeRadiusValueChange &&
-    isCurrentLocationMode(LocationMode.AROUND_ME)
+    shouldShowRadiusSlider && isCurrentLocationMode(LocationMode.AROUND_ME)
 
   const groupLabel = 'Sélectionne ta localisation'
 
-  const options: RadioButtonGroupOption[] = useMemo(() => {
-    const baseOptions: RadioButtonGroupOption[] = [
-      {
-        key: LocationMode.AROUND_ME,
-        label: AROUND_ME_TITLE,
-        description: hasGeolocPosition ? undefined : 'Géolocalisation désactivée',
-        asset: { variant: 'icon', Icon: PositionFilled },
-        collapsed: shouldShowAroundMeRadiusSlider ? (
-          <SliderContainer>
-            <LocationSearchFilters
-              aroundRadius={tempAroundMeRadius}
-              onValuesChange={onTempAroundMeRadiusValueChange}
+  const options: RadioButtonGroupOption[] = [
+    {
+      key: LocationMode.AROUND_ME,
+      label: AROUND_ME_TITLE,
+      description: isGeolocated ? undefined : 'Géolocalisation désactivée',
+      asset: { variant: 'icon', Icon: PositionFilled },
+      collapsed: shouldShowAroundMeRadiusSlider ? (
+        <SliderContainer>
+          <LocationSearchFilters
+            aroundRadius={aroundMeRadius}
+            onValuesChange={onTempAroundMeRadiusValueChange}
+          />
+        </SliderContainer>
+      ) : null,
+    },
+    {
+      key: LocationMode.AROUND_PLACE,
+      label: AROUND_PLACE_TITLE,
+      description: AROUND_PLACE_SUBTITLE,
+      asset: { variant: 'icon', Icon: MagnifyingGlassFilled },
+      collapsed:
+        locationMode === LocationMode.AROUND_PLACE ? (
+          <React.Fragment>
+            <LocationSearchInput
+              selectedPlace={selectedPlace}
+              setSelectedPlace={locationModalActions.setPlace}
+              placeQuery={addressInputValue}
+              setPlaceQuery={locationModalActions.setAddressInputValue}
+              onResetPlace={locationModalActions.resetPlace}
             />
-          </SliderContainer>
+            {shouldShowAroundPlaceRadiusSlider ? (
+              <SliderContainer>
+                <LocationSearchFilters
+                  aroundRadius={aroundPlaceRadius}
+                  onValuesChange={onTempAroundPlaceRadiusValueChange}
+                />
+              </SliderContainer>
+            ) : null}
+          </React.Fragment>
         ) : null,
-      },
-      {
-        key: LocationMode.AROUND_PLACE,
-        label: AROUND_PLACE_TITLE,
-        description: AROUND_PLACE_SUBTITLE,
-        asset: { variant: 'icon', Icon: MagnifyingGlassFilled },
-        collapsed:
-          tempLocationMode === LocationMode.AROUND_PLACE ? (
-            <React.Fragment>
-              <LocationSearchInput
-                selectedPlace={selectedPlace}
-                setSelectedPlace={setSelectedPlace}
-                placeQuery={placeQuery}
-                setPlaceQuery={setPlaceQuery}
-                onResetPlace={onResetPlace}
-              />
-              {shouldShowAroundPlaceRadiusSlider ? (
-                <SliderContainer>
-                  <LocationSearchFilters
-                    aroundRadius={tempAroundPlaceRadius}
-                    onValuesChange={onTempAroundPlaceRadiusValueChange}
-                  />
-                </SliderContainer>
-              ) : null}
-            </React.Fragment>
-          ) : null,
-      },
-    ]
+    },
+    ...(shouldHideEverywhereSection
+      ? []
+      : [
+          {
+            key: LocationMode.EVERYWHERE,
+            label: LocationLabel.everywhereLabel,
+            asset: { variant: 'icon' as const, Icon: WorldPosition },
+          },
+        ]),
+  ]
 
-    if (shouldDisplayEverywhereSection) {
-      baseOptions.push({
-        key: LocationMode.EVERYWHERE,
-        label: LocationLabel.everywhereLabel,
-        asset: { variant: 'icon', Icon: WorldPosition },
-      })
-    }
-
-    return baseOptions
-  }, [
-    hasGeolocPosition,
-    shouldShowAroundMeRadiusSlider,
-    tempAroundMeRadius,
-    onTempAroundMeRadiusValueChange,
-    tempLocationMode,
-    selectedPlace,
-    setSelectedPlace,
-    placeQuery,
-    setPlaceQuery,
-    onResetPlace,
-    shouldShowAroundPlaceRadiusSlider,
-    tempAroundPlaceRadius,
-    onTempAroundPlaceRadiusValueChange,
-    shouldDisplayEverywhereSection,
-  ])
-
-  const currentValue = tempLocationMode ? MODE_TO_LABEL_MAP[tempLocationMode] : ''
+  const currentValue = locationMode ? MODE_TO_LABEL_MAP[locationMode] : ''
 
   return (
     <ModalScreenWrapper onClose={handleClose}>

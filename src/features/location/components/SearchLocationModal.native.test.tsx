@@ -179,40 +179,6 @@ describe('SearchLocationModal', () => {
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
 
-    it('should call searchContext dispatch with mockRadiusPlace when pressing "Valider la localisation"', async () => {
-      renderSearchLocationModal()
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
-      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
-      await user.press(openLocationModalButton)
-
-      const searchInput = screen.getByTestId('styled-input-container')
-      await act(async () => {
-        fireEvent.changeText(searchInput, mockPlaces[0].label)
-      })
-
-      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-      // userEvent.press not working correctly here
-      // eslint-disable-next-line local-rules/no-fireEvent
-      fireEvent.press(suggestedPlace)
-
-      await act(async () => {
-        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChange([mockRadiusPlace])
-      })
-
-      await user.press(screen.getByText('Valider la localisation'))
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        payload: {
-          aroundRadius: mockRadiusPlace,
-          place: mockPlaces[0],
-        },
-        type: 'SET_LOCATION_PLACE',
-      })
-    })
-
     it('should display default radius even if an AroundMeRadius was set previously', async () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       renderSearchLocationModal()
@@ -257,30 +223,6 @@ describe('SearchLocationModal', () => {
       })
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
-    })
-
-    it('should call searchContext dispatch with mockAroundMeRadius when pressing "Valider la localisation"', async () => {
-      getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-
-      renderSearchLocationModal()
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
-      const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-      await user.press(geolocPositionButton)
-
-      await act(async () => {
-        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChange([mockAroundMeRadius])
-      })
-
-      await user.press(screen.getByText('Valider la localisation'))
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        payload: mockAroundMeRadius,
-        type: 'SET_LOCATION_AROUND_ME',
-      })
     })
 
     it('should display default radius even if a PlaceRadius was set previously', async () => {

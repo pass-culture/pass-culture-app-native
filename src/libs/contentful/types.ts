@@ -4,6 +4,7 @@ import { GtlLevel } from 'shared/gtl/types'
 export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
+  ARTIST_PLAYLIST = 'artistPlaylist',
   BOOK_TYPES = 'bookTypes',
   BUSINESS = 'business',
   CATEGORIES = 'categories',
@@ -226,6 +227,13 @@ export interface AlgoliaFields {
   recommendationParameters?: RecommendationParameters
 }
 
+interface ArtistPlaylistFields {
+  title: string
+  artistId: string
+  algoliaParameters: AlgoliaParameters
+  displayParameters: DisplayParameters
+}
+
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesPlaylist/fields
 export interface VenuesFields {
   title: string
@@ -442,6 +450,7 @@ interface HomepageNatifFields {
 
 export type HomepageNatifModule =
   | AlgoliaContentModel
+  | ArtistPlaylistContentModel
   | BusinessContentModel
   | RecommendationContentModel
   | ThematicHighlightContentModel
@@ -454,6 +463,8 @@ export type HomepageNatifModule =
   | VenueMapBlockContentModel
 
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
+
+export type ArtistPlaylistContentModel = Entry<ArtistPlaylistFields, ContentTypes.ARTIST_PLAYLIST>
 
 export type BusinessContentModel = Entry<BusinessFields, ContentTypes.BUSINESS>
 
@@ -502,6 +513,11 @@ export type TrendsContentModel = Entry<TrendsFields, ContentTypes.TRENDS>
 
 export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
+
+export const isArtistPlaylistContentModel = (
+  module: HomepageNatifModule
+): module is ArtistPlaylistContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.ARTIST_PLAYLIST
 
 export const isBusinessContentModel = (
   module: HomepageNatifModule

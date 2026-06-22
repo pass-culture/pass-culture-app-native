@@ -1,5 +1,6 @@
 import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
+  ArtistPlaylistModule,
   BusinessModule,
   CategoryListModule,
   Color,
@@ -219,6 +220,32 @@ export const formattedTrendsModule: TrendsModule = {
       },
       title: 'Tendance 3',
       type: ContentTypes.TREND_BLOCK,
+    },
+  ],
+}
+
+export const formattedArtitPlaylistModule: ArtistPlaylistModule = {
+  type: HomepageModuleType.ArtistPlaylistModule,
+  id: '2DYuR6KoSLElDuiMMjxx8g',
+  title: 'Fais le plein de lecture',
+  displayParameters: {
+    title: 'Fais le plein de lecture avec notre partenaire ',
+    subtitle: 'Tout plein de livres pour encore plus de fun sans que pour autant on en sache ',
+    layout: 'two-items',
+    minOffers: 1,
+  },
+  artistId: 'dc9babd-4cd3-4971-ae5c-6f7775748807',
+  offersModuleParameters: [
+    {
+      title: 'Livre',
+      categories: ['Cartes jeunes', 'Spectacles'],
+      hitsPerPage: 10,
+      minBookingsThreshold: 2,
+      subcategories: ['Livre', 'Livre numérique, e-book'],
+      movieGenres: ['ACTION', 'BOLLYWOOD'],
+      musicTypes: ['Pop', 'Gospel'],
+      showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
+      bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
     },
   ],
 }

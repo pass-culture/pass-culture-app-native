@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { formatDistanceDate } from 'libs/parsers/formatDistanceDate'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Typo } from 'ui/theme'
 
 type Props = {
@@ -23,20 +23,14 @@ export const OfferCaption: FC<Props> = ({
   distance,
   width,
 }: Props) => {
-  const categoryLabelNumberOfLines = useMobileFontScaleToDisplay({
-    default: 1,
-    at200PercentZoom: 3,
-  })
-  const nameNumberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 4 })
-  const distanceDateNumberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 4 })
-
+  const distanceDateNumberOfLines = useNumberOfLine(1)
   const distanceDate = formatDistanceDate(width, distance, date)
 
   return (
     <Fragment>
       <View>
-        <CategoryLabel numberOfLines={categoryLabelNumberOfLines}>{categoryLabel}</CategoryLabel>
-        <Typo.BodyAccentXs numberOfLines={nameNumberOfLines}>{name}</Typo.BodyAccentXs>
+        <CategoryLabel numberOfLines={useNumberOfLine(1)}>{categoryLabel}</CategoryLabel>
+        <Typo.BodyAccentXs numberOfLines={useNumberOfLine(2)}>{name}</Typo.BodyAccentXs>
       </View>
       <View>
         <Typo.BodyXs testID="priceIsDuo">{price}</Typo.BodyXs>

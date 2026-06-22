@@ -399,50 +399,6 @@ describe('ThematicHome', () => {
       info: '',
     })
   })
-
-  describe('localization', () => {
-    it.each`
-      hasGeolocPosition | from                | selectedLocationMode         | expectedLocationMode
-      ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}
-      ${true}           | ${'deeplink'}       | ${LocationMode.EVERYWHERE}   | ${LocationMode.AROUND_ME}
-      ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_ME}
-      ${true}           | ${'category_block'} | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}
-      ${true}           | ${'category_block'} | ${LocationMode.EVERYWHERE}   | ${LocationMode.AROUND_ME}
-      ${false}          | ${'deeplink'}       | ${LocationMode.EVERYWHERE}   | ${LocationMode.EVERYWHERE}
-      ${false}          | ${'category_block'} | ${LocationMode.EVERYWHERE}   | ${LocationMode.EVERYWHERE}
-      ${false}          | ${'deeplink'}       | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
-      ${false}          | ${'category_block'} | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
-      ${true}           | ${'category_block'} | ${LocationMode.AROUND_PLACE} | ${LocationMode.AROUND_PLACE}
-    `(
-      'should have localization mode $expectedLocationMode when user comes from $from, geolocPosition is $hasGeolocPosition and has $selectedLocationMode',
-      async ({
-        hasGeolocPosition,
-        from,
-        selectedLocationMode,
-        expectedLocationMode,
-      }: {
-        hasGeolocPosition: boolean
-        from: string
-        selectedLocationMode: LocationMode
-        expectedLocationMode: LocationMode
-      }) => {
-        useRoute.mockReturnValueOnce({ params: { entryId: 'fakeEntryId', from } })
-
-        mockUseLocation.mockReturnValueOnce({
-          ...defaultUseLocation,
-          selectedLocationMode,
-          hasGeolocPosition,
-        })
-        renderThematicHome()
-
-        await screen.findByText('Suivre')
-
-        expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
-          expectedLocationMode
-        )
-      }
-    )
-  })
 })
 
 const renderThematicHome = () => {

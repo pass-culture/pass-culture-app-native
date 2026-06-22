@@ -64,7 +64,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({
 
   return topOffers.length > 0 ? (
     <PassPlaylist
-      playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
+      playlistType={PlaylistType.ARTIST_TOP_OFFERS}
       title={playlistTitle}
       data={topOffers}
       FlatListComponent={FlatList}

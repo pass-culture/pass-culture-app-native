@@ -28,7 +28,11 @@ export const buildOffersModulesQueries = ({
       indexName: getIndexName(params.offerParams),
       query: params.offerParams.query,
       ...buildHitsPerPage(params.offerParams.hitsPerPage),
-      ...buildOfferSearchParameters(params.offerParams, params.locationParams, isUserUnderage),
+      ...buildOfferSearchParameters(
+        { ...params.offerParams, artistId: params.artistId },
+        params.locationParams,
+        isUserUnderage
+      ),
       attributesToHighlight: [], // We disable highlighting because we don't need it
       attributesToRetrieve: offerAttributesToRetrieve,
     }

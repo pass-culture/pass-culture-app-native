@@ -19,7 +19,7 @@ const defaultState: LocationModalState = {
   ...defaultLocationState,
 }
 
-const locationModalStore = createStore({
+export const locationModalStore = createStore({
   name: 'locationModal',
   defaultState,
   actions: (set) => {
@@ -37,9 +37,19 @@ const locationModalStore = createStore({
     return {
       sync: () => {
         const locationState = locationSelectors.selectState()
+        const isAroundPlace = locationState.locationMode === LocationMode.AROUND_PLACE
+
         set({
-          addressInputValue: locationState.configuration[LocationMode.AROUND_PLACE].label,
           ...locationState,
+          configuration: {
+            ...locationState.configuration,
+            [LocationMode.AROUND_PLACE]: isAroundPlace
+              ? locationState.configuration[LocationMode.AROUND_PLACE]
+              : defaultLocationState.configuration[LocationMode.AROUND_PLACE],
+          },
+          addressInputValue: isAroundPlace
+            ? locationState.configuration[LocationMode.AROUND_PLACE].label
+            : '',
           visible: true,
         })
       },
@@ -62,6 +72,15 @@ const locationModalStore = createStore({
       setAroundPlaceRadius: (radius: number) =>
         setConfiguration(LocationMode.AROUND_PLACE, { radius }),
       setLocationMode: (locationMode: LocationMode) => set({ locationMode }),
+      resetPlace: () =>
+        set({
+          addressInputValue: '',
+          configuration: {
+            ...defaultLocationState.configuration,
+            [LocationMode.AROUND_PLACE]:
+              defaultLocationState.configuration[LocationMode.AROUND_PLACE],
+          },
+        }),
       updateConfig: (
         mode: LocationMode,
         data: Partial<LocationState['configuration'][LocationMode]>
@@ -76,7 +95,7 @@ const locationModalStore = createStore({
   },
   selectors: {
     selectLocationMode: () => (state) => state.locationMode,
-    selectLocationModalConfiguration: (configurationKey: LocationMode) => (state) =>
+    selectConfiguration: (configurationKey: LocationMode) => (state) =>
       state.configuration[configurationKey],
     selectPlace: () => (state) => {
       const { radius: _, ...place } = state.configuration[LocationMode.AROUND_PLACE]
@@ -84,22 +103,14 @@ const locationModalStore = createStore({
     },
     selectIsVisible: () => (state) => state.visible,
     selectAddressInputValue: () => (state) => state.addressInputValue,
-    selectCanSubmit: () => (state) => {
+    selectIsSubmitDisabled: () => (state) => {
       if (state.locationMode === LocationMode.AROUND_PLACE) {
-        return !!state.configuration[LocationMode.AROUND_PLACE].label
+        return !state.configuration[LocationMode.AROUND_PLACE].label
       }
-      return true
+      return false
     },
   },
 })
 
 export const locationModalActions = locationModalStore.actions
 export const locationModalSelectors = locationModalStore.selectors
-
-export const {
-  useStore: useLocationModal,
-  useLocationModalConfiguration,
-  usePlace: useLocationModalPlace,
-  useAddressInputValue: useLocationModalAddressInputValue,
-  useCanSubmit: useCanSubmitLocationModal,
-} = locationModalStore.hooks

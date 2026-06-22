@@ -73,6 +73,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_CATEGORY_BLOCKS = 'wipNewCategoryBlocks',
+  WIP_NEW_CATEGORY_BLOCKS_HOME = 'wipNewCategoryBlocksHome',
   WIP_NEW_SEARCH_RESULTS_PAGE = 'wipNewSearchResultsPage',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
   WIP_OFFER_REFACTO = 'wipOfferRefacto',

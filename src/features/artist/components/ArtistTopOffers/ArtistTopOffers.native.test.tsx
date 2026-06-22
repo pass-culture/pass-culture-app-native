@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
+import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -29,6 +30,28 @@ describe('ArtistTopOffers', () => {
 
     expect(screen.getByLabelText('Ses oeuvres populaires')).toBeOnTheScreen()
     expect(screen.getByText('Manga one piece t91')).toBeOnTheScreen()
+  })
+
+  it('should trigger ConsultOffer log with good parameters when pressing a playlist item', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers
+          artistName="Céline Dion"
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Manga one piece t91'))
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      artistName: 'Céline Dion',
+      displayAdvice: false,
+      from: 'artist',
+      isHeadline: false,
+      offerId: '16302',
+      playlistType: PlaylistType.ARTIST_TOP_OFFERS,
+    })
   })
 
   it('should display top offers in an horizontal carousel', () => {

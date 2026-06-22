@@ -8,6 +8,7 @@ import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
+  'ArtistPlaylistModule' = 'ArtistPlaylistModule',
   'OffersModule' = 'OffersModule',
   'VenuesModule' = 'VenuesModule',
   'BusinessModule' = 'BusinessModule',
@@ -70,6 +71,7 @@ export type Homepage = {
 }
 
 export type HomepageModule =
+  | ArtistPlaylistModule
   | OffersModule
   | BusinessModule
   | RecommendedOffersModule
@@ -79,6 +81,16 @@ export type HomepageModule =
   | CategoryListModule
   | VideoModule
   | HighlightOfferModule
+
+export type ArtistPlaylistModule = {
+  type: HomepageModuleType.ArtistPlaylistModule
+  id: string
+  title: string
+  artistId: string
+  offersModuleParameters: OffersModuleParameters[]
+  displayParameters: DisplayParameters
+  data?: ModuleData
+}
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -129,6 +141,7 @@ export type OffersModuleParameters = {
   isSortedByLikes?: boolean
   isSortedByReleaseDate?: boolean
   isWithClub?: boolean
+  artistId?: string
 }
 
 export type BusinessModule = {
@@ -371,4 +384,8 @@ export const isVenuesModule = (module: HomepageModule): module is VenuesModule =
 
 export const isOffersModule = (module: HomepageModule): module is OffersModule => {
   return module.type === HomepageModuleType.OffersModule
+}
+
+export const isArtistPlaylistModule = (module: HomepageModule): module is ArtistPlaylistModule => {
+  return module.type === HomepageModuleType.ArtistPlaylistModule
 }
