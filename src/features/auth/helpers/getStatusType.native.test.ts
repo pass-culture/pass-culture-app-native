@@ -1,58 +1,98 @@
-import { UserProfileResponse, YoungStatusType } from 'api/gen'
+import { DepositType, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { logUserStatusTypeFallback } from 'features/profile/helpers/logUserStatusTypeFallback'
+import { getAge } from 'shared/user/getAge'
 
 import { getStatusType, UserStatusType } from './getStatusType'
 
 jest.mock('features/profile/helpers/logUserStatusTypeFallback')
 
-const buildUser = (statusType: YoungStatusType | string): UserProfileResponse =>
-  ({ status: { statusType } }) as UserProfileResponse
+jest.mock('shared/user/getAge')
+const mockedGetAge = getAge as jest.Mock
+const mockAge = (age: number) => mockedGetAge.mockReturnValue(age)
+
+const buildUser = ({
+  statusType,
+  depositType,
+}: {
+  statusType: YoungStatusType | string
+  depositType?: DepositType
+}): UserProfileResponse => ({ status: { statusType }, depositType }) as UserProfileResponse
 
 describe('getStatusType', () => {
   it('should return BENEFICIARY', () => {
-    const user = buildUser(YoungStatusType.beneficiary)
+    mockAge(18)
+    const user = buildUser({ statusType: YoungStatusType.beneficiary })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.BENEFICIARY)
   })
 
+  it('should return ELIGIBLE_AND_BENEFICIARY when user eligible with credit V3 and age >= 18', () => {
+    mockAge(18)
+    const user = buildUser({
+      statusType: YoungStatusType.eligible,
+      depositType: DepositType.GRANT_17_18,
+    })
+
+    const result = getStatusType(user)
+
+    expect(result).toBe(UserStatusType.ELIGIBLE_AND_BENEFICIARY)
+  })
+
+  it('should return ELIGIBLE_AND_FREE_BENEFICIARY when user eligible with free deposit and age >= 17', () => {
+    mockAge(17)
+    const user = buildUser({
+      statusType: YoungStatusType.eligible,
+      depositType: DepositType.GRANT_FREE,
+    })
+
+    const result = getStatusType(user)
+
+    expect(result).toBe(UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY)
+  })
+
   it('should return EX_BENEFICIARY', () => {
-    const user = buildUser(YoungStatusType.ex_beneficiary)
+    mockAge(21)
+    const user = buildUser({ statusType: YoungStatusType.ex_beneficiary })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.EX_BENEFICIARY)
   })
 
   it('should return ELIGIBLE', () => {
-    const user = buildUser(YoungStatusType.eligible)
+    mockAge(18)
+    const user = buildUser({ statusType: YoungStatusType.eligible })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.ELIGIBLE)
   })
 
   it('should return GENERAL_PUBLIC', () => {
-    const user = buildUser(YoungStatusType.non_eligible)
+    mockAge(25)
+    const user = buildUser({ statusType: YoungStatusType.non_eligible })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.GENERAL_PUBLIC)
   })
 
   it('should return SUSPENDED', () => {
-    const user = buildUser(YoungStatusType.suspended)
+    mockAge(18)
+    const user = buildUser({ statusType: YoungStatusType.suspended })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.SUSPENDED)
   })
 
   it('should return UNKNOWN when statusType is unknown', () => {
-    const user = buildUser('unexpected_status')
+    mockAge(18)
+    const user = buildUser({ statusType: 'unexpected_status' })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.UNKNOWN)
   })
 
   it('should log fallback when status type is unknown', () => {
-    const user = buildUser('unexpected_status')
+    const user = buildUser({ statusType: 'unexpected_status' })
     const result = getStatusType(user)
 
     expect(result).toBe(UserStatusType.UNKNOWN)
