@@ -89,7 +89,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
     <ObservedPlaylist onViewableItemsChanged={handleArtistOffersViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
-          playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
+          playlistType={PlaylistType.ARTIST_CATEGORY_PLAYLIST}
           title={title}
           data={items}
           FlatListComponent={FlatList}
