@@ -4,6 +4,7 @@ import { getAge } from 'shared/user/getAge'
 
 export enum UserStatusType {
   ELIGIBLE = 'ELIGIBLE',
+  ELIGIBLE_AND_FREE_BENEFICIARY = 'ELIGIBLE_AND_FREE_BENEFICIARY',
   ELIGIBLE_AND_BENEFICIARY = 'ELIGIBLE_AND_BENEFICIARY',
   BENEFICIARY = 'BENEFICIARY',
   EX_BENEFICIARY = 'EX_BENEFICIARY',
@@ -19,12 +20,15 @@ export const getStatusType = (user: UserProfileResponse): UserStatusType => {
 
   const age = getAge(birthDate)
   const isEighteenOrMore = age && age >= 18
+  const isSeventeenOrMore = age && age >= 17
   const isCreditV3 = depositType === DepositType.GRANT_17_18
-  const isBeneficiaryWithCreditV3Seventeen = isCreditV3 && isEighteenOrMore
+  const isEligibleAndBeneficiary = isCreditV3 && isEighteenOrMore
+  const isEligibleAndFreeBeneficiary = depositType === DepositType.GRANT_FREE && isSeventeenOrMore
 
   switch (status.statusType) {
     case YoungStatusType.eligible:
-      if (isBeneficiaryWithCreditV3Seventeen) return UserStatusType.ELIGIBLE_AND_BENEFICIARY
+      if (isEligibleAndFreeBeneficiary) return UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY
+      if (isEligibleAndBeneficiary) return UserStatusType.ELIGIBLE_AND_BENEFICIARY
       return UserStatusType.ELIGIBLE
     case YoungStatusType.beneficiary:
       return UserStatusType.BENEFICIARY

@@ -33,13 +33,21 @@ describe('LoggedInHeader', () => {
     expect(screen.getByTestId('logged-in-eligible-header')).toBeOnTheScreen()
   })
 
+  it('should render LoggedInEligibleHeader when user is ELIGIBLE_AND_FREE_BENEFICIARY', () => {
+    const user = { ...nonBeneficiaryUser, statusType: UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY }
+
+    renderLoggedInHeader({ user })
+
+    expect(screen.getByTestId('logged-in-eligible-header')).toBeOnTheScreen()
+  })
+
   it('should render LoggedInEligibleAndBeneficiaryHeader when user is ELIGIBLE_AND_BENEFICIARY', () => {
-    const eligibleUser = {
+    const user = {
       ...beneficiaryUser,
       creditType: UserCreditType.CREDIT_V3_17,
       statusType: UserStatusType.ELIGIBLE_AND_BENEFICIARY,
     }
-    renderLoggedInHeader({ user: eligibleUser })
+    renderLoggedInHeader({ user })
 
     expect(screen.getByTestId('logged-in-eligible-and-beneficiary-header')).toBeOnTheScreen()
   })

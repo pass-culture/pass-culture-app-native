@@ -116,4 +116,30 @@ describe('getCreditType', () => {
       expect(logUserCreditTypeFallback).toHaveBeenCalledTimes(1)
     })
   })
+
+  describe('CREDIT EMPTY', () => {
+    it('should return CREDIT_EMPTY when remaining is 0 and not free deposit', () => {
+      const result = getCreditType(
+        buildUser({
+          depositType: DepositType.GRANT_18,
+          domainsCredit: { all: { remaining: 0, initial: 0 } },
+        })
+      )
+
+      expect(result).toBe(UserCreditType.CREDIT_EMPTY)
+    })
+
+    it('should NOT return CREDIT_EMPTY for CREDIT_V3_FREE even if remaining is 0', () => {
+      mockedGetAge.mockReturnValueOnce(18)
+
+      const result = getCreditType(
+        buildUser({
+          depositType: DepositType.GRANT_FREE,
+          domainsCredit: { all: { remaining: 0, initial: 0 } },
+        })
+      )
+
+      expect(result).toBe(UserCreditType.CREDIT_V3_FREE)
+    })
+  })
 })
