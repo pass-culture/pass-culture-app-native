@@ -264,11 +264,11 @@ exports[`ThematicHome should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#320096",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "height": 40,
                   "justifyContent": "center",
                   "overflow": "hidden",

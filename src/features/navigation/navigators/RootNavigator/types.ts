@@ -346,7 +346,10 @@ export type RootStackParamList = {
   VideoModulePage: VideoModulePageParams
   HomeLocationModal: undefined
   SearchLocationModal: undefined
-  VenueMapLocationModal: { openedFrom: Referrals; shouldOpenMapInTab?: boolean }
+  VenueMapLocationModal: {
+    openedFrom: Referrals
+    shouldOpenMapInTab?: boolean
+  }
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
