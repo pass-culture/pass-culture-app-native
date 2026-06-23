@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { analytics } from 'libs/analytics/provider'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { VerticalPlaylistOffersView } from './VerticalPlaylistOffersView'
 
@@ -20,6 +22,10 @@ const mockHitsItems: Offer[] = [
   mockedAlgoliaResponse.hits[1],
   mockedAlgoliaResponse.hits[2],
 ]
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<VerticalPlaylistOffersView />', () => {
   it('should render correctly', async () => {
@@ -58,5 +64,82 @@ describe('<VerticalPlaylistOffersView />', () => {
     expect(screen.getAllByText('My title')[0]).toBeOnTheScreen()
     expect(screen.getByText('My subtitle')).toBeOnTheScreen()
     expect(screen.getByText('3 offres')).toBeOnTheScreen()
+  })
+
+  it('should display artist button when artistId specified', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VerticalPlaylistOffersView
+          title="My title"
+          subtitle="My subtitle"
+          items={mockHitsItems}
+          searchQuery="query"
+          analyticsFrom="searchresults"
+          artistId="1"
+        />
+      )
+    )
+
+    expect(await screen.findByLabelText('Accéder à la page artiste de Artist 1')).toBeOnTheScreen()
+  })
+
+  it('should not display artist button when artistId not specified', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VerticalPlaylistOffersView
+          title="My title"
+          subtitle="My subtitle"
+          items={mockHitsItems}
+          searchQuery="query"
+          analyticsFrom="searchresults"
+        />
+      )
+    )
+
+    await screen.findAllByText('My title')
+
+    expect(screen.queryByLabelText('Accéder à la page artiste de Artist 1')).not.toBeOnTheScreen()
+  })
+
+  it('should navigate on artist page when pressing artist button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VerticalPlaylistOffersView
+          title="My title"
+          subtitle="My subtitle"
+          items={mockHitsItems}
+          searchQuery="query"
+          analyticsFrom="searchresults"
+          artistId="1"
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Accéder à la page artiste de Artist 1'))
+
+    expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
+  })
+
+  it('should trigger ConsultArtist log when pressing artist button', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VerticalPlaylistOffersView
+          title="My title"
+          subtitle="My subtitle"
+          items={mockHitsItems}
+          searchQuery="query"
+          analyticsFrom="home"
+          artistId="1"
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Accéder à la page artiste de Artist 1'))
+
+    expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+      artistId: '1',
+      artistName: 'Artist 1',
+      from: 'home',
+    })
   })
 })
