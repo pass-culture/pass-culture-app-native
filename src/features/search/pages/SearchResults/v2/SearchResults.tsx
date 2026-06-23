@@ -108,6 +108,8 @@ export const SearchResults = () => {
     showModal()
   }
 
+  const [hasBeenClicked, setHasBeenClicked] = useState(false)
+
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -158,7 +160,13 @@ export const SearchResults = () => {
             {(() => {
               switch (selectedSearchTab) {
                 case 'Offres':
-                  return <OffersList searchFilters={searchFilters} />
+                  return (
+                    <OffersList
+                      searchFilters={searchFilters}
+                      hasBeenClicked={hasBeenClicked}
+                      setHasBeenClicked={setHasBeenClicked}
+                    />
+                  )
                 case 'Lieux':
                   return <VenuesList searchFilters={searchFilters} />
                 case 'Artistes':
@@ -170,6 +178,8 @@ export const SearchResults = () => {
                       onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
                       header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
                       searchFilters={searchFilters}
+                      hasBeenClicked={hasBeenClicked}
+                      setHasBeenClicked={setHasBeenClicked}
                     />
                   )
               }

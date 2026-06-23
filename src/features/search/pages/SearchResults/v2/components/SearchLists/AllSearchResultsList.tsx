@@ -20,6 +20,8 @@ type Props = {
   enableAIFakeDoor?: boolean
   header?: React.ReactNode
   searchFilters: FetchSearchResultsArgs
+  hasBeenClicked: boolean
+  setHasBeenClicked: (hasBeenClicked: boolean) => void
 }
 
 const isWeb = Platform.OS === 'web'
@@ -29,6 +31,8 @@ export const AllSearchResultsList: FC<Props> = ({
   onPressAIFakeDoorBanner,
   header,
   searchFilters,
+  hasBeenClicked,
+  setHasBeenClicked,
 }) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
 
@@ -49,7 +53,10 @@ export const AllSearchResultsList: FC<Props> = ({
       />
       <NoSearchResultContainer searchFilters={searchFilters}>
         <Container testID="searchResults">
-          <OffersList searchFilters={searchFilters}>
+          <OffersList
+            searchFilters={searchFilters}
+            hasBeenClicked={hasBeenClicked}
+            setHasBeenClicked={setHasBeenClicked}>
             <React.Fragment>
               {header}
               <SearchResultsListHeader
