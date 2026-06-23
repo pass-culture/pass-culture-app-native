@@ -21,9 +21,10 @@ export const LocationModalFooter = memo(function LocationModalFooter({
   useForHeightKeyboardEvents(setKeyboardHeight)
 
   const modalSpacing = Platform.OS === 'ios' ? modal.spacing.LG : modal.spacing.SM
+  const shouldApplyKeyboardPadding = Platform.OS === 'ios' && keyboardHeight > 0
 
   return (
-    <Container paddingBottom={keyboardHeight ? keyboardHeight - modalSpacing : 0}>
+    <Container paddingBottom={shouldApplyKeyboardPadding ? keyboardHeight - modalSpacing : 0}>
       <Button fullWidth wording={buttonWording} disabled={isSubmitDisabled} onPress={onSubmit} />
     </Container>
   )
@@ -33,4 +34,5 @@ const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme
   ...(paddingBottom ? { paddingBottom } : {}),
   alignItems: 'center',
   paddingHorizontal: theme.designSystem.size.spacing.xl,
+  paddingTop: theme.designSystem.size.spacing.s,
 }))

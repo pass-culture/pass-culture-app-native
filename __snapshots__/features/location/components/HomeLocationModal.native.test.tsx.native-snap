@@ -196,6 +196,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
     </View>
   </View>
   <RCTScrollView
+    keyboardShouldPersistTaps="handled"
     style={
       {
         "flexBasis": 0,
@@ -882,6 +883,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
         {
           "alignItems": "center",
           "paddingHorizontal": 24,
+          "paddingTop": 8,
         }
       }
     >
