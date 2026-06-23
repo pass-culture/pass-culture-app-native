@@ -265,25 +265,6 @@ describe('<VenueTopComponent />', () => {
       })
     })
 
-    it('should display new tag on volunteer card when venue has volunteering url and wipEnableVolunteerNewTag FF activated', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-        enableVolunteerNewTag: true,
-      })
-
-      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
-    })
-
-    it('should not display new tag on volunteer card when venue has volunteering url and wipEnableVolunteerNewTag FF deactivated', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
-
-      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
-    })
-
     it('should display feedback component below volunteer card when venue has volunteering url and wipEnableVolunteerFeedback FF activated', () => {
       renderVenueTopComponent({
         venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
@@ -348,7 +329,6 @@ type RenderVenueTopComponent = ComponentProps<typeof VenueTopComponent>
 const renderVenueTopComponent = ({
   venue,
   enableVolunteer,
-  enableVolunteerNewTag,
   enableVolunteerFeedback,
 }: RenderVenueTopComponent) =>
   render(
@@ -356,7 +336,6 @@ const renderVenueTopComponent = ({
       <VenueTopComponent
         venue={venue}
         enableVolunteer={enableVolunteer}
-        enableVolunteerNewTag={enableVolunteerNewTag}
         enableVolunteerFeedback={enableVolunteerFeedback}
       />
     )

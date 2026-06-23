@@ -19,8 +19,6 @@ import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipbo
 import { EditorialCard, EditorialCardInfo } from 'ui/components/EditorialCard'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -29,7 +27,6 @@ type Props = {
   venue: VenueResponse
   onPressBannerImage?: () => void
   enableVolunteer?: boolean
-  enableVolunteerNewTag?: boolean
   enableVolunteerFeedback?: boolean
 }
 
@@ -40,7 +37,6 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
   enableVolunteer,
-  enableVolunteerNewTag,
   enableVolunteerFeedback,
 }) => {
   const theme = useTheme()
@@ -151,25 +147,18 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
       </TopContainer>
       {hasVolunteer ? (
         <VolunteeringContainer gap={4}>
-          <CardWrapper>
-            {enableVolunteerNewTag ? (
-              <TagContainer>
-                <Tag variant={TagVariant.NEW} label="Nouveau" />
-              </TagContainer>
-            ) : null}
-            <EditorialCard
-              height={
-                theme.isDesktopViewport ? VOLUNTEER_LARGE_CARD_HEIGHT : VOLUNTEER_SMALL_CARD_HEIGHT
-              }
-              width={width}
-              isFocus={focusProps.isFocus}
-              editorialCardInfo={editorialCardInfo}
-              accessibilityLabel={`Devenir bénévole pour ${venue.name} - Ouvre JeVeuxAider.gouv.fr | Devenez bénévole dans une association en quelques clics | La plateforme publique du bénévolat par la Réserve Civique`}
-              onFocus={focusProps.onFocus}
-              onBlur={focusProps.onBlur}
-              onPress={onPressVolunteeringCard}
-            />
-          </CardWrapper>
+          <EditorialCard
+            height={
+              theme.isDesktopViewport ? VOLUNTEER_LARGE_CARD_HEIGHT : VOLUNTEER_SMALL_CARD_HEIGHT
+            }
+            width={width}
+            isFocus={focusProps.isFocus}
+            editorialCardInfo={editorialCardInfo}
+            accessibilityLabel={`Devenir bénévole pour ${venue.name} - Ouvre JeVeuxAider.gouv.fr | Devenez bénévole dans une association en quelques clics | La plateforme publique du bénévolat par la Réserve Civique`}
+            onFocus={focusProps.onFocus}
+            onBlur={focusProps.onBlur}
+            onPress={onPressVolunteeringCard}
+          />
           {enableVolunteerFeedback ? (
             <StyledFeedBack
               storageKey="volunteering_feedback"
@@ -215,18 +204,6 @@ const getVenue = (venue: VenueResponse): VenueBlockVenue => {
     coordinates: {},
   }
 }
-
-const CardWrapper = styled.View({
-  position: 'relative',
-})
-
-const TagContainer = styled.View(({ theme }) => ({
-  position: 'absolute',
-  top: theme.designSystem.size.spacing.l,
-  left: theme.designSystem.size.spacing.xxxl,
-  zIndex: 2,
-  pointerEvents: 'none',
-}))
 
 const VolunteeringContainer = styled(ViewGap)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,

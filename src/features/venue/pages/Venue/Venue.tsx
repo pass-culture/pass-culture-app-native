@@ -82,7 +82,6 @@ export const Venue: FunctionComponent = () => {
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
   const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
-  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
   const enableVolunteerFeedback = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
   )
@@ -182,7 +181,6 @@ export const Venue: FunctionComponent = () => {
       <VenueTopComponent
         venue={venue}
         enableVolunteer={enableVolunteer}
-        enableVolunteerNewTag={enableVolunteerNewTag}
         enableVolunteerFeedback={enableVolunteerFeedback}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
