@@ -73,7 +73,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   onExpandBioPress,
 }) => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
-  const { appBarHeight } = useTheme()
+  const { appBarHeight, designSystem } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
@@ -81,7 +81,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
 
-  const { top } = useSafeAreaInsets()
+  const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
   const { name, description, image } = artist
@@ -128,7 +128,10 @@ export const ArtistBody: FunctionComponent<Props> = ({
         scrollEventThrottle={16}
         bounces={false}
         onScroll={onScroll}
-        contentContainerStyle={{ paddingTop: headerHeight }}>
+        contentContainerStyle={{
+          paddingTop: headerHeight,
+          paddingBottom: designSystem.size.spacing.xxl + bottom,
+        }}>
         <ViewGap gap={8}>
           <ViewGap gap={6}>
             <ArtistHeader name={name} avatarImage={image} />
