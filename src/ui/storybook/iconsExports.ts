@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { Again } from 'ui/svg/icons/Again'
-import { AISearch } from 'ui/svg/icons/AISearch'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -160,7 +159,6 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
-  AISearch,
   ArrowAgain,
   ArrowLeftNew,
   ArrowNext,
