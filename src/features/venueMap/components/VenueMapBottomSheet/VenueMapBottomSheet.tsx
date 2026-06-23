@@ -5,9 +5,8 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet'
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
-import React, { Fragment, FunctionComponent, forwardRef, useMemo, useRef } from 'react'
+import React, { Fragment, FunctionComponent, forwardRef, useMemo } from 'react'
 import { ViewToken } from 'react-native'
-import { Directions, FlingGesture, Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -24,14 +23,8 @@ import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing } from 'ui/theme'
 
-const FLING_GESTURE = Gesture.Fling()
-  .withTestId('flingGesture')
-  .runOnJS(true)
-  .direction(Directions.UP)
-
 interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   onClose?: () => void
-  onFlingUp?: () => void
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
   offersPlaylistType: PlaylistType
@@ -49,7 +42,6 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       onClose,
       venue,
       venueOffers,
-      onFlingUp,
       offersPlaylistType,
       onViewableItemsChanged,
       ...bottomSheetProps
@@ -126,27 +118,18 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       return null
     }, [venue, onClose, VENUE_THUMBNAIL_SIZE, venueTags, designSystem.size.spacing.l])
 
-    const flingRef = useRef<FlingGesture | undefined>(undefined)
-
-    FLING_GESTURE.withRef(flingRef)
-      .enabled(!!onFlingUp)
-      .onEnd(() => onFlingUp?.())
-
     return (
-      <GestureDetector gesture={FLING_GESTURE}>
-        <StyledBottomSheet
-          ref={ref}
-          index={-1}
-          enablePanDownToClose
-          simultaneousHandlers={flingRef}
-          handleComponent={HandleComponent}
-          {...bottomSheetProps}>
-          <StyledBottomSheetView>
-            {venueMapPreview}
-            {offersPlaylist}
-          </StyledBottomSheetView>
-        </StyledBottomSheet>
-      </GestureDetector>
+      <StyledBottomSheet
+        ref={ref}
+        index={-1}
+        enablePanDownToClose
+        handleComponent={HandleComponent}
+        {...bottomSheetProps}>
+        <StyledBottomSheetView>
+          {venueMapPreview}
+          {offersPlaylist}
+        </StyledBottomSheetView>
+      </StyledBottomSheet>
     )
   }
 )

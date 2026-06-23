@@ -73,9 +73,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const isInVenueMapScreen = routeName.toLowerCase() === 'venuemap'
 
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
-  const shouldNavigateToVenueOnFling = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE
-  )
 
   const mapViewRef = useRef<Map>(null)
   const [mapLayout, setMapLayout] = useState<LayoutRectangle>()
@@ -229,16 +226,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     }
   }, [selectedVenue, mapReady])
 
-  const handleFlingUp = () => {
-    if (
-      shouldNavigateToVenueOnFling &&
-      selectedVenue?.isPermanent &&
-      bottomSheetIndex === snapPoints.length - 1
-    ) {
-      navigateToVenue(selectedVenue.venueId)
-    }
-  }
-
   // Category filters
   const { activeFilters } = useVenueMapFilters()
 
@@ -271,7 +258,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
         ref={bottomSheetRef}
         onClose={removeSelectedVenue}
         venue={selectedVenue}
-        onFlingUp={handleFlingUp}
         venueOffers={selectedVenueOffers?.hits}
         onAnimate={handleBottomSheetAnimation}
         onChange={setBottomSheetIndex}
