@@ -2,12 +2,12 @@ import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { isFreeBeneficiary } from 'features/auth/helpers/checkCreditType'
+import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
 import {
   isCurrentOrFormerBeneficiary,
   isCurrentBeneficiary,
 } from 'features/auth/helpers/checkStatusType'
-import { UserCreditType } from 'features/auth/helpers/getCreditType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetWrapperDesktop } from 'features/location/components/LocationWidgetWrapperDesktop'
@@ -41,7 +41,7 @@ export const HomeHeader: FunctionComponent = function () {
         !isLoggedIn ||
         !user ||
         !isCurrentOrFormerBeneficiary(user) ||
-        user?.creditType === UserCreditType.CREDIT_V3_FREE ||
+        isFreeBeneficiary(user) ||
         getIsUserEligibleFree(user?.eligibilityType) ||
         (!isCurrentBeneficiary(user) && shouldDisplayActivationFlow)
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'

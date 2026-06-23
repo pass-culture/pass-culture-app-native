@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
+import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
 import { FreeHomeButton } from 'features/profile/components/Buttons/FreeHomeButton/FreeHomeButton'
 import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
 import { GreySeparatorWithBorderDefaultColor } from 'features/profile/components/GreySeparatorWithBorderDefaultColor/GreySeparatorWithBorderDefaultColor'

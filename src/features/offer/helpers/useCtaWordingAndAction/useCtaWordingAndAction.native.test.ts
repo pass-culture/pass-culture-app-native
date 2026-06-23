@@ -8,6 +8,7 @@ import {
   SubscriptionStatus,
   YoungStatusType,
 } from 'api/gen'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -141,10 +142,26 @@ describe('getCtaWordingAndAction', () => {
       })
     })
 
-    it('should display "Réserver l’offre" wording and open booking modal when user profile complete', () => {
+    it('should display "Réserver l’offre" wording and open booking modal when user is beneficiary', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...beneficiaryUser, eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
+        user: beneficiaryUser,
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
+        subcategory: buildSubcategory({}),
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        ...result,
+      })
+    })
+
+    it('should display "Réserver l’offre" wording and open booking modal when user is free beneficiary', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...beneficiaryUser, creditType: UserCreditType.CREDIT_V3_FREE },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
       })

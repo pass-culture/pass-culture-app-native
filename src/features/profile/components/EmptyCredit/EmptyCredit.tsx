@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'

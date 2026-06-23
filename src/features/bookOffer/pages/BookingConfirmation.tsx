@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FC, useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
+import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
 import { checkHasAlreadySeenSurvey } from 'features/bookOffer/pages/qualtricsSurveyModals/checkHasAlreadySeenSurvey'
 import { BookingCompletedSurveyModal } from 'features/bookOffer/pages/qualtricsSurveyModals/QualtricsSurveyModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'

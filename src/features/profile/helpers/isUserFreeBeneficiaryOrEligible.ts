@@ -1,5 +1,5 @@
 import { UserRole } from 'api/gen/api'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
+import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
 import { UserProfile } from 'features/share/types'
 
 export const isUserFreeBeneficiaryOrEligible = (user?: UserProfile) => {
