@@ -29,11 +29,12 @@ describe('useAvailableReaction', () => {
     await waitFor(() => expect(result.current.data).toEqual({}))
   })
 
-  it('should handle errors correctly', async () => {
-    mockServer.getApi('/v2/reaction/available', { responseOptions: { statusCode: 400, data: {} } })
+  it('should swallow a 401 error so the tab badge never crashes the app', async () => {
+    mockServer.getApi('/v2/reaction/available', { responseOptions: { statusCode: 401, data: {} } })
 
     const { result } = renderUseAvailableReaction()
 
+    // The 401 is exposed as recoverable query state instead of being thrown to the boundary.
     await waitFor(() => expect(result.current.isError).toBeTruthy())
 
     expect(result.current.data).toBeUndefined()

@@ -7,6 +7,7 @@ import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
+import { logoutStoreActions } from 'shared/store/logoutStore'
 import { mockServer } from 'tests/mswServer'
 
 import { ApiError } from './ApiError'
@@ -357,6 +358,10 @@ describe('[api] helpers', () => {
   describe('handleGeneratedApiResponse', () => {
     const navigateFromRef = jest.spyOn(NavigationRef, 'navigateFromRef')
 
+    beforeEach(() => {
+      logoutStoreActions.setIsLoggingOut(false)
+    })
+
     it('should return body when status is ok', async () => {
       const response = await respondWith('apiResponse')
 
@@ -450,6 +455,15 @@ describe('[api] helpers', () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
       expect(navigateFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
+      expect(result).toEqual({})
+    })
+
+    it('should not navigate to LoginMethods when a logout is in progress', async () => {
+      logoutStoreActions.setIsLoggingOut(true)
+
+      const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
+
+      expect(navigateFromRef).not.toHaveBeenCalled()
       expect(result).toEqual({})
     })
   })

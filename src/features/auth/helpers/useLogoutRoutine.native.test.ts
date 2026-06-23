@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
+import { logoutStoreActions, logoutStoreSelectors } from 'shared/store/logoutStore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
@@ -15,9 +16,11 @@ jest.mock('libs/keychain/keychain')
 
 let queryClient: QueryClient
 const removeQueriesMock = jest.fn()
+const cancelQueriesMock = jest.fn()
 const setupQueryClient = (client: QueryClient) => {
   queryClient = client
   jest.spyOn(queryClient, 'removeQueries').mockImplementation(removeQueriesMock)
+  jest.spyOn(queryClient, 'cancelQueries').mockImplementation(cancelQueriesMock)
 }
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -113,6 +116,33 @@ describe('useLogoutRoutine', () => {
     await result.current()
 
     expect(removeQueriesMock).toHaveBeenCalledWith(query)
+  })
+
+  it.each(
+    LoggedInQueryKeys.map((key) => ({
+      queryKey: [key],
+    }))
+  )('should cancel in-flight query: "%s"', async (query) => {
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
+
+    expect(cancelQueriesMock).toHaveBeenCalledWith(query)
+  })
+
+  it('should mark the logout as in progress to prevent automatic navigation to login page', async () => {
+    const setIsLoggingOutSpy = jest.spyOn(logoutStoreActions, 'setIsLoggingOut')
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
+
+    expect(setIsLoggingOutSpy).toHaveBeenNthCalledWith(1, true)
+  })
+
+  it('should lift the logout guard once the routine is done', async () => {
+    logoutStoreActions.setIsLoggingOut(false)
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
+
+    expect(logoutStoreSelectors.selectIsLoggingOut()).toBe(false)
   })
 
   it('should logout from Google account', async () => {

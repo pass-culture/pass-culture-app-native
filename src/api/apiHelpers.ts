@@ -11,6 +11,7 @@ import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+import { logoutStoreSelectors } from 'shared/store/logoutStore'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
@@ -149,7 +150,10 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationStatus.status &&
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    navigateToLoginMethods()
+    // Skip the auto-redirect when the logout is intentional (tokens cleared on purpose).
+    if (!logoutStoreSelectors.selectIsLoggingOut()) {
+      navigateToLoginMethods()
+    }
     return {}
   }
 

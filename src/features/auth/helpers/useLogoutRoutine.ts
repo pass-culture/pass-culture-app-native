@@ -10,6 +10,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { BatchProfile } from 'libs/react-native-batch'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { storage } from 'libs/storage'
+import { logoutStoreActions } from 'shared/store/logoutStore'
 
 export function useLogoutRoutine(): () => Promise<void> {
   const queryClient = useQueryClient()
@@ -17,13 +18,14 @@ export function useLogoutRoutine(): () => Promise<void> {
 
   return useCallback(async () => {
     try {
+      logoutStoreActions.setIsLoggingOut(true)
+      setIsLoggedIn(false)
+
       handleBatchProfileReset()
 
-      LoggedInQueryKeys.forEach((queryKey) => {
-        queryClient.removeQueries({
-          queryKey: [queryKey],
-        })
-      })
+      await Promise.all(
+        LoggedInQueryKeys.map((queryKey) => queryClient.cancelQueries({ queryKey: [queryKey] }))
+      )
       await Promise.all([
         analytics.logLogout(),
         storage.clear('access_token'),
@@ -31,11 +33,17 @@ export function useLogoutRoutine(): () => Promise<void> {
         AsyncStorage.multiRemove(LoggedInQueryKeys),
         googleLogout(),
       ])
+      LoggedInQueryKeys.forEach((queryKey) => {
+        queryClient.removeQueries({
+          queryKey: [queryKey],
+        })
+      })
       eventMonitoring.setUser(null)
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
+      logoutStoreActions.setIsLoggingOut(false)
     }
   }, [queryClient, setIsLoggedIn])
 }
@@ -51,6 +59,7 @@ function handleBatchProfileReset() {
 
 // List of keys that are accessible only when logged in to clean when logging out
 export const LoggedInQueryKeys: QueryKeys[] = [
+  QueryKeys.AVAILABLE_REACTION,
   QueryKeys.CULTURAL_SURVEY_QUESTIONS,
   QueryKeys.FAVORITES,
   QueryKeys.FAVORITES_COUNT,
