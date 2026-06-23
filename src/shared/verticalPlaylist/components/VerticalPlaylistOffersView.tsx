@@ -10,17 +10,25 @@ import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { useGridListLayout, gridListLayoutActions } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'shared/verticalPlaylist/components/LineSeparator'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { Avatar } from 'ui/components/Avatar/Avatar'
+import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
+import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Page } from 'ui/pages/Page'
+import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
+import { AVATAR_SMALL } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const isWeb = Platform.OS === 'web'
@@ -33,6 +41,7 @@ type Props = {
   searchId?: string
   searchQuery?: string
   analyticsFrom: Referrals
+  artistId?: string
 }
 
 export const VerticalPlaylistOffersView = ({
@@ -42,6 +51,7 @@ export const VerticalPlaylistOffersView = ({
   searchId,
   searchQuery,
   analyticsFrom,
+  artistId,
 }: Props) => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { headerTransition, onScroll } = useOpacityTransition()
@@ -56,6 +66,8 @@ export const VerticalPlaylistOffersView = ({
   const isGridLayout = canUseGrid && selectedGridListLayout === GridListLayout.GRID
 
   const nbHits = items.length
+
+  const artist = items[0]?.artists?.find((artist) => artist.id === artistId)
 
   const onGridListButtonPress = (layout: GridListLayout) => {
     if (!canUseGrid) return
@@ -111,6 +123,10 @@ export const VerticalPlaylistOffersView = ({
     ]
   )
 
+  const onArtistPress = (artistId: string, artistName: string) => {
+    void analytics.logConsultArtist({ artistId, artistName, from: analyticsFrom })
+  }
+
   return (
     <Page>
       <FlatList
@@ -123,7 +139,36 @@ export const VerticalPlaylistOffersView = ({
         ListHeaderComponent={
           <React.Fragment>
             <Placeholder height={headerHeight} />
+
             <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+            {artist ? (
+              <InternalTouchableLink
+                navigateTo={{ screen: 'Artist', params: { id: artist.id } }}
+                accessibilityLabel={`Accéder à la page artiste de ${artist.name}`}
+                accessibilityRole={accessibilityRoleInternalNavigation()}
+                onBeforeNavigate={() => onArtistPress(artist.id, artist.name)}>
+                <StyledInfoHeader
+                  title={artist.name}
+                  subtitle="te partage ses pépites"
+                  defaultThumbnailSize={AVATAR_SMALL}
+                  thumbnailComponent={
+                    <Avatar
+                      size={AVATAR_SMALL}
+                      rounded={false}
+                      borderRadius={designSystem.size.borderRadius.pill}>
+                      {artist.image ? (
+                        <ArtistImage url={artist.image} testID="ArtistImage" />
+                      ) : (
+                        <DefaultAvatar testID="defaultArtistAvatar" />
+                      )}
+                    </Avatar>
+                  }
+                  rightComponent={
+                    <RightFilled size={designSystem.size.icon.s} testID="RightFilled" />
+                  }
+                />
+              </InternalTouchableLink>
+            ) : null}
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
             <HeaderRow>
               <TitleContainer>
@@ -181,3 +226,17 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
 const TitleContainer = styled.View({
   justifyContent: 'center',
 })
+
+const StyledInfoHeader = styled(InfoHeader)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const ArtistImage = styled(FastImage)(({ theme }) => ({
+  width: '100%',
+  height: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: theme.designSystem.color.background.subtle,
+  borderWidth: 1,
+  borderColor: theme.designSystem.color.border.subtle,
+}))

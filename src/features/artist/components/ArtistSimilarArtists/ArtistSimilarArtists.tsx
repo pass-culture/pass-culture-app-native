@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ArtistSimilarArtistsSkeleton } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtistsSkeleton'
 import { useSimilarArtistsQuery } from 'features/artist/queries/useSimilarArtistsQuery'
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { analytics } from 'libs/analytics/provider'
@@ -22,7 +23,7 @@ const TITLE = 'Tu peux aussi aimer'
 
 export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => {
   const isSimilarArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_SIMILAR_ARTISTS)
-  const { data: artists = [] } = useSimilarArtistsQuery(artistId, {
+  const { data: artists = [], isLoading } = useSimilarArtistsQuery(artistId, {
     enabled: isSimilarArtistsEnabled,
   })
 
@@ -34,7 +35,9 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
     void analytics.logConsultArtist({ artistId: id, artistName: name, from: 'artist' })
   }
 
-  if (!isSimilarArtistsEnabled || artists.length === 0) return null
+  if (!isSimilarArtistsEnabled) return null
+  if (isLoading) return <ArtistSimilarArtistsSkeleton title={TITLE} />
+  if (artists.length === 0) return null
 
   return (
     <View>

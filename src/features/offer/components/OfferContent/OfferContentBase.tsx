@@ -49,8 +49,6 @@ import { OfferContentProps } from 'features/offer/types'
 import { FeedBack } from 'features/reactions/components/FeedBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
@@ -113,7 +111,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
   const theme = useTheme()
-  const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const {
     visible: proAdvicesWritersModalVisible,
     showModal: showProAdvicesWritersModal,
@@ -484,7 +481,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 onSeeMoreButtonPress={handleOnSeeMoreProAdvicePress}
                 onShowClubAdviceWritersModal={showProAdvicesWritersModal}
                 displayAllAdvicesButton={proAdvicesTotalCount > 1}
-                showSectionTag={enableNewTagProAdvices}
                 feedback={
                   <FeedBack
                     storageKey="offer_pro_advices_feedback"

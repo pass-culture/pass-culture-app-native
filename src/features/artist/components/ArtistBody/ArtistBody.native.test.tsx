@@ -7,8 +7,11 @@ import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -246,4 +249,94 @@ describe('<ArtistBody />', () => {
       { subject: 'Retrouve "Avril Lavigne" sur le pass Culture' }
     )
   })
+
+  it('should display artist playlist by category when wipArtistCategoryPlaylists FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Concert',
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+            }),
+            buildArtistOffer({
+              objectID: '2',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+            buildArtistOffer({
+              objectID: '3',
+              name: 'Festival livre',
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
+            }),
+          ]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    expect(await screen.findByLabelText('Prochains concerts et festivals')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Livres')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Prochains festivals et salons du livre')).toBeOnTheScreen()
+  })
+
+  it('should not display artist playlist by category when wipArtistCategoryPlaylists FF deactivated', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Concert',
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+            }),
+            buildArtistOffer({
+              objectID: '2',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+            buildArtistOffer({
+              objectID: '3',
+              name: 'Festival livre',
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
+            }),
+          ]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findAllByText('Avril Lavigne')
+
+    expect(screen.queryByLabelText('Prochains concerts et festivals')).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText('Livres')).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText('Prochains festivals et salons du livre')).not.toBeOnTheScreen()
+  })
+})
+
+const buildArtistOffer = ({
+  name,
+  objectID,
+  subcategoryId,
+}: {
+  name: string
+  objectID: string
+  subcategoryId: SubcategoryIdEnum
+}): AlgoliaOfferWithArtistAndEan => ({
+  ...mockedAlgoliaOffersWithSameArtistResponse[0],
+  objectID,
+  offer: {
+    ...mockedAlgoliaOffersWithSameArtistResponse[0].offer,
+    bookFormat: undefined,
+    name,
+    subcategoryId,
+  },
 })

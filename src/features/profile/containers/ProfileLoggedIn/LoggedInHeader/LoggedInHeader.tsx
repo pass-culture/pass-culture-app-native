@@ -28,6 +28,7 @@ export const LoggedInHeader = ({ user, featureFlags }: Props) => {
 
   switch (user.statusType) {
     case 'ELIGIBLE':
+    case 'ELIGIBLE_AND_FREE_BENEFICIARY':
       return <LoggedInEligibleHeader {...commonProps} subscriptionInfos={subscriptionInfos} />
 
     case 'ELIGIBLE_AND_BENEFICIARY':

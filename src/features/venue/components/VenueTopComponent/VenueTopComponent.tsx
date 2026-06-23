@@ -8,14 +8,12 @@ import { VenueTopComponentBase } from 'features/venue/components/VenueTopCompone
 type Props = {
   venue: VenueResponse
   enableVolunteer?: boolean
-  enableVolunteerNewTag?: boolean
   enableVolunteerFeedback?: boolean
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({
   venue,
   enableVolunteer,
-  enableVolunteerNewTag,
   enableVolunteerFeedback,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -29,7 +27,6 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
       venue={venue}
       onPressBannerImage={handleImagePress}
       enableVolunteer={enableVolunteer}
-      enableVolunteerNewTag={enableVolunteerNewTag}
       enableVolunteerFeedback={enableVolunteerFeedback}
     />
   )

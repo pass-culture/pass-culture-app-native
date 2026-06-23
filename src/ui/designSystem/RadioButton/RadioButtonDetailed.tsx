@@ -5,6 +5,7 @@
 
 import React, { useCallback } from 'react'
 import { Platform } from 'react-native'
+import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -17,6 +18,9 @@ import { RadioDescriptionText } from 'ui/designSystem/RadioButton/styles/RadioBu
 import { DetailedRadioProps, RadioStateObject } from 'ui/designSystem/RadioButton/types'
 import { SelectableAsset } from 'ui/designSystem/SelectableAsset'
 import { SelectableSizing } from 'ui/designSystem/types'
+
+const isWeb = Platform.OS === 'web'
+const layoutTransition = isWeb ? undefined : LinearTransition.duration(250)
 
 export const RadioButtonDetailed = ({
   label,
@@ -43,35 +47,48 @@ export const RadioButtonDetailed = ({
   }
 
   return (
-    <RadioButtonContainer
-      radioState={radioState}
-      variant="detailed"
-      sizing={sizing}
-      collapsed={collapsed}
-      isHover={hoverProps.isHover}>
-      <TouchableContentContainer
-        onPress={onToggle}
-        {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}
-        {...focusProps}
-        {...hoverProps}>
-        <RadioCircle radioState={radioState} variant="detailed" hoverProps={hoverProps} />
-        <RightBox radioState={radioState} label={label} hoverProps={hoverProps}>
-          {description ? (
-            <RadioDescriptionText radioState={radioState} {...hoverProps}>
-              {description}
-            </RadioDescriptionText>
+    <AnimatedRadioWrapper layout={layoutTransition}>
+      <RadioButtonContainer
+        radioState={radioState}
+        variant="detailed"
+        sizing={sizing}
+        collapsed={collapsed}
+        isHover={hoverProps.isHover}>
+        <TouchableContentContainer
+          onPress={onToggle}
+          {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}
+          {...focusProps}
+          {...hoverProps}>
+          <RadioCircle radioState={radioState} variant="detailed" hoverProps={hoverProps} />
+          <RightBox radioState={radioState} label={label} hoverProps={hoverProps}>
+            {description ? (
+              <RadioDescriptionText radioState={radioState} {...hoverProps}>
+                {description}
+              </RadioDescriptionText>
+            ) : null}
+          </RightBox>
+          {asset ? (
+            <LeftBox>
+              <SelectableAsset {...asset} disable={disabled} />
+            </LeftBox>
           ) : null}
-        </RightBox>
-        {asset ? (
-          <LeftBox>
-            <SelectableAsset {...asset} disable={disabled} />
-          </LeftBox>
+        </TouchableContentContainer>
+        {collapsed && selected ? (
+          <Animated.View
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(150)}
+            layout={layoutTransition}>
+            <CollapsedContainer>{collapsed}</CollapsedContainer>
+          </Animated.View>
         ) : null}
-      </TouchableContentContainer>
-      {collapsed && selected ? <CollapsedContainer>{collapsed}</CollapsedContainer> : null}
-    </RadioButtonContainer>
+      </RadioButtonContainer>
+    </AnimatedRadioWrapper>
   )
 }
+
+const AnimatedRadioWrapper = styled(Animated.View)({
+  overflow: 'hidden',
+})
 
 const LeftBox = styled.View({ justifyContent: 'center' })
 
@@ -86,8 +103,6 @@ type ContainerProps = {
   sizing?: SelectableSizing
   isHover?: boolean
 }
-
-const isWeb = Platform.OS === 'web'
 
 const TouchableContentContainer = styled(TouchableOpacity)(({ theme }) => ({
   alignItems: 'center',

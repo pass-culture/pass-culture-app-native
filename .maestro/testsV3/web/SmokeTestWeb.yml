@@ -19,12 +19,12 @@ tags:
 - tapOn: "Films à l'affiche"
 - runFlow:
     when:
-      visible: 'Les artistes'
+      visible: 'Les offres'
     commands:
       - assertVisible: '.*résultats'
 - runFlow:
     when:
-      notVisible: 'Les artistes'
+      notVisible: 'Les offres'
     commands:
       - assertVisible: 'Pas de résultat'
 

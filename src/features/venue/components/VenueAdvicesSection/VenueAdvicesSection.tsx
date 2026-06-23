@@ -10,8 +10,6 @@ import { FeedBack } from 'features/reactions/components/FeedBack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -22,7 +20,6 @@ type Props = {
   nbAdvices: number
   onShowWritersModal: () => void
   onPressAdviceCardSeeMore?: (offerId: number) => void
-  enableNewTagProAdvices?: boolean
   onPressAllAdvicesButton?: () => void
   onFeedbackLog: (type: ReactionTypeEnum) => void
 }
@@ -33,7 +30,6 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   nbAdvices,
   onShowWritersModal,
   onPressAdviceCardSeeMore,
-  enableNewTagProAdvices,
   onPressAllAdvicesButton,
   onFeedbackLog,
 }) => {
@@ -42,16 +38,9 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   return (
     <Container gap={4}>
       <Gutter>
-        <Row>
-          <StyledTitle3 {...getHeadingAttrs(3)} numberOfLines={2}>
-            {`Les avis par “${venue.name}”`}
-          </StyledTitle3>
-          {enableNewTagProAdvices ? (
-            <TagContainer>
-              <Tag variant={TagVariant.NEW} label="Nouveau" />
-            </TagContainer>
-          ) : null}
-        </Row>
+        <StyledTitle3 {...getHeadingAttrs(3)} numberOfLines={2}>
+          {`Les avis par “${venue.name}”`}
+        </StyledTitle3>
       </Gutter>
       <StyledAdviceCardList
         data={advicesCardData}
@@ -105,8 +94,6 @@ const Gutter = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
-
 const StyledTitle3 = styled(Typo.Title3)({
   flexShrink: 1,
 })
@@ -118,8 +105,3 @@ const StyledAdviceCardList = styled(AdviceCardList).attrs(({ theme }) => ({
   cardWidth: ADVICE_CARD_WIDTH,
   snapToInterval: ADVICE_CARD_WIDTH,
 }))``
-
-const TagContainer = styled.View(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.s,
-  flexShrink: 0,
-}))
