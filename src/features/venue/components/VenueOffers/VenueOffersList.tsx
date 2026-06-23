@@ -64,7 +64,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   onViewableItemsChanged,
   advicesCardData,
   nbAdvices,
-  enableNewTagProAdvices,
   onShowWritersModal,
   onPressAdviceCardSeeMore,
   onPressAllAdvicesButton,
@@ -197,7 +196,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           nbAdvices={nbAdvices}
           venue={venue}
           onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
-          enableNewTagProAdvices={enableNewTagProAdvices}
           onShowWritersModal={onShowWritersModal}
           onPressAllAdvicesButton={onPressAllAdvicesButton}
           onFeedbackLog={onFeedbackLog}

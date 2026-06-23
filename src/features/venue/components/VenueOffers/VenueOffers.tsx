@@ -41,7 +41,6 @@ export interface VenueOffersProps {
   ) => void
   advicesCardData?: AdviceCardData[]
   nbAdvices: number
-  enableNewTagProAdvices?: boolean
   onShowWritersModal: () => void
 }
 
@@ -62,7 +61,6 @@ export function VenueOffers({
   onViewableItemsChanged,
   advicesCardData,
   nbAdvices,
-  enableNewTagProAdvices,
   onShowWritersModal,
 }: Readonly<VenueOffersProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -134,7 +132,6 @@ export function VenueOffers({
             nbAdvices={nbAdvices}
             venue={venue}
             onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
-            enableNewTagProAdvices={enableNewTagProAdvices}
             onShowWritersModal={onShowWritersModal}
             onPressAllAdvicesButton={onPressAllAdvicesButton}
             onFeedbackLog={onFeedbackLog}
@@ -158,7 +155,6 @@ export function VenueOffers({
       onViewableItemsChanged={onViewableItemsChanged}
       advicesCardData={advicesCardData}
       nbAdvices={nbAdvices}
-      enableNewTagProAdvices={enableNewTagProAdvices}
       onShowWritersModal={onShowWritersModal}
       onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
       onPressAllAdvicesButton={onPressAllAdvicesButton}

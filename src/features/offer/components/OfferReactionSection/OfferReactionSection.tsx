@@ -11,8 +11,6 @@ import { AdvicesStatus } from 'features/offer/types'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
 import { Star } from 'ui/svg/Star'
@@ -25,7 +23,6 @@ type Props = {
   clubAdvices?: AdviceCardData[]
   proAdvicesCount?: number
   proAdvices?: AdviceCardData[]
-  enableProReviewNewTag?: boolean
 }
 
 export const OfferReactionSection: FunctionComponent<Props> = ({
@@ -36,7 +33,6 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   clubAdvices,
   proAdvicesCount,
   proAdvices,
-  enableProReviewNewTag,
 }) => {
   const scrollToAnchor = useScrollToAnchor()
 
@@ -65,21 +61,14 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
     ) : null
 
   const proAdvicesCounterElement = hasProAdvices ? (
-    <ProAdvicesCounterContainer gap={2}>
-      <OfferAdvicesCounter
-        testID="proAdvicesCounter"
-        publishedText={`${proAdvicesStatus.total} avis des pros`}
-        unpublishedText="Recommandé par les pros"
-        icon={<SmallProEditoIcon />}
-        advicesStatus={proAdvicesStatus}
-        onPress={() => scrollToAnchor(AnchorNames.PRO_ADVICE_SECTION)}
-      />
-      {enableProReviewNewTag && proAdvicesStatus.total > 0 ? (
-        <TagContainer>
-          <Tag variant={TagVariant.NEW} label="Nouveau" />
-        </TagContainer>
-      ) : null}
-    </ProAdvicesCounterContainer>
+    <OfferAdvicesCounter
+      testID="proAdvicesCounter"
+      publishedText={`${proAdvicesStatus.total} avis des pros`}
+      unpublishedText="Recommandé par les pros"
+      icon={<SmallProEditoIcon />}
+      advicesStatus={proAdvicesStatus}
+      onPress={() => scrollToAnchor(AnchorNames.PRO_ADVICE_SECTION)}
+    />
   ) : null
 
   const headlineOffersCounterElement = hasHeadlineOffers ? (
@@ -129,13 +118,3 @@ const SmallProEditoIcon = styled(ProEditoCertification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.proEdito,
   size: theme.designSystem.size.icon.m,
 }))``
-
-const TagContainer = styled.View({
-  alignItems: 'center',
-})
-
-const ProAdvicesCounterContainer = styled(ViewGap)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  flexWrap: 'wrap',
-})

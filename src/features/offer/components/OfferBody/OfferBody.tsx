@@ -83,7 +83,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     }
   }, [params])
 
-  const enableProReviewNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const enableOfferArtistSectionRefacto = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO
   )
@@ -171,7 +170,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           clubAdvices={clubAdvices}
           proAdvicesCount={proAdvicesCount}
           proAdvices={proAdvices}
-          enableProReviewNewTag={enableProReviewNewTag}
         />
 
         <GroupWithSeparator

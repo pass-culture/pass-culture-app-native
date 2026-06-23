@@ -38,7 +38,6 @@ interface Props {
   shouldDisplayVenueCalendar?: boolean
   advicesCardData?: AdviceCardData[]
   nbAdvices: number
-  enableNewTagProAdvices?: boolean
   onShowWritersModal: () => void
 }
 
@@ -53,7 +52,6 @@ export const VenueBody: FunctionComponent<Props> = ({
   shouldDisplayVenueCalendar,
   advicesCardData,
   nbAdvices,
-  enableNewTagProAdvices,
   onShowWritersModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -117,7 +115,6 @@ export const VenueBody: FunctionComponent<Props> = ({
           onViewableItemsChanged={onViewableItemsChanged}
           advicesCardData={advicesCardData}
           nbAdvices={nbAdvices}
-          enableNewTagProAdvices={enableNewTagProAdvices}
           onShowWritersModal={onShowWritersModal}
         />
       </React.Fragment>

@@ -81,7 +81,6 @@ export const Venue: FunctionComponent = () => {
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
-  const enableNewTagProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_NEW_TAG)
   const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
   const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
   const enableVolunteerFeedback = useFeatureFlag(
@@ -209,7 +208,6 @@ export const Venue: FunctionComponent = () => {
                 : undefined
             }
             nbAdvices={advices?.nbResults ?? 0}
-            enableNewTagProAdvices={enableNewTagProAdvices}
             onShowWritersModal={showAdvicesWritersModal}
           />
           <VenueThematicSection venue={venue} />
