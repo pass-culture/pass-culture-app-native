@@ -13,7 +13,7 @@ onFlowStart:
       file: ../common/helpers/generateQFResponse.js
       env:
         user_id: ${output.userId}
-        mock_type: 'OK'
+        mock_type: 'CHILD_NOT_IN_TAX_HOUSEHOLD'
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/lifecycle/StopApp.yml
@@ -166,24 +166,17 @@ onFlowStart:
 
 - tapOn: 'Se connecter'
 
-- waitForAnimationToEnd
+- extendedWaitUntil:
+    visible: ".*Bonjour.*"
+    timeout: 10000
 
-- assertVisible: 'Bonne nouvelle !'
+- tapOn: '.*Profil.*'
+- tapOn: '.*Accueil.*'
 
-- assertVisible: "200 €"
+- assertVisible: 'Ton dossier a été refusé.'
 
-- tapOn: "Continuer"
+- tapOn: 'Voir plus de détails'
 
-- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
-
-- assertVisible: 'Profil'
-- copyTextFrom:
-    childOf: '.*€'
-
-- evalScript: ${output.amountProfil = maestro.copiedText}
-- tapOn:
-    text: 'Accueil.*'
-    index: 0
-- assertVisible: 'Tu as ${output.amountProfil} sur ton pass'
+- assertVisible: 'Ton dossier est refusé'
 
 - runFlow: ../common/lifecycle/StopApp.yml

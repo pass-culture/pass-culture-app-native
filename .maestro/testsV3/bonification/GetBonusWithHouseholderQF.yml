@@ -13,7 +13,7 @@ onFlowStart:
       file: ../common/helpers/generateQFResponse.js
       env:
         user_id: ${output.userId}
-        mock_type: 'OK'
+        mock_type: 'HOUSEHOLDER_OK'
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/lifecycle/StopApp.yml
