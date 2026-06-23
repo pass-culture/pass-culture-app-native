@@ -9,16 +9,10 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 import { LocationMode } from 'libs/location/types'
 
 type Props = {
-  onPressAIFakeDoorBanner: () => void
-  enableAIFakeDoor?: boolean
   enableNewCategoryBlocks?: boolean
 }
 
-export const CategoriesList: FC<Props> = ({
-  enableAIFakeDoor,
-  enableNewCategoryBlocks,
-  onPressAIFakeDoorBanner,
-}) => {
+export const CategoriesList: FC<Props> = ({ enableNewCategoryBlocks }) => {
   const isWeb = Platform.OS === 'web'
 
   const sortedCategories = useSortedSearchCategories()
@@ -33,8 +27,6 @@ export const CategoriesList: FC<Props> = ({
       sortedCategories={sortedCategories}
       shouldDisplayVenueMap={shouldDisplayVenueMap}
       isMapWithoutPositionAndNotLocated={isMapWithoutPositionAndNotLocated}
-      enableAIFakeDoor={enableAIFakeDoor}
-      onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
       enableNewCategoryBlocks={enableNewCategoryBlocks}
       onPressVenueMap={() => navigate('VenueMapLocationModal', { openedFrom: 'searchLanding' })}
     />

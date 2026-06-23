@@ -110,7 +110,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -157,7 +156,6 @@ describe('<SearchListHeader />', () => {
               userData={[]}
               venuesUserData={mockVenuesUserData}
               venues={mockedAlgoliaVenuesItems}
-              onPressAIFakeDoorBanner={jest.fn()}
             />
           )
 
@@ -173,7 +171,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -191,7 +188,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -204,7 +200,6 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[{ message: 'message test' }]}
           venuesUserData={[]}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
       const bannerContainer = screen.getByTestId('banner-container')
@@ -214,12 +209,7 @@ describe('<SearchListHeader />', () => {
 
     it('should not display paddingBottom when nbHits is equal to 0', () => {
       render(
-        <SearchListHeader
-          nbHits={0}
-          userData={[{ message: 'message test' }]}
-          venuesUserData={[]}
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
+        <SearchListHeader nbHits={0} userData={[{ message: 'message test' }]} venuesUserData={[]} />
       )
       const bannerContainer = screen.getByTestId('banner-container')
 
@@ -235,7 +225,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -249,7 +238,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -278,7 +266,6 @@ describe('<SearchListHeader />', () => {
             userData={[]}
             venuesUserData={[]}
             venues={mockedAlgoliaVenuesItems}
-            onPressAIFakeDoorBanner={jest.fn()}
           />
         )
 
@@ -305,7 +292,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -330,7 +316,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -347,7 +332,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -369,43 +353,19 @@ describe('<SearchListHeader />', () => {
     })
 
     it('should not render venue items when there are not venues', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={[]}
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
-      )
+      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
 
       expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
     })
 
     it('should not render venues nbHits', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={[]}
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
-      )
+      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
 
       expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
     })
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are not venues', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={[]}
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
-      )
+      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
     })
@@ -414,15 +374,7 @@ describe('<SearchListHeader />', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: { ...mockSearchState, searchId },
       })
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={[]}
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
-      )
+      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
 
       expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
     })
@@ -444,7 +396,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -470,7 +421,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -490,7 +440,6 @@ describe('<SearchListHeader />', () => {
           userData={[]}
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
@@ -509,7 +458,6 @@ describe('<SearchListHeader />', () => {
         userData={[]}
         venuesUserData={[]}
         venues={mockedAlgoliaVenuesItems}
-        onPressAIFakeDoorBanner={jest.fn()}
       />
     )
 
@@ -525,44 +473,12 @@ describe('<SearchListHeader />', () => {
           venuesUserData={[]}
           venues={mockedAlgoliaVenuesItems}
           shouldDisplayGridList
-          onPressAIFakeDoorBanner={jest.fn()}
         />
       )
 
       await screen.findByText('Les offres')
 
       expect(await screen.findByTestId('grid-list-menu')).toBeOnTheScreen()
-    })
-  })
-
-  describe('AI fake door banner', () => {
-    it('should display it when enableAIFakeDoor FF activated', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-          enableAIFakeDoor
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
-      )
-
-      expect(screen.getByText('Utilise notre IA pass Culture')).toBeOnTheScreen()
-    })
-
-    it('should not display it when enableAIFakeDoor FF deactivated', () => {
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-          onPressAIFakeDoorBanner={jest.fn()}
-        />
-      )
-
-      expect(screen.queryByText('Utilise notre IA pass Culture')).not.toBeOnTheScreen()
     })
   })
 })

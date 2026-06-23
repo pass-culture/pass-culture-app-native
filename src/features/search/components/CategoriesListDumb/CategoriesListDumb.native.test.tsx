@@ -46,7 +46,6 @@ const initialProps: ComponentProps<typeof CategoriesListDumb> = {
   onPressVenueMap: jest.fn(),
   shouldDisplayVenueMap: false,
   isMapWithoutPositionAndNotLocated: false,
-  onPressAIFakeDoorBanner: jest.fn(),
 }
 
 describe('CategoriesListDumb', () => {
@@ -141,17 +140,5 @@ describe('CategoriesListDumb', () => {
     expect(screen.getByLabelText('Catégorie Médias & presse')).toBeOnTheScreen()
     expect(screen.getByText('Médias')).toBeOnTheScreen()
     expect(screen.getByText('& presse')).toBeOnTheScreen()
-  })
-
-  it('should display AI fake door banner when enableAIFakeDoor FF activated', () => {
-    render(<CategoriesListDumb {...initialProps} enableAIFakeDoor />)
-
-    expect(screen.getByText('Utilise notre IA pass Culture')).toBeOnTheScreen()
-  })
-
-  it('should not display AI fake door banner when enableAIFakeDoor FF deactivated', () => {
-    render(<CategoriesListDumb {...initialProps} />)
-
-    expect(screen.queryByText('Utilise notre IA pass Culture')).not.toBeOnTheScreen()
   })
 })

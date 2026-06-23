@@ -6,7 +6,6 @@ import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueM
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { NewCategoryButton } from 'shared/categoryButton/NewCategoryButton'
-import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -15,8 +14,6 @@ type Props = {
   sortedCategories: ListCategoryButtonProps
   shouldDisplayVenueMap: boolean
   isMapWithoutPositionAndNotLocated: boolean
-  onPressAIFakeDoorBanner: () => void
-  enableAIFakeDoor?: boolean
   enableNewCategoryBlocks?: boolean
   children?: never
   onPressVenueMap: () => void
@@ -35,9 +32,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
   shouldDisplayVenueMap,
   isMapWithoutPositionAndNotLocated,
-  enableAIFakeDoor,
   enableNewCategoryBlocks,
-  onPressAIFakeDoorBanner,
   onPressVenueMap,
 }) => {
   const { designSystem } = useTheme()
@@ -52,14 +47,9 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
 
   return (
     <StyledScrollView showsHorizontalScrollIndicator={false} testID="categoriesButtons">
-      {enableAIFakeDoor ? (
-        <BannerContainer>
-          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
-        </BannerContainer>
-      ) : null}
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
         <Container>
-          <ContainerVenueMapBlock enableAIFakeDoor={enableAIFakeDoor}>
+          <ContainerVenueMapBlock>
             <VenueMapBlock
               onPress={isMapWithoutPositionAndNotLocated ? onPressVenueMap : undefined}
               from="searchLanding"
@@ -156,15 +146,7 @@ const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,
 }))
 
-const ContainerVenueMapBlock = styled.View<{ enableAIFakeDoor?: boolean }>(
-  ({ theme, enableAIFakeDoor }) => ({
-    marginTop: enableAIFakeDoor
-      ? theme.designSystem.size.spacing.s
-      : theme.designSystem.size.spacing.l,
-    marginBottom: theme.designSystem.size.spacing.s,
-  })
-)
-
-const BannerContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.s,
+const ContainerVenueMapBlock = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.s,
 }))

@@ -11,7 +11,6 @@ describe('CategoriesListDumb', () => {
         shouldDisplayVenueMap={false}
         isMapWithoutPositionAndNotLocated={false}
         onPressVenueMap={jest.fn()}
-        onPressAIFakeDoorBanner={jest.fn()}
       />
     )
 
