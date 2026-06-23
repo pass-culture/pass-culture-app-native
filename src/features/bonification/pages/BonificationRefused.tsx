@@ -50,26 +50,29 @@ interface PageConfigEntry {
 }
 type PageConfigMap = Record<BonificationRefusedType, PageConfigEntry>
 
-export const PAGE_CONFIG: PageConfigMap = {
-  [BonificationRefusedType.CUSTODIAN_NOT_FOUND]: {
-    Illustration: ErrorIllustration,
-    title: 'Ton dossier est refusé',
-    firstText:
-      'Nous avons bien reçu ton dossier, mais nous ne trouvons pas ton parent ou représentant légal.',
-    secondText: undefined,
-    bannerText:
-      'Cela peut venir d’une erreur de saisie. Vérifie que les informations correspondent bien à celles des papiers officiels avant de réessayer.',
-    bannerLinks: undefined,
-    primaryButton: {
-      wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
-    },
-    tertiaryButton: {
-      wording: 'Annuler',
-      navigateTo: navigateToHomeConfig,
-      Icon: Invalidate,
-    },
+const notFoundPageConfig = {
+  Illustration: ErrorIllustration,
+  title: 'Ton dossier est refusé',
+  firstText:
+    'Nous avons bien reçu ton dossier, mais nous ne trouvons pas ton parent ou représentant légal.',
+  secondText: undefined,
+  bannerText:
+    'Cela peut venir d’une erreur de saisie. Vérifie que les informations correspondent bien à celles des papiers officiels avant de réessayer.',
+  bannerLinks: undefined,
+  primaryButton: {
+    wording: 'Renouveler ma demande',
+    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
   },
+  tertiaryButton: {
+    wording: 'Annuler',
+    navigateTo: navigateToHomeConfig,
+    Icon: Invalidate,
+  },
+}
+
+export const PAGE_CONFIG: PageConfigMap = {
+  [BonificationRefusedType.APPLICATION_NOT_FOUND]: notFoundPageConfig,
+  [BonificationRefusedType.CUSTODIAN_NOT_FOUND]: notFoundPageConfig,
   [BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier est refusé',
@@ -147,6 +150,7 @@ export function BonificationRefused() {
   const { user } = useAuthContext()
   const showNumberOfRemainingRetries =
     (params?.bonificationRefusedType === BonificationRefusedType.CUSTODIAN_NOT_FOUND ||
+      params?.bonificationRefusedType === BonificationRefusedType.APPLICATION_NOT_FOUND ||
       params?.bonificationRefusedType === BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD) &&
     user?.remainingBonusAttempts &&
     user?.remainingBonusAttempts <= 5
