@@ -55,133 +55,119 @@ describe('VenuesModule component', () => {
     expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
   })
 
-  describe('When wipEnableVolunteerNewTag FF activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG])
-    })
-
-    describe('When playlist has exclusively volunteering venues', () => {
-      it('should display new tag', () => {
-        renderVenuesModule({
-          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
-        })
-
-        expect(screen.getByText('Nouveau')).toBeOnTheScreen()
-      })
-
-      describe('When wipEnableVolunteerFeedback FF activated', () => {
-        beforeEach(() => {
-          setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
-        })
-
-        it('should display feedback', () => {
-          renderVenuesModule({
-            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
-          })
-
-          expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
-        })
-
-        it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
-          await AsyncStorage.removeItem('volunteering_feedback')
-          renderVenuesModule({
-            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
-          })
-
-          await user.press(screen.getByText('Oui'))
-
-          expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
-            featureName: 'volunteer',
-            feedbackResponse: 'Oui',
-            from: 'home',
-            entryId: 'fakeEntryId',
-          })
-        })
-
-        it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
-          await AsyncStorage.removeItem('volunteering_feedback')
-          renderVenuesModule({
-            displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
-          })
-
-          await user.press(screen.getByText('Non'))
-
-          expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
-            featureName: 'volunteer',
-            feedbackResponse: 'Non',
-            from: 'home',
-            entryId: 'fakeEntryId',
-          })
-        })
-      })
-
-      it('should not display feedback when wipEnableVolunteerFeedback FF deactivated', () => {
-        renderVenuesModule({
-          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
-        })
-
-        expect(
-          screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
-        ).not.toBeOnTheScreen()
-      })
-
-      it('should trigger ConsultVenue log with originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
-        renderVenuesModule({
-          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
-        })
-
-        const venues = screen.getAllByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma')
-        const firstVenue = venues[0]
-
-        if (firstVenue) {
-          await user.press(firstVenue)
-        }
-
-        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-          venueId: props.data?.playlistItems[0].id.toString(),
-          from: 'home',
-          moduleName: props.displayParameters.title,
-          moduleId: props.moduleId,
-          homeEntryId: props.homeEntryId,
-          originDetails: 'volunteeringPlaylist',
-          displayAdvice: false,
-        })
-      })
-    })
-
-    describe('When playlist has not exclusively volunteering venues', () => {
-      it('should not display new tag', () => {
-        renderVenuesModule()
-
-        expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
-      })
-
-      it('should not display feedback when wipEnableVolunteerFeedback FF activated', () => {
+  describe('When playlist has exclusively volunteering venues', () => {
+    describe('When wipEnableVolunteerFeedback FF activated', () => {
+      beforeEach(() => {
         setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
-        renderVenuesModule()
-
-        expect(
-          screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
-        ).not.toBeOnTheScreen()
       })
 
-      it('should trigger ConsultVenue log without originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
-        renderVenuesModule()
-        const venues = screen.getAllByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma')
-        const firstVenue = venues[0]
-
-        if (firstVenue) {
-          await user.press(firstVenue)
-        }
-
-        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-          venueId: props.data?.playlistItems[0].id.toString(),
-          from: 'home',
-          moduleName: props.displayParameters.title,
-          moduleId: props.moduleId,
-          homeEntryId: props.homeEntryId,
-          displayAdvice: false,
+      it('should display feedback', () => {
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
         })
+
+        expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
+      })
+
+      it('should trigger FeatureFeedbackClicked log with yes answer when answering yes to feedback quiz', async () => {
+        await AsyncStorage.removeItem('volunteering_feedback')
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        await user.press(screen.getByText('Oui'))
+
+        expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+          featureName: 'volunteer',
+          feedbackResponse: 'Oui',
+          from: 'home',
+          entryId: 'fakeEntryId',
+        })
+      })
+
+      it('should trigger FeatureFeedbackClicked log with no answer when answering no to feedback quiz', async () => {
+        await AsyncStorage.removeItem('volunteering_feedback')
+        renderVenuesModule({
+          displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+        })
+
+        await user.press(screen.getByText('Non'))
+
+        expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
+          featureName: 'volunteer',
+          feedbackResponse: 'Non',
+          from: 'home',
+          entryId: 'fakeEntryId',
+        })
+      })
+    })
+
+    it('should not display feedback when wipEnableVolunteerFeedback FF deactivated', () => {
+      renderVenuesModule({
+        displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+      })
+
+      expect(
+        screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should trigger ConsultVenue log with originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
+      renderVenuesModule({
+        displayParameters: { ...props.displayParameters, isExclusiveVolunteering: true },
+      })
+
+      const venues = screen.getAllByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma')
+      const firstVenue = venues[0]
+
+      if (firstVenue) {
+        await user.press(firstVenue)
+      }
+
+      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+        venueId: props.data?.playlistItems[0].id.toString(),
+        from: 'home',
+        moduleName: props.displayParameters.title,
+        moduleId: props.moduleId,
+        homeEntryId: props.homeEntryId,
+        originDetails: 'volunteeringPlaylist',
+        displayAdvice: false,
+      })
+    })
+  })
+
+  describe('When playlist has not exclusively volunteering venues', () => {
+    it('should not display new tag', () => {
+      renderVenuesModule()
+
+      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+    })
+
+    it('should not display feedback when wipEnableVolunteerFeedback FF activated', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK])
+      renderVenuesModule()
+
+      expect(
+        screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should trigger ConsultVenue log without originDetails set to volunteeringPlaylist when pressing on a venue', async () => {
+      renderVenuesModule()
+      const venues = screen.getAllByLabelText('Le Petit Rintintin 1 - Paris - 75000 - Cinéma')
+      const firstVenue = venues[0]
+
+      if (firstVenue) {
+        await user.press(firstVenue)
+      }
+
+      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+        venueId: props.data?.playlistItems[0].id.toString(),
+        from: 'home',
+        moduleName: props.displayParameters.title,
+        moduleId: props.moduleId,
+        homeEntryId: props.homeEntryId,
+        displayAdvice: false,
       })
     })
   })

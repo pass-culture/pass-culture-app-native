@@ -86,42 +86,6 @@ describe('<OfferReactionSection />', () => {
       expect(mockScrollToAnchor).toHaveBeenCalledWith('pro-advice-section')
     })
 
-    it('should display new tag when wipProReviewsNewTag FF activated', async () => {
-      renderOfferReactionSection({
-        proAdvices: [...offerProAdvicesCardDataFixture],
-        proAdvicesCount: 2,
-        enableProReviewNewTag: true,
-      })
-
-      await screen.findByText('2 avis des pros')
-
-      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
-    })
-
-    it('should not display new tag when wipProReviewsNewTag FF deactivated', async () => {
-      renderOfferReactionSection({
-        proAdvices: [...offerProAdvicesCardDataFixture],
-        proAdvicesCount: 2,
-        enableProReviewNewTag: false,
-      })
-
-      await screen.findByText('2 avis des pros')
-
-      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
-    })
-
-    it('should not display new tag when wipProReviewsNewTag FF activated but no pro advices', async () => {
-      renderOfferReactionSection({
-        clubAdvices: [advicesFixture[0]],
-        clubAdvicesCount: 1,
-        enableProReviewNewTag: true,
-      })
-
-      await screen.findByText('1 avis book club')
-
-      expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
-    })
-
     it('should display pro advices without crashing when no club advice variant exists', async () => {
       renderOfferReactionSection({
         adviceVariantInfo: undefined,
@@ -169,7 +133,6 @@ function renderOfferReactionSection({
   adviceVariantInfo = adviceVariantInfoFixture,
   proAdvicesCount = 0,
   proAdvices,
-  enableProReviewNewTag,
 }: RenderOfferReactionSectionType) {
   render(
     reactQueryProviderHOC(
@@ -181,7 +144,6 @@ function renderOfferReactionSection({
         adviceVariantInfo={adviceVariantInfo}
         proAdvices={proAdvices}
         proAdvicesCount={proAdvicesCount}
-        enableProReviewNewTag={enableProReviewNewTag}
       />
     )
   )

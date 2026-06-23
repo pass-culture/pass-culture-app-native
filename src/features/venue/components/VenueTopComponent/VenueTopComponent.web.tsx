@@ -9,14 +9,12 @@ import { useModal } from 'ui/components/modals/useModal'
 type Props = {
   venue: VenueResponse
   enableVolunteer?: boolean
-  enableVolunteerNewTag?: boolean
   enableVolunteerFeedback?: boolean
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({
   venue,
   enableVolunteer,
-  enableVolunteerNewTag,
   enableVolunteerFeedback,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
@@ -33,7 +31,6 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
         venue={venue}
         onPressBannerImage={isDesktopViewport ? showModal : undefined}
         enableVolunteer={enableVolunteer}
-        enableVolunteerNewTag={enableVolunteerNewTag}
         enableVolunteerFeedback={enableVolunteerFeedback}
       />
     </React.Fragment>

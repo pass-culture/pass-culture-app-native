@@ -40,21 +40,6 @@ describe('VenueAdvicesSection', () => {
     expect(screen.getByText('Lire les 2 avis')).toBeOnTheScreen()
   })
 
-  it('should display "Nouveau" tag when wipProReviewsNewTag FF activated', () => {
-    render(
-      <VenueAdvicesSection
-        advicesCardData={[...proAdvicesCardDataFixture]}
-        nbAdvices={2}
-        venue={venueDataTest}
-        enableNewTagProAdvices
-        onShowWritersModal={jest.fn()}
-        onFeedbackLog={jest.fn()}
-      />
-    )
-
-    expect(screen.getByText('Nouveau')).toBeOnTheScreen()
-  })
-
   it('should navigate to venue pro advices page when pressing all advices button', async () => {
     render(
       <VenueAdvicesSection

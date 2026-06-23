@@ -43,7 +43,6 @@ export const VenuesModule = ({
   data,
   onViewableItemsChanged,
 }: VenuesModuleProps) => {
-  const enableVolunteerNewTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_NEW_TAG)
   const enableVolunteerFeedback = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
   )
@@ -67,7 +66,6 @@ export const VenuesModule = ({
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
-  const showNewTag = enableVolunteerNewTag && isExclusiveVolunteering
   const showFeedback = enableVolunteerFeedback && isExclusiveVolunteering
 
   useEffect(() => {
@@ -129,7 +127,6 @@ export const VenuesModule = ({
             contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
             onViewableItemsChanged={handleViewableItemsChanged}
             playlistRef={listRef}
-            showNewTag={showNewTag}
             noMarginBottom
             seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
           />
