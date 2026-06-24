@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Avatar, AvatarProps } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -31,6 +32,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   withPush,
   ...props
 }) => {
+  const numberOfLines = useNumberOfLine(2)
   const content = (
     <StyledView gap={2} isFullWidth={isFullWidth}>
       <Avatar size={size} {...props}>
@@ -42,14 +44,14 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
       </Avatar>
       <View>
         <ArtistName
-          numberOfLines={2}
+          numberOfLines={numberOfLines}
           maxWidth={size ?? 0}
           isFullWidth={isFullWidth}
           isDisabled={!id}>
           {name}
         </ArtistName>
         {role ? (
-          <ArtistRole numberOfLines={2} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
+          <ArtistRole numberOfLines={numberOfLines} maxWidth={size ?? 0} isFullWidth={isFullWidth}>
             {role}
           </ArtistRole>
         ) : null}

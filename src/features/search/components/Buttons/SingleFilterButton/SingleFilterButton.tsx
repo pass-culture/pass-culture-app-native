@@ -27,7 +27,10 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
 }) => {
   const filterButtonLabel = testID ? `${testID}Label` : 'filterButtonLabel'
 
-  const accessibilityLabel = isSelected ? `${label}\u00a0: Filtre sélectionné` : label
+  const accessibilityLabel = isSelected
+    ? `${label}\u00a0: Filtre sélectionné`
+    : `${label}\u00a0: Filtre non sélectionné`
+
   return (
     <TouchableContainer
       isSelected={isSelected}
