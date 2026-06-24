@@ -123,6 +123,7 @@ describe('<ArtistSimilarArtists />', () => {
       title: TITLE,
       subtitle: undefined,
       similarToArtistId: artistId,
+      originDetails: 'similarArtistsPlaylist',
     })
   })
 
