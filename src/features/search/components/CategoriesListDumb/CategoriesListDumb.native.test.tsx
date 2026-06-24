@@ -8,7 +8,7 @@ import { render, screen } from 'tests/utils'
 
 const fixtureSortedCategories: ComponentProps<typeof CategoriesListDumb>['sortedCategories'] = [
   {
-    label: 'Concerts & Festivals',
+    label: 'Concerts et Festivals',
     navigateTo: {
       screen: 'TabNavigator',
       params: {
@@ -86,7 +86,7 @@ describe('CategoriesListDumb', () => {
         enableNewCategoryBlocks
         sortedCategories={[
           {
-            label: 'Concerts & Festivals',
+            label: 'Concerts et Festivals',
             navigateTo: {
               screen: 'TabNavigator',
               params: {
@@ -99,7 +99,7 @@ describe('CategoriesListDumb', () => {
             },
             borderColor: 'brandPrimary',
             fillColor: 'information03',
-            labelParts: ['Concerts', '& festivals'],
+            labelParts: ['Concerts', 'et festivals'],
             searchLandingPosition: undefined,
           },
         ]}
@@ -107,7 +107,7 @@ describe('CategoriesListDumb', () => {
     )
 
     expect(screen.getByText('Concerts')).toBeOnTheScreen()
-    expect(screen.getByText('& festivals')).toBeOnTheScreen()
+    expect(screen.getByText('et festivals')).toBeOnTheScreen()
   })
 
   it('should display new category blocks with label parts instead of raw label', () => {
@@ -117,7 +117,7 @@ describe('CategoriesListDumb', () => {
         enableNewCategoryBlocks
         sortedCategories={[
           {
-            label: 'Médias & presse',
+            label: 'Médias et presse',
             navigateTo: {
               screen: 'TabNavigator',
               params: {
@@ -130,15 +130,15 @@ describe('CategoriesListDumb', () => {
             },
             borderColor: 'decorative01',
             fillColor: 'pending01',
-            labelParts: ['Médias', '& presse'],
+            labelParts: ['Médias', 'et presse'],
             searchLandingPosition: undefined,
           },
         ]}
       />
     )
 
-    expect(screen.getByLabelText('Catégorie Médias & presse')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Catégorie Médias et presse')).toBeOnTheScreen()
     expect(screen.getByText('Médias')).toBeOnTheScreen()
-    expect(screen.getByText('& presse')).toBeOnTheScreen()
+    expect(screen.getByText('et presse')).toBeOnTheScreen()
   })
 })

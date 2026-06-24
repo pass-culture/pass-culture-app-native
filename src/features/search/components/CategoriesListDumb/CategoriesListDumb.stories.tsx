@@ -32,7 +32,7 @@ export const Default: Story = {
   args: {
     sortedCategories: [
       {
-        label: 'Concerts & Festivals',
+        label: 'Concerts et Festivals',
         navigateTo: {
           screen: 'TabNavigator',
           params: {
