@@ -1,10 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ScreenOrigin } from 'features/location/enums'
-import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -12,14 +10,11 @@ import { useLocationLabel } from 'libs/locationV2/location.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const LOCATION_TITLE_MAX_WIDTH = getSpacing(25)
-const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
-const TOOLTIP_WIDTH = getSpacing(58)
 
 type Props = {
   screenOrigin: ScreenOrigin
@@ -30,8 +25,6 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { selectedLocationMode } = useLocation()
-  const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
-    useLocationWidgetTooltip(screenOrigin)
 
   const locationTitle = useLocationLabel()
 
@@ -59,18 +52,10 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
       <StyledTouchable
         testID={computedAccessibilityLabel}
         onPress={onPress}
-        accessibilityLabel={computedAccessibilityLabel}
-        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
+        accessibilityLabel={computedAccessibilityLabel}>
         <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
         <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
       </StyledTouchable>
-      {enableTooltip ? (
-        <StyledTooltip
-          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-          isVisible={isTooltipVisible}
-          onHide={hideTooltip}
-        />
-      ) : null}
     </WidgetContainer>
   )
 }
@@ -79,13 +64,6 @@ const WidgetContainer = styled.View({
   position: 'relative',
   alignSelf: 'center',
 })
-
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
-  position: 'absolute',
-  top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
-  right: 0,
-  width: TOOLTIP_WIDTH,
-}))
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   alignItems: 'center',

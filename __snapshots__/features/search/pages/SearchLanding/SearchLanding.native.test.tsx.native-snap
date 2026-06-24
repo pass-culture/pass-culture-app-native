@@ -182,7 +182,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
-                  onLayout={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}

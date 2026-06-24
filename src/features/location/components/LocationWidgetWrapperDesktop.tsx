@@ -1,24 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useLocationForLocationWidgetDesktop } from 'features/location/components/useLocationForLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
-import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import {
   RootScreenNames,
   UseNavigationType,
 } from 'features/navigation/navigators/RootNavigator/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
-import { getSpacing, Typo } from 'ui/theme'
-
-const TOOLTIP_WIDTH = getSpacing(58)
-const WIDGET_HEIGHT = getSpacing(5 + 1) // textSize + padding
+import { Typo } from 'ui/theme'
 
 type LocationWidgetWrapperDesktopProps = {
   screenOrigin: ScreenOrigin
@@ -35,14 +29,10 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
   } = useLocationForLocationWidgetDesktop()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { isTooltipVisible, hideTooltip, onWidgetLayout, touchableRef, enableTooltip } =
-    useLocationWidgetTooltip(screenOrigin)
-
   const locationModalScreen: RootScreenNames =
     screenOrigin === ScreenOrigin.HOME ? 'HomeLocationModal' : 'SearchLocationModal'
 
   const onPressLocationButton = () => {
-    hideTooltip()
     navigate(locationModalScreen)
   }
 
@@ -54,18 +44,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
 
   return (
     <WidgetContainer>
-      {enableTooltip ? (
-        <StyledTooltip
-          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-          isVisible={isTooltipVisible}
-          onHide={hideTooltip}
-        />
-      ) : null}
-      <LocationButton
-        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
-        onPress={onPressLocationButton}
-        testID={testId}
-        accessibilityLabel={testId}>
+      <LocationButton onPress={onPressLocationButton} testID={testId} accessibilityLabel={testId}>
         <NotShrunk>{locationIcon}</NotShrunk>
         <LocationTitle>{locationTitle}</LocationTitle>
         <NotShrunk>
@@ -80,14 +59,6 @@ const WidgetContainer = styled.View({
   position: 'relative',
   alignSelf: 'center',
 })
-
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
-  position: 'absolute',
-  top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
-  right: 0,
-  zIndex: theme.zIndex.header,
-  width: TOOLTIP_WIDTH,
-}))
 
 const LocationButton = styledButton(Touchable)(({ theme }) => ({
   flexDirection: 'row',
