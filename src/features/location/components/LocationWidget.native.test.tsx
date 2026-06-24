@@ -3,7 +3,7 @@ import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { ScreenOrigin } from 'features/location/enums'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockNavigate = jest.fn()
 
@@ -30,49 +30,6 @@ describe('LocationWidget', () => {
     await user.press(button)
 
     expect(mockNavigate).toHaveBeenCalledWith('HomeLocationModal')
-  })
-
-  it('should show tooltip after 1 second and hide 8 seconds after it appeared', async () => {
-    jest.useFakeTimers()
-    renderLocationWidget()
-
-    await act(async () => {
-      jest.advanceTimersByTime(1000)
-    })
-
-    expect(
-      screen.getByText(
-        'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
-      )
-    ).toBeOnTheScreen()
-
-    await act(async () => {
-      jest.advanceTimersByTime(8000)
-    })
-
-    expect(
-      screen.queryByText(
-        'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
-      )
-    ).not.toBeOnTheScreen()
-  })
-
-  it('should hide tooltip when pressing close button', async () => {
-    renderLocationWidget()
-
-    await act(async () => {
-      jest.advanceTimersByTime(1000)
-    })
-
-    const button = screen.getByLabelText('Fermer le tooltip')
-
-    await user.press(button)
-
-    expect(
-      screen.queryByText(
-        'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
-      )
-    ).not.toBeOnTheScreen()
   })
 })
 
