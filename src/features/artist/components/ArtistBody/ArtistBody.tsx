@@ -132,7 +132,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           paddingTop: headerHeight,
           paddingBottom: designSystem.size.spacing.xxl + bottom,
         }}>
-        <ViewGap gap={8}>
+        <ViewGap gap={6}>
           <ViewGap gap={6}>
             <ArtistHeader name={name} avatarImage={image} />
             {capitalizedDescriptionWithDot ? (

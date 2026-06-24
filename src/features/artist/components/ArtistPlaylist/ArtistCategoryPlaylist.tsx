@@ -113,6 +113,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
           seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
+          noMarginBottom
         />
       )}
     </ObservedPlaylist>
