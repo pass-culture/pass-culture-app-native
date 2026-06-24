@@ -470,47 +470,6 @@ export interface Bonification {
 }
 /**
  * @export
- * @interface BonusCreditRequest
- */
-export interface BonusCreditRequest {
-  /**
-   * @type {string}
-   * @memberof BonusCreditRequest
-   */
-  birthCityCogCode?: string | null
-  /**
-   * @type {string}
-   * @memberof BonusCreditRequest
-   */
-  birthCountryCogCode: string
-  /**
-   * @type {string}
-   * @memberof BonusCreditRequest
-   */
-  birthDate: string
-  /**
-   * @type {string}
-   * @memberof BonusCreditRequest
-   */
-  commonName?: string | null
-  /**
-   * @type {Array<string>}
-   * @memberof BonusCreditRequest
-   */
-  firstNames: Array<string>
-  /**
-   * @type {GenderEnum}
-   * @memberof BonusCreditRequest
-   */
-  gender: GenderEnum
-  /**
-   * @type {string}
-   * @memberof BonusCreditRequest
-   */
-  lastName: string
-}
-/**
- * @export
  * @interface BookOfferRequest
  */
 export interface BookOfferRequest {
@@ -1854,6 +1813,37 @@ export interface DeviceInfoV2 {
    * @memberof DeviceInfoV2
    */
   source?: string | null
+}
+/**
+ * An enumeration
+ * @export
+ * @enum {string}
+ */
+export enum DisabilityBonificationStatus {
+  'eligible' = 'eligible',
+  'not_eligible' = 'not_eligible',
+  'started' = 'started',
+  'too_many_retries' = 'too_many_retries',
+  'person_not_found' = 'person_not_found',
+  'application_not_found' = 'application_not_found',
+  'granted' = 'granted',
+  'ko' = 'ko',
+}
+/**
+ * @export
+ * @interface DisabilityBonusCreditRequest
+ */
+export interface DisabilityBonusCreditRequest {
+  /**
+   * @type {string}
+   * @memberof DisabilityBonusCreditRequest
+   */
+  birthCityCogCode?: string | null
+  /**
+   * @type {string}
+   * @memberof DisabilityBonusCreditRequest
+   */
+  birthCountryCogCode: string
 }
 /**
  * @export
@@ -3689,7 +3679,7 @@ export interface ProfileUpdateRequest {
   schoolTypeId?: SchoolTypesIdEnum | null
 }
 /**
- * An enumeration.
+ * 
  * @export
  * @enum {string}
  */
@@ -3698,11 +3688,53 @@ export enum QFBonificationStatus {
   'not_eligible' = 'not_eligible',
   'started' = 'started',
   'custodian_not_found' = 'custodian_not_found',
+  'application_not_found' = 'application_not_found',
   'not_in_tax_household' = 'not_in_tax_household',
   'quotient_familial_too_high' = 'quotient_familial_too_high',
   'too_many_retries' = 'too_many_retries',
   'granted' = 'granted',
-  'unknown_ko' = 'unknown_ko',
+  'ko' = 'ko',
+}
+/**
+ * @export
+ * @interface QuotientFamilialBonusCreditRequest
+ */
+export interface QuotientFamilialBonusCreditRequest {
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  birthCityCogCode?: string | null
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  birthCountryCogCode: string
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  birthDate: string
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  commonName?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  firstNames: Array<string>
+  /**
+   * @type {GenderEnum}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  gender: GenderEnum
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  lastName: string
 }
 /**
  * @export
@@ -4971,6 +5003,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   depositType?: DepositType | null
+  /**
+   * @type {DisabilityBonificationStatus}
+   * @memberof UserProfileResponse
+   */
+  disabilityBonificationStatus?: DisabilityBonificationStatus | null
   /**
    * @type {DomainsCredit}
    * @memberof UserProfileResponse
@@ -7383,12 +7420,41 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary create_quotient_familial_bonus_credit_fraud_check <POST>
-     * @param {BonusCreditRequest} body 
+     * @summary create_disability_bonus_credit_fraud_checks <POST>
+     * @param {DisabilityBonusCreditRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1SubscriptionBonusQuotientFamilial(body: BonusCreditRequest, options: any = {}): Promise<FetchArgs> {
+    async postNativeV1SubscriptionBonusDisability(body: DisabilityBonusCreditRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV1SubscriptionBonusDisability.'
+        )
+      }
+      let pathname = `/native/v1/subscription/bonus/disability`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"DisabilityBonusCreditRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary create_quotient_familial_bonus_credit_fraud_check <POST>
+     * @param {QuotientFamilialBonusCreditRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1SubscriptionBonusQuotientFamilial(body: QuotientFamilialBonusCreditRequest, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'body' is not null or undefined
       if (body === null || body === undefined) {
         throw new RequiredError(
@@ -7404,7 +7470,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"BonusCreditRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      const needsSerialization = (<any>"QuotientFamilialBonusCreditRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -8597,12 +8663,24 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary create_quotient_familial_bonus_credit_fraud_check <POST>
-     * @param {BonusCreditRequest} body 
+     * @summary create_disability_bonus_credit_fraud_checks <POST>
+     * @param {DisabilityBonusCreditRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1SubscriptionBonusQuotientFamilial(body: BonusCreditRequest, options?: any): Promise<EmptyResponse> {
+    async postNativeV1SubscriptionBonusDisability(body: DisabilityBonusCreditRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SubscriptionBonusDisability(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary create_quotient_familial_bonus_credit_fraud_check <POST>
+     * @param {QuotientFamilialBonusCreditRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1SubscriptionBonusQuotientFamilial(body: QuotientFamilialBonusCreditRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SubscriptionBonusQuotientFamilial(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
@@ -9599,13 +9677,25 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary create_quotient_familial_bonus_credit_fraud_check <POST>
-    * @param {BonusCreditRequest} body 
+    * @summary create_disability_bonus_credit_fraud_checks <POST>
+    * @param {DisabilityBonusCreditRequest} body 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async postNativeV1SubscriptionBonusQuotientFamilial(body: BonusCreditRequest, options?: any) {
+  public async postNativeV1SubscriptionBonusDisability(body: DisabilityBonusCreditRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1SubscriptionBonusDisability(body, options)
+  }
+  /**
+    * 
+    * @summary create_quotient_familial_bonus_credit_fraud_check <POST>
+    * @param {QuotientFamilialBonusCreditRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV1SubscriptionBonusQuotientFamilial(body: QuotientFamilialBonusCreditRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1SubscriptionBonusQuotientFamilial(body, options)
   }

@@ -11,6 +11,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 
 const STATUS_TO_REFUSED_TYPE: Record<string, BonificationRefusedType> = {
   [QFBonificationStatus.custodian_not_found]: BonificationRefusedType.CUSTODIAN_NOT_FOUND,
+  [QFBonificationStatus.application_not_found]: BonificationRefusedType.APPLICATION_NOT_FOUND,
   [QFBonificationStatus.too_many_retries]: BonificationRefusedType.TOO_MANY_RETRIES,
   [QFBonificationStatus.not_in_tax_household]: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
   [QFBonificationStatus.quotient_familial_too_high]:
@@ -46,6 +47,7 @@ export const BonificationBanner = ({
     case QFBonificationStatus.not_in_tax_household:
     case QFBonificationStatus.too_many_retries:
     case QFBonificationStatus.custodian_not_found:
+    case QFBonificationStatus.application_not_found:
     case QFBonificationStatus.quotient_familial_too_high:
       if (noRefusedType) return null
       return (
