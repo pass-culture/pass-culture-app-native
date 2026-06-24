@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`DeactivateProfileSuccess component should render delete profile success 1`] = `
+exports[`DeactivateProfileSuccess should render deactivate profile success 1`] = `
 <View
   isLandscape={false}
   style={

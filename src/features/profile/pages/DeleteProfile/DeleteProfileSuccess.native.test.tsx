@@ -23,17 +23,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 jest.useFakeTimers()
 
-describe('DeleteProfileSuccess component', () => {
+describe('DeleteProfileSuccess', () => {
   it('should render delete profile success', () => {
     render(<DeleteProfileSuccess />)
 
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should log out user', () => {
-    render(<DeleteProfileSuccess />)
-
-    expect(signOutMock).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to Home page when clicking on "Retourner à l’accueil" button', async () => {

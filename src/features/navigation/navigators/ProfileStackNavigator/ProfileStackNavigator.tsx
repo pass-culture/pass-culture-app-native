@@ -161,14 +161,12 @@ const profileStackNavigatorPathDefinition = {
     // FIXME(PC-00000): Why is it not in the routes
     DeleteProfileSuccess: {
       screen: DeleteProfileSuccess,
-      if: useIsSignedIn,
       linking: {
         path: 'profile/suppression/succes',
       },
     },
     DeactivateProfileSuccess: {
       screen: DeactivateProfileSuccess,
-      if: useIsSignedIn,
       linking: {
         path: 'profile/desactivation/succes',
       },

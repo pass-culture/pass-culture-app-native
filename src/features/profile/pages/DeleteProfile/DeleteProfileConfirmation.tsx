@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { navigateFromRef } from 'features/navigation/navigationRef'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
@@ -22,9 +22,9 @@ export const DeleteProfileConfirmation = () => {
   const { anonymizeAccount } = useAnonymizeAccountMutation({
     onSuccess: async () => {
       await signOut()
-      // We use navigateFromRef instead of navigation because signOut() may unmount the current screen
-      // (RootNavigator rebuild). navigateFromRef ensures navigation still works after logout.
-      navigateFromRef(...getProfileHookConfig('DeleteProfileSuccess'))
+      // We use resetFromRef instead of navigation because signOut() may unmount the current screen
+      // (RootNavigator rebuild). resetFromRef ensures navigation still works after logout.
+      resetFromRef(...getProfileHookConfig('DeleteProfileSuccess'))
     },
     onError: () => {
       showErrorSnackBar(
