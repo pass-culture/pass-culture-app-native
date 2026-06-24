@@ -15,18 +15,12 @@ export type LoginRoutine = (
 ) => Promise<void>
 
 export function useLoginRoutine(): LoginRoutine {
-  const { setIsLoggedIn } = useAuthContext()
+  const { setIsLoggedIn, user } = useAuthContext()
   const resetContexts = useResetContexts()
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
 
-  /**
-   * Executes the minimal set of instructions required to proceed to the login
-   * @param {SigninResponseV2} response
-   * @param {LoginRoutineMethod} method The process that triggered the login routine
-   */
-
   return async (response, method, analyticsType) => {
-    connectServicesRequiringUserId(response.accessToken)
+    connectServicesRequiringUserId(response.accessToken, user?.id)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     scheduleAccessTokenRemoval(response.accessToken)

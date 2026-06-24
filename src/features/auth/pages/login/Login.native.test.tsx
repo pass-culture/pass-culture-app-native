@@ -11,6 +11,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -644,10 +645,11 @@ function renderLogin() {
     reactQueryProviderHOC(
       <AuthContext.Provider
         value={{
-          isLoggedIn: false,
+          isLoggedIn: true,
           setIsLoggedIn: jest.fn(),
           isUserLoading: false,
           refetchUser: jest.fn(),
+          user: beneficiaryUser,
         }}>
         <Login />
       </AuthContext.Provider>

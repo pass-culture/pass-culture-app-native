@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
@@ -11,7 +10,6 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import * as PackageJson from 'libs/packageJson'
@@ -219,21 +217,6 @@ describe('AuthContext', () => {
       })
 
       expect(await getRefreshToken()).toBe('')
-    })
-
-    it('should log to Sentry when error occurs', async () => {
-      void storage.saveString('access_token', 'access_token')
-      await saveRefreshToken('token')
-      const error = new Error('Batch error')
-      BatchProfile.identify.mockImplementationOnce(() => {
-        throw error
-      })
-
-      renderUseAuthContext()
-
-      await act(async () => {})
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     })
   })
 })

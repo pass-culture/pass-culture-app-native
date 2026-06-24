@@ -8,9 +8,6 @@ interface AccessToken {
   jti: string
   nbf: number
   type: string
-  user_claims?: {
-    user_id?: number
-  }
 }
 
 export const decodeToken = (token: string) => {
@@ -19,12 +16,6 @@ export const decodeToken = (token: string) => {
   } catch {
     return null
   }
-}
-
-export const getUserIdFromAccessToken = (accessToken: string) => {
-  const tokenContent = decodeToken(accessToken)
-
-  return tokenContent?.user_claims?.user_id ?? null
 }
 
 type TokenStatus = 'valid' | 'expired' | 'unknown'
