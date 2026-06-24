@@ -1,5 +1,4 @@
 export enum QueryKeys {
-  ACCOUNT_SUSPEND_TOKEN_VALIDATION = 'accountSuspendTokenValidation',
   ACCOUNT_SUSPENSION_DATE = 'accountSuspensionDate',
   ACCOUNT_SUSPENSION_STATUS = 'accountSuspensionStatus',
   ACTIVITY_TYPES = 'activityTypes',

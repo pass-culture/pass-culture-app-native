@@ -1,10 +1,7 @@
 import { AccountState, UserSuspensionStatusResponse } from 'api/gen'
-import { useAccountSuspensionStatusQuery } from 'features/auth/queries/useAccountSuspensionStatusQuery'
+import { accountQueries } from 'features/trustedDevice/queries/useAccountSuspendTokenValidationQuery'
+import { queryClient } from 'libs/react-query/queryClient'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
-
-jest.mock('libs/network/NetInfoWrapper')
 
 const expectedResponse = { status: AccountState.SUSPENDED }
 const simulateSuspensionStatus200 = () => {
@@ -18,28 +15,22 @@ const simulateSuspensionStatusError = () => {
 }
 jest.mock('libs/jwt/jwt')
 
-describe('useAccountSuspensionStatus', () => {
+describe('suspension status query', () => {
+  beforeEach(() => {
+    queryClient.clear()
+  })
+
   it('should return suspension status if it exists', async () => {
     simulateSuspensionStatus200()
-    const { result } = renderSuspensionDateHook()
+    const response = await queryClient.fetchQuery(accountQueries.suspensionStatus())
 
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
-
-    expect(result.current.data?.status).toBe(expectedResponse.status)
+    expect(response?.status).toBe(expectedResponse.status)
   })
 
-  // TODO(PC-36587): unskip this test
-  it.skip('should return undefined if error', async () => {
+  it('should return no status for unsuspended user', async () => {
     simulateSuspensionStatusError()
-    const { result } = renderSuspensionDateHook()
+    const response = await queryClient.fetchQuery(accountQueries.suspensionStatus())
 
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
-
-    expect(result.current.data).toBeUndefined()
+    expect(response?.status).toBeUndefined()
   })
 })
-
-const renderSuspensionDateHook = () =>
-  renderHook(() => useAccountSuspensionStatusQuery(), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })

@@ -1,11 +1,12 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useQuery } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
 
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import {
   AccountSecurityStatus,
-  useAccountSuspendTokenValidationQuery,
+  accountQueries,
 } from 'features/trustedDevice/queries/useAccountSuspendTokenValidationQuery'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -14,7 +15,10 @@ export const AccountSecurityBuffer = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'AccountSecurityBuffer'>>()
 
-  const { data: tokenStatus, isLoading } = useAccountSuspendTokenValidationQuery(params.token)
+  // eslint-disable-next-line local-rules/no-queries-outside-query-files, local-rules/queries-only-in-use-query-functions
+  const { data: tokenStatus, isLoading } = useQuery(
+    accountQueries.suspendTokenValidation(params.token)
+  )
 
   useEffect(() => {
     if (tokenStatus === AccountSecurityStatus.EXPIRED_TOKEN) {
