@@ -20,7 +20,6 @@ import { proAdvicesCardDataFixture } from 'features/venue/fixtures/venueProAdvic
 import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -195,81 +194,59 @@ describe('<VenueOffers />', () => {
   })
 
   describe('Artist playlist', () => {
-    describe('When wipVenueArtistsPlaylist feature flag activated', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST])
+    it('should display artists playlist when venue offers have artists', async () => {
+      renderVenueOffers({
+        venueArtists: venueOffersArtistsMock,
       })
 
-      it('should display artists playlist when venue offers have artists', async () => {
-        renderVenueOffers({
-          venueArtists: venueOffersArtistsMock,
-        })
+      await screen.findByText('Les artistes disponibles dans ce lieu')
 
-        await screen.findByText('Les artistes disponibles dans ce lieu')
+      expect(screen.getByText('Les artistes disponibles dans ce lieu')).toBeOnTheScreen()
+    })
 
-        expect(screen.getByText('Les artistes disponibles dans ce lieu')).toBeOnTheScreen()
-      })
+    it('should trigger ConsultArtist log when pressing artists playlist item', async () => {
+      renderVenueOffers({ venueArtists: venueOffersArtistsMock })
 
-      it('should trigger ConsultArtist log when pressing artists playlist item', async () => {
-        renderVenueOffers({ venueArtists: venueOffersArtistsMock })
+      await user.press(screen.getByText('Freida McFadden'))
 
-        await user.press(screen.getByText('Freida McFadden'))
-
-        expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
-          artistId: '1',
-          artistName: 'Freida McFadden',
-          from: 'venue',
-          venueId: venueDataTest.id.toString(),
-        })
-      })
-
-      it('should not display artists playlist when venue offers have not artists', async () => {
-        renderVenueOffers({})
-
-        await screen.findByLabelText('Toutes les offres')
-
-        expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
-      })
-
-      it('should display see all button when there are several artists in the playlist', async () => {
-        renderVenueOffers({
-          venueArtists: venueOffersArtistsMock,
-        })
-
-        expect(
-          await screen.findByLabelText(
-            'Voir tout pour la sélection Les artistes disponibles dans ce lieu'
-          )
-        ).toBeOnTheScreen()
-      })
-
-      // { artists: VenueOffersArtistsResponseSnap }
-
-      it('should not display see all button when there is only one artist in the playlist', async () => {
-        renderVenueOffers({
-          venueArtists: { artists: [VenueOffersArtistsResponseSnap[0]] },
-        })
-
-        await screen.findByText('Les artistes disponibles dans ce lieu')
-
-        expect(
-          screen.queryByLabelText(
-            'Voir tout pour la sélection Les artistes disponibles dans ce lieu'
-          )
-        ).not.toBeOnTheScreen()
+      expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+        artistId: '1',
+        artistName: 'Freida McFadden',
+        from: 'venue',
+        venueId: venueDataTest.id.toString(),
       })
     })
 
-    describe('When wipVenueArtistsPlaylist feature flag deactivated', () => {
-      it('should not display artists playlist when venue offers have artists', async () => {
-        renderVenueOffers({
-          venueArtists: venueOffersArtistsMock,
-        })
+    it('should not display artists playlist when venue offers have not artists', async () => {
+      renderVenueOffers({})
 
-        await screen.findByLabelText('Toutes les offres')
+      await screen.findByLabelText('Toutes les offres')
 
-        expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
+    })
+
+    it('should display see all button when there are several artists in the playlist', async () => {
+      renderVenueOffers({
+        venueArtists: venueOffersArtistsMock,
       })
+
+      expect(
+        await screen.findByLabelText(
+          'Voir tout pour la sélection Les artistes disponibles dans ce lieu'
+        )
+      ).toBeOnTheScreen()
+    })
+
+    it('should not display see all button when there is only one artist in the playlist', async () => {
+      renderVenueOffers({
+        venueArtists: { artists: [VenueOffersArtistsResponseSnap[0]] },
+      })
+
+      await screen.findByText('Les artistes disponibles dans ce lieu')
+
+      expect(
+        screen.queryByLabelText('Voir tout pour la sélection Les artistes disponibles dans ce lieu')
+      ).not.toBeOnTheScreen()
     })
   })
 

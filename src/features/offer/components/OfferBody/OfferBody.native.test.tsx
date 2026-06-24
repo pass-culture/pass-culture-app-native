@@ -83,12 +83,12 @@ jest.useFakeTimers()
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
     deviceInfoStoreActions.setDeviceInfo({
       deviceId: 'device-id',
       source: 'iPhone 13',
       os: 'iOS',
     })
+    setFeatureFlags()
   })
 
   describe('Tags section', () => {
@@ -491,10 +491,7 @@ describe('<OfferBody />', () => {
 
   describe('When wipArtistSectionRefacto FF activated', () => {
     beforeEach(() => {
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
-        RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO,
-      ])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO])
     })
 
     it('should display new artist section', () => {

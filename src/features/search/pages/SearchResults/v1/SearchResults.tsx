@@ -18,8 +18,6 @@ import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSe
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -51,8 +49,6 @@ export const SearchResults = () => {
 
   const { geolocPosition } = useLocation()
   const previousGeolocPosition = usePrevious(geolocPosition)
-
-  const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
 
   const {
     hits,
@@ -124,7 +120,7 @@ export const SearchResults = () => {
     }
   }
 
-  const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
+  const searchResultHits = hits
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
