@@ -120,7 +120,7 @@ jobs:
           channelId: ${{ inputs.CHANNEL }}
 
       - name: Delete service account key
-        if: always()
+        if: always() && steps.create-sa-key.conclusion != 'skipped'
         env:
           KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
           SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
