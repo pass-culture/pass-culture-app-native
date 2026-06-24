@@ -13,6 +13,7 @@ import {
   isThematicCategoryInfo,
   isThematicHighlightInfo,
 } from 'libs/contentful/types'
+import { buildContentfulIllustrationUrl } from 'shared/illustrations/buildContentfulIllustrationUrl'
 
 const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   const thematicHeader = homepageEntry.fields.thematicHeader
@@ -37,14 +38,18 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (isThematicCategoryInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
-    // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
-    if (thematicHeaderFields?.image.fields === undefined) return
+    if (thematicHeaderFields === undefined) return
+
+    const legacyImageUrl = buildImageUrl(thematicHeaderFields.image?.fields?.file.url)
 
     const categoryThematicHeader: CategoryThematicHeader = {
       type: ThematicHeaderType.Category,
       title: thematicHeaderFields.displayedTitle,
+      titleParts: thematicHeaderFields.titleParts,
       subtitle: thematicHeaderFields.displayedSubtitle,
-      imageUrl: buildImageUrl(thematicHeaderFields.image.fields.file.url),
+      imageUrl: thematicHeaderFields.illustrationFilename
+        ? buildContentfulIllustrationUrl(thematicHeaderFields.illustrationFilename)
+        : legacyImageUrl,
       color: thematicHeaderFields.color,
     }
     return categoryThematicHeader

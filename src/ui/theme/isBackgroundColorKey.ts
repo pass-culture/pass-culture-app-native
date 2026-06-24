@@ -1,7 +1,10 @@
 import { BackgroundColor, BackgroundColorKey } from 'theme/types'
-import { GradientColor } from 'ui/theme/gradientImagesMapping'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
+
+type ColorValue = ColorsEnum | BackgroundColorKey
 
 export const isBackgroundColorKey = (
-  value: GradientColor,
+  value: ColorValue,
   background: BackgroundColor
 ): value is BackgroundColorKey => value in background

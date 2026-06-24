@@ -34,8 +34,10 @@ export const thematicCategoryInfoFixture: ThematicCategoryInfo = {
   fields: {
     title: 'catégorie cinéma',
     displayedTitle: 'Cinéma',
+    titleParts: ['vos', 'cinéma'],
     displayedSubtitle: 'Sous-titre cinéma',
     color: Color.Lilac,
+    illustrationFilename: 'cinema',
     image: {
       sys: {
         space: {
