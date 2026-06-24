@@ -9,9 +9,6 @@ import {
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
-import { GeolocPermissionState, useLocation } from 'libs/location/location'
-import { locationActions } from 'libs/locationV2/location.store'
-import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -61,7 +58,6 @@ export function VenueSelectionModal({
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { top } = useCustomSafeInsets()
   const { designSystem } = useTheme()
-  const { permissionState } = useLocation()
 
   const handleSubmit = useCallback(() => {
     if (selectedVenue !== undefined) {
@@ -69,13 +65,6 @@ export function VenueSelectionModal({
     }
   }, [onSubmit, selectedVenue])
 
-  const onPressGeolocationBanner = useCallback(async () => {
-    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      locationActions.showPermissionModal()
-    } else {
-      await requestGeolocPermission()
-    }
-  }, [permissionState])
   const HEIGHT_CONTAINER = designSystem.size.spacing.xl
 
   const customHeader = useMemo(() => {
@@ -136,7 +125,6 @@ export function VenueSelectionModal({
         isSharingLocation={isSharingLocation}
         subTitle={subTitle}
         headerMessage={headerMessage}
-        onPressGeolocationBanner={onPressGeolocationBanner}
       />
       <GeolocationActivationModal />
     </AppModal>

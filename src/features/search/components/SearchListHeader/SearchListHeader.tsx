@@ -1,9 +1,9 @@
 import { useIsFocused } from '@react-navigation/native'
 import { SearchResponse } from 'algoliasearch/lite'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { ScrollViewProps, View, ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -16,8 +16,8 @@ import { GridListLayout, SearchView, VenuesUserData } from 'features/search/type
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { locationStore } from 'libs/locationV2/location.store'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -54,17 +54,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   shouldDisplayGridList,
   onViewableVenuePlaylistItemsChanged,
 }) => {
-  const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const {
     searchState: { venue, offerCategories },
   } = useSearch()
   const isFocused = useIsFocused()
-
-  const isLocated = useMemo(
-    () => selectedLocationMode !== LocationMode.EVERYWHERE,
-    [selectedLocationMode]
-  )
+  const { designSystem, contentPage } = useTheme()
+  const locationMode = locationStore.hooks.useLocationMode()
+  const isLocated = locationMode !== LocationMode.EVERYWHERE
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
@@ -86,11 +83,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const onPress = () => {
     void analytics.logActivateGeolocfromSearchResults()
-    showGeolocPermissionModal()
   }
 
   const shouldDisplayGeolocationBanner =
-    geolocPosition === null &&
     offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
@@ -117,14 +112,16 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   return (
     <View testID="searchListHeader">
       {shouldDisplayGeolocationBanner ? (
-        <GeolocationBannerContainer>
-          <GeolocationBanner
-            title="Géolocalise-toi"
-            subtitle="Pour trouver des offres autour de toi"
-            analyticsFrom="search"
-            onPress={onPress}
-          />
-        </GeolocationBannerContainer>
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi"
+          analyticsFrom="search"
+          onPress={onPress}
+          style={{
+            marginVertical: designSystem.size.spacing.l,
+            marginHorizontal: contentPage.marginHorizontal,
+          }}
+        />
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
@@ -185,11 +182,6 @@ const TitleContainer = styled.View(({ theme }) => ({
   flex: 1,
   flexDirection: 'column',
   marginHorizontal: theme.designSystem.size.spacing.xl,
-}))
-
-const GeolocationBannerContainer = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.l,
-  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits, theme }) => ({

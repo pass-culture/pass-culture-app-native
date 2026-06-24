@@ -10,6 +10,7 @@ import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
 import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -115,6 +116,7 @@ jest.useFakeTimers()
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-01-01'))
+    useLocationV2.setState(defaultLocationState)
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
 
@@ -534,23 +536,10 @@ describe('<OfferPlace />', () => {
         place: SuggestedPlace | null
         headerMessage: string
       }) => {
-        mockUseLocation
-          .mockReturnValueOnce({
-            selectedLocationMode: locationMode,
-            place,
-          })
-          .mockReturnValueOnce({
-            selectedLocationMode: locationMode,
-            place,
-          })
-          .mockReturnValueOnce({
-            selectedLocationMode: locationMode,
-            place,
-          })
-          .mockReturnValueOnce({
-            selectedLocationMode: locationMode,
-            place,
-          })
+        mockUseLocation.mockReturnValue({
+          selectedLocationMode: locationMode,
+          place,
+        })
 
         renderOfferPlace({
           subcategory: mockSubcategory,

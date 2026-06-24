@@ -20,6 +20,11 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode, UseLocationReturnType } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -140,6 +145,9 @@ describe('ThematicHome', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 2, longitude: 2 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -345,7 +353,6 @@ describe('ThematicHome', () => {
   })
 
   it('should not show geolocation banner when user is geolocated or located', async () => {
-    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderThematicHome()
 
     await screen.findByText('Suivre')
@@ -354,10 +361,7 @@ describe('ThematicHome', () => {
   })
 
   it('should show system banner when user is not geolocated or located', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      ...defaultUseLocation,
-      userLocation: undefined,
-    })
+    useLocationV2.setState(defaultLocationState)
     renderThematicHome()
 
     await screen.findByText('Suivre')
@@ -366,7 +370,6 @@ describe('ThematicHome', () => {
   })
 
   it('should not show system banner when user is geolocated or located', async () => {
-    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderThematicHome()
 
     await screen.findByText('Suivre')

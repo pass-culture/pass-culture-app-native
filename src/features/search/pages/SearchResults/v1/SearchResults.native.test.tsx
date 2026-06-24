@@ -19,6 +19,11 @@ import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { Position } from 'libs/location/location'
 import { LocationMode, UseLocationReturnType } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -239,6 +244,10 @@ jest.useFakeTimers()
 describe('<SearchResults/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 123.34, longitude: 0.12238 })
+    locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+    locationActions.setPlace(MOCKED_PLACE)
     mockUseNetInfoContext.mockReset()
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
     mockUseSearchHistory.mockReset()

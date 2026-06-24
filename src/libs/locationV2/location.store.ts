@@ -65,7 +65,7 @@ export const defaultLocationState: LocationState = {
   },
 }
 
-const locationStore = createStore({
+export const locationStore = createStore({
   name: 'location',
   defaultState: defaultLocationState,
   actions: (set) => {

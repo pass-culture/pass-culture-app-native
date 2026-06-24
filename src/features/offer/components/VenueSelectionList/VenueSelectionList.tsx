@@ -27,7 +27,6 @@ export type VenueSelectionListProps = ViewProps &
     subTitle: string
     headerMessage: string
     onEndReached: () => void
-    onPressGeolocationBanner?: VoidFunction
   }
 
 export const VenueSelectionList = ({
@@ -46,7 +45,6 @@ export const VenueSelectionList = ({
   isSharingLocation,
   subTitle,
   headerMessage,
-  onPressGeolocationBanner,
   ...props
 }: VenueSelectionListProps) => {
   const { modal } = useTheme()
@@ -86,7 +84,6 @@ export const VenueSelectionList = ({
             title="Active ta géolocalisation"
             subtitle="Pour trouver les lieux autour de toi"
             analyticsFrom="offer"
-            onPress={onPressGeolocationBanner}
           />
           <BannerSpacer />
         </React.Fragment>

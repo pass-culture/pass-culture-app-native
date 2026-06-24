@@ -109,22 +109,26 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 }
 
 const ThematicHeaderWithGeolocBanner: FunctionComponent<{
-  isLocated: boolean
   thematicHeader?: ThematicHeader
-}> = ({ thematicHeader, isLocated }) => (
-  <React.Fragment>
-    <SubHeader thematicHeader={thematicHeader} />
-    {isLocated ? null : (
-      <GeolocationBannerContainer>
-        <GeolocationBanner
-          title="Géolocalise-toi"
-          subtitle="pour trouver des offres autour de toi"
-          analyticsFrom="thematicHome"
-        />
-      </GeolocationBannerContainer>
-    )}
-  </React.Fragment>
-)
+}> = ({ thematicHeader }) => {
+  const { designSystem, home } = useTheme()
+
+  return (
+    <React.Fragment>
+      <SubHeader thematicHeader={thematicHeader} />
+      <GeolocationBanner
+        title="Géolocalise-toi"
+        subtitle="pour trouver des offres autour de toi"
+        analyticsFrom="thematicHome"
+        // cannot be styled with styled-components because of a circular dependency
+        style={{
+          marginHorizontal: designSystem.size.spacing.xl,
+          marginBottom: home.spaceBetweenModules,
+        }}
+      />
+    </React.Fragment>
+  )
+}
 
 export const ThematicHome: FunctionComponent = () => {
   const {
@@ -206,9 +210,7 @@ export const ThematicHome: FunctionComponent = () => {
         modules={modules}
         homeId={homeId}
         thematicHeader={thematicHeader}
-        Header={
-          <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-        }
+        Header={<ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} />}
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={videoModuleId}
@@ -271,11 +273,6 @@ const ListHeaderContainer = styled.View({
   flexGrow: 1,
   flexShrink: 0,
 })
-
-const GeolocationBannerContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-  marginBottom: theme.home.spaceBetweenModules,
-}))
 
 const IntroductionContainer = styled.View<{ marginTopHeader: number }>(({ marginTopHeader }) => ({
   marginTop: getSpacing(ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT) + marginTopHeader,

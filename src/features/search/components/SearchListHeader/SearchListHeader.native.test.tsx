@@ -16,7 +16,12 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location/location'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { act, render, screen } from 'tests/utils'
@@ -32,15 +37,6 @@ const mockUsePreviousRouteName: jest.Mock<Route<string> | null> = usePreviousRou
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
-
-const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(() => ({
-  geolocPosition: mockPosition,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  onModalHideRef: { current: jest.fn() },
-}))
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 const mockDisabilities = {
   [DisplayedDisabilitiesEnum.AUDIO]: false,
@@ -90,6 +86,9 @@ const mockedAlgoliaVenuesItems = mockAlgoliaVenues.map(
 
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition(mockPosition)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
     mockUsePreviousRouteName.mockReturnValue({ name: 'SomeScreen', key: 'key' })
   })
@@ -123,19 +122,19 @@ describe('<SearchListHeader />', () => {
       }
 
       it.each`
-        mockVenuesUserData                              | accessibilityFilter                  | selectedLocationMode         | geolocPosition  | expectedTitle
-        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les disquaires accessibles'}
-        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les disquaires près de toi'}
-        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les disquaires près de toi'}
-        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les disquaires'}
-        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les disquaires accessibles près de toi'}
-        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les disquaires accessibles près de toi'}
-        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les lieux culturels accessibles'}
-        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les lieux culturels près de toi'}
-        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les lieux culturels près de toi'}
-        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${'Les lieux culturels accessibles près de toi'}
-        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_PLACE} | ${undefined}    | ${'Les lieux culturels accessibles près de toi'}
-        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.EVERYWHERE}   | ${undefined}    | ${'Les lieux culturels'}
+        mockVenuesUserData                              | accessibilityFilter                  | selectedLocationMode         | geolocPosition  | place     | expectedTitle
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.EVERYWHERE}   | ${null}         | ${null}   | ${'Les disquaires accessibles'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${null}   | ${'Les disquaires près de toi'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_PLACE} | ${null}         | ${kourou} | ${'Les disquaires près de toi'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${defaultValuesAccessibilityContext} | ${LocationMode.EVERYWHERE}   | ${null}         | ${null}   | ${'Les disquaires'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${null}   | ${'Les disquaires accessibles près de toi'}
+        ${[{ venue_playlist_title: 'Les disquaires' }]} | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_PLACE} | ${null}         | ${kourou} | ${'Les disquaires accessibles près de toi'}
+        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.EVERYWHERE}   | ${null}         | ${null}   | ${'Les lieux culturels accessibles'}
+        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${null}   | ${'Les lieux culturels près de toi'}
+        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.AROUND_PLACE} | ${null}         | ${kourou} | ${'Les lieux culturels près de toi'}
+        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_ME}    | ${mockPosition} | ${null}   | ${'Les lieux culturels accessibles près de toi'}
+        ${[]}                                           | ${accessibilityFilterActivated}      | ${LocationMode.AROUND_PLACE} | ${null}         | ${kourou} | ${'Les lieux culturels accessibles près de toi'}
+        ${[]}                                           | ${defaultValuesAccessibilityContext} | ${LocationMode.EVERYWHERE}   | ${null}         | ${null}   | ${'Les lieux culturels'}
       `(
         'should show correct title',
         ({
@@ -143,13 +142,14 @@ describe('<SearchListHeader />', () => {
           mockVenuesUserData,
           selectedLocationMode,
           geolocPosition,
+          place,
           expectedTitle,
         }) => {
           mockUseAccessibilityFiltersContext.mockReturnValueOnce(accessibilityFilter)
-          mockUseLocation.mockReturnValueOnce({
-            geolocPosition,
-            selectedLocationMode,
-          })
+          useLocationV2.setState(defaultLocationState)
+          locationActions.setLocationMode(selectedLocationMode)
+          locationActions.setGeolocPosition(geolocPosition)
+          locationActions.setPlace(place)
           render(
             <SearchListHeader
               nbHits={10}
@@ -178,10 +178,8 @@ describe('<SearchListHeader />', () => {
     })
 
     it('should display the geolocation incitation button when position is null', () => {
-      mockUseLocation.mockReturnValueOnce({
-        geolocPosition: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-      })
+      useLocationV2.setState(defaultLocationState)
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
       render(
         <SearchListHeader
           nbHits={10}
@@ -245,20 +243,20 @@ describe('<SearchListHeader />', () => {
     })
 
     it.each`
-      locationFilter                                                                          | isLocated | locationType
-      ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}  | ${LocationMode.EVERYWHERE}
-      ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}   | ${LocationMode.AROUND_ME}
-      ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}   | ${LocationMode.AROUND_PLACE}
+      locationFilter                                                                          | geolocPosition  | place     | isLocated | locationType
+      ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}         | ${null}   | ${false}  | ${LocationMode.EVERYWHERE}
+      ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${mockPosition} | ${null}   | ${true}   | ${LocationMode.AROUND_ME}
+      ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${null}         | ${kourou} | ${true}   | ${LocationMode.AROUND_PLACE}
     `(
       'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isLocated param = $isLocated',
-      ({ locationFilter, isLocated }) => {
+      ({ locationFilter, geolocPosition, place, isLocated }) => {
         mockUseSearch.mockReturnValueOnce({
           searchState: { ...mockSearchState, searchId, locationFilter },
         })
-        mockUseLocation.mockReturnValueOnce({
-          geolocPosition: mockPosition,
-          selectedLocationMode: locationFilter.locationType,
-        })
+        useLocationV2.setState(defaultLocationState)
+        locationActions.setLocationMode(locationFilter.locationType)
+        locationActions.setGeolocPosition(geolocPosition)
+        locationActions.setPlace(place)
 
         render(
           <SearchListHeader
@@ -281,10 +279,8 @@ describe('<SearchListHeader />', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: { ...mockSearchState, searchId },
       })
-      mockUseLocation.mockReturnValueOnce({
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-      })
+      useLocationV2.setState(defaultLocationState)
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
 
       render(
         <SearchListHeader
@@ -448,10 +444,8 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should display system banner for geolocation incitation', () => {
-    mockUseLocation.mockReturnValueOnce({
-      geolocPosition: null,
-      selectedLocationMode: LocationMode.EVERYWHERE,
-    })
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     render(
       <SearchListHeader
         nbHits={10}

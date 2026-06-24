@@ -2,29 +2,23 @@ import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeoCoordinates, GeolocPermissionState } from 'libs/location/location'
-import { locationActions } from 'libs/locationV2/location.store'
-import * as requestGeolocPermissionModule from 'libs/locationV2/requestGeolocPermission'
-import { render, screen, userEvent } from 'tests/utils'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
+import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  defaultLocationState,
+  locationSelectors,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
-const mockRequestGeolocPermission = jest.spyOn(
-  requestGeolocPermissionModule,
-  'requestGeolocPermission'
-)
-const defaultUseLocation = {
-  geolocPosition: DEFAULT_POSITION,
-  permissionState: GeolocPermissionState.GRANTED,
-  onPressGeolocPermissionModalButton: jest.fn(),
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
+
+jest.mock('libs/locationV2/syncLocation')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -39,6 +33,7 @@ jest.useFakeTimers()
 describe('<VenueSelectionModal />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
   })
 
   const items: VenueListItem[] = [
@@ -173,14 +168,6 @@ describe('<VenueSelectionModal />', () => {
   })
 
   describe('When user share his position', () => {
-    beforeAll(() => {
-      mockUseLocation.mockReturnValue({
-        ...defaultUseLocation,
-        geolocPosition: DEFAULT_POSITION,
-        permissionState: GeolocPermissionState.GRANTED,
-      })
-    })
-
     it('should not display "Active ta géolocalisation" button', () => {
       render(
         <VenueSelectionModal
@@ -206,14 +193,6 @@ describe('<VenueSelectionModal />', () => {
   })
 
   describe("When user doesn't share his position", () => {
-    beforeAll(() => {
-      mockUseLocation.mockReturnValue({
-        ...defaultUseLocation,
-        geolocPosition: null,
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      })
-    })
-
     it('should display "Active ta géolocalisation" button', () => {
       render(
         <VenueSelectionModal
@@ -238,7 +217,7 @@ describe('<VenueSelectionModal />', () => {
     })
 
     it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', async () => {
-      const showPermissionModal = jest.spyOn(locationActions, 'showPermissionModal')
+      mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
       render(
         <VenueSelectionModal
@@ -262,11 +241,11 @@ describe('<VenueSelectionModal />', () => {
 
       await user.press(button)
 
-      expect(showPermissionModal).toHaveBeenCalledWith()
+      await waitFor(() => expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true))
     })
 
     it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
-      const hidePermissionModal = jest.spyOn(locationActions, 'hidePermissionModal')
+      mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
       render(
         <VenueSelectionModal
@@ -292,20 +271,14 @@ describe('<VenueSelectionModal />', () => {
 
       await user.press(screen.getByText('Activer la géolocalisation'))
 
-      expect(hidePermissionModal).toHaveBeenCalledWith()
+      expect(locationSelectors.selectIsPermissionModalVisible()).toBe(false)
     })
   })
 
   describe('When user has forbidden his position', () => {
-    beforeAll(() => {
-      mockUseLocation.mockReturnValue({
-        ...defaultUseLocation,
-        geolocPosition: null,
-        permissionState: GeolocPermissionState.DENIED,
-      })
-    })
-
     it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', async () => {
+      mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
+
       render(
         <VenueSelectionModal
           headerMessage=""
@@ -328,7 +301,9 @@ describe('<VenueSelectionModal />', () => {
 
       await user.press(button)
 
-      expect(mockRequestGeolocPermission).toHaveBeenCalledWith()
+      await waitFor(() =>
+        expect(locationSelectors.selectPermissionState()).toBe(GeolocPermissionState.DENIED)
+      )
     })
   })
 })
