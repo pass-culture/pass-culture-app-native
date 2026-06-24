@@ -34,6 +34,17 @@ describe('buildLocationParameter', () => {
       })
     })
 
+    it('should return a position without radius when selectedLocationMode is "AROUND_ME" and no radius is provided', () => {
+      const result = buildLocationParameter({
+        userLocation,
+        selectedLocationMode: LocationMode.AROUND_ME,
+      })
+
+      expect(result).toEqual({
+        aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+      })
+    })
+
     it('should return a position with a specified radius when selectedLocationMode is "AROUND_ME" and there is a userPosition', () => {
       const result = buildLocationParameter({
         userLocation,

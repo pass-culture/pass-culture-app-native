@@ -10,7 +10,6 @@ import { LocationLabel, LocationMode } from 'libs/location/types'
 import { useIsGeolocated } from 'libs/locationV2/location.store'
 import { locationModalActions, locationModalStore } from 'libs/locationV2/locationModal.store'
 import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
-import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
@@ -25,7 +24,6 @@ type LocationModalProps = {
   onSubmit?: () => void
   onClose?: () => void
   shouldHideEverywhereSection?: boolean
-  shouldShowRadiusSlider?: boolean
   buttonWording?: string
   from: 'home' | 'search' | 'venueMap'
 }
@@ -49,7 +47,6 @@ const MODE_TO_LABEL_MAP: Record<LocationMode, string> = {
 export const LocationModal = ({
   onSubmit,
   onClose,
-  shouldShowRadiusSlider,
   buttonWording,
   shouldHideEverywhereSection,
   from,
@@ -58,28 +55,8 @@ export const LocationModal = ({
   const selectedPlace = locationModalStore.hooks.usePlace()
   const isSubmitDisabled = locationModalStore.hooks.useIsSubmitDisabled()
   const addressInputValue = locationModalStore.hooks.useAddressInputValue()
-  const { radius: aroundMeRadius } = locationModalStore.hooks.useConfiguration(
-    LocationMode.AROUND_ME
-  )
-  const { radius: aroundPlaceRadius } = locationModalStore.hooks.useConfiguration(
-    LocationMode.AROUND_PLACE
-  )
   const isGeolocated = useIsGeolocated()
   const { goBack } = useNavigation<UseNavigationType>()
-
-  const isCurrentLocationMode = (target: LocationMode) => locationMode === target
-
-  const onTempAroundPlaceRadiusValueChange = (newValues: number[]) => {
-    if (newValues?.[0]) {
-      locationModalActions.setAroundPlaceRadius(newValues[0])
-    }
-  }
-
-  const onTempAroundMeRadiusValueChange = (newValues: number[]) => {
-    if (newValues?.[0]) {
-      locationModalActions.setAroundMeRadius(newValues[0])
-    }
-  }
 
   useEffect(() => {
     locationModalActions.sync()
@@ -97,12 +74,6 @@ export const LocationModal = ({
     goBack()
   }
 
-  const shouldShowAroundPlaceRadiusSlider =
-    shouldShowRadiusSlider && isCurrentLocationMode(LocationMode.AROUND_PLACE)
-
-  const shouldShowAroundMeRadiusSlider =
-    shouldShowRadiusSlider && isCurrentLocationMode(LocationMode.AROUND_ME)
-
   const groupLabel = 'Sélectionne ta localisation'
 
   const options: RadioButtonGroupOption[] = [
@@ -111,14 +82,6 @@ export const LocationModal = ({
       label: AROUND_ME_TITLE,
       description: isGeolocated ? undefined : 'Géolocalisation désactivée',
       asset: { variant: 'icon', Icon: PositionFilled },
-      collapsed: shouldShowAroundMeRadiusSlider ? (
-        <SliderContainer>
-          <LocationSearchFilters
-            aroundRadius={aroundMeRadius}
-            onValuesChange={onTempAroundMeRadiusValueChange}
-          />
-        </SliderContainer>
-      ) : null,
     },
     {
       key: LocationMode.AROUND_PLACE,
@@ -127,23 +90,13 @@ export const LocationModal = ({
       asset: { variant: 'icon', Icon: MagnifyingGlassFilled },
       collapsed:
         locationMode === LocationMode.AROUND_PLACE ? (
-          <React.Fragment>
-            <LocationSearchInput
-              selectedPlace={selectedPlace}
-              setSelectedPlace={locationModalActions.setPlace}
-              placeQuery={addressInputValue}
-              setPlaceQuery={locationModalActions.setAddressInputValue}
-              onResetPlace={locationModalActions.resetPlace}
-            />
-            {shouldShowAroundPlaceRadiusSlider ? (
-              <SliderContainer>
-                <LocationSearchFilters
-                  aroundRadius={aroundPlaceRadius}
-                  onValuesChange={onTempAroundPlaceRadiusValueChange}
-                />
-              </SliderContainer>
-            ) : null}
-          </React.Fragment>
+          <LocationSearchInput
+            selectedPlace={selectedPlace}
+            setSelectedPlace={locationModalActions.setPlace}
+            placeQuery={addressInputValue}
+            setPlaceQuery={locationModalActions.setAddressInputValue}
+            onResetPlace={locationModalActions.resetPlace}
+          />
         ) : null,
     },
     ...(shouldHideEverywhereSection
@@ -220,8 +173,4 @@ const FooterContainer = styled.View(({ theme }) => ({
 const HeaderContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.l,
   width: '100%',
-}))
-
-const SliderContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
 }))

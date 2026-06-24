@@ -44,7 +44,7 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     void analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const { place, selectedLocationMode } = useLocation()
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
 
@@ -60,17 +60,13 @@ export const SearchFilter: React.FC = () => {
         return {
           locationType: selectedLocationMode,
           place: place as SuggestedPlace,
-          aroundRadius: aroundPlaceRadius,
         }
       case LocationMode.AROUND_ME:
-        return {
-          locationType: selectedLocationMode,
-          aroundRadius: aroundMeRadius,
-        }
+        return { locationType: selectedLocationMode }
       case LocationMode.EVERYWHERE:
         return { locationType: selectedLocationMode }
     }
-  }, [aroundMeRadius, aroundPlaceRadius, place, selectedLocationMode])
+  }, [place, selectedLocationMode])
 
   const hasDefaultValues = isEqual(searchState, {
     ...initialSearchState,

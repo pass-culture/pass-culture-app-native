@@ -51,7 +51,6 @@ describe('Search reducer', () => {
       {
         ...state,
         locationFilter: {
-          aroundRadius: 20,
           locationType: LocationMode.AROUND_PLACE,
           place: Kourou,
         },
@@ -71,7 +70,6 @@ describe('Search reducer', () => {
     expect(newState.locationFilter).toStrictEqual({
       locationType: LocationMode.AROUND_PLACE,
       place: Kourou,
-      aroundRadius: 100,
     })
   })
 })

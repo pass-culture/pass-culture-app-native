@@ -492,7 +492,6 @@ describe('[Analytics utils]', () => {
     it('should return all location filter param in a string when type is AROUND_ME', () => {
       const aroundMeType: LocationFilter = {
         locationType: LocationMode.AROUND_ME,
-        aroundRadius: 100,
       }
       const aroundMeTypeSearchState: SearchState = {
         ...initialSearchState,
@@ -551,7 +550,6 @@ describe('[Analytics utils]', () => {
           type: 'street',
           geolocation: { longitude: 2.331196, latitude: 48.869334 },
         },
-        aroundRadius: 100,
       }
       const placeTypeSearchState = {
         ...initialSearchState,
@@ -573,7 +571,6 @@ describe('[Analytics utils]', () => {
           type: 'street',
           geolocation: { longitude: 2.331196, latitude: 48.869334 },
         },
-        aroundRadius: 100,
       }
       const placeTypeSearchState = {
         ...initialSearchState,

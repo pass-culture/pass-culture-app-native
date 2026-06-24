@@ -70,7 +70,6 @@ const mockDefaultLocationFilter: LocationFilter = {
 
 const mockAroundMeLocationFilter: LocationFilter = {
   locationType: LocationMode.AROUND_ME,
-  aroundRadius: 50,
 }
 
 let mockSearchState = initialSearchState

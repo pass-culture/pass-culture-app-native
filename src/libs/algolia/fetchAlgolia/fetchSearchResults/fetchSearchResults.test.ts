@@ -213,7 +213,7 @@ describe('fetchSearchResults', () => {
       {
         ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        aroundRadius: 100000,
+        aroundRadius: undefined,
         aroundLatLng: '42, 43',
       },
       {
@@ -249,7 +249,7 @@ describe('fetchSearchResults', () => {
       {
         ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        aroundRadius: 100000,
+        aroundRadius: undefined,
         aroundLatLng: '5.16176, -52.669726',
       },
       {
@@ -285,7 +285,7 @@ describe('fetchSearchResults', () => {
       {
         ...defaultVenuesQuery,
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        aroundRadius: 100000,
+        aroundRadius: undefined,
         aroundLatLng: '5.16176, -52.669726',
       },
       {

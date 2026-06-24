@@ -29,13 +29,7 @@ export const useSync = (shouldSync = true) => {
   const { setParams } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
-  const {
-    setPlace,
-    setSelectedLocationMode,
-    setSelectedPlace,
-    setAroundMeRadius,
-    hasGeolocPosition,
-  } = useLocation()
+  const { setPlace, setSelectedLocationMode, setSelectedPlace, hasGeolocPosition } = useLocation()
 
   /*
    * 1) URL => State (one-time, on mount)
@@ -98,19 +92,6 @@ export const useSync = (shouldSync = true) => {
 
     setSelectedLocationMode(LocationMode.AROUND_ME)
     setCanSwitchToAroundMe(false)
-
-    if (
-      params?.locationFilter?.locationType === LocationMode.AROUND_ME &&
-      params?.locationFilter?.aroundRadius
-    ) {
-      setAroundMeRadius(params.locationFilter.aroundRadius)
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    hasGeolocPosition,
-    canSwitchToAroundMe,
-    setSelectedLocationMode,
-    setAroundMeRadius,
-    params?.locationFilter?.locationType,
-  ])
+  }, [hasGeolocPosition, canSwitchToAroundMe, setSelectedLocationMode])
 }

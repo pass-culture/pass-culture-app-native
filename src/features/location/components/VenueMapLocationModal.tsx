@@ -25,7 +25,6 @@ export const VenueMapLocationModal: FC = () => {
     <LocationModal
       from="venueMap"
       onSubmit={handleSubmit}
-      shouldShowRadiusSlider
       buttonWording="Valider et voir sur la carte"
       shouldHideEverywhereSection
     />

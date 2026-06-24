@@ -5,13 +5,12 @@ import { LocationMode } from 'libs/algolia/types'
 
 type SearchVenuePositionType = {
   aroundLatLng?: string
-  aroundRadius: number | 'all'
+  aroundRadius?: number | 'all'
 }
 
-export function convertKmToMeters(aroundRadiusKm: number | 'all') {
-  if (aroundRadiusKm === 'all' || aroundRadiusKm === 0) {
-    return 'all'
-  }
+export function convertKmToMeters(aroundRadiusKm?: number | 'all') {
+  if (aroundRadiusKm === undefined) return undefined
+  if (aroundRadiusKm === 'all' || aroundRadiusKm === 0) return 'all'
   return aroundRadiusKm * 1000
 }
 
@@ -19,40 +18,21 @@ export function buildSearchVenuePosition(
   buildLocationParameterParams: BuildLocationParameterParams,
   venue?: Venue
 ) {
-  const { selectedLocationMode, userLocation, aroundMeRadius, aroundPlaceRadius } =
-    buildLocationParameterParams
+  const { selectedLocationMode, userLocation } = buildLocationParameterParams
 
   let searchVenuePosition: SearchVenuePositionType = { aroundRadius: 'all' }
-  if (userLocation) {
-    switch (selectedLocationMode) {
-      case LocationMode.AROUND_ME:
-        searchVenuePosition = {
-          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-          aroundRadius: convertKmToMeters(aroundMeRadius),
-        }
-        break
-      case LocationMode.EVERYWHERE:
-        searchVenuePosition = {
-          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-          aroundRadius: 'all',
-        }
-        break
-      case LocationMode.AROUND_PLACE:
-        searchVenuePosition = {
-          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-          aroundRadius: convertKmToMeters(aroundPlaceRadius),
-        }
-        break
 
-      default:
-        break
-    }
+  if (userLocation) {
+    const aroundLatLng = `${userLocation.latitude}, ${userLocation.longitude}`
+
+    searchVenuePosition =
+      selectedLocationMode === LocationMode.EVERYWHERE
+        ? { aroundLatLng, aroundRadius: 'all' }
+        : { aroundLatLng }
   }
 
   if (venue?._geoloc) {
-    const venuePosition = venue._geoloc
-    const latitude = venuePosition.lat
-    const longitude = venuePosition.lng
+    const { lat: latitude, lng: longitude } = venue._geoloc
 
     if (latitude && longitude) {
       searchVenuePosition = {

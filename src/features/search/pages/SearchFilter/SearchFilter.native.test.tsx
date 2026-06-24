@@ -3,7 +3,6 @@ import React from 'react'
 import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
@@ -34,12 +33,9 @@ const initialMockUseLocation = {
   place: null,
   userLocation: DEFAULT_POSITION,
   selectedLocationMode: LocationMode.AROUND_ME,
-  aroundMeRadius: DEFAULT_RADIUS,
   setSelectedLocationMode: mockSetSelectedLocationMode,
   hasGeolocPosition: false,
   setSelectedPlace: jest.fn(),
-  setAroundMeRadius: jest.fn(),
-  aroundPlaceRadius: DEFAULT_RADIUS,
   setPlace: jest.fn(),
 }
 const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
@@ -93,7 +89,7 @@ describe('<SearchFilter/>', () => {
       ...initialMockUseSearch,
       searchState: {
         ...initialSearchState,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+        locationFilter: { locationType: LocationMode.AROUND_ME },
       },
     })
     renderSearchFilter()
@@ -110,7 +106,7 @@ describe('<SearchFilter/>', () => {
       ...initialMockUseSearch,
       searchState: {
         ...initialSearchState,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+        locationFilter: { locationType: LocationMode.AROUND_ME },
         minPrice: '5',
         defaultMinPrice: '5',
       },
@@ -190,7 +186,7 @@ describe('<SearchFilter/>', () => {
         type: 'SET_STATE',
         payload: {
           ...initialSearchState,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+          locationFilter: { locationType: LocationMode.AROUND_ME },
         },
       })
     })

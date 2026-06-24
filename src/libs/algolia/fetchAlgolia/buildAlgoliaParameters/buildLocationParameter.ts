@@ -4,39 +4,42 @@ import { Position } from 'libs/location/location'
 
 export type AlgoliaPositionParams = {
   aroundLatLng: string
-  aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS | number
+  aroundRadius?: RADIUS_FILTERS.UNLIMITED_RADIUS | number
 }
 
 export type BuildLocationParameterParams = {
   selectedLocationMode: LocationMode
   userLocation: Position
-  aroundMeRadius: number | 'all'
-  aroundPlaceRadius: number | 'all'
+  aroundMeRadius?: number | 'all'
+  aroundPlaceRadius?: number | 'all'
   geolocPosition?: Position
 }
 
 export const buildLocationParameter = ({
   selectedLocationMode,
   userLocation,
-  aroundMeRadius,
-  aroundPlaceRadius,
+  aroundMeRadius = 'all',
+  aroundPlaceRadius = 'all',
 }: BuildLocationParameterParams): AlgoliaPositionParams | undefined => {
   if (!userLocation) return
-  const positionParams: AlgoliaPositionParams = {
-    aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-    aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS,
+
+  const aroundLatLng = `${userLocation.latitude}, ${userLocation.longitude}`
+
+  if (selectedLocationMode === LocationMode.EVERYWHERE) {
+    return { aroundLatLng, aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS }
   }
-  switch (selectedLocationMode) {
-    case LocationMode.AROUND_ME:
-      positionParams.aroundRadius = getRadius(aroundMeRadius)
-      break
-    case LocationMode.AROUND_PLACE:
-      positionParams.aroundRadius = getRadius(aroundPlaceRadius)
-      break
-    default:
-      break
+
+  if (selectedLocationMode === LocationMode.AROUND_ME) {
+    if (aroundMeRadius === undefined) return { aroundLatLng }
+    return { aroundLatLng, aroundRadius: getRadius(aroundMeRadius) }
   }
-  return positionParams
+
+  if (selectedLocationMode === LocationMode.AROUND_PLACE) {
+    if (aroundPlaceRadius === undefined) return { aroundLatLng }
+    return { aroundLatLng, aroundRadius: getRadius(aroundPlaceRadius) }
+  }
+
+  return { aroundLatLng }
 }
 
 export const buildLocationParameterForSearch = ({
@@ -46,22 +49,23 @@ export const buildLocationParameterForSearch = ({
   aroundMeRadius,
   aroundPlaceRadius,
 }: BuildLocationParameterParams): AlgoliaPositionParams | undefined => {
-  return geolocPosition && selectedLocationMode === LocationMode.EVERYWHERE
-    ? {
-        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
-        aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS,
-      }
-    : buildLocationParameter({
-        selectedLocationMode,
-        userLocation,
-        aroundMeRadius,
-        aroundPlaceRadius,
-      })
+  if (geolocPosition && selectedLocationMode === LocationMode.EVERYWHERE) {
+    return {
+      aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
+      aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS,
+    }
+  }
+
+  return buildLocationParameter({
+    selectedLocationMode,
+    userLocation,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  })
 }
 
 const computeAroundRadiusInMeters = (aroundRadius: number): number => {
   if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
-  // Algolia API needs an integer: https://www.algolia.com/doc/api-reference/api-parameters/aroundRadius/#options
   return Math.round(aroundRadius * 1000)
 }
 

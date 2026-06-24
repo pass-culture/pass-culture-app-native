@@ -9,8 +9,6 @@ const userLocation = {
 const buildLocationParameterParams: BuildLocationParameterParams = {
   userLocation,
   selectedLocationMode: LocationMode.AROUND_ME,
-  aroundMeRadius: 'all',
-  aroundPlaceRadius: 'all',
 }
 const disabilitiesProperties = {
   isAudioDisabilityCompliant: false,
@@ -27,7 +25,6 @@ describe('buildVenueSearchParameters', () => {
 
     expect(venueSearchPredicate).toEqual({
       aroundLatLng: '48.8566, 2.3522',
-      aroundRadius: 'all',
       facetFilters: defaultFacetFilters,
     })
   })
@@ -40,7 +37,6 @@ describe('buildVenueSearchParameters', () => {
 
     expect(venueSearchPredicate).toEqual({
       aroundLatLng: '48.8566, 2.3522',
-      aroundRadius: 'all',
       facetFilters: [...defaultFacetFilters, ['mental_disability:true'], ['motor_disability:true']],
     })
   })
