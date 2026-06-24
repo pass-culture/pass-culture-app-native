@@ -28,6 +28,23 @@ describe('BonificationBanner', () => {
     expect(bannerLabel).toBeOnTheScreen()
   })
 
+  it('should show pending banner when started', () => {
+    render(
+      reactQueryProviderHOC(
+        <BonificationBanner
+          bonificationStatus={QFBonificationStatus.started}
+          onCloseCallback={jest.fn()}
+        />
+      )
+    )
+
+    const bannerLabel = screen.getByLabelText(
+      'Bonus de 50 € - Ton dossier est actuellement en cours de vérification.'
+    )
+
+    expect(bannerLabel).toBeOnTheScreen()
+  })
+
   describe('error banner', () => {
     it('should show correct message', () => {
       render(
@@ -64,6 +81,126 @@ describe('BonificationBanner', () => {
       })
     })
 
+    it('should show correct message when application_not_found', () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.application_not_found}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLabel = screen.getByText('Ton dossier a été refusé.')
+
+      expect(bannerLabel).toBeOnTheScreen()
+    })
+
+    it('should navigate with correct params when application_not_found', async () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.application_not_found}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLink = screen.getByText('Voir plus de détails')
+
+      await userEvent.press(bannerLink)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: { bonificationRefusedType: 'application_not_found' },
+        screen: 'BonificationRefused',
+      })
+    })
+
+    it('should show correct message when quotient_familial_too_high', () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.quotient_familial_too_high}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLabel = screen.getByText('Ton dossier a été refusé.')
+
+      expect(bannerLabel).toBeOnTheScreen()
+    })
+
+    it('should navigate with correct params when quotient_familial_too_high', async () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.quotient_familial_too_high}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLink = screen.getByText('Voir plus de détails')
+
+      await userEvent.press(bannerLink)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: { bonificationRefusedType: 'quotient_familial_too_high' },
+        screen: 'BonificationRefused',
+      })
+    })
+
+    it('should show correct message when not_in_tax_household', () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.not_in_tax_household}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLabel = screen.getByText('Ton dossier a été refusé.')
+
+      expect(bannerLabel).toBeOnTheScreen()
+    })
+
+    it('should navigate with correct params when not_in_tax_household', async () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.not_in_tax_household}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLink = screen.getByText('Voir plus de détails')
+
+      await userEvent.press(bannerLink)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: { bonificationRefusedType: 'not_in_tax_household' },
+        screen: 'BonificationRefused',
+      })
+    })
+
+    it('should show correct message when too_many_retries', () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.too_many_retries}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLabel = screen.getByText('Ton dossier a été refusé.')
+
+      expect(bannerLabel).toBeOnTheScreen()
+    })
+
     it('should navigate with correct params when too_many_retries', async () => {
       render(
         reactQueryProviderHOC(
@@ -83,22 +220,5 @@ describe('BonificationBanner', () => {
         screen: 'BonificationRefused',
       })
     })
-  })
-
-  it('should show pending banner', () => {
-    render(
-      reactQueryProviderHOC(
-        <BonificationBanner
-          bonificationStatus={QFBonificationStatus.started}
-          onCloseCallback={jest.fn()}
-        />
-      )
-    )
-
-    const bannerLabel = screen.getByLabelText(
-      'Bonus de 50 € - Ton dossier est actuellement en cours de vérification.'
-    )
-
-    expect(bannerLabel).toBeOnTheScreen()
   })
 })

@@ -75,6 +75,13 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'BonificationRefused APPLICATION_NOT_FOUND',
+      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+        bonificationRefusedType: BonificationRefusedType.APPLICATION_NOT_FOUND,
+      }),
+    },
+    {
+      id: uuidv4(),
       title: 'BonificationRefused NOT_IN_TAX_HOUSEHOLD',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
         bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
