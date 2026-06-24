@@ -67,7 +67,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistArtists' as const,
-    params: { title, subtitle: undefined, offerId },
+    params: { title, subtitle: undefined, offerId, originDetails: 'offer' },
   }
 
   const soloArtist = artists[0]

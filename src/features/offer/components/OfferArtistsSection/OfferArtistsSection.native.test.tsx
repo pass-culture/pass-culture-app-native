@@ -324,6 +324,7 @@ describe('<OfferArtistsSection />', () => {
       expect(navigate).toHaveBeenCalledWith('VerticalPlaylistArtists', {
         offerId: 1,
         title: 'Artistes',
+        originDetails: 'offer',
       })
     })
   })

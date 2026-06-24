@@ -11,26 +11,41 @@ jest.useFakeTimers()
 
 describe('HorizontalArtistTile', () => {
   it('should render the artist name and role correctly', () => {
-    render(<HorizontalArtistTile artist={{ ...mockArtistLadyGaga, role: 'Interprète' }} />)
+    render(
+      <HorizontalArtistTile
+        artist={{ ...mockArtistLadyGaga, role: 'Interprète' }}
+        onBeforeNavigate={jest.fn()}
+      />
+    )
 
     expect(screen.getByText('Lady Gaga')).toBeOnTheScreen()
     expect(screen.getByText('Interprète')).toBeOnTheScreen()
   })
 
   it('should render the artist image when an image URL is provided', () => {
-    render(<HorizontalArtistTile artist={mockArtistLadyGaga} />)
+    render(<HorizontalArtistTile artist={mockArtistLadyGaga} onBeforeNavigate={jest.fn()} />)
 
     expect(screen.getByTestId('artistAvatar')).toBeOnTheScreen()
   })
 
   it('should render the default avatar when no image URL is provided', () => {
-    render(<HorizontalArtistTile artist={{ ...mockArtistLadyGaga, image: undefined }} />)
+    render(
+      <HorizontalArtistTile
+        artist={{ ...mockArtistLadyGaga, image: undefined }}
+        onBeforeNavigate={jest.fn()}
+      />
+    )
 
     expect(screen.getByTestId('defaultArtistAvatar')).toBeOnTheScreen()
   })
 
   it('should navigate to artist page when artist has an id and pressing tile', async () => {
-    render(<HorizontalArtistTile artist={{ ...mockArtistLadyGaga, role: 'Interprète' }} />)
+    render(
+      <HorizontalArtistTile
+        artist={{ ...mockArtistLadyGaga, role: 'Interprète' }}
+        onBeforeNavigate={jest.fn()}
+      />
+    )
 
     await user.press(screen.getByLabelText('Lady Gaga - Interprète'))
 
@@ -38,7 +53,12 @@ describe('HorizontalArtistTile', () => {
   })
 
   it('should not activate artist page navigation when artist has not an id', () => {
-    render(<HorizontalArtistTile artist={{ ...mockArtistLadyGaga, role: 'Interprète', id: '' }} />)
+    render(
+      <HorizontalArtistTile
+        artist={{ ...mockArtistLadyGaga, role: 'Interprète', id: '' }}
+        onBeforeNavigate={jest.fn()}
+      />
+    )
 
     expect(screen.queryByLabelText('Lady Gaga - Interprète')).not.toBeOnTheScreen()
   })

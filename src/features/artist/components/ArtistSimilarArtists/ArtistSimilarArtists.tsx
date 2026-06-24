@@ -58,7 +58,12 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
                 onBeforeNavigate,
                 navigateToVerticalPlaylist: {
                   screen: 'VerticalPlaylistArtists',
-                  params: { title: TITLE, subtitle: undefined, similarToArtistId: artistId },
+                  params: {
+                    title: TITLE,
+                    subtitle: undefined,
+                    similarToArtistId: artistId,
+                    originDetails: 'similarArtistsPlaylist',
+                  },
                 },
                 hideSearchSeeAll: true,
               }}
