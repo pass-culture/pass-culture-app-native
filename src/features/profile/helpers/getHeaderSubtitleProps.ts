@@ -1,7 +1,7 @@
-import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
+import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
 
 type Props = {
   isCreditEmpty: boolean

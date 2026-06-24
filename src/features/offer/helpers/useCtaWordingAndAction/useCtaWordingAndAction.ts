@@ -13,14 +13,6 @@ import {
   SubscriptionStatus,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isFreeBeneficiary } from 'features/auth/helpers/checkCreditType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
-import {
-  isCurrentOrFormerBeneficiary,
-  isNonEligible,
-  isEligible,
-  isCurrentBeneficiary,
-} from 'features/auth/helpers/checkStatusType'
 import { useOngoingOrEndedBookingQueryV2 } from 'features/bookings/queries'
 import {
   useStoredProfileInfos,
@@ -37,7 +29,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getIsFreeOffer } from 'features/offer/helpers/getIsFreeOffer/getIsFreeOffer'
-import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import {
   HasEnoughCredit,
   useHasEnoughCredit,
@@ -52,6 +43,14 @@ import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBook
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
+import { isFreeBeneficiary } from 'shared/user/checkCreditType'
+import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
+import {
+  isCurrentOrFormerBeneficiary,
+  isNonEligible,
+  isEligible,
+  isCurrentBeneficiary,
+} from 'shared/user/checkStatusType'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
@@ -130,7 +129,6 @@ export const getCtaWordingAndAction = ({
   const isUserEligibleFree = getIsUserEligibleFree(user?.eligibilityType)
   const isFreeOffer = getIsFreeOffer(offer)
   const isNotFreeOffer = !isFreeOffer
-  const isProfileIncomplete = getIsProfileIncomplete(user)
   const isUserFreeBeneficiary = isFreeBeneficiary(user)
   const isUserBeneficiary = isCurrentBeneficiary(user)
   const userWithNotEnoughCredit = isUserBeneficiary && !hasEnoughCredit
@@ -217,7 +215,7 @@ export const getCtaWordingAndAction = ({
   }
 
   if (isFreeOffer) {
-    if (isUserEligibleFree && isProfileIncomplete) {
+    if (isUserEligibleFree) {
       return {
         wording: 'Réserver l’offre',
         isDisabled: false,

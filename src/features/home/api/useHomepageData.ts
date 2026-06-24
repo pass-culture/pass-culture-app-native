@@ -4,10 +4,10 @@ import { Homepage } from 'features/home/types'
 import { UserOnboardingRole } from 'features/onboarding/enums'
 import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRoleFromOnboarding'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { isUserFreeBeneficiaryOrEligible } from 'features/profile/helpers/isUserFreeBeneficiaryOrEligible'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useUserHasBookingsQueryV2 } from 'queries/bookings/useUserHasBookingsQuery'
+import { isUserFreeBeneficiaryOrEligible } from 'shared/user/isUserFreeBeneficiaryOrEligible'
 
 enum HomepageType {
   GENERAL,

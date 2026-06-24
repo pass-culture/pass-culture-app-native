@@ -2,12 +2,6 @@ import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isFreeBeneficiary } from 'features/auth/helpers/checkCreditType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/checkEligibilityType'
-import {
-  isCurrentOrFormerBeneficiary,
-  isCurrentBeneficiary,
-} from 'features/auth/helpers/checkStatusType'
 import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetWrapperDesktop } from 'features/location/components/LocationWidgetWrapperDesktop'
@@ -16,6 +10,9 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { isFreeBeneficiary } from 'shared/user/checkCreditType'
+import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
+import { isCurrentOrFormerBeneficiary, isCurrentBeneficiary } from 'shared/user/checkStatusType'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'

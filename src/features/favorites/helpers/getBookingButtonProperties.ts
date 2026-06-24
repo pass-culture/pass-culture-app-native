@@ -1,11 +1,11 @@
 import { FavoriteOfferResponse } from 'api/gen'
-import { isEligible } from 'features/auth/helpers/checkStatusType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getBeneficiaryBookingButtonProps } from 'features/favorites/helpers/getBeneficiaryBookingButtonProps'
 import { getEligibleBookingButtonProps } from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { UserProfile } from 'features/share/types'
 import { OfferModal } from 'shared/offer/enums'
+import { isEligible } from 'shared/user/checkStatusType'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 interface Props {

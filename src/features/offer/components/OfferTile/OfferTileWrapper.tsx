@@ -2,7 +2,6 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -17,6 +16,7 @@ import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
+import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 
 type Props = Omit<
   OfferTileProps,

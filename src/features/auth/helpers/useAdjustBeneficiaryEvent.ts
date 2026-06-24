@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
-import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserProfile } from 'features/share/types'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
+import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 import { getAge } from 'shared/user/getAge'
 
 export const useAdjustBeneficiaryEvent = (user?: UserProfile) => {

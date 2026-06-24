@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
 import { AttachedCardImage } from 'features/home/components/AttachedModuleCard/AttachedCardImage'
 import { getDistance } from 'libs/location/getDistance'
@@ -13,6 +12,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
+import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 
 type Props = {
   offer: Offer
