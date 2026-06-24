@@ -83,9 +83,7 @@ export type SearchResultsContentProps = {
   userData: SearchResponse<Offer[]>['userData']
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
-  onPressAIFakeDoorBanner: () => void
   onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
-  enableAIFakeDoor?: boolean
 }
 
 export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
@@ -99,8 +97,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   userData,
   venuesUserData,
   offerVenues,
-  enableAIFakeDoor,
-  onPressAIFakeDoorBanner,
 }) => {
   const previousRouteName = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -342,8 +338,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         shouldDisplayGridList={shouldDisplayGridList}
         onViewableItemsChanged={handleViewableItemsChanged}
         onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
-        enableAIFakeDoor={enableAIFakeDoor}
-        onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,

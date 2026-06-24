@@ -61,7 +61,6 @@ describe('<SearchList />', () => {
     onScroll: jest.fn(),
     userData: [],
     venuesUserData: [],
-    onPressAIFakeDoorBanner: jest.fn(),
   }
 
   it('should renders correctly and calls renderItem', () => {

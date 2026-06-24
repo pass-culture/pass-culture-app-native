@@ -16,7 +16,6 @@ import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
-import { AIFakeDoorBanner } from 'ui/components/ModuleBanner/AIFakeDoorBanner'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Error } from 'ui/svg/icons/Error'
 import { Typo } from 'ui/theme'
@@ -26,8 +25,6 @@ type SearchListHeaderProps = ScrollViewProps & {
   venuesSection?: React.ReactNode
   artistSection?: React.ReactNode
   shouldDisplayGridList?: boolean
-  enableAIFakeDoor?: boolean
-  onPressAIFakeDoorBanner: () => void
   searchFilters: FetchSearchResultsArgs
 }
 
@@ -36,8 +33,6 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
   venuesSection,
   artistSection,
   shouldDisplayGridList,
-  enableAIFakeDoor,
-  onPressAIFakeDoorBanner,
   searchFilters,
 }) => {
   const { geolocPosition, showGeolocPermissionModal } = useLocation()
@@ -82,11 +77,6 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
 
   return (
     <View testID="searchListHeader">
-      {enableAIFakeDoor ? (
-        <AIFakeDoorBannerContainer>
-          <AIFakeDoorBanner onPress={onPressAIFakeDoorBanner} />
-        </AIFakeDoorBannerContainer>
-      ) : null}
       {shouldDisplayGeolocationBanner ? (
         <GeolocationBannerContainer>
           <GeolocationBanner
@@ -152,9 +142,5 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
 }))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const AIFakeDoorBannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))

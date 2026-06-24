@@ -43,7 +43,6 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
-  ENABLE_AI_FAKE_DOOR = 'enableAIFakeDoor',
   ENABLE_BONIFICATION = 'enableBonification',
   ENABLE_HANDICAP_BONIFICATION = 'enableHandicapBonification',
   ENABLE_CHATBOT = 'enableChatbot',

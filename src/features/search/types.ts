@@ -97,7 +97,6 @@ export interface SearchListProps {
   onRefresh: (() => void) | null | undefined
   onEndReached: () => void
   userData: SearchResponse<Offer[]>['userData']
-  onPressAIFakeDoorBanner: () => void
   onScroll?: () => void
   onPress?: () => void
   artistSection?: ReactNode
@@ -115,7 +114,6 @@ export interface SearchListProps {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
-  enableAIFakeDoor?: boolean
 }
 
 export type CreateHistoryItem = {
