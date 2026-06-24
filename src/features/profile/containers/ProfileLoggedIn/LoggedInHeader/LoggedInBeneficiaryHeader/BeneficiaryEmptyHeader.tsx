@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { FreeHomeButton } from 'features/profile/components/Buttons/FreeHomeButton/FreeHomeButton'
 import { HelpButton } from 'features/profile/components/Buttons/HelpButton/HelpButton'
 import { GreySeparatorWithBorderDefaultColor } from 'features/profile/components/GreySeparatorWithBorderDefaultColor/GreySeparatorWithBorderDefaultColor'
@@ -13,6 +12,7 @@ import { getIsDepositExpired } from 'features/profile/helpers/getIsDepositExpire
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
 import { UserProfile } from 'features/share/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
 import { getAge } from 'shared/user/getAge'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { PageHeader } from 'ui/components/headers/PageHeader'

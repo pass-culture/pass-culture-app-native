@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { HighlightedBody } from 'features/profile/components/HighlightedBody/HighlightedBody'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, memo, useState, useMemo, PropsWithChildren } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
+import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 
 import { TabNavigationStateType, TabStateRoute } from '../navigators/TabNavigator/types'
 

@@ -1,6 +1,4 @@
 import { OfferResponse, SubcategoryIdEnum, SubcategoryResponseModelv2 } from 'api/gen'
-import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
-import { getIsUserEligibleFree } from 'features/auth/helpers/getIsUserEligibleFree'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'
 import { isFreeDigitalOffer, isFreeOffer } from 'features/offerRefacto/helpers'
@@ -12,6 +10,8 @@ import {
 } from 'features/offerRefacto/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { UserProfile } from 'features/share/types'
+import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
+import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 
 export const getExternalUrlCTA = (
   offer: OfferResponse,

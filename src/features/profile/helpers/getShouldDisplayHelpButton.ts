@@ -1,5 +1,5 @@
-import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserProfile } from 'features/share/types'
+import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 
 type Props = { user: UserProfile | undefined }
 
