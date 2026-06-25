@@ -1,4 +1,3 @@
-import type { ImageSourcePropType } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -20,7 +19,7 @@ export type MappingOutput = Pick<
   searchLandingPosition: number | undefined
   fillColor: BackgroundColorKey | IllustrationColorKey
   borderColor: BorderColorKey
-  imageSource?: ImageSourcePropType
+  illustrationUrl?: string
   labelParts?: readonly string[]
 }
 
@@ -68,7 +67,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
         searchLandingPosition: category.searchLandingPosition,
         borderColor: category.borderColor,
         fillColor: category.fillColor,
-        imageSource: category.illustration,
+        illustrationUrl: category.illustrationUrl,
         labelParts: getCategoryLabelParts(label),
       }
     })

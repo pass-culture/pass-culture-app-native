@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-restricted-imports
+import FastImage from '@d11/react-native-fast-image'
 import React, { FunctionComponent } from 'react'
-import type { ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -24,7 +25,7 @@ type CategoryButtonProps = {
   style?: InternalTouchableLinkProps['style']
   fillColor: ColorsType
   borderColor: ColorsType
-  imageSource?: ImageSourcePropType
+  illustrationUrl?: string
   labelParts?: readonly string[]
 }
 
@@ -36,7 +37,7 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
   navigateTo,
   onBeforeNavigate,
   height,
-  imageSource,
+  illustrationUrl,
   labelParts,
 }) => {
   const shouldUseAccessibleLayout = useMobileFontScaleToDisplay({
@@ -44,7 +45,7 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
     at200PercentZoom: true,
   })
   const labelPartsToDisplay = shouldUseAccessibleLayout ? [label] : (labelParts ?? [label])
-  const imageSourceToDisplay = shouldUseAccessibleLayout ? undefined : imageSource
+  const illustrationUrlToDisplay = shouldUseAccessibleLayout ? undefined : illustrationUrl
   const effectiveHeight = useMobileFontScaleToDisplay({
     default: height,
     at200PercentZoom: undefined,
@@ -76,7 +77,12 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
               <Label key={labelPart}>{labelPart}</Label>
             ))}
           </LabelContainer>
-          {imageSourceToDisplay ? <CategoryIcon source={imageSourceToDisplay} /> : null}
+          {illustrationUrlToDisplay ? (
+            <RemoteCategoryIllustration
+              source={{ uri: illustrationUrlToDisplay }}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+          ) : null}
         </Container>
       )}
     </TouchableContainer>
@@ -146,11 +152,10 @@ const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) =
   paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
-const CategoryIcon = styled.Image({
+const RemoteCategoryIllustration = styled(FastImage)({
   position: 'absolute',
   right: 0,
   top: CATEGORY_ICON_TOP,
   width: CATEGORY_ICON_SIZE,
   height: CATEGORY_ICON_SIZE,
-  resizeMode: 'contain',
 })

@@ -73,6 +73,7 @@ export const whiteListEnv = (env, commitHash) => {
     'HOT_UPDATER_FIREBASE_PROJECT_ID',
     'HOT_UPDATER_FIREBASE_STORAGE_BUCKET',
     'HOT_UPDATER_FUNCTION_URL',
+    'ILLUSTRATIONS_BASE_URL',
     'IOS_APP_ICON',
     'IOS_APP_ID',
     'IOS_APP_NAME',
