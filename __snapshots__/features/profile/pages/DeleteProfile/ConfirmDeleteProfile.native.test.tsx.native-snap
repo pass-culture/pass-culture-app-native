@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`ConfirmDeleteProfile component should render confirm delete profile 1`] = `
+exports[`ConfirmDeleteProfile should render confirm delete profile 1`] = `
 <View
   isLandscape={false}
   style={

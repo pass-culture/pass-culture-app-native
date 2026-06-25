@@ -4,6 +4,7 @@ import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/fixtures'
@@ -38,6 +39,8 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
 }))
 
 const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')
+
+jest.mock('features/navigation/navigationRef', () => ({ resetFromRef: jest.fn() }))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -93,7 +96,7 @@ describe('DeleteProfileConfirmation', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(resetFromRef).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: 'DeleteProfileSuccess',
     })

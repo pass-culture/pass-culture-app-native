@@ -1,13 +1,14 @@
 import React from 'react'
 
-import { reset, goBack } from '__mocks__/@react-navigation/native'
+import { goBack } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
 
@@ -16,11 +17,18 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+const mockSignOut = jest.fn()
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
+  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+}))
+
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/adjust/adjust')
+
+jest.mock('features/navigation/navigationRef', () => ({ resetFromRef: jest.fn() }))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -32,7 +40,7 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-describe('ConfirmDeleteProfile component', () => {
+describe('ConfirmDeleteProfile', () => {
   it('should render confirm delete profile', () => {
     renderConfirmDeleteProfile()
 
@@ -45,21 +53,11 @@ describe('ConfirmDeleteProfile component', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(reset).toHaveBeenCalledWith({
-      index: 0,
-      routes: [
-        {
-          name: 'TabNavigator',
-          state: {
-            routes: [
-              {
-                name: 'ProfileStackNavigator',
-                state: { routes: [{ name: 'DeactivateProfileSuccess' }] },
-              },
-            ],
-          },
-        },
-      ],
+    await waitFor(() => {
+      expect(resetFromRef).toHaveBeenCalledWith('ProfileStackNavigator', {
+        screen: 'DeactivateProfileSuccess',
+        params: undefined,
+      })
     })
   })
 
