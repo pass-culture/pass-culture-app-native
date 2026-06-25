@@ -1,10 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { InseeCountry } from 'api/gen'
 import { CountryPicker } from 'features/bonification/components/CountryPicker'
+import { BonificationType } from 'features/bonification/enums'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
@@ -12,7 +13,7 @@ import {
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchNameInput } from 'features/profile/components/CitySearchInput/CitySearchNameInput'
 import { env } from 'libs/environment/env'
@@ -33,7 +34,15 @@ export type FormValues = {
 }
 
 export const BonificationBirthPlace = () => {
+  const { params } = useRoute<UseRouteType<'BonificationBirthPlace'>>()
   const { navigate } = useNavigation<UseNavigationType>()
+  const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
+
+  const title = isDisabilityBonification
+    ? 'Quel est ton lieu de naissance\u00a0?'
+    : 'Quel est le lieu de naissance de ton représentant légal\u00a0?'
+
+  const step = isDisabilityBonification ? 'Étape 1 sur 2' : 'Étape 4 sur 5'
 
   const { birthCountry, birthCity } = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
@@ -60,7 +69,12 @@ export const BonificationBirthPlace = () => {
     } else {
       setBirthCity(null)
     }
-    navigate(...getSubscriptionHookConfig('BonificationRecap'))
+
+    navigate(
+      ...getSubscriptionHookConfig('BonificationRecap', {
+        bonificationType: params?.bonificationType ?? BonificationType.FAMILY_QUOTIENT,
+      })
+    )
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
@@ -70,11 +84,9 @@ export const BonificationBirthPlace = () => {
       title="Informations"
       scrollChildren={
         <Form.MaxWidth>
-          <StyledBodyXsSteps>Étape 4 sur 5</StyledBodyXsSteps>
+          <StyledBodyXsSteps>{step}</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>
-              Quel est le lieu de naissance de ton représentant légal&nbsp;?
-            </Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
             <Controller
               control={control}
               name="birthCountrySelection"
@@ -117,15 +129,17 @@ export const BonificationBirthPlace = () => {
                 )}
               />
             ) : null}
-            <Button
-              variant="tertiary"
-              numberOfLines={2}
-              icon={InfoPlain}
-              wording="Je ne connais pas son lieu de naissance"
-              onPress={async () => {
-                await openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS)
-              }}
-            />
+            {isDisabilityBonification ? null : (
+              <Button
+                variant="tertiary"
+                numberOfLines={2}
+                icon={InfoPlain}
+                wording="Je ne connais pas son lieu de naissance"
+                onPress={async () => {
+                  await openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS)
+                }}
+              />
+            )}
           </ViewGap>
         </Form.MaxWidth>
       }

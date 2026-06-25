@@ -1,22 +1,29 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
+import { BonificationType } from 'features/bonification/enums'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { BlockDescriptionItem } from 'features/profile/components/Tutorial/BlockDescriptionItem'
 import { DashedStepContainer } from 'features/profile/components/Tutorial/DashedStepContainer'
 import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
+import { getBonificationButtonContent } from 'features/profile/helpers/getBonificationButtonContent'
 import { UserProfile } from 'features/share/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
+import { Again } from 'ui/svg/icons/Again'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { Lock } from 'ui/svg/icons/Lock'
-import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -24,12 +31,27 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 type Props = { amount: string; isLoggedIn: boolean; user?: UserProfile }
 
 export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) => {
+  const disableHandicapBonificationButton = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_BUTTON
+  )
+  const { navigate } = useNavigation<UseNavigationType>()
+
   const { designSystem } = useTheme()
+
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
+
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
-  const showBonficationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
-  const onPressHandicapBonficationButton = () => 'doNothing'
+
+  const showBonificationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
+
+  const onPressHandicapBonificationButton = () =>
+    navigate(
+      ...getSubscriptionHookConfig('BonificationRequiredInformation', {
+        bonificationType: BonificationType.DISABILITY,
+      })
+    )
 
   return (
     <React.Fragment>
@@ -39,7 +61,9 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
         variant={StepVariant.unknown}
         iconComponent={<GreyHandicapMotor />}
         addMoreSpacingToIcons>
-        <DashedStepContainer bonificationStatus={bonificationStatus}>
+        <DashedStepContainer
+          bonificationStatus={bonificationStatus}
+          disabled={disableHandicapBonificationButton}>
           <ViewGap gap={4}>
             <StyledBody>Bonus sous conditions</StyledBody>
             <Typo.Title3>
@@ -74,15 +98,26 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
                 />,
               ]}
             />
-            {showBonficationButton ? (
+            {showBonificationButton ? (
               <ButtonContainerFlexStart>
                 <Button
                   variant="tertiary"
                   color="neutral"
-                  icon={PlainArrowNext}
-                  wording="Faire une demande"
-                  onPress={onPressHandicapBonficationButton}
-                  disabled
+                  icon={Again}
+                  wording={
+                    getBonificationButtonContent(BonificationType.DISABILITY, bonificationStatus)
+                      .label
+                  }
+                  accessibilityLabel={
+                    getBonificationButtonContent(BonificationType.DISABILITY, bonificationStatus)
+                      .accessibilityLabel
+                  }
+                  onPress={onPressHandicapBonificationButton}
+                  disabled={
+                    disableHandicapBonificationButton ||
+                    getBonificationButtonContent(BonificationType.DISABILITY, bonificationStatus)
+                      .disabled
+                  }
                 />
               </ButtonContainerFlexStart>
             ) : null}

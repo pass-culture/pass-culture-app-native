@@ -1,3 +1,4 @@
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { ProfileScreenType } from 'features/identityCheck/pages/profile/types'
 import {
@@ -62,12 +63,12 @@ export type SubscriptionStackParamList = {
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
   // Bonification
   BonificationBirthDate: undefined
-  BonificationBirthPlace: undefined
-  BonificationError: undefined
-  BonificationRequiredInformation: undefined
+  BonificationBirthPlace?: { bonificationType: BonificationType }
+  BonificationError?: { bonificationType: BonificationType }
+  BonificationRequiredInformation?: { bonificationType: BonificationType }
   BonificationExplanations: undefined
   BonificationNames: undefined
-  BonificationRecap: undefined
+  BonificationRecap?: { bonificationType: BonificationType }
   BonificationRefused?: { bonificationRefusedType: BonificationRefusedType }
   BonificationTitle: undefined
   BonificationIncorrectLink: undefined

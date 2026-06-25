@@ -1,17 +1,19 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { View } from 'react-native'
 
 import { GenderEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BonificationType } from 'features/bonification/enums'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
-import { usePostBonusQuotientFamilialMutation } from 'features/bonification/queries/usePostBonusQuotientFamilialMutation'
+import { usePostDisabilityBonificationMutation } from 'features/bonification/queries/usePostDisabilityBonificationMutation'
+import { usePostQFBonificationMutation } from 'features/bonification/queries/usePostQFBonificationMutation'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -21,13 +23,21 @@ import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const BonificationRecap = () => {
+  const { params } = useRoute<UseRouteType<'BonificationRecap'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
+
+  const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
+  const step = isDisabilityBonification ? 'Étape 2 sur 2' : 'Étape 5 sur 5'
+  const checkboxLabel = isDisabilityBonification
+    ? 'Je certifie que les informations saisies sont exactes.'
+    : 'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées.'
+
   const { resetLegalRepresentative } = legalRepresentativeActions
   const { refetchUser } = useAuthContext()
 
-  const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
+  const { mutate: mutateQFBonification, isPending } = usePostQFBonificationMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
       showSuccessSnackBar('Tes informations ont été envoyées\u00a0!')
@@ -35,15 +45,19 @@ export const BonificationRecap = () => {
       void refetchUser()
     },
     onError: (_error) => {
-      navigate(...getSubscriptionHookConfig('BonificationError'))
+      navigate(
+        ...getSubscriptionHookConfig('BonificationError', {
+          bonificationType: BonificationType.FAMILY_QUOTIENT,
+        })
+      )
     },
   })
 
   const [accepted, setAccepted] = useState(false)
 
-  const submit = () => {
+  const submitQFBonification = () => {
     if (title && firstNames && givenName && birthDate && birthCountry?.cog) {
-      mutate({
+      mutateQFBonification({
         gender: title === 'Madame' ? GenderEnum.Mme : GenderEnum['M.'],
         firstNames,
         commonName,
@@ -53,9 +67,53 @@ export const BonificationRecap = () => {
         birthCityCogCode: birthCity?.code,
       })
     } else {
-      navigate(...getSubscriptionHookConfig('BonificationError'))
+      navigate(
+        ...getSubscriptionHookConfig('BonificationError', {
+          bonificationType: BonificationType.FAMILY_QUOTIENT,
+        })
+      )
     }
   }
+
+  const { mutate: mutateDisabilityBonification } = usePostDisabilityBonificationMutation({
+    onSuccess: () => {
+      navigate('TabNavigator', { screen: 'Home' })
+      showSuccessSnackBar('Tes informations ont été envoyées\u00a0!')
+      void refetchUser()
+    },
+    onError: (_error) => {
+      navigate(
+        ...getSubscriptionHookConfig('BonificationError', {
+          bonificationType: BonificationType.DISABILITY,
+        })
+      )
+    },
+  })
+
+  const submitDisabilityBonification = () => {
+    if (birthCountry?.cog) {
+      mutateDisabilityBonification({
+        birthCountryCogCode: birthCountry.cog.toString(),
+        birthCityCogCode: birthCity?.code,
+      })
+    } else {
+      navigate(
+        ...getSubscriptionHookConfig('BonificationError', {
+          bonificationType: BonificationType.DISABILITY,
+        })
+      )
+    }
+  }
+
+  const submit = isDisabilityBonification ? submitDisabilityBonification : submitQFBonification
+  const onPressModify = isDisabilityBonification
+    ? () =>
+        navigate(
+          ...getSubscriptionHookConfig('BonificationBirthPlace', {
+            bonificationType: BonificationType.DISABILITY,
+          })
+        )
+    : () => navigate(...getSubscriptionHookConfig('BonificationNames'))
 
   const recapData: InfoListItemProps[] = []
 
@@ -122,11 +180,11 @@ export const BonificationRecap = () => {
       scrollChildren={
         <ViewGap gap={4}>
           <View>
-            <StyledBodyXsSteps>Étape 5 sur 5</StyledBodyXsSteps>
-            <Summary title="Vérifie les infos avant d’envoyer ta demande" data={recapData} />
+            <StyledBodyXsSteps>{step}</StyledBodyXsSteps>
+            <Summary title="Vérifie les informations avant d’envoyer ta demande" data={recapData} />
           </View>
           <Checkbox
-            label="Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées"
+            label={checkboxLabel}
             variant="default"
             isChecked={accepted}
             onPress={() => {
@@ -149,9 +207,7 @@ export const BonificationRecap = () => {
             variant="secondary"
             color="neutral"
             wording="Modifier mes informations"
-            onPress={() => {
-              navigate(...getSubscriptionHookConfig('BonificationNames'))
-            }}
+            onPress={onPressModify}
           />
         </ViewGap>
       }

@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { QuotientFamilialBonusCreditRequest } from 'api/gen'
 import { EmptyResponse } from 'libs/fetch'
 
-export const usePostBonusQuotientFamilialMutation = ({
+export const usePostQFBonificationMutation = ({
   onSuccess,
   onError,
 }: MutationOptions<EmptyResponse, DefaultError, QuotientFamilialBonusCreditRequest>) =>

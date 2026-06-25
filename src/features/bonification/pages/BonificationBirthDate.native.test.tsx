@@ -2,6 +2,7 @@ import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
@@ -25,7 +26,7 @@ describe('BonificationBirthDate', () => {
     await userEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
+      params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
       screen: 'BonificationBirthPlace',
     })
   })
