@@ -1,7 +1,14 @@
 import React from 'react'
 
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockHandleImagePress = jest.fn()
 const user = userEvent.setup()
@@ -9,6 +16,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<VenueBanner />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display the Google watermark if the image is from Google', () => {
     render(<VenueBanner bannerUrl="https://image.com" bannerIsFromGoogle />)
 

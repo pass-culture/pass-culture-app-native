@@ -4,6 +4,9 @@ import { renderHook } from '@testing-library/react-native'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 import { setSettingsMock } from 'tests/settings/mockSettings'
 
@@ -17,9 +20,20 @@ mockUseWindowDimensions.mockReturnValue({ scale: 1 })
 const mockUseTheme = useTheme as jest.Mock
 mockUseTheme.mockReturnValue({ isDesktopViewport: false })
 
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
+
 describe('useResizeImageURL hook', () => {
   beforeEach(() => {
     setSettingsMock()
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
   })
 
   it('should return a smaller resized image URL on a small screen', () => {
