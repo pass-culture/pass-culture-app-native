@@ -11,8 +11,16 @@ import {
   locationActions,
   useLocationV2,
 } from 'libs/locationV2/location.store'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { UseLocationReturnType } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen, userEvent } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 import { SearchVenueItem } from './SearchVenueItem'
 
@@ -64,6 +72,13 @@ jest.useFakeTimers()
 describe('<SearchVenueItem />', () => {
   beforeEach(() => {
     useLocationV2.setState(defaultLocationState)
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
   })
 
   it('should render venue item correctly', () => {
