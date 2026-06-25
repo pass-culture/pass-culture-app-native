@@ -3,9 +3,16 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('features/offer/components/OfferVenueBlock/getVenueBlock')
 const mockOnCopyAddressPress = jest.fn()
@@ -24,6 +31,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<OfferVenueBlock />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   mockUseVenueBlock.mockReturnValue({
     venueName: 'PATHE BEAUGRENELLE',
     venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',

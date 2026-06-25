@@ -4,6 +4,9 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen, userEvent } from 'tests/utils'
@@ -13,6 +16,10 @@ import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 const today = 1736853946 //'2025-01-14T16:05:46+02:00'
 const tomorrow = 1736940346 //'2025-01-15T16:05:46+02:00'
 const yesterday = 1736767546 //'2025-01-13T16:05:46+02:00'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const props = {
   moduleId: '1',
@@ -44,6 +51,13 @@ describe('MarketingBlockExclusivity', () => {
   beforeEach(() => {
     mockdate.set(new Date(today * 1000))
     setFeatureFlags()
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
   })
 
   it('navigate to offer when pressing', async () => {

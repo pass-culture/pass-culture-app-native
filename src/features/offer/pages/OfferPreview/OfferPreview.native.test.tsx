@@ -6,6 +6,13 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { analytics } from 'libs/analytics/provider'
 import { renderAsync, screen, userEvent } from 'tests/utils'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockOffer = jest.fn((): { data: OfferResponse } => ({
   data: {
@@ -51,6 +58,16 @@ jest.mock('ui/components/ImagesCarousel/ImagesCarousel', () => {
 jest.useFakeTimers()
 
 describe('<OfferPreview />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display offer preview page', async () => {
     await renderAsync(<OfferPreview />)
 

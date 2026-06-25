@@ -2,6 +2,9 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockArtistLadyGaga } from 'features/artist/fixtures/mockArtist'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { HorizontalArtistTile } from 'shared/verticalPlaylist/components/HorizontalArtistTile'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -9,7 +12,21 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
+
 describe('HorizontalArtistTile', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should render the artist name and role correctly', () => {
     render(
       <HorizontalArtistTile
