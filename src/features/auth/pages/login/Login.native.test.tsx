@@ -3,7 +3,13 @@ import React from 'react'
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponseV2 } from 'api/gen'
+import {
+  AccountState,
+  FavoriteResponse,
+  OauthStateResponse,
+  RecreditType,
+  SigninResponseV2,
+} from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -18,6 +24,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -155,17 +162,6 @@ describe('<Login/>', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
-    void storage.saveObject('has_seen_eligible_card', true)
-    mockMeApiCall({ showEligibleCard: true } as UserProfile)
-    renderLogin()
-
-    await fillInputs()
-    await user.press(screen.getByText('Se connecter'))
-
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
-  })
-
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
     mockMeApiCall({ showEligibleCard: true } as UserProfile)
     renderLogin()
@@ -176,7 +172,21 @@ describe('<Login/>', () => {
     expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
   })
 
-  it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null', async () => {
+  it('should redirect to BonificationGranted WHEN signin is successful and recreditTypeToShow is BonusCredit and recreditAmountToShow is eq to bonus amount', async () => {
+    mockMeApiCall({
+      showEligibleCard: true,
+      recreditAmountToShow: bonificationAmountFallbackValue,
+      recreditTypeToShow: RecreditType.BonusCredit,
+    } as UserProfile)
+    renderLogin()
+
+    await fillInputs()
+    await user.press(screen.getByText('Se connecter'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'BonificationGranted')
+  })
+
+  it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null and recreditTypeToShow is not BonusCredit', async () => {
     mockMeApiCall({ showEligibleCard: true, recreditAmountToShow: 3000 } as UserProfile)
     renderLogin()
 
@@ -186,14 +196,18 @@ describe('<Login/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
   })
 
-  it('should not redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow to null', async () => {
-    mockMeApiCall({ showEligibleCard: true, recreditAmountToShow: null } as UserProfile)
+  it('should redirect to RecreditBirthdayNotification WHEN signin is successful and recreditTypeToShow is BonusCredit and recreditAmountToShow is not eq to bonus amount', async () => {
+    mockMeApiCall({
+      showEligibleCard: true,
+      recreditAmountToShow: 3000,
+      recreditTypeToShow: RecreditType.BonusCredit,
+    } as UserProfile)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
   })
 
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {

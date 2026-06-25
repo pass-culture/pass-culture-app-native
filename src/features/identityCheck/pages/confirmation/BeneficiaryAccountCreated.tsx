@@ -15,7 +15,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import FrenchRepublicAnimation from 'ui/animations/french_republic_animation.json'
+import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -73,10 +73,9 @@ export function BeneficiaryAccountCreated() {
 
   return (
     <GenericInfoPage
-      animation={FrenchRepublicAnimation}
+      animation={BirthdayCake}
       animationColoringMode="targeted"
       animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
-      animationTargetLayerNames={['étoile', 'cadre']}
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{
