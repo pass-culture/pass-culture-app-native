@@ -40,7 +40,7 @@ export const VenueBlock: FunctionComponent<Props> = ({
     <VenueInfoHeader
       title={title}
       subtitle={subtitle}
-      imageSize={thumbnailSize ?? designSystem.size.image.s}
+      imageSize={thumbnailSize ?? designSystem.size.image.xxs}
       imageURL={venueImageUrl}
       showArrow={showArrow}
     />
