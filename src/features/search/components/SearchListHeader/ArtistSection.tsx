@@ -32,7 +32,7 @@ export const ArtistSection = ({
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistArtists' as const,
-    params: { title: playlistTitle, subtitle: undefined },
+    params: { title: playlistTitle, subtitle: undefined, originDetails: 'searchResults' },
   }
 
   const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
