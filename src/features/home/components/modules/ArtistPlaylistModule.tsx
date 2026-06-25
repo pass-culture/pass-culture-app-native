@@ -14,7 +14,9 @@ import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { useArtistQuery } from 'queries/artist/useArtistQuery'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
@@ -56,10 +58,13 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   } = props
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const { data: artist, isError, error } = useArtistQuery(artistId)
+
+  useEffect(() => {
+    if (isError) eventMonitoring.captureException(error)
+  }, [error, isError])
 
   const { playlistItems } = data ?? { playlistItems: [] }
-  const firstItem = playlistItems.length > 0 ? (playlistItems[0] as Offer) : undefined
-  const artist = firstItem?.artists?.find((artist) => artist.id === artistId)
 
   const [parameters = { title: '', hitsPerPage: 0 }] = offersModuleParameters
   // When we navigate to the search page, we want to show 20 results per page,

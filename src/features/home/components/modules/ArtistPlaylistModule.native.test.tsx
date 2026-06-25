@@ -3,6 +3,7 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import {
   ArtistPlaylistModule,
   ArtistPlaylistModuleProps,
@@ -42,7 +43,7 @@ const props = {
   homeEntryId: 'fakeEntryId',
   index: 1,
   data: mockData,
-  artistId: '1',
+  artistId: mockArtist.id,
 }
 
 const nativeEventEnd = {
@@ -54,6 +55,12 @@ const nativeEventEnd = {
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
+
+const mockUseArtistQuery = jest.fn()
+mockUseArtistQuery.mockReturnValue({
+  data: mockArtist,
+})
+jest.mock('queries/artist/useArtistQuery', () => ({ useArtistQuery: () => mockUseArtistQuery() }))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -88,7 +95,7 @@ describe('ArtistPlaylistModule', () => {
           minOffers: 0,
           title: 'Module title',
         },
-        artistId: '1',
+        artistId: mockArtist.id,
       },
     })
   })
@@ -96,12 +103,12 @@ describe('ArtistPlaylistModule', () => {
   it('should display artist button and redirect to artist page when pressing it', async () => {
     renderArtistPlaylistModule({
       data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
-      artistId: '1',
+      artistId: mockArtist.id,
     })
 
-    await user.press(await screen.findByLabelText('Accéder à la page artiste de Artist 1'))
+    await user.press(await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne'))
 
-    expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
+    expect(navigate).toHaveBeenCalledWith('Artist', { id: mockArtist.id })
   })
 
   describe('Analytics', () => {
@@ -171,14 +178,14 @@ describe('ArtistPlaylistModule', () => {
     it('should trigger ConsultArtist log when pressing artist button', async () => {
       renderArtistPlaylistModule({
         data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
-        artistId: '1',
+        artistId: mockArtist.id,
       })
 
-      await user.press(await screen.findByLabelText('Accéder à la page artiste de Artist 1'))
+      await user.press(await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne'))
 
       expect(analytics.logConsultArtist).toHaveBeenCalledWith({
-        artistId: '1',
-        artistName: 'Artist 1',
+        artistId: mockArtist.id,
+        artistName: mockArtist.name,
         from: 'home',
       })
     })
