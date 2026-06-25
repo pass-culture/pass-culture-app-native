@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
@@ -23,8 +24,17 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'BonificationRequiredInformation',
-      navigationTarget: getSubscriptionPropConfig('BonificationRequiredInformation'),
+      title: 'BonificationRequiredInformation - Family Quotient',
+      navigationTarget: getSubscriptionPropConfig('BonificationRequiredInformation', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRequiredInformation - Disability',
+      navigationTarget: getSubscriptionPropConfig('BonificationRequiredInformation', {
+        bonificationType: BonificationType.DISABILITY,
+      }),
     },
     {
       id: uuidv4(),
@@ -43,18 +53,45 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'BonificationBirthPlace',
-      navigationTarget: getSubscriptionPropConfig('BonificationBirthPlace'),
+      title: 'BonificationBirthPlace - Family Quotient',
+      navigationTarget: getSubscriptionPropConfig('BonificationBirthPlace', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
+      }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRecap',
-      navigationTarget: getSubscriptionPropConfig('BonificationRecap'),
+      title: 'BonificationBirthPlace - Disability',
+      navigationTarget: getSubscriptionPropConfig('BonificationBirthPlace', {
+        bonificationType: BonificationType.DISABILITY,
+      }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationError',
-      navigationTarget: getSubscriptionPropConfig('BonificationError'),
+      title: 'BonificationRecap - Family Quotient',
+      navigationTarget: getSubscriptionPropConfig('BonificationRecap', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRecap - Disability',
+      navigationTarget: getSubscriptionPropConfig('BonificationRecap', {
+        bonificationType: BonificationType.DISABILITY,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationError - Family Quotient',
+      navigationTarget: getSubscriptionPropConfig('BonificationError', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationError - Disability',
+      navigationTarget: getSubscriptionPropConfig('BonificationError', {
+        bonificationType: BonificationType.DISABILITY,
+      }),
     },
     {
       id: uuidv4(),

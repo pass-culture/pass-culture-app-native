@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -61,7 +62,9 @@ const notFoundPageConfig = {
   bannerLinks: undefined,
   primaryButton: {
     wording: 'Renouveler ma demande',
-    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
+    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
+      bonificationType: BonificationType.FAMILY_QUOTIENT,
+    }),
   },
   tertiaryButton: {
     wording: 'Annuler',
@@ -90,7 +93,9 @@ export const PAGE_CONFIG: PageConfigMap = {
     ],
     primaryButton: {
       wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
+      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
+      }),
     },
     tertiaryButton: {
       wording: 'Annuler',

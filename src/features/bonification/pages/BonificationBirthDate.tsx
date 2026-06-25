@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
+import { BonificationType } from 'features/bonification/enums'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import {
   legalRepresentativeActions,
@@ -55,7 +56,11 @@ export const BonificationBirthDate = () => {
     ({ birthdate }: BirthdayForm) => {
       if (birthdate) {
         setBirthDate(birthdate)
-        navigate(...getSubscriptionHookConfig('BonificationBirthPlace'))
+        navigate(
+          ...getSubscriptionHookConfig('BonificationBirthPlace', {
+            bonificationType: BonificationType.FAMILY_QUOTIENT,
+          })
+        )
       }
     },
     [navigate, setBirthDate]

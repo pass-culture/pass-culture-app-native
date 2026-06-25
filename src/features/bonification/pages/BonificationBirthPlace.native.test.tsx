@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { goBack, navigate } from '__mocks__/@react-navigation/native'
+import { goBack, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { InseeCountries, InseeCountry } from 'api/gen'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
@@ -39,6 +40,7 @@ const inseeCountriesMock: InseeCountries = {
 
 describe('BonificationBirthPlace', () => {
   beforeEach(() => {
+    jest.clearAllMocks()
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, [
       {
         nom: 'Paris',
@@ -52,31 +54,77 @@ describe('BonificationBirthPlace', () => {
     mockServer.getApi<InseeCountries>(`/v1/countries`, inseeCountriesMock)
   })
 
-  it('should navigate to FAQ if button pressed', async () => {
-    renderBonificationBirthPlace()
+  describe('Family quotient bonification', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { bonificationType: BonificationType.FAMILY_QUOTIENT } })
+    })
 
-    const button = screen.getByText('Je ne connais pas son lieu de naissance')
-    await userEvent.press(button)
+    it('should display legal representative wording and step 4/5', () => {
+      renderBonificationBirthPlace()
 
-    expect(openUrl).toHaveBeenNthCalledWith(
-      1,
-      env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS
-    )
-  })
+      expect(screen.getByText('Étape 4 sur 5')).toBeTruthy()
+      expect(
+        screen.getByText('Quel est le lieu de naissance de ton représentant légal ?')
+      ).toBeTruthy()
+    })
 
-  it('Should navigate to next form when pressing "Continuer" when forms are filled', async () => {
-    renderBonificationBirthPlace()
+    it('should navigate to next form when pressing "Continuer" when forms are filled', async () => {
+      renderBonificationBirthPlace()
 
-    await completeForm()
-    await goToNextScreen()
+      await completeForm()
+      await goToNextScreen()
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'BonificationRecap',
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
+        screen: 'BonificationRecap',
+      })
+    })
+
+    it('should navigate to FAQ if button pressed', async () => {
+      renderBonificationBirthPlace()
+
+      const button = screen.getByText('Je ne connais pas son lieu de naissance')
+      await userEvent.press(button)
+
+      expect(openUrl).toHaveBeenNthCalledWith(
+        1,
+        env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS
+      )
     })
   })
 
-  it('Should go back when pressing go back button', async () => {
+  describe('Disability bonification', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { bonificationType: BonificationType.DISABILITY } })
+    })
+
+    it('should display disability wording and step 1/2', () => {
+      renderBonificationBirthPlace()
+
+      expect(screen.getByText('Étape 1 sur 2')).toBeTruthy()
+      expect(screen.getByText('Quel est ton lieu de naissance ?')).toBeTruthy()
+    })
+
+    it('should not display FAQ button', () => {
+      renderBonificationBirthPlace()
+
+      expect(screen.queryByText('Je ne connais pas son lieu de naissance')).toBeNull()
+    })
+
+    it('should navigate to next form when pressing "Continuer" when forms are filled', async () => {
+      renderBonificationBirthPlace()
+
+      await completeForm()
+      await goToNextScreen()
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: { bonificationType: BonificationType.DISABILITY },
+        screen: 'BonificationRecap',
+      })
+    })
+  })
+
+  it('should go back when pressing go back button', async () => {
     renderBonificationBirthPlace()
 
     const button = screen.getByLabelText('Revenir en arrière')

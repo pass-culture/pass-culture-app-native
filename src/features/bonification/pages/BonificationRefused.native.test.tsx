@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefused, PAGE_CONFIG } from 'features/bonification/pages/BonificationRefused'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { beneficiaryUser } from 'fixtures/user'
@@ -24,7 +25,7 @@ describe('BonificationRefused', () => {
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: undefined,
+        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
         screen: 'BonificationRequiredInformation',
       })
     })
@@ -98,7 +99,7 @@ describe('BonificationRefused', () => {
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: undefined,
+        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
         screen: 'BonificationRequiredInformation',
       })
     })
