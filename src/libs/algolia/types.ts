@@ -159,7 +159,6 @@ export type SearchQueryParameters = {
   beginningDatetime?: string
   date: SelectedDate | null
   eanList?: string[]
-  artistId?: string
   artistName?: string
   endingDatetime?: string
   hitsPerPage: number | null
@@ -295,7 +294,6 @@ export type PlaylistOffersParams = {
   offerParams: SearchQueryParameters
   locationParams: BuildLocationParameterParams
   indexName?: string
-  artistId?: string
 }
 
 export type fetchOffersByGTLArgs = {

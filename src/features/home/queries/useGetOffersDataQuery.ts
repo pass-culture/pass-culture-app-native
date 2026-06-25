@@ -2,12 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
-import {
-  ArtistPlaylistModule,
-  HomepageModuleType,
-  OfferModuleParamsInfo,
-  OffersModule,
-} from 'features/home/types'
+import { ArtistPlaylistModule, OfferModuleParamsInfo, OffersModule } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
@@ -35,11 +30,7 @@ export const useGetOffersDataQuery = (modules: (OffersModule | ArtistPlaylistMod
 
   const offersParameters = modules.map((module) => {
     const adaptedPlaylistParameters = module.offersModuleParameters
-      .map((offerModuleParameter) => ({
-        ...adaptPlaylistParameters(offerModuleParameter),
-        artistId:
-          module.type === HomepageModuleType.ArtistPlaylistModule ? module.artistId : undefined,
-      }))
+      .map((offerModuleParameter) => adaptPlaylistParameters(offerModuleParameter))
       .filter(isPlaylistOffersParameters)
     offersModuleIds.push(module.id)
     return {

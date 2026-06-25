@@ -155,20 +155,6 @@ describe('buildFacetFilters', () => {
     })
   })
 
-  it('should return default and artist id when artist id specified', () => {
-    const facetFilters = buildFacetFilters({
-      ...defaultBuildFacetFilterParam,
-      artistId: 'dc9babd-4cd3-4971-ae5c-6f7775748807',
-    })
-
-    expect(facetFilters).toEqual({
-      facetFilters: [
-        ['offer.isEducational:false'],
-        ['artists.id:dc9babd-4cd3-4971-ae5c-6f7775748807'],
-      ],
-    })
-  })
-
   it('should return default and artist name when artist name specified', () => {
     const facetFilters = buildFacetFilters({
       ...defaultBuildFacetFilterParam,
