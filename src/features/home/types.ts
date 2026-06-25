@@ -264,6 +264,7 @@ export type CategoryBlock = {
   homeEntryId: string
   image?: string
   color: Color
+  illustrationCategoryBlock?: string
 }
 
 export type TrendBlock = {
@@ -298,17 +299,22 @@ export type TrendNavigationProps = {
 }
 
 export enum Color {
-  Gold = 'Gold',
   Aquamarine = 'Aquamarine',
-  SkyBlue = 'SkyBlue',
-  DeepPink = 'DeepPink',
   Coral = 'Coral',
-  Lilac = 'Lilac',
   Decorative01 = 'Decorative01',
   Decorative02 = 'Decorative02',
   Decorative03 = 'Decorative03',
   Decorative04 = 'Decorative04',
   Decorative05 = 'Decorative05',
+  DeepPink = 'DeepPink',
+  Gold = 'Gold',
+  Information03 = 'Information03',
+  Information04 = 'Information04',
+  Lilac = 'Lilac',
+  Negative01 = 'Negative01',
+  Pending01 = 'Pending01',
+  Positive01 = 'Positive01',
+  SkyBlue = 'SkyBlue',
 }
 
 export type VenueMapModule = {

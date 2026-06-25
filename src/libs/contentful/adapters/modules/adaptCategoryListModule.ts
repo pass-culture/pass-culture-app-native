@@ -27,12 +27,18 @@ const categoryBlockListHaveFields = (
 
 const adaptCategoryBlock = (CategoryBlockList: CategoryBlockContentModel[]): CategoryBlock[] =>
   CategoryBlockList.filter(categoryBlockListHaveFields).map((bloc) => {
-    const { displayedTitle: title, image, color } = bloc.fields.thematicCategoryInfo.fields
+    const {
+      displayedTitle: title,
+      image,
+      color,
+      illustrationCategoryBlock,
+    } = bloc.fields.thematicCategoryInfo.fields
     return {
       id: bloc.sys.id,
       image: buildImageUrl(image?.fields?.file.url),
       homeEntryId: bloc.fields.homeEntryId,
       title,
       color: getCategoryBlockColor(color),
+      illustrationCategoryBlock,
     }
   })

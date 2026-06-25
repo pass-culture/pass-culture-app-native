@@ -80,7 +80,8 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
           {illustrationUrlToDisplay ? (
             <RemoteCategoryIllustration
               source={{ uri: illustrationUrlToDisplay }}
-              resizeMode={FastImage.resizeMode.contain}
+              resizeMode={FastImage.resizeMode?.contain}
+              testID="categoryIllustration"
             />
           ) : null}
         </Container>

@@ -367,6 +367,7 @@ type ThematicCategoryInfoFields = {
   image?: Image
   illustrationFilename?: ContentfulIllustrationName
   color: Color | CategoryHeaderColor
+  illustrationCategoryBlock?: string
 }
 
 export type ThematicHighlightFields = {
