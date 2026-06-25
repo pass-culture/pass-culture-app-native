@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -45,14 +46,13 @@ describe('useInitialScreen()', () => {
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
   })
 
-  it('should return BonificationGranted when logged in user has credit to show of type BonusCredit', async () => {
+  it('should return BonificationGranted when logged in user has credit to show of type BonusCredit and recreditAmountToShow is eq to bonus amount', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', true)
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        showEligibleCard: false,
-        recreditAmountToShow: 500,
+        recreditAmountToShow: bonificationAmountFallbackValue,
         recreditTypeToShow: RecreditType.BonusCredit,
       },
       { persist: true }
@@ -88,14 +88,34 @@ describe('useInitialScreen()', () => {
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
   })
 
-  it('should return RecreditBirthdayNotification when user hasn’t seen eligible card and has credit to show', async () => {
+  it('should return RecreditBirthdayNotification when user has credit to show', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', null)
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        showEligibleCard: true,
         recreditAmountToShow: 3000,
+      },
+      { persist: true }
+    )
+
+    const { result } = renderHook(() => useInitialScreen())
+
+    await waitFor(() => {
+      expect(result.current).toEqual('RecreditBirthdayNotification')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
+  })
+
+  it('should return RecreditBirthdayNotification when user has credit to show of type BonusCredit and recreditAmountToShow is not eq to bonus amount', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', null)
+    mockAuthContextWithUser(
+      {
+        ...beneficiaryUser,
+        recreditAmountToShow: 3000,
+        recreditTypeToShow: RecreditType.BonusCredit,
       },
       { persist: true }
     )

@@ -9,16 +9,19 @@ import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
+import { useBonificationBonusAmount } from 'queries/settings/useSettings'
 
 import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn, user } = useAuthContext()
 
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    getInitialScreen({ isLoggedIn, user })
+    getInitialScreen({ isLoggedIn, user, bonificationBonusAmount })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -27,7 +30,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
         setInitialScreen('OnboardingStackNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, user])
+  }, [isLoggedIn, user, bonificationBonusAmount])
 
   initialScreen && performanceMonitoringStoreActions.setInitialScreenName(initialScreen)
   return initialScreen
@@ -36,14 +39,19 @@ export function useInitialScreen(): RootScreenNames | undefined {
 async function getInitialScreen({
   isLoggedIn,
   user,
+  bonificationBonusAmount,
 }: {
   isLoggedIn: boolean
   user?: UserProfile
+  bonificationBonusAmount: number
 }): Promise<RootScreenNames> {
   if (isLoggedIn && user) {
     try {
       if (user.recreditAmountToShow) {
-        if (user.recreditTypeToShow === RecreditType.BonusCredit) {
+        if (
+          user.recreditTypeToShow === RecreditType.BonusCredit &&
+          user.recreditAmountToShow === bonificationBonusAmount
+        ) {
           return 'BonificationGranted'
         }
         return 'RecreditBirthdayNotification'

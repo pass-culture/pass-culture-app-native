@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
-import { AccountState, FavoriteResponse } from 'api/gen'
+import { AccountState, FavoriteResponse, RecreditType } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { isOAuthLoginRequest, LoginRequest, SignInResponseFailure } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
@@ -17,6 +17,7 @@ import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { useBonificationBonusAmount } from 'queries/settings/useSettings'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 
 export const useSignInMutation = ({
@@ -81,6 +82,7 @@ const useHandleSigninSuccess = (
   setErrorMessage?: (message: string) => void
 ) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
@@ -93,17 +95,25 @@ const useHandleSigninSuccess = (
   })
 
   const offerId = params?.offerId
+  const comeFrom = params?.from
 
   const navigateForActiveState = useCallback(async () => {
     const user = await api.getNativeV1Me()
     const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
     if (user?.recreditAmountToShow) {
-      navigate('RecreditBirthdayNotification')
+      if (
+        user.recreditTypeToShow === RecreditType.BonusCredit &&
+        user.recreditAmountToShow === bonificationBonusAmount
+      ) {
+        navigate('BonificationGranted')
+      } else {
+        navigate('RecreditBirthdayNotification')
+      }
     } else if (!hasSeenEligibleCard && user.showEligibleCard) {
       navigate('EighteenBirthday')
     } else if (offerId) {
-      switch (params.from) {
+      switch (comeFrom) {
         case StepperOrigin.BOOKING:
           navigate('Offer', { id: offerId, openModalOnNavigation: true })
           return
@@ -122,7 +132,7 @@ const useHandleSigninSuccess = (
     } else {
       navigateToHome()
     }
-  }, [addFavorite, navigate, offerId, params?.from])
+  }, [addFavorite, navigate, offerId, comeFrom, bonificationBonusAmount])
 
   return useCallback(
     async (accountState: AccountState) => {
