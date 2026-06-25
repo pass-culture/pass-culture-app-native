@@ -43,7 +43,7 @@
     "http-proxy-middleware": "^2.0.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.6",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.27.1",
     "@happy-dom/jest-environment": "^20.9.0",
