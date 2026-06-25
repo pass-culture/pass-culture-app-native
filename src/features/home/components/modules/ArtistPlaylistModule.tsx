@@ -97,15 +97,15 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           width={width}
           height={height}
           analyticsFrom="home"
-          hasSmallLayout={displayParameters.layout === 'three-items'}
+          hasSmallLayout
         />
       )
     },
 
-    [moduleName, moduleId, homeEntryId, displayParameters.layout]
+    [moduleName, moduleId, homeEntryId]
   )
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
 
   const shouldModuleBeDisplayed =
     playlistItems.length > 0 && playlistItems.length >= displayParameters.minOffers
