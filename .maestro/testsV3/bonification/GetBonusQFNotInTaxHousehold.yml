@@ -13,7 +13,7 @@ onFlowStart:
       file: ../common/helpers/generateQFResponse.js
       env:
         user_id: ${output.userId}
-        mock_type: 'CHILD_NOT_IN_TAX_HOUSEHOLD'
+        mock_type: 'NOT_IN_TAX_HOUSEHOLD'
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/lifecycle/StopApp.yml
