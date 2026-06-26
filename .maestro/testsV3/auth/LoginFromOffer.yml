@@ -1,7 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - auth
-  - fix
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
   - runScript:

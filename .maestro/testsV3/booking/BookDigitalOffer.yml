@@ -1,7 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - booking
-  - fix
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
   - runScript:

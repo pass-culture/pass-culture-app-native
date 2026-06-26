@@ -173,6 +173,10 @@ onFlowStart:
 - tapOn: '.*Profil.*'
 - tapOn: '.*Accueil.*'
 
-- assertVisible: 'Vérifier maintenant'
+- assertVisible: 'Ton dossier a été refusé.'
+
+- tapOn: 'Voir plus de détails'
+
+- assertVisible: 'Ton dossier est refusé'
 
 - runFlow: ../common/lifecycle/StopApp.yml
