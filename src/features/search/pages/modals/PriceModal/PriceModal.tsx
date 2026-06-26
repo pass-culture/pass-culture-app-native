@@ -13,12 +13,12 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { priceSchema } from 'features/search/helpers/schema/priceSchema/priceSchema'
 import { SearchState } from 'features/search/types'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertEuroToPacificFranc'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
-import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'shared/currency/formatCurrencyFromCentsWithoutCurrencySymbol'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 import { getAvailableCredit } from 'shared/user/getAvailableCredit'
@@ -48,9 +48,20 @@ export type PriceModalProps = {
 
 const titleId = uuidv4()
 
-const getConversionRate = (currency: Currency, euroToPacificFrancRate: number) => {
-  return currency === Currency.PACIFIC_FRANC_SHORT ? euroToPacificFrancRate : 1
+const formatCurrencyFromCentsWithoutCurrencySymbol = (
+  priceInCents: number,
+  currency: Currency,
+  euroToPacificFrancRate: number
+): number => {
+  const priceInEuro = convertCentsToEuros(priceInCents)
+
+  if (currency === Currency.PACIFIC_FRANC_SHORT || currency === Currency.PACIFIC_FRANC_FULL) {
+    return convertCurrency(priceInEuro, euroToPacificFrancRate, RoundUnit.UNITS)
+  }
+  return Math.floor(priceInEuro * 100) / 100
 }
+
+const priceToString = (price?: number) => (price ? String(price) : '')
 
 export const PriceModal: FunctionComponent<PriceModalProps> = ({
   title,
@@ -60,114 +71,58 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
+  const { isLoggedIn, user } = useAuthContext()
   const currencyFull = useGetCurrencyToDisplay('full')
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const conversionRate = getConversionRate(currency, euroToPacificFrancRate)
-
   const [previousCurrency, setPreviousCurrency] = useState(currency)
-
   const { searchState, dispatch } = useSearch()
-  const { isLoggedIn, user } = useAuthContext()
 
-  const availableCredit = getAvailableCredit()?.amount ?? 0
-  const formatAvailableCredit = formatCurrencyFromCentsWithoutCurrencySymbol(
+  const availableCredit = getAvailableCredit(user)?.amount ?? 0
+  const formattedCredit = formatCurrencyFromCentsWithoutCurrencySymbol(
     availableCredit,
     currency,
     euroToPacificFrancRate
   )
-  const formatAvailableCreditWithCurrency = formatCurrencyFromCents(
+  const formattedCreditWithCurrency = formatCurrencyFromCents(
     availableCredit,
     currency,
     euroToPacificFrancRate
   )
-  const bannerTitle = `Il te reste ${formatAvailableCreditWithCurrency} sur ton pass Culture.`
-
-  const initialCredit = user?.domainsCredit?.all?.initial ?? MAX_PRICE_IN_CENTS
-  const formatInitialCredit = formatCurrencyFromCentsWithoutCurrencySymbol(
-    initialCredit,
-    currency,
-    euroToPacificFrancRate
-  )
-  const formatInitialCreditWithCurrency = formatCurrencyFromCents(
-    initialCredit,
-    currency,
-    euroToPacificFrancRate
-  )
-
-  const searchPriceSchema = priceSchema({ initialCredit: formatInitialCredit, currency })
-
-  const isLimitCreditSearchDefaultValue = Number(searchState?.maxPrice) === formatAvailableCredit
+  const searchPriceSchema = priceSchema()
 
   const isLoggedInAndBeneficiary = isLoggedIn && isCurrentBeneficiary(user)
-  const GRANT_FREE_OR_EMPTY_TYPES = [UserCreditType.CREDIT_V3_FREE, UserCreditType.CREDIT_EMPTY]
   const creditTypeIsNotGrantFreeOrEmpty =
-    user && !GRANT_FREE_OR_EMPTY_TYPES.includes(user.creditType)
-  const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
+    user && ![UserCreditType.CREDIT_V3_FREE, UserCreditType.CREDIT_EMPTY].includes(user.creditType)
 
   const { modal } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  function search(values: PriceModalFormData) {
-    const transformedValues = {
-      ...values,
-      minPrice: values.minPrice
-        ? String(Number(values.minPrice.replace(',', '.')) * conversionRate)
-        : '',
-      maxPrice: values.maxPrice
-        ? String(Number(values.maxPrice.replace(',', '.')) * conversionRate)
-        : '',
-    }
+  const search = (values: PriceModalFormData) => {
+    const conversionRate = currency === Currency.PACIFIC_FRANC_SHORT ? euroToPacificFrancRate : 1
+    const formatPrice = (rawPrice: string) =>
+      rawPrice ? Number(rawPrice.replace(',', '.')) * conversionRate : undefined
 
-    const offerIsFree =
-      transformedValues.isOnlyFreeOffersSearch ||
-      (transformedValues.maxPrice === '0' &&
-        (transformedValues.minPrice === '' || transformedValues.minPrice === '0'))
-
-    let additionalSearchState: SearchState = {
+    const newSearchState: SearchState = {
       ...searchState,
-      priceRange: null,
-      minPrice: undefined,
-      maxPrice: undefined,
-      defaultMinPrice: values.minPrice,
-      defaultMaxPrice: values.maxPrice,
-      offerIsFree,
+      minPrice: formatPrice(values.minPrice),
+      maxPrice: formatPrice(values.maxPrice),
     }
 
-    if (transformedValues.minPrice) {
-      additionalSearchState = {
-        ...additionalSearchState,
-        minPrice: transformedValues.minPrice,
-      }
-    }
-
-    if (transformedValues.maxPrice) {
-      additionalSearchState = {
-        ...additionalSearchState,
-        maxPrice: transformedValues.maxPrice,
-        maxPossiblePrice: undefined,
-      }
-    } else {
-      additionalSearchState = {
-        ...additionalSearchState,
-        maxPossiblePrice: String(formatInitialCredit),
-      }
-    }
-
-    dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+    dispatch({ type: 'SET_STATE', payload: newSearchState })
     hideModal()
   }
 
   const initialFormValues = useMemo(() => {
     return {
-      minPrice: searchState?.defaultMinPrice ?? '',
-      maxPrice: searchState?.defaultMaxPrice ?? '',
-      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+      minPrice: priceToString(searchState?.minPrice),
+      maxPrice: priceToString(searchState?.maxPrice),
+      isLimitCreditSearch: false,
+      isOnlyFreeOffersSearch: false,
     }
-  }, [isLimitCreditSearchDefaultValue, isOnlyFreeOffersSearchDefaultValue, searchState])
+  }, [searchState?.minPrice, searchState?.maxPrice])
 
   const {
     handleSubmit,
@@ -177,76 +132,62 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     setValue,
     trigger,
     formState: { isSubmitting, isValid, isValidating },
-    watch,
   } = useForm<PriceModalFormData>({
     mode: 'onChange',
     defaultValues: initialFormValues,
     resolver: yupResolver(searchPriceSchema),
   })
 
-  const { minPrice, maxPrice, isLimitCreditSearch, isOnlyFreeOffersSearch } = watch()
-
   const onSubmit = handleSubmit(search)
 
-  const toggleOnlyFreeOffersSearch = useCallback(() => {
-    const toggleOnlyFreeOffersSearchValue = !getValues('isOnlyFreeOffersSearch')
-    setValue('isOnlyFreeOffersSearch', toggleOnlyFreeOffersSearchValue)
-    if (toggleOnlyFreeOffersSearchValue) {
+  const onToggleOnlyFreeOffersSearch = useCallback(() => {
+    const wasActive = getValues('isOnlyFreeOffersSearch')
+    setValue('isOnlyFreeOffersSearch', !wasActive)
+    const isActive = !wasActive
+    if (isActive) {
       setValue('maxPrice', '0')
       setValue('minPrice', '0')
       setValue('isLimitCreditSearch', false)
       trigger(['minPrice', 'maxPrice'])
       return
     }
-    const maxPrice = searchState?.maxPrice === '0' ? '' : (searchState?.maxPrice ?? '')
-    const minPrice = searchState?.minPrice === '0' ? '' : (searchState?.minPrice ?? '')
 
-    setValue('maxPrice', maxPrice)
-    setValue('minPrice', minPrice)
+    setValue('maxPrice', priceToString(searchState?.maxPrice))
+    setValue('minPrice', priceToString(searchState?.minPrice))
     trigger(['minPrice', 'maxPrice'])
   }, [setValue, getValues, trigger, searchState?.maxPrice, searchState?.minPrice])
 
-  const toggleLimitCreditSearch = useCallback(() => {
-    const toggleLimitCreditSearchValue = !getValues('isLimitCreditSearch')
-    setValue('isLimitCreditSearch', toggleLimitCreditSearchValue)
-
-    if (toggleLimitCreditSearchValue) {
-      setValue('maxPrice', String(formatAvailableCredit))
+  const onToggleLimitCreditSearch = useCallback(() => {
+    const wasActive = getValues('isLimitCreditSearch')
+    setValue('isLimitCreditSearch', !wasActive)
+    const isActive = !wasActive
+    if (isActive) {
+      setValue('maxPrice', String(formattedCredit))
       setValue('isOnlyFreeOffersSearch', false)
       trigger(['minPrice', 'maxPrice'])
       return
     }
 
-    const availableCreditIsMaxPriceSearch = Number(searchState?.maxPrice) === formatAvailableCredit
-    setValue('maxPrice', availableCreditIsMaxPriceSearch ? '' : (searchState?.maxPrice ?? ''))
+    setValue('maxPrice', priceToString(searchState?.maxPrice))
     trigger(['minPrice', 'maxPrice'])
-  }, [setValue, getValues, trigger, formatAvailableCredit, searchState?.maxPrice])
+  }, [setValue, getValues, trigger, formattedCredit, searchState?.maxPrice])
 
   const closeModal = useCallback(() => {
     reset({
-      minPrice: searchState?.minPrice ?? '',
-      maxPrice: searchState?.maxPrice ?? '',
-      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+      minPrice: priceToString(searchState?.minPrice),
+      maxPrice: priceToString(searchState?.maxPrice),
+      isLimitCreditSearch: false,
+      isOnlyFreeOffersSearch: false,
     })
     hideModal()
-  }, [
-    hideModal,
-    isLimitCreditSearchDefaultValue,
-    isOnlyFreeOffersSearchDefaultValue,
-    reset,
-    searchState?.maxPrice,
-    searchState?.minPrice,
-  ])
+  }, [hideModal, reset, searchState?.maxPrice, searchState?.minPrice])
 
   const close = useCallback(() => {
     closeModal()
-    if (onClose) {
-      onClose()
-    }
+    onClose?.()
   }, [closeModal, onClose])
 
-  const onResetPress = useCallback(() => {
+  const resetForm = useCallback(() => {
     reset(
       {
         minPrice: '',
@@ -260,28 +201,24 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       type: 'SET_STATE',
       payload: {
         ...searchState,
-        priceRange: null,
         minPrice: undefined,
         maxPrice: undefined,
         defaultMinPrice: '',
         defaultMaxPrice: '',
-        offerIsFree: false,
       },
     })
   }, [dispatch, reset, searchState])
 
   useEffect(() => {
     if (currency !== previousCurrency) {
-      onResetPress()
+      resetForm()
       setPreviousCurrency(currency)
     }
-  }, [currency, previousCurrency, onResetPress])
+  }, [currency, previousCurrency, resetForm])
 
   const disabled = !isValid || (!isValidating && isSubmitting)
   const isKeyboardOpen = keyboardHeight > 0
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
-  const hasDefaultValues =
-    !isLimitCreditSearch && !isOnlyFreeOffersSearch && maxPrice === '' && minPrice === ''
 
   return (
     <AppModal
@@ -306,17 +243,20 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       fixedModalBottom={
         <SearchFixedModalBottom
           onSearchPress={onSubmit}
-          onResetPress={onResetPress}
+          onResetPress={resetForm}
           isSearchDisabled={disabled}
           filterBehaviour={filterBehaviour}
-          isResetDisabled={hasDefaultValues}
         />
       }>
       <FormContainer isKeyboardOpen={isKeyboardOpen}>
         <Form.MaxWidth>
           {isLoggedInAndBeneficiary && creditTypeIsNotGrantFreeOrEmpty ? (
             <Container>
-              <Banner label={bannerTitle} Icon={Error} testID="creditBanner" />
+              <Banner
+                label={`Il te reste ${formattedCreditWithCurrency} sur ton pass Culture.`}
+                Icon={Error}
+                testID="creditBanner"
+              />
             </Container>
           ) : null}
           <Controller
@@ -325,7 +265,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             render={({ field: { value } }) => (
               <FilterSwitchWithLabel
                 isActive={value}
-                toggle={toggleOnlyFreeOffersSearch}
+                toggle={onToggleOnlyFreeOffersSearch}
                 label="Uniquement les offres gratuites"
                 testID="onlyFreeOffers"
               />
@@ -340,7 +280,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                 <React.Fragment>
                   <FilterSwitchWithLabel
                     isActive={value}
-                    toggle={toggleLimitCreditSearch}
+                    toggle={onToggleLimitCreditSearch}
                     label="Limiter la recherche à mon crédit"
                     testID="limitCreditSearch"
                   />
@@ -362,7 +302,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             control={control}
             name="maxPrice"
             label={`Prix maximum (en\u00a0${currencyFull})`}
-            description={`max\u00a0: ${formatInitialCreditWithCurrency}`}
             testID="Entrée pour le prix maximum"
             isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
           />
