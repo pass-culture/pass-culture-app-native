@@ -4,11 +4,11 @@ import { DomainsCredit } from 'api/gen'
 import { UserProfile } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 
-import { hasOngoingCredit } from './useAvailableCredit'
+import { hasOngoingCredit } from './getAvailableCredit'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useAvailableCredit', () => {
+describe('getAvailableCredit', () => {
   mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
   const noMoreCredit = {

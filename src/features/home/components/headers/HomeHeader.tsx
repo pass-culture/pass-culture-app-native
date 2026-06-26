@@ -13,19 +13,19 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { isFreeBeneficiary } from 'shared/user/checkCreditType'
 import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
 import { isCurrentOrFormerBeneficiary, isCurrentBeneficiary } from 'shared/user/checkStatusType'
-import { useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
-  const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport, designSystem } = useTheme()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const numberOfLines = useMobileFontScaleToDisplay({ default: 2, at200PercentZoom: 3 })
   const height = designSystem.size.spacing.xl
+  const availableCredit = getAvailableCredit(user)
 
   const Header = useMemo(() => {
     const welcomeTitle =

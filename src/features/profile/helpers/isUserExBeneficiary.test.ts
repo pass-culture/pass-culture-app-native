@@ -1,11 +1,11 @@
 import { UserRole } from 'api/gen'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUserV2, eligibleUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
-import { getAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 
 import { isUserExBeneficiary } from './isUserExBeneficiary'
 
-jest.mock('shared/user/useAvailableCredit')
+jest.mock('shared/user/getAvailableCredit')
 
 const underageBeneficiaryUser: UserProfile = {
   ...eligibleUserV2,

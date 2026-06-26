@@ -21,7 +21,7 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'shared/currency/formatCurrencyFromCentsWithoutCurrencySymbol'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
-import { useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -70,7 +70,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const { searchState, dispatch } = useSearch()
   const { isLoggedIn, user } = useAuthContext()
 
-  const availableCredit = useAvailableCredit()?.amount ?? 0
+  const availableCredit = getAvailableCredit()?.amount ?? 0
   const formatAvailableCredit = formatCurrencyFromCentsWithoutCurrencySymbol(
     availableCredit,
     currency,

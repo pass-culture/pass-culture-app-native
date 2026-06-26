@@ -3,7 +3,7 @@ import * as getBeneficiaryBookingButtonPropsAPI from 'features/favorites/helpers
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import * as getEligibleBookingButtonPropsAPI from 'features/favorites/helpers/getEligibleBookingButtonProps'
 import { beneficiaryUserV2, eligibleUserV2, exBeneficiaryUserV2 } from 'fixtures/user'
-import { getAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 
 const getEligibleBookingButtonPropsSpy = jest.spyOn(
   getEligibleBookingButtonPropsAPI,
@@ -15,7 +15,7 @@ const getBeneficiaryBookingButtonPropsSpy = jest.spyOn(
   'getBeneficiaryBookingButtonProps'
 )
 
-jest.mock('shared/user/useAvailableCredit')
+jest.mock('shared/user/getAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
 
 const favoriteOffer = favoriteOfferResponseSnap

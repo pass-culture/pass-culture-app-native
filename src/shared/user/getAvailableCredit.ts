@@ -1,4 +1,3 @@
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { computeCredit } from 'features/profile/helpers/computeCredit'
 import { UserProfile } from 'features/share/types'
 
@@ -12,17 +11,10 @@ export const hasOngoingCredit = (user: UserProfile) => {
   return hasRemainingCredit && hasDepositExpired
 }
 
-export const getAvailableCredit = (user: UserProfile): Credit => {
+export const getAvailableCredit = (user?: UserProfile): Credit | undefined => {
+  if (!user) return undefined
   return {
     amount: computeCredit(user.domainsCredit),
     isExpired: !hasOngoingCredit(user),
   }
-}
-
-export const useAvailableCredit = (): Credit | undefined => {
-  const { user } = useAuthContext()
-
-  if (!user) return undefined
-
-  return getAvailableCredit(user)
 }

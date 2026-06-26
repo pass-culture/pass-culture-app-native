@@ -28,7 +28,7 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position, useLocation } from 'libs/location/location'
-import { useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import {
   FavoriteHitPlaceholder,
@@ -96,7 +96,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   }, [data, favoritesState, position])
 
   const { user } = useAuthContext()
-  const credit = useAvailableCredit()
+  const credit = getAvailableCredit(user)
 
   useEffect(() => {
     flatListRef?.current?.scrollToOffset({ animated: true, offset: 0 })

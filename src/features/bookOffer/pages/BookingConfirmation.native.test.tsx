@@ -24,8 +24,8 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
-jest.mock('shared/user/useAvailableCredit', () => ({
-  useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
+jest.mock('shared/user/getAvailableCredit', () => ({
+  getAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 
 const share = jest
