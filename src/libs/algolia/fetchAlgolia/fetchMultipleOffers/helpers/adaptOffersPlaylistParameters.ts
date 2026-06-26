@@ -12,7 +12,7 @@ export const adaptOffersPlaylistParameters = (
   subcategoryLabelMapping: SubcategoryLabelMapping,
   genreTypeMapping: GenreTypeMapping
 ): SearchQueryParameters => {
-  const { priceMin, priceMax } = parameters
+  const { priceMin = 0, priceMax = 300 } = parameters
 
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({
     beginningDatetime: parameters.beginningDatetime,
@@ -49,7 +49,7 @@ export const adaptOffersPlaylistParameters = (
     offerSubcategories,
     offerIsDuo: parameters.isDuo ?? false,
     isDigital: parameters.isDigital ?? false,
-    priceRange: _buildPriceRange({ priceMin, priceMax }),
+    priceRange: [priceMin, priceMax],
     tags: parameters.tags ?? [],
     allocineIdList: parameters.allocineIdList ?? [],
     date: null,
@@ -67,8 +67,4 @@ export const adaptOffersPlaylistParameters = (
       : undefined),
     ...(parameters.isWithClub ? { isWithClub: parameters.isWithClub } : undefined),
   }
-}
-
-const _buildPriceRange = ({ priceMin = 0, priceMax = 300 }): [number, number] => {
-  return [priceMin, priceMax]
 }
