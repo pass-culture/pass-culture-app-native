@@ -1,7 +1,6 @@
+import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
-
-import { formatCurrencyFromCentsWithoutCurrencySymbol } from './formatCurrencyFromCentsWithoutCurrencySymbol'
 
 describe('formatCurrencyFromCentsWithoutCurrencySymbol()', () => {
   it.each`

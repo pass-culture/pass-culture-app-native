@@ -48,7 +48,7 @@ export type PriceModalProps = {
 
 const titleId = uuidv4()
 
-const formatCurrencyFromCentsWithoutCurrencySymbol = (
+export const formatCurrencyFromCentsWithoutCurrencySymbol = (
   priceInCents: number,
   currency: Currency,
   euroToPacificFrancRate: number
