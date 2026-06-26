@@ -4,9 +4,9 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { FormatPriceOptions } from '../../libs/parsers/getDisplayedPrice'
 
-const getFractionDigits = (princeInEuro: number, options?: FormatPriceOptions): number => {
+const getFractionDigits = (priceInEuro: number, options?: FormatPriceOptions): number => {
   if (options?.fractionDigits) return options.fractionDigits
-  return princeInEuro === Math.floor(princeInEuro) ? 0 : 2
+  return priceInEuro === Math.floor(priceInEuro) ? 0 : 2
 }
 
 export const formatCurrencyFromCents = (
