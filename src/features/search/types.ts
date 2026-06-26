@@ -57,7 +57,6 @@ export interface SearchState {
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
   isDigital: boolean
-  priceRange: Range<number> | null
   timeRange: Range<number> | null
   tags: string[]
   query: string

@@ -13,14 +13,12 @@ export const useFilterCount = (searchState: SearchState): number => {
     venue,
     beginningDatetime,
     endingDatetime,
-    priceRange,
   } = searchState
   const { disabilities } = useAccessibilityFiltersContext()
   const hasCategories = offerCategories?.length > 0
   const minPriceAsNumber = getPriceAsNumber(minPrice)
   const maxPriceAsNumber = getPriceAsNumber(maxPrice)
-  const hasPricesOrFree =
-    (!!minPriceAsNumber && minPriceAsNumber > 0) || !!maxPriceAsNumber || !!priceRange
+  const hasPriceFilter = (!!minPriceAsNumber && minPriceAsNumber > 0) || !!maxPriceAsNumber
   const hasActivatedAccessibility =
     !!disabilities.isMentalDisabilityCompliant ||
     !!disabilities.isMotorDisabilityCompliant ||
@@ -34,7 +32,7 @@ export const useFilterCount = (searchState: SearchState): number => {
     // Catégories
     +hasCategories +
     // Prix ou gratuit
-    +hasPricesOrFree +
+    +hasPriceFilter +
     // Uniquement les offres duo
     +offerIsDuo +
     // Date & heure

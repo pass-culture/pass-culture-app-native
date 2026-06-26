@@ -176,7 +176,6 @@ export type SearchQueryParameters = {
   offerSubcategories: SubcategoryIdEnumv2[]
   isDigital: boolean
   page?: number
-  priceRange: Range<number> | null
   query: string
   searchId?: string
   tags: string[]

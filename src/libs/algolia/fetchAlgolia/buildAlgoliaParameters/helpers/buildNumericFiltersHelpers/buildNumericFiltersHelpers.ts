@@ -1,6 +1,6 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
-import { clampPrice, MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
+import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   computeTimeRangeFromHoursToSeconds,
@@ -17,17 +17,15 @@ export const buildOfferLast30DaysBookings = (
   return [`${NUMERIC_FILTERS_ENUM.OFFER_LAST_30_DAYS_BOOKINGS} >= ${minBookingsThreshold}`]
 }
 
-export const buildOfferPriceRangePredicate = ({
-  priceRange,
-  minPrice,
-  maxPrice,
-}: Pick<SearchQueryParameters, 'priceRange' | 'minPrice' | 'maxPrice'>):
-  | FiltersArray[0]
-  | undefined => {
+export const buildOfferPriceRangePredicate = (
+  minPrice?: string,
+  maxPrice?: string
+): FiltersArray[0] => {
   const formatMinPrice = getPriceAsNumber(minPrice) ?? 0
   const formatMaxPrice = getPriceAsNumber(maxPrice) || convertCentsToEuros(MAX_PRICE_IN_CENTS)
-  const formatPriceRange: Range<number> = priceRange ?? [formatMinPrice, formatMaxPrice]
-  return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
+  const min = Math.max(0, formatMinPrice)
+  const max = Math.min(convertCentsToEuros(MAX_PRICE_IN_CENTS), formatMaxPrice)
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${min} TO ${max}`]
 }
 
 export const buildDatePredicate = ({

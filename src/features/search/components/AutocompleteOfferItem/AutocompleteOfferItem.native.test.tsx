@@ -31,7 +31,6 @@ const venue = mockedSuggestedVenue
 let mockSearchState: SearchState = {
   ...initialSearchState,
   venue,
-  priceRange: [0, 20],
 }
 
 const mockDispatch = jest.fn()
@@ -59,7 +58,6 @@ describe('AutocompleteOfferItem component', () => {
     mockSearchState = {
       ...initialSearchState,
       venue,
-      priceRange: [0, 20],
     }
     setFeatureFlags()
   })
@@ -224,7 +222,6 @@ describe('AutocompleteOfferItem component', () => {
           query: mockHit.query,
           locationFilter: mockSearchState.locationFilter,
           venue: mockSearchState.venue,
-          priceRange: mockSearchState.priceRange,
           searchId,
           isAutocomplete: true,
           offerNativeCategories: [],
@@ -282,7 +279,6 @@ describe('AutocompleteOfferItem component', () => {
             offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
           },
@@ -312,7 +308,6 @@ describe('AutocompleteOfferItem component', () => {
             offerNativeCategories: [NativeCategoryIdEnumv2.ARTS_VISUELS],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
           },
@@ -341,7 +336,6 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
           },
@@ -370,7 +364,6 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
           },
@@ -400,7 +393,6 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
           },
@@ -429,7 +421,6 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
           },
@@ -458,7 +449,6 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
             offerNativeCategories: [],
             locationFilter: mockSearchState.locationFilter,
-            priceRange: mockSearchState.priceRange,
             searchId,
             isAutocomplete: true,
             venue: mockSearchState.venue,

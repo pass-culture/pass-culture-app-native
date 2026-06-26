@@ -19,7 +19,6 @@ export const initialSearchState: SearchState = {
   offerCategories: [],
   offerIsDuo: false,
   offerSubcategories: [],
-  priceRange: null,
   query: '',
   tags: [],
   timeRange: null,
