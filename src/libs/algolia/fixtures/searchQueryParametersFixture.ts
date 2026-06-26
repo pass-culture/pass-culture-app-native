@@ -8,7 +8,6 @@ export const searchQueryParametersFixture: SearchQueryParameters = {
   offerCategories: [],
   offerSubcategories: [],
   offerIsDuo: false,
-  offerIsFree: false,
   isDigital: false,
   priceRange: null,
   query: '',

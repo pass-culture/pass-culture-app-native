@@ -172,7 +172,6 @@ export type SearchQueryParameters = {
   offerGtlLabel?: string
   offerGtlLevel?: GtlLevel
   offerIsDuo: boolean
-  offerIsFree?: boolean
   offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   isDigital: boolean

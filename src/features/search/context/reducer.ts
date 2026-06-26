@@ -18,7 +18,6 @@ export const initialSearchState: SearchState = {
   minPrice: undefined,
   offerCategories: [],
   offerIsDuo: false,
-  offerIsFree: false,
   offerSubcategories: [],
   priceRange: null,
   query: '',

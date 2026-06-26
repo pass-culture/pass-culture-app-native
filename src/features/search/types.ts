@@ -56,7 +56,6 @@ export interface SearchState {
   offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
-  offerIsFree?: boolean
   isDigital: boolean
   priceRange: Range<number> | null
   timeRange: Range<number> | null

@@ -18,15 +18,12 @@ export const buildOfferLast30DaysBookings = (
 }
 
 export const buildOfferPriceRangePredicate = ({
-  offerIsFree,
   priceRange,
   minPrice,
   maxPrice,
-}: Pick<SearchQueryParameters, 'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice'>):
+}: Pick<SearchQueryParameters, 'priceRange' | 'minPrice' | 'maxPrice'>):
   | FiltersArray[0]
   | undefined => {
-  if (offerIsFree) return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES} = 0`]
-
   const formatMinPrice = getPriceAsNumber(minPrice) ?? 0
   const formatMaxPrice = getPriceAsNumber(maxPrice) || convertCentsToEuros(MAX_PRICE_IN_CENTS)
   const formatPriceRange: Range<number> = priceRange ?? [formatMinPrice, formatMaxPrice]

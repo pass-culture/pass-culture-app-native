@@ -12,7 +12,6 @@ export const buildNumericFilters = (
     date,
     beginningDatetime,
     endingDatetime,
-    offerIsFree,
     priceRange,
     timeRange,
     minPrice,
@@ -25,7 +24,6 @@ export const buildNumericFilters = (
     | 'beginningDatetime'
     | 'endingDatetime'
     | 'date'
-    | 'offerIsFree'
     | 'priceRange'
     | 'timeRange'
     | 'minPrice'
@@ -40,7 +38,6 @@ export const buildNumericFilters = (
   numericFilters: FiltersArray
 } => {
   const priceRangePredicate = buildOfferPriceRangePredicate({
-    offerIsFree,
     priceRange,
     minPrice,
     maxPrice,

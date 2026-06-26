@@ -7,7 +7,6 @@ export const useFilterCount = (searchState: SearchState): number => {
     offerCategories,
     minPrice,
     maxPrice,
-    offerIsFree,
     offerIsDuo,
     date,
     timeRange,
@@ -21,10 +20,7 @@ export const useFilterCount = (searchState: SearchState): number => {
   const minPriceAsNumber = getPriceAsNumber(minPrice)
   const maxPriceAsNumber = getPriceAsNumber(maxPrice)
   const hasPricesOrFree =
-    (!!minPriceAsNumber && minPriceAsNumber > 0) ||
-    !!maxPriceAsNumber ||
-    !!priceRange ||
-    !!offerIsFree
+    (!!minPriceAsNumber && minPriceAsNumber > 0) || !!maxPriceAsNumber || !!priceRange
   const hasActivatedAccessibility =
     !!disabilities.isMentalDisabilityCompliant ||
     !!disabilities.isMotorDisabilityCompliant ||

@@ -34,7 +34,6 @@ export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState
       offerCategories: [],
       offerSubcategories: [],
       offerIsDuo: false,
-      offerIsFree: false,
       isDigital: false,
       priceRange: [0, convertCentsToEuros(maxPriceInCents)],
       tags: [],

@@ -20,7 +20,6 @@ type PerformSearchState = {
   searchCategories?: string
   searchGenreTypes?: string
   searchOfferIsDuo?: boolean
-  searchOfferIsFree?: boolean
   searchNativeCategories?: string
   searchQuery?: string
   searchTimeRange?: string
@@ -133,7 +132,7 @@ export const buildPerformSearchState = (
   state.searchDate = buildSearchDate(searchState)
 
   if (searchState.isAutocomplete) {
-    state.searchIsAutocomplete = searchState.isAutocomplete
+    state.searchIsAutocomplete = true
   }
 
   if (searchState.maxPrice) {
@@ -153,11 +152,7 @@ export const buildPerformSearchState = (
   }
 
   if (searchState.offerIsDuo) {
-    state.searchOfferIsDuo = searchState.offerIsDuo
-  }
-
-  if (searchState.offerIsFree) {
-    state.searchOfferIsFree = searchState.offerIsFree
+    state.searchOfferIsDuo = true
   }
 
   if (searchState.offerNativeCategories && searchState.offerNativeCategories.length > 0) {
@@ -169,7 +164,7 @@ export const buildPerformSearchState = (
   }
 
   if (searchState.isFromHistory) {
-    state.searchIsBasedOnHistory = searchState.isFromHistory
+    state.searchIsBasedOnHistory = true
   }
   return state
 }
