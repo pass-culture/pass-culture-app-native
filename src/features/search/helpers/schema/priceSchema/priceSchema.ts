@@ -1,4 +1,4 @@
-import { boolean, object, string } from 'yup'
+import { AnySchema, boolean, object, string } from 'yup'
 
 const PRICE_REGEX = /^\d+(?:[,.]\d{0,2})?$/
 const formatPriceError = `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
@@ -7,22 +7,18 @@ const minPriceError = `Le montant minimum ne peut pas dépasser le montant maxim
 const priceValidationSchema = () =>
   string()
     .trim()
-    .test('validPrice', formatPriceError, (value) => {
-      if (!value) return true
-      return PRICE_REGEX.test(value.trim())
-    })
+    .test('validPrice', formatPriceError, (value) => !value || PRICE_REGEX.test(value.trim()))
 
 const minPriceWithConditions = () =>
-  priceValidationSchema().when(['validPrice'], (price, schema) => {
-    if (!!price && price.trim().length > 0) {
-      return schema.test('minPriceLowerThanMax', minPriceError, (minPrice) => {
-        if (!minPrice) return true
-        const min = Number(minPrice.trim().replace(',', '.'))
-        const max = Number(price.trim().replace(',', '.'))
-        return min <= max
-      })
-    }
-    return schema
+  priceValidationSchema().when(['maxPrice'], (maxPrice: string, schema: AnySchema) => {
+    if (!maxPrice || !maxPrice.trim()) return schema
+
+    return schema.test('minPriceLowerThanMax', minPriceError, (minPrice: string) => {
+      if (!minPrice) return true
+      const min = Number(minPrice.trim().replace(',', '.'))
+      const max = Number(maxPrice.trim().replace(',', '.'))
+      return min <= max
+    })
   })
 
 export const priceSchema = () =>

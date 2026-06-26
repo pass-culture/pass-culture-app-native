@@ -16,10 +16,10 @@ export type HasEnoughCredit =
 const message =
   'En raison des conversions monétaires, ton crédit disponible ne couvre pas le prix total.'
 
-function convertDomainCreditToPacificFranc(
+const convertDomainCreditToPacificFranc = (
   credit: { initial: number; remaining: number },
   rate: number
-) {
+) => {
   return {
     initial: convertCurrency(convertCentsToEuros(credit.initial), rate, RoundUnit.UNITS),
     remaining: convertCurrency(convertCentsToEuros(credit.remaining), rate, RoundUnit.UNITS),
