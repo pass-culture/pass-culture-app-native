@@ -6,7 +6,7 @@ import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { RoundUnit, convertCurrency } from 'shared/currency/convertEuroToPacificFranc'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertCurrency'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
 export type HasEnoughCredit =

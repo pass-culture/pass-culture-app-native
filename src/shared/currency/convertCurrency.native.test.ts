@@ -1,6 +1,6 @@
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
-import { convertCurrency, RoundUnit } from './convertEuroToPacificFranc'
+import { convertCurrency, RoundUnit } from './convertCurrency'
 
 describe('convertEuroToPacificFranc', () => {
   describe('when rounding is NONE', () => {

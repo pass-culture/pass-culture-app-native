@@ -1,5 +1,5 @@
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { RoundUnit, convertCurrency } from 'shared/currency/convertEuroToPacificFranc'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertCurrency'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { FormatPriceOptions } from '../../libs/parsers/getDisplayedPrice'

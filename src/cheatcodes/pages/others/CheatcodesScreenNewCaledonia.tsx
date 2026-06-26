@@ -6,7 +6,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLocation } from 'libs/location/location'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { convertCurrency, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
+import { convertCurrency, RoundUnit } from 'shared/currency/convertCurrency'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { Separator } from 'ui/components/Separator'
