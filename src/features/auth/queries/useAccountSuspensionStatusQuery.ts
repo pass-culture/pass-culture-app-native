@@ -1,18 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useAccountSuspensionStatusQuery = (enabled?: boolean) =>
-  useQuery({
+export const useAccountSuspensionStatusQuery = () => {
+  const { isLoggedIn } = useAuthContext()
+  return useQuery({
     queryKey: [QueryKeys.ACCOUNT_SUSPENSION_STATUS],
-    queryFn: async () => {
-      try {
-        return await api.getNativeV1AccountSuspensionStatus()
-      } catch {
-        return null
-      }
-    },
-    enabled: enabled ?? false,
+    queryFn: () => api.getNativeV1AccountSuspensionStatus(),
+    enabled: isLoggedIn,
     meta: { private: true },
   })
+}

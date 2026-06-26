@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { UserSuspensionDateResponse } from 'api/gen'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -8,13 +10,12 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
 
 jest.mock('libs/jwt/jwt')
-
+jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })
-jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: () => mockUseAuthContext(),
-}))
+mockAuthContextWithUser({
+  ...beneficiaryUser,
+})
 
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {

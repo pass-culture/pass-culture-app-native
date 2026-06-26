@@ -10,8 +10,8 @@ export const useAccountUnsuspendMutation = (
 
   return useMutation({
     mutationFn: () => api.postNativeV1AccountUnsuspend(),
-    onSuccess: () => {
-      queryClient.removeQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         predicate: (query) => !!query.meta?.private,
       })
       onSuccess()

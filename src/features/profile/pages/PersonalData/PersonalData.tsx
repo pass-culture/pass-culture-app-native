@@ -9,9 +9,9 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { EditableField } from 'features/profile/components/EditableFiled/EditableField'
 import {
+  useProfileTokenExpirationQuery,
   checkHasCurrentEmailChange,
-  useCheckHasCurrentEmailChangeQuery,
-} from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
+} from 'features/profile/queries/useProfileTokenExpirationQuery'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -27,7 +27,7 @@ function onEmailChangeClick() {
 }
 
 export function PersonalData() {
-  const { isLoggedIn, user } = useAuthContext()
+  const { user } = useAuthContext()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   const fullname = [user?.firstName, user?.lastName].filter(Boolean).join(' ').trim()
@@ -37,9 +37,7 @@ export function PersonalData() {
       ? `${user.street}, ${user.postalCode}, ${user.city}`
       : ''
 
-  const { data: hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery({
-    enabled: isLoggedIn,
-    meta: { private: true },
+  const { data: hasCurrentEmailChange } = useProfileTokenExpirationQuery({
     select: (data) => checkHasCurrentEmailChange(data),
   })
 

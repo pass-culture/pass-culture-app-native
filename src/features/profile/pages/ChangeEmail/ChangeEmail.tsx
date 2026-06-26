@@ -8,8 +8,8 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
 import {
   checkHasCurrentEmailChange,
-  useCheckHasCurrentEmailChangeQuery,
-} from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
+  useProfileTokenExpirationQuery,
+} from 'features/profile/queries/useProfileTokenExpirationQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
@@ -18,7 +18,7 @@ import { ChangeEmailContent } from './ChangeEmailContent'
 export function ChangeEmail() {
   const { params } = useRoute<UseRouteType<'ChangeEmail'>>()
   const { replace } = useNavigation<UseNavigationType>()
-  const { isLoggedIn, user } = useAuthContext()
+  const { user } = useAuthContext()
 
   const { hideModal, showModal, visible } = useModal(false)
 
@@ -32,9 +32,7 @@ export function ChangeEmail() {
       return replace(...getProfileHookConfig('ChangeEmail', { showModal: false }))
   }
 
-  const { data: hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery({
-    enabled: isLoggedIn,
-    meta: { private: true },
+  const { data: hasCurrentEmailChange } = useProfileTokenExpirationQuery({
     select: (data) => checkHasCurrentEmailChange(data),
   })
 
