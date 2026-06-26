@@ -67,6 +67,9 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
           </View>
         </View>
         <View
+          accessibilityLabel="Profite de ton crédit jusqu’au 18/11/2050"
+          accessibilityRole="text"
+          accessible={true}
           style={
             {
               "alignItems": "center",
