@@ -136,11 +136,11 @@ export const buildPerformSearchState = (
   }
 
   if (searchState.maxPrice) {
-    state.searchMaxPrice = searchState.maxPrice
+    state.searchMaxPrice = String(searchState.maxPrice)
   }
 
   if (searchState.minPrice) {
-    state.searchMinPrice = searchState.minPrice
+    state.searchMinPrice = String(searchState.minPrice)
   }
 
   if (searchState.offerCategories.length > 0) {

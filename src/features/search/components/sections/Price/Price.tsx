@@ -3,7 +3,6 @@ import React, { useCallback, useMemo } from 'react'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
 import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -25,16 +24,19 @@ export const Price = ({ onClose, currency, euroToPacificFrancRate }: Props) => {
     hideModal: hideSearchPriceModal,
   } = useModal(false)
 
-  const minPrice: number | undefined = getPriceAsNumber(searchState.minPrice)
-  const maxPrice: number | undefined = getPriceAsNumber(searchState.maxPrice)
-
   const onPress = useCallback(() => {
     showSearchPriceModal()
   }, [showSearchPriceModal])
 
   const description = useMemo(
-    () => getPriceDescription(currency, euroToPacificFrancRate, minPrice, maxPrice),
-    [currency, euroToPacificFrancRate, maxPrice, minPrice]
+    () =>
+      getPriceDescription(
+        currency,
+        euroToPacificFrancRate,
+        searchState.minPrice,
+        searchState.maxPrice
+      ),
+    [currency, euroToPacificFrancRate, searchState.maxPrice, searchState.minPrice]
   )
 
   return (

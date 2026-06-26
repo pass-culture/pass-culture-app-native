@@ -163,9 +163,9 @@ export type SearchQueryParameters = {
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean
-  maxPrice?: string
+  maxPrice?: number
   minBookingsThreshold?: number
-  minPrice?: string
+  minPrice?: number
   isHeadline?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
