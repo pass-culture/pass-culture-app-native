@@ -170,7 +170,7 @@ onFlowStart:
 
 - assertVisible: 'Bonne nouvelle !'
 
-- assertVisible: "200 €"
+- assertVisible: "50 €"
 
 - tapOn: "Continuer"
 
