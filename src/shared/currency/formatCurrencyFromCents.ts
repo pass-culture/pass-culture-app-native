@@ -1,5 +1,5 @@
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { FormatPriceOptions } from '../../libs/parsers/getDisplayedPrice'
@@ -18,7 +18,7 @@ export const formatCurrencyFromCents = (
   const priceInEuro = convertCentsToEuros(priceInCents)
 
   if (currency === Currency.PACIFIC_FRANC_SHORT) {
-    const priceInPacificFrancs = convertEuroToPacificFranc(
+    const priceInPacificFrancs = convertCurrency(
       priceInEuro,
       euroToPacificFrancRate,
       RoundUnit.UNITS

@@ -3,7 +3,7 @@ import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPric
 import { HasEnoughCreditType } from 'features/offerRefacto/types'
 import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 export const hasEnoughCredit = (
@@ -25,12 +25,8 @@ export function convertDomainCreditToPacificFranc(
   rate: number
 ) {
   return {
-    initial: convertEuroToPacificFranc(convertCentsToEuros(credit.initial), rate, RoundUnit.UNITS),
-    remaining: convertEuroToPacificFranc(
-      convertCentsToEuros(credit.remaining),
-      rate,
-      RoundUnit.UNITS
-    ),
+    initial: convertCurrency(convertCentsToEuros(credit.initial), rate, RoundUnit.UNITS),
+    remaining: convertCurrency(convertCentsToEuros(credit.remaining), rate, RoundUnit.UNITS),
   }
 }
 
@@ -60,7 +56,7 @@ export const checkHasEnoughCredit = ({
   // If the currency is Euro, we only check the Euro credit
   if (currency === Currency.EURO) return { hasEnoughCredit: hasEnoughCreditInEuro }
 
-  const priceInPacificFranc = convertEuroToPacificFranc(
+  const priceInPacificFranc = convertCurrency(
     convertCentsToEuros(priceInEuroCents),
     euroToPacificFrancRate,
     RoundUnit.UNITS
