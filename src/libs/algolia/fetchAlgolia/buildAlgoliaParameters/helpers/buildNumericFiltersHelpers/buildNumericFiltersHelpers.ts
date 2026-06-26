@@ -27,10 +27,7 @@ export const buildOfferPriceRangePredicate = ({
   const formatMinPrice = getPriceAsNumber(minPrice) ?? 0
   const formatMaxPrice = getPriceAsNumber(maxPrice) || convertCentsToEuros(MAX_PRICE_IN_CENTS)
   const formatPriceRange: Range<number> = priceRange ?? [formatMinPrice, formatMaxPrice]
-  if (formatPriceRange)
-    return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
-
-  return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: 0 TO 300`]
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
 }
 
 export const buildDatePredicate = ({
