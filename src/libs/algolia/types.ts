@@ -163,7 +163,6 @@ export type SearchQueryParameters = {
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean
-  maxPossiblePrice?: string
   maxPrice?: string
   minBookingsThreshold?: number
   minPrice?: string

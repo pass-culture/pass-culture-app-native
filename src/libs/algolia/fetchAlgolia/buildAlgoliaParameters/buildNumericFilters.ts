@@ -17,7 +17,6 @@ export const buildNumericFilters = (
     timeRange,
     minPrice,
     maxPrice,
-    maxPossiblePrice,
     minBookingsThreshold,
     minLikes,
     isWithClub,
@@ -31,7 +30,6 @@ export const buildNumericFilters = (
     | 'timeRange'
     | 'minPrice'
     | 'maxPrice'
-    | 'maxPossiblePrice'
     | 'minBookingsThreshold'
     | 'isHeadline'
     | 'minLikes'
@@ -46,7 +44,6 @@ export const buildNumericFilters = (
     priceRange,
     minPrice,
     maxPrice,
-    maxPossiblePrice,
   })
   const datePredicate = buildDatePredicate({ date, timeRange })
   const homepageDatePredicate = buildHomepageDatePredicate(

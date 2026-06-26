@@ -22,18 +22,13 @@ export const buildOfferPriceRangePredicate = ({
   priceRange,
   minPrice,
   maxPrice,
-  maxPossiblePrice,
-}: Pick<
-  SearchQueryParameters,
-  'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice' | 'maxPossiblePrice'
->): FiltersArray[0] | undefined => {
+}: Pick<SearchQueryParameters, 'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice'>):
+  | FiltersArray[0]
+  | undefined => {
   if (offerIsFree) return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES} = 0`]
 
   const formatMinPrice = getPriceAsNumber(minPrice) ?? 0
-  const formatMaxPrice =
-    getPriceAsNumber(maxPrice) ||
-    getPriceAsNumber(maxPossiblePrice) ||
-    convertCentsToEuros(MAX_PRICE_IN_CENTS)
+  const formatMaxPrice = getPriceAsNumber(maxPrice) || convertCentsToEuros(MAX_PRICE_IN_CENTS)
   const formatPriceRange: Range<number> = priceRange ?? [formatMinPrice, formatMaxPrice]
   if (formatPriceRange)
     return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]

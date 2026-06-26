@@ -67,7 +67,6 @@ export interface SearchState {
   defaultMinPrice?: string
   defaultMaxPrice?: string
   searchId?: string
-  maxPossiblePrice?: string
   isAutocomplete?: boolean
   isFullyDigitalOffersCategory?: boolean
   minBookingsThreshold?: number
