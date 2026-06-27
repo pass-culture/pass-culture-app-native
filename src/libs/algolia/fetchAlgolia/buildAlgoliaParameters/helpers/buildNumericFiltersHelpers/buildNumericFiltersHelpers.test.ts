@@ -31,76 +31,20 @@ describe('buildOfferLast30DaysBookings', () => {
 })
 
 describe('buildOfferPriceRangePredicate', () => {
-  const defaultBuildOfferPriceRangePredicate = {
-    offerIsFree: false,
-    priceRange: null,
-  }
-
   it('should return an offer price range predicate from 0 to 300 when price range, minimum and maximum prices not defined', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate(
-      defaultBuildOfferPriceRangePredicate
-    )
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices: 0 TO 300'])
-  })
-
-  it('should return an offer price range predicate at 0 when offerIsFree is true', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate({
-      ...defaultBuildOfferPriceRangePredicate,
-      offerIsFree: true,
-    })
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices = 0'])
+    expect(buildOfferPriceRangePredicate(undefined, undefined)).toEqual(['offer.prices: 0 TO 300'])
   })
 
   it('should return an offer price range predicate with the minimum price when defined and the default maximum price', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate({
-      ...defaultBuildOfferPriceRangePredicate,
-      minPrice: '10',
-    })
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices: 10 TO 300'])
+    expect(buildOfferPriceRangePredicate(10, undefined)).toEqual(['offer.prices: 10 TO 300'])
   })
 
   it('should return an offer price range predicate with the maximum price when defined and the default minimum price', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate({
-      ...defaultBuildOfferPriceRangePredicate,
-      maxPrice: '15',
-    })
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices: 0 TO 15'])
-  })
-
-  it('should return an offer price range predicate with the maximum possible price when defined and the default minimum price', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate({
-      ...defaultBuildOfferPriceRangePredicate,
-      maxPossiblePrice: '80',
-    })
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices: 0 TO 80'])
-  })
-
-  it('should return an offer price range predicate with the price range when defined', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate({
-      ...defaultBuildOfferPriceRangePredicate,
-      priceRange: [5, 30],
-      minPrice: '10',
-      maxPrice: '300',
-      maxPossiblePrice: '80',
-    })
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices: 5 TO 30'])
+    expect(buildOfferPriceRangePredicate(undefined, 15)).toEqual(['offer.prices: 0 TO 15'])
   })
 
   it('should return an offer price range predicate with the minimum and maximum prices when defined and price range not defined', () => {
-    const offerPriceRangePredicate = buildOfferPriceRangePredicate({
-      ...defaultBuildOfferPriceRangePredicate,
-      minPrice: '10',
-      maxPrice: '200',
-      maxPossiblePrice: '80',
-    })
-
-    expect(offerPriceRangePredicate).toEqual(['offer.prices: 10 TO 200'])
+    expect(buildOfferPriceRangePredicate(10, 200)).toEqual(['offer.prices: 10 TO 200'])
   })
 })
 

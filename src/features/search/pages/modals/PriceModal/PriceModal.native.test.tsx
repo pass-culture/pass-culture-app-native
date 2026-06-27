@@ -6,11 +6,9 @@ import * as Auth from 'features/auth/context/AuthContext'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { render, screen, userEvent, waitFor, waitForButtonToBePressable } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
@@ -57,6 +55,7 @@ jest.useFakeTimers()
 describe('<PriceModal/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockSearchState = { ...searchState, searchId }
   })
 
   beforeAll(() => {
@@ -184,7 +183,7 @@ describe('<PriceModal/>', () => {
 
   describe('with previous value in the search state', () => {
     it('should reset minimum price when pressing reset button', async () => {
-      mockSearchState = { ...searchState, minPrice: '5' }
+      mockSearchState = { ...searchState, minPrice: 5 }
       renderSearchPrice()
 
       const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
@@ -196,7 +195,7 @@ describe('<PriceModal/>', () => {
     })
 
     it('should call dispatch with default search when pressing reset button', async () => {
-      mockSearchState = { ...searchState, minPrice: '5', defaultMinPrice: '5' }
+      mockSearchState = { ...searchState, minPrice: 5 }
       renderSearchPrice()
 
       const resetButton = screen.getByText('Réinitialiser')
@@ -209,7 +208,7 @@ describe('<PriceModal/>', () => {
     })
 
     it('should preserve minimum price when closing the modal', async () => {
-      mockSearchState = { ...searchState, minPrice: '5' }
+      mockSearchState = { ...searchState, minPrice: 5 }
       renderSearchPrice()
 
       const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
@@ -221,7 +220,7 @@ describe('<PriceModal/>', () => {
     })
 
     it('should reset maximum price when pressing reset button', async () => {
-      mockSearchState = { ...searchState, maxPrice: '15' }
+      mockSearchState = { ...searchState, maxPrice: 15 }
       renderSearchPrice()
 
       const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
@@ -233,7 +232,7 @@ describe('<PriceModal/>', () => {
     })
 
     it('should preserve maximum price when closing the modal', async () => {
-      mockSearchState = { ...searchState, maxPrice: '15' }
+      mockSearchState = { ...searchState, maxPrice: 15 }
       renderSearchPrice()
 
       const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
@@ -245,7 +244,7 @@ describe('<PriceModal/>', () => {
     })
 
     it('should reset limit credit search toggle when pressing reset button', async () => {
-      mockSearchState = { ...searchState, maxPrice: '70' }
+      mockSearchState = { ...searchState, maxPrice: 70 }
       renderSearchPrice()
 
       const resetButton = screen.getByText('Réinitialiser')
@@ -254,42 +253,6 @@ describe('<PriceModal/>', () => {
       const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
 
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
-    })
-
-    it('should preserve limit credit search toggle when closing the modal', async () => {
-      mockSearchState = { ...searchState, maxPrice: '70' }
-      renderSearchPrice()
-
-      const previousButton = screen.getByTestId('Fermer')
-      await user.press(previousButton)
-
-      const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
-
-      expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(true)
-    })
-
-    it('should reset only free offers search toggle when pressing reset button', async () => {
-      mockSearchState = { ...searchState, offerIsFree: true }
-      renderSearchPrice()
-
-      const resetButton = screen.getByText('Réinitialiser')
-      await user.press(resetButton)
-
-      const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
-
-      expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(false)
-    })
-
-    it('should preserve only free offers search toggle when closing the modal', async () => {
-      mockSearchState = { ...searchState, offerIsFree: true }
-      renderSearchPrice()
-
-      const previousButton = screen.getByTestId('Fermer')
-      await user.press(previousButton)
-
-      const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
-
-      expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(true)
     })
   })
 
@@ -315,7 +278,7 @@ describe('<PriceModal/>', () => {
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
   })
 
-  it('should reset the maximum price when desactivate limit credit search toggle and no max price entered in the current search', async () => {
+  it('should reset the maximum price when deactivate limit credit search toggle and no max price entered in the current search', async () => {
     renderSearchPrice()
 
     const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
@@ -327,20 +290,8 @@ describe('<PriceModal/>', () => {
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
-  it('should reset the maximum price when desactivate limit credit search toggle if max price entered in the current search is the available credit', async () => {
-    mockSearchState = { ...searchState, maxPrice: '70' }
-    renderSearchPrice()
-
-    const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
-    await user.press(toggleLimitCreditSearch)
-
-    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
-
-    expect(maxPriceInput.props.value).toStrictEqual('')
-  })
-
-  it('should update the maximum price by the max price entered in the current search if different from avaiable credit when desactivate limit credit search toggle', async () => {
-    mockSearchState = { ...searchState, maxPrice: '15' }
+  it('should update the maximum price by the max price entered in the current search if different from avaiable credit when deactivate limit credit search toggle', async () => {
+    mockSearchState = { ...searchState, maxPrice: 15 }
     renderSearchPrice()
 
     const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
@@ -352,7 +303,7 @@ describe('<PriceModal/>', () => {
     expect(maxPriceInput.props.value).toStrictEqual('15')
   })
 
-  it('should desactivate limit credit search toggle when only free offers search toggle activated', async () => {
+  it('should deactivate limit credit search toggle when only free offers search toggle activated', async () => {
     renderSearchPrice()
 
     const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
@@ -366,7 +317,7 @@ describe('<PriceModal/>', () => {
     expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
   })
 
-  it('should desactivate only free offers search toggle when limit credit search toggle activated', async () => {
+  it('should deactivate only free offers search toggle when limit credit search toggle activated', async () => {
     renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -392,8 +343,8 @@ describe('<PriceModal/>', () => {
     expect(minPriceInput.props.value).toStrictEqual('0')
   })
 
-  it('should update the minimum price by empty value when desactivate only free offers search toggle if minimum price in the current search is 0', async () => {
-    mockSearchState = { ...searchState, minPrice: '0' }
+  it('should update the minimum price by empty value when deactivate only free offers search toggle if minimum price in the current search is 0', async () => {
+    mockSearchState = { ...searchState, minPrice: 0 }
     renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -405,8 +356,8 @@ describe('<PriceModal/>', () => {
     expect(minPriceInput.props.value).toStrictEqual('')
   })
 
-  it('should update the minimum price by minimum price in the current search when desactivate only free offers search toggle if minimum price in the current search is not 0', async () => {
-    mockSearchState = { ...searchState, minPrice: '5' }
+  it('should update the minimum price by minimum price in the current search when deactivate only free offers search toggle if minimum price in the current search is not 0', async () => {
+    mockSearchState = { ...searchState, minPrice: 5 }
     renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -418,8 +369,8 @@ describe('<PriceModal/>', () => {
     expect(minPriceInput.props.value).toStrictEqual('5')
   })
 
-  it('should update the maximum price by empty value when desactivate only free offers search toggle if maximum price in the current search is 0', async () => {
-    mockSearchState = { ...searchState, maxPrice: '0' }
+  it('should update the maximum price by empty value when deactivate only free offers search toggle if maximum price in the current search is 0', async () => {
+    mockSearchState = { ...searchState, maxPrice: 0 }
     renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -431,8 +382,8 @@ describe('<PriceModal/>', () => {
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
-  it('should update the maximum price by maximum price in the current search when desactivate only free offers search toggle if maximum price in the current search is not 0', async () => {
-    mockSearchState = { ...searchState, maxPrice: '20' }
+  it('should update the maximum price by maximum price in the current search when deactivate only free offers search toggle if maximum price in the current search is not 0', async () => {
+    mockSearchState = { ...searchState, maxPrice: 20 }
     renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -520,18 +471,6 @@ describe('<PriceModal/>', () => {
     expect(inputError).toBeOnTheScreen()
   })
 
-  it('should display the initial credit in right label maximum price input', async () => {
-    renderSearchPrice()
-
-    await waitFor(() => {
-      expect(screen.getByText('Rechercher')).toBeEnabled()
-    })
-
-    const rightLabelMaxInput = screen.getByText(`max : 80 €`, { hidden: true })
-
-    expect(rightLabelMaxInput).toBeOnTheScreen()
-  })
-
   describe('should close the modal', () => {
     it('when pressing the search button', async () => {
       renderSearchPrice()
@@ -564,57 +503,27 @@ describe('<PriceModal/>', () => {
   it('should hide minPrice error when onlyFreeOffers is pressed', async () => {
     renderSearchPrice()
 
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
     const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
     const onlyFreeOffersToggle = screen.getByTestId(
       'Uniquement les offres gratuites - Interrupteur à bascule - non coché'
     )
 
-    await user.type(minPriceInput, '9999')
+    await user.type(maxPriceInput, '1')
+    await user.type(minPriceInput, '2')
 
     expect(
-      screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
+      screen.getByText('Le montant minimum ne peut pas dépasser le montant maximum', {
+        hidden: true,
+      })
     ).toBeOnTheScreen()
 
     await user.press(onlyFreeOffersToggle)
 
     expect(
-      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
-    ).not.toBeOnTheScreen()
-  })
-
-  it('should hide maxPrice error when onlyFreeOffers is pressed', async () => {
-    renderSearchPrice()
-
-    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
-    await user.type(maxPriceInput, '9999')
-
-    expect(
-      screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
-    ).toBeOnTheScreen()
-
-    const onlyFreeOffersToggle = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
-    await user.press(onlyFreeOffersToggle)
-
-    expect(
-      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
-    ).not.toBeOnTheScreen()
-  })
-
-  it('should hide maxPrice error when limitCreditSearch is pressed', async () => {
-    renderSearchPrice()
-
-    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
-    await user.type(maxPriceInput, '9999')
-
-    expect(
-      screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
-    ).toBeOnTheScreen()
-
-    const limitCreditSearchToggle = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
-    await user.press(limitCreditSearchToggle)
-
-    expect(
-      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€', { hidden: true })
+      screen.queryByText('Le montant minimum ne peut pas dépasser le montant maximum', {
+        hidden: true,
+      })
     ).not.toBeOnTheScreen()
   })
 
@@ -645,21 +554,6 @@ describe('<PriceModal/>', () => {
       const creditBanner = screen.queryByTestId('creditBanner')
 
       expect(creditBanner).not.toBeOnTheScreen()
-    })
-
-    it('should display the credit given to 18 year olds in right label maximum price input', async () => {
-      renderSearchPrice()
-
-      await waitFor(() => {
-        expect(screen.getByText('Rechercher')).toBeEnabled()
-      })
-
-      const rightLabelMaxInput = screen.getByText(
-        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`,
-        { hidden: true }
-      )
-
-      expect(rightLabelMaxInput).toBeOnTheScreen()
     })
   })
 
@@ -694,21 +588,6 @@ describe('<PriceModal/>', () => {
 
       expect(creditBanner).not.toBeOnTheScreen()
     })
-
-    it('should display the credit given to 18 year olds in right label maximum price input', async () => {
-      renderSearchPrice()
-
-      await waitFor(() => {
-        expect(screen.getByText('Rechercher')).toBeEnabled()
-      })
-
-      const rightLabelMaxInput = screen.getByText(
-        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`,
-        { hidden: true }
-      )
-
-      expect(rightLabelMaxInput).toBeOnTheScreen()
-    })
   })
 
   describe('with "Appliquer le filtre" button', () => {
@@ -738,9 +617,7 @@ describe('<PriceModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        defaultMinPrice: '',
-        defaultMaxPrice: '50',
-        maxPrice: '50',
+        maxPrice: 50,
       }
 
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -766,10 +643,8 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          minPrice: '5',
-          maxPrice: '20',
-          defaultMinPrice: '5',
-          defaultMaxPrice: '20',
+          minPrice: 5,
+          maxPrice: 20,
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -792,11 +667,8 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          minPrice: '0',
-          maxPrice: '0',
-          defaultMinPrice: '0',
-          defaultMaxPrice: '0',
-          offerIsFree: true,
+          minPrice: 0,
+          maxPrice: 0,
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -816,34 +688,8 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          offerIsFree: true,
-          minPrice: '0',
-          maxPrice: '0',
-          defaultMinPrice: '0',
-          defaultMaxPrice: '0',
-        }
-
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
-      })
-
-      it('with only free offers when pressing button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
-        renderSearchPrice()
-
-        const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
-        await user.type(maxPriceInput, '0')
-
-        const searchButton = screen.getByText('Rechercher')
-        await user.press(searchButton)
-
-        const expectedSearchParams = {
-          ...mockSearchState,
-          offerIsFree: true,
-          maxPrice: '0',
-          defaultMaxPrice: '0',
-          defaultMinPrice: '',
+          minPrice: 0,
+          maxPrice: 0,
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -863,11 +709,8 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          minPrice: '1',
+          minPrice: 1,
           maxPrice: undefined,
-          defaultMinPrice: '1',
-          defaultMaxPrice: '',
-          maxPossiblePrice: '80',
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({

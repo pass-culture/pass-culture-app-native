@@ -203,8 +203,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
         ...searchState,
         minPrice: undefined,
         maxPrice: undefined,
-        defaultMinPrice: '',
-        defaultMaxPrice: '',
       },
     })
   }, [dispatch, reset, searchState])

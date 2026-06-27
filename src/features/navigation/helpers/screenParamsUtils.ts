@@ -73,8 +73,6 @@ const searchParamsParser = {
   accessibilityFilter: JSON.parse,
   gtls: JSON.parse,
   shouldRedirect: JSON.parse,
-  defaultMinPrice: JSON.parse,
-  defaultMaxPrice: JSON.parse,
   calendarFilterId: JSON.parse,
 }
 
@@ -282,8 +280,6 @@ const searchParamsStringifier = {
   accessibilityFilter: JSON.stringify,
   gtls: JSON.stringify,
   shouldRedirect: JSON.stringify,
-  defaultMinPrice: JSON.stringify,
-  defaultMaxPrice: JSON.stringify,
   calendarFilterId: JSON.stringify,
 }
 

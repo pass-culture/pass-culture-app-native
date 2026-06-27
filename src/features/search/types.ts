@@ -62,8 +62,6 @@ export interface SearchState {
   query: string
   minPrice?: number
   maxPrice?: number
-  defaultMinPrice?: string
-  defaultMaxPrice?: string
   searchId?: string
   isAutocomplete?: boolean
   isFullyDigitalOffersCategory?: boolean

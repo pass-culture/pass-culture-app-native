@@ -104,7 +104,7 @@ describe('SearchHeader component', () => {
 
     mockUseSearch.mockReturnValueOnce({
       ...initialMockUseSearch,
-      searchState: { ...modifiedSearchState, minPrice: '10', maxPrice: '300' },
+      searchState: { ...modifiedSearchState, minPrice: 10, maxPrice: 300 },
     })
 
     render(

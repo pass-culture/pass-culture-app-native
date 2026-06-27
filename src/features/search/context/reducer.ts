@@ -7,8 +7,6 @@ import { SuggestedPlace } from 'libs/place/types'
 export const initialSearchState: SearchState = {
   beginningDatetime: undefined,
   date: null,
-  defaultMaxPrice: '',
-  defaultMinPrice: '',
   endingDatetime: undefined,
   gtls: [],
   hitsPerPage: 20,

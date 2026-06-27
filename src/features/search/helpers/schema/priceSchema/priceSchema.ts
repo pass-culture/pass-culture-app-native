@@ -1,8 +1,8 @@
 import { AnySchema, boolean, object, string } from 'yup'
 
 const PRICE_REGEX = /^\d+(?:[,.]\d{0,2})?$/
-const formatPriceError = `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
-const minPriceError = `Le montant minimum ne peut pas dépasser le montant maximum`
+const formatPriceError = 'Format du prix incorrect. Exemple de format attendu\u00a0: 10,00'
+const minPriceError = 'Le montant minimum ne peut pas dépasser le montant maximum'
 
 const priceValidationSchema = () =>
   string()

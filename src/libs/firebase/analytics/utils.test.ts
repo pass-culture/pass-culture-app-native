@@ -169,7 +169,7 @@ describe('[Analytics utils]', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
-          maxPrice: '30',
+          maxPrice: 30,
         },
         'SearchResults'
       )
@@ -185,7 +185,7 @@ describe('[Analytics utils]', () => {
       const partialSearchState = buildPerformSearchState(
         {
           ...initialSearchState,
-          minPrice: '10',
+          minPrice: 10,
         },
         'SearchResults'
       )
@@ -271,22 +271,6 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsDuo: true,
-        searchView: SearchView.Results,
-      })
-    })
-
-    it('with free offer filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerIsFree: true,
-        },
-        'SearchResults'
-      )
-
-      expect(partialSearchState).toEqual({
-        searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchOfferIsFree: true,
         searchView: SearchView.Results,
       })
     })

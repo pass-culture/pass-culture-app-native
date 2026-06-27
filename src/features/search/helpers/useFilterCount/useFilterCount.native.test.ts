@@ -14,7 +14,7 @@ const venueId = 5959
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
 const fourFilters = {
-  minPrice: '1', // 1 for minPrice & maxPrice
+  minPrice: 1, // 1 for minPrice & maxPrice
   maxPrice: String(convertCentsToEuros(MAX_PRICE_IN_CENTS)), // 1 for minPrice & maxPrice
   offerCategories: ['CINEMA'], // 1
   timeRange, // 1
@@ -29,19 +29,18 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('useFilterCount', () => {
   it.each`
-    section                                | partialSearchState                                                                                  | expected
-    ${'initial state'}                     | ${{}}                                                                                               | ${0}
-    ${'offerIsDuo'}                        | ${{ offerIsDuo: true }}                                                                             | ${1}
-    ${'date'}                              | ${{ date }}                                                                                         | ${1}
-    ${'timeRange'}                         | ${{ timeRange }}                                                                                    | ${1}
-    ${'offerCategories - 0'}               | ${{ offerCategories: [] }}                                                                          | ${0}
-    ${'offerCategories - 1'}               | ${{ offerCategories: ['CINEMA'] }}                                                                  | ${1}
-    ${'minPrice'}                          | ${{ minPrice: '1' }}                                                                                | ${1}
-    ${'maxPrice'}                          | ${{ maxPrice: String(convertCentsToEuros(MAX_PRICE_IN_CENTS)) }}                                    | ${1}
-    ${'minPrice - maxPrice'}               | ${{ minPrice: '1', maxPrice: String(convertCentsToEuros(MAX_PRICE_IN_CENTS)), offerIsFree: false }} | ${1}
-    ${'offerIsFree - minPrice - maxPrice'} | ${{ offerIsFree: true, minPrice: '0', maxPrice: '0' }}                                              | ${1}
-    ${'venue'}                             | ${{ venue: { ...Kourou, venueId } }}                                                                | ${1}
-    ${'fourFilters'}                       | ${fourFilters}                                                                                      | ${4}
+    section                  | partialSearchState                                                            | expected
+    ${'initial state'}       | ${{}}                                                                         | ${0}
+    ${'offerIsDuo'}          | ${{ offerIsDuo: true }}                                                       | ${1}
+    ${'date'}                | ${{ date }}                                                                   | ${1}
+    ${'timeRange'}           | ${{ timeRange }}                                                              | ${1}
+    ${'offerCategories - 0'} | ${{ offerCategories: [] }}                                                    | ${0}
+    ${'offerCategories - 1'} | ${{ offerCategories: ['CINEMA'] }}                                            | ${1}
+    ${'minPrice'}            | ${{ minPrice: 1 }}                                                            | ${1}
+    ${'maxPrice'}            | ${{ maxPrice: String(convertCentsToEuros(MAX_PRICE_IN_CENTS)) }}              | ${1}
+    ${'minPrice - maxPrice'} | ${{ minPrice: 1, maxPrice: String(convertCentsToEuros(MAX_PRICE_IN_CENTS)) }} | ${1}
+    ${'venue'}               | ${{ venue: { ...Kourou, venueId } }}                                          | ${1}
+    ${'fourFilters'}         | ${fourFilters}                                                                | ${4}
   `(
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {

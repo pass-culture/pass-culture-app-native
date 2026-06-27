@@ -933,89 +933,9 @@ describe('fetchOffer', () => {
   })
 
   describe('offer price', () => {
-    it('should fetch with no numericFilters when no price range is specified and offer is not free', () => {
-      const query = 'searched query'
-      const offerIsFree = false
-
-      fetchOffers({
-        parameters: { query, offerIsFree } as SearchQueryParameters,
-        buildLocationParameterParams,
-        isUserUnderage: false,
-      })
-
-      expect(mockSearchForHits).toHaveBeenCalledWith({
-        requests: [
-          expect.objectContaining({
-            query,
-            page: 0,
-            attributesToHighlight: [],
-            facetFilters: [['offer.isEducational:false']],
-            numericFilters: [['offer.prices: 0 TO 300']],
-            attributesToRetrieve: offerAttributesToRetrieve,
-            clickAnalytics: false,
-            analytics: false,
-          }),
-        ],
-      })
-    })
-
-    it('should fetch with numericFilters when offer is free even when priceRange is provided', () => {
-      const query = 'searched query'
-      const offerIsFree = true
-      const priceRange: Range<number> = [0, 300]
-
-      fetchOffers({
-        parameters: { query, offerIsFree, priceRange } as SearchQueryParameters,
-        buildLocationParameterParams,
-        isUserUnderage: false,
-      })
-
-      expect(mockSearchForHits).toHaveBeenCalledWith({
-        requests: [
-          expect.objectContaining({
-            query,
-            facetFilters: [['offer.isEducational:false']],
-            numericFilters: [['offer.prices = 0']],
-            page: 0,
-            attributesToHighlight: [],
-            attributesToRetrieve: offerAttributesToRetrieve,
-            clickAnalytics: false,
-            analytics: false,
-          }),
-        ],
-      })
-    })
-
-    it('should fetch with numericFilters range when price range is provided and offer is not free', () => {
-      const query = 'searched query'
-      const offerIsFree = false
-      const priceRange: Range<number> = [0, 50]
-
-      fetchOffers({
-        parameters: { query, offerIsFree, priceRange } as SearchQueryParameters,
-        buildLocationParameterParams,
-        isUserUnderage: false,
-      })
-
-      expect(mockSearchForHits).toHaveBeenCalledWith({
-        requests: [
-          expect.objectContaining({
-            query,
-            facetFilters: [['offer.isEducational:false']],
-            numericFilters: [['offer.prices: 0 TO 50']],
-            page: 0,
-            attributesToHighlight: [],
-            attributesToRetrieve: offerAttributesToRetrieve,
-            clickAnalytics: false,
-            analytics: false,
-          }),
-        ],
-      })
-    })
-
     it('should fetch with minimum price when it is provided', () => {
       const query = 'searched query'
-      const minPrice = '5'
+      const minPrice = 5
 
       fetchOffers({
         parameters: { query, minPrice } as SearchQueryParameters,
@@ -1066,7 +986,7 @@ describe('fetchOffer', () => {
 
     it('should fetch with maximum price when it is provided', () => {
       const query = 'searched query'
-      const maxPrice = '25'
+      const maxPrice = 25
 
       fetchOffers({
         parameters: { query, maxPrice } as SearchQueryParameters,
@@ -1481,13 +1401,12 @@ describe('fetchOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockGetLastOfDate.mockReturnValue(987654321)
       const query = ''
-      const offerIsFree = true
       const selectedDate = new Date(2020, 3, 19, 11).toISOString()
 
       fetchOffers({
         parameters: {
           date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
-          offerIsFree,
+          maxPrice: 0,
         } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
@@ -1498,7 +1417,7 @@ describe('fetchOffer', () => {
           expect.objectContaining({
             query,
             facetFilters: [['offer.isEducational:false']],
-            numericFilters: [['offer.prices = 0'], ['offer.dates: 123456789 TO 987654321']],
+            numericFilters: [['offer.prices: 0 TO 0'], ['offer.dates: 123456789 TO 987654321']],
             page: 0,
             attributesToHighlight: [],
             attributesToRetrieve: offerAttributesToRetrieve,
@@ -1513,13 +1432,12 @@ describe('fetchOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([123456789, 987654321])
       const query = ''
-      const offerIsFree = true
       const timeRange = [10, 17]
 
       fetchOffers({
         parameters: {
+          maxPrice: 0,
           timeRange: timeRange as Range<number>,
-          offerIsFree,
         } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
@@ -1530,7 +1448,7 @@ describe('fetchOffer', () => {
           expect.objectContaining({
             query,
             facetFilters: [['offer.isEducational:false']],
-            numericFilters: [['offer.prices = 0'], ['offer.times: 123456789 TO 987654321']],
+            numericFilters: [['offer.prices: 0 TO 0'], ['offer.times: 123456789 TO 987654321']],
             page: 0,
             attributesToHighlight: [],
             attributesToRetrieve: offerAttributesToRetrieve,
@@ -1548,7 +1466,6 @@ describe('fetchOffer', () => {
         [123, 1234],
       ])
       const query = ''
-      const offerIsFree = true
       const selectedDate = new Date(2020, 3, 19, 11).toISOString()
 
       fetchOffers({
@@ -1557,8 +1474,8 @@ describe('fetchOffer', () => {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
             selectedDate,
           },
+          maxPrice: 0,
           timeRange: [18, 22],
-          offerIsFree,
         } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
@@ -1570,7 +1487,7 @@ describe('fetchOffer', () => {
             query,
             facetFilters: [['offer.isEducational:false']],
             numericFilters: [
-              ['offer.prices = 0'],
+              ['offer.prices: 0 TO 0'],
               ['offer.dates: 123456789 TO 987654321', 'offer.dates: 123 TO 1234'],
             ],
             page: 0,
@@ -1633,14 +1550,14 @@ describe('fetchOffer', () => {
       const query = ''
       const offerCategories = ['ARTS_LOISIRS_CREATIFS', 'SPECTACLES']
       const offerIsDuo = true
-      const priceRange = [5, 40]
 
       fetchOffers({
         parameters: {
           query,
+          minPrice: 5,
+          maxPrice: 40,
           offerCategories,
           offerIsDuo,
-          priceRange: priceRange as Range<number>,
           isDigital: false,
         } as SearchQueryParameters,
         buildLocationParameterParams: {

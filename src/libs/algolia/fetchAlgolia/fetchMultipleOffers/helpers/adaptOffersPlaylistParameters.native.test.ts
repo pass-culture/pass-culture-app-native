@@ -19,24 +19,15 @@ const defaultSearchParameters = omit(
   {
     ...initialSearchState,
     hitsPerPage: null,
-    priceRange: [0, 300],
     minBookingsThreshold: 0,
+    minPrice: 0,
+    maxPrice: 300,
     offerGenreTypes: [],
     offerGtlLabel: undefined,
     offerGtlLevel: undefined,
     allocineIdList: [],
   },
-  [
-    'offerIsFree',
-    'view',
-    'venue',
-    'locationFilter',
-    'gtls',
-    'minPrice',
-    'maxPrice',
-    'defaultMaxPrice',
-    'defaultMinPrice',
-  ]
+  ['view', 'venue', 'locationFilter', 'gtls']
 )
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -167,7 +158,7 @@ describe('adaptOffersPlaylistParameters', () => {
       genreTypeMapping
     )
 
-    expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 300] })
+    expect(result).toStrictEqual({ ...defaultSearchParameters, minPrice: 50, maxPrice: 300 })
   })
 
   it('should return algolia parameters with a price range when maximum price is provided', () => {
@@ -179,7 +170,7 @@ describe('adaptOffersPlaylistParameters', () => {
       genreTypeMapping
     )
 
-    expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [0, 200] })
+    expect(result).toStrictEqual({ ...defaultSearchParameters, minPrice: 0, maxPrice: 200 })
   })
 
   it('should return algolia parameters with a price range when minimum and maximum prices are provided', () => {
@@ -191,7 +182,7 @@ describe('adaptOffersPlaylistParameters', () => {
       genreTypeMapping
     )
 
-    expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 200] })
+    expect(result).toStrictEqual({ ...defaultSearchParameters, minPrice: 50, maxPrice: 200 })
   })
 
   it('should return algolia parameters when a movieGenres and a musicTypes lists are provided', () => {
