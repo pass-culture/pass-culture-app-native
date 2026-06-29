@@ -54,7 +54,7 @@ In order to launch the app in the Simulator or on your external Apple device, yo
 
    1. Connect to the Apple Developer account with Xcode.
    1. Get invited to the Apple Developer group by an Admin.
-   1. Download the private key via fastlane:
+   1. Download the private key via fastlane (for each environment):
 
       ```sh
       bundle exec fastlane ios download_certificates --env testing
