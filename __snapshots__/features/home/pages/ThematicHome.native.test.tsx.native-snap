@@ -57,6 +57,7 @@ exports[`ThematicHome should render correctly 1`] = `
             testID="listHeader"
           >
             <ThematicHeaderWithGeolocBanner
+              homeId="fakeEntryId"
               thematicHeader={
                 {
                   "color": "Lilac",
@@ -534,161 +535,7 @@ exports[`ThematicHome should render correctly 1`] = `
             "width": 40,
           }
         }
-      >
-        <View>
-          <View
-            onLayout={[Function]}
-            style={
-              {
-                "alignSelf": "flex-start",
-                "position": "relative",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Suivre le thème"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#90949d",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
-              }
-              testID="Suivre le thème"
-            >
-              <View
-                gap={8}
-                hasIcon={true}
-                isMultiline={false}
-                style={
-                  {
-                    "alignItems": "center",
-                    "columnGap": 8,
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {
-                        "transform": [
-                          {
-                            "rotate": "0deg",
-                          },
-                        ],
-                      },
-                    }
-                  }
-                  jestInlineStyle={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
-                  }
-                  nativeID="1"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                      {
-                        "transform": [
-                          {
-                            "rotate": "0deg",
-                          },
-                        ],
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={14}
-                    width={14}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 14,
-                      },
-                      {
-                        "color": "#161617",
-                        "flexBasis": undefined,
-                        "flexGrow": undefined,
-                        "flexShrink": 1,
-                        "maxWidth": "100%",
-                        "minWidth": 0,
-                        "textAlign": undefined,
-                      },
-                    ]
-                  }
-                >
-                  Suivre
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
+      />
     </View>
   </View>
   <View
@@ -723,10 +570,10 @@ exports[`ThematicHome should render correctly 1`] = `
       }
     >
       <View
-        backgroundColor="#320096"
+        backgroundColor="#20c5e9"
         style={
           {
-            "backgroundColor": "#320096",
+            "backgroundColor": "#20c5e9",
             "height": 212,
             "overflow": "hidden",
           }
@@ -795,6 +642,7 @@ exports[`ThematicHome should render correctly 1`] = `
             style={
               {
                 "alignItems": "flex-start",
+                "flexShrink": 1,
                 "maxWidth": "58%",
               }
             }
@@ -814,6 +662,7 @@ exports[`ThematicHome should render correctly 1`] = `
                   "fontSize": 17,
                   "lineHeight": 27.2,
                   "marginBottom": 4,
+                  "maxWidth": "100%",
                   "paddingHorizontal": 4,
                   "paddingVertical": 2,
                 }
@@ -827,6 +676,7 @@ exports[`ThematicHome should render correctly 1`] = `
                 {
                   "alignItems": "flex-start",
                   "gap": 4,
+                  "maxWidth": "100%",
                   "transform": [
                     {
                       "rotate": "-2deg",
@@ -849,6 +699,7 @@ exports[`ThematicHome should render correctly 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 19,
                     "lineHeight": 30.4,
+                    "maxWidth": "100%",
                     "paddingHorizontal": 4,
                     "paddingVertical": 2,
                   }
@@ -917,7 +768,6 @@ exports[`ThematicHome should render correctly 1`] = `
                       "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
-                      "flexShrink": 0,
                       "justifyContent": "center",
                       "opacity": 1,
                       "paddingBottom": 8,

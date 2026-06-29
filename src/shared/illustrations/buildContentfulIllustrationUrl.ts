@@ -1,6 +1,6 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-export const contentfulIllustrationNames = [
+const contentfulIllustrationNames = [
   'museum',
   'art',
   'onlineEvent',
