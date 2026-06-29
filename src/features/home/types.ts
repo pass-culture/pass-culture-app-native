@@ -149,7 +149,6 @@ export type OffersModuleParameters = {
   isSortedByLikes?: boolean
   isSortedByReleaseDate?: boolean
   isWithClub?: boolean
-  artistId?: string
 }
 
 export type BusinessModule = {
