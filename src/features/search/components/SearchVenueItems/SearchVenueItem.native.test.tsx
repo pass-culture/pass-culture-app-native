@@ -5,16 +5,15 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { Activity } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
   locationActions,
   useLocationV2,
 } from 'libs/locationV2/location.store'
-import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
-import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { UseLocationReturnType } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen, userEvent } from 'tests/utils'
 

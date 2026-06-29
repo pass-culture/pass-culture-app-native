@@ -36,7 +36,7 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
     const newPath = `?size=${sizeWithRatio}&filename=${trimmedPathName}`
     const resizedImageURL = new URL(newPath, imageResizingUrl)
     return resizedImageURL.href
-  } catch (err) {
+  } catch {
     return imageURL
   }
 }
