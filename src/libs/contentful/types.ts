@@ -1,5 +1,6 @@
-import { Color } from 'features/home/types'
+import { CategoryHeaderColor, Color } from 'features/home/types'
 import { GtlLevel } from 'shared/gtl/types'
+import { ContentfulIllustrationName } from 'shared/illustrations/buildContentfulIllustrationUrl'
 
 export enum ContentTypes {
   ALGOLIA = 'algolia',
@@ -361,9 +362,11 @@ type BookTypesFields = {
 type ThematicCategoryInfoFields = {
   title: string
   displayedTitle: string
+  titleParts?: string[]
   displayedSubtitle?: string
-  image: Image
-  color: Color
+  image?: Image
+  illustrationFilename?: ContentfulIllustrationName
+  color: Color | CategoryHeaderColor
 }
 
 export type ThematicHighlightFields = {

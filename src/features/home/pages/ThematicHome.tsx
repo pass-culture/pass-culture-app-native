@@ -34,7 +34,10 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { getSpacing, Typo } from 'ui/theme'
 
-const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
+const SubHeader: FunctionComponent<{ homeId: string; thematicHeader?: ThematicHeader }> = ({
+  homeId,
+  thematicHeader,
+}) => {
   const { designSystem } = useTheme()
   const MARGIN_TOP_HEADER = designSystem.size.spacing.xl
 
@@ -91,8 +94,11 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         )}
         <CategoryThematicHomeHeader
           title={thematicHeader?.title}
+          titleParts={thematicHeader.titleParts}
           subtitle={thematicHeader?.subtitle}
           color={thematicHeader?.color}
+          imageUrl={thematicHeader.imageUrl}
+          homeId={homeId}
         />
       </React.Fragment>
     )
@@ -109,13 +115,14 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 }
 
 const ThematicHeaderWithGeolocBanner: FunctionComponent<{
+  homeId: string
   thematicHeader?: ThematicHeader
-}> = ({ thematicHeader }) => {
+}> = ({ homeId, thematicHeader }) => {
   const { designSystem, home } = useTheme()
 
   return (
     <React.Fragment>
-      <SubHeader thematicHeader={thematicHeader} />
+      <SubHeader homeId={homeId} thematicHeader={thematicHeader} />
       <GeolocationBanner
         title="Géolocalise-toi"
         subtitle="pour trouver des offres autour de toi"
@@ -210,7 +217,7 @@ export const ThematicHome: FunctionComponent = () => {
         modules={modules}
         homeId={homeId}
         thematicHeader={thematicHeader}
-        Header={<ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} />}
+        Header={<ThematicHeaderWithGeolocBanner homeId={homeId} thematicHeader={thematicHeader} />}
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={videoModuleId}
@@ -241,6 +248,7 @@ export const ThematicHome: FunctionComponent = () => {
             <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
               <AnimatedCategoryThematicHomeHeader
                 {...thematicHeader}
+                homeId={homeId}
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
               />

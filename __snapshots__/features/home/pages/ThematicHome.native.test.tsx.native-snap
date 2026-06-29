@@ -57,6 +57,7 @@ exports[`ThematicHome should render correctly 1`] = `
             testID="listHeader"
           >
             <ThematicHeaderWithGeolocBanner
+              homeId="fakeEntryId"
               thematicHeader={
                 {
                   "color": "Lilac",
@@ -160,7 +161,7 @@ exports[`ThematicHome should render correctly 1`] = `
                 marginTopHeader={24}
                 style={
                   {
-                    "height": 204,
+                    "height": 236,
                   }
                 }
               />
@@ -529,167 +530,12 @@ exports[`ThematicHome should render correctly 1`] = `
         </Text>
       </View>
       <View
-        collapsable={false}
         style={
           {
-            "opacity": 1,
+            "width": 40,
           }
         }
-      >
-        <View>
-          <View
-            onLayout={[Function]}
-            style={
-              {
-                "alignSelf": "flex-start",
-                "position": "relative",
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Suivre le thème"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": false,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
-                  "borderColor": "#90949d",
-                  "borderStyle": "solid",
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingBottom": 8,
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                  "paddingTop": 8,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
-              }
-              testID="Suivre le thème"
-            >
-              <View
-                gap={8}
-                hasIcon={true}
-                isMultiline={false}
-                style={
-                  {
-                    "alignItems": "center",
-                    "columnGap": 8,
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {
-                        "transform": [
-                          {
-                            "rotate": "0deg",
-                          },
-                        ],
-                      },
-                    }
-                  }
-                  jestInlineStyle={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
-                  }
-                  nativeID="1"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                      {
-                        "transform": [
-                          {
-                            "rotate": "0deg",
-                          },
-                        ],
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={14}
-                    width={14}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 14,
-                      },
-                      {
-                        "color": "#161617",
-                        "flexBasis": undefined,
-                        "flexGrow": undefined,
-                        "flexShrink": 1,
-                        "maxWidth": "100%",
-                        "minWidth": 0,
-                        "textAlign": undefined,
-                      },
-                    ]
-                  }
-                >
-                  Suivre
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
+      />
     </View>
   </View>
   <View
@@ -715,7 +561,7 @@ exports[`ThematicHome should render correctly 1`] = `
     <View
       style={
         {
-          "height": 180,
+          "height": 212,
           "left": 0,
           "position": "absolute",
           "right": 0,
@@ -724,51 +570,80 @@ exports[`ThematicHome should render correctly 1`] = `
       }
     >
       <View
-        fill="none"
-        height={180}
-        testID="HomeGradient"
-        width="100%"
-      >
-        <Text>
-          HomeGradient-SVG-Mock
-        </Text>
-      </View>
-      <View
+        backgroundColor="#20c5e9"
         style={
           {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
+            "backgroundColor": "#20c5e9",
+            "height": 212,
+            "overflow": "hidden",
           }
         }
+        testID="CategoryThematicHomeHeaderV2"
       >
         <View
-          collapsable={false}
           style={
             [
               {
-                "backgroundColor": "rgba(22,22,23,0.67)",
-                "paddingBottom": 16,
-                "paddingHorizontal": 24,
-                "paddingTop": 8,
+                "overflow": "hidden",
               },
               {
-                "backgroundColor": "rgba(22,22,23,0)",
-                "transform": [
-                  {
-                    "translateY": 0,
-                  },
-                ],
+                "aspectRatio": 1.5,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+                "width": 320,
               },
             ]
           }
         >
-          <View
-            gap={1}
+          <FastImageView
+            accessible={false}
+            collapsable={false}
+            defaultSource={null}
+            resizeMode="contain"
+            source={
+              {
+                "uri": "url.com/image",
+              }
+            }
             style={
               {
-                "gap": 4,
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+            testID="categoryHeaderIllustration"
+          />
+        </View>
+        <View
+          collapsable={false}
+          style={
+            {
+              "alignItems": "flex-end",
+              "bottom": 24,
+              "flexDirection": "row",
+              "gap": 8,
+              "justifyContent": "space-between",
+              "left": 24,
+              "position": "absolute",
+              "right": 24,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "flex-start",
+                "flexShrink": 1,
+                "maxWidth": "58%",
               }
             }
           >
@@ -777,52 +652,226 @@ exports[`ThematicHome should render correctly 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "#ffffff",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
                   "marginBottom": 4,
+                  "maxWidth": "100%",
+                  "paddingHorizontal": 4,
+                  "paddingVertical": 2,
                 }
               }
             >
               HeaderSubtitle
             </Text>
+            <View
+              accessibilityLabel="HeaderTitle"
+              style={
+                {
+                  "alignItems": "flex-start",
+                  "gap": 4,
+                  "maxWidth": "100%",
+                  "transform": [
+                    {
+                      "rotate": "-2deg",
+                    },
+                  ],
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                numberOfLines={1}
+                style={
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                    "maxWidth": "100%",
+                    "paddingHorizontal": 4,
+                    "paddingVertical": 2,
+                  }
+                }
+              >
+                HeaderTitle
+              </Text>
+            </View>
           </View>
-          <Text
-            accessibilityRole="header"
-            numberOfLines={2}
+          <View
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 28,
-                "lineHeight": 44.8,
+                "flexShrink": 0,
               }
             }
           >
-            HeaderTitle
-          </Text>
+            <View>
+              <View
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignSelf": "flex-start",
+                    "position": "relative",
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Suivre le thème"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
+                      "userSelect": "auto",
+                      "width": "auto",
+                    }
+                  }
+                  testID="Suivre le thème"
+                >
+                  <View
+                    gap={8}
+                    hasIcon={true}
+                    isMultiline={false}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 8,
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      collapsable={false}
+                      jestAnimatedProps={
+                        {
+                          "value": {},
+                        }
+                      }
+                      jestAnimatedStyle={
+                        {
+                          "value": {
+                            "transform": [
+                              {
+                                "rotate": "0deg",
+                              },
+                            ],
+                          },
+                        }
+                      }
+                      jestInlineStyle={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                      nativeID="1"
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                          },
+                          {
+                            "transform": [
+                              {
+                                "rotate": "0deg",
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={14}
+                        width={14}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 14,
+                          },
+                          {
+                            "color": "#161617",
+                            "flexBasis": undefined,
+                            "flexGrow": undefined,
+                            "flexShrink": 1,
+                            "maxWidth": "100%",
+                            "minWidth": 0,
+                            "textAlign": undefined,
+                          },
+                        ]
+                      }
+                    >
+                      Suivre
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
-      <View
-        collapsable={false}
-        style={
-          [
-            {
-              "bottom": 16,
-              "position": "absolute",
-              "right": 24,
-            },
-            {
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-          ]
-        }
-      />
     </View>
   </View>
 </View>

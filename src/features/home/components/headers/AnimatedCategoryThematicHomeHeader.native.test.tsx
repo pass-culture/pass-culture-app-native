@@ -26,6 +26,7 @@ const renderAnimatedCategoryThematicHomeHeader = () => {
   render(
     reactQueryProviderHOC(
       <AnimatedCategoryThematicHomeHeader
+        homeId="fakeEntryId"
         subtitle="Un sous-titre"
         title="Un titre"
         color={Color.Aquamarine}
