@@ -1,5 +1,4 @@
-import { useNavigationState } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import { ViewToken } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
@@ -15,7 +14,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
-import { useSync } from 'features/search/helpers/useSync/useSync'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useLocation } from 'libs/location/location'
@@ -30,10 +28,7 @@ import { Page } from 'ui/pages/Page'
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
-export const SearchResults = () => {
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.at(-1)?.name
-  useSync(currentRoute === 'SearchResults')
+export const SearchResults: FC = () => {
   const [searchIdGenerated] = useState(() => uuidv4())
 
   const netInfo = useNetInfoContext()

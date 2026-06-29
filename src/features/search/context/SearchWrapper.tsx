@@ -9,6 +9,8 @@ import React, {
 } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
+import { loadSearchFiltersFromUrl } from 'features/search/store/loadSearchFiltersFromUrl'
+import { searchStore } from 'features/search/store/search.store'
 import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -35,6 +37,15 @@ export const SearchWrapper = memo(function SearchWrapper({
   const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
   const showSuggestions = useCallback(() => setIsFocusOnSuggestions(true), [])
   const hideSuggestions = useCallback(() => setIsFocusOnSuggestions(false), [])
+
+  // duplicates the search state in the store to use it outside of the context
+  useEffect(() => {
+    searchStore.actions.setParams(searchState)
+  }, [searchState])
+
+  useEffect(() => {
+    void loadSearchFiltersFromUrl(dispatch)
+  }, [])
 
   useEffect(() => {
     switch (selectedLocationMode) {
