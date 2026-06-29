@@ -61,6 +61,7 @@ export type SubscriptionStackParamList = {
   EduConnectErrors: { code?: string; logoutUrl?: string }
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
   // Bonification
+  BonificationDisabilityRefused: undefined
   BonificationBirthDate: undefined
   BonificationBirthPlace: undefined
   BonificationError: undefined
