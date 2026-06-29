@@ -59,7 +59,6 @@ export const EnvironmentSchema = yup.object({
   FIREBASE_PROJECTID: yup.string().required(),
   FIREBASE_STORAGEBUCKET: yup.string().required(),
   FRAUD_EMAIL_ADDRESS: yup.string().required(),
-  GCP_IMAGE_COULD_STORAGE_NAME: yup.string().required(),
   GOOGLE_CLIENT_ID: yup.string().required(),
   GOOGLE_IOS_CLIENT_ID: yup.string().required(),
   GOOGLE_IOS_REVERSED_CLIENT_ID: yup.string().required(),
