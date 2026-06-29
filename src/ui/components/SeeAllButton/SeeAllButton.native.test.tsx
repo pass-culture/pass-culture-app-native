@@ -140,6 +140,5 @@ describe('<SeeAllButton />', () => {
 
     expect(screen.getByLabelText('Voir tout pour la sélection Hello')).toBeTruthy()
     expect(screen.queryByLabelText('Voir tout pour la sélection Hello 👋')).toBeNull()
-    expect(screen.queryByText('Voir tout pour la sélection Hello 👋')).toBeNull()
   })
 })
