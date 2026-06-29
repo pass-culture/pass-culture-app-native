@@ -26,11 +26,11 @@ describe('<OfferCategoryChoices />', () => {
     const onChange = jest.fn()
     render(<OfferCategoryChoices onChange={onChange} selection={[]} />)
 
-    await user.press(screen.getByText('Arts & loisirs créatifs'))
+    await user.press(screen.getByText('Arts et loisirs créatifs'))
 
     expect(onChange).toHaveBeenNthCalledWith(1, ['ARTS_LOISIRS_CREATIFS'])
 
-    await user.press(screen.getByText('Conférences & rencontres'))
+    await user.press(screen.getByText('Conférences et rencontres'))
 
     expect(onChange).toHaveBeenNthCalledWith(2, ['RENCONTRES_CONFERENCES'])
   })
@@ -44,7 +44,7 @@ describe('<OfferCategoryChoices />', () => {
       />
     )
 
-    await user.press(screen.getByText('Conférences & rencontres'))
+    await user.press(screen.getByText('Conférences et rencontres'))
 
     expect(onChange).toHaveBeenNthCalledWith(1, [])
   })
@@ -54,7 +54,7 @@ describe('<OfferCategoryChoices />', () => {
     const onChange = jest.fn()
     render(<OfferCategoryChoices onChange={onChange} selection={[]} />)
 
-    expect(screen.queryByText('Arts & loisirs créatifs')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Conférences & rencontres')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Arts et loisirs créatifs')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Conférences et rencontres')).not.toBeOnTheScreen()
   })
 })
