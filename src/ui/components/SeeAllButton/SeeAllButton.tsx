@@ -1,6 +1,7 @@
 import React from 'react'
 import { Platform } from 'react-native'
 
+import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { SeeAllButtonWrapper } from 'ui/components/SeeAllButton/SeeAllButtonWrapper'
 import { SeeAllInSearchButton } from 'ui/components/SeeAllButton/SeeAllInSearchButton'
 import { SeeAllInVerticalPlaylistButton } from 'ui/components/SeeAllButton/SeeAllInVerticalPlaylistButton'
@@ -21,7 +22,8 @@ type Props = {
 
 export const SeeAllButton = ({ playlistTitle, data }: Props) => {
   const noSeeAllButton = !data
-  const accessibilityLabel = `Voir tout pour la sélection ${playlistTitle}`
+  const title = separateTitleAndEmojis(playlistTitle)
+  const accessibilityLabel = `Voir tout pour la sélection ${title?.titleText}`
 
   if (noSeeAllButton) return null
 

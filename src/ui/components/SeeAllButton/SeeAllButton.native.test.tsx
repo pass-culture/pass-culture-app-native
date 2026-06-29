@@ -123,4 +123,23 @@ describe('<SeeAllButton />', () => {
 
     expect(screen.toJSON()).toBeNull()
   })
+
+  it('should expose only the text to screen readers (emoji ignored)', () => {
+    render(
+      <SeeAllButton
+        {...baseProps}
+        playlistTitle="Hello 👋"
+        data={{
+          ...baseProps.data,
+          hidePlaylistSeeAll: false,
+          navigateToVerticalPlaylist: { screen: 'VerticalPlaylistOffers' },
+          navigateToSearchPlaylist: undefined,
+        }}
+      />
+    )
+
+    expect(screen.getByLabelText('Voir tout pour la sélection Hello')).toBeTruthy()
+    expect(screen.queryByLabelText('Voir tout pour la sélection Hello 👋')).toBeNull()
+    expect(screen.queryByText('Voir tout pour la sélection Hello 👋')).toBeNull()
+  })
 })
