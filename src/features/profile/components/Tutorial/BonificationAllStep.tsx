@@ -5,7 +5,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { DisabilityBonificationStatus, QFBonificationStatus } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import {
+  BonificationQFRefusedType,
+  BonificationDisabilityRefusedType,
+} from 'features/bonification/types/BonificationRefusedType'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
@@ -14,6 +17,7 @@ import { DashedStepContainer } from 'features/profile/components/Tutorial/Dashed
 import { DefaultStepContainer } from 'features/profile/components/Tutorial/DefaultStepContainer'
 import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
 import { getBonificationButtonContent } from 'features/profile/helpers/getBonificationButtonContent'
+import { getDisabilityBonificationRefusedType } from 'features/profile/helpers/getDisabilityBonificationRefusedType'
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -24,7 +28,6 @@ import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
-import { Again } from 'ui/svg/icons/Again'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Diagram } from 'ui/svg/icons/Diagram'
@@ -53,9 +56,6 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
 
   const { designSystem } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToBonificationExplanations = () => {
-    navigate(...getSubscriptionHookConfig('BonificationExplanations'))
-  }
 
   // FAMILY QUOTIENT BONIFICATION
   const bonificationQFStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
@@ -69,14 +69,18 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
   const navigateToQFBonificationRefused = () => {
     navigate(
       ...getSubscriptionHookConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+        bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
       })
     )
   }
 
+  const navigateToQFBonificationFlow = () => {
+    navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+  }
+
   const onPressQFBonificationButton = () => {
     if (bonificationQFTooManyRetries) navigateToQFBonificationRefused()
-    else navigateToBonificationExplanations()
+    else navigateToQFBonificationFlow()
     resetBannerVisibility()
   }
 
@@ -104,23 +108,46 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
   const wasDisabilityBonificationReceived =
     disabilityBonificationStatus === DisabilityBonificationStatus.granted
 
+  const disabilityBonificationButtonContent = getBonificationButtonContent(
+    BonificationType.DISABILITY,
+    disabilityBonificationStatus
+  )
+
   const showDisabilityBonificationButton =
     isLoggedIn &&
     isEligibleToDisabilityBonification &&
     !wasDisabilityBonificationReceived &&
     !disableHandicapBonificationButton
 
-  const onPressDisabilityBonificationButton = () =>
+  const disabilityBonificationRefusedType = getDisabilityBonificationRefusedType(
+    disabilityBonificationStatus
+  )
+
+  const navigateToDisabilityBonificationFlow = () => {
     navigate(
       ...getSubscriptionHookConfig('BonificationRequiredInformation', {
         bonificationType: BonificationType.DISABILITY,
       })
     )
+  }
 
-  const disabilityBonificationButtonContent = getBonificationButtonContent(
-    BonificationType.DISABILITY,
-    disabilityBonificationStatus
-  )
+  const navigateToDisabilityBonificationRefused = (
+    bonificationRefusedType: BonificationDisabilityRefusedType
+  ) => {
+    navigate(
+      ...getSubscriptionHookConfig('BonificationDisabilityRefused', {
+        bonificationRefusedType,
+      })
+    )
+  }
+
+  const onPressDisabilityBonificationButton = () => {
+    if (disabilityBonificationRefusedType) {
+      navigateToDisabilityBonificationRefused(disabilityBonificationRefusedType)
+    } else {
+      navigateToDisabilityBonificationFlow()
+    }
+  }
 
   return (
     <React.Fragment>
@@ -216,7 +243,7 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                     <Button
                       variant="tertiary"
                       color="neutral"
-                      icon={Again}
+                      icon={PlainArrowNext}
                       wording={disabilityBonificationButtonContent.label}
                       onPress={onPressDisabilityBonificationButton}
                       disabled={disabilityBonificationButtonContent.disabled}

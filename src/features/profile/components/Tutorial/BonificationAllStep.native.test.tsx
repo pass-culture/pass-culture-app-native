@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { QFBonificationStatus, DisabilityBonificationStatus } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { BonificationAllStep } from 'features/profile/components/Tutorial/BonificationAllStep'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -63,7 +63,7 @@ describe('BonificationAllStep', () => {
         'SubscriptionStackNavigator',
         expect.objectContaining({
           screen: 'BonificationRefused',
-          params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
+          params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
         })
       )
     })

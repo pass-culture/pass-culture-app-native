@@ -4,20 +4,20 @@ import { QFBonificationStatus } from 'api/gen'
 import { DefaultBonificationBanner } from 'features/bonification/components/DefaultBonificationBanner'
 import { ErrorBonificationBanner } from 'features/bonification/components/ErrorBonificationBanner'
 import { PendingBonificationBanner } from 'features/bonification/components/PendingBonificationBanner'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
-const STATUS_TO_REFUSED_TYPE: Record<string, BonificationRefusedType> = {
-  [QFBonificationStatus.custodian_not_found]: BonificationRefusedType.CUSTODIAN_NOT_FOUND,
-  [QFBonificationStatus.application_not_found]: BonificationRefusedType.APPLICATION_NOT_FOUND,
-  [QFBonificationStatus.too_many_retries]: BonificationRefusedType.TOO_MANY_RETRIES,
-  [QFBonificationStatus.not_in_tax_household]: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
+const STATUS_TO_REFUSED_TYPE: Record<string, BonificationQFRefusedType> = {
+  [QFBonificationStatus.custodian_not_found]: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
+  [QFBonificationStatus.application_not_found]: BonificationQFRefusedType.APPLICATION_NOT_FOUND,
+  [QFBonificationStatus.too_many_retries]: BonificationQFRefusedType.TOO_MANY_RETRIES,
+  [QFBonificationStatus.not_in_tax_household]: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
   [QFBonificationStatus.quotient_familial_too_high]:
-    BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
+    BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
 }
 
 type BonificationBannerProps = {

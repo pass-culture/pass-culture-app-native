@@ -5,7 +5,10 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import {
+  BonificationQFRefusedType,
+  BonificationDisabilityRefusedType,
+} from 'features/bonification/types/BonificationRefusedType'
 import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -107,35 +110,49 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
       id: uuidv4(),
       title: 'BonificationRefused CUSTODIAN_NOT_FOUND',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND,
+        bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
       }),
     },
     {
       id: uuidv4(),
       title: 'BonificationRefused APPLICATION_NOT_FOUND',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.APPLICATION_NOT_FOUND,
+        bonificationRefusedType: BonificationQFRefusedType.APPLICATION_NOT_FOUND,
       }),
     },
     {
       id: uuidv4(),
       title: 'BonificationRefused NOT_IN_TAX_HOUSEHOLD',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
+        bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
       }),
     },
     {
       id: uuidv4(),
       title: 'BonificationRefused QUOTIENT_FAMILY_TOO_HIGH',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
+        bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
       }),
     },
     {
       id: uuidv4(),
       title: 'BonificationRefused TOO_MANY_RETRIES',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+        bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationDisabilityRefused TOO_MANY_RETRIES',
+      navigationTarget: getSubscriptionPropConfig('BonificationDisabilityRefused', {
+        bonificationRefusedType: BonificationDisabilityRefusedType.TOO_MANY_RETRIES,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationDisabilityRefused APPLICATION_NOT_FOUND',
+      navigationTarget: getSubscriptionPropConfig('BonificationDisabilityRefused', {
+        bonificationRefusedType: BonificationDisabilityRefusedType.APPLICATION_NOT_FOUND,
       }),
     },
   ],

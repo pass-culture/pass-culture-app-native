@@ -1,5 +1,8 @@
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import {
+  BonificationQFRefusedType,
+  BonificationDisabilityRefusedType,
+} from 'features/bonification/types/BonificationRefusedType'
 import { ProfileScreenType } from 'features/identityCheck/pages/profile/types'
 import {
   CulturalSurveyRootStackParamList,
@@ -62,6 +65,7 @@ export type SubscriptionStackParamList = {
   EduConnectErrors: { code?: string; logoutUrl?: string }
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
   // Bonification
+  BonificationDisabilityRefused?: { bonificationRefusedType: BonificationDisabilityRefusedType }
   BonificationBirthDate: undefined
   BonificationBirthPlace?: { bonificationType: BonificationType }
   BonificationError?: { bonificationType: BonificationType }
@@ -69,7 +73,7 @@ export type SubscriptionStackParamList = {
   BonificationExplanations: undefined
   BonificationNames: undefined
   BonificationRecap?: { bonificationType: BonificationType }
-  BonificationRefused?: { bonificationRefusedType: BonificationRefusedType }
+  BonificationRefused?: { bonificationRefusedType: BonificationQFRefusedType }
   BonificationTitle: undefined
   BonificationIncorrectLink: undefined
 } & CulturalSurveyRootStackParamList

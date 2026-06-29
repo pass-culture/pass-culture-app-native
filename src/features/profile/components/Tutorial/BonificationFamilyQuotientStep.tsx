@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
@@ -58,11 +58,32 @@ export const BonificationFamilyQuotientStep = ({
 
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
 
+  const navigateToBonificationRefused = () => {
+    navigate(
+      ...getSubscriptionHookConfig('BonificationRefused', {
+        bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
+      })
+    )
+  }
+
+  const navigateToBonificationFlow = () => {
+    navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+  }
+
+  const onPressBonificationButton = () => {
+    if (bonificationTooManyRetries) navigateToBonificationRefused()
+    else navigateToBonificationFlow()
+    resetBannerVisibility()
+  }
+
   const showBonificationButton =
     isLoggedIn &&
     isEligibleToBonification &&
     !wasBonificationReceived &&
     !disableQFBonificationButton
+
+  const iconBonificationButton =
+    bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
 
   const bonificationButtonContent = getBonificationButtonContent(
     BonificationType.FAMILY_QUOTIENT,
@@ -118,25 +139,10 @@ export const BonificationFamilyQuotientStep = ({
                   variant="tertiary"
                   color="neutral"
                   disabled={bonificationButtonContent.disabled}
-                  icon={
-                    bonificationStatus === QFBonificationStatus.started
-                      ? ClockFilled
-                      : PlainArrowNext
-                  }
+                  icon={iconBonificationButton}
                   wording={bonificationButtonContent.label}
                   accessibilityLabel={bonificationButtonContent.accessibilityLabel}
-                  onPress={() => {
-                    if (bonificationTooManyRetries) {
-                      navigate(
-                        ...getSubscriptionHookConfig('BonificationRefused', {
-                          bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
-                        })
-                      )
-                    } else {
-                      navigate(...getSubscriptionHookConfig('BonificationExplanations'))
-                    }
-                    resetBannerVisibility()
-                  }}
+                  onPress={onPressBonificationButton}
                 />
               </ButtonContainerFlexStart>
             ) : null}

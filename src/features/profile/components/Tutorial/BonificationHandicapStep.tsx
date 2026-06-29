@@ -2,8 +2,9 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { QFBonificationStatus } from 'api/gen'
+import { DisabilityBonificationStatus } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
+import { BonificationDisabilityRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
@@ -11,6 +12,7 @@ import { BlockDescriptionItem } from 'features/profile/components/Tutorial/Block
 import { DashedStepContainer } from 'features/profile/components/Tutorial/DashedStepContainer'
 import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
 import { getBonificationButtonContent } from 'features/profile/helpers/getBonificationButtonContent'
+import { getDisabilityBonificationRefusedType } from 'features/profile/helpers/getDisabilityBonificationRefusedType'
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -38,11 +40,12 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
 
   const { designSystem } = useTheme()
 
-  const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+  const bonificationStatus: DisabilityBonificationStatus | null | undefined =
+    user?.disabilityBonificationStatus
 
-  const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
+  const isEligibleToBonification = bonificationStatus !== DisabilityBonificationStatus.not_eligible
 
-  const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
+  const wasBonificationReceived = bonificationStatus === DisabilityBonificationStatus.granted
 
   const showBonificationButton =
     isLoggedIn &&
@@ -50,12 +53,32 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
     !wasBonificationReceived &&
     !disableHandicapBonificationButton
 
-  const onPressHandicapBonificationButton = () =>
+  const bonificationRefusedType = getDisabilityBonificationRefusedType(bonificationStatus)
+
+  const navigateToDisabilityBonificationFlow = () =>
     navigate(
       ...getSubscriptionHookConfig('BonificationRequiredInformation', {
         bonificationType: BonificationType.DISABILITY,
       })
     )
+
+  const navigateToDisabilityBonificationRefused = (
+    bonificationRefusedType: BonificationDisabilityRefusedType
+  ) => {
+    navigate(
+      ...getSubscriptionHookConfig('BonificationDisabilityRefused', {
+        bonificationRefusedType,
+      })
+    )
+  }
+
+  const onPressHandicapBonificationButton = () => {
+    if (bonificationRefusedType) {
+      navigateToDisabilityBonificationRefused(bonificationRefusedType)
+    } else {
+      navigateToDisabilityBonificationFlow()
+    }
+  }
 
   const bonificationButtonContent = getBonificationButtonContent(
     BonificationType.DISABILITY,

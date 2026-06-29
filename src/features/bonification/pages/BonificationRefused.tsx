@@ -5,7 +5,7 @@ import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -51,7 +51,7 @@ interface PageConfigEntry {
   primaryButton: PrimaryButtonConfig
   tertiaryButton: TertiaryButtonConfig
 }
-type PageConfigMap = Record<BonificationRefusedType, PageConfigEntry>
+type PageConfigMap = Record<BonificationQFRefusedType, PageConfigEntry>
 
 const notFoundPageConfig = {
   Illustration: ErrorIllustration,
@@ -76,9 +76,9 @@ const notFoundPageConfig = {
 }
 
 export const PAGE_CONFIG: PageConfigMap = {
-  [BonificationRefusedType.APPLICATION_NOT_FOUND]: notFoundPageConfig,
-  [BonificationRefusedType.CUSTODIAN_NOT_FOUND]: notFoundPageConfig,
-  [BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD]: {
+  [BonificationQFRefusedType.APPLICATION_NOT_FOUND]: notFoundPageConfig,
+  [BonificationQFRefusedType.CUSTODIAN_NOT_FOUND]: notFoundPageConfig,
+  [BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier est refusé',
     firstText:
@@ -105,7 +105,7 @@ export const PAGE_CONFIG: PageConfigMap = {
       Icon: Invalidate,
     },
   },
-  [BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: {
+  [BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: {
     Illustration: SadFace,
     title: 'Ton dossier est refusé',
     firstText:
@@ -121,7 +121,7 @@ export const PAGE_CONFIG: PageConfigMap = {
       Icon: ExternalSiteFilled,
     },
   },
-  [BonificationRefusedType.TOO_MANY_RETRIES]: {
+  [BonificationQFRefusedType.TOO_MANY_RETRIES]: {
     Illustration: SadFace,
     title: 'Tu as atteint le nombre maximum d’essais',
     firstText: (
@@ -141,7 +141,7 @@ export const PAGE_CONFIG: PageConfigMap = {
     secondText: undefined,
     bannerText: undefined,
     bannerLinks: undefined,
-    primaryButton: { wording: 'Retour à l’acceuil', navigateTo: navigateToHomeConfig },
+    primaryButton: { wording: 'Retour à l’accueil', navigateTo: navigateToHomeConfig },
     tertiaryButton: {
       wording: undefined,
       navigateTo: undefined,
@@ -160,13 +160,13 @@ export function BonificationRefused() {
   const remainingBonusAttempts = user?.remainingBonusAttempts
 
   // Fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
-  const bonificationRefuseTypeFallback = BonificationRefusedType.CUSTODIAN_NOT_FOUND
+  const bonificationRefuseTypeFallback = BonificationQFRefusedType.CUSTODIAN_NOT_FOUND
   const bonificationRefusedType = params?.bonificationRefusedType ?? bonificationRefuseTypeFallback
 
   const RETRY_REFUSED_TYPES = [
-    BonificationRefusedType.CUSTODIAN_NOT_FOUND,
-    BonificationRefusedType.APPLICATION_NOT_FOUND,
-    BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
+    BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
+    BonificationQFRefusedType.APPLICATION_NOT_FOUND,
+    BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
   ]
 
   const showNumberOfRemainingRetries =

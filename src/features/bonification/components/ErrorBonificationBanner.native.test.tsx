@@ -2,13 +2,13 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ErrorBonificationBanner } from 'features/bonification/components/ErrorBonificationBanner'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { render, screen, userEvent } from 'tests/utils'
 
 const defaultProps = {
   amount: '30€',
   onClose: jest.fn(),
-  refusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+  refusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
 }
 
 const user = userEvent.setup()
@@ -23,7 +23,7 @@ describe('ErrorBonificationBanner', () => {
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
       screen: 'BonificationRefused',
-      params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
+      params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
     })
   })
 })
