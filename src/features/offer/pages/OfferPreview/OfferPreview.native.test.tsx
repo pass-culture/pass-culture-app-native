@@ -5,10 +5,10 @@ import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { analytics } from 'libs/analytics/provider'
-import { renderAsync, screen, userEvent } from 'tests/utils'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { renderAsync, screen, userEvent } from 'tests/utils'
 
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
