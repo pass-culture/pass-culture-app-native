@@ -61,7 +61,7 @@ export const BonificationBirthPlace = () => {
 
   const disabled = !formState.isValid
 
-  async function saveBirthPlaceAndNavigate({ birthCountrySelection, birthCity }: FormValues) {
+  const saveBirthPlaceAndNavigate = ({ birthCountrySelection, birthCity }: FormValues) => {
     if (disabled) return
     setBirthCountry(birthCountrySelection)
     if (birthCountrySelection.libcog === 'France' && birthCity) {
