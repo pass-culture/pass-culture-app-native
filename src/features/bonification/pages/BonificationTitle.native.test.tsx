@@ -2,7 +2,7 @@ import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { BonificationTitle } from 'features/bonification/pages/BonificationTitle'
-import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import { qfBonificationActions } from 'features/bonification/store/qfBonificationStore'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -34,12 +34,12 @@ describe('BonificationTitle', () => {
 
   describe('Data persistence', () => {
     beforeEach(() => {
-      const { resetLegalRepresentative } = legalRepresentativeActions
-      resetLegalRepresentative()
+      const { resetQFBonification } = qfBonificationActions
+      resetQFBonification()
     })
 
     it('should show previously saved data if there is any', () => {
-      const { setTitle } = legalRepresentativeActions
+      const { setTitle } = qfBonificationActions
       const title = 'Monsieur'
       setTitle(title)
       render(<BonificationTitle />)
@@ -50,7 +50,7 @@ describe('BonificationTitle', () => {
     })
 
     it('should save form to store when pressing "Continuer"', async () => {
-      const setTitleSpy = jest.spyOn(legalRepresentativeActions, 'setTitle')
+      const setTitleSpy = jest.spyOn(qfBonificationActions, 'setTitle')
 
       render(<BonificationTitle />)
 

@@ -4,7 +4,7 @@ import { goBack, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { InseeCountries, InseeCountry } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
-import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import { qfBonificationActions } from 'features/bonification/store/qfBonificationStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/env'
 import { CITIES_API_URL } from 'libs/place/queries/constants'
@@ -135,12 +135,12 @@ describe('BonificationBirthPlace', () => {
 
   describe('Data persistence', () => {
     beforeEach(() => {
-      const { resetLegalRepresentative } = legalRepresentativeActions
-      resetLegalRepresentative()
+      const { resetQFBonification } = qfBonificationActions
+      resetQFBonification()
     })
 
     it('should show previously saved data if there is any', () => {
-      const { setBirthCountry, setBirthCity } = legalRepresentativeActions
+      const { setBirthCountry, setBirthCity } = qfBonificationActions
       setBirthCountry(birthCountry)
       setBirthCity(birthCity)
 
@@ -154,8 +154,8 @@ describe('BonificationBirthPlace', () => {
     })
 
     it('should save form to store when pressing "Continuer"', async () => {
-      const setBirthCountrySpy = jest.spyOn(legalRepresentativeActions, 'setBirthCountry')
-      const setBirthCitySpy = jest.spyOn(legalRepresentativeActions, 'setBirthCity')
+      const setBirthCountrySpy = jest.spyOn(qfBonificationActions, 'setBirthCountry')
+      const setBirthCitySpy = jest.spyOn(qfBonificationActions, 'setBirthCity')
 
       renderBonificationBirthPlace()
 

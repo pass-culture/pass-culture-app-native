@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { InseeCountry } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
-import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import { qfBonificationActions } from 'features/bonification/store/qfBonificationStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -27,8 +27,8 @@ const birthCountry: InseeCountry = { libcog: 'Belgique', cog: 99131 }
 describe('BonificationRecap', () => {
   describe('Family quotient bonification', () => {
     beforeEach(() => {
-      const { resetLegalRepresentative } = legalRepresentativeActions
-      resetLegalRepresentative()
+      const { resetQFBonification } = qfBonificationActions
+      resetQFBonification()
       useRoute.mockReturnValue({ params: { bonificationType: BonificationType.FAMILY_QUOTIENT } })
     })
 
@@ -115,15 +115,12 @@ describe('BonificationRecap', () => {
       })
 
       it('should clear previously saved data', async () => {
-        const resetLegalRepresentativeSpy = jest.spyOn(
-          legalRepresentativeActions,
-          'resetLegalRepresentative'
-        )
+        const resetQFBonificationSpy = jest.spyOn(qfBonificationActions, 'resetQFBonification')
 
         prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
         await validateAndSubmitForm()
 
-        expect(resetLegalRepresentativeSpy).toHaveBeenCalledWith()
+        expect(resetQFBonificationSpy).toHaveBeenCalledWith()
       })
     })
 
@@ -237,7 +234,7 @@ describe('BonificationRecap', () => {
       })
 
       it('should clear store', async () => {
-        const resetSpy = jest.spyOn(legalRepresentativeActions, 'resetLegalRepresentative')
+        const resetSpy = jest.spyOn(qfBonificationActions, 'resetQFBonification')
 
         prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
 
@@ -278,7 +275,7 @@ async function validateAndSubmitForm() {
 
 function prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry) {
   const { setTitle, setFirstNames, setGivenName, setCommonName, setBirthDate, setBirthCountry } =
-    legalRepresentativeActions
+    qfBonificationActions
   setTitle(title)
   setFirstNames([firstName])
   setGivenName(givenName)
