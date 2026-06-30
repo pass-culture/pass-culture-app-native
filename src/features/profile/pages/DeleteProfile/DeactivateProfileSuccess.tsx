@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
-import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
@@ -13,13 +12,8 @@ import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Typo } from 'ui/theme'
 
-export function DeactivateProfileSuccess() {
-  const signOut = useLogoutRoutine()
+export const DeactivateProfileSuccess = () => {
   const { data: reactivationLimit } = useAccountUnsuspensionLimit()
-
-  useEffect(() => {
-    void signOut()
-  }, [signOut])
 
   return (
     <GenericInfoPage

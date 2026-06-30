@@ -8,13 +8,14 @@ export const useAppStateChange = (
 ) => {
   const appState = useRef(AppState.currentState)
 
-  function handleAppStateChange(nextAppState: AppStateStatus) {
-    if (onAppBecomeInactive && isActive(appState.current) && isInactiveOrBackground(nextAppState)) {
-      onAppBecomeInactive()
-    }
-    if (onAppBecomeActive && isInactiveOrBackground(appState.current) && isActive(nextAppState)) {
-      onAppBecomeActive()
-    }
+  const handleAppStateChange = (nextAppState: AppStateStatus) => {
+    const becomesActive = appState.current.match(/inactive|background/) && nextAppState === 'active'
+    const becomesInactive =
+      appState.current === 'active' && nextAppState.match(/inactive|background/)
+
+    if (becomesActive) onAppBecomeActive?.()
+    else if (becomesInactive) onAppBecomeInactive?.()
+
     appState.current = nextAppState
   }
 
@@ -25,13 +26,6 @@ export const useAppStateChange = (
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
+
   return appState
-}
-
-function isActive(stateStatus: AppStateStatus) {
-  return stateStatus === 'active'
-}
-
-function isInactiveOrBackground(stateStatus: AppStateStatus) {
-  return stateStatus === 'inactive' || stateStatus === 'background'
 }

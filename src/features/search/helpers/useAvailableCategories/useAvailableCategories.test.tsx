@@ -1,11 +1,11 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { categoryIllustrationUrls } from 'features/search/constants/categoryIllustrationUrls'
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
-import { illustrations } from 'ui/designSystem/illustrations'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 
 let mockData = PLACEHOLDER_DATA
@@ -203,10 +203,17 @@ describe('useAvailableCategories', () => {
       expect.arrayContaining([
         expect.objectContaining({
           icon: categoriesIcons.Conference,
-          illustration: illustrations.mic,
+          illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
           facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
           borderColor: 'decorative01',
           fillColor: 'pending01',
+        }),
+        expect.objectContaining({
+          icon: categoriesIcons.Book,
+          illustrationUrl: categoryIllustrationUrls[SearchGroupNameEnumv2.LIVRES],
+          facetFilter: SearchGroupNameEnumv2.LIVRES,
+          borderColor: 'decorative05',
+          fillColor: 'negative01',
         }),
         expect.objectContaining({
           icon: categoriesIcons.Palette,
@@ -216,7 +223,8 @@ describe('useAvailableCategories', () => {
         }),
         expect.objectContaining({
           icon: categoriesIcons.Museum,
-          illustration: illustrations.vase,
+          illustrationUrl:
+            categoryIllustrationUrls[SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES],
           facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
           borderColor: 'decorative01',
           fillColor: 'pending01',

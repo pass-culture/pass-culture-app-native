@@ -22,9 +22,9 @@ const getBackgroundColorByStatus = (
 ) => {
   switch (status) {
     case QFBonificationStatus.eligible:
+    case QFBonificationStatus.application_not_found:
     case QFBonificationStatus.custodian_not_found:
     case QFBonificationStatus.not_in_tax_household:
-    case QFBonificationStatus.unknown_ko:
       return theme.designSystem.color.background.info
     case QFBonificationStatus.started:
     case QFBonificationStatus.too_many_retries:

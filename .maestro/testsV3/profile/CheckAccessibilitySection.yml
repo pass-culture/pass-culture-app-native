@@ -1,7 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - profile
-  - fix
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
@@ -35,6 +34,12 @@ onFlowStart:
       visible: 'Fermer'
     commands:
     - tapOn: 'Fermer'
+
+- runFlow:
+    when:
+      visible: 'Afficher les signets, le menu Partager et les onglets ouverts'
+    commands:
+    - tapOn: 'fermer le pop-up'
 - assertVisible: 'Accessibilité'
 - assertVisible: "L'accessibilité au pass Culture"
 - runFlow:

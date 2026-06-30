@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
@@ -19,16 +18,12 @@ import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSe
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
-import { useModal } from 'ui/components/modals/useModal'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 
@@ -45,9 +40,6 @@ export const SearchResults = () => {
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
-  const { userLocation } = useLocation()
-  const { user } = useAuthContext()
-  const { visible, showModal, hideModal } = useModal(false)
   const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 
   const setQueryHistoryMemoized = useCallback(
@@ -57,9 +49,6 @@ export const SearchResults = () => {
 
   const { geolocPosition } = useLocation()
   const previousGeolocPosition = usePrevious(geolocPosition)
-
-  const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
-  const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
   const {
     hits,
@@ -131,16 +120,7 @@ export const SearchResults = () => {
     }
   }
 
-  const handleAIFakeDoorPress = (from: 'search' | 'searchAutoComplete') => {
-    void analytics.logHasClickedFakeDoorCTA({
-      featureName: 'conversational_search_AI',
-      from,
-      searchId: searchState.searchId ?? searchIdGenerated,
-    })
-    showModal()
-  }
-
-  const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
+  const searchResultHits = hits
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -174,8 +154,6 @@ export const SearchResults = () => {
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
               header={isZoomedAt200 ? searchHeader : undefined}
             />
           ) : (
@@ -190,20 +168,10 @@ export const SearchResults = () => {
               venuesUserData={venuesUserData}
               offerVenues={offerVenues}
               onViewableItemsChanged={handleViewableItemsChanged}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
             />
           )}
         </InstantSearch>
       </Form.Flex>
-      {enableAIFakeDoor ? (
-        <AIFakeDoorModal
-          close={hideModal}
-          visible={visible}
-          userLocation={userLocation}
-          userCity={user?.city}
-        />
-      ) : null}
     </Page>
   )
 }

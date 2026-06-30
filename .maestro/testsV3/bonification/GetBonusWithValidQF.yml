@@ -170,7 +170,7 @@ onFlowStart:
 
 - assertVisible: 'Bonne nouvelle !'
 
-- assertVisible: "200 €"
+- assertVisible: "50 €"
 
 - tapOn: "Continuer"
 
@@ -185,3 +185,5 @@ onFlowStart:
     text: 'Accueil.*'
     index: 0
 - assertVisible: 'Tu as ${output.amountProfil} sur ton pass'
+
+- runFlow: ../common/lifecycle/StopApp.yml

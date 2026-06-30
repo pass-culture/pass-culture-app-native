@@ -67,8 +67,8 @@ describe('<CategoriesModal/>', () => {
 
       expect(screen.getByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
       expect(screen.getByText('Cinéma')).toBeOnTheScreen()
-      expect(screen.getByText('Musées & visites culturelles')).toBeOnTheScreen()
-      expect(screen.getByText('Jeux & jeux vidéos')).toBeOnTheScreen()
+      expect(screen.getByText('Musées et visites')).toBeOnTheScreen()
+      expect(screen.getByText('Jeux et jeux vidéos')).toBeOnTheScreen()
     })
 
     it('should not show categories when the backend returns no category', () => {
@@ -77,8 +77,8 @@ describe('<CategoriesModal/>', () => {
 
       expect(screen.getByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
       expect(screen.queryByText('Cinéma')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Musées et visites')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Jeux et jeux vidéos')).not.toBeOnTheScreen()
     })
 
     it('should show only categories exisiting in categories return from backend', () => {
@@ -90,14 +90,14 @@ describe('<CategoriesModal/>', () => {
 
       expect(screen.getByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
       expect(screen.getByText('Cinéma')).toBeOnTheScreen()
-      expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Musées et visites')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Jeux et jeux vidéos')).not.toBeOnTheScreen()
     })
 
     it('should set the selected category filter when search button is pressed and a category was already set', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
+      const someCategoryFilterCheckbox = screen.getByText('Arts et loisirs créatifs')
       await user.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
@@ -421,7 +421,7 @@ describe('<CategoriesModal/>', () => {
       await user.press(goBackButton)
       await user.press(goBackButton)
 
-      await user.press(screen.getByText('Jeux & jeux vidéos'))
+      await user.press(screen.getByText('Jeux et jeux vidéos'))
       await user.press(screen.getByText('Rechercher'))
 
       const expectedSearchParams: SearchState = {
@@ -456,7 +456,7 @@ describe('<CategoriesModal/>', () => {
       })
       await user.press(screen.getByTestId('Revenir en arrière'))
       await user.press(screen.getByTestId('Revenir en arrière'))
-      await user.press(screen.getByText('Jeux & jeux vidéos'))
+      await user.press(screen.getByText('Jeux et jeux vidéos'))
 
       const searchButton = screen.getByText('Appliquer le filtre')
       await user.press(searchButton)

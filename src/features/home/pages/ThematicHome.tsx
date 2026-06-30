@@ -34,7 +34,10 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { getSpacing, Typo } from 'ui/theme'
 
-const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
+const SubHeader: FunctionComponent<{ homeId: string; thematicHeader?: ThematicHeader }> = ({
+  homeId,
+  thematicHeader,
+}) => {
   const { designSystem } = useTheme()
   const MARGIN_TOP_HEADER = designSystem.size.spacing.xl
 
@@ -91,8 +94,11 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         )}
         <CategoryThematicHomeHeader
           title={thematicHeader?.title}
+          titleParts={thematicHeader.titleParts}
           subtitle={thematicHeader?.subtitle}
           color={thematicHeader?.color}
+          imageUrl={thematicHeader.imageUrl}
+          homeId={homeId}
         />
       </React.Fragment>
     )
@@ -109,22 +115,27 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 }
 
 const ThematicHeaderWithGeolocBanner: FunctionComponent<{
-  isLocated: boolean
+  homeId: string
   thematicHeader?: ThematicHeader
-}> = ({ thematicHeader, isLocated }) => (
-  <React.Fragment>
-    <SubHeader thematicHeader={thematicHeader} />
-    {isLocated ? null : (
-      <GeolocationBannerContainer>
-        <GeolocationBanner
-          title="Géolocalise-toi"
-          subtitle="pour trouver des offres autour de toi"
-          analyticsFrom="thematicHome"
-        />
-      </GeolocationBannerContainer>
-    )}
-  </React.Fragment>
-)
+}> = ({ homeId, thematicHeader }) => {
+  const { designSystem, home } = useTheme()
+
+  return (
+    <React.Fragment>
+      <SubHeader homeId={homeId} thematicHeader={thematicHeader} />
+      <GeolocationBanner
+        title="Géolocalise-toi"
+        subtitle="pour trouver des offres autour de toi"
+        analyticsFrom="thematicHome"
+        // cannot be styled with styled-components because of a circular dependency
+        style={{
+          marginHorizontal: designSystem.size.spacing.xl,
+          marginBottom: home.spaceBetweenModules,
+        }}
+      />
+    </React.Fragment>
+  )
+}
 
 export const ThematicHome: FunctionComponent = () => {
   const {
@@ -206,9 +217,7 @@ export const ThematicHome: FunctionComponent = () => {
         modules={modules}
         homeId={homeId}
         thematicHeader={thematicHeader}
-        Header={
-          <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-        }
+        Header={<ThematicHeaderWithGeolocBanner homeId={homeId} thematicHeader={thematicHeader} />}
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={videoModuleId}
@@ -239,6 +248,7 @@ export const ThematicHome: FunctionComponent = () => {
             <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
               <AnimatedCategoryThematicHomeHeader
                 {...thematicHeader}
+                homeId={homeId}
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
               />
@@ -271,11 +281,6 @@ const ListHeaderContainer = styled.View({
   flexGrow: 1,
   flexShrink: 0,
 })
-
-const GeolocationBannerContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-  marginBottom: theme.home.spaceBetweenModules,
-}))
 
 const IntroductionContainer = styled.View<{ marginTopHeader: number }>(({ marginTopHeader }) => ({
   marginTop: getSpacing(ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT) + marginTopHeader,

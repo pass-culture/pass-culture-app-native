@@ -698,6 +698,989 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 <View
                   style={
                     {
+                      "marginTop": 16,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "marginHorizontal": 24,
+                      }
+                    }
+                    withMargins={true}
+                  >
+                    <View
+                      gap={3}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          accessibilityRole="header"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                            }
+                          }
+                        >
+                          Les artistes
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Voir tout pour la sélection Les artistes"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": false,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            [
+                              [
+                                {
+                                  "userSelect": "auto",
+                                },
+                                {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                  "flexDirection": "row",
+                                  "justifyContent": "center",
+                                  "paddingBottom": 2,
+                                  "paddingLeft": 2,
+                                  "paddingRight": 2,
+                                  "paddingTop": 2,
+                                  "width": "auto",
+                                },
+                              ],
+                              {
+                                "opacity": 1,
+                              },
+                            ]
+                          }
+                          testID="Voir tout pour la sélection Les artistes"
+                        >
+                          <View
+                            gap={8}
+                            hasIcon={false}
+                            isMultiline={false}
+                            style={
+                              {
+                                "alignItems": "center",
+                                "columnGap": 8,
+                                "flexDirection": "row",
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 14,
+                                    "lineHeight": 14,
+                                  },
+                                  {
+                                    "color": "#6123df",
+                                    "flexBasis": undefined,
+                                    "flexGrow": undefined,
+                                    "flexShrink": 1,
+                                    "maxWidth": "100%",
+                                    "minWidth": 0,
+                                    "textAlign": undefined,
+                                  },
+                                ]
+                              }
+                            >
+                              Voir tout
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      accessibilityRole="none"
+                      noMargin={false}
+                      style={
+                        {
+                          "marginBottom": 16,
+                          "marginTop": 4,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        4 résultats
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    onLayout={[Function]}
+                    style={
+                      {
+                        "position": "relative",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <RCTScrollView
+                      ItemSeparatorComponent={
+                        {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [
+                            {
+                              "width": 16,
+                            },
+                          ],
+                          "inlineStyle": e {
+                            "rules": [
+                              [Function],
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": true,
+                          "target": [Function],
+                        }
+                      }
+                      ListFooterComponent={
+                        {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [
+                            {
+                              "width": 24,
+                            },
+                          ],
+                          "inlineStyle": e {
+                            "rules": [
+                              [Function],
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": true,
+                          "target": [Function],
+                        }
+                      }
+                      ListHeaderComponent={
+                        {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [
+                            {
+                              "width": 24,
+                            },
+                          ],
+                          "inlineStyle": e {
+                            "rules": [
+                              [Function],
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": true,
+                          "target": [Function],
+                        }
+                      }
+                      collapsable={false}
+                      data={
+                        [
+                          {
+                            "id": "1",
+                            "name": "Artist 1",
+                          },
+                          {
+                            "id": "2",
+                            "name": "Artist 2",
+                          },
+                          {
+                            "id": "3",
+                            "name": "Artist 3",
+                          },
+                          {
+                            "id": "4",
+                            "name": "Artist 4",
+                          },
+                        ]
+                      }
+                      drawDistance={187.5}
+                      getItem={[Function]}
+                      getItemCount={[Function]}
+                      getItemLayout={[Function]}
+                      handlerTag={1}
+                      handlerType="NativeViewGestureHandler"
+                      horizontal={true}
+                      initialNumToRender={4}
+                      keyExtractor={[Function]}
+                      maxToRenderPerBatch={6}
+                      onContentSizeChange={[Function]}
+                      onEndReachedThreshold={0.2}
+                      onGestureHandlerEvent={[Function]}
+                      onGestureHandlerStateChange={[Function]}
+                      onLayout={[Function]}
+                      onMomentumScrollBegin={[Function]}
+                      onMomentumScrollEnd={[Function]}
+                      onScroll={[Function]}
+                      onScrollBeginDrag={[Function]}
+                      onScrollEndDrag={[Function]}
+                      onViewableItemsChanged={[Function]}
+                      removeClippedSubviews={true}
+                      renderItem={[Function]}
+                      renderScrollComponent={[Function]}
+                      scrollEnabled={true}
+                      scrollEventThrottle={16}
+                      showsHorizontalScrollIndicator={false}
+                      stickyHeaderIndices={[]}
+                      updateCellsBatchingPeriod={100}
+                      viewabilityConfig={
+                        {
+                          "minimumViewTime": 300,
+                          "viewAreaCoveragePercentThreshold": 20,
+                          "waitForInteraction": true,
+                        }
+                      }
+                      viewabilityConfigCallbackPairs={
+                        [
+                          {
+                            "onViewableItemsChanged": [Function],
+                            "viewabilityConfig": {
+                              "minimumViewTime": 300,
+                              "viewAreaCoveragePercentThreshold": 20,
+                              "waitForInteraction": true,
+                            },
+                          },
+                        ]
+                      }
+                      windowSize={7}
+                    >
+                      <View>
+                        <View
+                          collapsable={false}
+                          onLayout={[Function]}
+                        >
+                          <View
+                            style={
+                              {
+                                "width": 24,
+                              }
+                            }
+                            width={24}
+                          />
+                        </View>
+                        <View
+                          onFocusCapture={[Function]}
+                          style={
+                            [
+                              {
+                                "flexDirection": "row",
+                              },
+                              null,
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityLabel="Artist 1"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                [
+                                  {
+                                    "userSelect": "auto",
+                                  },
+                                  {},
+                                ],
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Artist 1"
+                          >
+                            <View
+                              gap={2}
+                              isFullWidth={false}
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                  "gap": 8,
+                                }
+                              }
+                            >
+                              <View
+                                rounded={true}
+                                size={72}
+                                style={
+                                  {
+                                    "borderBottomLeftRadius": 36,
+                                    "borderBottomRightRadius": 36,
+                                    "borderTopLeftRadius": 36,
+                                    "borderTopRightRadius": 36,
+                                    "height": 72,
+                                    "overflow": "hidden",
+                                    "width": 72,
+                                  }
+                                }
+                                testID="Avatar"
+                              >
+                                <View
+                                  backgroundColor="#ffffff"
+                                  size={72}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "backgroundColor": "#ffffff",
+                                      "height": 72,
+                                      "justifyContent": "center",
+                                      "position": "absolute",
+                                      "width": 72,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "#f1f1f4",
+                                        "borderBottomLeftRadius": 999,
+                                        "borderBottomRightRadius": 999,
+                                        "borderColor": "#cbcdd2",
+                                        "borderTopLeftRadius": 999,
+                                        "borderTopRightRadius": 999,
+                                        "borderWidth": 1,
+                                        "height": "100%",
+                                        "justifyContent": "center",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    testID="defaultArtistAvatar"
+                                  >
+                                    <View
+                                      height={32}
+                                      testID="BicolorProfile"
+                                      width={32}
+                                    >
+                                      <Text>
+                                        BicolorProfile-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                              <View>
+                                <Text
+                                  isDisabled={false}
+                                  isFullWidth={false}
+                                  maxWidth={72}
+                                  numberOfLines={2}
+                                  style={
+                                    {
+                                      "alignSelf": "center",
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 14,
+                                      "lineHeight": 22.4,
+                                      "maxWidth": 72,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  Artist 1
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            highlighted={false}
+                            leadingItem={
+                              {
+                                "id": "1",
+                                "name": "Artist 1",
+                              }
+                            }
+                            style={
+                              {
+                                "width": 16,
+                              }
+                            }
+                            width={16}
+                          />
+                        </View>
+                        <View
+                          onFocusCapture={[Function]}
+                          style={
+                            [
+                              {
+                                "flexDirection": "row",
+                              },
+                              null,
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityLabel="Artist 2"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                [
+                                  {
+                                    "userSelect": "auto",
+                                  },
+                                  {},
+                                ],
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Artist 2"
+                          >
+                            <View
+                              gap={2}
+                              isFullWidth={false}
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                  "gap": 8,
+                                }
+                              }
+                            >
+                              <View
+                                rounded={true}
+                                size={72}
+                                style={
+                                  {
+                                    "borderBottomLeftRadius": 36,
+                                    "borderBottomRightRadius": 36,
+                                    "borderTopLeftRadius": 36,
+                                    "borderTopRightRadius": 36,
+                                    "height": 72,
+                                    "overflow": "hidden",
+                                    "width": 72,
+                                  }
+                                }
+                                testID="Avatar"
+                              >
+                                <View
+                                  backgroundColor="#ffffff"
+                                  size={72}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "backgroundColor": "#ffffff",
+                                      "height": 72,
+                                      "justifyContent": "center",
+                                      "position": "absolute",
+                                      "width": 72,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "#f1f1f4",
+                                        "borderBottomLeftRadius": 999,
+                                        "borderBottomRightRadius": 999,
+                                        "borderColor": "#cbcdd2",
+                                        "borderTopLeftRadius": 999,
+                                        "borderTopRightRadius": 999,
+                                        "borderWidth": 1,
+                                        "height": "100%",
+                                        "justifyContent": "center",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    testID="defaultArtistAvatar"
+                                  >
+                                    <View
+                                      height={32}
+                                      testID="BicolorProfile"
+                                      width={32}
+                                    >
+                                      <Text>
+                                        BicolorProfile-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                              <View>
+                                <Text
+                                  isDisabled={false}
+                                  isFullWidth={false}
+                                  maxWidth={72}
+                                  numberOfLines={2}
+                                  style={
+                                    {
+                                      "alignSelf": "center",
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 14,
+                                      "lineHeight": 22.4,
+                                      "maxWidth": 72,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  Artist 2
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            highlighted={false}
+                            leadingItem={
+                              {
+                                "id": "2",
+                                "name": "Artist 2",
+                              }
+                            }
+                            style={
+                              {
+                                "width": 16,
+                              }
+                            }
+                            width={16}
+                          />
+                        </View>
+                        <View
+                          onFocusCapture={[Function]}
+                          style={
+                            [
+                              {
+                                "flexDirection": "row",
+                              },
+                              null,
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityLabel="Artist 3"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                [
+                                  {
+                                    "userSelect": "auto",
+                                  },
+                                  {},
+                                ],
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Artist 3"
+                          >
+                            <View
+                              gap={2}
+                              isFullWidth={false}
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                  "gap": 8,
+                                }
+                              }
+                            >
+                              <View
+                                rounded={true}
+                                size={72}
+                                style={
+                                  {
+                                    "borderBottomLeftRadius": 36,
+                                    "borderBottomRightRadius": 36,
+                                    "borderTopLeftRadius": 36,
+                                    "borderTopRightRadius": 36,
+                                    "height": 72,
+                                    "overflow": "hidden",
+                                    "width": 72,
+                                  }
+                                }
+                                testID="Avatar"
+                              >
+                                <View
+                                  backgroundColor="#ffffff"
+                                  size={72}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "backgroundColor": "#ffffff",
+                                      "height": 72,
+                                      "justifyContent": "center",
+                                      "position": "absolute",
+                                      "width": 72,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "#f1f1f4",
+                                        "borderBottomLeftRadius": 999,
+                                        "borderBottomRightRadius": 999,
+                                        "borderColor": "#cbcdd2",
+                                        "borderTopLeftRadius": 999,
+                                        "borderTopRightRadius": 999,
+                                        "borderWidth": 1,
+                                        "height": "100%",
+                                        "justifyContent": "center",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    testID="defaultArtistAvatar"
+                                  >
+                                    <View
+                                      height={32}
+                                      testID="BicolorProfile"
+                                      width={32}
+                                    >
+                                      <Text>
+                                        BicolorProfile-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                              <View>
+                                <Text
+                                  isDisabled={false}
+                                  isFullWidth={false}
+                                  maxWidth={72}
+                                  numberOfLines={2}
+                                  style={
+                                    {
+                                      "alignSelf": "center",
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 14,
+                                      "lineHeight": 22.4,
+                                      "maxWidth": 72,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  Artist 3
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            highlighted={false}
+                            leadingItem={
+                              {
+                                "id": "3",
+                                "name": "Artist 3",
+                              }
+                            }
+                            style={
+                              {
+                                "width": 16,
+                              }
+                            }
+                            width={16}
+                          />
+                        </View>
+                        <View
+                          onFocusCapture={[Function]}
+                          style={
+                            [
+                              {
+                                "flexDirection": "row",
+                              },
+                              null,
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityLabel="Artist 4"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                [
+                                  {
+                                    "userSelect": "auto",
+                                  },
+                                  {},
+                                ],
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Artist 4"
+                          >
+                            <View
+                              gap={2}
+                              isFullWidth={false}
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                  "gap": 8,
+                                }
+                              }
+                            >
+                              <View
+                                rounded={true}
+                                size={72}
+                                style={
+                                  {
+                                    "borderBottomLeftRadius": 36,
+                                    "borderBottomRightRadius": 36,
+                                    "borderTopLeftRadius": 36,
+                                    "borderTopRightRadius": 36,
+                                    "height": 72,
+                                    "overflow": "hidden",
+                                    "width": 72,
+                                  }
+                                }
+                                testID="Avatar"
+                              >
+                                <View
+                                  backgroundColor="#ffffff"
+                                  size={72}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "backgroundColor": "#ffffff",
+                                      "height": 72,
+                                      "justifyContent": "center",
+                                      "position": "absolute",
+                                      "width": 72,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "#f1f1f4",
+                                        "borderBottomLeftRadius": 999,
+                                        "borderBottomRightRadius": 999,
+                                        "borderColor": "#cbcdd2",
+                                        "borderTopLeftRadius": 999,
+                                        "borderTopRightRadius": 999,
+                                        "borderWidth": 1,
+                                        "height": "100%",
+                                        "justifyContent": "center",
+                                        "width": "100%",
+                                      }
+                                    }
+                                    testID="defaultArtistAvatar"
+                                  >
+                                    <View
+                                      height={32}
+                                      testID="BicolorProfile"
+                                      width={32}
+                                    >
+                                      <Text>
+                                        BicolorProfile-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                              <View>
+                                <Text
+                                  isDisabled={false}
+                                  isFullWidth={false}
+                                  maxWidth={72}
+                                  numberOfLines={2}
+                                  style={
+                                    {
+                                      "alignSelf": "center",
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 14,
+                                      "lineHeight": 22.4,
+                                      "maxWidth": 72,
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  Artist 4
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          onLayout={[Function]}
+                        >
+                          <View
+                            style={
+                              {
+                                "width": 24,
+                              }
+                            }
+                            width={24}
+                          />
+                        </View>
+                      </View>
+                    </RCTScrollView>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
                       "flexDirection": "row",
                       "justifyContent": "space-between",
                     }
@@ -2148,11 +3131,11 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#320096",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
+                "backgroundColor": "#6123df",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "height": 40,
                 "justifyContent": "center",
                 "overflow": "hidden",

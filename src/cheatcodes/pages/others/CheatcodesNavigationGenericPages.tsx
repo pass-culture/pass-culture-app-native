@@ -40,6 +40,14 @@ const genericPagesCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'GenericInfoPage illustrations',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodesScreenGenericInfoPageIllustrations' },
+      },
+    },
+    {
+      id: uuidv4(),
       title: 'GenericErrorPage',
       navigationTarget: {
         screen: 'CheatcodesStackNavigator',

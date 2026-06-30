@@ -44,7 +44,7 @@ describe('BonificationRefused', () => {
 
     it('should not show number of remaining retries if over 5', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND },
+        params: { bonificationRefusedType: BonificationRefusedType.APPLICATION_NOT_FOUND },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
 

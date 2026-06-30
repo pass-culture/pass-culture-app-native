@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { isCurrentOrFormerBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { AppearanceButton } from 'features/profile/components/AppearanceButton/AppearanceButton'
 import { BugReportButton } from 'features/profile/components/Buttons/BugReportButton/BugReportButton'
 import { ChatbotButton } from 'features/profile/components/Buttons/ChatbotButton/ChatbotButton'
@@ -15,6 +14,7 @@ import { getShouldDisplayHelpButton } from 'features/profile/helpers/getShouldDi
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 
 type Props = { user: UserProfile | undefined }
 

@@ -1,4 +1,5 @@
 import { initialSearchState } from 'features/search/context/reducer'
+import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
@@ -33,7 +34,16 @@ describe('useSortedSearchCategories', () => {
   it("should format category's label", () => {
     const { result } = renderHook(useSortedSearchCategories)
 
-    expect(result.current[0]?.label).toEqual('Concerts & festivals')
+    expect(result.current[0]?.label).toEqual('Concerts et festivals')
+  })
+
+  it('should expose remote illustration URLs when new category blocks FF is activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS])
+
+    const { result } = renderHook(useSortedSearchCategories)
+    const booksCategory = result.current.find((category) => category.label === 'Livres')
+
+    expect(booksCategory?.illustrationUrl).toEqual(`${env.ILLUSTRATIONS_BASE_URL}/book%403x.png`)
   })
 
   it('should sort search group names by the key position', () => {
@@ -42,18 +52,18 @@ describe('useSortedSearchCategories', () => {
     const actualCategoriesLabels = result.current.map((category) => category.label)
 
     expect(actualCategoriesLabels).toEqual([
-      'Concerts & festivals',
+      'Concerts et festivals',
       'Cinéma',
       'Films, séries et documentaires',
       'Livres',
       'Musique',
-      'Arts & loisirs créatifs',
+      'Arts et loisirs créatifs',
       'Spectacles',
-      'Musées & visites culturelles',
-      'Jeux & jeux vidéos',
-      'Médias & presse',
+      'Musées et visites',
+      'Jeux et jeux vidéos',
+      'Médias et presse',
       'Cartes jeunes',
-      'Conférences & rencontres',
+      'Conférences et rencontres',
       'Évènements en ligne',
     ])
   })

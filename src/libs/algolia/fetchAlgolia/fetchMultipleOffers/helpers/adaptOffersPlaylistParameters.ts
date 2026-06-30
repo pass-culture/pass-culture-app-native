@@ -66,7 +66,6 @@ export const adaptOffersPlaylistParameters = (
       ? { isSortedByReleaseDate: parameters.isSortedByReleaseDate }
       : undefined),
     ...(parameters.isWithClub ? { isWithClub: parameters.isWithClub } : undefined),
-    ...(parameters.artistId ? { artistId: parameters.artistId } : undefined),
   }
 }
 

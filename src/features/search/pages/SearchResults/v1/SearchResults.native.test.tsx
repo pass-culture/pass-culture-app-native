@@ -17,9 +17,13 @@ import { AlgoliaOffer, AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location/location'
 import { LocationMode, UseLocationReturnType } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -240,6 +244,10 @@ jest.useFakeTimers()
 describe('<SearchResults/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 123.34, longitude: 0.12238 })
+    locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+    locationActions.setPlace(MOCKED_PLACE)
     mockUseNetInfoContext.mockReset()
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
     mockUseSearchHistory.mockReset()
@@ -490,40 +498,6 @@ describe('<SearchResults/>', () => {
         })
       })
     })
-
-    describe('When enableAIFakeDoor FF is activated', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
-      })
-
-      it('should display AI fake door button', async () => {
-        render(reactQueryProviderHOC(<SearchResults />))
-
-        expect(
-          await screen.findByLabelText('Accéder au questionnaire sur l’IA pass Culture')
-        ).toBeOnTheScreen()
-      })
-
-      it('should open AI fake door modal when pressing AI button', async () => {
-        render(reactQueryProviderHOC(<SearchResults />))
-
-        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
-
-        expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
-      })
-
-      it('should trigger hasClickedFakeDoorCTA log when pressing AI button', async () => {
-        render(reactQueryProviderHOC(<SearchResults />))
-
-        await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
-
-        expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
-          featureName: 'conversational_search_AI',
-          from: 'searchAutoComplete',
-          searchId: 'testUuidV4',
-        })
-      })
-    })
   })
 
   describe('When offline', () => {
@@ -560,32 +534,6 @@ describe('<SearchResults/>', () => {
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_SEARCH_ID',
         payload: 'testUuidV4',
-      })
-    })
-  })
-
-  describe('When enableAIFakeDoor FF activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR])
-    })
-
-    it('should open AI fake door modal when pressing banner', async () => {
-      render(reactQueryProviderHOC(<SearchResults />))
-
-      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
-
-      expect(await screen.findByText('Encore un peu de patience...')).toBeOnTheScreen()
-    })
-
-    it('should trigger hasClickedFakeDoorCTA log when pressing AI fake door banner', async () => {
-      render(reactQueryProviderHOC(<SearchResults />))
-
-      await user.press(screen.getByLabelText('Accéder au questionnaire sur l’IA pass Culture'))
-
-      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
-        featureName: 'conversational_search_AI',
-        from: 'search',
-        searchId: 'testUuidV4',
       })
     })
   })

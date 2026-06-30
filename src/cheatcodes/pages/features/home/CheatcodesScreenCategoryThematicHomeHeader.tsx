@@ -30,6 +30,7 @@ export const CheatcodesScreenCategoryThematicHomeHeader: FunctionComponent = () 
         onBackPress={handleBackPress}
       />
       <CategoryThematicHomeHeader
+        homeId="fakeEntryId"
         subtitle={thematicHomeHeader.subtitle}
         title={thematicHomeHeader.title}
         color={thematicHomeHeader.color}

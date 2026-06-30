@@ -811,17 +811,17 @@ export const subcategoriesMappingSnap = {
 }
 
 export const useSearchGroupLabelMappingSnap = {
-  ARTS_LOISIRS_CREATIFS: 'Arts & loisirs créatifs',
+  ARTS_LOISIRS_CREATIFS: 'Arts et loisirs créatifs',
   CARTES_JEUNES: 'Cartes jeunes',
-  CONCERTS_FESTIVALS: 'Concerts & festivals',
-  RENCONTRES_CONFERENCES: 'Conférences & rencontres',
+  CONCERTS_FESTIVALS: 'Concerts et festivals',
+  RENCONTRES_CONFERENCES: 'Conférences et rencontres',
   EVENEMENTS_EN_LIGNE: 'Évènements en ligne',
   CINEMA: 'Cinéma',
   FILMS_DOCUMENTAIRES_SERIES: 'Films, séries et documentaires',
-  JEUX_JEUX_VIDEOS: 'Jeux & jeux vidéos',
+  JEUX_JEUX_VIDEOS: 'Jeux et jeux vidéos',
   LIVRES: 'Livres',
-  MEDIA_PRESSE: 'Médias & presse',
-  MUSEES_VISITES_CULTURELLES: 'Musées & visites culturelles',
+  MEDIA_PRESSE: 'Médias et presse',
+  MUSEES_VISITES_CULTURELLES: 'Musées et visites',
   MUSIQUE: 'Musique',
   NONE: ALL_CATEGORIES_LABEL,
   SPECTACLES: 'Spectacles',

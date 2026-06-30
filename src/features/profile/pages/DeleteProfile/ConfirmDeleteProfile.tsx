@@ -1,9 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useAccountSuspendMutation } from 'features/auth/queries/useAccountSuspendMutation'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { resetFromRef } from 'features/navigation/navigationRef'
+import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
@@ -19,26 +20,14 @@ import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
-  const { reset } = useNavigation<UseNavigationType>()
+  const signOut = useLogoutRoutine()
 
   const { suspendAccount, isLoading } = useAccountSuspendMutation({
-    onSuccess: () => {
-      reset({
-        index: 0,
-        routes: [
-          {
-            name: 'TabNavigator',
-            state: {
-              routes: [
-                {
-                  name: 'ProfileStackNavigator',
-                  state: { routes: [{ name: 'DeactivateProfileSuccess' }] },
-                },
-              ],
-            },
-          },
-        ],
-      })
+    onSuccess: async () => {
+      await signOut()
+      // We use resetFromRef instead of navigation because signOut() may unmount the current screen
+      // (RootNavigator rebuild). resetFromRef ensures navigation still works after logout.
+      resetFromRef(...getProfileHookConfig('DeactivateProfileSuccess'))
     },
     onError: () => {
       showErrorSnackBar('Une erreur s’est produite pendant le chargement.')

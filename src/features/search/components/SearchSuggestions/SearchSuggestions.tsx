@@ -24,8 +24,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
-import { Button } from 'ui/designSystem/Button/Button'
-import { AISearch } from 'ui/svg/icons/AISearch'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -34,8 +32,6 @@ type SearchSuggestionsParams = {
   filteredHistory: HistoryItem[]
   shouldNavigateToSearchResults?: boolean
   offerCategories?: SearchGroupNameEnumv2[]
-  enableAIFakeDoor?: boolean
-  onPressAIButton?: () => void
   header?: React.ReactNode
 }
 export const SearchSuggestions = ({
@@ -45,8 +41,6 @@ export const SearchSuggestions = ({
   filteredHistory,
   shouldNavigateToSearchResults,
   offerCategories,
-  enableAIFakeDoor,
-  onPressAIButton,
   header,
 }: SearchSuggestionsParams) => {
   const { navigate, setOptions } = useNavigation<UseNavigationType>()
@@ -145,18 +139,6 @@ export const SearchSuggestions = ({
       onScroll={Keyboard.dismiss}
       scrollEventThrottle={16}>
       {header}
-      {enableAIFakeDoor ? (
-        <ButtonContainer>
-          <Button
-            variant="tertiary"
-            wording="Demander à l’IA pass Culture"
-            accessibilityLabel="Accéder au questionnaire sur l’IA pass Culture"
-            color="neutral"
-            icon={AISearch}
-            onPress={onPressAIButton}
-          />
-        </ButtonContainer>
-      ) : null}
       <SearchHistory
         history={filteredHistory}
         queryHistory={queryHistory}
@@ -191,10 +173,4 @@ const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingLeft: theme.designSystem.size.spacing.xl,
   paddingRight: theme.designSystem.size.spacing.xl,
   ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
-}))
-
-const ButtonContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
-  marginLeft: theme.designSystem.size.spacing.xxxl,
-  alignItems: 'flex-start',
 }))

@@ -593,7 +593,7 @@ describe('AutocompleteOfferItem component', () => {
 
         await screen.findByText('cinéma')
 
-        expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Musées et visites')).not.toBeOnTheScreen()
       })
 
       it('when native category associated to the most popular category', async () => {
@@ -611,7 +611,7 @@ describe('AutocompleteOfferItem component', () => {
 
         await screen.findByText('cinéma')
 
-        expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Musées et visites')).not.toBeOnTheScreen()
       })
 
       it('when category is unknown in the app', async () => {
@@ -647,7 +647,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        expect(await screen.findByText('Concerts & festivals')).toBeOnTheScreen()
+        expect(await screen.findByText('Concerts et festivals')).toBeOnTheScreen()
       })
 
       it('has not native category associated to the suggestion', async () => {
@@ -663,7 +663,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        expect(await screen.findByText('Concerts & festivals')).toBeOnTheScreen()
+        expect(await screen.findByText('Concerts et festivals')).toBeOnTheScreen()
       })
 
       it('native category is unknown in the app', async () => {

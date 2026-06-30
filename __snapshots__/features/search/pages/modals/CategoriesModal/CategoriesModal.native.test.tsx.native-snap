@@ -681,7 +681,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Filtre - Concerts & festivals"
+                    accessibilityLabel="Filtre - Concerts et festivals"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -725,7 +725,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Filtre - Concerts & festivals"
+                    testID="Filtre - Concerts et festivals"
                   >
                     <View
                       style={
@@ -773,7 +773,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             }
                           }
                         >
-                          Concerts & festivals
+                          Concerts et festivals
                         </Text>
                       </View>
                     </View>
@@ -1321,7 +1321,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Filtre - Arts & loisirs créatifs"
+                    accessibilityLabel="Filtre - Arts et loisirs créatifs"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1365,7 +1365,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Filtre - Arts & loisirs créatifs"
+                    testID="Filtre - Arts et loisirs créatifs"
                   >
                     <View
                       style={
@@ -1413,7 +1413,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             }
                           }
                         >
-                          Arts & loisirs créatifs
+                          Arts et loisirs créatifs
                         </Text>
                       </View>
                     </View>
@@ -1577,7 +1577,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Filtre - Musées & visites culturelles"
+                    accessibilityLabel="Filtre - Musées et visites"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1621,7 +1621,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Filtre - Musées & visites culturelles"
+                    testID="Filtre - Musées et visites"
                   >
                     <View
                       style={
@@ -1669,7 +1669,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             }
                           }
                         >
-                          Musées & visites culturelles
+                          Musées et visites
                         </Text>
                       </View>
                     </View>
@@ -1705,7 +1705,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Filtre - Jeux & jeux vidéos"
+                    accessibilityLabel="Filtre - Jeux et jeux vidéos"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1749,7 +1749,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Filtre - Jeux & jeux vidéos"
+                    testID="Filtre - Jeux et jeux vidéos"
                   >
                     <View
                       style={
@@ -1797,7 +1797,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             }
                           }
                         >
-                          Jeux & jeux vidéos
+                          Jeux et jeux vidéos
                         </Text>
                       </View>
                     </View>
@@ -1833,7 +1833,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Filtre - Médias & presse"
+                    accessibilityLabel="Filtre - Médias et presse"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1877,7 +1877,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Filtre - Médias & presse"
+                    testID="Filtre - Médias et presse"
                   >
                     <View
                       style={
@@ -1925,7 +1925,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             }
                           }
                         >
-                          Médias & presse
+                          Médias et presse
                         </Text>
                       </View>
                     </View>
@@ -1961,7 +1961,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Filtre - Conférences & rencontres"
+                    accessibilityLabel="Filtre - Conférences et rencontres"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -2005,7 +2005,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Filtre - Conférences & rencontres"
+                    testID="Filtre - Conférences et rencontres"
                   >
                     <View
                       style={
@@ -2053,7 +2053,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                             }
                           }
                         >
-                          Conférences & rencontres
+                          Conférences et rencontres
                         </Text>
                       </View>
                     </View>

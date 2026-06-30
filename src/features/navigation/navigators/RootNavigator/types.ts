@@ -19,6 +19,7 @@ import { TabParamList } from 'features/navigation/navigators/TabNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { ConsultArtistOriginDetails } from 'libs/analytics/logEventAnalytics'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { VerticalPlaylistOffersSource } from 'shared/verticalPlaylist/types'
@@ -340,13 +341,17 @@ export type RootStackParamList = {
     similarToArtistId?: string
     offerId?: number
     offerCategoryId?: CategoryIdEnum
+    originDetails?: ConsultArtistOriginDetails
   }
   VerticalPlaylistOffers: VerticalPlaylistOffersSource
   VerticalPlaylistVenues: { module: VenuesModule }
   VideoModulePage: VideoModulePageParams
   HomeLocationModal: undefined
   SearchLocationModal: undefined
-  VenueMapLocationModal: { openedFrom: Referrals; shouldOpenMapInTab?: boolean }
+  VenueMapLocationModal: {
+    openedFrom: Referrals
+    shouldOpenMapInTab?: boolean
+  }
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

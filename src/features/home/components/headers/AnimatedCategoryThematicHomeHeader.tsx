@@ -1,118 +1,31 @@
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
-import { Animated } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { CategoryThematicHeader } from 'features/home/types'
 import {
-  useMobileFontScaleToDisplay,
-  useNumberOfLine,
-} from 'shared/accessibility/helpers/zoomHelpers'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { HomeGradient } from 'ui/svg/HomeGradient'
-import { getSpacing, Typo } from 'ui/theme'
-import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
-import { isBackgroundColorKey } from 'ui/theme/isBackgroundColorKey'
+  CATEGORY_HEADER_HEIGHT,
+  CategoryThematicHomeHeaderContent,
+} from 'features/home/components/headers/CategoryThematicHomeHeaderContent'
+import { CategoryThematicHeader } from 'features/home/types'
+import { getSpacing } from 'ui/theme'
 
-export const MOBILE_HEADER_HEIGHT = 45
+export const MOBILE_HEADER_HEIGHT = CATEGORY_HEADER_HEIGHT
 
-type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
-
-type AppHeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
-
-const AppHeader: FunctionComponent<AppHeaderProps> = ({
-  title,
-  subtitle,
-  color,
-  gradientTranslation,
-}) => {
-  const { designSystem } = useTheme()
-
-  const gradientRaw = gradientImagesMapping[color] ?? gradientImagesMapping.Gold
-  const gradientColors: string[] = gradientRaw.map((colorValue) =>
-    isBackgroundColorKey(colorValue, designSystem.color.background)
-      ? designSystem.color.background[colorValue]
-      : colorValue
-  )
-
-  const isZoomed = useMobileFontScaleToDisplay({
-    default: false,
-    at200PercentZoom: true,
-  })
-  const Container = isZoomed ? ZoomContainer : DefaultContainer
-  const TextContainer = isZoomed ? ZoomTextContainer : DefaultTextContainer
-  const numberOfLinesTitle = useNumberOfLine(2)
-  const numberOfLinesSubtitle = useNumberOfLine(1)
-
-  return (
-    <Container>
-      <HomeGradient
-        colors={gradientColors}
-        testID="HomeGradient"
-        height={getSpacing(MOBILE_HEADER_HEIGHT)}
-      />
-      <TextContainer>
-        <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation || 0 }] }}>
-          {subtitle ? (
-            <ViewGap gap={1}>
-              <Subtitle numberOfLines={numberOfLinesSubtitle}>{subtitle}</Subtitle>
-            </ViewGap>
-          ) : null}
-          {isZoomed ? null : <Typo.Title1 numberOfLines={numberOfLinesTitle}>{title}</Typo.Title1>}
-        </AnimatedBackground>
-      </TextContainer>
-      <AnimatedBackgroundSubscribeButton
-        style={{ transform: [{ translateY: gradientTranslation || 0 }] }}
-      />
-    </Container>
-  )
+type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'> & {
+  homeId: string
 }
 
-export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
-  title,
-  subtitle,
-  gradientTranslation,
-  color,
-}) => {
-  return (
-    <AppHeader
-      title={title}
-      subtitle={subtitle}
-      gradientTranslation={gradientTranslation}
-      color={color}
-    />
-  )
-}
+export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = (
+  props
+) => (
+  <Container>
+    <CategoryThematicHomeHeaderContent {...props} />
+  </Container>
+)
 
-const DefaultContainer = styled.View({
+const Container = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
   right: 0,
   height: getSpacing(MOBILE_HEADER_HEIGHT),
 })
-
-const ZoomContainer = styled.View({})
-const ZoomTextContainer = styled.View({})
-
-const DefaultTextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
-
-const SubscribeButtonContainer = styled.View(({ theme }) => ({
-  position: 'absolute',
-  bottom: theme.designSystem.size.spacing.l,
-  right: theme.designSystem.size.spacing.xl,
-}))
-
-const Subtitle = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.designSystem.color.text.lockedInverted,
-  marginBottom: theme.designSystem.size.spacing.xs,
-}))
-
-const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
-
-const AnimatedBackgroundSubscribeButton = Animated.createAnimatedComponent(SubscribeButtonContainer)
-
-const AnimatedBackground = styled(AnimatedBlackBackground)(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
-}))

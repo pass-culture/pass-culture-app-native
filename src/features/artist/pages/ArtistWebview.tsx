@@ -4,18 +4,15 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
-import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { useArtistQuery } from 'queries/artist/useArtistQuery'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 const ArtistWebviewContent = () => {
-  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params } = useRoute<UseRouteType<'ArtistWebview'>>()
   const { data: artist, isError, error } = useArtistQuery(params.id)
 
@@ -25,7 +22,7 @@ const ArtistWebviewContent = () => {
     if (isError) eventMonitoring.captureException(error)
   }, [error, isError])
 
-  if (!artist?.descriptionSource || !enableArtistPage) return <PageNotFound />
+  if (!artist?.descriptionSource) return <PageNotFound />
 
   return (
     <React.Fragment>

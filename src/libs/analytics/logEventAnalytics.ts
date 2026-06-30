@@ -109,6 +109,12 @@ export type CTAexitActivationFlow =
   | 'Close'
   | 'GoToDemarcheNumerique'
 
+export type ConsultArtistOriginDetails =
+  | 'similarArtistsPlaylist'
+  | 'venue'
+  | 'offer'
+  | 'searchResults'
+
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
@@ -274,6 +280,7 @@ export const logEventAnalytics = {
     offerId?: string
     venueId?: string
     searchId?: string
+    originDetails?: ConsultArtistOriginDetails
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST }, params),
   logConsultArtistFakeDoor: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST_FAKE_DOOR }),

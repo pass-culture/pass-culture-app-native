@@ -31,8 +31,8 @@ export const ScrollToTopButton = ({
 const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
 const StyledView = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.brandSecondary,
-  borderRadius: theme.designSystem.size.borderRadius.xl,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',

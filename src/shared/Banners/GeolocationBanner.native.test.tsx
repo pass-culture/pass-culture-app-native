@@ -1,35 +1,35 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { showGeolocPermissionModal } from 'libs/location/__mocks__/location'
-import { GeolocPermissionState, useLocation } from 'libs/location/location'
-import * as requestGeolocPermissionModule from 'libs/locationV2/requestGeolocPermission'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
+import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  defaultLocationState,
+  locationActions,
+  locationSelectors,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/location/location')
-const mockUseLocation = useLocation as jest.Mock
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 
-jest.mock('libs/locationV2/requestGeolocPermission')
-const mockRequestGeolocPermission = jest.spyOn(
-  requestGeolocPermissionModule,
-  'requestGeolocPermission'
-)
+jest.mock('libs/locationV2/syncLocation')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<GeolocationBanner />', () => {
-  beforeEach(() => setFeatureFlags())
+  beforeEach(() => {
+    setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+  })
 
   it('should display system banner for geolocation incitation', () => {
-    mockUseLocation.mockReturnValueOnce({
-      permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      showGeolocPermissionModal,
-    })
     render(
       reactQueryProviderHOC(
         <GeolocationBanner
@@ -44,10 +44,8 @@ describe('<GeolocationBanner />', () => {
   })
 
   it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      showGeolocPermissionModal,
-    })
+    mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
+
     render(
       reactQueryProviderHOC(
         <GeolocationBanner
@@ -61,13 +59,12 @@ describe('<GeolocationBanner />', () => {
 
     await user.press(button)
 
-    expect(showGeolocPermissionModal).toHaveBeenCalledWith()
+    await waitFor(() => expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true))
   })
 
   it('should ask for permission when pressing button and permission is denied', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      permissionState: GeolocPermissionState.DENIED,
-    })
+    mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
+
     render(
       reactQueryProviderHOC(
         <GeolocationBanner
@@ -81,7 +78,9 @@ describe('<GeolocationBanner />', () => {
 
     await user.press(button)
 
-    expect(mockRequestGeolocPermission).toHaveBeenCalledWith()
+    await waitFor(() =>
+      expect(locationSelectors.selectPermissionState()).toBe(GeolocPermissionState.DENIED)
+    )
   })
 
   it('should call onPress externaly when specified', async () => {
@@ -102,5 +101,21 @@ describe('<GeolocationBanner />', () => {
     await user.press(button)
 
     expect(mockOnPress).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display banner when user is geolocated', () => {
+    locationActions.setGeolocPosition({ latitude: 2, longitude: 2 })
+
+    render(
+      reactQueryProviderHOC(
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
+        />
+      )
+    )
+
+    expect(screen.queryByTestId('systemBanner')).not.toBeOnTheScreen()
   })
 })

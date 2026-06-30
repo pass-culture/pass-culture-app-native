@@ -1,15 +1,17 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { RecreditType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { storage } from 'libs/storage'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
-import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
+import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getAge } from 'shared/user/getAge'
-import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -19,38 +21,41 @@ import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
+  const { replace } = useNavigation<UseNavigationType>()
+  const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
   const { user } = useAuthContext()
   const theme = useTheme()
 
   const age = getAge(user?.birthDate)
-
-  const credit = useAvailableCredit()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const creditedAmount = formatCurrencyFromCents(
-    user?.recreditAmountToShow ?? 3000,
-    currency,
-    euroToPacificFrancRate
-  )
-  const remainingCredit = formatCurrencyFromCents(
-    credit?.amount ?? 3000,
-    currency,
-    euroToPacificFrancRate
-  )
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+
+  const hasAlsoBonusRecreditToShow = user?.recreditTypeToShow === RecreditType.BonusCredit
+  const bonifAmountToShow = hasAlsoBonusRecreditToShow ? bonificationBonusAmount : 0
+
+  const formattedAmountToShow = user?.recreditAmountToShow
+    ? formatCurrencyFromCents(
+        user?.recreditAmountToShow - bonifAmountToShow,
+        currency,
+        euroToPacificFrancRate
+      )
+    : undefined
+
+  const recreditMessage =
+    age && formattedAmountToShow
+      ? `Pour tes ${age} ans, ${formattedAmountToShow} ont été ajoutés à ton compte.`
+      : undefined
 
   const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
-      onSuccess: () => navigateToHome(),
+      onSuccess: () => navigateToHomeWithReset(),
       onError: () => showErrorSnackBar('Une erreur est survenue'),
     })
 
   useEffect(() => {
     storage.saveObject('has_seen_birthday_notification_card', true)
   }, [])
-
-  const recreditMessage = age
-    ? `Pour tes ${age} ans, ${creditedAmount} ont été ajoutés à ton compte. Tu disposes maintenant de\u00a0:`
-    : undefined
 
   return (
     <GenericInfoPage
@@ -61,7 +66,11 @@ export const RecreditBirthdayNotification = () => {
       subtitle={recreditMessage}
       buttonPrimary={{
         wording: 'Continuer',
-        onPress: resetRecreditAmountToShow,
+        onPress: () => {
+          if (hasAlsoBonusRecreditToShow) {
+            replace('BonificationGranted')
+          } else resetRecreditAmountToShow()
+        },
         isLoading: isResetRecreditAmountToShowLoading,
       }}>
       <React.Fragment>
@@ -72,7 +81,7 @@ export const RecreditBirthdayNotification = () => {
             icon={categoriesIcons.Show}
             isAnimated
           />
-          <Amount>{remainingCredit}</Amount>
+          <Amount>{formattedAmountToShow}</Amount>
         </ProgressBarContainer>
         <StyledBody>
           Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.

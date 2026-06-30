@@ -4,6 +4,8 @@ import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { Artist } from 'features/venue/types'
+import { analytics } from 'libs/analytics/provider'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { HorizontalArtistTile } from 'shared/verticalPlaylist/components/HorizontalArtistTile'
@@ -22,7 +24,18 @@ export const VerticalPlaylistArtists = () => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { headerTransition, onScroll } = useOpacityTransition()
   const { title, subtitle, items, nbItems } = useGetArtistsFromPlaylist({ params })
-  const renderItem = ({ item }) => <HorizontalArtistTile artist={item} />
+  const renderItem = ({ item }) => (
+    <HorizontalArtistTile artist={item} onBeforeNavigate={handlePressArtistTile} />
+  )
+
+  const handlePressArtistTile = (artist: Artist) => {
+    void analytics.logConsultArtist({
+      artistId: artist.id,
+      artistName: artist.name,
+      from: 'verticalplaylistartists',
+      originDetails: params.originDetails,
+    })
+  }
 
   return (
     <Page>

@@ -1,6 +1,12 @@
 import { FlashList, FlashListRef } from '@shopify/flash-list'
-import React, { FC, PropsWithChildren, useEffect, useRef } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import React, { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
+import {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Platform,
+  useWindowDimensions,
+} from 'react-native'
+import Animated, { LinearTransition } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 } from 'uuid'
 
@@ -11,6 +17,8 @@ import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { ListHeaderComponent } from 'features/search/pages/SearchResults/v2/components/SearchLists/components/ListHeaderComponent'
 import { ANIMATION_DURATION } from 'features/search/pages/SearchResults/v2/components/SearchLists/searchLists.constants'
 import { SearchOfferItemWrapper } from 'features/search/pages/SearchResults/v2/components/SearchListsItems/SearchOfferItemWrapper'
+import { SearchMapButton } from 'features/search/pages/SearchResults/v2/components/SearchMap/components/SearchMapButton'
+import { SearchMapContainer } from 'features/search/pages/SearchResults/v2/components/SearchMap/SearchMapContainer'
 import { OffersListSkeleton } from 'features/search/pages/SearchResults/v2/components/SearchSkeletons/OffersListSkeleton'
 import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
@@ -21,17 +29,26 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useUserLocation } from 'libs/locationV2/location.store'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
-import { Spacer } from 'ui/theme'
 
 const searchIdGenerated = v4()
 const isWeb = Platform.OS === 'web'
 
-export const OffersList: FC<PropsWithChildren<{ searchFilters: FetchSearchResultsArgs }>> = ({
+type Props = {
+  searchFilters: FetchSearchResultsArgs
+  hasBeenClicked: boolean
+  setHasBeenClicked: (hasBeenClicked: boolean) => void
+}
+
+export const OffersList: FC<PropsWithChildren<Props>> = ({
   children,
   searchFilters,
+  hasBeenClicked,
+  setHasBeenClicked,
 }) => {
   const transformHits = useTransformOfferHits()
 
@@ -101,55 +118,75 @@ export const OffersList: FC<PropsWithChildren<{ searchFilters: FetchSearchResult
     }
   }, [disabilities, isFetching, isSuccess, offersResponse?.nbHits, previousRouteName, searchState])
 
-  const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
+  const [shouldDisplayMapButtonText, setShouldDisplayMapButtonText] = useState(true)
+  const { headerTransition: scrollButtonTransition, onScroll: onScrollOpacity } =
+    useOpacityTransition()
+  const headerHeight = useGetHeaderHeight()
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    onScrollOpacity(event)
+    const currentOffset = event.nativeEvent.contentOffset.y
+    setShouldDisplayMapButtonText(currentOffset <= headerHeight)
+  }
 
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isGeolocated = useUserLocation()
   if (showSkeleton) return <OffersListSkeleton />
 
   return (
     <React.Fragment>
-      <Container>
-        <FlashList
-          key="offers_search_results"
-          data={offersResponse?.offers}
-          keyExtractor={(item: Offer) => item.objectID}
-          ListHeaderComponent={
-            children ? (
-              <React.Fragment>{children}</React.Fragment>
-            ) : (
-              <ListHeaderComponent
-                title="Les offres"
-                nbItems={offersResponse?.offers.length ?? 0}
-              />
-            )
-          }
-          renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
-          contentContainerStyle={{
-            paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
-            paddingHorizontal: designSystem.size.spacing.xl,
-          }}
-          ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
-          numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
-          refreshing={isRefetching}
-          onRefresh={refetch}
-          onEndReached={handleEndReached}
-          scrollEnabled={!!offersResponse?.nbHits}
-          onScroll={onScroll}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-        />
-      </Container>
-      {shouldRenderScrollToTopButton ? (
-        <ScrollToTopContainer>
-          <ScrollToTopButton
-            transition={scrollButtonTransition}
-            onPress={() => {
-              listRef.current?.scrollToOffset({ offset: 0 })
+      {hasBeenClicked && isGeolocated ? (
+        <SearchMapContainer searchFilters={searchFilters} />
+      ) : (
+        <Container>
+          <FlashList
+            ref={listRef}
+            key="offers_search_results"
+            data={offersResponse?.offers}
+            keyExtractor={(item: Offer) => item.objectID}
+            ListHeaderComponent={
+              children ? (
+                <React.Fragment>{children}</React.Fragment>
+              ) : (
+                <ListHeaderComponent
+                  title="Les offres"
+                  nbItems={offersResponse?.offers.length ?? 0}
+                />
+              )
+            }
+            renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
+            contentContainerStyle={{
+              paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+              paddingHorizontal: designSystem.size.spacing.xl,
             }}
+            ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
+            numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            onEndReached={handleEndReached}
+            scrollEnabled={!!offersResponse?.nbHits}
+            onScroll={handleScroll}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
           />
-          <Spacer.BottomScreen />
-        </ScrollToTopContainer>
-      ) : null}
+
+          <FloatingButtonsWrapper
+            layout={LinearTransition.springify().damping(15).stiffness(20).duration(1000)}>
+            {shouldRenderScrollToTopButton ? (
+              <ScrollToTopButton
+                transition={scrollButtonTransition}
+                onPress={() => {
+                  listRef.current?.scrollToOffset({ offset: 0 })
+                }}
+              />
+            ) : null}
+
+            <SearchMapButton
+              setHasBeenClicked={setHasBeenClicked}
+              shouldDisplayMapButtonText={shouldDisplayMapButtonText}
+            />
+          </FloatingButtonsWrapper>
+        </Container>
+      )}
     </React.Fragment>
   )
 }
@@ -164,9 +201,12 @@ const LineSeparator = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
 }))
 
-const ScrollToTopContainer = styled.View(({ theme }) => ({
-  alignSelf: 'center',
+const FloatingButtonsWrapper = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  gap: theme.designSystem.size.spacing.s,
   right: theme.designSystem.size.spacing.xl,
   bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,

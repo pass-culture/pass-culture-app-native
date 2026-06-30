@@ -1,9 +1,9 @@
-import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
+import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 
 export const getRefundRule = ({
   totalAmount,

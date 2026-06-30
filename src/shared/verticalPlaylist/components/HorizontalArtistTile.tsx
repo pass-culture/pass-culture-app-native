@@ -10,9 +10,12 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { Typo } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'
 
-type ArtistItemProps = { artist: Artist }
+type ArtistItemProps = {
+  artist: Artist
+  onBeforeNavigate: (artist: Artist) => void
+}
 
-export const HorizontalArtistTile = ({ artist }: ArtistItemProps) => {
+export const HorizontalArtistTile = ({ artist, onBeforeNavigate }: ArtistItemProps) => {
   const content = (
     <Container>
       <Avatar size={AVATAR_SMALL} {...artist}>
@@ -36,7 +39,8 @@ export const HorizontalArtistTile = ({ artist }: ArtistItemProps) => {
   return (
     <InternalTouchableLink
       navigateTo={{ screen: 'Artist', params: { id: artist.id } }}
-      accessibilityLabel={accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}
+      onBeforeNavigate={() => onBeforeNavigate(artist)}>
       {content}
     </InternalTouchableLink>
   )

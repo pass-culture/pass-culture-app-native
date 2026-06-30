@@ -2362,13 +2362,18 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                         "s": 16,
                       },
                       "illustration": {
-                        "m": 200,
-                        "xl": 320,
+                        "s": 96,
+                        "xl": 200,
                         "xs": 72,
+                        "xxxl": 320,
                       },
                       "image": {
-                        "m": 72,
-                        "s": 56,
+                        "l": 144,
+                        "m": 96,
+                        "s": 80,
+                        "xl": 176,
+                        "xs": 72,
+                        "xxs": 56,
                       },
                       "spacing": {
                         "l": 16,

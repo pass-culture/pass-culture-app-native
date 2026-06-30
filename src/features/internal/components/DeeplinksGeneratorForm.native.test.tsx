@@ -94,7 +94,7 @@ describe('<DeeplinksGeneratorForm />', () => {
     const search = screen.getByText('SearchResults')
     await user.press(search)
 
-    let categoryButton = screen.getByText('Arts & loisirs créatifs')
+    let categoryButton = screen.getByText('Arts et loisirs créatifs')
     await user.press(categoryButton)
 
     const subcategoryButton = screen.getByText('Arts visuels')
@@ -108,7 +108,7 @@ describe('<DeeplinksGeneratorForm />', () => {
       'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing'
     )
 
-    categoryButton = screen.getByText('Concerts & festivals')
+    categoryButton = screen.getByText('Concerts et festivals')
     await user.press(categoryButton)
 
     generateButton = screen.getByText('Générer le lien')

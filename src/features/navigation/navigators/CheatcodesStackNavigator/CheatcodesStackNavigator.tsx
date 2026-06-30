@@ -40,6 +40,7 @@ import { CheatcodesScreenDirectIdAccess } from 'cheatcodes/pages/others/Cheatcod
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
 import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPage'
+import { CheatcodesScreenGenericInfoPageIllustrations } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPageIllustrations'
 import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericOfficialPage'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
@@ -284,6 +285,12 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenGenericInfoPage,
       linking: {
         path: 'cheatcodes/other/generic-info-page',
+      },
+    },
+    CheatcodesScreenGenericInfoPageIllustrations: {
+      screen: CheatcodesScreenGenericInfoPageIllustrations,
+      linking: {
+        path: 'cheatcodes/other/generic-info-page-illustrations',
       },
     },
     CheatcodesScreenGenericOfficialPage: {

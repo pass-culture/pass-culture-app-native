@@ -1,3 +1,4 @@
+import { getCategoryBlockColor } from 'features/home/helpers/getCategoryColor'
 import { CategoryBlock, CategoryListModule, HomepageModuleType } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
@@ -29,9 +30,9 @@ const adaptCategoryBlock = (CategoryBlockList: CategoryBlockContentModel[]): Cat
     const { displayedTitle: title, image, color } = bloc.fields.thematicCategoryInfo.fields
     return {
       id: bloc.sys.id,
-      image: buildImageUrl(image.fields?.file.url),
+      image: buildImageUrl(image?.fields?.file.url),
       homeEntryId: bloc.fields.homeEntryId,
       title,
-      color,
+      color: getCategoryBlockColor(color),
     }
   })

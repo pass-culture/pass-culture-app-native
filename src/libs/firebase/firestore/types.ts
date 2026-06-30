@@ -43,7 +43,6 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
-  ENABLE_AI_FAKE_DOOR = 'enableAIFakeDoor',
   ENABLE_BONIFICATION = 'enableBonification',
   ENABLE_HANDICAP_BONIFICATION = 'enableHandicapBonification',
   ENABLE_CHATBOT = 'enableChatbot',
@@ -57,8 +56,6 @@ export enum RemoteStoreFeatureFlags {
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
   SHOW_TECHNICAL_PROBLEM_BANNER = 'showTechnicalProblemBanner',
   WIP_ARTIST_CATEGORY_PLAYLISTS = 'wipArtistCategoryPlaylists',
-  WIP_ARTIST_PAGE = 'wipArtistPage',
-  WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
   WIP_ARTIST_RECOMMENDATION_PLAYLIST = 'wipArtistRecommendationPlaylist',
   WIP_ARTIST_SECTION_REFACTO = 'wipArtistSectionRefacto',
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
@@ -69,7 +66,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
   WIP_ENABLE_VOLUNTEER = 'wipEnableVolunteer',
   WIP_ENABLE_VOLUNTEER_FEEDBACK = 'wipEnableVolunteerFeedback',
-  WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_CATEGORY_BLOCKS = 'wipNewCategoryBlocks',
   WIP_NEW_CATEGORY_BLOCKS_HOME = 'wipNewCategoryBlocksHome',
@@ -87,7 +83,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_SEARCH_IN_VENUE_PAGE = 'wipSearchInVenuePage',
   WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS = 'wipThematicSearchConcertsAndFestivals',
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',
-  WIP_VENUE_ARTISTS_PLAYLIST = 'wipVenueArtistsPlaylist',
   WIP_VENUE_MAP = 'wipVenueMap',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
 }

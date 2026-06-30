@@ -51,12 +51,20 @@ export type HighlightThematicHeader = {
 export type CategoryThematicHeader = {
   type: ThematicHeaderType.Category
   title: string
+  titleParts?: string[]
   subtitle?: string
   imageUrl?: string
   gradientTranslation?: Animated.AnimatedInterpolation<string | number>
   imageAnimatedHeight?: Animated.AnimatedInterpolation<string | number>
-  color: Color
+  color: Color | CategoryHeaderColor
 }
+
+export type CategoryHeaderColor =
+  | 'Positive01'
+  | 'Negative01'
+  | 'Pending01'
+  | 'Information01'
+  | 'Information04'
 
 export type ThematicHeader =
   | DefaultThematicHeader
@@ -141,7 +149,6 @@ export type OffersModuleParameters = {
   isSortedByLikes?: boolean
   isSortedByReleaseDate?: boolean
   isWithClub?: boolean
-  artistId?: string
 }
 
 export type BusinessModule = {

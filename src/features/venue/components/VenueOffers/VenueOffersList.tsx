@@ -6,7 +6,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { isCurrentBeneficiary } from 'features/auth/helpers/checkStatusType'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
@@ -24,6 +23,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -71,7 +71,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
-  const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
@@ -79,7 +78,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   const { hits = [] } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
-  const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
+  const shouldDisplayArtistsPlaylist = artists.length > 0
   const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
 
   const onBeforeNavigate = () => analytics.logVenueSeeMoreClicked(venue.id)
@@ -165,7 +164,12 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistArtists' as const,
-    params: { title: playlistTitle, subtitle: undefined, venueId: venue.id },
+    params: {
+      title: playlistTitle,
+      subtitle: undefined,
+      venueId: venue.id,
+      originDetails: 'venue',
+    },
   }
 
   return (

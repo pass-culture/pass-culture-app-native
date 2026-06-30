@@ -16,19 +16,19 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Helmet } from 'libs/react-helmet/Helmet'
 
 type Props = {
-  onPressAIFakeDoorBanner: () => void
-  enableAIFakeDoor?: boolean
   header?: React.ReactNode
   searchFilters: FetchSearchResultsArgs
+  hasBeenClicked: boolean
+  setHasBeenClicked: (hasBeenClicked: boolean) => void
 }
 
 const isWeb = Platform.OS === 'web'
 
 export const AllSearchResultsList: FC<Props> = ({
-  enableAIFakeDoor,
-  onPressAIFakeDoorBanner,
   header,
   searchFilters,
+  hasBeenClicked,
+  setHasBeenClicked,
 }) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
 
@@ -49,7 +49,10 @@ export const AllSearchResultsList: FC<Props> = ({
       />
       <NoSearchResultContainer searchFilters={searchFilters}>
         <Container testID="searchResults">
-          <OffersList searchFilters={searchFilters}>
+          <OffersList
+            searchFilters={searchFilters}
+            hasBeenClicked={hasBeenClicked}
+            setHasBeenClicked={setHasBeenClicked}>
             <React.Fragment>
               {header}
               <SearchResultsListHeader
@@ -65,8 +68,6 @@ export const AllSearchResultsList: FC<Props> = ({
                   <VenuesPlaylistContainer withMargins={false} searchFilters={searchFilters} />
                 }
                 shouldDisplayGridList={shouldDisplayGridList}
-                enableAIFakeDoor={enableAIFakeDoor}
-                onPressAIFakeDoorBanner={onPressAIFakeDoorBanner}
                 searchFilters={searchFilters}
               />
             </React.Fragment>

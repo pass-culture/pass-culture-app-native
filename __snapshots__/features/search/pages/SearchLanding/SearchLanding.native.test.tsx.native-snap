@@ -182,7 +182,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
-                  onLayout={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -533,7 +532,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             }
           >
             <View
-              accessibilityLabel="Catégorie Concerts & festivals"
+              accessibilityLabel="Catégorie Concerts et festivals"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -596,7 +595,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   },
                 ]
               }
-              testID="Catégorie Concerts & festivals"
+              testID="Catégorie Concerts et festivals"
             >
               <View
                 style={
@@ -622,7 +621,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     }
                   }
                 >
-                  CONCERTS & FESTIVALS
+                  CONCERTS ET FESTIVALS
                 </Text>
               </View>
             </View>
@@ -1003,7 +1002,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Arts & loisirs créatifs"
+              accessibilityLabel="Catégorie Arts et loisirs créatifs"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -1066,7 +1065,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   },
                 ]
               }
-              testID="Catégorie Arts & loisirs créatifs"
+              testID="Catégorie Arts et loisirs créatifs"
             >
               <View
                 style={
@@ -1092,7 +1091,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     }
                   }
                 >
-                  ARTS & LOISIRS CRÉATIFS
+                  ARTS ET LOISIRS CRÉATIFS
                 </Text>
               </View>
             </View>
@@ -1191,7 +1190,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Musées & visites culturelles"
+              accessibilityLabel="Catégorie Musées et visites"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -1254,7 +1253,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   },
                 ]
               }
-              testID="Catégorie Musées & visites culturelles"
+              testID="Catégorie Musées et visites"
             >
               <View
                 style={
@@ -1280,12 +1279,12 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     }
                   }
                 >
-                  MUSÉES & VISITES CULTURELLES
+                  MUSÉES ET VISITES
                 </Text>
               </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Jeux & jeux vidéos"
+              accessibilityLabel="Catégorie Jeux et jeux vidéos"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -1348,7 +1347,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   },
                 ]
               }
-              testID="Catégorie Jeux & jeux vidéos"
+              testID="Catégorie Jeux et jeux vidéos"
             >
               <View
                 style={
@@ -1374,12 +1373,12 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     }
                   }
                 >
-                  JEUX & JEUX VIDÉOS
+                  JEUX ET JEUX VIDÉOS
                 </Text>
               </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Médias & presse"
+              accessibilityLabel="Catégorie Médias et presse"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -1442,7 +1441,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   },
                 ]
               }
-              testID="Catégorie Médias & presse"
+              testID="Catégorie Médias et presse"
             >
               <View
                 style={
@@ -1468,7 +1467,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     }
                   }
                 >
-                  MÉDIAS & PRESSE
+                  MÉDIAS ET PRESSE
                 </Text>
               </View>
             </View>
@@ -1567,7 +1566,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Conférences & rencontres"
+              accessibilityLabel="Catégorie Conférences et rencontres"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -1630,7 +1629,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   },
                 ]
               }
-              testID="Catégorie Conférences & rencontres"
+              testID="Catégorie Conférences et rencontres"
             >
               <View
                 style={
@@ -1656,7 +1655,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     }
                   }
                 >
-                  CONFÉRENCES & RENCONTRES
+                  CONFÉRENCES ET RENCONTRES
                 </Text>
               </View>
             </View>

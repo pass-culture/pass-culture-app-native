@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
@@ -24,18 +23,13 @@ import {
   SearchFilter,
   SelectSearchOffersParams,
 } from 'features/search/queries/useSearchOffersQuery/types'
-import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { AIFakeDoorModal } from 'shared/AIFakeDoorModal/AIFakeDoorModal'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
-import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
@@ -51,16 +45,12 @@ export const SearchResults = () => {
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
-  const { user } = useAuthContext()
-  const { visible, showModal, hideModal } = useModal(false)
   const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   const isLandscape = useIsLandscape()
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
   )
-
-  const enableAIFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_AI_FAKE_DOOR)
 
   const [selectedSearchTab, setSelectedSearchTab] =
     useState<SelectSearchOffersParams['selectedFilter']>(undefined)
@@ -99,14 +89,7 @@ export const SearchResults = () => {
     }
   }, [searchState.searchId, dispatch])
 
-  const handleAIFakeDoorPress = (from: 'search' | 'searchAutoComplete') => {
-    void analytics.logHasClickedFakeDoorCTA({
-      featureName: 'conversational_search_AI',
-      from,
-      searchId: searchState.searchId ?? searchIdGenerated,
-    })
-    showModal()
-  }
+  const [hasBeenClicked, setHasBeenClicked] = useState(false)
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -147,8 +130,6 @@ export const SearchResults = () => {
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
-              enableAIFakeDoor={enableAIFakeDoor}
-              onPressAIButton={() => handleAIFakeDoorPress('searchAutoComplete')}
               header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
             />
           </React.Fragment>
@@ -158,7 +139,13 @@ export const SearchResults = () => {
             {(() => {
               switch (selectedSearchTab) {
                 case 'Offres':
-                  return <OffersList searchFilters={searchFilters} />
+                  return (
+                    <OffersList
+                      searchFilters={searchFilters}
+                      hasBeenClicked={hasBeenClicked}
+                      setHasBeenClicked={setHasBeenClicked}
+                    />
+                  )
                 case 'Lieux':
                   return <VenuesList searchFilters={searchFilters} />
                 case 'Artistes':
@@ -166,10 +153,10 @@ export const SearchResults = () => {
                 default:
                   return (
                     <AllSearchResultsList
-                      enableAIFakeDoor={enableAIFakeDoor}
-                      onPressAIFakeDoorBanner={() => handleAIFakeDoorPress('search')}
                       header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
                       searchFilters={searchFilters}
+                      hasBeenClicked={hasBeenClicked}
+                      setHasBeenClicked={setHasBeenClicked}
                     />
                   )
               }
@@ -177,15 +164,6 @@ export const SearchResults = () => {
           </React.Fragment>
         )}
       </InstantSearch>
-
-      {enableAIFakeDoor ? (
-        <AIFakeDoorModal
-          close={hideModal}
-          visible={visible}
-          userLocation={userLocation}
-          userCity={user?.city}
-        />
-      ) : null}
     </Page>
   )
 }

@@ -32,7 +32,12 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
   }
 
   const handleItemPress = (id: string, name: string) => {
-    void analytics.logConsultArtist({ artistId: id, artistName: name, from: 'artist' })
+    void analytics.logConsultArtist({
+      artistId: id,
+      artistName: name,
+      from: 'artist',
+      originDetails: 'similarArtistsPlaylist',
+    })
   }
 
   if (!isSimilarArtistsEnabled) return null
@@ -53,7 +58,12 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
                 onBeforeNavigate,
                 navigateToVerticalPlaylist: {
                   screen: 'VerticalPlaylistArtists',
-                  params: { title: TITLE, subtitle: undefined, similarToArtistId: artistId },
+                  params: {
+                    title: TITLE,
+                    subtitle: undefined,
+                    similarToArtistId: artistId,
+                    originDetails: 'similarArtistsPlaylist',
+                  },
                 },
                 hideSearchSeeAll: true,
               }}

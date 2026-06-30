@@ -86,6 +86,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({
       itemHeight={itemHeight}
       keyExtractor={keyExtractor}
       seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
+      noMarginBottom
     />
   ) : null
 }

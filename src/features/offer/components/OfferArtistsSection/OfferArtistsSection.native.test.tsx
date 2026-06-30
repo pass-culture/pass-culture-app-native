@@ -194,8 +194,8 @@ describe('<OfferArtistsSection />', () => {
         />
       )
 
-      expect(screen.getByLabelText('Acteurs')).toBeOnTheScreen()
-      expect(screen.getByLabelText('Réalisateur')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Acteurs : Filtre non sélectionné')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Réalisateur : Filtre non sélectionné')).toBeOnTheScreen()
     })
 
     it('should display all artists by default', () => {
@@ -226,7 +226,7 @@ describe('<OfferArtistsSection />', () => {
         />
       )
 
-      await user.press(screen.getByLabelText('Réalisateur'))
+      await user.press(screen.getByLabelText('Réalisateur : Filtre non sélectionné'))
 
       expect(screen.getByText('James Cameron')).toBeOnTheScreen()
       expect(screen.queryByText('Sam Worthington')).not.toBeOnTheScreen()
@@ -245,7 +245,7 @@ describe('<OfferArtistsSection />', () => {
         />
       )
 
-      await user.press(screen.getByLabelText('Réalisateur'))
+      await user.press(screen.getByLabelText('Réalisateur : Filtre non sélectionné'))
 
       expect(screen.getByText('James Cameron')).toBeOnTheScreen()
       expect(screen.queryByText('Sam Worthington')).not.toBeOnTheScreen()
@@ -324,6 +324,7 @@ describe('<OfferArtistsSection />', () => {
       expect(navigate).toHaveBeenCalledWith('VerticalPlaylistArtists', {
         offerId: 1,
         title: 'Artistes',
+        originDetails: 'offer',
       })
     })
   })
