@@ -83,7 +83,7 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(
       1,
-      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&utm_gen=marketing'
+      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%7D&from=deeplink&utm_gen=marketing'
     )
   })
 
@@ -105,7 +105,7 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(
       1,
-      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing'
+      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing'
     )
 
     categoryButton = screen.getByText('Concerts et festivals')
@@ -116,7 +116,7 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(
       2,
-      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing'
+      'https://webapp-v2.example.com/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%7D&from=deeplink&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing'
     )
   })
 
@@ -158,7 +158,7 @@ describe('getDefaultScreenParams', () => {
     const defaultParams = getDefaultScreenParams('SearchResults')
 
     expect(defaultParams).toEqual({
-      locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 'all' },
+      locationFilter: { locationType: LocationMode.AROUND_ME },
       from: 'deeplink',
     })
   })

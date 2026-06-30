@@ -59,12 +59,11 @@ describe('useVenueSearchParameters', () => {
   it('should retrieve the locationFilter filtered around me if no venue - position available', () => {
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: { aroundRadius: 100, locationType: LocationMode.AROUND_ME },
+      locationFilter: { locationType: LocationMode.AROUND_ME },
     }
     const { result } = renderHook(() => useVenueSearchParameters())
 
     expect(result.current.locationFilter).toEqual({
-      aroundRadius: 100,
       locationType: LocationMode.AROUND_ME,
     })
   })

@@ -58,8 +58,7 @@ export const SearchResults = () => {
   const handleTabPress = (tab: SearchFilter) =>
     setSelectedSearchTab(tab === selectedSearchTab ? undefined : tab)
 
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const { userLocation, selectedLocationMode, geolocPosition } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const {
@@ -71,8 +70,6 @@ export const SearchResults = () => {
     buildLocationParameterParams: {
       userLocation,
       selectedLocationMode,
-      aroundPlaceRadius,
-      aroundMeRadius,
       geolocPosition,
     },
     aroundPrecision,

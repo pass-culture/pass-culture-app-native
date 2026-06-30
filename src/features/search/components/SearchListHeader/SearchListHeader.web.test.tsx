@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
-import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { SearchState } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -68,7 +67,7 @@ describe('<SearchListHeader />', () => {
         searchState: {
           ...mockSearchState,
           searchId,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+          locationFilter: { locationType: LocationMode.AROUND_ME },
         },
       })
       mockUseLocation.mockReturnValueOnce({
@@ -98,7 +97,6 @@ describe('<SearchListHeader />', () => {
           locationFilter: {
             locationType: LocationMode.AROUND_PLACE,
             place: kourou,
-            aroundRadius: MAX_RADIUS,
           },
         },
       })

@@ -35,8 +35,7 @@ type SearchOfferResponse = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const { userLocation, selectedLocationMode, geolocPosition } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -52,8 +51,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       searchState,
       userLocation,
       selectedLocationMode,
-      aroundPlaceRadius,
-      aroundMeRadius,
       disabilities,
     ],
     queryFn: async ({ pageParam }) => {
@@ -69,8 +66,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         buildLocationParameterParams: {
           userLocation,
           selectedLocationMode,
-          aroundPlaceRadius,
-          aroundMeRadius,
           geolocPosition,
         },
         isUserUnderage,

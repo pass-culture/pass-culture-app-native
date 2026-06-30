@@ -37,8 +37,7 @@ export const useGetArtistsFromPlaylist = ({
 
   const { searchState } = useSearch()
 
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const { userLocation, selectedLocationMode, geolocPosition } = useLocation()
 
   const { disabilities } = useAccessibilityFiltersContext()
 
@@ -51,8 +50,6 @@ export const useGetArtistsFromPlaylist = ({
     buildLocationParameterParams: {
       userLocation,
       selectedLocationMode,
-      aroundPlaceRadius,
-      aroundMeRadius,
       geolocPosition,
     },
     aroundPrecision: remoteConfig.aroundPrecision,

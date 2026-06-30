@@ -45,8 +45,7 @@ export const SearchSuggestions = ({
 }: SearchSuggestionsParams) => {
   const { navigate, setOptions } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
-  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius, geolocPosition } =
-    useLocation()
+  const { userLocation, selectedLocationMode, geolocPosition } = useLocation()
   const { venue } = searchState
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const shouldDisplayArtistsSuggestions = useFeatureFlag(
@@ -67,7 +66,10 @@ export const SearchSuggestions = ({
   }, [setOptions])
 
   const searchVenuePosition = buildSearchVenuePosition(
-    { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius },
+    {
+      userLocation,
+      selectedLocationMode,
+    },
     venue
   )
 

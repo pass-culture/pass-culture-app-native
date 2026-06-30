@@ -44,8 +44,6 @@ describe('useVenuesInRegionQuery', () => {
 
     expect(mockFetchVenues).toHaveBeenCalledWith({
       buildLocationParameterParams: {
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 50,
         selectedLocationMode: 'AROUND_PLACE',
         userLocation: {
           latitude: 48.866667,
@@ -65,7 +63,6 @@ describe('useVenuesInRegionQuery', () => {
       () =>
         useVenuesInRegionQuery({
           region: {} as Region,
-          radius: 10,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -82,7 +79,6 @@ describe('useVenuesInRegionQuery', () => {
       () =>
         useVenuesInRegionQuery({
           region,
-          radius: 10,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -100,7 +96,6 @@ describe('useVenuesInRegionQuery', () => {
       () =>
         useVenuesInRegionQuery({
           region,
-          radius: 10,
           select: (data) => data?.map((value) => value.venueId),
         }),
       {

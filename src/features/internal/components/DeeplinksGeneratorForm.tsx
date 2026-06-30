@@ -52,7 +52,7 @@ type DeeplinksAppParams = Record<string, unknown> & {
 export const getDefaultScreenParams = (screenName: ScreensUsedByMarketing) => {
   if (screenName === 'SearchResults') {
     return {
-      locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 'all' },
+      locationFilter: { locationType: LocationMode.AROUND_ME },
       from: 'deeplink',
     }
   }

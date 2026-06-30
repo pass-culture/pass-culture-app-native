@@ -11,7 +11,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<DeeplinksHistory />', () => {
   const history = [
-    'https://passculture.app/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%2C%22aroundRadius%22%3A%22all%22%7D&from=deeplink&utm_gen=marketing',
+    'https://passculture.app/recherche/resultats?locationFilter=%7B%22locationType%22%3A%22AROUND_ME%22%7D&from=deeplink&utm_gen=marketing',
     'https://passculture.app/lieu/34323?from=deeplink&utm_gen=marketing',
   ] as const
 

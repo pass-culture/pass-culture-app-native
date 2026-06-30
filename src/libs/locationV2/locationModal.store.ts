@@ -68,9 +68,6 @@ export const locationModalStore = createStore({
           place || defaultLocationState.configuration[LocationMode.AROUND_PLACE]
         ),
       setAddressInputValue: (addressInputValue: string) => set({ addressInputValue }),
-      setAroundMeRadius: (radius: number) => setConfiguration(LocationMode.AROUND_ME, { radius }),
-      setAroundPlaceRadius: (radius: number) =>
-        setConfiguration(LocationMode.AROUND_PLACE, { radius }),
       setLocationMode: (locationMode: LocationMode) => set({ locationMode }),
       resetPlace: () =>
         set({
@@ -98,7 +95,7 @@ export const locationModalStore = createStore({
     selectConfiguration: (configurationKey: LocationMode) => (state) =>
       state.configuration[configurationKey],
     selectPlace: () => (state) => {
-      const { radius: _, ...place } = state.configuration[LocationMode.AROUND_PLACE]
+      const place = state.configuration[LocationMode.AROUND_PLACE]
       return place.label ? place : null
     },
     selectIsVisible: () => (state) => state.visible,

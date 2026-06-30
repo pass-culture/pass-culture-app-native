@@ -43,9 +43,5 @@ export type UseLocationReturnType = {
   setSelectedPlace: (place: SuggestedPlace | null) => void
   onResetPlace: () => void
   setPlaceQuery: (placeQuery: string) => void
-  aroundPlaceRadius: number
-  setAroundPlaceRadius: (radius: number) => void
-  aroundMeRadius: number
-  setAroundMeRadius: (radius: number) => void
   userLocation: Position
 }

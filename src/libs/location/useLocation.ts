@@ -18,18 +18,10 @@ export const useLocation = (): UseLocationReturnType => {
 
   const hasGeolocPosition = useIsGeolocated()
   const { permissionState, geolocationError: geolocPositionError } = useLocationV2()
-  const { geolocation: geolocPosition, radius: aroundMeRadius } = useLocationConfiguration(
-    LocationMode.AROUND_ME
-  )
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
 
-  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const place = usePlace()
-  const {
-    setPlace,
-    setAroundPlaceRadius,
-    setAroundMeRadius,
-    showPermissionModal: showGeolocPermissionModal,
-  } = locationActions
+  const { setPlace, showPermissionModal: showGeolocPermissionModal } = locationActions
 
   const userLocation = useUserLocation()
 
@@ -47,10 +39,6 @@ export const useLocation = (): UseLocationReturnType => {
     selectedPlace: place,
     setSelectedPlace: locationModalActions.setPlace,
     setPlaceQuery: locationModalActions.setAddressInputValue,
-    aroundPlaceRadius,
-    setAroundPlaceRadius,
-    aroundMeRadius,
-    setAroundMeRadius,
     userLocation,
   }
 }

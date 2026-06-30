@@ -1,9 +1,7 @@
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
 import { goBack, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { DEFAULT_RADIUS } from 'features/search/constants'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
@@ -19,12 +17,6 @@ import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()
 
-const mockRadiusPlace = 37
-const mockAroundMeRadius = 73
-
-const radiusWithKm = (radius: number): string => {
-  return `${radius.toString()} km`
-}
 const mockPlaces = [
   {
     label: 'Kourou',
@@ -167,11 +159,6 @@ describe('VenueMapLocationModal', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
-    await act(async () => {
-      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([mockRadiusPlace])
-    })
-
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
 
@@ -199,11 +186,6 @@ describe('VenueMapLocationModal', () => {
     // userEvent.press not working correctly here
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
-
-    await act(async () => {
-      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([mockRadiusPlace])
-    })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
@@ -233,11 +215,6 @@ describe('VenueMapLocationModal', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
-    await act(async () => {
-      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([mockRadiusPlace])
-    })
-
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
 
@@ -265,11 +242,6 @@ describe('VenueMapLocationModal', () => {
     // userEvent.press not working correctly here
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
-
-    await act(async () => {
-      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([mockRadiusPlace])
-    })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
@@ -301,11 +273,6 @@ describe('VenueMapLocationModal', () => {
     // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
-    await act(async () => {
-      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([mockRadiusPlace])
-    })
-
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
 
@@ -323,107 +290,6 @@ describe('VenueMapLocationModal', () => {
     await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-  })
-
-  describe('PlaceRadius', () => {
-    it("should display default radius if it wasn't set previously", async () => {
-      renderVenueMapLocationModal()
-
-      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
-      await user.press(openLocationModalButton)
-
-      const searchInput = screen.getByTestId('styled-input-container')
-      fireEvent.changeText(searchInput, mockPlaces[0].label)
-      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-      // userEvent.press not working correctly here
-      // eslint-disable-next-line local-rules/no-fireEvent
-      fireEvent.press(suggestedPlace)
-
-      expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
-    })
-
-    it('should display default radius even if an AroundMeRadius was set previously', async () => {
-      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-      renderVenueMapLocationModal()
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
-
-      await user.press(screen.getByText('Utiliser ma position actuelle'))
-
-      await act(async () => {
-        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChange([mockAroundMeRadius])
-      })
-
-      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
-      await user.press(openLocationModalButton)
-
-      const searchInput = screen.getByTestId('styled-input-container')
-      fireEvent.changeText(searchInput, mockPlaces[0].label)
-
-      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-      // userEvent.press not working correctly here
-      // eslint-disable-next-line local-rules/no-fireEvent
-      fireEvent.press(suggestedPlace)
-
-      expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
-    })
-  })
-
-  describe('AroundMeRadius', () => {
-    it("should display default radius if it wasn't set previously", async () => {
-      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-      renderVenueMapLocationModal()
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
-      const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-
-      await user.press(geolocPositionButton)
-
-      expect(screen.getByLabelText(/Utiliser ma position actuelle/)).toHaveAccessibilityState({
-        checked: true,
-      })
-
-      expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
-    })
-
-    it('should display default radius even if a PlaceRadius was set previously', async () => {
-      getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-      mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-
-      renderVenueMapLocationModal()
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
-      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
-      await user.press(openLocationModalButton)
-
-      const searchInput = screen.getByTestId('styled-input-container')
-      await act(async () => {
-        fireEvent.changeText(searchInput, mockPlaces[0].label)
-      })
-
-      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-      // userEvent.press not working correctly here
-      // eslint-disable-next-line local-rules/no-fireEvent
-      fireEvent.press(suggestedPlace)
-
-      await act(async () => {
-        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChange([mockRadiusPlace])
-      })
-
-      const validateButon = screen.getByText('Valider et voir sur la carte')
-      await user.press(validateButon)
-
-      const openGeolocationModalButton = screen.getByText('Utiliser ma position actuelle')
-      await user.press(openGeolocationModalButton)
-
-      expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
-    })
   })
 })
 

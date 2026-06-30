@@ -7,12 +7,10 @@ import { QueryKeys } from 'libs/queryKeys'
 const STALE_TIME_VENUES = 5 * 60 * 1000
 
 export const useVenuesQuery = (query: string) => {
-  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const { userLocation, selectedLocationMode } = useLocation()
   const buildLocationParameterParams = {
     userLocation,
     selectedLocationMode,
-    aroundMeRadius,
-    aroundPlaceRadius,
   }
 
   return useQuery({

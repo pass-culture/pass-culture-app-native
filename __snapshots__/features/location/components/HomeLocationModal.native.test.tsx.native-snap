@@ -283,7 +283,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <View
-              collapsed={null}
               isHover={false}
               radioState={
                 {

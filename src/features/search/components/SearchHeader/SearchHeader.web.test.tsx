@@ -91,7 +91,7 @@ describe('SearchHeader component', () => {
   })
 
   it('should reset search state on go back except for location filter', async () => {
-    const locationFilter = { locationType: LocationMode.AROUND_ME, aroundRadius: 15 } as const
+    const locationFilter = { locationType: LocationMode.AROUND_ME } as const
 
     const initialSearchStateWithLocation = {
       ...initialSearchState,

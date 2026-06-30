@@ -16,14 +16,12 @@ export type LocationState = {
       info: ''
       type: 'locality'
       geolocation: GeoCoordinates | null
-      radius: number
     }
     [LocationMode.AROUND_PLACE]: {
       label: string
       info: string
       type: 'locality' | 'municipality' | 'housenumber' | 'street'
       geolocation: GeoCoordinates | null
-      radius: number
     }
     [LocationMode.EVERYWHERE]: {
       label: 'France entière'
@@ -46,14 +44,12 @@ export const defaultLocationState: LocationState = {
       info: '',
       type: 'locality',
       geolocation: null,
-      radius: 50,
     },
     [LocationMode.AROUND_PLACE]: {
       label: '',
       info: '',
       type: 'locality',
       geolocation: null,
-      radius: 50,
     },
     [LocationMode.EVERYWHERE]: {
       label: 'France entière',
@@ -88,9 +84,6 @@ export const locationStore = createStore({
           LocationMode.AROUND_PLACE,
           place || defaultLocationState.configuration[LocationMode.AROUND_PLACE]
         ),
-      setAroundPlaceRadius: (radius: number) =>
-        setConfiguration(LocationMode.AROUND_PLACE, { radius }),
-      setAroundMeRadius: (radius: number) => setConfiguration(LocationMode.AROUND_ME, { radius }),
       setGeolocPosition: (geolocation: GeoCoordinates | null) =>
         setConfiguration(LocationMode.AROUND_ME, { geolocation }),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),

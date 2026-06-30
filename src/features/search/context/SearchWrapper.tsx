@@ -30,7 +30,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   children: React.JSX.Element
 }) {
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
-  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const { place, selectedLocationMode } = useLocation()
 
   const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
   const showSuggestions = useCallback(() => setIsFocusOnSuggestions(true), [])
@@ -39,31 +39,19 @@ export const SearchWrapper = memo(function SearchWrapper({
   useEffect(() => {
     switch (selectedLocationMode) {
       case LocationMode.AROUND_ME:
-        dispatch({
-          type: 'SET_LOCATION_AROUND_ME',
-          payload: aroundMeRadius,
-        })
+        dispatch({ type: 'SET_LOCATION_AROUND_ME' })
         break
       case LocationMode.AROUND_PLACE:
-        if (place)
-          dispatch({
-            type: 'SET_LOCATION_PLACE',
-            payload: {
-              place: place,
-              aroundRadius: aroundPlaceRadius,
-            },
-          })
+        if (place) dispatch({ type: 'SET_LOCATION_PLACE', payload: { place } })
         break
       case LocationMode.EVERYWHERE:
-        dispatch({
-          type: 'SET_LOCATION_EVERYWHERE',
-        })
+        dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
         break
 
       default:
         break
     }
-  }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch])
+  }, [selectedLocationMode, place, dispatch])
 
   const resetSearch = useCallback(() => {
     dispatch({ type: 'SET_STATE', payload: initialSearchState })

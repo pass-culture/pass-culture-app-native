@@ -11,6 +11,7 @@ const EXPECTED_AROUND_LAT_LNG = `${48}, ${-1}`
 describe('buildLocationParameters', () => {
   it.each`
     selectedLocationMode         | userLocation             | aroundMeRadius | aroundPlaceRadius | expected
+    ${LocationMode.AROUND_ME}    | ${DEFAULT_USER_POSITION} | ${undefined}   | ${undefined}      | ${{ aroundLatLng: EXPECTED_AROUND_LAT_LNG }}
     ${LocationMode.AROUND_ME}    | ${DEFAULT_USER_POSITION} | ${20}          | ${'all'}          | ${{ aroundLatLng: EXPECTED_AROUND_LAT_LNG, aroundRadius: 20_000 }}
     ${LocationMode.AROUND_ME}    | ${DEFAULT_USER_POSITION} | ${'all'}       | ${10}             | ${{ aroundLatLng: EXPECTED_AROUND_LAT_LNG, aroundRadius: 'all' }}
     ${LocationMode.AROUND_PLACE} | ${DEFAULT_USER_POSITION} | ${'all'}       | ${10}             | ${{ aroundLatLng: EXPECTED_AROUND_LAT_LNG, aroundRadius: 10_000 }}

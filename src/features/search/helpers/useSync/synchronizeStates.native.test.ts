@@ -69,10 +69,7 @@ describe('syncLocationFromParams', () => {
   })
 
   it('should call setCanSwitchToAroundMe when LocationMode is AROUND_ME', () => {
-    syncLocationFromParams(
-      { locationType: LocationMode.AROUND_ME, aroundRadius: 5000 },
-      mockedHandlers
-    )
+    syncLocationFromParams({ locationType: LocationMode.AROUND_ME }, mockedHandlers)
 
     expect(mockedHandlers.setCanSwitchToAroundMe).toHaveBeenCalledWith(true)
   })
@@ -91,7 +88,6 @@ describe('syncLocationFromParams', () => {
     syncLocationFromParams(
       {
         locationType: LocationMode.AROUND_PLACE,
-        aroundRadius: 5000,
         place: mockedPlace,
       },
       mockedHandlers

@@ -87,7 +87,6 @@ const mockSetPlace = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 const mockedPosition: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockedNoPosition = null as Position
-const DEFAULT_RADIUS = 50
 const everywhereUseLocation = {
   geolocPosition: mockedNoPosition,
   geolocPositionError: null,
@@ -108,10 +107,6 @@ const everywhereUseLocation = {
   setSelectedPlace: jest.fn(),
   placeQuery: '',
   setPlaceQuery: jest.fn(),
-  aroundPlaceRadius: DEFAULT_RADIUS,
-  setAroundPlaceRadius: jest.fn(),
-  aroundMeRadius: DEFAULT_RADIUS,
-  setAroundMeRadius: jest.fn(),
 }
 const aroundMeUseLocation = {
   ...everywhereUseLocation,

@@ -21,32 +21,36 @@ const geolocPosition: Position = { latitude: 66, longitude: 66 }
 const buildLocationParameterParamsAroundMe: BuildLocationParameterParams = {
   selectedLocationMode: LocationMode.AROUND_ME,
   userLocation: geolocPosition,
-  aroundMeRadius: MAX_RADIUS,
-  aroundPlaceRadius: 'all',
 }
 
 const buildLocationParameterParamsEverywhere: BuildLocationParameterParams = {
   selectedLocationMode: LocationMode.EVERYWHERE,
   userLocation: null,
-  aroundMeRadius: MAX_RADIUS,
-  aroundPlaceRadius: MAX_RADIUS,
 }
 
 const buildLocationParameterParamsAroundPlace: BuildLocationParameterParams = {
   selectedLocationMode: LocationMode.AROUND_PLACE,
   userLocation: Kourou.geolocation,
-  aroundMeRadius: 'all',
-  aroundPlaceRadius: MAX_RADIUS,
 }
 
 describe('buildSearchVenuePosition', () => {
   describe('When user shares his position', () => {
-    it('should return user position and around radius when location filter is around me', () => {
+    it('should return user position without around radius when no radius is provided', () => {
+      const searchVenuePosition = buildSearchVenuePosition({
+        selectedLocationMode: LocationMode.AROUND_ME,
+        userLocation: geolocPosition,
+      })
+
+      expect(searchVenuePosition).toEqual({
+        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
+      })
+    })
+
+    it('should return user position without around radius when location filter is around me', () => {
       const searchVenuePosition = buildSearchVenuePosition(buildLocationParameterParamsAroundMe)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
-        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
 
@@ -77,12 +81,11 @@ describe('buildSearchVenuePosition', () => {
       })
     })
 
-    it('should return place position and around radius when location filter is place', () => {
+    it('should return place position without around radius when location filter is place', () => {
       const searchVenuePosition = buildSearchVenuePosition(buildLocationParameterParamsAroundPlace)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: '5.16186, -52.669736',
-        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
   })
@@ -119,12 +122,11 @@ describe('buildSearchVenuePosition', () => {
       })
     })
 
-    it('should return place position and around radius when location filter is place', () => {
+    it('should return place position without around radius when location filter is place', () => {
       const searchVenuePosition = buildSearchVenuePosition(buildLocationParameterParamsAroundPlace)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: '5.16186, -52.669736',
-        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
   })

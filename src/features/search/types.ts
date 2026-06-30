@@ -29,8 +29,8 @@ interface SelectedDate {
 
 export type LocationFilter =
   | { locationType: LocationMode.EVERYWHERE }
-  | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
+  | { locationType: LocationMode.AROUND_ME }
+  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace }
 
 export enum SearchView {
   Landing = 'SearchLanding',

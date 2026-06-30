@@ -33,10 +33,8 @@ const mockedPlace: SuggestedPlace = {
 
 const mockShowGeolocPermissionModal = jest.fn()
 const mockSelectedLocationMode = jest.fn()
-const mockSetAroundMeRadius = jest.fn()
 const mockedPosition = { latitude: 2, longitude: 40 } as Position
 const mockedNoPosition = null as Position
-const DEFAULT_RADIUS = 50
 const everywhereUseLocation = {
   geolocPosition: mockedNoPosition,
   geolocPositionError: null,
@@ -57,10 +55,6 @@ const everywhereUseLocation = {
   setSelectedPlace: jest.fn(),
   placeQuery: '',
   setPlaceQuery: jest.fn(),
-  aroundPlaceRadius: DEFAULT_RADIUS,
-  setAroundPlaceRadius: jest.fn(),
-  aroundMeRadius: DEFAULT_RADIUS,
-  setAroundMeRadius: mockSetAroundMeRadius,
 }
 
 const mockUseLocation = jest.fn(() => everywhereUseLocation)
@@ -125,100 +119,6 @@ describe('useSync', () => {
     await act(async () => {})
 
     expect(mockSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
-  })
-
-  it('should update search state with aroundRadius params when user has geolocPosition', async () => {
-    mockUseLocation
-      .mockReturnValueOnce({
-        ...everywhereUseLocation,
-        hasGeolocPosition: true,
-        geolocPosition: mockedPosition,
-      })
-      .mockReturnValueOnce({
-        ...everywhereUseLocation,
-        hasGeolocPosition: true,
-        geolocPosition: mockedPosition,
-      })
-      .mockReturnValueOnce({
-        ...everywhereUseLocation,
-        hasGeolocPosition: true,
-        geolocPosition: mockedPosition,
-      })
-
-    useRoute
-      .mockReturnValueOnce({
-        params: {
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: 'all',
-          },
-        },
-      })
-      .mockReturnValueOnce({
-        params: {
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: 'all',
-          },
-        },
-      })
-      .mockReturnValueOnce({
-        params: {
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: 'all',
-          },
-        },
-      })
-    renderHook(() => {
-      useSync()
-    })
-    await act(async () => {})
-    await act(async () => {})
-    await act(async () => {})
-
-    expect(mockSetAroundMeRadius).toHaveBeenCalledWith('all')
-  })
-
-  it('should not update search state with aroundRadius params when user has no geolocPosition', async () => {
-    mockUseLocation
-      .mockReturnValueOnce(everywhereUseLocation)
-      .mockReturnValueOnce(everywhereUseLocation)
-      .mockReturnValueOnce(everywhereUseLocation)
-
-    useRoute
-      .mockReturnValueOnce({
-        params: {
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: 'all',
-          },
-        },
-      })
-      .mockReturnValueOnce({
-        params: {
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: 'all',
-          },
-        },
-      })
-      .mockReturnValueOnce({
-        params: {
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: 'all',
-          },
-        },
-      })
-    renderHook(() => {
-      useSync()
-    })
-    await act(async () => {})
-    await act(async () => {})
-    await act(async () => {})
-
-    expect(mockSetAroundMeRadius).not.toHaveBeenCalledWith('all')
   })
 
   it('should not update search state with locationType params when user has no geolocPosition', async () => {
