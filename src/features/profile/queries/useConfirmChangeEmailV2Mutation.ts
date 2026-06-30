@@ -12,7 +12,7 @@ export const useConfirmChangeEmailV2Mutation = ({
 }) =>
   useMutation({
     mutationFn: (body: ChangeBeneficiaryEmailBody) =>
-      api.postNativeV2ProfileEmailUpdateConfirm(body),
+      api.postNativeV2ProfileEmailUpdateConfirm(body, { credentials: 'omit' }),
     onSuccess,
     onError,
   })

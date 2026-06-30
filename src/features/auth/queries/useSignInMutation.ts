@@ -44,7 +44,9 @@ export const useSignInMutation = ({
       const isOAuth = isOAuthLoginRequest(requestBody)
       if (isOAuth) {
         const { provider, ...oauthBody } = requestBody
-        return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider)
+        return api.postNativeV1OauthssoProviderAuthorize(oauthBody, provider, {
+          credentials: 'omit',
+        })
       }
       return api.postNativeV2Signin(requestBody, { credentials: 'omit' })
     },

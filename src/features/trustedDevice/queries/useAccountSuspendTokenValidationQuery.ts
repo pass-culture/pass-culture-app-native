@@ -18,7 +18,7 @@ export const useAccountSuspendTokenValidationQuery = (
 
     queryFn: async () => {
       try {
-        await api.getNativeV1AccountSuspendTokenValidationtoken(token)
+        await api.getNativeV1AccountSuspendTokenValidationtoken(token, { credentials: 'omit' })
 
         return AccountSecurityStatus.VALID_TOKEN
       } catch (error) {
