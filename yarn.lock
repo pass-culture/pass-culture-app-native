@@ -4095,12 +4095,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@batch.com/react-native-plugin@npm:10.1.2":
-  version: 10.1.2
-  resolution: "@batch.com/react-native-plugin@npm:10.1.2"
+"@batch.com/react-native-plugin@npm:11.1.0":
+  version: 11.1.0
+  resolution: "@batch.com/react-native-plugin@npm:11.1.0"
   peerDependencies:
     react-native: "*"
-  checksum: 10/1f5c2a38e0969bd7a5764aa051cd790141acac35c8025928664f555fc8238466e5bd354e12a894aee850e109452b725ea5a7f30a247e68a316740467b7c06ef5
+  checksum: 10/17a424c749080922a222fa1a63724f26ae67cba3880e696b9dde57ed3c0bf264cbbb1ef6aa9d515648fe065ced6e256894ca753017ba396c5fbf1352bacb3a16
   languageName: node
   linkType: hard
 
@@ -11834,7 +11834,7 @@ __metadata:
     "@babel/runtime": "npm:^7.29.7"
     "@bam.tech/eslint-plugin": "npm:^1.0.1"
     "@bam.tech/react-native-config": "npm:^1.4.5"
-    "@batch.com/react-native-plugin": "npm:10.1.2"
+    "@batch.com/react-native-plugin": "npm:11.1.0"
     "@chanzuckerberg/axe-storybook-testing": "npm:^10.0.0"
     "@chromatic-com/storybook": "npm:^5.1.2"
     "@d11/react-native-fast-image": "npm:^8.13.0"

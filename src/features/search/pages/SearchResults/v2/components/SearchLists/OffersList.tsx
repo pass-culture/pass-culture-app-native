@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native'
 import { FlashList, FlashListRef } from '@shopify/flash-list'
 import React, { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
 import {
@@ -83,10 +84,13 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
 
   const { searchState } = useSearch()
 
+  const isFocused = useIsFocused()
+
   const handleEndReached = async () => {
-    if (!(offersResponse && hasNextPage)) {
+    if (!isFocused || !offersResponse || !hasNextPage) {
       return
     }
+
     const page = offersResponse.lastPage?.offersResponse.page ?? 0
 
     if (page > 0) {

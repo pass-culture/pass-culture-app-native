@@ -6,7 +6,6 @@ import { FetchSearchResultsArgs } from 'features/search/types'
 import { fetchSearchOffers } from 'libs/algolia/fetchAlgolia/fetchSearchOffers/fetchSearchOffers'
 import { QueryKeys } from 'libs/queryKeys'
 import { CustomInfiniteQueryOptions } from 'libs/react-query/types'
-import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 
 export const useSearchOffersQuery = <TSelect = FetchSearchOffersResponse>(
   params: FetchSearchResultsArgs,
@@ -27,9 +26,7 @@ export const useSearchOffersQuery = <TSelect = FetchSearchOffersResponse>(
         parameters: { ...params.parameters, page: pageParam },
       }),
     initialPageParam: 0,
-    getNextPageParam: (lastPage) => {
-      return lastPage.offersResponse ? getNextPageParam(lastPage.offersResponse) : undefined
-    },
+    getNextPageParam: (lastPage) => lastPage.offersResponse.page + 1,
     ...options,
   })
 }

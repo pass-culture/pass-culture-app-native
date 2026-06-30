@@ -56,6 +56,9 @@ const optionsWithAccessToken = {
     Authorization: `Bearer ${accessToken}`,
   },
 }
+const optionsForNotAuthenticatedRoute: RequestInit = {
+  credentials: 'omit',
+}
 
 const tokenRemainingLifetimeInMs = 10 * 60 * 1000
 jest.spyOn(jwt, 'computeTokenRemainingLifetimeInMs').mockReturnValue(tokenRemainingLifetimeInMs)
@@ -360,7 +363,7 @@ describe('[api] helpers', () => {
     it('should return body when status is ok', async () => {
       const response = await respondWith('apiResponse')
 
-      const result = await handleGeneratedApiResponse(response)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
       expect(result).toEqual('apiResponse')
     })
@@ -368,7 +371,7 @@ describe('[api] helpers', () => {
     it('should return body when status is ok given a plain text response', async () => {
       const response = new Response('apiResponse', { headers: { 'content-type': 'text/plain' } })
 
-      const result = await handleGeneratedApiResponse(response)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
       expect(result).toEqual('apiResponse')
     })
@@ -376,7 +379,7 @@ describe('[api] helpers', () => {
     it('should return empty object when status is 204 (no content)', async () => {
       const response = await respondWith('', 204)
 
-      const result = await handleGeneratedApiResponse(response)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
       expect(result).toEqual({})
     })
@@ -384,7 +387,7 @@ describe('[api] helpers', () => {
     it('should navigate to suspension screen when status is 403 (forbidden)', async () => {
       const response = await respondWith('', 403)
 
-      const result = await handleGeneratedApiResponse(response)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
       expect(navigateFromRef).toHaveBeenCalledWith('AccountStatusScreenHandler')
       expect(result).toEqual({})
@@ -395,7 +398,7 @@ describe('[api] helpers', () => {
         'x-country-ban': 'CountryName',
       })
 
-      const result = await handleGeneratedApiResponse(response)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
       expect(navigateFromRef).toHaveBeenCalledWith('BannedCountryError')
       expect(result).toEqual({})
@@ -403,7 +406,6 @@ describe('[api] helpers', () => {
 
     it.each([
       400, // Bad Request
-      401, // Unauthorized
       404, // Not Found
       500, // Internal Server Error
       502, // Bad Gateway
@@ -413,7 +415,7 @@ describe('[api] helpers', () => {
       const response = await respondWith('apiResponse', statusCode)
 
       const getResult = () => {
-        return handleGeneratedApiResponse(response)
+        return handleGeneratedApiResponse(response, optionsWithAccessToken)
       }
       const error = new ApiError(
         statusCode,
@@ -424,11 +426,20 @@ describe('[api] helpers', () => {
       await expect(getResult).rejects.toThrow(error)
     })
 
-    it('should capture a detailed error on Sentry when status is 401', async () => {
+    it('should redirect to LoginMethods on 401 when user is logged In', async () => {
+      const response = await respondWith('apiResponse', 401)
+
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
+
+      expect(navigateFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
+      expect(result).toEqual({})
+    })
+
+    it('should throw error on 401 when user is not logged In', async () => {
       const response = await respondWith('apiResponse', 401)
 
       const getResult = () => {
-        return handleGeneratedApiResponse(response)
+        return handleGeneratedApiResponse(response, optionsForNotAuthenticatedRoute)
       }
       const error = new ApiError(
         401,
@@ -437,6 +448,13 @@ describe('[api] helpers', () => {
       )
 
       await expect(getResult).rejects.toThrow(error)
+    })
+
+    it('should capture a detailed error on Sentry when status is 401', async () => {
+      const response = await respondWith('apiResponse', 401)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
+
+      expect(result).toEqual({})
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         new Error('handleGeneratedApiResponse'),
@@ -447,7 +465,8 @@ describe('[api] helpers', () => {
     })
 
     it('should navigate to LoginMethods when access and refresh tokens are invalid', async () => {
-      const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
+      const response = await respondWith('apiResponse', 401)
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
       expect(navigateFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(result).toEqual({})

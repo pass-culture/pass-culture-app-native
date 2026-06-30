@@ -20,8 +20,8 @@ export const useGetOffersByGtlQuery = <TData = SearchResponse<Offer[]>>(
     queryKey,
   }: UseGetOffersByGtlQueryArgs,
   select?: (data: SearchResponse<Offer>[]) => TData
-) => {
-  return useQuery<SearchResponse<Offer>[], Error, TData>({
+) =>
+  useQuery<SearchResponse<Offer>[], Error, TData>({
     queryKey: [queryKey, venue?.id, userLocation, selectedLocationMode],
     queryFn: () =>
       fetchOffersByGTL({
@@ -43,4 +43,3 @@ export const useGetOffersByGtlQuery = <TData = SearchResponse<Offer[]>>(
     select,
     enabled: !!filteredGtlPlaylistsConfig.length,
   })
-}

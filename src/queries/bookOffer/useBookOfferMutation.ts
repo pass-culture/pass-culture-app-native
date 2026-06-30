@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { BookingsResponseV2, BookOfferRequest, BookOfferResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { QueryKeys } from 'libs/queryKeys'
@@ -24,6 +25,7 @@ interface BookOffer {
 
 export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
   const queryClient = useQueryClient()
+  const { isLoggedIn } = useAuthContext()
 
   return useMutation({
     mutationFn: (body: BookOfferRequest) => api.postNativeV1Bookings(body),
@@ -38,7 +40,10 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])
 
-      await Promise.all([prefetchBookingByIdQuery(data.bookingId), prefetchBookingsV2Query()])
+      await Promise.all([
+        prefetchBookingByIdQuery(data.bookingId, isLoggedIn),
+        prefetchBookingsV2Query(isLoggedIn),
+      ])
 
       Adjust.logEvent(AdjustEvents.BOOK_OFFER)
       onSuccess(data)

@@ -33,7 +33,6 @@ export const useRemoveFavoriteMutation = ({ onError }: RemoveFavorite) => {
           nbFavorites: favorites.length,
           favorites,
         })
-        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       }
 
       return { previousFavorites: previousFavorites ?? [] } as FavoriteMutationContext
@@ -41,9 +40,6 @@ export const useRemoveFavoriteMutation = ({ onError }: RemoveFavorite) => {
     onError: (error: Error, favoriteId, context: FavoriteMutationContext | undefined) => {
       if (context?.previousFavorites) {
         queryClient.setQueryData([QueryKeys.FAVORITES], context.previousFavorites)
-        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], {
-          count: context.previousFavorites.length,
-        })
       }
       if (onError) {
         onError(error, favoriteId, context)

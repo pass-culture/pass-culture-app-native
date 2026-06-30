@@ -19,7 +19,7 @@ export const useVenuesQuery = (query: string) => {
     queryKey: [QueryKeys.VENUES, query, buildLocationParameterParams],
     queryFn: () =>
       fetchVenues({
-        query: query,
+        query,
         buildLocationParameterParams,
       }),
     staleTime: STALE_TIME_VENUES,

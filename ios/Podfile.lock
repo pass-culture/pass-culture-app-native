@@ -10,7 +10,7 @@ PODS:
   - AppAuth/Core (1.7.6)
   - AppAuth/ExternalUserAgent (1.7.6):
     - AppAuth/Core
-  - Batch (2.1.2)
+  - Batch (3.1.0)
   - BatchFirebaseDispatcher (3.2.0):
     - Batch (>= 1.19)
     - Firebase/Analytics
@@ -2685,7 +2685,7 @@ PODS:
   - RNAppleAuthentication (2.5.1):
     - React-Core
   - RNBatchPush (1.0.0):
-    - Batch (~> 2.1.0)
+    - Batch (~> 3.1.0)
     - boost
     - DoubleConversion
     - fast_float
@@ -3669,7 +3669,7 @@ SPEC CHECKSUMS:
   Adjust: a0095eda439b925f809b0efbf64923c05701e937
   AdjustSignature: 682d788005a6e21557913a9dc0381ae8d943ca0a
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
-  Batch: a140a9ac06c2172b3bb24bd291e8933734f69679
+  Batch: 47c1df1f301078fc01b9f9531faeed8f18a9bac0
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   BVLinearGradient: cb006ba232a1f3e4f341bb62c42d1098c284da70
@@ -3793,7 +3793,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 4928682e20747464165effacc170019a18da953c
   ReactCommon: ec1cdf708729338070f8c4ad746768a782fd9eb1
   RNAppleAuthentication: a89c9804592b38ed4ab11f0aee68d05ba12ad432
-  RNBatchPush: c02611a5326b26b29074cda3876f781f4b582278
+  RNBatchPush: 9935c34a01e1a96aa01b764099188c43ece7fcac
   RNCAsyncStorage: 357676e1dc19095208c80d4271066c407cd02ed1
   RNCClipboard: 6bb264fff8f9fff950262d3ecfa22bfe2dab189c
   RNDeviceInfo: d863506092aef7e7af3a1c350c913d867d795047

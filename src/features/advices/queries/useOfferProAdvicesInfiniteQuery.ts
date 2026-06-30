@@ -9,7 +9,7 @@ import {
   PRO_ADVICES_RESULTS_PER_PAGE,
 } from './proAdvicesPagination'
 
-export function useOfferProAdvicesInfiniteQuery({
+export const useOfferProAdvicesInfiniteQuery = ({
   offerId,
   enableProAdvices,
   latitude,
@@ -19,8 +19,8 @@ export function useOfferProAdvicesInfiniteQuery({
   enableProAdvices: boolean
   latitude?: number
   longitude?: number
-}) {
-  return useInfiniteQuery({
+}) =>
+  useInfiniteQuery({
     queryKey: [
       QueryKeys.OFFER_PRO_ADVICES,
       offerId,
@@ -43,4 +43,3 @@ export function useOfferProAdvicesInfiniteQuery({
     enabled: enableProAdvices,
     staleTime: 60 * 60 * 1000,
   })
-}

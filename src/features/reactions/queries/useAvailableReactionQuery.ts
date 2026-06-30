@@ -11,5 +11,6 @@ export const useAvailableReactionQuery = () => {
     queryKey: [QueryKeys.AVAILABLE_REACTION],
     queryFn: () => api.getNativeV2ReactionAvailable(),
     enabled: isLoggedIn,
+    meta: { private: true },
   })
 }

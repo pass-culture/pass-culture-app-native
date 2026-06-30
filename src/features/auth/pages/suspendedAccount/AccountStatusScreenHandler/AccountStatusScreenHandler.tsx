@@ -55,9 +55,9 @@ export const AccountStatusScreenHandler = () => {
   if (suspensionStatus === AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER) {
     return <SuspiciousLoginSuspendedAccount />
   }
-  if (suspensionStatus === AccountState.WAITING_FOR_ANONYMIZATION) {
-    return <DeleteProfileSuccess />
-  } else {
-    return <FraudulentSuspendedAccount />
-  }
+  return suspensionStatus === AccountState.WAITING_FOR_ANONYMIZATION ? (
+    <DeleteProfileSuccess />
+  ) : (
+    <FraudulentSuspendedAccount />
+  )
 }

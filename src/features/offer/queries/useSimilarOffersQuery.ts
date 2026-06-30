@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
 import { api } from 'api/api'
@@ -108,7 +108,7 @@ export const useSimilarOffersQuery = ({
       }
     },
     staleTime: 1000 * 60 * 5,
-    enabled: !!searchGroupNames && onlineManager.isOnline() && shouldFetch,
+    enabled: !!searchGroupNames && shouldFetch,
   })
 
   return {

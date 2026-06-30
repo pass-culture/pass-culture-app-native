@@ -17,7 +17,7 @@ type UseGTLPlaylistsProps = {
   isUserUnderage: boolean
   adaptPlaylistParameters: (parameters: OffersModuleParameters) => PlaylistOffersParams
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
-  queryKey: keyof typeof QueryKeys
+  queryKey: QueryKeys
 }
 
 export const useGTLPlaylistsQuery = ({

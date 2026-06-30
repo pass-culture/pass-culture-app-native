@@ -81,7 +81,8 @@ describe('<SSOButtonApple />', () => {
           source: 'iPhone 13',
         },
       },
-      'apple'
+      'apple',
+      { credentials: 'omit' }
     )
   })
 

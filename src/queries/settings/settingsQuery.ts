@@ -9,8 +9,8 @@ import { CustomQueryOptions } from 'libs/react-query/types'
 const settingsQueryBaseOptions = {
   queryKey: [QueryKeys.SETTINGS],
   queryFn: () => api.getNativeV1Settings(),
-  staleTime: 60 * 60 * 1000, // 1H. More or less arbitrary.
-  gcTime: 24 * 60 * 60 * 1000, // 1 day. More or less arbitrary.
+  staleTime: 60 * 60 * 1000, // 1h - More or less arbitrary.
+  gcTime: 24 * 60 * 60 * 1000, // 1d - More or less arbitrary.
 }
 
 // Use it only if needed, otherwise use ./useSettings.ts hooks
@@ -22,8 +22,7 @@ export const useSettingsQuery = <TSelect = SettingsResponse>(
     ...options,
   })
 
-export const prefetchSettingsQuery = async () => {
-  return queryClient.prefetchQuery({
+export const prefetchSettingsQuery = async () =>
+  queryClient.prefetchQuery({
     ...settingsQueryBaseOptions,
   })
-}

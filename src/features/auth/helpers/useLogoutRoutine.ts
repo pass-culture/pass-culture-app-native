@@ -1,46 +1,15 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useQueryClient } from '@tanstack/react-query'
+import { QueryClient, useQueryClient } from '@tanstack/react-query'
 import { useCallback } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics/provider'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { QueryKeys } from 'libs/queryKeys'
 import { BatchProfile } from 'libs/react-native-batch'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { storage } from 'libs/storage'
 
-export function useLogoutRoutine(): () => Promise<void> {
-  const queryClient = useQueryClient()
-  const { setIsLoggedIn } = useAuthContext()
-
-  return useCallback(async () => {
-    try {
-      handleBatchProfileReset()
-
-      LoggedInQueryKeys.forEach((queryKey) => {
-        queryClient.removeQueries({
-          queryKey: [queryKey],
-        })
-      })
-      await Promise.all([
-        analytics.logLogout(),
-        storage.clear('access_token'),
-        clearRefreshToken(),
-        AsyncStorage.multiRemove(LoggedInQueryKeys),
-        googleLogout(),
-      ])
-      eventMonitoring.setUser(null)
-    } catch (err) {
-      eventMonitoring.captureException(err)
-    } finally {
-      setIsLoggedIn(false)
-    }
-  }, [queryClient, setIsLoggedIn])
-}
-
-function handleBatchProfileReset() {
+const handleBatchProfileReset = () => {
   BatchProfile.identify(null)
   const editor = BatchProfile.editor()
   editor.setAttribute('app_version', null)
@@ -49,13 +18,36 @@ function handleBatchProfileReset() {
   editor.save()
 }
 
-// List of keys that are accessible only when logged in to clean when logging out
-export const LoggedInQueryKeys: QueryKeys[] = [
-  QueryKeys.CULTURAL_SURVEY_QUESTIONS,
-  QueryKeys.FAVORITES,
-  QueryKeys.FAVORITES_COUNT,
-  QueryKeys.RECOMMENDATION_HITS,
-  QueryKeys.RECOMMENDATION_OFFER_IDS,
-  QueryKeys.NEXT_SUBSCRIPTION_STEP,
-  QueryKeys.USER_PROFILE,
-]
+export const logoutActions = async (
+  setIsLoggedIn: (isLoggedIn: boolean) => void,
+  queryClient: QueryClient
+) => {
+  setIsLoggedIn(false)
+  try {
+    handleBatchProfileReset()
+
+    queryClient.removeQueries({
+      predicate: (query) => !!query.meta?.private,
+    })
+
+    await Promise.all([
+      analytics.logLogout(),
+      storage.clear('access_token'),
+      clearRefreshToken(),
+      googleLogout(),
+    ])
+    eventMonitoring.setUser(null)
+  } catch (err) {
+    eventMonitoring.captureException(err)
+  }
+}
+
+export const useLogoutRoutine = (): (() => Promise<void>) => {
+  const queryClient = useQueryClient()
+  const { setIsLoggedIn } = useAuthContext()
+
+  return useCallback(
+    async () => logoutActions(setIsLoggedIn, queryClient),
+    [queryClient, setIsLoggedIn]
+  )
+}

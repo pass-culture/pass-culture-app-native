@@ -1,15 +1,18 @@
 import { QueryClient } from '@tanstack/react-query'
 
 import { BookingsResponseV2, BookOfferResponse } from 'api/gen'
+import { beneficiaryUser } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
 import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { prefetchBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
 import { prefetchBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
+jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/adjust/adjust')
 
 const props = { onError: jest.fn(), onSuccess: jest.fn() }
@@ -33,6 +36,12 @@ jest.mock('queries/bookings/useBookingsQuery', () => ({
 jest.mock('libs/jwt/jwt')
 
 describe('useBookOfferMutation', () => {
+  beforeEach(() => {
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+    })
+  })
+
   it('invalidates userProfile after successfully booking an offer', async () => {
     mockServer.postApi<BookOfferResponse>('/v1/bookings', {})
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
@@ -80,7 +89,7 @@ describe('useBookOfferMutation', () => {
 
     await waitFor(() => expect(props.onSuccess).toHaveBeenCalledTimes(1))
 
-    expect(prefetchBookingByIdQuery).toHaveBeenCalledWith(bookingId)
+    expect(prefetchBookingByIdQuery).toHaveBeenCalledWith(bookingId, true)
     expect(prefetchBookingsV2Query).toHaveBeenCalledTimes(1)
   })
 

@@ -1,5 +1,7 @@
 import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -7,19 +9,29 @@ import { renderHook, waitFor } from 'tests/utils'
 import { useGetRemindersQuery } from './useGetRemindersQuery'
 
 jest.mock('libs/jwt/jwt')
-jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/context/AuthContext')
+
+mockAuthContextWithUser({
+  ...beneficiaryUser,
+})
 
 describe('useGetRemindersQuery', () => {
   beforeEach(() => mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse))
 
-  it('should only fetch data if user is loogedIn', async () => {
+  it('should only fetch data if user is loggedIn', async () => {
     const { result } = renderUseGetRemindersQuery()
 
     await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.reminders.length).toEqual(remindersResponse.reminders.length)
+  })
+
+  it('should not fetch data if user is not loggedIn', async () => {
+    mockAuthContextWithoutUser()
+    const { result } = renderUseGetRemindersQuery()
+
+    await waitFor(async () => expect(result.current.isFetched).toEqual(false))
+    await waitFor(async () => expect(result.current.isEnabled).toEqual(false))
   })
 
   it('should allow selecting a subset of data', async () => {

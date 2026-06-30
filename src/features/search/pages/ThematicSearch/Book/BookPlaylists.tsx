@@ -15,6 +15,7 @@ import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
+import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -48,7 +49,7 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
     selectedLocationMode,
     isUserUnderage,
     adaptPlaylistParameters,
-    queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
+    queryKey: QueryKeys.THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS,
     transformHits,
   })
 

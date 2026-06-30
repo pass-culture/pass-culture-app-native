@@ -14,7 +14,7 @@ export const useCancelBookingMutation = ({ onSuccess, onError }: Props) => {
   return useMutation({
     mutationFn: (bookingId: number) => api.postNativeV1BookingsbookingIdCancel(bookingId),
     onSuccess: async (_, bookingId) => {
-      await queryClient.removeQueries({ queryKey: [QueryKeys.BOOKINGSV2, bookingId] })
+      queryClient.removeQueries({ queryKey: [QueryKeys.BOOKINGSV2, bookingId] })
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [QueryKeys.USER_PROFILE] }),
         queryClient.invalidateQueries({

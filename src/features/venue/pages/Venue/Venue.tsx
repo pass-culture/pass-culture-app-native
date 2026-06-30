@@ -33,6 +33,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
+import { QueryKeys } from 'libs/queryKeys'
 import {
   useCategoryHomeLabelMapping,
   useCategoryIdMapping,
@@ -108,7 +109,7 @@ export const Venue: FunctionComponent = () => {
     selectedLocationMode,
     isUserUnderage,
     adaptPlaylistParameters,
-    queryKey: 'VENUE_GTL_PLAYLISTS',
+    queryKey: QueryKeys.VENUE_GTL_PLAYLISTS,
     transformHits,
   })
 
