@@ -9,6 +9,7 @@ import { Offer } from 'shared/offer/types'
 
 export const fetchSearchOffers = async (args: FetchSearchResultsArgs) => {
   const queries = [buildOffersQuery(args), buildDuplicatedOffersQuery(args)]
+
   try {
     const { results } = await client.searchForHits<Offer>({ requests: queries })
     const [offersResponse, duplicatedOffersResponse] = results
