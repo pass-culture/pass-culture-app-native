@@ -5,6 +5,8 @@ import { DefaultBonificationBanner } from 'features/bonification/components/Defa
 import { ErrorBonificationBanner } from 'features/bonification/components/ErrorBonificationBanner'
 import { PendingBonificationBanner } from 'features/bonification/components/PendingBonificationBanner'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -27,6 +29,10 @@ export const BonificationBanner = ({
   bonificationStatus,
   onCloseCallback,
 }: BonificationBannerProps) => {
+  const disableQFBonificationButton = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON
+  )
+
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
@@ -55,11 +61,18 @@ export const BonificationBanner = ({
           amount={formatedBonificationAmount}
           refusedType={refusedType}
           onClose={onClose}
+          disableQFBonificationButton={disableQFBonificationButton}
         />
       )
 
     case QFBonificationStatus.eligible:
     default:
-      return <DefaultBonificationBanner amount={formatedBonificationAmount} onClose={onClose} />
+      return (
+        <DefaultBonificationBanner
+          amount={formatedBonificationAmount}
+          onClose={onClose}
+          disableQFBonificationButton={disableQFBonificationButton}
+        />
+      )
   }
 }

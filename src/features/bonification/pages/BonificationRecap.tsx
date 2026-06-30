@@ -9,6 +9,10 @@ import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames
 import { usePostDisabilityBonificationMutation } from 'features/bonification/queries/usePostDisabilityBonificationMutation'
 import { usePostQFBonificationMutation } from 'features/bonification/queries/usePostQFBonificationMutation'
 import {
+  disabilityBonificationActions,
+  useDisabilityBonification,
+} from 'features/bonification/store/disabilityBonificationStore'
+import {
   qfBonificationActions,
   useQFBonification,
 } from 'features/bonification/store/qfBonificationStore'
@@ -25,8 +29,6 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 export const BonificationRecap = () => {
   const { params } = useRoute<UseRouteType<'BonificationRecap'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
-    useQFBonification()
 
   const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
   const step = isDisabilityBonification ? 'Étape 2 sur 2' : 'Étape 5 sur 5'
@@ -34,7 +36,16 @@ export const BonificationRecap = () => {
     ? 'Je certifie que les informations saisies sont exactes.'
     : 'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées.'
 
+  const qf = useQFBonification()
+  const disability = useDisabilityBonification()
+
   const { resetQFBonification } = qfBonificationActions
+  const { resetDisabilityBonification } = disabilityBonificationActions
+
+  const birthCountry = isDisabilityBonification ? disability.birthCountry : qf.birthCountry
+  const birthCity = isDisabilityBonification ? disability.birthCity : qf.birthCity
+  const { title, firstNames, commonName, givenName, birthDate } = qf
+
   const { refetchUser } = useAuthContext()
 
   const { mutate: mutateQFBonification, isPending } = usePostQFBonificationMutation({
@@ -79,6 +90,7 @@ export const BonificationRecap = () => {
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
       showSuccessSnackBar('Tes informations ont été envoyées\u00a0!')
+      resetDisabilityBonification()
       void refetchUser()
     },
     onError: (_error) => {
@@ -117,39 +129,38 @@ export const BonificationRecap = () => {
 
   const recapData: InfoListItemProps[] = []
 
-  if (title) {
-    recapData.push({
-      title: 'Civilité',
-      value: title,
-    })
-  }
+  if (!isDisabilityBonification) {
+    if (title) {
+      recapData.push({ title: 'Civilité', value: title })
+    }
 
-  if (givenName) {
-    recapData.push({
-      title: 'Nom de naissance',
-      value: givenName.toUpperCase(),
-    })
-  }
+    if (givenName) {
+      recapData.push({
+        title: 'Nom de naissance',
+        value: givenName.toUpperCase(),
+      })
+    }
 
-  if (firstNames?.length) {
-    recapData.push({
-      title: 'Prénom(s)',
-      value: firstNames.join(', '),
-    })
-  }
+    if (firstNames?.length) {
+      recapData.push({
+        title: 'Prénom(s)',
+        value: firstNames.join(', '),
+      })
+    }
 
-  if (commonName) {
-    recapData.push({
-      title: 'Nom d’usage',
-      value: commonName.toUpperCase(),
-    })
-  }
+    if (commonName) {
+      recapData.push({
+        title: 'Nom d’usage',
+        value: commonName.toUpperCase(),
+      })
+    }
 
-  if (birthDate) {
-    recapData.push({
-      title: 'Date de naissance',
-      value: new Date(birthDate).toLocaleDateString(),
-    })
+    if (birthDate) {
+      recapData.push({
+        title: 'Date de naissance',
+        value: new Date(birthDate).toLocaleDateString(),
+      })
+    }
   }
 
   if (birthCountry) {
@@ -187,9 +198,7 @@ export const BonificationRecap = () => {
             label={checkboxLabel}
             variant="default"
             isChecked={accepted}
-            onPress={() => {
-              setAccepted((prev) => !prev)
-            }}
+            onPress={() => setAccepted((v) => !v)}
           />
         </ViewGap>
       }
