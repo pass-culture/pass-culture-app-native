@@ -8,7 +8,10 @@ import { ProfileNavigateParams } from 'features/navigation/navigators/RootNaviga
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { EditableField } from 'features/profile/components/EditableFiled/EditableField'
-import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
+import {
+  useProfileTokenExpirationQuery,
+  checkHasCurrentEmailChange,
+} from 'features/profile/queries/useProfileTokenExpirationQuery'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -34,7 +37,9 @@ export function PersonalData() {
       ? `${user.street}, ${user.postalCode}, ${user.city}`
       : ''
 
-  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery()
+  const { data: hasCurrentEmailChange } = useProfileTokenExpirationQuery({
+    select: (data) => checkHasCurrentEmailChange(data),
+  })
 
   const updateEmailRoute = useMemo<ProfileNavigateParams[0]>(() => {
     if (hasCurrentEmailChange) return 'TrackEmailChange'

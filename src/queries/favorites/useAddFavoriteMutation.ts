@@ -32,13 +32,9 @@ export const useAddFavoriteMutation = ({
           data,
         ]
         queryClient.setQueryData([QueryKeys.FAVORITES], { ...previousFavorites, favorites })
-        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       } else {
-        queryClient.invalidateQueries({
+        void queryClient.invalidateQueries({
           queryKey: [QueryKeys.FAVORITES],
-        })
-        queryClient.invalidateQueries({
-          queryKey: [QueryKeys.FAVORITES_COUNT],
         })
       }
       if (onSuccess) {
@@ -64,7 +60,6 @@ export const useAddFavoriteMutation = ({
           nbFavorites: favorites.length,
           favorites,
         })
-        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       }
 
       return { previousFavorites: previousFavorites ?? [] } as FavoriteMutationContext
@@ -81,9 +76,6 @@ export const useAddFavoriteMutation = ({
       )
       if (context?.previousFavorites) {
         queryClient.setQueryData([QueryKeys.FAVORITES], context.previousFavorites)
-        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], {
-          count: context.previousFavorites.length,
-        })
       }
     },
   })

@@ -9,7 +9,7 @@ import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
-import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
+import { useLogoutRoutine } from './useLogoutRoutine'
 
 jest.mock('libs/keychain/keychain')
 
@@ -104,15 +104,13 @@ describe('useLogoutRoutine', () => {
     expect(eventMonitoring.setUser).toHaveBeenCalledWith(null)
   })
 
-  it.each(
-    LoggedInQueryKeys.map((key) => ({
-      queryKey: [key],
-    }))
-  )('should remove query: "%s"', async (query) => {
+  it('should remove private queries', async () => {
     const { result } = renderUseLogoutRoutine()
     await result.current()
 
-    expect(removeQueriesMock).toHaveBeenCalledWith(query)
+    expect(removeQueriesMock).toHaveBeenCalledWith({
+      predicate: expect.any(Function),
+    })
   })
 
   it('should logout from Google account', async () => {

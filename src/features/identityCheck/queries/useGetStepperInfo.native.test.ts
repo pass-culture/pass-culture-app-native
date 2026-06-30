@@ -6,16 +6,20 @@ import {
   SubscriptionStepperResponseV3Fixture,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
+import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
-jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/context/AuthContext')
+
+mockAuthContextWithUser({
+  ...beneficiaryUser,
+})
 
 describe('useGetStepperInfo', () => {
   beforeEach(() => {
@@ -62,6 +66,14 @@ describe('useGetStepperInfo', () => {
 
     expect(result.current.data).toBeDefined()
     expect(result.current.data?.title).toEqual('Titre Stepper')
+  })
+
+  it('should only fetch data when user is logged in', async () => {
+    mockAuthContextWithoutUser()
+    const { result } = renderGetStepperInfo()
+
+    await waitFor(async () => expect(result.current.isFetched).toEqual(false))
+    await waitFor(async () => expect(result.current.isEnabled).toEqual(false))
   })
 
   describe('when feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER enabled', () => {

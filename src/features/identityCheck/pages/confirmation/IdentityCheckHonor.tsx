@@ -34,10 +34,7 @@ export const IdentityCheckHonor = () => {
     isSuccess: isPostingHonorSuccess,
   } = usePostHonorStatementMutation({
     onSuccess: async () => {
-      queryClient.invalidateQueries({
-        queryKey: [QueryKeys.NEXT_SUBSCRIPTION_STEP],
-      })
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({
         queryKey: [QueryKeys.HOME_BANNER],
       })
       let userProfile
@@ -51,7 +48,7 @@ export const IdentityCheckHonor = () => {
       if (hasUserOngoingCredit) {
         navigate(...getSubscriptionHookConfig('BeneficiaryAccountCreated'))
       } else {
-        saveStep(IdentityCheckStep.CONFIRMATION)
+        void saveStep(IdentityCheckStep.CONFIRMATION)
         navigate(...getSubscriptionHookConfig('BeneficiaryRequestSent'))
       }
     },

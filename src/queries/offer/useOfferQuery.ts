@@ -40,7 +40,7 @@ export const useOfferQuery = <T = OfferResponse>({
   const { logType } = useLogTypeFromRemoteConfig()
   const queryClient = useQueryClient()
 
-  const query = useQuery({
+  return useQuery({
     queryKey: [QueryKeys.OFFER, offerId],
     queryFn: async () => {
       const offer = await getOfferById(offerId, logType)
@@ -50,6 +50,4 @@ export const useOfferQuery = <T = OfferResponse>({
     enabled: !!offerId,
     select,
   })
-
-  return query
 }
