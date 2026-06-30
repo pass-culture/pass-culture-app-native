@@ -72,7 +72,7 @@ describe('categoriesHelpers', () => {
     expect(categories).toEqual([
       {
         name: 'ARTS_LOISIRS_CREATIFS',
-        value: 'Arts & loisirs créatifs',
+        value: 'Arts et loisirs créatifs',
       },
       {
         name: 'CARTES_JEUNES',
@@ -84,11 +84,11 @@ describe('categoriesHelpers', () => {
       },
       {
         name: 'CONCERTS_FESTIVALS',
-        value: 'Concerts & festivals',
+        value: 'Concerts et festivals',
       },
       {
         name: 'RENCONTRES_CONFERENCES',
-        value: 'Conférences & rencontres',
+        value: 'Conférences et rencontres',
       },
       {
         name: 'EVENEMENTS_EN_LIGNE',
@@ -100,7 +100,7 @@ describe('categoriesHelpers', () => {
       },
       {
         name: 'JEUX_JEUX_VIDEOS',
-        value: 'Jeux & jeux vidéos',
+        value: 'Jeux et jeux vidéos',
       },
       {
         name: 'LIVRES',
@@ -108,11 +108,11 @@ describe('categoriesHelpers', () => {
       },
       {
         name: 'MEDIA_PRESSE',
-        value: 'Médias & presse',
+        value: 'Médias et presse',
       },
       {
         name: 'MUSEES_VISITES_CULTURELLES',
-        value: 'Musées & visites culturelles',
+        value: 'Musées et visites',
       },
       {
         name: 'MUSIQUE',

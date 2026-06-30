@@ -678,7 +678,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Recherche – Liste - Élément 2 sur 14 - Concerts & festivals"
+                accessibilityLabel="Recherche – Liste - Élément 2 sur 14 - Concerts et festivals"
                 accessibilityRole="button"
                 accessible={true}
                 style={
@@ -723,7 +723,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Concerts & festivals"
+                      accessibilityLabel="Concerts et festivals"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -768,7 +768,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "width": "auto",
                         }
                       }
-                      testID="Concerts & festivals"
+                      testID="Concerts et festivals"
                     >
                       <View
                         gap={8}
@@ -803,7 +803,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                             ]
                           }
                         >
-                          Concerts & festivals
+                          Concerts et festivals
                         </Text>
                       </View>
                     </View>
@@ -1343,7 +1343,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Recherche – Liste - Élément 7 sur 14 - Arts & loisirs créatifs"
+                accessibilityLabel="Recherche – Liste - Élément 7 sur 14 - Arts et loisirs créatifs"
                 accessibilityRole="button"
                 accessible={true}
                 style={
@@ -1388,7 +1388,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Arts & loisirs créatifs"
+                      accessibilityLabel="Arts et loisirs créatifs"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -1433,7 +1433,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "width": "auto",
                         }
                       }
-                      testID="Arts & loisirs créatifs"
+                      testID="Arts et loisirs créatifs"
                     >
                       <View
                         gap={8}
@@ -1468,7 +1468,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                             ]
                           }
                         >
-                          Arts & loisirs créatifs
+                          Arts et loisirs créatifs
                         </Text>
                       </View>
                     </View>
@@ -1609,7 +1609,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Recherche – Liste - Élément 9 sur 14 - Musées & visites culturelles"
+                accessibilityLabel="Recherche – Liste - Élément 9 sur 14 - Musées et visites"
                 accessibilityRole="button"
                 accessible={true}
                 style={
@@ -1654,7 +1654,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Musées & visites culturelles"
+                      accessibilityLabel="Musées et visites"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -1699,7 +1699,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "width": "auto",
                         }
                       }
-                      testID="Musées & visites culturelles"
+                      testID="Musées et visites"
                     >
                       <View
                         gap={8}
@@ -1734,7 +1734,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                             ]
                           }
                         >
-                          Musées & visites culturelles
+                          Musées et visites
                         </Text>
                       </View>
                     </View>
@@ -1742,7 +1742,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Recherche – Liste - Élément 10 sur 14 - Jeux & jeux vidéos"
+                accessibilityLabel="Recherche – Liste - Élément 10 sur 14 - Jeux et jeux vidéos"
                 accessibilityRole="button"
                 accessible={true}
                 style={
@@ -1787,7 +1787,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Jeux & jeux vidéos"
+                      accessibilityLabel="Jeux et jeux vidéos"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -1832,7 +1832,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "width": "auto",
                         }
                       }
-                      testID="Jeux & jeux vidéos"
+                      testID="Jeux et jeux vidéos"
                     >
                       <View
                         gap={8}
@@ -1867,7 +1867,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                             ]
                           }
                         >
-                          Jeux & jeux vidéos
+                          Jeux et jeux vidéos
                         </Text>
                       </View>
                     </View>
@@ -1875,7 +1875,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Recherche – Liste - Élément 11 sur 14 - Médias & presse"
+                accessibilityLabel="Recherche – Liste - Élément 11 sur 14 - Médias et presse"
                 accessibilityRole="button"
                 accessible={true}
                 style={
@@ -1920,7 +1920,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Médias & presse"
+                      accessibilityLabel="Médias et presse"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -1965,7 +1965,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "width": "auto",
                         }
                       }
-                      testID="Médias & presse"
+                      testID="Médias et presse"
                     >
                       <View
                         gap={8}
@@ -2000,7 +2000,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                             ]
                           }
                         >
-                          Médias & presse
+                          Médias et presse
                         </Text>
                       </View>
                     </View>
@@ -2141,7 +2141,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Recherche – Liste - Élément 13 sur 14 - Conférences & rencontres"
+                accessibilityLabel="Recherche – Liste - Élément 13 sur 14 - Conférences et rencontres"
                 accessibilityRole="button"
                 accessible={true}
                 style={
@@ -2186,7 +2186,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Conférences & rencontres"
+                      accessibilityLabel="Conférences et rencontres"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -2231,7 +2231,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                           "width": "auto",
                         }
                       }
-                      testID="Conférences & rencontres"
+                      testID="Conférences et rencontres"
                     >
                       <View
                         gap={8}
@@ -2266,7 +2266,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                             ]
                           }
                         >
-                          Conférences & rencontres
+                          Conférences et rencontres
                         </Text>
                       </View>
                     </View>

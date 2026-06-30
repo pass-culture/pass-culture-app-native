@@ -34,7 +34,7 @@ describe('useSortedSearchCategories', () => {
   it("should format category's label", () => {
     const { result } = renderHook(useSortedSearchCategories)
 
-    expect(result.current[0]?.label).toEqual('Concerts & festivals')
+    expect(result.current[0]?.label).toEqual('Concerts et festivals')
   })
 
   it('should expose remote illustration URLs when new category blocks FF is activated', () => {
@@ -52,18 +52,18 @@ describe('useSortedSearchCategories', () => {
     const actualCategoriesLabels = result.current.map((category) => category.label)
 
     expect(actualCategoriesLabels).toEqual([
-      'Concerts & festivals',
+      'Concerts et festivals',
       'Cinéma',
       'Films, séries et documentaires',
       'Livres',
       'Musique',
-      'Arts & loisirs créatifs',
+      'Arts et loisirs créatifs',
       'Spectacles',
-      'Musées & visites culturelles',
-      'Jeux & jeux vidéos',
-      'Médias & presse',
+      'Musées et visites',
+      'Jeux et jeux vidéos',
+      'Médias et presse',
       'Cartes jeunes',
-      'Conférences & rencontres',
+      'Conférences et rencontres',
       'Évènements en ligne',
     ])
   })

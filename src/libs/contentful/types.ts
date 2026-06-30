@@ -567,6 +567,7 @@ export const isVenueMapBlockContentModel = (
 ): module is VenueMapBlockContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VENUE_MAP_BLOCK
 
+//TODO(PC-42568): remove old wordings (with esperluette) after next forced app update
 export type ContentfulLabelCategories =
   | 'Arts & loisirs créatifs'
   | 'Cartes jeunes'
@@ -583,6 +584,12 @@ export type ContentfulLabelCategories =
   | 'Musées & visites culturelles'
   | 'Musique'
   | 'Spectacles'
+  | 'Arts et loisirs créatifs'
+  | 'Concerts et festivals'
+  | 'Conférences et rencontres'
+  | 'Jeux et jeux vidéos'
+  | 'Médias et presse'
+  | 'Musées et visites'
 
 export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VIDEO
