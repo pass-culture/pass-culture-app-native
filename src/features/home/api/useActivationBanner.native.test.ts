@@ -185,6 +185,92 @@ describe('useActivationBanner', () => {
   })
 })
 
+describe('useActivationBanner with free beneficiary aged 17 or 18', () => {
+  it('should override banner amount for free beneficiary aged 17', async () => {
+    const SEVENTEEN_YEARS_OLD_DATE = '2005-10-24'
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+      user: {
+        ...beneficiaryUser,
+        creditType: UserCreditType.CREDIT_V3_FREE,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_17,
+        birthDate: SEVENTEEN_YEARS_OLD_DATE,
+        currency: CurrencyEnum.EUR,
+      },
+    })
+    mockDepositAmounts.mockReturnValueOnce('50\u00a0€')
+
+    const { result } = renderUseActivationBanner()
+
+    await act(async () => {})
+
+    expect(result.current.banner).toEqual({
+      title: 'Débloque tes 50\u00a0€',
+      text: 'API - Bénéficie de ton crédit maintenant !',
+      name: BannerName.activation_banner,
+    })
+  })
+
+  it('should override banner amount for free beneficiary aged 18', async () => {
+    const EIGHTEEN_YEARS_OLD_DATE = '2004-10-24'
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+      user: {
+        ...beneficiaryUser,
+        creditType: UserCreditType.CREDIT_V3_FREE,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+        birthDate: EIGHTEEN_YEARS_OLD_DATE,
+        currency: CurrencyEnum.EUR,
+      },
+    })
+    mockDepositAmounts.mockReturnValueOnce('150\u00a0€')
+
+    const { result } = renderUseActivationBanner()
+
+    await act(async () => {})
+
+    expect(result.current.banner).toEqual({
+      title: 'Débloque tes 150\u00a0€',
+      text: 'API - Bénéficie de ton crédit maintenant !',
+      name: BannerName.activation_banner,
+    })
+  })
+
+  it('should not override for free beneficiary aged 16', async () => {
+    const SIXTEEN_YEARS_OLD_DATE = '2006-10-24'
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+      user: {
+        ...beneficiaryUser,
+        creditType: UserCreditType.CREDIT_V3_FREE,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+        birthDate: SIXTEEN_YEARS_OLD_DATE,
+        currency: CurrencyEnum.EUR,
+      },
+    })
+    mockDepositAmounts.mockReturnValueOnce('0\u00a0€')
+
+    const { result } = renderUseActivationBanner()
+
+    await act(async () => {})
+
+    expect(result.current.banner).toEqual({
+      title: 'API - Débloque tes 150\u00a0€',
+      text: 'API - Bénéficie de ton crédit maintenant !',
+      name: BannerName.activation_banner,
+    })
+  })
+})
+
 const renderUseActivationBanner = () =>
   renderHook(() => useActivationBanner(), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
