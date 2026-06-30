@@ -9,9 +9,9 @@ import { BonificationType } from 'features/bonification/enums'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
-  legalRepresentativeActions,
-  useLegalRepresentative,
-} from 'features/bonification/store/legalRepresentativeStore'
+  qfBonificationActions,
+  useQFBonification,
+} from 'features/bonification/store/qfBonificationStore'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -44,8 +44,8 @@ export const BonificationBirthPlace = () => {
 
   const step = isDisabilityBonification ? 'Étape 1 sur 2' : 'Étape 4 sur 5'
 
-  const { birthCountry, birthCity } = useLegalRepresentative()
-  const { setBirthCountry, setBirthCity } = legalRepresentativeActions
+  const { birthCountry, birthCity } = useQFBonification()
+  const { setBirthCountry, setBirthCity } = qfBonificationActions
 
   const [showCityField, setShowCityField] = useState(!!birthCity)
 

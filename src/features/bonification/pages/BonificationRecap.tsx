@@ -9,9 +9,9 @@ import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames
 import { usePostDisabilityBonificationMutation } from 'features/bonification/queries/usePostDisabilityBonificationMutation'
 import { usePostQFBonificationMutation } from 'features/bonification/queries/usePostQFBonificationMutation'
 import {
-  legalRepresentativeActions,
-  useLegalRepresentative,
-} from 'features/bonification/store/legalRepresentativeStore'
+  qfBonificationActions,
+  useQFBonification,
+} from 'features/bonification/store/qfBonificationStore'
 import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -26,7 +26,7 @@ export const BonificationRecap = () => {
   const { params } = useRoute<UseRouteType<'BonificationRecap'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
-    useLegalRepresentative()
+    useQFBonification()
 
   const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
   const step = isDisabilityBonification ? 'Étape 2 sur 2' : 'Étape 5 sur 5'
@@ -34,14 +34,14 @@ export const BonificationRecap = () => {
     ? 'Je certifie que les informations saisies sont exactes.'
     : 'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées.'
 
-  const { resetLegalRepresentative } = legalRepresentativeActions
+  const { resetQFBonification } = qfBonificationActions
   const { refetchUser } = useAuthContext()
 
   const { mutate: mutateQFBonification, isPending } = usePostQFBonificationMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
       showSuccessSnackBar('Tes informations ont été envoyées\u00a0!')
-      resetLegalRepresentative()
+      resetQFBonification()
       void refetchUser()
     },
     onError: (_error) => {
