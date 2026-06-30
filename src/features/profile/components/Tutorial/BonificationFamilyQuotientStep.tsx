@@ -58,7 +58,16 @@ export const BonificationFamilyQuotientStep = ({
 
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
 
-  const showBonificationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
+  const showBonificationButton =
+    isLoggedIn &&
+    isEligibleToBonification &&
+    !wasBonificationReceived &&
+    !disableQFBonificationButton
+
+  const bonificationButtonContent = getBonificationButtonContent(
+    BonificationType.FAMILY_QUOTIENT,
+    bonificationStatus
+  )
 
   return (
     <React.Fragment>
@@ -68,9 +77,7 @@ export const BonificationFamilyQuotientStep = ({
         variant={StepVariant.unknown}
         iconComponent={<GreyDiagram />}
         addMoreSpacingToIcons>
-        <DashedStepContainer
-          bonificationStatus={bonificationStatus}
-          disabled={disableQFBonificationButton}>
+        <DashedStepContainer bonificationStatus={bonificationStatus}>
           <ViewGap gap={4}>
             <StyledBody>Bonus sous conditions</StyledBody>
             <Typo.Title3>
@@ -110,30 +117,14 @@ export const BonificationFamilyQuotientStep = ({
                 <Button
                   variant="tertiary"
                   color="neutral"
-                  disabled={
-                    disableQFBonificationButton ||
-                    getBonificationButtonContent(
-                      BonificationType.FAMILY_QUOTIENT,
-                      bonificationStatus
-                    ).disabled
-                  }
+                  disabled={bonificationButtonContent.disabled}
                   icon={
                     bonificationStatus === QFBonificationStatus.started
                       ? ClockFilled
                       : PlainArrowNext
                   }
-                  wording={
-                    getBonificationButtonContent(
-                      BonificationType.FAMILY_QUOTIENT,
-                      bonificationStatus
-                    ).label
-                  }
-                  accessibilityLabel={
-                    getBonificationButtonContent(
-                      BonificationType.FAMILY_QUOTIENT,
-                      bonificationStatus
-                    ).accessibilityLabel
-                  }
+                  wording={bonificationButtonContent.label}
+                  accessibilityLabel={bonificationButtonContent.accessibilityLabel}
                   onPress={() => {
                     if (bonificationTooManyRetries) {
                       navigate(

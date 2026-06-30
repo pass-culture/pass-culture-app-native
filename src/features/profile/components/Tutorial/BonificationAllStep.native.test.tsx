@@ -35,7 +35,7 @@ describe('BonificationAllStep', () => {
   })
 
   describe('Family quotient bonification', () => {
-    it('should show QF button when user is eligible', () => {
+    it('should show button when user is eligible', () => {
       renderComponent()
 
       expect(screen.getByLabelText('Faire une demande de bonus quotient familial')).toBeTruthy()
@@ -68,13 +68,7 @@ describe('BonificationAllStep', () => {
       )
     })
 
-    it('should not show QF button when not logged in', () => {
-      renderComponent({}, { isLoggedIn: false })
-
-      expect(screen.queryByLabelText('Faire une demande de bonus quotient familial')).toBeNull()
-    })
-
-    it('should disable QF button when status is started', () => {
+    it('should disable button when status is started', () => {
       renderComponent({ qfBonificationStatus: QFBonificationStatus.started })
 
       const button = screen.getByLabelText('En cours de traitement pour le bonus quotient familial')
@@ -82,13 +76,41 @@ describe('BonificationAllStep', () => {
       expect(button.props.accessibilityState.disabled).toBe(true)
     })
 
-    it('should disable QF button when feature flag is enabled', () => {
+    it('should hide button when feature flag is enabled', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON])
       renderComponent()
 
-      const button = screen.getByLabelText('Faire une demande de bonus quotient familial')
+      const button = screen.queryByLabelText('Faire une demande de bonus quotient familial')
 
-      expect(button.props.accessibilityState.disabled).toBe(true)
+      expect(button).not.toBeOnTheScreen()
+    })
+
+    it('should hide button when not logged in', () => {
+      renderComponent({}, { isLoggedIn: false })
+
+      const button = screen.queryByLabelText('Faire une demande de bonus quotient familial')
+
+      expect(button).not.toBeOnTheScreen()
+    })
+
+    it('should hide button when not eligible', () => {
+      renderComponent({
+        qfBonificationStatus: QFBonificationStatus.not_eligible,
+      })
+
+      const button = screen.queryByLabelText('Faire une demande de bonus quotient familial')
+
+      expect(button).not.toBeOnTheScreen()
+    })
+
+    it('should hide button when granted', () => {
+      renderComponent({
+        qfBonificationStatus: QFBonificationStatus.granted,
+      })
+
+      const button = screen.queryByLabelText('Faire une demande de bonus quotient familial')
+
+      expect(button).not.toBeOnTheScreen()
     })
   })
 
@@ -117,20 +139,6 @@ describe('BonificationAllStep', () => {
       )
     })
 
-    it('should not show disability button when not logged in', () => {
-      renderComponent({}, { isLoggedIn: false })
-
-      expect(screen.queryByText('Faire une demande')).toBeNull()
-    })
-
-    it('should hide button when granted', () => {
-      renderComponent({
-        disabilityBonificationStatus: DisabilityBonificationStatus.granted,
-      })
-
-      expect(screen.queryByLabelText('Faire une demande de bonus situation de handicap')).toBeNull()
-    })
-
     it('should disable button when started', () => {
       renderComponent({ disabilityBonificationStatus: DisabilityBonificationStatus.started })
 
@@ -141,13 +149,41 @@ describe('BonificationAllStep', () => {
       expect(button.props.accessibilityState.disabled).toBe(true)
     })
 
-    it('should disable button when feature flag is enabled', () => {
+    it('should hide button when feature flag is enabled', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_BUTTON])
       renderComponent()
 
-      const button = screen.getByLabelText('Faire une demande de bonus situation de handicap')
+      const button = screen.queryByLabelText('Faire une demande de bonus situation de handicap')
 
-      expect(button.props.accessibilityState.disabled).toBe(true)
+      expect(button).not.toBeOnTheScreen()
+    })
+
+    it('should hide button when not logged in', () => {
+      renderComponent({}, { isLoggedIn: false })
+
+      const button = screen.queryByLabelText('Faire une demande de bonus situation de handicap')
+
+      expect(button).not.toBeOnTheScreen()
+    })
+
+    it('should hide button when not eligible', () => {
+      renderComponent({
+        disabilityBonificationStatus: DisabilityBonificationStatus.not_eligible,
+      })
+
+      const button = screen.queryByLabelText('Faire une demande de bonus situation de handicap')
+
+      expect(button).not.toBeOnTheScreen()
+    })
+
+    it('should hide button when granted', () => {
+      renderComponent({
+        disabilityBonificationStatus: DisabilityBonificationStatus.granted,
+      })
+
+      const button = screen.queryByLabelText('Faire une demande de bonus situation de handicap')
+
+      expect(button).not.toBeOnTheScreen()
     })
   })
 })

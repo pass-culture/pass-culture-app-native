@@ -2400,7 +2400,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                   </View>
                   <View>
                     <View
-                      disabled={false}
                       style={
                         {
                           "backgroundColor": "#ffffff",
@@ -2622,7 +2621,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                       />
                     </View>
                     <View
-                      disabled={false}
                       style={
                         {
                           "backgroundColor": "#ffffff",
