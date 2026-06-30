@@ -320,6 +320,26 @@ describe('<ArtistBody />', () => {
     expect(screen.queryByLabelText('Livres')).not.toBeOnTheScreen()
     expect(screen.queryByLabelText('Prochains festivals et salons du livre')).not.toBeOnTheScreen()
   })
+
+  it('should expose only the text to screen readers (emoji ignored)', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Voir plus'))
+
+    expect(screen.getByLabelText('© Contenu généré par IA')).toBeTruthy()
+    expect(screen.queryByLabelText('© Contenu généré par IA ✨')).toBeNull()
+    expect(screen.queryByText('© Contenu généré par IA ✨')).toBeNull()
+  })
 })
 
 const buildArtistOffer = ({

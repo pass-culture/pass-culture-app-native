@@ -10,6 +10,7 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
+import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
@@ -85,10 +86,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const headerHeight = appBarHeight + top
 
   const { name, description, image } = artist
-
   const descriptionWithDot = ensureEndingDot(description ?? '')
   const capitalizedDescriptionWithDot = capitalize(descriptionWithDot)
-
+  const creditAccessibilityLabel = separateTitleAndEmojis(artist.descriptionCredit ?? '')
   const {
     visible: shareArtistModalVisible,
     showModal: showShareArtistModal,
@@ -143,7 +143,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
                   onAdditionalPress={onExpandBioPress}>
                   {artist.descriptionSource ? (
                     <ViewGap gap={1}>
-                      <Credit>{artist.descriptionCredit}</Credit>
+                      <Credit accessibilityLabel={creditAccessibilityLabel.titleText}>
+                        {artist.descriptionCredit}
+                      </Credit>
                       {isWeb ? (
                         <ExternalTouchableLink
                           as={ButtonQuaternaryBlack}
