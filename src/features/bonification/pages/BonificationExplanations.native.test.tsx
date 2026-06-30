@@ -61,10 +61,7 @@ describe('BonificationExplanations', () => {
   })
 
   it('should show banner to users with pacific franc currency', async () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      currency: CurrencyEnum.XPF,
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, currency: CurrencyEnum.XPF })
 
     render(<BonificationExplanations />)
 

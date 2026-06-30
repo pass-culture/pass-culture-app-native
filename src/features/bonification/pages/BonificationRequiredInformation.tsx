@@ -30,13 +30,9 @@ export const BonificationRequiredInformation = () => {
     ? 'Nous avons besoins de quelques informations supplémentaires'
     : 'Quelles sont les informations requises d’un de tes parents ou représentants légaux\u00a0?'
 
-  const subtitle = isDisabilityBonification
-    ? 'Afin de finaliser ta demande, nous t’invitons à te munir des informations suivantes\u00a0:'
-    : 'Munis-toi des informations suivantes pour faire ta demande\u00a0:'
-
   const dataPrivacyText = isDisabilityBonification
-    ? `Tu peux en savoir plus sur la collecte de données et tes droits (accès, opposition, rectification) en consultant `
-    : `Toi ou tes représentants légaux pouvez en savoir plus sur cette collecte de données et vos droits (accès, opposition, rectification) en consultant `
+    ? 'Tu peux en savoir plus sur la collecte de données et tes droits (accès, opposition, rectification) en consultant '
+    : 'Toi ou tes représentants légaux pouvez en savoir plus sur cette collecte de données et vos droits (accès, opposition, rectification) en consultant '
 
   const onPressFamilyQuotient = () => navigate(...getSubscriptionHookConfig('BonificationNames'))
   const onPressDisability = () =>
@@ -59,7 +55,7 @@ export const BonificationRequiredInformation = () => {
               <IdCardWithMagnifyingGlass />
             </Container>
             <StyledTitle3 {...getHeadingAttrs(2)}>{title}</StyledTitle3>
-            <Typo.Body>{subtitle}</Typo.Body>
+            <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
               {isDisabilityBonification ? (
                 <React.Fragment>
