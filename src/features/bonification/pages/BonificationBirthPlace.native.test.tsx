@@ -135,6 +135,7 @@ describe('BonificationBirthPlace', () => {
 
   describe('Data persistence', () => {
     beforeEach(() => {
+      useRoute.mockReturnValue({ params: { bonificationType: BonificationType.FAMILY_QUOTIENT } })
       const { resetQFBonification } = qfBonificationActions
       resetQFBonification()
     })

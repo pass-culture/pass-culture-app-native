@@ -9,6 +9,10 @@ import { BonificationType } from 'features/bonification/enums'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
+  disabilityBonificationActions,
+  useDisabilityBonification,
+} from 'features/bonification/store/disabilityBonificationStore'
+import {
   qfBonificationActions,
   useQFBonification,
 } from 'features/bonification/store/qfBonificationStore'
@@ -44,8 +48,14 @@ export const BonificationBirthPlace = () => {
 
   const step = isDisabilityBonification ? 'Étape 1 sur 2' : 'Étape 4 sur 5'
 
-  const { birthCountry, birthCity } = useQFBonification()
-  const { setBirthCountry, setBirthCity } = qfBonificationActions
+  const qf = useQFBonification()
+  const disability = useDisabilityBonification()
+
+  const birthCountry = isDisabilityBonification ? disability.birthCountry : qf.birthCountry
+  const birthCity = isDisabilityBonification ? disability.birthCity : qf.birthCity
+
+  const qfActions = qfBonificationActions
+  const disabilityActions = disabilityBonificationActions
 
   const [showCityField, setShowCityField] = useState(!!birthCity)
 
@@ -63,11 +73,22 @@ export const BonificationBirthPlace = () => {
 
   const saveBirthPlaceAndNavigate = ({ birthCountrySelection, birthCity }: FormValues) => {
     if (disabled) return
-    setBirthCountry(birthCountrySelection)
-    if (birthCountrySelection.libcog === 'France' && birthCity) {
-      setBirthCity(birthCity)
+
+    if (isDisabilityBonification) {
+      disabilityActions.setBirthCountry(birthCountrySelection)
+
+      if (birthCountrySelection.libcog === 'France' && birthCity) {
+        disabilityActions.setBirthCity(birthCity)
+      } else {
+        disabilityActions.setBirthCity(null)
+      }
     } else {
-      setBirthCity(null)
+      qfActions.setBirthCountry(birthCountrySelection)
+      if (birthCountrySelection.libcog === 'France' && birthCity) {
+        qfActions.setBirthCity(birthCity)
+      } else {
+        qfActions.setBirthCity(null)
+      }
     }
 
     navigate(
