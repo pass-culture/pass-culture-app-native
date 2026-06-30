@@ -4,6 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { InseeCountry } from 'api/gen'
 import { BonificationType } from 'features/bonification/enums'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
+import { disabilityBonificationActions } from 'features/bonification/store/disabilityBonificationStore'
 import { qfBonificationActions } from 'features/bonification/store/qfBonificationStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -155,17 +156,19 @@ describe('BonificationRecap', () => {
 
   describe('Disability bonification', () => {
     beforeEach(() => {
+      const { resetDisabilityBonification } = disabilityBonificationActions
+      resetDisabilityBonification()
       useRoute.mockReturnValue({ params: { bonificationType: BonificationType.DISABILITY } })
     })
 
     it('should display step 2 on 2', () => {
-      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+      prepareDataAndRender2(birthCountry)
 
       expect(screen.getByText('Étape 2 sur 2')).toBeTruthy()
     })
 
     it('should display correct checkbox label', async () => {
-      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+      prepareDataAndRender2(birthCountry)
 
       expect(
         screen.getByText('Je certifie que les informations saisies sont exactes.')
@@ -173,28 +176,24 @@ describe('BonificationRecap', () => {
     })
 
     it('should navigate to birth place screen when pressing "Modifier mes informations"', async () => {
-      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+      prepareDataAndRender2(birthCountry)
 
       const button = screen.getByText('Modifier mes informations')
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: {
-          bonificationType: BonificationType.DISABILITY,
-        },
+        params: { bonificationType: BonificationType.DISABILITY },
         screen: 'BonificationBirthPlace',
       })
     })
 
     it('should navigate to error screen when data is missing', async () => {
-      prepareDataAndRender(title, firstName, givenName, commonName, birthDate, undefined)
+      prepareDataAndRender2(undefined)
 
       await validateAndSubmitForm()
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: {
-          bonificationType: BonificationType.DISABILITY,
-        },
+        params: { bonificationType: BonificationType.DISABILITY },
         screen: 'BonificationError',
       })
     })
@@ -207,7 +206,7 @@ describe('BonificationRecap', () => {
       })
 
       it('should show snackbar', async () => {
-        prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+        prepareDataAndRender2(birthCountry)
 
         await validateAndSubmitForm()
 
@@ -215,7 +214,7 @@ describe('BonificationRecap', () => {
       })
 
       it('should navigate to home', async () => {
-        prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+        prepareDataAndRender2(birthCountry)
 
         await validateAndSubmitForm()
 
@@ -226,7 +225,7 @@ describe('BonificationRecap', () => {
       })
 
       it('should refresh user', async () => {
-        prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+        prepareDataAndRender2(birthCountry)
 
         await validateAndSubmitForm()
 
@@ -236,7 +235,7 @@ describe('BonificationRecap', () => {
       it('should clear store', async () => {
         const resetSpy = jest.spyOn(qfBonificationActions, 'resetQFBonification')
 
-        prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+        prepareDataAndRender2(birthCountry)
 
         await validateAndSubmitForm()
 
@@ -252,7 +251,7 @@ describe('BonificationRecap', () => {
       })
 
       it('should navigate to error screen', async () => {
-        prepareDataAndRender(title, firstName, givenName, commonName, birthDate, birthCountry)
+        prepareDataAndRender2(birthCountry)
 
         await validateAndSubmitForm()
 
@@ -281,6 +280,12 @@ function prepareDataAndRender(title, firstName, givenName, commonName, birthDate
   setGivenName(givenName)
   setCommonName(commonName)
   setBirthDate(new Date(birthDate))
+  setBirthCountry(birthCountry)
+  render(reactQueryProviderHOC(<BonificationRecap />))
+}
+
+function prepareDataAndRender2(birthCountry) {
+  const { setBirthCountry } = disabilityBonificationActions
   setBirthCountry(birthCountry)
   render(reactQueryProviderHOC(<BonificationRecap />))
 }
