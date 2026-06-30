@@ -44,7 +44,11 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
 
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
 
-  const showBonificationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
+  const showBonificationButton =
+    isLoggedIn &&
+    isEligibleToBonification &&
+    !wasBonificationReceived &&
+    !disableHandicapBonificationButton
 
   const onPressHandicapBonificationButton = () =>
     navigate(
@@ -52,6 +56,11 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
         bonificationType: BonificationType.DISABILITY,
       })
     )
+
+  const bonificationButtonContent = getBonificationButtonContent(
+    BonificationType.DISABILITY,
+    bonificationStatus
+  )
 
   return (
     <React.Fragment>
@@ -61,9 +70,7 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
         variant={StepVariant.unknown}
         iconComponent={<GreyHandicapMotor />}
         addMoreSpacingToIcons>
-        <DashedStepContainer
-          bonificationStatus={bonificationStatus}
-          disabled={disableHandicapBonificationButton}>
+        <DashedStepContainer bonificationStatus={bonificationStatus}>
           <ViewGap gap={4}>
             <StyledBody>Bonus sous conditions</StyledBody>
             <Typo.Title3>
@@ -104,20 +111,10 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
                   variant="tertiary"
                   color="neutral"
                   icon={Again}
-                  wording={
-                    getBonificationButtonContent(BonificationType.DISABILITY, bonificationStatus)
-                      .label
-                  }
-                  accessibilityLabel={
-                    getBonificationButtonContent(BonificationType.DISABILITY, bonificationStatus)
-                      .accessibilityLabel
-                  }
+                  wording={bonificationButtonContent.label}
+                  accessibilityLabel={bonificationButtonContent.accessibilityLabel}
                   onPress={onPressHandicapBonificationButton}
-                  disabled={
-                    disableHandicapBonificationButton ||
-                    getBonificationButtonContent(BonificationType.DISABILITY, bonificationStatus)
-                      .disabled
-                  }
+                  disabled={bonificationButtonContent.disabled}
                 />
               </ButtonContainerFlexStart>
             ) : null}

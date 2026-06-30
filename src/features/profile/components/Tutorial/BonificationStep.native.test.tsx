@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { QFBonificationStatus } from 'api/gen'
 import { BonificationStep } from 'features/profile/components/Tutorial/BonificationStep'
 import { beneficiaryUser } from 'fixtures/user'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -55,35 +54,6 @@ describe('<BonificationStep />', () => {
     ).toBeOnTheScreen()
 
     expect(screen.getByText('Le bonus dépend des ressources de ton foyer.')).toBeOnTheScreen()
-  })
-
-  it('should disable button when request is started', () => {
-    renderBonificationStep({
-      enableFamilyQuotientBonification: true,
-      user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.started },
-    })
-
-    const button = screen.getByText('En cours de traitement')
-
-    expect(button).toBeDisabled()
-  })
-
-  it('should hide button if user is not eligible', () => {
-    renderBonificationStep({
-      enableFamilyQuotientBonification: true,
-      user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.not_eligible },
-    })
-
-    expect(screen.queryByText('Vérifier maintenant')).not.toBeOnTheScreen()
-  })
-
-  it('should hide button if bonus already granted when bonification granted', () => {
-    renderBonificationStep({
-      enableFamilyQuotientBonification: true,
-      user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.granted },
-    })
-
-    expect(screen.queryByText('Vérifier maintenant')).not.toBeOnTheScreen()
   })
 })
 

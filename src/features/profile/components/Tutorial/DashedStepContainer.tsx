@@ -5,26 +5,20 @@ import { getSpacing } from 'ui/theme'
 
 export const DashedStepContainer = styled.View<{
   bonificationStatus: QFBonificationStatus | DisabilityBonificationStatus | null | undefined
-  disabled?: boolean
-}>(({ theme, bonificationStatus, disabled }) => ({
+}>(({ theme, bonificationStatus }) => ({
   borderColor: theme.designSystem.color.border.brandPrimary,
   borderWidth: getSpacing(0.25),
   borderRadius: theme.designSystem.size.borderRadius.m,
   borderStyle: 'dashed',
   padding: theme.designSystem.size.spacing.l,
   overflow: 'hidden',
-  backgroundColor: getBackgroundColorByStatus(bonificationStatus, theme, disabled),
+  backgroundColor: getBackgroundColorByStatus(bonificationStatus, theme),
   marginVertical: theme.designSystem.size.spacing.m,
 }))
 const getBackgroundColorByStatus = (
   status: QFBonificationStatus | DisabilityBonificationStatus | null | undefined,
-  theme: DefaultTheme,
-  disabled?: boolean
+  theme: DefaultTheme
 ) => {
-  if (disabled) {
-    return theme.designSystem.color.background.disabled
-  }
-
   switch (status) {
     case QFBonificationStatus.ko:
     case DisabilityBonificationStatus.ko:

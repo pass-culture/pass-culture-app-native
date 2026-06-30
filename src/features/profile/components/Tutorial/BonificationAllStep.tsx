@@ -81,10 +81,18 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
   }
 
   const showQFBonificationButton =
-    isLoggedIn && isEligibleToQFBonification && !wasQFBonificationReceived
+    isLoggedIn &&
+    isEligibleToQFBonification &&
+    !wasQFBonificationReceived &&
+    !disableQFBonificationButton
 
   const iconQFBonificationButton =
     bonificationQFStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
+
+  const qfBonificationButtonContent = getBonificationButtonContent(
+    BonificationType.FAMILY_QUOTIENT,
+    bonificationQFStatus
+  )
 
   // DISABILITY BONIFICATION
   const disabilityBonificationStatus: DisabilityBonificationStatus | null | undefined =
@@ -97,7 +105,10 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
     disabilityBonificationStatus === DisabilityBonificationStatus.granted
 
   const showDisabilityBonificationButton =
-    isLoggedIn && isEligibleToDisabilityBonification && !wasDisabilityBonificationReceived
+    isLoggedIn &&
+    isEligibleToDisabilityBonification &&
+    !wasDisabilityBonificationReceived &&
+    !disableHandicapBonificationButton
 
   const onPressDisabilityBonificationButton = () =>
     navigate(
@@ -105,6 +116,11 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
         bonificationType: BonificationType.DISABILITY,
       })
     )
+
+  const disabilityBonificationButtonContent = getBonificationButtonContent(
+    BonificationType.DISABILITY,
+    disabilityBonificationStatus
+  )
 
   return (
     <React.Fragment>
@@ -138,9 +154,7 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
               text="Tu ne peux pas cumuler les deux bonus"
             />
             <View>
-              <DashedStepContainer
-                bonificationStatus={bonificationQFStatus}
-                disabled={disableQFBonificationButton}>
+              <DashedStepContainer bonificationStatus={bonificationQFStatus}>
                 <BonficiationTitleContainer>
                   <StyledDiagram />
                   <Typo.Button>Quotient familial</Typo.Button>
@@ -167,34 +181,16 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                       variant="tertiary"
                       color="neutral"
                       icon={iconQFBonificationButton}
-                      wording={
-                        getBonificationButtonContent(
-                          BonificationType.FAMILY_QUOTIENT,
-                          bonificationQFStatus
-                        ).label
-                      }
-                      disabled={
-                        disableQFBonificationButton ||
-                        getBonificationButtonContent(
-                          BonificationType.FAMILY_QUOTIENT,
-                          bonificationQFStatus
-                        ).disabled
-                      }
+                      wording={qfBonificationButtonContent.label}
+                      disabled={qfBonificationButtonContent.disabled}
                       onPress={onPressQFBonificationButton}
-                      accessibilityLabel={
-                        getBonificationButtonContent(
-                          BonificationType.FAMILY_QUOTIENT,
-                          bonificationQFStatus
-                        ).accessibilityLabel
-                      }
+                      accessibilityLabel={qfBonificationButtonContent.accessibilityLabel}
                     />
                   </StyledButtonContainerFlexStart>
                 ) : null}
               </DashedStepContainer>
               <SeparatorWithText label="ou" />
-              <DashedStepContainer
-                bonificationStatus={disabilityBonificationStatus}
-                disabled={disableHandicapBonificationButton}>
+              <DashedStepContainer bonificationStatus={disabilityBonificationStatus}>
                 <BonficiationTitleContainer>
                   <StyledHandicapMotor />
                   <Typo.Button>Situation de handicap</Typo.Button>
@@ -221,26 +217,10 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                       variant="tertiary"
                       color="neutral"
                       icon={Again}
-                      wording={
-                        getBonificationButtonContent(
-                          BonificationType.DISABILITY,
-                          disabilityBonificationStatus
-                        ).label
-                      }
+                      wording={disabilityBonificationButtonContent.label}
                       onPress={onPressDisabilityBonificationButton}
-                      disabled={
-                        disableHandicapBonificationButton ||
-                        getBonificationButtonContent(
-                          BonificationType.DISABILITY,
-                          disabilityBonificationStatus
-                        ).disabled
-                      }
-                      accessibilityLabel={
-                        getBonificationButtonContent(
-                          BonificationType.DISABILITY,
-                          disabilityBonificationStatus
-                        ).accessibilityLabel
-                      }
+                      disabled={disabilityBonificationButtonContent.disabled}
+                      accessibilityLabel={disabilityBonificationButtonContent.accessibilityLabel}
                     />
                   </StyledButtonContainerFlexStart>
                 ) : null}
