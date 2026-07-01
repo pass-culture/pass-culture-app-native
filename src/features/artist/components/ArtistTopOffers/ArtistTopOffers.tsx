@@ -75,6 +75,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({
         euroToPacificFrancRate,
         analyticsFrom: 'artist',
         artistName,
+        originDetails: 'artistRecommendation',
         theme,
         hasSmallLayout: true,
         priceDisplay: (item: Offer) =>

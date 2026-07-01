@@ -50,6 +50,7 @@ describe('ArtistTopOffers', () => {
       from: 'artist',
       isHeadline: false,
       offerId: '16302',
+      originDetails: 'artistRecommendation',
       playlistType: PlaylistType.ARTIST_TOP_OFFERS,
     })
   })
