@@ -1,4 +1,3 @@
-
 diff --git a/node_modules/react-native-maps/src/AnimatedRegion.ts b/node_modules/react-native-maps/src/AnimatedRegion.ts
 index 03b995c..a7af504 100644
 --- a/node_modules/react-native-maps/src/AnimatedRegion.ts
@@ -58,6 +57,19 @@ index 1db5d07..9d7f64e 100644
    };
  }
  
+diff --git a/node_modules/react-native-maps/src/createFabricMap.tsx b/node_modules/react-native-maps/src/createFabricMap.tsx
+index 34ed4fa..51561c0 100644
+--- a/node_modules/react-native-maps/src/createFabricMap.tsx
++++ b/node_modules/react-native-maps/src/createFabricMap.tsx
+@@ -45,7 +45,7 @@
+ const createFabricMap = (ViewComponent: React.ComponentType, Commands: any) => {
+   return forwardRef<FabricMapHandle | null, FabricMapViewProps>(
+     (props, ref) => {
+-      const fabricRef = useRef<React.ElementRef<typeof ViewComponent>>(null);
++      const fabricRef = useRef<any>(null);
+ 
+       useImperativeHandle(ref, () => ({
+         async getMarkersFrames(onlyVisible: boolean) {
 diff --git a/node_modules/react-native-maps/src/decorateMapComponent.ts b/node_modules/react-native-maps/src/decorateMapComponent.ts
 index 3b52d77..df610fe 100644
 --- a/node_modules/react-native-maps/src/decorateMapComponent.ts
