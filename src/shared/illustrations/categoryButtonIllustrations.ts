@@ -1,6 +1,24 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-export const illustrationsCategoryBlockMapping: Record<string, string> = {
+const categoryButtonIllustrationNames = [
+  'Book',
+  'Camera',
+  'Computer',
+  'Mic',
+  'MusicSheet',
+  'Newspaper',
+  'Notebook',
+  'PaintingPalette',
+  'PassCard',
+  'Popcorn',
+  'Spotlight',
+  'Vase',
+  'Videogame',
+] as const
+
+export type CategoryButtonIllustrationName = (typeof categoryButtonIllustrationNames)[number]
+
+export const categoryButtonIllustrationUrls = {
   Book: buildCategoryIllustrationUrl('book%403x.png'),
   Camera: buildCategoryIllustrationUrl('camera%403x.png'),
   Computer: buildCategoryIllustrationUrl('computer%403x.png'),
@@ -14,4 +32,4 @@ export const illustrationsCategoryBlockMapping: Record<string, string> = {
   Spotlight: buildCategoryIllustrationUrl('spotlight%403x.png'),
   Vase: buildCategoryIllustrationUrl('vase%403x.png'),
   Videogame: buildCategoryIllustrationUrl('videogame%403x.png'),
-}
+} as const satisfies Record<CategoryButtonIllustrationName, string>

@@ -18,6 +18,7 @@ export const videoModuleColorsMapping: Record<
   Decorative05: 'decorative05',
   DeepPink: theme.colors.deepPinkLight,
   Gold: theme.colors.goldLight100,
+  Information01: 'information01',
   Information03: 'information03',
   Information04: 'information04',
   Lilac: theme.colors.lilacLight,

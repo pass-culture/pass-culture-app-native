@@ -5,6 +5,7 @@ import { PlaylistOffersParams, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes, ContentfulLabelCategories, Layout } from 'libs/contentful/types'
 import { GtlLevel } from 'shared/gtl/types'
+import type { CategoryButtonIllustrationName } from 'shared/illustrations/categoryButtonIllustrations'
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
@@ -263,8 +264,8 @@ export type CategoryBlock = {
   title: string
   homeEntryId: string
   image?: string
-  color: Color
-  illustrationCategoryBlock?: string
+  color: Color | CategoryHeaderColor
+  illustrationCategoryBlock?: CategoryButtonIllustrationName
 }
 
 export type TrendBlock = {
@@ -308,6 +309,7 @@ export enum Color {
   Decorative05 = 'Decorative05',
   DeepPink = 'DeepPink',
   Gold = 'Gold',
+  Information01 = 'Information01',
   Information03 = 'Information03',
   Information04 = 'Information04',
   Lilac = 'Lilac',

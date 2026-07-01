@@ -56,6 +56,11 @@ export const colorMapping: Record<
     text: ColorsEnum.LILAC_DARK,
     fill: ColorsEnum.GOLD_LIGHT_200,
   },
+  Information01: {
+    border: 'decorative04',
+    text: 'locked',
+    fill: 'information01',
+  },
   Information03: {
     border: 'brandPrimary',
     text: 'locked',

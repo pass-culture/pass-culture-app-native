@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
-import { illustrationsCategoryBlockMapping } from 'features/home/constants'
+import { getCategoryBlockColor } from 'features/home/helpers/getCategoryColor'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { getCategoryLabelParts } from 'features/search/helpers/getCategoryLabelParts/getCategoryLabelParts'
 import { analytics } from 'libs/analytics/provider'
@@ -12,6 +12,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { NewCategoryButton } from 'shared/categoryButton/NewCategoryButton'
+import { categoryButtonIllustrationUrls } from 'shared/illustrations/categoryButtonIllustrations'
 import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
@@ -62,20 +63,23 @@ export const CategoryListModule = ({
       <AccessibleTitle title={title} />
       <StyledView>
         {categoryBlockList.map((item) => {
+          const color = enableNewCategoryBlocks ? item.color : getCategoryBlockColor(item.color)
+          const categoryColorMapping = colorMapping[color] ?? colorMapping.Information04
+
           const fillFromDesignSystem = enableNewCategoryBlocks
-            ? designSystem.color.illustration[colorMapping[item.color]?.fill ?? 'default']
-            : designSystem.color.background[colorMapping[item.color]?.fill ?? 'default']
+            ? designSystem.color.illustration[categoryColorMapping.fill ?? 'default']
+            : designSystem.color.background[categoryColorMapping.fill ?? 'default']
 
           const borderFromDesignSystem =
-            designSystem.color.border[colorMapping[item.color]?.border ?? 'default']
+            designSystem.color.border[categoryColorMapping.border ?? 'default']
           return enableNewCategoryBlocks ? (
             <StyledNewCategoryButton
               key={item.id}
               label={item.title}
               height={BLOCK_HEIGHT}
               mobileMinWidth={mobileMinWidth}
-              fillColor={fillFromDesignSystem || colorMapping[item.color]?.fill}
-              borderColor={borderFromDesignSystem || colorMapping[item.color]?.border}
+              fillColor={fillFromDesignSystem || categoryColorMapping.fill}
+              borderColor={borderFromDesignSystem || categoryColorMapping.border}
               onBeforeNavigate={() => {
                 void analytics.logCategoryBlockClicked({
                   moduleId: item.id,
@@ -96,7 +100,7 @@ export const CategoryListModule = ({
               labelParts={getCategoryLabelParts(item.title)}
               illustrationUrl={
                 item.illustrationCategoryBlock
-                  ? illustrationsCategoryBlockMapping[item.illustrationCategoryBlock]
+                  ? categoryButtonIllustrationUrls[item.illustrationCategoryBlock]
                   : undefined
               }
             />
@@ -106,8 +110,8 @@ export const CategoryListModule = ({
               label={item.title}
               height={BLOCK_HEIGHT}
               mobileMinWidth={mobileMinWidth}
-              fillColor={fillFromDesignSystem || colorMapping[item.color]?.fill}
-              borderColor={borderFromDesignSystem || colorMapping[item.color]?.border}
+              fillColor={fillFromDesignSystem || categoryColorMapping.fill}
+              borderColor={borderFromDesignSystem || categoryColorMapping.border}
               onBeforeNavigate={() => {
                 void analytics.logCategoryBlockClicked({
                   moduleId: item.id,
