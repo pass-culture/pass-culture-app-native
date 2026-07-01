@@ -1,6 +1,6 @@
-import { DepositType, UserProfileResponse, YoungStatusType } from 'api/gen'
+import { UserProfileResponse, YoungStatusType } from 'api/gen'
+import { UserCreditType, getCreditType } from 'features/auth/helpers/getCreditType'
 import { logUserStatusTypeFallback } from 'features/profile/helpers/logUserStatusTypeFallback'
-import { getAge } from 'shared/user/getAge'
 
 export enum UserStatusType {
   ELIGIBLE = 'ELIGIBLE',
@@ -14,21 +14,20 @@ export enum UserStatusType {
 }
 
 export const getStatusType = (user: UserProfileResponse): UserStatusType => {
-  const { status, birthDate, depositType } = user
+  const { status } = user
 
   if (!user || !status) return UserStatusType.UNKNOWN
 
-  const age = getAge(birthDate)
-  const isEighteenOrMore = age && age >= 18
-  const isSeventeenOrMore = age && age >= 17
-  const isCreditV3 = depositType === DepositType.GRANT_17_18
-  const isEligibleAndBeneficiary = isCreditV3 && isEighteenOrMore
-  const isEligibleAndFreeBeneficiary = depositType === DepositType.GRANT_FREE && isSeventeenOrMore
+  const creditType = getCreditType(user)
+  const isBeneficiary = ![UserCreditType.CREDIT_EXPIRED, UserCreditType.NO_CREDIT].includes(
+    creditType
+  )
+  const isFreeBeneficiary = creditType === UserCreditType.CREDIT_V3_FREE
 
   switch (status.statusType) {
     case YoungStatusType.eligible:
-      if (isEligibleAndFreeBeneficiary) return UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY
-      if (isEligibleAndBeneficiary) return UserStatusType.ELIGIBLE_AND_BENEFICIARY
+      if (isFreeBeneficiary) return UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY
+      if (isBeneficiary) return UserStatusType.ELIGIBLE_AND_BENEFICIARY
       return UserStatusType.ELIGIBLE
     case YoungStatusType.beneficiary:
       return UserStatusType.BENEFICIARY
