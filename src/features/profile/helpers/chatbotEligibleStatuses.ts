@@ -5,4 +5,5 @@ export const CHATBOT_ELIGIBLE_STATUSES = new Set<UserStatusType>([
   UserStatusType.BENEFICIARY,
   UserStatusType.EX_BENEFICIARY,
   UserStatusType.ELIGIBLE_AND_BENEFICIARY,
+  UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY,
 ])
