@@ -544,17 +544,13 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
             }
           }
           style={
-            [
-              {
-                "bottom": 0,
-                "height": 120,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-              },
-              {},
-              {},
-            ]
+            {
+              "bottom": 0,
+              "height": 120,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         />
         <View
@@ -1290,17 +1286,13 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
             }
           }
           style={
-            [
-              {
-                "bottom": 0,
-                "height": 120,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-              },
-              {},
-              {},
-            ]
+            {
+              "bottom": 0,
+              "height": 120,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         />
         <View

@@ -1,6 +1,6 @@
 import { RouteProp } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
-import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'

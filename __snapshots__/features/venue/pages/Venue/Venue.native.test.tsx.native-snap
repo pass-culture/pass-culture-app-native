@@ -3334,17 +3334,13 @@ d’options
         }
       }
       style={
-        [
-          {
-            "bottom": "100%",
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-          {},
-          {},
-        ]
+        {
+          "bottom": "100%",
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
       }
     />
     <View
@@ -6837,17 +6833,13 @@ d’options
         }
       }
       style={
-        [
-          {
-            "bottom": "100%",
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-          {},
-          {},
-        ]
+        {
+          "bottom": "100%",
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
       }
     />
     <View
@@ -11172,17 +11164,13 @@ d’options
         }
       }
       style={
-        [
-          {
-            "bottom": "100%",
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-          {},
-          {},
-        ]
+        {
+          "bottom": "100%",
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
       }
     />
     <View
