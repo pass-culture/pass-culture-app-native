@@ -15,6 +15,7 @@ export const isCurrentBeneficiary = (user?: UserProfile) => {
   if (!user) return false
   return (
     user.statusType === UserStatusType.BENEFICIARY ||
+    user.statusType === UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY ||
     user.statusType === UserStatusType.ELIGIBLE_AND_BENEFICIARY
   )
 }
@@ -23,6 +24,7 @@ export const isEligible = (user?: UserProfile) => {
   if (!user) return false
   return (
     user?.statusType === UserStatusType.ELIGIBLE ||
+    user.statusType === UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY ||
     user?.statusType === UserStatusType.ELIGIBLE_AND_BENEFICIARY
   )
 }

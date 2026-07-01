@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { LoggedInBeneficiaryHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInBeneficiaryHeader/LoggedInBeneficiaryHeader'
@@ -27,20 +28,20 @@ export const LoggedInHeader = ({ user, featureFlags }: Props) => {
   const commonProps = { user, featureFlags }
 
   switch (user.statusType) {
-    case 'ELIGIBLE':
-    case 'ELIGIBLE_AND_FREE_BENEFICIARY':
+    case UserStatusType.ELIGIBLE:
+    case UserStatusType.ELIGIBLE_AND_FREE_BENEFICIARY:
       return <LoggedInEligibleHeader {...commonProps} subscriptionInfos={subscriptionInfos} />
 
-    case 'ELIGIBLE_AND_BENEFICIARY':
+    case UserStatusType.ELIGIBLE_AND_BENEFICIARY:
       return <LoggedInEligibleAndBeneficiaryHeader {...commonProps} depositAmount={depositAmount} />
 
-    case 'BENEFICIARY':
+    case UserStatusType.BENEFICIARY:
       return <LoggedInBeneficiaryHeader {...commonProps} bonificationInfos={bonificationInfos} />
 
-    case 'EX_BENEFICIARY':
+    case UserStatusType.EX_BENEFICIARY:
       return <LoggedInExBeneficiaryHeader {...commonProps} remoteConfigData={remoteConfigData} />
 
-    case 'GENERAL_PUBLIC':
+    case UserStatusType.GENERAL_PUBLIC:
     default:
       return <LoggedInGeneralPublicHeader {...commonProps} />
   }
