@@ -30,7 +30,7 @@ onFlowStart:
 - scrollUntilVisible:
     element: 'Des questions sur ton crédit ?'
 
-- tapOn: 'Faire une demande'
+- tapOn: 'Faire une demande de bonus quotient familial'
 
 - assertVisible: 'Quel est ce bonus et comment en bénéficier ?'
 
@@ -121,11 +121,11 @@ onFlowStart:
 
 - tapOn: 'Continuer vers le résumé'
 
-- assertVisible: 'Vérifie les infos avant d’envoyer ta demande'
+- assertVisible: 'Vérifie les informations avant d’envoyer ta demande'
 
 - scroll
 
-- tapOn: 'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées'
+- tapOn: 'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées.'
 
 - tapOn: 'Confirmer'
 
