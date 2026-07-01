@@ -133,29 +133,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="0"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -514,29 +495,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     }
                   >
                     <View
-                      collapsable={false}
-                      jestAnimatedProps={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestAnimatedStyle={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestInlineStyle={
+                      style={
                         {
                           "flexShrink": 0,
                         }
-                      }
-                      nativeID="1"
-                      style={
-                        [
-                          {
-                            "flexShrink": 0,
-                          },
-                        ]
                       }
                     >
                       <View
@@ -829,29 +791,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     }
                   >
                     <View
-                      collapsable={false}
-                      jestAnimatedProps={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestAnimatedStyle={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestInlineStyle={
+                      style={
                         {
                           "flexShrink": 0,
                         }
-                      }
-                      nativeID="2"
-                      style={
-                        [
-                          {
-                            "flexShrink": 0,
-                          },
-                        ]
                       }
                     >
                       <View

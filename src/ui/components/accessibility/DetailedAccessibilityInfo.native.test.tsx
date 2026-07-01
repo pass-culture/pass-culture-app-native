@@ -19,6 +19,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
+const openURLSpy = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
+
 describe('DetailedAccessibilityInfo', () => {
   it('should redirect to acceslibre when clicking on the banner link', async () => {
     render(
@@ -32,7 +34,7 @@ describe('DetailedAccessibilityInfo', () => {
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
     await user.press(accesLibreLink)
 
-    await waitFor(() => expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl))
+    await waitFor(() => expect(openURLSpy).toHaveBeenCalledWith(fakeAccesLibreUrl))
   })
 
   it('should log analytics with ID when clicking on the banner link and ID is provided', async () => {

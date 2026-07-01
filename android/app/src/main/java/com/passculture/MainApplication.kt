@@ -1,48 +1,28 @@
 package com.passculture
- 
+
 import android.app.Application
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
-import com.facebook.react.ReactNativeHost
-import com.facebook.react.ReactPackage
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
-import com.facebook.react.defaults.DefaultReactNativeHost
-import com.passculture.DefaultBrowserPackage
 import com.hotupdater.HotUpdater
- 
+
 class MainApplication : Application(), ReactApplication {
- 
-  override val reactNativeHost: ReactNativeHost =
-      object : DefaultReactNativeHost(this) {
-        override fun getPackages(): List<ReactPackage> =
-            PackageList(this).packages.apply {
-              // Packages that cannot be autolinked yet can be added manually here, for example:
-              // add(MyReactNativePackage())
 
-              // This module has been added to be able to open app links in browser, even if user has chosen to open them inside the app (in Android settings).
-              add(DefaultBrowserPackage())
-            }
- 
-        override fun getJSMainModuleName(): String = "index"
- 
-        override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
- 
-        override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
-        override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
+  override val reactHost: ReactHost by lazy {
+    getDefaultReactHost(
+            context = applicationContext,
+            packageList =
+                    PackageList(this).packages.toMutableList().apply {
+                      // This module has been added to be able to open app links in browser,
+                      // even if user has chosen to open them inside the app (in Android settings).
+                      add(DefaultBrowserPackage())
+                    },
+            jsBundleFilePath = HotUpdater.getJSBundleFile(applicationContext),
+    )
+  }
 
-        // 2. Override the getJSBundleFile method in order to let
-        // the HotUpdater runtime determine where to get the JS
-        // bundle location from on each app start
-        override fun getJSBundleFile(): String? {
-            return HotUpdater.getJSBundleFile(applicationContext)  
-        }
-      }
- 
-  override val reactHost: ReactHost
-    get() = getDefaultReactHost(this.applicationContext, reactNativeHost)
- 
   override fun onCreate() {
     super.onCreate()
     loadReactNative(this)

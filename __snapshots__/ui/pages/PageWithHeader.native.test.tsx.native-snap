@@ -133,29 +133,10 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="0"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -291,6 +272,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,
@@ -317,17 +299,13 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             }
           }
           style={
-            [
-              {
-                "bottom": 0,
-                "height": 120,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-              },
-              {},
-              {},
-            ]
+            {
+              "bottom": 0,
+              "height": 120,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         />
         <View
@@ -497,29 +475,10 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="1"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -655,6 +614,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,
@@ -681,17 +641,13 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             }
           }
           style={
-            [
-              {
-                "bottom": 0,
-                "height": 120,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-              },
-              {},
-              {},
-            ]
+            {
+              "bottom": 0,
+              "height": 120,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         />
         <View

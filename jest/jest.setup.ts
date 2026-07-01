@@ -1,11 +1,21 @@
-import { EmitterSubscription, Keyboard } from 'react-native'
-/* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
-// @ts-ignore jest can have access to this file but typescript does not know it
-// We can see it
+import { EmitterSubscription, Keyboard } from 'react-native'
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
-// Include this line for mocking react-native-gesture-handler
 import 'react-native-gesture-handler/jestSetup'
+
+jest.mock('react-native-worklets', () => require('react-native-worklets/src/mock'))
+jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'))
+jest.mock('react-native/Libraries/Linking/NativeLinkingManager', () => ({
+  __esModule: true,
+  default: {
+    getInitialURL: jest.fn().mockResolvedValue(null),
+    canOpenURL: jest.fn().mockResolvedValue(true),
+    openURL: jest.fn().mockResolvedValue(undefined),
+    openSettings: jest.fn().mockResolvedValue(undefined),
+    addListener: jest.fn(),
+    removeListeners: jest.fn(),
+  },
+}))
 
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 /* Tests passed but there is a console error in web files */

@@ -137,29 +137,10 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="6"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -613,29 +594,10 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               }
             >
               <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
-                  }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {},
-                  }
-                }
-                jestInlineStyle={
+                style={
                   {
                     "flexShrink": 0,
                   }
-                }
-                nativeID="7"
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
                 }
               >
                 <View
@@ -826,29 +788,10 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="0"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -1255,29 +1198,10 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               }
             >
               <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
-                  }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {},
-                  }
-                }
-                jestInlineStyle={
+                style={
                   {
                     "flexShrink": 0,
                   }
-                }
-                nativeID="1"
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
                 }
               >
                 <View

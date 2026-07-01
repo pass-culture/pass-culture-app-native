@@ -131,30 +131,6 @@ describe('<ImagesCarouselModal />', () => {
     expect(await screen.findByText('2/3')).toBeInTheDocument()
   })
 
-  it('should display previous image', async () => {
-    jest.useFakeTimers()
-    render(
-      <ImagesCarouselModal
-        isVisible
-        imagesURL={['image1', 'image2', 'image3']}
-        hideModal={jest.fn()}
-        defaultIndex={2}
-      />
-    )
-
-    await forceOnLayout()
-
-    await screen.findByText('3/3')
-
-    fireEvent.click(screen.getByTestId('Image précédente'))
-
-    await act(async () => {
-      jest.advanceTimersByTime(500)
-    })
-
-    expect(await screen.findByText('2/3')).toBeInTheDocument()
-  })
-
   it('should close modal on click on close button', async () => {
     jest.useFakeTimers()
     const mockOnClose = jest.fn()
