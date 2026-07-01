@@ -114,6 +114,7 @@ export type ConsultArtistOriginDetails =
   | 'venue'
   | 'offer'
   | 'searchResults'
+  | 'artistRecommendation'
 
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {

@@ -46,6 +46,7 @@ export interface OfferTileProps {
   apiRecoParams?: RecommendationApiParams
   index?: number
   artistName?: string
+  originDetails?: string
   navigationMethod?: NavigationMethod
   interactionTag?: ReactNode
   containerWidth?: number
