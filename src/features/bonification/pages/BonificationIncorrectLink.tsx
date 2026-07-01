@@ -6,15 +6,12 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Typo } from 'ui/theme'
 
-export function BonificationIncorrectLink() {
+export const BonificationIncorrectLink = () => {
   return (
     <GenericInfoPage
       illustration={SadFace}
       title="Oups, ce lien semble incorrect"
-      buttonPrimary={{
-        wording: 'Revenir au catalogue',
-        navigateTo: navigateToHomeConfig,
-      }}>
+      buttonPrimary={{ wording: 'Revenir au catalogue', navigateTo: navigateToHomeConfig }}>
       <StyledBody>
         Nous ne pouvons pas te rediriger vers cette page. Vérifie le lien ou retourne simplement à
         l’accueil.

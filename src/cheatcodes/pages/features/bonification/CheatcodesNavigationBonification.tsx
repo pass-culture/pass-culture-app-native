@@ -101,6 +101,11 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
         bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
       }),
     },
+    {
+      id: uuidv4(),
+      title: 'BonificationDisabilityRefused',
+      navigationTarget: getSubscriptionPropConfig('BonificationDisabilityRefused'),
+    },
   ],
 }
 

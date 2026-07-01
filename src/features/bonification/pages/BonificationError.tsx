@@ -9,7 +9,7 @@ import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
-export function BonificationError() {
+export const BonificationError = () => {
   return (
     <GenericInfoPage
       illustration={HappyFaceWithTear}

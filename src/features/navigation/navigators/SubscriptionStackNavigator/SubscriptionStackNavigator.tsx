@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
+import { BonificationDisabilityRefused } from 'features/bonification/pages/BonificationDisabilityRefused'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
 import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
 import { BonificationIncorrectLink } from 'features/bonification/pages/BonificationIncorrectLink'
@@ -273,6 +274,13 @@ const subscriptionStackNavigatorDefinition = {
       screen: ComeBackLater,
       linking: {
         path: 'identification/reviens-plus-tard',
+      },
+    },
+    BonificationDisabilityRefused: {
+      screen: BonificationDisabilityRefused,
+      if: useIsSignedIn,
+      linking: {
+        path: 'bonification/refuse-handicap',
       },
     },
     BonificationExplanations: {

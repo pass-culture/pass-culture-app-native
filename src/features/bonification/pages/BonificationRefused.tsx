@@ -145,7 +145,7 @@ export const PAGE_CONFIG: PageConfigMap = {
   },
 }
 
-export function BonificationRefused() {
+export const BonificationRefused = () => {
   const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
   const { user } = useAuthContext()
   const showNumberOfRemainingRetries =
