@@ -1,5 +1,5 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useCallback, useEffect, useState } from 'react'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
