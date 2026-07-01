@@ -5,14 +5,9 @@ import { ArtistResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useArtistQuery = (artistId: string) =>
-  useQuery<ArtistResponse | null, string>({
+  useQuery<ArtistResponse, string>({
     queryKey: [QueryKeys.ARTIST, artistId],
-    queryFn: async () => {
-      try {
-        return await api.getNativeV1ArtistsartistId(artistId)
-      } catch (error) {
-        return null
-      }
-    },
+    queryFn: async () => api.getNativeV1ArtistsartistId(artistId),
     staleTime: 60 * 60 * 1000,
+    throwOnError: false,
   })

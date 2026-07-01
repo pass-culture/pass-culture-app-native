@@ -61,9 +61,11 @@ const mockUseArtistQueryConfig = { shouldError: false }
 jest.mock('queries/artist/useArtistQuery', () => ({
   useArtistQuery: (artistId: string | undefined) => {
     if (mockUseArtistQueryConfig.shouldError) {
-      return { data: null }
+      return { data: undefined, isError: true }
     }
-    return artistId === undefined ? { data: null } : { data: mockArtist }
+    return artistId === undefined
+      ? { data: undefined, isError: false }
+      : { data: mockArtist, isError: false }
   },
 }))
 
