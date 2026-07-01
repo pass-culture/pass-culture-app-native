@@ -10,6 +10,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 interface VideoModuleBaseProps extends VideoModuleType {
   index: number
@@ -63,30 +64,38 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
     homeEntryId: props.homeEntryId,
   }
 
+  const videoModuleNavigateParams = {
+    moduleId: props.id,
+    moduleName: props.title,
+    homeEntryId: props.homeEntryId,
+    offersModuleParameters: props.offersModuleParameters,
+    youtubeVideoId: props.youtubeVideoId,
+    isMultiOffer,
+    videoTag: props.videoTag,
+    videoPublicationDate: props.videoPublicationDate,
+    videoDescription: props.videoDescription,
+    offerTitle: props.offerTitle,
+    color: props.color,
+    videoTitle: props.videoTitle,
+    offerIds: props.offerIds,
+    eanList: props.eanList,
+    transcription: props.transcription,
+    thematicHomeEntryId: props.thematicHomeEntryId,
+    thematicHomeTitle: props.thematicHomeTitle,
+  }
+
+  const navigateToVideoModulePage: InternalNavigationProps['navigateTo'] = {
+    screen: 'VideoModulePage',
+    params: videoModuleNavigateParams,
+  }
+
   const videoModuleParams = {
     isMultiOffer,
     analyticsParams,
     onVideoPlaceholderPress: () => {
-      navigate('VideoModulePage', {
-        moduleId: props.id,
-        moduleName: props.title,
-        homeEntryId: props.homeEntryId,
-        offersModuleParameters: props.offersModuleParameters,
-        youtubeVideoId: props.youtubeVideoId,
-        isMultiOffer,
-        videoTag: props.videoTag,
-        videoPublicationDate: props.videoPublicationDate,
-        videoDescription: props.videoDescription,
-        offerTitle: props.offerTitle,
-        color: props.color,
-        videoTitle: props.videoTitle,
-        offerIds: props.offerIds,
-        eanList: props.eanList,
-        transcription: props.transcription,
-        thematicHomeEntryId: props.thematicHomeEntryId,
-        thematicHomeTitle: props.thematicHomeTitle,
-      })
+      navigate('VideoModulePage', videoModuleNavigateParams)
     },
+    navigateToVideoModulePage,
     offers,
   }
 
