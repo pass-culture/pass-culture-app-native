@@ -1,4 +1,3 @@
-import { useNavigationState } from '@react-navigation/native'
 import { isEqual } from 'lodash'
 import React, { useCallback, useMemo } from 'react'
 import { useTheme } from 'styled-components'
@@ -15,7 +14,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -35,9 +33,6 @@ export const SearchFilter: React.FC = () => {
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.[routes?.length - 1]?.name
-  useSync(currentRoute === 'SearchFilter')
 
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch('SearchResults')

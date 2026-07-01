@@ -1060,7 +1060,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1074,7 +1074,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     }
                   }
                   accessible={true}
-                  focusable={true}
+                  focusable={false}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1165,7 +1165,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                             "lineHeight": 14,
                           },
                           {
-                            "color": "#161617",
+                            "color": "#696a6f",
                             "flexBasis": undefined,
                             "flexGrow": undefined,
                             "flexShrink": 1,
