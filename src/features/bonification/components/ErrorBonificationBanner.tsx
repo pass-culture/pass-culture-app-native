@@ -10,21 +10,25 @@ type ErrorBonificationBannerProps = {
   amount: string
   onClose: () => void
   refusedType: BonificationRefusedType
+  disableQFBonificationButton: boolean
 }
 
 export const ErrorBonificationBanner = ({
   amount,
   refusedType,
   onClose,
+  disableQFBonificationButton,
 }: ErrorBonificationBannerProps) => {
-  const links = [
-    {
-      navigateTo: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: refusedType,
-      }),
-      wording: 'Voir plus de détails',
-    },
-  ]
+  const links = disableQFBonificationButton
+    ? undefined
+    : [
+        {
+          wording: 'Voir plus de détails',
+          navigateTo: getSubscriptionPropConfig('BonificationRefused', {
+            bonificationRefusedType: refusedType,
+          }),
+        },
+      ]
 
   return (
     <Banner

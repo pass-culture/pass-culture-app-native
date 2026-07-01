@@ -2,8 +2,9 @@ import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
-import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import { qfBonificationActions } from 'features/bonification/store/qfBonificationStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/env'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
@@ -25,7 +26,7 @@ describe('BonificationBirthDate', () => {
     await userEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
+      params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
       screen: 'BonificationBirthPlace',
     })
   })
@@ -53,12 +54,12 @@ describe('BonificationBirthDate', () => {
 
   describe('Data persistence', () => {
     beforeEach(() => {
-      const { resetLegalRepresentative } = legalRepresentativeActions
-      resetLegalRepresentative()
+      const { resetQFBonification } = qfBonificationActions
+      resetQFBonification()
     })
 
     it('should show previously saved data if there is any', () => {
-      const { setBirthDate } = legalRepresentativeActions
+      const { setBirthDate } = qfBonificationActions
       const birthDate = '1975-10-10T00:00:00.000Z'
       setBirthDate(new Date(birthDate))
       render(<BonificationBirthDate />)
@@ -69,7 +70,7 @@ describe('BonificationBirthDate', () => {
     })
 
     it('should save form to store when pressing "Continuer"', async () => {
-      const setBirthDateSpy = jest.spyOn(legalRepresentativeActions, 'setBirthDate')
+      const setBirthDateSpy = jest.spyOn(qfBonificationActions, 'setBirthDate')
 
       render(<BonificationBirthDate />)
 

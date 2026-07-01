@@ -3,6 +3,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -10,7 +11,10 @@ import { CreditProgressBar } from 'features/profile/components/CreditInfo/Credit
 import { BlockDescriptionItem } from 'features/profile/components/Tutorial/BlockDescriptionItem'
 import { DashedStepContainer } from 'features/profile/components/Tutorial/DashedStepContainer'
 import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
+import { getBonificationButtonContent } from 'features/profile/helpers/getBonificationButtonContent'
 import { UserProfile } from 'features/share/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
@@ -39,33 +43,31 @@ export const BonificationFamilyQuotientStep = ({
   isLoggedIn,
   resetBannerVisibility,
 }: Props) => {
+  const disableQFBonificationButton = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON
+  )
   const { designSystem } = useTheme()
+
   const { navigate } = useNavigation<UseNavigationType>()
+
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+
   const bonificationTooManyRetries = user?.remainingBonusAttempts === 0
+
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
+
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
 
-  const getWording = (status: QFBonificationStatus | null | undefined): string => {
-    switch (status) {
-      case QFBonificationStatus.started:
-        return 'En cours de traitement'
-      case QFBonificationStatus.granted:
-        return 'Bonus obtenu'
-      default:
-        return 'Vérifier maintenant'
-    }
-  }
+  const showBonificationButton =
+    isLoggedIn &&
+    isEligibleToBonification &&
+    !wasBonificationReceived &&
+    !disableQFBonificationButton
 
-  const getDisabled = (status: QFBonificationStatus | null | undefined): boolean => {
-    switch (status) {
-      case QFBonificationStatus.started:
-      case QFBonificationStatus.granted:
-        return true
-      default:
-        return false
-    }
-  }
+  const bonificationButtonContent = getBonificationButtonContent(
+    BonificationType.FAMILY_QUOTIENT,
+    bonificationStatus
+  )
 
   return (
     <React.Fragment>
@@ -110,18 +112,19 @@ export const BonificationFamilyQuotientStep = ({
                 />,
               ]}
             />
-            {!isLoggedIn || !isEligibleToBonification || wasBonificationReceived ? null : (
+            {showBonificationButton ? (
               <ButtonContainerFlexStart>
                 <Button
                   variant="tertiary"
                   color="neutral"
+                  disabled={bonificationButtonContent.disabled}
                   icon={
                     bonificationStatus === QFBonificationStatus.started
                       ? ClockFilled
                       : PlainArrowNext
                   }
-                  wording={getWording(bonificationStatus)}
-                  disabled={getDisabled(bonificationStatus)}
+                  wording={bonificationButtonContent.label}
+                  accessibilityLabel={bonificationButtonContent.accessibilityLabel}
                   onPress={() => {
                     if (bonificationTooManyRetries) {
                       navigate(
@@ -136,7 +139,7 @@ export const BonificationFamilyQuotientStep = ({
                   }}
                 />
               </ButtonContainerFlexStart>
-            )}
+            ) : null}
           </ViewGap>
         </DashedStepContainer>
       </InternalStep>

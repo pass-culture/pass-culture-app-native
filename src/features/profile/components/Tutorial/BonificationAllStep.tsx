@@ -3,7 +3,8 @@ import React from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { QFBonificationStatus } from 'api/gen'
+import { DisabilityBonificationStatus, QFBonificationStatus } from 'api/gen'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -12,7 +13,10 @@ import { BlockDescriptionItem } from 'features/profile/components/Tutorial/Block
 import { DashedStepContainer } from 'features/profile/components/Tutorial/DashedStepContainer'
 import { DefaultStepContainer } from 'features/profile/components/Tutorial/DefaultStepContainer'
 import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
+import { getBonificationButtonContent } from 'features/profile/helpers/getBonificationButtonContent'
 import { UserProfile } from 'features/share/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
@@ -20,6 +24,7 @@ import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
+import { Again } from 'ui/svg/icons/Again'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Diagram } from 'ui/svg/icons/Diagram'
@@ -39,35 +44,29 @@ type Props = {
 }
 
 export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility, user }: Props) => {
+  const disableQFBonificationButton = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON
+  )
+  const disableHandicapBonificationButton = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_BUTTON
+  )
+
   const { designSystem } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
-  const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
-  const bonificationTooManyRetries = user?.remainingBonusAttempts === 0
-  const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
-  const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
-
-  const getWording = (status: QFBonificationStatus | null | undefined): string => {
-    switch (status) {
-      case QFBonificationStatus.started:
-        return 'En cours de traitement'
-      case QFBonificationStatus.granted:
-        return 'Bonus obtenu'
-      default:
-        return 'Faire une demande'
-    }
+  const navigateToBonificationExplanations = () => {
+    navigate(...getSubscriptionHookConfig('BonificationExplanations'))
   }
 
-  const getDisabled = (status: QFBonificationStatus | null | undefined): boolean => {
-    switch (status) {
-      case QFBonificationStatus.started:
-      case QFBonificationStatus.granted:
-        return true
-      default:
-        return false
-    }
-  }
+  // FAMILY QUOTIENT BONIFICATION
+  const bonificationQFStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
 
-  const navigateToBonificationRefused = () => {
+  const bonificationQFTooManyRetries = user?.remainingBonusAttempts === 0
+
+  const isEligibleToQFBonification = bonificationQFStatus !== QFBonificationStatus.not_eligible
+
+  const wasQFBonificationReceived = bonificationQFStatus === QFBonificationStatus.granted
+
+  const navigateToQFBonificationRefused = () => {
     navigate(
       ...getSubscriptionHookConfig('BonificationRefused', {
         bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
@@ -75,20 +74,53 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
     )
   }
 
-  const navigateToBonificationExplanations = () => {
-    navigate(...getSubscriptionHookConfig('BonificationExplanations'))
-  }
-
-  const onPressFamilyQuotientBonificationButton = () => {
-    if (bonificationTooManyRetries) navigateToBonificationRefused()
+  const onPressQFBonificationButton = () => {
+    if (bonificationQFTooManyRetries) navigateToQFBonificationRefused()
     else navigateToBonificationExplanations()
     resetBannerVisibility()
   }
 
-  const defaultDashedStepContainer = null
-  const showBonificationButton = isLoggedIn && isEligibleToBonification && !wasBonificationReceived
-  const iconBonificationButton =
-    bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
+  const showQFBonificationButton =
+    isLoggedIn &&
+    isEligibleToQFBonification &&
+    !wasQFBonificationReceived &&
+    !disableQFBonificationButton
+
+  const iconQFBonificationButton =
+    bonificationQFStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
+
+  const qfBonificationButtonContent = getBonificationButtonContent(
+    BonificationType.FAMILY_QUOTIENT,
+    bonificationQFStatus
+  )
+
+  // DISABILITY BONIFICATION
+  const disabilityBonificationStatus: DisabilityBonificationStatus | null | undefined =
+    user?.disabilityBonificationStatus
+
+  const isEligibleToDisabilityBonification =
+    disabilityBonificationStatus !== DisabilityBonificationStatus.not_eligible
+
+  const wasDisabilityBonificationReceived =
+    disabilityBonificationStatus === DisabilityBonificationStatus.granted
+
+  const showDisabilityBonificationButton =
+    isLoggedIn &&
+    isEligibleToDisabilityBonification &&
+    !wasDisabilityBonificationReceived &&
+    !disableHandicapBonificationButton
+
+  const onPressDisabilityBonificationButton = () =>
+    navigate(
+      ...getSubscriptionHookConfig('BonificationRequiredInformation', {
+        bonificationType: BonificationType.DISABILITY,
+      })
+    )
+
+  const disabilityBonificationButtonContent = getBonificationButtonContent(
+    BonificationType.DISABILITY,
+    disabilityBonificationStatus
+  )
 
   return (
     <React.Fragment>
@@ -122,7 +154,7 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
               text="Tu ne peux pas cumuler les deux bonus"
             />
             <View>
-              <DashedStepContainer bonificationStatus={bonificationStatus}>
+              <DashedStepContainer bonificationStatus={bonificationQFStatus}>
                 <BonficiationTitleContainer>
                   <StyledDiagram />
                   <Typo.Button>Quotient familial</Typo.Button>
@@ -143,21 +175,22 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                     />,
                   ]}
                 />
-                {showBonificationButton ? (
+                {showQFBonificationButton ? (
                   <StyledButtonContainerFlexStart>
                     <Button
                       variant="tertiary"
                       color="neutral"
-                      icon={iconBonificationButton}
-                      wording={getWording(bonificationStatus)}
-                      disabled={getDisabled(bonificationStatus)}
-                      onPress={onPressFamilyQuotientBonificationButton}
+                      icon={iconQFBonificationButton}
+                      wording={qfBonificationButtonContent.label}
+                      disabled={qfBonificationButtonContent.disabled}
+                      onPress={onPressQFBonificationButton}
+                      accessibilityLabel={qfBonificationButtonContent.accessibilityLabel}
                     />
                   </StyledButtonContainerFlexStart>
                 ) : null}
               </DashedStepContainer>
               <SeparatorWithText label="ou" />
-              <DashedStepContainer bonificationStatus={defaultDashedStepContainer}>
+              <DashedStepContainer bonificationStatus={disabilityBonificationStatus}>
                 <BonficiationTitleContainer>
                   <StyledHandicapMotor />
                   <Typo.Button>Situation de handicap</Typo.Button>
@@ -178,6 +211,19 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
                     />,
                   ]}
                 />
+                {showDisabilityBonificationButton ? (
+                  <StyledButtonContainerFlexStart>
+                    <Button
+                      variant="tertiary"
+                      color="neutral"
+                      icon={Again}
+                      wording={disabilityBonificationButtonContent.label}
+                      onPress={onPressDisabilityBonificationButton}
+                      disabled={disabilityBonificationButtonContent.disabled}
+                      accessibilityLabel={disabilityBonificationButtonContent.accessibilityLabel}
+                    />
+                  </StyledButtonContainerFlexStart>
+                ) : null}
               </DashedStepContainer>
             </View>
           </Container>

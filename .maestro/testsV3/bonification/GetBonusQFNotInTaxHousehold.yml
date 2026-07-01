@@ -30,13 +30,13 @@ onFlowStart:
 - scrollUntilVisible:
     element: 'Des questions sur ton crédit ?'
 
-- tapOn: 'Vérifier maintenant'
+- tapOn: 'Faire une demande'
 
 - assertVisible: 'Quel est ce bonus et comment en bénéficier ?'
 
 - tapOn: '.*Continuer.*'
 
-- assertVisible: "Munis-toi des informations suivantes pour faire ta demande :"
+- assertVisible: 'Munis-toi des informations suivantes pour faire ta demande :'
 
 - tapOn: '.*Commencer.*'
 
@@ -121,7 +121,7 @@ onFlowStart:
 
 - tapOn: 'Continuer vers le résumé'
 
-- assertVisible: "Vérifie les infos avant d’envoyer ta demande"
+- assertVisible: 'Vérifie les informations avant d’envoyer ta demande'
 
 - scroll
 
@@ -167,7 +167,7 @@ onFlowStart:
 - tapOn: 'Se connecter'
 
 - extendedWaitUntil:
-    visible: ".*Bonjour.*"
+    visible: '.*Bonjour.*'
     timeout: 10000
 
 - tapOn: '.*Profil.*'
