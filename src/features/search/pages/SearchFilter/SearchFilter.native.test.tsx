@@ -111,8 +111,7 @@ describe('<SearchFilter/>', () => {
       searchState: {
         ...initialSearchState,
         locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-        minPrice: '5',
-        defaultMinPrice: '5',
+        minPrice: 5,
       },
     })
     renderSearchFilter()
@@ -199,7 +198,7 @@ describe('<SearchFilter/>', () => {
       beforeEach(() => {
         mockUseSearch.mockReturnValue({
           ...initialMockUseSearch,
-          searchState: { ...initialSearchState, minPrice: '10' },
+          searchState: { ...initialSearchState, minPrice: 10 },
         })
         mockUseLocation.mockReturnValue({
           ...initialMockUseLocation,

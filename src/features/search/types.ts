@@ -56,18 +56,13 @@ export interface SearchState {
   offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
-  offerIsFree?: boolean
   isDigital: boolean
-  priceRange: Range<number> | null
   timeRange: Range<number> | null
   tags: string[]
   query: string
-  minPrice?: string
-  maxPrice?: string
-  defaultMinPrice?: string
-  defaultMaxPrice?: string
+  minPrice?: number
+  maxPrice?: number
   searchId?: string
-  maxPossiblePrice?: string
   isAutocomplete?: boolean
   isFullyDigitalOffersCategory?: boolean
   minBookingsThreshold?: number

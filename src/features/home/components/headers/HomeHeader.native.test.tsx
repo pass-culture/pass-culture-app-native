@@ -8,7 +8,7 @@ import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
-import { useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -20,9 +20,9 @@ jest.unmock('@react-navigation/native')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('shared/user/useAvailableCredit')
+jest.mock('shared/user/getAvailableCredit')
 
-const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
+const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
 
 describe('HomeHeader', () => {
@@ -34,7 +34,7 @@ describe('HomeHeader', () => {
     mockAuthContextWithUser(exBeneficiaryUser)
 
     const credit = { amount: 5, isExpired: true }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGetAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -50,7 +50,7 @@ describe('HomeHeader', () => {
     })
 
     const credit = { amount: 5600, isExpired: false }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGetAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -66,7 +66,7 @@ describe('HomeHeader', () => {
     })
 
     const credit = { amount: 0, isExpired: false }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGetAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -83,7 +83,7 @@ describe('HomeHeader', () => {
     })
 
     const credit = { amount: 0, isExpired: false }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGetAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -96,7 +96,7 @@ describe('HomeHeader', () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
 
     const credit = { amount: 0, isExpired: false }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGetAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -108,7 +108,7 @@ describe('HomeHeader', () => {
     mockAuthContextWithoutUser()
 
     const credit = { amount: 0, isExpired: false }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
+    mockGetAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()

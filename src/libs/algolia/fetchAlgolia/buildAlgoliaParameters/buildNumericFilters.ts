@@ -12,12 +12,9 @@ export const buildNumericFilters = (
     date,
     beginningDatetime,
     endingDatetime,
-    offerIsFree,
-    priceRange,
     timeRange,
     minPrice,
     maxPrice,
-    maxPossiblePrice,
     minBookingsThreshold,
     minLikes,
     isWithClub,
@@ -26,12 +23,9 @@ export const buildNumericFilters = (
     | 'beginningDatetime'
     | 'endingDatetime'
     | 'date'
-    | 'offerIsFree'
-    | 'priceRange'
     | 'timeRange'
     | 'minPrice'
     | 'maxPrice'
-    | 'maxPossiblePrice'
     | 'minBookingsThreshold'
     | 'isHeadline'
     | 'minLikes'
@@ -41,13 +35,7 @@ export const buildNumericFilters = (
 ): null | {
   numericFilters: FiltersArray
 } => {
-  const priceRangePredicate = buildOfferPriceRangePredicate({
-    offerIsFree,
-    priceRange,
-    minPrice,
-    maxPrice,
-    maxPossiblePrice,
-  })
+  const priceRangePredicate = buildOfferPriceRangePredicate(minPrice, maxPrice)
   const datePredicate = buildDatePredicate({ date, timeRange })
   const homepageDatePredicate = buildHomepageDatePredicate(
     {

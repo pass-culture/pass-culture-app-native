@@ -1,12 +1,12 @@
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertCurrency'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { FormatPriceOptions } from '../../libs/parsers/getDisplayedPrice'
 
-const getFractionDigits = (princeInEuro: number, options?: FormatPriceOptions): number => {
+const getFractionDigits = (priceInEuro: number, options?: FormatPriceOptions): number => {
   if (options?.fractionDigits) return options.fractionDigits
-  return princeInEuro === Math.floor(princeInEuro) ? 0 : 2
+  return priceInEuro === Math.floor(priceInEuro) ? 0 : 2
 }
 
 export const formatCurrencyFromCents = (
@@ -18,7 +18,7 @@ export const formatCurrencyFromCents = (
   const priceInEuro = convertCentsToEuros(priceInCents)
 
   if (currency === Currency.PACIFIC_FRANC_SHORT) {
-    const priceInPacificFrancs = convertEuroToPacificFranc(
+    const priceInPacificFrancs = convertCurrency(
       priceInEuro,
       euroToPacificFrancRate,
       RoundUnit.UNITS

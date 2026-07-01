@@ -13,7 +13,7 @@ import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('shared/user/useAvailableCredit')
+jest.mock('shared/user/getAvailableCredit')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/helpers/isUserExBeneficiary')
 jest.mock('libs/subcategories/useSubcategory')

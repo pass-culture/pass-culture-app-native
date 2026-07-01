@@ -24,7 +24,6 @@ jest.mock('queries/subcategories/useSubcategoriesQuery')
 let mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
-  priceRange: [0, 20],
 }
 
 const queryWithMoreThan150characters =
@@ -158,7 +157,6 @@ describe('SearchBox component', () => {
     mockSearchState = {
       ...initialSearchState,
       offerCategories: [SearchGroupNameEnumv2.CINEMA],
-      priceRange: [0, 20],
     }
     mockQuery = ''
     mockIsFocusOnSuggestions = false
@@ -189,7 +187,6 @@ describe('SearchBox component', () => {
         ...initialSearchState,
         query: 'j',
         offerCategories: mockSearchState.offerCategories,
-        priceRange: mockSearchState.priceRange,
         searchId,
       },
     })
@@ -225,7 +222,6 @@ describe('SearchBox component', () => {
           ...initialSearchState,
           query: 'j',
           offerCategories: mockSearchState.offerCategories,
-          priceRange: mockSearchState.priceRange,
           searchId,
           accessibilityFilter: {
             isAudioDisabilityCompliant: undefined,
@@ -337,7 +333,6 @@ describe('SearchBox component', () => {
         ...initialSearchState,
         query: 'j',
         offerCategories: mockSearchState.offerCategories,
-        priceRange: mockSearchState.priceRange,
         searchId,
       },
     })
@@ -453,7 +448,6 @@ describe('SearchBox component', () => {
                 isMotorDisabilityCompliant: undefined,
                 isVisualDisabilityCompliant: undefined,
               },
-              priceRange: mockSearchState.priceRange,
             },
             screen: 'ThematicSearch',
           },
@@ -629,7 +623,6 @@ describe('SearchBox component', () => {
           query: 'HP',
           offerCategories: BOOK_OFFER_CATEGORIES,
           offerNativeCategories: BOOK_OFFER_NATIVE_CATEGORIES,
-          priceRange: mockSearchState.priceRange,
           searchId,
         },
       })
@@ -692,7 +685,6 @@ describe('SearchBox component', () => {
           query: 'HP',
           offerCategories: BOOK_OFFER_CATEGORIES,
           gtls: [],
-          priceRange: mockSearchState.priceRange,
           searchId,
         },
       })

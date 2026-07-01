@@ -890,19 +890,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       >
                         Prix maximum (en €)
                       </Text>
-                      <Text
-                        style={
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                            "marginTop": 2,
-                          }
-                        }
-                      >
-                        max : 80 €
-                      </Text>
                     </View>
                   </View>
                 </View>
@@ -936,7 +923,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   testID="styled-input-container"
                 >
                   <TextInput
-                    accessibilityLabel="Champs de texte - Prix maximum (en €) - max : 80 €"
+                    accessibilityLabel="Champs de texte - Prix maximum (en €)"
                     accessibilityRequired={false}
                     autoCapitalize="none"
                     autoComplete="off"
@@ -1035,7 +1022,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     {
                       "busy": undefined,
                       "checked": undefined,
-                      "disabled": true,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1049,7 +1036,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     }
                   }
                   accessible={true}
-                  focusable={false}
+                  focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1140,7 +1127,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                             "lineHeight": 14,
                           },
                           {
-                            "color": "#696a6f",
+                            "color": "#161617",
                             "flexBasis": undefined,
                             "flexGrow": undefined,
                             "flexShrink": 1,

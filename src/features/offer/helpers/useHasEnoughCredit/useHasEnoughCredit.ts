@@ -6,7 +6,7 @@ import { UserProfile } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
+import { RoundUnit, convertCurrency } from 'shared/currency/convertCurrency'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
 export type HasEnoughCredit =
@@ -16,17 +16,13 @@ export type HasEnoughCredit =
 const message =
   'En raison des conversions monétaires, ton crédit disponible ne couvre pas le prix total.'
 
-function convertDomainCreditToPacificFranc(
+const convertDomainCreditToPacificFranc = (
   credit: { initial: number; remaining: number },
   rate: number
-) {
+) => {
   return {
-    initial: convertEuroToPacificFranc(convertCentsToEuros(credit.initial), rate, RoundUnit.UNITS),
-    remaining: convertEuroToPacificFranc(
-      convertCentsToEuros(credit.remaining),
-      rate,
-      RoundUnit.UNITS
-    ),
+    initial: convertCurrency(convertCentsToEuros(credit.initial), rate, RoundUnit.UNITS),
+    remaining: convertCurrency(convertCentsToEuros(credit.remaining), rate, RoundUnit.UNITS),
   }
 }
 
@@ -50,7 +46,7 @@ export const useHasEnoughCredit = (
   // If the currency is Euro, we only check the Euro credit
   if (currency === Currency.EURO) return { hasEnoughCredit: hasEnoughCreditInEuro }
 
-  const priceInPacificFranc = convertEuroToPacificFranc(
+  const priceInPacificFranc = convertCurrency(
     convertCentsToEuros(priceInEuroCents),
     euroToPacificFrancRate,
     RoundUnit.UNITS

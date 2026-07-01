@@ -163,22 +163,19 @@ export type SearchQueryParameters = {
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean
-  maxPossiblePrice?: string
-  maxPrice?: string
+  maxPrice?: number
   minBookingsThreshold?: number
-  minPrice?: string
+  minPrice?: number
   isHeadline?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerGtlLabel?: string
   offerGtlLevel?: GtlLevel
   offerIsDuo: boolean
-  offerIsFree?: boolean
   offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   isDigital: boolean
   page?: number
-  priceRange: Range<number> | null
   query: string
   searchId?: string
   tags: string[]

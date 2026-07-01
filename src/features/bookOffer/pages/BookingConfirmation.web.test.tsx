@@ -5,8 +5,8 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
-jest.mock('shared/user/useAvailableCredit', () => ({
-  useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
+jest.mock('shared/user/getAvailableCredit', () => ({
+  getAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 
 jest.mock('libs/firebase/analytics/analytics')

@@ -6,7 +6,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLocation } from 'libs/location/location'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
+import { convertCurrency, RoundUnit } from 'shared/currency/convertCurrency'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { Separator } from 'ui/components/Separator'
@@ -52,12 +52,10 @@ export const CheatcodesScreenNewCaledonia = () => {
         keyboardType="numeric"
       />
       <StyledText>Franc Pacifique sans arrondi&nbsp;:</StyledText>
-      <Typo.Title3>
-        {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate)}&nbsp;F
-      </Typo.Title3>
+      <Typo.Title3>{convertCurrency(priceInEuro, pacificFrancToEuroRate)}&nbsp;F</Typo.Title3>
       <StyledText>Franc Pacifique avec l’arrondi à l’unité&nbsp;:</StyledText>
       <Typo.Title3>
-        {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
+        {convertCurrency(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
       </Typo.Title3>
       <Separator.HorizontalWithMargin />
     </CheatcodesTemplateScreen>

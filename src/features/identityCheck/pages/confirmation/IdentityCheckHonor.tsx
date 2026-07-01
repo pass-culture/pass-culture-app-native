@@ -13,7 +13,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { QueryKeys } from 'libs/queryKeys'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
+import { hasOngoingCredit } from 'shared/user/getAvailableCredit'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'

@@ -76,7 +76,6 @@ const mockAdaptPlaylistParameters = (parameters: OffersModuleParameters): Playli
     offerSubcategories: [],
     offerIsDuo: false,
     isDigital: false,
-    priceRange: [0, 300],
     tags: [],
     date: null,
     timeRange: null,

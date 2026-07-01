@@ -33,10 +33,10 @@ describe('hasUrlParams', () => {
           lock: null,
           stock: undefined,
           two_smoking_barrels: [],
-          priceRange: [10, 20],
-          defaultMaxPrice: '30',
+          minPrice: 10,
+          maxPrice: 20,
         },
-        { ...mockSearchState, priceRange: [10, 20], defaultMaxPrice: '30' }
+        { ...mockSearchState, minPrice: 10, maxPrice: 20 }
       )
     ).toBe(true)
   })
@@ -45,10 +45,10 @@ describe('hasUrlParams', () => {
     expect(
       hasUrlParams(
         {
-          priceRange: [10, 20],
-          defaultMaxPrice: '40',
+          minPrice: 10,
+          maxPrice: 20,
         },
-        { ...mockSearchState, priceRange: [10, 20], defaultMaxPrice: '30' }
+        { ...mockSearchState, minPrice: 10, maxPrice: 30 }
       )
     ).toBe(false)
   })

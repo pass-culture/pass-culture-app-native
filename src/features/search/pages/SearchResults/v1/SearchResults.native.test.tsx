@@ -36,7 +36,6 @@ const mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.CINEMA],
   venue,
-  priceRange: [0, 20],
 }
 const mockDispatch = jest.fn()
 

@@ -18,7 +18,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
-import { useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -34,7 +34,7 @@ export const BookingConfirmation: FC = () => {
     utmMedium: 'post_booking',
   })
   const { reset } = useNavigation<UseNavigationType>()
-  const credit = useAvailableCredit()
+  const credit = getAvailableCredit(user)
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
   const trackBooking = useCallback(() => BatchProfile.trackEvent(BatchEvent.hasBooked), [])

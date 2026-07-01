@@ -7,13 +7,9 @@ const defaultBuildNumericFilters = {
   date: null,
   beginningDatetime: undefined,
   endingDatetime: undefined,
-  offerIsFree: false,
-
-  priceRange: null,
   timeRange: null,
-  minPrice: '',
-  maxPrice: '',
-  maxPossiblePrice: '',
+  minPrice: undefined,
+  maxPrice: undefined,
   minBookingsThreshold: 0,
 }
 
@@ -31,8 +27,8 @@ describe('buildNumericFilters', () => {
   it('should return a price range as a filter when prices defined', () => {
     const numericFilters = buildNumericFilters({
       ...defaultBuildNumericFilters,
-      minPrice: '10',
-      maxPrice: '50',
+      minPrice: 10,
+      maxPrice: 50,
     })
 
     expect(numericFilters).toEqual({ numericFilters: [['offer.prices: 10 TO 50']] })

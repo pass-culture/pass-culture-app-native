@@ -103,7 +103,7 @@ describe('buildOfferSearchParameters', () => {
   it('should return parameters with minimum price filter when minPrice is specified', () => {
     const parameters = {
       ...searchQueryParametersFixture,
-      minPrice: '50',
+      minPrice: 50,
     }
 
     const result = buildOfferSearchParameters(

@@ -51,7 +51,6 @@ const searchParamsParser = {
   isAutocomplete: JSON.parse,
   isFullyDigitalOffersCategory: JSON.parse,
   locationFilter: JSON.parse,
-  maxPossiblePrice: JSON.parse,
   maxPrice: JSON.parse,
   minPrice: JSON.parse,
   offerCategories: JSON.parse,
@@ -74,8 +73,6 @@ const searchParamsParser = {
   accessibilityFilter: JSON.parse,
   gtls: JSON.parse,
   shouldRedirect: JSON.parse,
-  defaultMinPrice: JSON.parse,
-  defaultMaxPrice: JSON.parse,
   calendarFilterId: JSON.parse,
 }
 
@@ -261,7 +258,6 @@ const searchParamsStringifier = {
   isAutocomplete: JSON.stringify,
   isFullyDigitalOffersCategory: JSON.stringify,
   locationFilter: JSON.stringify,
-  maxPossiblePrice: JSON.stringify,
   maxPrice: JSON.stringify,
   minPrice: JSON.stringify,
   offerCategories: JSON.stringify,
@@ -284,8 +280,6 @@ const searchParamsStringifier = {
   accessibilityFilter: JSON.stringify,
   gtls: JSON.stringify,
   shouldRedirect: JSON.stringify,
-  defaultMinPrice: JSON.stringify,
-  defaultMaxPrice: JSON.stringify,
   calendarFilterId: JSON.stringify,
 }
 
