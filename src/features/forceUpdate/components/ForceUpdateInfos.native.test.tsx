@@ -23,6 +23,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
+const openURLSpy = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
+
 describe('<ForceUpdateInfos/>', () => {
   beforeEach(() => setFeatureFlags())
 
@@ -40,6 +42,6 @@ describe('<ForceUpdateInfos/>', () => {
     const goToWebappButton = screen.getByText('Utiliser la version web')
     await user.press(goToWebappButton)
 
-    expect(Linking.openURL).toHaveBeenCalledWith(WEBAPP_V2_URL)
+    expect(openURLSpy).toHaveBeenCalledWith(WEBAPP_V2_URL)
   })
 })

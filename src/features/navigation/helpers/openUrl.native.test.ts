@@ -15,6 +15,7 @@ jest.mock('features/navigation/navigators/RootNavigator/linking/linking')
 jest.mock('libs/firebase/analytics/analytics')
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 const getScreenFromDeeplinkModuleSpy = jest.spyOn(
   getScreenFromDeeplinkModule,
@@ -32,6 +33,7 @@ jest.mock('react-native', () => {
 describe('openUrl', () => {
   afterEach(() => {
     openURLSpy.mockReset()
+    canOpenURLSpy.mockReset()
     // ios is the default value for native tests
     Platform.OS = 'ios'
   })
@@ -39,6 +41,7 @@ describe('openUrl', () => {
   describe('ExternalUrl', () => {
     it('should open links on browser using custom module on Android', async () => {
       Platform.OS = 'android'
+      canOpenURLSpy.mockResolvedValueOnce(true)
 
       const link = 'https://www.google.com'
       await openUrl(link)

@@ -454,29 +454,10 @@ exports[`ThematicHome should render correctly 1`] = `
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="0"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -793,31 +774,6 @@ exports[`ThematicHome should render correctly 1`] = `
                     }
                   >
                     <View
-                      collapsable={false}
-                      jestAnimatedProps={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestAnimatedStyle={
-                        {
-                          "value": {
-                            "transform": [
-                              {
-                                "rotate": "0deg",
-                              },
-                            ],
-                          },
-                        }
-                      }
-                      jestInlineStyle={
-                        [
-                          {
-                            "flexShrink": 0,
-                          },
-                        ]
-                      }
-                      nativeID="1"
                       style={
                         [
                           {

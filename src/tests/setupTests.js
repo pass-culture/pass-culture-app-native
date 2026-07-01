@@ -1,13 +1,14 @@
 /* eslint-disable no-restricted-imports */
-import '@testing-library/react-native'
-
-import '@testing-library/jest-native/extend-expect'
-
 import { TextEncoder } from 'util'
 
+import '@testing-library/jest-native/extend-expect'
+import '@testing-library/react-native'
 import { toHaveNoViolations } from 'jest-axe'
+import { setUpTests } from 'react-native-reanimated'
 
 import { queryCache, mutationCache } from './reactQueryProviderHOC'
+
+setUpTests()
 
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder

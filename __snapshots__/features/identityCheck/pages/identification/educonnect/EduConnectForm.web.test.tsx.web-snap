@@ -82,9 +82,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
               class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
             >
               <div
-                class="css-view-175oi2r"
-                id="0"
-                style="flex-shrink: 0;"
+                class="css-view-175oi2r r-flexShrink-1q142lx"
               >
                 <div
                   class="css-view-175oi2r"
@@ -212,9 +210,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-view-175oi2r"
-                  id="1"
-                  style="flex-shrink: 0;"
+                  class="css-view-175oi2r r-flexShrink-1q142lx"
                 >
                   <div
                     aria-label="Nouvelle fenêtre"

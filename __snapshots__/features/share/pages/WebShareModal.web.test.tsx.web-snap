@@ -185,9 +185,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
                       >
                         <div
-                          class="css-view-175oi2r"
-                          id="3"
-                          style="flex-shrink: 0;"
+                          class="css-view-175oi2r r-flexShrink-1q142lx"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -243,9 +241,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r"
-                                  id="4"
-                                  style="flex-shrink: 0;"
+                                  class="css-view-175oi2r r-flexShrink-1q142lx"
                                 >
                                   <div
                                     class="css-view-175oi2r"
@@ -283,9 +279,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r"
-                                  id="5"
-                                  style="flex-shrink: 0;"
+                                  class="css-view-175oi2r r-flexShrink-1q142lx"
                                 >
                                   <div
                                     class="css-view-175oi2r"
