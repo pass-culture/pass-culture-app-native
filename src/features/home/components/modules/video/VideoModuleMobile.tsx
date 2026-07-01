@@ -9,10 +9,12 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ColorsType } from 'theme/types'
+import { SeeAllInModalButton } from 'ui/components/SeeAllButton/SeeAllInModalButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Typo } from 'ui/theme'
@@ -28,15 +30,38 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   const { designSystem } = useTheme()
 
   const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
-
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
   const MONO_OFFER_CARD_VERTICAL_SPACING = designSystem.size.spacing.xxl
-
   const COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER =
     MONO_OFFER_CARD_VERTICAL_SPACING + monoOfferCardHeight
 
+  const showSeeMore = props.offers.length > 3
+  const hasThematicHomeEntry = !!(props.thematicHomeEntryId && props.thematicHomeTitle)
   const fillFromDesignSystem =
     designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
+
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'offers',
+      moduleId: props.id,
+      moduleName: props.title,
+      from: 'home',
+    })
+  }
+
+  function renderTitleSeeMore() {
+    return showSeeMore && props.isMultiOffer ? (
+      <SeeAllButtonContainer withMargin>
+        <SeeAllInModalButton
+          title={props.videoTitle}
+          onPress={() => {
+            onBeforeNavigate()
+            props.onVideoPlaceholderPress()
+          }}
+        />
+      </SeeAllButtonContainer>
+    ) : null
+  }
 
   const renderOfferPart = () => {
     if (!props.isMultiOffer && props.offers[0]) {
@@ -64,8 +89,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
     )
   }
 
-  const hasThematicHomeEntry = !!(props.thematicHomeEntryId && props.thematicHomeTitle)
-
   return (
     <Container>
       <StyledTitleContainer>
@@ -73,6 +96,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           title={props.title}
           accessibilityLabel={`Média vidéo\u00a0: ${props.title}`}
         />
+        {renderTitleSeeMore()}
       </StyledTitleContainer>
       {props.videoDescription ? (
         <Description>{props.videoDescription}</Description>
@@ -135,6 +159,11 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   )
 }
 
+const SeeAllButtonContainer = styled.View<{ withMargin?: boolean }>(({ withMargin, theme }) => ({
+  marginRight: withMargin ? theme.contentPage.marginHorizontal : undefined,
+  justifyContent: 'center',
+}))
+
 const ViewWithPaddingTop = styled.View(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.l,
 }))
@@ -146,6 +175,7 @@ const Container = styled.View(({ theme }) => ({
 const StyledTitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xs,
   alignItems: 'center',
+  justifyContent: 'space-between',
   flexDirection: 'row',
 }))
 

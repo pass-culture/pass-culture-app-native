@@ -9,12 +9,10 @@ import { AttachedThematicCard } from 'features/home/components/AttachedModuleCar
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics/provider'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { Offer } from 'shared/offer/types'
 import { ColorsType } from 'theme/types'
-import { SeeAllInModalButton } from 'ui/components/SeeAllButton/SeeAllInModalButton'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -30,30 +28,8 @@ const COLOR_CATEGORY_BACKGROUND_WIDTH = getSpacing(160)
 
 export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) => {
   const { designSystem } = useTheme()
-  const showSeeMore = props.offers.length > 3
   const hasOnlyTwoOffers = props.offers.length === 2
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
-
-  const onBeforeNavigate = () => {
-    void analytics.logClickSeeAll({
-      type: 'offers',
-      moduleId: props.id,
-      moduleName: props.title,
-      from: 'home',
-    })
-  }
-
-  function renderTitleSeeMore() {
-    return showSeeMore && props.isMultiOffer ? (
-      <SeeAllInModalButton
-        title={props.videoTitle}
-        onPress={() => {
-          onBeforeNavigate()
-          props.onVideoPlaceholderPress()
-        }}
-      />
-    ) : null
-  }
 
   function renderSoloOffer() {
     return props.offers[0] ? (
@@ -94,7 +70,6 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
           title={props.title}
           accessibilityLabel={`Média vidéo\u00a0: ${props.title}`}
         />
-        {renderTitleSeeMore()}
       </StyledTitleContainer>
       <Description>{props.videoDescription}</Description>
       <View testID="desktop-video-module">

@@ -2,7 +2,6 @@ import React from 'react'
 
 import { SeeAllButtonWrapper } from 'ui/components/SeeAllButton/SeeAllButtonWrapper'
 import { Button } from 'ui/designSystem/Button/Button'
-import { EyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 
 type Props = {
   title: string
@@ -17,8 +16,7 @@ export const SeeAllInModalButton = ({ title, onPress }: Props) => {
       <Button
         variant="tertiary"
         wording="Voir tout"
-        color="neutral"
-        icon={EyeSophisticated}
+        size="small"
         onPress={onPress}
         accessibilityLabel={accessibilityLabel}
       />

@@ -160,7 +160,7 @@ describe('VideoModule', () => {
     mockUseVideoOffersQuery.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2, offerFixture3, offerFixture4],
     })
-    renderVideoModule({ isDesktopViewport: true })
+    renderVideoModule({})
 
     const seeAllButton = screen.getByLabelText(
       'Voir tout pour la sélection Lujipeka répond à vos questions !'
