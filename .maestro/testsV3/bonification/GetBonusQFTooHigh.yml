@@ -121,7 +121,7 @@ onFlowStart:
 
 - tapOn: 'Continuer vers le résumé'
 
-- assertVisible: 'Vérifie les infos avant d’envoyer ta demande'
+- assertVisible: 'Vérifie les informations avant d’envoyer ta demande'
 
 - scroll
 

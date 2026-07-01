@@ -36,7 +36,7 @@ onFlowStart:
 
 - tapOn: '.*Continuer.*'
 
-- assertVisible: "Munis-toi des informations suivantes pour faire ta demande :"
+- assertVisible: 'Munis-toi des informations suivantes pour faire ta demande :'
 
 - tapOn: '.*Commencer.*'
 
@@ -121,7 +121,7 @@ onFlowStart:
 
 - tapOn: 'Continuer vers le résumé'
 
-- assertVisible: "Vérifie les infos avant d’envoyer ta demande"
+- assertVisible: 'Vérifie les informations avant d’envoyer ta demande'
 
 - scroll
 
@@ -170,9 +170,9 @@ onFlowStart:
 
 - assertVisible: 'Bonne nouvelle !'
 
-- assertVisible: "50 €"
+- assertVisible: '50 €'
 
-- tapOn: "Continuer"
+- tapOn: 'Continuer'
 
 - runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
