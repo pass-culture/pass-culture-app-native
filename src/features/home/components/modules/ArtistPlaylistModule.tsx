@@ -57,7 +57,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   } = props
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
-  const { data: artist } = useArtistQuery(artistId)
+  const { data: artist, isError: hasArtistError } = useArtistQuery(artistId)
 
   const { playlistItems } = data ?? { playlistItems: [] }
 
@@ -108,7 +108,10 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
 
   const shouldModuleBeDisplayed =
-    playlistItems.length > 0 && playlistItems.length >= displayParameters.minOffers && artist
+    playlistItems.length > 0 &&
+    playlistItems.length >= displayParameters.minOffers &&
+    artist &&
+    !hasArtistError
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
