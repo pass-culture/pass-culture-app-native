@@ -56,11 +56,16 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
-const mockUseArtistQuery = jest.fn()
-mockUseArtistQuery.mockReturnValue({
-  data: mockArtist,
-})
-jest.mock('queries/artist/useArtistQuery', () => ({ useArtistQuery: () => mockUseArtistQuery() }))
+const mockUseArtistQueryConfig = { shouldError: false }
+
+jest.mock('queries/artist/useArtistQuery', () => ({
+  useArtistQuery: (artistId: string | undefined) => {
+    if (mockUseArtistQueryConfig.shouldError) {
+      return { data: null }
+    }
+    return artistId === undefined ? { data: null } : { data: mockArtist }
+  },
+}))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -74,6 +79,27 @@ describe('ArtistPlaylistModule', () => {
     renderArtistPlaylistModule({ data: undefined })
 
     expect(screen.toJSON()).not.toBeOnTheScreen()
+  })
+
+  it('should not display module if artist is undefined', () => {
+    renderArtistPlaylistModule({
+      data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+      artistId: undefined,
+    })
+
+    expect(screen.toJSON()).not.toBeOnTheScreen()
+  })
+
+  it('should not display module if artist query fails', () => {
+    mockUseArtistQueryConfig.shouldError = false
+    renderArtistPlaylistModule({
+      data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+      artistId: mockArtist.id,
+    })
+
+    expect(screen.toJSON()).not.toBeOnTheScreen()
+
+    mockUseArtistQueryConfig.shouldError = false
   })
 
   it('should navigate to vertical playlist when we click on "Voir tout"', async () => {
