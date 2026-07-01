@@ -4,7 +4,14 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { renderAsync, screen } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockOffer = jest.fn((): { data: OfferResponse } => ({
   data: {
@@ -26,6 +33,16 @@ jest.mock('queries/offer/useOfferQuery', () => ({
 jest.useFakeTimers()
 
 describe('<OfferPreview />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display offer preview page', async () => {
     await renderAsync(<OfferPreview />)
 

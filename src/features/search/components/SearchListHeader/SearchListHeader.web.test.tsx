@@ -9,11 +9,18 @@ import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/h
 import { SearchState } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { GeoCoordinates } from 'libs/location/location'
 import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils/web'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const searchId = uuidv4()
 
@@ -58,6 +65,16 @@ jest.mock('libs/firebase/analytics/analytics')
 // FIXME(PC-37597): un-skip flaky tests
 // eslint-disable-next-line jest/no-disabled-tests
 describe('<SearchListHeader />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])

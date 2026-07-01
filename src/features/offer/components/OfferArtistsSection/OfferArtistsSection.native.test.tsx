@@ -4,7 +4,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ArtistType, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
 import { analytics } from 'libs/analytics/provider'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockArtist = { id: '1', name: 'Edith Piaf' }
 const mockMultiArtists = [
@@ -19,6 +26,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<OfferArtistsSection />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   describe('When single artist', () => {
     it('should display correctly', () => {
       render(

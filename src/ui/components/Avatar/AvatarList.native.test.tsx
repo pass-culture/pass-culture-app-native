@@ -1,9 +1,16 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { AVATAR_LARGE, AVATAR_SMALL } from 'ui/theme/constants'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const avatarsData = [
   { id: '1', image: 'url1', name: 'Oda' },
@@ -14,6 +21,16 @@ const avatarsData = [
 const user = userEvent.setup()
 
 describe('<AvatarList />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   jest.useFakeTimers()
 
   it('should display all items in the list', () => {

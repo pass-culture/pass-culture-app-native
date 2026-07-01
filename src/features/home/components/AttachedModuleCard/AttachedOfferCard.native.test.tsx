@@ -4,11 +4,18 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { UseLocationReturnType, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const offer = offersFixture[2]
 
@@ -48,6 +55,16 @@ mockUseSubcategories.mockReturnValue({
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 
 describe('AttachedOfferCard', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display date if offer has one', () => {
     render(<AttachedOfferCard offer={offer} />)
 
