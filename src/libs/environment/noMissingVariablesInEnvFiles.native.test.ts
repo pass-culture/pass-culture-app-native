@@ -11,7 +11,7 @@ function loadEnvVariables(filePath: string) {
     throw new Error(`No variables found in ${filePath}`)
   }
 
-  return Object.keys(parsed)
+  return Object.keys(parsed) as string[]
 }
 
 function compareEnvFiles(envFiles: string[]) {

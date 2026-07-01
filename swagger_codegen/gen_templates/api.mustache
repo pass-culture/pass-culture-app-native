@@ -132,7 +132,7 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
         {{/isArray}}
       {{/queryParams}}
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
   {{/hasQueryParams}}
