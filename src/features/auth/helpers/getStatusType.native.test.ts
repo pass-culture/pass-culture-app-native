@@ -13,10 +13,13 @@ const mockAge = (age: number) => mockedGetAge.mockReturnValue(age)
 const buildUser = ({
   statusType,
   depositType,
+  isBeneficiary,
 }: {
   statusType: YoungStatusType | string
   depositType?: DepositType
-}): UserProfileResponse => ({ status: { statusType }, depositType }) as UserProfileResponse
+  isBeneficiary?: boolean
+}): UserProfileResponse =>
+  ({ status: { statusType }, depositType, isBeneficiary }) as UserProfileResponse
 
 describe('getStatusType', () => {
   it('should return BENEFICIARY', () => {
@@ -27,11 +30,12 @@ describe('getStatusType', () => {
     expect(result).toBe(UserStatusType.BENEFICIARY)
   })
 
-  it('should return ELIGIBLE_AND_BENEFICIARY when user eligible with credit V3 and age >= 18', () => {
+  it('should return ELIGIBLE_AND_BENEFICIARY when user eligible and isBeneficiary', () => {
     mockAge(18)
     const user = buildUser({
       statusType: YoungStatusType.eligible,
       depositType: DepositType.GRANT_17_18,
+      isBeneficiary: true,
     })
 
     const result = getStatusType(user)
@@ -39,8 +43,7 @@ describe('getStatusType', () => {
     expect(result).toBe(UserStatusType.ELIGIBLE_AND_BENEFICIARY)
   })
 
-  it('should return ELIGIBLE_AND_FREE_BENEFICIARY when user eligible with free deposit and age >= 17', () => {
-    mockAge(17)
+  it('should return ELIGIBLE_AND_FREE_BENEFICIARY when user eligible with free deposit', () => {
     const user = buildUser({
       statusType: YoungStatusType.eligible,
       depositType: DepositType.GRANT_FREE,
