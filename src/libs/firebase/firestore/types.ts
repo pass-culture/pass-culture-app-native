@@ -43,8 +43,8 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
-  DISABLE_HANDICAP_BONIFICATION_BUTTON = 'disableHandicapBonificationButton',
-  DISABLE_QF_BONIFICATION_BUTTON = 'disableQFBonificationButton',
+  DISABLE_HANDICAP_BONIFICATION_MANUAL_REQUEST = 'disableHandicapBonificationManualRequest',
+  DISABLE_QF_BONIFICATION_MANUAL_REQUEST = 'disableQFBonificationManualRequest',
   ENABLE_BONIFICATION = 'enableBonification',
   ENABLE_CHATBOT = 'enableChatbot',
   ENABLE_HANDICAP_BONIFICATION = 'enableHandicapBonification',

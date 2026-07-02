@@ -77,7 +77,7 @@ describe('BonificationAllStep', () => {
     })
 
     it('should hide button when feature flag is enabled', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON])
+      setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST])
       renderComponent()
 
       const button = screen.queryByLabelText('Faire une demande de bonus quotient familial')
@@ -150,7 +150,7 @@ describe('BonificationAllStep', () => {
     })
 
     it('should hide button when feature flag is enabled', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_BUTTON])
+      setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_MANUAL_REQUEST])
       renderComponent()
 
       const button = screen.queryByLabelText('Faire une demande de bonus situation de handicap')

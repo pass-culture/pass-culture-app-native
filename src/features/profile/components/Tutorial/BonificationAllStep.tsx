@@ -45,10 +45,10 @@ type Props = {
 
 export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility, user }: Props) => {
   const disableQFBonificationButton = useFeatureFlag(
-    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
   )
   const disableHandicapBonificationButton = useFeatureFlag(
-    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_BUTTON
+    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_MANUAL_REQUEST
   )
 
   const { designSystem } = useTheme()

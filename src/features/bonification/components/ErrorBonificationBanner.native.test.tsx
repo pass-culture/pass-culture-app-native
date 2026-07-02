@@ -16,7 +16,7 @@ jest.useFakeTimers()
 
 describe('ErrorBonificationBanner', () => {
   it('should navigate to BonificationRefused when pressing "Voir plus de détails"', async () => {
-    render(<ErrorBonificationBanner {...defaultProps} disableQFBonificationButton={false} />)
+    render(<ErrorBonificationBanner {...defaultProps} />)
 
     const button = screen.getByText('Voir plus de détails')
     await user.press(button)
@@ -28,18 +28,10 @@ describe('ErrorBonificationBanner', () => {
   })
 
   it('should display "Voir plus de détails" button when FF disable', () => {
-    render(<ErrorBonificationBanner {...defaultProps} disableQFBonificationButton={false} />)
+    render(<ErrorBonificationBanner {...defaultProps} />)
 
     const button = screen.getByText('Voir plus de détails')
 
     expect(button).toBeOnTheScreen()
-  })
-
-  it('should hide "Voir plus de détails" button when FF enable', () => {
-    render(<ErrorBonificationBanner {...defaultProps} disableQFBonificationButton />)
-
-    const button = screen.queryByText('Voir plus de détails')
-
-    expect(button).not.toBeOnTheScreen()
   })
 })

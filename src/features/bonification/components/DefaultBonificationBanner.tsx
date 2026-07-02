@@ -8,22 +8,15 @@ import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 type DefaultBonificationBannerProps = {
   amount: string
   onClose: () => void
-  disableQFBonificationButton: boolean
 }
 
-export const DefaultBonificationBanner = ({
-  amount,
-  onClose,
-  disableQFBonificationButton,
-}: DefaultBonificationBannerProps) => {
-  const links = disableQFBonificationButton
-    ? undefined
-    : [
-        {
-          navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
-          wording: 'Vérifier maintenant',
-        },
-      ]
+export const DefaultBonificationBanner = ({ amount, onClose }: DefaultBonificationBannerProps) => {
+  const links = [
+    {
+      navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
+      wording: 'Vérifier maintenant',
+    },
+  ]
 
   return (
     <Banner

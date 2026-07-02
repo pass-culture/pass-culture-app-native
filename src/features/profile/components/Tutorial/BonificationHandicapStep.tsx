@@ -32,7 +32,7 @@ type Props = { amount: string; isLoggedIn: boolean; user?: UserProfile }
 
 export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) => {
   const disableHandicapBonificationButton = useFeatureFlag(
-    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_BUTTON
+    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_MANUAL_REQUEST
   )
   const { navigate } = useNavigation<UseNavigationType>()
 

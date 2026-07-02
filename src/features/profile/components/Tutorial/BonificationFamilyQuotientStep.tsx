@@ -44,7 +44,7 @@ export const BonificationFamilyQuotientStep = ({
   resetBannerVisibility,
 }: Props) => {
   const disableQFBonificationButton = useFeatureFlag(
-    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_BUTTON
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
   )
   const { designSystem } = useTheme()
 

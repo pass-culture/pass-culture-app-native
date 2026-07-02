@@ -11,7 +11,7 @@ jest.useFakeTimers()
 
 describe('DefaultBonificationBanner', () => {
   it('should navigate to BonificationExplanations when pressing "Vérifier maintenant"', async () => {
-    render(<DefaultBonificationBanner {...defaultProps} disableQFBonificationButton={false} />)
+    render(<DefaultBonificationBanner {...defaultProps} />)
 
     const button = screen.getByText('Vérifier maintenant')
     await user.press(button)
@@ -22,18 +22,10 @@ describe('DefaultBonificationBanner', () => {
   })
 
   it('should display "Vérifier maintenant" button when FF disable', () => {
-    render(<DefaultBonificationBanner {...defaultProps} disableQFBonificationButton={false} />)
+    render(<DefaultBonificationBanner {...defaultProps} />)
 
     const button = screen.getByText('Vérifier maintenant')
 
     expect(button).toBeOnTheScreen()
-  })
-
-  it('should hide "Vérifier maintenant" button when FF enable', () => {
-    render(<DefaultBonificationBanner {...defaultProps} disableQFBonificationButton />)
-
-    const button = screen.queryByText('Vérifier maintenant')
-
-    expect(button).not.toBeOnTheScreen()
   })
 })
