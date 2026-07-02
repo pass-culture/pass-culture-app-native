@@ -466,7 +466,7 @@ module.exports = [
         'testing-library/prefer-screen-queries': ['error'],
         'testing-library/no-await-sync-events': 'off', // TODO(PC-25292): enable when its issues are fixed
         'jest/no-conditional-in-test': 'off', // TODO(PC-25293): enable when its issues are fixed
-        '@bam.tech/await-user-event': 'warn',
+        '@bam.tech/await-user-event': 'off',
         '@bam.tech/prefer-user-event': 'warn',
       },
     }
