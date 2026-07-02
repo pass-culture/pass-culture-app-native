@@ -3,12 +3,15 @@ import React from 'react'
 
 import { popTo, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { SearchView } from 'features/search/types'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -223,6 +226,51 @@ describe('<ThematicSearch/>', () => {
           userLocation: undefined,
         })
       })
+    })
+  })
+
+  describe('PerformSearch log', () => {
+    beforeEach(() => {
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockUseLocation.mockReturnValue(defaultUseLocation)
+      mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
+      mockedUseSearch.mockReturnValue({
+        ...defaultUseSearch,
+        searchState: { ...mockSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] },
+      })
+    })
+
+    it('should log PerformSearch when search query execution ends', async () => {
+      mockUseSearchResults.mockReturnValueOnce({ ...defaultUseSearchResults, isLoading: true })
+      const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith(
+        { ...mockSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] },
+        defaultDisabilitiesProperties,
+        0,
+        SearchView.Thematic
+      )
+    })
+
+    it('should log PerformSearch only one time when there is search query execution and several re-render', async () => {
+      mockUseSearchResults.mockReturnValueOnce({ ...defaultUseSearchResults, isLoading: true })
+      const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not log PerformSearch when there is no search query execution', async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(analytics.logPerformSearch).not.toHaveBeenCalled()
     })
   })
 
