@@ -2,7 +2,6 @@ const mockInstance = {
   fetch: jest.fn(() => Promise.resolve()),
   activate: jest.fn(() => Promise.resolve(true)),
   fetchAndActivate: jest.fn(() => Promise.resolve(true)),
-  setDefaults: jest.fn(() => Promise.resolve()),
   getAll: jest.fn(() => ({})),
 
   getValue: jest.fn(() => ({

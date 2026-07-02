@@ -19,14 +19,14 @@ import { AnalyticsProvider } from './types'
 
 const firebaseAnalytics = getAnalytics()
 
-setAnalyticsCollectionEnabled(firebaseAnalytics, false)
+void setAnalyticsCollectionEnabled(firebaseAnalytics, false)
 
 export const firebaseAnalyticsProvider: AnalyticsProvider = {
   async enableCollection() {
-    setAnalyticsCollectionEnabled(firebaseAnalytics, true)
+    await setAnalyticsCollectionEnabled(firebaseAnalytics, true)
   },
   async disableCollection() {
-    setAnalyticsCollectionEnabled(firebaseAnalytics, false)
+    await setAnalyticsCollectionEnabled(firebaseAnalytics, false)
   },
   async getAppInstanceId() {
     if (Platform.OS === 'web') return null
@@ -35,16 +35,14 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
   async setDefaultEventParameters(params: Record<string, unknown> | undefined) {
     // only apply on native devices, does not exist on the Web
     if (Platform.OS !== 'web') {
-      firebaseAnalytics.setDefaultEventParameters(params)
+      await firebaseAnalytics.setDefaultEventParameters(params)
     }
   },
   async setUserId(userId) {
-    setUserId(firebaseAnalytics, userId.toString())
+    await setUserId(firebaseAnalytics, userId.toString())
   },
   async logScreenView(screenName, locationType) {
-    // @ts-expect-error Firebase has overly strict event name types
-
-    logEvent(firebaseAnalytics, EVENT_PAGE_VIEW_NAME, {
+    await logEvent(firebaseAnalytics, EVENT_PAGE_VIEW_NAME, {
       [EVENT_PAGE_VIEW_PARAM_KEY]: screenName,
       screen_class: screenName,
       locationType,

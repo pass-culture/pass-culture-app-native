@@ -4,7 +4,7 @@ import { bare } from '@hot-updater/bare'
 import { firebaseDatabase, firebaseStorage } from '@hot-updater/firebase'
 import { withSentry } from '@hot-updater/sentry-plugin'
 import { config } from 'dotenv'
-import * as admin from 'firebase-admin'
+import { applicationDefault } from 'firebase-admin'
 import { defineConfig } from 'hot-updater'
 
 const ENV = process.env.NODE_ENV || 'local'
@@ -12,7 +12,7 @@ const ENV = process.env.NODE_ENV || 'local'
 config({ path: `.env.${ENV}` })
 config()
 
-const credential = admin.credential.applicationDefault()
+const credential = applicationDefault()
 
 export default defineConfig({
   build: withSentry(bare({ enableHermes: true, sourcemap: true }), {

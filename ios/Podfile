@@ -64,7 +64,6 @@ target 'PassCulture' do
 
   # Third party deps podspec link, to include if 0.60 autolinking not supported
 
-  pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '11.13.0'
   pod 'FirebaseCore', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
   pod 'BatchFirebaseDispatcher'

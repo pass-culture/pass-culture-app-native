@@ -1,7 +1,6 @@
-// eslint-disable-next-line no-restricted-imports
-import { FirebaseRemoteConfigTypes } from '@react-native-firebase/remote-config'
+import { FirebaseRemoteConfigTypes } from 'libs/firebase/shims/remote-config'
 
-function isConfigValue(value: unknown): value is FirebaseRemoteConfigTypes.ConfigValue {
+const isConfigValue = (value: unknown): value is FirebaseRemoteConfigTypes.ConfigValue => {
   if (!value) {
     return false
   }

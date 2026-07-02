@@ -1,4 +1,4 @@
-import { FirebaseRemoteConfigTypes } from '@react-native-firebase/remote-config/lib'
+import { FirebaseRemoteConfigTypes } from 'libs/firebase/shims/remote-config'
 
 export const transformDefaultValues = (
   values: Record<string, unknown>

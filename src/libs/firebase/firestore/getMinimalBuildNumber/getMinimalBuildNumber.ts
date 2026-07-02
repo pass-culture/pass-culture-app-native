@@ -17,7 +17,7 @@ export const getMinimalBuildNumber = async (): Promise<number | undefined> => {
 
     const docSnapshot = await getDoc(docRef)
 
-    return docSnapshot.get<number>(RemoteStoreAppVersion.MINIMAL_BUILD_NUMBER)
+    return docSnapshot.get(RemoteStoreAppVersion.MINIMAL_BUILD_NUMBER)
   } catch (error) {
     captureMonitoringError(getErrorMessage(error), 'firestore_not_available')
     return undefined
