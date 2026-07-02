@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
-import { Easing, FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated'
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeOut,
+  SlideInDown,
+  SlideOutDown,
+} from 'react-native-reanimated'
 import { scheduleOnRN } from 'react-native-worklets'
 import styled from 'styled-components/native'
 
-import Animated from 'libs/react-native-reanimated'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 
 import { ModalScreenWrapperProps } from './ModalScreenWrapper'
@@ -43,7 +48,7 @@ export const ModalScreenWrapper = ({ onClose, children }: ModalScreenWrapperProp
             entering={BACKDROP_ENTERING}
             exiting={BACKDROP_EXITING}
             onPress={closeWithTransition}
-            accessibilityLabel="Fermer la modale"
+            accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
           />
           <ModalContainer entering={MODAL_ENTERING} exiting={createModalExiting(onClose)}>
             {children(closeWithTransition)}

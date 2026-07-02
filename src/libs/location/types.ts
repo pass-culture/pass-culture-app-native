@@ -36,7 +36,6 @@ export type UseLocationReturnType = {
   geolocPosition: Position
   geolocPositionError: GeolocationError | null
   permissionState: GeolocPermissionState | null
-  showGeolocPermissionModal: () => void
   selectedLocationMode: LocationMode
   setSelectedLocationMode: (locationMode: LocationMode) => void
   selectedPlace: SuggestedPlace | null

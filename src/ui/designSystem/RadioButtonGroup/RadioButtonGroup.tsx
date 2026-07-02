@@ -149,7 +149,9 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
 
     return (
       <OptionsContainer display={display} variant={variant}>
-        {options.map((item, index) => renderRadioButton(item, index))}
+        {options.map((item, index) => (
+          <React.Fragment key={item.key}>{renderRadioButton(item, index)}</React.Fragment>
+        ))}
       </OptionsContainer>
     )
   }

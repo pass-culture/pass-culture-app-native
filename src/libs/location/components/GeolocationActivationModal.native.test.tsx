@@ -1,17 +1,15 @@
 import React from 'react'
+import { Linking } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
-import { GeolocPermissionState } from 'libs/location/location'
-import { locationActions } from 'libs/locationV2/location.store'
 import { render, screen, userEvent } from 'tests/utils'
 
-const onPressGeolocPermissionModalButton = jest.spyOn(locationActions, 'showPermissionModal')
-
-let mockPermissionState = GeolocPermissionState.GRANTED
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    permissionState: mockPermissionState,
+const mockGoBack = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...(jest.requireActual('@react-navigation/native') as Record<string, unknown>),
+  useNavigation: () => ({
+    goBack: mockGoBack,
   }),
 }))
 
@@ -22,34 +20,33 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
-jest.useFakeTimers()
 
 describe('GeolocationActivationModal', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should render properly', () => {
-    mockPermissionState = GeolocPermissionState.DENIED
-    locationActions.showPermissionModal()
     renderGeolocationActivationModal()
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open settings to activate geoloc when press on "Activer la géolocalisation"', async () => {
-    mockPermissionState = GeolocPermissionState.DENIED
-    locationActions.showPermissionModal()
+  it('should go back when pressing close icon', async () => {
     renderGeolocationActivationModal()
 
-    await user.press(screen.getByText('Activer la géolocalisation'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
-    expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should log event deeplinkEnableLocation when press on "Activer la géolocalisation"', async () => {
-    mockPermissionState = GeolocPermissionState.DENIED
-    locationActions.showPermissionModal()
+  it('should open settings to activate geoloc when press on "Activer la géolocalisation"', async () => {
+    jest.spyOn(Linking, 'openSettings').mockResolvedValueOnce(undefined as unknown as void)
     renderGeolocationActivationModal()
 
     await user.press(screen.getByText('Activer la géolocalisation'))
 
+    expect(Linking.openSettings).toHaveBeenCalledTimes(1)
     expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
   })
 })

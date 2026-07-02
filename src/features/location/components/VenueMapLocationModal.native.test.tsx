@@ -15,7 +15,7 @@ import { initLocation } from 'libs/locationV2/initLocation'
 import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, within } from 'tests/utils'
 
 jest.useFakeTimers()
 
@@ -111,7 +111,14 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    await user.press(screen.getByLabelText('Fermer la modale'))
+    const geolocModal = screen.getByTestId('modal-geoloc-permission-modal')
+    const geolocCloseButton = within(geolocModal).getByLabelText('Fermer la modale')
+    const closeButtons = screen.getAllByLabelText('Fermer la modale')
+    const locationModalCloseButton = closeButtons.find((button) => button !== geolocCloseButton)
+
+    expect(locationModalCloseButton).toBeTruthy()
+
+    await user.press(locationModalCloseButton as NonNullable<typeof locationModalCloseButton>)
 
     expect(goBack).toHaveBeenCalledTimes(1)
   })

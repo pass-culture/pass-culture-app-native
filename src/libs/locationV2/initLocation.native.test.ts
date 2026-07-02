@@ -67,19 +67,23 @@ describe('initLocation', () => {
       })
     })
 
-    it('should hide permission modal if permission is GRANTED', async () => {
-      locationActions.setLocationMode(LocationMode.EVERYWHERE)
+    it('should update permission state when app becomes active', async () => {
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
       initLocation()
-      locationActions.showPermissionModal()
+
+      await waitFor(() => {
+        expect(locationSelectors.selectPermissionState()).toBe(
+          GeolocPermissionState.NEVER_ASK_AGAIN
+        )
+      })
 
       AppState.__triggerChange('inactive')
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       AppState.__triggerChange('active')
 
       await waitFor(() => {
-        expect(locationSelectors.selectIsPermissionModalVisible()).toBe(false)
+        expect(locationSelectors.selectPermissionState()).toBe(GeolocPermissionState.GRANTED)
       })
     })
   })
