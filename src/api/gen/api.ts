@@ -1826,6 +1826,7 @@ export enum DisabilityBonificationStatus {
   'too_many_retries' = 'too_many_retries',
   'person_not_found' = 'person_not_found',
   'application_not_found' = 'application_not_found',
+  'not_recipient' = 'not_recipient',
   'granted' = 'granted',
   'ko' = 'ko',
 }

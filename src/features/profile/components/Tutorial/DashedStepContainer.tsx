@@ -29,6 +29,7 @@ const getBackgroundColorByStatus = (
     case QFBonificationStatus.custodian_not_found:
     case QFBonificationStatus.not_in_tax_household:
     case DisabilityBonificationStatus.person_not_found:
+    case DisabilityBonificationStatus.not_recipient:
       return theme.designSystem.color.background.info
 
     case QFBonificationStatus.started:
