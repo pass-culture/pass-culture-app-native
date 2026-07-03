@@ -362,7 +362,7 @@ type BookTypesFields = {
 
 type ThematicCategoryInfoFields = {
   title: string
-  displayedTitle: string
+  displayedTitle?: string
   titleParts?: string[]
   displayedSubtitle?: string
   image?: Image

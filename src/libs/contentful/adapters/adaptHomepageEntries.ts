@@ -41,10 +41,14 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     if (thematicHeaderFields === undefined) return
 
     const legacyImageUrl = buildImageUrl(thematicHeaderFields.image?.fields?.file.url)
+    const title =
+      thematicHeaderFields.titleParts?.join(' ') ??
+      thematicHeaderFields.displayedTitle ??
+      thematicHeaderFields.title
 
     const categoryThematicHeader: CategoryThematicHeader = {
       type: ThematicHeaderType.Category,
-      title: thematicHeaderFields.displayedTitle,
+      title,
       titleParts: thematicHeaderFields.titleParts,
       subtitle: thematicHeaderFields.displayedSubtitle,
       imageUrl: thematicHeaderFields.illustrationFilename

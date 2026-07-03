@@ -97,7 +97,7 @@ export const CategoryListModule = ({
                   moduleListId: id,
                 },
               }}
-              labelParts={getCategoryLabelParts(item.title)}
+              labelParts={item.titleParts ?? getCategoryLabelParts(item.title)}
               illustrationUrl={
                 item.illustrationCategoryBlock
                   ? categoryButtonIllustrationUrls[item.illustrationCategoryBlock]

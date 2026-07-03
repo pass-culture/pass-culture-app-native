@@ -679,7 +679,7 @@ exports[`ThematicHome should render correctly 1`] = `
                   "maxWidth": "100%",
                   "transform": [
                     {
-                      "rotate": "-2deg",
+                      "rotate": "-3deg",
                     },
                   ],
                 }

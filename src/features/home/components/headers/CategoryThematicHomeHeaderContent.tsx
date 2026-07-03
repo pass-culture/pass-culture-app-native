@@ -102,7 +102,7 @@ const TitleContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   gap: theme.designSystem.size.spacing.xs,
   maxWidth: '100%',
-  transform: 'rotate(-2deg)',
+  transform: 'rotate(-3deg)',
 }))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
