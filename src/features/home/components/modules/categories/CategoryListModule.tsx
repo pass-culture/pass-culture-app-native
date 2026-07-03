@@ -2,11 +2,17 @@ import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
+import { getCategoryBlockColor } from 'features/home/helpers/getCategoryColor'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
+import { getCategoryLabelParts } from 'features/search/helpers/getCategoryLabelParts/getCategoryLabelParts'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
+import { NewCategoryButton } from 'shared/categoryButton/NewCategoryButton'
+import { categoryButtonIllustrationUrls } from 'shared/illustrations/categoryButtonIllustrations'
 import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
@@ -39,6 +45,10 @@ export const CategoryListModule = ({
 
   const { designSystem } = useTheme()
 
+  const enableNewCategoryBlocks = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS_HOME
+  )
+
   useEffect(() => {
     void analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
@@ -53,19 +63,55 @@ export const CategoryListModule = ({
       <AccessibleTitle title={title} />
       <StyledView>
         {categoryBlockList.map((item) => {
-          const fillFromDesignSystem =
-            designSystem.color.background[colorMapping[item.color].fill ?? 'default']
+          const color = enableNewCategoryBlocks ? item.color : getCategoryBlockColor(item.color)
+          const categoryColorMapping = colorMapping[color] ?? colorMapping.Information04
+
+          const fillFromDesignSystem = enableNewCategoryBlocks
+            ? designSystem.color.illustration[categoryColorMapping.fill ?? 'default']
+            : designSystem.color.background[categoryColorMapping.fill ?? 'default']
 
           const borderFromDesignSystem =
-            designSystem.color.border[colorMapping[item.color].border ?? 'default']
-          return (
+            designSystem.color.border[categoryColorMapping.border ?? 'default']
+          return enableNewCategoryBlocks ? (
+            <StyledNewCategoryButton
+              key={item.id}
+              label={item.title}
+              height={BLOCK_HEIGHT}
+              mobileMinWidth={mobileMinWidth}
+              fillColor={fillFromDesignSystem || categoryColorMapping.fill}
+              borderColor={borderFromDesignSystem || categoryColorMapping.border}
+              onBeforeNavigate={() => {
+                void analytics.logCategoryBlockClicked({
+                  moduleId: item.id,
+                  moduleListID: id,
+                  entryId: homeEntryId,
+                  toEntryId: item.homeEntryId,
+                })
+              }}
+              navigateTo={{
+                screen: 'ThematicHome',
+                params: {
+                  homeId: item.homeEntryId,
+                  from: 'category_block',
+                  moduleId: item.id,
+                  moduleListId: id,
+                },
+              }}
+              labelParts={getCategoryLabelParts(item.title)}
+              illustrationUrl={
+                item.illustrationCategoryBlock
+                  ? categoryButtonIllustrationUrls[item.illustrationCategoryBlock]
+                  : undefined
+              }
+            />
+          ) : (
             <StyledCategoryButton
               key={item.id}
               label={item.title}
               height={BLOCK_HEIGHT}
               mobileMinWidth={mobileMinWidth}
-              fillColor={fillFromDesignSystem || colorMapping[item.color].fill}
-              borderColor={borderFromDesignSystem || colorMapping[item.color].border}
+              fillColor={fillFromDesignSystem || categoryColorMapping.fill}
+              borderColor={borderFromDesignSystem || categoryColorMapping.border}
               onBeforeNavigate={() => {
                 void analytics.logCategoryBlockClicked({
                   moduleId: item.id,
@@ -116,6 +162,16 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const StyledCategoryButton = styled(CategoryButton)<{ mobileMinWidth: string }>(
+  ({ theme, mobileMinWidth }) => ({
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: 0,
+    minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+    maxWidth: theme.isMobileViewport ? MOBILE_MAX_WIDTH : DESKTOP_MAX_WIDTH,
+  })
+)
+
+const StyledNewCategoryButton = styled(NewCategoryButton)<{ mobileMinWidth: string }>(
   ({ theme, mobileMinWidth }) => ({
     flexGrow: 1,
     flexShrink: 0,

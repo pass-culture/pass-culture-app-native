@@ -80,7 +80,8 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
           {illustrationUrlToDisplay ? (
             <RemoteCategoryIllustration
               source={{ uri: illustrationUrlToDisplay }}
-              resizeMode={FastImage.resizeMode.contain}
+              resizeMode="contain"
+              testID="categoryIllustration"
             />
           ) : null}
         </Container>
@@ -90,8 +91,6 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
 }
 
 const MIN_HEIGHT = getSpacing(20)
-const CATEGORY_ICON_SIZE = getSpacing(24)
-const CATEGORY_ICON_TOP = getSpacing(1.25)
 
 const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
   onMouseDown: (e: Event) => void
@@ -152,10 +151,12 @@ const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) =
   paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
-const RemoteCategoryIllustration = styled(FastImage)({
+const CATEGORY_ICON_TOP = getSpacing(3.5)
+
+const RemoteCategoryIllustration = styled(FastImage)(({ theme }) => ({
   position: 'absolute',
-  right: 0,
+  right: theme.designSystem.size.spacing.xs,
   top: CATEGORY_ICON_TOP,
-  width: CATEGORY_ICON_SIZE,
-  height: CATEGORY_ICON_SIZE,
-})
+  width: theme.designSystem.size.image.xs,
+  height: theme.designSystem.size.image.xs,
+}))

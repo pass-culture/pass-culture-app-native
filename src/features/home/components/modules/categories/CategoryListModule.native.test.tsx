@@ -6,6 +6,7 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -93,5 +94,35 @@ describe('CategoryListModule', () => {
     )
 
     expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
+  })
+
+  it('should not display new category button when wipNewCategoryBlocksHome FF deactivated', () => {
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    expect(screen.queryByTestId('categoryIllustration')).not.toBeOnTheScreen()
+  })
+
+  it('should display new category button when wipNewCategoryBlocksHome FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS_HOME])
+
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    expect(screen.getByTestId('categoryIllustration')).toBeOnTheScreen()
   })
 })
