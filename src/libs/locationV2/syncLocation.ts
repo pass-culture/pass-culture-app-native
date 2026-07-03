@@ -1,7 +1,8 @@
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
-import { GeolocationError } from 'libs/location/types'
+import { GeolocationError, LocationMode } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
+import { locationModalActions } from 'libs/locationV2/locationModal.store'
 
 export const syncLocation = async () => {
   const permission = locationSelectors.selectPermissionState()
@@ -15,5 +16,7 @@ export const syncLocation = async () => {
       locationActions.setGeolocPosition(null)
       locationActions.setGeolocationError(newPositionError?.cause ?? null)
     }
+  } else {
+    locationModalActions.setLocationMode(LocationMode.EVERYWHERE)
   }
 }

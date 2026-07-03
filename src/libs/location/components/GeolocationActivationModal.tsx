@@ -1,10 +1,12 @@
-import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import React, { useCallback } from 'react'
 import { Linking, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
+import { locationStore } from 'libs/locationV2/location.store'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -19,6 +21,15 @@ const isNative = Platform.OS === 'android' || Platform.OS === 'ios'
 
 export const GeolocationActivationModal: React.FC = () => {
   const { goBack } = useNavigation<UseNavigationType>()
+  const permission = locationStore.hooks.usePermissionState()
+
+  useFocusEffect(
+    useCallback(() => {
+      if (permission === GeolocPermissionState.GRANTED) {
+        goBack()
+      }
+    }, [goBack, permission])
+  )
 
   return (
     <AppInformationModal

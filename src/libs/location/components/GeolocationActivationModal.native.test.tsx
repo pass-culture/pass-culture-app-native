@@ -1,17 +1,12 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
+import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
+import { locationActions } from 'libs/locationV2/location.store'
 import { render, screen, userEvent } from 'tests/utils'
-
-const mockGoBack = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...(jest.requireActual('@react-navigation/native') as Record<string, unknown>),
-  useNavigation: () => ({
-    goBack: mockGoBack,
-  }),
-}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -23,7 +18,8 @@ const user = userEvent.setup()
 
 describe('GeolocationActivationModal', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    locationActions.setPermissionState(GeolocPermissionState.DENIED)
+    goBack.mockClear()
   })
 
   it('should render properly', () => {
@@ -37,7 +33,15 @@ describe('GeolocationActivationModal', () => {
 
     await user.press(screen.getByLabelText('Fermer la modale'))
 
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
+    expect(goBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should go back when permission is granted', () => {
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+
+    renderGeolocationActivationModal()
+
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 
   it('should open settings to activate geoloc when press on "Activer la géolocalisation"', async () => {

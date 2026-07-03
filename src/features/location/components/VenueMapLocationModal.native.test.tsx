@@ -118,6 +118,8 @@ describe('VenueMapLocationModal', () => {
 
     expect(locationModalCloseButton).toBeTruthy()
 
+    goBack.mockClear()
+
     await user.press(locationModalCloseButton as NonNullable<typeof locationModalCloseButton>)
 
     expect(goBack).toHaveBeenCalledTimes(1)

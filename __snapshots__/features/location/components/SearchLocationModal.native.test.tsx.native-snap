@@ -4,7 +4,19 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
 [
   <Modal
     animationType="fade"
-    onRequestClose={[MockFunction]}
+    onRequestClose={
+      [MockFunction] {
+        "calls": [
+          [],
+        ],
+        "results": [
+          {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
     statusBarTranslucent={true}
     testID="modal-geoloc-permission-modal"
     transparent={true}

@@ -14,6 +14,7 @@ import { requestGeolocPermission } from 'libs/location/geolocation/requestGeoloc
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { initLocation } from 'libs/locationV2/initLocation'
+import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent, within } from 'tests/utils'
@@ -72,6 +73,7 @@ const user = userEvent.setup()
 
 describe('SearchLocationModal', () => {
   beforeEach(() => {
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
     initLocation()
   })
 
@@ -119,6 +121,8 @@ describe('SearchLocationModal', () => {
     const locationModalCloseButton = closeButtons.find((button) => button !== geolocCloseButton)
 
     expect(locationModalCloseButton).toBeTruthy()
+
+    goBack.mockClear()
 
     await user.press(locationModalCloseButton as NonNullable<typeof locationModalCloseButton>)
 
