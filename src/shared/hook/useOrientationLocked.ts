@@ -11,13 +11,29 @@ export const useOrientationLocked = () => {
   const applyOrientationLock = useCallback((locked: boolean) => {
     if (locked) {
       Orientation.lockToPortrait()
-    } else {
-      Orientation.unlockAllOrientations()
+      return
     }
+
+    if (typeof Orientation.getAutoRotateState !== 'function') {
+      Orientation.unlockAllOrientations()
+      return
+    }
+
+    Orientation.getAutoRotateState((canRotate: boolean) => {
+      if (canRotate) {
+        Orientation.unlockAllOrientations()
+        return
+      }
+
+      Orientation.lockToPortrait()
+    })
   }, [])
 
   useEffect(() => {
     let mounted = true
+
+    // Lock immediately to avoid a landscape flash while async preference is loading.
+    Orientation.lockToPortrait()
 
     const init = async () => {
       const storedValue = await AsyncStorage.getItem(STORAGE_KEY)
@@ -38,13 +54,13 @@ export const useOrientationLocked = () => {
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (state: AppStateStatus) => {
-      if (state === 'active' && isOrientationLocked) {
-        Orientation.lockToPortrait()
+      if (state === 'active') {
+        void applyOrientationLock(isOrientationLocked)
       }
     })
 
     return () => subscription.remove()
-  }, [isOrientationLocked])
+  }, [applyOrientationLock, isOrientationLocked])
 
   useEffect(() => {
     const handler = (orientation: string) => {
