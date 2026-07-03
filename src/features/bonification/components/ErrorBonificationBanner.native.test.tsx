@@ -26,12 +26,4 @@ describe('ErrorBonificationBanner', () => {
       params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
     })
   })
-
-  it('should display "Voir plus de détails" button when FF disable', () => {
-    render(<ErrorBonificationBanner {...defaultProps} />)
-
-    const button = screen.getByText('Voir plus de détails')
-
-    expect(button).toBeOnTheScreen()
-  })
 })

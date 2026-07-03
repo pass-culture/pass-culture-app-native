@@ -20,12 +20,4 @@ describe('DefaultBonificationBanner', () => {
       screen: 'BonificationExplanations',
     })
   })
-
-  it('should display "Vérifier maintenant" button when FF disable', () => {
-    render(<DefaultBonificationBanner {...defaultProps} />)
-
-    const button = screen.getByText('Vérifier maintenant')
-
-    expect(button).toBeOnTheScreen()
-  })
 })
