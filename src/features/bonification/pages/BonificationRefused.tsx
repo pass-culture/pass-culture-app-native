@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -11,6 +12,8 @@ import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -61,7 +64,9 @@ const notFoundPageConfig = {
   bannerLinks: undefined,
   primaryButton: {
     wording: 'Renouveler ma demande',
-    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
+    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
+      bonificationType: BonificationType.FAMILY_QUOTIENT,
+    }),
   },
   tertiaryButton: {
     wording: 'Annuler',
@@ -90,7 +95,9 @@ export const PAGE_CONFIG: PageConfigMap = {
     ],
     primaryButton: {
       wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
+      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
+      }),
     },
     tertiaryButton: {
       wording: 'Annuler',
@@ -118,9 +125,7 @@ export const PAGE_CONFIG: PageConfigMap = {
     Illustration: SadFace,
     title: 'Tu as atteint le nombre maximum d’essais',
     firstText: (
-      // Exceptionally, we have raw text in a Fragment that will be passed to a Typo.Body
-      // eslint-disable-next-line local-rules/no-raw-text
-      <React.Fragment>
+      <Typo.Body>
         Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu
         souhaites obtenir plus d’informations, tu peux{SPACE}
         <ExternalTouchableLink
@@ -131,7 +136,7 @@ export const PAGE_CONFIG: PageConfigMap = {
           accessibilityRole={AccessibilityRole.LINK}
         />
         .
-      </React.Fragment>
+      </Typo.Body>
     ),
     secondText: undefined,
     bannerText: undefined,
@@ -146,59 +151,67 @@ export const PAGE_CONFIG: PageConfigMap = {
 }
 
 export function BonificationRefused() {
+  const disableQFBonificationManualRequest = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
+  )
   const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
   const { user } = useAuthContext()
-  const showNumberOfRemainingRetries =
-    (params?.bonificationRefusedType === BonificationRefusedType.CUSTODIAN_NOT_FOUND ||
-      params?.bonificationRefusedType === BonificationRefusedType.APPLICATION_NOT_FOUND ||
-      params?.bonificationRefusedType === BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD) &&
-    user?.remainingBonusAttempts &&
-    user?.remainingBonusAttempts <= 5
-  const lastRemainingRetry = user?.remainingBonusAttempts == 1
-  const bonificationRefusedType =
-    params?.bonificationRefusedType ?? BonificationRefusedType.CUSTODIAN_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
 
-  const pageConfig = PAGE_CONFIG[bonificationRefusedType] // refused code will come from back
+  const remainingBonusAttempts = user?.remainingBonusAttempts
+
+  // Fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
+  const bonificationRefuseTypeFallback = BonificationRefusedType.CUSTODIAN_NOT_FOUND
+  const bonificationRefusedType = params?.bonificationRefusedType ?? bonificationRefuseTypeFallback
+
+  const RETRY_REFUSED_TYPES = [
+    BonificationRefusedType.CUSTODIAN_NOT_FOUND,
+    BonificationRefusedType.APPLICATION_NOT_FOUND,
+    BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
+  ]
+
+  const showNumberOfRemainingRetries =
+    RETRY_REFUSED_TYPES.includes(bonificationRefusedType) &&
+    remainingBonusAttempts &&
+    remainingBonusAttempts <= 5
+
+  const lastRemainingRetry = remainingBonusAttempts == 1
+
+  const buttonsSurtitle = showNumberOfRemainingRetries ? (
+    <StyledBodyXs>
+      Attention, il te reste&nbsp;:{SPACE}
+      <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry}>
+        {remainingBonusAttempts}
+        {remainingBonusAttempts
+          ? plural(remainingBonusAttempts, { plural: ' demandes', singular: ' demande' })
+          : undefined}
+      </StyledBodyXsDark>
+    </StyledBodyXs>
+  ) : disableQFBonificationManualRequest ? (
+    <StyledBodyXs>La demande de bonus est temporairement indisponible</StyledBodyXs>
+  ) : undefined
+
+  const pageConfig = PAGE_CONFIG[bonificationRefusedType]
   const { Icon, wording, navigateTo, externalNav } = pageConfig.tertiaryButton
+
   const tertiaryExternalNav =
     Icon && wording && externalNav
-      ? {
-          icon: Icon,
-          wording: wording,
-          externalNav: externalNav,
-        }
+      ? { icon: Icon, wording: wording, externalNav: externalNav }
       : undefined
+
   const tertiaryNavigateTo =
     Icon && wording && navigateTo
-      ? {
-          icon: Icon,
-          wording: wording,
-          navigateTo: navigateTo,
-        }
+      ? { icon: Icon, wording: wording, navigateTo: navigateTo }
       : tertiaryExternalNav
+
   return (
     <GenericInfoPage
       illustration={pageConfig.Illustration}
       title={pageConfig.title}
-      buttonsSurtitle={
-        showNumberOfRemainingRetries ? (
-          <StyledBodyXs>
-            Attention, il te reste&nbsp;:{' '}
-            <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry}>
-              {user?.remainingBonusAttempts}{' '}
-              {user?.remainingBonusAttempts
-                ? plural(user?.remainingBonusAttempts, {
-                    plural: ' demandes',
-                    singular: ' demande',
-                  })
-                : undefined}
-            </StyledBodyXsDark>
-          </StyledBodyXs>
-        ) : null
-      }
+      buttonsSurtitle={buttonsSurtitle}
       buttonPrimary={{
         wording: pageConfig.primaryButton.wording,
         navigateTo: pageConfig.primaryButton.navigateTo,
+        disabled: disableQFBonificationManualRequest,
       }}
       buttonTertiary={tertiaryNavigateTo}>
       <ViewGap gap={4}>
@@ -216,6 +229,7 @@ export function BonificationRefused() {
 type StyledBodyXsProps = {
   lastRemainingRetry?: boolean
 }
+
 const CenteredBody = styled(Typo.Body)({
   textAlign: 'center',
 })

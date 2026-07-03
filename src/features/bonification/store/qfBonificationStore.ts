@@ -23,8 +23,8 @@ const defaultState: State = {
   birthCountry: null,
 }
 
-const legalRepresentativeStore = createStore({
-  name: 'legal-representative',
+const qfBonificationStore = createStore({
+  name: 'family-quotient-bonification',
   defaultState,
   actions: (set) => ({
     setFirstNames: (firstNames: string[]) => set({ firstNames }),
@@ -34,14 +34,14 @@ const legalRepresentativeStore = createStore({
     setBirthDate: (birthDate: Date) => set({ birthDate }),
     setBirthCity: (birthCity: SuggestedCity | null) => set({ birthCity }),
     setBirthCountry: (birthCountry: InseeCountry) => set({ birthCountry }),
-    resetLegalRepresentative: () => set(defaultState),
+    resetQFBonification: () => set(defaultState),
   }),
   selectors: {
-    selectLegalRepresentative: () => (state) => state,
+    selectQFBonification: () => (state) => state,
   },
   options: { persist: true },
 })
 
-export const legalRepresentativeActions = legalRepresentativeStore.actions
+export const qfBonificationActions = qfBonificationStore.actions
 
-export const { useLegalRepresentative } = legalRepresentativeStore.hooks
+export const { useQFBonification } = qfBonificationStore.hooks

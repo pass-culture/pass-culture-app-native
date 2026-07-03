@@ -2,7 +2,7 @@ import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
-import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import { qfBonificationActions } from 'features/bonification/store/qfBonificationStore'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/env'
 import { render, screen, userEvent } from 'tests/utils'
@@ -84,12 +84,12 @@ describe('BonificationNames', () => {
 
   describe('Data persistence', () => {
     beforeEach(() => {
-      const { resetLegalRepresentative } = legalRepresentativeActions
-      resetLegalRepresentative()
+      const { resetQFBonification } = qfBonificationActions
+      resetQFBonification()
     })
 
     it('should show previously saved data if there is any', () => {
-      const { setFirstNames } = legalRepresentativeActions
+      const { setFirstNames } = qfBonificationActions
       const firstName = 'Jean'
       setFirstNames([firstName])
       render(<BonificationNames />)
@@ -100,8 +100,8 @@ describe('BonificationNames', () => {
     })
 
     it('should save form to store when pressing "Continuer"', async () => {
-      const setFirstNameSpy = jest.spyOn(legalRepresentativeActions, 'setFirstNames')
-      const setGivenNameSpy = jest.spyOn(legalRepresentativeActions, 'setGivenName')
+      const setFirstNameSpy = jest.spyOn(qfBonificationActions, 'setFirstNames')
+      const setGivenNameSpy = jest.spyOn(qfBonificationActions, 'setGivenName')
 
       render(<BonificationNames />)
 

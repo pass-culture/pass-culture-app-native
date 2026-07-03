@@ -11,7 +11,7 @@ export const PendingBonificationBanner = ({ amount, onClose }: PendingBonificati
     type={BannerType.ALERT}
     label={`Bonus de ${amount}`}
     description="Ton dossier est actuellement en cours de vérification."
-    links={[]}
+    links={undefined}
     Icon={Code}
     onClose={onClose}
   />

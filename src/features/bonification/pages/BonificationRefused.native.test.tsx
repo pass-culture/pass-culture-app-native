@@ -1,9 +1,12 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { BonificationType } from 'features/bonification/enums'
 import { BonificationRefused, PAGE_CONFIG } from 'features/bonification/pages/BonificationRefused'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -11,6 +14,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 
 describe('BonificationRefused', () => {
+  beforeEach(() => setFeatureFlags([]))
+
   describe('Parent not found', () => {
     it('should go navigate to home when pressing "Corriger les informations"', async () => {
       useRoute.mockReturnValueOnce({
@@ -24,7 +29,7 @@ describe('BonificationRefused', () => {
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: undefined,
+        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
         screen: 'BonificationRequiredInformation',
       })
     })
@@ -98,7 +103,7 @@ describe('BonificationRefused', () => {
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: undefined,
+        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
         screen: 'BonificationRequiredInformation',
       })
     })
@@ -169,6 +174,43 @@ describe('BonificationRefused', () => {
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 4 demandes')
 
       expect(remainingAttemptsText).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('when manual request is disabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST])
+    })
+
+    it('should disable button', () => {
+      render(<BonificationRefused />)
+
+      const button = screen.getByText(
+        PAGE_CONFIG[BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
+      )
+
+      expect(button).toBeDisabled()
+    })
+
+    it('should display unavailable message', () => {
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 10 })
+
+      render(<BonificationRefused />)
+
+      expect(
+        screen.getByText('La demande de bonus est temporairement indisponible')
+      ).toBeOnTheScreen()
+    })
+
+    it('should show remaining retries instead of unavailable message when both are true', () => {
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 3 })
+
+      render(<BonificationRefused />)
+
+      expect(screen.getByText('Attention, il te reste : 3 demandes')).toBeOnTheScreen()
+      expect(
+        screen.queryByText('La demande de bonus est temporairement indisponible')
+      ).not.toBeOnTheScreen()
     })
   })
 })

@@ -5,6 +5,8 @@ import { DefaultBonificationBanner } from 'features/bonification/components/Defa
 import { ErrorBonificationBanner } from 'features/bonification/components/ErrorBonificationBanner'
 import { PendingBonificationBanner } from 'features/bonification/components/PendingBonificationBanner'
 import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -27,6 +29,10 @@ export const BonificationBanner = ({
   bonificationStatus,
   onCloseCallback,
 }: BonificationBannerProps) => {
+  const disableQFBonificationManualRequest = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
+  )
+
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
@@ -39,10 +45,11 @@ export const BonificationBanner = ({
   const refusedType = bonificationStatus && STATUS_TO_REFUSED_TYPE[bonificationStatus]
   const noRefusedType = !refusedType
   const onClose = () => onCloseCallback()
+  const bannerProps = { amount: formatedBonificationAmount, onClose }
 
   switch (bonificationStatus) {
     case QFBonificationStatus.started:
-      return <PendingBonificationBanner amount={formatedBonificationAmount} onClose={onClose} />
+      return <PendingBonificationBanner {...bannerProps} />
 
     case QFBonificationStatus.not_in_tax_household:
     case QFBonificationStatus.too_many_retries:
@@ -50,16 +57,11 @@ export const BonificationBanner = ({
     case QFBonificationStatus.application_not_found:
     case QFBonificationStatus.quotient_familial_too_high:
       if (noRefusedType) return null
-      return (
-        <ErrorBonificationBanner
-          amount={formatedBonificationAmount}
-          refusedType={refusedType}
-          onClose={onClose}
-        />
-      )
+      return <ErrorBonificationBanner {...bannerProps} refusedType={refusedType} />
 
     case QFBonificationStatus.eligible:
     default:
-      return <DefaultBonificationBanner amount={formatedBonificationAmount} onClose={onClose} />
+      if (disableQFBonificationManualRequest) return null
+      return <DefaultBonificationBanner {...bannerProps} />
   }
 }

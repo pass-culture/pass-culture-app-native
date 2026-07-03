@@ -5,11 +5,12 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
+import { BonificationType } from 'features/bonification/enums'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import {
-  legalRepresentativeActions,
-  useLegalRepresentative,
-} from 'features/bonification/store/legalRepresentativeStore'
+  qfBonificationActions,
+  useQFBonification,
+} from 'features/bonification/store/qfBonificationStore'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -32,8 +33,8 @@ type BirthdayForm = {
 export const BonificationBirthDate = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const storedLegalRepresentative = useLegalRepresentative()
-  const { setBirthDate } = legalRepresentativeActions
+  const storedLegalRepresentative = useQFBonification()
+  const { setBirthDate } = qfBonificationActions
 
   const currentYear = new Date().getFullYear()
   const maximumSpinnerDate = new Date(currentYear - 17, 11, 31)
@@ -55,7 +56,11 @@ export const BonificationBirthDate = () => {
     ({ birthdate }: BirthdayForm) => {
       if (birthdate) {
         setBirthDate(birthdate)
-        navigate(...getSubscriptionHookConfig('BonificationBirthPlace'))
+        navigate(
+          ...getSubscriptionHookConfig('BonificationBirthPlace', {
+            bonificationType: BonificationType.FAMILY_QUOTIENT,
+          })
+        )
       }
     },
     [navigate, setBirthDate]
