@@ -1,5 +1,4 @@
-import { useNavigationState } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
@@ -12,7 +11,6 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
-import { useSync } from 'features/search/helpers/useSync/useSync'
 import { AllSearchResultsList } from 'features/search/pages/SearchResults/v2/components/SearchLists/AllSearchResultsList'
 import { ArtistsList } from 'features/search/pages/SearchResults/v2/components/SearchLists/ArtistsList'
 import { OffersList } from 'features/search/pages/SearchResults/v2/components/SearchLists/OffersList'
@@ -36,11 +34,7 @@ const searchInputID = uuidv4()
 const searchIdGenerated = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
-export const SearchResults = () => {
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.at(-1)?.name
-  useSync(currentRoute === 'SearchResults')
-
+export const SearchResults: FC = () => {
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
