@@ -4,6 +4,10 @@ import { locationSelectors } from 'libs/locationV2/location.store'
 import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { syncLocation } from 'libs/locationV2/syncLocation'
 
+jest.mock('features/navigation/navigationRef', () => ({
+  navigationRef: { navigate: jest.fn() },
+}))
+
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 
@@ -29,13 +33,18 @@ describe('requestGeolocPermission', () => {
     expect(onSuccess).toHaveBeenCalledTimes(1)
   })
 
-  it('should show permission modal when permission is NEVER_ASK_AGAIN', async () => {
+  it('should navigate to activation modal when permission is NEVER_ASK_AGAIN', async () => {
     mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
     const onSuccess = jest.fn()
 
     await requestGeolocPermission({ onSuccess })
 
-    expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true)
+    const { navigationRef } = jest.requireMock('features/navigation/navigationRef') as {
+      navigationRef: { navigate: jest.Mock }
+    }
+
+    expect(navigationRef.navigate).toHaveBeenCalledWith('GeolocationActivationModal')
+    expect(locationSelectors.selectPermissionState()).toBe(GeolocPermissionState.NEVER_ASK_AGAIN)
     expect(onSuccess).not.toHaveBeenCalled()
   })
 })

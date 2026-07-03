@@ -73,6 +73,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { VerticalPlaylistArtists } from 'shared/verticalPlaylist/pages/VerticalPlaylistArtists'
@@ -416,6 +417,13 @@ const rootScreens: RouteConfig[] = [
     name: 'VenueMapLocationModal',
     component: VenueMapLocationModal,
     options: MODAL_SCREEN_OPTIONS,
+  },
+  {
+    name: 'GeolocationActivationModal',
+    component: GeolocationActivationModal,
+    options: {
+      presentation: 'transparentModal',
+    },
   },
 ]
 

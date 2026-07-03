@@ -8,7 +8,6 @@ import { createStore } from 'libs/store/createStore'
 export type LocationState = {
   permissionState: GeolocPermissionState | null
   geolocationError: GeolocationError | null
-  isPermissionModalVisible: boolean
   locationMode: LocationMode
   configuration: {
     [LocationMode.AROUND_ME]: {
@@ -39,7 +38,6 @@ export const defaultLocationState: LocationState = {
   locationMode: LocationMode.EVERYWHERE,
   permissionState: null,
   geolocationError: null,
-  isPermissionModalVisible: false,
   configuration: {
     [LocationMode.AROUND_ME]: {
       label: 'Ma position',
@@ -97,16 +95,11 @@ export const locationStore = createStore({
       setPermissionState: (permissionState: GeolocPermissionState | null) => {
         set((state) => ({
           permissionState,
-          ...(permissionsGrantedWhilePermissionModalOpen(state, permissionState) && {
-            isPermissionModalVisible: false,
-          }),
           ...(permissionsRejectedWhileAroundMe(state) && {
             locationMode: LocationMode.EVERYWHERE,
           }),
         }))
       },
-      showPermissionModal: () => set({ isPermissionModalVisible: true }),
-      hidePermissionModal: () => set({ isPermissionModalVisible: false }),
     }
   },
   selectors: {
@@ -133,7 +126,6 @@ export const locationStore = createStore({
 
       return LocationModeToLocationTypeMap[state.locationMode]
     },
-    selectIsPermissionModalVisible: () => (state) => state.isPermissionModalVisible,
     selectLocationLabel: () => (state) => state.configuration[state.locationMode].label,
   },
   options: { persist: true, persistKeys: ['locationMode', 'configuration'] },
@@ -150,11 +142,6 @@ const isRejected = (permission: GeolocPermissionState | null) => {
     permission === GeolocPermissionState.NEVER_ASK_AGAIN
   )
 }
-
-const permissionsGrantedWhilePermissionModalOpen = (
-  state: LocationState,
-  newPermissionState: GeolocPermissionState | null
-) => newPermissionState === GeolocPermissionState.GRANTED && state.isPermissionModalVisible
 
 const permissionsRejectedWhileAroundMe = (state: LocationState) =>
   state.locationMode === LocationMode.AROUND_ME && isRejected(state.permissionState)

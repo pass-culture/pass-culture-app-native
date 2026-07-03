@@ -30,7 +30,6 @@ import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
   locationActions,
-  locationSelectors,
   useLocationV2,
 } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
@@ -131,6 +130,10 @@ jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermis
 const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 
 jest.mock('libs/locationV2/syncLocation')
+
+jest.mock('features/navigation/navigationRef', () => ({
+  navigationRef: { navigate: jest.fn() },
+}))
 
 jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
@@ -328,7 +331,12 @@ describe('SearchResultsContent component', () => {
 
     await user.press(await screen.findByText('Géolocalise-toi'))
 
-    await waitFor(() => expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true))
+    const { navigationRef } = jest.requireMock('features/navigation/navigationRef') as {
+      navigationRef: { navigate: jest.Mock }
+    }
+    await waitFor(() =>
+      expect(navigationRef.navigate).toHaveBeenCalledWith('GeolocationActivationModal')
+    )
   })
 
   it('should not log PerformSearch when there is not search query execution', async () => {

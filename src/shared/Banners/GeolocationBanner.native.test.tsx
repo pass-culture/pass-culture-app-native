@@ -20,6 +20,10 @@ const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 
 jest.mock('libs/locationV2/syncLocation')
 
+jest.mock('features/navigation/navigationRef', () => ({
+  navigationRef: { navigate: jest.fn() },
+}))
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -43,7 +47,7 @@ describe('<GeolocationBanner />', () => {
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
   })
 
-  it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
+  it('should navigate to "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
     mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
     render(
@@ -59,7 +63,12 @@ describe('<GeolocationBanner />', () => {
 
     await user.press(button)
 
-    await waitFor(() => expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true))
+    const { navigationRef } = jest.requireMock('features/navigation/navigationRef') as {
+      navigationRef: { navigate: jest.Mock }
+    }
+    await waitFor(() =>
+      expect(navigationRef.navigate).toHaveBeenCalledWith('GeolocationActivationModal')
+    )
   })
 
   it('should ask for permission when pressing button and permission is denied', async () => {

@@ -24,12 +24,7 @@ export const useLocation = (): UseLocationReturnType => {
 
   const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const place = usePlace()
-  const {
-    setPlace,
-    setAroundPlaceRadius,
-    setAroundMeRadius,
-    showPermissionModal: showGeolocPermissionModal,
-  } = locationActions
+  const { setPlace, setAroundPlaceRadius, setAroundMeRadius } = locationActions
 
   const userLocation = useUserLocation()
 
@@ -40,7 +35,6 @@ export const useLocation = (): UseLocationReturnType => {
     hasGeolocPosition,
     place,
     setPlace,
-    showGeolocPermissionModal,
     selectedLocationMode,
     setSelectedLocationMode: locationActions.setLocationMode,
     onResetPlace: locationModalActions.resetPlace,

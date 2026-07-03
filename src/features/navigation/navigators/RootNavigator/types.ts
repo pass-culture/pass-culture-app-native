@@ -352,6 +352,7 @@ export type RootStackParamList = {
     openedFrom: Referrals
     shouldOpenMapInTab?: boolean
   }
+  GeolocationActivationModal: undefined
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

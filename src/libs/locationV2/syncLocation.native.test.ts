@@ -2,6 +2,7 @@ import { GeolocPermissionState, GeolocPositionError } from 'libs/location/geoloc
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { GeolocationError, LocationMode } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
+import { locationModalSelectors } from 'libs/locationV2/locationModal.store'
 import { syncLocation } from 'libs/locationV2/syncLocation'
 
 jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
@@ -28,6 +29,14 @@ describe('syncLocation', () => {
       locationSelectors.selectLocationConfiguration(LocationMode.AROUND_ME).geolocation
     ).toEqual(position)
     expect(locationSelectors.selectState().geolocationError).toBeNull()
+  })
+
+  it('should set location mode to EVERYWHERE when permission is not GRANTED', async () => {
+    locationActions.setPermissionState(GeolocPermissionState.DENIED)
+
+    await syncLocation()
+
+    expect(locationModalSelectors.selectLocationMode()).toEqual(LocationMode.EVERYWHERE)
   })
 
   it('should clear position and set error when getGeolocPosition fails', async () => {
