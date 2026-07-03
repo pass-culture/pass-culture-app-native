@@ -16,6 +16,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useLocation } from 'libs/location/location'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
+import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 import { EditorialCard, EditorialCardInfo } from 'ui/components/EditorialCard'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -63,14 +64,14 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const editorialCardInfo: EditorialCardInfo = useMemo(
     () => ({
-      imageURL:
-        'https://cdn.phototourl.com/free/2026-03-25-5b473853-1bdb-4308-96bb-8b1518dbe1aa.png',
+      imageURL: buildCategoryIllustrationUrl('benevolat.png'),
+      imageBackgroundColor: theme.designSystem.color.illustration.positive02,
       url: venue.volunteeringUrl,
       title: `Deviens bénévole pour\n“${venue.name}”`,
       subtitle: 'Donne de ton temps pour la culture\u00a0!',
       callToAction: 'Voir les missions sur jeveuxaider.gouv',
     }),
-    [venue.name, venue.volunteeringUrl]
+    [theme.designSystem.color.illustration.positive02, venue.name, venue.volunteeringUrl]
   )
 
   const onPressVolunteeringCard = async () => {

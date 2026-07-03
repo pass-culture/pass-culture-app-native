@@ -1,10 +1,11 @@
+// eslint-disable-next-line no-restricted-imports
+import FastImage from '@d11/react-native-fast-image'
 import React, { FunctionComponent, memo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { ColorScheme } from 'libs/styled/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
@@ -14,6 +15,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type EditorialCardInfo = {
   imageURL: string
+  imageBackgroundColor?: string
   url?: string | null
   date?: string
   title?: string
@@ -47,7 +49,8 @@ const EditorialCardComponent: FunctionComponent<Props> = ({
   onPress,
   style,
 }) => {
-  const { imageURL, url, date, title, subtitle, callToAction } = editorialCardInfo
+  const { imageURL, imageBackgroundColor, url, date, title, subtitle, callToAction } =
+    editorialCardInfo
   const isDisabled = !url
   const isLargeScreen = width > 700
 
@@ -104,18 +107,35 @@ const EditorialCardComponent: FunctionComponent<Props> = ({
       height={height}
       style={style}>
       {isLargeScreen ? (
-        <FlexRow>
-          <ColumnLargeScreen>{renderInfos()}</ColumnLargeScreen>
-          <StyledImageBackgroundLargeScreen url={imageURL} height={height} testID="imageBusiness">
-            <StyledLinearGradient angle={90} />
-          </StyledImageBackgroundLargeScreen>
-        </FlexRow>
+        <ImageContainer
+          accessible={false}
+          height={height}
+          backgroundColor={imageBackgroundColor}
+          testID="imageBusiness">
+          <RemoteImage
+            source={{ uri: imageURL }}
+            resizeMode="contain"
+            testID="imageBusinessIllustration"
+          />
+          <StyledLinearGradient angle={90}>
+            <ColumnLargeScreen>{renderInfos()}</ColumnLargeScreen>
+          </StyledLinearGradient>
+        </ImageContainer>
       ) : (
-        <StyledImageBackground url={imageURL} height={height} testID="imageBusiness">
+        <ImageContainer
+          accessible={false}
+          height={height}
+          backgroundColor={imageBackgroundColor}
+          testID="imageBusiness">
+          <RemoteImage
+            source={{ uri: imageURL }}
+            resizeMode="contain"
+            testID="imageBusinessIllustration"
+          />
           <StyledLinearGradient angle={0}>
             <Column>{renderInfos()}</Column>
           </StyledLinearGradient>
-        </StyledImageBackground>
+        </ImageContainer>
       )}
     </StyledTouchableOpacity>
   )
@@ -124,16 +144,6 @@ const EditorialCardComponent: FunctionComponent<Props> = ({
 export const EditorialCard = memo(EditorialCardComponent)
 
 const BlankSpace = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.l }))
-
-const FlexRow = styled.View(({ theme }) => {
-  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
-  return {
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    flexDirection: 'row',
-    width: theme.appContentWidth - 2 * MAIN_MARGIN,
-    ...FULL_HEIGHT,
-  }
-})
 
 const StyledLinearGradient = styled(LinearGradient).attrs<{ angle: number; colors?: string[] }>(
   ({ theme, angle }) => ({
@@ -164,7 +174,6 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
 })
 
 const ColumnLargeScreen = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.lockedInverted,
   width: '50%',
   flexDirection: 'column',
   ...FULL_HEIGHT,
@@ -180,24 +189,22 @@ const Column = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.l,
 }))
 
-const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ theme, height }) => ({
-  height,
-  ...FULL_WIDTH,
-  borderRadius: theme.designSystem.size.borderRadius.s,
-  backgroundColor: theme.designSystem.color.background.brandPrimary,
-}))
-
-const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(({
-  height,
-  theme,
-}) => {
-  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
-  return {
+const ImageContainer = styled.View<{ height: number; backgroundColor?: string }>(
+  ({ theme, height, backgroundColor }) => ({
     height,
-    width: (theme.appContentWidth - 2 * MAIN_MARGIN) / 2,
+    ...FULL_WIDTH,
     borderRadius: theme.designSystem.size.borderRadius.s,
-    backgroundColor: theme.designSystem.color.background.brandPrimary,
-  }
+    backgroundColor: backgroundColor ?? theme.designSystem.color.background.brandPrimary,
+    overflow: 'hidden',
+  })
+)
+
+const RemoteImage = styled(FastImage)({
+  aspectRatio: 3 / 2,
+  ...FULL_HEIGHT,
+  position: 'absolute',
+  right: 0,
+  top: 0,
 })
 
 const Row = styled.View(({ theme }) => ({
