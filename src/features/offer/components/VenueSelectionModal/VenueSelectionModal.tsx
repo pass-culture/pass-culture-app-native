@@ -8,7 +8,6 @@ import {
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
-import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -126,7 +125,6 @@ export function VenueSelectionModal({
         subTitle={subTitle}
         headerMessage={headerMessage}
       />
-      <GeolocationActivationModal />
     </AppModal>
   )
 }
