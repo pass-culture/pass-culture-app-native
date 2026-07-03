@@ -9,6 +9,7 @@ const screensSearch = [
   'SearchLanding',
   'SearchResults',
   'ThematicSearch',
+  'ThematicSearchSubcategories',
 ] as const satisfies ReadonlyDeep<ScreenNames[]>
 
 export type SearchStackRouteName = (typeof screensSearch)[number]
@@ -22,12 +23,18 @@ export const hasAThematicSearch = [
 
 type HasAThematicSearch = typeof hasAThematicSearch
 
-type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
+export type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
 
 export type SearchStackParamList = {
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   ThematicSearch?: Partial<
+    SearchState & {
+      offerCategories: ThematicSearchCategories[]
+      accessibilityFilter: Partial<DisabilitiesProperties>
+    }
+  >
+  ThematicSearchSubcategories?: Partial<
     SearchState & {
       offerCategories: ThematicSearchCategories[]
       accessibilityFilter: Partial<DisabilitiesProperties>

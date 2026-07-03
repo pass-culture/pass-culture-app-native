@@ -1,6 +1,8 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -34,6 +36,23 @@ describe('<SubcategoryButtonListWrapper/>', () => {
     expect(await screen.findByText('Romans et littérature')).toBeOnTheScreen()
   })
 
+  it('should display "Tout parcourir" header with a "Voir tout" button', async () => {
+    await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.LIVRES)
+
+    expect(await screen.findByText('Tout parcourir')).toBeOnTheScreen()
+    expect(screen.getByText('Voir tout')).toBeOnTheScreen()
+  })
+
+  it('should navigate directly to ThematicSearchSubcategories when pressing "Voir tout"', async () => {
+    await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.LIVRES)
+
+    await user.press(await screen.findByText('Voir tout'))
+
+    expect(navigate).toHaveBeenCalledWith('ThematicSearchSubcategories', {
+      offerCategories: [SearchGroupNameEnumv2.LIVRES],
+    })
+  })
+
   it.skip('should update searchState with correct params', async () => {
     await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.LIVRES)
 
@@ -51,5 +70,5 @@ describe('<SubcategoryButtonListWrapper/>', () => {
   })
 })
 
-const renderSubcategoryButtonListWrapper = (offerCategory: SearchGroupNameEnumv2) =>
+const renderSubcategoryButtonListWrapper = (offerCategory: ThematicSearchCategories) =>
   renderAsync(reactQueryProviderHOC(<SubcategoryButtonListWrapper offerCategory={offerCategory} />))
