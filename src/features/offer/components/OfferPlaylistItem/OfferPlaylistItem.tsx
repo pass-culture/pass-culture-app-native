@@ -25,6 +25,7 @@ type OfferPlaylistItemProps = {
   euroToPacificFrancRate: number
   theme: DefaultTheme
   artistName?: string
+  originDetails?: string
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
   priceDisplay: (item: Offer) => string
@@ -46,6 +47,7 @@ export const OfferPlaylistItem = ({
   categoryMapping,
   labelMapping,
   artistName,
+  originDetails,
   apiRecoParams,
   theme,
   analyticsFrom = 'offer',
@@ -87,6 +89,7 @@ export const OfferPlaylistItem = ({
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
         artistName={artistName}
+        originDetails={originDetails}
         navigationMethod={navigationMethod}
         interactionTag={tag}
       />

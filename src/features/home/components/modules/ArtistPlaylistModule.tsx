@@ -99,6 +99,8 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           moduleName={moduleName}
           moduleId={moduleId}
           homeEntryId={homeEntryId}
+          artistName={artist?.name}
+          originDetails="artistRecommendation"
           width={width}
           height={height}
           analyticsFrom="home"
@@ -107,7 +109,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
       )
     },
 
-    [moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId, artist?.name]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
@@ -145,7 +147,12 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   }
 
   const onArtistPress = (artistId: string, artistName: string) => {
-    void analytics.logConsultArtist({ artistId, artistName, from: 'home' })
+    void analytics.logConsultArtist({
+      artistId,
+      artistName,
+      from: 'home',
+      originDetails: 'artistRecommendation',
+    })
   }
 
   return (

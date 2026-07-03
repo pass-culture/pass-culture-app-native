@@ -187,6 +187,7 @@ describe('ArtistPlaylistModule', () => {
         artistId: mockArtist.id,
         artistName: mockArtist.name,
         from: 'home',
+        originDetails: 'artistRecommendation',
       })
     })
   })

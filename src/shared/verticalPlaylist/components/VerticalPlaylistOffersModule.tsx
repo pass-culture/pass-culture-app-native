@@ -20,6 +20,7 @@ export const VerticalPlaylistOffersModule = ({ module }: Props) => {
       artistId={
         module.type === HomepageModuleType.ArtistPlaylistModule ? module.artistId : undefined
       }
+      moduleId={module.type === HomepageModuleType.ArtistPlaylistModule ? module.id : undefined}
     />
   )
 }

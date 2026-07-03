@@ -140,6 +140,7 @@ describe('<VerticalPlaylistOffersView />', () => {
       artistId: '1',
       artistName: 'Artist 1',
       from: 'home',
+      originDetails: 'artistRecommendation',
     })
   })
 })

@@ -35,6 +35,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     apiRecoParams,
     index,
     artistName,
+    originDetails,
     interactionTag,
     navigationMethod = NAVIGATION_METHOD.NAVIGATE,
     containerWidth,
@@ -88,6 +89,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       searchId,
       index,
       artistName,
+      originDetails,
       displayAdvice: proAdvicesOnOfferSegment === 'A',
     })
   }
