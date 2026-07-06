@@ -13,13 +13,16 @@ import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePla
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
+import { usePrevious } from 'features/search/helpers/usePrevious'
 import { BookPlaylists } from 'features/search/pages/ThematicSearch/Book/BookPlaylists'
 import { CinemaPlaylists } from 'features/search/pages/ThematicSearch/Cinema/CinemaPlaylists'
 import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSearch/ConcertsAndFestivals/ConcertsAndFestivalsPlaylists'
 import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
+import { SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
+import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -47,6 +50,8 @@ export const ThematicSearch: React.FC = () => {
   const {
     hits: { venues },
     venuesUserData,
+    nbHits,
+    isLoading,
   } = useSearchResults()
 
   const { searchState, dispatch } = useSearch()
@@ -76,6 +81,14 @@ export const ThematicSearch: React.FC = () => {
     },
     [pageTracking]
   )
+
+  // Execute log only on search fetch completion (same pattern as SearchResultsContent)
+  const previousIsLoading = usePrevious(isLoading)
+  useEffect(() => {
+    if (previousIsLoading && !isLoading) {
+      void analytics.logPerformSearch(searchState, disabilities, nbHits, SearchView.Thematic)
+    }
+  }, [disabilities, isLoading, nbHits, previousIsLoading, searchState])
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
