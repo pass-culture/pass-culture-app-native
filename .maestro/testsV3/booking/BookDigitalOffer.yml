@@ -23,8 +23,8 @@ onFlowStart:
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Catégorie Médias & presse'
-      - tapOn: 'Catégorie Médias & presse'
+            text: 'Catégorie Médias et presse'
+      - tapOn: 'Catégorie Médias et presse'
 
 - runFlow:
     when:
@@ -32,13 +32,13 @@ onFlowStart:
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Médias & presse'
-      - tapOn: 'Médias & presse'
+            text: 'MÉDIAS ET PRESSE'
+      - tapOn: 'MÉDIAS ET PRESSE'
 
 - tapOn: 'Voir tous les filtres : 1 filtre actif'
 - tapOn: '.*Catégorie.*'
 
-- assertVisible: 'Médias & presse'
+- assertVisible: 'Médias et presse'
 - tapOn: '.*Presse en ligne.*'
 - tapOn: 'Appliquer le filtre'
 
@@ -53,9 +53,9 @@ onFlowStart:
 
 - runFlow:
     when:
-      visible: "Réserver l'offre"
+      visible: "Réserver l’offre"
     commands:
-      - tapOn: "Réserver l'offre"
+      - tapOn: "Réserver l’offre"
 
 - runFlow:
     when:
