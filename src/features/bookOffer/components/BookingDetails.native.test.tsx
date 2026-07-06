@@ -13,6 +13,11 @@ import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import * as BookingOfferAPI from 'queries/offer/useBookingOfferQuery'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -68,15 +73,6 @@ mockUseSubcategoriesMapping.mockReturnValue({
 })
 
 const mockOnPressBookOffer = jest.fn()
-
-let mockSelectedLocationMode = LocationMode.EVERYWHERE
-let mockPlace: SuggestedPlace | null = null
-jest.mock('libs/location/location', () => ({
-  useLocation: jest.fn(() => ({
-    selectedLocationMode: mockSelectedLocationMode,
-    place: mockPlace,
-  })),
-}))
 
 const offerVenues = [
   {
@@ -145,14 +141,13 @@ describe('<BookingDetails />', () => {
   })
 
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
     mockServer.getApi<OfferResponse>(`/v3/offer/${mockOfferId}`, offerResponseSnap)
   })
 
   afterEach(() => {
     mockVenueList = []
     mockNbVenueItems = 0
-    mockSelectedLocationMode = LocationMode.EVERYWHERE
-    mockPlace = null
   })
 
   describe('with initial state', () => {
@@ -660,8 +655,10 @@ describe('<BookingDetails />', () => {
         })
         mockNbVenueItems = 2
         mockVenueList = offerVenues
-        mockSelectedLocationMode = locationMode
-        mockPlace = place
+        useLocationV2.setState(defaultLocationState)
+        locationActions.setLocationMode(locationMode)
+        locationActions.setPlace(place)
+
         renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
         await user.press(screen.getByText('Modifier'))

@@ -7,7 +7,7 @@ import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistC
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
@@ -29,7 +29,9 @@ type Props = {
 }
 
 export const VideoMultiOfferTile: FunctionComponent<Props> = ({ offer, analyticsParams }) => {
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()

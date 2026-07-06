@@ -17,7 +17,7 @@ import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
@@ -52,7 +52,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   } = props
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { user } = useAuthContext()
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const { designSystem } = useTheme()
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(

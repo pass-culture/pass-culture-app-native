@@ -14,7 +14,7 @@ import { UserProfile } from 'features/share/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
@@ -53,7 +53,9 @@ export const Favorite: React.FC<Props> = (props) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const distanceToOffer = getDistance(
     {
       lat: offer.coordinates?.latitude,

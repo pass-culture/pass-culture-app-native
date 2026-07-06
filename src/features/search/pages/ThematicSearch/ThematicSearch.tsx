@@ -23,8 +23,8 @@ import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/Thematic
 import { SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationMode } from 'libs/locationV2/location.store'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -43,7 +43,7 @@ export const ThematicSearch: React.FC = () => {
 
   const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
-  const { selectedLocationMode } = useLocation()
+  const selectedLocationMode = useLocationMode()
   const [fallbackSearchId] = useState(() => uuidv4())
   const currentSearchId = params?.searchId ?? fallbackSearchId
   const isLandscape = useIsLandscape()

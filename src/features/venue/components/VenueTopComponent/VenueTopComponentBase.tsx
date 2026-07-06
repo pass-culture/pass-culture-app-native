@@ -15,7 +15,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -45,7 +45,9 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   const { venueAddress, venueName } = getVenueBlock({
     venue: getVenue(venue),
   })
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
 
   const { bannerUrl, bannerIsFromGoogle, bannerCredit } = venue
 

@@ -22,6 +22,16 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 jest.useFakeTimers()
 
 describe('<ProfileOnline />', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.clearAllMocks()
+    jest.clearAllTimers()
+  })
+
+  afterEach(() => {
+    jest.clearAllTimers()
+  })
+
   setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
 
   it('should display ProfileLoggedIn when user is logged in', async () => {
@@ -55,14 +65,16 @@ describe('<ProfileOnline />', () => {
 
   it('should scroll to top when user logs out', async () => {
     mockAuthContextWithUser(beneficiaryUser)
-    await renderProfileOnline()
+    const { rerender } = await renderProfileOnline()
 
     const scrollToSpy = jest.spyOn(ScrollView.prototype, 'scrollTo').mockImplementation(jest.fn())
 
     mockAuthContextWithoutUser()
-    render(reactQueryProviderHOC(<ProfileOnline />))
+    rerender(reactQueryProviderHOC(<ProfileOnline />))
 
-    await act(async () => jest.advanceTimersByTime(400))
+    await act(async () => {
+      jest.advanceTimersByTime(400)
+    })
 
     expect(scrollToSpy).toHaveBeenCalledWith({ y: 0, animated: true })
 

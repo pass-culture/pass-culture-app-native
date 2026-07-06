@@ -4,6 +4,12 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -19,8 +25,6 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
-jest.mock('libs/location/location')
-
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -33,6 +37,9 @@ jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
 
 describe('<Home/>', () => {
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ longitude: 90.4773245, latitude: 90.4773245 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

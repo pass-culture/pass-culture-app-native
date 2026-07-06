@@ -3,19 +3,18 @@ import React from 'react'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useLocation } from 'libs/location/location'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/location/location')
-jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 
 describe('<VenueTopComponent />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
   })
 
   it('should display preview in modal', async () => {

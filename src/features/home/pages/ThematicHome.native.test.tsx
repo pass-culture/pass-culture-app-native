@@ -19,7 +19,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeolocPermissionState } from 'libs/location/location'
-import { LocationMode, UseLocationReturnType } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
   locationActions,
@@ -72,20 +72,8 @@ const mockUseFetchHomepageByIdQueryValue: UseQueryResult<Homepage, Error> = {
 
 mockUseHomepageData.mockReturnValue(mockUseFetchHomepageByIdQueryValue)
 
-const defaultUseLocation: Partial<UseLocationReturnType> = {
-  userLocation: {
-    latitude: 2,
-    longitude: 2,
-  },
-  permissionState: GeolocPermissionState.GRANTED,
-  setPlace: jest.fn(),
-  setSelectedLocationMode: jest.fn(),
-  onResetPlace: jest.fn(),
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+const setLocationModeSpy = jest.spyOn(locationActions, 'setLocationMode')
+const setPlaceSpy = jest.spyOn(locationActions, 'setPlace')
 
 jest
   .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
@@ -148,6 +136,9 @@ describe('ThematicHome', () => {
     useLocationV2.setState(defaultLocationState)
     locationActions.setGeolocPosition({ latitude: 2, longitude: 2 })
     locationActions.setLocationMode(LocationMode.AROUND_ME)
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+    setLocationModeSpy.mockClear()
+    setPlaceSpy.mockClear()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -362,6 +353,7 @@ describe('ThematicHome', () => {
 
   it('should show system banner when user is not geolocated or located', async () => {
     useLocationV2.setState(defaultLocationState)
+    locationActions.setPermissionState(null)
     renderThematicHome()
 
     await screen.findByText('Suivre')
@@ -381,7 +373,6 @@ describe('ThematicHome', () => {
     const latitude = 12
     const longitude = 14
 
-    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     useRoute.mockReturnValueOnce({
       params: { entryId: 'fakeEntryId', latitude, longitude },
     })
@@ -389,11 +380,9 @@ describe('ThematicHome', () => {
 
     await screen.findByText('Suivre')
 
-    expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
-      LocationMode.AROUND_PLACE
-    )
+    expect(setLocationModeSpy).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
 
-    expect(defaultUseLocation.setPlace).toHaveBeenCalledWith({
+    expect(setPlaceSpy).toHaveBeenCalledWith({
       label: 'Géolocalisation',
       geolocation: {
         latitude,

@@ -8,7 +8,12 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/fixtures/algoliaFixtures'
-import { Position } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { renderHook } from 'tests/utils'
 
@@ -31,16 +36,15 @@ const useSimilarOffersSpy = jest
   .mockImplementation()
   .mockReturnValue({ similarOffers: moreHitsForSimilarOffersPlaylist, apiRecoParams })
 
-const mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockPosition,
-  }),
-}))
-
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('useOfferPlaylist', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 90.4773245, longitude: 90.4773245 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+  })
+
   describe('When offer is defined', () => {
     it('should return same category similar offers playlist', () => {
       const { result } = renderHook(() =>

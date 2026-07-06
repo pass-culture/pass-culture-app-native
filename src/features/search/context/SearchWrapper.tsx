@@ -12,8 +12,8 @@ import { Action, initialSearchState, searchReducer } from 'features/search/conte
 import { loadSearchFiltersFromUrl } from 'features/search/store/loadSearchFiltersFromUrl'
 import { searchStore } from 'features/search/store/search.store'
 import { SearchState } from 'features/search/types'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration, useLocationMode, usePlace } from 'libs/locationV2/location.store'
 
 export interface ISearchContext {
   searchState: SearchState
@@ -32,7 +32,10 @@ export const SearchWrapper = memo(function SearchWrapper({
   children: React.JSX.Element
 }) {
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
-  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const place = usePlace()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
 
   const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
   const showSuggestions = useCallback(() => setIsFocusOnSuggestions(true), [])

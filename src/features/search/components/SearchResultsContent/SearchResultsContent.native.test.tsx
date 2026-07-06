@@ -13,6 +13,7 @@ import {
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
+import { getRegionFromPosition } from 'features/venueMap/helpers/getRegionFromPosition/getRegionFromPosition'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { beneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
@@ -25,7 +26,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { GeoCoordinates, GeolocPermissionState, Position } from 'libs/location/location'
+import { GeoCoordinates, GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
@@ -36,7 +37,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor, within } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor, within, act } from 'tests/utils'
 
 import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
@@ -81,50 +82,61 @@ const mockedPlace: SuggestedPlace = {
   type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const mockSetSelectedLocationMode = jest.fn()
-const mockSetPlace = jest.fn()
-const mockShowGeolocPermissionModal = jest.fn()
 const mockedPosition: GeoCoordinates = { latitude: 2, longitude: 40 }
-const mockedNoPosition = null as Position
-const DEFAULT_RADIUS = 50
-const everywhereUseLocation = {
-  geolocPosition: mockedNoPosition,
-  geolocPositionError: null,
-  place: mockedPlace,
-  userLocation: mockedNoPosition,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  hasGeolocPosition: false,
-  permissionState: GeolocPermissionState.DENIED,
-  onModalHideRef: jest.fn(),
-  setPlace: mockSetPlace,
-  isCurrentLocationMode: jest.fn(),
-  setSelectedLocationMode: mockSetSelectedLocationMode,
-  showGeolocPermissionModal: mockShowGeolocPermissionModal,
-  triggerPositionUpdate: jest.fn(),
-  onPressGeolocPermissionModalButton: jest.fn(),
-  onResetPlace: jest.fn(),
-  selectedPlace: null,
-  setSelectedPlace: jest.fn(),
-  placeQuery: '',
-  setPlaceQuery: jest.fn(),
-  aroundPlaceRadius: DEFAULT_RADIUS,
-  setAroundPlaceRadius: jest.fn(),
-  aroundMeRadius: DEFAULT_RADIUS,
-  setAroundMeRadius: jest.fn(),
-}
-const aroundMeUseLocation = {
-  ...everywhereUseLocation,
-  geolocPosition: mockedPosition,
-  userLocation: mockedPosition,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  hasGeolocPosition: true,
-  permissionState: GeolocPermissionState.GRANTED,
+const mockedNoPosition = null as GeoCoordinates | null
+
+const setupLocationState = ({
+  locationMode = LocationMode.EVERYWHERE,
+  geolocPosition = mockedNoPosition,
+  place = null as SuggestedPlace | null,
+  permissionState = GeolocPermissionState.DENIED,
+}: {
+  locationMode?: LocationMode
+  geolocPosition?: GeoCoordinates | null
+  place?: SuggestedPlace | null
+  permissionState?: GeolocPermissionState | null
+} = {}) => {
+  act(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(locationMode)
+    locationActions.setGeolocPosition(geolocPosition)
+    locationActions.setPermissionState(permissionState)
+    if (place) {
+      locationActions.setPlace(place)
+    }
+  })
 }
 
-const mockUseLocation = jest.fn(() => everywhereUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+const setupAroundMeLocation = () => {
+  act(() => {
+    useLocationV2.setState({
+      ...defaultLocationState,
+      locationMode: LocationMode.AROUND_ME,
+      configuration: {
+        ...defaultLocationState.configuration,
+        [LocationMode.AROUND_ME]: {
+          ...defaultLocationState.configuration[LocationMode.AROUND_ME],
+          geolocation: mockedPosition,
+        },
+      },
+      permissionState: GeolocPermissionState.GRANTED,
+    })
+  })
+  const region = getRegionFromPosition(mockedPosition, 1)
+  useVenueMapStore.setInitialRegion(region)
+  useVenueMapStore.setRegion(region)
+}
+
+const setupEverywhereLocation = () =>
+  setupLocationState({
+    locationMode: LocationMode.EVERYWHERE,
+    geolocPosition: mockedNoPosition,
+    place: mockedPlace,
+    permissionState: GeolocPermissionState.DENIED,
+  })
+
+const setLocationModeSpy = jest.spyOn(locationActions, 'setLocationMode')
+const setPlaceSpy = jest.spyOn(locationActions, 'setPlace')
 
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
@@ -246,13 +258,13 @@ describe('SearchResultsContent component', () => {
       dispatch: mockDispatch,
     })
 
-    mockUseLocation.mockReturnValue({
-      ...everywhereUseLocation,
-      userLocation: mockedPosition,
-      hasGeolocPosition: false,
-    })
+    setupEverywhereLocation()
+
+    useVenueMapStore.clearVenueMapStore()
 
     mockPreviousRouteName = SearchView.Landing
+    setLocationModeSpy.mockClear()
+    setPlaceSpy.mockClear()
   })
 
   it('should render correctly', async () => {
@@ -280,8 +292,7 @@ describe('SearchResultsContent component', () => {
 
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
-      locationActions.setGeolocPosition(mockedPosition)
-      mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
+      setupAroundMeLocation()
       renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       await screen.findByTestId('searchResults')
@@ -290,7 +301,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('when a category filter is selected and position is null', async () => {
-      mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
+      setupEverywhereLocation()
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -308,7 +319,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('when position is null and no results search', async () => {
-      mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
+      setupEverywhereLocation()
       renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       await screen.findByTestId('searchResults')
@@ -318,13 +329,8 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
-    useLocationV2.setState(defaultLocationState)
-    locationActions.setLocationMode(LocationMode.EVERYWHERE)
+    setupEverywhereLocation()
     mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
-    mockUseLocation.mockReturnValueOnce({
-      ...everywhereUseLocation,
-      userLocation: null,
-    })
     renderSearchResultContent()
 
     await initSearchResultsFlashlist()
@@ -552,8 +558,8 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
 
-      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
-      expect(mockSetPlace).toHaveBeenCalledWith(null)
+      expect(setLocationModeSpy).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
+      expect(setPlaceSpy).toHaveBeenCalledWith(null)
     })
 
     it('should log ExtendSearchRadiusClicked when `Élargir la zone de recherche` cta is pressed', async () => {
@@ -625,12 +631,7 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
-    useLocationV2.setState(defaultLocationState)
-    locationActions.setLocationMode(LocationMode.EVERYWHERE)
-    mockUseLocation.mockReturnValueOnce({
-      ...everywhereUseLocation,
-      userLocation: null,
-    })
+    setupEverywhereLocation()
 
     renderSearchResultContent()
     await initSearchResultsFlashlist()
@@ -644,12 +645,7 @@ describe('SearchResultsContent component', () => {
 
   describe('should display geolocation incitation button', () => {
     beforeEach(() => {
-      useLocationV2.setState(defaultLocationState)
-      locationActions.setLocationMode(LocationMode.EVERYWHERE)
-      mockUseLocation.mockReturnValue({
-        ...everywhereUseLocation,
-        userLocation: null,
-      })
+      setupEverywhereLocation()
     })
 
     it('when position is null', async () => {
@@ -703,7 +699,7 @@ describe('SearchResultsContent component', () => {
 
   describe('when feature flag map in search deactivated', () => {
     beforeEach(() => {
-      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+      setupAroundMeLocation()
     })
 
     it('should not display tabs', async () => {
@@ -787,8 +783,12 @@ describe('SearchResultsContent component', () => {
 
   describe('when feature flag map in search activated', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
-      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH,
+        RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+      ])
+      mockUseRoute.mockReturnValue({ name: 'SearchResults' })
+      setupAroundMeLocation()
     })
 
     it('should display tabs', async () => {
@@ -845,7 +845,7 @@ describe('SearchResultsContent component', () => {
 
     describe('and user location selected is everywhere', () => {
       beforeEach(() => {
-        mockUseLocation.mockReturnValue(everywhereUseLocation)
+        setupEverywhereLocation()
       })
 
       it('should navigate to venue map location modal when pressing map tab', async () => {
@@ -871,7 +871,7 @@ describe('SearchResultsContent component', () => {
 
   describe('Artists section', () => {
     beforeEach(() => {
-      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+      setupAroundMeLocation()
     })
 
     it('should display artists playlist when there are artists', async () => {

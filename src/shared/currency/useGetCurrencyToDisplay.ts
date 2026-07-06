@@ -1,8 +1,8 @@
 /* eslint-disable local-rules/no-euro-usage */
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { getCurrencyFromParam } from 'shared/currency/getCurrencyParam'
 
 export enum Currency {
@@ -17,7 +17,8 @@ export const useGetCurrencyToDisplay = (
   displayFormat: CurrencyDisplayFormat = 'short'
 ): Currency => {
   const { user } = useAuthContext()
-  const { selectedPlace, selectedLocationMode } = useLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
 
   const pacificFrancCurrency =
     displayFormat === 'full' ? Currency.PACIFIC_FRANC_FULL : Currency.PACIFIC_FRANC_SHORT

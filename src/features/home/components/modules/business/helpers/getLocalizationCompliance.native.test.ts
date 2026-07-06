@@ -1,15 +1,9 @@
 import { getLocalizationCompliance } from 'features/home/components/modules/business/helpers/getLocalizationCompliance'
 import { LocationCircleArea } from 'features/home/types'
-import { GeoCoordinates, Position } from 'libs/location/location'
+import { GeoCoordinates, Position } from 'libs/location/types'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: Position = DEFAULT_POSITION
-
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-  }),
-}))
 
 const locationAreaWithUserInside: LocationCircleArea = {
   latitude: 2,

@@ -6,25 +6,29 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { Activity, VenueResponse } from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import * as openingHoursStatusModule from 'features/venue/components/OpeningHoursStatus/getOpeningHoursStatus'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useLocation } from 'libs/location/location'
-import { UseLocationReturnType } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/location/location')
 jest.mock('react-native-map-link')
 
-const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
 
 const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+const getOpeningHoursStatusSpy = jest.spyOn(openingHoursStatusModule, 'getOpeningHoursStatus')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -32,6 +36,12 @@ jest.useFakeTimers()
 describe('<VenueTopComponent />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    mockdate.reset()
+  })
+
+  afterEach(() => {
+    mockdate.reset()
   })
 
   it('should display full venue address', async () => {
@@ -52,10 +62,8 @@ describe('<VenueTopComponent />', () => {
 
   it('should display distance between user and venue when geolocation is activated and venue open to public', async () => {
     const userLocation = { latitude: 30, longitude: 30.1 }
-    mockUseLocation.mockReturnValueOnce({
-      userLocation,
-      hasGeolocPosition: true,
-    } as UseLocationReturnType)
+    locationActions.setGeolocPosition(userLocation)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     const locatedVenue: VenueResponse = {
       ...venueOpenToPublic,
       latitude: 30,
@@ -83,9 +91,6 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should not display distance between user and venue when geolocation is not activated', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: false,
-    } as UseLocationReturnType)
     const locatedVenue: VenueResponse = {
       ...venueOpenToPublic,
       latitude: 30,
@@ -119,10 +124,14 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should render dynamics opening hours', async () => {
-    mockdate.set(new Date('2024-05-31T08:31:00'))
+    getOpeningHoursStatusSpy.mockReturnValueOnce({
+      openingState: 'open-soon',
+      openingLabel: 'Ouvre bientôt - 9h',
+      nextChangeTime: undefined,
+    })
     renderVenueTopComponent({ venue: venueOpenToPublic })
 
-    expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
+    expect(await screen.findByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
@@ -163,8 +172,6 @@ describe('<VenueTopComponent />', () => {
 
   describe('venue is not open to public', () => {
     it('should not render dynamics opening hours', async () => {
-      mockdate.set(new Date('2024-05-31T08:31:00'))
-
       renderVenueTopComponent({ venue: { ...venueDataTest, isOpenToPublic: false } })
 
       expect(screen.queryByText('Ouvre bientôt - 9h')).not.toBeOnTheScreen()
@@ -178,10 +185,8 @@ describe('<VenueTopComponent />', () => {
 
     it('should not display distance between user and venue when geolocation is activated', async () => {
       const userLocation = { latitude: 30, longitude: 30.1 }
-      mockUseLocation.mockReturnValueOnce({
-        userLocation,
-        hasGeolocPosition: true,
-      } as UseLocationReturnType)
+      locationActions.setGeolocPosition(userLocation)
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
       const locatedVenue: VenueResponse = {
         ...venueDataTest,
         latitude: 30,

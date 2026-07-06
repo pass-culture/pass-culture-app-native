@@ -27,7 +27,9 @@ import { useFavoritesQuery } from 'features/favorites/queries'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { Position, useLocation } from 'libs/location/location'
+import { Position } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration } from 'libs/locationV2/location.store'
 import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import {
@@ -81,7 +83,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
-  const { geolocPosition: position } = useLocation()
+  const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
   const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)

@@ -155,4 +155,5 @@ export const {
   useIsGeolocated,
   usePlace,
   useLocationLabel,
+  useLocationMode,
 } = locationStore.hooks

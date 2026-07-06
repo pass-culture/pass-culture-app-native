@@ -4,8 +4,8 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
-import { useLocation } from 'libs/location/location'
 import { Position } from 'libs/location/types'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { Offer } from 'shared/offer/types'
 
@@ -31,7 +31,7 @@ export const useHighlightOffer = ({
   const isUserUnderage = useIsUserUnderage()
 
   const transformOfferHits = useTransformOfferHits()
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
 
   const getHighlightOffer = async () => {
     if (offerTag) {

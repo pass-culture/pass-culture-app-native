@@ -12,7 +12,13 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { GeoCoordinates, Position } from 'libs/location/location'
+import { GeoCoordinates } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
@@ -47,16 +53,6 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
 } satisfies SearchResultsContentProps
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
-const mockPosition: Position = DEFAULT_POSITION
-const mockShowGeolocPermissionModal = jest.fn()
-
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-    showGeolocPermissionModal: mockShowGeolocPermissionModal,
-    onModalHideRef: { current: jest.fn() },
-  }),
-}))
 
 jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
@@ -87,6 +83,9 @@ jest
 
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition(DEFAULT_POSITION)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockUseVenuesInRegionQuery.mockReturnValue({ data: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })

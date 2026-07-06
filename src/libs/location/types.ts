@@ -1,5 +1,3 @@
-import { SuggestedPlace } from 'libs/place/types'
-
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
 
 export enum LocationMode {
@@ -28,23 +26,3 @@ export type Position = GeoCoordinates | null | undefined
 
 export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
-
-export type UseLocationReturnType = {
-  hasGeolocPosition: boolean
-  place: SuggestedPlace | null
-  setPlace: (place: SuggestedPlace | null) => void
-  geolocPosition: Position
-  geolocPositionError: GeolocationError | null
-  permissionState: GeolocPermissionState | null
-  selectedLocationMode: LocationMode
-  setSelectedLocationMode: (locationMode: LocationMode) => void
-  selectedPlace: SuggestedPlace | null
-  setSelectedPlace: (place: SuggestedPlace | null) => void
-  onResetPlace: () => void
-  setPlaceQuery: (placeQuery: string) => void
-  aroundPlaceRadius: number
-  setAroundPlaceRadius: (radius: number) => void
-  aroundMeRadius: number
-  setAroundMeRadius: (radius: number) => void
-  userLocation: Position
-}

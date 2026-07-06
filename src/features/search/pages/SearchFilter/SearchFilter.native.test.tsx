@@ -10,7 +10,12 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates } from 'libs/location/location'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -29,25 +34,17 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-const initialMockUseLocation = {
-  geolocPosition: DEFAULT_POSITION,
-  place: null,
-  userLocation: DEFAULT_POSITION,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  aroundMeRadius: DEFAULT_RADIUS,
-  setSelectedLocationMode: jest.fn(),
-  hasGeolocPosition: false,
-  setSelectedPlace: jest.fn(),
-  setAroundMeRadius: jest.fn(),
-  aroundPlaceRadius: DEFAULT_RADIUS,
-  setPlace: jest.fn(),
+
+const setupAroundMeLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setGeolocPosition(DEFAULT_POSITION)
+  locationActions.setLocationMode(LocationMode.AROUND_ME)
 }
-const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
-  () => initialMockUseLocation
-)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+
+const setupEverywhereLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setLocationMode(LocationMode.EVERYWHERE)
+}
 
 const mockData = PLACEHOLDER_DATA
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
@@ -91,6 +88,7 @@ describe('<SearchFilter/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
+    setupAroundMeLocation()
   })
 
   it('should render correctly', async () => {
@@ -142,16 +140,11 @@ describe('<SearchFilter/>', () => {
           ...initialMockUseSearch,
           searchState: { ...initialSearchState, minPrice: 10 },
         })
-        mockUseLocation.mockReturnValue({
-          ...initialMockUseLocation,
-          geolocPosition: undefined,
-          userLocation: undefined,
-          selectedLocationMode: LocationMode.EVERYWHERE,
-        })
+        setupEverywhereLocation()
       })
 
       afterEach(() => {
-        mockUseLocation.mockReturnValue(initialMockUseLocation)
+        setupAroundMeLocation()
         mockUseSearch.mockReturnValue(initialMockUseSearch)
       })
 

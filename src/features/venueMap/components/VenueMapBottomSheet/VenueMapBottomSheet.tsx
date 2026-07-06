@@ -17,7 +17,7 @@ import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/Ve
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { parseActivity } from 'libs/parsers/activity'
 import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
@@ -48,7 +48,9 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     },
     ref
   ) {
-    const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+    const userLocation = useUserLocation()
+    const selectedPlace = usePlace()
+    const selectedLocationMode = useLocationMode()
     const { designSystem } = useTheme()
     const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing.xxxxl
 

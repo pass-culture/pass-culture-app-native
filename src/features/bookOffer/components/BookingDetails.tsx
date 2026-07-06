@@ -23,7 +23,7 @@ import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueS
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation } from 'libs/location/location'
+import { usePlace, useLocationMode, useUserLocation } from 'libs/locationV2/location.store'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
@@ -84,7 +84,9 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
   const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
   const { onScroll: onScrollModal } = useOpacityTransition()
-  const { userLocation, selectedLocationMode, place } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+  const place = usePlace()
 
   const defaultSearchVenueOffers = {
     offerId: 0,

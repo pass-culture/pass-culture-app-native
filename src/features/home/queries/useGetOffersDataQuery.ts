@@ -9,7 +9,7 @@ import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { PlaylistOffersParams } from 'libs/algolia/types'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 
 const isPlaylistOffersParameters = (parameter: unknown): parameter is PlaylistOffersParams =>
@@ -20,7 +20,7 @@ const isPlaylistOffersParamsArrayWithoutUndefined = (
 ): params is PlaylistOffersParams[] => params !== undefined
 
 export const useGetOffersDataQuery = (modules: (OffersModule | ArtistPlaylistModule)[]) => {
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const transformHits = useTransformOfferHits()
 
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()

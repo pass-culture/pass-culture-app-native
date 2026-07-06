@@ -3,7 +3,12 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQueryAPI from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { Position } from 'libs/location/types'
+import { LocationMode, Position } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -18,11 +23,6 @@ const fetchOffersByArtistSpy = jest
   })
 
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-  }),
-}))
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQueryAPI, 'useRemoteConfigQuery')
 
@@ -37,6 +37,12 @@ describe('useArtistResultsQuery', () => {
         artistPageSubcategories: { subcategories: [SubcategoryIdEnum.LIVRE_PAPIER] },
       },
     })
+  })
+
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition(mockUserLocation)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
   })
 
   it('should fetch same artist playlist when artistId and subcategory compatible with artist page defined', async () => {

@@ -6,7 +6,7 @@ import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOffer, HitOffer, PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
-import { LocationMode, Position } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -25,15 +25,6 @@ const defaultVenue: VenueResponse = {
   isOpenToPublic: true,
   isPermanent: true,
 }
-
-const mockLocationMode = LocationMode.AROUND_ME
-const mockUserLocation: Position = { latitude: 2, longitude: 2 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
 
 jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),

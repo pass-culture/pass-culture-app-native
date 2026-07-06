@@ -10,7 +10,7 @@ import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueS
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation } from 'libs/location/location'
+import { usePlace, useLocationMode, useUserLocation } from 'libs/locationV2/location.store'
 import { Subcategory } from 'libs/subcategories/types'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
@@ -53,7 +53,9 @@ export const OfferVenueContainer: FC<Props> = ({
 
   const canSeeVenue = offer.venue.isPermanent
 
-  const { selectedLocationMode, place, userLocation } = useLocation()
+  const selectedLocationMode = useLocationMode()
+  const place = usePlace()
+  const userLocation = useUserLocation()
 
   const {
     visible: isChangeVenueModalVisible,

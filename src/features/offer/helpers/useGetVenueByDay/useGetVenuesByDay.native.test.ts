@@ -3,7 +3,12 @@ import mockdate from 'mockdate'
 
 import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferIds'
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
-import { LocationMode, Position } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -36,20 +41,17 @@ const OFFER_WITHOUT_STOCKS = mockBuilder.offerResponseV2({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/network/NetInfoWrapper')
 
-const mockLocationMode = LocationMode.AROUND_ME
-const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
-
 const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')
 
 mockdate.set(TODAY.toDate())
 
 describe('useGetVenuesByDay', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 48.90374, longitude: 2.48171 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+  })
+
   describe('hasStocksOnlyAfter15Days', () => {
     it('should be true when there is only stocks after 15 days', async () => {
       const offers = [OFFER_WITHOUT_STOCKS, OFFER_WITH_STOCKS_AFTER_15_DAYS]

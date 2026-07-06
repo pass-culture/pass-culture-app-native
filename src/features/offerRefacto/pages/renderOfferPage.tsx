@@ -8,8 +8,6 @@ import { Offer } from 'features/offerRefacto/pages/Offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
-jest.mock('libs/location/location')
-
 jest.unmock('@react-navigation/native')
 
 jest.unmock('@react-navigation/native-stack')

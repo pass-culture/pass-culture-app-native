@@ -5,6 +5,11 @@ import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineC
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -13,15 +18,7 @@ jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/network/NetInfoWrapper')
 
-const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
-
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
 
 jest.mock('ui/components/anchor/AnchorContext', () => ({
   useScrollToAnchor: jest.fn,
@@ -73,7 +70,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
 const mockOffer = mockBuilder.offerResponseV2({})
@@ -83,6 +79,12 @@ jest.useFakeTimers()
 describe('OfferCineContent', () => {
   beforeAll(() => {
     setFeatureFlags()
+  })
+
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+    locationActions.setGeolocPosition(mockUserLocation)
   })
 
   it('should display skeleton when data is loading', async () => {

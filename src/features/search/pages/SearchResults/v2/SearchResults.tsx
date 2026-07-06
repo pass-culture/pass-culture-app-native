@@ -23,7 +23,12 @@ import {
 } from 'features/search/queries/useSearchOffersQuery/types'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  useLocationConfiguration,
+  useLocationMode,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -52,8 +57,12 @@ export const SearchResults: FC = () => {
   const handleTabPress = (tab: SearchFilter) =>
     setSelectedSearchTab(tab === selectedSearchTab ? undefined : tab)
 
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
+  const { radius: aroundMeRadius, geolocation: geolocPosition } = useLocationConfiguration(
+    LocationMode.AROUND_ME
+  )
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const {

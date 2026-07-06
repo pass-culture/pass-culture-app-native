@@ -3,12 +3,13 @@ import { useEffect } from 'react'
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
 
 import { useVenuesQuery } from '../queries/useVenuesQuery'
 
 export const useGetVenuesData = (modules: VenuesModule[]) => {
-  const { userLocation, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
 
   const venuesParameters: (VenuesModuleParameters & BuildLocationParameterParams)[] = []
   const venuesModuleIds: string[] = []
