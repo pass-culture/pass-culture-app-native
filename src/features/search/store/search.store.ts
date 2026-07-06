@@ -1,4 +1,5 @@
 import { navigationRef } from 'features/navigation/navigationRef'
+import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
 import { createStore } from 'libs/store/createStore'
@@ -24,5 +25,12 @@ export const searchStore = createStore({
 })
 
 searchStore.store.subscribe(searchStore.selectors.selectParams, (params) => {
-  navigationRef.setParams(params)
+  if (!navigationRef.isReady()) return
+
+  const currentScreenName = navigationRef.getCurrentRoute()?.name as
+    | SearchStackRouteName
+    | undefined
+  if (currentScreenName === 'SearchResults') {
+    navigationRef.setParams(params)
+  }
 })
