@@ -71,6 +71,23 @@ describe('EditorialCard Component', () => {
     expect(touchable.props.accessibilityRole).toEqual(AccessibilityRole.LINK)
   })
 
+  it('should ignore decorative image for accessibility', () => {
+    render(<EditorialCard {...defaultProps} />)
+
+    expect(screen.getByTestId('imageBusiness')).toHaveProp('accessible', false)
+  })
+
+  it('should use custom image background color when provided', () => {
+    render(
+      <EditorialCard
+        {...defaultProps}
+        editorialCardInfo={{ ...mockEditorialInfo, imageBackgroundColor: '#00ff00' }}
+      />
+    )
+
+    expect(screen.getByTestId('imageBusiness')).toHaveStyle({ backgroundColor: '#00ff00' })
+  })
+
   it('should call onPress when the card is pressed', async () => {
     render(<EditorialCard {...defaultProps} />)
 

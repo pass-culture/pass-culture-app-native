@@ -14,6 +14,7 @@ import { useLocation } from 'libs/location/location'
 import { UseLocationReturnType } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
+import { theme } from 'theme'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/location/location')
@@ -236,6 +237,28 @@ describe('<VenueTopComponent />', () => {
       expect(
         screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
       ).toBeOnTheScreen()
+    })
+
+    it('should display volunteer card with GCP volunteer illustration', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      expect(screen.getByTestId('imageBusinessIllustration').props.source.uri).toContain(
+        'benevolat.png'
+      )
+    })
+
+    it('should display volunteer card illustration with positive02 background color', () => {
+      renderVenueTopComponent({
+        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
+        enableVolunteer: true,
+      })
+
+      expect(screen.getByTestId('imageBusiness')).toHaveStyle({
+        backgroundColor: theme.designSystem.color.illustration.positive02,
+      })
     })
 
     it('should redirect to voluteer page when venue has volunteering url and pressing volunteer card', async () => {
