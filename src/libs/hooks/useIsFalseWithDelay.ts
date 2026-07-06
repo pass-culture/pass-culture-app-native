@@ -14,7 +14,7 @@ export const useIsFalseWithDelay = (condition: boolean, delay: number): boolean 
   const [delayedCondition, setDelayedCondition] = useState(condition)
 
   useEffect(() => {
-    let timer: number | null = null
+    let timer: NodeJS.Timeout | null = null
     if (condition) {
       setDelayedCondition(true)
     } else {

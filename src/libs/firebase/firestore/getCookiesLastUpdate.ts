@@ -23,10 +23,8 @@ export const getCookiesLastUpdate = async (): Promise<
 
   return getDoc(docRef)
     .then((docSnapshot) => {
-      const lastUpdated = new Date(
-        docSnapshot.get<string>(RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE)
-      )
-      const lastUpdateBuildVersion = docSnapshot.get<number>(
+      const lastUpdated = new Date(docSnapshot.get(RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE))
+      const lastUpdateBuildVersion = docSnapshot.get(
         RemoteStoreCookies.COOKIES_LAST_UPDATE_BUILD_VERSION
       )
 

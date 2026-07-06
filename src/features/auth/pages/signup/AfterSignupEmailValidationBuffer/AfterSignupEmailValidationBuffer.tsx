@@ -13,7 +13,7 @@ import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export function AfterSignupEmailValidationBuffer() {
   const { replace } = useNavigation<UseNavigationType>()
-  const timeoutRef = useRef<number | undefined>(undefined)
+  const timeoutRef = useRef<NodeJS.Timeout>(undefined)
   const delayedReplace: typeof replace = (...args) => {
     timeoutRef.current = setTimeout(() => {
       replace(...args)

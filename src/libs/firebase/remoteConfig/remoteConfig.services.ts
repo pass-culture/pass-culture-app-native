@@ -1,18 +1,13 @@
 import { getRemoteConfigFromConfigValues } from 'libs/firebase/remoteConfig/helpers/getRemoteConfigFromConfigValues'
 import { transformDefaultValues } from 'libs/firebase/remoteConfig/helpers/transformDefaultValues'
-import {
-  remoteConfigInstance,
-  fetchAndActivate,
-  setDefaults,
-  getAll,
-} from 'libs/firebase/shims/remote-config'
+import { remoteConfigInstance, fetchAndActivate, getAll } from 'libs/firebase/shims/remote-config'
 
 import { DEFAULT_REMOTE_CONFIG } from './remoteConfig.constants'
 import { CustomRemoteConfig, RemoteConfigServices } from './remoteConfig.types'
 
 export const remoteConfig: RemoteConfigServices = {
   async configure() {
-    await setDefaults(remoteConfigInstance, transformDefaultValues(DEFAULT_REMOTE_CONFIG))
+    remoteConfigInstance.defaultConfig = transformDefaultValues(DEFAULT_REMOTE_CONFIG)
   },
   async refresh() {
     return fetchAndActivate(remoteConfigInstance)
