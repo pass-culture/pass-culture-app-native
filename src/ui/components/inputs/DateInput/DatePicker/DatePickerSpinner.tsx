@@ -2,9 +2,8 @@ import React, { FunctionComponent } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
-import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
+import { DateInputText } from 'ui/components/inputs/DateInput/DateInputText'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
-import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing } from 'ui/theme'
 
 export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
@@ -18,8 +17,14 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
 
   return (
     <React.Fragment>
-      <DateInputDisplay date={date} errorMessage={errorMessage} />
-      <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
+      <DateInputText
+        date={date}
+        onChange={onChange}
+        minimumDate={minimumDate}
+        maximumDate={maximumDate}
+        errorMessage={errorMessage}
+      />
+      {errorMessage ? null : <PlaceholderErrorMessage />}
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
         date={date}
@@ -37,7 +42,11 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
 
 // This height will only show 3 rows of the spinner instead of 7
 const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
+
 const SpinnerDatePicker = styled(DatePicker)<{ appTheme: DefaultTheme }>(({ appTheme }) => ({
   height: appTheme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
-  marginTop: appTheme.designSystem.size.spacing.xl,
+}))
+
+const PlaceholderErrorMessage = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
 }))
