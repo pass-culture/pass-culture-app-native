@@ -95,8 +95,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const borderWidth = getBorderWidth(borderColor)
   const labelText = getLabelText(iconButton, wording)
   const computedA11yLabel = getComputedAccessibilityLabel(
-    iconButton ? accessibilityLabel : (accessibilityLabel ?? wording ?? ''),
-    accessibilityHint
+    iconButton ? accessibilityLabel : (accessibilityLabel ?? wording ?? '')
   )
   const gap = getSpacingGap(!!labelText, theme.designSystem.size.spacing.s)
   const isMultiline = typeof numberOfLines === 'number' && numberOfLines > 1
