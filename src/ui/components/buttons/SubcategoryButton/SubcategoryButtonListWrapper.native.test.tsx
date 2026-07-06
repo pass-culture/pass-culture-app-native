@@ -5,6 +5,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
+import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderAsync, screen, userEvent } from 'tests/utils'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
@@ -50,6 +51,18 @@ describe('<SubcategoryButtonListWrapper/>', () => {
 
     expect(navigate).toHaveBeenCalledWith('ThematicSearchSubcategories', {
       offerCategories: [SearchGroupNameEnumv2.LIVRES],
+    })
+  })
+
+  it('should log ClickSeeAll event when pressing "Voir tout"', async () => {
+    await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.LIVRES)
+
+    await user.press(await screen.findByText('Voir tout'))
+
+    expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+      type: 'categories',
+      moduleName: 'Tout parcourir',
+      from: 'thematicsearch',
     })
   })
 

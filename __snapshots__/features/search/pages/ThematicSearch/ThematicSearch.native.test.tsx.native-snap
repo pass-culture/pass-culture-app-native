@@ -634,7 +634,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           }
         >
           <View
-            accessibilityLabel="Voir toutes les catégories"
+            accessibilityLabel="Voir tout pour la sélection Tout parcourir"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -686,7 +686,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 },
               ]
             }
-            testID="Voir toutes les catégories"
+            testID="Voir tout pour la sélection Tout parcourir"
           >
             <View
               gap={8}

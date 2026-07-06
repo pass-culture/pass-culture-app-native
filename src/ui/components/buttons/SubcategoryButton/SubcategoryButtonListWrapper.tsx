@@ -2,10 +2,10 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
+import { analytics } from 'libs/analytics/provider'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 import { useSubcategoryButtonContent } from 'ui/components/buttons/SubcategoryButton/useSubcategoryButtonContent'
-import { SeeAllButtonWrapper } from 'ui/components/SeeAllButton/SeeAllButtonWrapper'
-import { SeeAllInVerticalPlaylistButton } from 'ui/components/SeeAllButton/SeeAllInVerticalPlaylistButton'
+import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -17,6 +17,14 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const { isMobileViewport } = useTheme()
   const subcategoryButtonContent = useSubcategoryButtonContent(offerCategory)
 
+  const onBeforeNavigate = () => {
+    void analytics.logClickSeeAll({
+      type: 'categories',
+      moduleName: 'Tout parcourir',
+      from: 'thematicsearch',
+    })
+  }
+
   return (
     <React.Fragment>
       {isMobileViewport ? (
@@ -24,15 +32,17 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
           <TitleContainer>
             <Typo.Title3 {...getHeadingAttrs(2)}>Tout parcourir</Typo.Title3>
           </TitleContainer>
-          <SeeAllButtonWrapper>
-            <SeeAllInVerticalPlaylistButton
-              accessibilityLabel="Voir toutes les catégories"
-              navigateTo={{
+          <SeeAllButton
+            playlistTitle="Tout parcourir"
+            data={{
+              onBeforeNavigate,
+              navigateToVerticalPlaylist: {
                 screen: 'ThematicSearchSubcategories',
                 params: { offerCategories: [offerCategory] },
-              }}
-            />
-          </SeeAllButtonWrapper>
+              },
+              hideSearchSeeAll: true,
+            }}
+          />
         </HeaderContainer>
       ) : null}
       <SubcategoryButtonList subcategoryButtonContent={subcategoryButtonContent} />

@@ -230,7 +230,7 @@ export const logEventAnalytics = {
     void analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
   },
   logClickSeeAll: (params: {
-    type: 'offers' | 'venues' | 'artists'
+    type: 'offers' | 'venues' | 'artists' | 'categories'
     moduleName: string
     moduleId?: string
     homeEntryId?: string

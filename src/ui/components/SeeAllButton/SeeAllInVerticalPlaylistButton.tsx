@@ -6,7 +6,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 
 type Props = {
   accessibilityLabel: string
-  onBeforeNavigate?: () => void
+  onBeforeNavigate: () => void
   navigateTo: InternalNavigationProps['navigateTo']
 }
 
