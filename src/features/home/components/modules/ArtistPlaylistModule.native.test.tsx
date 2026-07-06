@@ -3,6 +3,7 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import {
   ArtistPlaylistModule,
@@ -19,7 +20,7 @@ import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 mockdate.set(new Date(2020, 10, 16))
 
@@ -56,18 +57,7 @@ jest.mock('features/auth/context/AuthContext')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
-const mockUseArtistQueryConfig = { shouldError: false }
-
-jest.mock('queries/artist/useArtistQuery', () => ({
-  useArtistQuery: (artistId: string | undefined) => {
-    if (mockUseArtistQueryConfig.shouldError) {
-      return { data: undefined, isError: true }
-    }
-    return artistId === undefined
-      ? { data: undefined, isError: false }
-      : { data: mockArtist, isError: false }
-  },
-}))
+jest.mock('api/api')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -75,6 +65,8 @@ jest.useFakeTimers()
 describe('ArtistPlaylistModule', () => {
   beforeEach(() => {
     setFeatureFlags()
+    const mockApi = jest.mocked(api)
+    mockApi.getNativeV1ArtistsartistId.mockResolvedValue(mockArtist)
   })
 
   it('should not render if data is undefined', () => {
@@ -92,16 +84,15 @@ describe('ArtistPlaylistModule', () => {
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
-  it('should not display module if artist query fails', () => {
-    mockUseArtistQueryConfig.shouldError = false
-    renderArtistPlaylistModule({
-      data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
-      artistId: mockArtist.id,
+  it('should not display module if artist query fails', async () => {
+    const mockApi = jest.mocked(api)
+    mockApi.getNativeV1ArtistsartistId.mockRejectedValueOnce(new Error('404: Artist not found'))
+
+    renderArtistPlaylistModule()
+
+    await waitFor(() => {
+      expect(screen.toJSON()).not.toBeOnTheScreen()
     })
-
-    expect(screen.toJSON()).not.toBeOnTheScreen()
-
-    mockUseArtistQueryConfig.shouldError = false
   })
 
   it('should navigate to vertical playlist when we click on "Voir tout"', async () => {
@@ -109,7 +100,7 @@ describe('ArtistPlaylistModule', () => {
       data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
     })
 
-    await user.press(screen.getByText('Voir tout'))
+    await user.press(await screen.findByText('Voir tout'))
 
     expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffers', {
       type: VerticalPlaylist.ModuleArtistPlaylist,
@@ -142,7 +133,7 @@ describe('ArtistPlaylistModule', () => {
   describe('Analytics', () => {
     it('should trigger logEvent "AllTilesSeen" only once', async () => {
       renderArtistPlaylistModule()
-      const scrollView = screen.getByTestId('offersModuleList')
+      const scrollView = await screen.findByTestId('offersModuleList')
 
       await act(async () => {
         // 1st scroll to last item => trigger
@@ -193,7 +184,7 @@ describe('ArtistPlaylistModule', () => {
         data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
       })
 
-      await user.press(screen.getByText('Voir tout'))
+      await user.press(await screen.findByText('Voir tout'))
 
       expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
         from: 'home',
