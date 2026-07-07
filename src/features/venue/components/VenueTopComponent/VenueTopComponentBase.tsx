@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { View, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -9,6 +9,7 @@ import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { FeedBack } from 'features/reactions/components/FeedBack'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { VolunteerCard } from 'features/venue/components/VenueTopComponent/VolunteerCard'
 import { getVenueTopComponentTags } from 'features/venue/helpers/getVenueTopComponentTags'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -16,8 +17,6 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useLocation } from 'libs/location/location'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
-import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
-import { EditorialCard, EditorialCardInfo } from 'ui/components/EditorialCard'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
@@ -61,18 +60,6 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   const isDynamicOpeningHoursDisplayed = venue.openingHours && venue.isOpenToPublic
 
   const hasVolunteer = enableVolunteer && !!venue.volunteeringUrl
-
-  const editorialCardInfo: EditorialCardInfo = useMemo(
-    () => ({
-      imageURL: buildCategoryIllustrationUrl('benevolat.png'),
-      imageBackgroundColor: theme.designSystem.color.illustration.positive02,
-      url: venue.volunteeringUrl,
-      title: `Deviens bénévole pour\n“${venue.name}”`,
-      subtitle: 'Donne de ton temps pour la culture\u00a0!',
-      callToAction: 'Voir les missions sur jeveuxaider.gouv',
-    }),
-    [theme.designSystem.color.illustration.positive02, venue.name, venue.volunteeringUrl]
-  )
 
   const onPressVolunteeringCard = async () => {
     if (venue.volunteeringUrl) {
@@ -148,13 +135,14 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
       </TopContainer>
       {hasVolunteer ? (
         <VolunteeringContainer gap={4}>
-          <EditorialCard
+          <VolunteerCard
             height={
               theme.isDesktopViewport ? VOLUNTEER_LARGE_CARD_HEIGHT : VOLUNTEER_SMALL_CARD_HEIGHT
             }
             width={width}
             isFocus={focusProps.isFocus}
-            editorialCardInfo={editorialCardInfo}
+            venueName={venue.name}
+            volunteeringUrl={venue.volunteeringUrl}
             accessibilityLabel={`Devenir bénévole pour ${venue.name} - Ouvre JeVeuxAider.gouv.fr | Devenez bénévole dans une association en quelques clics | La plateforme publique du bénévolat par la Réserve Civique`}
             onFocus={focusProps.onFocus}
             onBlur={focusProps.onBlur}

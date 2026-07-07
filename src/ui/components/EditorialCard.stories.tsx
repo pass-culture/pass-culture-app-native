@@ -1,8 +1,6 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
-import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { EditorialCard } from './EditorialCard'
@@ -14,12 +12,12 @@ const meta: Meta<typeof EditorialCard> = {
 export default meta
 
 const editorialCardInfo = {
-  imageURL: buildCategoryIllustrationUrl('benevolat.png'),
-  imageBackgroundColor: theme.designSystem.color.illustration.positive02,
-  url: 'https://www.jeveuxaider.gouv.fr/',
-  title: 'Deviens bénévole pour\n“On cherche des bénévoles”',
-  subtitle: 'Donne de ton temps pour la culture\u00a0!',
-  callToAction: 'Voir les missions sur jeveuxaider.gouv',
+  imageURL: 'https://cdn.phototourl.com/free/2026-03-24-5f1a4c71-c6d5-45b2-94b4-2273fe731437.jpg',
+  url: 'https://www.google.com/',
+  date: '25 mars 2026',
+  title: 'Main title',
+  subtitle: 'This is a subtitle',
+  callToAction: 'Read more',
 }
 
 const baseProps = {
