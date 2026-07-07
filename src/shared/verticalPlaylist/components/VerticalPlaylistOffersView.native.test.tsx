@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
@@ -66,7 +67,7 @@ describe('<VerticalPlaylistOffersView />', () => {
     expect(screen.getByText('3 offres')).toBeOnTheScreen()
   })
 
-  it('should display artist button when artistId specified', async () => {
+  it('should display artist button when artist specified', async () => {
     render(
       reactQueryProviderHOC(
         <VerticalPlaylistOffersView
@@ -75,12 +76,14 @@ describe('<VerticalPlaylistOffersView />', () => {
           items={mockHitsItems}
           searchQuery="query"
           analyticsFrom="searchresults"
-          artistId="1"
+          artist={mockArtist}
         />
       )
     )
 
-    expect(await screen.findByLabelText('Accéder à la page artiste de Artist 1')).toBeOnTheScreen()
+    expect(
+      await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne')
+    ).toBeOnTheScreen()
   })
 
   it('should not display artist button when artistId not specified', async () => {
@@ -110,14 +113,14 @@ describe('<VerticalPlaylistOffersView />', () => {
           items={mockHitsItems}
           searchQuery="query"
           analyticsFrom="searchresults"
-          artistId="1"
+          artist={mockArtist}
         />
       )
     )
 
-    await user.press(await screen.findByLabelText('Accéder à la page artiste de Artist 1'))
+    await user.press(await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne'))
 
-    expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
+    expect(navigate).toHaveBeenCalledWith('Artist', { id: mockArtist.id })
   })
 
   it('should trigger ConsultArtist log when pressing artist button', async () => {
@@ -129,16 +132,16 @@ describe('<VerticalPlaylistOffersView />', () => {
           items={mockHitsItems}
           searchQuery="query"
           analyticsFrom="home"
-          artistId="1"
+          artist={mockArtist}
         />
       )
     )
 
-    await user.press(await screen.findByLabelText('Accéder à la page artiste de Artist 1'))
+    await user.press(await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne'))
 
     expect(analytics.logConsultArtist).toHaveBeenCalledWith({
-      artistId: '1',
-      artistName: 'Artist 1',
+      artistId: mockArtist.id,
+      artistName: mockArtist.name,
       from: 'home',
       originDetails: 'artistRecommendation',
     })
