@@ -16,6 +16,7 @@ const props = {
     password: '',
     birthdate: '',
   },
+  accessibilityLabelForNextStep: 'Continuer',
   onDefaultEmailSignup: jest.fn(),
 }
 

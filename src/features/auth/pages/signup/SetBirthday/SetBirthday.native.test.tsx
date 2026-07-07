@@ -27,6 +27,7 @@ const props = {
     birthdate: '',
   },
   onDefaultEmailSignup: jest.fn(),
+  accessibilityLabelForNextStep: 'Continuer',
 }
 
 const specificUserAges = [15, 16, 17, 18]
