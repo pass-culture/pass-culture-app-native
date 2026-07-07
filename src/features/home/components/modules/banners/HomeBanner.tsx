@@ -9,7 +9,7 @@ import { getShouldShowBonificationBanner } from 'features/bonification/getShould
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
-import { FreeBeneficiaryBanner } from 'features/home/components/FreeBeneficiaryBanner'
+import { EligibleFreeBanner } from 'features/home/components/EligibleFreeBanner'
 import {
   StepperOrigin,
   UseNavigationType,
@@ -17,6 +17,7 @@ import {
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ActivationDisabledBanner } from 'features/remoteBanners/banners/ActivationDisabledBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
+import { getShouldShowEligibleFreeBanner } from 'features/share/helpers/getShouldShowFreeBanner'
 import { TechnicalProblemBanner } from 'features/technicalProblemBanner/components/TechnicalProblemBanner'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -91,11 +92,10 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     const systemBannerAnalyticsType =
       banner.name === BannerName.geolocation_banner ? 'location' : 'credit'
 
-    const showFreeBeneficiaryBanner =
-      (user?.eligibilityType === 'ELIGIBLE_CREDIT_V2_16' ||
-        user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_16' ||
-        user?.eligibilityType === 'ELIGIBLE_CREDIT_V3_15') &&
-      user?.subscriptionStatus === 'has_to_complete_subscription'
+    const showEligibleFreeBanner = getShouldShowEligibleFreeBanner(
+      user?.eligibilityType,
+      user?.subscriptionStatus
+    )
 
     const renderSystemBanner = (
       Icon: React.FunctionComponent<AccessibleIcon>,
@@ -131,10 +131,10 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
         </BannerContainer>
       )
     }
-    if (showFreeBeneficiaryBanner) {
+    if (showEligibleFreeBanner) {
       return (
         <BannerContainer>
-          <FreeBeneficiaryBanner />
+          <EligibleFreeBanner />
         </BannerContainer>
       )
     }

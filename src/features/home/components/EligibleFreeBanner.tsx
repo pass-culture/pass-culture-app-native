@@ -7,7 +7,7 @@ import { getSubscriptionPropConfig } from 'features/navigation/navigators/Subscr
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Offers } from 'ui/svg/icons/Offers'
 
-export const FreeBeneficiaryBanner = () => {
+export const EligibleFreeBanner = () => {
   const storedProfileInfos = useStoredProfileInfos()
   return (
     <SystemBanner
