@@ -4060,18 +4060,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bam.tech/react-native-config@npm:^1.4.5":
-  version: 1.4.5
-  resolution: "@bam.tech/react-native-config@npm:1.4.5"
-  peerDependencies:
-    react-native-windows: ">=0.61"
-  peerDependenciesMeta:
-    react-native-windows:
-      optional: true
-  checksum: 10/fd88143b585bfca88d31544eec8d96450d15701e9a15bff95bb37c4010b25c0c54df36db711ed10527712a0f349518fc9440a15c21ee15d59bfc9539bf94ac3b
-  languageName: node
-  linkType: hard
-
 "@batch.com/react-native-plugin@npm:11.1.0":
   version: 11.1.0
   resolution: "@batch.com/react-native-plugin@npm:11.1.0"
@@ -10771,7 +10759,6 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.29.7"
     "@babel/runtime": "npm:^7.29.7"
     "@bam.tech/eslint-plugin": "npm:^1.0.1"
-    "@bam.tech/react-native-config": "npm:^1.4.5"
     "@batch.com/react-native-plugin": "npm:11.1.0"
     "@chanzuckerberg/axe-storybook-testing": "npm:^10.0.0"
     "@chromatic-com/storybook": "npm:^5.1.2"
@@ -10934,6 +10921,7 @@ __metadata:
     react-native-android-location-enabler: "npm:^3.0.1"
     react-native-animatable: "npm:^1.3.3"
     react-native-calendars: "npm:1.1312.0"
+    react-native-config: "npm:^1.6.1"
     react-native-date-picker: "npm:^5.0.13"
     react-native-device-info: "npm:^14.0.4"
     react-native-email-link: "npm:^1.10.0"
@@ -23064,6 +23052,20 @@ __metadata:
     moment:
       optional: true
   checksum: 10/14ee61b506ceec26aa48e36cf8b2e77bcb45ab28e18520aaa513190d2c57c0ad3197fe61db5ddda1d11eee9166ae5a9b8118e437c870dbdf508edf06251aca5b
+  languageName: node
+  linkType: hard
+
+"react-native-config@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "react-native-config@npm:1.6.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-windows: ">=0.61"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: 10/22ab54833f1066c361d0baa52bebbd29f43d5b5ace45cbd3b4dd191220556f5d031284a39734bb1b12475a4365b50bd24d7ac9b304472e2aa24fa714f4bd12af
   languageName: node
   linkType: hard
 
