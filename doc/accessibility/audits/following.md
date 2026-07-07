@@ -66,14 +66,16 @@ Texte
 <summary> ⏳ Critère 11.10 - Dans chaque écran, les fonctionnalités activables au moyen d’un geste complexe sont-elles activables au moyen d’un geste simple ?</summary>
 
 **RAAM** : [Critère 11.10](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-1)  
-**Ticket** : [PC-42367](https://passculture.atlassian.net/browse/PC-42367)  
-**PR** : [#9877](https://github.com/pass-culture/pass-culture-app-native/pull/9877)
+**Ticket** : [PC-42367](https://passculture.atlassian.net/browse/PC-42367), [PC-42368](https://passculture.atlassian.net/browse/PC-42368)  
+**PR** : [#9877](https://github.com/pass-culture/pass-culture-app-native/pull/9877), [#9886](https://github.com/pass-culture/pass-culture-app-native/pull/9886)
 
 **Problème** 😱  
-E02 - Dans le module vidéo, lorsqu'il y a plus de 3 offres associées il faut scroller horizontalement pour y accéder. Il faudrait une alternative à ce geste complexe
+- E02 : Dans le module vidéo, lorsqu'il y a plus de 3 offres associées il faut scroller horizontalement pour y accéder. Il faudrait une alternative à ce geste complexe.
+- E14 : Sur les pages de recherche thématique (ex. « Livres »), les sous-catégories sont présentées dans un carrousel à défilement horizontal, un geste complexe sans alternative.
 
 **Correction** 💡  
-E02 : ajout du bouton “Voir tout” pour accéder à une page avec les offres disposées verticalement
+- E02 : Ajout du bouton “Voir tout” pour accéder à une page avec les offres disposées verticalement
+- E14 : Ajout d'un bouton « Voir tout » au-dessus de la liste horizontale des sous-catégories qui redirige vers une page avec la liste des sous-catégories au format vertical.
 
 **Retours audit** 🔥  
 Texte

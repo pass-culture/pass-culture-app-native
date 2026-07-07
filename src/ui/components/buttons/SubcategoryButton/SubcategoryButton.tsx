@@ -1,5 +1,5 @@
 import React from 'react'
-import { LayoutChangeEvent, Platform } from 'react-native'
+import { LayoutChangeEvent, Platform, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
@@ -28,6 +28,7 @@ type SubcategoryButtonProps = {
   onBeforeNavigate: VoidFunction
   onLayout?: (event: LayoutChangeEvent) => void
   uniformHeight?: number
+  style?: StyleProp<ViewStyle>
 }
 
 export const SubcategoryButton = ({
@@ -38,6 +39,7 @@ export const SubcategoryButton = ({
   onBeforeNavigate,
   onLayout,
   uniformHeight,
+  style,
 }: SubcategoryButtonProps) => {
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
@@ -54,7 +56,8 @@ export const SubcategoryButton = ({
       backgroundColor={backgroundColor}
       borderColor={borderColor}
       onLayout={onLayout}
-      uniformHeight={uniformHeight}>
+      uniformHeight={uniformHeight}
+      style={style}>
       <StyledText>{label}</StyledText>
     </StyledInternalTouchable>
   )

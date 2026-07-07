@@ -7,7 +7,10 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
+import {
+  SearchStackRouteName,
+  ThematicSearchCategories,
+} from 'features/navigation/navigators/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -106,7 +109,7 @@ export const ThematicSearch: React.FC = () => {
     }
   }, [dispatch, isWeb, params?.offerCategories])
 
-  const offerCategories = (params?.offerCategories ?? []) as SearchGroupNameEnumv2[]
+  const offerCategories = (params?.offerCategories ?? []) as ThematicSearchCategories[]
   const offerCategory = offerCategories[0]
   const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 

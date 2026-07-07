@@ -12,6 +12,7 @@ import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/navig
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResultsContainer } from 'features/search/pages/SearchResults/SearchResultsContainer'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { ThematicSearchSubcategories } from 'features/search/pages/ThematicSearch/ThematicSearchSubcategories'
 import { SearchView } from 'features/search/types'
 
 const searchStackNavigatorConfig = {
@@ -40,6 +41,14 @@ const searchStackNavigatorConfig = {
         path: 'recherche/thematique',
         parse: screenParamsParser[SearchView.Thematic],
         stringify: screenParamsStringifier[SearchView.Thematic],
+      },
+    },
+    ThematicSearchSubcategories: {
+      screen: ThematicSearchSubcategories,
+      linking: {
+        path: 'recherche/thematique/toutes-les-categories',
+        parse: screenParamsParser.ThematicSearchSubcategories,
+        stringify: screenParamsStringifier.ThematicSearchSubcategories,
       },
     },
   },
