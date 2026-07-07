@@ -1,7 +1,7 @@
-# v1.398.0
+# v1.399.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
-Pathname not found for deleteNativeV1MeFavoritesfavoriteId
+- /native/v1/me/favorites/{favorite_id}
 - /native/v1/me/reminders/{reminder_id}
 - /native/v1/account/suspend/token_validation/{token}
 - /native/v1/account/suspension_date
@@ -60,6 +60,7 @@ Pathname not found for deleteNativeV1MeFavoritesfavoriteId
 - /native/v1/reset_recredit_amount_to_show
 - /native/v1/send_offer_link_by_push/{offer_id}
 - /native/v1/send_offer_webapp_link_by_email/{offer_id}
+- /native/v1/subscription/bonus/disability
 - /native/v1/subscription/bonus/quotient_familial
 - /native/v1/subscription/honor_statement
 - /native/v1/subscription/profile
@@ -88,5 +89,4 @@ Pathname not found for deleteNativeV1MeFavoritesfavoriteId
 - /native/v1/reaction
 - /native/v1/refresh_access_token
 - /native/v1/signin
-- /native/v1/subscription/bonus/disability
 
