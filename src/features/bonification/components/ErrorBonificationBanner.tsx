@@ -20,7 +20,7 @@ export const ErrorBonificationBanner = ({
   const links = [
     {
       wording: 'Voir plus de détails',
-      navigateTo: getSubscriptionPropConfig('BonificationRefused', {
+      navigateTo: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: refusedType,
       }),
     },

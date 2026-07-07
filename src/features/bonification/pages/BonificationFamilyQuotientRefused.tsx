@@ -150,16 +150,16 @@ export const PAGE_CONFIG: PageConfigMap = {
   },
 }
 
-export function BonificationRefused() {
+export const BonificationFamilyQuotientRefused = () => {
   const disableQFBonificationManualRequest = useFeatureFlag(
     RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
   )
-  const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
+  const { params } = useRoute<UseRouteType<'BonificationFamilyQuotientRefused'>>()
   const { user } = useAuthContext()
 
   const remainingBonusAttempts = user?.remainingBonusAttempts
 
-  // Fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
+  // Fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationFamilyQuotientRefused?: { ... } to satify typing of components using navigateTo
   const bonificationRefuseTypeFallback = BonificationQFRefusedType.CUSTODIAN_NOT_FOUND
   const bonificationRefusedType = params?.bonificationRefusedType ?? bonificationRefuseTypeFallback
 

@@ -7,6 +7,8 @@ import { BonificationDisabilityRefusedType } from 'features/bonification/types/B
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -16,8 +18,14 @@ import { Typo } from 'ui/theme'
 export const BonificationDisabilityRefused = () => {
   const { params } = useRoute<UseRouteType<'BonificationDisabilityRefused'>>()
 
+  const disableHandicapBonificationButton = useFeatureFlag(
+    RemoteStoreFeatureFlags.DISABLE_HANDICAP_BONIFICATION_MANUAL_REQUEST
+  )
+
   const isTooManyRetriesError =
     params?.bonificationRefusedType === BonificationDisabilityRefusedType.TOO_MANY_RETRIES
+
+  const disabledNewRequest = disableHandicapBonificationButton || isTooManyRetriesError
 
   const tooManyRetriesText = isTooManyRetriesError ? (
     <StyledBodyXs>Prochaine demande possible demain</StyledBodyXs>
@@ -29,11 +37,11 @@ export const BonificationDisabilityRefused = () => {
       title="Ton dossier est refusé"
       buttonsSurtitle={tooManyRetriesText}
       buttonPrimary={{
+        disabled: disabledNewRequest,
         wording: 'Renouveler ma demande',
         navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
           bonificationType: BonificationType.DISABILITY,
         }),
-        disabled: isTooManyRetriesError,
       }}
       buttonTertiary={{
         wording: 'Retour à l’accueil',
@@ -46,8 +54,8 @@ export const BonificationDisabilityRefused = () => {
           de ce bonus.
         </StyledBody>
         <StyledBody>
-          Si ta situation change, tu pourras déposer une nouvelle demande et compléter les
-          informations nécessaires.
+          Si ta situation change au cours de tes 18 ans et que tu remplis les conditions, tu pourras
+          refaire une demande et compléter les informations nécessaires.
         </StyledBody>
       </ViewGap>
     </GenericInfoPage>

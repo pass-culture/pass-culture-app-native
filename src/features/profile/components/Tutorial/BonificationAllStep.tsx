@@ -68,7 +68,7 @@ export const BonificationAllStep = ({ amount, isLoggedIn, resetBannerVisibility,
 
   const navigateToQFBonificationRefused = () => {
     navigate(
-      ...getSubscriptionHookConfig('BonificationRefused', {
+      ...getSubscriptionHookConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
       })
     )

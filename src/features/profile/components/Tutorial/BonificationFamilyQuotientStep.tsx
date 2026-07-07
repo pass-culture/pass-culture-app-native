@@ -60,7 +60,7 @@ export const BonificationFamilyQuotientStep = ({
 
   const navigateToBonificationRefused = () => {
     navigate(
-      ...getSubscriptionHookConfig('BonificationRefused', {
+      ...getSubscriptionHookConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
       })
     )

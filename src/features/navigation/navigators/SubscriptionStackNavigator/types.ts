@@ -65,17 +65,17 @@ export type SubscriptionStackParamList = {
   EduConnectErrors: { code?: string; logoutUrl?: string }
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
   // Bonification
-  BonificationDisabilityRefused?: { bonificationRefusedType: BonificationDisabilityRefusedType }
   BonificationBirthDate: undefined
   BonificationBirthPlace?: { bonificationType: BonificationType }
+  BonificationDisabilityRefused?: { bonificationRefusedType: BonificationDisabilityRefusedType }
   BonificationError?: { bonificationType: BonificationType }
-  BonificationRequiredInformation?: { bonificationType: BonificationType }
   BonificationExplanations: undefined
+  BonificationFamilyQuotientRefused?: { bonificationRefusedType: BonificationQFRefusedType }
+  BonificationIncorrectLink: undefined
   BonificationNames: undefined
   BonificationRecap?: { bonificationType: BonificationType }
-  BonificationRefused?: { bonificationRefusedType: BonificationQFRefusedType }
+  BonificationRequiredInformation?: { bonificationType: BonificationType }
   BonificationTitle: undefined
-  BonificationIncorrectLink: undefined
 } & CulturalSurveyRootStackParamList
 
 export type SubscriptionStackRouteName = keyof SubscriptionStackParamList

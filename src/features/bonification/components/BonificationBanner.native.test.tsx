@@ -98,7 +98,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'custodian_not_found' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -133,7 +133,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'application_not_found' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -168,7 +168,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'quotient_familial_too_high' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -203,7 +203,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'not_in_tax_household' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -238,7 +238,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'too_many_retries' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
   })

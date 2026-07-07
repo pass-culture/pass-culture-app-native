@@ -108,36 +108,36 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused CUSTODIAN_NOT_FOUND',
-      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+      title: 'BonificationFamilyQuotientRefused CUSTODIAN_NOT_FOUND',
+      navigationTarget: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
       }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused APPLICATION_NOT_FOUND',
-      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+      title: 'BonificationFamilyQuotientRefused APPLICATION_NOT_FOUND',
+      navigationTarget: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.APPLICATION_NOT_FOUND,
       }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused NOT_IN_TAX_HOUSEHOLD',
-      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+      title: 'BonificationFamilyQuotientRefused NOT_IN_TAX_HOUSEHOLD',
+      navigationTarget: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
       }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused QUOTIENT_FAMILY_TOO_HIGH',
-      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+      title: 'BonificationFamilyQuotientRefused QUOTIENT_FAMILY_TOO_HIGH',
+      navigationTarget: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
       }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused TOO_MANY_RETRIES',
-      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+      title: 'BonificationFamilyQuotientRefused TOO_MANY_RETRIES',
+      navigationTarget: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
       }),
     },

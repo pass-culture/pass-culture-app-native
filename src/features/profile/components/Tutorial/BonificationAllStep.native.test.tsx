@@ -46,10 +46,9 @@ describe('BonificationAllStep', () => {
 
       await userEvent.press(screen.getByLabelText('Faire une demande de bonus quotient familial'))
 
-      expect(navigate).toHaveBeenCalledWith(
-        'SubscriptionStackNavigator',
-        expect.objectContaining({ screen: 'BonificationExplanations' })
-      )
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        screen: 'BonificationExplanations',
+      })
 
       expect(resetBannerVisibility).toHaveBeenCalledTimes(1)
     })
@@ -62,7 +61,7 @@ describe('BonificationAllStep', () => {
       expect(navigate).toHaveBeenCalledWith(
         'SubscriptionStackNavigator',
         expect.objectContaining({
-          screen: 'BonificationRefused',
+          screen: 'BonificationFamilyQuotientRefused',
           params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
         })
       )
@@ -128,15 +127,41 @@ describe('BonificationAllStep', () => {
         screen.getByLabelText('Faire une demande de bonus situation de handicap')
       )
 
-      expect(navigate).toHaveBeenCalledWith(
-        'SubscriptionStackNavigator',
-        expect.objectContaining({
-          screen: 'BonificationRequiredInformation',
-          params: {
-            bonificationType: BonificationType.DISABILITY,
-          },
-        })
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        screen: 'BonificationRequiredInformation',
+        params: { bonificationType: BonificationType.DISABILITY },
+      })
+    })
+
+    it('should navigate to disability refused screen when request is refused', async () => {
+      renderComponent({
+        disabilityBonificationStatus: DisabilityBonificationStatus.person_not_found,
+      })
+
+      await userEvent.press(
+        screen.getByLabelText('Faire une demande de bonus situation de handicap')
       )
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        screen: 'BonificationDisabilityRefused',
+        params: { bonificationRefusedType: DisabilityBonificationStatus.person_not_found },
+      })
+    })
+
+    it('should navigate to disability refused screen when too many retries', async () => {
+      renderComponent({
+        disabilityBonificationStatus: DisabilityBonificationStatus.too_many_retries,
+        remainingBonusAttempts: 0,
+      })
+
+      await userEvent.press(
+        screen.getByLabelText('Faire une demande de bonus situation de handicap')
+      )
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        screen: 'BonificationDisabilityRefused',
+        params: { bonificationRefusedType: DisabilityBonificationStatus.too_many_retries },
+      })
     })
 
     it('should disable button when started', () => {

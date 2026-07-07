@@ -2,7 +2,10 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefused, PAGE_CONFIG } from 'features/bonification/pages/BonificationRefused'
+import {
+  BonificationFamilyQuotientRefused,
+  PAGE_CONFIG,
+} from 'features/bonification/pages/BonificationFamilyQuotientRefused'
 import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -13,7 +16,7 @@ import { render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 
-describe('BonificationRefused', () => {
+describe('BonificationFamilyQuotientRefused', () => {
   beforeEach(() => setFeatureFlags([]))
 
   describe('Parent not found', () => {
@@ -21,7 +24,7 @@ describe('BonificationRefused', () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
         PAGE_CONFIG[BonificationQFRefusedType.CUSTODIAN_NOT_FOUND].primaryButton.wording
@@ -40,7 +43,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 5 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.getByText('Attention, il te reste : 5 demandes')
 
@@ -53,7 +56,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 6 demandes')
 
@@ -66,7 +69,7 @@ describe('BonificationRefused', () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
         PAGE_CONFIG[BonificationQFRefusedType.TOO_MANY_RETRIES].primaryButton.wording
@@ -82,7 +85,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 0 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 0 demandes')
 
@@ -95,7 +98,7 @@ describe('BonificationRefused', () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
         PAGE_CONFIG[BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
@@ -114,7 +117,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 5 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.getByText('Attention, il te reste : 5 demandes')
 
@@ -127,7 +130,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 1 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.getByText('Attention, il te reste : 1 demande')
 
@@ -140,7 +143,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 6 demandes')
 
@@ -153,7 +156,7 @@ describe('BonificationRefused', () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
         PAGE_CONFIG[BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH].primaryButton.wording
@@ -169,7 +172,7 @@ describe('BonificationRefused', () => {
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 4 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 4 demandes')
 
@@ -183,7 +186,7 @@ describe('BonificationRefused', () => {
     })
 
     it('should disable button', () => {
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
         PAGE_CONFIG[BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
@@ -195,7 +198,7 @@ describe('BonificationRefused', () => {
     it('should display unavailable message', () => {
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 10 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       expect(
         screen.getByText('La demande de bonus est temporairement indisponible')
@@ -205,7 +208,7 @@ describe('BonificationRefused', () => {
     it('should show remaining retries instead of unavailable message when both are true', () => {
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 3 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       expect(screen.getByText('Attention, il te reste : 3 demandes')).toBeOnTheScreen()
       expect(
