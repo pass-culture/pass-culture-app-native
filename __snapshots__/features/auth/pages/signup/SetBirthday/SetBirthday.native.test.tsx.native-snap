@@ -146,7 +146,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                   }
                 }
               >
-                Format : 21/05/2021
+                Format : 01/09/2002
               </Text>
             </View>
           </View>
@@ -181,7 +181,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           testID="styled-input-container"
         >
           <TextInput
-            accessibilityLabel="Champs de texte - Date de naissance - Format : 21/05/2021"
+            accessibilityLabel="Champs de texte - Date de naissance - Format : 01/09/2002"
             accessibilityRequired={false}
             editable={true}
             isEmpty={false}
@@ -1114,7 +1114,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                   }
                 }
               >
-                Format : 21/05/2021
+                Format : 01/09/2002
               </Text>
             </View>
           </View>
@@ -1149,7 +1149,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           testID="styled-input-container"
         >
           <TextInput
-            accessibilityLabel="Champs de texte - Date de naissance - Format : 21/05/2021"
+            accessibilityLabel="Champs de texte - Date de naissance - Format : 01/09/2002"
             accessibilityRequired={false}
             editable={true}
             isEmpty={false}

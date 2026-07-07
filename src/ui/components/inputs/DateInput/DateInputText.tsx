@@ -52,8 +52,11 @@ export const DateInputText = ({
     [value, minimumDate, maximumDate]
   )
 
-  const displayedError =
-    value.length === maxLength ? (parsedDate ? errorMessage : invalidDateMessage) : errorMessage
+  const displayedError = (() => {
+    if (value.length !== maxLength) return errorMessage
+    if (!parsedDate) return invalidDateMessage
+    return errorMessage
+  })()
 
   const computedAccessibilityLabel = getComputedAccessibilityLabel(label, value, displayedError)
 

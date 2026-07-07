@@ -2024,7 +2024,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                         }
                       }
                     >
-                      Format : 21/05/2021
+                      Format : 01/09/2002
                     </Text>
                   </View>
                 </View>
@@ -2059,7 +2059,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
-                  accessibilityLabel="Champs de texte - Date de naissance - Format : 21/05/2021"
+                  accessibilityLabel="Champs de texte - Date de naissance - Format : 01/09/2002"
                   accessibilityRequired={false}
                   editable={true}
                   isEmpty={false}
