@@ -3,7 +3,7 @@ import { resolve, join } from 'path'
 
 import { config as dotEnvConfig } from 'dotenv'
 
-import { parseBooleanVariables } from './parseBooleanVariables'
+import { Environment } from './types'
 
 const envVariable = process.env.ENV ?? 'this should never happen'
 
@@ -18,4 +18,7 @@ if (!existsSync(path)) {
 
 dotEnvConfig({ path })
 
-export const env = parseBooleanVariables({ ...process.env, __DEV__ })
+export const env: Environment = {
+  ...(process.env as Environment),
+  __DEV__,
+}

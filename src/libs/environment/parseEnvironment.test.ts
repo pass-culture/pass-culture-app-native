@@ -2,7 +2,7 @@ import { ValidationError } from 'yup'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
-import { parseBooleanVariables, parseEnvironment } from './parseEnvironment'
+import { parseEnvironment } from './parseEnvironment'
 
 jest.mock('libs/monitoring/services')
 const mockCaptureException = eventMonitoring.captureException as jest.Mock
@@ -15,30 +15,13 @@ const mockedConfig = {
   URL_PREFIX: 'passculture',
 }
 
-describe('parseBooleanVariables', () => {
-  const convertedConfig = parseBooleanVariables(mockedConfig)
-
-  it('should generate falsy values for feature flags used with false', () => {
-    expect(convertedConfig.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING).toBeFalsy()
-  })
-
-  it('should generate truthy values for feature flags used with true', () => {
-    const convertedConfig = parseBooleanVariables({
-      ...mockedConfig,
-      FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: 'true',
-    })
-
-    expect(convertedConfig.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING).toBeTruthy()
-  })
-
-  it('should not touch strings other than "true" and "false"', () => {
-    expect(convertedConfig.API_BASE_URL).toEqual('your-api.com')
-    expect(convertedConfig.SENTRY_DSN).toEqual('sentry-dsn')
-    expect(convertedConfig.URL_PREFIX).toEqual('passculture')
-  })
-})
-
 describe('parseEnvironment', () => {
+  it('should coerce boolean env vars from strings', () => {
+    const env = parseEnvironment(mockedConfig)
+
+    expect(env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING).toBe(false)
+  })
+
   it('should log error when having a validation error', () => {
     const mockConsoleError = jest.fn()
     jest.spyOn(global.console, 'error').mockImplementationOnce(mockConsoleError)

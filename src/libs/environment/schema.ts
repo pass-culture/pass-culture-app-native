@@ -1,5 +1,12 @@
 import * as yup from 'yup'
 
+const booleanFromEnvString = () =>
+  yup.boolean().transform((value, originalValue) => {
+    if (originalValue === 'true') return true
+    if (originalValue === 'false') return false
+    return value
+  })
+
 export const EnvironmentSchema = yup.object({
   ACCES_LIBRE_URL: yup.string().required(),
   ACCESSIBILITY_PLAN: yup.string().required(),
@@ -51,7 +58,7 @@ export const EnvironmentSchema = yup.object({
   FAQ_LINK_RIGHT_TO_ERASURE: yup.string().required(),
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: yup.string().required(),
   FAQ_LINK: yup.string().required(),
-  FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: yup.boolean().required(),
+  FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: booleanFromEnvString().required(),
   FIREBASE_API_PUBLIC_KEY: yup.string().required(),
   FIREBASE_APPID: yup.string().required(),
   FIREBASE_AUTHDOMAIN: yup.string().required(),
