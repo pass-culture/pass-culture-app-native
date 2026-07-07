@@ -85,7 +85,7 @@ export type LoginRoutineMethod =
   | 'fromConfirmChangeEmail'
 
 type SSOType = 'SSO_login' | 'SSO_signup'
-type EmailType = 'email_login' | 'email_signup'
+type EmailType = 'email_login' | 'email_signup' | 'email_reinitialize' | 'email_change'
 export type LoginType = SSOType | EmailType
 
 type SSOProvider = 'apple' | 'google'

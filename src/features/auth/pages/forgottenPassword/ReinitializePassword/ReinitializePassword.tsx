@@ -83,7 +83,8 @@ export const ReinitializePassword = () => {
           refreshToken: response.refreshToken,
           accountState: AccountState.ACTIVE,
         },
-        'fromReinitializePassword'
+        'fromReinitializePassword',
+        'email_reinitialize'
       )
       navigateToHome()
     },
