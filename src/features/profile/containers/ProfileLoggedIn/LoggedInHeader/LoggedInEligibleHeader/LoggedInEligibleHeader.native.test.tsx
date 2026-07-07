@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { SubscriptionStatus } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
@@ -11,6 +12,9 @@ import { LoggedInEligibleHeader } from './LoggedInEligibleHeader'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery', () => ({
   useFeatureFlagOptionsQuery: jest.fn(),
+}))
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
 const mockUseFeatureFlagOptionsQuery = useFeatureFlagOptionsQuery as jest.Mock
@@ -42,10 +46,26 @@ describe('LoggedInEligibleHeader', () => {
     expect(screen.getByTestId('eligible-free-header')).toBeOnTheScreen()
   })
 
-  it('should render EligibleFreeHeader with age 16 for V3_16', async () => {
+  it('should render EligibleFreeBanner when age 15 and not free beneficiary', async () => {
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15, {
+      subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+    })
+
+    expect(screen.getByText('Profite d’offres gratuites')).toBeOnTheScreen()
+  })
+
+  it('should render EligibleFreeBanner with age 16 for V3_16', async () => {
     await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_16)
 
     expect(screen.getByTestId('eligible-free-header')).toBeOnTheScreen()
+  })
+
+  it('should render EligibleFreeBanner when age 16 and not free beneficiary', async () => {
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_16, {
+      subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+    })
+
+    expect(screen.getByText('Profite d’offres gratuites')).toBeOnTheScreen()
   })
 
   it('should render EligibleHeader for V3_17', async () => {
@@ -67,11 +87,14 @@ describe('LoggedInEligibleHeader', () => {
   })
 })
 
-const renderLoggedInEligibleHeader = (eligibilityType: UserEligibilityType) =>
+const renderLoggedInEligibleHeader = (
+  eligibilityType: UserEligibilityType,
+  userOverrides?: Partial<typeof nonBeneficiaryUser>
+) =>
   renderAsync(
     reactQueryProviderHOC(
       <LoggedInEligibleHeader
-        user={{ ...nonBeneficiaryUser, eligibilityType }}
+        user={{ ...nonBeneficiaryUser, ...userOverrides, eligibilityType }}
         featureFlags={featureFlags}
       />
     )
