@@ -152,6 +152,14 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
+      title: 'AsyncStorage 🗑️',
+      navigationTarget: {
+        screen: 'CheatcodesScreenAsyncStorage',
+      },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'Accès direct par ID 🎯',
       navigationTarget: {
         screen: 'CheatcodesScreenDirectIdAccess',

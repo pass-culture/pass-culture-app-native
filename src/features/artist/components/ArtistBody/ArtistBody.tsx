@@ -10,6 +10,7 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
+import { FollowArtistFakeDoorModal } from 'features/artist/components/FollowArtistFakeDoorModal/FollowArtistFakeDoorModal'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -33,6 +34,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
+import { Bell } from 'ui/svg/icons/Bell'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
@@ -81,6 +83,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
+  const enableArtistFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR)
 
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -99,6 +102,12 @@ export const ArtistBody: FunctionComponent<Props> = ({
     artist,
     utmMedium: 'header',
   })
+
+  const {
+    visible: fakeDoorModalVisible,
+    showModal: showFakeDoorModal,
+    hideModal: hideFakeDoorModal,
+  } = useModal(false)
 
   const pressShareArtist = () => {
     void analytics.logShare({
@@ -134,7 +143,18 @@ export const ArtistBody: FunctionComponent<Props> = ({
         }}>
         <ViewGap gap={6}>
           <ViewGap gap={6}>
-            <ArtistHeader name={name} avatarImage={image} />
+            <ArtistHeader name={name} avatarImage={image}>
+              {enableArtistFakeDoor ? (
+                <Button
+                  wording="Suivre"
+                  icon={Bell}
+                  variant="secondary"
+                  color="neutral"
+                  accessibilityLabel="Suivre cet artiste"
+                  onPress={showFakeDoorModal}
+                />
+              ) : null}
+            </ArtistHeader>
             {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>À propos</Typo.BodyAccent>
@@ -199,6 +219,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           RightElement={ShareButton({ onPress: pressShareArtist })}
         />
       )}
+      <FollowArtistFakeDoorModal visible={fakeDoorModalVisible} close={hideFakeDoorModal} />
       {shareContent ? (
         <WebShareModal
           visible={shareArtistModalVisible}
