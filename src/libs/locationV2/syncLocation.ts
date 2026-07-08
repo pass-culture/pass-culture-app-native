@@ -9,6 +9,7 @@ export const syncLocation = async () => {
   if (permission === GeolocPermissionState.GRANTED) {
     try {
       const newPosition = await getGeolocPosition()
+      console.log({ newPosition })
       locationActions.setGeolocPosition(newPosition)
       locationActions.setGeolocationError(null)
     } catch (e) {

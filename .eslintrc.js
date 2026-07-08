@@ -232,18 +232,6 @@ module.exports = {
         message:
           "Please use the function `share()` from `libs/share` instead for cross-platform support. Don't forget to check `isShareApiSupported()` before using the `share()` function !",
       },
-      {
-        object: 'window',
-        property: 'GeolocationPositionError',
-        message: 'Use getWebGeolocErrorFromCode() to support legacy browsers.',
-      },
-    ],
-    'no-restricted-globals': [
-      'error',
-      {
-        name: 'GeolocationPositionError',
-        message: 'Use getWebGeolocErrorFromCode() to support legacy browsers.',
-      },
     ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],

@@ -1,14 +1,35 @@
 import Geolocation from 'react-native-geolocation-service'
 
-import { AskGeolocPermission } from 'libs/location/types'
+import { navigationRef } from 'features/navigation/navigationRef'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+import { locationActions } from 'libs/locationV2/location.store'
 
-import { GeolocPermissionState } from '../enums'
+import {
+  GEOLOCATION_USER_ERROR_MESSAGE,
+  GeolocPermissionState,
+  GeolocPositionError,
+} from '../enums'
 
-const requestGeolocPermissionSystem = async () => {
+export const requestGeolocPermission = async (onSuccess?: () => void) => {
+  console.log('requestGeolocPermission ios')
   const permissionValue = await Geolocation.requestAuthorization('whenInUse')
-  // Corresponding user response: Allow while using app
-  if (permissionValue === 'granted') return GeolocPermissionState.GRANTED
-  return GeolocPermissionState.NEVER_ASK_AGAIN
+  console.log('permissionValue', permissionValue)
+  if (permissionValue === 'granted') {
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+    console.log('granted')
+    try {
+      const position = await getGeolocPosition()
+      locationActions.setGeolocPosition(position)
+      console.log({ position })
+      onSuccess?.()
+    } catch (error) {
+      locationActions.setGeolocationError({
+        type: GeolocPositionError.POSITION_UNAVAILABLE,
+        message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.POSITION_UNAVAILABLE],
+      })
+    }
+    return
+  }
+  locationActions.setPermissionState(GeolocPermissionState.NEVER_ASK_AGAIN)
+  navigationRef.navigate('GeolocationActivationModal')
 }
-
-export const requestGeolocPermission: AskGeolocPermission = requestGeolocPermissionSystem

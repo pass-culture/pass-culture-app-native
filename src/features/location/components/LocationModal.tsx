@@ -7,7 +7,7 @@ import { ModalScreenWrapper } from 'features/location/components/ModalScreenWrap
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationLabel, LocationMode } from 'libs/location/types'
-import { useIsGeolocated } from 'libs/locationV2/location.store'
+import { useIsGeolocated, useLocationV2 } from 'libs/locationV2/location.store'
 import { locationModalActions, locationModalStore } from 'libs/locationV2/locationModal.store'
 import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -64,6 +64,7 @@ export const LocationModal = ({
   const { radius: aroundPlaceRadius } = locationModalStore.hooks.useConfiguration(
     LocationMode.AROUND_PLACE
   )
+  const { geolocationError } = useLocationV2()
   const isGeolocated = useIsGeolocated()
   const { goBack } = useNavigation<UseNavigationType>()
 
@@ -109,7 +110,7 @@ export const LocationModal = ({
     {
       key: LocationMode.AROUND_ME,
       label: AROUND_ME_TITLE,
-      description: isGeolocated ? undefined : 'Géolocalisation désactivée',
+      description: isGeolocated ? undefined : geolocationError?.message,
       asset: { variant: 'icon', Icon: PositionFilled },
       collapsed: shouldShowAroundMeRadiusSlider ? (
         <SliderContainer>

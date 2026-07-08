@@ -21,6 +21,7 @@ export const initLocation = () => {
 }
 
 const syncPermissionsAndLocation = async () => {
+  console.log('syncPermissionsAndLocation')
   const permission = await checkGeolocPermission()
   locationActions.setPermissionState(permission)
   void syncLocation()

@@ -4,6 +4,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationV2 } from 'libs/locationV2/location.store'
 
 const isWeb = Platform.OS === 'web'
 
@@ -18,10 +19,14 @@ export const useShouldDisplayVenueMap = (
 ): OutputProps => {
   const enabledVenueMap = useFeatureFlag(featureFlag)
 
+  const state = useLocationV2()
+
   const { hasGeolocPosition, selectedLocationMode } = useLocation()
   const isLocated =
     selectedLocationMode === LocationMode.AROUND_PLACE ||
     (selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition)
+
+  console.log({ isLocated, hasGeolocPosition, state })
 
   return {
     shouldDisplayVenueMap: !!enabledVenueMap && isLocated && !isWeb,

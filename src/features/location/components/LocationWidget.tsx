@@ -6,7 +6,7 @@ import { ScreenOrigin } from 'features/location/enums'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { useLocationLabel } from 'libs/locationV2/location.store'
+import { useLocationLabel, useLocationV2 } from 'libs/locationV2/location.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -29,6 +29,15 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   const locationTitle = useLocationLabel()
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
+
+  const state = useLocationV2()
+
+  const { hasGeolocPosition } = useLocation()
+  const isLocated =
+    selectedLocationMode === LocationMode.AROUND_PLACE ||
+    (selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition)
+
+  console.log({ isLocated, hasGeolocPosition, state })
 
   const locationIcon = isWidgetHighlighted ? (
     <LocationPointerFilled />

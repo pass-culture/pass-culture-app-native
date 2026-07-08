@@ -201,6 +201,9 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
   VenueMapLocationModal: {
     path: 'modale-de-localisation-carte',
   },
+  GeolocationActivationModal: {
+    path: 'modale-activation-geolocalisation',
+  },
 }
 
 export const rootStackNavigatorPathConfig = {
