@@ -306,6 +306,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             <View>
               <View
                 accessibilityElementsHidden={true}
+                accessible={false}
                 importantForAccessibility="no"
                 style={
                   {
@@ -1011,6 +1012,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               <View>
                 <View
                   accessibilityElementsHidden={true}
+                  accessible={false}
                   importantForAccessibility="no"
                   style={
                     {
@@ -1990,6 +1992,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               <View>
                 <View
                   accessibilityElementsHidden={true}
+                  accessible={false}
                   importantForAccessibility="no"
                   style={
                     {
@@ -3996,6 +3999,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              accessible={false}
               importantForAccessibility="no"
               style={
                 {

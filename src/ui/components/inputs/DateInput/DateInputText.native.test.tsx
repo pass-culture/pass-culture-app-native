@@ -47,7 +47,9 @@ describe('DateInputText', () => {
 
     fireEvent.changeText(input, '31022000')
 
-    expect(screen.getByText('La date saisie est invalide.')).toBeTruthy()
+    expect(
+      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
+    ).toBeTruthy()
   })
 
   it('should remove the invalid date error after correcting the date', () => {
@@ -57,11 +59,15 @@ describe('DateInputText', () => {
 
     fireEvent.changeText(input, '31022000')
 
-    expect(screen.getByText('La date saisie est invalide.')).toBeTruthy()
+    expect(
+      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
+    ).toBeTruthy()
 
     fireEvent.changeText(input, '28022000')
 
-    expect(screen.queryByText('La date saisie est invalide.')).toBeNull()
+    expect(
+      screen.queryByText('La date saisie est invalide.', { exact: false, hidden: true })
+    ).toBeNull()
   })
 
   it('should display the provided errorMessage', () => {
@@ -73,7 +79,10 @@ describe('DateInputText', () => {
     )
 
     expect(
-      screen.getByText('Tu dois avoir au moins 15 ans pour t’inscrire au pass Culture')
+      screen.getByText('Tu dois avoir au moins 15 ans pour t’inscrire au pass Culture', {
+        exact: false,
+        hidden: true,
+      })
     ).toBeTruthy()
   })
 
@@ -89,7 +98,9 @@ describe('DateInputText', () => {
     fireEvent.changeText(input, '01011999')
 
     expect(onChange).not.toHaveBeenCalled()
-    expect(screen.getByText('La date saisie est invalide.')).toBeTruthy()
+    expect(
+      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
+    ).toBeTruthy()
   })
 
   it('should reject dates after maximumDate', () => {
@@ -104,7 +115,9 @@ describe('DateInputText', () => {
     fireEvent.changeText(input, '01012001')
 
     expect(onChange).not.toHaveBeenCalled()
-    expect(screen.getByText('La date saisie est invalide.')).toBeTruthy()
+    expect(
+      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
+    ).toBeTruthy()
   })
 
   it('should not call onChange with an incomplete date', () => {

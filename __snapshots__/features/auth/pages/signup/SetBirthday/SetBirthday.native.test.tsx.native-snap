@@ -112,6 +112,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         <View>
           <View
             accessibilityElementsHidden={true}
+            accessible={false}
             importantForAccessibility="no"
             style={
               {
@@ -1080,6 +1081,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         <View>
           <View
             accessibilityElementsHidden={true}
+            accessible={false}
             importantForAccessibility="no"
             style={
               {

@@ -2397,6 +2397,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -2682,6 +2683,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -2823,6 +2825,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -2964,6 +2967,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -3105,6 +3109,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -3246,6 +3251,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {

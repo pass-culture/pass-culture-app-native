@@ -460,6 +460,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -1871,6 +1872,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         <Text
                           accessibilityElementsHidden={true}
                           accessibilityRole="header"
+                          accessible={false}
                           importantForAccessibility="no"
                           style={
                             {

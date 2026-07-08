@@ -68,11 +68,17 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   const inputLabel =
     customProps.requiredIndicator === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
 
+  const numberOfCharacter = customProps.characterCount
+    ? `${textLength}/${customProps.characterCount}`
+    : undefined
+
   const computedAccessibilityLabel = getComputedAccessibilityLabel(
     'Champs de texte',
     customProps.label,
     customProps.description,
     customProps.requiredIndicator ? 'Obligatoire' : null,
+    numberOfCharacter,
+    customProps.errorMessage,
     customProps.accessibilityHint
   )
 
@@ -135,14 +141,14 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
       {customProps.errorMessage || customProps.characterCount ? (
         <FooterContainer>
           {customProps.errorMessage ? (
-            <ErrorContainer>
+            <ErrorContainer {...hiddenFromScreenReaderMobile}>
               <ErrorIcon />
               <ErrorText>{customProps.errorMessage}</ErrorText>
             </ErrorContainer>
           ) : null}
           {customProps.characterCount ? (
             <CounterContainer>
-              <Counter>{`${textLength}/${customProps.characterCount}`}</Counter>
+              <Counter>{numberOfCharacter}</Counter>
             </CounterContainer>
           ) : null}
         </FooterContainer>

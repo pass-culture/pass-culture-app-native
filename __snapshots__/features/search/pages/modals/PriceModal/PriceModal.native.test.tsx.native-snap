@@ -760,6 +760,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {
@@ -867,6 +868,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 <View>
                   <View
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     importantForAccessibility="no"
                     style={
                       {
