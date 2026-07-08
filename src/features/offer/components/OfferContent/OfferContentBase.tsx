@@ -179,7 +179,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const placeholderImage = useRef(cachedOffer?.images?.recto?.url).current
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
+    let timeoutId: number
     if (shouldTriggerBatchSurveyEvent) {
       timeoutId = setTimeout(() => {
         trackBatchEvent()

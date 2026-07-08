@@ -62,8 +62,6 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
-            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
 
       - name: Render Sentry Template

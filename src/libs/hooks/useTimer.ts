@@ -8,7 +8,7 @@ export const useTimer = (initialValueInSeconds: number) => {
   const [timeLeft, setTimeLeft] = useState(initialValueInSeconds)
 
   useEffect(() => {
-    let timerId: NodeJS.Timeout
+    let timerId: number
     if (timeLeft > 0) {
       timerId = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1)

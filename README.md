@@ -163,11 +163,7 @@ For the **staging** app, use these links for [iOS][4] and [Android][5].
 See doc about deployment process [here](./doc/ci-cd/deployment.md) for the mobile application.
 
 [1]: Ask for IT
-[2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
-[3]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
-[4]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
-[5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
-[6]: https://developer.apple.com/account/resources/devices/list
+[2]: https://developer.apple.com/account/resources/devices/list
 
 ## Performances
 
