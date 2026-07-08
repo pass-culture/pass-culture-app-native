@@ -1,7 +1,6 @@
 import { SectionItem } from 'features/profile/helpers/createProfileContent'
 import { env } from 'libs/environment/env'
 import { Bell } from 'ui/svg/icons/Bell'
-import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
@@ -55,7 +54,6 @@ export const loggedOutContentConfig = ({
       { title: 'Confidentialité', screen: 'ConsentSettings', icon: Confidentiality },
       { title: 'Accessibilité', screen: 'Accessibility', icon: HandicapMental },
       { title: 'Informations légales', screen: 'LegalNotices', icon: LegalNotices },
-      { title: 'Faire une suggestion', screen: 'FeedbackInApp', icon: Bulb },
     ],
   },
   {

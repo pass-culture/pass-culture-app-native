@@ -93,7 +93,7 @@ export const getSiteMapLinks = (
       {
         wording: 'Faire une suggestion',
         navigateTo: getProfilePropConfig('FeedbackInApp'),
-        isLoggedIn: false,
+        isLoggedIn: true,
       },
       {
         wording: 'Informations légales',
