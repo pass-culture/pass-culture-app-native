@@ -34,10 +34,6 @@ adb install android/app/build/outputs/apk/staging/release/app-staging-release.ap
 adb install android/app/build/outputs/apk/apptesting/release/app-apptesting-release.apk # Testing
 ```
 
-### With an AppCenter release
-
-Install the release as instructed in the documentation https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/ci-cd/deployment.md#testing
-
 ## Manual Test
 
 You should come back to the initial state to avoid getting bad results:

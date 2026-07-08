@@ -88,7 +88,6 @@ jobs:
         with:
           secrets: |-
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
-            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             IOS_GOOGLE_SERVICES_PLIST:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-ios-google-service-${{ inputs.ENV }}
             MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
             MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
@@ -124,7 +123,6 @@ jobs:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ steps.secrets.outputs.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
           MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
