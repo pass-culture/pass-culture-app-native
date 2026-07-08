@@ -4,12 +4,13 @@ import { BonificationQFRefusedType } from 'features/bonification/types/Bonificat
 const qfBonificationRefusedTypeMap: Partial<
   Record<QFBonificationStatus, BonificationQFRefusedType>
 > = {
-  [QFBonificationStatus.custodian_not_found]: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
   [QFBonificationStatus.application_not_found]: BonificationQFRefusedType.APPLICATION_NOT_FOUND,
-  [QFBonificationStatus.too_many_retries]: BonificationQFRefusedType.TOO_MANY_RETRIES,
+  [QFBonificationStatus.custodian_not_found]: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
+  [QFBonificationStatus.ko]: BonificationQFRefusedType.KO,
   [QFBonificationStatus.not_in_tax_household]: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
   [QFBonificationStatus.quotient_familial_too_high]:
     BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
+  [QFBonificationStatus.too_many_retries]: BonificationQFRefusedType.TOO_MANY_RETRIES,
 }
 
 export const getQFBonificationRefusedType = (

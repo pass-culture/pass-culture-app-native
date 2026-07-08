@@ -75,79 +75,89 @@ const notFoundPageConfig = {
   },
 }
 
+const notInTaxHouseholdConfig = {
+  Illustration: ErrorIllustration,
+  title: 'Ton dossier est refusé',
+  firstText:
+    'Nous avons bien reçu ton dossier, mais tu n’es pas associé au dossier CAF de ce parent ou représentant légal.',
+  secondText: undefined,
+  bannerText:
+    'Essaie avec ton autre parent ou responsable légal, ou contacte-nous si tu as un doute.',
+  bannerLinks: [
+    {
+      onPress: () => openUrl(env.SUPPORT_ACCOUNT_ISSUES_FORM),
+      wording: 'Contacter notre support',
+      icon: PlainArrowNext,
+    },
+  ],
+  primaryButton: {
+    wording: 'Renouveler ma demande',
+    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
+      bonificationType: BonificationType.FAMILY_QUOTIENT,
+    }),
+  },
+  tertiaryButton: {
+    wording: 'Annuler',
+    navigateTo: navigateToHomeConfig,
+    Icon: Invalidate,
+  },
+}
+
+const quotientFamilyTooHighConfig = {
+  Illustration: SadFace,
+  title: 'Ton dossier est refusé',
+  firstText:
+    'Après vérification, tu ne réponds pas aux critères d’éligibilité permettant de bénéficier de ce bonus.',
+  secondText:
+    'Tu as toujours accès à ton crédit habituel pour découvrir de nouvelles offres culturelles.',
+  bannerText: undefined,
+  bannerLinks: undefined,
+  primaryButton: {
+    wording: 'Revenir au catalogue',
+    navigateTo: navigateToHomeConfig,
+  },
+  tertiaryButton: {
+    wording: 'Accéder à l’annuaire CAF',
+    externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
+    Icon: ExternalSiteFilled,
+  },
+}
+
+const tooManyRetryConfig = {
+  Illustration: SadFace,
+  title: 'Tu as atteint le nombre maximum d’essais',
+  firstText: (
+    <Typo.Body>
+      Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu
+      souhaites obtenir plus d’informations, tu peux{SPACE}
+      <ExternalTouchableLink
+        as={Link}
+        isInsideText
+        wording="contacter notre support"
+        externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+        accessibilityRole={AccessibilityRole.LINK}
+      />
+      .
+    </Typo.Body>
+  ),
+  secondText: undefined,
+  bannerText: undefined,
+  bannerLinks: undefined,
+  primaryButton: { wording: 'Retour à l’accueil', navigateTo: navigateToHomeConfig },
+  tertiaryButton: {
+    wording: undefined,
+    navigateTo: undefined,
+    Icon: undefined,
+  },
+}
+
 export const PAGE_CONFIG: PageConfigMap = {
   [BonificationQFRefusedType.APPLICATION_NOT_FOUND]: notFoundPageConfig,
   [BonificationQFRefusedType.CUSTODIAN_NOT_FOUND]: notFoundPageConfig,
-  [BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD]: {
-    Illustration: ErrorIllustration,
-    title: 'Ton dossier est refusé',
-    firstText:
-      'Nous avons bien reçu ton dossier, mais tu n’es pas associé au dossier CAF de ce parent ou représentant légal.',
-    secondText: undefined,
-    bannerText:
-      'Essaie avec ton autre parent ou responsable légal, ou contacte-nous si tu as un doute.',
-    bannerLinks: [
-      {
-        onPress: () => openUrl(env.SUPPORT_ACCOUNT_ISSUES_FORM),
-        wording: 'Contacter notre support',
-        icon: PlainArrowNext,
-      },
-    ],
-    primaryButton: {
-      wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
-        bonificationType: BonificationType.FAMILY_QUOTIENT,
-      }),
-    },
-    tertiaryButton: {
-      wording: 'Annuler',
-      navigateTo: navigateToHomeConfig,
-      Icon: Invalidate,
-    },
-  },
-  [BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: {
-    Illustration: SadFace,
-    title: 'Ton dossier est refusé',
-    firstText:
-      'Après vérification, tu ne réponds pas aux critères d’éligibilité permettant de bénéficier de ce bonus.',
-    secondText:
-      'Tu as toujours accès à ton crédit habituel pour découvrir de nouvelles offres culturelles.',
-    bannerText: undefined,
-    bannerLinks: undefined,
-    primaryButton: { wording: 'Revenir au catalogue', navigateTo: navigateToHomeConfig },
-    tertiaryButton: {
-      wording: 'Accéder à l’annuaire CAF',
-      externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
-      Icon: ExternalSiteFilled,
-    },
-  },
-  [BonificationQFRefusedType.TOO_MANY_RETRIES]: {
-    Illustration: SadFace,
-    title: 'Tu as atteint le nombre maximum d’essais',
-    firstText: (
-      <Typo.Body>
-        Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu
-        souhaites obtenir plus d’informations, tu peux{SPACE}
-        <ExternalTouchableLink
-          as={Link}
-          isInsideText
-          wording="contacter notre support"
-          externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-          accessibilityRole={AccessibilityRole.LINK}
-        />
-        .
-      </Typo.Body>
-    ),
-    secondText: undefined,
-    bannerText: undefined,
-    bannerLinks: undefined,
-    primaryButton: { wording: 'Retour à l’accueil', navigateTo: navigateToHomeConfig },
-    tertiaryButton: {
-      wording: undefined,
-      navigateTo: undefined,
-      Icon: undefined,
-    },
-  },
+  [BonificationQFRefusedType.KO]: notFoundPageConfig,
+  [BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD]: notInTaxHouseholdConfig,
+  [BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: quotientFamilyTooHighConfig,
+  [BonificationQFRefusedType.TOO_MANY_RETRIES]: tooManyRetryConfig,
 }
 
 export const BonificationFamilyQuotientRefused = () => {
@@ -164,8 +174,9 @@ export const BonificationFamilyQuotientRefused = () => {
   const bonificationRefusedType = params?.bonificationRefusedType ?? bonificationRefuseTypeFallback
 
   const RETRY_REFUSED_TYPES = [
-    BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
     BonificationQFRefusedType.APPLICATION_NOT_FOUND,
+    BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
+    BonificationQFRefusedType.KO,
     BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
   ]
 
