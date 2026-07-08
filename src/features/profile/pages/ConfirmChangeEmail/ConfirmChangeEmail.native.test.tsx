@@ -4,6 +4,7 @@ import { navigate, replace, reset, useRoute } from '__mocks__/@react-navigation/
 import { EmailChangeConfirmationResponse } from 'api/gen'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
+import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { getRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
@@ -27,8 +28,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     resetSearch: jest.fn(),
   }),
 }))
-
-jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -110,6 +109,20 @@ describe('<ConfirmChangeEmail />', () => {
 
     expect(await storage.readString('access_token')).toEqual('accessToken')
     expect(await getRefreshToken()).toEqual('refreshToken')
+  })
+
+  it('should log login analytics with email_change type on change email confirmation success', async () => {
+    mockServer.postApi<EmailChangeConfirmationResponse>('/v2/profile/email_update/confirm', {
+      responseOptions: { statusCode: 200, data: confirmationSuccessResponse },
+    })
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
+
+    await userEvent.press(screen.getByText('Confirmer la demande'))
+
+    expect(analytics.logLogin).toHaveBeenCalledWith({
+      method: 'fromConfirmChangeEmail',
+      type: 'email_change',
+    })
   })
 
   it('should redirect to change email expired when change email confirmation fails because the link expired', async () => {

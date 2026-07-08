@@ -153,7 +153,8 @@ describe('ReinitializePassword Page', () => {
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
       },
-      'fromReinitializePassword'
+      'fromReinitializePassword',
+      'email_reinitialize'
     )
   })
 
