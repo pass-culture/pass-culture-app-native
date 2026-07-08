@@ -1,5 +1,8 @@
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import {
+  BonificationQFRefusedType,
+  BonificationDisabilityRefusedType,
+} from 'features/bonification/types/BonificationRefusedType'
 import { ProfileScreenType } from 'features/identityCheck/pages/profile/types'
 import {
   CulturalSurveyRootStackParamList,
@@ -64,14 +67,15 @@ export type SubscriptionStackParamList = {
   // Bonification
   BonificationBirthDate: undefined
   BonificationBirthPlace?: { bonificationType: BonificationType }
+  BonificationDisabilityRefused?: { bonificationRefusedType: BonificationDisabilityRefusedType }
   BonificationError?: { bonificationType: BonificationType }
-  BonificationRequiredInformation?: { bonificationType: BonificationType }
   BonificationExplanations: undefined
+  BonificationFamilyQuotientRefused?: { bonificationRefusedType: BonificationQFRefusedType }
+  BonificationIncorrectLink: undefined
   BonificationNames: undefined
   BonificationRecap?: { bonificationType: BonificationType }
-  BonificationRefused?: { bonificationRefusedType: BonificationRefusedType }
+  BonificationRequiredInformation?: { bonificationType: BonificationType }
   BonificationTitle: undefined
-  BonificationIncorrectLink: undefined
 } & CulturalSurveyRootStackParamList
 
 export type SubscriptionStackRouteName = keyof SubscriptionStackParamList

@@ -3,12 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
+import { BonificationDisabilityRefused } from 'features/bonification/pages/BonificationDisabilityRefused'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
 import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
+import { BonificationFamilyQuotientRefused } from 'features/bonification/pages/BonificationFamilyQuotientRefused'
 import { BonificationIncorrectLink } from 'features/bonification/pages/BonificationIncorrectLink'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
-import { BonificationRefused } from 'features/bonification/pages/BonificationRefused'
 import { BonificationRequiredInformation } from 'features/bonification/pages/BonificationRequiredInformation'
 import { BonificationTitle } from 'features/bonification/pages/BonificationTitle'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
@@ -275,6 +276,13 @@ const subscriptionStackNavigatorDefinition = {
         path: 'identification/reviens-plus-tard',
       },
     },
+    BonificationDisabilityRefused: {
+      screen: BonificationDisabilityRefused,
+      if: useIsSignedIn,
+      linking: {
+        path: 'bonification/refuse-handicap',
+      },
+    },
     BonificationExplanations: {
       screen: BonificationExplanations,
       if: useIsSignedIn,
@@ -338,8 +346,8 @@ const subscriptionStackNavigatorDefinition = {
         path: 'bonification/lien-incorrect',
       },
     },
-    BonificationRefused: {
-      screen: BonificationRefused,
+    BonificationFamilyQuotientRefused: {
+      screen: BonificationFamilyQuotientRefused,
       if: useIsSignedIn,
       linking: {
         path: 'bonification/refuse',

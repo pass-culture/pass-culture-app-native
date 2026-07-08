@@ -15,7 +15,7 @@ import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-export function BonificationGranted() {
+export const BonificationGranted = () => {
   const { designSystem } = useTheme()
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
   const { refetchUser } = useAuthContext()

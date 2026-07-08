@@ -5,7 +5,7 @@ import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -51,7 +51,7 @@ interface PageConfigEntry {
   primaryButton: PrimaryButtonConfig
   tertiaryButton: TertiaryButtonConfig
 }
-type PageConfigMap = Record<BonificationRefusedType, PageConfigEntry>
+type PageConfigMap = Record<BonificationQFRefusedType, PageConfigEntry>
 
 const notFoundPageConfig = {
   Illustration: ErrorIllustration,
@@ -75,98 +75,109 @@ const notFoundPageConfig = {
   },
 }
 
-export const PAGE_CONFIG: PageConfigMap = {
-  [BonificationRefusedType.APPLICATION_NOT_FOUND]: notFoundPageConfig,
-  [BonificationRefusedType.CUSTODIAN_NOT_FOUND]: notFoundPageConfig,
-  [BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD]: {
-    Illustration: ErrorIllustration,
-    title: 'Ton dossier est refusé',
-    firstText:
-      'Nous avons bien reçu ton dossier, mais tu n’es pas associé au dossier CAF de ce parent ou représentant légal.',
-    secondText: undefined,
-    bannerText:
-      'Essaie avec ton autre parent ou responsable légal, ou contacte-nous si tu as un doute.',
-    bannerLinks: [
-      {
-        onPress: () => openUrl(env.SUPPORT_ACCOUNT_ISSUES_FORM),
-        wording: 'Contacter notre support',
-        icon: PlainArrowNext,
-      },
-    ],
-    primaryButton: {
-      wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
-        bonificationType: BonificationType.FAMILY_QUOTIENT,
-      }),
+const notInTaxHouseholdConfig = {
+  Illustration: ErrorIllustration,
+  title: 'Ton dossier est refusé',
+  firstText:
+    'Nous avons bien reçu ton dossier, mais tu n’es pas associé au dossier CAF de ce parent ou représentant légal.',
+  secondText: undefined,
+  bannerText:
+    'Essaie avec ton autre parent ou responsable légal, ou contacte-nous si tu as un doute.',
+  bannerLinks: [
+    {
+      onPress: () => openUrl(env.SUPPORT_ACCOUNT_ISSUES_FORM),
+      wording: 'Contacter notre support',
+      icon: PlainArrowNext,
     },
-    tertiaryButton: {
-      wording: 'Annuler',
-      navigateTo: navigateToHomeConfig,
-      Icon: Invalidate,
-    },
+  ],
+  primaryButton: {
+    wording: 'Renouveler ma demande',
+    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
+      bonificationType: BonificationType.FAMILY_QUOTIENT,
+    }),
   },
-  [BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: {
-    Illustration: SadFace,
-    title: 'Ton dossier est refusé',
-    firstText:
-      'Après vérification, tu ne réponds pas aux critères d’éligibilité permettant de bénéficier de ce bonus.',
-    secondText:
-      'Tu as toujours accès à ton crédit habituel pour découvrir de nouvelles offres culturelles.',
-    bannerText: undefined,
-    bannerLinks: undefined,
-    primaryButton: { wording: 'Revenir au catalogue', navigateTo: navigateToHomeConfig },
-    tertiaryButton: {
-      wording: 'Accéder à l’annuaire CAF',
-      externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
-      Icon: ExternalSiteFilled,
-    },
-  },
-  [BonificationRefusedType.TOO_MANY_RETRIES]: {
-    Illustration: SadFace,
-    title: 'Tu as atteint le nombre maximum d’essais',
-    firstText: (
-      <Typo.Body>
-        Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu
-        souhaites obtenir plus d’informations, tu peux{SPACE}
-        <ExternalTouchableLink
-          as={Link}
-          isInsideText
-          wording="contacter notre support"
-          externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-          accessibilityRole={AccessibilityRole.LINK}
-        />
-        .
-      </Typo.Body>
-    ),
-    secondText: undefined,
-    bannerText: undefined,
-    bannerLinks: undefined,
-    primaryButton: { wording: 'Retour à l’acceuil', navigateTo: navigateToHomeConfig },
-    tertiaryButton: {
-      wording: undefined,
-      navigateTo: undefined,
-      Icon: undefined,
-    },
+  tertiaryButton: {
+    wording: 'Annuler',
+    navigateTo: navigateToHomeConfig,
+    Icon: Invalidate,
   },
 }
 
-export function BonificationRefused() {
+const quotientFamilyTooHighConfig = {
+  Illustration: SadFace,
+  title: 'Ton dossier est refusé',
+  firstText:
+    'Après vérification, tu ne réponds pas aux critères d’éligibilité permettant de bénéficier de ce bonus.',
+  secondText:
+    'Tu as toujours accès à ton crédit habituel pour découvrir de nouvelles offres culturelles.',
+  bannerText: undefined,
+  bannerLinks: undefined,
+  primaryButton: {
+    wording: 'Revenir au catalogue',
+    navigateTo: navigateToHomeConfig,
+  },
+  tertiaryButton: {
+    wording: 'Accéder à l’annuaire CAF',
+    externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
+    Icon: ExternalSiteFilled,
+  },
+}
+
+const tooManyRetryConfig = {
+  Illustration: SadFace,
+  title: 'Tu as atteint le nombre maximum d’essais',
+  firstText: (
+    <Typo.Body>
+      Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu
+      souhaites obtenir plus d’informations, tu peux{SPACE}
+      <ExternalTouchableLink
+        as={Link}
+        isInsideText
+        wording="contacter notre support"
+        externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+        accessibilityRole={AccessibilityRole.LINK}
+      />
+      .
+    </Typo.Body>
+  ),
+  secondText: undefined,
+  bannerText: undefined,
+  bannerLinks: undefined,
+  primaryButton: { wording: 'Retour à l’accueil', navigateTo: navigateToHomeConfig },
+  tertiaryButton: {
+    wording: undefined,
+    navigateTo: undefined,
+    Icon: undefined,
+  },
+}
+
+export const PAGE_CONFIG: PageConfigMap = {
+  [BonificationQFRefusedType.APPLICATION_NOT_FOUND]: notFoundPageConfig,
+  [BonificationQFRefusedType.CUSTODIAN_NOT_FOUND]: notFoundPageConfig,
+  [BonificationQFRefusedType.KO]: notFoundPageConfig,
+  [BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD]: notInTaxHouseholdConfig,
+  [BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: quotientFamilyTooHighConfig,
+  [BonificationQFRefusedType.TOO_MANY_RETRIES]: tooManyRetryConfig,
+}
+
+export const BonificationFamilyQuotientRefused = () => {
   const disableQFBonificationManualRequest = useFeatureFlag(
     RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
   )
-  const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
+  const { params } = useRoute<UseRouteType<'BonificationFamilyQuotientRefused'>>()
   const { user } = useAuthContext()
 
   const remainingBonusAttempts = user?.remainingBonusAttempts
 
-  // Fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
-  const bonificationRefuseTypeFallback = BonificationRefusedType.CUSTODIAN_NOT_FOUND
+  // Fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationFamilyQuotientRefused?: { ... } to satify typing of components using navigateTo
+  const bonificationRefuseTypeFallback = BonificationQFRefusedType.CUSTODIAN_NOT_FOUND
   const bonificationRefusedType = params?.bonificationRefusedType ?? bonificationRefuseTypeFallback
 
   const RETRY_REFUSED_TYPES = [
-    BonificationRefusedType.CUSTODIAN_NOT_FOUND,
-    BonificationRefusedType.APPLICATION_NOT_FOUND,
-    BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
+    BonificationQFRefusedType.APPLICATION_NOT_FOUND,
+    BonificationQFRefusedType.CUSTODIAN_NOT_FOUND,
+    BonificationQFRefusedType.KO,
+    BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD,
   ]
 
   const showNumberOfRemainingRetries =

@@ -2,8 +2,11 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BonificationType } from 'features/bonification/enums'
-import { BonificationRefused, PAGE_CONFIG } from 'features/bonification/pages/BonificationRefused'
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import {
+  BonificationFamilyQuotientRefused,
+  PAGE_CONFIG,
+} from 'features/bonification/pages/BonificationFamilyQuotientRefused'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -13,18 +16,18 @@ import { render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 
-describe('BonificationRefused', () => {
+describe('BonificationFamilyQuotientRefused', () => {
   beforeEach(() => setFeatureFlags([]))
 
   describe('Parent not found', () => {
-    it('should go navigate to home when pressing "Corriger les informations"', async () => {
+    it('should go navigate to BonificationRequiredInformation when pressing "Renouveler ma demande" button', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND },
+        params: { bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.CUSTODIAN_NOT_FOUND].primaryButton.wording
+        PAGE_CONFIG[BonificationQFRefusedType.CUSTODIAN_NOT_FOUND].primaryButton.wording
       )
       await userEvent.press(button)
 
@@ -36,11 +39,11 @@ describe('BonificationRefused', () => {
 
     it('should show number of remaining retries if equal or under 5', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND },
+        params: { bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 5 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.getByText('Attention, il te reste : 5 demandes')
 
@@ -49,11 +52,11 @@ describe('BonificationRefused', () => {
 
     it('should not show number of remaining retries if over 5', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.APPLICATION_NOT_FOUND },
+        params: { bonificationRefusedType: BonificationQFRefusedType.APPLICATION_NOT_FOUND },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 6 demandes')
 
@@ -64,12 +67,12 @@ describe('BonificationRefused', () => {
   describe('Too many retries', () => {
     it('should go navigate to home when pressing "Revenir à l’accueil"', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
+        params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.TOO_MANY_RETRIES].primaryButton.wording
+        PAGE_CONFIG[BonificationQFRefusedType.TOO_MANY_RETRIES].primaryButton.wording
       )
       await userEvent.press(button)
 
@@ -78,11 +81,11 @@ describe('BonificationRefused', () => {
 
     it('should not show number of remaining retries', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
+        params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 0 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 0 demandes')
 
@@ -93,12 +96,12 @@ describe('BonificationRefused', () => {
   describe('Child not found', () => {
     it('should go navigate to home when pressing "Renouveler ma demande"', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+        params: { bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
+        PAGE_CONFIG[BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
       )
       await userEvent.press(button)
 
@@ -110,11 +113,11 @@ describe('BonificationRefused', () => {
 
     it('should show number of remaining retries if equal or under 5', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+        params: { bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 5 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.getByText('Attention, il te reste : 5 demandes')
 
@@ -123,11 +126,11 @@ describe('BonificationRefused', () => {
 
     it('should adapt singular when remaining retries is 1', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+        params: { bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 1 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.getByText('Attention, il te reste : 1 demande')
 
@@ -136,11 +139,11 @@ describe('BonificationRefused', () => {
 
     it('should not show number of remaining retries if over 5', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+        params: { bonificationRefusedType: BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 6 demandes')
 
@@ -151,12 +154,12 @@ describe('BonificationRefused', () => {
   describe('Family quotient too high', () => {
     it('should go navigate to home when pressing "Revenir vers le catalogue"', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
+        params: { bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
       })
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH].primaryButton.wording
+        PAGE_CONFIG[BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH].primaryButton.wording
       )
       await userEvent.press(button)
 
@@ -165,11 +168,11 @@ describe('BonificationRefused', () => {
 
     it('should not show number of remaining retries', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
+        params: { bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
       })
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 4 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const remainingAttemptsText = screen.queryByText('Attention, il te reste : 4 demandes')
 
@@ -183,10 +186,10 @@ describe('BonificationRefused', () => {
     })
 
     it('should disable button', () => {
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
+        PAGE_CONFIG[BonificationQFRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
       )
 
       expect(button).toBeDisabled()
@@ -195,7 +198,7 @@ describe('BonificationRefused', () => {
     it('should display unavailable message', () => {
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 10 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       expect(
         screen.getByText('La demande de bonus est temporairement indisponible')
@@ -205,7 +208,7 @@ describe('BonificationRefused', () => {
     it('should show remaining retries instead of unavailable message when both are true', () => {
       mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 3 })
 
-      render(<BonificationRefused />)
+      render(<BonificationFamilyQuotientRefused />)
 
       expect(screen.getByText('Attention, il te reste : 3 demandes')).toBeOnTheScreen()
       expect(
