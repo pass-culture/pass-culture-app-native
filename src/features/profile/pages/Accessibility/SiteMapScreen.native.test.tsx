@@ -111,7 +111,7 @@ describe('SiteMapScreen', () => {
       await screen.findByText('Plan du site')
 
       expect(
-        screen.getByLabelText('Profil – Liste - Élément 1 sur 9 - Créer un compte')
+        screen.getByLabelText('Profil – Liste - Élément 1 sur 8 - Créer un compte')
       ).toBeTruthy()
     })
   })

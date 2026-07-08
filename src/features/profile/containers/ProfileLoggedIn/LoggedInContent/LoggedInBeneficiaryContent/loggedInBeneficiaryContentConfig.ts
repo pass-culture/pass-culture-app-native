@@ -42,7 +42,7 @@ export const loggedInBeneficiaryContentConfig = ({
     items: [
       { component: ChatbotButton, key: 'ChatbotButton' },
       { component: HelpButton, key: 'HelpButton' },
-      { title: 'Chercher une info', externalNav: { url: env.ACCESSIBILITY_PLAN } },
+      { title: 'Chercher une info', externalNav: { url: env.FAQ_LINK } },
       { component: BugReportButton, key: 'BugReportButton' },
     ],
   },
