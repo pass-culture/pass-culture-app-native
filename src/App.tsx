@@ -1,6 +1,6 @@
 import 'intl'
 import 'intl/locale-data/jsonp/en'
-import { HotUpdater } from '@hot-updater/react-native'
+import { getUpdateSource, HotUpdater } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox } from 'react-native'
@@ -130,8 +130,9 @@ const AppWithHotUpdater: any =
   __DEV__ || env.ENV !== 'testing'
     ? App
     : HotUpdater.wrap({
-        baseURL: `${env.HOT_UPDATER_FUNCTION_URL}/api/check-update`,
-        updateStrategy: 'appVersion',
+        source: getUpdateSource(`${env.HOT_UPDATER_FUNCTION_URL}/api/check-update`, {
+          updateStrategy: 'appVersion',
+        }),
       })(App)
 
 export { AppWithHotUpdater as App }
