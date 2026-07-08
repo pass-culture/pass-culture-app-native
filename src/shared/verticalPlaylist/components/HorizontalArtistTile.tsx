@@ -26,7 +26,7 @@ export const HorizontalArtistTile = ({ artist, onBeforeNavigate }: ArtistItemPro
         )}
       </Avatar>
       <TextContainer>
-        <Typo.Title4>{artist.name}</Typo.Title4>
+        <ArtistName isDisabled={!artist.id}>{artist.name}</ArtistName>
         {artist.role ? <ArtistRole>{artist.role}</ArtistRole> : null}
       </TextContainer>
     </Container>
@@ -60,6 +60,10 @@ const StyledImage = styled(FastImage)({
   width: '100%',
   height: '100%',
 })
+
+const ArtistName = styled(Typo.Title4)<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
+  color: isDisabled ? theme.designSystem.color.text.subtle : theme.designSystem.color.text.default,
+}))
 
 const ArtistRole = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
