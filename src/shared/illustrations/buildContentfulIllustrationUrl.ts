@@ -12,6 +12,7 @@ const contentfulIllustrationNames = [
   'game',
   'cinema',
   'media&press',
+  'free',
 ] as const
 
 export type ContentfulIllustrationName = (typeof contentfulIllustrationNames)[number]
