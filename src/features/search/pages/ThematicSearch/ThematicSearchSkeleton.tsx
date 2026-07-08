@@ -9,10 +9,6 @@ import {
   VENUE_ITEM_WIDTH,
 } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import {
-  SUBCATEGORY_BUTTON_HEIGHT,
-  SUBCATEGORY_BUTTON_WIDTH,
-} from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
-import {
   ModuleTitlePlaceholder,
   OfferPlaylistSkeleton,
   TextPlaceholder,
@@ -20,6 +16,9 @@ import {
 } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+
+const SUBCATEGORY_BUTTON_HEIGHT = 56
+const SUBCATEGORY_BUTTON_WIDTH = 156
 
 const FlatlistSkeleton: React.FC<{
   numberOfTiles: number
