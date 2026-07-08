@@ -134,6 +134,25 @@ describe('<SetAddress/>', () => {
     })
   })
 
+  it('should disable continue button when address has validation error', async () => {
+    renderSetAddress()
+
+    const input = screen.getByTestId('Entrée pour l’adresse')
+    fireEvent.changeText(input, '%%%')
+
+    expect(input.props.accessibilityLabel).toContain(
+      'Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces.'
+    )
+
+    const continueButton = screen.getByLabelText('Continuer vers le statut')
+
+    expect(continueButton).toBeDisabled()
+
+    await user.press(screen.getByText('Continuer'))
+
+    expect(navigate).not.toHaveBeenCalled()
+  })
+
   describe('when ff phoneNumberInProfileStepper is enabled', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
