@@ -13,6 +13,7 @@ export type StorageKey =
   | 'has_seen_booking_page'
   | 'has_seen_share_app_modal'
   | 'has_seen_eligible_card'
+  | 'has_seen_follow_venue_fake_door_survey'
   | 'has_seen_onboarding_subscription'
   | 'has_seen_push_notifications_modal_once'
   | 'has_seen_qualtrics_survey'
