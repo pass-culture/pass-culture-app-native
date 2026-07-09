@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
-import { ModalScreenWrapper } from 'features/location/components/ModalScreenWrapper'
+import { ModalScreenWrapper } from 'shared/ModalScreenWrapper/ModalScreenWrapper'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationLabel, LocationMode } from 'libs/location/types'
@@ -160,7 +160,7 @@ export const LocationModal = ({
   const currentValue = locationMode ? MODE_TO_LABEL_MAP[locationMode] : ''
 
   return (
-    <ModalScreenWrapper onClose={handleClose}>
+    <ModalScreenWrapper onClose={handleClose} fullScreen>
       {(closeWithTransition) => (
         <React.Fragment>
           <HeaderContainer>
