@@ -27,9 +27,8 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   const isLandscape = useIsLandscape()
   const theme = useTheme()
   const hasMultipleItems = subcategoryButtonContent.length > 2
-  const shouldDisplaySeeAllButton = Boolean(
-    theme.isMobileViewport && subcategoryButtonContent.length > 4 && !!seeAllNavigateTo
-  )
+  const shouldDisplaySeeAllButton =
+    !!theme.isMobileViewport && subcategoryButtonContent.length > 4 && !!seeAllNavigateTo
   const [maxHeight, setMaxHeight] = useState(0)
 
   const handleLayout = useCallback((event: LayoutChangeEvent) => {
