@@ -3307,9 +3307,9 @@ PODS:
     - React-Core
   - react-native-lottie-splash-screen (1.1.2):
     - React
-  - react-native-maps (1.24.2):
-    - react-native-maps/Maps (= 1.24.2)
-  - react-native-maps/Generated (1.24.2):
+  - react-native-maps (1.26.0):
+    - react-native-maps/Maps (= 1.26.0)
+  - react-native-maps/Generated (1.26.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -3338,7 +3338,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-maps/Maps (1.24.2):
+  - react-native-maps/Maps (1.26.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -5197,7 +5197,7 @@ SPEC CHECKSUMS:
   react-native-get-random-values: d40be1625939a24442f7d1abf96c4846db8eab71
   react-native-in-app-review: b3d1eed3d1596ebf6539804778272c4c65e4a400
   react-native-lottie-splash-screen: 2d84b1c81c176981d3e5e17df14da5a99a2f5082
-  react-native-maps: 4c7d10c22273b626135f7df3e9b26cd5f76096d7
+  react-native-maps: 3793b1682de6d6c5d8e225dc877eb435b5090e80
   react-native-netinfo: cec9c4e86083cb5b6aba0e0711f563e2fbbff187
   react-native-orientation-locker: cc6f357b289a2e0dd2210fea0c52cb8e0727fdaa
   react-native-performance: 7086e7ef93c6550ea39f2f9ae321313118c9d347
