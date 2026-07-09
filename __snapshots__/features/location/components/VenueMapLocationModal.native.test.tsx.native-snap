@@ -643,6 +643,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
     </View>
     <RCTScrollView
       keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
       style={
         {
           "flexBasis": 0,
