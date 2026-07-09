@@ -1,4 +1,4 @@
-import { NativeConfig } from '@bam.tech/react-native-config'
+import { NativeConfig } from 'react-native-config'
 import { ValidationError } from 'yup'
 
 import { Environment, EnvironmentSchema } from 'libs/environment/schema'
@@ -8,25 +8,13 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 const isValidationError = (error: unknown): error is ValidationError =>
   error instanceof ValidationError
 
-export const parseBooleanVariables = (config: NativeConfig) => {
-  const configWithActualBooleans: Record<string, string | boolean> = { ...config }
-
-  Object.keys(config).forEach((key) => {
-    if (config[key] === 'true') {
-      configWithActualBooleans[key] = true
-    } else if (config[key] === 'false') {
-      configWithActualBooleans[key] = false
-    }
+export const parseEnvironment = (config: NativeConfig): Environment => {
+  const castedConfig = EnvironmentSchema.cast(config, {
+    stripUnknown: false,
   })
 
-  return configWithActualBooleans
-}
-
-export const parseEnvironment = (config: NativeConfig): Environment => {
-  const configWithActualBooleans = parseBooleanVariables(config)
-
   try {
-    EnvironmentSchema.validateSync(configWithActualBooleans, { strict: true })
+    EnvironmentSchema.validateSync(castedConfig, { strict: true })
   } catch (error) {
     const errorMessage = getErrorMessage(error)
     const validationErrorMessage = isValidationError(error)
@@ -36,5 +24,5 @@ export const parseEnvironment = (config: NativeConfig): Environment => {
     eventMonitoring.captureException(validationErrorMessage, { extra: { error } })
   }
 
-  return configWithActualBooleans as Environment
+  return castedConfig as Environment
 }
