@@ -1,14 +1,18 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
-import styled from 'styled-components/native'
+import React, { useMemo } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { getSubcategoryButtonContent } from 'ui/components/buttons/SubcategoryButton/helpers'
 import { SubcategoryButton } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
-import { useSubcategoryButtonContent } from 'ui/components/buttons/SubcategoryButton/useSubcategoryButtonContent'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
@@ -28,7 +32,32 @@ export const ThematicSearchSubcategories = () => {
 
   const offerCategories = (params?.offerCategories ?? []) as ThematicSearchCategories[]
   const offerCategory = offerCategories[0]
-  const subcategoryButtonContent = useSubcategoryButtonContent(offerCategory)
+  const { data: subcategories = PLACEHOLDER_DATA } = useSubcategoriesQuery()
+  const { searchState, dispatch } = useSearch()
+  const { designSystem } = useTheme()
+  const nativeCategories = useNativeCategories(offerCategory)
+
+  const subcategoryButtonContent = useMemo(
+    () =>
+      getSubcategoryButtonContent({
+        nativeCategories,
+        offerCategory,
+        subcategories,
+        searchState,
+        dispatch,
+        backgroundColors: designSystem.color.background,
+        borderColors: designSystem.color.border,
+      }),
+    [
+      dispatch,
+      nativeCategories,
+      offerCategory,
+      searchState,
+      subcategories,
+      designSystem.color.background,
+      designSystem.color.border,
+    ]
+  )
 
   const mobileMinWidth = useMobileFontScaleToDisplay({
     default: MOBILE_MIN_WIDTH,
@@ -43,7 +72,7 @@ export const ThematicSearchSubcategories = () => {
     <Page>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
-        <Typo.Title2 {...getHeadingAttrs(1)}>{TITLE}</Typo.Title2>
+        <Title {...getHeadingAttrs(1)}>{TITLE}</Title>
         <SubcategoryButtonsContainer>
           {subcategoryButtonContent.map((item) => (
             <StyledSubcategoryButton
@@ -71,6 +100,10 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
+}))
+
+const Title = styled(Typo.Title2)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
 
 const SubcategoryButtonsContainer = styled.View(({ theme }) => ({

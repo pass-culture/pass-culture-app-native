@@ -7,10 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import {
-  SearchStackRouteName,
-  ThematicSearchCategories,
-} from 'features/navigation/navigators/SearchStackNavigator/types'
+import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -42,7 +39,7 @@ const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue
 }, {}) as Record<SearchGroupNameEnumv2, string>
 
 export const ThematicSearch: React.FC = () => {
-  const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
+  const { params, name: currentView } = useRoute<UseRouteType<'ThematicSearch'>>()
 
   const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
