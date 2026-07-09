@@ -295,3 +295,254 @@ def fill_missing(config: dict) -> dict:
 
     return config
 
+
+def build_maestro_args(config: dict) -> list[str]:
+    secrets = resolve_secrets(config)
+    args = [config["target"]]
+
+    env_vars = {
+        "MAESTRO_APP_ID": secrets["app_id"],
+        "MAESTRO_VALID_IOS_EMAIL": "dev-tests-e2e-ios@passculture.team",
+        "MAESTRO_VALID_ANDROID_EMAIL": "dev-tests-e2e-android@passculture.team",
+        "MAESTRO_INVALID_EMAIL": "dev-tests-e2e-invalid@passculture.team",
+        "MAESTRO_UNREGISTERED_EMAIL": "dev-tests-unregistered+e2e@passculture.team",
+        "MAESTRO_MOCK_ANALYTICS_SERVER": f"http://localhost:{MOCK_ANALYTICS_PORT}",
+        "MAESTRO_NUMBER_PHONE": "0607080910",
+        "MAESTRO_PASSWORD": secrets["password"],
+        "MAESTRO_RUN_TRACKING_TESTS": "false",
+        "MAESTRO_RUN_CLOUD_COMMANDS": "true"
+        if config["target"] == "cloud"
+        else "false",
+        "MAESTRO_E2E_API_KEY": secrets["e2e_api_key"],
+        "MAESTRO_E2E_ENDPOINT": secrets["e2e_endpoint"],
+        "MAESTRO_DRIVER_STARTUP_TIMEOUT": "60000",
+    }
+    if config["target"] == "cloud":
+        env_vars["MAESTRO_CLOUD_API_KEY"] = secrets["cloud_api_key"]
+    for key, value in env_vars.items():
+        args.extend(["--env", f"{key}={value}"])
+
+    if config.get("tags"):
+        for tag in config["tags"]:
+            args.extend(["--include-tags", tag])
+    elif config["target"] == "test" and config["platform"] == "web":
+        args.extend(["--include-tags", "web"])
+
+    if config["target"] == "cloud":
+        args.extend(
+            [
+                f"--api-key={secrets['robin_api_key']}",
+                f"--project-id={secrets['robin_project_id']}",
+                "--flows",
+                f"{TESTS_DIR}/",
+                "--device-locale",
+                "fr_FR",
+                "--timeout",
+                "120",
+            ]
+        )
+        if config["platform"] == "ios":
+            args.extend(
+                ["--device-os", "iOS-26-2", "--device-model", "iPhone-17-Pro-Max"]
+            )
+        elif config["platform"] == "android":
+            args.extend(["--device-os", "android-36", "--device-model", "pixel_9"])
+
+    if config.get("app_binary"):
+        args.append(f"--app-binary-id={config['app_binary']}")
+    elif config.get("app_file"):
+        args.append(f"--app-file={config['app_file']}")
+
+    if config.get("run_name"):
+        args.extend(["--name", config["run_name"]])
+
+    if config["platform"] == "web":
+        args.append(f"{TESTS_DIR}/")
+
+    return args
+
+
+def resolve_secrets(config: dict) -> dict:
+    env_file = f".env.{ENV}"
+    platform = config["platform"]
+
+    if platform == "ios":
+        app_id = parse_env_variable("IOS_APP_ID", env_file)
+    elif platform == "android":
+        app_id = parse_env_variable("ANDROID_APP_ID", env_file)
+    else:
+        app_id = parse_env_variable("APP_PUBLIC_URL", env_file)
+
+    secrets = {
+        "app_id": app_id,
+        "password": parse_env_variable("MAESTRO_PASSWORD", SECRET_FILE),
+        "cloud_api_key": parse_env_variable("MAESTRO_CLOUD_API_KEY", SECRET_FILE),
+        "e2e_api_key": parse_env_variable("MAESTRO_E2E_API_KEY", SECRET_FILE),
+        "e2e_endpoint": parse_env_variable("MAESTRO_E2E_ENDPOINT", SECRET_FILE),
+        "robin_api_key": "",
+        "robin_project_id": "",
+    }
+    if config["target"] == "cloud":
+        secrets["robin_api_key"] = parse_env_variable("ROBIN_API_KEY", SECRET_FILE)
+        secrets["robin_project_id"] = parse_env_variable(
+            "ROBIN_PROJECT_ID", SECRET_FILE
+        )
+
+    return secrets
+
+
+APP_TSX = "./src/App.tsx"
+
+
+def setup_environment(config: dict) -> bool:
+    if config["target"] == "test" and config["platform"] == "android":
+        _adb_reverse()
+
+    if config["target"] == "test":
+        _stop_mock_server()
+        _start_mock_server()
+
+    _disable_recaptcha()
+
+    if config["platform"] in ("ios", "android"):
+        return _inject_logbox_ignore()
+
+    return False
+
+
+def _cleanup(config: dict, logbox_injected: bool):
+    if logbox_injected:
+        _remove_logbox_ignore()
+    if config["target"] == "test":
+        _stop_mock_server()
+
+
+def _adb_reverse():
+    try:
+        subprocess.run(
+            ["adb", "reverse", "tcp:8081", "tcp:8081"], check=True, capture_output=True
+        )
+        subprocess.run(
+            [
+                "adb",
+                "reverse",
+                f"tcp:{MOCK_ANALYTICS_PORT}",
+                f"tcp:{MOCK_ANALYTICS_PORT}",
+            ],
+            check=True,
+            capture_output=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        warn("adb reverse failed — assure-toi que ton device est connecté")
+
+
+def _stop_mock_server():
+    subprocess.run(
+        f"lsof -ti :{MOCK_ANALYTICS_PORT} | xargs kill -INT 2>/dev/null || true",
+        shell=True,
+        capture_output=True,
+    )
+
+
+def _start_mock_server():
+    subprocess.Popen(
+        f"cd .maestro/mock_analytics_server && yarn install --silent && PORT={MOCK_ANALYTICS_PORT} yarn start",
+        shell=True,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
+
+def _disable_recaptcha():
+    try:
+        subprocess.run(
+            [
+                "npx",
+                "ts-node",
+                "--compilerOptions",
+                '{"module": "commonjs"}',
+                "./scripts/enableNativeAppRecaptcha.ts",
+                ENV,
+                "false",
+            ],
+            check=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        warn("enableNativeAppRecaptcha failed — continuing anyway")
+
+
+def _inject_logbox_ignore() -> bool:
+    try:
+        with open(APP_TSX) as f:
+            content = f.read()
+        if "LogBox.ignoreAllLogs()" not in content:
+            patched = content.replace(
+                "LogBox.ignoreLogs([", "LogBox.ignoreAllLogs()\nLogBox.ignoreLogs(["
+            )
+            with open(APP_TSX, "w") as f:
+                f.write(patched)
+            return True
+    except FileNotFoundError:
+        pass
+    return False
+
+
+def _remove_logbox_ignore():
+    try:
+        with open(APP_TSX) as f:
+            content = f.read()
+        with open(APP_TSX, "w") as f:
+            f.write(content.replace("LogBox.ignoreAllLogs()\n", ""))
+    except FileNotFoundError:
+        pass
+
+
+def main():
+    print("\n" * 2)
+    banner()
+
+    config = prompt_config()
+
+    print(f"\n{BOLD}{CYAN}  📋 Récapitulatif{RESET}")
+    print(format_config(config))
+
+    if not confirm("Lancer les tests ?"):
+        warn("Annulé.")
+        sys.exit(0)
+
+    save_config(config)
+
+    print(f"\n{GREEN}▸ Préparation...{RESET}")
+    maestro_args = build_maestro_args(config)
+    logbox_injected = setup_environment(config)
+
+    signal.signal(
+        signal.SIGINT, lambda *_: (_cleanup(config, logbox_injected), sys.exit(130))
+    )
+    signal.signal(
+        signal.SIGTERM, lambda *_: (_cleanup(config, logbox_injected), sys.exit(143))
+    )
+
+    if logbox_injected:
+        time.sleep(LOGBOX_RELOAD_WAIT_SECONDS)
+
+    print(
+        f"\n{GREEN}▸ Lancement : maestro {config['target']} sur {BOLD}{config['platform']}{RESET}{GREEN} ({ENV}){RESET}\n"
+    )
+
+    result = subprocess.run(["maestro", *maestro_args])
+    _cleanup(config, logbox_injected)
+
+    if result.returncode == 0:
+        print(f"\n{GREEN}✓ Tests terminés avec succès{RESET}")
+    else:
+        print(f"\n{RED}✗ Tests échoués (code {result.returncode}){RESET}")
+    sys.exit(result.returncode)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(f"\n\n  {YELLOW}⚠ Interrompu.{RESET}\n")
+        sys.exit(130)
