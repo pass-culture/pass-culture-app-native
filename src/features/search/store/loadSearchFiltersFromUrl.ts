@@ -19,9 +19,14 @@ export const loadSearchFiltersFromUrl = async (dispatch: (action: Action) => voi
    */
   const initialURL = await Linking.getInitialURL()
   if (initialURL) {
-    // require() defers this import to call time, breaking the circular dep with SearchWrapper
+    // Defer linking import to call time, breaking the circular dep with SearchWrapper.
+    // - Web (Vite): `require` is not defined, so we use `import()`
+    // - Jest/Node: prefer `require()` to avoid dynamic import needing vm modules
+    const hasRequire = typeof require === 'function'
     // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-    const { linking } = require('features/navigation/navigators/RootNavigator/linking/linking')
+    const { linking } = hasRequire
+      ? require('features/navigation/navigators/RootNavigator/linking/linking')
+      : await import('features/navigation/navigators/RootNavigator/linking/linking')
     const url = new URL(initialURL)
     const state = getStateFromPath(`${url.pathname}${url.search}`, linking.config)
     const [nestedScreen, params] = getNestedNavigationFromState(state)
