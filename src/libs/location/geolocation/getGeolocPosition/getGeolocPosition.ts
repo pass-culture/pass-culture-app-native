@@ -7,7 +7,7 @@ import { GeoCoordinates } from '../../types'
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from '../enums'
 
 const GET_POSITION_SETTINGS: GeoOptions = {
-  enableHighAccuracy: false,
+  enableHighAccuracy: true,
   timeout: 20000,
   maximumAge: 600000,
   showLocationDialog: false,
