@@ -12,6 +12,7 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -95,6 +96,7 @@ mockUseGTLPlaylists.mockReturnValue({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
+const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
   useDeviceMetrics: () => ({
@@ -107,6 +109,8 @@ jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
 jest.mock('libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog', () => ({
   triggerConsultOfferLog: jest.fn(),
 }))
+
+const asyncStorageSpyOn = jest.spyOn(AsyncStorage, 'getItem')
 
 const user = userEvent.setup()
 
@@ -487,6 +491,47 @@ describe('<Venue />', () => {
       await user.press(screen.getByText('Lancer la recherche'))
 
       expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(5543)
+    })
+  })
+
+  describe('When wipVenueFakeDoor FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR])
+      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
+        ...venueDataTest,
+        isOpenToPublic: true,
+        bannerUrl: 'url_image',
+      })
+    })
+
+    it('should display follow button', async () => {
+      renderVenue(venueId)
+
+      expect(await screen.findByLabelText('Suivre le lieu')).toBeOnTheScreen()
+    })
+
+    it('should open fake door modal when pressing follow button', async () => {
+      asyncStorageSpyOn.mockResolvedValueOnce('false')
+      renderVenue(venueId)
+
+      await user.press(await screen.findByLabelText('Suivre le lieu'))
+
+      expect(await screen.findByText('Répondre au questionnaire')).toBeOnTheScreen()
+    })
+
+    it('should open fake door modal when pressing follow button and redirect to qualtrics survey when pressing answer survey button', async () => {
+      asyncStorageSpyOn.mockResolvedValueOnce('false')
+      renderVenue(venueId)
+
+      await user.press(await screen.findByLabelText('Suivre le lieu'))
+
+      await user.press(await screen.findByText('Répondre au questionnaire'))
+
+      expect(openUrlSpy).toHaveBeenCalledWith(
+        'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
+        undefined,
+        true
+      )
     })
   })
 })

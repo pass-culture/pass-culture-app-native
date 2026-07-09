@@ -42,6 +42,7 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { FakeDoorModal } from 'shared/FakeDoorModal/FakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
@@ -86,6 +87,7 @@ export const Venue: FunctionComponent = () => {
   const enableVolunteerFeedback = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
   )
+  const enableVenueFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -95,6 +97,11 @@ export const Venue: FunctionComponent = () => {
     visible: advicesWritersModalVisible,
     hideModal: hideAdvicesWritersModal,
     showModal: showAdvicesWritersModal,
+  } = useModal(false)
+  const {
+    visible: venueFakeDoorModalVisible,
+    hideModal: hideVenueFakeDoorModal,
+    showModal: showVenueFakeDoorModal,
   } = useModal(false)
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
@@ -183,6 +190,8 @@ export const Venue: FunctionComponent = () => {
         venue={venue}
         enableVolunteer={enableVolunteer}
         enableVolunteerFeedback={enableVolunteerFeedback}
+        enableVenueFakeDoor={enableVenueFakeDoor}
+        onPressFollowButton={showVenueFakeDoorModal}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
@@ -225,6 +234,16 @@ export const Venue: FunctionComponent = () => {
           />
         </View>
       ) : null}
+      {enableVenueFakeDoor ? (
+        <View>
+          <FakeDoorModal
+            close={hideVenueFakeDoorModal}
+            visible={venueFakeDoorModalVisible}
+            surveyKey="has_seen_follow_venue_fake_door_survey"
+            surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY"
+          />
+        </View>
+      ) : null}
     </React.Fragment>
   ) : null
 
@@ -237,7 +256,8 @@ export const Venue: FunctionComponent = () => {
           <VenueContent
             venue={venue}
             isCTADisplayed={isCTADisplayed}
-            showSearchInVenueModal={showSearchInVenueModal}>
+            showSearchInVenueModal={showSearchInVenueModal}
+            onPressFollowButton={showVenueFakeDoorModal}>
             {VenueContentChildren}
           </VenueContent>
           <SearchInVenueModal
@@ -248,7 +268,10 @@ export const Venue: FunctionComponent = () => {
           />
         </React.Fragment>
       ) : (
-        <OldVenueContent venue={venue} isCTADisplayed={isCTADisplayed}>
+        <OldVenueContent
+          venue={venue}
+          isCTADisplayed={isCTADisplayed}
+          onPressFollowButton={showVenueFakeDoorModal}>
           {VenueContentChildren}
         </OldVenueContent>
       )}

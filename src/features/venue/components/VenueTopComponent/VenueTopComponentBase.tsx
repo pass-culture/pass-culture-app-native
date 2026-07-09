@@ -28,6 +28,8 @@ type Props = {
   onPressBannerImage?: () => void
   enableVolunteer?: boolean
   enableVolunteerFeedback?: boolean
+  enableVenueFakeDoor?: boolean
+  onPressFollowButton?: () => void
 }
 
 const VOLUNTEER_SMALL_CARD_HEIGHT = getSpacing(56.25)
@@ -38,6 +40,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   onPressBannerImage,
   enableVolunteer,
   enableVolunteerFeedback,
+  enableVenueFakeDoor,
+  onPressFollowButton,
 }) => {
   const theme = useTheme()
   const { width } = useWindowDimensions()
@@ -88,6 +92,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
           bannerCredit={bannerCredit}
           bannerIsFromGoogle={bannerIsFromGoogle}
           handleImagePress={onPressBannerImage}
+          enableVenueFakeDoor={enableVenueFakeDoor}
+          onPressFollowButton={onPressFollowButton}
         />
         <MarginContainer>
           <ViewGap gap={4}>
