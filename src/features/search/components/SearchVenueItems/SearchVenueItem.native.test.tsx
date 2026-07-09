@@ -5,9 +5,16 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { Activity } from 'api/gen'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { UseLocationReturnType } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen, userEvent } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 import { SearchVenueItem } from './SearchVenueItem'
 
@@ -83,6 +90,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SearchVenueItem />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should render venue item correctly', () => {
     renderSearchVenueItem(mockAlgoliaVenue)
 

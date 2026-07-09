@@ -8,7 +8,14 @@ import { BookingListItemResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from '
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { ongoingBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics/provider'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { userEvent, render, screen } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
@@ -22,6 +29,16 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('OnGoingBookingItem', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   const bookings = ongoingBookingsV2ListSnap.bookings
 
   const initialBooking = ongoingBookingsV2ListSnap.bookings[0]

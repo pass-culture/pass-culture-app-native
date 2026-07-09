@@ -15,6 +15,9 @@ import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { GeoCoordinates } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import {
@@ -27,6 +30,10 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.useFakeTimers()
 jest.mock('libs/firebase/analytics/analytics')
@@ -91,6 +98,13 @@ describe('<SearchListHeader />', () => {
     locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
     mockUsePreviousRouteName.mockReturnValue({ name: 'SomeScreen', key: 'key' })
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
   })
 
   describe('When feature flags deactivated', () => {

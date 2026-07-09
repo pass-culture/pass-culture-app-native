@@ -1,9 +1,16 @@
 import React from 'react'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { EditorialCard } from './EditorialCard'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockEditorialInfo = {
   imageURL: 'https://example.com/image.jpg',
@@ -29,6 +36,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('EditorialCard Component', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should render correctly for mobile screens (width < 700)', () => {
     render(<EditorialCard {...defaultProps} />)
 

@@ -17,6 +17,7 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,
   showAccessScreeningButton: false,
+  imageResizingUrl: '',
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',
     [SubscriptionTheme.MUSIQUE]: '',

@@ -4,7 +4,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { proAdvicesCardDataFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -12,6 +19,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('VenueAdvicesSection', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display correctly', () => {
     render(
       <VenueAdvicesSection
