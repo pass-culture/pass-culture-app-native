@@ -49,7 +49,11 @@ const renderVenueContent = (props?: Partial<React.ComponentProps<typeof VenueCon
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
         <OfferCTAProvider>
-          <VenueContent venue={venueDataTest} showSearchInVenueModal={mockShowModal} {...props}>
+          <VenueContent
+            venue={venueDataTest}
+            showSearchInVenueModal={mockShowModal}
+            {...props}
+            onPressFollowButton={jest.fn()}>
             <React.Fragment />
           </VenueContent>
         </OfferCTAProvider>

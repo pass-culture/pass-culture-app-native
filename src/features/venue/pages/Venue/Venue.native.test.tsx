@@ -3,7 +3,7 @@ import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import {
   Activity,
   OffersStocksResponseV2,
@@ -12,7 +12,6 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -96,7 +95,6 @@ mockUseGTLPlaylists.mockReturnValue({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
-const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('features/trustedDevice/helpers/useDeviceMetrics', () => ({
   useDeviceMetrics: () => ({
@@ -516,22 +514,10 @@ describe('<Venue />', () => {
 
       await user.press(await screen.findByLabelText('Suivre le lieu'))
 
-      expect(await screen.findByText('Répondre au questionnaire')).toBeOnTheScreen()
-    })
-
-    it('should open fake door modal when pressing follow button and redirect to qualtrics survey when pressing answer survey button', async () => {
-      asyncStorageSpyOn.mockResolvedValueOnce('false')
-      renderVenue(venueId)
-
-      await user.press(await screen.findByLabelText('Suivre le lieu'))
-
-      await user.press(await screen.findByText('Répondre au questionnaire'))
-
-      expect(openUrlSpy).toHaveBeenCalledWith(
-        'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
-        undefined,
-        true
-      )
+      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+        surveyKey: 'has_seen_follow_venue_fake_door_survey',
+        surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
+      })
     })
   })
 })

@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
-import { TouchableWithoutFeedback } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -15,8 +14,6 @@ import { CircledClock } from 'ui/svg/icons/CircledClock'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
-
-const OVERLAY_COLOR = 'rgba(0, 0, 0, 0.7)'
 
 export const FakeDoorModal = () => {
   const { goBack } = useNavigation<UseNavigationType>()
@@ -59,51 +56,43 @@ export const FakeDoorModal = () => {
       }
 
   return (
-    <React.Fragment>
-      <OverlayContainer>
-        <TouchableWithoutFeedback onPress={goBack}>
-          <AbsoluteBackground />
-        </TouchableWithoutFeedback>
-      </OverlayContainer>
+    <ModalScreenWrapper onClose={goBack}>
+      {(closeWithTransition) => (
+        <React.Fragment>
+          <HeaderContainer>
+            <ModalHeader
+              title="Encore un peu de patience..."
+              rightIconAccessibilityLabel="Fermer la fenêtre"
+              rightIcon={Close}
+              onRightIconPress={closeWithTransition}
+            />
+          </HeaderContainer>
 
-      <ModalScreenWrapper onClose={goBack}>
-        {(closeWithTransition) => (
-          <React.Fragment>
-            <HeaderContainer>
-              <ModalHeader
-                title="Encore un peu de patience..."
-                rightIconAccessibilityLabel="Fermer la fenêtre"
-                rightIcon={Close}
-                onRightIconPress={closeWithTransition}
-              />
-            </HeaderContainer>
+          <Container gap={4}>
+            {content.icon}
+            {content.body}
+          </Container>
 
-            <Container gap={4}>
-              {content.icon}
-              {content.body}
-            </Container>
+          <ButtonContainer>
+            <ExternalTouchableLink
+              as={Button}
+              externalNav={{ url: surveyUrl }}
+              wording="Répondre au questionnaire"
+              fullWidth
+              icon={ExternalSiteFilled}
+              variant={content.buttonVariant}
+              onBeforeNavigate={hasSeenSurvey ? goBack : markHasSeen}
+            />
+          </ButtonContainer>
 
-            <ButtonContainer>
-              <ExternalTouchableLink
-                as={Button}
-                externalNav={{ url: surveyUrl }}
-                wording="Répondre au questionnaire"
-                fullWidth
-                icon={ExternalSiteFilled}
-                variant={content.buttonVariant}
-                onBeforeNavigate={hasSeenSurvey ? goBack : markHasSeen}
-              />
-            </ButtonContainer>
-
-            {hasSeenSurvey ? (
-              <CloseButtonContainer>
-                <Button wording="Fermer" onPress={goBack} />
-              </CloseButtonContainer>
-            ) : null}
-          </React.Fragment>
-        )}
-      </ModalScreenWrapper>
-    </React.Fragment>
+          {hasSeenSurvey ? (
+            <CloseButtonContainer>
+              <Button wording="Fermer" onPress={goBack} />
+            </CloseButtonContainer>
+          ) : null}
+        </React.Fragment>
+      )}
+    </ModalScreenWrapper>
   )
 }
 
@@ -139,17 +128,3 @@ const HeaderContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.l,
   width: '100%',
 }))
-
-const OverlayContainer = styled.View({
-  flex: 1,
-  justifyContent: 'flex-end',
-})
-
-const AbsoluteBackground = styled.View({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: OVERLAY_COLOR,
-})

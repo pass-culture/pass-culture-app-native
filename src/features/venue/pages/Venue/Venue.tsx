@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
@@ -9,7 +9,7 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
-import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -42,7 +42,6 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { FakeDoorModal } from 'shared/FakeDoorModal/FakeDoorModal'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
@@ -54,6 +53,7 @@ const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { data: venue } = useVenueQuery(params.id)
 
   const pageTracking = usePageTracking({
@@ -97,11 +97,6 @@ export const Venue: FunctionComponent = () => {
     visible: advicesWritersModalVisible,
     hideModal: hideAdvicesWritersModal,
     showModal: showAdvicesWritersModal,
-  } = useModal(false)
-  const {
-    visible: venueFakeDoorModalVisible,
-    hideModal: hideVenueFakeDoorModal,
-    showModal: showVenueFakeDoorModal,
   } = useModal(false)
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
@@ -180,6 +175,13 @@ export const Venue: FunctionComponent = () => {
     }
   }, [params.from, proAdvicesSegment, venue?.id])
 
+  const handleOnPressFollowButton = () => {
+    navigate('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_venue_fake_door_survey',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
+    })
+  }
+
   const isCTADisplayed =
     venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
@@ -191,7 +193,7 @@ export const Venue: FunctionComponent = () => {
         enableVolunteer={enableVolunteer}
         enableVolunteerFeedback={enableVolunteerFeedback}
         enableVenueFakeDoor={enableVenueFakeDoor}
-        onPressFollowButton={showVenueFakeDoorModal}
+        onPressFollowButton={handleOnPressFollowButton}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
@@ -234,16 +236,6 @@ export const Venue: FunctionComponent = () => {
           />
         </View>
       ) : null}
-      {enableVenueFakeDoor ? (
-        <View>
-          <FakeDoorModal
-            close={hideVenueFakeDoorModal}
-            visible={venueFakeDoorModalVisible}
-            surveyKey="has_seen_follow_venue_fake_door_survey"
-            surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY"
-          />
-        </View>
-      ) : null}
     </React.Fragment>
   ) : null
 
@@ -257,7 +249,7 @@ export const Venue: FunctionComponent = () => {
             venue={venue}
             isCTADisplayed={isCTADisplayed}
             showSearchInVenueModal={showSearchInVenueModal}
-            onPressFollowButton={showVenueFakeDoorModal}>
+            onPressFollowButton={handleOnPressFollowButton}>
             {VenueContentChildren}
           </VenueContent>
           <SearchInVenueModal
@@ -271,7 +263,7 @@ export const Venue: FunctionComponent = () => {
         <OldVenueContent
           venue={venue}
           isCTADisplayed={isCTADisplayed}
-          onPressFollowButton={showVenueFakeDoorModal}>
+          onPressFollowButton={handleOnPressFollowButton}>
           {VenueContentChildren}
         </OldVenueContent>
       )}
