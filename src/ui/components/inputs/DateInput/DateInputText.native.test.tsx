@@ -23,7 +23,7 @@ describe('DateInputText', () => {
 
     const input = screen.getByDisplayValue('01/09/2000')
 
-    fireEvent.changeText(input, '02092000')
+    fireEvent.changeText(input, '02092000') // 02/09/2000
 
     expect(screen.getByDisplayValue('02/09/2000')).toBeTruthy()
   })
@@ -35,7 +35,7 @@ describe('DateInputText', () => {
 
     const input = screen.getByDisplayValue('01/09/2000')
 
-    fireEvent.changeText(input, '15052000')
+    fireEvent.changeText(input, '15052000') // 15/05/2000
 
     expect(onChange).toHaveBeenCalledWith(new Date(2000, 4, 15))
   })
@@ -45,10 +45,10 @@ describe('DateInputText', () => {
 
     const input = screen.getByDisplayValue('01/09/2000')
 
-    fireEvent.changeText(input, '31022000')
+    fireEvent.changeText(input, '31022000') // 31/02/2000
 
     expect(
-      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
+      screen.getByText('La date saisie est invalide', { exact: false, hidden: true })
     ).toBeTruthy()
   })
 
@@ -57,16 +57,16 @@ describe('DateInputText', () => {
 
     const input = screen.getByDisplayValue('01/09/2000')
 
-    fireEvent.changeText(input, '31022000')
+    fireEvent.changeText(input, '31022000') // 31/02/2000
 
     expect(
-      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
+      screen.getByText('La date saisie est invalide', { exact: false, hidden: true })
     ).toBeTruthy()
 
-    fireEvent.changeText(input, '28022000')
+    fireEvent.changeText(input, '28022000') // 28/02/2000
 
     expect(
-      screen.queryByText('La date saisie est invalide.', { exact: false, hidden: true })
+      screen.queryByText('La date saisie est invalide', { exact: false, hidden: true })
     ).toBeNull()
   })
 
@@ -86,40 +86,6 @@ describe('DateInputText', () => {
     ).toBeTruthy()
   })
 
-  it('should reject dates before minimumDate', () => {
-    const onChange = jest.fn()
-
-    render(
-      <DateInputText {...defaultProps} onChange={onChange} minimumDate={new Date(2000, 0, 1)} />
-    )
-
-    const input = screen.getByDisplayValue('01/09/2000')
-
-    fireEvent.changeText(input, '01011999')
-
-    expect(onChange).not.toHaveBeenCalled()
-    expect(
-      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
-    ).toBeTruthy()
-  })
-
-  it('should reject dates after maximumDate', () => {
-    const onChange = jest.fn()
-
-    render(
-      <DateInputText {...defaultProps} onChange={onChange} maximumDate={new Date(2000, 11, 31)} />
-    )
-
-    const input = screen.getByDisplayValue('01/09/2000')
-
-    fireEvent.changeText(input, '01012001')
-
-    expect(onChange).not.toHaveBeenCalled()
-    expect(
-      screen.getByText('La date saisie est invalide.', { exact: false, hidden: true })
-    ).toBeTruthy()
-  })
-
   it('should not call onChange with an incomplete date', () => {
     const onChange = jest.fn()
 
@@ -127,7 +93,7 @@ describe('DateInputText', () => {
 
     const input = screen.getByDisplayValue('01/09/2000')
 
-    fireEvent.changeText(input, '0101')
+    fireEvent.changeText(input, '0101') // 01/01
 
     expect(onChange).not.toHaveBeenCalled()
   })

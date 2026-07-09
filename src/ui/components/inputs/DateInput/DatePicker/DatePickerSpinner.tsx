@@ -17,13 +17,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
 
   return (
     <React.Fragment>
-      <DateInputText
-        date={date}
-        onChange={onChange}
-        minimumDate={minimumDate}
-        maximumDate={maximumDate}
-        errorMessage={errorMessage}
-      />
+      <DateInputText date={date} onChange={onChange} errorMessage={errorMessage} />
       {errorMessage ? null : <PlaceholderErrorMessage />}
       <SpinnerDatePicker
         testID="date-picker-spinner-native"

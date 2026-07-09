@@ -7,14 +7,12 @@ import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 type Props = {
   date: Date
   onChange: (date: Date) => void
-  minimumDate?: Date
-  maximumDate?: Date
   errorMessage?: string
 }
 
 const label = 'Date de naissance'
 const dateFormat = 'dd/MM/yyyy'
-const invalidDateMessage = 'La date saisie est invalide.'
+const invalidDateMessage = 'La date saisie est invalide'
 const maxLength = 10
 
 const formatInput = (text: string) => {
@@ -24,33 +22,22 @@ const formatInput = (text: string) => {
   return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`
 }
 
-const parseDate = (value: string, minimumDate?: Date, maximumDate?: Date) => {
+const parseDate = (value: string) => {
   if (value.length !== maxLength) return null
   const parsed = parse(value, dateFormat, new Date())
   if (!isValid(parsed)) return null
   if (format(parsed, dateFormat) !== value) return null
-  if (minimumDate && parsed < minimumDate) return null
-  if (maximumDate && parsed > maximumDate) return null
   return parsed
 }
 
-export const DateInputText = ({
-  date,
-  onChange,
-  minimumDate,
-  maximumDate,
-  errorMessage,
-}: Props) => {
+export const DateInputText = ({ date, onChange, errorMessage }: Props) => {
   const [value, setValue] = useState(format(date, dateFormat))
 
   useEffect(() => {
     setValue(format(date, dateFormat))
   }, [date])
 
-  const parsedDate = useMemo(
-    () => parseDate(value, minimumDate, maximumDate),
-    [value, minimumDate, maximumDate]
-  )
+  const parsedDate = useMemo(() => parseDate(value), [value])
 
   const displayedError = (() => {
     if (value.length !== maxLength) return errorMessage
@@ -63,7 +50,7 @@ export const DateInputText = ({
   const onTextChange = (text: string) => {
     const formatted = formatInput(text)
     setValue(formatted)
-    const parsed = parseDate(formatted, minimumDate, maximumDate)
+    const parsed = parseDate(formatted)
     if (parsed) onChange(parsed)
   }
 

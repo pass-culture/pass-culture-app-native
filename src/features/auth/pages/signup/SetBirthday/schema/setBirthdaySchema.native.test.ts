@@ -1,5 +1,6 @@
 import { ValidationError } from 'yup'
 
+import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { analytics } from 'libs/analytics/provider'
 
@@ -8,6 +9,8 @@ const lessThanFifteenYearsOldBirthdate = new Date()
 lessThanFifteenYearsOldBirthdate.setFullYear(today.getFullYear() - 14)
 
 describe('setBirthdaySchema', () => {
+  beforeEach(() => jest.clearAllMocks())
+
   it('should validate when valid birthdate is provided', async () => {
     const input = { birthdate: new Date('2005-01-01') }
     const result = setBirthdaySchema.validate(input)
@@ -21,6 +24,17 @@ describe('setBirthdaySchema', () => {
 
     await expect(result).rejects.toEqual(
       new ValidationError('La date de naissance est obligatoire')
+    )
+  })
+
+  it('should reject when birthdate is before minimum date', async () => {
+    const input = { birthdate: new Date(MINIMUM_DATE.getTime() - 24 * 60 * 60 * 1000) }
+    const result = setBirthdaySchema.validate(input)
+
+    await expect(result).rejects.toEqual(
+      new ValidationError(
+        `La date doit être postérieure au ${MINIMUM_DATE.toLocaleDateString('fr-FR')}`
+      )
     )
   })
 
