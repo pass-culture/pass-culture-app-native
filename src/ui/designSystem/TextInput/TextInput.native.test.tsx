@@ -73,7 +73,28 @@ describe('<TextInput />', () => {
       <TextInput label="E-mail" onChangeText={jest.fn()} ref={myRef} errorMessage="Error !!!" />
     )
 
-    expect(screen.getByText('Error !!!')).toBeOnTheScreen()
+    expect(screen.getByText('Error !!!', { exact: false, hidden: true })).toBeOnTheScreen()
+  })
+
+  it('should read all input information in accessibility label when defined', () => {
+    render(
+      <TextInput
+        label="E-mail"
+        onChangeText={jest.fn()}
+        ref={myRef}
+        errorMessage="Error !!!"
+        description="Format : email@gmail.com"
+        requiredIndicator="explicit"
+        characterCount={10}
+        accessibilityHint="Message complémentaire"
+      />
+    )
+
+    expect(
+      screen.getByLabelText(
+        'Champs de texte - E-mail - Format : email@gmail.com - Obligatoire - 0/10 - Error !!! - Message complémentaire'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should display character count when defined', () => {

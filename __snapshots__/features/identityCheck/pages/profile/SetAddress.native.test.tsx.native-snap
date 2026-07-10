@@ -315,6 +315,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {
@@ -944,6 +945,7 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {

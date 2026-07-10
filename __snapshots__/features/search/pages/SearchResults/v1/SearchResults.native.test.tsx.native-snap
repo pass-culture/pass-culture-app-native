@@ -367,6 +367,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       <View>
                         <View
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           importantForAccessibility="no"
                           style={
                             {

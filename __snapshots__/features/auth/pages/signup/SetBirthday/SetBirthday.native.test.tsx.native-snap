@@ -102,86 +102,127 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         </View>
       </View>
       <View
-        accessibilityLabel="Date de naissance - 1er décembre 2006"
-        accessible={true}
-        gap={2}
         style={
           {
             "alignItems": "flex-start",
-            "display": "flex",
-            "flexDirection": "column",
-            "gap": 8,
-            "maxWidth": 500,
             "width": "100%",
           }
         }
       >
-        <View
-          style={
-            {
-              "alignItems": "flex-end",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            }
-          }
-        >
-          <Text
-            htmlFor="testUuidV4"
+        <View>
+          <View
+            accessibilityElementsHidden={true}
+            accessible={false}
+            importantForAccessibility="no"
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "alignItems": "flex-end",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
               }
             }
           >
-            Date de naissance
-          </Text>
+            <View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Date de naissance
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginTop": 2,
+                  }
+                }
+              >
+                Format : 01/09/2002
+              </Text>
+            </View>
+          </View>
         </View>
         <View
-          height="small"
           isDisabled={false}
           isError={false}
-          isFocus={false}
+          isFocused={false}
+          isHover={false}
+          size="small"
           style={
             {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
               "borderColor": "#90949d",
               "borderStyle": "solid",
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "borderWidth": 2,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
               "height": 40,
+              "marginTop": 4,
               "paddingBottom": 0,
-              "paddingLeft": 17,
-              "paddingRight": 17,
+              "paddingLeft": 9,
+              "paddingRight": 9,
               "paddingTop": 0,
               "width": "100%",
             }
           }
           testID="styled-input-container"
         >
-          <Text
+          <TextInput
+            accessibilityLabel="Champs de texte - Date de naissance - Format : 01/09/2002"
+            accessibilityRequired={false}
+            editable={true}
+            isEmpty={false}
+            keyboardType="number-pad"
+            multiline={false}
             nativeID="testUuidV4"
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder=""
+            placeholderTextColor="#696a6f"
+            returnKeyType="next"
             style={
               {
                 "color": "#161617",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
-                "lineHeight": 25.6,
+                "height": "100%",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
               }
             }
-          >
-            1er décembre 2006
-          </Text>
+            testID="Champ de texte"
+            textAlignVertical="center"
+            value="01/12/2006"
+          />
         </View>
       </View>
+      <View
+        style={
+          {
+            "height": 24,
+          }
+        }
+      />
       <RNDatePicker
         appTheme={
           {
@@ -781,9 +822,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
               "height": 216,
               "width": 310,
             },
-            {
-              "marginTop": 24,
-            },
+            {},
           ]
         }
         testID="date-picker-spinner-native"
@@ -1032,86 +1071,127 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         </View>
       </View>
       <View
-        accessibilityLabel="Date de naissance - 1er décembre 2006"
-        accessible={true}
-        gap={2}
         style={
           {
             "alignItems": "flex-start",
-            "display": "flex",
-            "flexDirection": "column",
-            "gap": 8,
-            "maxWidth": 500,
             "width": "100%",
           }
         }
       >
-        <View
-          style={
-            {
-              "alignItems": "flex-end",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            }
-          }
-        >
-          <Text
-            htmlFor="testUuidV4"
+        <View>
+          <View
+            accessibilityElementsHidden={true}
+            accessible={false}
+            importantForAccessibility="no"
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 16,
-                "lineHeight": 25.6,
+                "alignItems": "flex-end",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
               }
             }
           >
-            Date de naissance
-          </Text>
+            <View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Date de naissance
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginTop": 2,
+                  }
+                }
+              >
+                Format : 01/09/2002
+              </Text>
+            </View>
+          </View>
         </View>
         <View
-          height="small"
           isDisabled={false}
           isError={false}
-          isFocus={false}
+          isFocused={false}
+          isHover={false}
+          size="small"
           style={
             {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
               "borderColor": "#90949d",
               "borderStyle": "solid",
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "borderWidth": 2,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
               "height": 40,
+              "marginTop": 4,
               "paddingBottom": 0,
-              "paddingLeft": 17,
-              "paddingRight": 17,
+              "paddingLeft": 9,
+              "paddingRight": 9,
               "paddingTop": 0,
               "width": "100%",
             }
           }
           testID="styled-input-container"
         >
-          <Text
+          <TextInput
+            accessibilityLabel="Champs de texte - Date de naissance - Format : 01/09/2002"
+            accessibilityRequired={false}
+            editable={true}
+            isEmpty={false}
+            keyboardType="number-pad"
+            multiline={false}
             nativeID="testUuidV4"
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder=""
+            placeholderTextColor="#696a6f"
+            returnKeyType="next"
             style={
               {
                 "color": "#161617",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
-                "lineHeight": 25.6,
+                "height": "100%",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
               }
             }
-          >
-            1er décembre 2006
-          </Text>
+            testID="Champ de texte"
+            textAlignVertical="center"
+            value="01/12/2006"
+          />
         </View>
       </View>
+      <View
+        style={
+          {
+            "height": 24,
+          }
+        }
+      />
       <RNDatePicker
         appTheme={
           {
@@ -1711,9 +1791,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
               "height": 216,
               "width": 310,
             },
-            {
-              "marginTop": 24,
-            },
+            {},
           ]
         }
         testID="date-picker-spinner-native"

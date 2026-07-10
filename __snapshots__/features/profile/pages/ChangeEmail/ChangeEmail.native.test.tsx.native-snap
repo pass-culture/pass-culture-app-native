@@ -357,6 +357,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {

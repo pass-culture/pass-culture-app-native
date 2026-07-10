@@ -1179,6 +1179,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <Text
                                   accessibilityElementsHidden={true}
                                   accessibilityRole="header"
+                                  accessible={false}
                                   importantForAccessibility="no"
                                   style={
                                     {
@@ -4682,6 +4683,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 <Text
                                   accessibilityElementsHidden={true}
                                   accessibilityRole="header"
+                                  accessible={false}
                                   importantForAccessibility="no"
                                   style={
                                     {

@@ -315,6 +315,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 <View>
                   <View
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     importantForAccessibility="no"
                     style={
                       {
@@ -585,6 +586,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 <View>
                   <View
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     importantForAccessibility="no"
                     style={
                       {
