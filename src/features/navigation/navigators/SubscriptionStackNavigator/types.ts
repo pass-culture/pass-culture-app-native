@@ -71,7 +71,6 @@ export type SubscriptionStackParamList = {
   BonificationError?: { bonificationType: BonificationType }
   BonificationExplanations: undefined
   BonificationFamilyQuotientRefused?: { bonificationRefusedType: BonificationQFRefusedType }
-  BonificationIncorrectLink: undefined
   BonificationNames: undefined
   BonificationRecap?: { bonificationType: BonificationType }
   BonificationRequiredInformation?: { bonificationType: BonificationType }

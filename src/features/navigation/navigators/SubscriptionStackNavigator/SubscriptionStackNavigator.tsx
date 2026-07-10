@@ -7,7 +7,6 @@ import { BonificationDisabilityRefused } from 'features/bonification/pages/Bonif
 import { BonificationError } from 'features/bonification/pages/BonificationError'
 import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
 import { BonificationFamilyQuotientRefused } from 'features/bonification/pages/BonificationFamilyQuotientRefused'
-import { BonificationIncorrectLink } from 'features/bonification/pages/BonificationIncorrectLink'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { BonificationRequiredInformation } from 'features/bonification/pages/BonificationRequiredInformation'
@@ -337,13 +336,6 @@ const subscriptionStackNavigatorDefinition = {
       if: useIsSignedIn,
       linking: {
         path: 'bonification/erreur',
-      },
-    },
-    BonificationIncorrectLink: {
-      screen: BonificationIncorrectLink,
-      if: useIsSignedIn,
-      linking: {
-        path: 'bonification/lien-incorrect',
       },
     },
     BonificationFamilyQuotientRefused: {

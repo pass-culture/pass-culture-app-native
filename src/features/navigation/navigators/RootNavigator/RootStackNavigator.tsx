@@ -37,6 +37,7 @@ import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
+import { IncorrectLink } from 'features/errors/pages/IncorrectLink'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
@@ -258,6 +259,7 @@ const rootScreens: RouteConfig[] = [
   { name: 'Login', component: Login, options: { title: 'Connexion' } },
   { name: 'LoginMethods', component: LoginMethods, options: { title: 'Méthodes de connexion' } },
   { name: 'BannedCountryError', component: BannedCountryError },
+  { name: 'IncorrectLink', component: IncorrectLink, options: { title: 'Lien incorrect' } },
   {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
