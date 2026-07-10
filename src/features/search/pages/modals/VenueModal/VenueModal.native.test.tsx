@@ -68,8 +68,18 @@ describe('VenueModal', () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
-    const closeButton = screen.getByLabelText('Fermer la modale')
+    const closeButton = screen.getByLabelText('Fermer')
     await user.press(closeButton)
+
+    expect(dismissModalMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('should close when pressing the go back button', async () => {
+    render(<VenueModal visible dismissModal={dismissModalMock} />)
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+
+    const goBackButton = screen.getByLabelText('Revenir en arrière')
+    await user.press(goBackButton)
 
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
@@ -123,7 +133,7 @@ describe('VenueModal', () => {
     const clearInput = screen.getByRole('button', { name: 'Réinitialiser la recherche' })
     await user.press(clearInput)
 
-    const closeButton = screen.getByRole('button', { name: 'Fermer la modale' })
+    const closeButton = screen.getByRole('button', { name: 'Fermer' })
     await user.press(closeButton)
 
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
