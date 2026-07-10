@@ -71,10 +71,12 @@ Texte
 
 **Problème** 😱  
 - E02 : Dans le module vidéo, lorsqu'il y a plus de 3 offres associées il faut scroller horizontalement pour y accéder. Il faudrait une alternative à ce geste complexe.
+- E11 : Actuellement pour renseigner sa date de naissance, nous avons que les spinners pour le faire, mais ils sont parfois non accessible.
 - E14 : Sur les pages de recherche thématique (ex. « Livres »), les sous-catégories sont présentées dans un carrousel à défilement horizontal, un geste complexe sans alternative.
 
 **Correction** 💡  
-- E02 : Ajout du bouton “Voir tout” pour accéder à une page avec les offres disposées verticalement
+- E02 : Ajout du bouton “Voir tout” pour accéder à une page avec les offres disposées verticalement.
+- E11 : Ajout d'un input pour renseigner sa date de naissance (en plus des spinners).
 - E14 : Ajout d'un bouton « Voir tout » au-dessus de la liste horizontale des sous-catégories qui redirige vers une page avec la liste des sous-catégories au format vertical.
 
 **Retours audit** 🔥  

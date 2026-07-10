@@ -475,6 +475,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {
@@ -536,7 +537,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     testID="styled-input-container"
                   >
                     <TextInput
-                      accessibilityLabel="Champs de texte - Suggérer une amélioration"
+                      accessibilityLabel="Champs de texte - Suggérer une amélioration - 0/800"
                       accessibilityRequired={false}
                       editable={true}
                       isEmpty={true}

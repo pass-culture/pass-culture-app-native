@@ -26,23 +26,21 @@ describe('<DatePickerSpinner />', () => {
     mockdate.set(CURRENT_DATE)
   })
 
-  describe('- navigation -', () => {
-    it('should keep disabled the button "Continuer" when the date is not selected', () => {
-      render(<DatePickerSpinner {...props} />)
+  it('should keep disabled the button "Continuer" when the date is not selected', () => {
+    render(<DatePickerSpinner {...props} />)
 
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
-      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
 
-      expect(props.onChange).toHaveBeenCalledWith(CURRENT_DATE)
-    })
+    expect(props.onChange).toHaveBeenCalledWith(CURRENT_DATE)
+  })
 
-    it('should keep enable the button "Continuer" when the date is selected and is different from the current date', () => {
-      render(<DatePickerSpinner {...props} />)
+  it('should keep enable the button "Continuer" when the date is selected and is different from the current date', () => {
+    render(<DatePickerSpinner {...props} />)
 
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
-      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
-      expect(props.onChange).toHaveBeenCalledWith(ELIGIBLE_AGE_DATE)
-    })
+    expect(props.onChange).toHaveBeenCalledWith(ELIGIBLE_AGE_DATE)
   })
 })

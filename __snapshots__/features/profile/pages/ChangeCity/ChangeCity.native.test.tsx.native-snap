@@ -322,6 +322,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {
@@ -1059,6 +1060,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {
@@ -1796,6 +1798,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                   <View>
                     <View
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       importantForAccessibility="no"
                       style={
                         {

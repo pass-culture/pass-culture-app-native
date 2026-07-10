@@ -843,6 +843,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       <Text
         accessibilityElementsHidden={true}
+        accessible={false}
         importantForAccessibility="no"
         style={
           {
@@ -1819,6 +1820,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     >
       <Text
         accessibilityElementsHidden={true}
+        accessible={false}
         importantForAccessibility="no"
         style={
           {
