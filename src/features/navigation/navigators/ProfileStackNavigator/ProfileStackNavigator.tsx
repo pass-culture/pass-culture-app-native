@@ -319,6 +319,13 @@ const profileStackNavigatorPathDefinition = {
   },
 }
 
+export const AUTH_PROTECTED_PROFILE_SCREENS = new Set(
+  Object.entries(profileStackNavigatorPathDefinition.screens).flatMap(
+    ([screenName, screenDefinition]) =>
+      'if' in screenDefinition && screenDefinition.if === useIsSignedIn ? [screenName] : []
+  )
+)
+
 export const ProfileStackNavigator = createNativeStackNavigator(profileStackNavigatorPathDefinition)
 
 const ProfileScreen = createComponentForStaticNavigation(ProfileStackNavigator)
