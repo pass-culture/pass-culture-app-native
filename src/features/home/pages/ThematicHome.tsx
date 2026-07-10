@@ -23,8 +23,8 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
-import { LocationMode } from 'libs/location/types'
-import { useLocation } from 'libs/location/useLocation'
+import { useUserLocation } from 'libs/locationV2/location.store'
+import { setAroundPlaceFromCoords } from 'libs/locationV2/setAroundPlaceFromCoords'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -156,7 +156,7 @@ export const ThematicHome: FunctionComponent = () => {
 
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
   const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
-  const { userLocation, setSelectedLocationMode, setPlace } = useLocation()
+  const userLocation = useUserLocation()
   const isLocated = !!userLocation
 
   const { onScroll, headerTransition, gradientTranslation, viewTranslation, imageAnimatedHeight } =
@@ -184,17 +184,9 @@ export const ThematicHome: FunctionComponent = () => {
 
   useEffect(() => {
     if (hasLocationUrlParams) {
-      setSelectedLocationMode(LocationMode.AROUND_PLACE)
-      setPlace({
-        label: 'Géolocalisation',
-        geolocation: {
-          latitude,
-          longitude,
-        },
-        info: '',
-      })
+      void setAroundPlaceFromCoords({ latitude, longitude })
     }
-  }, [hasLocationUrlParams, latitude, longitude, setPlace, setSelectedLocationMode])
+  }, [hasLocationUrlParams, latitude, longitude])
 
   const handleBackPress = () => {
     isFromDeeplink ? navigate(...homeNavigationConfig) : goBack()
