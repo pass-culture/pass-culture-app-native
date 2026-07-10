@@ -18,6 +18,7 @@ export const env: Environment = {
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST: 'algoliaVenuesIndexPlaylistSearchNewest',
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: 'algoliaVenuesIndexPlaylistSearch',
+  ANALYTICS_DEBUGGER_ENABLED: true,
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
   APPLE_SERVICE_ID: 'apple_service_id',
