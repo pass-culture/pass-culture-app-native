@@ -6,7 +6,7 @@ import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 
 const CINEMA_PLAYLISTS_TITLES = ['Films à l’affiche', 'Films de la semaine', 'Cartes ciné']
@@ -19,7 +19,7 @@ export const CinemaPlaylists: React.FC<ThematicPlaylistProps> = ({
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const { playlists: cinemaPlaylists, isLoading: areCinemaPlaylistsLoading } =
     useThematicSearchPlaylistsQuery({
       playlistTitles: CINEMA_PLAYLISTS_TITLES,

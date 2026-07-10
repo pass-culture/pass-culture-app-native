@@ -11,7 +11,7 @@ import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenu
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 
 export type CineBlockProps = {
@@ -29,7 +29,9 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
 
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const venue = getVenue(offer.venue)
   const distance = venue.coordinates
     ? getDistance(

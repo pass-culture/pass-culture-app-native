@@ -12,7 +12,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { mapActivityToIcon } from 'libs/parsers/activity'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
@@ -48,7 +48,9 @@ const UnmemoizedSearchVenueItem = ({
   searchId,
   searchGroupLabel,
 }: SearchVenueItemProps) => {
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { designSystem } = useTheme()
   const { lat, lng } = venue._geoloc

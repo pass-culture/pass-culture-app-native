@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useLocation } from 'libs/location/location'
+import { usePlace } from 'libs/locationV2/location.store'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { convertCurrency, RoundUnit } from 'shared/currency/convertCurrency'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -19,7 +19,7 @@ export const CheatcodesScreenNewCaledonia = () => {
   const [inputEuro, setInputEuro] = useState('')
   const priceInEuro = parseFloat(inputEuro) || 0
 
-  const { selectedPlace } = useLocation()
+  const selectedPlace = usePlace()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
 

@@ -3,9 +3,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { Activity } from 'api/gen'
-import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
-import { UseLocationReturnType } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -46,43 +51,21 @@ const ITEM_WIDTH = 144
 const searchId = uuidv4()
 
 const DEFAULT_USER_LOCATION = { latitude: 48, longitude: 2 }
-const DEFAULT_SELECTED_PLACE: SuggestedPlace | null = {
+const DEFAULT_SELECTED_PLACE: SuggestedPlace = {
   type: 'municipality',
   label: 'Kourou',
   info: 'Kourou',
   geolocation: DEFAULT_USER_LOCATION,
 }
 
-const EVERYWHERE_USER_POSITION = {
-  userLocation: null,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  geolocPosition: undefined,
-}
-
-const AROUND_ME_POSITION = {
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  geolocPosition: DEFAULT_USER_LOCATION,
-  place: null,
-}
-const MUNICIPALITY_AROUND_PLACE_POSITION = {
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedPlace: DEFAULT_SELECTED_PLACE,
-  selectedLocationMode: LocationMode.AROUND_PLACE,
-  geolocPosition: undefined,
-}
-
-const mockUseLocation = jest.fn((): Partial<UseLocationReturnType> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/location', () => ({
-  useLocation: () => mockUseLocation(),
-}))
-
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SearchVenueItem />', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
+
   it('should render venue item correctly', () => {
     renderSearchVenueItem(mockAlgoliaVenue)
 
@@ -134,7 +117,8 @@ describe('<SearchVenueItem />', () => {
   })
 
   it('should display the distance when user choose geolocation', () => {
-    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
+    locationActions.setGeolocPosition(DEFAULT_USER_LOCATION)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
 
     renderSearchVenueItem(mockAlgoliaVenue)
 
@@ -142,14 +126,15 @@ describe('<SearchVenueItem />', () => {
   })
 
   it('should no display the distance tag when user chose an unprecise location (type municipality or locality)', () => {
-    mockUseLocation.mockReturnValueOnce(MUNICIPALITY_AROUND_PLACE_POSITION)
+    locationActions.setPlace(DEFAULT_SELECTED_PLACE)
+    locationActions.setLocationMode(LocationMode.AROUND_PLACE)
     renderSearchVenueItem(mockAlgoliaVenue)
 
     expect(screen.queryByTestId('distance_tag')).not.toBeOnTheScreen()
   })
 
   it("should not display the distance tag when user chose 'France Entière'", () => {
-    mockUseLocation.mockReturnValueOnce(EVERYWHERE_USER_POSITION)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     renderSearchVenueItem(mockAlgoliaVenue)
 
     expect(screen.queryByTestId('distance_tag')).not.toBeOnTheScreen()

@@ -2,8 +2,8 @@ import { Platform } from 'react-native'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useIsGeolocated, useLocationMode } from 'libs/locationV2/location.store'
 
 const isWeb = Platform.OS === 'web'
 
@@ -18,7 +18,8 @@ export const useShouldDisplayVenueMap = (
 ): OutputProps => {
   const enabledVenueMap = useFeatureFlag(featureFlag)
 
-  const { hasGeolocPosition, selectedLocationMode } = useLocation()
+  const hasGeolocPosition = useIsGeolocated()
+  const selectedLocationMode = useLocationMode()
   const isLocated =
     selectedLocationMode === LocationMode.AROUND_PLACE ||
     (selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition)

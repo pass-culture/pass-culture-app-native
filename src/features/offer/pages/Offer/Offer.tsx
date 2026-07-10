@@ -23,7 +23,7 @@ import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation } from 'libs/location/useLocation'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { useOffersViewedReviewTrigger } from 'libs/reviewInApp/useOffersViewedReviewTrigger'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
@@ -48,7 +48,7 @@ export function Offer() {
   const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
 
   const { user, isLoggedIn } = useAuthContext()
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const { data: offer, isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({

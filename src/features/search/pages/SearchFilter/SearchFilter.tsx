@@ -17,8 +17,8 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration, useLocationMode, usePlace } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -39,7 +39,10 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     void analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const place = usePlace()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
 

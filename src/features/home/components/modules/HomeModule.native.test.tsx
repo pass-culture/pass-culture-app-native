@@ -21,7 +21,13 @@ import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeoCoordinates, Position } from 'libs/location/location'
+import { GeoCoordinates } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -59,16 +65,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-const mockPosition: Position = DEFAULT_POSITION
-
-const mockUseLocation = jest.fn(() => ({
-  geolocPosition: mockPosition,
-  userLocation: mockPosition,
-  onModalHideRef: jest.fn(),
-}))
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 jest.mock('queries/offer/useAlgoliaSimilarOffersQuery', () => ({
   useAlgoliaSimilarOffersQuery: jest.fn(() => mockedAlgoliaResponse.hits),
@@ -121,6 +117,9 @@ describe('<HomeModule />', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition(DEFAULT_POSITION)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockInView(true)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })

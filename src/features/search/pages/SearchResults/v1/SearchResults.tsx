@@ -16,7 +16,8 @@ import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useLocation } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration } from 'libs/locationV2/location.store'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -42,7 +43,7 @@ export const SearchResults: FC = () => {
     [setQueryHistory]
   )
 
-  const { geolocPosition } = useLocation()
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
   const previousGeolocPosition = usePrevious(geolocPosition)
 
   const {

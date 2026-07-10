@@ -5,9 +5,8 @@ import styled from 'styled-components/native'
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { useLocationLabel } from 'libs/locationV2/location.store'
+import { useLocationMode, useLocationLabel } from 'libs/locationV2/location.store'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -18,7 +17,7 @@ export const LocationWidgetBadge = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
-  const { selectedLocationMode } = useLocation()
+  const selectedLocationMode = useLocationMode()
 
   const locationTitle = useLocationLabel()
 

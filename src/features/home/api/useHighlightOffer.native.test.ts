@@ -3,8 +3,12 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { useLocation } from 'libs/location/location'
-import { UseLocationReturnType } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
@@ -27,9 +31,6 @@ const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetc
 
 const mockOffers = mockedAlgoliaResponse.hits
 
-jest.mock('libs/location/location')
-const mockUseLocation = jest.mocked(useLocation)
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.useFakeTimers()
@@ -37,6 +38,10 @@ jest.useFakeTimers()
 setSettingsMock({ patchSettingsWith: { objectStorageUrl: undefined } }) // Avoid thumbUrl change
 
 describe('useHighlightOffer', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
+
   it('should return offer when offerId is provided', async () => {
     mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0]])
 
@@ -70,11 +75,11 @@ describe('useHighlightOffer', () => {
   describe('geolocation', () => {
     it('should return offer when isGeolocated is true and the distance to the offer is within the radius', async () => {
       const mockOffer = mockOffers[0]
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseLocation.mockReturnValue({
-        geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-        userLocation: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-      } as UseLocationReturnType)
+      locationActions.setGeolocPosition({
+        latitude: mockOffer._geoloc.lat,
+        longitude: mockOffer._geoloc.lng,
+      })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -88,10 +93,8 @@ describe('useHighlightOffer', () => {
 
     it('should not return offer when isGeolocated is true and the distance to the offer is beyond radius', async () => {
       const mockOffer = mockOffers[0]
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseLocation.mockReturnValue({
-        geolocPosition: { latitude: 1, longitude: 1 },
-      } as UseLocationReturnType)
+      locationActions.setGeolocPosition({ latitude: 1, longitude: 1 })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -105,10 +108,7 @@ describe('useHighlightOffer', () => {
 
     it('should not return offer when isGeolocated is true and the user position is not defined', async () => {
       const mockOffer = mockOffers[0]
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseLocation.mockReturnValue({
-        geolocPosition: undefined,
-      } as UseLocationReturnType)
+      useLocationV2.setState(defaultLocationState)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -122,10 +122,11 @@ describe('useHighlightOffer', () => {
 
     it('should return offer when isGeolocated is true and around radius is not defined', async () => {
       const mockOffer = mockOffers[0]
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseLocation.mockReturnValue({
-        geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-      } as UseLocationReturnType)
+      locationActions.setGeolocPosition({
+        latitude: mockOffer._geoloc.lat,
+        longitude: mockOffer._geoloc.lng,
+      })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({

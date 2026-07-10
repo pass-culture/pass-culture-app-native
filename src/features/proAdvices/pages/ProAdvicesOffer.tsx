@@ -8,7 +8,7 @@ import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/of
 import { ProAdvicesBase } from 'features/proAdvices/pages/ProAdvicesBase'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/useLocation'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
 export const ProAdvicesOffer: FunctionComponent = () => {
@@ -16,7 +16,7 @@ export const ProAdvicesOffer: FunctionComponent = () => {
   const { offerId, venueId } = route.params
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
 
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const { data: offer } = useOfferQuery({ offerId })
   const {
     data: advicesData,

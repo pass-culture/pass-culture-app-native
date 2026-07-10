@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { useLocation } from 'libs/location/useLocation'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -40,7 +40,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     homeEntryId,
     onViewableItemsChanged,
   } = props
-  const { userLocation: position } = useLocation()
+  const position = useUserLocation()
   const { user: profile } = useAuthContext()
   const { designSystem } = useTheme()
   const { offers, recommendationApiParams } = useHomeRecommendedOffers(

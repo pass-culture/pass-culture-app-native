@@ -2,13 +2,13 @@ import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getShouldDisplayActivationFlow } from 'features/auth/helpers/getShouldDisplayActivationFlow'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationMode } from 'libs/locationV2/location.store'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 
 export function useOverrideCreditActivationAmount() {
   const { user } = useAuthContext()
-  const { selectedLocationMode } = useLocation()
+  const selectedLocationMode = useLocationMode()
   const { data: subscription } = useGetStepperInfoQuery()
 
   const amount = useGetDepositAmountsByAge(user?.birthDate)

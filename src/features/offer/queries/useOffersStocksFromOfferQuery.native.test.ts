@@ -4,6 +4,11 @@ import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferI
 import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, Position } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
@@ -24,14 +29,7 @@ const OFFER_WITHOUT_ALLOCINE_ID = mockBuilder.offerResponseV2({ extraData: { all
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/network/NetInfoWrapper')
 
-const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
 
 const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')
 const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
@@ -42,6 +40,12 @@ mockdate.set(TODAY.toDate())
 jest.useFakeTimers()
 
 describe('useOffersStocksFromOfferQuery', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+    locationActions.setGeolocPosition(mockUserLocation)
+  })
+
   it('should call fetchOffers with allocineId when provided', async () => {
     renderUseOffersStocksFromOfferQuery(OFFER_WITH_STOCKS_TODAY)
     const allocineId = OFFER_WITH_STOCKS_TODAY.extraData?.allocineId

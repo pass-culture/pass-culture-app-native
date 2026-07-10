@@ -14,7 +14,7 @@ import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -34,7 +34,8 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
     SearchGroupNameEnumv2.LIVRES
   ] as ContentfulLabelCategories
 
-  const { userLocation, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()

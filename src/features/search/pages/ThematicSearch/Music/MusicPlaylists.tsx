@@ -6,7 +6,7 @@ import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 
 const MUSIC_PLAYLISTS_TITLES = [
@@ -26,7 +26,7 @@ export const MusicPlaylists: React.FC<ThematicPlaylistProps> = ({
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
 
   const { playlists: musicPlaylists, isLoading: areMusicPlaylistsLoading } =
     useThematicSearchPlaylistsQuery({

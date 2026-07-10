@@ -7,7 +7,13 @@ import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVarian
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
-import { Position } from 'libs/location/location'
+import { GeoCoordinates } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -34,14 +40,14 @@ const Kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-let mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockPosition,
-    geolocPosition: mockPosition,
-    place: Kourou,
-  }),
-}))
+let mockPosition: GeoCoordinates = { latitude: 90.4773245, longitude: 90.4773245 }
+
+const setupLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setGeolocPosition(mockPosition)
+  locationActions.setLocationMode(LocationMode.AROUND_ME)
+  locationActions.setPlace(Kourou)
+}
 
 let queryClient: QueryClient
 const mockedGetQueryData = () => ({ images: { recto: { url: 'image.jpeg' } } })
@@ -64,6 +70,7 @@ describe('<OfferContent />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
+    setupLocation()
     mockAuthContextWithoutUser({ persist: true })
   })
 

@@ -11,7 +11,12 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Artist } from 'features/venue/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  useLocationConfiguration,
+  useLocationMode,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { VerticalPlaylistArtistsData } from 'shared/verticalPlaylist/types'
@@ -37,8 +42,12 @@ export const useGetArtistsFromPlaylist = ({
 
   const { searchState } = useSearch()
 
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
+  const { radius: aroundMeRadius, geolocation: geolocPosition } = useLocationConfiguration(
+    LocationMode.AROUND_ME
+  )
 
   const { disabilities } = useAccessibilityFiltersContext()
 

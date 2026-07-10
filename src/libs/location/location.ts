@@ -5,5 +5,4 @@ export {
   GeolocPermissionState,
   GeolocPositionError,
 } from './geolocation/enums'
-export { useLocation } from './useLocation'
 export type { GeoCoordinates, GeolocationError, Position } from './types'

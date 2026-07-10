@@ -5,7 +5,7 @@ import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { adaptOffersPlaylistLocationParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistLocationParameters'
 import { adaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistParameters'
 import { PlaylistOffersParams } from 'libs/algolia/types'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
@@ -13,7 +13,7 @@ export const useAdaptOffersPlaylistParameters = () => {
   const defaultPriceMaxInCents = useMaxPrice()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const genreTypeMapping = useGenreTypeMapping()
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
 
   return useCallback(
     (parameters: OffersModuleParameters): PlaylistOffersParams => {

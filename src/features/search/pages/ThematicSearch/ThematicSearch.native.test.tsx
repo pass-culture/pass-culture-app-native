@@ -15,7 +15,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { LocationMode } from 'libs/location/types'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -35,15 +35,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
-const defaultUseLocation = {
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  onModalHideRef: jest.fn(),
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   data: gtlPlaylistAlgoliaSnapshot,
@@ -126,12 +117,12 @@ describe('<ThematicSearch/>', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
   })
 
   describe('book offerCategory', () => {
     beforeEach(() => {
       mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      mockUseLocation.mockReturnValue(defaultUseLocation)
       mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
       mockedUseSearch.mockReturnValue({
         ...defaultUseSearch,
@@ -223,7 +214,7 @@ describe('<ThematicSearch/>', () => {
           searchGroupLabel: 'Livres',
           selectedLocationMode: 'EVERYWHERE',
           transformHits: expect.any(Function),
-          userLocation: undefined,
+          userLocation: null,
         })
       })
     })
@@ -232,7 +223,6 @@ describe('<ThematicSearch/>', () => {
   describe('PerformSearch log', () => {
     beforeEach(() => {
       mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      mockUseLocation.mockReturnValue(defaultUseLocation)
       mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
       mockedUseSearch.mockReturnValue({
         ...defaultUseSearch,

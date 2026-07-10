@@ -3,6 +3,11 @@ import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position, LocationMode } from 'libs/location/types'
 import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
+import {
   getVenueList,
   filterVenueOfferHit,
   useSearchVenueOffersInfiniteQuery,
@@ -13,18 +18,17 @@ import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
 
 jest.useFakeTimers()
 
 describe('useSearchVenueOffersInfiniteQuery', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+    locationActions.setGeolocPosition(mockUserLocation)
+  })
+
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {
       const offerVenues = getVenueList(mockedAlgoliaResponse.hits, mockUserLocation)

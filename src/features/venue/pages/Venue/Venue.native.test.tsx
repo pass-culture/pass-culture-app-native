@@ -30,6 +30,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
@@ -56,7 +57,6 @@ jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
-jest.mock('libs/location/location')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 const venueId = venueDataTest.id
@@ -119,6 +119,7 @@ describe('<Venue />', () => {
   })
 
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
     setFeatureFlags()
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})

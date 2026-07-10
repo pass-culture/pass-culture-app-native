@@ -8,6 +8,12 @@ import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylis
 import { initialSearchState } from 'features/search/context/reducer'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -28,15 +34,6 @@ jest.mock('uuid', () => ({
 }))
 
 const venueId = venueDataTest.id
-
-jest.mock('libs/location/location', () => ({
-  useLocation: jest.fn().mockReturnValue({
-    userLocation: {
-      latitude: 2,
-      longitude: 2,
-    },
-  }),
-}))
 
 jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
@@ -77,6 +74,9 @@ describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 2, longitude: 2 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

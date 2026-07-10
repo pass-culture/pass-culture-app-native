@@ -14,8 +14,12 @@ import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subs
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/location'
-import { LocationMode, UseLocationReturnType } from 'libs/location/types'
+import { GeolocPermissionState } from 'libs/location/location'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -30,9 +34,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.mock('libs/location/location')
-const mockUseGeolocation = jest.mocked(useLocation)
-
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 
@@ -43,10 +44,9 @@ jest.useFakeTimers()
 describe('<HomeBanner/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
     mockDepositAmounts.mockReturnValue(undefined)
-    mockUseGeolocation.mockReturnValue({
-      selectedLocationMode: LocationMode.EVERYWHERE,
-    } as UseLocationReturnType)
   })
 
   describe('when feature flag showRemoteGenericBanner is enabled', () => {

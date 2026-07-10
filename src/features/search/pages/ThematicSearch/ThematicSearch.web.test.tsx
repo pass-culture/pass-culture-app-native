@@ -7,7 +7,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment/env'
-import { LocationMode } from 'libs/location/types'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -45,17 +45,9 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => mockUseSearchResults(),
 }))
 
-const defaultUseLocation = {
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  onModalHideRef: jest.fn(),
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
-
 describe('<ThematicSearch/>', () => {
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
     mockServer.universalGet(
       `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
       {}
@@ -67,7 +59,6 @@ describe('<ThematicSearch/>', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.MUSIQUE] })
     mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
-    mockUseLocation.mockReturnValue(defaultUseLocation)
   })
 
   it('should render', async () => {

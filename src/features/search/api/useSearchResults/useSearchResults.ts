@@ -18,7 +18,12 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { algoliaAnalyticsActions } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  useLocationConfiguration,
+  useLocationMode,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
@@ -35,8 +40,12 @@ type SearchOfferResponse = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
+  const { radius: aroundMeRadius, geolocation: geolocPosition } = useLocationConfiguration(
+    LocationMode.AROUND_ME
+  )
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()

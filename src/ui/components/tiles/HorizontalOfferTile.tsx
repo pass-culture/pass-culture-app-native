@@ -12,8 +12,13 @@ import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsSt
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import {
+  useLocationConfiguration,
+  useUserLocation,
+  usePlace,
+  useLocationMode,
+} from 'libs/locationV2/location.store'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -56,7 +61,10 @@ export const HorizontalOfferTile = ({
   ...horizontalTileProps
 }: Props) => {
   const theme = useTheme()
-  const { geolocPosition, userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
   const { offer: offerDetails, objectID, _geoloc } = offer
   const {
     subcategoryId,

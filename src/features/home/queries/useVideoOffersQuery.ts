@@ -9,7 +9,7 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { useLocation } from 'libs/location/useLocation'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
@@ -25,7 +25,7 @@ export const useVideoOffersQuery = (
   eanList?: string[]
 ) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
 

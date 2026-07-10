@@ -10,7 +10,12 @@ import { SearchState } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location/location'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils/web'
@@ -19,15 +24,6 @@ const searchId = uuidv4()
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
-
-const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(() => ({
-  geolocPosition: mockPosition,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  onModalHideRef: { current: jest.fn() },
-}))
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -61,6 +57,8 @@ describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
+      useLocationV2.setState(defaultLocationState)
+      locationActions.setGeolocPosition(mockPosition)
     })
 
     it('should not display see map button when user location mode is around me and there is a venues playlist', () => {
@@ -71,10 +69,7 @@ describe('<SearchListHeader />', () => {
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
         },
       })
-      mockUseLocation.mockReturnValueOnce({
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_ME,
-      })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
 
       render(
         <SearchListHeader
@@ -102,10 +97,8 @@ describe('<SearchListHeader />', () => {
           },
         },
       })
-      mockUseLocation.mockReturnValueOnce({
-        geolocPosition: mockPosition,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-      })
+      locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+      locationActions.setPlace(kourou)
 
       render(
         <SearchListHeader
