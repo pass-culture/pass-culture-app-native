@@ -1,22 +1,30 @@
-import { parsePhoneNumberFromString, CountryCode } from 'libphonenumber-js'
+import { parsePhoneNumberFromString } from 'libphonenumber-js'
 
 import { WHITELISTED_COUNTRIES } from 'shared/countries/constants'
 
 const getLastNineDigits = (phoneNumber: string) => phoneNumber.slice(-9)
+const normalizePhoneNumber = (phoneNumber: string) => phoneNumber.replace(/\s+/g, '')
+
+const parseStrict = (phoneNumber: string) => parsePhoneNumberFromString(phoneNumber)
+
+const WHITELISTED_COUNTRY_IDS = new Set(WHITELISTED_COUNTRIES.map((country) => country.id))
 
 export const getNationalNumber = (phoneNumber: string): string => {
-  const country = WHITELISTED_COUNTRIES.find((c) => phoneNumber.startsWith(`+${c.callingCode}`))
-  if (country) {
-    const parsed = parsePhoneNumberFromString(phoneNumber, country.id as CountryCode)
-    if (parsed?.nationalNumber) return parsed.nationalNumber
-  }
-  return getLastNineDigits(phoneNumber)
+  const normalizedPhoneNumber = normalizePhoneNumber(phoneNumber)
+
+  const parsed = parseStrict(normalizedPhoneNumber)
+  if (parsed?.nationalNumber) return parsed.nationalNumber
+
+  return getLastNineDigits(normalizedPhoneNumber)
 }
 
 export const getCountryIdFromPhoneNumber = (phoneNumber?: string | null): string | undefined => {
   if (!phoneNumber) return
-  const countryId = phoneNumber.slice(0, -9)
-  const cleanCode = countryId.replace(/^\+/, '')
-  const country = WHITELISTED_COUNTRIES.find((c) => c.callingCode === cleanCode)
-  return country?.id ?? undefined
+
+  const normalizedPhoneNumber = normalizePhoneNumber(phoneNumber)
+
+  const parsedCountry = parseStrict(normalizedPhoneNumber)?.country
+  if (parsedCountry && WHITELISTED_COUNTRY_IDS.has(parsedCountry)) return parsedCountry
+
+  return undefined
 }

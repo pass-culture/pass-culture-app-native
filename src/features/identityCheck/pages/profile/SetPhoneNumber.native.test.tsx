@@ -50,6 +50,17 @@ describe('<SetPhoneNumber/>', () => {
     expect(phoneInput.props.value).toBe('')
   })
 
+  it('should strip calling code when pasted in phone number input', async () => {
+    renderSetPhoneNumber({ type: ProfileTypes.IDENTITY_CHECK })
+
+    const phoneInput = screen.getByTestId('Entrée pour le numéro de téléphone')
+    await act(async () => fireEvent.changeText(phoneInput, '+33639980123'))
+
+    await waitFor(() => {
+      expect(screen.getByTestId('Entrée pour le numéro de téléphone').props.value).toBe('639980123')
+    })
+  })
+
   it('should disable the submit button when phone number is empty', async () => {
     renderSetPhoneNumber({ type: ProfileTypes.IDENTITY_CHECK })
 
@@ -75,6 +86,66 @@ describe('<SetPhoneNumber/>', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Le numéro de téléphone est trop long')).toBeTruthy()
+    })
+  })
+
+  it('should clear error when input becomes valid after an invalid value', async () => {
+    renderSetPhoneNumber({ type: ProfileTypes.IDENTITY_CHECK })
+
+    const phoneInput = screen.getByTestId('Entrée pour le numéro de téléphone')
+
+    await act(async () => fireEvent.changeText(phoneInput, '063998012345678'))
+
+    await waitFor(() => {
+      expect(screen.getByText('Le numéro de téléphone est trop long')).toBeTruthy()
+      expect(screen.getByText('Continuer')).toBeDisabled()
+    })
+
+    await act(async () => fireEvent.changeText(phoneInput, '0639980123'))
+
+    await waitFor(() => {
+      expect(screen.queryByText('Le numéro de téléphone est trop long')).toBeNull()
+      expect(screen.getByText('Continuer')).toBeEnabled()
+    })
+  })
+
+  it('should show error when input becomes invalid after a valid value', async () => {
+    renderSetPhoneNumber({ type: ProfileTypes.IDENTITY_CHECK })
+
+    const phoneInput = screen.getByTestId('Entrée pour le numéro de téléphone')
+
+    await act(async () => fireEvent.changeText(phoneInput, '0639980123'))
+
+    await waitFor(() => {
+      expect(screen.getByText('Continuer')).toBeEnabled()
+    })
+
+    await act(async () => fireEvent.changeText(phoneInput, '063998012345678'))
+
+    await waitFor(() => {
+      expect(screen.getByText('Le numéro de téléphone est trop long')).toBeTruthy()
+      expect(screen.getByText('Continuer')).toBeDisabled()
+    })
+  })
+
+  it('should revalidate phone number when country calling code changes', async () => {
+    renderSetPhoneNumber({ type: ProfileTypes.IDENTITY_CHECK })
+
+    const phoneInput = screen.getByTestId('Entrée pour le numéro de téléphone')
+    await act(async () => fireEvent.changeText(phoneInput, '0612345678'))
+
+    await waitFor(() => {
+      expect(screen.getByText('Continuer')).toBeEnabled()
+    })
+
+    await user.press(
+      await screen.findByTestId('+33 - Ouvrir la modale de choix de l’indicatif téléphonique')
+    )
+    await user.press(screen.getByLabelText('Guadeloupe +590'))
+
+    await waitFor(() => {
+      expect(screen.getByText('Continuer')).toBeDisabled()
+      expect(screen.getByText('Le numéro de téléphone est invalide')).toBeOnTheScreen()
     })
   })
 

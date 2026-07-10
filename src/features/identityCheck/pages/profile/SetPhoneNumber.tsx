@@ -7,6 +7,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
+import { sanitizePhoneNumberInput } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import {
   PhoneNumberFormValues,
   phoneNumberSchema,
@@ -60,7 +61,7 @@ export const SetPhoneNumber = () => {
     }
   }
 
-  const { control, handleSubmit, formState } = useForm<PhoneNumberFormValues>({
+  const { control, handleSubmit, formState, setValue, trigger } = useForm<PhoneNumberFormValues>({
     resolver: yupResolver(phoneNumberSchema),
     defaultValues: {
       phoneNumber: getUserPhoneNumber(),
@@ -101,7 +102,16 @@ export const SetPhoneNumber = () => {
                     label="Numéro de téléphone"
                     description="Exemple&nbsp;: +33639980123"
                     value={field.value}
-                    onChangeText={field.onChange}
+                    onChangeText={(value) =>
+                      setValue('phoneNumber', sanitizePhoneNumberInput(value), {
+                        shouldDirty: true,
+                        shouldTouch: true,
+                        shouldValidate: true,
+                      })
+                    }
+                    onBlur={() => {
+                      void trigger('phoneNumber')
+                    }}
                     accessibilityHint={fieldState.error?.message}
                     leftComponent={
                       <Controller
@@ -113,7 +123,10 @@ export const SetPhoneNumber = () => {
                           return (
                             <CountryPicker
                               selectedCountry={selectedCountry}
-                              onSelect={(country) => field.onChange(country.id)}
+                              onSelect={(country) => {
+                                field.onChange(country.id)
+                                void trigger('phoneNumber')
+                              }}
                             />
                           )
                         }}

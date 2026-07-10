@@ -3,6 +3,7 @@ import { CountryCode } from 'libphonenumber-js'
 import {
   formatPhoneNumberForDisplay,
   formatPhoneNumberWithPrefix,
+  sanitizePhoneNumberInput,
 } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 
 describe('formatPhoneNumberWithPrefix', () => {
@@ -15,6 +16,9 @@ describe('formatPhoneNumberWithPrefix', () => {
     ${'6-33-34-45-54'}      | ${'33'}             | ${'+33633344554'}
     ${'06.33.34.45.54'}     | ${'33'}             | ${'+33633344554'}
     ${'06  33  34  45  54'} | ${'33'}             | ${'+33633344554'}
+    ${'+33633344554'}       | ${'33'}             | ${'+33633344554'}
+    ${'0033633344554'}      | ${'33'}             | ${'+33633344554'}
+    ${'+590690123456'}      | ${'590'}            | ${'+590690123456'}
     ${'446566'}             | ${'687'}            | ${'+687446566'}
   `(
     'formatPhoneNumberWithPrefix($providedNumber, $providedCallingCode) should return $expectedOutput',
@@ -59,6 +63,22 @@ describe('formatPhoneNumberForDisplay', () => {
       expect(formatPhoneNumberForDisplay(providedNumber, providedCountryCode)).toEqual(
         expectedOutput
       )
+    }
+  )
+})
+
+describe('sanitizePhoneNumberInput', () => {
+  it.each`
+    providedInput          | expectedOutput
+    ${'+33633344554'}      | ${'633344554'}
+    ${'0033633344554'}     | ${'633344554'}
+    ${'+590690123456'}     | ${'690123456'}
+    ${'+590 690 12 34 56'} | ${'690123456'}
+    ${'0633344554'}        | ${'0633344554'}
+  `(
+    'sanitizePhoneNumberInput($providedInput) should return $expectedOutput',
+    ({ providedInput, expectedOutput }: { providedInput: string; expectedOutput: string }) => {
+      expect(sanitizePhoneNumberInput(providedInput)).toEqual(expectedOutput)
     }
   )
 })

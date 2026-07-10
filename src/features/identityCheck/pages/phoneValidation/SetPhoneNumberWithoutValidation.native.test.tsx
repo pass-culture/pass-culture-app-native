@@ -63,6 +63,36 @@ describe('SetPhoneNumberWithoutValidation', () => {
 
       unmount()
     })
+
+    it('should strip calling code when pasted in phone number input', async () => {
+      givenStoredPhoneNumber('', { callingCode: '33', countryCode: 'FR' })
+
+      const { unmount } = renderSetPhoneNumberWithoutValidation()
+
+      await fillPhoneNumberInput('+33612345678')
+
+      expect(screen.getByTestId('Entrée pour le numéro de téléphone').props.value).toBe('612345678')
+
+      unmount()
+    })
+
+    it('should clear error when input becomes valid after an invalid value', async () => {
+      givenStoredPhoneNumber('', { callingCode: '33', countryCode: 'FR' })
+
+      const { unmount } = renderSetPhoneNumberWithoutValidation()
+
+      await fillPhoneNumberInput('061234567890123')
+
+      expect(screen.getByText('Le numéro de téléphone est trop long')).toBeOnTheScreen()
+      expect(screen.getByText('Continuer')).toBeDisabled()
+
+      await fillPhoneNumberInput('0612345678')
+
+      expect(screen.queryByText('Le numéro de téléphone est trop long')).toBeNull()
+      expect(screen.getByText('Continuer')).toBeEnabled()
+
+      unmount()
+    })
   })
 
   describe('when user already given his phone number', () => {

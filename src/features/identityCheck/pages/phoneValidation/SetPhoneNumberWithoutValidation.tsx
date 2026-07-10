@@ -9,7 +9,10 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
-import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
+import {
+  formatPhoneNumberWithPrefix,
+  sanitizePhoneNumberInput,
+} from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import {
   PhoneNumberFormValues,
   phoneNumberSchema,
@@ -28,14 +31,15 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SetPhoneNumberWithoutValidation = () => {
   const { dispatch, phoneValidation } = useSubscriptionContext()
-  const { control, handleSubmit, getValues, setError, formState } = useForm<PhoneNumberFormValues>({
-    resolver: yupResolver(phoneNumberSchema),
-    defaultValues: {
-      phoneNumber: phoneValidation?.phoneNumber,
-      countryId: phoneValidation?.country.countryCode ?? METROPOLITAN_FRANCE.id,
-    },
-    mode: 'onChange',
-  })
+  const { control, handleSubmit, getValues, setError, formState, setValue, trigger } =
+    useForm<PhoneNumberFormValues>({
+      resolver: yupResolver(phoneNumberSchema),
+      defaultValues: {
+        phoneNumber: phoneValidation?.phoneNumber,
+        countryId: phoneValidation?.country.countryCode ?? METROPOLITAN_FRANCE.id,
+      },
+      mode: 'onChange',
+    })
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
@@ -55,8 +59,8 @@ export const SetPhoneNumberWithoutValidation = () => {
           },
         },
       })
-      saveStep(IdentityCheckStep.PHONE_VALIDATION)
-      invalidateStepperInfoQueries()
+      void saveStep(IdentityCheckStep.PHONE_VALIDATION)
+      void invalidateStepperInfoQueries()
       navigateForwardToStepper()
     },
     onError: (error) => {
@@ -97,7 +101,16 @@ export const SetPhoneNumberWithoutValidation = () => {
                     label="Numéro de téléphone"
                     description="0639980123"
                     value={field.value}
-                    onChangeText={field.onChange}
+                    onChangeText={(value) =>
+                      setValue('phoneNumber', sanitizePhoneNumberInput(value), {
+                        shouldDirty: true,
+                        shouldTouch: true,
+                        shouldValidate: true,
+                      })
+                    }
+                    onBlur={() => {
+                      void trigger('phoneNumber')
+                    }}
                     onSubmitEditing={submit}
                     accessibilityHint={fieldState.error?.message}
                     leftComponent={
@@ -110,7 +123,10 @@ export const SetPhoneNumberWithoutValidation = () => {
                           return (
                             <CountryPicker
                               selectedCountry={selectedCountry}
-                              onSelect={(country) => field.onChange(country.id)}
+                              onSelect={(country) => {
+                                field.onChange(country.id)
+                                void trigger('phoneNumber')
+                              }}
                             />
                           )
                         }}

@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form'
 
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
+import { sanitizePhoneNumberInput } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { useSubmitChangePhoneNumber } from 'features/profile/pages/ChangePhoneNumber/useSubmitChangePhoneNumber'
 import { METROPOLITAN_FRANCE } from 'shared/countries/constants'
 import { Form } from 'ui/components/Form'
@@ -12,7 +13,7 @@ import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export function ChangePhoneNumber() {
-  const { control, handleSubmit, onSubmit, isValid, buttonWording, isPending } =
+  const { control, handleSubmit, onSubmit, isValid, buttonWording, isPending, setValue, trigger } =
     useSubmitChangePhoneNumber()
 
   return (
@@ -35,7 +36,16 @@ export function ChangePhoneNumber() {
                   label="Numéro de téléphone"
                   description="Exemple&nbsp;: +33639980123"
                   value={field.value}
-                  onChangeText={field.onChange}
+                  onChangeText={(value) =>
+                    setValue('phoneNumber', sanitizePhoneNumberInput(value), {
+                      shouldDirty: true,
+                      shouldTouch: true,
+                      shouldValidate: true,
+                    })
+                  }
+                  onBlur={() => {
+                    void trigger('phoneNumber')
+                  }}
                   accessibilityHint={fieldState.error?.message}
                   leftComponent={
                     <Controller
@@ -47,7 +57,14 @@ export function ChangePhoneNumber() {
                         return (
                           <CountryPicker
                             selectedCountry={selectedCountry}
-                            onSelect={(country) => field.onChange(country.id)}
+                            onSelect={(country) => {
+                              setValue('countryId', country.id, {
+                                shouldDirty: true,
+                                shouldTouch: true,
+                                shouldValidate: true,
+                              })
+                              void trigger(['countryId', 'phoneNumber'])
+                            }}
                           />
                         )
                       }}

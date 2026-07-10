@@ -29,6 +29,8 @@ export const useSubmitChangePhoneNumber = () => {
     control,
     formState: { isValid },
     handleSubmit,
+    setValue,
+    trigger,
   } = useForm<PhoneNumberFormValues>({
     resolver: yupResolver(phoneNumberSchema),
     defaultValues: {
@@ -64,6 +66,8 @@ export const useSubmitChangePhoneNumber = () => {
     control,
     isValid,
     handleSubmit,
+    setValue,
+    trigger,
     onSubmit,
     buttonWording: 'Continuer',
     isPending,

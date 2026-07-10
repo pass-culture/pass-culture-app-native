@@ -1,11 +1,41 @@
 import { parsePhoneNumberFromString, CountryCode } from 'libphonenumber-js'
 
-export const formatPhoneNumberWithPrefix = (phoneNumber: string, countryCallingCode: string) => {
-  let preformattedNumber = phoneNumber.replaceAll(/[\s.-]/g, '')
-  if (preformattedNumber.startsWith('0')) {
-    preformattedNumber = preformattedNumber.substring(1)
+import { findCountryByCallingCode } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
+
+const normalizePhoneNumber = (input: string) => {
+  const normalizedInput = input.replaceAll(/[\s.-]/g, '')
+  return normalizedInput.startsWith('00') ? `+${normalizedInput.slice(2)}` : normalizedInput
+}
+
+export const sanitizePhoneNumberInput = (input: string): string => {
+  const normalizedInput = normalizePhoneNumber(input)
+
+  if (!normalizedInput.startsWith('+')) {
+    return normalizedInput
   }
-  return `+${countryCallingCode}${preformattedNumber}`
+
+  const parsed = parsePhoneNumberFromString(normalizedInput)
+  if (parsed?.nationalNumber) return parsed.nationalNumber
+
+  return normalizedInput.slice(1)
+}
+
+export const formatPhoneNumberWithPrefix = (phoneNumber: string, countryCallingCode: string) => {
+  const country = findCountryByCallingCode(countryCallingCode)
+
+  let nationalNumber = sanitizePhoneNumberInput(phoneNumber)
+  if (nationalNumber.startsWith('0')) {
+    nationalNumber = nationalNumber.substring(1)
+  }
+
+  if (country) {
+    const parsed = parsePhoneNumberFromString(nationalNumber, {
+      defaultCallingCode: country.callingCode,
+    })
+    if (parsed?.number) return parsed.number
+  }
+
+  return `+${countryCallingCode}${nationalNumber}`
 }
 
 // returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces for display

@@ -1,9 +1,5 @@
-import {
-  parsePhoneNumberFromString,
-  CountryCode,
-  getCountries,
-  validatePhoneNumberLength,
-} from 'libphonenumber-js'
+import { CountryCode, getCountries, validatePhoneNumberLength } from 'libphonenumber-js'
+import { parsePhoneNumberFromString } from 'libphonenumber-js/max'
 import * as yup from 'yup'
 
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
@@ -28,8 +24,12 @@ export const phoneNumberSchema = yup.object({
         return createError({ message: 'Le numéro de téléphone est trop long' })
       }
 
-      const parsePhoneNumber = parsePhoneNumberFromString(phoneNumber, parent.countryId)
-      const phoneNumberInvalid = !parsePhoneNumber?.isValid()
+      const parsePhoneNumber = parsePhoneNumberFromString(phoneNumber, {
+        defaultCountry: parent.countryId,
+        extract: false,
+      })
+      const phoneNumberInvalid =
+        !parsePhoneNumber?.isValid() || parsePhoneNumber.country !== parent.countryId
       if (phoneNumberInvalid) {
         return createError({ message: 'Le numéro de téléphone est invalide' })
       }
