@@ -25,7 +25,6 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
     depositType,
     isEligibleForBeneficiaryUpgrade,
   } = user
-  const actualyNotPossibleInFrontend = false
   const isTooOldForThisTypeOfEligibility = false
 
   const age = getAge(birthDate)
@@ -42,9 +41,10 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isEligibleCreditV1_18 = isTooOldForThisTypeOfEligibility
 
   // CREDIT_V2
-  const isEligibleCreditV2_15 = actualyNotPossibleInFrontend
-  const isEligibleCreditV2_16 = actualyNotPossibleInFrontend
-  const isEligibleCreditV2_17 = actualyNotPossibleInFrontend
+  const isEligibleCreditV2Underage = eligibility === EligibilityType['underage']
+  const isEligibleCreditV2_15 = isEligibleCreditV2Underage && isFifteen
+  const isEligibleCreditV2_16 = isEligibleCreditV2Underage && isSixteen
+  const isEligibleCreditV2_17 = isEligibleCreditV2Underage && isSeventeen
   const isEligibleCreditV2_18 = eligibility === EligibilityType['age-18']
 
   // CREDIT_V3
