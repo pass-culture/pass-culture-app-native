@@ -356,6 +356,13 @@ const subscriptionStackNavigatorDefinition = {
   },
 }
 
+export const AUTH_PROTECTED_SUBSCRIPTION_SCREENS = new Set(
+  Object.entries(subscriptionStackNavigatorDefinition.screens).flatMap(
+    ([screenName, screenDefinition]) =>
+      'if' in screenDefinition && screenDefinition.if === useIsSignedIn ? [screenName] : []
+  )
+)
+
 export const SubscriptionStackNavigator = createNativeStackNavigator(
   subscriptionStackNavigatorDefinition
 )
