@@ -8,6 +8,7 @@ import 'react-app-polyfill/stable'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { AnalyticsDebugger } from 'features/analyticsDebugger/AnalyticsDebugger'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
@@ -79,9 +80,11 @@ export function App() {
                               <SubscriptionContextProvider>
                                 <AppWebHead />
                                 <ScreenErrorProvider>
-                                  <Suspense fallback={<LoadingPage />}>
-                                    <AppNavigationContainer />
-                                  </Suspense>
+                                  <AnalyticsDebugger>
+                                    <Suspense fallback={<LoadingPage />}>
+                                      <AppNavigationContainer />
+                                    </Suspense>
+                                  </AnalyticsDebugger>
                                 </ScreenErrorProvider>
                               </SubscriptionContextProvider>
                             </CulturalSurveyContextProvider>

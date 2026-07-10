@@ -1,3 +1,7 @@
+import {
+  analyticsDebuggerActions,
+  analyticsDebuggerSelectors,
+} from 'features/analyticsDebugger/store/analyticsDebuggerStore'
 // eslint-disable-next-line no-restricted-imports
 import { resetDedupCache } from 'libs/analytics/eventDeduplication'
 // eslint-disable-next-line no-restricted-imports
@@ -84,6 +88,46 @@ describe('analyticsProvider - logEvent', () => {
       await analytics.logScreenView('Offer')
 
       expect(firebaseAnalytics.logScreenView).toHaveBeenCalledTimes(2)
+    })
+  })
+
+  describe('analytics debugger capture', () => {
+    beforeEach(() => {
+      analyticsDebuggerActions.setCaptureEnabled(true)
+    })
+
+    afterEach(() => {
+      analyticsDebuggerActions.clearEvents()
+      analyticsDebuggerActions.setCaptureEnabled(false)
+    })
+
+    it('should capture logged events with their name and params', async () => {
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
+      expect(analyticsDebuggerSelectors.selectEvents()).toEqual([
+        expect.objectContaining({ name: AnalyticsEvent.CONSULT_OFFER, params: EVENT_PARAMS }),
+      ])
+    })
+
+    it('should not capture deduplicated events', async () => {
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
+      expect(analyticsDebuggerSelectors.selectEvents()).toHaveLength(1)
+    })
+
+    it('should not capture events when capture is disabled', async () => {
+      analyticsDebuggerActions.setCaptureEnabled(false)
+
+      await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
+      expect(analyticsDebuggerSelectors.selectEvents()).toEqual([])
+    })
+
+    it('should not capture screen views', async () => {
+      await analytics.logScreenView(SCREEN_NAME)
+
+      expect(analyticsDebuggerSelectors.selectEvents()).toEqual([])
     })
   })
 })
