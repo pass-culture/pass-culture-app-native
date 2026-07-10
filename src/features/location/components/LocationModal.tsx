@@ -171,7 +171,9 @@ export const LocationModal = ({
               onRightIconPress={closeWithTransition}
             />
           </HeaderContainer>
-          <StyledScrollView keyboardShouldPersistTaps="handled">
+          <StyledScrollView
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}>
             <RadioButtonGroup
               label={groupLabel}
               options={options}
