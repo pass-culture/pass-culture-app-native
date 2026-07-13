@@ -37,8 +37,8 @@ jobs:
     timeout-minutes: 60
     if: ${{ github.actor != 'dependabot[bot]' }}
     permissions:
-      contents: read # checkout the PR ref
-      id-token: write # OIDC token for google-github-actions/auth
+      contents: read
+      id-token: write
     environment:
       name: app-native-${{ inputs.environment }}
     steps:
