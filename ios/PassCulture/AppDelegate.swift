@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // Setup Batch
-    let associatedDomain = ReactNativeConfig.env(for: "WEBAPP_V2_DOMAIN")
+    let associatedDomain = RNCConfig.env(for: "WEBAPP_V2_DOMAIN")
     BatchSDK.associatedDomains = associatedDomain.map { [$0] } ?? []
     BatchEventDispatcher.add(BatchFirebaseDispatcher.instance())
     RNBatch.start()
