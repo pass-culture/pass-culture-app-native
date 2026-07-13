@@ -85,9 +85,9 @@ jobs:
       - run: yarn install
       - run: yarn run "build:$ENV"
         env:
-          # By default NodeJS processes are limited to 512MB of memory
+          # By default, Node.js processes are limited to 512MB of memory
           # This is not enough for the build process when compiling sourcemaps
-          # Increases the limit so that the build doesnt fail
+          # Increases the limit so that the build does not fail
           NODE_OPTIONS: --max_old_space_size=4096
           ENV: ${{ inputs.environment }}
       - if: inputs.environment != 'testing'
