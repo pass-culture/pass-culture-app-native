@@ -3,24 +3,28 @@ name: '2 [on_workflow/PR] Deploy PR version for validation'
 on:
   workflow_call:
     inputs:
-      ENV:
+      environment:
+        description: 'Environment to deploy to (e.g., "testing")'
         type: string
         required: true
-      PUSH_RELEASE_TO_SENTRY:
+      source_branch:
+        description: 'Branch of pass-culture-app-native repository to deploy'
+        type: string
+        required: true
+      push_release_to_sentry:
         description: 'If true, creates a release in Sentry and uploads sourcemaps'
         type: boolean
         default: false
-      CHANNEL:
-        type: string
-        required: true
-      EXPIRES:
+      duration:
+        description: 'Time to live for the preview deployment (e.g., "3d" for 3 days)'
         type: string
         default: '3d'
-      REF:
-        type: string
+    secrets:
+      github_app_id:
+        description: 'The GitHub App ID for the PassCulture GitHub App'
         required: true
-      CACHE_BUCKET_NAME:
-        type: string
+      github_app_private_key:
+        description: 'The private key for the PassCulture GitHub App'
         required: true
 
 defaults:
@@ -32,18 +36,29 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     if: ${{ github.actor != 'dependabot[bot]' }}
+    permissions:
+      contents: read
+      id-token: write
     environment:
-      name: app-native-${{ inputs.ENV }}
+      name: app-native-${{ inputs.environment }}
     steps:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
         with:
-          ref: ${{ inputs.REF }}
+          ref: ${{ inputs.source_branch }}
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
+
+      - name: Install passdirector
+        uses: pass-culture/common-workflows/actions/setup-passdirector@b470d76b19d7f3ebcda367f5e17484228021d388 # setup-passdirector/v1.0.0
+        with:
+          version: v0.7.2
+          github_app_id: ${{ secrets.github_app_id }}
+          github_app_private_key: ${{ secrets.github_app_private_key }}
+
       - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
@@ -70,16 +85,16 @@ jobs:
       - run: yarn install
       - run: yarn run "build:$ENV"
         env:
-          # By default NodeJS processes are limited to 512MB of memory
+          # By default, Node.js processes are limited to 512MB of memory
           # This is not enough for the build process when compiling sourcemaps
-          # Increases the limit so that the build doesnt fail
+          # Increases the limit so that the build does not fail
           NODE_OPTIONS: --max_old_space_size=4096
-          ENV: ${{ inputs.ENV }}
-      - if: inputs.ENV != 'testing'
+          ENV: ${{ inputs.environment }}
+      - if: inputs.environment != 'testing'
         run: |
           grep -E '"version": "[0-9]+.[0-9]+.[0-9]+"' package.json | grep -Eo '[0-9]+.[0-9]+.[0-9]+' > build/version.txt
       - name: 'Create Sentry release'
-        if: ${{ inputs.PUSH_RELEASE_TO_SENTRY }}
+        if: ${{ inputs.push_release_to_sentry }}
         uses: getsentry/action-release@5657c9e888b4e2cc85f4d29143ea4131fde4a73a #v3.0.0
         env:
           SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_TOKEN }}
@@ -87,51 +102,27 @@ jobs:
           SENTRY_PROJECT: jeunes
         with:
           sourcemaps: ./build
-          working_directory: .
-          version: ${{ inputs.CHANNEL }}
+          version: ${{ inputs.source_branch }}
           url_prefix: '~'
 
-      - name: Create service account key
-        id: create-sa-key
-        env:
-          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
-        run: |
-          gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account="${SERVICE_ACCOUNT}" \
-            --project="${PROJECT_ID}"
-          SA_KEY_JSON=$(jq -c . temporary-sa-key.json)
-          echo "FIREBASE_TOKEN=${SA_KEY_JSON}" >> "${GITHUB_OUTPUT}"
-          SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          echo "SA_KEY_ID=${SA_KEY_ID}" >> "${GITHUB_OUTPUT}"
-
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c #v0.10.0
-        id: firebase-deploy
         env:
-          FIREBASE_TOKEN: ${{ steps.create-sa-key.outputs.FIREBASE_TOKEN }}
-          PROJECT_ID: pc-native-${{ inputs.ENV }}
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: ${FIREBASE_TOKEN}
-          expires: ${{ inputs.EXPIRES }}
-          projectId: pc-native-${{ inputs.ENV }}
-          entryPoint: .
-          channelId: ${{ inputs.CHANNEL }}
+          CHANNEL: ${{ inputs.source_branch }}
+          PROJECT_ID: pc-native-${{ inputs.environment }}
+          TARGET: pc-native-${{ inputs.environment }}
+          DURATION: ${{ inputs.duration }}
+        id: deploy
+        run: |
+          URL=$(passdirector firebase deploy-preview --project-id "${PROJECT_ID}" --target "${TARGET}" --channel "${CHANNEL}" --duration "${DURATION}")
+          echo "preview_url=$URL" | tee -a "$GITHUB_OUTPUT"
 
-      - name: Delete service account key
-        if: always()
+      - name: Publish Summary
         env:
-          KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
-          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
         run: |
-          gcloud iam service-accounts keys delete "${KEY_ID}" \
-            --iam-account="${SERVICE_ACCOUNT}" \
-            --project="${PROJECT_ID}" \
-            --quiet
-          rm -f temporary-sa-key.json
-
-      - name: 'Firebase Deployment URL'
-        run: |
-          echo "::notice:: Firebase deployment is available at : ${{ steps.firebase-deploy.outputs.details_url }}"
+          {
+            echo "### :rocket: Deploy app native preview summary"
+            echo "| Results                              | Value |"
+            echo "| ------------------------------------ | ----- |"
+            echo "| [preview] url                        |  ${{ env.PREVIEW_URL }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
