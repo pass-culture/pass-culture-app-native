@@ -117,10 +117,12 @@ jobs:
           echo "preview_url=$URL" | tee -a "$GITHUB_OUTPUT"
 
       - name: Publish Summary
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
         run: |
           {
             echo "### :rocket: Deploy app native preview summary"
             echo "| Results                              | Value |"
             echo "| ------------------------------------ | ----- |"
-            echo "| [preview] url                        |  ${{ steps.deploy.outputs.preview_url }} |"
+            echo "| [preview] url                        |  ${{ env.PREVIEW_URL }} |"
           } >> "$GITHUB_STEP_SUMMARY"
