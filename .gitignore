@@ -144,3 +144,6 @@ storybook-static
 
 # ssl certificates
 proxy_cacert
+
+# claude
+CLAUDE.md
