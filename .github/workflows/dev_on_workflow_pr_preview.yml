@@ -3,27 +3,27 @@ name: '2 [on_workflow/PR] Deploy PR version for validation'
 on:
   workflow_call:
     inputs:
-      ENV:
+      environment:
         description: 'Environment to deploy to (e.g., "testing")'
         type: string
         required: true
-      SOURCE_BRANCH:
+      source_branch:
         description: 'Branch of pass-culture-app-native repository to deploy'
         type: string
         required: true
-      PUSH_RELEASE_TO_SENTRY:
+      push_release_to_sentry:
         description: 'If true, creates a release in Sentry and uploads sourcemaps'
         type: boolean
         default: false
-      DURATION:
+      duration:
         description: 'Time to live for the preview deployment (e.g., "3d" for 3 days)'
         type: string
         default: '3d'
     secrets:
-      PASSCULTURE_GITHUB_ACTION_APP_ID:
+      github_app_id:
         description: 'The GitHub App ID for the PassCulture GitHub App'
         required: true
-      PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY:
+      github_app_private_key:
         description: 'The private key for the PassCulture GitHub App'
         required: true
 
@@ -40,13 +40,13 @@ jobs:
       contents: read # checkout the PR ref
       id-token: write # OIDC token for google-github-actions/auth
     environment:
-      name: app-native-${{ inputs.ENV }}
+      name: app-native-${{ inputs.environment }}
     steps:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
         with:
-          ref: ${{ inputs.SOURCE_BRANCH }}
+          ref: ${{ inputs.source_branch }}
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
         with:
           node-version-file: '.nvmrc'
@@ -56,8 +56,8 @@ jobs:
         uses: ./.github/actions/setup-passdirector
         with:
           version: v0.7.2
-          github_app_id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID}}
-          github_app_private_key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY}}
+          github_app_id: ${{ secrets.github_app_id }}
+          github_app_private_key: ${{ secrets.github_app_private_key }}
 
       - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
@@ -89,12 +89,12 @@ jobs:
           # This is not enough for the build process when compiling sourcemaps
           # Increases the limit so that the build doesnt fail
           NODE_OPTIONS: --max_old_space_size=4096
-          ENV: ${{ inputs.ENV }}
-      - if: inputs.ENV != 'testing'
+          ENV: ${{ inputs.environment }}
+      - if: inputs.environment != 'testing'
         run: |
           grep -E '"version": "[0-9]+.[0-9]+.[0-9]+"' package.json | grep -Eo '[0-9]+.[0-9]+.[0-9]+' > build/version.txt
       - name: 'Create Sentry release'
-        if: ${{ inputs.PUSH_RELEASE_TO_SENTRY }}
+        if: ${{ inputs.push_release_to_sentry }}
         uses: getsentry/action-release@5657c9e888b4e2cc85f4d29143ea4131fde4a73a #v3.0.0
         env:
           SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_TOKEN }}
@@ -102,16 +102,15 @@ jobs:
           SENTRY_PROJECT: jeunes
         with:
           sourcemaps: ./build
-          working_directory: .
-          version: ${{ inputs.SOURCE_BRANCH }}
+          version: ${{ inputs.source_branch }}
           url_prefix: '~'
 
       - name: Deploy to Firebase Hosting
         env:
-          CHANNEL: ${{ inputs.SOURCE_BRANCH }}
-          PROJECT_ID: pc-native-${{ inputs.ENV }}
-          TARGET: pc-native-${{ inputs.ENV }}
-          DURATION: ${{ inputs.DURATION }}
+          CHANNEL: ${{ inputs.source_branch }}
+          PROJECT_ID: pc-native-${{ inputs.environment }}
+          TARGET: pc-native-${{ inputs.environment }}
+          DURATION: ${{ inputs.duration }}
         id: deploy
         run: |
           URL=$(passdirector firebase deploy-preview --project-id "${PROJECT_ID}" --target "${TARGET}" --channel "${CHANNEL}" --duration "${DURATION}")

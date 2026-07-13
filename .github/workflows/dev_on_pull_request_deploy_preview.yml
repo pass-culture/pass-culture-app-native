@@ -18,8 +18,8 @@ jobs:
     name: Deploy PR version to Firebase
     uses: ./.github/workflows/dev_on_workflow_pr_preview.yml
     with:
-      ENV: 'testing'
-      SOURCE_BRANCH: '${{ github.ref }}'
+      environment: 'testing'
+      source_branch: '${{ github.ref }}'
     secrets:
-      PASSCULTURE_GITHUB_ACTION_APP_ID: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
-      PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+      github_app_id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+      github_app_private_key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
