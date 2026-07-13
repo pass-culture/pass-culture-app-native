@@ -78,7 +78,6 @@ coverage/
 
 # @react-native-config codegen
 ios/react-native-config.xcconfig
-ios/envfile
 
 # Deploy
 android/keystores/*

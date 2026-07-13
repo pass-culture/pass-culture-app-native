@@ -13,7 +13,7 @@
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
-#import "ReactNativeConfig.h"
+#import "RNCConfig.h"
 
 #import <PassCulture-Swift.h>
 
@@ -56,8 +56,10 @@
   }
 
   // Setup Batch
-  NSString* AssociatedDomain = [ReactNativeConfig envFor:@"WEBAPP_V2_DOMAIN"];
-  [BatchSDK setAssociatedDomains:@[AssociatedDomain]];
+  NSString* AssociatedDomain = [RNCConfig envFor:@"WEBAPP_V2_DOMAIN"];
+  if (AssociatedDomain != nil) {
+    [BatchSDK setAssociatedDomains:@[AssociatedDomain]];
+  }
   [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
   [RNBatch start];
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
