@@ -3192,104 +3192,114 @@ d’options
         </Text>
       </View>
       <View
-        accessibilityLabel="Partager"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        gap={3}
         style={
           {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderColor": "#90949d",
-            "borderStyle": "solid",
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
-            "opacity": 1,
-            "paddingBottom": 8,
-            "paddingLeft": 8,
-            "paddingRight": 8,
-            "paddingTop": 8,
-            "userSelect": "auto",
-            "width": "auto",
+            "gap": 12,
           }
         }
-        testID="Partager"
       >
         <View
-          gap={0}
-          hasIcon={true}
-          isMultiline={false}
+          accessibilityLabel="Partager"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "columnGap": 0,
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#90949d",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "userSelect": "auto",
+              "width": "auto",
             }
           }
+          testID="Partager"
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
-              {
-                "flexShrink": 0,
-              }
-            }
-            nativeID="6"
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
+              }
             }
           >
             <View
-              height={22}
-              width={22}
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="6"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -6696,104 +6706,114 @@ d’options
         </Text>
       </View>
       <View
-        accessibilityLabel="Partager"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        gap={3}
         style={
           {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderColor": "#90949d",
-            "borderStyle": "solid",
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
-            "opacity": 1,
-            "paddingBottom": 8,
-            "paddingLeft": 8,
-            "paddingRight": 8,
-            "paddingTop": 8,
-            "userSelect": "auto",
-            "width": "auto",
+            "gap": 12,
           }
         }
-        testID="Partager"
       >
         <View
-          gap={0}
-          hasIcon={true}
-          isMultiline={false}
+          accessibilityLabel="Partager"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "columnGap": 0,
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#90949d",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "userSelect": "auto",
+              "width": "auto",
             }
           }
+          testID="Partager"
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
-              {
-                "flexShrink": 0,
-              }
-            }
-            nativeID="25"
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
+              }
             }
           >
             <View
-              height={22}
-              width={22}
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="25"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -11031,104 +11051,114 @@ d’options
         </Text>
       </View>
       <View
-        accessibilityLabel="Partager"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        gap={3}
         style={
           {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "borderColor": "#90949d",
-            "borderStyle": "solid",
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
-            "opacity": 1,
-            "paddingBottom": 8,
-            "paddingLeft": 8,
-            "paddingRight": 8,
-            "paddingTop": 8,
-            "userSelect": "auto",
-            "width": "auto",
+            "gap": 12,
           }
         }
-        testID="Partager"
       >
         <View
-          gap={0}
-          hasIcon={true}
-          isMultiline={false}
+          accessibilityLabel="Partager"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "columnGap": 0,
+              "backgroundColor": "#ffffff",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#90949d",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
               "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "userSelect": "auto",
+              "width": "auto",
             }
           }
+          testID="Partager"
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
-              {
-                "flexShrink": 0,
-              }
-            }
-            nativeID="14"
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
             style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
+              }
             }
           >
             <View
-              height={22}
-              width={22}
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
+              jestInlineStyle={
+                {
+                  "flexShrink": 0,
+                }
+              }
+              nativeID="14"
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
-import { ModalScreenWrapper } from 'features/location/components/ModalScreenWrapper'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationLabel, LocationMode } from 'libs/location/types'
@@ -12,6 +11,7 @@ import { locationModalActions, locationModalStore } from 'libs/locationV2/locati
 import { requestGeolocPermission } from 'libs/locationV2/requestGeolocPermission'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
+import { ModalScreenWrapper } from 'shared/ModalScreenWrapper/ModalScreenWrapper'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
@@ -160,7 +160,7 @@ export const LocationModal = ({
   const currentValue = locationMode ? MODE_TO_LABEL_MAP[locationMode] : ''
 
   return (
-    <ModalScreenWrapper onClose={handleClose}>
+    <ModalScreenWrapper onClose={handleClose} fullScreen>
       {(closeWithTransition) => (
         <React.Fragment>
           <HeaderContainer>
