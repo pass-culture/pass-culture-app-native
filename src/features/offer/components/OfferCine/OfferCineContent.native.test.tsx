@@ -69,8 +69,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 const user = userEvent.setup()
 const mockOffer = mockBuilder.offerResponseV2({})
 
