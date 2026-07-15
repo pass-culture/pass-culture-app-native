@@ -58,7 +58,7 @@ describe('CalendarModal', () => {
     it('should close the modal when pressing close button', async () => {
       renderCalendarModal()
 
-      await user.press(screen.getByLabelText('Fermer'))
+      await user.press(screen.getByLabelText('Fermer la modale'))
 
       expect(mockOnClose).toHaveBeenCalledWith()
     })
@@ -66,7 +66,7 @@ describe('CalendarModal', () => {
     it('should hide the modal when pressing close button', async () => {
       renderCalendarModal()
 
-      await user.press(screen.getByLabelText('Fermer'))
+      await user.press(screen.getByLabelText('Fermer la modale'))
 
       expect(mockHideModal).toHaveBeenCalledWith()
     })

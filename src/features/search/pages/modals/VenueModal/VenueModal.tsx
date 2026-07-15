@@ -1,21 +1,25 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
+import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
-import { Close } from 'ui/svg/icons/Close'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
+  onClose?: VoidFunction
 }
 
-export const VenueModal = ({ visible, dismissModal }: Props) => {
+const titleId = uuidv4()
+const title = 'Lieu culturel'
+
+export const VenueModal = ({ visible, dismissModal, onClose: onParentClose }: Props) => {
   const {
     doChangeVenue,
     doResetVenue,
@@ -28,6 +32,11 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     onClose,
   } = useVenueModal({ dismissModal })
 
+  const handleClose = () => {
+    onClose()
+    onParentClose?.()
+  }
+
   const onResetPress = () => {
     doResetVenue()
   }
@@ -35,20 +44,20 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
   return (
     <AppModal
       visible={visible}
-      title="Lieu culturel"
+      title={title}
       isUpToStatusBar
       scrollEnabled={false}
       noPadding
       keyboardShouldPersistTaps="handled"
       customModalHeader={
-        <HeaderContainer>
-          <ModalHeader
-            title="Lieu culturel"
-            rightIconAccessibilityLabel="Fermer la modale"
-            rightIcon={Close}
-            onRightIconPress={onClose}
-          />
-        </HeaderContainer>
+        <SearchCustomModalHeader
+          titleId={titleId}
+          title={title}
+          onGoBack={onClose}
+          onClose={handleClose}
+          shouldDisplayBackButton
+          shouldDisplayCloseButton
+        />
       }
       fixedModalBottom={
         <SearchFixedModalBottom
@@ -81,11 +90,6 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.modal.spacing.MD,
   marginTop: theme.designSystem.size.spacing.xl,
-}))
-
-const HeaderContainer = styled.View(({ theme }) => ({
-  padding: theme.modal.spacing.SM,
-  width: '100%',
 }))
 
 const Container = styled.View(({ theme }) => ({

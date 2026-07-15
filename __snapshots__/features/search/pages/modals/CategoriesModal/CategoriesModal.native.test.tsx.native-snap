@@ -250,7 +250,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               testID="close-button-container"
             >
               <View
-                accessibilityLabel="Fermer"
+                accessibilityLabel="Fermer la modale"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -299,7 +299,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Fermer"
+                testID="Fermer la modale"
               >
                 <View
                   height={24}

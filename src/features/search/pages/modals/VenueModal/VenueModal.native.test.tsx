@@ -74,6 +74,16 @@ describe('VenueModal', () => {
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 
+  it('should close when pressing the go back button', async () => {
+    render(<VenueModal visible dismissModal={dismissModalMock} />)
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+
+    const goBackButton = screen.getByLabelText('Revenir en arrière')
+    await user.press(goBackButton)
+
+    expect(dismissModalMock).toHaveBeenCalledTimes(1)
+  })
+
   it('should trigger logEvent "logUserSetVenue" when pressing "Valider le lieu culturel" button', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)

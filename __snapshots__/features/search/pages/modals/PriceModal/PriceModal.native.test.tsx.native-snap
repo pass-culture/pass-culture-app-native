@@ -250,7 +250,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               testID="close-button-container"
             >
               <View
-                accessibilityLabel="Fermer"
+                accessibilityLabel="Fermer la modale"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -299,7 +299,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     },
                   ]
                 }
-                testID="Fermer"
+                testID="Fermer la modale"
               >
                 <View
                   height={24}

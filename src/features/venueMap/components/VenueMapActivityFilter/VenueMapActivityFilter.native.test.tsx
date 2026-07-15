@@ -62,7 +62,7 @@ describe('VenueMapActivityFilter', () => {
       />
     )
 
-    await user.press(screen.getByLabelText('Fermer'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
     expect(popTo).toHaveBeenNthCalledWith(1, 'VenueMap')
   })
