@@ -12,9 +12,11 @@ interface HeaderIconProps {
   onClose?: () => void
   color?: ColorsType
   size?: number | string
+  accessibilityLabel?: string
 }
 
 export const CloseButton: React.FC<HeaderIconProps> = ({
+  accessibilityLabel = 'Fermer',
   color,
   onClose,
   hitSlop = 8,
@@ -23,7 +25,11 @@ export const CloseButton: React.FC<HeaderIconProps> = ({
 }) => {
   const { designSystem } = useTheme()
   return (
-    <StyledTouchable onPress={onClose} accessibilityLabel="Fermer" hitSlop={hitSlop} {...props}>
+    <StyledTouchable
+      onPress={onClose}
+      accessibilityLabel={accessibilityLabel}
+      hitSlop={hitSlop}
+      {...props}>
       <DefaultClose testID="icon-close" color={color} size={size ?? designSystem.size.icon.m} />
       <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>

@@ -190,7 +190,7 @@ describe('<CategoriesModal/>', () => {
       it('when pressing previous button', async () => {
         renderCategories()
 
-        const previousButton = screen.getByTestId('Fermer')
+        const previousButton = screen.getByTestId('Fermer la modale')
         await user.press(previousButton)
 
         expect(mockHideModal).toHaveBeenCalledTimes(1)
@@ -406,7 +406,7 @@ describe('<CategoriesModal/>', () => {
       const button = screen.getByText('Réinitialiser')
       await user.press(button)
 
-      const closeButton = screen.getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer la modale')
       await user.press(closeButton)
 
       expect(screen.getByText('Livres papier')).toBeOnTheScreen()
@@ -492,7 +492,7 @@ describe('<CategoriesModal/>', () => {
         onClose: mockOnClose,
       })
 
-      const closeButton = screen.getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer la modale')
       await user.press(closeButton)
 
       expect(mockOnClose).toHaveBeenCalledTimes(1)
@@ -501,7 +501,7 @@ describe('<CategoriesModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderCategories()
 
-      const closeButton = screen.getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer la modale')
       await user.press(closeButton)
 
       expect(mockOnClose).not.toHaveBeenCalled()

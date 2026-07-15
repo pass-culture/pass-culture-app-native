@@ -311,7 +311,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 testID="close-button-container"
               >
                 <View
-                  accessibilityLabel="Fermer"
+                  accessibilityLabel="Fermer la modale"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -360,7 +360,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Fermer"
+                  testID="Fermer la modale"
                 >
                   <View
                     height={24}

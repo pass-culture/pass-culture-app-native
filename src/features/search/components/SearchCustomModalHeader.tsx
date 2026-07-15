@@ -58,7 +58,11 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
         </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
           {shouldDisplayCloseButton ? (
-            <StyledCloseButton onClose={onClose} color={designSystem.color.icon.default} />
+            <StyledCloseButton
+              onClose={onClose}
+              color={designSystem.color.icon.default}
+              accessibilityLabel="Fermer la modale"
+            />
           ) : null}
         </ButtonContainer>
       </HeaderContent>
