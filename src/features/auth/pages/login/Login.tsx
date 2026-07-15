@@ -195,6 +195,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                 visible={!!errorMessage}
                 errorMessage={errorMessage}
                 numberOfSpacesTop={5}
+                accessibilityElementsHidden={false}
                 centered
               />
               <EmailInputController

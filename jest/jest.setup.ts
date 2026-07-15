@@ -5,19 +5,6 @@ import 'react-native-gesture-handler/jestSetup'
 
 jest.mock('react-native-worklets', () => require('react-native-worklets/src/mock'))
 jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'))
-jest.mock('react-native/Libraries/Linking/NativeLinkingManager', () => ({
-  __esModule: true,
-  default: {
-    getInitialURL: jest.fn().mockResolvedValue(null),
-    canOpenURL: jest.fn().mockResolvedValue(true),
-    openURL: jest.fn().mockResolvedValue(undefined),
-    openSettings: jest.fn().mockResolvedValue(undefined),
-    addListener: jest.fn(),
-    removeListeners: jest.fn(),
-  },
-}))
-
-/* See the corresponding mocks in libs/analytics/__mocks__ */
 /* Tests passed but there is a console error in web files */
 /* console.error
 [2021-07-01T00:00:00.000Z]  @firebase/analytics: FirebaseError: Analytics: Dynamic config fetch failed: [400] API key not valid. Please pass a valid API key. (analytics/config-fetch-failed).
@@ -29,7 +16,6 @@ jest.mock('react-native/Libraries/Linking/NativeLinkingManager', () => ({
 } */
 jest.mock('libs/analytics/provider')
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
 /* I have problem in web test files, it doesn't work when use it directly */
