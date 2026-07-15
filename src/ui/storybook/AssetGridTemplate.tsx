@@ -7,10 +7,13 @@ import styled from 'styled-components/native'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo, getSpacing } from 'ui/theme'
 
+type ImageSource = string | React.ComponentProps<typeof FastImage>['source']
+
 interface AssetGridTemplateProps {
   title: string
   icons?: Record<string, React.ComponentType<AccessibleIcon>>
-  images?: Record<string, React.ComponentProps<typeof FastImage>['source']>
+  images?: Record<string, ImageSource>
+  imageSize?: number
   isBicolor?: boolean
   isIllustration?: boolean
 }
@@ -19,6 +22,7 @@ export const AssetGridTemplate: React.FC<AssetGridTemplateProps> = ({
   title,
   icons,
   images,
+  imageSize = getSpacing(24),
   isBicolor = false,
   isIllustration = false,
 }) => {
@@ -84,6 +88,7 @@ export const AssetGridTemplate: React.FC<AssetGridTemplateProps> = ({
               <StyledRasterImage
                 source={typeof source === 'string' ? { uri: source } : source}
                 resizeMode="contain"
+                size={imageSize}
               />
               {isCopied ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
               <StyledBodyS numberOfLines={2}>{name}</StyledBodyS>
@@ -136,7 +141,7 @@ const StyledBodyS = styled(Typo.BodyS)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
 }))
 
-const StyledRasterImage = styled(FastImage)({
-  width: getSpacing(24),
-  height: getSpacing(24),
-})
+const StyledRasterImage = styled(FastImage)<{ size: number }>(({ size }) => ({
+  width: size,
+  height: size,
+}))

@@ -1,6 +1,6 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-const categoryButtonIllustrationNames = [
+export const categoryButtonIllustrationNames = [
   'Book',
   'Camera',
   'Computer',
