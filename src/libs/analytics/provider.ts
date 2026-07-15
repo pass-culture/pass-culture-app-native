@@ -1,3 +1,4 @@
+import { ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 // eslint-disable-next-line no-restricted-imports
 import { isDuplicateEvent } from 'libs/analytics/eventDeduplication'
 // eslint-disable-next-line no-restricted-imports
@@ -6,6 +7,19 @@ import { AnalyticsProvider } from 'libs/analytics/types'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { locationSelectors } from 'libs/locationV2/location.store'
+
+export const SENSITIVE_SCREEN_NAMES: ScreenNames[] = [
+  'BonificationBirthDate',
+  'BonificationBirthPlace',
+  'BonificationDisabilityRefused',
+  'BonificationError',
+  'BonificationExplanations',
+  'BonificationFamilyQuotientRefused',
+  'BonificationNames',
+  'BonificationRecap',
+  'BonificationRequiredInformation',
+  'BonificationTitle',
+]
 
 export const analytics: AnalyticsProvider = {
   enableCollection: async () => {
@@ -17,6 +31,7 @@ export const analytics: AnalyticsProvider = {
 
   logScreenView: async (screenName) => {
     if (isDuplicateEvent('screen_view', { screenName })) return
+    if (SENSITIVE_SCREEN_NAMES.includes(screenName)) return
     const locationType = locationSelectors.selectLocationType()
     await firebaseAnalytics.logScreenView(screenName, locationType)
   },
