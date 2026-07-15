@@ -128,6 +128,14 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
+      title: 'Analytics debugger 📈',
+      navigationTarget: {
+        screen: 'CheatcodesScreenAnalyticsDebugger',
+      },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'Campagne MAJ données 🔥',
       navigationTarget: {
         screen: 'CheatcodesScreenMandatoryUpdate',
