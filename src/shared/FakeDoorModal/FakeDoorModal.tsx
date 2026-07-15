@@ -5,7 +5,6 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { ModalScreenWrapper } from 'shared/ModalScreenWrapper/ModalScreenWrapper'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -14,7 +13,7 @@ import { CircledCheck } from 'ui/svg/icons/CircledCheck'
 import { CircledClock } from 'ui/svg/icons/CircledClock'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 const OVERLAY_COLOR = 'rgba(0, 0, 0, 0.7)'
 
@@ -25,7 +24,7 @@ export const FakeDoorModal = () => {
   const [hasSeenSurvey, setHasSeenSurvey] = useState(false)
 
   useEffect(() => {
-    AsyncStorage.getItem(surveyKey).then((val) => {
+    void AsyncStorage.getItem(surveyKey).then((val) => {
       setHasSeenSurvey(val === 'true')
     })
   }, [surveyKey])
@@ -45,6 +44,7 @@ export const FakeDoorModal = () => {
             <Typo.BodyAccent>3 min</Typo.BodyAccent> pour y répondre&nbsp;!
           </StyledBody>
         ),
+        buttonWording: 'Répondre au questionnaire',
         buttonVariant: 'secondary',
       }
     : {
@@ -55,57 +55,81 @@ export const FakeDoorModal = () => {
             Aide-nous à la créer en donnant ton avis&nbsp;!
           </StyledBody>
         ),
+        buttonWording: 'Donner mon avis',
         buttonVariant: 'primary',
       }
 
   return (
-    <React.Fragment>
-      <OverlayContainer>
-        <TouchableWithoutFeedback onPress={goBack}>
-          <AbsoluteBackground />
-        </TouchableWithoutFeedback>
-      </OverlayContainer>
+    <Root>
+      <TouchableWithoutFeedback
+        onPress={goBack}
+        accessibilityLabel="Fermer la modale en touchant l’arrière-plan">
+        <AbsoluteBackground />
+      </TouchableWithoutFeedback>
 
-      <ModalScreenWrapper onClose={goBack}>
-        {(closeWithTransition) => (
-          <React.Fragment>
-            <HeaderContainer>
-              <ModalHeader
-                title="Encore un peu de patience..."
-                rightIconAccessibilityLabel="Fermer la fenêtre"
-                rightIcon={Close}
-                onRightIconPress={closeWithTransition}
-              />
-            </HeaderContainer>
+      <Sheet>
+        <HeaderContainer>
+          <ModalHeader
+            title="Encore un peu de patience..."
+            rightIconAccessibilityLabel="Fermer la fenêtre"
+            rightIcon={Close}
+            onRightIconPress={goBack}
+          />
+        </HeaderContainer>
 
-            <Container gap={4}>
-              {content.icon}
-              {content.body}
-            </Container>
+        <Container gap={4}>
+          {content.icon}
+          {content.body}
+        </Container>
 
-            <ButtonContainer>
-              <ExternalTouchableLink
-                as={Button}
-                externalNav={{ url: surveyUrl }}
-                wording="Répondre au questionnaire"
-                fullWidth
-                icon={ExternalSiteFilled}
-                variant={content.buttonVariant}
-                onBeforeNavigate={hasSeenSurvey ? goBack : markHasSeen}
-              />
-            </ButtonContainer>
+        <ButtonContainer>
+          <ExternalTouchableLink
+            as={Button}
+            externalNav={{ url: surveyUrl }}
+            wording={content.buttonWording}
+            fullWidth
+            icon={ExternalSiteFilled}
+            variant={content.buttonVariant}
+            onBeforeNavigate={hasSeenSurvey ? goBack : markHasSeen}
+          />
+        </ButtonContainer>
 
-            {hasSeenSurvey ? (
-              <CloseButtonContainer>
-                <Button wording="Fermer" onPress={goBack} />
-              </CloseButtonContainer>
-            ) : null}
-          </React.Fragment>
-        )}
-      </ModalScreenWrapper>
-    </React.Fragment>
+        {hasSeenSurvey ? (
+          <CloseButtonContainer>
+            <Button wording="Fermer" onPress={goBack} />
+          </CloseButtonContainer>
+        ) : null}
+
+        <Spacer.BottomScreen />
+      </Sheet>
+    </Root>
   )
 }
+
+const Root = styled.View({
+  flex: 1,
+  justifyContent: 'flex-end',
+})
+
+const AbsoluteBackground = styled.View({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: OVERLAY_COLOR,
+})
+
+const Sheet = styled.View(({ theme }) => ({
+  width: '100%',
+  maxWidth: theme.appContentWidth,
+  alignSelf: 'center',
+  backgroundColor: theme.designSystem.color.background.default,
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.l,
+  overflow: 'hidden',
+  paddingBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
@@ -132,24 +156,9 @@ const StyledBody = styled(Typo.Body)({
 const CloseButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
 const HeaderContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.l,
   width: '100%',
 }))
-
-const OverlayContainer = styled.View({
-  flex: 1,
-  justifyContent: 'flex-end',
-})
-
-const AbsoluteBackground = styled.View({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: OVERLAY_COLOR,
-})

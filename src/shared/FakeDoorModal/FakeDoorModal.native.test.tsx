@@ -45,17 +45,17 @@ describe('FakeDoorModal', () => {
     it('should display primary button', () => {
       render(<FakeDoorModal />)
 
-      const button = screen.getByLabelText('Répondre au questionnaire')
+      const button = screen.getByLabelText('Donner mon avis')
 
       expect(button.props.style.backgroundColor).toEqual(
         theme.designSystem.color.background.brandPrimary
       )
     })
 
-    it('should mark the survey as seen when pressing "Répondre au questionnaire" button', async () => {
+    it('should mark the survey as seen when pressing "Donner mon avis" button', async () => {
       render(<FakeDoorModal />)
 
-      await user.press(screen.getByLabelText('Répondre au questionnaire'))
+      await user.press(screen.getByLabelText('Donner mon avis'))
 
       expect(asyncStorageSetItemSpy).toHaveBeenCalledWith(
         'has_seen_follow_venue_fake_door_survey',
@@ -67,7 +67,7 @@ describe('FakeDoorModal', () => {
     it('should redirect to qualtrics survey when pressing answer survey button', async () => {
       render(<FakeDoorModal />)
 
-      await user.press(screen.getByLabelText('Répondre au questionnaire'))
+      await user.press(screen.getByLabelText('Donner mon avis'))
 
       expect(openUrlSpy).toHaveBeenCalledWith('https://passculture.qualtrics.com/', undefined, true)
     })

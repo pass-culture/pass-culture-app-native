@@ -22,7 +22,7 @@ export const FakeDoorModal = () => {
   const [hasSeenSurvey, setHasSeenSurvey] = useState(false)
 
   useEffect(() => {
-    AsyncStorage.getItem(surveyKey).then((val) => {
+    void AsyncStorage.getItem(surveyKey).then((val) => {
       setHasSeenSurvey(val === 'true')
     })
   }, [surveyKey])
@@ -42,6 +42,7 @@ export const FakeDoorModal = () => {
             <Typo.BodyAccent>3 min</Typo.BodyAccent> pour y répondre&nbsp;!
           </StyledBody>
         ),
+        buttonWording: 'Répondre au questionnaire',
         buttonVariant: 'secondary',
       }
     : {
@@ -52,6 +53,7 @@ export const FakeDoorModal = () => {
             Aide-nous à la créer en donnant ton avis&nbsp;!
           </StyledBody>
         ),
+        buttonWording: 'Donner mon avis',
         buttonVariant: 'primary',
       }
 
@@ -77,7 +79,7 @@ export const FakeDoorModal = () => {
             <ExternalTouchableLink
               as={Button}
               externalNav={{ url: surveyUrl }}
-              wording="Répondre au questionnaire"
+              wording={content.buttonWording}
               fullWidth
               icon={ExternalSiteFilled}
               variant={content.buttonVariant}
@@ -89,7 +91,9 @@ export const FakeDoorModal = () => {
             <CloseButtonContainer>
               <Button wording="Fermer" onPress={goBack} />
             </CloseButtonContainer>
-          ) : null}
+          ) : (
+            <BottomSpacer />
+          )}
         </React.Fragment>
       )}
     </ModalScreenWrapper>
@@ -127,4 +131,8 @@ const CloseButtonContainer = styled.View(({ theme }) => ({
 const HeaderContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.l,
   width: '100%',
+}))
+
+const BottomSpacer = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxl,
 }))

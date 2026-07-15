@@ -167,7 +167,7 @@ const VenueIcon = styled(Venue).attrs(({ theme }) => ({
 }))``
 
 const ButtonContainer = styled.View<{ hasGoogleCredit: boolean }>(({ theme, hasGoogleCredit }) => ({
-  right: theme.designSystem.size.spacing.l,
+  right: theme.designSystem.size.spacing.xl,
   bottom: hasGoogleCredit
     ? theme.designSystem.size.spacing.xxxl
     : theme.designSystem.size.spacing.l,
