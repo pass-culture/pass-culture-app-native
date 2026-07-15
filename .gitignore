@@ -88,6 +88,7 @@ fastlane/playStoreServiceAccount.json
 # local settings
 .env.development
 .env.local
+.env
 
 # Google service
 google-services.json
