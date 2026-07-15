@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -10,8 +11,8 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
-import { FollowArtistFakeDoorModal } from 'features/artist/components/FollowArtistFakeDoorModal/FollowArtistFakeDoorModal'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
@@ -40,6 +41,8 @@ import { Share } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
+
+const FOLLOW_ARTIST_SURVEY_URL = 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU'
 
 type Props = {
   artist: ArtistResponse
@@ -103,11 +106,14 @@ export const ArtistBody: FunctionComponent<Props> = ({
     utmMedium: 'header',
   })
 
-  const {
-    visible: fakeDoorModalVisible,
-    showModal: showFakeDoorModal,
-    hideModal: hideFakeDoorModal,
-  } = useModal(false)
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  const handlePressFollow = () => {
+    navigate('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyUrl: FOLLOW_ARTIST_SURVEY_URL,
+    })
+  }
 
   const pressShareArtist = () => {
     void analytics.logShare({
@@ -151,7 +157,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
                   variant="secondary"
                   color="neutral"
                   accessibilityLabel="Suivre cet artiste"
-                  onPress={showFakeDoorModal}
+                  onPress={handlePressFollow}
                 />
               ) : null}
             </ArtistHeader>
@@ -219,7 +225,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
           RightElement={ShareButton({ onPress: pressShareArtist })}
         />
       )}
-      <FollowArtistFakeDoorModal visible={fakeDoorModalVisible} close={hideFakeDoorModal} />
       {shareContent ? (
         <WebShareModal
           visible={shareArtistModalVisible}

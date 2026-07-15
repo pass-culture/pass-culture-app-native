@@ -372,7 +372,10 @@ describe('<ArtistBody />', () => {
 
     await user.press(await screen.findByLabelText('Suivre cet artiste'))
 
-    expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
+    expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+    })
   })
 
   it('should expose only the text to screen readers (emoji ignored)', async () => {

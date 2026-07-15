@@ -34,7 +34,6 @@ import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/Cheatc
 import { CheatcodesNavigationNotScreensPages } from 'cheatcodes/pages/others/CheatcodesNavigationNotScreensPages'
 import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
-import { CheatcodesScreenAsyncStorage } from 'cheatcodes/pages/others/CheatcodesScreenAsyncStorage'
 import { CheatcodesScreenPageHeaderWithoutPlaceholder } from 'cheatcodes/pages/others/CheatcodesScreenCheatcodesScreenPageHeaderWithoutPlaceholder'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenDirectIdAccess } from 'cheatcodes/pages/others/CheatcodesScreenDirectIdAccess'
@@ -262,12 +261,6 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenAccesLibre,
       linking: {
         path: 'cheatcodes/other/acces-libre',
-      },
-    },
-    CheatcodesScreenAsyncStorage: {
-      screen: CheatcodesScreenAsyncStorage,
-      linking: {
-        path: 'cheatcodes/other/async-storage',
       },
     },
     CheatcodesScreenDebugInformations: {
