@@ -73,23 +73,11 @@ jobs:
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
 
-      - name: Create service account key
-        id: create-sa-key
-        env:
-          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
-        run: |
-          gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account="${SERVICE_ACCOUNT}" \
-            --project="${PROJECT_ID}"
-          SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          echo "SA_KEY_ID=${SA_KEY_ID}" >> "$GITHUB_OUTPUT"
-
       - name: Deploy soft android for ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
           ENV: ${{ inputs.ENV }}
         run: |
           bundle exec fastlane android deploy ota: --env "${ENV}"
@@ -98,23 +86,10 @@ jobs:
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
           ENV: ${{ inputs.ENV }}
         run: |
           bundle exec fastlane ios deploy ota: --env "${ENV}"
-
-      - name: Delete service account key
-        if: always()
-        env:
-          KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
-          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
-        run: |
-          gcloud iam service-accounts keys delete "${KEY_ID}" \
-            --iam-account="${SERVICE_ACCOUNT}" \
-            --project="${PROJECT_ID}" \
-            --quiet
-          rm -f temporary-sa-key.json
 
   slack_notify:
     runs-on: ubuntu-24.04
