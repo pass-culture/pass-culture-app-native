@@ -31,7 +31,7 @@ const createModalExiting = (onClose: () => void) =>
     }
   })
 
-export const ModalScreenWrapper = ({ onClose, children }: ModalScreenWrapperProps) => {
+export const ModalScreenWrapper = ({ onClose, children, fullScreen }: ModalScreenWrapperProps) => {
   const [isOpen, setIsOpen] = useState(true)
 
   const closeWithTransition = () => {
@@ -50,7 +50,10 @@ export const ModalScreenWrapper = ({ onClose, children }: ModalScreenWrapperProp
             onPress={closeWithTransition}
             accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
           />
-          <ModalContainer entering={MODAL_ENTERING} exiting={createModalExiting(onClose)}>
+          <ModalContainer
+            entering={MODAL_ENTERING}
+            exiting={createModalExiting(onClose)}
+            fullScreen={fullScreen}>
             {children(closeWithTransition)}
           </ModalContainer>
         </React.Fragment>
@@ -77,9 +80,9 @@ const Backdrop = styled(AnimatedPressable)({
   backgroundColor: OVERLAY_COLOR,
 })
 
-const ModalContainer = styled(Animated.View)(({ theme }) => ({
+const ModalContainer = styled(Animated.View)<{ fullScreen?: boolean }>(({ theme, fullScreen }) => ({
   width: '100%',
-  height: '100%',
+  height: fullScreen ? '100%' : 'auto',
   backgroundColor: theme.designSystem.color.background.default,
   borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
   borderTopRightRadius: theme.designSystem.size.borderRadius.l,

@@ -25,6 +25,7 @@ type Props = {
   isCTADisplayed?: boolean
   children: React.ReactNode
   showSearchInVenueModal: () => void
+  onPressFollowButton: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () =>
@@ -35,6 +36,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   isCTADisplayed,
   children,
   showSearchInVenueModal,
+  onPressFollowButton,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -97,7 +99,13 @@ export const VenueContent: React.FunctionComponent<Props> = ({
       <Container>
         <VenueWebMetaHeader title={venue.name} description={venue.description} />
         <VenueHeaderWrapper
-          header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
+          header={
+            <VenueHeader
+              headerTransition={headerTransition}
+              venue={venue}
+              onPressFollowButton={onPressFollowButton}
+            />
+          }>
           <ContentContainer
             rightNootch={isLandscape ? right : 0}
             leftNootch={isLandscape ? left : 0}

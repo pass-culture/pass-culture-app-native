@@ -321,6 +321,63 @@ describe('<ArtistBody />', () => {
     expect(screen.queryByLabelText('Prochains festivals et salons du livre')).not.toBeOnTheScreen()
   })
 
+  it('should display follow button when wipArtistFakeDoor FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    expect(await screen.findByLabelText('Suivre cet artiste')).toBeOnTheScreen()
+  })
+
+  it('should not display follow button when wipArtistFakeDoor FF deactivated', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findAllByText('Avril Lavigne')
+
+    expect(screen.queryByLabelText('Suivre cet artiste')).not.toBeOnTheScreen()
+  })
+
+  it('should open fake door modal when pressing follow button', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Suivre cet artiste'))
+
+    expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+    })
+  })
+
   it('should expose only the text to screen readers (emoji ignored)', async () => {
     render(
       reactQueryProviderHOC(

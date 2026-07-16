@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { resetDedupCache } from 'libs/analytics/eventDeduplication'
 // eslint-disable-next-line no-restricted-imports
-import { analytics } from 'libs/analytics/provider'
+import { SENSITIVE_SCREEN_NAMES, analytics } from 'libs/analytics/provider'
 import { LocationType } from 'libs/analytics/types'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
@@ -55,6 +55,16 @@ describe('analyticsProvider - logEvent', () => {
 
       expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME, 'undefined')
     })
+
+    it.each(SENSITIVE_SCREEN_NAMES)(
+      'should not log screen view when logScreenView is called with screen %s',
+      async (sensitive_screen_name) => {
+        await analytics.logScreenView(sensitive_screen_name)
+        await act(() => {})
+
+        expect(firebaseAnalytics.logScreenView).not.toHaveBeenCalled()
+      }
+    )
   })
 
   describe('deduplication', () => {

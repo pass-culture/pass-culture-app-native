@@ -77,7 +77,13 @@ describe('<VenueHeader />', () => {
 const renderVenueHeader = () => {
   const animatedValue = new Animated.Value(0)
   render(
-    reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} venue={venueDataTest} />)
+    reactQueryProviderHOC(
+      <VenueHeader
+        headerTransition={animatedValue}
+        venue={venueDataTest}
+        onPressFollowButton={jest.fn()}
+      />
+    )
   )
   return { animatedValue }
 }

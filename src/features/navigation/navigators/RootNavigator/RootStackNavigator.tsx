@@ -76,6 +76,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
+import { FakeDoorModal } from 'shared/FakeDoorModal/FakeDoorModal'
 import { VerticalPlaylistArtists } from 'shared/verticalPlaylist/pages/VerticalPlaylistArtists'
 import { VerticalPlaylistOffers } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffers'
 import { VerticalPlaylistVenues } from 'shared/verticalPlaylist/pages/VerticalPlaylistVenues'
@@ -423,6 +424,15 @@ const rootScreens: RouteConfig[] = [
     component: GeolocationActivationModal,
     options: {
       presentation: 'transparentModal',
+    },
+  },
+  {
+    name: 'FakeDoorModal',
+    component: FakeDoorModal,
+    options: {
+      presentation: 'transparentModal',
+      animation: 'fade',
+      headerShown: false,
     },
   },
 ]

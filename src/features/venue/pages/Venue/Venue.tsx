@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
@@ -9,7 +9,7 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
-import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -53,6 +53,7 @@ const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { data: venue } = useVenueQuery(params.id)
 
   const pageTracking = usePageTracking({
@@ -86,6 +87,7 @@ export const Venue: FunctionComponent = () => {
   const enableVolunteerFeedback = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
   )
+  const enableVenueFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -174,6 +176,13 @@ export const Venue: FunctionComponent = () => {
     }
   }, [params.from, proAdvicesSegment, venue?.id])
 
+  const handleOnPressFollowButton = () => {
+    navigate('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_venue_fake_door_survey',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
+    })
+  }
+
   const isCTADisplayed =
     venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
@@ -184,6 +193,8 @@ export const Venue: FunctionComponent = () => {
         venue={venue}
         enableVolunteer={enableVolunteer}
         enableVolunteerFeedback={enableVolunteerFeedback}
+        enableVenueFakeDoor={enableVenueFakeDoor}
+        onPressFollowButton={handleOnPressFollowButton}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
@@ -238,7 +249,8 @@ export const Venue: FunctionComponent = () => {
           <VenueContent
             venue={venue}
             isCTADisplayed={isCTADisplayed}
-            showSearchInVenueModal={showSearchInVenueModal}>
+            showSearchInVenueModal={showSearchInVenueModal}
+            onPressFollowButton={handleOnPressFollowButton}>
             {VenueContentChildren}
           </VenueContent>
           <SearchInVenueModal
@@ -249,7 +261,10 @@ export const Venue: FunctionComponent = () => {
           />
         </React.Fragment>
       ) : (
-        <OldVenueContent venue={venue} isCTADisplayed={isCTADisplayed}>
+        <OldVenueContent
+          venue={venue}
+          isCTADisplayed={isCTADisplayed}
+          onPressFollowButton={handleOnPressFollowButton}>
           {VenueContentChildren}
         </OldVenueContent>
       )}

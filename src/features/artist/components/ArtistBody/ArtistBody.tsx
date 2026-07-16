@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -11,6 +12,7 @@ import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarAr
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
@@ -33,11 +35,14 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
+import { Bell } from 'ui/svg/icons/Bell'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
+
+const FOLLOW_ARTIST_SURVEY_URL = 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU'
 
 type Props = {
   artist: ArtistResponse
@@ -81,6 +86,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
+  const enableArtistFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR)
 
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -99,6 +105,15 @@ export const ArtistBody: FunctionComponent<Props> = ({
     artist,
     utmMedium: 'header',
   })
+
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  const handlePressFollow = () => {
+    navigate('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyUrl: FOLLOW_ARTIST_SURVEY_URL,
+    })
+  }
 
   const pressShareArtist = () => {
     void analytics.logShare({
@@ -134,7 +149,18 @@ export const ArtistBody: FunctionComponent<Props> = ({
         }}>
         <ViewGap gap={6}>
           <ViewGap gap={6}>
-            <ArtistHeader name={name} avatarImage={image} />
+            <ArtistHeader name={name} avatarImage={image}>
+              {enableArtistFakeDoor ? (
+                <Button
+                  wording="Suivre"
+                  icon={Bell}
+                  variant="secondary"
+                  color="neutral"
+                  accessibilityLabel="Suivre cet artiste"
+                  onPress={handlePressFollow}
+                />
+              ) : null}
+            </ArtistHeader>
             {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>À propos</Typo.BodyAccent>
