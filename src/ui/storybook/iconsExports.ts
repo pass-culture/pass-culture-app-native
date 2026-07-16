@@ -139,6 +139,8 @@ import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
+import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
+import { SceneClubCertification } from 'ui/svg/SceneClubCertification'
 
 export const SocialNetworkIcons = {
   Facebook,
@@ -295,6 +297,8 @@ export const UnconventionalIcons = {
   LogoDMS,
   LogoFrenchRepublic,
   LogoPassCulture,
+  ProEditoCertification,
+  SceneClubCertification,
   SystemThemeIllustration,
   Ubble,
 }

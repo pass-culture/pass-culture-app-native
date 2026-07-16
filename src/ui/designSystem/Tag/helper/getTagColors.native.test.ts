@@ -50,4 +50,11 @@ describe('getTagColors', () => {
     expect(result.backgroundColor).toEqual(background.headline)
     expect(result.iconColor).toEqual(icon.headline)
   })
+
+  it('should return correct colors for TagVariant.SCENECLUB', () => {
+    const result = getColors(TagVariant.SCENECLUB)
+
+    expect(result.backgroundColor).toEqual(background.sceneClub)
+    expect(result.iconColor).toEqual(icon.sceneClub)
+  })
 })

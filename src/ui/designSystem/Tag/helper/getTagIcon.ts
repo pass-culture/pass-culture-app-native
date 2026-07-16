@@ -10,6 +10,7 @@ export function getTagIcon(variant: TagVariant, icon?: TagProps['Icon']): TagPro
   const forcedVariants = [
     TagVariant.BOOKCLUB,
     TagVariant.CINECLUB,
+    TagVariant.SCENECLUB,
     TagVariant.HEADLINE,
     TagVariant.LIKE,
     TagVariant.PROEDITO,
