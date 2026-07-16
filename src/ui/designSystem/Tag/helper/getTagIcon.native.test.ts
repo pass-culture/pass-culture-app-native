@@ -16,6 +16,12 @@ describe('getFinalTagIcon', () => {
     expect(result).toEqual(variantIcons[TagVariant.BOOKCLUB])
   })
 
+  it('should return forced icon for TagVariant.SCENECLUB', () => {
+    const result = getTagIcon(TagVariant.SCENECLUB, CustomIcon)
+
+    expect(result).toEqual(variantIcons[TagVariant.SCENECLUB])
+  })
+
   it('should return passed icon for TagVariant.SUCCESS', () => {
     const result = getTagIcon(TagVariant.SUCCESS, CustomIcon)
 
