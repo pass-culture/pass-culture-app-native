@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['module:@react-native/babel-preset'],
+  presets: ['babel-preset-expo'],
   plugins: [
     ...(process.env.NODE_ENV !== 'test' && !process.env.JEST ? ['babel-plugin-react-compiler'] : []),
     'macros',
