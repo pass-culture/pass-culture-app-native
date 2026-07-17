@@ -2,11 +2,7 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { env } from 'libs/environment/env'
-import {
-  useEnableFrontImageResizing,
-  useImageResizingUrl,
-  useObjectStorageUrl,
-} from 'queries/settings/useSettings'
+import { useEnableFrontImageResizing, useImageResizingUrl } from 'queries/settings/useSettings'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432
@@ -34,11 +30,14 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
   const imageResizingHost = imageResizingUrl ?? env.RESIZE_IMAGE_ON_DEMAND_URL
   try {
     const parsedImageURL = new URL(imageURL)
+    if (parsedImageURL.hostname != 'storage.googleapis.com') {
+      return imageURL
+    }
     const trimmedPathName = parsedImageURL.pathname.replace(/^\//, '')
     const newPath = `?size=${sizeWithRatio}&filename=${trimmedPathName}`
     const resizedImageURL = new URL(newPath, imageResizingHost)
     return resizedImageURL.href
-  } catch (err) {
+  } catch {
     return imageURL
   }
 }
