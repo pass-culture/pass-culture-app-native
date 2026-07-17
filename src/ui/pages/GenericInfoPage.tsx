@@ -3,18 +3,25 @@ import { AccessibilityRole, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   useMobileFontScaleToDisplay,
   useWebZoomToDisplay,
 } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
+import { IllustrationColorKey } from 'theme/types'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import {
+  GenericInfoPageIllustration,
+  GenericInfoPageIllustrationSize,
+} from 'ui/pages/GenericInfoPageIllustration'
 import { getGenericInfoPageButtons } from 'ui/pages/helpers/getGenericInfoPageButtons'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
@@ -64,6 +71,9 @@ type AnimationColoringProps = {
 type AnimationProps =
   | {
       illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+      illustrationUrl?: string
+      illustrationBackgroundColor?: IllustrationColorKey
+      illustrationSize?: GenericInfoPageIllustrationSize
       animation?: never
       animationColoringMode?: never
       animationTargetShapeNames?: never
@@ -72,6 +82,9 @@ type AnimationProps =
   | ({
       animation: AnimationObject
       illustration?: never
+      illustrationUrl?: never
+      illustrationBackgroundColor?: never
+      illustrationSize?: never
     } & AnimationColoringProps)
 
 type Props = PropsWithChildren<{
@@ -91,6 +104,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
   withSkipAction,
   illustration: IllustrationComponent,
+  illustrationUrl,
+  illustrationBackgroundColor,
+  illustrationSize,
   animation,
   title,
   subtitle,
@@ -106,6 +122,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
 }) => {
   const { designSystem } = useTheme()
   const isLandscape = useIsLandscape()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const headerHeight = useGetHeaderHeight()
   const { top } = useSafeAreaInsets()
@@ -123,6 +140,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   })
 
   const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
+  const shouldDisplayRemoteIllustration = enableNewVisionUi && illustrationUrl
 
   return (
     <Page>
@@ -136,7 +154,13 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <ContainerFlex flexValue={flexWeb}>
           <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
             <IllustrationContainer animation={!!animation}>
-              {IllustrationComponent ? (
+              {shouldDisplayRemoteIllustration ? (
+                <GenericInfoPageIllustration
+                  url={illustrationUrl}
+                  backgroundColor={illustrationBackgroundColor}
+                  size={illustrationSize}
+                />
+              ) : IllustrationComponent ? (
                 <IllustrationComponent
                   size={illustrationSizes.fullPage}
                   color={designSystem.color.icon.brandPrimary}

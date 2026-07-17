@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -12,6 +14,8 @@ jest.mock('libs/firebase/analytics/analytics')
 const onPress = jest.fn()
 
 describe('<GenericInfoPage />', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should render correctly', () => {
     render(
       <GenericInfoPage
@@ -44,5 +48,41 @@ describe('<GenericInfoPage />', () => {
     )
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should keep legacy illustration when new vision UI FF is not activated', () => {
+    render(
+      <GenericInfoPage
+        illustration={MaintenanceCone}
+        illustrationUrl="https://example.com/illustration.png"
+        title="Title"
+        buttonPrimary={{
+          wording: 'ButtonPrimary',
+          onPress,
+        }}
+      />
+    )
+
+    expect(screen.queryByTestId('generic-info-page-remote-illustration')).not.toBeOnTheScreen()
+  })
+
+  it('should display remote illustration when new vision UI FF is activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(
+      <GenericInfoPage
+        illustration={MaintenanceCone}
+        illustrationUrl="https://example.com/illustration.png"
+        illustrationBackgroundColor="positive01"
+        illustrationSize="small"
+        title="Title"
+        buttonPrimary={{
+          wording: 'ButtonPrimary',
+          onPress,
+        }}
+      />
+    )
+
+    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
   })
 })
