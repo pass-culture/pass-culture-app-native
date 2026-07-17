@@ -215,7 +215,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   size="small"
                   source={
                     {
-                      "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                      "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
                     }
                   }
                   style={

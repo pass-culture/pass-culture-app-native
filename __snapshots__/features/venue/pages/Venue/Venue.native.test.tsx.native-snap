@@ -866,7 +866,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         resizeMode="cover"
                         source={
                           {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=654&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                           }
                         }
                         style={
@@ -993,7 +993,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 size="small"
                                 source={
                                   {
-                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                    "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
@@ -1645,7 +1645,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -1853,7 +1853,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -2061,7 +2061,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                           }
                                         }
                                         style={
@@ -4380,7 +4380,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         resizeMode="cover"
                         source={
                           {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=654&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                           }
                         }
                         style={
@@ -4507,7 +4507,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 size="small"
                                 source={
                                   {
-                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                    "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
@@ -5159,7 +5159,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -5367,7 +5367,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -5575,7 +5575,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                           }
                                         }
                                         style={

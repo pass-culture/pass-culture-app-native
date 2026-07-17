@@ -1884,7 +1884,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           size="small"
                           source={
                             {
-                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                              "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
                             }
                           }
                           style={
@@ -2233,7 +2233,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           size="small"
                           source={
                             {
-                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                              "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
                             }
                           }
                           style={
@@ -2578,7 +2578,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           size="small"
                           source={
                             {
-                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                              "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
                             }
                           }
                           style={
@@ -2922,7 +2922,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           size="small"
                           source={
                             {
-                              "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                              "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
                             }
                           }
                           style={
