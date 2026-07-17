@@ -1211,6 +1211,83 @@ PODS:
   - BoringSSL-GRPC/Interface (0.0.37)
   - BVLinearGradient (2.8.3):
     - React-Core
+  - EXConstants (56.0.20):
+    - ExpoModulesCore
+  - Expo (56.0.15):
+    - ExpoModulesCore
+    - ExpoModulesJSI
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTAppDelegate
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactAppDependencyProvider
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - ExpoAdapterGoogleSignIn (10.1.0):
+    - ExpoModulesCore
+    - GoogleSignIn (~> 7.0)
+    - React-Core
+  - ExpoAsset (56.0.19):
+    - ExpoModulesCore
+  - ExpoDomWebView (56.0.6):
+    - ExpoModulesCore
+  - ExpoFileSystem (56.0.8):
+    - ExpoModulesCore
+  - ExpoFont (56.0.7):
+    - ExpoModulesCore
+  - ExpoKeepAwake (56.0.3):
+    - ExpoModulesCore
+  - ExpoLogBox (56.0.14):
+    - React-Core
+  - ExpoModulesCore (56.0.20):
+    - ExpoModulesJSI
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-jsinspector
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
+  - ExpoModulesJSI (56.0.12):
+    - React-Core
+    - ReactCommon
+  - ExpoModulesWorklets (56.0.20):
+    - ExpoModulesCore
+    - ExpoModulesJSI
+  - ExpoModulesWorkletsAdapter (56.0.20):
+    - ExpoModulesCore
+    - ExpoModulesJSI
+    - ExpoModulesWorklets
+    - RNWorklets
   - FBLazyVector (0.85.3)
   - Firebase/Analytics (12.15.0):
     - Firebase/Core
@@ -4050,6 +4127,19 @@ PODS:
 DEPENDENCIES:
   - BatchFirebaseDispatcher
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
+  - EXConstants (from `../node_modules/expo-constants/ios`)
+  - Expo (from `../node_modules/expo`)
+  - "ExpoAdapterGoogleSignIn (from `../node_modules/@react-native-google-signin/google-signin/expo/ios`)"
+  - ExpoAsset (from `../node_modules/expo-asset/ios`)
+  - "ExpoDomWebView (from `../node_modules/@expo/dom-webview/ios`)"
+  - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
+  - ExpoFont (from `../node_modules/expo-font/ios`)
+  - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - "ExpoLogBox (from `../node_modules/@expo/log-box`)"
+  - ExpoModulesCore (from `../node_modules/expo-modules-core`)
+  - ExpoModulesJSI (from `../node_modules/expo-modules-jsi/apple`)
+  - ExpoModulesWorklets (from `../node_modules/expo-modules-core`)
+  - ExpoModulesWorkletsAdapter (from `../node_modules/expo-modules-core`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FirebaseCore
   - GoogleUtilities
@@ -4214,6 +4304,32 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   BVLinearGradient:
     :path: "../node_modules/react-native-linear-gradient"
+  EXConstants:
+    :path: "../node_modules/expo-constants/ios"
+  Expo:
+    :path: "../node_modules/expo"
+  ExpoAdapterGoogleSignIn:
+    :path: "../node_modules/@react-native-google-signin/google-signin/expo/ios"
+  ExpoAsset:
+    :path: "../node_modules/expo-asset/ios"
+  ExpoDomWebView:
+    :path: "../node_modules/@expo/dom-webview/ios"
+  ExpoFileSystem:
+    :path: "../node_modules/expo-file-system/ios"
+  ExpoFont:
+    :path: "../node_modules/expo-font/ios"
+  ExpoKeepAwake:
+    :path: "../node_modules/expo-keep-awake/ios"
+  ExpoLogBox:
+    :path: "../node_modules/@expo/log-box"
+  ExpoModulesCore:
+    :path: "../node_modules/expo-modules-core"
+  ExpoModulesJSI:
+    :path: "../node_modules/expo-modules-jsi/apple"
+  ExpoModulesWorklets:
+    :path: "../node_modules/expo-modules-core"
+  ExpoModulesWorkletsAdapter:
+    :path: "../node_modules/expo-modules-core"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   hermes-engine:
@@ -4445,6 +4561,19 @@ SPEC CHECKSUMS:
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
   BoringSSL-GRPC: dded2a44897e45f28f08ae87a55ee4bcd19bc508
   BVLinearGradient: cb006ba232a1f3e4f341bb62c42d1098c284da70
+  EXConstants: 5120c651b684c629efa1bafcf0d0ddb96b0de62f
+  Expo: d4e271e9e797209a2649359fae0ce4664ebc2754
+  ExpoAdapterGoogleSignIn: 3400db1f94651c59f123494ff66562e102922733
+  ExpoAsset: df5110ae7e42e935bad07138133aa74f025ef79e
+  ExpoDomWebView: 4e53b05879dc73ba374f76bff93dd64c8a0d91b3
+  ExpoFileSystem: 9dc04ec1e11bc3c7b965d7feb2de12c789755c7b
+  ExpoFont: 274487aa78f8c65d6551e2558eca3ec6ce3432ce
+  ExpoKeepAwake: 359c47a1d9ccc3a3c519bca6e39562cce230c5bb
+  ExpoLogBox: cdad5c9402a186574fb5924ea91df1f08ba9a98a
+  ExpoModulesCore: 3756c67958331b9a9bd27b07829b04aab02abc1f
+  ExpoModulesJSI: 5246c01c5835979cf8528d2d30d12edf799b5f87
+  ExpoModulesWorklets: bf01b3310464f105c5f6dbd887db81a51c765d05
+  ExpoModulesWorkletsAdapter: e212b7bbaa8bfd537b55c46a6f7d3be3eccca803
   FBLazyVector: 473b935415b82ae4f7f9aa9d5b3378491143ccbf
   Firebase: a8539b633d474fbeb654c7043f9c1649e274045b
   FirebaseABTesting: 04cab3e6db77b86af50b6cf7c825a13e04beca52
@@ -4593,6 +4722,6 @@ SPEC CHECKSUMS:
   Sentry: d587a8fe91ca13503ecd69a1905f3e8a0fcf61be
   Yoga: 9d8e8094a2bed6a175d9e6001a0546d5dae663ee
 
-PODFILE CHECKSUM: e039ac4389965f949a3ab2790f7864b198ed7f8b
+PODFILE CHECKSUM: 65876360a630535cba8a2c7c7a6d66bfdeb655e3
 
 COCOAPODS: 1.15.2

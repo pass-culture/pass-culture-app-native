@@ -6,5 +6,5 @@ PROXY_DIAGNOSTIC="$(realpath '/Library/Application Support'/*/*/*diag 2>/dev/nul
 if [ -n "${PROXY_DIAGNOSTIC}" ]; then
 	"$PROXY_DIAGNOSTIC" -f | grep "TUNNEL_CONNECTED" >/dev/null
 else
-	return 1
+	exit 1
 fi

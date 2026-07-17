@@ -21,6 +21,7 @@ const setupQueryClient = (client: QueryClient) => {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/react-native-google-sso/googleLogout')
 
 const mockSetAttribute = jest.fn()
 const mockSave = jest.fn()

@@ -5,8 +5,8 @@
 #define PassCulture_Bridging_Header_h
 
 #import "RNSplashScreen.h" // react-native-lottie-splash-screen
-#import "RNCConfig.h"
 #import "Orientation.h"
-#import "BatchFirebaseDispatcher.h"
+#import "HotUpdaterBridge.h"
+#import "PassCultureNativeBridge.h"
 
 #endif

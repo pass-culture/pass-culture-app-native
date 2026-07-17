@@ -112,7 +112,8 @@ android {
 
     namespace "com.passculture"
     defaultConfig {
-        applicationId project.env.get("ANDROID_APP_ID")
+        // Static literal so `expo run:android` can statically resolve the app id. Then overridden by the product flavors.
+        applicationId "com.passculture"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         resValue "string", "url_prefix", project.env.get("URL_PREFIX")
@@ -183,18 +184,16 @@ android {
     flavorDimensions "environment"
     productFlavors {
         // ProductFlavors names can not start with 'test' https://android.googlesource.com/platform/tools/build/+/21b5320e57ba21f829ecbb4862cf0b9876e11778/gradle/src/main/groovy/com/android/build/gradle/AndroidPlugin.groovy#93
-        apptesting {
-            dimension "environment"
-        }
-        development {
-            dimension "environment"
-        }
-        staging {
-            dimension "environment"
-        }
-        production {
-            dimension "environment"
-        }
+        apptesting {}
+        development {}
+        staging {}
+        production {}
+    }
+
+    // Shared flavor config
+    productFlavors.all {
+        dimension "environment"
+        applicationId project.env.get("ANDROID_APP_ID")
     }
 }
 

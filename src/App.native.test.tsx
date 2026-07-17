@@ -26,6 +26,7 @@ jest.mock('@hot-updater/react-native')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/react-native-google-sso/configureGoogleSignin')
 
 jest.mock('react-native-safe-area-context', () => ({
   ...jest.requireActual('react-native-safe-area-context'),

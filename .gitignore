@@ -147,3 +147,8 @@ proxy_cacert
 
 # claude
 CLAUDE.md
+
+# Expo
+.expo
+dist/
+web-build/
