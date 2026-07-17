@@ -5,8 +5,6 @@ import { MarkdownPart } from 'ui/components/MarkdownPart/MarkdownPart'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('MarkdownPart', () => {
   it('should return text in normal style by default', () => {
     render(<MarkdownPart text="text" />)

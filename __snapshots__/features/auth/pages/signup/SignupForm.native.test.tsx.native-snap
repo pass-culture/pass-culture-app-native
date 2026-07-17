@@ -132,29 +132,10 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="0"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -223,22 +204,17 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       }
     >
       <View
+        collapsable={false}
         isFull={false}
         style={
-          [
-            {
-              "backgroundColor": "#6123df",
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
-              "width": "20%",
-            },
-            {},
-            {
-              "width": "0%",
-            },
-          ]
+          {
+            "backgroundColor": "#6123df",
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+            "height": "100%",
+            "overflow": "hidden",
+            "width": "0%",
+          }
         }
         width={20}
       />
@@ -770,29 +746,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="1"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -923,22 +880,17 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
       }
     >
       <View
+        collapsable={false}
         isFull={false}
         style={
-          [
-            {
-              "backgroundColor": "#6123df",
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
-              "width": "40%",
-            },
-            {},
-            {
-              "width": "20%",
-            },
-          ]
+          {
+            "backgroundColor": "#6123df",
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+            "height": "100%",
+            "overflow": "hidden",
+            "width": "20%",
+          }
         }
         width={40}
       />
@@ -1686,29 +1638,10 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="2"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -1839,22 +1772,17 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       }
     >
       <View
+        collapsable={false}
         isFull={false}
         style={
-          [
-            {
-              "backgroundColor": "#6123df",
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
-              "width": "60%",
-            },
-            {},
-            {
-              "width": "40%",
-            },
-          ]
+          {
+            "backgroundColor": "#6123df",
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+            "height": "100%",
+            "overflow": "hidden",
+            "width": "40%",
+          }
         }
         width={60}
       />
@@ -2964,29 +2892,10 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="3"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -3117,22 +3026,17 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
       }
     >
       <View
+        collapsable={false}
         isFull={false}
         style={
-          [
-            {
-              "backgroundColor": "#6123df",
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
-              "width": "80%",
-            },
-            {},
-            {
-              "width": "60%",
-            },
-          ]
+          {
+            "backgroundColor": "#6123df",
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+            "height": "100%",
+            "overflow": "hidden",
+            "width": "60%",
+          }
         }
         width={80}
       />
@@ -3561,29 +3465,10 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 }
               >
                 <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestInlineStyle={
+                  style={
                     {
                       "flexShrink": 0,
                     }
-                  }
-                  nativeID="4"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
                   }
                 >
                   <View
@@ -3690,29 +3575,10 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 }
               >
                 <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestInlineStyle={
+                  style={
                     {
                       "flexShrink": 0,
                     }
-                  }
-                  nativeID="5"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
                   }
                 >
                   <View
@@ -3819,29 +3685,10 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 }
               >
                 <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestInlineStyle={
+                  style={
                     {
                       "flexShrink": 0,
                     }
-                  }
-                  nativeID="6"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
                   }
                 >
                   <View

@@ -262,23 +262,20 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
                   <View
                     backgroundColor="#6123df"
                     barWidth={0}
+                    collapsable={false}
                     isAnimated={true}
                     onLayout={[Function]}
                     progress={1}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#6123df",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "left": 0,
-                          "opacity": 0,
-                          "position": "relative",
-                        },
-                        {},
-                        {},
-                      ]
+                      {
+                        "backgroundColor": "#6123df",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "left": 0,
+                        "opacity": 0,
+                        "position": "relative",
+                      }
                     }
                     testID="animated-progress-bar"
                   />
@@ -708,23 +705,20 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
                   <View
                     backgroundColor="#6123df"
                     barWidth={0}
+                    collapsable={false}
                     isAnimated={true}
                     onLayout={[Function]}
                     progress={1}
                     style={
-                      [
-                        {
-                          "backgroundColor": "#6123df",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "left": 0,
-                          "opacity": 0,
-                          "position": "relative",
-                        },
-                        {},
-                        {},
-                      ]
+                      {
+                        "backgroundColor": "#6123df",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "left": 0,
+                        "opacity": 0,
+                        "position": "relative",
+                      }
                     }
                     testID="animated-progress-bar"
                   />

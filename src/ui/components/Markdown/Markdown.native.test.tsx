@@ -9,8 +9,6 @@ const TEXT =
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
-
 describe('Markdown', () => {
   it('should render text with different styles', () => {
     render(<Markdown>{TEXT}</Markdown>)

@@ -1,5 +1,3 @@
-import { CaptureContext, Extras } from '@sentry/types'
-
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { eventMonitoring } from 'libs/monitoring/services'
 
@@ -23,9 +21,8 @@ describe('MonitoringError', () => {
   })
 
   it('should pass captureContext to MonitoringError as a 2nd argument', () => {
-    const extra: Extras = { userId: 1000 }
-    const captureContext: CaptureContext = {
-      extra,
+    const captureContext = {
+      extra: { userId: 1000 },
     }
     const error = new MonitoringError('error', { captureContext, logType: LogTypeEnum.ERROR })
 
@@ -34,9 +31,8 @@ describe('MonitoringError', () => {
   })
 
   it('should pass captureContext to RenamedError as a last argument', () => {
-    const extra: Extras = { userId: 1000 }
-    const captureContext: CaptureContext = {
-      extra,
+    const captureContext = {
+      extra: { userId: 1000 },
     }
     const error = new MonitoringError('error', {
       name: 'RenamedError',

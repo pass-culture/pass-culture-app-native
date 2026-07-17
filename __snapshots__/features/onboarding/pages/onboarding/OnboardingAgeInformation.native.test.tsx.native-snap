@@ -121,29 +121,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="0"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -392,6 +373,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                         }
                       }
                       accessible={true}
+                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -402,30 +384,25 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       onStartShouldSetResponder={[Function]}
                       status="cette année"
                       style={
-                        [
-                          {
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#161617",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "marginHorizontal": 0,
-                            "overflow": "hidden",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                          },
-                          {
-                            "transform": [
-                              {
-                                "scale": 0.95,
-                              },
-                            ],
-                          },
-                          {},
-                        ]
+                        {
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderColor": "#161617",
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "borderWidth": 2,
+                          "marginHorizontal": 0,
+                          "overflow": "hidden",
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                          "transform": [
+                            {
+                              "scale": 0.95,
+                            },
+                          ],
+                        }
                       }
                     >
                       <View
@@ -749,24 +726,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     </View>
   </RCTScrollView>
   <View
+    collapsable={false}
     style={
-      [
-        {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-        {
-          "opacity": 0,
-          "transform": [
-            {
-              "scale": 0.95,
-            },
-          ],
-        },
-        {},
-      ]
+      {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": [
+          {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
@@ -960,29 +933,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="1"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -1154,29 +1108,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="2"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -1637,6 +1572,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                         }
                       }
                       accessible={true}
+                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1647,30 +1583,25 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       onStartShouldSetResponder={[Function]}
                       status="cette année"
                       style={
-                        [
-                          {
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#161617",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "marginHorizontal": 0,
-                            "overflow": "hidden",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                          },
-                          {
-                            "transform": [
-                              {
-                                "scale": 0.95,
-                              },
-                            ],
-                          },
-                          {},
-                        ]
+                        {
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderColor": "#161617",
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "borderWidth": 2,
+                          "marginHorizontal": 0,
+                          "overflow": "hidden",
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                          "transform": [
+                            {
+                              "scale": 0.95,
+                            },
+                          ],
+                        }
                       }
                     >
                       <View
@@ -1777,24 +1708,20 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     </View>
   </RCTScrollView>
   <View
+    collapsable={false}
     style={
-      [
-        {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-        {
-          "opacity": 0,
-          "transform": [
-            {
-              "scale": 0.95,
-            },
-          ],
-        },
-        {},
-      ]
+      {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": [
+          {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
@@ -1988,29 +1915,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="3"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View

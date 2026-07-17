@@ -236,29 +236,10 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 }
               >
                 <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestInlineStyle={
+                  style={
                     {
                       "flexShrink": 0,
                     }
-                  }
-                  nativeID="0"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
                   }
                 >
                   <View
@@ -601,29 +582,10 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
               }
             >
               <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
-                  }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {},
-                  }
-                }
-                jestInlineStyle={
+                style={
                   {
                     "flexShrink": 0,
                   }
-                }
-                nativeID="1"
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
                 }
               >
                 <View
@@ -696,37 +658,11 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
             variant="detailed"
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              layout={BaseAnimationMock {}}
+              style={
                 {
                   "overflow": "hidden",
                 }
-              }
-              layout={
-                LinearTransition {
-                  "build": [Function],
-                  "durationV": 250,
-                  "randomizeDelay": false,
-                  "reduceMotionV": "system",
-                }
-              }
-              nativeID="2"
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                ]
               }
             >
               <View
@@ -886,37 +822,11 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              layout={BaseAnimationMock {}}
+              style={
                 {
                   "overflow": "hidden",
                 }
-              }
-              layout={
-                LinearTransition {
-                  "build": [Function],
-                  "durationV": 250,
-                  "randomizeDelay": false,
-                  "reduceMotionV": "system",
-                }
-              }
-              nativeID="3"
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                ]
               }
             >
               <View
@@ -1098,37 +1008,11 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              layout={BaseAnimationMock {}}
+              style={
                 {
                   "overflow": "hidden",
                 }
-              }
-              layout={
-                LinearTransition {
-                  "build": [Function],
-                  "durationV": 250,
-                  "randomizeDelay": false,
-                  "reduceMotionV": "system",
-                }
-              }
-              nativeID="4"
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                ]
               }
             >
               <View

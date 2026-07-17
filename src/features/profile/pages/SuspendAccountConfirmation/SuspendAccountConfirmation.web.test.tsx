@@ -1,6 +1,6 @@
 import { RouteProp } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
-import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'

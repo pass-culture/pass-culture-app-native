@@ -1,0 +1,35 @@
+diff --git a/lib/module/layoutReanimation/web/domUtils.js b/lib/module/layoutReanimation/web/domUtils.js
+index b035eafe128ee2071c31bfb698194f144e3f66c8..1a3df2af658364f952e08ad4c2e28be73973828b 100644
+--- a/lib/module/layoutReanimation/web/domUtils.js
++++ b/lib/module/layoutReanimation/web/domUtils.js
+@@ -135,7 +135,10 @@ function checkIfScreenWasChanged(mutationTarget) {
+   return mutationTarget[reactFiberKey]?.child?.memoizedProps?.navigation !== undefined;
+ }
+ export function addHTMLMutationObserver() {
+-  if (isObserverSet || !IS_WINDOW_AVAILABLE) {
++  // `document.body` can be null while `window` exists (e.g. during page teardown/unload),
++  // which makes `observer.observe(document.body, ...)` throw. Bail out before setting
++  // `isObserverSet` so the observer can still be installed on a later mount.
++  if (isObserverSet || !IS_WINDOW_AVAILABLE || !document.body) {
+     return;
+   }
+   isObserverSet = true;
+diff --git a/lib/typescript/createAnimatedComponent/createAnimatedComponent.d.ts b/lib/typescript/createAnimatedComponent/createAnimatedComponent.d.ts
+index 6ab991f308aa1bae47f786901e8f328cd7ce2619..a5f0bdd43097e60dcdfe54b090f9ba3607ac2522 100644
+--- a/lib/typescript/createAnimatedComponent/createAnimatedComponent.d.ts
++++ b/lib/typescript/createAnimatedComponent/createAnimatedComponent.d.ts
+@@ -1,4 +1,4 @@
+-import type { ComponentProps, ComponentRef, ComponentType, ReactNode, Ref } from 'react';
++import type { ComponentProps, ComponentRef, ComponentType, ReactElement, Ref } from 'react';
+ import type { FlatList, FlatListProps } from 'react-native';
+ import type { InstanceOrElement } from '../commonTypes';
+ import type { AnimatedProps } from '../helperTypes';
+@@ -9,7 +9,7 @@ import type { InitialComponentProps } from './commonTypes';
+ type AnimatedComponentRef<TInstance> = Ref<ExtractElementRef<TInstance>> | (TInstance extends InstanceOrElement ? AnimatedRef<TInstance> : never) | AnimatedRef;
+ export type AnimatedComponentType<Props extends object = object, Instance = unknown> = (props: Omit<AnimatedProps<Props>, 'ref'> & {
+     ref?: AnimatedComponentRef<Instance>;
+-}) => ReactNode;
++}) => ReactElement | null;
+ type AnimatableComponent<C extends ComponentType<any>> = C & {
+     jsProps?: string[];
+ };

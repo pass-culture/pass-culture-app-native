@@ -137,29 +137,10 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="0"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -649,29 +630,10 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                 }
               >
                 <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestInlineStyle={
+                  style={
                     {
                       "flexShrink": 0,
                     }
-                  }
-                  nativeID="1"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
                   }
                 >
                   <View

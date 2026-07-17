@@ -317,29 +317,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
+                        style={
                           {
                             "flexShrink": 0,
                           }
-                        }
-                        nativeID="0"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
                         }
                       >
                         <View
@@ -445,29 +426,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
+                        style={
                           {
                             "flexShrink": 0,
                           }
-                        }
-                        nativeID="1"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
                         }
                       >
                         <View
@@ -520,26 +482,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          layout={
-            LinearTransition {
-              "build": [Function],
-              "durationV": 200,
-              "randomizeDelay": false,
-              "reduceMotionV": "system",
-            }
-          }
-          nativeID="2"
+          layout={BaseAnimationMock {}}
         >
           <View
             gap={6}
@@ -1272,29 +1215,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   }
                                 >
                                   <View
-                                    collapsable={false}
-                                    jestAnimatedProps={
-                                      {
-                                        "value": {},
-                                      }
-                                    }
-                                    jestAnimatedStyle={
-                                      {
-                                        "value": {},
-                                      }
-                                    }
-                                    jestInlineStyle={
+                                    style={
                                       {
                                         "flexShrink": 0,
                                       }
-                                    }
-                                    nativeID="3"
-                                    style={
-                                      [
-                                        {
-                                          "flexShrink": 0,
-                                        },
-                                      ]
                                     }
                                   >
                                     <View
@@ -2336,31 +2260,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {
-                              "transform": [
-                                {
-                                  "rotate": "0deg",
-                                },
-                              ],
-                            },
-                          }
-                        }
-                        jestInlineStyle={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
-                        }
-                        nativeID="4"
                         style={
                           [
                             {
@@ -3115,29 +3014,10 @@ d’options
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="5"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -3267,29 +3147,10 @@ d’options
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="6"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -3345,17 +3206,13 @@ d’options
         }
       }
       style={
-        [
-          {
-            "bottom": "100%",
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-          {},
-          {},
-        ]
+        {
+          "bottom": "100%",
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
       }
     />
     <View
@@ -3440,29 +3297,10 @@ d’options
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="7"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -3831,29 +3669,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
+                        style={
                           {
                             "flexShrink": 0,
                           }
-                        }
-                        nativeID="19"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
                         }
                       >
                         <View
@@ -3959,29 +3778,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
+                        style={
                           {
                             "flexShrink": 0,
                           }
-                        }
-                        nativeID="20"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
                         }
                       >
                         <View
@@ -4034,26 +3834,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          layout={
-            LinearTransition {
-              "build": [Function],
-              "durationV": 200,
-              "randomizeDelay": false,
-              "reduceMotionV": "system",
-            }
-          }
-          nativeID="21"
+          layout={BaseAnimationMock {}}
         >
           <View
             gap={6}
@@ -4786,29 +4567,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   }
                                 >
                                   <View
-                                    collapsable={false}
-                                    jestAnimatedProps={
-                                      {
-                                        "value": {},
-                                      }
-                                    }
-                                    jestAnimatedStyle={
-                                      {
-                                        "value": {},
-                                      }
-                                    }
-                                    jestInlineStyle={
+                                    style={
                                       {
                                         "flexShrink": 0,
                                       }
-                                    }
-                                    nativeID="22"
-                                    style={
-                                      [
-                                        {
-                                          "flexShrink": 0,
-                                        },
-                                      ]
                                     }
                                   >
                                     <View
@@ -5850,31 +5612,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {
-                              "transform": [
-                                {
-                                  "rotate": "0deg",
-                                },
-                              ],
-                            },
-                          }
-                        }
-                        jestInlineStyle={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
-                        }
-                        nativeID="23"
                         style={
                           [
                             {
@@ -6629,29 +6366,10 @@ d’options
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="24"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -6781,29 +6499,10 @@ d’options
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="25"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -6859,17 +6558,13 @@ d’options
         }
       }
       style={
-        [
-          {
-            "bottom": "100%",
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-          {},
-          {},
-        ]
+        {
+          "bottom": "100%",
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
       }
     />
     <View
@@ -6954,29 +6649,10 @@ d’options
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="26"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -7345,29 +7021,10 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
+                        style={
                           {
                             "flexShrink": 0,
                           }
-                        }
-                        nativeID="8"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
                         }
                       >
                         <View
@@ -7473,29 +7130,10 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestInlineStyle={
+                        style={
                           {
                             "flexShrink": 0,
                           }
-                        }
-                        nativeID="9"
-                        style={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
                         }
                       >
                         <View
@@ -7548,26 +7186,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          layout={
-            LinearTransition {
-              "build": [Function],
-              "durationV": 200,
-              "randomizeDelay": false,
-              "reduceMotionV": "system",
-            }
-          }
-          nativeID="10"
+          layout={BaseAnimationMock {}}
         >
           <View
             gap={6}
@@ -7989,29 +7608,10 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           }
                         >
                           <View
-                            collapsable={false}
-                            jestAnimatedProps={
-                              {
-                                "value": {},
-                              }
-                            }
-                            jestAnimatedStyle={
-                              {
-                                "value": {},
-                              }
-                            }
-                            jestInlineStyle={
+                            style={
                               {
                                 "flexShrink": 0,
                               }
-                            }
-                            nativeID="16"
-                            style={
-                              [
-                                {
-                                  "flexShrink": 0,
-                                },
-                              ]
                             }
                           >
                             <View
@@ -8109,29 +7709,10 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           }
                         >
                           <View
-                            collapsable={false}
-                            jestAnimatedProps={
-                              {
-                                "value": {},
-                              }
-                            }
-                            jestAnimatedStyle={
-                              {
-                                "value": {},
-                              }
-                            }
-                            jestInlineStyle={
+                            style={
                               {
                                 "flexShrink": 0,
                               }
-                            }
-                            nativeID="17"
-                            style={
-                              [
-                                {
-                                  "flexShrink": 0,
-                                },
-                              ]
                             }
                           >
                             <View
@@ -8229,29 +7810,10 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           }
                         >
                           <View
-                            collapsable={false}
-                            jestAnimatedProps={
-                              {
-                                "value": {},
-                              }
-                            }
-                            jestAnimatedStyle={
-                              {
-                                "value": {},
-                              }
-                            }
-                            jestInlineStyle={
+                            style={
                               {
                                 "flexShrink": 0,
                               }
-                            }
-                            nativeID="18"
-                            style={
-                              [
-                                {
-                                  "flexShrink": 0,
-                                },
-                              ]
                             }
                           >
                             <View
@@ -10195,31 +9757,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       }
                     >
                       <View
-                        collapsable={false}
-                        jestAnimatedProps={
-                          {
-                            "value": {},
-                          }
-                        }
-                        jestAnimatedStyle={
-                          {
-                            "value": {
-                              "transform": [
-                                {
-                                  "rotate": "0deg",
-                                },
-                              ],
-                            },
-                          }
-                        }
-                        jestInlineStyle={
-                          [
-                            {
-                              "flexShrink": 0,
-                            },
-                          ]
-                        }
-                        nativeID="12"
                         style={
                           [
                             {
@@ -10974,29 +10511,10 @@ d’options
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="13"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View
@@ -11126,29 +10644,10 @@ d’options
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="14"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -11204,17 +10703,13 @@ d’options
         }
       }
       style={
-        [
-          {
-            "bottom": "100%",
-            "height": 120,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-          },
-          {},
-          {},
-        ]
+        {
+          "bottom": "100%",
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
       }
     />
     <View
@@ -11299,29 +10794,10 @@ d’options
           }
         >
           <View
-            collapsable={false}
-            jestAnimatedProps={
-              {
-                "value": {},
-              }
-            }
-            jestAnimatedStyle={
-              {
-                "value": {},
-              }
-            }
-            jestInlineStyle={
+            style={
               {
                 "flexShrink": 0,
               }
-            }
-            nativeID="15"
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
             }
           >
             <View

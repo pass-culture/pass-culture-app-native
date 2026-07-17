@@ -15,7 +15,6 @@ import * as useNetInfoContext from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 jest.mock('libs/firebase/analytics/analytics')
 
 jest
