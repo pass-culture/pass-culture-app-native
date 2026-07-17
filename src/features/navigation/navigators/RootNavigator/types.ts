@@ -263,6 +263,7 @@ export type RootStackParamList = {
   ArtistWebview: ArtistParams
   _DeeplinkOnlyArtist1: ArtistParams
   BannedCountryError: undefined
+  IncorrectLink: undefined
   BonificationGranted: undefined
   BookingConfirmation: BookingConfirmationParams
   _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams

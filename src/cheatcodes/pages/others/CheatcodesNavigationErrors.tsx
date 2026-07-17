@@ -27,6 +27,7 @@ const errorsCheatcodeCategory: CheatcodeCategory = {
       title: 'BannedCountryError',
       navigationTarget: { screen: 'BannedCountryError' },
     },
+    { id: uuidv4(), title: 'IncorrectLink', navigationTarget: { screen: 'IncorrectLink' } },
     { id: uuidv4(), title: 'Contentful KO error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Offre inexistante', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Maintenance', showOnlyInSearch: true },

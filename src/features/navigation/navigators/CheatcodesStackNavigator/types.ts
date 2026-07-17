@@ -4,9 +4,9 @@ export type CheatcodesStackParamList = {
   // Features
   CheatcodesNavigationAchievements: undefined
   CheatcodesNavigationBirthdayNotifications: undefined
+  CheatcodesNavigationBonification: undefined
   CheatcodesNavigationBookings: undefined
   CheatcodesNavigationBookOffer: undefined
-  CheatcodesNavigationBonification: undefined
   CheatcodesNavigationCulturalSurvey: undefined
   CheatcodesNavigationForceUpdate: undefined
   CheatcodesNavigationHome: undefined
@@ -26,18 +26,17 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenDefaultThematicHomeHeader: undefined
   CheatcodesScreenHighlightThematicHomeHeader: undefined
   CheatcodesScreenMaintenance: undefined
-  CheatcodesScreenOffline: undefined
   CheatcodesScreenNotEligibleEduConnect: undefined
   CheatcodesScreenRemoteBanners: undefined
   CheatcodesScreenTrustedDeviceInfos: undefined
   // Others
-  CheatcodesScreenABTest: undefined
   CheatcodeScreenLoadingPage: undefined
   CheatcodesNavigationAccountManagement: undefined
   CheatcodesNavigationErrors: undefined
   CheatcodesNavigationGenericPages: undefined
   CheatcodesNavigationNotScreensPages: undefined
   CheatcodesNavigationSignUp: undefined
+  CheatcodesScreenABTest: undefined
   CheatcodesScreenAccesLibre: undefined
   CheatcodesScreenDebugInformations: undefined
   CheatcodesScreenDirectIdAccess: undefined
@@ -49,9 +48,10 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenLayoutExpiredLink: undefined
   CheatcodesScreenMandatoryUpdate: undefined
   CheatcodesScreenNewCaledonia: undefined
+  CheatcodesScreenOffline: undefined
+  CheatcodesScreenPageHeaderWithoutPlaceholder: undefined
   CheatcodesScreenPageWithHeader: undefined
   CheatcodesScreenRemoteConfig: undefined
-  CheatcodesScreenPageHeaderWithoutPlaceholder: undefined
 }
 
 export type CheatcodesStackRouteName = keyof CheatcodesStackParamList

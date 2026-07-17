@@ -90,25 +90,19 @@ export function CheatcodesMenu(): React.JSX.Element {
     {
       id: uuidv4(),
       title: 'RemoteBanners 🆒',
-      navigationTarget: {
-        screen: 'CheatcodesScreenRemoteBanners',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenRemoteBanners' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Share 🔗',
-      navigationTarget: {
-        screen: 'CheatcodesNavigationShare',
-      },
+      navigationTarget: { screen: 'CheatcodesNavigationShare' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Maintenance 🔗',
-      navigationTarget: {
-        screen: 'CheatcodesScreenMaintenance',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenMaintenance' },
       subscreens: [],
     },
   ]
@@ -121,41 +115,31 @@ export function CheatcodesMenu(): React.JSX.Element {
     {
       id: uuidv4(),
       title: 'AB Tests 🧪',
-      navigationTarget: {
-        screen: 'CheatcodesScreenABTest',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenABTest' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Campagne MAJ données 🔥',
-      navigationTarget: {
-        screen: 'CheatcodesScreenMandatoryUpdate',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenMandatoryUpdate' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'AccesLibre 🌈',
-      navigationTarget: {
-        screen: 'CheatcodesScreenAccesLibre',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenAccesLibre' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Debug informations 🪲',
-      navigationTarget: {
-        screen: 'CheatcodesScreenDebugInformations',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenDebugInformations' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Accès direct par ID 🎯',
-      navigationTarget: {
-        screen: 'CheatcodesScreenDirectIdAccess',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenDirectIdAccess' },
       subscreens: [],
     },
     {
@@ -167,25 +151,19 @@ export function CheatcodesMenu(): React.JSX.Element {
     {
       id: uuidv4(),
       title: 'Remote config 📊',
-      navigationTarget: {
-        screen: 'CheatcodesScreenRemoteConfig',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenRemoteConfig' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Features flags 🏳️',
-      navigationTarget: {
-        screen: 'CheatcodesScreenFeatureFlags',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenFeatureFlags' },
       subscreens: [],
     },
     {
       id: uuidv4(),
       title: 'Nouvelles Calédonie 🇳🇨',
-      navigationTarget: {
-        screen: 'CheatcodesScreenNewCaledonia',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenNewCaledonia' },
       subscreens: [],
     },
     {
@@ -197,9 +175,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     {
       id: uuidv4(),
       title: 'Offline 📵',
-      navigationTarget: {
-        screen: 'CheatcodesScreenOffline',
-      },
+      navigationTarget: { screen: 'CheatcodesScreenOffline' },
       subscreens: [],
     },
   ]
