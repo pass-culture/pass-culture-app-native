@@ -66,9 +66,7 @@ export const ReinitializePassword = () => {
 
   // We use this useEffect in order to validate confirmedPassword when newPassword changes and matches
   const password = watch('newPassword')
-  useEffect(() => {
-    trigger('confirmedPassword')
-  }, [password, trigger])
+  useEffect(() => void trigger('confirmedPassword'), [password, trigger])
 
   const { mutate: resetPassword, isPending } = useResetPasswordMutation({
     onSuccess: async (response: ResetPasswordResponse) => {
@@ -119,8 +117,7 @@ export const ReinitializePassword = () => {
                 name="newPassword"
                 label="Mot de passe"
                 control={control}
-                withSecurityRules
-                securityRulesAlwaysVisible
+                displayValidation
                 onSubmitEditing={handleSubmit(submitPassword)}
                 requiredIndicator="explicit"
                 autocomplete="new-password"

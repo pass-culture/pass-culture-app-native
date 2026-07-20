@@ -1,20 +1,15 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
-import { v4 as uuidv4 } from 'uuid'
 
-import {
-  PasswordSecurityRules,
-  getPasswordRulesAccessibilityLabel,
-} from 'features/auth/components/PasswordSecurityRules'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
-import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
+import { getPasswordRulesAccessibilityLabel } from 'ui/designSystem/PasswordInput/helpers'
+import { PasswordInput } from 'ui/designSystem/PasswordInput/PasswordInput'
 
-interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputProps {
+interface Props<TFieldValues extends FieldValues, TName>
+  extends Omit<React.ComponentProps<typeof PasswordInput>, 'value' | 'onChangeText'> {
   name: TName
   control: Control<TFieldValues>
-  withSecurityRules?: boolean
-  securityRulesAlwaysVisible?: boolean
-  autocomplete: 'new-password' | 'current-password'
+  displayValidation?: boolean
 }
 
 export const PasswordInputController = <
@@ -23,19 +18,15 @@ export const PasswordInputController = <
 >({
   name,
   control,
-  withSecurityRules = false,
-  securityRulesAlwaysVisible = false,
-  autocomplete,
+  displayValidation = false,
   ...otherPasswordInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
-  const passwordInputErrorId = uuidv4()
-
   return (
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => {
-        const securityRulesAccessibilityLabel = withSecurityRules
+      render={({ field: { onChange, value }, fieldState: { error } }) => {
+        const securityRulesAccessibilityLabel = displayValidation
           ? getPasswordRulesAccessibilityLabel(value)
           : undefined
 
@@ -45,25 +36,14 @@ export const PasswordInputController = <
         )
 
         return (
-          <React.Fragment>
-            <PasswordInput
-              ref={ref}
-              autocomplete={autocomplete}
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              accessibilityHint={computedAccessibilityHint}
-              errorMessage={error?.message}
-              {...otherPasswordInputProps}
-            />
-            {withSecurityRules ? (
-              <PasswordSecurityRules
-                password={value}
-                visible={securityRulesAlwaysVisible ? true : value.length > 0}
-                nativeID={passwordInputErrorId}
-              />
-            ) : null}
-          </React.Fragment>
+          <PasswordInput
+            {...otherPasswordInputProps}
+            value={value}
+            onChangeText={onChange}
+            errorMessage={displayValidation ? undefined : error?.message}
+            displayValidation={displayValidation}
+            accessibilityHint={computedAccessibilityHint}
+          />
         )
       }}
     />

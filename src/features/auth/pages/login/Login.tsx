@@ -217,6 +217,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                 />
               </ButtonContainer>
               <PasswordInputController
+                label="Mot de passe"
                 name="password"
                 control={control}
                 autocomplete="current-password"
