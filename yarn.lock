@@ -11421,7 +11421,7 @@ __metadata:
     typescript: "npm:^6.0.3"
     uuid: "npm:^14.0.0"
     vite: "npm:^8.0.16"
-    vite-bundle-analyzer: "npm:^1.3.6"
+    vite-bundle-analyzer: "npm:^1.3.8"
     vite-plugin-html: "npm:^3.2.2"
     yup: "npm:^0.32.11"
     zustand: "npm:^4.5.7"
@@ -27680,12 +27680,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-bundle-analyzer@npm:^1.3.6":
-  version: 1.3.6
-  resolution: "vite-bundle-analyzer@npm:1.3.6"
+"vite-bundle-analyzer@npm:^1.3.8":
+  version: 1.3.8
+  resolution: "vite-bundle-analyzer@npm:1.3.8"
   bin:
     analyze: dist/bin.js
-  checksum: 10/e2b2e9dd19a703197ef1241a25adca72516611941a99c03f4b90a3611258aceeb2a0b5a174c82c42a00a21f19711280c97e01bf17f789c93055dff90a8e5c0fe
+  checksum: 10/0997e47a7a798a252a8b2fa5e5328e7feed000fd0f45ae7e5505b440539e367b762db6c9c515d917d33109b8ed775be0eb6f3acdff1833a03835b40993193241
   languageName: node
   linkType: hard
 
