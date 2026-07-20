@@ -11,6 +11,8 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
+import { buildFollowArtistSurveyUrl } from 'features/artist/helpers/buildFollowArtistSurveyUrl'
+import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
@@ -41,8 +43,6 @@ import { Share } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
-
-const FOLLOW_ARTIST_SURVEY_URL = 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU'
 
 type Props = {
   artist: ArtistResponse
@@ -109,9 +109,15 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const handlePressFollow = () => {
+    // Business rule: report a single offer type, the first playlist category displayed on the page.
+    // Playlists are only rendered when enablePlaylistByCategory is on, so no category is reported otherwise.
+    const [firstArtistPlaylist] = enablePlaylistByCategory
+      ? getDisplayableArtistPlaylists(artistPlaylist)
+      : []
+
     navigate('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
-      surveyUrl: FOLLOW_ARTIST_SURVEY_URL,
+      surveyUrl: buildFollowArtistSurveyUrl({ offerType: firstArtistPlaylist?.searchGroupName }),
     })
   }
 

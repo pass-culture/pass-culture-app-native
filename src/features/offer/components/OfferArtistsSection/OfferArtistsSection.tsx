@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { styled, useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum, OfferArtist, SubcategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, OfferArtist, SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { FollowArtistButton } from 'features/artist/components/FollowArtistButton/FollowArtistButton'
 import { formatArtists } from 'features/artist/helpers/formatArtists'
 import { getArtistRole } from 'features/artist/helpers/getArtistRole'
@@ -29,6 +29,7 @@ interface Props {
   artists: OfferArtist[]
   offerCategoryId: CategoryIdEnum
   offerSubcategoryId: SubcategoryIdEnum
+  offerSearchGroupName: SearchGroupNameEnumv2
   offerId: number
   onPlaylistItemPress: (artistId: string, artistName: string) => void
 }
@@ -37,6 +38,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   artists,
   offerCategoryId,
   offerSubcategoryId,
+  offerSearchGroupName,
   offerId,
   onPlaylistItemPress,
 }) => {
@@ -137,6 +139,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
               <FollowArtistButton
                 artistName={soloArtist.name}
                 artistId={soloArtist.id || undefined}
+                offerType={offerSearchGroupName}
               />
             </SoloFollowButtonContainer>
           ) : null}
@@ -171,6 +174,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
                     <FollowArtistButton
                       artistName={artist.name}
                       artistId={artist.id || undefined}
+                      offerType={offerSearchGroupName}
                     />
                   )
                 : undefined

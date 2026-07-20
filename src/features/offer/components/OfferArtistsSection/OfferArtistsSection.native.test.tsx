@@ -1,7 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { ArtistType, CategoryIdEnum, OfferArtist, SubcategoryIdEnum } from 'api/gen'
+import {
+  ArtistType,
+  CategoryIdEnum,
+  OfferArtist,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -28,6 +34,7 @@ const renderOfferArtistsSection = (artists: OfferArtist[]) =>
         artists={artists}
         offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
         offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
+        offerSearchGroupName={SearchGroupNameEnumv2.MUSIQUE}
         onPlaylistItemPress={jest.fn()}
         offerId={1}
       />
@@ -220,7 +227,7 @@ describe('<OfferArtistsSection />', () => {
       expect(screen.queryByLabelText('Suivre Edith Piaf')).not.toBeOnTheScreen()
     })
 
-    it('should open fake door modal with artistId when pressing follow button', async () => {
+    it('should open fake door modal with artistId and offer type when pressing follow button', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
       renderOfferArtistsSection([mockArtist])
 
@@ -228,7 +235,8 @@ describe('<OfferArtistsSection />', () => {
 
       expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
         surveyKey: 'has_seen_follow_artist_fake_door_survey',
-        surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=1',
+        surveyUrl:
+          'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=1&offer_type=MUSIQUE',
       })
     })
 
@@ -240,7 +248,21 @@ describe('<OfferArtistsSection />', () => {
 
       expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
         surveyKey: 'has_seen_follow_artist_fake_door_survey',
-        surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+        surveyUrl:
+          'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?offer_type=MUSIQUE',
+      })
+    })
+
+    it('should open fake door modal with offer type from a multi artists list', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
+      renderOfferArtistsSection(mockMultiArtists)
+
+      await user.press(screen.getByLabelText('Suivre Zoe Saldana'))
+
+      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+        surveyKey: 'has_seen_follow_artist_fake_door_survey',
+        surveyUrl:
+          'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=2&offer_type=MUSIQUE',
       })
     })
   })
