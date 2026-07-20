@@ -8,7 +8,11 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -17,24 +21,6 @@ const trackingProps = {
   homeEntryId: '4Fs4egA8G2z3fHgU2XQj3h',
   moduleId: formattedTrendsModule.id,
 }
-const mockedPlace: SuggestedPlace = {
-  label: 'Kourou',
-  info: 'Guyane',
-  type: 'street',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
-}
-const mockHasGeolocPosition = true
-const mockSelectedLocationMode = LocationMode.AROUND_ME
-
-const mockUseLocation = jest.fn(() => ({
-  hasGeolocPosition: mockHasGeolocPosition,
-  selectedLocationMode: mockSelectedLocationMode,
-  place: mockedPlace,
-  onModalHideRef: jest.fn(),
-}))
-jest.mock('libs/location/location', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
@@ -42,7 +28,12 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('TrendsModule', () => {
-  beforeEach(() => setFeatureFlags())
+  beforeEach(() => {
+    setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ longitude: -52.669736, latitude: 5.16186 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+  })
 
   it('should log analytics on render', () => {
     const trackingPropsWithoutRedesign = {
@@ -80,12 +71,7 @@ describe('TrendsModule', () => {
   })
 
   it('should navigate to venue map location modal when pressing venue map block content type and user location is everywhere', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: true,
-      selectedLocationMode: LocationMode.EVERYWHERE,
-      place: mockedPlace,
-      onModalHideRef: jest.fn(),
-    })
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))
@@ -114,12 +100,7 @@ describe('TrendsModule', () => {
   })
 
   it('should not log analytics when pressing venue map block content type and user location is everywhere', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: true,
-      selectedLocationMode: LocationMode.EVERYWHERE,
-      place: mockedPlace,
-      onModalHideRef: jest.fn(),
-    })
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     renderTrendsModule()
 
     await user.press(screen.getByText('Accès carte des lieux'))

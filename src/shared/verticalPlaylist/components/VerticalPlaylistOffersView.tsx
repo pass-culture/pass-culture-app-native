@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ArtistResponse } from 'api/gen'
 import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -41,7 +42,8 @@ type Props = {
   searchId?: string
   searchQuery?: string
   analyticsFrom: Referrals
-  artistId?: string
+  artist?: ArtistResponse
+  moduleId?: string
 }
 
 export const VerticalPlaylistOffersView = ({
@@ -51,7 +53,8 @@ export const VerticalPlaylistOffersView = ({
   searchId,
   searchQuery,
   analyticsFrom,
-  artistId,
+  artist,
+  moduleId,
 }: Props) => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { headerTransition, onScroll } = useOpacityTransition()
@@ -67,7 +70,8 @@ export const VerticalPlaylistOffersView = ({
 
   const nbHits = items.length
 
-  const artist = items[0]?.artists?.find((artist) => artist.id === artistId)
+  const originDetails = artist ? 'artistRecommendation' : undefined
+  const artistName = artist?.name
 
   const onGridListButtonPress = (layout: GridListLayout) => {
     if (!canUseGrid) return
@@ -97,6 +101,9 @@ export const VerticalPlaylistOffersView = ({
           height={tileWidth / RATIO_HOME_IMAGE}
           width={tileWidth}
           searchId={searchId}
+          moduleId={moduleId}
+          artistName={artistName}
+          originDetails={originDetails}
           containerWidth={width / nbrOfTilesToDisplay - contentPage.marginHorizontal}
         />
       ) : (
@@ -107,6 +114,9 @@ export const VerticalPlaylistOffersView = ({
             index,
             searchId,
             from: analyticsFrom,
+            moduleId,
+            artistName,
+            originDetails,
           }}
         />
       ),
@@ -120,11 +130,19 @@ export const VerticalPlaylistOffersView = ({
       searchQuery,
       searchState.query,
       analyticsFrom,
+      moduleId,
+      artistName,
+      originDetails,
     ]
   )
 
   const onArtistPress = (artistId: string, artistName: string) => {
-    void analytics.logConsultArtist({ artistId, artistName, from: analyticsFrom })
+    void analytics.logConsultArtist({
+      artistId,
+      artistName,
+      from: analyticsFrom,
+      originDetails: 'artistRecommendation',
+    })
   }
 
   return (

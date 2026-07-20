@@ -44,10 +44,7 @@ describe('<UbbleWebview/>', () => {
         render(reactQueryProviderHOC(<UbbleWebview />))
 
         await act(async () => {
-          expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-            params: undefined,
-            screen: 'BonificationIncorrectLink',
-          })
+          expect(navigate).toHaveBeenCalledWith('IncorrectLink')
         })
       })
     })

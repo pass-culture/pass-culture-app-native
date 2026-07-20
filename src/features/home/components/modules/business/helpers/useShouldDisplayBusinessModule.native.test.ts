@@ -1,17 +1,14 @@
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { LocationCircleArea } from 'features/home/types'
-import { GeoCoordinates, Position } from 'libs/location/location'
+import { GeoCoordinates, LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { renderHook } from 'tests/utils'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: Position = DEFAULT_POSITION
-
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-    userLocation: mockPosition,
-  }),
-}))
 
 const locationAreaWithUserInside: LocationCircleArea = {
   latitude: 2,
@@ -28,6 +25,10 @@ const locationAreaWithUserOutside: LocationCircleArea = {
 describe('showBusinessModule()', () => {
   afterEach(jest.resetAllMocks)
 
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
+
   it.each`
     targetNotConnectedUsersOnly | connected | moduleLocalization             | showModule
     ${undefined}                | ${true}   | ${undefined}                   | ${true}
@@ -43,7 +44,8 @@ describe('showBusinessModule()', () => {
   `(
     'With user geolocated : showBusinessModule($targetNotConnectedUsersOnly, $connected, $geoLocation) \t= $showModule',
     ({ targetNotConnectedUsersOnly, connected, moduleLocalization, showModule: expected }) => {
-      mockPosition = DEFAULT_POSITION
+      locationActions.setGeolocPosition(DEFAULT_POSITION)
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
 
       const { result } = renderHook(() =>
         useShouldDisplayBusinessModule(targetNotConnectedUsersOnly, connected, moduleLocalization)
@@ -68,8 +70,6 @@ describe('showBusinessModule()', () => {
   `(
     'With user not geolocated :showBusinessModule($targetNotConnectedUsersOnly, $connected, $geoLocation) \t= $showModule',
     ({ targetNotConnectedUsersOnly, connected, moduleLocalization, showModule: expected }) => {
-      mockPosition = undefined
-
       const { result } = renderHook(() =>
         useShouldDisplayBusinessModule(targetNotConnectedUsersOnly, connected, moduleLocalization)
       )

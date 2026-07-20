@@ -9,8 +9,12 @@ import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlac
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
-import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -80,25 +84,16 @@ const offerPlaceProps: OfferPlaceProps = {
 
 const DEFAULT_USER_LOCATION = { latitude: 5, longitude: -52 }
 
-const EVERYWHERE_USER_POSITION = {
-  userLocation: null,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  geolocPosition: undefined,
-  place: null,
-}
-const AROUND_ME_POSITION = {
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  geolocPosition: DEFAULT_USER_LOCATION,
-  place: null,
+const setupEverywhereLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setLocationMode(LocationMode.EVERYWHERE)
 }
 
-const mockUseLocation = jest.fn((): Partial<UseLocationReturnType> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/location', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+const setupAroundMeLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setLocationMode(LocationMode.AROUND_ME)
+  locationActions.setGeolocPosition(DEFAULT_USER_LOCATION)
+}
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -116,7 +111,7 @@ jest.useFakeTimers()
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-01-01'))
-    useLocationV2.setState(defaultLocationState)
+    setupEverywhereLocation()
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
 
@@ -340,10 +335,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display venue tag distance when user share his position', () => {
-    mockUseLocation
-      .mockReturnValueOnce(AROUND_ME_POSITION)
-      .mockReturnValueOnce(AROUND_ME_POSITION)
-      .mockReturnValueOnce(AROUND_ME_POSITION)
+    setupAroundMeLocation()
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({ distance: '73 km' })
 
@@ -536,10 +528,13 @@ describe('<OfferPlace />', () => {
         place: SuggestedPlace | null
         headerMessage: string
       }) => {
-        mockUseLocation.mockReturnValue({
-          selectedLocationMode: locationMode,
-          place,
-        })
+        setupEverywhereLocation()
+        if (locationMode === LocationMode.AROUND_ME) {
+          locationActions.setLocationMode(LocationMode.AROUND_ME)
+        } else if (locationMode === LocationMode.AROUND_PLACE && place) {
+          locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+          locationActions.setPlace(place)
+        }
 
         renderOfferPlace({
           subcategory: mockSubcategory,

@@ -5,7 +5,10 @@ import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 
-type DefaultBonificationBannerProps = { amount: string; onClose: () => void }
+type DefaultBonificationBannerProps = {
+  amount: string
+  onClose: () => void
+}
 
 export const DefaultBonificationBanner = ({ amount, onClose }: DefaultBonificationBannerProps) => {
   const links = [

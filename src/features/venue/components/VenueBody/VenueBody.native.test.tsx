@@ -15,6 +15,7 @@ import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearch
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -32,7 +33,6 @@ mockUseVenueOffers.mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
 })
-jest.mock('libs/location/location')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
@@ -70,6 +70,7 @@ const user = userEvent.setup()
 
 describe('<VenueBody />', () => {
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
     setFeatureFlags()
     // We mock only the first call to canOpenURL so we can wait for instagram to be displayed
     // This way we avoid act warning when the calls to openURL are made

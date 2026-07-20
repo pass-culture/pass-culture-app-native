@@ -1,8 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
+import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { BonificationType } from 'features/bonification/enums'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
@@ -17,11 +19,30 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationRequiredInformation = () => {
+  const { params } = useRoute<UseRouteType<'BonificationRequiredInformation'>>()
   const { navigate } = useNavigation<UseNavigationType>()
+  const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
+
+  const title = isDisabilityBonification
+    ? 'Nous avons besoins de quelques informations supplémentaires'
+    : 'Quelles sont les informations requises d’un de tes parents ou représentants légaux\u00a0?'
+
+  const dataPrivacyText = isDisabilityBonification
+    ? 'Tu peux en savoir plus sur la collecte de données et tes droits (accès, opposition, rectification) en consultant '
+    : 'Toi ou tes représentants légaux pouvez en savoir plus sur cette collecte de données et vos droits (accès, opposition, rectification) en consultant '
+
+  const onPressFamilyQuotient = () => navigate(...getSubscriptionHookConfig('BonificationNames'))
+  const onPressDisability = () =>
+    navigate(
+      ...getSubscriptionHookConfig('BonificationBirthPlace', {
+        bonificationType: BonificationType.DISABILITY,
+      })
+    )
+
+  const onPress = isDisabilityBonification ? onPressDisability : onPressFamilyQuotient
 
   return (
     <PageWithHeader
@@ -33,27 +54,40 @@ export const BonificationRequiredInformation = () => {
             <Container>
               <IdCardWithMagnifyingGlass />
             </Container>
-            <StyledTitle3 {...getHeadingAttrs(2)}>
-              Quelles sont les informations requises d’un de tes parents ou représentants
-              légaux&nbsp;?
-            </StyledTitle3>
+            <StyledTitle3 {...getHeadingAttrs(2)}>{title}</StyledTitle3>
             <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
-              <BulletListItem groupLabel="Informations demandées" index={0} total={5}>
-                <Typo.BodyAccent>Nom de naissance</Typo.BodyAccent>
-              </BulletListItem>
-              <BulletListItem groupLabel="Informations demandées" index={1} total={5}>
-                <Typo.BodyAccent>Prénom(s)</Typo.BodyAccent>
-              </BulletListItem>
-              <BulletListItem groupLabel="Informations demandées" index={2} total={5}>
-                <Typo.BodyAccent>Nom d’usage</Typo.BodyAccent>
-              </BulletListItem>
-              <BulletListItem groupLabel="Informations demandées" index={3} total={5}>
-                <Typo.BodyAccent>Date de naissance</Typo.BodyAccent>
-              </BulletListItem>
-              <BulletListItem groupLabel="Informations demandées" index={4} total={5}>
-                <Typo.BodyAccent>Lieu de naissance</Typo.BodyAccent>
-              </BulletListItem>
+              {isDisabilityBonification ? (
+                <React.Fragment>
+                  <BulletListItem groupLabel="Informations demandées" index={0} total={2}>
+                    <Typo.BodyAccent>Pays de naissance</Typo.BodyAccent>
+                  </BulletListItem>
+                  <BulletListItem groupLabel="Informations demandées" index={1} total={2}>
+                    <View>
+                      <Typo.BodyAccent>Ville de naissance</Typo.BodyAccent>
+                      <Typo.BodyS>Si tu es né en France</Typo.BodyS>
+                    </View>
+                  </BulletListItem>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <BulletListItem groupLabel="Informations demandées" index={0} total={5}>
+                    <Typo.BodyAccent>Nom de naissance</Typo.BodyAccent>
+                  </BulletListItem>
+                  <BulletListItem groupLabel="Informations demandées" index={1} total={5}>
+                    <Typo.BodyAccent>Prénom(s)</Typo.BodyAccent>
+                  </BulletListItem>
+                  <BulletListItem groupLabel="Informations demandées" index={2} total={5}>
+                    <Typo.BodyAccent>Nom d’usage</Typo.BodyAccent>
+                  </BulletListItem>
+                  <BulletListItem groupLabel="Informations demandées" index={3} total={5}>
+                    <Typo.BodyAccent>Date de naissance</Typo.BodyAccent>
+                  </BulletListItem>
+                  <BulletListItem groupLabel="Informations demandées" index={4} total={5}>
+                    <Typo.BodyAccent>Lieu de naissance</Typo.BodyAccent>
+                  </BulletListItem>
+                </React.Fragment>
+              )}
             </VerticalUl>
           </ViewGap>
         </Form.MaxWidth>
@@ -66,7 +100,7 @@ export const BonificationRequiredInformation = () => {
             wording="Commencer"
             isLoading={false}
             accessibilityLabel="Commencer la demande"
-            onPress={() => navigate(...getSubscriptionHookConfig('BonificationNames'))}
+            onPress={onPress}
           />
           <ExternalTouchableLink
             as={Button}
@@ -77,8 +111,7 @@ export const BonificationRequiredInformation = () => {
             icon={ExternalSiteFilled}
           />
           <StyledBodyXs>
-            Toi ou tes représentants légaux pouvez en savoir plus sur cette collecte de données et
-            vos droits (accès, opposition, rectification) en consultant {SPACE}
+            {dataPrivacyText}
             <ExternalTouchableLink
               as={Link}
               isInsideText

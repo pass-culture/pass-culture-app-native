@@ -11,6 +11,8 @@ import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getC
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Bell } from 'ui/svg/icons/Bell'
 import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -21,7 +23,9 @@ type Props = {
   bannerUrl?: string | null
   bannerCredit?: string | null
   bannerIsFromGoogle?: boolean
+  enableVenueFakeDoor?: boolean
   handleImagePress?: VoidFunction
+  onPressFollowButton?: VoidFunction
 }
 
 export const VenueBanner: React.FC<Props> = ({
@@ -29,6 +33,8 @@ export const VenueBanner: React.FC<Props> = ({
   bannerUrl,
   bannerCredit,
   bannerIsFromGoogle,
+  enableVenueFakeDoor,
+  onPressFollowButton,
 }) => {
   const backgroundStyle = useVenueBackgroundStyle()
   const { isMobileViewport, designSystem } = useTheme()
@@ -53,6 +59,18 @@ export const VenueBanner: React.FC<Props> = ({
             accessibilityLabel={computedAccessibilityLabel}>
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           </GoogleWatermarkWrapper>
+          {enableVenueFakeDoor ? (
+            <ButtonContainer hasGoogleCredit={!!hasGoogleCredit}>
+              <Button
+                variant="secondary"
+                icon={Bell}
+                wording="Suivre"
+                accessibilityLabel="Suivre le lieu"
+                color="neutral"
+                onPress={onPressFollowButton}
+              />
+            </ButtonContainer>
+          ) : null}
           {hasGoogleCredit ? (
             <CopyrightText {...hiddenFromScreenReader()}>{currentCreditText}</CopyrightText>
           ) : null}
@@ -147,3 +165,11 @@ const VenueIcon = styled(Venue).attrs(({ theme }) => ({
   size: getSpacing(30),
   color: theme.designSystem.color.icon.subtle,
 }))``
+
+const ButtonContainer = styled.View<{ hasGoogleCredit: boolean }>(({ theme, hasGoogleCredit }) => ({
+  right: theme.designSystem.size.spacing.xl,
+  bottom: hasGoogleCredit
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.l,
+  position: 'absolute',
+}))

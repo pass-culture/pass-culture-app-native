@@ -20,7 +20,6 @@ import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
-import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { initLocation } from 'libs/locationV2/initLocation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -72,27 +71,24 @@ export function App() {
               <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
                 <AuthWrapper>
                   <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                    <React.Fragment>
-                      <GeolocationActivationModal />
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchWrapper>
-                            <SnackBarWrapper>
-                              <CulturalSurveyContextProvider>
-                                <SubscriptionContextProvider>
-                                  <AppWebHead />
-                                  <ScreenErrorProvider>
-                                    <Suspense fallback={<LoadingPage />}>
-                                      <AppNavigationContainer />
-                                    </Suspense>
-                                  </ScreenErrorProvider>
-                                </SubscriptionContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarWrapper>
-                          </SearchWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
-                    </React.Fragment>
+                    <AccessibilityFiltersWrapper>
+                      <FavoritesWrapper>
+                        <SearchWrapper>
+                          <SnackBarWrapper>
+                            <CulturalSurveyContextProvider>
+                              <SubscriptionContextProvider>
+                                <AppWebHead />
+                                <ScreenErrorProvider>
+                                  <Suspense fallback={<LoadingPage />}>
+                                    <AppNavigationContainer />
+                                  </Suspense>
+                                </ScreenErrorProvider>
+                              </SubscriptionContextProvider>
+                            </CulturalSurveyContextProvider>
+                          </SnackBarWrapper>
+                        </SearchWrapper>
+                      </FavoritesWrapper>
+                    </AccessibilityFiltersWrapper>
                   </ErrorBoundary>
                 </AuthWrapper>
               </GoogleOAuthProvider>

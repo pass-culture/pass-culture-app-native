@@ -9,12 +9,16 @@ type Props = {
   venue: VenueResponse
   enableVolunteer?: boolean
   enableVolunteerFeedback?: boolean
+  enableVenueFakeDoor?: boolean
+  onPressFollowButton?: () => void
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({
   venue,
   enableVolunteer,
   enableVolunteerFeedback,
+  enableVenueFakeDoor,
+  onPressFollowButton,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -28,6 +32,8 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
       onPressBannerImage={handleImagePress}
       enableVolunteer={enableVolunteer}
       enableVolunteerFeedback={enableVolunteerFeedback}
+      enableVenueFakeDoor={enableVenueFakeDoor}
+      onPressFollowButton={onPressFollowButton}
     />
   )
 }

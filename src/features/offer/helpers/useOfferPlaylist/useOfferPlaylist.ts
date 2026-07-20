@@ -10,7 +10,8 @@ import {
   SimilarOffersRequestQuery,
 } from 'api/gen'
 import { useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'
-import { Position, useLocation } from 'libs/location/location'
+import { Position } from 'libs/location/location'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { Offer } from 'shared/offer/types'
 
 type OfferPlaylistProps = {
@@ -35,7 +36,7 @@ export const useOfferPlaylist = ({
   offerSearchGroup,
   searchGroupList,
 }: OfferPlaylistProps): UseOfferPlaylistType => {
-  const { userLocation } = useLocation()
+  const userLocation = useUserLocation()
   const isFocused = useIsFocused()
 
   const { latitude, longitude } = userLocation ?? {}

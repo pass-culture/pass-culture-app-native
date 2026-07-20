@@ -1,13 +1,10 @@
-import { EmitterSubscription, Keyboard } from 'react-native'
-/* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
-// @ts-ignore jest can have access to this file but typescript does not know it
-// We can see it
+import { EmitterSubscription, Keyboard } from 'react-native'
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
-// Include this line for mocking react-native-gesture-handler
 import 'react-native-gesture-handler/jestSetup'
 
-/* See the corresponding mocks in libs/analytics/__mocks__ */
+jest.mock('react-native-worklets', () => require('react-native-worklets/src/mock'))
+jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'))
 /* Tests passed but there is a console error in web files */
 /* console.error
 [2021-07-01T00:00:00.000Z]  @firebase/analytics: FirebaseError: Analytics: Dynamic config fetch failed: [400] API key not valid. Please pass a valid API key. (analytics/config-fetch-failed).
@@ -19,7 +16,6 @@ import 'react-native-gesture-handler/jestSetup'
 } */
 jest.mock('libs/analytics/provider')
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
 /* I have problem in web test files, it doesn't work when use it directly */

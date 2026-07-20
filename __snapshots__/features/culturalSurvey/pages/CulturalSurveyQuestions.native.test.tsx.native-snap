@@ -121,89 +121,97 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           <View
             style={
               {
-                "flexDirection": "row",
+                "alignSelf": "flex-start",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "height": 24,
-                "justifyContent": "flex-start",
+                "justifyContent": "center",
+                "maxWidth": 204,
+                "width": "100%",
               }
             }
           >
             <View
+              accessibilityLabel="Progression du questionnaire culturel"
+              accessibilityRole="progressbar"
+              accessibilityValue={
+                {
+                  "max": 100,
+                  "min": 0,
+                  "now": 0,
+                  "text": "0%",
+                }
+              }
+              accessible={true}
+              labelPosition="right"
               style={
                 {
-                  "alignSelf": "center",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "maxWidth": 204,
+                  "width": "100%",
                 }
               }
             >
               <View
-                accessibilityLabel="Barre de progression : 0%"
-                accessibilityRole="progressbar"
-                accessible={true}
+                labelPosition="right"
                 style={
                   {
                     "alignItems": "center",
                     "flexDirection": "row",
-                    "maxHeight": 40,
+                    "gap": 12,
+                    "width": "100%",
                   }
                 }
               >
                 <View
-                  height={1.5}
                   style={
                     {
+                      "backgroundColor": "#f1f1f4",
                       "borderBottomLeftRadius": 999,
                       "borderBottomRightRadius": 999,
-                      "borderColor": "#cbcdd2",
-                      "borderStyle": "solid",
+                      "borderColor": "#90949d",
                       "borderTopLeftRadius": 999,
                       "borderTopRightRadius": 999,
                       "borderWidth": 1,
                       "flexBasis": 0,
-                      "flexDirection": "row",
                       "flexGrow": 1,
                       "flexShrink": 1,
-                      "height": 6,
-                      "zIndex": 1,
+                      "height": 8,
+                      "overflow": "hidden",
                     }
                   }
+                  testID="progress-bar-track"
                 >
                   <View
+                    progressRatio={0}
                     style={
                       {
                         "backgroundColor": "#6123df",
-                        "flexBasis": 0,
-                        "flexGrow": 0,
-                        "flexShrink": 1,
+                        "borderBottomLeftRadius": 999,
+                        "borderBottomRightRadius": 999,
+                        "borderTopLeftRadius": 999,
+                        "borderTopRightRadius": 999,
+                        "height": "100%",
+                        "width": "0%",
                       }
                     }
-                    testID="progress-bar"
+                    testID="progress-bar-progress"
                   />
                 </View>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "alignSelf": "center",
-                }
-              }
-            >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "marginLeft": 8,
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexShrink": 0,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                    }
                   }
-                }
-              >
-                0%
-              </Text>
+                  testID="progress-bar-label"
+                >
+                  0%
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -1886,6 +1894,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
   </RCTScrollView>
   <BVLinearGradient
     bottomViewHeight={0}
+    collapsable={false}
     colors={
       [
         16777215,
@@ -1912,17 +1921,13 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       }
     }
     style={
-      [
-        {
-          "bottom": 0,
-          "height": 120,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-        },
-        {},
-        {},
-      ]
+      {
+        "bottom": 0,
+        "height": 120,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+      }
     }
   />
   <View

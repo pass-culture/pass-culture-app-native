@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Animated } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
@@ -9,19 +10,29 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { Bell } from 'ui/svg/icons/Bell'
 import { Share } from 'ui/svg/icons/Share'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
   venue: VenueResponse
+  enableVenueFakeDoor?: boolean
+  onPressFollowButton: () => void
 }
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
-export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
+export const VenueHeader: React.FC<Props> = ({
+  headerTransition,
+  venue,
+  enableVenueFakeDoor,
+  onPressFollowButton,
+}) => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
+  const [showSmallSubscriptionButton, setShowSmallSubscriptionButton] = useState(false)
 
   const { share: shareVenue, shareContent } = getShareVenue({ venue, utmMedium: 'header' })
   const {
@@ -36,6 +47,21 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
     showShareVenueModal()
   }
 
+  useEffect(() => {
+    const listenerId = headerTransition.addListener(({ value }) => {
+      setShowSmallSubscriptionButton(value > 0.5)
+    })
+    return () => {
+      headerTransition.removeListener(listenerId)
+    }
+  }, [headerTransition])
+
+  const smallSubscribeButtonOpacity = headerTransition.interpolate({
+    inputRange: [0.5, 1],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  })
+
   return (
     <React.Fragment>
       <ContentHeader
@@ -44,14 +70,28 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
         onBackPress={goBack}
         titleTestID="venueHeaderName"
         RightElement={
-          <Button
-            iconButton
-            icon={Share}
-            onPress={onSharePress}
-            accessibilityLabel="Partager"
-            variant="secondary"
-            color="neutral"
-          />
+          <ButtonsContainer gap={3}>
+            {enableVenueFakeDoor && showSmallSubscriptionButton ? (
+              <Animated.View style={{ opacity: smallSubscribeButtonOpacity }}>
+                <Button
+                  iconButton
+                  icon={Bell}
+                  onPress={onPressFollowButton}
+                  accessibilityLabel="Suivre le lieu"
+                  variant="secondary"
+                  color="neutral"
+                />
+              </Animated.View>
+            ) : null}
+            <Button
+              iconButton
+              icon={Share}
+              onPress={onSharePress}
+              accessibilityLabel="Partager"
+              variant="secondary"
+              color="neutral"
+            />
+          </ButtonsContainer>
         }
       />
       {shareContent ? (
@@ -65,3 +105,7 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
     </React.Fragment>
   )
 }
+
+const ButtonsContainer = styled(ViewGap)({
+  flexDirection: 'row',
+})

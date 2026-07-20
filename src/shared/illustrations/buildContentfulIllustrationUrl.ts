@@ -1,6 +1,6 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-const contentfulIllustrationNames = [
+export const contentfulIllustrationNames = [
   'museum',
   'art',
   'onlineEvent',
@@ -12,6 +12,7 @@ const contentfulIllustrationNames = [
   'game',
   'cinema',
   'media&press',
+  'free',
 ] as const
 
 export type ContentfulIllustrationName = (typeof contentfulIllustrationNames)[number]

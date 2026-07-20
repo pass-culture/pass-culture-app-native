@@ -100,6 +100,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
             euroToPacificFrancRate,
             analyticsFrom,
             artistName: artist.name,
+            originDetails: 'artistRecommendation',
             theme,
             hasSmallLayout: true,
             priceDisplay: (item: Offer) =>

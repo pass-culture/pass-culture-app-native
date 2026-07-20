@@ -46,8 +46,13 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import {
+  locationActions,
+  useLocationConfiguration,
+  useLocationMode,
+  usePlace,
+} from 'libs/locationV2/location.store'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
@@ -119,8 +124,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isRefetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
-  const { geolocPosition, selectedLocationMode, setSelectedLocationMode, selectedPlace, setPlace } =
-    useLocation()
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const selectedLocationMode = useLocationMode()
+  const { setLocationMode: setSelectedLocationMode, setPlace } = locationActions
+  const selectedPlace = usePlace()
   const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH

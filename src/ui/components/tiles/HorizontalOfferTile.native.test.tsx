@@ -9,6 +9,11 @@ import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { UserProps } from 'libs/location/getDistance'
 import { LocationMode, Position } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
@@ -73,10 +78,16 @@ const AROUND_PLACE_POSITION: Props = {
   selectedPlace: { ...DEFAULT_SELECTED_PLACE, type: 'housenumber' },
 }
 
-const mockUseLocation = jest.fn(() => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+const setupLocation = ({ selectedPlace, selectedLocationMode, geolocPosition }: Props) => {
+  useLocationV2.setState(defaultLocationState)
+  if (geolocPosition) {
+    locationActions.setGeolocPosition(geolocPosition)
+  }
+  if (selectedPlace) {
+    locationActions.setPlace(selectedPlace)
+  }
+  locationActions.setLocationMode(selectedLocationMode)
+}
 
 const defaultProps = {
   offer: mockOffer,
@@ -89,6 +100,7 @@ jest.useFakeTimers()
 describe('HorizontalOfferTile component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
+    useLocationV2.setState(defaultLocationState)
   })
 
   it('should navigate to the offer when pressing an offer', async () => {
@@ -230,7 +242,7 @@ describe('HorizontalOfferTile component', () => {
 
       describe('user has chosen FranceEntière', () => {
         beforeEach(() => {
-          mockUseLocation.mockReturnValue(EVERYWHERE_USER_POSITION)
+          setupLocation(EVERYWHERE_USER_POSITION)
         })
 
         it('should not show distance', async () => {
@@ -244,7 +256,7 @@ describe('HorizontalOfferTile component', () => {
 
       describe('user has chosen FranceEntière but has geolocation activated', () => {
         beforeEach(() => {
-          mockUseLocation.mockReturnValue(EVERYWHERE_WITH_GEOLOC_USER_POSITION)
+          setupLocation(EVERYWHERE_WITH_GEOLOC_USER_POSITION)
         })
 
         it('should show distance', async () => {
@@ -259,7 +271,7 @@ describe('HorizontalOfferTile component', () => {
 
     describe('user has chosen FranceEntière but has geolocation activated', () => {
       beforeEach(() => {
-        mockUseLocation.mockReturnValue(EVERYWHERE_WITH_GEOLOC_USER_POSITION)
+        setupLocation(EVERYWHERE_WITH_GEOLOC_USER_POSITION)
       })
 
       it('should not show distance', async () => {
@@ -273,7 +285,7 @@ describe('HorizontalOfferTile component', () => {
 
     describe('user has chosen geolocation', () => {
       beforeEach(() => {
-        mockUseLocation.mockReturnValue(AROUND_ME_POSITION)
+        setupLocation(AROUND_ME_POSITION)
       })
 
       it('should show distance', async () => {
@@ -285,7 +297,7 @@ describe('HorizontalOfferTile component', () => {
 
     describe('user has an unprecise location (type municipality or locality)', () => {
       beforeEach(() => {
-        mockUseLocation.mockReturnValue(MUNICIPALITY_AROUND_PLACE_POSITION)
+        setupLocation(MUNICIPALITY_AROUND_PLACE_POSITION)
       })
 
       it('should not show distance', async () => {
@@ -299,7 +311,7 @@ describe('HorizontalOfferTile component', () => {
 
     describe('user has a precise location (type housenumber or street)', () => {
       beforeEach(() => {
-        mockUseLocation.mockReturnValue(AROUND_PLACE_POSITION)
+        setupLocation(AROUND_PLACE_POSITION)
       })
 
       it('should show distance', async () => {

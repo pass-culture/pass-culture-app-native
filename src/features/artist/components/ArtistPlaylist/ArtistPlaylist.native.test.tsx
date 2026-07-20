@@ -96,6 +96,7 @@ describe('ArtistPlaylist', () => {
       from: 'artist',
       isHeadline: false,
       offerId: '2',
+      originDetails: 'artistRecommendation',
       playlistType: PlaylistType.ARTIST_CATEGORY_PLAYLIST,
     })
   })

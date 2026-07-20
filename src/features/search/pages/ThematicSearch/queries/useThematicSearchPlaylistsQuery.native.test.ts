@@ -1,4 +1,9 @@
 import { LocationMode, Position } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { setSettingsMock } from 'tests/settings/mockSettings'
@@ -8,14 +13,7 @@ import { useThematicSearchPlaylistsQuery } from './useThematicSearchPlaylistsQue
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
 
 const defaultThematicSearchOffer = mockBuilder.searchResponseOffer({})
 
@@ -28,6 +26,12 @@ setSettingsMock({ patchSettingsWith: { objectStorageUrl: undefined } }) // Avoid
 const PLAYLISTS_TITLES = ['Titre de la playlist - 1', 'Titre de la playlist - 2']
 
 describe('useThematicSearchPlaylists', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+    locationActions.setGeolocPosition(mockUserLocation)
+  })
+
   it('should fetch thematic search playlists offers', async () => {
     renderHook(
       () =>

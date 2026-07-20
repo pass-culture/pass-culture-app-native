@@ -1,6 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { VerticalPlaylistOffers } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffers'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -42,11 +48,12 @@ jest.mock('features/venue/helpers/useVenueSearchParameters', () => ({
   useVenueSearchParameters: () => ({}),
 }))
 
-jest.mock('libs/location/location', () => ({
-  useLocation: () => ({ userLocation: null, selectedLocationMode: 'AROUND_ME' }),
-}))
-
 describe('VerticalPlaylistOffers', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+  })
+
   it('should render VerticalPlaylistOffersModule', () => {
     useRoute.mockReturnValueOnce({
       params: { type: VerticalPlaylist.ModuleOffers, module: { title: 'Module playlist' } },

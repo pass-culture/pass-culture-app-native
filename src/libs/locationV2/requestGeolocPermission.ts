@@ -1,3 +1,4 @@
+import { navigationRef } from 'features/navigation/navigationRef'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { locationActions } from 'libs/locationV2/location.store'
@@ -17,6 +18,6 @@ export const requestGeolocPermission = async (params: { onSuccess?: () => void }
     return params.onSuccess?.()
   }
   if (permission === GeolocPermissionState.NEVER_ASK_AGAIN) {
-    locationActions.showPermissionModal()
+    navigationRef.navigate('GeolocationActivationModal')
   }
 }

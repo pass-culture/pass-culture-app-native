@@ -1,15 +1,21 @@
 import React from 'react'
 
-import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native'
+import { useNavigationState } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
+import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates } from 'libs/location/location'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -28,26 +34,17 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-const mockSetSelectedLocationMode = jest.fn()
-const initialMockUseLocation = {
-  geolocPosition: DEFAULT_POSITION,
-  place: null,
-  userLocation: DEFAULT_POSITION,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  aroundMeRadius: DEFAULT_RADIUS,
-  setSelectedLocationMode: mockSetSelectedLocationMode,
-  hasGeolocPosition: false,
-  setSelectedPlace: jest.fn(),
-  setAroundMeRadius: jest.fn(),
-  aroundPlaceRadius: DEFAULT_RADIUS,
-  setPlace: jest.fn(),
+
+const setupAroundMeLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setGeolocPosition(DEFAULT_POSITION)
+  locationActions.setLocationMode(LocationMode.AROUND_ME)
 }
-const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
-  () => initialMockUseLocation
-)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+
+const setupEverywhereLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setLocationMode(LocationMode.EVERYWHERE)
+}
 
 const mockData = PLACEHOLDER_DATA
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
@@ -82,19 +79,22 @@ jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
+const resetSearchStateWithAroundMe: SearchState = {
+  ...initialSearchState,
+  locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+}
+
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
+    setupAroundMeLocation()
   })
 
   it('should render correctly', async () => {
     mockUseSearch.mockReturnValueOnce({
       ...initialMockUseSearch,
-      searchState: {
-        ...initialSearchState,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-      },
+      searchState: resetSearchStateWithAroundMe,
     })
     renderSearchFilter()
 
@@ -105,77 +105,20 @@ describe('<SearchFilter/>', () => {
     })
   })
 
-  it('should reset search when pressing reset button and use back button', async () => {
+  it('should navigate with default filters when pressing back button', async () => {
     mockUseSearch.mockReturnValueOnce({
       ...initialMockUseSearch,
-      searchState: {
-        ...initialSearchState,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-        minPrice: 5,
-      },
+      searchState: resetSearchStateWithAroundMe,
     })
     renderSearchFilter()
 
     await screen.findByText('Filtres')
-    await user.press(screen.getByText('Réinitialiser'))
-
     await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockNavigateToSearch).toHaveBeenCalledWith(
-      initialSearchState,
+      resetSearchStateWithAroundMe,
       defaultDisabilitiesProperties
     )
-  })
-
-  it('should setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has a geolocposition', async () => {
-    // we mock globally due to many renders
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseLocation.mockReturnValue({
-      ...initialMockUseLocation,
-      selectedLocationMode: LocationMode.EVERYWHERE,
-      hasGeolocPosition: true,
-    })
-
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_ME,
-        },
-      },
-    })
-
-    renderSearchFilter()
-
-    await screen.findByText('Filtres')
-
-    await waitFor(() => {
-      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
-    })
-
-    // we reset the mock to its initial state
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseLocation.mockReturnValue(initialMockUseLocation)
-  })
-
-  it("shouldn't setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has no geolocposition", async () => {
-    mockUseLocation.mockReturnValueOnce({
-      ...initialMockUseLocation,
-      hasGeolocPosition: false,
-      selectedLocationMode: LocationMode.EVERYWHERE,
-    })
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_ME,
-        },
-      },
-    })
-
-    renderSearchFilter()
-
-    await screen.findByText('Filtres')
-
-    expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
   })
 
   describe('should update the SearchState, but keep the query, when pressing the reset button, and position', () => {
@@ -187,10 +130,7 @@ describe('<SearchFilter/>', () => {
 
       expect(mockStateDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
-        payload: {
-          ...initialSearchState,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-        },
+        payload: resetSearchStateWithAroundMe,
       })
     })
 
@@ -200,16 +140,11 @@ describe('<SearchFilter/>', () => {
           ...initialMockUseSearch,
           searchState: { ...initialSearchState, minPrice: 10 },
         })
-        mockUseLocation.mockReturnValue({
-          ...initialMockUseLocation,
-          geolocPosition: undefined,
-          userLocation: undefined,
-          selectedLocationMode: LocationMode.EVERYWHERE,
-        })
+        setupEverywhereLocation()
       })
 
       afterEach(() => {
-        mockUseLocation.mockReturnValue(initialMockUseLocation)
+        setupAroundMeLocation()
         mockUseSearch.mockReturnValue(initialMockUseSearch)
       })
 

@@ -132,29 +132,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             }
           >
             <View
-              collapsable={false}
-              jestAnimatedProps={
-                {
-                  "value": {},
-                }
-              }
-              jestAnimatedStyle={
-                {
-                  "value": {},
-                }
-              }
-              jestInlineStyle={
+              style={
                 {
                   "flexShrink": 0,
                 }
-              }
-              nativeID="0"
-              style={
-                [
-                  {
-                    "flexShrink": 0,
-                  },
-                ]
               }
             >
               <View
@@ -2397,6 +2378,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -2682,6 +2664,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -2823,6 +2806,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -2964,6 +2948,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -3105,6 +3090,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {
@@ -3246,6 +3232,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <View>
                       <View
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         importantForAccessibility="no"
                         style={
                           {

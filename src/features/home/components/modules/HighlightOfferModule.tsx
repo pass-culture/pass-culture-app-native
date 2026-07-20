@@ -7,7 +7,7 @@ import { getLocalizationCompliance } from 'features/home/components/modules/busi
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { useLocation } from 'libs/location/useLocation'
+import { useUserLocation } from 'libs/locationV2/location.store'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
@@ -39,7 +39,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     isGeolocated,
     aroundRadius,
   })
-  const { userLocation: position } = useLocation()
+  const position = useUserLocation()
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({

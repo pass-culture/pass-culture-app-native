@@ -1,7 +1,6 @@
 import { CurrencyEnum } from 'api/gen'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useLocation } from 'libs/location/location'
-import { UseLocationReturnType } from 'libs/location/types'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { getCurrencyFromParam } from 'shared/currency/getCurrencyParam'
 import { renderHook } from 'tests/utils/web'
 
@@ -10,15 +9,12 @@ import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
 jest.mock('shared/currency/getCurrencyParam')
 const mockGetCurrencyFromParam = jest.mocked(getCurrencyFromParam)
 
-jest.mock('libs/location/location')
-const mockUseGeolocation = jest.mocked(useLocation)
-
 jest.mock('features/auth/context/AuthContext')
 
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockUseGeolocation.mockReturnValue({ userLocation: null } as UseLocationReturnType)
+    useLocationV2.setState(defaultLocationState)
   })
 
   describe('when currency params is provided', () => {

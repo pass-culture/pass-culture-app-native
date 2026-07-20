@@ -8,7 +8,12 @@ import { BookPlaylists } from 'features/search/pages/ThematicSearch/Book/BookPla
 import { env } from 'libs/environment/__mocks__/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { LocationMode, Position } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -20,15 +25,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
-const mockLocationMode = LocationMode.AROUND_ME
-const mockUserLocation: Position = { latitude: 2, longitude: 2 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockUserLocation,
-    selectedLocationMode: mockLocationMode,
-  }),
-}))
 
 const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   data: gtlPlaylistAlgoliaSnapshot,
@@ -67,6 +63,9 @@ const DEFAULT_PLAYLIST_TITLE = 'GTL playlist'
 
 describe('BookPlaylists', () => {
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition({ latitude: 2, longitude: 2 })
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     setFeatureFlags([])
   })
 

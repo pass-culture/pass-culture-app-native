@@ -15,9 +15,6 @@ There are two types of deployments: **soft** and **hard**:
 
 Deployments are triggered using tags and pushing them to the remote repository. The CI detects if the tag contains a certain keyword (for example `patch` or `prod-hard-deploy`) and starts the appropriate deployment.
 
-## Testing
-
-You can review & download the **testing** apps on AppCenter for [iOS][2] & [Android][3] of using this [url][4].
 
 ### ⚡️ Soft deploy (automatic)
 
@@ -33,10 +30,6 @@ If you modified native code, you need to hard deploy:
 
 This will bump the patch number, create a tag `testing/vX.X.X+1` and push it.
 The **CI** will detect the tag and launch the lanes [`hard-deploy-android-testing`](../../.github/workflows/dev_on_push_workflow_main.yml#L133) & [`dhard-eploy-ios-testing`](../../.github/workflows/dev_on_push_workflow_main.yml#L143).
-
-## Staging (MES)
-
-You can review & download the **staging** apps on AppCenter for [iOS][5] & [Android][6] of using this [url][7].
 
 ### Hard deploy
 
@@ -81,10 +74,6 @@ This will create a tag `prod-hard-deploy`. The CI will detect the tag and launch
 The builds for iOS and Android were already generated at the MES time and are available on the Google Play Console and App Store Connect interfaces.
 
 [1]: https://www.notion.so/passcultureapp/Processus-d-ploiement-MES-MEP-App-Native-bc75cbf31d6146ee88c8c031eb14b655
-[2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
-[3]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
 [4]: https://app.testing.passculture.team/accueil
-[5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
-[6]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
 [7]: https://app.staging.passculture.team/accueil
 [8]: https://github.com/pass-culture/pass-culture-app-native/actions/workflows/jira_create_and_push_staging_testing_deploy_tags.yml

@@ -1,17 +1,13 @@
 import { OffersModuleParameters } from 'features/home/types'
 import * as parseSearchParametersAPI from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistParameters'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
 const mockMaxPrice = 172_00
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => mockMaxPrice),
-}))
-
-const mockPosition = undefined
-jest.mock('libs/location/location', () => ({
-  useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
 }))
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
@@ -28,6 +24,10 @@ describe('useAdaptOffersPlaylistParameters', () => {
     parseSearchParametersAPI,
     'adaptOffersPlaylistParameters'
   )
+
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
 
   it('should set price max parameter when not provided', () => {
     const parameters = {} as OffersModuleParameters

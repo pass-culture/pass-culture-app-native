@@ -78,7 +78,6 @@ coverage/
 
 # @react-native-config codegen
 ios/react-native-config.xcconfig
-ios/envfile
 
 # Deploy
 android/keystores/*
@@ -89,6 +88,7 @@ fastlane/playStoreServiceAccount.json
 # local settings
 .env.development
 .env.local
+.env
 
 # Google service
 google-services.json
@@ -144,3 +144,6 @@ storybook-static
 
 # ssl certificates
 proxy_cacert
+
+# claude
+CLAUDE.md

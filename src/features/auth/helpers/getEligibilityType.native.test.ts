@@ -41,6 +41,42 @@ describe('getEligibilityType', () => {
   })
 
   describe('ELIGIBLE V2', () => {
+    it('should return ELIGIBLE_CREDIT_V2_15', () => {
+      mockedGetAge.mockReturnValueOnce(15)
+
+      const result = getEligibilityType(
+        buildUser({
+          eligibility: EligibilityType.underage,
+        })
+      )
+
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_15)
+    })
+
+    it('should return ELIGIBLE_CREDIT_V2_16', () => {
+      mockedGetAge.mockReturnValueOnce(16)
+
+      const result = getEligibilityType(
+        buildUser({
+          eligibility: EligibilityType.underage,
+        })
+      )
+
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_16)
+    })
+
+    it('should return ELIGIBLE_CREDIT_V2_17', () => {
+      mockedGetAge.mockReturnValueOnce(17)
+
+      const result = getEligibilityType(
+        buildUser({
+          eligibility: EligibilityType.underage,
+        })
+      )
+
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_17)
+    })
+
     it('should return ELIGIBLE_CREDIT_V2_18', () => {
       const result = getEligibilityType(buildUser({ eligibility: EligibilityType['age-18'] }))
 
@@ -94,7 +130,7 @@ describe('getEligibilityType', () => {
   })
 
   describe('ELIGIBLE UNKNOWN', () => {
-    it('should return ELIGIBLE_UNKNOWN by default', () => {
+    it('should return ELIGIBLE_UNKNOWN for an unsupported eligibility', () => {
       const result = getEligibilityType(buildUser())
 
       expect(result).toBe(UserEligibilityType.ELIGIBLE_UNKNOWN)

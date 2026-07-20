@@ -13,7 +13,13 @@ import {
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location/location'
+import { GeoCoordinates } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -21,21 +27,15 @@ const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries').mo
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
-const mockPositionError = null as GeolocationError | null
-const mockUserLocation = null as GeoCoordinates | null
-const defaultUseLocation = {
-  permissionState: GeolocPermissionState.GRANTED,
-  geolocPosition: DEFAULT_POSITION,
-  geolocPositionError: mockPositionError,
-  triggerPositionUpdate: jest.fn(),
-  showGeolocPermissionModal: jest.fn(),
-  userLocation: mockUserLocation,
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
+
+const setupUserLocation = (userLocation: GeoCoordinates | null) => {
+  useLocationV2.setState(defaultLocationState)
+  if (userLocation) {
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
+    locationActions.setGeolocPosition(userLocation)
+  }
 }
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 const setVenuesSpy = jest.spyOn(useVenueMapStore, 'setVenues')
 
@@ -67,6 +67,11 @@ jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () 
 jest.useFakeTimers()
 
 describe('useSearchResults', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition(DEFAULT_POSITION)
+  })
+
   describe('useSearchInfiniteQuery', () => {
     it('should fetch offers, venues and duplicated offers', async () => {
       renderUseSearchResults()
@@ -75,6 +80,8 @@ describe('useSearchResults', () => {
         expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
           {
             indexName: 'algoliaOffersIndexName',
+            aroundLatLng: '66, 66',
+            aroundRadius: 'all',
             attributesToHighlight: [],
             attributesToRetrieve: offerAttributesToRetrieve,
             clickAnalytics: true,
@@ -106,6 +113,8 @@ describe('useSearchResults', () => {
           },
           {
             indexName: 'algoliaOffersIndexName',
+            aroundLatLng: '66, 66',
+            aroundRadius: 'all',
             attributesToHighlight: [],
             attributesToRetrieve: offerAttributesToRetrieve,
             clickAnalytics: true,
@@ -120,6 +129,8 @@ describe('useSearchResults', () => {
           },
           {
             indexName: 'algoliaOffersIndexName',
+            aroundLatLng: '66, 66',
+            aroundRadius: 'all',
             attributesToRetrieve: ['artists'],
             facetFilters: [['offer.isEducational:false']],
             hitsPerPage: 100,
@@ -178,7 +189,10 @@ describe('useSearchResults', () => {
     describe('When user share his location and received venues from Algolia', () => {
       beforeAll(() => {
         fetchSearchResultsSpy.mockResolvedValueOnce(mockFetchSearchResultsResponse)
-        mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
+      })
+
+      beforeEach(() => {
+        setupUserLocation(DEFAULT_POSITION)
       })
 
       it('should set initial venues', async () => {
@@ -204,7 +218,10 @@ describe('useSearchResults', () => {
             userData: null,
           },
         })
-        mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
+      })
+
+      beforeEach(() => {
+        setupUserLocation(DEFAULT_POSITION)
       })
 
       it('should set initial venues as empty array', async () => {
@@ -219,7 +236,6 @@ describe('useSearchResults', () => {
     describe('When user not share his location and received venues from Algolia', () => {
       beforeAll(() => {
         fetchSearchResultsSpy.mockResolvedValueOnce(mockFetchSearchResultsResponse)
-        mockUseLocation.mockReturnValue({ ...defaultUseLocation })
       })
 
       it('should set initial venues as empty array', async () => {

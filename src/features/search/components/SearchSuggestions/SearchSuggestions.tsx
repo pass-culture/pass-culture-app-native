@@ -21,7 +21,12 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  useLocationConfiguration,
+  useLocationMode,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 
@@ -45,8 +50,12 @@ export const SearchSuggestions = ({
 }: SearchSuggestionsParams) => {
   const { navigate, setOptions } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
-  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius, geolocPosition } =
-    useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundMeRadius, geolocation: geolocPosition } = useLocationConfiguration(
+    LocationMode.AROUND_ME
+  )
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const { venue } = searchState
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const shouldDisplayArtistsSuggestions = useFeatureFlag(

@@ -2,14 +2,16 @@ import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useLocation } from 'libs/location/location'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { renderHook } from 'tests/utils'
 
 import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
 
-jest.mock('libs/location/location')
-const mockUseGeolocation = jest.mocked(useLocation)
 const NOUMEA_DEFAULT_POSITION = { longitude: 166.445742, latitude: -22.26308 }
 const PARIS_DEFAULT_POSITION = { latitude: 48.859, longitude: 2.347 }
 
@@ -19,7 +21,7 @@ const mockUseAuthContext = jest.mocked(useAuthContext)
 describe('useGetCurrencyToDisplay', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockUseGeolocation.mockReturnValue({ userLocation: null } as UseLocationReturnType)
+    useLocationV2.setState(defaultLocationState)
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       user: undefined,
@@ -37,11 +39,7 @@ describe('useGetCurrencyToDisplay', () => {
 
   describe('when location mode is EVERYWHERE', () => {
     beforeEach(() => {
-      mockUseGeolocation.mockReturnValue({
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        selectedPlace: null,
-      } as UseLocationReturnType)
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
     })
 
     it('should return Euro when displayFormat is "short"', () => {
@@ -77,16 +75,13 @@ describe('useGetCurrencyToDisplay', () => {
 
   describe('when selectedPlace is defined in New Caledonia and location mode is EVERYWHERE', () => {
     beforeEach(() => {
-      mockUseGeolocation.mockReturnValue({
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        selectedPlace: {
-          type: 'municipality',
-          label: 'Nouméa',
-          info: 'Nouvelle-Calédonie',
-          geolocation: NOUMEA_DEFAULT_POSITION,
-        },
-      } as UseLocationReturnType)
+      locationActions.setPlace({
+        type: 'municipality',
+        label: 'Nouméa',
+        info: 'Nouvelle-Calédonie',
+        geolocation: NOUMEA_DEFAULT_POSITION,
+      })
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
     })
 
     it('should return Euro when displayFormat is "short"', () => {
@@ -104,16 +99,13 @@ describe('useGetCurrencyToDisplay', () => {
 
   describe('when user is not connected and location is outside New Caledonia', () => {
     beforeEach(() => {
-      mockUseGeolocation.mockReturnValue({
-        userLocation: PARIS_DEFAULT_POSITION,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-        selectedPlace: {
-          type: 'municipality',
-          label: 'Paris',
-          info: 'Paris',
-          geolocation: PARIS_DEFAULT_POSITION,
-        },
-      } as UseLocationReturnType)
+      locationActions.setPlace({
+        type: 'municipality',
+        label: 'Paris',
+        info: 'Paris',
+        geolocation: PARIS_DEFAULT_POSITION,
+      })
+      locationActions.setLocationMode(LocationMode.AROUND_PLACE)
     })
 
     it('should return Euro when displayFormat is "short"', () => {
@@ -131,16 +123,13 @@ describe('useGetCurrencyToDisplay', () => {
 
   describe('when user is not connected and location is in New Caledonia', () => {
     beforeEach(() => {
-      mockUseGeolocation.mockReturnValue({
-        userLocation: NOUMEA_DEFAULT_POSITION,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-        selectedPlace: {
-          type: 'municipality',
-          label: 'Nouméa',
-          info: 'Nouvelle-Calédonie',
-          geolocation: NOUMEA_DEFAULT_POSITION,
-        },
-      } as UseLocationReturnType)
+      locationActions.setPlace({
+        type: 'municipality',
+        label: 'Nouméa',
+        info: 'Nouvelle-Calédonie',
+        geolocation: NOUMEA_DEFAULT_POSITION,
+      })
+      locationActions.setLocationMode(LocationMode.AROUND_PLACE)
     })
 
     it('should return Pacific Franc short ("F") when displayFormat is "short"', () => {

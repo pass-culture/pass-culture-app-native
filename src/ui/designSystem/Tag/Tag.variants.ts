@@ -8,6 +8,7 @@ import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
+import { SceneClubCertification } from 'ui/svg/SceneClubCertification'
 import { Star } from 'ui/svg/Star'
 
 export const variantBackground = {
@@ -18,6 +19,7 @@ export const variantBackground = {
   [TagVariant.NEW]: 'brandPrimary',
   [TagVariant.BOOKCLUB]: 'bookclub',
   [TagVariant.CINECLUB]: 'cineclub',
+  [TagVariant.SCENECLUB]: 'sceneClub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'subtle',
   [TagVariant.PROEDITO]: 'proEdito',
@@ -30,6 +32,7 @@ export const variantIconColor = {
   [TagVariant.ERROR]: 'error',
   [TagVariant.BOOKCLUB]: 'bookclub',
   [TagVariant.CINECLUB]: 'cineclub',
+  [TagVariant.SCENECLUB]: 'sceneClub',
   [TagVariant.HEADLINE]: 'headline',
   [TagVariant.LIKE]: 'brandPrimary',
   [TagVariant.PROEDITO]: 'proEdito',
@@ -42,6 +45,7 @@ export const variantLabelColor = {
 export const variantIcons = {
   [TagVariant.BOOKCLUB]: BookClubCertification,
   [TagVariant.CINECLUB]: CineClubCertification,
+  [TagVariant.SCENECLUB]: SceneClubCertification,
   [TagVariant.HEADLINE]: Star,
   [TagVariant.LIKE]: ThumbUpFilled,
   [TagVariant.PROEDITO]: ProEditoCertification,

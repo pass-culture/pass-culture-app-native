@@ -9,9 +9,11 @@ import React, {
 } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
+import { loadSearchFiltersFromUrl } from 'features/search/store/loadSearchFiltersFromUrl'
+import { searchStore } from 'features/search/store/search.store'
 import { SearchState } from 'features/search/types'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration, useLocationMode, usePlace } from 'libs/locationV2/location.store'
 
 export interface ISearchContext {
   searchState: SearchState
@@ -30,12 +32,27 @@ export const SearchWrapper = memo(function SearchWrapper({
   children: React.JSX.Element
 }) {
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
-  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const place = usePlace()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
 
   const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
   const showSuggestions = useCallback(() => setIsFocusOnSuggestions(true), [])
   const hideSuggestions = useCallback(() => setIsFocusOnSuggestions(false), [])
 
+  // duplicates the search state in the store to use it outside of the context
+  // TODO(PC-42708): use the store directly instead of the context
+  useEffect(() => {
+    searchStore.actions.setParams(searchState)
+  }, [searchState])
+
+  // TODO(PC-42708): move in App.tsx and App.web.tsx
+  useEffect(() => {
+    void loadSearchFiltersFromUrl(dispatch)
+  }, [])
+
+  // TODO(PC-42708): subscribe to location store to observe the changes
   useEffect(() => {
     switch (selectedLocationMode) {
       case LocationMode.AROUND_ME:

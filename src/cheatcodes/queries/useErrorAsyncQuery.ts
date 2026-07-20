@@ -9,7 +9,7 @@ export const useErrorAsyncQuery = (
   asyncTestReqCount: number,
   setAsyncTestReqCount: React.Dispatch<React.SetStateAction<number>>
 ) => {
-  async function errorAsync() {
+  const errorAsync = async () => {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', {

@@ -28,7 +28,8 @@ export function ConfirmChangeEmail() {
     }) => {
       await loginRoutine(
         { accessToken, refreshToken, accountState: AccountState.ACTIVE },
-        'fromConfirmChangeEmail'
+        'fromConfirmChangeEmail',
+        'email_change'
       )
 
       if (resetPasswordToken) {

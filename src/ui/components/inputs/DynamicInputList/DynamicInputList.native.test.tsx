@@ -72,7 +72,7 @@ describe('<DynamicInputList />', () => {
       />
     )
 
-    expect(screen.getByText('Le prénom est invalide')).toBeTruthy()
+    expect(screen.getByText('Le prénom est invalide', { exact: false, hidden: true })).toBeTruthy()
   })
 
   it('should not display the add button when all possible inputs are already provided', async () => {

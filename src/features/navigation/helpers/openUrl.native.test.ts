@@ -15,23 +15,19 @@ jest.mock('features/navigation/navigators/RootNavigator/linking/linking')
 jest.mock('libs/firebase/analytics/analytics')
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
+const mockDefaultBrowserOpenUrl = jest.spyOn(NativeModules.DefaultBrowserModule, 'openUrl')
 
 const getScreenFromDeeplinkModuleSpy = jest.spyOn(
   getScreenFromDeeplinkModule,
   'getScreenFromDeeplink'
 )
 
-jest.mock('react-native', () => {
-  const RN = jest.requireActual('react-native')
-  // jest does not have access to NativeModules, so we need to mock them
-  RN.NativeModules.DefaultBrowserModule = { openUrl: jest.fn() }
-
-  return RN
-})
-
 describe('openUrl', () => {
   afterEach(() => {
+    mockDefaultBrowserOpenUrl.mockReset()
     openURLSpy.mockReset()
+    canOpenURLSpy.mockReset()
     // ios is the default value for native tests
     Platform.OS = 'ios'
   })
@@ -39,12 +35,13 @@ describe('openUrl', () => {
   describe('ExternalUrl', () => {
     it('should open links on browser using custom module on Android', async () => {
       Platform.OS = 'android'
+      canOpenURLSpy.mockResolvedValueOnce(true)
 
       const link = 'https://www.google.com'
       await openUrl(link)
       await act(() => {})
 
-      expect(NativeModules.DefaultBrowserModule.openUrl).toHaveBeenCalledWith(link)
+      expect(mockDefaultBrowserOpenUrl).toHaveBeenCalledWith(link)
     })
 
     it('should open links on browser using Linking when url is invalid on Android', async () => {

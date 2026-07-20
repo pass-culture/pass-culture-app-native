@@ -1,5 +1,5 @@
 import React from 'react'
-import { LayoutChangeEvent, Platform } from 'react-native'
+import { LayoutChangeEvent, Platform, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
@@ -12,8 +12,8 @@ import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-export const SUBCATEGORY_BUTTON_HEIGHT = 56
-export const SUBCATEGORY_BUTTON_WIDTH = 156
+const SUBCATEGORY_BUTTON_HEIGHT = 56
+const SUBCATEGORY_BUTTON_WIDTH = 156
 
 export type SubcategoryButtonItem = SubcategoryButtonProps & {
   nativeCategory: NativeCategoryEnum
@@ -28,6 +28,8 @@ type SubcategoryButtonProps = {
   onBeforeNavigate: VoidFunction
   onLayout?: (event: LayoutChangeEvent) => void
   uniformHeight?: number
+  style?: StyleProp<ViewStyle>
+  fullWidth?: boolean
 }
 
 export const SubcategoryButton = ({
@@ -38,6 +40,8 @@ export const SubcategoryButton = ({
   onBeforeNavigate,
   onLayout,
   uniformHeight,
+  style,
+  fullWidth,
 }: SubcategoryButtonProps) => {
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
@@ -54,7 +58,9 @@ export const SubcategoryButton = ({
       backgroundColor={backgroundColor}
       borderColor={borderColor}
       onLayout={onLayout}
-      uniformHeight={uniformHeight}>
+      uniformHeight={uniformHeight}
+      fullWidth={fullWidth}
+      style={style}>
       <StyledText>{label}</StyledText>
     </StyledInternalTouchable>
   )
@@ -65,10 +71,11 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   backgroundColor: ColorsType
   borderColor: ColorsType
   uniformHeight?: number
-}>(({ theme, isFocus, backgroundColor, borderColor, uniformHeight }) => ({
+  fullWidth?: boolean
+}>(({ theme, isFocus, backgroundColor, borderColor, uniformHeight, fullWidth }) => ({
   flexDirection: 'row',
   backgroundColor,
-  width: theme.isMobileViewport ? SUBCATEGORY_BUTTON_WIDTH : '100%',
+  width: fullWidth || !theme.isMobileViewport ? '100%' : SUBCATEGORY_BUTTON_WIDTH,
   minHeight: uniformHeight ?? SUBCATEGORY_BUTTON_HEIGHT,
   borderColor,
   borderWidth: 1.6,
@@ -77,7 +84,8 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   ...customFocusOutline({ theme, isFocus }),
   textAlign: 'left',
   alignItems: 'center',
-  ...(Platform.OS === 'web' && { padding: theme.designSystem.size.spacing.s }),
+  paddingVertical: theme.designSystem.size.spacing.s,
+  ...(Platform.OS === 'web' && { paddingHorizontal: theme.designSystem.size.spacing.s }),
 }))
 
 const StyledText = styled(Typo.BodyAccentXs).attrs({

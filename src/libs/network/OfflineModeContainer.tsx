@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { Spacer, Typo } from 'ui/theme'
 
-const THIRTY_SECONDS = 15000
+const THIRTY_SECONDS = 15_000
 
 export function OfflineModeContainer({ children }: { children: ReactNode }) {
   const netInfo = useNetInfoContext()
@@ -17,7 +17,7 @@ export function OfflineModeContainer({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     isInternetReachable.current = netInfo.isInternetReachable
-    let timer: number | undefined
+    let timer: number
     if (isInternetReachable.current) {
       setShow(false)
     } else {

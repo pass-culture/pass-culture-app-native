@@ -35,6 +35,8 @@ const usePushPermissionSpy = jest.spyOn(usePushPermission, 'usePushPermission').
   refreshPermission: jest.fn(),
 })
 
+const openSettingsSpy = jest.spyOn(Linking, 'openSettings').mockResolvedValue(undefined)
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -330,7 +332,7 @@ describe('NotificationsSettings', () => {
       const openSettingsButton = await screen.findByLabelText('Autoriser les notifications')
       await user.press(openSettingsButton)
 
-      expect(Linking.openSettings).toHaveBeenCalledTimes(1)
+      expect(openSettingsSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should toggle push switch when permission is granted and user press it', async () => {

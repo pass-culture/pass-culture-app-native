@@ -4,6 +4,7 @@ import { styled } from 'styled-components/native'
 
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BonificationType } from 'features/bonification/enums'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
@@ -94,7 +95,11 @@ export const BonificationExplanations = () => {
             isLoading={false}
             accessibilityLabel="Continuer vers les informations requises"
             onPress={() =>
-              navigate(...getSubscriptionHookConfig('BonificationRequiredInformation'))
+              navigate(
+                ...getSubscriptionHookConfig('BonificationRequiredInformation', {
+                  bonificationType: BonificationType.FAMILY_QUOTIENT,
+                })
+              )
             }
           />
           <ExternalTouchableLink

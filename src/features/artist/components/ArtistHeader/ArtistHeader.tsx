@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArtistHeaderWrapper } from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
+import {
+  ArtistHeaderWrapper,
+  ArtistNameContainer,
+} from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -11,9 +14,10 @@ import { AVATAR_LARGE } from 'ui/theme/constants'
 type ArtistHeaderProps = {
   avatarImage?: string | null
   name: string
+  children?: React.ReactNode
 }
 
-export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
+export const ArtistHeader = ({ avatarImage, name, children }: ArtistHeaderProps) => {
   return (
     <ArtistHeaderWrapper gap={4}>
       <Avatar size={AVATAR_LARGE}>
@@ -23,7 +27,10 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
           <DefaultAvatar testID="defaultArtistAvatar" size={50} />
         )}
       </Avatar>
-      <ArtistName>{name}</ArtistName>
+      <ArtistNameContainer gap={2}>
+        <ArtistName>{name}</ArtistName>
+        {children}
+      </ArtistNameContainer>
     </ArtistHeaderWrapper>
   )
 }

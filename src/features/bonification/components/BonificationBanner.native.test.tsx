@@ -4,45 +4,66 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { QFBonificationStatus } from 'api/gen'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-setFeatureFlags([]) // After adding "navigate" in test, setFeatureFlag is required or else: "TypeError: docSnapshot.get is not a function" (maybe a FF is used in navigation?)
 
 describe('BonificationBanner', () => {
-  it('should show default banner', () => {
-    render(
-      reactQueryProviderHOC(
+  beforeEach(() => setFeatureFlags([]))
+
+  describe('default banner', () => {
+    it('should show banner', () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.eligible}
+            onCloseCallback={jest.fn()}
+          />
+        )
+      )
+
+      const bannerLabel = screen.getByLabelText(
+        'Bonus de 50 € - Tu es peut-être éligible à ce bonus, vérifie si tu y as droit.'
+      )
+
+      expect(bannerLabel).toBeOnTheScreen()
+    })
+
+    it('should hide banner when feature flag is enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST])
+      render(
         <BonificationBanner
           bonificationStatus={QFBonificationStatus.eligible}
           onCloseCallback={jest.fn()}
         />
       )
-    )
+      const bannerLabel = screen.queryByText(
+        'Bonus de 50 € - Tu es peut-être éligible à ce bonus, vérifie si tu y as droit.'
+      )
 
-    const bannerLabel = screen.getByLabelText(
-      'Bonus de 50 € - Tu es peut-être éligible à ce bonus, vérifie si tu y as droit.'
-    )
-
-    expect(bannerLabel).toBeOnTheScreen()
+      expect(bannerLabel).not.toBeOnTheScreen()
+    })
   })
 
-  it('should show pending banner when started', () => {
-    render(
-      reactQueryProviderHOC(
-        <BonificationBanner
-          bonificationStatus={QFBonificationStatus.started}
-          onCloseCallback={jest.fn()}
-        />
+  describe('pending banner', () => {
+    it('should show banner when started', () => {
+      render(
+        reactQueryProviderHOC(
+          <BonificationBanner
+            bonificationStatus={QFBonificationStatus.started}
+            onCloseCallback={jest.fn()}
+          />
+        )
       )
-    )
 
-    const bannerLabel = screen.getByLabelText(
-      'Bonus de 50 € - Ton dossier est actuellement en cours de vérification.'
-    )
+      const bannerLabel = screen.getByLabelText(
+        'Bonus de 50 € - Ton dossier est actuellement en cours de vérification.'
+      )
 
-    expect(bannerLabel).toBeOnTheScreen()
+      expect(bannerLabel).toBeOnTheScreen()
+    })
   })
 
   describe('error banner', () => {
@@ -77,7 +98,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'custodian_not_found' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -112,7 +133,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'application_not_found' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -147,7 +168,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'quotient_familial_too_high' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -182,7 +203,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'not_in_tax_household' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
 
@@ -217,7 +238,7 @@ describe('BonificationBanner', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: { bonificationRefusedType: 'too_many_retries' },
-        screen: 'BonificationRefused',
+        screen: 'BonificationFamilyQuotientRefused',
       })
     })
   })

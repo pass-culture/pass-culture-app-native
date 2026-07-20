@@ -20,6 +20,10 @@ const mockRequestOSGeolocPermission = jest.mocked(requestOSGeolocPermission)
 
 jest.mock('libs/locationV2/syncLocation')
 
+jest.mock('features/navigation/navigationRef', () => ({
+  navigationRef: { navigate: jest.fn() },
+}))
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -216,7 +220,7 @@ describe('<VenueSelectionModal />', () => {
       expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
     })
 
-    it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', async () => {
+    it('should navigate to "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', async () => {
       mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
 
       render(
@@ -241,37 +245,12 @@ describe('<VenueSelectionModal />', () => {
 
       await user.press(button)
 
-      await waitFor(() => expect(locationSelectors.selectIsPermissionModalVisible()).toBe(true))
-    })
-
-    it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
-      mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
-
-      render(
-        <VenueSelectionModal
-          headerMessage=""
-          subTitle=""
-          rightIconAccessibilityLabel=""
-          validateButtonLabel=""
-          isVisible
-          items={items}
-          title="Lieu de retrait"
-          onSubmit={jest.fn()}
-          onClosePress={jest.fn()}
-          nbLoadedHits={nbLoadedHits}
-          nbHits={nbHits}
-          isFetchingNextPage
-          isSharingLocation={false}
-          onEndReached={jest.fn()}
-        />
+      const { navigationRef } = jest.requireMock('features/navigation/navigationRef') as {
+        navigationRef: { navigate: jest.Mock }
+      }
+      await waitFor(() =>
+        expect(navigationRef.navigate).toHaveBeenCalledWith('GeolocationActivationModal')
       )
-      const button = screen.getByText('Active ta géolocalisation')
-
-      await user.press(button)
-
-      await user.press(screen.getByText('Activer la géolocalisation'))
-
-      expect(locationSelectors.selectIsPermissionModalVisible()).toBe(false)
     })
   })
 

@@ -3,7 +3,7 @@ import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import {
   Activity,
   OffersStocksResponseV2,
@@ -30,6 +30,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
@@ -56,7 +57,6 @@ jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
-jest.mock('libs/location/location')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 const venueId = venueDataTest.id
@@ -108,6 +108,8 @@ jest.mock('libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
   triggerConsultOfferLog: jest.fn(),
 }))
 
+const asyncStorageSpyOn = jest.spyOn(AsyncStorage, 'getItem')
+
 const user = userEvent.setup()
 
 describe('<Venue />', () => {
@@ -119,6 +121,7 @@ describe('<Venue />', () => {
   })
 
   beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
     setFeatureFlags()
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
@@ -487,6 +490,35 @@ describe('<Venue />', () => {
       await user.press(screen.getByText('Lancer la recherche'))
 
       expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(5543)
+    })
+  })
+
+  describe('When wipVenueFakeDoor FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR])
+      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
+        ...venueDataTest,
+        isOpenToPublic: true,
+        bannerUrl: 'url_image',
+      })
+    })
+
+    it('should display follow button', async () => {
+      renderVenue(venueId)
+
+      expect(await screen.findByLabelText('Suivre le lieu')).toBeOnTheScreen()
+    })
+
+    it('should open fake door modal when pressing follow button', async () => {
+      asyncStorageSpyOn.mockResolvedValueOnce('false')
+      renderVenue(venueId)
+
+      await user.press(await screen.findByLabelText('Suivre le lieu'))
+
+      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+        surveyKey: 'has_seen_follow_venue_fake_door_survey',
+        surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
+      })
     })
   })
 })

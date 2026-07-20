@@ -6,7 +6,11 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 
-export const Venue = () => {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const Venue = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const {
     visible: searchVenueModalVisible,
@@ -24,7 +28,11 @@ export const Venue = () => {
         description={venueLabel}
         onPress={showSearchVenueModal}
       />
-      <VenueModal visible={searchVenueModalVisible} dismissModal={hideSearchVenueModal} />
+      <VenueModal
+        visible={searchVenueModalVisible}
+        dismissModal={hideSearchVenueModal}
+        onClose={onClose}
+      />
     </React.Fragment>
   )
 }

@@ -12,7 +12,7 @@ import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
 import { FetchSearchResultsArgs, SearchListProps } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
-import { useLocation } from 'libs/location/location'
+import { useLocationMode } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 
@@ -23,7 +23,7 @@ type Props = {
 export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters }) => {
   const isFocused = useIsFocused()
 
-  const { selectedLocationMode } = useLocation()
+  const selectedLocationMode = useLocationMode()
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
   const { searchState } = useSearch()
 

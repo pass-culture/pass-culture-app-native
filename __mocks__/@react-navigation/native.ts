@@ -28,6 +28,7 @@ export const createPathConfigForStaticNavigation = jest.fn((staticNavigatorDefin
 export const addListener = jest.fn()
 export const canGoBack = jest.fn()
 export const dispatch = jest.fn()
+export const getCurrentRoute = jest.fn()
 export const getParent = jest.fn()
 export const getState = jest.fn()
 export const goBack = jest.fn()
@@ -48,6 +49,7 @@ export const navigation = {
   addListener,
   canGoBack,
   dispatch,
+  getCurrentRoute,
   getParent,
   getState,
   goBack,

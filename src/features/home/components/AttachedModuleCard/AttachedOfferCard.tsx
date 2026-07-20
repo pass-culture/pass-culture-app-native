@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
 import { AttachedCardImage } from 'features/home/components/AttachedModuleCard/AttachedCardImage'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -21,7 +21,9 @@ type Props = {
 }
 
 export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, comingSoon }) => {
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const { offer: attachedOffer } = offer
   const { user } = useAuthContext()
   const mapping = useCategoryIdMapping()

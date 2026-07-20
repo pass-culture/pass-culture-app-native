@@ -22,6 +22,7 @@ import { Venue } from 'features/venue/types'
 import { ConsultArtistOriginDetails } from 'libs/analytics/logEventAnalytics'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { StorageKey } from 'libs/storage'
 import { VerticalPlaylistOffersSource } from 'shared/verticalPlaylist/types'
 
 export type Referrals =
@@ -239,6 +240,11 @@ type LoginParams = {
   from?: StepperOrigin
 }
 
+type FakeDoorModalParams = {
+  surveyKey: StorageKey
+  surveyUrl: string
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -257,6 +263,7 @@ export type RootStackParamList = {
   ArtistWebview: ArtistParams
   _DeeplinkOnlyArtist1: ArtistParams
   BannedCountryError: undefined
+  IncorrectLink: undefined
   BonificationGranted: undefined
   BookingConfirmation: BookingConfirmationParams
   _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams
@@ -271,6 +278,7 @@ export type RootStackParamList = {
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
   _DeeplinkOnlyEighteenBirthday1: undefined
+  FakeDoorModal: FakeDoorModalParams
   FavoritesSorts: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
@@ -352,6 +360,7 @@ export type RootStackParamList = {
     openedFrom: Referrals
     shouldOpenMapInTab?: boolean
   }
+  GeolocationActivationModal: undefined
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

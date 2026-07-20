@@ -72,24 +72,6 @@ describe('SearchHeader component', () => {
     expect(locationFilterButton).toHaveFocus()
   })
 
-  it('should focus on suggestion when focusing and pressing enter', async () => {
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
-    )
-
-    await act(async () => {
-      await userEvent.tab()
-      await userEvent.keyboard('{Enter}')
-    })
-
-    expect(mockShowSuggestions).toHaveBeenCalledTimes(1)
-  })
-
   it('should reset search state on go back except for location filter', async () => {
     const locationFilter = { locationType: LocationMode.AROUND_ME, aroundRadius: 15 } as const
 

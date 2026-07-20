@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
@@ -30,7 +31,6 @@ jest.mock('queries/venue/useVenueOffersQuery', () => ({
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
-jest.mock('libs/location/location')
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -49,7 +49,11 @@ const renderVenueContent = (props?: Partial<React.ComponentProps<typeof VenueCon
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
         <OfferCTAProvider>
-          <VenueContent venue={venueDataTest} showSearchInVenueModal={mockShowModal} {...props}>
+          <VenueContent
+            venue={venueDataTest}
+            showSearchInVenueModal={mockShowModal}
+            {...props}
+            onPressFollowButton={jest.fn()}>
             <React.Fragment />
           </VenueContent>
         </OfferCTAProvider>
@@ -59,6 +63,10 @@ const renderVenueContent = (props?: Partial<React.ComponentProps<typeof VenueCon
 }
 
 describe('<VenueContent />', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
+
   it('should not display "Rechercher une offre" button if there is no offer', async () => {
     renderVenueContent()
     await screen.findAllByText('Le Petit Rintintin 1')

@@ -74,4 +74,31 @@ describe('<VenueBanner />', () => {
 
     expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
   })
+
+  it('should display follow button when wipVenueFakeDoor FF activated', () => {
+    render(
+      <VenueBanner
+        bannerUrl="https://image.com"
+        bannerIsFromGoogle
+        bannerCredit="François Boulo"
+        handleImagePress={mockHandleImagePress}
+        enableVenueFakeDoor
+      />
+    )
+
+    expect(screen.getByLabelText('Suivre le lieu')).toBeOnTheScreen()
+  })
+
+  it('should not display follow button when wipVenueFakeDoor FF deactivated', () => {
+    render(
+      <VenueBanner
+        bannerUrl="https://image.com"
+        bannerIsFromGoogle
+        bannerCredit="François Boulo"
+        handleImagePress={mockHandleImagePress}
+      />
+    )
+
+    expect(screen.queryByLabelText('Suivre le lieu')).not.toBeOnTheScreen()
+  })
 })

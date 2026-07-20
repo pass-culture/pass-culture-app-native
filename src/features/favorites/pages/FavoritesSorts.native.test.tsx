@@ -5,29 +5,20 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
-import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import {
   GeolocPositionError,
   GeolocPermissionState,
-  GeolocationError,
-  GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-} from 'libs/location/location'
+} from 'libs/location/geolocation/enums'
+import { requestGeolocPermission as requestOSGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { render, screen, userEvent } from 'tests/utils'
 
-const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
-const mockPositionError = null as GeolocationError | null
-const defaultUseLocation = {
-  permissionState: GeolocPermissionState.GRANTED,
-  geolocPosition: DEFAULT_POSITION,
-  geolocPositionError: mockPositionError,
-  triggerPositionUpdate: jest.fn(),
-  showGeolocPermissionModal: jest.fn(),
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 }
 
 jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 
@@ -49,15 +40,20 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<FavoritesSorts/>', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setGeolocPosition(DEFAULT_POSITION)
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+    locationActions.setGeolocationError(null)
+  })
+
   it('should render correctly', () => {
-    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should go back on validate', async () => {
-    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
     await user.press(screen.getByText('Valider'))
@@ -78,7 +74,6 @@ describe('<FavoritesSorts/>', () => {
       sortByWording: string
       expectedAnalytics: FavoriteSortBy
     }) => {
-      mockUseLocation.mockReturnValueOnce(defaultUseLocation)
       renderFavoritesSort()
 
       await user.press(screen.getByText(sortByWording))
@@ -91,13 +86,10 @@ describe('<FavoritesSorts/>', () => {
   )
 
   it('should display error message when clicking on "Proximité géographique" and position is unavailable', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      ...defaultUseLocation,
-      geolocPosition: null,
-      geolocPositionError: {
-        type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
-        message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
-      },
+    locationActions.setGeolocPosition(null)
+    locationActions.setGeolocationError({
+      type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+      message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     })
 
     renderFavoritesSort()
@@ -112,7 +104,6 @@ describe('<FavoritesSorts/>', () => {
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
-    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
     renderFavoritesSort()
 
@@ -128,11 +119,9 @@ describe('<FavoritesSorts/>', () => {
   })
 
   it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      ...defaultUseLocation,
-      geolocPosition: null,
-      permissionState: GeolocPermissionState.DENIED,
-    })
+    locationActions.setGeolocPosition(null)
+    locationActions.setPermissionState(GeolocPermissionState.DENIED)
+    mockRequestOSGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
     renderFavoritesSort()
 

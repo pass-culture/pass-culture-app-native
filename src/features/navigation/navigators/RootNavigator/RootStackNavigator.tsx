@@ -37,6 +37,7 @@ import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
+import { IncorrectLink } from 'features/errors/pages/IncorrectLink'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
@@ -73,8 +74,10 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
+import { FakeDoorModal } from 'shared/FakeDoorModal/FakeDoorModal'
 import { VerticalPlaylistArtists } from 'shared/verticalPlaylist/pages/VerticalPlaylistArtists'
 import { VerticalPlaylistOffers } from 'shared/verticalPlaylist/pages/VerticalPlaylistOffers'
 import { VerticalPlaylistVenues } from 'shared/verticalPlaylist/pages/VerticalPlaylistVenues'
@@ -256,6 +259,7 @@ const rootScreens: RouteConfig[] = [
   { name: 'Login', component: Login, options: { title: 'Connexion' } },
   { name: 'LoginMethods', component: LoginMethods, options: { title: 'Méthodes de connexion' } },
   { name: 'BannedCountryError', component: BannedCountryError },
+  { name: 'IncorrectLink', component: IncorrectLink, options: { title: 'Lien incorrect' } },
   {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
@@ -416,6 +420,22 @@ const rootScreens: RouteConfig[] = [
     name: 'VenueMapLocationModal',
     component: VenueMapLocationModal,
     options: MODAL_SCREEN_OPTIONS,
+  },
+  {
+    name: 'GeolocationActivationModal',
+    component: GeolocationActivationModal,
+    options: {
+      presentation: 'transparentModal',
+    },
+  },
+  {
+    name: 'FakeDoorModal',
+    component: FakeDoorModal,
+    options: {
+      presentation: 'transparentModal',
+      animation: 'fade',
+      headerShown: false,
+    },
   },
 ]
 

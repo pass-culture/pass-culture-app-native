@@ -3,7 +3,12 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
-import { UseLocationReturnType, LocationMode } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -22,30 +27,16 @@ const props: VenueTileProps = {
 
 const DEFAULT_USER_LOCATION = { latitude: 48, longitude: 2 }
 
-const EVERYWHERE_USER_POSITION = {
-  userLocation: null,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  geolocPosition: undefined,
-}
-const AROUND_ME_POSITION = {
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  geolocPosition: DEFAULT_USER_LOCATION,
-}
-
-const mockUseLocation = jest.fn((): Partial<UseLocationReturnType> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
-
 const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('VenueTile component', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+  })
+
   it('should navigate to the venue when clicking on the venue tile', async () => {
     renderVenueTile()
 
@@ -105,14 +96,15 @@ describe('VenueTile component', () => {
   })
 
   it('should show distance when user has chosen geolocation', () => {
-    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
+    locationActions.setGeolocPosition(DEFAULT_USER_LOCATION)
+    locationActions.setLocationMode(LocationMode.AROUND_ME)
     renderVenueTile()
 
     expect(screen.getByTestId('distance-tag')).toBeTruthy()
   })
 
   it("should not show distance when user has chosen 'France Entière'", () => {
-    mockUseLocation.mockReturnValueOnce(EVERYWHERE_USER_POSITION)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     renderVenueTile()
 
     expect(screen.queryByTestId('distance-tag')).toBeFalsy()

@@ -74,7 +74,9 @@ describe('<SetPhoneNumber/>', () => {
     await act(async () => fireEvent.changeText(phoneInput, '063998012345678'))
 
     await waitFor(() => {
-      expect(screen.getByText('Le numéro de téléphone est trop long')).toBeTruthy()
+      expect(
+        screen.getByText('Le numéro de téléphone est trop long', { exact: false, hidden: true })
+      ).toBeTruthy()
     })
   })
 

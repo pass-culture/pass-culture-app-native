@@ -42,7 +42,13 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { Position } from 'libs/location/location'
+import { GeoCoordinates } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -93,14 +99,14 @@ const Kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-let mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockPosition,
-    geolocPosition: mockPosition,
-    place: Kourou,
-  }),
-}))
+let mockPosition: GeoCoordinates = { latitude: 90.4773245, longitude: 90.4773245 }
+
+const setupLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setGeolocPosition(mockPosition)
+  locationActions.setLocationMode(LocationMode.AROUND_ME)
+  locationActions.setPlace(Kourou)
+}
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
@@ -233,6 +239,7 @@ describe('<OfferContent />', () => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
+    setupLocation()
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags()
     mockNavigate.mockClear()

@@ -24,7 +24,7 @@ import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
-import { useLocation } from 'libs/location/useLocation'
+import { locationActions, useUserLocation } from 'libs/locationV2/location.store'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -156,7 +156,8 @@ export const ThematicHome: FunctionComponent = () => {
 
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
   const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
-  const { userLocation, setSelectedLocationMode, setPlace } = useLocation()
+  const userLocation = useUserLocation()
+  const { setLocationMode: setSelectedLocationMode, setPlace } = locationActions
   const isLocated = !!userLocation
 
   const { onScroll, headerTransition, gradientTranslation, viewTranslation, imageAnimatedHeight } =

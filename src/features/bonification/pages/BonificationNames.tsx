@@ -6,9 +6,9 @@ import { styled } from 'styled-components/native'
 
 import { BonificationNamesSchema } from 'features/bonification/schemas/BonificationNamesSchema'
 import {
-  legalRepresentativeActions,
-  useLegalRepresentative,
-} from 'features/bonification/store/legalRepresentativeStore'
+  qfBonificationActions,
+  useQFBonification,
+} from 'features/bonification/store/qfBonificationStore'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -33,8 +33,8 @@ type FormValues = {
 export const BonificationNames = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const storedLegalRepresentative = useLegalRepresentative()
-  const { setFirstNames, setCommonName, setGivenName } = legalRepresentativeActions
+  const storedLegalRepresentative = useQFBonification()
+  const { setFirstNames, setCommonName, setGivenName } = qfBonificationActions
 
   const { control, formState, handleSubmit } = useForm<FormValues>({
     defaultValues: {

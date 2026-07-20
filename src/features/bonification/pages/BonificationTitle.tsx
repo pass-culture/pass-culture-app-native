@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import {
-  legalRepresentativeActions,
-  useLegalRepresentative,
-} from 'features/bonification/store/legalRepresentativeStore'
+  qfBonificationActions,
+  useQFBonification,
+} from 'features/bonification/store/qfBonificationStore'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -28,8 +28,8 @@ enum FormValues {
 export const BonificationTitle = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const storedLegalRepresentative = useLegalRepresentative()
-  const { setTitle: storeTitle } = legalRepresentativeActions
+  const storedLegalRepresentative = useQFBonification()
+  const { setTitle: storeTitle } = qfBonificationActions
 
   const titleID = uuidv4()
   const titleLabel = 'Civilité'

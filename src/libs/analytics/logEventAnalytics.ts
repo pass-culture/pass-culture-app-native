@@ -85,7 +85,7 @@ export type LoginRoutineMethod =
   | 'fromConfirmChangeEmail'
 
 type SSOType = 'SSO_login' | 'SSO_signup'
-type EmailType = 'email_login' | 'email_signup'
+type EmailType = 'email_login' | 'email_signup' | 'email_reinitialize' | 'email_change'
 export type LoginType = SSOType | EmailType
 
 type SSOProvider = 'apple' | 'google'
@@ -114,6 +114,7 @@ export type ConsultArtistOriginDetails =
   | 'venue'
   | 'offer'
   | 'searchResults'
+  | 'artistRecommendation'
 
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
@@ -229,7 +230,7 @@ export const logEventAnalytics = {
     void analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
   },
   logClickSeeAll: (params: {
-    type: 'offers' | 'venues' | 'artists'
+    type: 'offers' | 'venues' | 'artists' | 'categories'
     moduleName: string
     moduleId?: string
     homeEntryId?: string

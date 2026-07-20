@@ -1,4 +1,3 @@
-import { useNavigationState } from '@react-navigation/native'
 import { isEqual } from 'lodash'
 import React, { useCallback, useMemo } from 'react'
 import { useTheme } from 'styled-components'
@@ -15,12 +14,11 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration, useLocationMode, usePlace } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -35,16 +33,16 @@ export const SearchFilter: React.FC = () => {
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.[routes?.length - 1]?.name
-  useSync(currentRoute === 'SearchFilter')
 
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch('SearchResults')
   const logReinitializeFilters = useFunctionOnce(() => {
     void analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const place = usePlace()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundMeRadius } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
 
@@ -133,7 +131,7 @@ export const SearchFilter: React.FC = () => {
             </SectionWrapper>
           ) : null}
           <SectionWrapper>
-            <Section.Venue />
+            <Section.Venue onClose={onClose} />
           </SectionWrapper>
           <SectionWrapper>
             <Section.Price

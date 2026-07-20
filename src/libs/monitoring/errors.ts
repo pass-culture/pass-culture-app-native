@@ -1,4 +1,3 @@
-import { ScopeContext } from '@sentry/types'
 import { ComponentType } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 
@@ -10,10 +9,12 @@ export enum LogTypeEnum {
   'IGNORED' = 'ignored',
 }
 
+type CaptureExceptionContext = Parameters<typeof eventMonitoring.captureException>[1]
+
 type ErrorInfo = {
   logType?: LogTypeEnum
   name?: string
-  captureContext?: Partial<ScopeContext>
+  captureContext?: CaptureExceptionContext
 }
 
 export class MonitoringError extends Error {

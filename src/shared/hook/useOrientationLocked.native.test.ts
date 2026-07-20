@@ -18,6 +18,7 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
 jest.mock('react-native-orientation-locker', () => ({
   lockToPortrait: jest.fn(),
   unlockAllOrientations: jest.fn(),
+  getAutoRotateState: jest.fn((callback: (state: boolean) => void) => callback(true)),
 
   addOrientationListener: jest.fn(),
   removeOrientationListener: jest.fn(),
@@ -71,7 +72,7 @@ describe('useOrientationLocked', () => {
 
     expect(AsyncStorage.setItem).toHaveBeenCalledWith('orientationLocked', 'true')
 
-    expect(Orientation.lockToPortrait).toHaveBeenCalledTimes(1)
+    expect(Orientation.lockToPortrait).toHaveBeenCalledTimes(2) // 1 for initial unlock, 1 for toggle
   })
 
   it('should unlock orientation when toggling from locked state', async () => {
@@ -90,6 +91,22 @@ describe('useOrientationLocked', () => {
     expect(AsyncStorage.setItem).toHaveBeenCalledWith('orientationLocked', 'false')
 
     expect(Orientation.unlockAllOrientations).toHaveBeenCalledTimes(1)
+  })
+
+  it('should keep portrait when app allows rotation but system auto-rotate is disabled', async () => {
+    ;(Orientation.getAutoRotateState as jest.Mock).mockImplementationOnce(
+      (callback: (state: boolean) => void) => callback(false)
+    )
+
+    storage.orientationLocked = 'false'
+
+    renderHook(() => useOrientationLocked())
+
+    await waitFor(() => {
+      expect(Orientation.lockToPortrait).toHaveBeenCalledTimes(1)
+    })
+
+    expect(Orientation.unlockAllOrientations).not.toHaveBeenCalled()
   })
 
   it('should clean up listeners on unmount', () => {

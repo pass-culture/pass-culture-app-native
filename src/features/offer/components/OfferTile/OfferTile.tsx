@@ -7,7 +7,7 @@ import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getDistance } from 'libs/location/getDistance'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { NAVIGATION_METHOD } from 'shared/constants'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -35,6 +35,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     apiRecoParams,
     index,
     artistName,
+    originDetails,
     interactionTag,
     navigationMethod = NAVIGATION_METHOD.NAVIGATE,
     containerWidth,
@@ -44,7 +45,9 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
 
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const { offerId, name, date, price, categoryId, thumbUrl, offerLocation, subcategoryId } = props
@@ -88,6 +91,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       searchId,
       index,
       artistName,
+      originDetails,
       displayAdvice: proAdvicesOnOfferSegment === 'A',
     })
   }

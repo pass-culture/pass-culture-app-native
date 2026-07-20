@@ -83,7 +83,7 @@ describe('VenueMapFiltersList', () => {
       />
     )
 
-    await user.press(screen.getByLabelText('Fermer'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })

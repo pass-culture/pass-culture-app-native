@@ -3,16 +3,19 @@ import React from 'react'
 
 import { popTo, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { SearchView } from 'features/search/types'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { LocationMode } from 'libs/location/types'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,15 +35,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
-const defaultUseLocation = {
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  onModalHideRef: jest.fn(),
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   data: gtlPlaylistAlgoliaSnapshot,
@@ -123,12 +117,12 @@ describe('<ThematicSearch/>', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
   })
 
   describe('book offerCategory', () => {
     beforeEach(() => {
       mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      mockUseLocation.mockReturnValue(defaultUseLocation)
       mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
       mockedUseSearch.mockReturnValue({
         ...defaultUseSearch,
@@ -220,9 +214,53 @@ describe('<ThematicSearch/>', () => {
           searchGroupLabel: 'Livres',
           selectedLocationMode: 'EVERYWHERE',
           transformHits: expect.any(Function),
-          userLocation: undefined,
+          userLocation: null,
         })
       })
+    })
+  })
+
+  describe('PerformSearch log', () => {
+    beforeEach(() => {
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
+      mockedUseSearch.mockReturnValue({
+        ...defaultUseSearch,
+        searchState: { ...mockSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] },
+      })
+    })
+
+    it('should log PerformSearch when search query execution ends', async () => {
+      mockUseSearchResults.mockReturnValueOnce({ ...defaultUseSearchResults, isLoading: true })
+      const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith(
+        { ...mockSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] },
+        defaultDisabilitiesProperties,
+        0,
+        SearchView.Thematic
+      )
+    })
+
+    it('should log PerformSearch only one time when there is search query execution and several re-render', async () => {
+      mockUseSearchResults.mockReturnValueOnce({ ...defaultUseSearchResults, isLoading: true })
+      const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not log PerformSearch when there is no search query execution', async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(analytics.logPerformSearch).not.toHaveBeenCalled()
     })
   })
 

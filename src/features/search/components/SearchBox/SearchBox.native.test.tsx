@@ -12,7 +12,6 @@ import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { GeoCoordinates, Position } from 'libs/location/location'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -73,18 +72,6 @@ jest.mock('react-instantsearch-core', () => ({
     query: mockQuery,
     refine: jest.fn,
     clear: mockClear,
-  }),
-}))
-
-const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-const mockPosition: Position = DEFAULT_POSITION
-
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-    place: null,
-    onModalHideRef: jest.fn(),
-    isCurrentLocationMode: jest.fn(),
   }),
 }))
 

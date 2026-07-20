@@ -7,8 +7,13 @@ import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeolocPermissionState } from 'libs/location/location'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
@@ -57,16 +62,13 @@ jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 mockDepositAmounts.mockReturnValue('150\u00a0€')
 
-const defaultUseLocation = {
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  permissionState: GeolocPermissionState.GRANTED,
-}
-const mockUseLocation = jest.fn(() => defaultUseLocation)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
-
 describe('useActivationBanner', () => {
+  beforeEach(() => {
+    useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
+    locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+  })
+
   describe('with feature flag enable', () => {
     it('nextSubscriptionStepEnable', async () => {
       mockUseGetStepperInfo.mockReturnValueOnce({
@@ -109,10 +111,7 @@ describe('useActivationBanner', () => {
     })
 
     it('isUserLocated', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        selectedLocationMode: LocationMode.AROUND_ME,
-      })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
       const { result } = renderUseActivationBanner()
 
       await act(async () => {})
@@ -150,10 +149,7 @@ describe('useActivationBanner', () => {
 
     it('should return banner title without amount', async () => {
       mockDepositAmounts.mockReturnValueOnce(undefined)
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        selectedLocationMode: LocationMode.AROUND_ME,
-      })
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
       const { result } = renderUseActivationBanner()
 
       await act(async () => {})

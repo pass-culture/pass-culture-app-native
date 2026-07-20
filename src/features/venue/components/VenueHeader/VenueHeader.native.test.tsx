@@ -72,12 +72,44 @@ describe('<VenueHeader />', () => {
       venueId: venueDataTest.id,
     })
   })
+
+  it('should display follow button when scrolling and wipVenueFakeDoor FF activated', () => {
+    const { animatedValue } = renderVenueHeader({ enableVenueFakeDoor: true })
+    scrollToDisplaySmallHeader(animatedValue)
+
+    expect(screen.getByLabelText('Suivre le lieu')).toBeOnTheScreen()
+  })
+
+  it('should not display follow button when scrolling and wipVenueFakeDoor FF deactivated', () => {
+    const { animatedValue } = renderVenueHeader()
+    scrollToDisplaySmallHeader(animatedValue)
+
+    expect(screen.queryByLabelText('Suivre le lieu')).not.toBeOnTheScreen()
+  })
 })
 
-const renderVenueHeader = () => {
+const renderVenueHeader = ({ enableVenueFakeDoor }: { enableVenueFakeDoor?: boolean } = {}) => {
   const animatedValue = new Animated.Value(0)
   render(
-    reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} venue={venueDataTest} />)
+    reactQueryProviderHOC(
+      <VenueHeader
+        headerTransition={animatedValue}
+        venue={venueDataTest}
+        enableVenueFakeDoor={enableVenueFakeDoor}
+        onPressFollowButton={jest.fn()}
+      />
+    )
   )
   return { animatedValue }
+}
+
+const scrollToDisplaySmallHeader = (animatedValue: Animated.Value) => {
+  act(() => {
+    Animated.timing(animatedValue, {
+      duration: 100,
+      toValue: 1,
+      useNativeDriver: false,
+    }).start()
+    jest.runAllTimers()
+  })
 }

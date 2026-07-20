@@ -55,6 +55,7 @@ jobs:
         id: openid-auth
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
         with:
+          create_credentials_file: true
           workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
           service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
       - name: Get Secret
@@ -62,8 +63,6 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
-            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
 
       - name: Render Sentry Template
@@ -75,23 +74,11 @@ jobs:
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
 
-      - name: Create service account key
-        id: create-sa-key
-        env:
-          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
-        run: |
-          gcloud iam service-accounts keys create temporary-sa-key.json \
-            --iam-account="${SERVICE_ACCOUNT}" \
-            --project="${PROJECT_ID}"
-          SA_KEY_ID=$(jq -r .private_key_id temporary-sa-key.json)
-          echo "SA_KEY_ID=${SA_KEY_ID}" >> "$GITHUB_OUTPUT"
-
       - name: Deploy soft android for ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
           ENV: ${{ inputs.ENV }}
         run: |
           bundle exec fastlane android deploy ota: --env "${ENV}"
@@ -100,23 +87,10 @@ jobs:
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          GOOGLE_APPLICATION_CREDENTIALS: temporary-sa-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
           ENV: ${{ inputs.ENV }}
         run: |
           bundle exec fastlane ios deploy ota: --env "${ENV}"
-
-      - name: Delete service account key
-        if: always()
-        env:
-          KEY_ID: ${{ steps.create-sa-key.outputs.SA_KEY_ID }}
-          SERVICE_ACCOUNT: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
-          PROJECT_ID: ${{ steps.openid-auth.outputs.project_id }}
-        run: |
-          gcloud iam service-accounts keys delete "${KEY_ID}" \
-            --iam-account="${SERVICE_ACCOUNT}" \
-            --project="${PROJECT_ID}" \
-            --quiet
-          rm -f temporary-sa-key.json
 
   slack_notify:
     runs-on: ubuntu-24.04

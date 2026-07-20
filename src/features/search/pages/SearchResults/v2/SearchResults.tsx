@@ -1,5 +1,4 @@
-import { useNavigationState } from '@react-navigation/native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
@@ -12,7 +11,6 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
-import { useSync } from 'features/search/helpers/useSync/useSync'
 import { AllSearchResultsList } from 'features/search/pages/SearchResults/v2/components/SearchLists/AllSearchResultsList'
 import { ArtistsList } from 'features/search/pages/SearchResults/v2/components/SearchLists/ArtistsList'
 import { OffersList } from 'features/search/pages/SearchResults/v2/components/SearchLists/OffersList'
@@ -25,7 +23,12 @@ import {
 } from 'features/search/queries/useSearchOffersQuery/types'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  useLocationConfiguration,
+  useLocationMode,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -36,11 +39,7 @@ const searchInputID = uuidv4()
 const searchIdGenerated = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
-export const SearchResults = () => {
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.at(-1)?.name
-  useSync(currentRoute === 'SearchResults')
-
+export const SearchResults: FC = () => {
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -58,8 +57,12 @@ export const SearchResults = () => {
   const handleTabPress = (tab: SearchFilter) =>
     setSelectedSearchTab(tab === selectedSearchTab ? undefined : tab)
 
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
-    useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+  const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
+  const { radius: aroundMeRadius, geolocation: geolocPosition } = useLocationConfiguration(
+    LocationMode.AROUND_ME
+  )
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const {

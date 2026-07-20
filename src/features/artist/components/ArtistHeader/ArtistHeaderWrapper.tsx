@@ -6,3 +6,7 @@ export const ArtistHeaderWrapper = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
+
+export const ArtistNameContainer = styled(ViewGap)({
+  alignItems: 'center',
+})

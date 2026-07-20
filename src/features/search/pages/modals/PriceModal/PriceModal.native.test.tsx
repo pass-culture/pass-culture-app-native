@@ -213,7 +213,7 @@ describe('<PriceModal/>', () => {
 
       const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
 
-      const previousButton = screen.getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer la modale')
       await user.press(previousButton)
 
       expect(minPriceInput.props.value).toStrictEqual('5')
@@ -237,7 +237,7 @@ describe('<PriceModal/>', () => {
 
       const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
-      const previousButton = screen.getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer la modale')
       await user.press(previousButton)
 
       expect(maxPriceInput.props.value).toStrictEqual('15')
@@ -493,7 +493,7 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Rechercher')).toBeEnabled()
       })
 
-      const previousButton = screen.getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer la modale')
       await user.press(previousButton)
 
       expect(mockHideModal).toHaveBeenCalledTimes(1)
@@ -732,7 +732,7 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
 
-      const closeButton = screen.getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer la modale')
       await user.press(closeButton)
 
       expect(mockOnClose).toHaveBeenCalledTimes(1)
@@ -745,7 +745,7 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Rechercher')).toBeEnabled()
       })
 
-      const closeButton = screen.getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer la modale')
       await user.press(closeButton)
 
       expect(mockOnClose).not.toHaveBeenCalled()

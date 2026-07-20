@@ -18,17 +18,13 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { Position } from 'libs/location/location'
-import { LocationMode, UseLocationReturnType } from 'libs/location/types'
-import {
-  defaultLocationState,
-  locationActions,
-  useLocationV2,
-} from 'libs/locationV2/location.store'
+import { LocationMode } from 'libs/location/types'
+import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -202,25 +198,26 @@ const MOCKED_PLACE: SuggestedPlace = {
   geolocation: DEFAULT_USER_LOCATION,
 }
 
-const getAroundPlaceUserPosition = ({
-  geolocPosition,
-}: {
-  geolocPosition?: Position
-}): Partial<UseLocationReturnType> => ({
-  setPlace: jest.fn(),
-  setSelectedLocationMode: jest.fn(),
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedLocationMode: LocationMode.AROUND_PLACE,
-  geolocPosition,
-  place: MOCKED_PLACE,
-  selectedPlace: MOCKED_PLACE,
-  hasGeolocPosition: false,
-})
-
-const mockUseLocation = jest.fn(() => getAroundPlaceUserPosition({}))
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
+const getAroundPlaceUserPosition = ({ geolocPosition }: { geolocPosition?: Position }) => {
+  act(() => {
+    useLocationV2.setState({
+      ...defaultLocationState,
+      locationMode: LocationMode.AROUND_PLACE,
+      configuration: {
+        ...defaultLocationState.configuration,
+        [LocationMode.AROUND_ME]: {
+          ...defaultLocationState.configuration[LocationMode.AROUND_ME],
+          geolocation: geolocPosition ?? DEFAULT_USER_LOCATION,
+        },
+        [LocationMode.AROUND_PLACE]: {
+          ...defaultLocationState.configuration[LocationMode.AROUND_PLACE],
+          ...MOCKED_PLACE,
+          geolocation: MOCKED_PLACE.geolocation,
+        },
+      },
+    })
+  })
+}
 
 const mockedEmptyHistory = {
   filteredHistory: [],
@@ -243,10 +240,7 @@ jest.useFakeTimers()
 describe('<SearchResults/>', () => {
   beforeEach(() => {
     setFeatureFlags()
-    useLocationV2.setState(defaultLocationState)
-    locationActions.setGeolocPosition({ latitude: 123.34, longitude: 0.12238 })
-    locationActions.setLocationMode(LocationMode.AROUND_PLACE)
-    locationActions.setPlace(MOCKED_PLACE)
+    getAroundPlaceUserPosition({ geolocPosition: { latitude: 123.34, longitude: 0.12238 } })
     mockUseNetInfoContext.mockReset()
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
     mockUseSearchHistory.mockReset()
@@ -257,9 +251,6 @@ describe('<SearchResults/>', () => {
       removeFromHistory: jest.fn(),
       search: jest.fn(),
     })
-    mockUseLocation.mockReturnValue(
-      getAroundPlaceUserPosition({ geolocPosition: { latitude: 123.34, longitude: 0.12238 } })
-    )
   })
 
   afterEach(() => {
@@ -279,9 +270,7 @@ describe('<SearchResults/>', () => {
 
     await screen.findByTestId('searchResults')
 
-    mockUseLocation.mockReturnValueOnce(
-      getAroundPlaceUserPosition({ geolocPosition: { latitude: 999, longitude: 0.876 } })
-    )
+    getAroundPlaceUserPosition({ geolocPosition: { latitude: 999, longitude: 0.876 } })
 
     rerender(reactQueryProviderHOC(<SearchResults />))
 
@@ -296,9 +285,7 @@ describe('<SearchResults/>', () => {
 
     await screen.findByTestId('searchResults')
 
-    mockUseLocation.mockReturnValueOnce(
-      getAroundPlaceUserPosition({ geolocPosition: { latitude: 999, longitude: 0.876 } })
-    )
+    getAroundPlaceUserPosition({ geolocPosition: { latitude: 999, longitude: 0.876 } })
 
     rerender(reactQueryProviderHOC(<SearchResults />))
 

@@ -18,7 +18,13 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { Position } from 'libs/location/location'
+import { GeoCoordinates } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
@@ -34,14 +40,14 @@ const Kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-let mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => ({
-    userLocation: mockPosition,
-    geolocPosition: mockPosition,
-    place: Kourou,
-  }),
-}))
+let mockPosition: GeoCoordinates | null = { latitude: 90.4773245, longitude: 90.4773245 }
+
+const setupLocation = () => {
+  useLocationV2.setState(defaultLocationState)
+  locationActions.setGeolocPosition(mockPosition)
+  locationActions.setLocationMode(LocationMode.AROUND_ME)
+  locationActions.setPlace(Kourou)
+}
 
 jest.mock('@react-navigation/native')
 const mockNavigate = jest.fn()
@@ -83,6 +89,7 @@ jest.useFakeTimers()
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
+    setupLocation()
     deviceInfoStoreActions.setDeviceInfo({
       deviceId: 'device-id',
       source: 'iPhone 13',

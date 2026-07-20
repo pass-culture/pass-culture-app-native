@@ -2,12 +2,15 @@ import React, { FunctionComponent, useState } from 'react'
 import { styled, useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferArtist, SubcategoryIdEnum } from 'api/gen'
+import { FollowArtistButton } from 'features/artist/components/FollowArtistButton/FollowArtistButton'
 import { formatArtists } from 'features/artist/helpers/formatArtists'
 import { getArtistRole } from 'features/artist/helpers/getArtistRole'
 import { getArtistSectionTitle } from 'features/artist/helpers/getArtistSectionTitle'
 import { getArtistsFilterButtons } from 'features/offer/helpers/getArtistsFilterButtons/getArtistsFilterButtons'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
 import { Avatar } from 'ui/components/Avatar/Avatar'
@@ -38,6 +41,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   onPlaylistItemPress,
 }) => {
   const { designSystem } = useTheme()
+  const enableArtistFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR)
   const sectionTitle = getArtistSectionTitle(offerSubcategoryId)
   const formattedArtists = formatArtists(artists, offerCategoryId)
   const filterButtons = getArtistsFilterButtons(artists, offerCategoryId)
@@ -126,7 +130,17 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
       </SeeAllButtonContainer>
 
       {artists.length === 1 && soloArtist ? (
-        soloArtistPart()
+        <ViewGap gap={2}>
+          {soloArtistPart()}
+          {enableArtistFakeDoor ? (
+            <SoloFollowButtonContainer>
+              <FollowArtistButton
+                artistName={soloArtist.name}
+                artistId={soloArtist.id || undefined}
+              />
+            </SoloFollowButtonContainer>
+          ) : null}
+        </ViewGap>
       ) : (
         <React.Fragment>
           {filterButtons.length > 1 ? (
@@ -151,12 +165,27 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
             onItemPress={onPlaylistItemPress}
             withMargins={false}
             keyExtractor={(item) => `${item.id}-${item.role ?? ''}`}
+            renderItemFooter={
+              enableArtistFakeDoor
+                ? (artist) => (
+                    <FollowArtistButton
+                      artistName={artist.name}
+                      artistId={artist.id || undefined}
+                    />
+                  )
+                : undefined
+            }
           />
         </React.Fragment>
       )}
     </ViewGap>
   )
 }
+
+// Align the follow button with the avatar image (left edge of the item)
+const SoloFollowButtonContainer = styled.View({
+  alignSelf: 'flex-start',
+})
 
 const ArtistImage = styled(FastImage)(({ theme }) => ({
   width: '100%',

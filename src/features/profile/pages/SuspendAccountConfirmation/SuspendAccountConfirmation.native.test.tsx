@@ -1,6 +1,6 @@
 import { RouteProp } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
-import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'

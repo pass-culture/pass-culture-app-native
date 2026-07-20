@@ -49,35 +49,14 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         }
       >
         <View
-          collapsable={false}
-          entering={[Function]}
-          exiting={[Function]}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          jestInlineStyle={
+          entering={BaseAnimationMock {}}
+          exiting={BaseAnimationMock {}}
+          style={
             {
               "alignItems": "center",
               "flexDirection": "row",
               "paddingBottom": 16,
             }
-          }
-          nativeID="0"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "paddingBottom": 16,
-              },
-            ]
           }
         >
           <View
@@ -160,29 +139,10 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  collapsable={false}
-                  jestAnimatedProps={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestAnimatedStyle={
-                    {
-                      "value": {},
-                    }
-                  }
-                  jestInlineStyle={
+                  style={
                     {
                       "flexShrink": 0,
                     }
-                  }
-                  nativeID="1"
-                  style={
-                    [
-                      {
-                        "flexShrink": 0,
-                      },
-                    ]
                   }
                 >
                   <View
@@ -317,43 +277,14 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   }
                 >
                   <View
-                    collapsable={false}
-                    jestAnimatedProps={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestAnimatedStyle={
-                      {
-                        "value": {},
-                      }
-                    }
-                    jestInlineStyle={
+                    layout={BaseAnimationMock {}}
+                    style={
                       {
                         "flexBasis": 0,
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
                       }
-                    }
-                    layout={
-                      LinearTransition {
-                        "build": [Function],
-                        "durationV": 250,
-                        "randomizeDelay": false,
-                        "reduceMotionV": "system",
-                      }
-                    }
-                    nativeID="2"
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
                     }
                   >
                     <View
@@ -367,6 +298,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       <View>
                         <View
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           importantForAccessibility="no"
                           style={
                             {
@@ -641,6 +573,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         }
       >
         <RCTScrollView
+          collapsable={false}
           contentContainerStyle={
             {
               "paddingBottom": 104,

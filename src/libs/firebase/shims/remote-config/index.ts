@@ -3,4 +3,5 @@ import { getRemoteConfig } from '@react-native-firebase/remote-config'
 
 export const remoteConfigInstance = getRemoteConfig()
 
-export { setDefaults, fetchAndActivate, getAll } from '@react-native-firebase/remote-config'
+export { fetchAndActivate, getAll } from '@react-native-firebase/remote-config'
+export type { FirebaseRemoteConfigTypes } from '@react-native-firebase/remote-config'

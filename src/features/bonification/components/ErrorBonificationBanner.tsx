@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BonificationRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
@@ -9,7 +9,7 @@ import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 type ErrorBonificationBannerProps = {
   amount: string
   onClose: () => void
-  refusedType: BonificationRefusedType
+  refusedType: BonificationQFRefusedType
 }
 
 export const ErrorBonificationBanner = ({
@@ -19,10 +19,10 @@ export const ErrorBonificationBanner = ({
 }: ErrorBonificationBannerProps) => {
   const links = [
     {
-      navigateTo: getSubscriptionPropConfig('BonificationRefused', {
+      wording: 'Voir plus de détails',
+      navigateTo: getSubscriptionPropConfig('BonificationFamilyQuotientRefused', {
         bonificationRefusedType: refusedType,
       }),
-      wording: 'Voir plus de détails',
     },
   ]
 

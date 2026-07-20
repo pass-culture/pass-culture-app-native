@@ -1,6 +1,6 @@
 import 'intl'
 import 'intl/locale-data/jsonp/en'
-import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
+import { getUpdateSource, HotUpdater } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox } from 'react-native'
@@ -25,7 +25,6 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
-import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { initLocation } from 'libs/locationV2/initLocation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
@@ -94,30 +93,27 @@ const App: FunctionComponent = function () {
                 <NetInfoWrapper>
                   <FirestoreNetworkObserver />
                   <AuthWrapper>
-                    <React.Fragment>
-                      <GeolocationActivationModal />
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchWrapper>
-                            <SnackBarWrapper>
-                              <CulturalSurveyContextProvider>
-                                <SubscriptionContextProvider>
-                                  <SplashScreenProvider>
-                                    <ShareAppWrapper>
-                                      <OfflineModeContainer>
-                                        <ScreenErrorProvider>
-                                          <AppNavigationContainer />
-                                        </ScreenErrorProvider>
-                                      </OfflineModeContainer>
-                                    </ShareAppWrapper>
-                                  </SplashScreenProvider>
-                                </SubscriptionContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarWrapper>
-                          </SearchWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
-                    </React.Fragment>
+                    <AccessibilityFiltersWrapper>
+                      <FavoritesWrapper>
+                        <SearchWrapper>
+                          <SnackBarWrapper>
+                            <CulturalSurveyContextProvider>
+                              <SubscriptionContextProvider>
+                                <SplashScreenProvider>
+                                  <ShareAppWrapper>
+                                    <OfflineModeContainer>
+                                      <ScreenErrorProvider>
+                                        <AppNavigationContainer />
+                                      </ScreenErrorProvider>
+                                    </OfflineModeContainer>
+                                  </ShareAppWrapper>
+                                </SplashScreenProvider>
+                              </SubscriptionContextProvider>
+                            </CulturalSurveyContextProvider>
+                          </SnackBarWrapper>
+                        </SearchWrapper>
+                      </FavoritesWrapper>
+                    </AccessibilityFiltersWrapper>
                   </AuthWrapper>
                 </NetInfoWrapper>
               </AnalyticsInitializer>

@@ -11,7 +11,12 @@ import { beneficiaryUserV2 } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { LocationMode, UseLocationReturnType } from 'libs/location/types'
+import { LocationMode } from 'libs/location/types'
+import {
+  defaultLocationState,
+  locationActions,
+  useLocationV2,
+} from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Credit } from 'shared/user/getAvailableCredit'
 import { mockServer } from 'tests/mswServer'
@@ -43,28 +48,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 const DEFAULT_USER_LOCATION = { latitude: 48, longitude: -1 }
 
-const EVERYWHERE_USER_POSITION = {
-  userLocation: null,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  geolocPosition: undefined,
-}
-
-const AROUND_ME_POSITION = {
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  geolocPosition: DEFAULT_USER_LOCATION,
-  place: null,
-}
-
-const mockUseLocation: jest.Mock<Partial<UseLocationReturnType>> = jest.fn(
-  () => EVERYWHERE_USER_POSITION
-)
-jest.mock('libs/location/useLocation', () => ({
-  useLocation: () => mockUseLocation(),
-}))
-
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -72,6 +55,7 @@ describe('<Favorite /> component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
     setFeatureFlags()
+    useLocationV2.setState(defaultLocationState)
   })
 
   it('should navigate to the offer when clicking on the favorite', async () => {
@@ -88,7 +72,8 @@ describe('<Favorite /> component', () => {
 
   describe('user has chosen geolocation', () => {
     beforeEach(() => {
-      mockUseLocation.mockReturnValue(AROUND_ME_POSITION)
+      locationActions.setGeolocPosition(DEFAULT_USER_LOCATION)
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
     })
 
     it('should not show distance for online offer', async () => {

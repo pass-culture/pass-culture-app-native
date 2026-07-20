@@ -54,6 +54,9 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
   BannedCountryError: {
     path: 'erreur-pays',
   },
+  IncorrectLink: {
+    path: 'lien-incorrect',
+  },
   // Authentication
   ChangeEmailExpiredLink: {
     path: 'lien-modification-email-expire',

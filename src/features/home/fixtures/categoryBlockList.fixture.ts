@@ -7,6 +7,7 @@ export const categoryBlockList: CategoryBlock[] = [
     image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
     homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
     color: Color.Gold,
+    illustrationCategoryBlock: 'Mic',
   },
   {
     id: '2',

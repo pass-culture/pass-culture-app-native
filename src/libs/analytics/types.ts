@@ -26,6 +26,7 @@ export type OfferAnalyticsParams = {
   playlistType?: PlaylistType
   artistName?: string
   isHeadline?: boolean
+  originDetails?: string
 }
 
 export type ConsultOfferLogParams = {

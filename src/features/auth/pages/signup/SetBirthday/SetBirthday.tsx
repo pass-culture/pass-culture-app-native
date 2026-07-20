@@ -46,14 +46,22 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   const {
     control,
-    formState: { isValid },
+    formState: { isValid, errors },
     handleSubmit,
     setValue,
+    watch,
   } = useForm<BirthdayForm>({
     resolver: yupResolver(setBirthdaySchema),
     defaultValues: { birthdate: initialDate },
     mode: 'onChange',
   })
+
+  const birthdate = watch('birthdate')
+
+  const displayErrorMessage = (date: Date) =>
+    formatDateToISOStringWithoutTime(date) === formatDateToISOStringWithoutTime(defaultDate)
+      ? undefined
+      : errors.birthdate?.message
 
   useEffect(() => {
     const fetchUserAge = async () => {
@@ -87,6 +95,10 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       ? 'Ta date de naissance nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
       : 'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
+  const errorMessage = displayErrorMessage(birthdate)
+
+  const accessibilityLabel = accessibilityLabelForNextStep + (errorMessage ?? '')
+
   return (
     <SetContainer>
       <Form.MaxWidth>
@@ -106,16 +118,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           <Controller
             control={control}
             name="birthdate"
-            render={({ field: { value, onChange }, formState: { errors } }) => (
+            render={({ field: { value, onChange } }) => (
               <DateInput
                 onChange={onChange}
                 date={value}
-                errorMessage={
-                  formatDateToISOStringWithoutTime(value) ===
-                  formatDateToISOStringWithoutTime(defaultDate)
-                    ? undefined
-                    : errors.birthdate?.message
-                }
+                errorMessage={displayErrorMessage(value)}
                 maximumDate={maximumSpinnerDate}
                 minimumDate={MINIMUM_DATE}
               />
@@ -124,7 +131,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           <ButtonContainer>
             <Button
               wording="Continuer"
-              accessibilityLabel={accessibilityLabelForNextStep}
+              accessibilityLabel={accessibilityLabel}
               disabled={!isValid}
               onPress={handleSubmit(onGoToNextStep)}
               fullWidth

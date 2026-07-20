@@ -37,7 +37,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { camelCase } from 'libs/formatter/camelCase'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
@@ -91,7 +91,8 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 
   const venue = transformGeoLocatedVenueToVenueResponse(selectedVenue)
 
-  const { userLocation, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()

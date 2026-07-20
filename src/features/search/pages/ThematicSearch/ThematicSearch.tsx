@@ -7,21 +7,24 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
+import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
+import { usePrevious } from 'features/search/helpers/usePrevious'
 import { BookPlaylists } from 'features/search/pages/ThematicSearch/Book/BookPlaylists'
 import { CinemaPlaylists } from 'features/search/pages/ThematicSearch/Cinema/CinemaPlaylists'
 import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSearch/ConcertsAndFestivals/ConcertsAndFestivalsPlaylists'
 import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
+import { SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
-import { useLocation } from 'libs/location/location'
+import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
+import { useLocationMode } from 'libs/locationV2/location.store'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -36,17 +39,19 @@ const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue
 }, {}) as Record<SearchGroupNameEnumv2, string>
 
 export const ThematicSearch: React.FC = () => {
-  const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
+  const { params, name: currentView } = useRoute<UseRouteType<'ThematicSearch'>>()
 
   const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
-  const { selectedLocationMode } = useLocation()
+  const selectedLocationMode = useLocationMode()
   const [fallbackSearchId] = useState(() => uuidv4())
   const currentSearchId = params?.searchId ?? fallbackSearchId
   const isLandscape = useIsLandscape()
   const {
     hits: { venues },
     venuesUserData,
+    nbHits,
+    isLoading,
   } = useSearchResults()
 
   const { searchState, dispatch } = useSearch()
@@ -77,6 +82,14 @@ export const ThematicSearch: React.FC = () => {
     [pageTracking]
   )
 
+  // Execute log only on search fetch completion (same pattern as SearchResultsContent)
+  const previousIsLoading = usePrevious(isLoading)
+  useEffect(() => {
+    if (previousIsLoading && !isLoading) {
+      void analytics.logPerformSearch(searchState, disabilities, nbHits, SearchView.Thematic)
+    }
+  }, [disabilities, isLoading, nbHits, previousIsLoading, searchState])
+
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
   const isLocated = useMemo(
@@ -93,7 +106,7 @@ export const ThematicSearch: React.FC = () => {
     }
   }, [dispatch, isWeb, params?.offerCategories])
 
-  const offerCategories = (params?.offerCategories ?? []) as SearchGroupNameEnumv2[]
+  const offerCategories = (params?.offerCategories ?? []) as ThematicSearchCategories[]
   const offerCategory = offerCategories[0]
   const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 

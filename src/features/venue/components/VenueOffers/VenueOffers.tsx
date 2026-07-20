@@ -17,7 +17,7 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location/location'
+import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -64,7 +64,8 @@ export function VenueOffers({
   onShowWritersModal,
 }: Readonly<VenueOffersProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { userLocation, selectedLocationMode } = useLocation()
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()

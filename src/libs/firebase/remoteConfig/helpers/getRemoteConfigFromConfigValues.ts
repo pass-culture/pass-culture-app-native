@@ -1,7 +1,5 @@
-// eslint-disable-next-line no-restricted-imports
-import { FirebaseRemoteConfigTypes } from '@react-native-firebase/remote-config'
-
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import { FirebaseRemoteConfigTypes } from 'libs/firebase/shims/remote-config'
 
 import { getConfigValue } from './getConfigValue'
 

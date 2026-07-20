@@ -14,11 +14,13 @@ import {
   setRegion,
   setVenues,
 } from 'features/venueMap/store/venueMapStore'
-import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { useLocationConfiguration, useLocationMode, usePlace } from 'libs/locationV2/location.store'
 
 export const VenueMap: FunctionComponent = () => {
-  const { geolocPosition, selectedPlace, selectedLocationMode } = useLocation()
+  const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
   const { width, height } = useWindowDimensions()
 
   const location =

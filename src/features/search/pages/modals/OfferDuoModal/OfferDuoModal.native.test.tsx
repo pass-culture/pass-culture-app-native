@@ -70,7 +70,7 @@ describe('<OfferDuoModal/>', () => {
           onClose: mockOnClose,
         })
 
-        const closeButton = screen.getByTestId('Fermer')
+        const closeButton = screen.getByTestId('Fermer la modale')
         await user.press(closeButton)
 
         expect(mockOnClose).toHaveBeenCalledTimes(1)
@@ -79,7 +79,7 @@ describe('<OfferDuoModal/>', () => {
       it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
         renderOfferDuoModal()
 
-        const closeButton = screen.getByTestId('Fermer')
+        const closeButton = screen.getByTestId('Fermer la modale')
         await user.press(closeButton)
 
         expect(mockOnClose).not.toHaveBeenCalled()
@@ -162,7 +162,7 @@ describe('<OfferDuoModal/>', () => {
     it('when pressing previous button', async () => {
       renderOfferDuoModal()
 
-      const previousButton = screen.getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer la modale')
       await user.press(previousButton)
 
       expect(mockHideModal).toHaveBeenCalledTimes(1)

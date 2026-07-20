@@ -26,6 +26,15 @@ const subcategoryButtonContent: SubcategoryButtonItem[] = [
   createSubcategoryButtonItem('BD & Comics', BooksNativeCategoriesEnum.BD_ET_COMICS),
 ]
 
+const longSubcategoryButtonContent: SubcategoryButtonItem[] = [
+  ...subcategoryButtonContent,
+  createSubcategoryButtonItem(
+    'Loisirs & Bien-être',
+    BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE
+  ),
+  createSubcategoryButtonItem('Mode et Art', BooksNativeCategoriesEnum.MODE_ET_ART),
+]
+
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -46,4 +55,29 @@ describe('<SubcategoryButtonList/>', () => {
 
     expect(await screen.findByText('Romans et littérature')).toBeOnTheScreen()
   })
+
+  it('should display "Voir tout" when there are more than 4 subcategories', async () => {
+    renderSubcategoryButtonList(longSubcategoryButtonContent)
+
+    expect(await screen.findByText('Voir tout')).toBeOnTheScreen()
+  })
+
+  it('should not display "Voir tout" when there are 4 subcategories or less', () => {
+    renderSubcategoryButtonList(subcategoryButtonContent)
+
+    expect(screen.queryByText('Voir tout')).not.toBeOnTheScreen()
+  })
 })
+
+const renderSubcategoryButtonList = (content: SubcategoryButtonItem[]) =>
+  render(
+    reactQueryProviderHOC(
+      <SubcategoryButtonList
+        subcategoryButtonContent={content}
+        seeAllNavigateTo={{
+          screen: 'ThematicSearchSubcategories',
+          params: { offerCategories: [] },
+        }}
+      />
+    )
+  )

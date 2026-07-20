@@ -10,12 +10,16 @@ type Props = {
   venue: VenueResponse
   enableVolunteer?: boolean
   enableVolunteerFeedback?: boolean
+  enableVenueFakeDoor?: boolean
+  onPressFollowButton?: () => void
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({
   venue,
   enableVolunteer,
   enableVolunteerFeedback,
+  enableVenueFakeDoor,
+  onPressFollowButton,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const { isDesktopViewport } = useTheme()
@@ -32,6 +36,8 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
         onPressBannerImage={isDesktopViewport ? showModal : undefined}
         enableVolunteer={enableVolunteer}
         enableVolunteerFeedback={enableVolunteerFeedback}
+        enableVenueFakeDoor={enableVenueFakeDoor}
+        onPressFollowButton={onPressFollowButton}
       />
     </React.Fragment>
   )
