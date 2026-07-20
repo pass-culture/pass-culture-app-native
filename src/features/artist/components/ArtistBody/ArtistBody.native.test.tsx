@@ -356,13 +356,78 @@ describe('<ArtistBody />', () => {
     expect(screen.queryByLabelText('Suivre cet artiste')).not.toBeOnTheScreen()
   })
 
-  it('should open fake door modal when pressing follow button', async () => {
+  it('should open fake door modal without offer type when the artist has no offer', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
     render(
       reactQueryProviderHOC(
         <ArtistBody
           artist={mockArtist}
           artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Suivre cet artiste'))
+
+    expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+    })
+  })
+
+  it('should open fake door modal with the first displayed playlist category as offer type', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR,
+      RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS,
+    ])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          // LIVRES comes before MUSIQUE in ARTIST_CATEGORY_PLAYLISTS, offers order is irrelevant
+          artistPlaylist={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Vinyle',
+              subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+            }),
+            buildArtistOffer({
+              objectID: '2',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+          ]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Suivre cet artiste'))
+
+    expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?offer_type=LIVRES',
+    })
+  })
+
+  it('should open fake door modal without offer type when wipArtistCategoryPlaylists FF deactivated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+          ]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
