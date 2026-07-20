@@ -5,6 +5,7 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { analytics } from 'libs/analytics/provider'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -20,7 +21,7 @@ const OVERLAY_COLOR = 'rgba(0, 0, 0, 0.7)'
 export const FakeDoorModal = () => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'FakeDoorModal'>>()
-  const { surveyKey, surveyUrl } = params
+  const { surveyKey, surveyUrl, analyticsParams } = params
   const [hasSeenSurvey, setHasSeenSurvey] = useState(false)
 
   useEffect(() => {
@@ -33,6 +34,11 @@ export const FakeDoorModal = () => {
     setHasSeenSurvey(true)
     await AsyncStorage.setItem(surveyKey, 'true')
     goBack()
+  }
+
+  const onSurveyAccess = () => {
+    if (analyticsParams) void analytics.logConsultFakeDoorSurvey(analyticsParams)
+    return hasSeenSurvey ? goBack() : markHasSeen()
   }
 
   const content = hasSeenSurvey
@@ -90,7 +96,7 @@ export const FakeDoorModal = () => {
             fullWidth
             icon={ExternalSiteFilled}
             variant={content.buttonVariant}
-            onBeforeNavigate={hasSeenSurvey ? goBack : markHasSeen}
+            onBeforeNavigate={onSurveyAccess}
           />
         </ButtonContainer>
 

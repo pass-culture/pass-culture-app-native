@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 import { Share } from 'react-native'
 
@@ -46,8 +47,9 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ArtistBody />', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     setFeatureFlags()
+    await AsyncStorage.clear()
   })
 
   it('should display only the main artist when there are several artists on header title', async () => {
@@ -375,6 +377,11 @@ describe('<ArtistBody />', () => {
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
       surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+      analyticsParams: {
+        featureName: 'follow_artist',
+        from: 'artist',
+        artistId: mockArtist.id,
+      },
     })
   })
 
@@ -387,7 +394,6 @@ describe('<ArtistBody />', () => {
       reactQueryProviderHOC(
         <ArtistBody
           artist={mockArtist}
-          // LIVRES comes before MUSIQUE in ARTIST_CATEGORY_PLAYLISTS, offers order is irrelevant
           artistPlaylist={[
             buildArtistOffer({
               objectID: '1',
@@ -412,7 +418,59 @@ describe('<ArtistBody />', () => {
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
       surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?offer_type=LIVRES',
+      analyticsParams: {
+        featureName: 'follow_artist',
+        from: 'artist',
+        artistId: mockArtist.id,
+      },
     })
+  })
+
+  it('should log HasClickedFakeDoorCTA when pressing the header follow button', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Suivre cet artiste'))
+
+    expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
+      featureName: 'follow_artist',
+      from: 'artist',
+      artistId: mockArtist.id,
+      hasSeenSurvey: false,
+      originDetails: 'artistHeader',
+    })
+  })
+
+  it('should log HasClickedFakeDoorCTA with hasSeenSurvey when the survey has already been accessed', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
+    await AsyncStorage.setItem('has_seen_follow_artist_fake_door_survey', 'true')
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(await screen.findByLabelText('Suivre cet artiste'))
+
+    expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith(
+      expect.objectContaining({ hasSeenSurvey: true })
+    )
   })
 
   it('should open fake door modal without offer type when wipArtistCategoryPlaylists FF deactivated', async () => {
@@ -440,6 +498,11 @@ describe('<ArtistBody />', () => {
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
       surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+      analyticsParams: {
+        featureName: 'follow_artist',
+        from: 'artist',
+        artistId: mockArtist.id,
+      },
     })
   })
 

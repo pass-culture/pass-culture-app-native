@@ -11,7 +11,11 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
-import { buildFollowArtistSurveyUrl } from 'features/artist/helpers/buildFollowArtistSurveyUrl'
+import {
+  buildFollowArtistSurveyUrl,
+  FOLLOW_ARTIST_FEATURE_NAME,
+  FOLLOW_ARTIST_SURVEY_KEY,
+} from 'features/artist/helpers/buildFollowArtistSurveyUrl'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
@@ -25,6 +29,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
+import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -108,16 +113,29 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const handlePressFollow = () => {
-    // Business rule: report a single offer type, the first playlist category displayed on the page.
-    // Playlists are only rendered when enablePlaylistByCategory is on, so no category is reported otherwise.
+  const handlePressFollow = async () => {
     const [firstArtistPlaylist] = enablePlaylistByCategory
       ? getDisplayableArtistPlaylists(artistPlaylist)
       : []
 
+    const hasSeenSurvey = await getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
+
+    void analytics.logHasClickedFakeDoorCTA({
+      featureName: FOLLOW_ARTIST_FEATURE_NAME,
+      from: 'artist',
+      artistId: artist.id,
+      hasSeenSurvey,
+      originDetails: 'artistHeader',
+    })
+
     navigate('FakeDoorModal', {
-      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
       surveyUrl: buildFollowArtistSurveyUrl({ offerType: firstArtistPlaylist?.searchGroupName }),
+      analyticsParams: {
+        featureName: FOLLOW_ARTIST_FEATURE_NAME,
+        from: 'artist',
+        artistId: artist.id,
+      },
     })
   }
 

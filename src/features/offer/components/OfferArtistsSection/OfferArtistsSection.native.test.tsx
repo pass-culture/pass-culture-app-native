@@ -237,6 +237,7 @@ describe('<OfferArtistsSection />', () => {
         surveyKey: 'has_seen_follow_artist_fake_door_survey',
         surveyUrl:
           'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=1&offer_type=MUSIQUE',
+        analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: '1' },
       })
     })
 
@@ -250,6 +251,7 @@ describe('<OfferArtistsSection />', () => {
         surveyKey: 'has_seen_follow_artist_fake_door_survey',
         surveyUrl:
           'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?offer_type=MUSIQUE',
+        analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: undefined },
       })
     })
 
@@ -263,6 +265,7 @@ describe('<OfferArtistsSection />', () => {
         surveyKey: 'has_seen_follow_artist_fake_door_survey',
         surveyUrl:
           'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=2&offer_type=MUSIQUE',
+        analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: '2' },
       })
     })
   })

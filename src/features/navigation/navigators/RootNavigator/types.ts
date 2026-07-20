@@ -240,9 +240,16 @@ type LoginParams = {
   from?: StepperOrigin
 }
 
+type FakeDoorModalAnalyticsParams = {
+  featureName: string
+  from: Referrals
+  artistId?: string
+}
+
 type FakeDoorModalParams = {
   surveyKey: StorageKey
   surveyUrl: string
+  analyticsParams?: FakeDoorModalAnalyticsParams
 }
 
 /**

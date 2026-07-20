@@ -1,10 +1,13 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { StorageKey } from 'libs/storage'
 
 const FOLLOW_ARTIST_SURVEY_URL = 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU'
 
+export const FOLLOW_ARTIST_SURVEY_KEY: StorageKey = 'has_seen_follow_artist_fake_door_survey'
+export const FOLLOW_ARTIST_FEATURE_NAME = 'follow_artist'
+
 type Params = {
   artistId?: string
-  // Qualtrics embedded data: culture category of the offer(s) the survey was triggered from
   offerType?: SearchGroupNameEnumv2
 }
 

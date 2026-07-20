@@ -3,6 +3,7 @@ import React from 'react'
 
 import { goBack, useRoute } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics/provider'
 import { FakeDoorModal } from 'shared/FakeDoorModal/FakeDoorModal'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
@@ -106,6 +107,53 @@ describe('FakeDoorModal', () => {
       render(<FakeDoorModal />)
 
       expect(await screen.findByText('Fermer')).toBeOnTheScreen()
+    })
+  })
+
+  describe('Analytics', () => {
+    it('should not log ConsultFakeDoorSurvey when no analytics params are provided', async () => {
+      render(<FakeDoorModal />)
+
+      await user.press(screen.getByLabelText('Donner mon avis'))
+
+      expect(analytics.logConsultFakeDoorSurvey).not.toHaveBeenCalled()
+    })
+
+    describe('When analytics params are provided', () => {
+      beforeEach(() => {
+        useRoute.mockReturnValue({
+          params: {
+            surveyKey: 'has_seen_follow_artist_fake_door_survey',
+            surveyUrl: 'https://passculture.qualtrics.com/',
+            analyticsParams: { featureName: 'follow_artist', from: 'artist', artistId: '1' },
+          },
+        })
+      })
+
+      it('should log ConsultFakeDoorSurvey when pressing "Donner mon avis" button', async () => {
+        render(<FakeDoorModal />)
+
+        await user.press(screen.getByLabelText('Donner mon avis'))
+
+        expect(analytics.logConsultFakeDoorSurvey).toHaveBeenCalledWith({
+          featureName: 'follow_artist',
+          from: 'artist',
+          artistId: '1',
+        })
+      })
+
+      it('should log ConsultFakeDoorSurvey when the survey has already been seen', async () => {
+        asyncStorageSpyOn.mockResolvedValueOnce('true')
+        render(<FakeDoorModal />)
+
+        await user.press(await screen.findByLabelText('Répondre au questionnaire'))
+
+        expect(analytics.logConsultFakeDoorSurvey).toHaveBeenCalledWith({
+          featureName: 'follow_artist',
+          from: 'artist',
+          artistId: '1',
+        })
+      })
     })
   })
 })

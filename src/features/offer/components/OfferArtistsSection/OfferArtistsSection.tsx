@@ -186,7 +186,6 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   )
 }
 
-// Align the follow button with the avatar image (left edge of the item)
 const SoloFollowButtonContainer = styled.View({
   alignSelf: 'flex-start',
 })
