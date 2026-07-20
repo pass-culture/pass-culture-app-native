@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { Artist } from 'features/venue/types'
 import { AvatarProps } from 'ui/components/Avatar/Avatar'
-import { AvatarListItem, AvatarListItemProps } from 'ui/components/Avatar/AvatarListItem'
+import { AvatarListItem } from 'ui/components/Avatar/AvatarListItem'
 import { Playlist } from 'ui/components/Playlist'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
@@ -18,6 +18,7 @@ type AvatarListProps = {
   withMargins?: boolean
   withPush?: boolean
   keyExtractor?: (item: Artist) => string
+  renderItemFooter?: (item: Artist) => React.ReactNode
 }
 
 const AVATAR_DEFAULT_CONFIG = {
@@ -34,6 +35,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
   withMargins,
   withPush,
   keyExtractor,
+  renderItemFooter,
 }) => {
   const mergedAvatarConfig = mergeWith(
     avatarConfig,
@@ -41,7 +43,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
     (value, srcValue) => value ?? srcValue
   )
   const renderAvatar = useCallback(
-    ({ item }: { item: AvatarListItemProps }) => (
+    ({ item }: { item: Artist }) => (
       <AvatarListItem
         id={item.id}
         image={item.image}
@@ -50,10 +52,11 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
         role={item.role}
         accessibilityLabel={item.accessibilityLabel}
         withPush={withPush}
+        footer={renderItemFooter?.(item)}
         {...mergedAvatarConfig}
       />
     ),
-    [onItemPress, mergedAvatarConfig, withPush]
+    [onItemPress, mergedAvatarConfig, withPush, renderItemFooter]
   )
 
   const size = mergedAvatarConfig.size

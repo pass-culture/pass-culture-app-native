@@ -9,7 +9,7 @@ import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-export type AvatarListItemProps = {
+type AvatarListItemProps = {
   id: number | string
   name: string
   onItemPress: (id: string, name: string) => void
@@ -18,6 +18,7 @@ export type AvatarListItemProps = {
   role?: string
   accessibilityLabel?: string
   withPush?: boolean
+  footer?: React.ReactNode
 } & AvatarProps
 
 export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
@@ -30,6 +31,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   role,
   accessibilityLabel,
   withPush,
+  footer,
   ...props
 }) => {
   const numberOfLines = useNumberOfLine(2)
@@ -59,19 +61,35 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
     </StyledView>
   )
 
-  if (!id) {
-    return content
-  }
-
-  return (
+  // The footer is rendered as a sibling of the navigation link (never nested inside it),
+  // because InternalTouchableLink renders an <a> on web and interactive elements
+  // must not be nested inside anchors.
+  const wrapped = id ? (
     <InternalTouchableLink
       accessibilityLabel={accessibilityLabel ?? name}
       navigateTo={{ screen: 'Artist', params: { id: id.toString() }, withPush }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
       {content}
     </InternalTouchableLink>
+  ) : (
+    content
+  )
+
+  if (!footer) {
+    return wrapped
+  }
+
+  return (
+    <ItemWithFooter gap={2}>
+      {wrapped}
+      {footer}
+    </ItemWithFooter>
   )
 }
+
+const ItemWithFooter = styled(ViewGap)({
+  alignItems: 'center',
+})
 
 const ArtistName = styled(Typo.BodyAccentS)<{
   maxWidth: number
