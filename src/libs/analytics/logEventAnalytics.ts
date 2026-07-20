@@ -297,6 +297,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_DISCLAIMER_VALIDATION_MAIL }),
   logConsultErrorApplicationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL }, { offerId }),
+  logConsultFakeDoorSurvey: (params: { featureName: string; from: Referrals; artistId?: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FAKE_DOOR_SURVEY }, params),
   logConsultFinishSubscriptionModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL }, { offerId }),
   logConsultHome: (params: ConsultHomeParams) =>
@@ -438,15 +440,21 @@ export const logEventAnalytics = {
     from,
     searchId,
     homeEntryId,
+    artistId,
+    hasSeenSurvey,
+    originDetails,
   }: {
     featureName: string
     from: Referrals
     searchId?: string
     homeEntryId?: string
+    artistId?: string
+    hasSeenSurvey?: boolean
+    originDetails?: string
   }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA },
-      { featureName, from, homeEntryId, searchId }
+      { artistId, featureName, from, hasSeenSurvey, homeEntryId, originDetails, searchId }
     ),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),

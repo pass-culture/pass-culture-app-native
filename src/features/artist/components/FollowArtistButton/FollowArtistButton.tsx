@@ -2,8 +2,14 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { buildFollowArtistSurveyUrl } from 'features/artist/helpers/buildFollowArtistSurveyUrl'
+import {
+  buildFollowArtistSurveyUrl,
+  FOLLOW_ARTIST_FEATURE_NAME,
+  FOLLOW_ARTIST_SURVEY_KEY,
+} from 'features/artist/helpers/buildFollowArtistSurveyUrl'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { analytics } from 'libs/analytics/provider'
+import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Bell } from 'ui/svg/icons/Bell'
 
@@ -20,10 +26,20 @@ export const FollowArtistButton: FunctionComponent<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const handlePress = () => {
+  const handlePress = async () => {
+    const hasSeenSurvey = await getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
+
+    void analytics.logHasClickedFakeDoorCTA({
+      featureName: FOLLOW_ARTIST_FEATURE_NAME,
+      from: 'offer',
+      artistId,
+      hasSeenSurvey,
+    })
+
     navigate('FakeDoorModal', {
-      surveyKey: 'has_seen_follow_artist_fake_door_survey',
+      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
       surveyUrl: buildFollowArtistSurveyUrl({ artistId, offerType }),
+      analyticsParams: { featureName: FOLLOW_ARTIST_FEATURE_NAME, from: 'offer', artistId },
     })
   }
 
