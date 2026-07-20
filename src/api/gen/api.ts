@@ -5759,7 +5759,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
@@ -6068,7 +6068,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
@@ -6168,7 +6168,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
@@ -6312,7 +6312,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
@@ -7203,7 +7203,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })

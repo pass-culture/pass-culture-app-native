@@ -24,12 +24,19 @@ describe('loginToApple (web)', () => {
     mockedApi.getNativeV1OauthState.mockResolvedValue({ oauthStateToken: mockState })
     mockLoadAppleSSOContext.mockReturnValue({ type: 'login', oauthStateToken: '' })
     Object.defineProperty(env, 'APPLE_SERVICE_ID', { value: 'test.service.id', writable: true })
-    delete (window as Partial<Window>).location
-    window.location = { ...originalLocation, origin: 'https://example.com', href: '' }
+    Object.defineProperty(window, 'location', {
+      value: { ...originalLocation, origin: 'https://example.com', href: '' },
+      writable: true,
+      configurable: true,
+    })
   })
 
   afterEach(() => {
-    window.location = originalLocation
+    Object.defineProperty(window, 'location', {
+      value: originalLocation,
+      writable: true,
+      configurable: true,
+    })
   })
 
   it('should redirect to Apple auth URL with correct params', async () => {
