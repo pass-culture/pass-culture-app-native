@@ -42,12 +42,11 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
         <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un mot de passe</Typo.Title3>
         <PasswordInputContainer>
           <PasswordInputController
+            label="Mot de passe"
             control={control}
             name="password"
             autocomplete="current-password"
-            label="Mot de passe"
-            withSecurityRules
-            securityRulesAlwaysVisible
+            displayValidation
           />
         </PasswordInputContainer>
         <ButtonPrimaryContainer>
