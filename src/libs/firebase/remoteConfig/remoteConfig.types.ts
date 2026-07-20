@@ -8,7 +8,6 @@ export type CustomRemoteConfig = {
   homeEntryIdBeneficiary: string
   homeEntryIdFreeBeneficiary: string
   homeEntryIdFreeOffers: string
-  homeEntryIdGeneral: string
   homeEntryIdWithoutBooking: string
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string

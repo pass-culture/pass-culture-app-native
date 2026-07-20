@@ -9,7 +9,6 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   homeEntryIdBeneficiary: '',
   homeEntryIdFreeBeneficiary: '',
   homeEntryIdFreeOffers: '',
-  homeEntryIdGeneral: '',
   homeEntryIdWithoutBooking: '',
   reactionFakeDoorCategories: { categories: [] },
   sameAuthorPlaylist: '',

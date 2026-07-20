@@ -14,7 +14,6 @@ export const getRemoteConfigFromConfigValues = (
   homeEntryIdBeneficiary: getConfigValue(parameters.homeEntryIdBeneficiary).asString(),
   homeEntryIdFreeBeneficiary: getConfigValue(parameters.homeEntryIdFreeBeneficiary).asString(),
   homeEntryIdFreeOffers: getConfigValue(parameters.homeEntryIdFreeOffers).asString(),
-  homeEntryIdGeneral: getConfigValue(parameters.homeEntryIdGeneral).asString(),
   homeEntryIdWithoutBooking: getConfigValue(parameters.homeEntryIdWithoutBooking).asString(),
   reactionFakeDoorCategories: JSON.parse(
     getConfigValue(parameters.reactionFakeDoorCategories).asString()
