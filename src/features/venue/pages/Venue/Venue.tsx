@@ -21,6 +21,7 @@ import { VenueContent } from 'features/venue/components/VenueContent/VenueConten
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
+import { buildFollowVenueSurveyUrl } from 'features/venue/helpers/buildFollowVenueSurveyUrl'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
@@ -179,7 +180,7 @@ export const Venue: FunctionComponent = () => {
   const handleOnPressFollowButton = () => {
     navigate('FakeDoorModal', {
       surveyKey: 'has_seen_follow_venue_fake_door_survey',
-      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
+      surveyUrl: buildFollowVenueSurveyUrl(venue?.activity),
     })
   }
 
