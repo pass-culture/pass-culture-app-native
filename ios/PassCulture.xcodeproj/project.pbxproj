@@ -11,8 +11,7 @@
 		1B9CDB3328FDA0E60060BC63 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B9CDB3228FDA0E60060BC63 /* SplashScreen.storyboard */; };
 		1BB62F9328DDAB680045698F /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB62F9228DDAB680045698F /* Dynamic.swift */; };
 		1BD7D11A28A67CE400283479 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */; };
-		25A567AE2E2FCEC0008F0E66 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 25A567AD2E2FCEB8008F0E66 /* AppDelegate.mm */; };
-		25A567B12E2FCF0E008F0E66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A567B02E2FCF0A008F0E66 /* main.m */; };
+		3AC0E8822F39F10000E2CF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0E8812F39F10000E2CF07 /* AppDelegate.swift */; };
 		3AC0E86F2F39E56C00E2CF07 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E86D2F39D8CF00E2CF07 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3AC0E8712F39E58600E2CF07 /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E8702F39E58600E2CF07 /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3AC0E8732F39E59200E2CF07 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC0E8722F39E59200E2CF07 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -39,9 +38,7 @@
 		1BB62F9228DDAB680045698F /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		1BD7D11928A67CE400283479 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Italic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		25A567AD2E2FCEB8008F0E66 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		25A567AF2E2FCEEC008F0E66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		25A567B02E2FCF0A008F0E66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3AC0E8812F39F10000E2CF07 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PassCulture/AppDelegate.swift; sourceTree = "<group>"; };
 		3746B404099846C48BD4E3A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PassCulture/Info.plist; sourceTree = "<group>"; };
 		39A88C70253F4B6000BACBFA /* PassCulture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PassCulture.entitlements; path = PassCulture/PassCulture.entitlements; sourceTree = "<group>"; };
 		3AC0E86D2F39D8CF00E2CF07 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -53,7 +50,6 @@
 		5FE4C5E883D5637AFB38DE7F /* Pods-PassCulture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.debug.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.debug.xcconfig"; sourceTree = "<group>"; };
 		6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
-		7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
 		82A443CC2AC3693F004BD838 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BoldItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		866FC5E348B2460296FB5F7B /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		8ED657E89359684BDB677D2F /* Pods_PassCulture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PassCulture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,7 +64,6 @@
 		D2AC37CEDDF462F38AB1A73F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = PassCulture/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		D554C847268F69C300C16018 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		DBF8B187882FD1725F936696 /* Pods-PassCulture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.release.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.release.xcconfig"; sourceTree = "<group>"; };
-		ED0101357B234447B64D029A /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
 		F423851ED1194E90940E001F /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,9 +112,7 @@
 		4F80AFA8A04449E4B81411BE /* PassCulture */ = {
 			isa = PBXGroup;
 			children = (
-				25A567AD2E2FCEB8008F0E66 /* AppDelegate.mm */,
-				25A567AF2E2FCEEC008F0E66 /* AppDelegate.h */,
-				25A567B02E2FCF0A008F0E66 /* main.m */,
+				3AC0E8812F39F10000E2CF07 /* AppDelegate.swift */,
 				39A88C70253F4B6000BACBFA /* PassCulture.entitlements */,
 				1B1270E628F945AD00A01C30 /* splashscreen.json */,
 				866FC5E348B2460296FB5F7B /* main.jsbundle */,
@@ -127,8 +120,6 @@
 				3746B404099846C48BD4E3A3 /* Info.plist */,
 				5F350A4B89F548B599D643BB /* GoogleService-Info.plist */,
 				A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */,
-				ED0101357B234447B64D029A /* PassCulture-Bridging-Header.h */,
-				7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */,
 				1B9CDB3228FDA0E60060BC63 /* SplashScreen.storyboard */,
 				D2AC37CEDDF462F38AB1A73F /* PrivacyInfo.xcprivacy */,
 			);
@@ -464,8 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BB62F9328DDAB680045698F /* Dynamic.swift in Sources */,
-				25A567AE2E2FCEC0008F0E66 /* AppDelegate.mm in Sources */,
-				25A567B12E2FCF0E008F0E66 /* main.m in Sources */,
+				3AC0E8822F39F10000E2CF07 /* AppDelegate.swift in Sources */,
 				D554C848268F69C300C16018 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,7 +501,6 @@
 				PRODUCT_NAME = PassCulture;
 				PROVISIONING_PROFILE_SPECIFIER = "$(IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SWIFT_OBJC_BRIDGING_HEADER = "PassCulture-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -558,7 +547,6 @@
 				PRODUCT_NAME = PassCulture;
 				PROVISIONING_PROFILE_SPECIFIER = "$(IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SWIFT_OBJC_BRIDGING_HEADER = "PassCulture-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
