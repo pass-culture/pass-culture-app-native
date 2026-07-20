@@ -517,6 +517,24 @@ describe('<Venue />', () => {
 
       expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
         surveyKey: 'has_seen_follow_venue_fake_door_survey',
+        surveyUrl: `https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY?venue_type=${Activity.BOOKSTORE}`,
+      })
+    })
+
+    it('should not send venue_type to the survey when venue has no activity', async () => {
+      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
+        ...venueDataTest,
+        isOpenToPublic: true,
+        bannerUrl: 'url_image',
+        activity: null,
+      })
+      asyncStorageSpyOn.mockResolvedValueOnce('false')
+      renderVenue(venueId)
+
+      await user.press(await screen.findByLabelText('Suivre le lieu'))
+
+      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
+        surveyKey: 'has_seen_follow_venue_fake_door_survey',
         surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
       })
     })
