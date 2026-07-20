@@ -25,6 +25,7 @@ type Props = {
   isCTADisplayed?: boolean
   children: React.ReactNode
   showSearchInVenueModal: () => void
+  enableVenueFakeDoor?: boolean
   onPressFollowButton: () => void
 }
 
@@ -36,6 +37,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   isCTADisplayed,
   children,
   showSearchInVenueModal,
+  enableVenueFakeDoor,
   onPressFollowButton,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
@@ -103,6 +105,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             <VenueHeader
               headerTransition={headerTransition}
               venue={venue}
+              enableVenueFakeDoor={enableVenueFakeDoor}
               onPressFollowButton={onPressFollowButton}
             />
           }>

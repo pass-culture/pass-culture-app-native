@@ -18,13 +18,19 @@ import { Share } from 'ui/svg/icons/Share'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
   venue: VenueResponse
+  enableVenueFakeDoor?: boolean
   onPressFollowButton: () => void
 }
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
-export const VenueHeader: React.FC<Props> = ({ headerTransition, venue, onPressFollowButton }) => {
+export const VenueHeader: React.FC<Props> = ({
+  headerTransition,
+  venue,
+  enableVenueFakeDoor,
+  onPressFollowButton,
+}) => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
   const [showSmallSubscriptionButton, setShowSmallSubscriptionButton] = useState(false)
 
@@ -65,7 +71,7 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue, onPressF
         titleTestID="venueHeaderName"
         RightElement={
           <ButtonsContainer gap={3}>
-            {showSmallSubscriptionButton ? (
+            {enableVenueFakeDoor && showSmallSubscriptionButton ? (
               <Animated.View style={{ opacity: smallSubscribeButtonOpacity }}>
                 <Button
                   iconButton
