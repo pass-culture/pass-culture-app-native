@@ -44,15 +44,18 @@ describe('ArtistTopOffers', () => {
 
     await user.press(screen.getByText('Manga one piece t91'))
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      artistName: 'Céline Dion',
-      displayAdvice: false,
-      from: 'artist',
-      isHeadline: false,
-      offerId: '16302',
-      originDetails: 'artistRecommendation',
-      playlistType: PlaylistType.ARTIST_TOP_OFFERS,
-    })
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith(
+      expect.objectContaining({
+        artistName: 'Céline Dion',
+        displayAdvice: false,
+        from: 'artist',
+        isHeadline: false,
+        offerId: '16302',
+        originDetails: 'artistRecommendation',
+        playlistType: PlaylistType.ARTIST_TOP_OFFERS,
+        venueId: 4070,
+      })
+    )
   })
 
   it('should display top offers in an horizontal carousel', () => {

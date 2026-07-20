@@ -79,9 +79,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   useEffect(() => {
     if (params.from === 'deeplink') {
-      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
+      triggerConsultOfferLog({ offerId: params.id, venueId: offer.venue.id, from: 'deeplink' })
     }
-  }, [params])
+  }, [offer.venue.id, params.from, params.id])
 
   const enableOfferArtistSectionRefacto = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO

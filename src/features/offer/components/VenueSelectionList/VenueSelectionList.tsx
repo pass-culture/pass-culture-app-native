@@ -10,6 +10,7 @@ import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
+  venueId?: number
 }
 
 export type VenueSelectionListProps = ViewProps &

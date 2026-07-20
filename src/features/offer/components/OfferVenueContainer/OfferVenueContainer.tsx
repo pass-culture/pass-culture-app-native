@@ -104,8 +104,10 @@ export const OfferVenueContainer: FC<Props> = ({
 
   const onNewOfferVenueSelected = (nextOfferId: number) => {
     hideChangeVenueModal()
+    const nextVenueId = venueList.find((item) => item.offerId === nextOfferId)?.venueId
     triggerConsultOfferLog({
       offerId: nextOfferId,
+      venueId: nextVenueId,
       from: 'offer',
       fromMultivenueOfferId: offer.id,
       displayAdvice: proAdvicesSegment === 'A',

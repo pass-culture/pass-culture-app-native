@@ -47,6 +47,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
       prePopulateOffer({ ...offer.offer, offerId: +offer.objectID, categoryId })
       triggerConsultOfferLog({
         offerId: +offer.objectID,
+        venueId: offer.venue.id,
         displayAdvice: proAdvicesOnOfferSegment === 'A',
         ...analyticsParams,
       })

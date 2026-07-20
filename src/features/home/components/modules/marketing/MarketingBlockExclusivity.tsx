@@ -28,6 +28,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
   const logConsultOffer = () => {
     triggerConsultOfferLog({
       offerId: Number.parseInt(offer.objectID),
+      venueId: offer.venue.id,
       from: 'home',
       homeEntryId,
       moduleName: offer.offer.name,

@@ -90,15 +90,18 @@ describe('ArtistPlaylist', () => {
 
     await user.press(screen.getByText('Livre papier'))
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      artistName: 'Céline Dion',
-      displayAdvice: false,
-      from: 'artist',
-      isHeadline: false,
-      offerId: '2',
-      originDetails: 'artistRecommendation',
-      playlistType: PlaylistType.ARTIST_CATEGORY_PLAYLIST,
-    })
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith(
+      expect.objectContaining({
+        artistName: 'Céline Dion',
+        displayAdvice: false,
+        from: 'artist',
+        isHeadline: false,
+        offerId: '2',
+        originDetails: 'artistRecommendation',
+        playlistType: PlaylistType.ARTIST_CATEGORY_PLAYLIST,
+        venueId: 4070,
+      })
+    )
   })
 
   it('should not display playlists for offers excluded from artist category mapping', async () => {

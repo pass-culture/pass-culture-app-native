@@ -18,7 +18,11 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Typo } from 'ui/theme'
 
-export const BookingImpossible: React.FC = () => {
+type Props = {
+  venueId: number
+}
+
+export const BookingImpossible: React.FC<Props> = ({ venueId }) => {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
@@ -57,7 +61,12 @@ export const BookingImpossible: React.FC = () => {
     dismissModal()
 
     const from = 'bookingimpossible'
-    triggerConsultOfferLog({ offerId, from, displayAdvice: proAdvicesOnOfferSegment === 'A' })
+    triggerConsultOfferLog({
+      offerId,
+      venueId,
+      from,
+      displayAdvice: proAdvicesOnOfferSegment === 'A',
+    })
     navigate('Offer', { id: offerId, from })
   }
 
