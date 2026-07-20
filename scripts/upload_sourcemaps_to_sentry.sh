@@ -19,7 +19,7 @@ create_sourcemaps() {
     HERMES_OS_BIN="osx-bin"
   fi
 
-  HERMES_BIN="node_modules/react-native/sdks/hermesc/${HERMES_OS_BIN}/hermesc"
+  HERMES_BIN="node_modules/hermes-compiler/hermesc/${HERMES_OS_BIN}/hermesc"
 
   if [[ "${APP_OS}" = "android" ]]; then
     npx react-native bundle \
