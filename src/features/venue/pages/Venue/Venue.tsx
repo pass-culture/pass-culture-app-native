@@ -250,6 +250,7 @@ export const Venue: FunctionComponent = () => {
             venue={venue}
             isCTADisplayed={isCTADisplayed}
             showSearchInVenueModal={showSearchInVenueModal}
+            enableVenueFakeDoor={enableVenueFakeDoor}
             onPressFollowButton={handleOnPressFollowButton}>
             {VenueContentChildren}
           </VenueContent>
@@ -264,6 +265,7 @@ export const Venue: FunctionComponent = () => {
         <OldVenueContent
           venue={venue}
           isCTADisplayed={isCTADisplayed}
+          enableVenueFakeDoor={enableVenueFakeDoor}
           onPressFollowButton={handleOnPressFollowButton}>
           {VenueContentChildren}
         </OldVenueContent>

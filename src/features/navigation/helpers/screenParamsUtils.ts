@@ -12,7 +12,6 @@ type ScreensRequiringParsing = Extract<
   | 'BookingDetails'
   | 'BookingConfirmation'
   | 'ClubAdvices'
-  | 'FakeDoorModal'
   | 'Home'
   | 'Login'
   | 'LoginMethods'
@@ -210,10 +209,6 @@ export const screenParamsParser: ParamsParsers = {
     transcription: identityFn,
     thematicHomeEntryId: identityFn,
     thematicHomeTitle: identityFn,
-  },
-  FakeDoorModal: {
-    surveyKey: identityFn,
-    surveyUrl: identityFn,
   },
 }
 
