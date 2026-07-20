@@ -89,6 +89,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
 
 const ItemWithFooter = styled(ViewGap)({
   alignItems: 'center',
+  justifyContent: 'space-between',
 })
 
 const ArtistName = styled(Typo.BodyAccentS)<{
