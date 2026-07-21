@@ -1,0 +1,123 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible:
+    id: 'Profil - non complété'
+    enabled: true
+
+- assertVisible:
+    id: 'Identification - non complété'
+    enabled: false
+
+- assertVisible:
+    id: 'Confirmation - non complété'
+    enabled: false
+
+- tapOn: 'Profil - non complété'
+
+- tapOn: 'Champs de texte - Prénom - Obligatoire'
+
+- inputText:
+    text: 1
+
+- tapOn: 'Champs de texte - Nom - Obligatoire'
+
+- inputText:
+    text: ${(}
+
+- tapOn: 'Champs de texte - Prénom - Obligatoire - Ce champ ne doit pas contenir de chiffres. - Ce champ ne doit pas contenir de chiffres.'
+
+- pressKey: Delete
+
+- inputText:
+    text: ${faker.name().firstName()}
+
+- tapOn: 'Champs de texte - Nom - Obligatoire - Ce champ contient des caractères invalides. - Ce champ contient des caractères invalides.'
+
+- pressKey: Delete
+
+- inputText:
+    text: ${faker.name().lastName()}
+
+- tapOn: 'Continuer vers la ville de résidence'
+
+- tapOn: 'Champs de texte - Indique ton code postal et choisis ta ville - Exemple : 75017'
+
+- inputText:
+    text: 670000
+
+- assertVisible: 'Champs de texte - Indique ton code postal et choisis ta ville - Exemple : 75017 - Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
+
+- pressKey: Delete
+
+- assertVisible: 'radio button, unchecked'
+
+- tapOn: 'Continuer vers l’adresse'
+
+- tapOn: 'Champs de texte - Recherche et sélectionne ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces.'
+
+- inputText:
+    text: ${faker.address().streetAddress()}
+
+- tapOn: 'Continuer vers le numéro de téléphone'
+
+- tapOn: 'Champs de texte - Numéro de téléphone - Exemple : +33639980123'
+
+- inputText:
+    text: 1234567891
+
+- assertVisible: 'Champs de texte - Numéro de téléphone - Exemple : +33639980123 - Le numéro de téléphone est trop long - Le numéro de téléphone est trop long'
+
+- pressKey: Delete
+
+- inputText:
+    text: ${faker.phone().phoneNumber('06########')}
+
+- assertVisible:
+    id: 'Continuer vers l’étape suivante'
+    enabled: true
+
+- tapOn: '+33 - Ouvrir la modale de choix de l’indicatif téléphonique'
+
+- tapOn: 'Martinique +596'
+
+- tapOn: 'Champs de texte - Numéro de téléphone - Exemple : +33639980123'
+
+- pressKey: Delete
+
+- inputText:
+    text: 9
+
+- assertVisible: 'Champs de texte - Numéro de téléphone - Exemple : +33639980123 - Le numéro de téléphone est invalide - Le numéro de téléphone est invalide'
+
+- repeat:
+    times: 9
+    commands:
+      - pressKey: Delete
+
+- inputText:
+    text: 596123456
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- scrollUntilVisible:
+    element:
+      text: 'radio button, unchecked'
+      index: 6
+
+- tapOn: "Statut - Demandeur d'emploi - En recherche d'emploi - non sélectionné"
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- tapOn: 'Modifier mes informations'
+
+- tapOn: 'Continuer vers la ville de résidence'
+
+- tapOn: 'Continuer vers l’adresse'
+
+- tapOn: 'Continuer vers le numéro de téléphone'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- tapOn: 'Confirmer et envoyer les informations'

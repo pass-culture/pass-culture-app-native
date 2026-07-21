@@ -1,0 +1,55 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - activation
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        step: 'EMAIL_VALIDATION'
+        age: 18
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+
+- tapOn: "Débloque tes 150 € à dépenser sur l'application"
+
+- runFlow: ../common/helpers/FillProfileStep.yml
+
+- tapOn: 'Identification - non complété'
+
+- tapOn: 'J’ai un titre de séjour, une carte d’identité ou un passeport étranger.'
+
+- assertVisible: 'Identifie-toi sur le site demarche.numerique.gouv.fr'
+
+- tapOn:
+    id: 'Revenir en arrière'
+
+- tapOn: 'J’ai une carte d’identité ou un passeport français'
+
+- tapOn: 'J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées'
+
+- assertVisible: 'Vérifions votre identité'
+
+- tapOn: 'Vérifier plus tard'
+
+- tapOn: 'Continuer ma vérification'
+
+- tapOn: 'Vérifier plus tard'
+
+- tapOn: 'Quitter'
+
+- assertVisible: 'Identification - à essayer de nouveau'
+
+- assertVisible: 'La vérification de ton identité a échoué'
+
+- tapOn: 'Abandonner'
+
+- tapOn: 'Abandonner la vérification'
+
+- assertVisible: 'Débloque tes 150 € Réessaie dès maintenant'
+
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
+
+- assertVisible: "Nous n'arrivons pas à lire ton document. Réessaie avec un passeport ou une carte d'identité française en cours de validité dans un lieu bien éclairé."
+
+- assertVisible: 'Lien externe - Réessayer la vérification de mon identité'
