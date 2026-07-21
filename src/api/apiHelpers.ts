@@ -164,7 +164,7 @@ export async function handleGeneratedApiResponse(
         extra: { responseBody },
       })
       // We navigate to Login in case of a 401 -> user not connected / session revoked server side
-      if (options.credentials !== 'omit') {
+      if (options?.credentials !== 'omit') {
         navigateToLoginMethods()
         return {}
       }
