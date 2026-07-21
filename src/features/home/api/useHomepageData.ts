@@ -10,7 +10,6 @@ import { useUserHasBookingsQueryV2 } from 'queries/bookings/useUserHasBookingsQu
 import { isUserFreeBeneficiaryOrEligible } from 'shared/user/isUserFreeBeneficiaryOrEligible'
 
 enum HomepageType {
-  GENERAL,
   BENEFICIARY,
   FREE_BENEFICIARY,
   WITHOUT_BOOKING,
@@ -39,19 +38,16 @@ const getHomepageType = ({
   onboardingRole,
 }: HomeCriterias): HomepageType => {
   if (!isLoggedIn) {
-    if (onboardingRole === UserOnboardingRole.EIGHTEEN) {
-      return HomepageType.BENEFICIARY
-    }
     if (onboardingRole === UserOnboardingRole.UNDERAGE) {
       return HomepageType.FREE_BENEFICIARY
     }
-    return HomepageType.GENERAL
+    return HomepageType.BENEFICIARY
   }
 
   if (isFreeBeneficiaryOrEligible) return HomepageType.FREE_BENEFICIARY
   if (isBeneficiary) return hasBookings ? HomepageType.BENEFICIARY : HomepageType.WITHOUT_BOOKING
 
-  return HomepageType.GENERAL
+  return HomepageType.BENEFICIARY
 }
 
 export const getHomepageId = (
@@ -67,7 +63,6 @@ export const getHomepageId = (
   const homePageRemoteConfig: Record<HomepageType, string> = {
     [HomepageType.BENEFICIARY]: remoteConfig.homeEntryIdBeneficiary,
     [HomepageType.FREE_BENEFICIARY]: remoteConfig.homeEntryIdFreeBeneficiary,
-    [HomepageType.GENERAL]: remoteConfig.homeEntryIdGeneral,
     [HomepageType.WITHOUT_BOOKING]: remoteConfig.homeEntryIdWithoutBooking,
   }
   const homepageType = getHomepageType({

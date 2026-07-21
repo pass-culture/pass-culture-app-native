@@ -21,7 +21,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 describe('getHomepageId', () => {
   const mockConfig: CustomRemoteConfig = {
     ...DEFAULT_REMOTE_CONFIG,
-    homeEntryIdGeneral: 'general-id',
     homeEntryIdBeneficiary: 'beneficiary-id',
     homeEntryIdFreeBeneficiary: 'free-beneficiary-id',
     homeEntryIdWithoutBooking: 'without-booking-id',
@@ -42,8 +41,8 @@ describe('getHomepageId', () => {
     ${true}    | ${false}                    | ${true}       | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdWithoutBooking}
     ${false}   | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNDERAGE} | ${mockConfig.homeEntryIdFreeBeneficiary}
     ${true}    | ${true}                     | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdFreeBeneficiary}
-    ${false}   | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
-    ${true}    | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+    ${false}   | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdBeneficiary}
+    ${true}    | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdBeneficiary}
   `(
     `should return remote config $expectedHomeEntry when isLoggedIn=$isLoggedIn, isFreeBeneficiaryOrEligible=$isFreeBeneficiaryOrEligible, isBeneficiary, hasBookings=$hasBookings, onboardingRole=$onboardingRole`,
     ({
