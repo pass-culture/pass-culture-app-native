@@ -14,7 +14,7 @@ const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
 const GC_TIME_TWENTY_FOUR_DAYS = 1000 * 60 * 60 * 24 * 24
 
-export const bookingsV2QueryOptions = (isLoggedIn: boolean) => ({
+const bookingsV2QueryOptions = (isLoggedIn: boolean) => ({
   queryKey: [QueryKeys.BOOKINGSV2],
   queryFn: () => api.getNativeV2Bookings(),
   staleTime: STALE_TIME_BOOKINGS,

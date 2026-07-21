@@ -3,7 +3,7 @@ import type { KnipConfig } from './node_modules/knip'
 const isProduction = process.env.NODE_ENV === 'production'
 
 const defaultConfig: KnipConfig = {
-  entry: ['index.js!', 'src/index.tsx!', 'server/src/index.ts!'],
+  entry: ['index.js!', 'src/index.tsx!', 'server/src/index.ts!', 'src/tests/setupTests.js'],
   project: ['src/**/*.{ts,tsx}!'], // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
   ignore: [
     'src/**/*.stories.old.tsx', // TODO(PC-35376): should delete this line
@@ -29,6 +29,8 @@ const defaultConfig: KnipConfig = {
     'src/shared/useABSegment/**',
     // Deadcode for the moment but it will be reused for professional reviews
     'src/features/reactions/components/FeedBack.tsx',
+    'src/tests/utils/web.tsx',
+    'src/types.ts',
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
