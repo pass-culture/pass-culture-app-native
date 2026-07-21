@@ -27,19 +27,21 @@ export const FollowArtistButton: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const handlePress = async () => {
-    const hasSeenSurvey = await getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
+    const hasSeenSurveyPromise = getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
+
+    navigate('FakeDoorModal', {
+      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
+      surveyUrl: buildFollowArtistSurveyUrl({ artistId, offerType }),
+      analyticsParams: { featureName: FOLLOW_ARTIST_FEATURE_NAME, from: 'offer', artistId },
+    })
+
+    const hasSeenSurvey = await hasSeenSurveyPromise
 
     void analytics.logHasClickedFakeDoorCTA({
       featureName: FOLLOW_ARTIST_FEATURE_NAME,
       from: 'offer',
       artistId,
       hasSeenSurvey,
-    })
-
-    navigate('FakeDoorModal', {
-      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
-      surveyUrl: buildFollowArtistSurveyUrl({ artistId, offerType }),
-      analyticsParams: { featureName: FOLLOW_ARTIST_FEATURE_NAME, from: 'offer', artistId },
     })
   }
 

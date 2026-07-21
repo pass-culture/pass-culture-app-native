@@ -118,7 +118,22 @@ export const ArtistBody: FunctionComponent<Props> = ({
       ? getDisplayableArtistPlaylists(artistPlaylist)
       : []
 
-    const hasSeenSurvey = await getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
+    const hasSeenSurveyPromise = getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
+
+    navigate('FakeDoorModal', {
+      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
+      surveyUrl: buildFollowArtistSurveyUrl({
+        artistId: artist.id,
+        offerType: firstArtistPlaylist?.searchGroupName,
+      }),
+      analyticsParams: {
+        featureName: FOLLOW_ARTIST_FEATURE_NAME,
+        from: 'artist',
+        artistId: artist.id,
+      },
+    })
+
+    const hasSeenSurvey = await hasSeenSurveyPromise
 
     void analytics.logHasClickedFakeDoorCTA({
       featureName: FOLLOW_ARTIST_FEATURE_NAME,
@@ -126,16 +141,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
       artistId: artist.id,
       hasSeenSurvey,
       originDetails: 'artistHeader',
-    })
-
-    navigate('FakeDoorModal', {
-      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
-      surveyUrl: buildFollowArtistSurveyUrl({ offerType: firstArtistPlaylist?.searchGroupName }),
-      analyticsParams: {
-        featureName: FOLLOW_ARTIST_FEATURE_NAME,
-        from: 'artist',
-        artistId: artist.id,
-      },
     })
   }
 

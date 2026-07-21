@@ -13,7 +13,7 @@ type Params = {
 
 export const buildFollowArtistSurveyUrl = ({ artistId, offerType }: Params = {}): string => {
   const searchParams = new URLSearchParams()
-  if (artistId) searchParams.append('artistId', artistId)
+  if (artistId) searchParams.append('artist_id', artistId)
   if (offerType) searchParams.append('offer_type', offerType)
 
   const query = searchParams.toString()

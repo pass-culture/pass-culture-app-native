@@ -110,6 +110,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
             />
           }>
           <ContentContainer
+            testID="venue-container"
             rightNootch={isLandscape ? right : 0}
             leftNootch={isLandscape ? left : 0}
             onScroll={handleScroll}

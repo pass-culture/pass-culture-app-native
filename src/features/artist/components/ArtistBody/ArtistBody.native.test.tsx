@@ -376,7 +376,7 @@ describe('<ArtistBody />', () => {
 
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
-      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+      surveyUrl: `https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=${mockArtist.id}`,
       analyticsParams: {
         featureName: 'follow_artist',
         from: 'artist',
@@ -417,7 +417,7 @@ describe('<ArtistBody />', () => {
 
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
-      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?offer_type=LIVRES',
+      surveyUrl: `https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=${mockArtist.id}&offer_type=LIVRES`,
       analyticsParams: {
         featureName: 'follow_artist',
         from: 'artist',
@@ -497,7 +497,7 @@ describe('<ArtistBody />', () => {
 
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
-      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU',
+      surveyUrl: `https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=${mockArtist.id}`,
       analyticsParams: {
         featureName: 'follow_artist',
         from: 'artist',
