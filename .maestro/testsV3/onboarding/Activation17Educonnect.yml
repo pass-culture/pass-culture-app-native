@@ -1,0 +1,28 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - activation
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        step: 'EMAIL_VALIDATION'
+        age: 17
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+
+- tapOn: "Débloque tes 50 € à dépenser sur l'application"
+
+- runFlow: ../common/helpers/FillProfileStep.yml
+
+- tapOn: 'Identification - non complété'
+
+- assertVisible: 'Ma pièce d’identité'
+
+- tapOn: 'Mes codes ÉduConnect'
+
+- assertVisible: 'Un compte unique pour les services numériques des écoles et des établissements'
+
+- tapOn: 'Revenir en arrière'
+
+- tapOn: 'Mes codes ÉduConnect'
