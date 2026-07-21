@@ -1,11 +1,11 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { TouchableWithoutFeedback } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { useHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/useHasSeenFakeDoorSurvey'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -22,17 +22,10 @@ export const FakeDoorModal = () => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'FakeDoorModal'>>()
   const { surveyKey, surveyUrl, analyticsParams } = params
-  const [hasSeenSurvey, setHasSeenSurvey] = useState(false)
-
-  useEffect(() => {
-    void AsyncStorage.getItem(surveyKey).then((val) => {
-      setHasSeenSurvey(val === 'true')
-    })
-  }, [surveyKey])
+  const { hasSeenSurvey, markHasSeenSurvey } = useHasSeenFakeDoorSurvey(surveyKey)
 
   const markHasSeen = async () => {
-    setHasSeenSurvey(true)
-    await AsyncStorage.setItem(surveyKey, 'true')
+    await markHasSeenSurvey()
     goBack()
   }
 

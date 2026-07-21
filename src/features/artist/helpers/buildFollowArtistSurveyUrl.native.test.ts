@@ -8,8 +8,8 @@ describe('buildFollowArtistSurveyUrl', () => {
     expect(buildFollowArtistSurveyUrl()).toEqual(SURVEY_URL)
   })
 
-  it('should append artistId only', () => {
-    expect(buildFollowArtistSurveyUrl({ artistId: '1' })).toEqual(`${SURVEY_URL}?artistId=1`)
+  it('should append artist_id only', () => {
+    expect(buildFollowArtistSurveyUrl({ artistId: '1' })).toEqual(`${SURVEY_URL}?artist_id=1`)
   })
 
   it('should append offer_type only', () => {
@@ -18,9 +18,9 @@ describe('buildFollowArtistSurveyUrl', () => {
     )
   })
 
-  it('should append both artistId and offer_type', () => {
+  it('should append both artist_id and offer_type', () => {
     expect(
       buildFollowArtistSurveyUrl({ artistId: '1', offerType: SearchGroupNameEnumv2.MUSIQUE })
-    ).toEqual(`${SURVEY_URL}?artistId=1&offer_type=MUSIQUE`)
+    ).toEqual(`${SURVEY_URL}?artist_id=1&offer_type=MUSIQUE`)
   })
 })
