@@ -1,7 +1,9 @@
-import { QueryClient, useQueryClient } from '@tanstack/react-query'
+import { QueryClient, UseMutateFunction, useQueryClient } from '@tanstack/react-query'
 import { useCallback } from 'react'
 
+import { SignoutResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useLogOutMutation } from 'features/auth/queries/useLogoutMutation'
 import { analytics } from 'libs/analytics/provider'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -19,6 +21,7 @@ const handleBatchProfileReset = () => {
 }
 
 export const logoutActions = async (
+  logout: UseMutateFunction<SignoutResponse, unknown, void, unknown>,
   setIsLoggedIn: (isLoggedIn: boolean) => void,
   queryClient: QueryClient
 ) => {
@@ -35,6 +38,7 @@ export const logoutActions = async (
       storage.clear('access_token'),
       clearRefreshToken(),
       googleLogout(),
+      logout(),
     ])
     eventMonitoring.setUser(null)
   } catch (err) {
@@ -46,8 +50,10 @@ export const useLogoutRoutine = (): (() => Promise<void>) => {
   const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
 
+  const { mutate: logout } = useLogOutMutation()
+
   return useCallback(
-    async () => logoutActions(setIsLoggedIn, queryClient),
-    [queryClient, setIsLoggedIn]
+    async () => logoutActions(logout, setIsLoggedIn, queryClient),
+    [queryClient, setIsLoggedIn, logout]
   )
 }

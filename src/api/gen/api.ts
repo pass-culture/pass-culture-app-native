@@ -4242,6 +4242,11 @@ export interface SigninResponseV2 {
 }
 /**
  * @export
+ * @interface SignoutResponse
+ */
+export interface SignoutResponse {}
+/**
+ * @export
  * @interface SimilarArtistItem
  */
 export interface SimilarArtistItem {
@@ -7421,6 +7426,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary signout <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1Signout(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/signout`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary create_disability_bonus_credit_fraud_checks <POST>
      * @param {DisabilityBonusCreditRequest} body 
      * @param {*} [options] Override http request option.
@@ -8664,6 +8687,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary signout <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1Signout(options?: any): Promise<SignoutResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Signout(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, options)
+    },
+    /**
+     * 
      * @summary create_disability_bonus_credit_fraud_checks <POST>
      * @param {DisabilityBonusCreditRequest} body 
      * @param {*} [options] Override http request option.
@@ -9675,6 +9709,17 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1Signin(body: SigninRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Signin(body, options)
+  }
+  /**
+    * 
+    * @summary signout <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV1Signout(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1Signout(options)
   }
   /**
     * 

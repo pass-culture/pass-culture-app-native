@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { QueryClient } from '@tanstack/react-query'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
+import * as API from 'api/api'
 import { analytics } from 'libs/analytics/provider'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -19,6 +20,7 @@ const setupQueryClient = (client: QueryClient) => {
   queryClient = client
   jest.spyOn(queryClient, 'removeQueries').mockImplementation(removeQueriesMock)
 }
+const apiSignOutSpy = jest.spyOn(API.api, 'postNativeV1Signout')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -118,6 +120,13 @@ describe('useLogoutRoutine', () => {
     await result.current()
 
     expect(googleLogout).toHaveBeenCalledTimes(1)
+  })
+
+  it('should logout from backend', async () => {
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
+
+    expect(apiSignOutSpy).toHaveBeenCalledTimes(1)
   })
 })
 
