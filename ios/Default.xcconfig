@@ -1,0 +1,11 @@
+// Default fallback values for the app identity.
+
+IOS_APP_ID=app.passculture.test
+IOS_APP_NAME=PassCulture T
+IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT=match Development app.passculture.test
+IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE=match AdHoc app.passculture.test
+IOS_TEAM_ID=WBC4X3LRTS
+IOS_APP_STORE_ID=1557887412
+IOS_KEYCHAIN_SERVICE_KEY=rn_keychain_service_key
+
+#include? "react-native-config.xcconfig"
