@@ -1,11 +1,10 @@
-import { getUpdateSource, HotUpdater } from '@hot-updater/react-native'
+import { HotUpdater } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Alert, Button } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { CrashTestButton } from 'cheatcodes/components/CrashTestButton'
-import { env } from 'libs/environment/env'
 import { decodeToken } from 'libs/jwt/jwt'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { BatchUser } from 'libs/react-native-batch'
@@ -34,9 +33,7 @@ const getUserId = async () => {
 const checkForAppUpdate = async () => {
   try {
     const updateInfo = await HotUpdater.checkForUpdate({
-      source: getUpdateSource(`${env.HOT_UPDATER_FUNCTION_URL}`, {
-        updateStrategy: 'appVersion',
-      }),
+      updateStrategy: 'appVersion',
     })
 
     if (!updateInfo) {
@@ -115,14 +112,6 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
           <Typo.Body>Channel: {HotUpdater.getChannel()}</Typo.Body>
           <Typo.Body>App Version: {HotUpdater.getAppVersion()}</Typo.Body>
           <Button title="Reload" onPress={() => HotUpdater.reload()} />
-          <Button
-            title="HotUpdater.runUpdateProcess()"
-            onPress={() =>
-              HotUpdater.runUpdateProcess({
-                source: `${env.HOT_UPDATER_FUNCTION_URL}`,
-              })
-            }
-          />
           <Button title="Check for App Update" onPress={handleCheckForAppUpdate} />
           <Typo.Body>Update Status: {updateStatus ?? 'unknown'}</Typo.Body>
         </StyledViewGap>
