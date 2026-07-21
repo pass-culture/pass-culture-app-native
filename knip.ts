@@ -3,32 +3,17 @@ import type { KnipConfig } from './node_modules/knip'
 const isProduction = process.env.NODE_ENV === 'production'
 
 const defaultConfig: KnipConfig = {
-  entry: ['index.js!', 'src/index.tsx!', 'server/src/index.ts!'],
+  entry: ['src/index.tsx!', 'server/src/index.ts!', 'src/tests/setupTests.js!'],
   project: ['src/**/*.{ts,tsx}!'], // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
   ignore: [
-    'src/**/*.stories.old.tsx', // TODO(PC-35376): should delete this line
-    'src/features/bookings/components/BookingListItem.tsx', // TODO(PC-35897): remove
-    'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
-    'src/ui/designSystem/Banner/**', // TODO(PC-38130): remove
-    'src/ui/designSystem/RadioButton/**', // TODO(PC-37009): remove
-    'src/ui/designSystem/RadioButtonGroup/**', // TODO(PC-37009): remove
-    'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
-    'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
-    'src/ui/designSystem/Snackbar/**', // TODO(PC-39606): remove
-    'src/ui/designSystem/illustrations/index.ts', // Deadcode: exported for future illustration consumers to remove when the ticket is done by conversion
-    'src/libs/locationV2/**',
-    'src/**/*.ios.*',
-    '.storybook/**/*',
-    'src/**/*.android.*',
+    // setup
     'src/**/*.web.*',
     'src/api/gen/**',
     'src/**/fixtures/**',
-    'src/**/__mocks__/**',
-    'src/features/offerRefacto/**',
-    // Deadcode for the moment but it will be reused for future AB testing
-    'src/shared/useABSegment/**',
-    // Deadcode for the moment but it will be reused for professional reviews
-    'src/features/reactions/components/FeedBack.tsx',
+    'src/tests/utils/web.tsx',
+    // temporary ignore
+    'src/**/*.stories.old.tsx', // TODO(PC-35376): should delete this line
+    'src/ui/designSystem/RadioButton/**', // TODO(PC-37009): remove
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
@@ -44,12 +29,14 @@ const productionConfig: KnipConfig = {
   project: [
     'src/**/*.{ts,tsx}!',
     '!src/**/*[fF]ixture*.{ts,tsx}',
-    '!src/**/{tests,storybook,__tests__}/**/*.{ts,tsx}',
     '!src/**/*.{test, stories}.{ts,tsx}',
   ],
   ignore: [
     ...(defaultConfig.ignore || []),
-    'src/features/bookings/components/Ticket/ControlComponent.tsx',
+    'src/types.ts',
+    'src/**/tests/**/*',
+    'src/**/storybook/**/*',
+    'src/shared/useABSegment/**/*',
   ],
   rules: {
     dependencies: 'off',
