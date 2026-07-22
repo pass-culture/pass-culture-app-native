@@ -80,6 +80,7 @@ export function OfferPlaylistList({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
+  const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
   const {
     logSameCategoryPlaylistVerticalScroll,
     logBooksSameCategoryPlaylistVerticalScroll,
@@ -191,6 +192,7 @@ export function OfferPlaylistList({
                   theme,
                   proAdvicesSegment,
                   enableProAdvicesTag,
+                  enableSceneClubTag,
                 })}
                 title={playlist.title}
                 playlistType={playlist.type}

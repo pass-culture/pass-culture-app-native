@@ -3,10 +3,12 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import {
   BookingsResponseV2,
+  ChronicleClubType,
   GetRemindersResponse,
   OfferProAdvices,
   PaginatedFavoritesResponse,
   SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
 } from 'api/gen'
 import { offerProAdvicesFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
@@ -267,6 +269,48 @@ describe('<Offer />', () => {
       categoryName: 'CINEMA',
       from: 'offer',
       offerId: '116656',
+    })
+  })
+
+  describe('scène club advices', () => {
+    const sceneClubOffer = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+      chronicles: [
+        {
+          id: 1,
+          clubType: ChronicleClubType.SCENE,
+          contentPreview: 'Une mise en scène bluffante',
+          dateCreated: '2025-04-12T09:14:52.123456Z',
+          author: { firstName: 'Camille', age: 17 },
+        },
+      ],
+      chroniclesCount: 1,
+    }
+
+    it('should display scène club advices section when offer has scène club advices', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SCENE_CLUB])
+      renderOfferPage({ mockOffer: sceneClubOffer })
+
+      expect(await screen.findByText('Les avis de la scène club')).toBeOnTheScreen()
+    })
+
+    it('should not display scène club advices section when offer has no advice', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SCENE_CLUB])
+      renderOfferPage({ mockOffer: { ...sceneClubOffer, chronicles: [], chroniclesCount: 0 } })
+
+      await screen.findByTestId('offerv2-container')
+
+      expect(screen.queryByText('Les avis de la scène club')).not.toBeOnTheScreen()
+    })
+
+    it('should not display scène club advices section when feature flag is disabled', async () => {
+      setFeatureFlags()
+      renderOfferPage({ mockOffer: sceneClubOffer })
+
+      await screen.findByTestId('offerv2-container')
+
+      expect(screen.queryByText('Les avis de la scène club')).not.toBeOnTheScreen()
     })
   })
 

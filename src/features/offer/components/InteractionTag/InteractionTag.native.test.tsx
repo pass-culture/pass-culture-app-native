@@ -116,4 +116,71 @@ describe('getTagProps', () => {
       variant: TagVariant.CINECLUB,
     })
   })
+
+  it('should return "X avis scène club" tag when advicesCount > 0 and subcategory is a scene club', () => {
+    expect(
+      getTagProps({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+        enableSceneClubTag: true,
+      })
+    ).toEqual({
+      label: '3 avis scène club',
+      variant: TagVariant.SCENECLUB,
+    })
+  })
+
+  it('should return short label "X avis" when advicesCount > 0, hasSmallLayout is true, and subcategory is a scene club', () => {
+    expect(
+      getTagProps({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        hasSmallLayout: true,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+        enableSceneClubTag: true,
+      })
+    ).toEqual({
+      label: '3 avis',
+      variant: TagVariant.SCENECLUB,
+    })
+  })
+
+  it('should not return a club tag when subcategory is a scene club and scene club tag is disabled', () => {
+    expect(
+      getTagProps({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+      })
+    ).toBeNull()
+  })
+
+  it('should fall back to the likes tag when subcategory is a scene club and scene club tag is disabled', () => {
+    expect(
+      getTagProps({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        likesCount: 10,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+      })
+    ).toEqual({
+      label: '10 j’aime',
+      variant: TagVariant.LIKE,
+    })
+  })
+
+  it.each([SubcategoryIdEnum.CONCERT, SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD])(
+    'should not return a club tag when advicesCount > 0 and subcategory %s belongs to no club',
+    (subcategoryId) => {
+      expect(
+        getTagProps({
+          theme: computedTheme,
+          clubAdvicesCount: 3,
+          subcategoryId,
+          enableSceneClubTag: true,
+        })
+      ).toBeNull()
+    }
+  )
 })
