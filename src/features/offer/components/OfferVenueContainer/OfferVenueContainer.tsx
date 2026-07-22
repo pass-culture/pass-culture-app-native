@@ -102,9 +102,8 @@ export const OfferVenueContainer: FC<Props> = ({
 
   const { onScroll: onScrollModal } = useOpacityTransition()
 
-  const onNewOfferVenueSelected = (nextOfferId: number) => {
+  const onNewOfferVenueSelected = (nextOfferId: number, nextVenueId?: number) => {
     hideChangeVenueModal()
-    const nextVenueId = venueList.find((item) => item.offerId === nextOfferId)?.venueId
     triggerConsultOfferLog({
       offerId: nextOfferId,
       venueId: nextVenueId,

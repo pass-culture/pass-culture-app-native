@@ -58,6 +58,7 @@ describe('<VenueSelectionModal />', () => {
       address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
       distance: '2,4 km',
       offerId: 3,
+      venueId: 30,
     },
   ]
 
@@ -168,7 +169,7 @@ describe('<VenueSelectionModal />', () => {
     await user.press(screen.getByText('Hachette Livre'))
     await user.press(screen.getByText('Choisir ce lieu'))
 
-    expect(onSubmit).toHaveBeenNthCalledWith(1, 3)
+    expect(onSubmit).toHaveBeenNthCalledWith(1, 3, 30)
   })
 
   describe('When user share his position', () => {
