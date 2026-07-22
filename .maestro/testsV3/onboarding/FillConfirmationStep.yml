@@ -1,0 +1,101 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible:
+    id: 'Profil - complété'
+    enabled: false
+
+- assertVisible:
+    id: 'Identification - complété'
+    enabled: false
+
+- assertVisible:
+    id: 'Confirmation - non complété'
+    enabled: true
+
+- tapOn: 'Confirmation - non complété'
+
+- tapOn: 'Retour'
+
+- assertVisible:
+    id: 'Confirmation - non complété'
+    enabled: true
+
+- tapOn: 'Confirmation - non complété'
+
+- tapOn: 'Commencer le questionnaire'
+
+- assertVisible:
+    id: 'Continuer vers l’étape suivante'
+    enabled: false
+
+- scrollUntilVisible:
+    element:
+      text: 'checkbox, unchecked'
+      index: 6
+
+- tapOn: "Au cours de l'année précédente, tu as été au moins une fois ... - Au cinéma"
+
+- tapOn: "Au cours de l'année précédente, tu as été au moins une fois ... - À un cours"
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '20%'
+
+- tapOn: 'Revenir en arrière'
+
+- assertVisible:
+  id: "Au cours de l'année précédente, tu as été au moins une fois ... - Au cinéma"
+  state: 'checked'
+
+- assertVisible:
+  id: "Au cours de l'année précédente, tu as été au moins une fois ... - À un cours"
+  state: 'checked'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- scrollUntilVisible:
+    element:
+      text: 'checkbox, unchecked'
+      index: 7
+
+- tapOn: "Au cours de l'année précédente, tu as au moins une fois ... - Aucune de ces activités culturelles"
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '40%'
+
+- tapOn:
+    text: 'checkbox, unchecked'
+    index: 7
+
+- tapOn: 'Cette année, tu aimerais ... - Autre'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '60%'
+
+- scrollUntilVisible:
+    element:
+      text: 'checkbox, unchecked'
+      index: 7
+
+- tapOn: 'Quels types de livres veux-tu qu’on te propose ? - Aucun'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '80%'
+
+- scrollTo: 'Aucun'
+
+- scrollUntilVisible:
+    element:
+      text: 'checkbox, unchecked'
+      index: 7
+
+- tapOn: 'Quels types de musique veux-tu qu’on te propose ? - Aucun'
+
+- tapOn: 'Valider le formulaire'
+
+- tapOn: 'Continuer'
+
+- tapOn: 'Valider et continuer'

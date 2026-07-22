@@ -1,0 +1,25 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - activation
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'IDENTITY_CHECK'
+        age: 18
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+
+- tapOn: "Débloque tes 150 € à dépenser sur l'application"
+
+- runFlow: ../common/helpers/FillConfirmationStep.yml
+
+- assertVisible: "150 € viennent d’être crédités sur ton compte pass Culture"
+
+- tapOn: "C’est parti !"
+
+- tapOn: "Fermer la modale" // pop up Fais tourner le bon plan
+
+- assertVisible: "Tu as 150 € sur ton pass"
