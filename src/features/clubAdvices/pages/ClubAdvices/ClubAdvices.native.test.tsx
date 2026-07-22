@@ -3,12 +3,17 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
-import { offerClubAdvicesFixture } from 'features/clubAdvices/fixtures/clubAdvices.fixture'
+import { OfferChronicle, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
+import {
+  offerClubAdvicesFixture,
+  sceneClubAdvicesFixture,
+} from 'features/clubAdvices/fixtures/clubAdvices.fixture'
 import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -29,9 +34,9 @@ jest.mock('libs/firebase/analytics/analytics')
 const mockScrollToIndex = jest.fn()
 jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation(mockScrollToIndex)
 
-const mockAdvices = offerClubAdvicesFixture.chronicles
+let mockClubAdvices: { chronicles: readonly OfferChronicle[] } = offerClubAdvicesFixture
 jest.mock('features/clubAdvices/queries/useClubAdvicesQuery', () => ({
-  useClubAdvicesQuery: () => ({ data: mockAdvices, isLoading: false }),
+  useClubAdvicesQuery: () => ({ data: mockClubAdvices, isLoading: false }),
 }))
 
 const mockNavigate = jest.fn()
@@ -60,6 +65,8 @@ jest.useFakeTimers()
 
 describe('ClubAdvices', () => {
   beforeEach(() => {
+    setFeatureFlags()
+    mockClubAdvices = offerClubAdvicesFixture
     mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, offerResponseSnap)
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerClubAdvicesFixture)
   })
@@ -98,6 +105,35 @@ describe('ClubAdvices', () => {
       await screen.findByText('Tous les avis du ciné club')
 
       expect(screen.getAllByTestId('cineClubIcon')[0]).toBeOnTheScreen()
+    })
+
+    it('should display scene club icon when offer subcategory linked to a live show', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SCENE_CLUB])
+      mockClubAdvices = { chronicles: sceneClubAdvicesFixture }
+      mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+      })
+
+      render(reactQueryProviderHOC(<ClubAdvices />))
+
+      await screen.findByText('Qui écrit les avis de la scène club ?')
+
+      expect(screen.getAllByTestId('sceneClubIcon')[0]).toBeOnTheScreen()
+    })
+
+    it('should not display advices when subcategory is a scene club and feature flag is disabled', async () => {
+      mockClubAdvices = { chronicles: sceneClubAdvicesFixture }
+      mockServer.getApi(`/v3/offer/${offerResponseSnap.id}`, {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+      })
+
+      render(reactQueryProviderHOC(<ClubAdvices />))
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Qui écrit les avis de la scène club ?')).not.toBeOnTheScreen()
     })
 
     it('should scroll to selected advice on layout', async () => {

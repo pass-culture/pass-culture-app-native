@@ -6,6 +6,7 @@ import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
+import { SceneClubCertification } from 'ui/svg/SceneClubCertification'
 
 const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.bookclub,
@@ -25,6 +26,15 @@ const SmallCineClubIcon = styled(CineClubCertification).attrs(({ theme }) => ({
   size: theme.designSystem.size.icon.m,
 }))``
 
+const SceneClubIcon = styled(SceneClubCertification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.sceneClub,
+}))``
+
+const SmallSceneClubIcon = styled(SceneClubCertification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.sceneClub,
+  size: theme.designSystem.size.icon.m,
+}))``
+
 export const BOOK_CLUB_SUBCATEGORIES = [
   SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
   SubcategoryIdEnum.LIVRE_NUMERIQUE,
@@ -37,6 +47,19 @@ export const CINE_CLUB_SUBCATEGORIES = [
   SubcategoryIdEnum.AUTRE_SUPPORT_NUMERIQUE,
   SubcategoryIdEnum.VOD,
   SubcategoryIdEnum.CINE_PLEIN_AIR,
+] as const
+
+export const SCENE_CLUB_SUBCATEGORIES = [
+  SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+  SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
+  SubcategoryIdEnum.SPECTACLE_VENTE_DISTANCE,
+  SubcategoryIdEnum.CONFERENCE,
+  SubcategoryIdEnum.VISITE_GUIDEE,
+  SubcategoryIdEnum.RENCONTRE,
+  SubcategoryIdEnum.SALON,
+  SubcategoryIdEnum.FESTIVAL_SPECTACLE,
+  SubcategoryIdEnum.LIVESTREAM_PRATIQUE_ARTISTIQUE,
+  SubcategoryIdEnum.ABO_SPECTACLE,
 ] as const
 
 export const PRO_ADVICE_VARIANT_CONFIG = {
@@ -82,8 +105,24 @@ const CINE_CLUB_VARIANT_CONFIG = {
   buttonWording: 'Voir tous les avis des clubs',
 } as const
 
+const SCENE_CLUB_VARIANT_CONFIG = {
+  subcategories: SCENE_CLUB_SUBCATEGORIES,
+  labelReaction: 'scène club',
+  titleSection: 'Les avis de la scène club',
+  subtitleSection: 'La communauté de jeunes passionnés te partage leur avis\u00a0!',
+  subtitleItem: 'Membre de la scène club',
+  Icon: <SceneClubIcon testID="sceneClubIcon" />,
+  SmallIcon: <SmallSceneClubIcon />,
+  modalTitle: 'Qui écrit les avis de la scène club\u00a0?',
+  modalWording:
+    'La scène club, c’est une équipe de jeunes passionnés de spectacle vivant réunis par le pass Culture. \n\nChaque mois, ils vont voir des spectacles et donnent leur avis pour t’aider à trouver ta prochaine sortie\u00a0!',
+  tag: <Tag variant={TagVariant.SCENECLUB} label="membre de la scène club" />,
+  buttonWording: 'Voir tous les avis des clubs',
+} as const
+
 export const CLUB_ADVICE_VARIANT_CONFIG = [
   BOOK_CLUB_VARIANT_CONFIG,
   CINE_CLUB_VARIANT_CONFIG,
+  SCENE_CLUB_VARIANT_CONFIG,
   PRO_ADVICE_VARIANT_CONFIG,
 ] as const

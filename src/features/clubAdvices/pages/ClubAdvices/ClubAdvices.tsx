@@ -1,10 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 
-import { SubcategoryIdEnum } from 'api/gen'
-import { AdviceCardData } from 'features/advices/types'
 import { clubAdvicesToAdviceCardData } from 'features/clubAdvices/adapters/clubAdvicesToAdviceCardData/clubAdvicesToAdviceCardData'
-import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
+import { useClubAdviceVariant } from 'features/clubAdvices/helpers/useClubAdviceVariant'
 import { ClubAdvicesBase } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvicesBase'
 import { useClubAdvicesQuery } from 'features/clubAdvices/queries/useClubAdvicesQuery'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -20,12 +18,10 @@ export const ClubAdvices: FunctionComponent = () => {
   const offerId = route.params?.offerId
   const { data: offer } = useOfferQuery({ offerId })
   const subcategoriesMapping = useSubcategoriesMapping()
-  const adviceVariantInfo =
-    clubAdviceVariant[offer?.subcategoryId ?? SubcategoryIdEnum.LIVRE_PAPIER]
-  const { data: adviceCardsData } = useClubAdvicesQuery<AdviceCardData[]>({
+  const adviceVariantInfo = useClubAdviceVariant(offer?.subcategoryId)
+  const { data: clubAdvices } = useClubAdvicesQuery({
     offerId,
-    select: ({ chronicles: advices }) =>
-      clubAdvicesToAdviceCardData(advices, adviceVariantInfo.subtitleItem),
+    enabled: !!adviceVariantInfo,
   })
 
   const handleOnShowRecoButtonPress = () => {
@@ -41,7 +37,12 @@ export const ClubAdvices: FunctionComponent = () => {
     })
   }
 
-  if (!offer || !adviceCardsData) return null
+  if (!offer || !clubAdvices || !adviceVariantInfo) return null
+
+  const adviceCardsData = clubAdvicesToAdviceCardData(
+    clubAdvices.chronicles,
+    adviceVariantInfo.subtitleItem
+  )
 
   return (
     <ClubAdvicesBase

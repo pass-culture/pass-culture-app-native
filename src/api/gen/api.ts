@@ -1476,6 +1476,17 @@ export interface ChronicleAuthor {
 }
 /**
  * @export
+ * @enum {string}
+ */
+export enum ChronicleClubType {
+  'CINE' = 'CINE',
+  'BOOK' = 'BOOK',
+  'ALBUM' = 'ALBUM',
+  'CONCERT' = 'CONCERT',
+  'SCENE' = 'SCENE',
+}
+/**
+ * @export
  * @interface ChroniclePreview
  */
 export interface ChroniclePreview {
@@ -1484,6 +1495,11 @@ export interface ChroniclePreview {
    * @memberof ChroniclePreview
    */
   author?: ChronicleAuthor | null
+  /**
+   * @type {ChronicleClubType}
+   * @memberof ChroniclePreview
+   */
+  clubType: ChronicleClubType
   /**
    * @type {string}
    * @memberof ChroniclePreview
@@ -2851,6 +2867,11 @@ export interface OfferChronicle {
    * @memberof OfferChronicle
    */
   author?: ChronicleAuthor | null
+  /**
+   * @type {ChronicleClubType}
+   * @memberof OfferChronicle
+   */
+  clubType: ChronicleClubType
   /**
    * @type {string}
    * @memberof OfferChronicle

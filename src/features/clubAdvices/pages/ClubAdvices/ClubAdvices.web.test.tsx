@@ -5,6 +5,7 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { offerClubAdvicesFixture } from 'features/clubAdvices/fixtures/clubAdvices.fixture'
 import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -22,6 +23,7 @@ jest.mock('features/navigation/helpers/openUrl')
 
 describe('ClubAdvices', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerClubAdvicesFixture)
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
   })
