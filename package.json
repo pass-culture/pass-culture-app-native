@@ -52,7 +52,7 @@
     "start:web:testing": "yarn start:web --mode=testing",
     "storybook": "NODE_OPTIONS='--openssl-legacy-provider' TZ=UTC storybook dev -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
-    "test:deadcode": "yarn knip --include-libs && NODE_ENV=production yarn knip --production --include-libs",
+    "test:deadcode": "yarn knip && NODE_ENV=production yarn knip --production",
     "test:e2e:android:staging": "./scripts/run_e2e_tests.sh test android staging",
     "test:e2e:ios:staging": "./scripts/run_e2e_tests.sh test ios staging",
     "test:e2e:web:staging": "./scripts/run_e2e_tests.sh test web staging",
@@ -300,7 +300,7 @@
     "jest-styled-components": "^7.0.8",
     "jetifier": "^1.6.5",
     "json": "^11.0.0",
-    "knip": "^5.43.6",
+    "knip": "^6.26.0",
     "mockdate": "^3.0.2",
     "msw": "^2.7.3",
     "prettier": "^3.5.3",
@@ -390,9 +390,7 @@
   },
   "exports": {
     ".": "./index.js",
-    "./jsx-dev-runtime": "./jsx-dev-runtime.js",
-    "./jsx-runtime": "./jsx-runtime.js",
-    "./": "./"
+    "./*": "./*"
   },
   "packageManager": "yarn@4.15.0"
 }

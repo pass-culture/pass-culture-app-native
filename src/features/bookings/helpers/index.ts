@@ -6,16 +6,7 @@ export { getBookingLabelForActivationCode } from './getBookingLabelForActivation
 export { getBookingLabels } from './getBookingLabels'
 export { getEventOnSiteWithdrawLabel } from './getEventOnSiteWithdrawLabel'
 export { getBookingListItemProperties } from './v2/getBookingListItemProperties'
-export {
-  daysCountdown,
-  displayExpirationMessage,
-  formattedExpirationDate,
-  getDigitalBookingsWithoutExpirationDate,
-  getEligibleBookingsForArchive,
-  isBookingInList,
-  isDigitalBookingWithoutExpirationDate,
-  isFreeBookingInSubcategories,
-} from './expirationDateUtils'
+export { daysCountdown, displayExpirationMessage } from './expirationDateUtils'
 
 export * as getBookingLabelsV2 from './v2/getBookingLabels'
 export * as getLocationLabelV2 from './v2/getLocationLabel'
