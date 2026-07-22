@@ -27,6 +27,7 @@ const offerVenues = [
     address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
     distance: '500 m',
     offerId: 1,
+    venueId: 1,
     price: 1000,
   },
   {
@@ -34,6 +35,7 @@ const offerVenues = [
     address: '75013 Paris, 56 rue de Tolbiac',
     distance: '1,5 km',
     offerId: 2,
+    venueId: 2,
     price: 1000,
   },
   {
@@ -41,6 +43,7 @@ const offerVenues = [
     address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
     distance: '2,4 km',
     offerId: 3,
+    venueId: 3,
     price: 1000,
   },
 ]
@@ -312,6 +315,7 @@ describe('<OfferPlace />', () => {
       from: 'offer',
       fromMultivenueOfferId: '146112',
       offerId: '2',
+      venueId: 2,
       isHeadline: false,
       displayAdvice: false,
     })

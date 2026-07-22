@@ -78,6 +78,7 @@ export const OfferPlaylistItem = ({
         categoryId={categoryId}
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
+        venueId={item.venue.id}
         name={item.offer.name}
         date={formatPlaylistDates(timestampsInMillis)}
         thumbUrl={item.offer.thumbUrl}

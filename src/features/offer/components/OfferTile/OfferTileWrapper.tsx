@@ -80,6 +80,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
       price={formattedPrice}
       interactionTag={tag}
       {...props}
+      venueId={props.venueId ?? item.venue.id}
       withCenterAlign={withCenterAlign}
     />
   )

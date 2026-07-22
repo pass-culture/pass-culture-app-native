@@ -139,6 +139,7 @@ export const HorizontalOfferTile = ({
 
     triggerConsultOfferLog({
       offerId,
+      venueId: offer.venue.id,
       displayAdvice: proAdvicesOnOfferSegment === 'A',
       ...analyticsParams,
     })

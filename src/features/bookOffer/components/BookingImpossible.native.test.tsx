@@ -12,13 +12,13 @@ import { userEvent, render, screen, waitFor } from 'tests/utils'
 import { BookingImpossible } from './BookingImpossible'
 
 jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
 const mockOfferId = favoriteResponseSnap.offer.id
+const mockVenueId = 1
 
 const mockInitialBookingState = initialBookingState
 const mockDismissModal = jest.fn()
@@ -64,7 +64,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should render without CTAs', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
 
       await screen.findByText(generalConditionText)
 
@@ -72,7 +72,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should log 'BookingImpossibleiOS' on mount", async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
 
       await screen.findByText(generalConditionText)
 
@@ -80,11 +80,14 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should dismiss modal when clicking on 'Voir le détail de l’offre'", async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
 
       await user.press(await screen.findByText('Voir le détail de l’offre'))
 
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith(
+        expect.objectContaining({ offerId: String(mockOfferId), venueId: 1 })
+      )
     })
   })
 
@@ -108,7 +111,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should render with CTAs', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
 
       await screen.findByText(generalConditionText)
 
@@ -116,7 +119,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should send email/push notification when adding to favorites', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
 
       const addToFavoriteButton = await screen.findByLabelText(favoriteButtonText)
 
@@ -127,7 +130,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should log analytics event when adding to favorites', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
 
       await user.press(screen.getByText(favoriteButtonText))
 
@@ -139,7 +142,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should change booking step from date to confirmation', async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
       await screen.findByText(generalConditionText)
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
@@ -149,7 +152,7 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
-      render(reactQueryProviderHOC(<BookingImpossible />))
+      render(reactQueryProviderHOC(<BookingImpossible venueId={mockVenueId} />))
       await screen.findByText(generalConditionText)
 
       await user.press(await screen.findByText('Retourner à l’offre'))

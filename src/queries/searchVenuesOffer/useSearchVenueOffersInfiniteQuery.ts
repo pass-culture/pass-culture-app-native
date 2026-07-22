@@ -78,6 +78,7 @@ export function getVenueList(hits: Offer[], userLocation: Position) {
   const venueList: VenueListItem[] = offerVenues.map((offerVenue) => {
     return {
       offerId: offerVenue.offerId,
+      venueId: offerVenue.venueId,
       title: offerVenue.title,
       address: offerVenue.address,
       distance: formatDistance(offerVenue.coordinates, userLocation),

@@ -10,12 +10,13 @@ import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
+  venueId?: number
 }
 
 export type VenueSelectionListProps = ViewProps &
   Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onScroll'> & {
     selectedItem?: number
-    onItemSelect: (itemOfferId: number) => void
+    onItemSelect: (itemOfferId: number, itemVenueId?: number) => void
     items: VenueListItem[]
     nbLoadedHits: number
     nbHits: number
@@ -66,7 +67,7 @@ export const VenueSelectionList = ({
   const handleValueChange = (label: string) => {
     const item = items.find((i) => i.title === label)
     if (item) {
-      onItemSelect(item.offerId)
+      onItemSelect(item.offerId, item.venueId)
     }
   }
 

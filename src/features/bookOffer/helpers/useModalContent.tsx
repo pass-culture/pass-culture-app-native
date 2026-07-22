@@ -42,13 +42,13 @@ const getEndedUseBookingModalContent = (offer: OfferResponse): ModalContent => {
   }
 }
 
-const getBookingImpossibleModalContent = (): ModalContent => {
+const getBookingImpossibleModalContent = (venueId: number): ModalContent => {
   return {
     title: 'Tu y es presque',
     leftIconAccessibilityLabel: undefined,
     leftIcon: undefined,
     onLeftIconPress: undefined,
-    children: <BookingImpossible />,
+    children: <BookingImpossible venueId={venueId} />,
   }
 }
 
@@ -128,7 +128,7 @@ export const useModalContent = (
       Platform.OS === 'ios' &&
       getOfferPrice(stocks) > 0
     ) {
-      return getBookingImpossibleModalContent()
+      return getBookingImpossibleModalContent(offer.venue.id)
     }
 
     return getNonEventModalContent(stocks, onPressBookOffer, isLoading)
