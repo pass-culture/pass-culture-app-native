@@ -18,7 +18,7 @@ import { AssetGridTemplate as Illustrations } from 'ui/storybook/AssetGridTempla
 import { getSpacing } from 'ui/theme'
 
 export default {
-  title: 'design system/Category illustrations',
+  title: 'design system/Illustrations',
 }
 
 const getCategoryIllustrationAssetName = (url: string) => {
@@ -41,9 +41,9 @@ const contentfulHeaderImages = Object.fromEntries(
 
 const Template: StoryFn = () => (
   <React.Fragment>
-    <Illustrations title="Category illustrations" images={categoryButtonImages} isIllustration />
+    <Illustrations title="Cultural objects" images={categoryButtonImages} isIllustration />
     <Illustrations
-      title="Contentful header illustrations"
+      title="Cultural themes"
       images={contentfulHeaderImages}
       imageSize={getSpacing(40)}
       isIllustration
@@ -52,6 +52,6 @@ const Template: StoryFn = () => (
 )
 
 export const AllIllustrations = {
-  name: 'Illustrations',
+  name: 'Cultural themes',
   render: Template,
 }

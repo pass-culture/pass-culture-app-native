@@ -33,7 +33,7 @@ const adaptCategoryBlock = (CategoryBlockList: CategoryBlockContentModel[]): Cat
       id: bloc.sys.id,
       image: buildImageUrl(image?.fields?.file.url),
       homeEntryId: bloc.fields.homeEntryId,
-      title: displayedTitle ?? title,
+      title: titleParts?.join(' ') ?? displayedTitle ?? title,
       ...(titleParts ? { titleParts } : {}),
       color,
       illustrationCategoryBlock,
