@@ -87,6 +87,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_SEARCH_IN_VENUE_PAGE = 'wipSearchInVenuePage',
   WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS = 'wipThematicSearchConcertsAndFestivals',
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',
+  WIP_USE_MOVIE_SCREENINGS_ENDPOINT = 'wipUseMovieScreeningsEndpoint',
   WIP_VENUE_FAKE_DOOR = 'wipVenueFakeDoor',
   WIP_VENUE_MAP = 'wipVenueMap',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',

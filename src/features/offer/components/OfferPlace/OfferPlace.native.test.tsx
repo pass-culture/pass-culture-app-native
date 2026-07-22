@@ -9,6 +9,7 @@ import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlac
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
@@ -114,6 +115,7 @@ jest.useFakeTimers()
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-01-01'))
+    setFeatureFlags()
     setupEverywhereLocation()
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
