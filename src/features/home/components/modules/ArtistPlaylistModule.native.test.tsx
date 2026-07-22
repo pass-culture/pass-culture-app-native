@@ -130,6 +130,17 @@ describe('ArtistPlaylistModule', () => {
     expect(navigate).toHaveBeenCalledWith('Artist', { id: mockArtist.id })
   })
 
+  it('should display right filled icon on artist button', async () => {
+    renderArtistPlaylistModule({
+      data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+      artistId: mockArtist.id,
+    })
+
+    await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne')
+
+    expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
+  })
+
   describe('Analytics', () => {
     it('should trigger logEvent "AllTilesSeen" only once', async () => {
       renderArtistPlaylistModule()
@@ -208,6 +219,34 @@ describe('ArtistPlaylistModule', () => {
         from: 'home',
         originDetails: 'artistRecommendation',
       })
+    })
+  })
+
+  describe('When disableArtistNavigation prop is true', () => {
+    it('should not navigate on artist page', async () => {
+      renderArtistPlaylistModule({
+        data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+        artistId: mockArtist.id,
+        disableArtistNavigation: true,
+      })
+
+      await screen.findByText('te partage ses pépites')
+
+      expect(
+        screen.queryByLabelText('Accéder à la page artiste de Avril Lavigne')
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should not display right filled icon on artist header', async () => {
+      renderArtistPlaylistModule({
+        data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+        artistId: mockArtist.id,
+        disableArtistNavigation: true,
+      })
+
+      await screen.findByText('te partage ses pépites')
+
+      expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
     })
   })
 })
