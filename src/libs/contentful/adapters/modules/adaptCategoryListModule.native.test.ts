@@ -43,7 +43,7 @@ describe('adaptCategoryListModule', () => {
 
     expect(adaptCategoryListModule(rawCategoryListModule)?.categoryBlockList[0]).toEqual(
       expect.objectContaining({
-        title: 'Livres',
+        title: 'vos livres',
         titleParts: ['vos', 'livres'],
       })
     )
