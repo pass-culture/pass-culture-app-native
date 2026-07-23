@@ -1,4 +1,8 @@
-import { BOOK_CLUB_SUBCATEGORIES, CINE_CLUB_SUBCATEGORIES } from 'features/clubAdvices/constants'
+import {
+  BOOK_CLUB_SUBCATEGORIES,
+  CINE_CLUB_SUBCATEGORIES,
+  SCENE_CLUB_SUBCATEGORIES,
+} from 'features/clubAdvices/constants'
 import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
 
 describe('clubAdviceVariant', () => {
@@ -6,7 +10,7 @@ describe('clubAdviceVariant', () => {
     BOOK_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {
       const variant = clubAdviceVariant[subcategoryId]
 
-      expect(variant.titleSection).toEqual('Les avis du book club')
+      expect(variant?.titleSection).toEqual('Les avis du book club')
     })
   })
 
@@ -14,7 +18,15 @@ describe('clubAdviceVariant', () => {
     CINE_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {
       const variant = clubAdviceVariant[subcategoryId]
 
-      expect(variant.titleSection).toEqual('Les avis du ciné club')
+      expect(variant?.titleSection).toEqual('Les avis du ciné club')
+    })
+  })
+
+  it('should define all scène club subcategories', () => {
+    SCENE_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {
+      const variant = clubAdviceVariant[subcategoryId]
+
+      expect(variant?.titleSection).toEqual('Les avis de la scène club')
     })
   })
 })

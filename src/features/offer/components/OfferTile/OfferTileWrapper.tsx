@@ -40,6 +40,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     item.offer
   const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
+  const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
   const formattedDate = getOfferDates({
     subcategoryId,
@@ -65,6 +66,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     subcategoryId: item.offer.subcategoryId,
     proAdvicesCount:
       enableProAdvicesTag && proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
+    enableSceneClubTag,
   })
 
   return (
