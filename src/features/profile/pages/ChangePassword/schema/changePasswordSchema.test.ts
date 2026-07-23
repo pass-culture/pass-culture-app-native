@@ -1,6 +1,6 @@
 import { ValidationError } from 'yup'
 
-import { PASSWORD_MIN_LENGTH } from 'features/auth/components/PasswordSecurityRules'
+import { PASSWORD_MIN_LENGTH } from 'ui/designSystem/PasswordInput/helpers'
 
 import { changePasswordSchema } from './changePasswordSchema'
 

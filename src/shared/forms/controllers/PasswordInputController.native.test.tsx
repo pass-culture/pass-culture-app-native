@@ -11,9 +11,7 @@ type PasswordForm = {
 describe('<PasswordInputController />', () => {
   describe('by default', () => {
     it('should show error when form is invalid and password is not empty', async () => {
-      renderPasswordInputController({
-        error: { type: 'custom', message: 'error' },
-      })
+      renderPasswordInputController({ error: { type: 'custom', message: 'error' } })
 
       const input = screen.getByTestId('Mot de passe')
       fireEvent.changeText(input, 'pass')
@@ -45,7 +43,7 @@ describe('<PasswordInputController />', () => {
       '1 chiffre',
       '1 caractère spécial (!@#$%^&*...)',
     ])('should not show password validation rules when empty', (rule) => {
-      renderPasswordInputController({ withSecurityRules: true })
+      renderPasswordInputController({ displayValidation: true })
 
       expect(screen.queryByText(rule)).not.toBeOnTheScreen()
     })
@@ -57,7 +55,7 @@ describe('<PasswordInputController />', () => {
       '1 chiffre',
       '1 caractère spécial (!@#$%^&*...)',
     ])('should show password validation rules when at least one character is typed', (rules) => {
-      renderPasswordInputController({ withSecurityRules: true })
+      renderPasswordInputController({ displayValidation: true })
 
       const input = screen.getByTestId('Mot de passe')
       fireEvent.changeText(input, 'a')
@@ -74,10 +72,7 @@ describe('<PasswordInputController />', () => {
       '1 chiffre',
       '1 caractère spécial (!@#$%^&*...)',
     ])('should show password validation rules', (rules) => {
-      renderPasswordInputController({
-        withSecurityRules: true,
-        securityRulesAlwaysVisible: true,
-      })
+      renderPasswordInputController({ displayValidation: true })
 
       expect(screen.getByText(rules, { includeHiddenElements: true })).toBeOnTheScreen()
     })
@@ -85,27 +80,24 @@ describe('<PasswordInputController />', () => {
 })
 
 const renderPasswordInputController = ({
-  withSecurityRules,
+  displayValidation,
   error,
-  securityRulesAlwaysVisible,
 }: {
-  withSecurityRules?: boolean
+  displayValidation?: boolean
   error?: ErrorOption
   securityRulesAlwaysVisible?: boolean
 }) => {
   const PasswordForm = () => {
-    const { control, setError } = useForm<PasswordForm>({
-      defaultValues: { password: '' },
-    })
+    const { control, setError } = useForm<PasswordForm>({ defaultValues: { password: '' } })
 
     error && setError('password', error)
     return (
       <PasswordInputController
+        label="Mot de passe"
         autocomplete="current-password"
         control={control}
         name="password"
-        withSecurityRules={withSecurityRules}
-        securityRulesAlwaysVisible={securityRulesAlwaysVisible}
+        displayValidation={displayValidation}
         requiredIndicator="explicit"
       />
     )

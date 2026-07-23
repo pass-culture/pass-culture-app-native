@@ -628,7 +628,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
-                    onSubmitEditing={[Function]}
                     placeholder=""
                     placeholderTextColor="#696a6f"
                     returnKeyType="next"

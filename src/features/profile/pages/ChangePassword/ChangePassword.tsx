@@ -131,7 +131,7 @@ export function ChangePassword() {
               name="newPassword"
               label="Nouveau mot de passe"
               autocomplete="new-password"
-              withSecurityRules
+              displayValidation
               requiredIndicator="explicit"
             />
             <RepeatPasswordContainer keyboardHeight={keyboardHeight}>

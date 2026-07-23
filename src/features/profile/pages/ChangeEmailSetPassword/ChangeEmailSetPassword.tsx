@@ -88,8 +88,7 @@ export const ChangeEmailSetPassword = () => {
                 autocomplete="new-password"
                 control={control}
                 requiredIndicator="explicit"
-                withSecurityRules
-                securityRulesAlwaysVisible
+                displayValidation
               />
             </Container>
             <Container>

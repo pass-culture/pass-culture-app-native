@@ -1,7 +1,7 @@
 import { ValidationError } from 'yup'
 
-import { PASSWORD_MIN_LENGTH } from 'features/auth/components/PasswordSecurityRules'
 import { passwordSchema } from 'shared/forms/schemas/passwordSchema'
+import { PASSWORD_MIN_LENGTH } from 'ui/designSystem/PasswordInput/helpers'
 
 describe('passwordSchema', () => {
   describe('valid', () => {
