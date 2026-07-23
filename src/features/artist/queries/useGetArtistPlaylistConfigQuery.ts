@@ -4,7 +4,7 @@ import { fetchArtistPlaylistConfig } from 'features/artist/api/fetchArtistPlayli
 import { ArtistPlaylistModule } from 'features/home/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-const STALE_TIME_ARTIST_PLAYLIST_CONFIG = 24 * 60 * 1000
+const STALE_TIME_ARTIST_PLAYLIST_CONFIG = 60 * 60 * 1000 // 1h
 
 export const useGetArtistPlaylistConfigQuery = <TData = ArtistPlaylistModule[]>(
   select?: (data: ArtistPlaylistModule[]) => TData
