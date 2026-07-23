@@ -104,7 +104,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   HeaderComponent,
-  CTAsComponent,
   proAdvicesCount,
   proAdvicesSegment,
   children,
@@ -344,16 +343,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [offer.id, pageTracking]
   )
 
-  const OfferCTAsComponent = CTAsComponent ? (
-    <CTAsComponent
-      offer={offer}
-      subcategory={subcategory}
-      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-      favoriteCTAProps={favoriteButtonProps}
-      onLayout={onLayout}
-      displayStickyGradient={!isBottomReached}
-    />
-  ) : (
+  const OfferCTAsComponent = (
     <OfferContentCTAs
       offer={offer}
       onLayout={onLayout}

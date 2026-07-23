@@ -26,7 +26,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   HeaderComponent,
-  CTAsComponent,
   proAdvicesCount,
   proAdvicesSegment,
 }) => {
@@ -85,7 +84,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
           HeaderComponent={HeaderComponent}
-          CTAsComponent={CTAsComponent}
           proAdvicesSegment={proAdvicesSegment}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />

@@ -56,7 +56,7 @@ import { BottomTabScreen } from 'features/navigation/navigators/TabNavigator/Tab
 import { VenueMapFiltersStackNavigator } from 'features/navigation/navigators/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { OfferPageBridge } from 'features/offer/bridge/OfferPageBridge'
+import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ProAdvicesOffer } from 'features/proAdvices/pages/ProAdvicesOffer'
@@ -442,7 +442,7 @@ const rootScreens: RouteConfig[] = [
 // For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
 // Youtube player in fullscreen opens and closes 1 second later automatically
 const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
-const OfferWithBridgeAndBoundary = withAsyncErrorBoundary(OfferPageBridge)
+const OfferAndBoundary = withAsyncErrorBoundary(Offer)
 
 // Lazy load screens and stacks
 const CheatcodesScreen = lazy(() => import('../CheatcodesStackNavigator/CheatcodesStackNavigator'))
@@ -503,7 +503,7 @@ const RootStackNavigator = withWebWrapper(
           ))}
           <RootStackNavigatorBase.Screen
             name="Offer"
-            component={OfferWithBridgeAndBoundary}
+            component={OfferAndBoundary}
             options={{ title: 'Offre' }}
           />
           <RootStackNavigatorBase.Screen
