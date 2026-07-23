@@ -20,7 +20,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import {
   GenericInfoPageIllustration,
-  type GenericInfoPageIllustrationProps,
+  type RemoteIllustration,
 } from 'ui/pages/GenericInfoPageIllustration'
 import { getGenericInfoPageButtons } from 'ui/pages/helpers/getGenericInfoPageButtons'
 import { Page } from 'ui/pages/Page'
@@ -71,7 +71,7 @@ type AnimationColoringProps = {
 type AnimationProps =
   | {
       illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
-      remoteIllustration?: GenericInfoPageIllustrationProps
+      remoteIllustration?: RemoteIllustration
       animation?: never
       animationColoringMode?: never
       animationTargetShapeNames?: never
@@ -133,6 +133,11 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   })
 
   const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
+  const illustrationContent = renderIllustrationContent({
+    IllustrationComponent,
+    remoteIllustration,
+    legacyColor: designSystem.color.icon.brandPrimary,
+  })
 
   return (
     <Page>
@@ -146,18 +151,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <ContainerFlex flexValue={flexWeb}>
           <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
             <IllustrationContainer animation={!!animation}>
-              {remoteIllustration && IllustrationComponent ? (
-                <FeatureFlaggedIllustration
-                  IllustrationComponent={IllustrationComponent}
-                  remoteIllustration={remoteIllustration}
-                  legacyColor={designSystem.color.icon.brandPrimary}
-                />
-              ) : IllustrationComponent ? (
-                <IllustrationComponent
-                  size={illustrationSizes.fullPage}
-                  color={designSystem.color.icon.brandPrimary}
-                />
-              ) : null}
+              {illustrationContent}
               {animation ? (
                 <ThemedStyledLottieView
                   source={animation}
@@ -188,9 +182,35 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   )
 }
 
+type IllustrationContentProps = {
+  IllustrationComponent?: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+  remoteIllustration?: RemoteIllustration
+  legacyColor: ColorsType
+}
+
+const renderIllustrationContent = ({
+  IllustrationComponent,
+  remoteIllustration,
+  legacyColor,
+}: IllustrationContentProps): ReactNode => {
+  if (!IllustrationComponent) return null
+
+  if (remoteIllustration) {
+    return (
+      <FeatureFlaggedIllustration
+        IllustrationComponent={IllustrationComponent}
+        remoteIllustration={remoteIllustration}
+        legacyColor={legacyColor}
+      />
+    )
+  }
+
+  return <IllustrationComponent size={illustrationSizes.fullPage} color={legacyColor} />
+}
+
 type FeatureFlaggedIllustrationProps = {
   IllustrationComponent: React.FC<AccessibleIcon | AccessibleRectangleIcon>
-  remoteIllustration: GenericInfoPageIllustrationProps
+  remoteIllustration: RemoteIllustration
   legacyColor: ColorsType
 }
 

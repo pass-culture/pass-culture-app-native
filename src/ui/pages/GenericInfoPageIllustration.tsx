@@ -5,29 +5,29 @@ import styled from 'styled-components/native'
 
 import { IllustrationColorKey } from 'theme/types'
 
-export type GenericInfoPageIllustrationSize = 'default' | 'small'
+type RemoteIllustrationSize = 'default' | 'small'
 
-export type GenericInfoPageIllustrationProps = {
+export type RemoteIllustration = {
   url: string
   backgroundColor: IllustrationColorKey
-  size: GenericInfoPageIllustrationSize
+  size: RemoteIllustrationSize
 }
 
 const ILLUSTRATION_SIZES = {
   default: 320,
   small: 200,
-} as const satisfies Record<GenericInfoPageIllustrationSize, number>
+} as const satisfies Record<RemoteIllustrationSize, number>
 
 const ILLUSTRATION_BORDER_RADII = {
   default: 96,
   small: 56,
-} as const satisfies Record<GenericInfoPageIllustrationSize, number>
+} as const satisfies Record<RemoteIllustrationSize, number>
 
 export const GenericInfoPageIllustration = ({
   url,
   backgroundColor,
   size,
-}: GenericInfoPageIllustrationProps): React.JSX.Element => (
+}: RemoteIllustration): React.JSX.Element => (
   <Container
     cropRadius={ILLUSTRATION_BORDER_RADII[size]}
     illustrationBackgroundColor={backgroundColor}
