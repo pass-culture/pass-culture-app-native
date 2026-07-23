@@ -10893,7 +10893,7 @@ __metadata:
     react-dom: "npm:19.2.3"
     react-error-boundary: "npm:^3.1.0"
     react-helmet: "npm:^6.1.0"
-    react-hook-form: "npm:^7.35.0"
+    react-hook-form: "npm:^7.80.0"
     react-instantsearch-core: "npm:^7.20.0"
     react-mobile-picker: "npm:^0.2.1"
     react-native: "npm:0.85.3"
@@ -23482,12 +23482,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.35.0":
-  version: 7.35.0
-  resolution: "react-hook-form@npm:7.35.0"
+"react-hook-form@npm:^7.80.0":
+  version: 7.80.0
+  resolution: "react-hook-form@npm:7.80.0"
   peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 10/bbbb2f608c7bec7f6294dcac48a7dafaff18b919938b29574e3f9c0e8b7880e2f5574d9a12a3452826c2bf2655eab9e0a6fbb896a5a99681a9b914064c076fe0
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10/7c679662a90a6630a796f5afa9ecc084b62eb1495ee00bebf61bc6291935fac60c500ebc115d34f0b36dfc46e5bb96166145975c25975bbcf2690cfa6c698e75
   languageName: node
   linkType: hard
 
