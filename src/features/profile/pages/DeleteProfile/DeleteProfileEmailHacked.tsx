@@ -1,9 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -11,6 +13,7 @@ import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
 export const DeleteProfileEmailHacked: FC = () => {
+  const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
@@ -25,6 +28,11 @@ export const DeleteProfileEmailHacked: FC = () => {
     <GenericInfoPage
       withGoBack
       illustration={UserBlocked}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
+        backgroundColor: 'information03',
+        size: isDesktopViewport ? 'default' : 'small',
+      }}
       title="Sécurise ton compte"
       buttonPrimary={{
         wording: 'Modifier mon adresse e-mail',
