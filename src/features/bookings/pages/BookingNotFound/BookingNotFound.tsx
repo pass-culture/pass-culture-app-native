@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
@@ -8,6 +9,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
+  const { isDesktopViewport } = useTheme()
   const timer = useRef<number>(null)
 
   useEffect(
@@ -38,7 +40,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         remoteIllustration={{
           url: genericInfoPageIllustrationUrls.emptyWalletLarge,
           backgroundColor: 'information03',
-          size: 'small',
+          size: isDesktopViewport ? 'default' : 'small',
         }}
         title="Réservation introuvable&nbsp;!"
         subtitle="Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer."
