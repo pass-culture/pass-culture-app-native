@@ -13,7 +13,7 @@ onFlowStart:
       file: ../common/helpers/generateBonusQFResponse.js
       env:
         user_id: ${output.userId}
-        mock_type: 'QUOTIENT_FAMILIAL_TOO_HIGH'
+        mock_type: 'OK'
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/lifecycle/StopApp.yml
@@ -166,17 +166,24 @@ onFlowStart:
 
 - tapOn: 'Se connecter'
 
-- extendedWaitUntil:
-    visible: '.*Bonjour.*'
-    timeout: 10000
+- waitForAnimationToEnd
 
-- tapOn: '.*Profil.*'
-- tapOn: '.*Accueil.*'
+- assertVisible: 'Bonne nouvelle !'
 
-- assertVisible: 'Ton dossier a été refusé.'
+- assertVisible: '50 €'
 
-- tapOn: 'Voir plus de détails'
+- tapOn: 'J’en profite'
 
-- assertVisible: 'Ton dossier est refusé'
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
+
+- assertVisible: 'Profil'
+- copyTextFrom:
+    childOf: '.*€'
+
+- evalScript: ${output.amountProfil = maestro.copiedText}
+- tapOn:
+    text: 'Accueil.*'
+    index: 0
+- assertVisible: 'Tu as ${output.amountProfil} sur ton pass'
 
 - runFlow: ../common/lifecycle/StopApp.yml
