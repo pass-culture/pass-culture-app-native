@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`CulturalSurveyIntro page should render the page with correct layout and content 1`] = `
+exports[`CulturalSurveyIntro should render the page with correct layout and content 1`] = `
 <View
   isLandscape={false}
   style={

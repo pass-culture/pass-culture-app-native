@@ -26,6 +26,7 @@ import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { Gradient } from 'ui/components/Gradient'
 import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
@@ -34,7 +35,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
-export function CulturalSurveyQuestions() {
+export const CulturalSurveyQuestions = () => {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const [isAtBottom, setIsAtBottom] = useState(false)
 
@@ -177,19 +178,29 @@ export function CulturalSurveyQuestions() {
 
   const onGoBack = () => {
     goBack()
-    currentQuestion &&
-      dispatch({ type: 'SET_ANSWERS', payload: { questionId: currentQuestion, answers: [] } })
 
-    if (currentQuestion === CulturalSurveyQuestionEnum.SORTIES) {
-      dispatch({
-        type: 'SET_QUESTIONS',
-        payload: [
-          CulturalSurveyQuestionEnum.SORTIES,
-          CulturalSurveyQuestionEnum.ACTIVITES,
-          CulturalSurveyQuestionEnum.PROJECTIONS,
-        ],
-      })
-    }
+    runAfterInteractionsMobile(() => {
+      if (currentQuestion) {
+        dispatch({
+          type: 'SET_ANSWERS',
+          payload: {
+            questionId: currentQuestion,
+            answers: [],
+          },
+        })
+      }
+
+      if (currentQuestion === CulturalSurveyQuestionEnum.SORTIES) {
+        dispatch({
+          type: 'SET_QUESTIONS',
+          payload: [
+            CulturalSurveyQuestionEnum.SORTIES,
+            CulturalSurveyQuestionEnum.ACTIVITES,
+            CulturalSurveyQuestionEnum.PROJECTIONS,
+          ],
+        })
+      }
+    })
   }
 
   return (

@@ -1,24 +1,32 @@
 import { useNavigation } from '@react-navigation/native'
 
+import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { analytics } from 'libs/analytics/provider'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 
 export const useGetCulturalSurveyContent = () => {
-  const { reset } = useNavigation<UseNavigationType>()
+  const { navigate, reset } = useNavigation<UseNavigationType>()
+  const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
   const { goBack } = useGoBack(...homeNavigationConfig)
 
-  const navigateToIdentityCheckHonor = async () => {
+  const navigateToCulturalSurvey = () => {
+    void analytics.logHasStartedCulturalSurvey()
+    const firstQuestion = initialQuestions[0]
+    if (!firstQuestion) return
+    navigate(...getSubscriptionHookConfig('CulturalSurveyQuestions', { question: firstQuestion }))
+  }
+
+  const navigateToIdentityCheckHonor = () => {
     reset({
       index: 0,
       routes: [
         {
           name: 'SubscriptionStackNavigator',
-          state: {
-            index: 0,
-            routes: [{ name: 'IdentityCheckHonor' }],
-          },
+          state: { index: 0, routes: [{ name: 'IdentityCheckHonor' }] },
         },
       ],
     })
@@ -32,19 +40,13 @@ export const useGetCulturalSurveyContent = () => {
       bodyText:
         'Parle nous de tes activités culturelles préférées. Tes réponses vont nous aider à mieux te connaître.',
       showFAQLink: false,
-      secondaryButton: {
-        icon: PlainArrowPrevious,
-        text: 'Retour',
-        onPress: goBack,
-      },
+      button: { wording: 'Commencer le questionnaire', onPress: navigateToCulturalSurvey },
+      secondaryButton: { icon: PlainArrowPrevious, wording: 'Retour', onPress: goBack },
     },
     thanks: {
       subtitle:
         'Elles nous permettent de suivre l’évolution de tes pratiques culturelles sur l’application.',
-      button: {
-        wording: 'Continuer',
-        onPress: navigateToIdentityCheckHonor,
-      },
+      button: { wording: 'Continuer', onPress: navigateToIdentityCheckHonor },
     },
   }
 }

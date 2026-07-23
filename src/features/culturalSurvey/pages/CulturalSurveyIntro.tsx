@@ -3,10 +3,8 @@ import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
-import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { useGetCulturalSurveyContent } from 'features/culturalSurvey/helpers/useGetCulturalSurveyContent'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
-import { analytics } from 'libs/analytics/provider'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -23,8 +21,6 @@ const FAQTouchableLinkProps = {
 }
 
 export const CulturalSurveyIntro = (): React.JSX.Element => {
-  const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
-
   const { intro } = useGetCulturalSurveyContent()
 
   return (
@@ -33,14 +29,11 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
       title={intro.title}
       subtitle={intro.customSubtitle}
       buttonPrimary={{
-        wording: 'Commencer le questionnaire',
-        onBeforeNavigate: analytics.logHasStartedCulturalSurvey,
-        navigateTo: getSubscriptionPropConfig('CulturalSurveyQuestions', {
-          question: initialQuestions[0],
-        }),
+        wording: intro.button.wording,
+        onPress: intro.button.onPress,
       }}
       buttonTertiary={{
-        wording: intro.secondaryButton.text,
+        wording: intro.secondaryButton.wording,
         icon: intro.secondaryButton.icon,
         onPress: intro.secondaryButton.onPress,
       }}>
