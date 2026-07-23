@@ -54,7 +54,11 @@ describe('<GenericInfoPage />', () => {
     render(
       <GenericInfoPage
         illustration={MaintenanceCone}
-        illustrationUrl="https://example.com/illustration.png"
+        remoteIllustration={{
+          url: 'https://example.com/illustration.png',
+          backgroundColor: 'positive01',
+          size: 'default',
+        }}
         title="Title"
         buttonPrimary={{
           wording: 'ButtonPrimary',
@@ -72,9 +76,11 @@ describe('<GenericInfoPage />', () => {
     render(
       <GenericInfoPage
         illustration={MaintenanceCone}
-        illustrationUrl="https://example.com/illustration.png"
-        illustrationBackgroundColor="positive01"
-        illustrationSize="small"
+        remoteIllustration={{
+          url: 'https://example.com/illustration.png',
+          backgroundColor: 'positive01',
+          size: 'small',
+        }}
         title="Title"
         buttonPrimary={{
           wording: 'ButtonPrimary',

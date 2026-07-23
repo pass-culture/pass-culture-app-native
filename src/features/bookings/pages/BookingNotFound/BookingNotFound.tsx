@@ -35,9 +35,11 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       </Helmet>
       <GenericInfoPage
         illustration={NoBookings}
-        illustrationUrl={genericInfoPageIllustrationUrls.emptyWalletLarge}
-        illustrationBackgroundColor="information03"
-        illustrationSize="small"
+        remoteIllustration={{
+          url: genericInfoPageIllustrationUrls.emptyWalletLarge,
+          backgroundColor: 'information03',
+          size: 'small',
+        }}
         title="Réservation introuvable&nbsp;!"
         subtitle="Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer."
         buttonPrimary={{

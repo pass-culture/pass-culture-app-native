@@ -16,9 +16,11 @@ export const PageNotFound: React.FC = () => {
       </Helmet>
       <GenericInfoPage
         illustration={PageNotFoundIcon}
-        illustrationUrl={genericInfoPageIllustrationUrls.emptyDigitalWindowLarge}
-        illustrationBackgroundColor="pending01"
-        illustrationSize="default"
+        remoteIllustration={{
+          url: genericInfoPageIllustrationUrls.emptyDigitalWindowLarge,
+          backgroundColor: 'pending01',
+          size: 'default',
+        }}
         title="Page introuvable&nbsp;!"
         subtitle="Il est possible que cette page soit désactivée ou n’existe pas."
         buttonPrimary={{

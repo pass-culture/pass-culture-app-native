@@ -7,10 +7,10 @@ import { IllustrationColorKey } from 'theme/types'
 
 export type GenericInfoPageIllustrationSize = 'default' | 'small'
 
-type Props = {
+export type GenericInfoPageIllustrationProps = {
   url: string
-  backgroundColor?: IllustrationColorKey
-  size?: GenericInfoPageIllustrationSize
+  backgroundColor: IllustrationColorKey
+  size: GenericInfoPageIllustrationSize
 }
 
 const ILLUSTRATION_SIZES = {
@@ -25,9 +25,9 @@ const ILLUSTRATION_BORDER_RADII = {
 
 export const GenericInfoPageIllustration = ({
   url,
-  backgroundColor = 'positive01',
-  size = 'default',
-}: Props): React.JSX.Element => (
+  backgroundColor,
+  size,
+}: GenericInfoPageIllustrationProps): React.JSX.Element => (
   <Container
     cropRadius={ILLUSTRATION_BORDER_RADII[size]}
     illustrationBackgroundColor={backgroundColor}
