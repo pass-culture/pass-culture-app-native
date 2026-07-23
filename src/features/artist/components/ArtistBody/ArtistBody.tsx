@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -17,7 +17,10 @@ import {
   FOLLOW_ARTIST_SURVEY_KEY,
 } from 'features/artist/helpers/buildFollowArtistSurveyUrl'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
+import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
+import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
+import { ArtistPlaylistModule as ArtistPlaylistModuleType } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -61,6 +64,7 @@ type Props = {
     playlistIndex?: number
   ) => void
   onExpandBioPress: () => void
+  artistPlaylistModule?: ArtistPlaylistModuleType
 }
 
 const ShareButton = ({ onPress }: { onPress: () => void }) => {
@@ -80,6 +84,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   artist,
   artistPlaylist,
   artistTopOffers,
+  artistPlaylistModule,
   onViewableItemsChanged,
   onExpandBioPress,
 }) => {
@@ -95,6 +100,10 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
+
+  const offersArtistPlaylistModulesData = useGetOffersDataQuery(
+    artistPlaylistModule ? [artistPlaylistModule] : []
+  )
 
   const { name, description, image } = artist
   const descriptionWithDot = ensureEndingDot(description ?? '')
@@ -112,6 +121,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   })
 
   const { navigate } = useNavigation<UseNavigationType>()
+  const isFocused = useIsFocused()
 
   const handlePressFollow = async () => {
     const [firstArtistPlaylist] = enablePlaylistByCategory
@@ -153,6 +163,13 @@ export const ArtistBody: FunctionComponent<Props> = ({
     })
     void shareArtist()
     showShareArtistModal()
+  }
+
+  const handleArtistPlaylistModuleOffersViewableItemsChanged = (
+    items: Pick<ViewToken, 'key' | 'index'>[]
+  ) => {
+    if (!isFocused || !artistPlaylistModule) return
+    onViewableItemsChanged(items, `artistPage${artistPlaylistModule.id}`, 'offer', artist.id)
   }
 
   return (
@@ -239,6 +256,19 @@ export const ArtistBody: FunctionComponent<Props> = ({
               onViewableItemsChanged={onViewableItemsChanged}
               proAdvicesSegment={proAdvicesSegment}
               enableProAdvicesTag={enableProAdvicesTag}
+            />
+          ) : null}
+          {artistPlaylistModule ? (
+            <ArtistPlaylistModule
+              displayParameters={artistPlaylistModule.displayParameters}
+              offersModuleParameters={artistPlaylistModule.offersModuleParameters}
+              artistId={artist.id}
+              index={0}
+              moduleId={artistPlaylistModule.id}
+              data={offersArtistPlaylistModulesData[0]}
+              onViewableItemsChanged={handleArtistPlaylistModuleOffersViewableItemsChanged}
+              homeEntryId={undefined}
+              disableArtistNavigation
             />
           ) : null}
           <ArtistSimilarArtists artistId={artist.id} />

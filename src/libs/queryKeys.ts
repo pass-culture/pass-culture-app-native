@@ -7,6 +7,7 @@ export enum QueryKeys {
   ALGOLIA_SIMILAR_OFFERS = 'algoliaSimilarOffers',
   ARTIST = 'artist',
   ARTIST_PLAYLIST = 'artistPlaylist',
+  ARTIST_PLAYLIST_CONFIG = 'artistPlaylistConfig',
   AVAILABLE_REACTION = 'availableReaction',
   BOOKINGSV2 = 'bookingsV2',
   BOOKINGSLIST = 'bookingsList',
