@@ -18,7 +18,7 @@ const ILLUSTRATION_SIZES = {
   small: 200,
 } as const satisfies Record<RemoteIllustrationSize, number>
 
-const ILLUSTRATION_BORDER_RADII = {
+const ILLUSTRATION_BORDER_RADIUS = {
   default: 96,
   small: 56,
 } as const satisfies Record<RemoteIllustrationSize, number>
@@ -29,7 +29,7 @@ export const GenericInfoPageIllustration = ({
   size,
 }: RemoteIllustration): React.JSX.Element => (
   <Container
-    cropRadius={ILLUSTRATION_BORDER_RADII[size]}
+    cropRadius={ILLUSTRATION_BORDER_RADIUS[size]}
     illustrationBackgroundColor={backgroundColor}
     illustrationSize={ILLUSTRATION_SIZES[size]}
     testID="generic-info-page-remote-illustration">
