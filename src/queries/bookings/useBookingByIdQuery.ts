@@ -9,9 +9,20 @@ import { CustomQueryOptions } from 'libs/react-query/types'
 
 const GC_TIME_TWENTY_FOUR_DAYS = 1000 * 60 * 60 * 24 * 24
 
+export const validateBookingResponse = (booking: BookingResponse, id: number): BookingResponse => {
+  if (!booking.stock?.offer) {
+    throw new Error(`Invalid booking response for booking #${id}`)
+  }
+
+  return booking
+}
+
 const bookingByIdQueryOptions = (id: number, isLoggedIn: boolean) => ({
   queryKey: [QueryKeys.BOOKINGSV2, id],
-  queryFn: () => api.getNativeV2BookingsbookingId(id),
+  queryFn: async () => {
+    const booking = await api.getNativeV2BookingsbookingId(id)
+    return validateBookingResponse(booking, id)
+  },
   meta: { persist: true, private: true },
   enabled: isLoggedIn,
   gcTime: GC_TIME_TWENTY_FOUR_DAYS,
