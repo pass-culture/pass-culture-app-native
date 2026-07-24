@@ -15,8 +15,6 @@
 #import "BatchFirebaseDispatcher.h"
 #import "RNCConfig.h"
 
-#import <PassCulture-Swift.h>
-
 @interface ReactNativeDelegate : RCTDefaultReactNativeFactoryDelegate
 @end
 
