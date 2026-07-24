@@ -73,7 +73,7 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-describe('CulturalSurveyQuestions page', () => {
+describe('CulturalSurveyQuestions', () => {
   beforeEach(() => {
     setFeatureFlags()
   })

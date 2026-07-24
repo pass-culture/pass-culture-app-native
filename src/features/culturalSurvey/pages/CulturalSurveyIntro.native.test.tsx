@@ -2,6 +2,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
+import { useCulturalSurveyContext } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
+import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
@@ -17,8 +19,11 @@ jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
-
 jest.mock('libs/firebase/analytics/analytics')
+
+jest
+  .spyOn(CulturalSurveyContextProviderModule, 'useCulturalSurveyContext')
+  .mockImplementation(useCulturalSurveyContext)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -28,7 +33,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('CulturalSurveyIntro page', () => {
+describe('CulturalSurveyIntro', () => {
   it('should render the page with correct layout and content', () => {
     render(<CulturalSurveyIntro />)
 
@@ -44,9 +49,7 @@ describe('CulturalSurveyIntro page', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         screen: 'CulturalSurveyQuestions',
-        params: {
-          question: CulturalSurveyQuestionEnum.SORTIES,
-        },
+        params: { question: CulturalSurveyQuestionEnum.SORTIES },
       })
     })
   })

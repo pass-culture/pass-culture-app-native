@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
+import { useCulturalSurveyContext } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
+import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
@@ -14,6 +16,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest
+  .spyOn(CulturalSurveyContextProviderModule, 'useCulturalSurveyContext')
+  .mockImplementation(useCulturalSurveyContext)
 
 const user = userEvent.setup()
 jest.useFakeTimers()
