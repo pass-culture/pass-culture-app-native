@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 error() {
-  echo "$1"
+  echo -e "\e[1;31m$1\e[0m"  # display message in red + bold and resets to normal
   exit 1
 }
 
