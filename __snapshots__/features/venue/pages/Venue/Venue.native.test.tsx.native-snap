@@ -27,6 +27,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         "overflow": "visible",
       }
     }
+    testID="venue-container"
   >
     <View>
       <View
@@ -3379,6 +3380,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
         "overflow": "visible",
       }
     }
+    testID="venue-container"
   >
     <View>
       <View
@@ -6731,6 +6733,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
         "overflow": "visible",
       }
     }
+    testID="venue-container"
   >
     <View>
       <View

@@ -19,7 +19,10 @@ import { TabParamList } from 'features/navigation/navigators/TabNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { ConsultArtistOriginDetails } from 'libs/analytics/logEventAnalytics'
+import {
+  ConsultArtistOriginDetails,
+  FakeDoorAnalyticsParams,
+} from 'libs/analytics/logEventAnalytics'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { StorageKey } from 'libs/storage'
@@ -240,16 +243,10 @@ type LoginParams = {
   from?: StepperOrigin
 }
 
-type FakeDoorModalAnalyticsParams = {
-  featureName: string
-  from: Referrals
-  artistId?: string
-}
-
 type FakeDoorModalParams = {
   surveyKey: StorageKey
   surveyUrl: string
-  analyticsParams?: FakeDoorModalAnalyticsParams
+  analyticsParams?: FakeDoorAnalyticsParams
 }
 
 /**

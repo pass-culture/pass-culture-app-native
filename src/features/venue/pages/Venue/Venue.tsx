@@ -21,7 +21,11 @@ import { VenueContent } from 'features/venue/components/VenueContent/VenueConten
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
-import { buildFollowVenueSurveyUrl } from 'features/venue/helpers/buildFollowVenueSurveyUrl'
+import {
+  buildFollowVenueSurveyUrl,
+  FOLLOW_VENUE_FEATURE_NAME,
+  FOLLOW_VENUE_SURVEY_KEY,
+} from 'features/venue/helpers/buildFollowVenueSurveyUrl'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
@@ -43,6 +47,7 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
@@ -51,6 +56,8 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
+
+type FollowVenueButtonOrigin = 'venueBanner' | 'venueHeader'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
@@ -177,11 +184,26 @@ export const Venue: FunctionComponent = () => {
     }
   }, [params.from, proAdvicesSegment, venue?.id])
 
-  const handleOnPressFollowButton = () => {
+  const handleOnPressFollowButton = async (originDetails: FollowVenueButtonOrigin) => {
+    if (!venue) return
+
+    const analyticsParams = {
+      featureName: FOLLOW_VENUE_FEATURE_NAME,
+      from: 'venue' as const,
+      venueId: venue.id.toString(),
+    }
+
+    const hasSeenSurveyPromise = getHasSeenFakeDoorSurvey(FOLLOW_VENUE_SURVEY_KEY)
+
     navigate('FakeDoorModal', {
-      surveyKey: 'has_seen_follow_venue_fake_door_survey',
-      surveyUrl: buildFollowVenueSurveyUrl(venue?.activity),
+      surveyKey: FOLLOW_VENUE_SURVEY_KEY,
+      surveyUrl: buildFollowVenueSurveyUrl(venue.activity),
+      analyticsParams,
     })
+
+    const hasSeenSurvey = await hasSeenSurveyPromise
+
+    void analytics.logHasClickedFakeDoorCTA({ ...analyticsParams, originDetails, hasSeenSurvey })
   }
 
   const isCTADisplayed =
@@ -195,7 +217,7 @@ export const Venue: FunctionComponent = () => {
         enableVolunteer={enableVolunteer}
         enableVolunteerFeedback={enableVolunteerFeedback}
         enableVenueFakeDoor={enableVenueFakeDoor}
-        onPressFollowButton={handleOnPressFollowButton}
+        onPressFollowButton={() => handleOnPressFollowButton('venueBanner')}
       />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
@@ -252,7 +274,7 @@ export const Venue: FunctionComponent = () => {
             isCTADisplayed={isCTADisplayed}
             showSearchInVenueModal={showSearchInVenueModal}
             enableVenueFakeDoor={enableVenueFakeDoor}
-            onPressFollowButton={handleOnPressFollowButton}>
+            onPressFollowButton={() => handleOnPressFollowButton('venueHeader')}>
             {VenueContentChildren}
           </VenueContent>
           <SearchInVenueModal
@@ -267,7 +289,7 @@ export const Venue: FunctionComponent = () => {
           venue={venue}
           isCTADisplayed={isCTADisplayed}
           enableVenueFakeDoor={enableVenueFakeDoor}
-          onPressFollowButton={handleOnPressFollowButton}>
+          onPressFollowButton={() => handleOnPressFollowButton('venueHeader')}>
           {VenueContentChildren}
         </OldVenueContent>
       )}

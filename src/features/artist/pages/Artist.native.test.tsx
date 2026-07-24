@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { contentfulArtistPlaylistSnap } from 'features/artist/fixtures/contentfulArtistPlaylistSnap'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { Artist } from 'features/artist/pages/Artist'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -27,6 +29,7 @@ describe('<Artist />', () => {
   beforeEach(() => {
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi(`/v1/artists/${mockArtist.id}/similar`, { artists: [] })
+    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulArtistPlaylistSnap)
     setFeatureFlags()
   })
 

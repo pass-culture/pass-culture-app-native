@@ -34,6 +34,7 @@ export const LinkToOffer = ({
 
       triggerConsultOfferLog({
         offerId: offer.id,
+        venueId: offer.venue.id,
         from: 'bookings',
         displayAdvice: proAdvicesOnOfferSegment === 'A',
       })

@@ -48,6 +48,7 @@ export const VideoEndView: React.FC<{
                   })
                   triggerConsultOfferLog({
                     offerId: +offer.objectID,
+                    venueId: offer.venue.id,
                     from: 'video',
                     moduleId,
                     moduleName,

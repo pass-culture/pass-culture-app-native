@@ -129,6 +129,7 @@ describe('HorizontalOfferTile component', () => {
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: String(offerId),
+      venueId: mockOffer.venue.id,
       from: 'searchresults',
       query: '',
       index: 0,

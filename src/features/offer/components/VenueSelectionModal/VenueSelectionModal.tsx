@@ -24,7 +24,7 @@ type VenueSelectionModalProps = Pick<
   nbHits: number
   isFetchingNextPage: boolean
   title: string
-  onSubmit: (selectedVenueId: number) => void
+  onSubmit: (selectedOfferId: number, selectedVenueId?: number) => void
   onClosePress: VoidFunction
   onEndReached: () => void
   isSharingLocation: boolean
@@ -53,14 +53,17 @@ export function VenueSelectionModal({
   validateButtonLabel,
   headerMessage,
 }: VenueSelectionModalProps) {
-  const [selectedVenue, setSelectedVenue] = useState<number>()
+  const [selectedVenue, setSelectedVenue] = useState<{
+    offerId: number
+    venueId?: number
+  }>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { top } = useCustomSafeInsets()
   const { designSystem } = useTheme()
 
   const handleSubmit = useCallback(() => {
     if (selectedVenue !== undefined) {
-      onSubmit(selectedVenue)
+      onSubmit(selectedVenue.offerId, selectedVenue.venueId)
     }
   }, [onSubmit, selectedVenue])
 
@@ -109,9 +112,9 @@ export function VenueSelectionModal({
         />
       </View>
       <VenueSelectionList
-        onItemSelect={setSelectedVenue}
+        onItemSelect={(offerId, venueId) => setSelectedVenue({ offerId, venueId })}
         items={items}
-        selectedItem={selectedVenue}
+        selectedItem={selectedVenue?.offerId}
         onEndReached={onEndReached}
         refreshing={refreshing}
         onRefresh={onRefresh}

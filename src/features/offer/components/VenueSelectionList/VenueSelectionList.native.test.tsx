@@ -11,6 +11,7 @@ const items: VenueListItem[] = [
     address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
     distance: '500 m',
     offerId: 1,
+    venueId: 10,
   },
   {
     title: 'Le Livre Éclaire',
@@ -80,7 +81,7 @@ describe('<VenueSelectionList />', () => {
 
     await user.press(screen.getByText('Envie de lire'))
 
-    expect(onItemSelect).toHaveBeenNthCalledWith(1, 1)
+    expect(onItemSelect).toHaveBeenNthCalledWith(1, 1, 10)
   })
 
   it('should display distance when user share his position', () => {

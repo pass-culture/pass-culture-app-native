@@ -48,6 +48,13 @@ const genericPagesCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'PageNotFound',
+      navigationTarget: {
+        screen: 'PageNotFound',
+      },
+    },
+    {
+      id: uuidv4(),
       title: 'GenericErrorPage',
       navigationTarget: {
         screen: 'CheatcodesStackNavigator',

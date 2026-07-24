@@ -28,7 +28,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   HeaderComponent,
-  CTAsComponent,
   proAdvicesSegment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -61,7 +60,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
         HeaderComponent={HeaderComponent}
-        CTAsComponent={CTAsComponent}
         proAdvicesCount={proAdvicesCount}
         proAdvicesSegment={proAdvicesSegment}>
         {comingSoonFooterHeight ? (

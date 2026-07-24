@@ -9,6 +9,7 @@ import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlac
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
@@ -27,6 +28,7 @@ const offerVenues = [
     address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
     distance: '500 m',
     offerId: 1,
+    venueId: 1,
     price: 1000,
   },
   {
@@ -34,6 +36,7 @@ const offerVenues = [
     address: '75013 Paris, 56 rue de Tolbiac',
     distance: '1,5 km',
     offerId: 2,
+    venueId: 2,
     price: 1000,
   },
   {
@@ -41,6 +44,7 @@ const offerVenues = [
     address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
     distance: '2,4 km',
     offerId: 3,
+    venueId: 3,
     price: 1000,
   },
 ]
@@ -111,6 +115,7 @@ jest.useFakeTimers()
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-01-01'))
+    setFeatureFlags()
     setupEverywhereLocation()
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
@@ -312,6 +317,7 @@ describe('<OfferPlace />', () => {
       from: 'offer',
       fromMultivenueOfferId: '146112',
       offerId: '2',
+      venueId: 2,
       isHeadline: false,
       displayAdvice: false,
     })

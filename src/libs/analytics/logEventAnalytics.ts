@@ -116,6 +116,11 @@ export type ConsultArtistOriginDetails =
   | 'searchResults'
   | 'artistRecommendation'
 
+export type FakeDoorAnalyticsParams = {
+  featureName: string
+  from: Referrals
+} & ({ artistId?: string; venueId?: never } | { venueId?: string; artistId?: never })
+
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
@@ -297,7 +302,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_DISCLAIMER_VALIDATION_MAIL }),
   logConsultErrorApplicationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL }, { offerId }),
-  logConsultFakeDoorSurvey: (params: { featureName: string; from: Referrals; artistId?: string }) =>
+  logConsultFakeDoorSurvey: (params: FakeDoorAnalyticsParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FAKE_DOOR_SURVEY }, params),
   logConsultFinishSubscriptionModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL }, { offerId }),
@@ -441,20 +446,18 @@ export const logEventAnalytics = {
     searchId,
     homeEntryId,
     artistId,
+    venueId,
     hasSeenSurvey,
     originDetails,
-  }: {
-    featureName: string
-    from: Referrals
+  }: FakeDoorAnalyticsParams & {
     searchId?: string
     homeEntryId?: string
-    artistId?: string
     hasSeenSurvey?: boolean
     originDetails?: string
   }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA },
-      { artistId, featureName, from, hasSeenSurvey, homeEntryId, originDetails, searchId }
+      { artistId, featureName, from, hasSeenSurvey, homeEntryId, originDetails, searchId, venueId }
     ),
   logHasClickedGridListToggle: ({ fromLayout }: { fromLayout: GridListLayout }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_GRID_LIST_TOGGLE }, { fromLayout }),

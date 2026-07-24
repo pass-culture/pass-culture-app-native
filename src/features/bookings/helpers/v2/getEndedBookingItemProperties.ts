@@ -57,6 +57,7 @@ export const getEndedBookingItemProperties = ({
 
       triggerConsultOfferLog({
         offerId: offer.id,
+        venueId: offer.venue.id,
         from: 'endedbookings',
         displayAdvice: proAdvicesOnOfferSegment === 'A',
       })

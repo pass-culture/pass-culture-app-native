@@ -33,6 +33,5 @@ module.exports = {
     '@babel/plugin-proposal-unicode-property-regex',
     '@babel/plugin-proposal-export-namespace-from',
     'react-native-worklets/plugin',
-    'hot-updater/babel-plugin',
   ],
 }

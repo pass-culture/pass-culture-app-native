@@ -31,7 +31,7 @@ describe('<FollowArtistButton />', () => {
 
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
-      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=1',
+      surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=1',
       analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: '1' },
     })
   })
@@ -62,7 +62,7 @@ describe('<FollowArtistButton />', () => {
     expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
       surveyKey: 'has_seen_follow_artist_fake_door_survey',
       surveyUrl:
-        'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artistId=1&offer_type=LIVRES',
+        'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=1&offer_type=LIVRES',
       analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: '1' },
     })
   })

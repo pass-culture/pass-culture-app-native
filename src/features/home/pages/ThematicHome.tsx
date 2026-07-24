@@ -88,19 +88,14 @@ const SubHeader: FunctionComponent<{ homeId: string; thematicHeader?: ThematicHe
     }
 
     return (
-      <React.Fragment>
-        {Platform.OS === 'web' ? null : (
-          <HeaderSpacerPlaceholder height={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT} />
-        )}
-        <CategoryThematicHomeHeader
-          title={thematicHeader?.title}
-          titleParts={thematicHeader.titleParts}
-          subtitle={thematicHeader?.subtitle}
-          color={thematicHeader?.color}
-          imageUrl={thematicHeader.imageUrl}
-          homeId={homeId}
-        />
-      </React.Fragment>
+      <CategoryThematicHomeHeader
+        title={thematicHeader?.title}
+        titleParts={thematicHeader.titleParts}
+        subtitle={thematicHeader?.subtitle}
+        color={thematicHeader?.color}
+        imageUrl={thematicHeader.imageUrl}
+        homeId={homeId}
+      />
     )
   }
 

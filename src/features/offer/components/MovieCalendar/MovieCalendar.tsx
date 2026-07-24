@@ -107,7 +107,7 @@ export const MovieCalendar: React.FC<Props> = ({
               date={date}
               selectedDate={selectedDate}
               onTabChange={onInternalTabChange}
-              disabled={disabledDates?.includes(date)}
+              disabled={disabledDates?.map((d) => d.getTime()).includes(date.getTime())}
             />
           )}
         />

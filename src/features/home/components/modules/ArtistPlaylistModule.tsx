@@ -40,6 +40,7 @@ export type ArtistPlaylistModuleProps = {
   homeEntryId: string | undefined
   data: ModuleData | undefined
   onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
+  disableArtistNavigation?: boolean
 }
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -54,6 +55,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     homeEntryId,
     data,
     onViewableItemsChanged,
+    disableArtistNavigation,
   } = props
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -159,6 +161,46 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     })
   }
 
+  const artistHeader = (
+    <StyledInfoHeader
+      title={artist?.name}
+      subtitle="te partage ses pépites"
+      defaultThumbnailSize={AVATAR_SMALL}
+      thumbnailComponent={
+        <Avatar
+          size={AVATAR_SMALL}
+          rounded={false}
+          borderRadius={designSystem.size.borderRadius.pill}>
+          {artist?.image ? (
+            <ArtistImage url={artist.image} testID="ArtistImage" />
+          ) : (
+            <DefaultAvatar testID="defaultArtistAvatar" />
+          )}
+        </Avatar>
+      }
+      rightComponent={
+        disableArtistNavigation ? undefined : (
+          <RightFilled size={designSystem.size.icon.s} testID="RightFilled" />
+        )
+      }
+    />
+  )
+
+  const renderPlaylistHeader = () => {
+    if (!artist) return undefined
+    if (disableArtistNavigation) return artistHeader
+
+    return (
+      <InternalTouchableLink
+        navigateTo={{ screen: 'Artist', params: { id: artist.id } }}
+        accessibilityLabel={`Accéder à la page artiste de ${artist.name}`}
+        accessibilityRole={accessibilityRoleInternalNavigation()}
+        onBeforeNavigate={() => onArtistPress(artist.id, artist.name)}>
+        {artistHeader}
+      </InternalTouchableLink>
+    )
+  }
+
   return (
     <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
@@ -179,36 +221,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
             navigateToSearchPlaylist: searchTabConfig,
             hideSearchSeeAll: isWeb,
           }}
-          playlistHeader={
-            artist ? (
-              <InternalTouchableLink
-                navigateTo={{ screen: 'Artist', params: { id: artist.id } }}
-                accessibilityLabel={`Accéder à la page artiste de ${artist.name}`}
-                accessibilityRole={accessibilityRoleInternalNavigation()}
-                onBeforeNavigate={() => onArtistPress(artist.id, artist.name)}>
-                <StyledInfoHeader
-                  title={artist.name}
-                  subtitle="te partage ses pépites"
-                  defaultThumbnailSize={AVATAR_SMALL}
-                  thumbnailComponent={
-                    <Avatar
-                      size={AVATAR_SMALL}
-                      rounded={false}
-                      borderRadius={designSystem.size.borderRadius.pill}>
-                      {artist.image ? (
-                        <ArtistImage url={artist.image} testID="ArtistImage" />
-                      ) : (
-                        <DefaultAvatar testID="defaultArtistAvatar" />
-                      )}
-                    </Avatar>
-                  }
-                  rightComponent={
-                    <RightFilled size={designSystem.size.icon.s} testID="RightFilled" />
-                  }
-                />
-              </InternalTouchableLink>
-            ) : undefined
-          }
+          playlistHeader={renderPlaylistHeader()}
         />
       )}
     </ObservedPlaylist>

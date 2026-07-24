@@ -112,6 +112,7 @@ export const OldVenueContent: React.FunctionComponent<Props> = ({
             />
           }>
           <ContentContainer
+            testID="venue-container"
             onScroll={handleScroll}
             scrollEventThrottle={16}
             bounces={false}

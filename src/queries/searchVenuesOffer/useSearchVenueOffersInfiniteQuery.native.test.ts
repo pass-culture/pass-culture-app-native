@@ -37,24 +37,28 @@ describe('useSearchVenueOffersInfiniteQuery', () => {
         {
           address: '75000 Paris, 1 rue de la paix',
           offerId: 102280,
+          venueId: 1,
           title: 'Lieu 1',
           distance: '4,5 km',
         },
         {
           address: '75000 Paris, 2 rue de la paix',
           offerId: 102272,
+          venueId: 2,
           title: 'Lieu 2',
           distance: '2,4 km',
         },
         {
           address: '75000 Paris, 3 rue de la paix',
           offerId: 102249,
+          venueId: 3,
           title: 'Lieu 3',
           distance: '900+ km',
         },
         {
           address: '75000 Paris, 4 rue de la paix',
           offerId: 102310,
+          venueId: 4,
           title: 'Lieu 4',
           distance: '900+ km',
         },
@@ -114,6 +118,7 @@ describe('useSearchVenueOffersInfiniteQuery', () => {
         {
           address: '75000 Paris, 1 rue de la paix',
           offerId: 102281,
+          venueId: 1,
           title: 'Lieu 1',
           distance: '4,5 km',
         },

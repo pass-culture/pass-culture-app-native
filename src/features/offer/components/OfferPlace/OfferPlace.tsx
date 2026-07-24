@@ -4,11 +4,15 @@ import React, { FC, ReactNode } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
+import { OfferCineBlockV2 } from 'features/offer/components/OfferCine/OfferCineBlockV2'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -52,14 +56,16 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   proAdvicesOnVenueSegment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { user } = useAuthContext()
   const queryClient = useQueryClient()
+  const wipUseMovieScreeningEndpoint = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_USE_MOVIE_SCREENINGS_ENDPOINT
+  )
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
   const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  const canSeeVenue = offer.venue.isPermanent
-
-  const handleOnSeeVenuePress = canSeeVenue
+  const handleOnSeeVenuePress = offer.venue.isPermanent
     ? async () => {
         // We pre-populate the query-cache with the data from the search result for a smooth transition
         queryClient.setQueryData([QueryKeys.VENUE, offer.venue.id], mergeVenueData(offer.venue))
@@ -71,15 +77,33 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
         navigate('Venue', { id: offer.venue.id })
       }
     : undefined
+  const { id: offerId, extraData: offerExtraData, venue: offerVenue } = offer
+  const { allocineId, visa } = offerExtraData || { allocineId: null, visa: null }
+  const { coordinates } = offerVenue
+  const { latitude: offerVenueLatitude, longitude: offerVenueLongitude } = coordinates
+  const offerCineBlock =
+    wipUseMovieScreeningEndpoint && (!!allocineId || !!visa) && !user ? (
+      <OfferCineBlockV2
+        title={venueSectionTitle}
+        offerId={offerId}
+        allocineId={allocineId?.toString()}
+        visa={visa}
+        offerVenueLatitude={offerVenueLatitude}
+        offerVenueLongitude={offerVenueLongitude}
+        onSeeVenuePress={handleOnSeeVenuePress}
+      />
+    ) : (
+      <OfferCineBlock
+        title={venueSectionTitle}
+        offer={offer}
+        onSeeVenuePress={handleOnSeeVenuePress}
+      />
+    )
 
   return (
     <OfferPlaceWrapper isDigital={offer.isDigital}>
       {isOfferAMovieScreening ? (
-        <OfferCineBlock
-          title={venueSectionTitle}
-          offer={offer}
-          onSeeVenuePress={handleOnSeeVenuePress}
-        />
+        offerCineBlock
       ) : (
         <OfferVenueContainer
           offer={offer}

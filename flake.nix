@@ -10,15 +10,17 @@
   inputs.nixpkgs_gitleaks.url =
     "github:nixos/nixpkgs?rev=01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09"; # contains gitleaks 8.28.0
   inputs.flake-utils.url = "github:numtide/flake-utils";
+  inputs.nixpkgs_maestro.url = 
+    "github:nixos/nixpkgs?rev=389ed85304b281ca7f306cf8a1eb4378651ca44e"; # contains maestro 2.6.1
 
-  outputs = { self, nixpkgs, nixpkgs_nodejs, nixpkgs_ruby, nixpkgs_gitleaks
-    , flake-utils, }:
+  outputs = { self, nixpkgs, nixpkgs_nodejs, nixpkgs_ruby, nixpkgs_gitleaks, nixpkgs_maestro, flake-utils, }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         pkgs_nodejs = nixpkgs_nodejs.legacyPackages.${system};
         pkgs_ruby = nixpkgs_ruby.legacyPackages.${system};
         pkgs_gitleaks = nixpkgs_gitleaks.legacyPackages.${system};
+        pkgs_maestro = nixpkgs_maestro.legacyPackages.${system};
       in {
         devShells.default = pkgs.mkShellNoCC {
           packages = [
@@ -27,7 +29,7 @@
             pkgs.jdk17 # needed by Android
             pkgs.jq # needed by some scripts run in the pipeline
             pkgs.python3 # needed by scripts/add_tracker.py
-            pkgs.maestro # needed to run end to end test locally
+            pkgs_maestro.maestro # needed to run end to end test locally
             pkgs.act # needed to debug pipeline locally
             pkgs.gh # needed to debug pipeline locally
             pkgs.podman # needed to debug pipeline locally

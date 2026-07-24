@@ -13,8 +13,10 @@ export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
   const paramsWithStringId: ConsultOfferLogParams = {
     ...params,
     offerId: params.offerId.toString(),
-    fromOfferId: params.fromOfferId?.toString(),
-    fromMultivenueOfferId: params.fromMultivenueOfferId?.toString(),
+    ...(params.fromOfferId ? { fromOfferId: params.fromOfferId.toString() } : {}),
+    ...(params.fromMultivenueOfferId
+      ? { fromMultivenueOfferId: params.fromMultivenueOfferId.toString() }
+      : {}),
     isHeadline: params.isHeadline === true,
   }
 

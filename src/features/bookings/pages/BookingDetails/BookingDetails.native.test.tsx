@@ -216,6 +216,7 @@ describe('BookingDetails', () => {
       })
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId: String(offerId),
+        venueId: 2185,
         from: 'bookings',
         isHeadline: false,
         displayAdvice: false,

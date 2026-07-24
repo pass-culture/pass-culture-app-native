@@ -91,7 +91,11 @@ describe('useModalContent', () => {
 
     const { result } = renderHook(useModalContent)
 
-    expect(result.current.children).toMatchInlineSnapshot('<BookingImpossible />')
+    expect(result.current.children).toMatchInlineSnapshot(`
+      <BookingImpossible
+        venueId={2090}
+      />
+    `)
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
     expect(result.current.title).toBe('Tu y es presque')

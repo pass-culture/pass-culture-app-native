@@ -54,6 +54,7 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
         isLoading={isLoading}
         skeletonListLength={3}
         renderSkeleton={() => <CineBlockSkeleton />}
+        keyExtractor={(item, index) => `${item?.offer?.id}-${index}`}
         renderItem={({ item }) => (
           <CineBlock
             offer={item.offer}
