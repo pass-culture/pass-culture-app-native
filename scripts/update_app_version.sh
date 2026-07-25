@@ -15,7 +15,10 @@ update_app_version() {
   git add package.json
   git add server/package.json
 
-  git commit -m "v${VERSION}"
+  if ! git commit -m "v${VERSION}"; then
+      echo "Failed to commit. Exiting without patching" >&2
+      exit 1
+  fi
   ./scripts/create_and_push_tag_from_package_json_version.sh "$1"
 
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
