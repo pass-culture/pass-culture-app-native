@@ -2254,7 +2254,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 1 sur 13 - Création de compte (6 écrans) "
+                  accessibilityLabel="Pages auditées – Liste - Élément 1 sur 13 - Création de compte (6 écrans)"
                   accessible={true}
                   style={
                     {
@@ -2304,7 +2304,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Création de compte (6 écrans) 
+                      Création de compte (6 écrans)
                     </Text>
                   </View>
                 </View>

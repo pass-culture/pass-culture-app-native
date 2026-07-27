@@ -273,7 +273,7 @@ export const AccessibilityDeclarationWeb = () => {
             <VerticalUl>
               <BulletListItem
                 groupLabel="Pages auditées"
-                text="Création de compte (6 écrans) "
+                text="Création de compte (6 écrans)"
                 index={0}
                 total={13}
               />
