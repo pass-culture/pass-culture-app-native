@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
-import { SearchView } from 'features/search/types'
+import { env } from 'libs/environment/__mocks__/env'
 import { render, userEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -32,32 +32,13 @@ describe('AccessibilityDeclarationWeb', () => {
   })
 
   it.each`
-    screen                          | params                                                                        | title
-    ${'TabNavigator'}               | ${{ screen: 'Home', params: undefined }}                                      | ${'Accueil'}
-    ${'SignupForm'}                 | ${undefined}                                                                  | ${'Inscription - Date de naissance'}
-    ${'Login'}                      | ${undefined}                                                                  | ${'Connexion'}
-    ${'SubscriptionStackNavigator'} | ${undefined}                                                                  | ${'Vérification d’identité'}
-    ${'TabNavigator'}               | ${{ screen: 'Profile', params: undefined }}                                   | ${'Profil'}
-    ${'ProfileStackNavigator'}      | ${{ screen: 'ChangePassword', params: undefined }}                            | ${'Modification de mot de passe'}
-    ${'TabNavigator'}               | ${{ screen: 'Favorites', params: undefined }}                                 | ${'Favoris'}
-    ${'TabNavigator'}               | ${{ screen: 'SearchStackNavigator', params: { screen: SearchView.Landing } }} | ${'Recherche'}
-    ${'ProfileStackNavigator'}      | ${{ screen: 'AccessibilityDeclarationWeb', params: undefined }}               | ${'Déclaration d’accessibilité'}
-  `(
-    'should navigate to $screen when $title is clicked',
-    async ({ screen: screenName, params, title }) => {
-      render(<AccessibilityDeclarationWeb />)
-
-      const link = screen.getByText(title)
-      await user.press(link)
-
-      expect(navigate).toHaveBeenCalledWith(screenName, params)
-    }
-  )
-
-  it.each`
-    url                                                    | title
-    ${'https://formulaire.defenseurdesdroits.fr/'}         | ${'Défenseur des droits'}
-    ${'https://www.defenseurdesdroits.fr/saisir/delegues'} | ${'Défenseur des droits dans votre région'}
+    url                                                                                              | title
+    ${'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf'} | ${'norme européenne 301 549 (v3.2.1)'}
+    ${'https://accessibilite.public.lu/fr/raweb1.1/index.html'}                                      | ${'RAWeb version 1.1'}
+    ${'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/'}                              | ${'Le RGAA version 4.1'}
+    ${env.SUPPORT_ACCOUNT_ISSUES_FORM}                                                               | ${'contacter le support'}
+    ${'https://formulaire.defenseurdesdroits.fr/'}                                                   | ${'Défenseur des droits'}
+    ${'https://www.defenseurdesdroits.fr/saisir/delegues'}                                           | ${'Défenseur des droits dans votre région'}
   `('should open $url when $title is clicked', async ({ url, title }) => {
     render(<AccessibilityDeclarationWeb />)
 
