@@ -233,7 +233,9 @@ jobs:
           restore-keys: |
             v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install packages for proxy
-        run: cd server && yarn install && cd ..
+        run: (cd server && yarn)
+      - name: Test proxy types
+        run: (cd server && yarn test:types)
       - name: Run proxy unit tests
         # the test https://github.com/pass-culture/pass-culture-app-native/blob/64e47e0bd8887e80fa20b6d7df00e110d77fd22e/server/src/middlewares/tests/webAppProxyMiddleware.test.ts#L275 fails sometimes, we suppose the backend doesn't respond sometimes
         run: cd server && (yarn test:unit:ci || yarn test:unit:ci || yarn test:unit:ci) && cd ..
