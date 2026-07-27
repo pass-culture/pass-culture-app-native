@@ -469,6 +469,7 @@ retrouver tes favoris
                   style={
                     {
                       "alignItems": "center",
+                      "alignSelf": "center",
                       "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 4,

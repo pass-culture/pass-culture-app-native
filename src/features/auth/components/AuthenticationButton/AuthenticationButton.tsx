@@ -59,6 +59,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
 
 const AuthenticationContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
+  alignSelf: 'center',
   flexDirection: 'row',
   flexWrap: 'wrap',
   gap: theme.designSystem.size.spacing.xs,
