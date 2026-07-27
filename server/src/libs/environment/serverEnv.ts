@@ -2,7 +2,6 @@ import { existsSync } from 'fs'
 import { resolve, join } from 'path'
 
 import { config as dotEnvConfig } from 'dotenv'
-
 import { Environment } from './types'
 
 const envVariable = process.env.ENV ?? 'this should never happen'
@@ -19,6 +18,6 @@ if (!existsSync(path)) {
 dotEnvConfig({ path })
 
 export const env: Environment = {
-  ...(process.env as Environment),
+  ...process.env,
   __DEV__,
 }

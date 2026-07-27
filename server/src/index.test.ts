@@ -16,7 +16,7 @@ const serverMock = setupServer(
 
 describe('express server', () => {
   let server: Server
-  let initialEnv: string | undefined
+  let initialEnv: NodeJS.ProcessEnv['ENV']
 
   beforeAll(async () => {
     serverMock.listen()
