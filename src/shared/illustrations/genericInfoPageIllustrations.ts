@@ -16,6 +16,6 @@ export const genericInfoPageIllustrationUrls = {
   brokenDinosaurSkeletonLarge: buildCategoryIllustrationUrl('brokenDinosaurSkeletonLarge.png'),
   emptyDigitalWindowLarge: buildCategoryIllustrationUrl('emptyDigitalWindowLarge.png'),
   emptyWalletLarge: buildCategoryIllustrationUrl('emptyWalletLarge.png'),
-  hourglass: buildCategoryIllustrationUrl('emptyWalletLarge.png'),
+  hourglass: buildCategoryIllustrationUrl('hourglass.png'),
   trashMosaic: buildCategoryIllustrationUrl('trashMosaic.png'),
 } as const satisfies Record<GenericInfoPageIllustrationName, string>
