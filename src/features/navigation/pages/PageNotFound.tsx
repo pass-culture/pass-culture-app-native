@@ -19,7 +19,6 @@ export const PageNotFound: React.FC = () => {
         remoteIllustration={{
           url: genericInfoPageIllustrationUrls.emptyDigitalWindowLarge,
           backgroundColor: 'pending01',
-          size: 'default',
         }}
         title="Page introuvable&nbsp;!"
         subtitle="Il est possible que cette page soit désactivée ou n’existe pas."

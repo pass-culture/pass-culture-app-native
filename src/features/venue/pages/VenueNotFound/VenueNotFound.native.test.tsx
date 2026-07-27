@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render } from 'tests/utils'
 
 const resetErrorBoundary = () => null
@@ -15,6 +16,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<VenueNotFound />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     expect(
       render(<VenueNotFound error={error} resetErrorBoundary={resetErrorBoundary} />)

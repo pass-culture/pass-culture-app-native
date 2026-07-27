@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
-import { useTheme } from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
@@ -14,7 +13,6 @@ import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
 export const DeleteProfileAccountHacked: FC = () => {
-  const { isDesktopViewport } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
@@ -30,7 +28,6 @@ export const DeleteProfileAccountHacked: FC = () => {
       remoteIllustration={{
         url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
         backgroundColor: 'information03',
-        size: isDesktopViewport ? 'default' : 'small',
       }}
       title="Sécurise ton compte"
       buttonPrimary={{ wording: 'Suspendre mon compte', onPress: navigateToSuspendAccount }}

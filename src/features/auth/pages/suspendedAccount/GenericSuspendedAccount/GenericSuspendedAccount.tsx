@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react'
-import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
@@ -20,7 +19,6 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
   children,
   onBeforeNavigateContactFraudTeam,
 }) => {
-  const { isDesktopViewport } = useTheme()
   const signOut = useLogoutRoutine()
   const { user } = useAuthContext()
   const version = useVersion()
@@ -32,7 +30,6 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
       remoteIllustration={{
         url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
         backgroundColor: 'information03',
-        size: isDesktopViewport ? 'default' : 'small',
       }}
       title="Ton compte a été suspendu"
       buttonPrimary={{

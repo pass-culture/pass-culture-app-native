@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { useTheme } from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
@@ -9,7 +8,6 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
-  const { isDesktopViewport } = useTheme()
   const timer = useRef<number>(null)
 
   useEffect(
@@ -37,7 +35,6 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         remoteIllustration={{
           url: genericInfoPageIllustrationUrls.emptyDigitalWindowLarge,
           backgroundColor: 'pending01',
-          size: isDesktopViewport ? 'default' : 'small',
         }}
         title="Offre introuvable&nbsp;!"
         subtitle="Il est possible que cette offre soit désactivée ou n’existe pas."

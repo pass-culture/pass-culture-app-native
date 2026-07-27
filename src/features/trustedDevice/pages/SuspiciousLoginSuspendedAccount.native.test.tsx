@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { SuspiciousLoginSuspendedAccount } from './SuspiciousLoginSuspendedAccount'
@@ -29,6 +30,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SuspiciousLoginSuspendedAccount/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match snapshot', () => {
     render(<SuspiciousLoginSuspendedAccount />)
 

@@ -3,6 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -36,6 +37,10 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix} onRequestClose={continueSignup}>
       <GenericInfoPage
         illustration={ErrorIllustration}
+        remoteIllustration={{
+          url: genericInfoPageIllustrationUrls.brokenDinosaurSkeletonLarge,
+          backgroundColor: 'negative01',
+        }}
         title="Veux-tu abandonner l’inscription&nbsp;?"
         subtitle="Les informations que tu as renseignées ne seront pas enregistrées."
         buttonPrimary={{

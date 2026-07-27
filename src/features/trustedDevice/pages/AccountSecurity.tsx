@@ -33,7 +33,6 @@ export const AccountSecurity = () => {
       remoteIllustration={{
         url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
         backgroundColor: 'information03',
-        size: 'small',
       }}
       title="Sécurise ton compte"
       buttonPrimary={

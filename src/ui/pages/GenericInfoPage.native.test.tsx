@@ -57,7 +57,6 @@ describe('<GenericInfoPage />', () => {
         remoteIllustration={{
           url: 'https://example.com/illustration.png',
           backgroundColor: 'positive01',
-          size: 'default',
         }}
         title="Title"
         buttonPrimary={{
@@ -79,7 +78,6 @@ describe('<GenericInfoPage />', () => {
         remoteIllustration={{
           url: 'https://example.com/illustration.png',
           backgroundColor: 'positive01',
-          size: 'small',
         }}
         title="Title"
         buttonPrimary={{
