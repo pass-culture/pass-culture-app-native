@@ -1,25 +1,3 @@
-diff --git a/dist/cjs/exports/Image/index.js b/dist/cjs/exports/Image/index.js
-index c76ecdee85f9c9b78c0b707725c3277e3a4c7ecc..007abd61fb4a85570e648c71d76ca35b1ebe988d 100644
---- a/dist/cjs/exports/Image/index.js
-+++ b/dist/cjs/exports/Image/index.js
-@@ -155,6 +155,7 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
-     onLoadStart = props.onLoadStart,
-     pointerEvents = props.pointerEvents,
-     source = props.source,
-+    transform = props.transform,
-     style = props.style,
-     rest = (0, _objectWithoutPropertiesLoose2.default)(props, _excluded);
-   var ariaLabel = _ariaLabel || accessibilityLabel;
-@@ -279,7 +280,8 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
-   }), /*#__PURE__*/React.createElement(_View.default, {
-     style: [styles.image, resizeModeStyles[resizeMode], {
-       backgroundImage,
--      filter
-+      filter,
-+      transform
-     }, backgroundSize != null && {
-       backgroundSize
-     }],
 diff --git a/dist/cjs/exports/Text/index.js b/dist/cjs/exports/Text/index.js
 index 1d03735f0e5ba42b0da8bbfa5692d572db95e38d..daae068c37a3eff3f28db82e1d885a95ec35dee8 100644
 --- a/dist/cjs/exports/Text/index.js
