@@ -9,14 +9,12 @@ import { Image } from 'libs/resizing-image-on-demand/Image'
 interface Props {
   imageUrl?: string
   imageHeight: number
-  minHeight?: number
   style?: ViewStyle
   children?: React.ReactNode
 }
 
 const isWeb = Platform.OS === 'web'
 const blurImageRadius = Platform.OS === 'android' ? 5 : 20
-const blurImageTransform = isWeb ? { transform: 'scale(1.1)' } : {}
 
 export const HeaderWithImage: FunctionComponent<Props> = ({
   imageUrl,
@@ -26,7 +24,12 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
 }) => {
   const { appContentWidth } = useTheme()
 
-  const blurImageStyle = { height: imageHeight, width: appContentWidth, opacity: 0.7 }
+  const blurImageStyle = {
+    height: imageHeight,
+    width: appContentWidth,
+    opacity: 0.7,
+    ...(isWeb ? { transform: [{ scale: 1.1 }] } : {}),
+  }
 
   return (
     <Container style={style}>
@@ -37,7 +40,6 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
             blurRadius={blurImageRadius}
             resizeMode="cover"
             url={imageUrl}
-            {...blurImageTransform}
           />
         ) : (
           <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight}>

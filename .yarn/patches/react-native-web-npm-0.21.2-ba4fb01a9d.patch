@@ -1,0 +1,69 @@
+diff --git a/dist/cjs/exports/Text/index.js b/dist/cjs/exports/Text/index.js
+index 1d03735f0e5ba42b0da8bbfa5692d572db95e38d..daae068c37a3eff3f28db82e1d885a95ec35dee8 100644
+--- a/dist/cjs/exports/Text/index.js
++++ b/dist/cjs/exports/Text/index.js
+@@ -108,9 +108,9 @@ var Text = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   var writingDirection = componentDirection || contextDirection;
+   var supportedProps = pickProps(rest);
+   supportedProps.dir = componentDirection;
+-  // 'auto' by default allows browsers to infer writing direction (root elements only)
++  // 'ltr' by default allows browsers to infer writing direction (root elements only)
+   if (!hasTextAncestor) {
+-    supportedProps.dir = componentDirection != null ? componentDirection : 'auto';
++    supportedProps.dir = componentDirection != null ? componentDirection : 'ltr';
+   }
+   if (onClick || onPress) {
+     supportedProps.onClick = handleClick;
+diff --git a/dist/cjs/exports/TextInput/index.js b/dist/cjs/exports/TextInput/index.js
+index ec9227892217fedcd6ad92b836ad8afb55f7ce40..b6a43cb1ef752ea4dea3ac21686766ec0ee63a17 100644
+--- a/dist/cjs/exports/TextInput/index.js
++++ b/dist/cjs/exports/TextInput/index.js
+@@ -352,7 +352,7 @@ var TextInput = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   supportedProps.autoComplete = autoComplete || autoCompleteType || 'on';
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+   // 'auto' by default allows browsers to infer writing direction
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   /*
+   if (returnKeyType != null) {
+     warnOnce('returnKeyType', 'returnKeyType is deprecated. Use enterKeyHint.');
+diff --git a/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js b/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
+index 2099ca6ca059a420542fbff0982699f1ffb17802..82081d09d12acd9e581a15eaded9d330f4784cd9 100644
+--- a/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
++++ b/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
+@@ -143,7 +143,7 @@ class CellRenderer extends React.Component {
+     }), element, itemSeparator);
+     return /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.parentProps && this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
+   }
+ }
+ exports.default = CellRenderer;
+diff --git a/dist/cjs/vendor/react-native/VirtualizedList/index.js b/dist/cjs/vendor/react-native/VirtualizedList/index.js
+index 84eee173e582a8fd4ae5d3bba98f9eb5744e48c0..ee694969886e9063f00de3c19d2f9586b2310db3 100644
+--- a/dist/cjs/vendor/react-native/VirtualizedList/index.js
++++ b/dist/cjs/vendor/react-native/VirtualizedList/index.js
+@@ -1134,6 +1134,13 @@ class VirtualizedList extends _StateSafePureComponent.default {
+       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
+     });
+     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
++    const headerIdx = cells.findIndex((cell) => cell.key === "$header");
++    const footerIdx = cells.findIndex((cell) => cell.key === "$footer");
++    const emptyComponentIdx = cells.findIndex((cell) => cell.key === "$empty");
++    const cellsWithoutHeaderAndFooter = cells.filter((_, idx) => !([headerIdx, footerIdx].includes(idx)));
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs && emptyComponentIdx === -1;
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null;
++    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells;
+     var innerRet = /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListContextProvider, {
+       value: {
+         cellKey: null,
+@@ -1145,7 +1152,7 @@ class VirtualizedList extends _StateSafePureComponent.default {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
++    }, cellsToDisplay));
+     var ret = innerRet;
+     /* https://github.com/necolas/react-native-web/issues/2239: Re-enable when ScrollView.Context.Consumer is available.
+     if (__DEV__) {

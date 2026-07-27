@@ -123,46 +123,46 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
         tabindex="0"
       />
       <div
-        class="css-view-175oi2r"
+        class="css-view-g5y9jx"
       >
         <div
           aria-labelledby="testUuidV4"
           aria-modal="true"
-          class="css-view-175oi2r r-bottom-1p0dtai r-left-1d2f490 r-position-1xcajam r-right-zchlnj r-top-ipm5af r-backgroundColor-1niwhzg"
+          class="css-view-g5y9jx r-bottom-1p0dtai r-left-1d2f490 r-position-1xcajam r-right-zchlnj r-top-ipm5af r-backgroundColor-1niwhzg"
           data-testid="modal"
           role="dialog"
         >
           <div
-            class="css-view-175oi2r r-flex-13awgt0 r-top-ipm5af"
+            class="css-view-g5y9jx r-flex-13awgt0 r-top-ipm5af"
           >
             <div
-              class="css-view-175oi2r r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+              class="css-view-g5y9jx r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
               style="width: 0px; height: 0px; background-color: rgb(0, 0, 0); opacity: 0.7;"
               tabindex="0"
             />
             <div
               aria-labelledby="testUuidV4"
               aria-modal="true"
-              class="css-view-175oi2r r-flex-13awgt0 r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-justifyContent-1777fci r-margin-ywje51 r-pointerEvents-12vffkv"
+              class="css-view-g5y9jx r-flex-13awgt0 r-alignItems-1awozwy r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-n0puxl r-justifyContent-1777fci r-margin-ywje51 r-pointerEvents-12vffkv"
               style="transform: translateY(0px);"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-flexDirection-eqz5dr r-height-11p5hdz r-justifyContent-1h0z5md r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
+                class="css-view-g5y9jx r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-flexDirection-eqz5dr r-height-11p5hdz r-justifyContent-1h0z5md r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
                 data-testid="modalContainer"
               >
                 <div
-                  class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-1mnahxq r-width-13qz1uu"
+                  class="css-view-g5y9jx r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-1mnahxq r-width-13qz1uu"
                   data-testid="modalHeader"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-1h0z5md r-width-1iww7jx"
+                    class="css-view-g5y9jx r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-1h0z5md r-width-1iww7jx"
                   />
                   <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingInline-3o4zer r-zIndex-184en5c"
+                    class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingInline-3o4zer r-zIndex-184en5c"
                   >
                     <h1
                       aria-level="1"
-                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1qsk4np r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                       data-testid="modalHeaderTitle"
                       dir="ltr"
                       id="testUuidV4"
@@ -172,7 +172,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                     </h1>
                   </div>
                   <div
-                    class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-17s6mgv r-width-1iww7jx"
+                    class="css-view-g5y9jx r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-17s6mgv r-width-1iww7jx"
                   >
                     <button
                       aria-label="Fermer la modale"
@@ -182,13 +182,13 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                       type="button"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
+                        class="css-view-g5y9jx r-alignItems-1awozwy r-columnGap-1wjczhr r-flexDirection-18u37iz"
                       >
                         <div
-                          class="css-view-175oi2r r-flexShrink-1q142lx"
+                          class="css-view-g5y9jx r-flexShrink-1q142lx"
                         >
                           <div
-                            class="css-view-175oi2r"
+                            class="css-view-g5y9jx"
                             data-testid="rightIcon"
                           >
                             <div
@@ -204,31 +204,31 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-height-1472mwg"
+                  class="css-view-g5y9jx r-height-1472mwg"
                   data-testid="spacerBetweenHeaderAndContent"
                 />
                 <div
-                  class="css-view-175oi2r r-maxHeight-pm9dpa r-maxWidth-iz080l r-paddingBottom-xd6kpl r-width-13qz1uu"
+                  class="css-view-g5y9jx r-maxHeight-pm9dpa r-maxWidth-iz080l r-paddingBottom-xd6kpl r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+                    class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
                     data-testid="modalScrollView"
                   >
                     <div
-                      class="css-view-175oi2r"
+                      class="css-view-g5y9jx"
                       style="padding: 5px 10px 5px 10px;"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy"
+                        class="css-view-g5y9jx r-alignItems-1awozwy"
                       >
                         <div
-                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1ifxtd0 r-marginTop-1wzrnnt r-width-13qz1uu"
+                          class="css-view-g5y9jx r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1ifxtd0 r-marginTop-1wzrnnt r-width-13qz1uu"
                         />
                         <div
-                          class="css-view-175oi2r r-flexBasis-1mlwlqe r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
+                          class="css-view-g5y9jx r-flexBasis-1mlwlqe r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
                         >
                           <div
-                            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
+                            class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                           >
                             <button
                               aria-label="Copier le lien"
@@ -238,13 +238,13 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                               type="button"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                                class="css-view-g5y9jx r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r r-flexShrink-1q142lx"
+                                  class="css-view-g5y9jx r-flexShrink-1q142lx"
                                 >
                                   <div
-                                    class="css-view-175oi2r"
+                                    class="css-view-g5y9jx"
                                   >
                                     <div
                                       class="css-text-146c3p1"
@@ -265,7 +265,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </button>
                           </div>
                           <div
-                            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
+                            class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                           >
                             <a
                               aria-label="Ouvrir le gestionnaire mail"
@@ -276,13 +276,13 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                               target="_blank"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
+                                class="css-view-g5y9jx r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                               >
                                 <div
-                                  class="css-view-175oi2r r-flexShrink-1q142lx"
+                                  class="css-view-g5y9jx r-flexShrink-1q142lx"
                                 >
                                   <div
-                                    class="css-view-175oi2r"
+                                    class="css-view-g5y9jx"
                                   >
                                     <div
                                       class="css-text-146c3p1"
@@ -304,24 +304,24 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           </div>
                         </div>
                         <div
-                          class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1peese0 r-marginTop-1wzrnnt r-width-13qz1uu"
+                          class="css-view-g5y9jx r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-1peese0 r-marginTop-1wzrnnt r-width-13qz1uu"
                         />
                         <ul
-                          class="css-view-175oi2r r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-marginBottom-zd98yo r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
+                          class="css-view-g5y9jx r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-marginBottom-zd98yo r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
                           role="list"
                         >
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-g5y9jx r-display-ixj5dj"
                             role="listitem"
                           >
                             <a
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
+                              class="css-view-g5y9jx r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%C2%A0!"
                               role="link"
                               style="transition-duration: 0s;"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-view-g5y9jx"
                               >
                                 <div
                                   class="css-text-146c3p1"
@@ -339,17 +339,17 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-g5y9jx r-display-ixj5dj"
                             role="listitem"
                           >
                             <a
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
+                              class="css-view-g5y9jx r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                               href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https%3A%2F%2Furl.com%2Foffer"
                               role="link"
                               style="transition-duration: 0s;"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-view-g5y9jx"
                               >
                                 <div
                                   class="css-text-146c3p1"
@@ -367,17 +367,17 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-g5y9jx r-display-ixj5dj"
                             role="listitem"
                           >
                             <a
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
+                              class="css-view-g5y9jx r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                               href="https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer"
                               role="link"
                               style="transition-duration: 0s;"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-view-g5y9jx"
                               >
                                 <div
                                   class="css-text-146c3p1"
@@ -395,17 +395,17 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-g5y9jx r-display-ixj5dj"
                             role="listitem"
                           >
                             <a
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
+                              class="css-view-g5y9jx r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                               href="https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre !"
                               role="link"
                               style="transition-duration: 0s;"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-view-g5y9jx"
                               >
                                 <div
                                   class="css-text-146c3p1"
@@ -431,7 +431,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           type="button"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+                            class="css-view-g5y9jx r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
                           >
                             <div
                               class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"

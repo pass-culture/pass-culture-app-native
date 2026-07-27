@@ -917,6 +917,7 @@ exports[`<LoginMethods/> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
+                "alignSelf": "center",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 4,
