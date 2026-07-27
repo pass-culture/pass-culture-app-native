@@ -8083,7 +8083,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async deleteNativeV1MeFavoritesfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV1MeFavoritesfavoriteId(favorite_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8095,7 +8095,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async deleteNativeV1MeRemindersreminderId(reminder_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV1MeRemindersreminderId(reminder_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8107,7 +8107,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspendTokenValidationtoken(token, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8118,7 +8118,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1AccountSuspensionDate(options?: any): Promise<UserSuspensionDateResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionDate(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8129,7 +8129,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1AccountSuspensionStatus(options?: any): Promise<UserSuspensionStatusResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionStatus(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8141,7 +8141,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1ArtistsartistId(artist_id: string, options?: any): Promise<ArtistResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ArtistsartistId(artist_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8153,7 +8153,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1ArtistsartistIdSimilar(artist_id: string, options?: any): Promise<SimilarArtistsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ArtistsartistIdSimilar(artist_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8165,7 +8165,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1Banner(isGeolocated?: boolean, options?: any): Promise<BannerResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Banner(isGeolocated, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8176,7 +8176,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1Categories(options?: any): Promise<CategoriesResponseModel> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Categories(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8187,7 +8187,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1Countries(options?: any): Promise<InseeCountries> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Countries(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8198,7 +8198,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1CulturalSurveyQuestions(options?: any): Promise<CulturalSurveyQuestionsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1CulturalSurveyQuestions(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8210,7 +8210,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1EmailValidationRemainingResendsemail(email: string, options?: any): Promise<EmailValidationRemainingResendsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1EmailValidationRemainingResendsemail(email, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8221,7 +8221,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1Me(options?: any): Promise<UserProfileResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Me(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8232,7 +8232,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1MeFavorites(options?: any): Promise<PaginatedFavoritesResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavorites(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8243,7 +8243,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1MeReminders(options?: any): Promise<GetRemindersResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MeReminders(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8272,7 +8272,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1OauthState(options?: any): Promise<OauthStateResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OauthState(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8284,7 +8284,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1OffereroffererIdHeadlineOffer(offerer_id: number, options?: any): Promise<OffererHeadLineOfferResponseModel> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OffereroffererIdHeadlineOffer(offerer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8297,7 +8297,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8309,7 +8309,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1OfferofferIdChronicles(offer_id: number, options?: any): Promise<OfferChronicles> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdChronicles(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8326,7 +8326,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any): Promise<OfferProAdvices> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8337,7 +8337,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1ProfileTokenExpiration(options?: any): Promise<UpdateEmailTokenExpiration> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ProfileTokenExpiration(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8349,7 +8349,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1ReactionAvailable(options?: any): Promise<GetAvailableReactionsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ReactionAvailable(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8367,7 +8367,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options?: any): Promise<SimilarOffersResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, retrievalModel, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8378,7 +8378,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1Settings(options?: any): Promise<SettingsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Settings(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8389,7 +8389,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1SubcategoriesV2(options?: any): Promise<SubcategoriesResponseModelv2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubcategoriesV2(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8400,7 +8400,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1SubscriptionActivityTypes(options?: any): Promise<ActivityTypesResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8411,7 +8411,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1SubscriptionProfile(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfile(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8424,7 +8424,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueId(venue_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8439,7 +8439,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any): Promise<VenueProAdvices> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8459,7 +8459,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2Bookings(options?: any): Promise<BookingsResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2Bookings(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8471,7 +8471,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2BookingsbookingId(booking_id: number, options?: any): Promise<BookingResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2BookingsbookingId(booking_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8483,7 +8483,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2Bookingsstatus(status: string, options?: any): Promise<BookingsListResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2Bookingsstatus(status, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8494,7 +8494,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ProfileEmailUpdateStatus(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8505,7 +8505,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2ReactionAvailable(options?: any): Promise<GetAvailableReactionsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ReactionAvailable(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8516,7 +8516,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2SubscriptionStepper(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8528,7 +8528,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV2VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueId(venue_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8540,7 +8540,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV3OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3OfferofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8551,7 +8551,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async getNativeV3SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV3> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3SubscriptionStepper(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8563,7 +8563,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async patchNativeV1Profile(body: UserProfilePatchRequest, options?: any): Promise<UserProfileResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchNativeV1Profile(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8575,7 +8575,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1Account(body: AccountRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Account(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8586,7 +8586,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1AccountAnonymize(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountAnonymize(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8597,7 +8597,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1AccountSuspend(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspend(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8608,7 +8608,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1AccountSuspendForHackSuspicion(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspendForHackSuspicion(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8620,7 +8620,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1AccountSuspendForSuspiciousLogin(body: SuspendAccountForSuspiciousLoginRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8631,7 +8631,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1AccountUnsuspend(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountUnsuspend(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8643,7 +8643,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1AchievementsMarkAsSeen(body: MarkAchievementsAsSeenRequest, options?: any): Promise<AchievementsResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AchievementsMarkAsSeen(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8655,7 +8655,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1Bookings(body: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Bookings(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8667,7 +8667,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1BookingsbookingIdCancel(booking_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1BookingsbookingIdCancel(booking_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8680,7 +8680,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1BookingsbookingIdToggleDisplay(body: BookingDisplayStatusRequest, booking_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1BookingsbookingIdToggleDisplay(body, booking_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8692,7 +8692,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1ChangePassword(body: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ChangePassword(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8704,7 +8704,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1CookiesConsent(body: CookieConsentRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1CookiesConsent(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8716,7 +8716,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1CulturalSurveyAnswers(body: CulturalSurveyAnswersRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1CulturalSurveyAnswers(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8728,7 +8728,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1Feedback(body: PostFeedbackBody, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Feedback(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8740,7 +8740,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1MeFavorites(body: FavoriteRequest, options?: any): Promise<FavoriteResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1MeFavorites(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8752,7 +8752,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1MeReminders(body: PostReminderRequest, options?: any): Promise<ReminderResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1MeReminders(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8765,7 +8765,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1OauthssoProviderAccount(body: SSOAccountRequest, sso_provider: string, options?: any): Promise<SigninResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthssoProviderAccount(body, sso_provider, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8778,7 +8778,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options?: any): Promise<SigninResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthssoProviderAuthorize(body, sso_provider, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8790,7 +8790,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1Profile(body: UserProfilePatchRequest, options?: any): Promise<UserProfileResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Profile(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8802,7 +8802,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1ProfileEmailUpdateCancel(body: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ProfileEmailUpdateCancel(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8815,7 +8815,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1Reaction(body: PostReactionRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Reaction(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8830,7 +8830,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1RecommendationPlaylist(body: PlaylistRequestBody, modelEndpoint?: string, longitude?: number, latitude?: number, options?: any): Promise<PlaylistResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1RecommendationPlaylist(body, modelEndpoint, longitude, latitude, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8841,7 +8841,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1RefreshAccessToken(options?: any): Promise<RefreshResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1RefreshAccessToken(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8853,7 +8853,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1RequestPasswordReset(body: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1RequestPasswordReset(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8865,7 +8865,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1ResendEmailValidation(body: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ResendEmailValidation(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8877,7 +8877,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1ResetPassword(body: ResetPasswordRequest, options?: any): Promise<ResetPasswordResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ResetPassword(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8888,7 +8888,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1ResetRecreditAmountToShow(options?: any): Promise<UserProfileResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ResetRecreditAmountToShow(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8900,7 +8900,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1SendOfferLinkByPushofferId(offer_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SendOfferLinkByPushofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8912,7 +8912,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1SendOfferWebappLinkByEmailofferId(offer_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SendOfferWebappLinkByEmailofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8924,7 +8924,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1Signin(body: SigninRequest, options?: any): Promise<SigninResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Signin(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8936,7 +8936,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1SubscriptionBonusDisability(body: DisabilityBonusCreditRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SubscriptionBonusDisability(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8948,7 +8948,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1SubscriptionBonusQuotientFamilial(body: QuotientFamilialBonusCreditRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SubscriptionBonusQuotientFamilial(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8959,7 +8959,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1SubscriptionHonorStatement(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SubscriptionHonorStatement(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8971,7 +8971,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1SubscriptionProfile(body: ProfileUpdateRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1SubscriptionProfile(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8983,7 +8983,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1UbbleIdentification(body: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1UbbleIdentification(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -8995,7 +8995,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ValidateEmail(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9007,7 +9007,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2OffersStocks(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9019,7 +9019,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2ProfileEmailUpdateConfirm(body: ChangeBeneficiaryEmailBody, options?: any): Promise<EmailChangeConfirmationResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileEmailUpdateConfirm(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9031,7 +9031,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2ProfileEmailUpdateNewEmail(body: NewEmailSelectionRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileEmailUpdateNewEmail(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9043,7 +9043,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2ProfileEmailUpdateNewPassword(body: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileEmailUpdateNewPassword(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9054,7 +9054,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2ProfileUpdateEmail(options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileUpdateEmail(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9066,7 +9066,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2Reaction(body: PostReactionRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2Reaction(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9078,7 +9078,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2RefreshAccessToken(body: RefreshRequestV2, options?: any): Promise<RefreshResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2RefreshAccessToken(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9090,7 +9090,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2Signin(body: SigninRequestV2, options?: any): Promise<SigninResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2Signin(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
      *
@@ -9102,7 +9102,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async putNativeV1ProfileEmailUpdateValidate(body: ChangeBeneficiaryEmailBody, options?: any): Promise<ChangeBeneficiaryEmailResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).putNativeV1ProfileEmailUpdateValidate(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, options)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
   }
 }
