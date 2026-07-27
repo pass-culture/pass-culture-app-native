@@ -16,6 +16,7 @@ export const ChangeCity = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Modifier ma ville de résidence"
       scrollChildren={
         <React.Fragment>

@@ -226,12 +226,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={false}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "maxWidth": 500,
             "width": "100%",
           }
         }
@@ -256,57 +256,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           style={{}}
         >
           <View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les actions suivantes : Cette déclaration d’accessibilité s’applique au
-            </Text>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              site internet 
-              <Text
-                accessibilityLabel="https://passculture.app/, lien externe"
-                accessibilityRole="link"
-                onPress={[Function]}
-                style={
-                  {
-                    "color": "#6123df",
-                    "cursor": "pointer",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "textDecorationLine": "underline",
-                  }
-                }
-              >
-                https://passculture.app/
-              </Text>
-            </Text>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
-                }
-              }
-            />
             <View
               gap={6}
               style={
@@ -315,6 +264,57 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               }
             >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les actions suivantes :
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Cette déclaration d’accessibilité s’applique au site internet 
+                <Text
+                  accessibilityLabel="https://passculture.app/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  https://passculture.app/
+                </Text>
+                .
+              </Text>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -338,7 +338,102 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   }
                 }
               >
-                Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration de l’accessibilité.
+                La version 
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 22,
+                    }
+                  }
+                >
+                  1.395.0
+                </Text>
+                 de l’application web pass Culture est non conforme avec la
+                 
+                <Text
+                  accessibilityLabel="norme européenne 301 549 (v3.2.1), lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  norme européenne 301 549 (v3.2.1)
+                </Text>
+                .
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                La méthodologie d’audit se base sur le Référentiel d’Évaluation de l’Accessibilité Web (RAWeb 1.1), seule méthode opérationnelle publiée à ce jour pour vérifier l’ensemble des critères de la norme européenne.
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                L’application web pass Culture est partiellement conforme avec le
+                 
+                <Text
+                  accessibilityLabel="RAWeb version 1.1, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  RAWeb version 1.1
+                </Text>
+                 
+                et
+                 
+                <Text
+                  accessibilityLabel="Le RGAA version 4.1, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  Le RGAA version 4.1
+                </Text>
+                , en raison des non-conformités énumérées dans la section « Résultats des tests ».
               </Text>
               <Text
                 accessibilityRole="header"
@@ -352,156 +447,40 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               >
                 Résultats des tests
-                
-
-
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                L’audit de conformité réalisé par la société Access42 révèle que le site est
+                 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "lineHeight": 22,
                     }
                   }
                 >
-                  L’audit de conformité réalisé par la société Tanaguru révèle que :
+                  conforme à 
+                  65,45%
+                   au RGAA version 4.1
                 </Text>
+                .
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
-              <View
-                accessibilityRole="list"
-                style={
-                  {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Résultats des tests – Liste - Élément 1 sur 2 - 85 % des critères RGAA version 4.1 sont respectés."
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      85 % des critères RGAA version 4.1 sont respectés.
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Résultats des tests – Liste - Élément 2 sur 2 - Le taux moyen de conformité du service en ligne s’élève à 93 %."
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Le taux moyen de conformité du service en ligne s’élève à 93 %.
-                    </Text>
-                  </View>
-                </View>
-              </View>
               <View
                 style={
                   {
                     "backgroundColor": "#f1f1f4",
                     "height": 1,
-                    "marginVertical": 24,
                     "width": "100%",
                   }
                 }
@@ -517,17 +496,8 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   }
                 }
               >
-                Contenus non accessibles
+                Contenus inaccessibles
               </Text>
-            </View>
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
               <Text
                 style={
                   {
@@ -553,14 +523,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 Non conformité
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
               <View
                 accessibilityRole="list"
                 style={
@@ -571,7 +533,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 1 sur 8 - Certains intitulés de lien ne sont pas pertinents."
+                  accessibilityLabel="Non conformité – Liste - Élément 1 sur 20 - [1.3 - RGAA] L’alternative textuelle d’une image porteuse d’information au moins n’est pas pertinente."
                   accessible={true}
                   style={
                     {
@@ -621,12 +583,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Certains intitulés de lien ne sont pas pertinents.
+                      [1.3 - RGAA] L’alternative textuelle d’une image porteuse d’information au moins n’est pas pertinente.
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 2 sur 8 - Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes."
+                  accessibilityLabel="Non conformité – Liste - Élément 2 sur 20 - [3.1 - RGAA] Une information au moins est véhiculée uniquement par la couleur."
                   accessible={true}
                   style={
                     {
@@ -676,12 +638,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes.
+                      [3.1 - RGAA] Une information au moins est véhiculée uniquement par la couleur.
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 3 sur 8 - En version mobile ou lors d’un zoom 200 %, le menu de navigation n’est plus disponible sur plusieurs pages de l’application."
+                  accessibilityLabel="Non conformité – Liste - Élément 3 sur 20 - [6.1 - RGAA] Un lien au moins a un intitulé qui n’est pas pertinent."
                   accessible={true}
                   style={
                     {
@@ -731,12 +693,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      En version mobile ou lors d’un zoom 200 %, le menu de navigation n’est plus disponible sur plusieurs pages de l’application.
+                      [6.1 - RGAA] Un lien au moins a un intitulé qui n’est pas pertinent.
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 4 sur 8 - Sur les pages de la recherche (recherche, résultats et filtres) :"
+                  accessibilityLabel="Non conformité – Liste - Élément 4 sur 20 - [7.1 - RGAA] Une fonctionnalité JavaScript au moins n’est pas compatible avec les technologies d’assistance ou fait un usage inapproprié de propriétés ARIA."
                   accessible={true}
                   style={
                     {
@@ -786,254 +748,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Sur les pages de la recherche (recherche, résultats et filtres) :
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityRole="list"
-                    style={
-                      {
-                        "flexDirection": "column",
-                        "marginVertical": 4,
-                        "paddingLeft": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Sur les pages de la recherche (recherche, résultats et filtres) : – Liste - Élément 1 sur 1 - Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS."
-                      accessible={true}
-                      style={
-                        {
-                          "display": "flex",
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          {
-                            "flexDirection": "row",
-                            "marginLeft": 32,
-                            "marginTop": 0,
-                          }
-                        }
-                      >
-                        <View
-                          style={
-                            {
-                              "height": 25.6,
-                              "justifyContent": "center",
-                            }
-                          }
-                        >
-                          <View
-                            borderColor="#161617"
-                            fillColor="#ffffff"
-                            height={3}
-                            width={3}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "marginLeft": 12,
-                            }
-                          }
-                        >
-                          Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Non conformité – Liste - Élément 5 sur 8 - Sur la page des résultats de recherche :"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Sur la page des résultats de recherche :
-                    </Text>
-                  </View>
-                  <View
-                    accessibilityRole="list"
-                    style={
-                      {
-                        "flexDirection": "column",
-                        "marginVertical": 4,
-                        "paddingLeft": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Sur la page des résultats de recherche : – Liste - Élément 1 sur 1 - La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large."
-                      accessible={true}
-                      style={
-                        {
-                          "display": "flex",
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          {
-                            "flexDirection": "row",
-                            "marginLeft": 32,
-                            "marginTop": 0,
-                          }
-                        }
-                      >
-                        <View
-                          style={
-                            {
-                              "height": 25.6,
-                              "justifyContent": "center",
-                            }
-                          }
-                        >
-                          <View
-                            borderColor="#161617"
-                            fillColor="#ffffff"
-                            height={3}
-                            width={3}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                              "marginLeft": 12,
-                            }
-                          }
-                        >
-                          La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large.
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Non conformité – Liste - Élément 6 sur 8 - Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue."
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue.
+                      [7.1 - RGAA] Une fonctionnalité JavaScript au moins n’est pas compatible avec les technologies d’assistance ou fait un usage inapproprié de propriétés ARIA.
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 7 sur 8 - La modale d’information sur la géolocalisation n’est pas restituée comme telle."
+                  accessibilityLabel="Non conformité – Liste - Élément 5 sur 20 - [7.3 - RGAA] Une fonctionnalité JavaScript au moins n’est pas contrôlable par le clavier ou tout autre dispositif de pointage."
                   accessible={true}
                   style={
                     {
@@ -1083,12 +803,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      La modale d’information sur la géolocalisation n’est pas restituée comme telle.
+                      [7.3 - RGAA] Une fonctionnalité JavaScript au moins n’est pas contrôlable par le clavier ou tout autre dispositif de pointage.
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Non conformité – Liste - Élément 8 sur 8 - Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page."
+                  accessibilityLabel="Non conformité – Liste - Élément 6 sur 20 - [7.4 - RGAA] Un changement de contexte au moins se déclenche sans que l’utilisateur en soit informé."
                   accessible={true}
                   style={
                     {
@@ -1138,299 +858,836 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page.
+                      [7.4 - RGAA] Un changement de contexte au moins se déclenche sans que l’utilisateur en soit informé.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 7 sur 20 - [7.5 - RGAA] Un message de statut au moins n’est pas restitué par les technologies d’assistance."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [7.5 - RGAA] Un message de statut au moins n’est pas restitué par les technologies d’assistance.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 8 sur 20 - [8.6 - RGAA] Un titre de page au moins n’est pas pertinent."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [8.6 - RGAA] Un titre de page au moins n’est pas pertinent.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 9 sur 20 - [8.9 - RGAA] Une balise au moins est utilisée à des fins de présentation (par exemple des paragraphes vides et/ou des textes non structurés dans des balises de paragraphes)."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [8.9 - RGAA] Une balise au moins est utilisée à des fins de présentation (par exemple des paragraphes vides et/ou des textes non structurés dans des balises de paragraphes).
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 10 sur 20 - [9.1 - RGAA] La hiérarchie des titres d’une page au moins n’est pas pertinente."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [9.1 - RGAA] La hiérarchie des titres d’une page au moins n’est pas pertinente.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 11 sur 20 - [9.2 - RGAA] La structure du document d’une page au moins n’est pas cohérente."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [9.2 - RGAA] La structure du document d’une page au moins n’est pas cohérente.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 12 sur 20 - [9.3 - RGAA] Une liste au moins n’est pas correctement structurée."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [9.3 - RGAA] Une liste au moins n’est pas correctement structurée.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 13 sur 20 - [10.1 - RGAA] Un élément HTML de présentation au moins (balise ou attribut) est utilisé."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [10.1 - RGAA] Un élément HTML de présentation au moins (balise ou attribut) est utilisé.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 14 sur 20 - [10.3 - RGAA] Un contenu au moins ne se présente pas dans un ordre logique dans le code source."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [10.3 - RGAA] Un contenu au moins ne se présente pas dans un ordre logique dans le code source.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 15 sur 20 - [10.7 - RGAA] Une indication visuelle de prise de focus au moins n’est pas visible ou suffisamment contrastée."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [10.7 - RGAA] Une indication visuelle de prise de focus au moins n’est pas visible ou suffisamment contrastée.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 16 sur 20 - [10.11 - RGAA] Un contenu au moins ne peut être présenté sans défilement horizontal et/ou présente des pertes d’informations lorsque le texte est agrandi à 400%."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [10.11 - RGAA] Un contenu au moins ne peut être présenté sans défilement horizontal et/ou présente des pertes d’informations lorsque le texte est agrandi à 400%.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 17 sur 20 - [11.5 - RGAA] Un ensemble de champs de même nature au moins ne sont pas regroupés."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [11.5 - RGAA] Un ensemble de champs de même nature au moins ne sont pas regroupés.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 18 sur 20 - [11.6 - RGAA] Un regroupement de champs de formulaires au moins n’a pas de légende."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [11.6 - RGAA] Un regroupement de champs de formulaires au moins n’a pas de légende.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 19 sur 20 - [13.10 - RGAA] Une fonctionnalité au moins, utilisable au moyen d’un geste complexe, n’a pas d’alternative au moyen d’un geste simple."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [13.10 - RGAA] Une fonctionnalité au moins, utilisable au moyen d’un geste complexe, n’a pas d’alternative au moyen d’un geste simple.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Non conformité – Liste - Élément 20 sur 20 - [14.1 - RAWeb] La documentation du site web ne décrit pas les fonctionnalités d’accessibilité disponibles et/ou les informations relatives à la compatibilité avec l’accessibilité."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      [14.1 - RAWeb] La documentation du site web ne décrit pas les fonctionnalités d’accessibilité disponibles et/ou les informations relatives à la compatibilité avec l’accessibilité.
                     </Text>
                   </View>
                 </View>
               </View>
-            </View>
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Dérogations pour charge disproportionnée
-            </Text>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
-              <View
-                accessibilityRole="list"
+              <Text
+                accessibilityRole="header"
                 style={
                   {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
                 }
               >
-                <View
-                  accessibilityLabel="Dérogations – Liste - Élément 1 sur 3 - Le lecteur Youtube, utilisé pour diffuser les contenus vidéo."
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Le lecteur Youtube, utilisé pour diffuser les contenus vidéo.
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Dérogations – Liste - Élément 2 sur 3 - Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte."
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte.
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Dérogations – Liste - Élément 3 sur 3 - La carte des lieux culturels, utilisée dans la recherche."
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      La carte des lieux culturels, utilisée dans la recherche.
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Contenus non soumis à l’obligation d’accessibilité
-            </Text>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
-              <View
-                accessibilityRole="list"
+                Dérogations pour charge disproportionnée
+              </Text>
+              <Text
                 style={
                   {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
                 }
               >
-                <View
-                  accessibilityLabel=" – Liste - Élément 1 sur 1 - Aucun"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
+                Pas de dérogation identifiée
+              </Text>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Aucun
-                    </Text>
-                  </View>
-                </View>
-              </View>
+                }
+              >
+                Contenus non soumis à l’obligation d’accessibilité
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pas d’exemption identifiée
+              </Text>
               <View
                 style={
                   {
                     "backgroundColor": "#f1f1f4",
                     "height": 1,
-                    "marginVertical": 24,
                     "width": "100%",
                   }
                 }
@@ -1448,15 +1705,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 Établissement de cette déclaration d’accessibilité
               </Text>
-            </View>
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
               <Text
                 style={
                   {
@@ -1469,7 +1717,9 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   }
                 }
               >
-                Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février 2023.
+                Cette déclaration a été établie le 
+                22 juillet 2026
+                .
               </Text>
               <Text
                 accessibilityRole="header"
@@ -1484,14 +1734,6 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 Technologies utilisées pour la réalisation du site pass Culture
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
               <View
                 accessibilityRole="list"
                 style={
@@ -1667,22 +1909,19 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   </View>
                 </View>
               </View>
-            </View>
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
                 }
-              }
-            >
-              Environnement de test
-              
-
-
+              >
+                Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité
+              </Text>
               <Text
                 style={
                   {
@@ -1693,16 +1932,8 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   }
                 }
               >
-                Les vérifications de restitution de contenus ont été réalisées sur la base de la combinaison fournie par la base de référence du RGAA 4.1, avec les versions suivantes :
+                Les tests des pages web ont été effectués avec les combinaisons de navigateurs web et lecteurs d’écran suivants :
               </Text>
-            </Text>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
               <View
                 accessibilityRole="list"
                 style={
@@ -1713,7 +1944,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 3 - Firefox et NVDA"
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 5 - Firefox 152 et NVDA 2025"
                   accessible={true}
                   style={
                     {
@@ -1763,12 +1994,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Firefox et NVDA
+                      Firefox 152 et NVDA 2025
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 3 - Chrome et NVDA"
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 5 - Firefox 152 et JAWS 2025"
                   accessible={true}
                   style={
                     {
@@ -1818,12 +2049,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Chrome et NVDA
+                      Firefox 152 et JAWS 2025
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 3 - Safari et VoiceOver"
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 5 - Safari 26.5 et VoiceOver (macOS 26.5)"
                   accessible={true}
                   style={
                     {
@@ -1873,98 +2104,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Safari et VoiceOver
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Les outils utilisés lors de l’évaluation
-            </Text>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
-              <View
-                accessibilityRole="list"
-                style={
-                  {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Les outils utilisés – Liste - Élément 1 sur 6 - Extension HeadingsMap"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Extension HeadingsMap
+                      Safari 26.5 et VoiceOver (macOS 26.5)
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Les outils utilisés – Liste - Élément 2 sur 6 - Extension Web Developer"
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 4 sur 5 - Safari 26.5 et VoiceOver (iOS 26.5)"
                   accessible={true}
                   style={
                     {
@@ -2014,12 +2159,12 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Extension Web Developer
+                      Safari 26.5 et VoiceOver (iOS 26.5)
                     </Text>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Les outils utilisés – Liste - Élément 3 sur 6 - Extension Stylus"
+                  accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 5 sur 5 - Chrome 146 et TalkBack (Android 16)"
                   accessible={true}
                   style={
                     {
@@ -2069,1874 +2214,862 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                         }
                       }
                     >
-                      Extension Stylus
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Les outils utilisés – Liste - Élément 4 sur 6 - Validateur HTML W3C"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Validateur HTML W3C
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Les outils utilisés – Liste - Élément 5 sur 6 - Tanaguru Contrast-Finder"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Tanaguru Contrast-Finder
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Les outils utilisés – Liste - Élément 6 sur 6 - Outils de développement (navigateur)"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      Outils de développement (navigateur)
+                      Chrome 146 et TalkBack (Android 16)
                     </Text>
                   </View>
                 </View>
               </View>
-            </View>
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Pages du site ayant fait l’objet de la vérification de conformité
-            </Text>
-            <View
-              style={
-                {
-                  "marginVertical": 24,
-                }
-              }
-            >
-              <View
-                accessibilityRole="list"
-                style={
-                  {
-                    "flexDirection": "column",
-                    "paddingLeft": 0,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 1 sur 12 - Accueil"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Accueil"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Accueil"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Accueil
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 2 sur 12 - Connexion"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Connexion"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Connexion"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Connexion
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 3 sur 12 - Inscription - Date de naissance"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Inscription - Date de naissance"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Inscription - Date de naissance"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Inscription - Date de naissance
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 4 sur 12 - Vérification d’identité"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Vérification d’identité"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Vérification d’identité"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Vérification d’identité
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 5 sur 12 - Profil"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Profil"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Profil"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Profil
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 6 sur 12 - Modification de mot de passe"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Modification de mot de passe"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Modification de mot de passe"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Modification de mot de passe
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 7 sur 12 - Recherche"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Recherche"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Recherche"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Recherche
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 8 sur 12 - Filtres"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Filtres"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Filtres"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Filtres
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 9 sur 12 - Résultats de recherche"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Résultats de recherche"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Résultats de recherche"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Résultats de recherche
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 10 sur 12 - Favoris"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Favoris"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Favoris"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Favoris
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 11 sur 12 - Détails d’une offre"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Détails d’une offre"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Détails d’une offre"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Détails d’une offre
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Pages auditées – Liste - Élément 12 sur 12 - Déclaration d’accessibilité"
-                  accessibilityRole="link"
-                  accessible={true}
-                  style={
-                    {
-                      "display": "flex",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "marginLeft": 12,
-                        "marginTop": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "height": 25.6,
-                          "justifyContent": "center",
-                        }
-                      }
-                    >
-                      <View
-                        borderColor="#161617"
-                        fillColor="#161617"
-                        height={3}
-                        width={3}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginLeft": 12,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Déclaration d’accessibilité"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "flexShrink": 1,
-                                "maxWidth": "100%",
-                                "minWidth": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
-                        }
-                        testID="Déclaration d’accessibilité"
-                      >
-                        <View
-                          size="small"
-                          style={
-                            {
-                              "alignItems": "flex-start",
-                              "columnGap": 4,
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                              "maxWidth": "100%",
-                              "minWidth": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            size="small"
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 14,
-                                "lineHeight": 22.4,
-                                "minWidth": 0,
-                                "textDecorationLine": "underline",
-                              }
-                            }
-                            testID="link-label"
-                            textColor="#161617"
-                          >
-                            Déclaration d’accessibilité
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
-                }
-              }
-            />
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                }
-              }
-            >
-              Retour d’information et contact
-            </Text>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de l’application pour être orienté vers une alternative accessible ou obtenir le contenu sous une
-            </Text>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              autre forme. 
               <Text
-                accessibilityLabel="Contacter le support, lien externe"
-                accessibilityRole="link"
-                onPress={[Function]}
                 style={
                   {
-                    "color": "#6123df",
-                    "cursor": "pointer",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                La vérification de l’accessibilité est le résultat de tests manuels, assistés par des outils (feuilles CSS dédiés, extensions HeadingsMaps et WebDeveloper Toolbar, Color Contrast Analyser).
+              </Text>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
                     "lineHeight": 25.6,
-                    "textDecorationLine": "underline",
                   }
                 }
               >
-                Contacter le support
+                Pages du site ayant fait l’objet de la vérification de conformité
               </Text>
-            </Text>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
+              >
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 1 sur 13 - Création de compte (6 écrans) "
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Création de compte (6 écrans) 
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 2 sur 13 - Authentification"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Authentification
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 3 sur 13 - Accessibilité"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Accessibilité
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 4 sur 13 - Plan du site"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Plan du site
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 5 sur 13 - Profil (connecté et déconnecté)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Profil (connecté et déconnecté)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 6 sur 13 - Apparence"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Apparence
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 7 sur 13 - Mentions légales"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Mentions légales
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 8 sur 13 - Recherche"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Recherche
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 9 sur 13 - Recherche - catégorie cinéma"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Recherche - catégorie cinéma
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 10 sur 13 - Réservation d’une offre (3 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Réservation d’une offre (3 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 11 sur 13 - Accueil"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Accueil
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 12 sur 13 - Lieu"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Lieu
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 13 sur 13 - Déblocage du crédit - Profil"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Déblocage du crédit - Profil
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            >
+              />
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
+                }
+              >
+                Retour d’information et contact
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005 :
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat",
+                    "fontSize": 16,
+                    "fontStyle": "italic",
+                    "fontWeight": "500",
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                « la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie. »
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un délai raisonnable, aux informations et fonctionnalités recherchées par la personne handicapée, que le contenu fasse l’objet d’une dérogation ou non.
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                pass Culture invite les personnes qui rencontreraient des difficultés à
+                 
+                <Text
+                  accessibilityLabel="contacter le support, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
+                    }
+                  }
+                >
+                  contacter le support
+                </Text>
+                 
+                afin qu’une assistance puisse être apportée (alternative accessible, information et contenu donnés sous une autre forme).
+              </Text>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -3960,90 +3093,228 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   }
                 }
               >
-                Cette procédure est à utiliser dans le cas suivant :
-                
-
-
-                Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante.
+                Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité du site, que vous nous le signalez et que vous ne parvenez pas à obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.
               </Text>
-              <View
-                gap={3}
+              <Text
                 style={
                   {
-                    "gap": 12,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
                 }
               >
-                <Text
+                Plusieurs moyens sont à votre disposition :
+              </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Moyens de recours – Liste - Élément 1 sur 3 - Écrire un message au  Défenseur des droits"
+                  accessible={true}
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "display": "flex",
                     }
                   }
                 >
-                  Écrire un message au 
-                  <Text
-                    accessibilityLabel="Défenseur des droits, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
+                  <View
                     style={
                       {
-                        "color": "#6123df",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
                       }
                     }
                   >
-                    Défenseur des droits
-                  </Text>
-                </Text>
-                <Text
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Écrire un message au 
+                      <Text
+                        accessibilityLabel="Défenseur des droits, lien externe"
+                        accessibilityRole="link"
+                        onPress={[Function]}
+                        style={
+                          {
+                            "color": "#6123df",
+                            "cursor": "pointer",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                      >
+                        Défenseur des droits
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Moyens de recours – Liste - Élément 2 sur 3 - Contacter le délégué du  Défenseur des droits dans votre région"
+                  accessible={true}
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "display": "flex",
                     }
                   }
                 >
-                  Contacter le délégué du 
-                  <Text
-                    accessibilityLabel="Défenseur des droits dans votre région, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
+                  <View
                     style={
                       {
-                        "color": "#6123df",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
                       }
                     }
                   >
-                    Défenseur des droits dans votre région
-                  </Text>
-                </Text>
-                <Text
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Contacter le délégué du 
+                      <Text
+                        accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+                        accessibilityRole="link"
+                        onPress={[Function]}
+                        style={
+                          {
+                            "color": "#6123df",
+                            "cursor": "pointer",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                      >
+                        Défenseur des droits dans votre région
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Moyens de recours – Liste - Élément 3 sur 3 - Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07"
+                  accessible={true}
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "display": "flex",
                     }
                   }
                 >
-                  Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
-                </Text>
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
             <View

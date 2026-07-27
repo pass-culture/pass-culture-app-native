@@ -226,12 +226,12 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={false}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "maxWidth": 500,
             "width": "100%",
           }
         }
@@ -568,12 +568,12 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
       }
     >
       <View
+        shouldLimitWidth={false}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "maxWidth": 500,
             "width": "100%",
           }
         }

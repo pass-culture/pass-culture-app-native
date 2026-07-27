@@ -25,6 +25,7 @@ export const EduconnectValidationPage: FC<Props> = ({
 }) => {
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Informations personnelles"
       scrollChildren={
         <Summary

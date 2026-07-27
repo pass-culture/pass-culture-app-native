@@ -144,6 +144,7 @@ export const SetAddress = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <React.Fragment>

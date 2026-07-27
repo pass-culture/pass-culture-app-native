@@ -52,6 +52,7 @@ export const SignupMethods: FunctionComponent = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       shouldDisplayBackButton
       title="Inscription"
       scrollChildren={

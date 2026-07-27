@@ -39,6 +39,7 @@ export function ChangeEmail() {
   return (
     <React.Fragment>
       <PageWithHeader
+        shouldLimitWidth
         title="Modifier mon e-mail"
         scrollChildren={
           <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange ?? false} user={user} />

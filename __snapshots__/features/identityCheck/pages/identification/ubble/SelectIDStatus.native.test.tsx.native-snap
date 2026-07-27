@@ -226,6 +226,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

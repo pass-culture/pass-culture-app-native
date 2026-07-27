@@ -101,6 +101,7 @@ export const ProfileInformationValidationUpdate = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Informations personnelles"
       scrollChildren={
         <Summary

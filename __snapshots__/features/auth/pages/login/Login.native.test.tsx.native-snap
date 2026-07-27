@@ -226,6 +226,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

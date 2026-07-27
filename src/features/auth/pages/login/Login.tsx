@@ -183,6 +183,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       ) : null}
       <PageWithHeader
+        shouldLimitWidth
         shouldDisplayBackButton
         title="Connexion"
         scrollChildren={

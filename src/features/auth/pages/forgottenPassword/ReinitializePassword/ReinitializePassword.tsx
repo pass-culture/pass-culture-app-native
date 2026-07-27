@@ -108,6 +108,7 @@ export const ReinitializePassword = () => {
   }
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Nouveau mot de passe"
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}
       scrollChildren={

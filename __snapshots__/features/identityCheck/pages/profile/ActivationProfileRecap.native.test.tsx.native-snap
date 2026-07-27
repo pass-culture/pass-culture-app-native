@@ -219,6 +219,7 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,
@@ -975,6 +976,7 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

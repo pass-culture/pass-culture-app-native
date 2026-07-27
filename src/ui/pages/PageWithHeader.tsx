@@ -23,8 +23,10 @@ interface Props {
   shouldBeAlignedFlexStart?: boolean
   scrollViewProps?: Omit<ScrollViewProps, 'contentContainerStyle'>
   shouldDisplayBottomGradient?: boolean
+  shouldLimitWidth?: boolean
 }
 const isWeb = Platform.OS === 'web'
+
 export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
   const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
   const [measuredHeaderHeight, setMeasuredHeaderHeight] = useState(0)
@@ -67,7 +69,8 @@ export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
         onLayout={onHeaderLayout}
       />
       <CustomKeyboardAvoidingView
-        shouldBeAlignedFlexStart={isWeb && props.shouldBeAlignedFlexStart}>
+        shouldBeAlignedFlexStart={isWeb && props.shouldBeAlignedFlexStart}
+        shouldLimitWidth={props.shouldLimitWidth}>
         {props.scrollChildren ? (
           <ChildrenScrollView
             ref={ref}

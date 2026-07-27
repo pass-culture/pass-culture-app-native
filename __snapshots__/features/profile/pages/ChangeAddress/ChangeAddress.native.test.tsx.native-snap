@@ -226,6 +226,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,
@@ -886,6 +887,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

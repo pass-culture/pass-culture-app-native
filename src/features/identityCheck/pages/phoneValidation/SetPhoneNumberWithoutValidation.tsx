@@ -77,6 +77,7 @@ export const SetPhoneNumberWithoutValidation = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Numéro de téléphone"
       scrollChildren={
         <ViewGap gap={8}>

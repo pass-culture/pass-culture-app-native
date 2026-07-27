@@ -27,6 +27,7 @@ export const EduConnectForm = () => {
   return (
     <ErrorBoundary FallbackComponent={EduConnectErrorBoundary}>
       <PageWithHeader
+        shouldLimitWidth
         title="Mon identité"
         scrollChildren={
           <Container>

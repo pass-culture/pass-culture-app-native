@@ -42,6 +42,7 @@ export const BonificationTitle = () => {
   }
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Informations"
       scrollChildren={
         <React.Fragment>

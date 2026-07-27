@@ -226,6 +226,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,
@@ -942,6 +943,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,
@@ -1658,6 +1660,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

@@ -17,10 +17,9 @@ export function ChangePhoneNumber() {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Modifier mon numéro de téléphone"
-      scrollViewProps={{
-        keyboardShouldPersistTaps: 'handled',
-      }}
+      scrollViewProps={{ keyboardShouldPersistTaps: 'handled' }}
       scrollChildren={
         <Form.MaxWidth flex={1}>
           <Controller

@@ -140,6 +140,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

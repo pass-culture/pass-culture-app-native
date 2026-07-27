@@ -68,6 +68,7 @@ export const BonificationBirthDate = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Informations"
       scrollChildren={
         <Form.MaxWidth>

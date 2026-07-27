@@ -7,6 +7,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const TrackEmailChange = () => (
   <PageWithHeader
+    shouldLimitWidth
     title="Modifier mon e-mail"
     scrollChildren={
       <React.Fragment>

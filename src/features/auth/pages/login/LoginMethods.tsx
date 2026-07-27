@@ -87,6 +87,7 @@ export const LoginMethods = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       shouldDisplayBackButton
       title="Connexion"
       scrollChildren={

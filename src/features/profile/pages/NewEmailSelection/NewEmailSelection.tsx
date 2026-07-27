@@ -63,6 +63,7 @@ export const NewEmailSelection = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Modifier mon adresse e-mail"
       scrollChildren={
         <Form.MaxWidth flex={1}>

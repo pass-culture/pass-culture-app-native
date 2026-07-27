@@ -92,6 +92,7 @@ export const EduConnectForm = () => {
   return (
     <ErrorBoundary FallbackComponent={EduConnectErrorBoundary}>
       <PageWithHeader
+        shouldLimitWidth
         title="ÉduConnect"
         scrollChildren={
           webViewSource ? (

@@ -10,6 +10,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SignupConfirmationEmail
 export const SignupConfirmationEmailSentPage: FunctionComponent<Props> = ({ route }) => {
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Inscription"
       scrollChildren={<SignupConfirmationEmailSent email={route.params.email} />}
     />

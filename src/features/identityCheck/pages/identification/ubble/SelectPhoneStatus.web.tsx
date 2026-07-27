@@ -12,7 +12,13 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
-  return <PageWithHeader title="Identification" scrollChildren={<SelectPhoneStatusContent />} />
+  return (
+    <PageWithHeader
+      shouldLimitWidth
+      title="Identification"
+      scrollChildren={<SelectPhoneStatusContent />}
+    />
+  )
 }
 
 const SelectPhoneStatusContent: FunctionComponent = () => {

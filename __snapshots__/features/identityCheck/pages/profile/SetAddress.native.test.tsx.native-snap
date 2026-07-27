@@ -226,6 +226,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,
@@ -834,6 +835,7 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,
