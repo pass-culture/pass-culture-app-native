@@ -170,7 +170,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 <div>
   <div
-    class="css-view-175oi2r r-marginTop-1mnahxq"
+    class="css-view-g5y9jx r-marginTop-1mnahxq"
   >
     <form
       class="c0"
@@ -182,16 +182,16 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         Renseigne ta date de naissance
       </h2>
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
+        class="css-view-g5y9jx r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-marginBottom-8d26hk r-width-13qz1uu"
+          class="css-view-g5y9jx r-marginBottom-8d26hk r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+            class="css-view-g5y9jx r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
           >
             <div
-              class="css-view-175oi2r"
+              class="css-view-g5y9jx"
             >
               <div
                 class="css-text-146c3p1"
@@ -202,7 +202,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             </div>
             <div
               aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+              class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
               role="presentation"
             >
               <p
@@ -215,15 +215,15 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         </div>
         <div
           aria-labelledby="testUuidV4"
-          class="css-view-175oi2r r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          class="css-view-g5y9jx r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           data-testid="date-picker-dropdown"
           role="group"
         >
           <div
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              class="css-view-g5y9jx r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <label
                 class="c3"
@@ -466,7 +466,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   class="c7"
                 >
                   <div
-                    class="css-view-175oi2r"
+                    class="css-view-g5y9jx"
                   >
                     <div
                       class="css-text-146c3p1"
@@ -480,10 +480,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              class="css-view-g5y9jx r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <label
                 class="c3"
@@ -593,7 +593,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   class="c7"
                 >
                   <div
-                    class="css-view-175oi2r"
+                    class="css-view-g5y9jx"
                   >
                     <div
                       class="css-text-146c3p1"
@@ -607,10 +607,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              class="css-view-g5y9jx r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <label
                 class="c3"
@@ -1385,7 +1385,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   class="c7"
                 >
                   <div
-                    class="css-view-175oi2r"
+                    class="css-view-g5y9jx"
                   >
                     <div
                       class="css-text-146c3p1"
@@ -1400,14 +1400,14 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-marginBottom-1ifxtd0"
+          class="css-view-g5y9jx r-marginBottom-1ifxtd0"
         >
           <div
             role="alert"
           />
         </div>
         <div
-          class="css-view-175oi2r r-paddingTop-1ur9v65 r-width-13qz1uu"
+          class="css-view-g5y9jx r-paddingTop-1ur9v65 r-width-13qz1uu"
         >
           <button
             aria-label="Continuer"
@@ -1417,7 +1417,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             type="button"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+              class="css-view-g5y9jx r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
             >
               <span
                 class="c11"
@@ -1522,7 +1522,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
 
 <div>
   <div
-    class="css-view-175oi2r r-marginTop-1mnahxq"
+    class="css-view-g5y9jx r-marginTop-1mnahxq"
   >
     <form
       class="c0"
@@ -1534,16 +1534,16 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         Renseigne ta date de naissance
       </h2>
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
+        class="css-view-g5y9jx r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-marginBottom-8d26hk r-width-13qz1uu"
+          class="css-view-g5y9jx r-marginBottom-8d26hk r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+            class="css-view-g5y9jx r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
           >
             <div
-              class="css-view-175oi2r"
+              class="css-view-g5y9jx"
             >
               <div
                 class="css-text-146c3p1"
@@ -1554,7 +1554,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             </div>
             <div
               aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+              class="css-view-g5y9jx r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
               role="presentation"
             >
               <p
@@ -1567,10 +1567,10 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         </div>
         <div
           aria-label="Date de naissance - 1er décembre 2006"
-          class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          class="css-view-g5y9jx r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+            class="css-view-g5y9jx r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
           >
             <label
               class="c3"
@@ -1580,7 +1580,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             </label>
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kj4tcz r-borderBottomRightRadius-wab3e5 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-wowrgg r-borderTopRightRadius-oho8x9 r-borderWidth-d045u9 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
+            class="css-view-g5y9jx r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kj4tcz r-borderBottomRightRadius-wab3e5 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-wowrgg r-borderTopRightRadius-oho8x9 r-borderWidth-d045u9 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
             data-testid="styled-input-container"
           >
             <p
@@ -1594,7 +1594,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           role="alert"
         />
         <div
-          class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-marginTop-knv0ih r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
+          class="css-view-g5y9jx r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-marginTop-knv0ih r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
           data-testid="date-picker-spinner-touch"
         >
           <div
@@ -2539,7 +2539,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-paddingTop-1ur9v65 r-width-13qz1uu"
+          class="css-view-g5y9jx r-paddingTop-1ur9v65 r-width-13qz1uu"
         >
           <button
             aria-label="Continuer"
@@ -2549,7 +2549,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             type="button"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
+              class="css-view-g5y9jx r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
             >
               <span
                 class="c6"
