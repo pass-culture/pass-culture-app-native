@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/fixtures'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileAccountNotDeletable } from './DeleteProfileAccountNotDeletable'
@@ -20,6 +21,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('DeleteProfileAccountNotDeletable', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<DeleteProfileAccountNotDeletable />)
 

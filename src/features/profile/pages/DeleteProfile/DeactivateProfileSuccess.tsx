@@ -5,6 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { Emoji } from 'ui/components/Emoji'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -18,6 +19,10 @@ export const DeactivateProfileSuccess = () => {
   return (
     <GenericInfoPage
       illustration={ProfileDeletion}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.trashMosaic,
+        backgroundColor: 'negative01',
+      }}
       title="Ton compte a été désactivé"
       buttonPrimary={{
         wording: 'Retourner à l’accueil',

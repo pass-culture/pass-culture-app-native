@@ -6,6 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -41,6 +42,7 @@ jest.useFakeTimers()
 describe('<GenericSuspendedAccount />', () => {
   beforeEach(() => {
     mockAuthContextWithUser(beneficiaryUser)
+    setFeatureFlags()
   })
 
   it('should open Zendesk url when clicking on "Contacter le service fraude" button', async () => {

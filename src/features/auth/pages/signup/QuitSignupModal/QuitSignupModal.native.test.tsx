@@ -3,6 +3,7 @@ import React from 'react'
 import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { QuitSignupModal } from './QuitSignupModal'
@@ -25,6 +26,7 @@ describe('QuitSignupModal', () => {
   beforeEach(() => {
     // @ts-expect-error: logCancelSignup is the mock function but is seen as the real function
     analytics.logCancelSignup.mockClear()
+    setFeatureFlags()
   })
 
   it('should render correctly', () => {

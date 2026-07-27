@@ -3,6 +3,7 @@ import React from 'react'
 import { AccountState } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 
 import { AccountStatusScreenHandler } from './AccountStatusScreenHandler'
@@ -32,6 +33,10 @@ function mockUseCurrentRoute(name: string) {
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AccountStatusScreenHandler />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<AccountStatusScreenHandler />)

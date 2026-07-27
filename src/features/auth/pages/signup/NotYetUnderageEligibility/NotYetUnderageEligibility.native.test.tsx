@@ -4,6 +4,7 @@ import React from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { NotYetUnderageEligibility } from './NotYetUnderageEligibility'
@@ -27,6 +28,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<NotYetUnderageEligibility />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render properly', () => {
     render(<NotYetUnderageEligibility {...navigationProps} />)
 

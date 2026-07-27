@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { Emoji } from 'ui/components/Emoji'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -11,6 +12,10 @@ import { Typo } from 'ui/theme'
 export const DeleteProfileSuccess = () => (
   <GenericInfoPage
     illustration={ProfileDeletion}
+    remoteIllustration={{
+      url: genericInfoPageIllustrationUrls.trashMosaic,
+      backgroundColor: 'negative01',
+    }}
     title="Ton compte a été supprimé"
     buttonPrimary={{
       wording: 'Retourner à l’accueil',

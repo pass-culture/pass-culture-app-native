@@ -3,6 +3,7 @@ import React from 'react'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { fireEvent, render, checkAccessibilityFor, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -16,6 +17,10 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 describe('<QuitIdentityCheckModal/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should not display the modal when visible is false', () => {
     renderQuitIdentityCheckModal(false)
 

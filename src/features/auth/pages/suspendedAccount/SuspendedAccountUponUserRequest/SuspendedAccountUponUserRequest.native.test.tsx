@@ -4,6 +4,7 @@ import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -33,6 +34,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SuspendedAccountUponUserRequest />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match snapshot', () => {
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 

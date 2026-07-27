@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render } from 'tests/utils'
 
 const resetErrorBoundary = () => null
@@ -15,6 +16,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<OfferNotFound />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     expect(
       render(<OfferNotFound error={error} resetErrorBoundary={resetErrorBoundary} />)

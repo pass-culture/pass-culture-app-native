@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 const resetErrorBoundary = () => null
@@ -9,6 +10,10 @@ const error = new Error('error')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<VenueNotFound />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

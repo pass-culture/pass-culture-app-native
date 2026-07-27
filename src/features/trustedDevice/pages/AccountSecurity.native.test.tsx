@@ -5,6 +5,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -28,6 +29,7 @@ describe('<AccountSecurity/>', () => {
   describe('with route params', () => {
     beforeEach(() => {
       useRoute.mockReturnValueOnce({ params: ROUTE_PARAMS })
+      setFeatureFlags()
     })
 
     describe('when user is connected and has a password', () => {

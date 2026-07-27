@@ -3,6 +3,7 @@ import React from 'react'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -25,6 +26,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<QuitIdentityCheckModal/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     renderQuitIdentityCheckModal(true)
 

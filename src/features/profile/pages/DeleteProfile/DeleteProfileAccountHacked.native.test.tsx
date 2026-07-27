@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileAccountHacked } from './DeleteProfileAccountHacked'
@@ -17,6 +18,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('DeleteProfileAccountHacked', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<DeleteProfileAccountHacked />)
 
