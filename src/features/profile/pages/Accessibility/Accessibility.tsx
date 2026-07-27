@@ -40,10 +40,6 @@ const sectionConfig: AccessibilityRowConfig[] = [
     title: 'Déclaration d’accessibilité - web',
     screen: 'AccessibilityDeclarationWeb',
   },
-  {
-    title: 'Parcours recommandés - web',
-    screen: 'RecommendedPaths',
-  },
 ]
 
 export const Accessibility = () => {
