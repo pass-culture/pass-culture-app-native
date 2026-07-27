@@ -7,6 +7,7 @@ import React from 'react'
 import webStyled, { CSSObject, DefaultTheme, useTheme } from 'styled-components'
 
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 import { getIconSize } from './getIconSize'
 import { getLinkGap } from './getLinkGap'
@@ -120,18 +121,10 @@ const getContainerStyle = ({
     display: 'inline-flex',
     flexDirection: 'row',
     width: 'fit-content',
-    ['&:hover span']: {
-      color: hoverColor,
-    },
-    ['&:hover svg path']: {
-      fill: hoverIconColor,
-    },
-    ['&:visited span']: {
-      color: visitedColor,
-    },
-    ['&:visited svg path']: {
-      fill: visitedIconColor,
-    },
+    ['&:hover span']: { color: hoverColor },
+    ['&:hover svg path']: { fill: hoverIconColor },
+    ['&:visited span']: { color: visitedColor },
+    ['&:visited svg path']: { fill: visitedIconColor },
   }
 }
 
@@ -174,28 +167,20 @@ const InlineTextContainer = webStyled(LinkAnchor)<{
     cursor: 'pointer',
     display: 'inline',
     margin: 0,
-    outline: 'none',
     padding: 0,
     textDecoration: 'underline',
     whiteSpace: 'nowrap',
     ...theme.designSystem.typography[getLinkTypography($size)],
+    ...customFocusOutline({ theme, noOffset: true }),
     ['& svg']: {
       marginRight: theme.designSystem.size.spacing.xs,
       transform: 'translateY(-0.05em)',
       verticalAlign: 'middle',
     },
-    ['&:hover']: {
-      color: hoverColor,
-    },
-    ['&:hover svg path']: {
-      fill: hoverIconColor,
-    },
-    ['&:visited']: {
-      color: visitedColor,
-    },
-    ['&:visited svg path']: {
-      fill: visitedIconColor,
-    },
+    ['&:hover']: { color: hoverColor },
+    ['&:hover svg path']: { fill: hoverIconColor },
+    ['&:visited']: { color: visitedColor },
+    ['&:visited svg path']: { fill: visitedIconColor },
   }
 })
 
