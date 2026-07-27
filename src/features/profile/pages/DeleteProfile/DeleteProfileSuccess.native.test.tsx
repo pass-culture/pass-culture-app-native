@@ -3,6 +3,7 @@ import React from 'react'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { DeleteProfileSuccess } from './DeleteProfileSuccess'
@@ -24,6 +25,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 jest.useFakeTimers()
 
 describe('DeleteProfileSuccess', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render delete profile success', () => {
     render(<DeleteProfileSuccess />)
 

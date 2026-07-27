@@ -6,6 +6,7 @@ import { resetFromRef } from 'features/navigation/navigationRef'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -41,6 +42,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ConfirmDeleteProfile', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render confirm delete profile', () => {
     renderConfirmDeleteProfile()
 

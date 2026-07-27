@@ -8,6 +8,7 @@ import { resetFromRef } from 'features/navigation/navigationRef'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/fixtures'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -46,6 +47,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('DeleteProfileConfirmation', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match snapshot', () => {
     renderDeleteProfileConfirmation()
 

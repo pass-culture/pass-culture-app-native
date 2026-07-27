@@ -6,6 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { DeactivateProfileSuccess } from './DeactivateProfileSuccess'
@@ -28,6 +29,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('DeactivateProfileSuccess', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render deactivate profile success', () => {
     render(<DeactivateProfileSuccess />)
 
