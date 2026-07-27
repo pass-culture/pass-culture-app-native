@@ -17,6 +17,7 @@ import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
 import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
@@ -100,6 +101,10 @@ export const BookingConfirmation: FC = () => {
     <React.Fragment>
       <GenericInfoPage
         illustration={TicketBooked}
+        remoteIllustration={{
+          url: genericInfoPageIllustrationUrls.validStampMosaïcLarge,
+          backgroundColor: 'positive01',
+        }}
         title="Réservation confirmée&nbsp;!"
         subtitle={`${amountLeftText}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`}
         buttonPrimary={{
