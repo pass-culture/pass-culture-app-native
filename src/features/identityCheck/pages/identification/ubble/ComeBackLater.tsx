@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
 import { Typo } from 'ui/theme'
@@ -24,6 +25,10 @@ export const ComeBackLater: FunctionComponent = () => {
     <GenericInfoPage
       withGoBack
       illustration={IdCardInvalid}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.stressedKnightLarge,
+        backgroundColor: 'negative01',
+      }}
       title="Reviens plus tard"
       buttonPrimary={{
         wording: 'M’identifier plus tard',
