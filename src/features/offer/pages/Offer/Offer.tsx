@@ -6,7 +6,7 @@ import { ReactionTypeEnum } from 'api/gen'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { useOfferProAdvicesQuery } from 'features/advices/queries/useOfferProAdvicesQuery'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
+import { useClubAdviceVariant } from 'features/clubAdvices/helpers/useClubAdviceVariant'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -138,10 +138,10 @@ export function Offer() {
   })
   const proAdvices = shouldDisplayProAdvices ? proAdvicesData : undefined
 
+  const adviceVariantInfo = useClubAdviceVariant(offer?.subcategoryId)
+
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 
-  const subcategory = subcategoriesMapping[offer?.subcategoryId]
-  const adviceVariantInfo = clubAdviceVariant[subcategory.id]
   const hasClubAdviceVariant = !!adviceVariantInfo
 
   const clubAdvices = hasClubAdviceVariant

@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { ChronicleClubType, ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 // humanizedId AHD3A
@@ -43,6 +43,7 @@ export const offerResponseSnap = toMutable({
   chronicles: [
     {
       id: 1,
+      clubType: ChronicleClubType.BOOK,
       contentPreview: 'Le Voyage Extraordinaire',
       dateCreated: '2025-01-20T23:32:13.978038Z',
       author: {
@@ -52,6 +53,7 @@ export const offerResponseSnap = toMutable({
     },
     {
       id: 2,
+      clubType: ChronicleClubType.BOOK,
       contentPreview: 'L’Art de la Cuisine',
       dateCreated: '2025-02-20T23:32:13.978038Z',
       author: {
@@ -61,6 +63,7 @@ export const offerResponseSnap = toMutable({
     },
     {
       id: 3,
+      clubType: ChronicleClubType.BOOK,
       contentPreview: 'Le Futur de la Technologie',
       dateCreated: '2025-03-20T23:32:13.978038Z',
       author: null,

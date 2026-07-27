@@ -1,8 +1,9 @@
-import { ChroniclePreview } from 'api/gen'
+import { ChronicleClubType, ChroniclePreview } from 'api/gen'
 import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 
 const ADVICE_PREVIEW: ChroniclePreview = {
   id: 1,
+  clubType: ChronicleClubType.BOOK,
   contentPreview: 'lorem ipsum dolor',
   dateCreated: '2025-01-20T23:32:13.978038Z',
   author: {

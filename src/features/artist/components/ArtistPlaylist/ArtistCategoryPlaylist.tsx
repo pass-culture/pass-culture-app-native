@@ -10,6 +10,8 @@ import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
@@ -56,6 +58,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useSubcategoryOfferLabelMapping()
+  const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const isFocused = useIsFocused()
 
@@ -107,6 +110,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
               getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
             proAdvicesSegment,
             enableProAdvicesTag,
+            enableSceneClubTag,
           })}
           itemWidth={itemWidth}
           itemHeight={itemHeight}

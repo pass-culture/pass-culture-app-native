@@ -2,11 +2,10 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { SubcategoryIdEnum, SubcategoryIdEnumv2 } from 'api/gen'
+import { SubcategoryIdEnumv2 } from 'api/gen'
 import { AdvicesOfferColumn } from 'features/advices/components/AdvicesOfferColumn/AdvicesOfferColumn.web'
-import { AdviceCardData } from 'features/advices/types'
 import { clubAdvicesToAdviceCardData } from 'features/clubAdvices/adapters/clubAdvicesToAdviceCardData/clubAdvicesToAdviceCardData'
-import { clubAdviceVariant } from 'features/clubAdvices/helpers/clubAdviceVariant'
+import { useClubAdviceVariant } from 'features/clubAdvices/helpers/useClubAdviceVariant'
 import { ClubAdvicesBase } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvicesBase'
 import { useClubAdvicesQuery } from 'features/clubAdvices/queries/useClubAdvicesQuery'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -20,12 +19,10 @@ export const ClubAdvices: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: offer } = useOfferQuery({ offerId })
   const subcategoriesMapping = useSubcategoriesMapping()
-  const adviceVariantInfo =
-    clubAdviceVariant[offer?.subcategoryId ?? SubcategoryIdEnum.LIVRE_PAPIER]
-  const { data: adviceCardsData } = useClubAdvicesQuery<AdviceCardData[]>({
+  const adviceVariantInfo = useClubAdviceVariant(offer?.subcategoryId)
+  const { data: clubAdvices } = useClubAdvicesQuery({
     offerId,
-    select: ({ chronicles: advices }) =>
-      clubAdvicesToAdviceCardData(advices, adviceVariantInfo.subtitleItem),
+    enabled: !!adviceVariantInfo,
   })
 
   const subcategory = offer
@@ -47,7 +44,12 @@ export const ClubAdvices: FunctionComponent = () => {
     navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
   }
 
-  if (!offer || !adviceCardsData) return null
+  if (!offer || !clubAdvices || !adviceVariantInfo) return null
+
+  const adviceCardsData = clubAdvicesToAdviceCardData(
+    clubAdvices.chronicles,
+    adviceVariantInfo.subtitleItem
+  )
 
   return (
     <Container>
