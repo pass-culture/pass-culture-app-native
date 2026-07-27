@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { formatToReadableFrenchDate } from 'libs/dates'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 
@@ -15,6 +16,10 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   return (
     <GenericInfoPage
       illustration={CalendarIllustration}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.hourglass,
+        backgroundColor: 'information04',
+      }}
       title="C’est pour bientôt&nbsp;!"
       subtitle={NotYetUnderageEligibilityText}
       buttonPrimary={{
