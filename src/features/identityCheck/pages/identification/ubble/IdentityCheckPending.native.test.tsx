@@ -3,6 +3,7 @@ import React from 'react'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -19,6 +20,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<IdentityCheckPending/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<IdentityCheckPending />)
 
