@@ -14,11 +14,6 @@ const isWeb = Platform.OS === 'web'
 // that can impact the UI but is still acceptable for most of the users.
 const MOBILE_ZOOM_THRESHOLD = 1.5
 
-// We use 150% as threshold because 200% zoom is quite extreme and
-// would break too much the UI. 150% is already a quite zoomed font size
-// that can impact the UI but is still acceptable for most of the users
-const WEB_ZOOM_THRESHOLD = 150
-
 /* Get device font scale (in order to adapt the display).
  * The value is rounded to 3 decimals to limit rendering variations.
  */
@@ -67,21 +62,6 @@ export const useMobileFontScaleToDisplay = <T>({
 export const useZoomInPercent = () => {
   const metrics = useDeviceMetrics()
   return metrics?.screenZoomLevel ? Math.round(metrics.screenZoomLevel * 100) / 2 : undefined
-}
-
-/**
- * Value hook to get the adapted value according to the web zoom.
- * if the `zoomPercent` is above the threshold (`150`), we consider the display
- * to be heavily zoomed and return the value for 200% zoom,
- *  which is a key value in digital accessibility.
- */
-export const useWebZoomToDisplay = <T>({
-  default: at100PercentZoom,
-  at200PercentZoom,
-}: ZoomedValue<T>): T => {
-  const zoomPercent = useZoomInPercent()
-  const isZoomedWeb = zoomPercent && zoomPercent > WEB_ZOOM_THRESHOLD
-  return isZoomedWeb ? at200PercentZoom : at100PercentZoom
 }
 
 export const useNumberOfLine = (defaultValue: number): number | undefined => {
