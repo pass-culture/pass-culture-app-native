@@ -132,7 +132,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
     at200PercentZoom: 0,
   })
 
-  const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
+  const flexWeb = useWebZoomToDisplay({ default: undefined, at200PercentZoom: undefined })
   const illustrationContent = renderIllustrationContent({
     IllustrationComponent,
     remoteIllustration,
