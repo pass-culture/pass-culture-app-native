@@ -3,6 +3,7 @@ import { View } from 'react-native'
 
 import { Bookability, Screening, VenueScreenings } from 'api/gen'
 import { formatHour } from 'features/bookOffer/helpers/utils'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -17,7 +18,7 @@ type Props = {
   offerId: number
 }
 
-const getEventCardLeftSubtitle = (screening: Screening) => {
+export const getEventCardLeftSubtitle = (screening: Screening) => {
   switch (screening.bookability) {
     case Bookability.STOCK_BOOKING_IS_DISABLED:
       return EventCardSubtitleEnum.UNAVAILABLE
@@ -29,9 +30,41 @@ const getEventCardLeftSubtitle = (screening: Screening) => {
       return EventCardSubtitleEnum.NOT_ENOUGH_CREDIT
     case Bookability.USER_CANNOT_BOOK:
       return EventCardSubtitleEnum.UNAVAILABLE
+    case Bookability.USER_HAS_ALREADY_BOOKED_RELATED_OFFER:
+    case Bookability.FINISH_SUBSCRIPTION_REQUIRED:
+    case Bookability.USER_APPLICATION_STILL_PROCESSING:
+    case Bookability.USER_HAS_APPLICATION_ERROR:
     case Bookability.AUTHENTICATION_REQUIRED:
     case Bookability.BOOKABLE:
       return screening.features.join(', ')
+  }
+}
+
+export const getEventCardRightSubtitle = (
+  screening: Screening,
+  currency,
+  euroToPacificFrancRate
+) => {
+  switch (screening.bookability) {
+    case Bookability.AUTHENTICATION_REQUIRED:
+    case Bookability.BOOKABLE:
+    case Bookability.USER_HAS_ALREADY_BOOKED_RELATED_OFFER:
+      return formatCurrencyFromCents(screening.price * 100, currency, euroToPacificFrancRate)
+    default:
+      return ''
+  }
+}
+
+export const getEventCardIsEnabled = (screening: Screening) => {
+  switch (screening.bookability) {
+    case Bookability.BOOKABLE:
+    case Bookability.AUTHENTICATION_REQUIRED:
+    case Bookability.FINISH_SUBSCRIPTION_REQUIRED:
+    case Bookability.USER_APPLICATION_STILL_PROCESSING:
+    case Bookability.USER_HAS_APPLICATION_ERROR:
+      return true
+    default:
+      return false
   }
 }
 
@@ -48,16 +81,10 @@ export const OfferEventCardListV2: FC<Props> = ({ venueScreenings, offerId }) =>
           setSelectedScreening(screening)
           modalSettings.showModal()
         },
-        isDisabled: ![Bookability.AUTHENTICATION_REQUIRED, Bookability.BOOKABLE].includes(
-          screening.bookability
-        ),
+        isDisabled: !getEventCardIsEnabled(screening),
         title: formatHour(screening.beginningDatetime).replace(':', 'h'),
         subtitleLeft: getEventCardLeftSubtitle(screening),
-        subtitleRight: [Bookability.AUTHENTICATION_REQUIRED, Bookability.BOOKABLE].includes(
-          screening.bookability
-        )
-          ? formatCurrencyFromCents(screening.price * 100, currency, euroToPacificFrancRate)
-          : '',
+        subtitleRight: getEventCardRightSubtitle(screening, currency, euroToPacificFrancRate),
       }) as EventCardProps,
     [currency, euroToPacificFrancRate, modalSettings]
   )
@@ -71,7 +98,8 @@ export const OfferEventCardListV2: FC<Props> = ({ venueScreenings, offerId }) =>
         <BookOfferModal
           screening={selectedScreening}
           offerId={offerId}
-          modalSettings={modalSettings}></BookOfferModal>
+          modalSettings={modalSettings}
+          from={StepperOrigin.OFFER}></BookOfferModal>
       ) : null}
     </View>
   )

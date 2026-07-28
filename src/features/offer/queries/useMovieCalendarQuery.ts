@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { MovieCalendarResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { locationStore } from 'libs/locationV2/location.store'
@@ -26,6 +27,7 @@ export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
   }
 ) => {
   const userLocation = locationStore.hooks.useUserLocation()
+  const { user, isLoggedIn } = useAuthContext()
   const longitude = userLocation?.longitude ?? offerVenueLongitude ?? 0
   const latitude = userLocation?.latitude ?? offerVenueLatitude ?? 0
   const radius = DEFAULT_RADIUS_KM * 1000
@@ -39,15 +41,21 @@ export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
           logType,
         })
       }
-      return api.getNativeV1MovieCalendar(
-        latitude,
-        longitude,
-        allocineId ?? undefined,
-        allocineId ? undefined : (visa ?? undefined),
-        radius
-      )
+      const allocineIdParam = allocineId ?? undefined
+      const visaParam = allocineId ? undefined : (visa ?? undefined)
+      return isLoggedIn
+        ? api.getNativeV1MovieCalendarMe(latitude, longitude, allocineIdParam, visaParam, radius)
+        : api.getNativeV1MovieCalendar(latitude, longitude, allocineIdParam, visaParam, radius)
     },
-    queryKey: [QueryKeys.OFFER_MOVIE_CALENDAR, latitude, longitude, allocineId, visa, radius],
+    queryKey: [
+      QueryKeys.OFFER_MOVIE_CALENDAR,
+      user?.id,
+      latitude,
+      longitude,
+      allocineId,
+      visa,
+      radius,
+    ],
     select: options?.select,
     enabled: options?.enabled,
   })

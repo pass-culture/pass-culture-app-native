@@ -479,8 +479,13 @@ export enum Bookability {
   'STOCK_IS_SOLD_OUT' = 'STOCK_IS_SOLD_OUT',
   'USER_CANNOT_BOOK' = 'USER_CANNOT_BOOK',
   'USER_HAS_ALREADY_BOOKED_OFFER' = 'USER_HAS_ALREADY_BOOKED_OFFER',
+  'USER_HAS_ALREADY_BOOKED_RELATED_OFFER' = 'USER_HAS_ALREADY_BOOKED_RELATED_OFFER',
   'USER_HAS_INSUFFICIENT_CREDIT' = 'USER_HAS_INSUFFICIENT_CREDIT',
   'AUTHENTICATION_REQUIRED' = 'AUTHENTICATION_REQUIRED',
+  'FINISH_SUBSCRIPTION_REQUIRED' = 'FINISH_SUBSCRIPTION_REQUIRED',
+  'USER_APPLICATION_STILL_PROCESSING' = 'USER_APPLICATION_STILL_PROCESSING',
+  'USER_HAS_APPLICATION_ERROR' = 'USER_HAS_APPLICATION_ERROR',
+
 }
 /**
  * @export
@@ -6120,7 +6125,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
-        /**
+    /**
      * @summary get_movie_screenings <GET>
      * @param {number} latitude
      * @param {number} longitude
@@ -6183,6 +6188,79 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+        /**
+     * @summary get_movie_screenings_for_user <GET>
+     * @param {number} latitude 
+     * @param {number} longitude 
+     * @param {Allocineid} [allocineId] 
+     * @param {Visa} [visa] 
+     * @param {number} [aroundRadius] 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1MovieCalendarMe(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'latitude' is not null or undefined
+      if (latitude === null || latitude === undefined) {
+        throw new RequiredError(
+          'latitude',
+          'Required parameter latitude was null or undefined when calling getNativeV1MovieCalendarMe.'
+        )
+      }
+      // verify required parameter 'longitude' is not null or undefined
+      if (longitude === null || longitude === undefined) {
+        throw new RequiredError(
+          'longitude',
+          'Required parameter longitude was null or undefined when calling getNativeV1MovieCalendarMe.'
+        )
+      }
+      let pathname = `/native/v1/movie/calendar/me`
+      const queryParameters: any = {};
+
+        if (allocineId != null) {
+            queryParameters['allocineId'] = allocineId;
+        }
+
+        if (visa != null) {
+            queryParameters['visa'] = visa;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
+        }
+
+        if (longitude != null) {
+            queryParameters['longitude'] = longitude;
+        }
+
+        if (aroundRadius != null) {
+            queryParameters['aroundRadius'] = aroundRadius;
+        }
+
+        if (from != null) {
+            queryParameters['from'] = from;
+        }
+
+        if (to != null) {
+            queryParameters['to'] = to;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key as string)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -8284,6 +8362,24 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, options)
     },
+     /**
+     * 
+     * @summary get_movie_screenings_for_user <GET>
+     * @param {number} latitude 
+     * @param {number} longitude 
+     * @param {Allocineid1} [allocineId] 
+     * @param {Visa1} [visa] 
+     * @param {number} [aroundRadius] 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1MovieCalendarMe(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options?: any): Promise<MovieCalendarResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MovieCalendarMe(latitude, longitude, allocineId, visa, aroundRadius, from, to, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, options)
+    },
     /**
      *
      * @summary google_oauth_state <GET>
@@ -9324,6 +9420,24 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1MovieCalendar(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MovieCalendar(latitude, longitude, allocineId, visa, aroundRadius, from, to, options)
+  }
+  /**
+    * 
+    * @summary get_movie_screenings_for_user <GET>
+    * @param {number} latitude 
+    * @param {number} longitude 
+    * @param {Allocineid1} [allocineId] 
+    * @param {Visa1} [visa] 
+    * @param {number} [aroundRadius] 
+    * @param {string} [from] 
+    * @param {string} [to] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1MovieCalendarMe(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1MovieCalendarMe(latitude, longitude, allocineId, visa, aroundRadius, from, to, options)
   }
   /**
     *
