@@ -84,7 +84,6 @@ export type AccessibilityRootStackParamList = {
   AccessibilityDeclarationMobileIOS?: undefined
   AccessibilityDeclarationWeb?: undefined
   SiteMapScreen?: undefined
-  RecommendedPaths?: undefined
 }
 
 export type CulturalSurveyRootStackParamList = {

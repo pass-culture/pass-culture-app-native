@@ -5,13 +5,18 @@ import styled from 'styled-components/native'
 type Props = {
   children?: ReactNode
   shouldBeAlignedFlexStart?: boolean
+  shouldLimitWidth?: boolean
 }
 
-export const CustomKeyboardAvoidingView = ({ children, shouldBeAlignedFlexStart }: Props) => {
+export const CustomKeyboardAvoidingView = ({
+  children,
+  shouldBeAlignedFlexStart,
+  shouldLimitWidth = false,
+}: Props) => {
   return (
     <Container>
       <StyledKeyboardAvoidingView shouldBeAlignedFlexStart={shouldBeAlignedFlexStart}>
-        <CenteredWebContainer>{children}</CenteredWebContainer>
+        <CenteredWebContainer shouldLimitWidth={shouldLimitWidth}>{children}</CenteredWebContainer>
       </StyledKeyboardAvoidingView>
     </Container>
   )
@@ -37,10 +42,12 @@ const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   overflow: 'scroll',
 }))
 
-const CenteredWebContainer = styled.View(({ theme }) => ({
-  ...(Platform.OS === 'web' && !theme.isMobileViewport
-    ? { maxHeight: '100%', paddingBottom: theme.designSystem.size.spacing.xl }
-    : { flex: 1 }),
-  width: '100%',
-  maxWidth: theme.contentPage.maxWidth,
-}))
+const CenteredWebContainer = styled.View<{ shouldLimitWidth: boolean }>(
+  ({ theme, shouldLimitWidth }) => ({
+    ...(Platform.OS === 'web' && !theme.isMobileViewport
+      ? { maxHeight: '100%', paddingBottom: theme.designSystem.size.spacing.xl }
+      : { flex: 1 }),
+    width: '100%',
+    ...(shouldLimitWidth ? { maxWidth: theme.contentPage.maxWidth } : {}),
+  })
+)

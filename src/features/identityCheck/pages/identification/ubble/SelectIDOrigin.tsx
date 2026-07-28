@@ -15,7 +15,11 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDOrigin: FunctionComponent = () => (
-  <PageWithHeader title="Identification" scrollChildren={<SelectIDOriginContent />} />
+  <PageWithHeader
+    shouldLimitWidth
+    title="Identification"
+    scrollChildren={<SelectIDOriginContent />}
+  />
 )
 
 const SelectIDOriginContent: FunctionComponent = () => {

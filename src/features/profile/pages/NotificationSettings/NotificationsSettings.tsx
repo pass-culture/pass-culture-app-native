@@ -259,7 +259,6 @@ const StyledView = styled.View(({ theme }) => ({
 }))
 
 const Container = styled.View(({ theme }) => ({
-  maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
   marginBottom: theme.designSystem.size.spacing.xxxl,

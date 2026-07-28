@@ -219,6 +219,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
       }
     >
       <View
+        shouldLimitWidth={true}
         style={
           {
             "flexBasis": 0,

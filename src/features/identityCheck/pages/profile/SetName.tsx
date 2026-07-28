@@ -88,6 +88,7 @@ export const SetName = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <Form.MaxWidth>

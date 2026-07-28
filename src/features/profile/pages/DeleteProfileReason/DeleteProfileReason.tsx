@@ -96,6 +96,7 @@ export function DeleteProfileReason() {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       onGoBack={goBack}
       title="Suppression de compte"
       scrollChildren={

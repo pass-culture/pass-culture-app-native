@@ -46,6 +46,7 @@ export const BonificationRequiredInformation = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Informations"
       shouldDisplayBottomGradient
       scrollChildren={

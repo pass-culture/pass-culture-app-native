@@ -17,6 +17,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation<UseNavigationType>()
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Oubli de mot de passe"
       shouldDisplayBackButton={false}
       RightButton={<RightButtonText onClose={goBack} wording="Quitter" />}

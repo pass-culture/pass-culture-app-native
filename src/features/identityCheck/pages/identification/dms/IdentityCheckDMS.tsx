@@ -24,6 +24,7 @@ export const IdentityCheckDMS = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Identification"
       scrollChildren={
         <Container>

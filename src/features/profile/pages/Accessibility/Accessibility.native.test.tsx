@@ -79,16 +79,4 @@ describe('Accessibility', () => {
       screen: 'AccessibilityDeclarationWeb',
     })
   })
-
-  it('should navigate to RecommendedPaths when clicked', async () => {
-    render(<Accessibility />)
-
-    const row = screen.getByText('Parcours recommandés - web')
-    await user.press(row)
-
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-      params: undefined,
-      screen: 'RecommendedPaths',
-    })
-  })
 })

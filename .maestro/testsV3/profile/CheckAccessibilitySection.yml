@@ -33,13 +33,13 @@ onFlowStart:
       platform: iOS
       visible: 'Fermer'
     commands:
-    - tapOn: 'Fermer'
+      - tapOn: 'Fermer'
 
 - runFlow:
     when:
       visible: 'Afficher les signets, le menu Partager et les onglets ouverts'
     commands:
-    - tapOn: 'fermer le pop-up'
+      - tapOn: 'fermer le pop-up'
 - assertVisible: 'Accessibilité'
 - assertVisible: "L'accessibilité au pass Culture"
 - runFlow:
@@ -81,12 +81,6 @@ onFlowStart:
 
 - tapOn: 'Déclaration d’accessibilité - web'
 - assertVisible: 'Déclaration d’accessibilité web'
-- runFlow:
-    file: ../common/navigation/TapOnBack.yml
-
-- tapOn: 'Parcours recommandés - web'
-- assertVisible: 'Parcours recommandés web'
-
 - runFlow:
     file: ../common/navigation/TapOnBack.yml
 

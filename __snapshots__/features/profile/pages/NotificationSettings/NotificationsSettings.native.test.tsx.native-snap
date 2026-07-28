@@ -226,12 +226,12 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
       }
     >
       <View
+        shouldLimitWidth={false}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "maxWidth": 500,
             "width": "100%",
           }
         }
@@ -261,7 +261,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 {
                   "alignSelf": "center",
                   "marginBottom": 40,
-                  "maxWidth": 500,
                   "width": "100%",
                 }
               }
@@ -2324,12 +2323,12 @@ exports[`NotificationsSettings should render correctly when user is not logged i
       }
     >
       <View
+        shouldLimitWidth={false}
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "maxWidth": 500,
             "width": "100%",
           }
         }
@@ -2359,7 +2358,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 {
                   "alignSelf": "center",
                   "marginBottom": 40,
-                  "maxWidth": 500,
                   "width": "100%",
                 }
               }

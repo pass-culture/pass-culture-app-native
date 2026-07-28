@@ -81,6 +81,7 @@ export const SetPhoneNumber = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Numéro de téléphone"
       scrollChildren={
         <ViewGap gap={8}>

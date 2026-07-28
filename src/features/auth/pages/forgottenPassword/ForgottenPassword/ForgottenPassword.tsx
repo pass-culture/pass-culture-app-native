@@ -29,6 +29,7 @@ export const ForgottenPassword = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Oubli de mot de passe"
       shouldDisplayBackButton
       scrollChildren={

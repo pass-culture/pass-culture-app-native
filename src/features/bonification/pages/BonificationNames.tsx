@@ -63,6 +63,7 @@ export const BonificationNames = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Informations"
       scrollChildren={
         <Form.MaxWidth>

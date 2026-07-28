@@ -8,7 +8,6 @@ import { Accessibility } from 'features/profile/pages/Accessibility/Accessibilit
 import { AccessibilityDeclarationMobileAndroid } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileAndroid'
 import { AccessibilityDeclarationMobileIOS } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileIOS'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
-import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { Appearance } from 'features/profile/pages/Appearance/Appearance'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
@@ -77,12 +76,6 @@ const profileStackNavigatorPathDefinition = {
       screen: AccessibilityDeclarationWeb,
       linking: {
         path: 'accessibilite/declaration-accessibilite-web',
-      },
-    },
-    RecommendedPaths: {
-      screen: RecommendedPaths,
-      linking: {
-        path: 'accessibilite/parcours-recommandes',
       },
     },
     SiteMapScreen: {

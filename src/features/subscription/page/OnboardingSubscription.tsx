@@ -109,6 +109,7 @@ export const OnboardingSubscription = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Thèmes"
       onGoBack={goBack}
       scrollChildren={

@@ -68,6 +68,7 @@ export const ChangeEmailSetPassword = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Créer mon mot de passe"
       scrollChildren={
         <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>

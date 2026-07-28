@@ -62,6 +62,7 @@ export const SelectIDStatus: FunctionComponent = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Identification"
       scrollChildren={
         <Container>

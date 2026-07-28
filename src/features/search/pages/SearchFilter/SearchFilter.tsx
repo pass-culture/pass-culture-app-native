@@ -114,6 +114,7 @@ export const SearchFilter: React.FC = () => {
   const onClose = isMobileViewport ? onGoBack : undefined
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Filtres"
       onGoBack={onGoBack}
       scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}

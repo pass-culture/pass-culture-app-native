@@ -74,6 +74,7 @@ export const SetCity = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <ViewGap gap={5}>

@@ -146,6 +146,7 @@ export const ProfileInformationValidationCreate = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <Summary

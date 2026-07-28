@@ -22,6 +22,7 @@ import { Typo } from 'ui/theme'
 export const IdentificationFork: FunctionComponent = () => {
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Identification"
       scrollChildren={<IdentificationForkEduconnectContent />}
     />

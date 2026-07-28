@@ -165,6 +165,7 @@ export const ActivationProfileRecap = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title={pageConfigByType[type]}
       scrollChildren={
         <Summary

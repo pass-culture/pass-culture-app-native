@@ -39,6 +39,7 @@ export const ChangeAddress = () => {
 
   return (
     <PageWithHeader
+      shouldLimitWidth
       title="Modifier mon adresse"
       scrollChildren={
         <React.Fragment>

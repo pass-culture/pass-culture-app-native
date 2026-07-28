@@ -1,11 +1,10 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
-import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabPropConfig } from 'features/navigation/TabBar/getTabPropConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { SearchView } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -14,204 +13,189 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
+import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+const appVersion = '1.395.0'
+const auditDate = '22 juillet 2026'
+const conformityRGAA = '65,45%'
+const nonAccessibleContent = [
+  '[1.3 - RGAA] L’alternative textuelle d’une image porteuse d’information au moins n’est pas pertinente.',
+  '[3.1 - RGAA] Une information au moins est véhiculée uniquement par la couleur.',
+  '[6.1 - RGAA] Un lien au moins a un intitulé qui n’est pas pertinent.',
+  '[7.1 - RGAA] Une fonctionnalité JavaScript au moins n’est pas compatible avec les technologies d’assistance ou fait un usage inapproprié de propriétés ARIA.',
+  '[7.3 - RGAA] Une fonctionnalité JavaScript au moins n’est pas contrôlable par le clavier ou tout autre dispositif de pointage.',
+  '[7.4 - RGAA] Un changement de contexte au moins se déclenche sans que l’utilisateur en soit informé.',
+  '[7.5 - RGAA] Un message de statut au moins n’est pas restitué par les technologies d’assistance.',
+  '[8.6 - RGAA] Un titre de page au moins n’est pas pertinent.',
+  '[8.9 - RGAA] Une balise au moins est utilisée à des fins de présentation (par exemple des paragraphes vides et/ou des textes non structurés dans des balises de paragraphes).',
+  '[9.1 - RGAA] La hiérarchie des titres d’une page au moins n’est pas pertinente.',
+  '[9.2 - RGAA] La structure du document d’une page au moins n’est pas cohérente.',
+  '[9.3 - RGAA] Une liste au moins n’est pas correctement structurée.',
+  '[10.1 - RGAA] Un élément HTML de présentation au moins (balise ou attribut) est utilisé.',
+  '[10.3 - RGAA] Un contenu au moins ne se présente pas dans un ordre logique dans le code source.',
+  '[10.7 - RGAA] Une indication visuelle de prise de focus au moins n’est pas visible ou suffisamment contrastée.',
+  '[10.11 - RGAA] Un contenu au moins ne peut être présenté sans défilement horizontal et/ou présente des pertes d’informations lorsque le texte est agrandi à 400%.',
+  '[11.5 - RGAA] Un ensemble de champs de même nature au moins ne sont pas regroupés.',
+  '[11.6 - RGAA] Un regroupement de champs de formulaires au moins n’a pas de légende.',
+  '[13.10 - RGAA] Une fonctionnalité au moins, utilisable au moyen d’un geste complexe, n’a pas d’alternative au moyen d’un geste simple.',
+  '[14.1 - RAWeb] La documentation du site web ne décrit pas les fonctionnalités d’accessibilité disponibles et/ou les informations relatives à la compatibilité avec l’accessibilité.',
+]
+
+// Ajouter les focus sur les liens
+// Changer le titre de la page
+// Mettre à jour le nouveau document de suivi d’accessibilité
 
 const webappUrl = { url: WEBAPP_V2_URL }
 const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
-const auditedPages: { wording: string; navigateTo: InternalNavigationProps['navigateTo'] }[] = [
-  { wording: 'Accueil', navigateTo: getTabPropConfig('Home') },
-  { wording: 'Connexion', navigateTo: { screen: 'Login' } },
-  { wording: 'Inscription - Date de naissance', navigateTo: { screen: 'SignupForm' } },
-  { wording: 'Vérification d’identité', navigateTo: { screen: 'SubscriptionStackNavigator' } },
-  { wording: 'Profil', navigateTo: getTabPropConfig('Profile') },
-  { wording: 'Modification de mot de passe', navigateTo: getProfilePropConfig('ChangePassword') },
-  {
-    wording: 'Recherche',
-    navigateTo: getTabPropConfig('SearchStackNavigator', { screen: SearchView.Landing }),
-  },
-  { wording: 'Filtres', navigateTo: { screen: 'SearchFilter' } },
-  {
-    wording: 'Résultats de recherche',
-    navigateTo: getTabPropConfig('SearchStackNavigator', { screen: SearchView.Results }),
-  },
-  { wording: 'Favoris', navigateTo: getTabPropConfig('Favorites') },
-  { wording: 'Détails d’une offre', navigateTo: { screen: 'Offer', params: { id: 1916 } } },
-  {
-    wording: 'Déclaration d’accessibilité',
-    navigateTo: getProfilePropConfig('AccessibilityDeclarationWeb'),
-  },
-]
 
-export function AccessibilityDeclarationWeb() {
-  const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
+const isWeb = Platform.OS === 'web'
+
+export const AccessibilityDeclarationWeb = () => {
+  const { goBack } = useNavigation<UseNavigationType>()
+
   return (
     <PageWithHeader
       onGoBack={goBack}
       title="Déclaration d’accessibilité web"
       scrollChildren={
         <React.Fragment>
-          <Typo.Body>
-            Le pass Culture s’engage à rendre son site internet accessible conformément à l’article
-            47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie
-            et les actions suivantes&nbsp;: Cette déclaration d’accessibilité s’applique au
-          </Typo.Body>
-          <Typo.Body>
-            site internet&nbsp;
-            <ExternalTouchableLink
-              as={Link}
-              isInsideText
-              isExternal
-              wording="https://passculture.app/"
-              externalNav={webappUrl}
-              accessibilityRole={AccessibilityRole.LINK}
-            />
-          </Typo.Body>
-          <StyledSeparator />
           <ViewGap gap={6}>
-            <TitleText>État de conformité</TitleText>
             <Typo.Body>
-              Le site pass Culture est partiellement conforme avec le référentiel général
-              d’amélioration de l’accessibilité.
+              Le pass Culture s’engage à rendre son site internet accessible conformément à
+              l’article 47 de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la
+              stratégie et les actions suivantes&nbsp;:
             </Typo.Body>
-            <SubtitleText>
-              Résultats des tests
-              {DOUBLE_LINE_BREAK}
-              <Typo.Body>
-                L’audit de conformité réalisé par la société Tanaguru révèle que&nbsp;:
-              </Typo.Body>
-            </SubtitleText>
-          </ViewGap>
-          <StyledView>
-            <VerticalUl>
-              <BulletListItem
-                groupLabel="Résultats des tests"
-                text="85&nbsp;% des critères RGAA version 4.1 sont respectés."
-                index={0}
-                total={2}
+
+            <Typo.Body>
+              Cette déclaration d’accessibilité s’applique au site internet&nbsp;
+              {isWeb ? (
+                <InternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  wording="https://passculture.app/"
+                  internalNav={webappUrl}
+                  accessibilityRole={AccessibilityRole.LINK}
+                  navigateTo={getTabPropConfig('Home')}
+                />
+              ) : (
+                <ExternalTouchableLink
+                  as={Link}
+                  isInsideText
+                  isExternal
+                  wording="https://passculture.app/"
+                  externalNav={webappUrl}
+                  accessibilityRole={AccessibilityRole.LINK}
+                />
+              )}
+              .
+            </Typo.Body>
+
+            <Separator.Horizontal />
+
+            <TitleText>État de conformité</TitleText>
+
+            <Typo.Body>
+              La version <Typo.Button>{appVersion}</Typo.Button> de l’application web pass Culture
+              est non conforme avec la{' '}
+              <ExternalTouchableLink
+                as={Link}
+                isExternal
+                isInsideText
+                wording="norme européenne 301 549 (v3.2.1)"
+                externalNav={{
+                  url: 'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf',
+                }}
+                accessibilityRole={AccessibilityRole.LINK}
               />
-              <BulletListItem
-                groupLabel="Résultats des tests"
-                text="Le taux moyen de conformité du service en ligne s’élève à 93&nbsp;%."
-                index={1}
-                total={2}
+              .
+            </Typo.Body>
+
+            <Typo.Body>
+              La méthodologie d’audit se base sur le Référentiel d’Évaluation de l’Accessibilité Web
+              (RAWeb 1.1), seule méthode opérationnelle publiée à ce jour pour vérifier l’ensemble
+              des critères de la norme européenne.
+            </Typo.Body>
+
+            <Typo.Body>
+              L’application web pass Culture est partiellement conforme avec le{SPACE}
+              <ExternalTouchableLink
+                as={Link}
+                isExternal
+                isInsideText
+                wording="RAWeb version 1.1"
+                externalNav={{ url: 'https://accessibilite.public.lu/fr/raweb1.1/index.html' }}
+                accessibilityRole={AccessibilityRole.LINK}
               />
-            </VerticalUl>
-            <StyledSeparator />
-            <TitleText>Contenus non accessibles</TitleText>
-          </StyledView>
-          <ViewGap gap={6}>
+              {SPACE}et{SPACE}
+              <ExternalTouchableLink
+                as={Link}
+                isExternal
+                isInsideText
+                wording="Le RGAA version 4.1"
+                externalNav={{
+                  url: 'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/',
+                }}
+                accessibilityRole={AccessibilityRole.LINK}
+              />
+              , en raison des non-conformités énumérées dans la section «&nbsp;Résultats des
+              tests&nbsp;».
+            </Typo.Body>
+
+            <SubtitleText>Résultats des tests</SubtitleText>
+
+            <Typo.Body>
+              L’audit de conformité réalisé par la société Access42 révèle que le site est{SPACE}
+              <Typo.Button>conforme à {conformityRGAA} au RGAA version 4.1</Typo.Button>.
+            </Typo.Body>
+
+            <Separator.Horizontal />
+
+            <TitleText>Contenus inaccessibles</TitleText>
+
             <Typo.Body>
               Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
             </Typo.Body>
+
             <SubtitleText>Non conformité</SubtitleText>
-          </ViewGap>
-          <StyledView>
+
             <VerticalUl>
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="Certains intitulés de lien ne sont pas pertinents."
-                index={0}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes."
-                index={1}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="En version mobile ou lors d’un zoom 200&nbsp;%, le menu de navigation n’est plus disponible sur plusieurs pages de l’application."
-                index={2}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="Sur les pages de la recherche (recherche, résultats et filtres)&nbsp;:"
-                nestedListTexts={[
-                  'Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.',
-                ]}
-                index={3}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="Sur la page des résultats de recherche&nbsp;:"
-                nestedListTexts={[
-                  'La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large.',
-                ]}
-                index={4}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue."
-                index={5}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="La modale d’information sur la géolocalisation n’est pas restituée comme telle."
-                index={6}
-                total={8}
-              />
-              <BulletListItem
-                groupLabel="Non conformité"
-                text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page."
-                index={7}
-                total={8}
-              />
+              {nonAccessibleContent.map((item, index) => (
+                <BulletListItem
+                  key={item}
+                  text={item}
+                  index={index}
+                  total={nonAccessibleContent.length}
+                  groupLabel="Non conformité"
+                />
+              ))}
             </VerticalUl>
-          </StyledView>
-          <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
-          <StyledView>
-            <VerticalUl>
-              <BulletListItem
-                groupLabel="Dérogations"
-                text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo."
-                index={0}
-                total={3}
-              />
-              <BulletListItem
-                groupLabel="Dérogations"
-                text="Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte."
-                index={1}
-                total={3}
-              />
-              <BulletListItem
-                groupLabel="Dérogations"
-                text="La carte des lieux culturels, utilisée dans la recherche."
-                index={2}
-                total={3}
-              />
-            </VerticalUl>
-          </StyledView>
-          <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
-          <StyledView>
-            <VerticalUl>
-              <BulletListItem groupLabel="" index={0} total={1} text="Aucun" />
-            </VerticalUl>
-            <StyledSeparator />
+
+            <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
+
+            <Typo.Body>Pas de dérogation identifiée</Typo.Body>
+
+            <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
+
+            <Typo.Body>Pas d’exemption identifiée</Typo.Body>
+
+            <Separator.Horizontal />
+
             <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
-          </StyledView>
-          <ViewGap gap={6}>
-            <Typo.BodyItalic>
-              Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13
-              février 2023.
-            </Typo.BodyItalic>
+
+            <Typo.BodyItalic>Cette déclaration a été établie le {auditDate}.</Typo.BodyItalic>
+
             <SubtitleText>
               Technologies utilisées pour la réalisation du site pass Culture
             </SubtitleText>
-          </ViewGap>
-          <StyledView>
+
             <VerticalUl>
               <BulletListItem
                 groupLabel="Technologies utilisées pour le site"
@@ -232,162 +216,209 @@ export function AccessibilityDeclarationWeb() {
                 total={3}
               />
             </VerticalUl>
-          </StyledView>
-          <SubtitleText>
-            Environnement de test
-            {DOUBLE_LINE_BREAK}
+
+            <SubtitleText>
+              Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier
+              l’accessibilité
+            </SubtitleText>
+
             <Typo.Body>
-              Les vérifications de restitution de contenus ont été réalisées sur la base de la
-              combinaison fournie par la base de référence du RGAA 4.1, avec les versions
-              suivantes&nbsp;:
+              Les tests des pages web ont été effectués avec les combinaisons de navigateurs web et
+              lecteurs d’écran suivants&nbsp;:
             </Typo.Body>
-          </SubtitleText>
-          <StyledView>
+
             <VerticalUl>
               <BulletListItem
                 groupLabel="Technologies pour vérifier l’accesibilité"
-                text="Firefox et NVDA"
+                text="Firefox 152 et NVDA 2025"
                 index={0}
-                total={3}
+                total={5}
               />
               <BulletListItem
                 groupLabel="Technologies pour vérifier l’accesibilité"
-                text="Chrome et NVDA"
+                text="Firefox 152 et JAWS 2025"
                 index={1}
-                total={3}
+                total={5}
               />
               <BulletListItem
                 groupLabel="Technologies pour vérifier l’accesibilité"
-                text="Safari et VoiceOver"
+                text="Safari 26.5 et VoiceOver (macOS 26.5)"
                 index={2}
-                total={3}
-              />
-            </VerticalUl>
-          </StyledView>
-          <SubtitleText>Les outils utilisés lors de l’évaluation</SubtitleText>
-          <StyledView>
-            <VerticalUl>
-              <BulletListItem
-                groupLabel="Les outils utilisés"
-                text="Extension HeadingsMap"
-                index={0}
-                total={6}
+                total={5}
               />
               <BulletListItem
-                groupLabel="Les outils utilisés"
-                text="Extension Web Developer"
-                index={1}
-                total={6}
-              />
-              <BulletListItem
-                groupLabel="Les outils utilisés"
-                text="Extension Stylus"
-                index={2}
-                total={6}
-              />
-              <BulletListItem
-                groupLabel="Les outils utilisés"
-                text="Validateur HTML W3C"
+                groupLabel="Technologies pour vérifier l’accesibilité"
+                text="Safari 26.5 et VoiceOver (iOS 26.5)"
                 index={3}
-                total={6}
+                total={5}
               />
               <BulletListItem
-                groupLabel="Les outils utilisés"
-                text="Tanaguru Contrast-Finder"
+                groupLabel="Technologies pour vérifier l’accesibilité"
+                text="Chrome 146 et TalkBack (Android 16)"
                 index={4}
-                total={6}
+                total={5}
+              />
+            </VerticalUl>
+
+            <Typo.Body>
+              La vérification de l’accessibilité est le résultat de tests manuels, assistés par des
+              outils (feuilles CSS dédiés, extensions HeadingsMaps et WebDeveloper Toolbar, Color
+              Contrast Analyser).
+            </Typo.Body>
+
+            <SubtitleText>
+              Pages du site ayant fait l’objet de la vérification de conformité
+            </SubtitleText>
+
+            <VerticalUl>
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Création de compte (6 écrans)"
+                index={0}
+                total={13}
               />
               <BulletListItem
-                groupLabel="Les outils utilisés"
-                text="Outils de développement (navigateur)"
-                index={5}
-                total={6}
+                groupLabel="Pages auditées"
+                text="Authentification"
+                index={1}
+                total={13}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Accessibilité"
+                index={2}
+                total={13}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Plan du site"
+                index={3}
+                total={13}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Profil (connecté et déconnecté)"
+                index={4}
+                total={13}
+              />
+              <BulletListItem groupLabel="Pages auditées" text="Apparence" index={5} total={13} />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Mentions légales"
+                index={6}
+                total={13}
+              />
+              <BulletListItem groupLabel="Pages auditées" text="Recherche" index={7} total={13} />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Recherche - catégorie cinéma"
+                index={8}
+                total={13}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Réservation d’une offre (3 écrans)"
+                index={9}
+                total={13}
+              />
+              <BulletListItem groupLabel="Pages auditées" text="Accueil" index={10} total={13} />
+              <BulletListItem groupLabel="Pages auditées" text="Lieu" index={11} total={13} />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Déblocage du crédit - Profil"
+                index={12}
+                total={13}
               />
             </VerticalUl>
-          </StyledView>
-          <SubtitleText>
-            Pages du site ayant fait l’objet de la vérification de conformité
-          </SubtitleText>
-          <StyledView>
-            <VerticalUl>
-              {auditedPages.map(({ wording, navigateTo }, index) => (
-                <BulletListItem
-                  key={wording}
-                  groupLabel="Pages auditées"
-                  index={index}
-                  total={auditedPages.length}
-                  accessibilityRole={AccessibilityRole.LINK}
-                  accessibilityLabel={wording}
-                  childrenContainer="view">
-                  <InternalTouchableLink
-                    as={Link}
-                    label={wording}
-                    navigateTo={navigateTo}
-                    size="small"
-                    color="neutral"
-                  />
-                </BulletListItem>
-              ))}
-            </VerticalUl>
-          </StyledView>
-          <StyledSeparator />
-          <TitleText>Retour d’information et contact</TitleText>
-          <Typo.Body>
-            Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le
-            responsable de l’application pour être orienté vers une alternative accessible ou
-            obtenir le contenu sous une
-          </Typo.Body>
-          <Typo.Body>
-            autre forme.&nbsp;
-            <ExternalTouchableLink
-              as={Link}
-              isInsideText
-              wording="Contacter le support"
-              externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
-              accessibilityRole={AccessibilityRole.LINK}
-              onBeforeNavigate={() =>
-                analytics.logHasClickedContactForm('AccessibilityDeclaration')
-              }
-            />
-          </Typo.Body>
 
-          <StyledSeparator />
+            <Separator.Horizontal />
 
-          <ViewGap gap={6}>
-            <TitleText>Voie de recours</TitleText>
+            <TitleText>Retour d’information et contact</TitleText>
+
             <Typo.Body>
-              Cette procédure est à utiliser dans le cas suivant&nbsp;:
-              {DOUBLE_LINE_BREAK}
-              Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous
-              empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas
-              obtenu de réponse satisfaisante.
+              Il est important de rappeler qu’en vertu de l’article 11 de la loi de février
+              2005&nbsp;:
             </Typo.Body>
-            <ViewGap gap={3}>
-              <Typo.Body>
-                Écrire un message au&nbsp;
+
+            <Typo.BodyItalic>
+              «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
+              handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son
+              mode de vie.&nbsp;»
+            </Typo.BodyItalic>
+
+            <Typo.Body>
+              pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un
+              délai raisonnable, aux informations et fonctionnalités recherchées par la personne
+              handicapée, que le contenu fasse l’objet d’une dérogation ou non.
+            </Typo.Body>
+
+            <Typo.Body>
+              pass Culture invite les personnes qui rencontreraient des difficultés à{SPACE}
+              <ExternalTouchableLink
+                as={Link}
+                isInsideText
+                isExternal
+                wording="contacter le support"
+                externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+                accessibilityRole={AccessibilityRole.LINK}
+                onBeforeNavigate={() =>
+                  analytics.logHasClickedContactForm('AccessibilityDeclaration')
+                }
+              />
+              {SPACE}
+              afin qu’une assistance puisse être apportée (alternative accessible, information et
+              contenu donnés sous une autre forme).
+            </Typo.Body>
+
+            <Separator.Horizontal />
+
+            <TitleText>Voie de recours</TitleText>
+
+            <Typo.Body>
+              Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou
+              une fonctionnalité du site, que vous nous le signalez et que vous ne parvenez pas à
+              obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances
+              ou une demande de saisine au Défenseur des droits.
+            </Typo.Body>
+
+            <Typo.Body>Plusieurs moyens sont à votre disposition&nbsp;:</Typo.Body>
+
+            <VerticalUl>
+              <BulletListItem
+                groupLabel="Moyens de recours"
+                text="Écrire un message au "
+                index={0}
+                total={3}>
                 <ExternalTouchableLink
                   as={Link}
                   isInsideText
+                  isExternal
                   wording="Défenseur des droits"
                   externalNav={rightsDefenderUrl}
                   accessibilityRole={AccessibilityRole.LINK}
                 />
-              </Typo.Body>
-              <Typo.Body>
-                Contacter le délégué du&nbsp;
+              </BulletListItem>
+              <BulletListItem
+                groupLabel="Moyens de recours"
+                text="Contacter le délégué du "
+                index={1}
+                total={3}>
                 <ExternalTouchableLink
                   as={Link}
+                  isExternal
                   isInsideText
                   wording="Défenseur des droits dans votre région"
                   externalNav={rightsDelegateUrl}
                   accessibilityRole={AccessibilityRole.LINK}
                 />
-              </Typo.Body>
-              <Typo.Body>
-                Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
-                droits Libre réponse 71120 75342 Paris CEDEX 07
-              </Typo.Body>
-            </ViewGap>
+              </BulletListItem>
+              <BulletListItem
+                groupLabel="Moyens de recours"
+                text="Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07"
+                index={2}
+                total={3}
+              />
+            </VerticalUl>
           </ViewGap>
           <Spacer.BottomScreen />
         </React.Fragment>
@@ -399,11 +430,3 @@ export function AccessibilityDeclarationWeb() {
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
-
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xl,
-}))
-
-const StyledView = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xl,
-}))
