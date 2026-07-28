@@ -3,7 +3,7 @@ import React from 'react'
 
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Bag } from 'ui/svg/icons/venueAndCategories/Bag'
+import { Bookstore } from 'ui/svg/icons/venueAndCategories/Bookstore'
 
 import { ActivityLocationIcon } from './ActivityLocationIcon'
 
@@ -17,7 +17,7 @@ const variantConfig: Variants<typeof ActivityLocationIcon> = [
   {
     label: 'ActivityLocationIcon with color',
     props: {
-      ActivityIcon: Bag,
+      ActivityIcon: Bookstore,
       iconColor: theme.designSystem.color.icon.subtle,
       backgroundColor: theme.designSystem.color.background.subtle,
     },
@@ -25,7 +25,7 @@ const variantConfig: Variants<typeof ActivityLocationIcon> = [
   {
     label: 'ActivityLocationIcon without color',
     props: {
-      ActivityIcon: Bag,
+      ActivityIcon: Bookstore,
     },
   },
 ]

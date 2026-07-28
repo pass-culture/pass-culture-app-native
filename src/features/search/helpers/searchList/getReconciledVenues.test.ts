@@ -85,7 +85,7 @@ const expectedAlgoliaVenues = [
     name: 'culture scientifique 2',
     objectID: '7927',
     postalCode: '75000',
-    activity: 'SCIENCE_CENTRE',
+    activity: 'COMMUNITY_CENTRE',
   },
   {
     _geoloc: {
@@ -98,7 +98,7 @@ const expectedAlgoliaVenues = [
     name: 'culture scientifique 1',
     objectID: '7926',
     postalCode: '75000',
-    activity: 'SCIENCE_CENTRE',
+    activity: 'COMMUNITY_CENTRE',
   },
   {
     _geoloc: {

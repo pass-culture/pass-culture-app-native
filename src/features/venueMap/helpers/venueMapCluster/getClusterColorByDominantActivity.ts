@@ -7,7 +7,6 @@ const getClusterColorFromActivity = (activity?: Activity): ClusterImageColorName
     case Activity.ART_GALLERY:
     case Activity.CINEMA:
     case Activity.FESTIVAL:
-    case Activity.GAMES_CENTRE:
     case Activity.LIBRARY:
     case Activity.MUSEUM:
     case Activity.PERFORMANCE_HALL:
