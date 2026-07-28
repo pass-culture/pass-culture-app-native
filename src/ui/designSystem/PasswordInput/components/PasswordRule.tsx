@@ -30,8 +30,8 @@ export const PasswordRule: FunctionComponent<Props> = ({ title, status }) => {
 
   const config: Record<PasswordRuleStatus, PasswordRuleConfig> = {
     [PasswordRuleStatus.Default]: {
-      textColor: 'default',
-      iconColor: designSystem.color.icon.default,
+      textColor: 'disabled',
+      iconColor: designSystem.color.icon.disabled,
       Icon: undefined,
     },
     [PasswordRuleStatus.Valid]: {

@@ -2,7 +2,7 @@ import { ValidationError } from 'yup'
 
 import { newPasswordSchema } from './newPasswordSchema'
 
-describe('reinitializePasswordSchema', () => {
+describe('newPasswordSchema', () => {
   it('should validate a form with all required values', async () => {
     const values = {
       newPassword: 'user@AZERTY123',
@@ -19,7 +19,7 @@ describe('reinitializePasswordSchema', () => {
       confirmedPassword: 'userAZERTY123',
     })
 
-    await expect(result).rejects.toEqual(new ValidationError('1 Caractère spécial (!@#$%^&*...)'))
+    await expect(result).rejects.toEqual(new ValidationError('1 caractère spécial (!@#$%^&*...)'))
   })
 
   it('should invalidate due to non identical newPassword and confirmedPassword', async () => {

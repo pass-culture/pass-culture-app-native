@@ -11,18 +11,9 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PasswordRule } from 'ui/designSystem/PasswordInput/components/PasswordRule'
 import {
-  NUMBER_OF_CHARACTERS,
-  NUMBER_OF_CAPITALS,
-  NUMBER_OF_LOWERCASE,
-  NUMBER_OF_NUMBERS,
-  NUMBER_OF_SPECIAL_CHARACTERS,
   getPasswordRuleStatus,
-  isLongEnough,
-  containsCapital,
-  containsLowercase,
-  containsNumber,
-  containsSpecialCharacter,
   getPasswordRulesAccessibilityLabel,
+  DISPLAYED_PASSWORD_RULES,
 } from 'ui/designSystem/PasswordInput/helpers'
 
 type Props = {
@@ -31,21 +22,20 @@ type Props = {
 }
 
 export const PasswordRules: FunctionComponent<Props> = ({ password, visible }) => {
-  const getStatus = (rule: (password: string) => boolean) => getPasswordRuleStatus(password, rule)
   const hiddenAccessibleText = getPasswordRulesAccessibilityLabel(password)
+
   if (visible)
     return (
       <React.Fragment>
         <HiddenAccessibleText displayBlock>{hiddenAccessibleText}</HiddenAccessibleText>
         <RulesContainer {...hiddenFromScreenReader()} gap={1}>
-          <PasswordRule title={NUMBER_OF_CHARACTERS} status={getStatus(isLongEnough)} />
-          <PasswordRule title={NUMBER_OF_CAPITALS} status={getStatus(containsCapital)} />
-          <PasswordRule title={NUMBER_OF_LOWERCASE} status={getStatus(containsLowercase)} />
-          <PasswordRule title={NUMBER_OF_NUMBERS} status={getStatus(containsNumber)} />
-          <PasswordRule
-            title={NUMBER_OF_SPECIAL_CHARACTERS}
-            status={getStatus(containsSpecialCharacter)}
-          />
+          {DISPLAYED_PASSWORD_RULES.map((rule) => (
+            <PasswordRule
+              key={rule.key}
+              title={rule.label}
+              status={getPasswordRuleStatus(password, rule.test)}
+            />
+          ))}
         </RulesContainer>
       </React.Fragment>
     )

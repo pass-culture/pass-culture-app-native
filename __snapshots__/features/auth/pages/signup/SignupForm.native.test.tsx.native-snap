@@ -1154,10 +1154,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 }
               >
                 <Text
-                  color="default"
+                  color="disabled"
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1183,10 +1183,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 }
               >
                 <Text
-                  color="default"
+                  color="disabled"
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1212,10 +1212,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 }
               >
                 <Text
-                  color="default"
+                  color="disabled"
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1241,10 +1241,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 }
               >
                 <Text
-                  color="default"
+                  color="disabled"
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1270,10 +1270,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 }
               >
                 <Text
-                  color="default"
+                  color="disabled"
                   style={
                     {
-                      "color": "#161617",
+                      "color": "#696a6f",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,

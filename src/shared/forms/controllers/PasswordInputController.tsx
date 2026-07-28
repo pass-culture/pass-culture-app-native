@@ -2,7 +2,10 @@ import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
-import { getPasswordRulesAccessibilityLabel } from 'ui/designSystem/PasswordInput/helpers'
+import {
+  getPasswordRulesAccessibilityLabel,
+  isPasswordRuleDisplayed,
+} from 'ui/designSystem/PasswordInput/helpers'
 import { PasswordInput } from 'ui/designSystem/PasswordInput/PasswordInput'
 
 interface Props<TFieldValues extends FieldValues, TName>
@@ -25,7 +28,10 @@ export const PasswordInputController = <
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, value }, fieldState: { error } }) => {
+      render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => {
+        const shouldHideError = displayValidation && isPasswordRuleDisplayed(error?.message)
+        const errorMessage = shouldHideError ? undefined : error?.message
+
         const securityRulesAccessibilityLabel = displayValidation
           ? getPasswordRulesAccessibilityLabel(value)
           : undefined
@@ -38,9 +44,11 @@ export const PasswordInputController = <
         return (
           <PasswordInput
             {...otherPasswordInputProps}
+            ref={ref}
             value={value}
             onChangeText={onChange}
-            errorMessage={displayValidation ? undefined : error?.message}
+            onBlur={onBlur}
+            errorMessage={errorMessage}
             displayValidation={displayValidation}
             accessibilityHint={computedAccessibilityHint}
           />

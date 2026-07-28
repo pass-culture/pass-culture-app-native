@@ -5,12 +5,12 @@
 
 import { PasswordRuleStatus } from 'ui/designSystem/PasswordInput/enums'
 
-export const PASSWORD_MIN_LENGTH = 12
-export const PASSWORD_MAX_LENGTH = 72
-export const CAPITAL = /[A-Z]+/
-export const LOWERCASE = /[a-z]+/
-export const NUMBER = /[0-9]+/
-export const SPECIAL = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/
+const PASSWORD_MIN_LENGTH = 12
+const PASSWORD_MAX_LENGTH = 72
+const CAPITAL = /[A-Z]+/
+const LOWERCASE = /[a-z]+/
+const NUMBER = /[0-9]+/
+const SPECIAL = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/
 
 export const isLongEnough = (password: string): boolean => password.length >= PASSWORD_MIN_LENGTH
 export const containsCapital = (password: string): boolean => CAPITAL.test(password)
@@ -25,25 +25,69 @@ export const isPasswordCorrect = (password: string) =>
   containsNumber(password) &&
   containsSpecialCharacter(password)
 
-export const NUMBER_OF_CHARACTERS = '12 caractères'
-export const NUMBER_OF_CAPITALS = '1 majuscule'
-export const NUMBER_OF_LOWERCASE = '1 minuscule'
-export const NUMBER_OF_NUMBERS = '1 chiffre'
-export const NUMBER_OF_SPECIAL_CHARACTERS = '1 caractère spécial (!@#$%^&*...)'
+const NUMBER_OF_CHARACTERS = `${PASSWORD_MIN_LENGTH} caractères`
+const NUMBER_OF_CAPITALS = '1 majuscule'
+const NUMBER_OF_LOWERCASE = '1 minuscule'
+const NUMBER_OF_NUMBERS = '1 chiffre'
+const NUMBER_OF_SPECIAL_CHARACTERS = '1 caractère spécial (!@#$%^&*...)'
 const DEFAULT_PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL = `Le mot de passe doit contenir au moins ${NUMBER_OF_CHARACTERS}, ${NUMBER_OF_CAPITALS}, ${NUMBER_OF_LOWERCASE}, ${NUMBER_OF_NUMBERS} et ${NUMBER_OF_SPECIAL_CHARACTERS}`
+
+type PasswordRule = {
+  key: string
+  label: string
+  test: (password: string) => boolean
+  displayInRules?: boolean
+}
+
+export const PASSWORD_RULES: PasswordRule[] = [
+  {
+    key: 'maxLength',
+    label: `Le mot de passe doit contenir ${PASSWORD_MAX_LENGTH} caractères maximum`,
+    test: (password) => password.length <= PASSWORD_MAX_LENGTH,
+    displayInRules: false,
+  },
+  {
+    key: 'minLength',
+    label: NUMBER_OF_CHARACTERS,
+    test: (password) => password.length >= PASSWORD_MIN_LENGTH,
+    displayInRules: true,
+  },
+  {
+    key: 'capital',
+    label: NUMBER_OF_CAPITALS,
+    test: (password) => CAPITAL.test(password),
+    displayInRules: true,
+  },
+  {
+    key: 'lowercase',
+    label: NUMBER_OF_LOWERCASE,
+    test: (password) => LOWERCASE.test(password),
+    displayInRules: true,
+  },
+  {
+    key: 'number',
+    label: NUMBER_OF_NUMBERS,
+    test: (password) => NUMBER.test(password),
+    displayInRules: true,
+  },
+  {
+    key: 'special',
+    label: NUMBER_OF_SPECIAL_CHARACTERS,
+    test: (password) => SPECIAL.test(password),
+    displayInRules: true,
+  },
+]
 
 const getRuleLabel = (title: string, isValidated: boolean) =>
   `${title} ${isValidated ? '- critère validé' : '- au minimum'}`
 
+export const DISPLAYED_PASSWORD_RULES = PASSWORD_RULES.filter((rule) => rule.displayInRules)
+
 export const getPasswordRulesAccessibilityLabel = (password: string): string => {
   if (password.length === 0) return DEFAULT_PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL
-  return [
-    getRuleLabel(NUMBER_OF_CHARACTERS, isLongEnough(password)),
-    getRuleLabel(NUMBER_OF_CAPITALS, containsCapital(password)),
-    getRuleLabel(NUMBER_OF_LOWERCASE, containsLowercase(password)),
-    getRuleLabel(NUMBER_OF_NUMBERS, containsNumber(password)),
-    getRuleLabel(NUMBER_OF_SPECIAL_CHARACTERS, containsSpecialCharacter(password)),
-  ].join(', ')
+  return DISPLAYED_PASSWORD_RULES.map((rule) => getRuleLabel(rule.label, rule.test(password))).join(
+    ', '
+  )
 }
 
 export const getPasswordRuleStatus = (
@@ -53,3 +97,6 @@ export const getPasswordRuleStatus = (
   if (password.length === 0) return PasswordRuleStatus.Default
   return isRuleValid(password) ? PasswordRuleStatus.Valid : PasswordRuleStatus.Invalid
 }
+
+export const isPasswordRuleDisplayed = (errorMessage?: string) =>
+  PASSWORD_RULES.some((rule) => rule.displayInRules && rule.label === errorMessage)
