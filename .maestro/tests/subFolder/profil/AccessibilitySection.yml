@@ -40,11 +40,5 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Parcours recommandés - web'
-- assertVisible: 'Parcours recommandés web'
-
-- runFlow:
-    file: ../../subFolder/cloud/commands/TapOnBack.yml
-
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
