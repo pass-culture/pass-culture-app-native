@@ -6,7 +6,12 @@ const genericInfoPageIllustrationNames = [
   'emptyDigitalWindowLarge',
   'emptyWalletLarge',
   'hourglass',
+  'mailBoxSendingLarge',
+  'questioningKnightLarge',
+  'sculptureMagnifyingGlassPaperLarge',
+  'stressedKnightLarge',
   'trashMosaic',
+  'validStampMosaïcLarge',
 ] as const
 
 type GenericInfoPageIllustrationName = (typeof genericInfoPageIllustrationNames)[number]
@@ -17,5 +22,12 @@ export const genericInfoPageIllustrationUrls = {
   emptyDigitalWindowLarge: buildCategoryIllustrationUrl('emptyDigitalWindowLarge.png'),
   emptyWalletLarge: buildCategoryIllustrationUrl('emptyWalletLarge.png'),
   hourglass: buildCategoryIllustrationUrl('hourglass.png'),
+  mailBoxSendingLarge: buildCategoryIllustrationUrl('mailBoxSendingLarge.png'),
+  questioningKnightLarge: buildCategoryIllustrationUrl('questioningKnightLarge.png'),
+  sculptureMagnifyingGlassPaperLarge: buildCategoryIllustrationUrl(
+    'sculptureMagnifyingGlassPaperLarge.png'
+  ),
+  stressedKnightLarge: buildCategoryIllustrationUrl('stressedKnightLarge.png'),
   trashMosaic: buildCategoryIllustrationUrl('trashMosaic.png'),
+  validStampMosaïcLarge: buildCategoryIllustrationUrl('validStampMosaïcLarge.png'),
 } as const satisfies Record<GenericInfoPageIllustrationName, string>

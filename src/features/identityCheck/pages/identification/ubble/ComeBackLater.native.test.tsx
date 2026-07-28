@@ -4,6 +4,7 @@ import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -27,6 +28,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ComeBackLater', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<ComeBackLater />)
 

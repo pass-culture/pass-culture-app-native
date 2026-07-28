@@ -4,6 +4,7 @@ import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubb
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { env } from 'libs/environment/env'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -26,6 +27,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ExpiredOrLostID', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<ExpiredOrLostID />)
 

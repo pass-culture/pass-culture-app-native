@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileContactSupport } from './DeleteProfileContactSupport'
@@ -14,6 +15,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('DeleteProfileContactSupport', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<DeleteProfileContactSupport />)
 

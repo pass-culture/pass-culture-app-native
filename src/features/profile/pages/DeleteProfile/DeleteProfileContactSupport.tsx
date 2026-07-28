@@ -6,6 +6,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent as InitialEmailSent } from 'ui/svg/icons/EmailSent'
@@ -20,6 +21,10 @@ export const DeleteProfileContactSupport: FC = () => {
     <GenericInfoPage
       withGoBack
       illustration={EmailSent}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.mailBoxSendingLarge,
+        backgroundColor: 'positive01',
+      }}
       title="Contacte le support"
       buttonPrimary={{
         wording: 'Contacter le support',

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
@@ -11,6 +12,10 @@ export function IdentityCheckPending() {
   return (
     <GenericInfoPage
       illustration={IdCardError}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.sculptureMagnifyingGlassPaperLarge,
+        backgroundColor: 'information02',
+      }}
       title="Oups&nbsp;!"
       buttonPrimary={{
         wording: 'Retourner à l’accueil',
