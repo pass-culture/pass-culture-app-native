@@ -44,7 +44,6 @@ jest.mock('shared/accessibility/helpers/zoomHelpers', () => ({
     title: titleDefaultValue,
     subtitle: subtitleDefaultValue,
   }),
-  useWebZoomToDisplay: ({ default: at100PercentZoom }) => at100PercentZoom,
   useZoomInPercent: () => 100,
 }))
 
