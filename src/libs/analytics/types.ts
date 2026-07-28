@@ -14,6 +14,10 @@ export type AnalyticsProvider = {
 
 export type LocationType = 'UserGeolocation' | 'UserSpecificLocation' | 'undefined'
 
+export type ClubAdviceType = 'book_club' | 'cine_club' | 'scene_club'
+
+export type AdviceType = ClubAdviceType | 'pro'
+
 export type OfferAnalyticsParams = {
   from: Referrals
   query?: string
@@ -45,6 +49,6 @@ export type ConsultOfferLogParams = {
   index?: number
   artistName?: string
   isHeadline?: boolean
-  adviceType?: 'book_club' | 'cine_club' | 'pro'
+  adviceType?: AdviceType
   originDetails?: string
 }

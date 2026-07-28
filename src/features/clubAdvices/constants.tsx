@@ -64,6 +64,7 @@ export const SCENE_CLUB_SUBCATEGORIES = [
 
 export const PRO_ADVICE_VARIANT_CONFIG = {
   subcategories: [],
+  adviceType: 'pro',
   labelReaction: 'avis des pros',
   titleSection: 'Les avis des pros',
   subtitleSection: 'Les professionnels qui proposent cette offre te partagent leurs avis\u00a0!',
@@ -77,6 +78,7 @@ export const PRO_ADVICE_VARIANT_CONFIG = {
 
 const BOOK_CLUB_VARIANT_CONFIG = {
   subcategories: BOOK_CLUB_SUBCATEGORIES,
+  adviceType: 'book_club',
   labelReaction: 'book club',
   titleSection: 'Les avis du book club',
   subtitleSection: 'Notre communauté de lecteurs te partage leur avis sur ce livre\u00a0!',
@@ -92,6 +94,7 @@ const BOOK_CLUB_VARIANT_CONFIG = {
 
 const CINE_CLUB_VARIANT_CONFIG = {
   subcategories: CINE_CLUB_SUBCATEGORIES,
+  adviceType: 'cine_club',
   labelReaction: 'ciné club',
   titleSection: 'Les avis du ciné club',
   subtitleSection: 'Notre communauté de cinéphiles te partage leur avis sur ce film\u00a0!',
@@ -107,6 +110,7 @@ const CINE_CLUB_VARIANT_CONFIG = {
 
 const SCENE_CLUB_VARIANT_CONFIG = {
   subcategories: SCENE_CLUB_SUBCATEGORIES,
+  adviceType: 'scene_club',
   labelReaction: 'scène club',
   titleSection: 'Les avis de la scène club',
   subtitleSection: 'La communauté de jeunes passionnés te partage leur avis\u00a0!',

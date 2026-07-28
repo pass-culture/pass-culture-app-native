@@ -14,6 +14,7 @@ import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
+import { ClubAdviceType } from 'libs/analytics/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
 
@@ -48,6 +49,7 @@ export interface OfferTileProps {
   originDetails?: string
   navigationMethod?: NavigationMethod
   interactionTag?: ReactNode
+  clubAdviceType?: ClubAdviceType
   containerWidth?: number
   withCenterAlign?: boolean
 }

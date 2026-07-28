@@ -78,6 +78,7 @@ export const ClubAdvicesBase: FunctionComponent<Props> = ({
       offerId: offerId.toString(),
       from: 'chronicles',
       categoryName: offerCategoryId,
+      adviceType: variantInfo.adviceType,
     })
     showModal()
   }

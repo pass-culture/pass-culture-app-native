@@ -3,7 +3,10 @@ import { DefaultTheme } from 'styled-components/native'
 
 import { OfferResponse, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
-import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import {
+  getDisplayedClubAdviceType,
+  renderInteractionTag,
+} from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -61,7 +64,7 @@ export const OfferPlaylistItem = ({
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     const categoryLabel = item.offer.bookFormat || labelMapping[item.offer.subcategoryId] || ''
     const categoryId = categoryMapping[item.offer.subcategoryId]
-    const tag = renderInteractionTag({
+    const interactionTagParams = {
       theme,
       likesCount: item.offer.likes,
       clubAdvicesCount: item.offer.chroniclesCount,
@@ -70,7 +73,9 @@ export const OfferPlaylistItem = ({
       subcategoryId: item.offer.subcategoryId,
       proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
       enableSceneClubTag,
-    })
+    }
+    const tag = renderInteractionTag(interactionTagParams)
+    const clubAdviceType = getDisplayedClubAdviceType(interactionTagParams)
     return (
       <OfferTile
         offerLocation={item._geoloc}
@@ -93,6 +98,7 @@ export const OfferPlaylistItem = ({
         originDetails={originDetails}
         navigationMethod={navigationMethod}
         interactionTag={tag}
+        clubAdviceType={clubAdviceType}
       />
     )
   }

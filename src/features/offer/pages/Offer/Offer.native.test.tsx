@@ -269,6 +269,7 @@ describe('<Offer />', () => {
       categoryName: 'CINEMA',
       from: 'offer',
       offerId: '116656',
+      adviceType: 'cine_club',
     })
   })
 
@@ -311,6 +312,22 @@ describe('<Offer />', () => {
       await screen.findByTestId('offerv2-container')
 
       expect(screen.queryByText('Les avis de la scène club')).not.toBeOnTheScreen()
+    })
+
+    it('should trigger ClickWhatsClub log with scène club advice type', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SCENE_CLUB])
+      renderOfferPage({ mockOffer: sceneClubOffer })
+
+      await screen.findByText('Les avis de la scène club')
+
+      await user.press(screen.getByText('Qui écrit les avis de la scène club ?'))
+
+      expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
+        categoryName: 'SPECTACLE',
+        from: 'offer',
+        offerId: '116656',
+        adviceType: 'scene_club',
+      })
     })
   })
 

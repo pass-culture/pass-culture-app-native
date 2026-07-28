@@ -5,11 +5,12 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { offerClubAdvicesFixture } from 'features/clubAdvices/fixtures/clubAdvices.fixture'
 import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 useRoute.mockReturnValue({
   params: {
@@ -86,6 +87,28 @@ describe('ClubAdvices', () => {
         expect(navigate).toHaveBeenCalledWith('Offer', {
           id: offerResponseSnap.id,
           from: 'chronicles',
+        })
+      })
+
+      it('should trigger ClickAllClubRecos log with advice type when pressing "Voir tous les avis des clubs" button', async () => {
+        render(reactQueryProviderHOC(<ClubAdvices />), {
+          theme: {
+            isDesktopViewport: true,
+          },
+        })
+
+        await screen.findByText('Tous les avis du ciné club')
+
+        fireEvent.click(screen.getByText('Qui écrit les avis du ciné club ?'))
+        fireEvent.click(await screen.findByText('Voir tous les avis des clubs'))
+
+        await waitFor(() => {
+          expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {
+            categoryName: 'CINEMA',
+            from: 'chronicles',
+            offerId: '116656',
+            adviceType: 'cine_club',
+          })
         })
       })
     })

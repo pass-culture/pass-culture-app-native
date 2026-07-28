@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 import { FlatListProps, StyleProp, ViewStyle } from 'react-native'
 
+import { AdviceType } from 'libs/analytics/types'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TagProps } from 'ui/designSystem/Tag/types'
 
@@ -18,6 +19,7 @@ export type AdviceCardData = {
 }
 
 export type AdviceVariantInfo = {
+  adviceType: AdviceType
   labelReaction: string
   titleSection: string
   subtitleSection: string

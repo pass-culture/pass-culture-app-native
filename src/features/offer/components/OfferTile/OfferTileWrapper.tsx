@@ -2,7 +2,10 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import {
+  getDisplayedClubAdviceType,
+  renderInteractionTag,
+} from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { OfferTileProps } from 'features/offer/types'
@@ -54,7 +57,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     })
   )
 
-  const tag = renderInteractionTag({
+  const interactionTagParams = {
     theme,
     likesCount: likes,
     clubAdvicesCount: chroniclesCount,
@@ -63,7 +66,9 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     subcategoryId: item.offer.subcategoryId,
     proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
     enableSceneClubTag,
-  })
+  }
+  const tag = renderInteractionTag(interactionTagParams)
+  const clubAdviceType = getDisplayedClubAdviceType(interactionTagParams)
 
   return (
     <OfferTile
@@ -77,6 +82,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
       thumbUrl={thumbUrl}
       price={formattedPrice}
       interactionTag={tag}
+      clubAdviceType={clubAdviceType}
       {...props}
       venueId={props.venueId ?? item.venue.id}
       withCenterAlign={withCenterAlign}

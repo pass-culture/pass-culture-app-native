@@ -1,6 +1,7 @@
 import { AdviceVariantInfo } from 'features/advices/types'
 
 export const adviceVariantInfoFixture: AdviceVariantInfo = {
+  adviceType: 'book_club',
   labelReaction: 'book club',
   titleSection: 'La reco du book club',
   subtitleSection: 'Notre communauté de lecteurs te partage leur avis sur ce livre\u00a0!',
