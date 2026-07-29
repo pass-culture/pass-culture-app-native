@@ -34,7 +34,6 @@ const Container = styled.View<{
   backgroundColor: theme.designSystem.color.illustration[illustrationBackgroundColor],
   borderTopLeftRadius: getSpacing(14),
   borderBottomRightRadius: getSpacing(14),
-  marginTop: theme.designSystem.size.spacing.l,
 }))
 
 const RemoteIllustration = styled(FastImage)({

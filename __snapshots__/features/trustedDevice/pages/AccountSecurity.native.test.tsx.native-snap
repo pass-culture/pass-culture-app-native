@@ -106,16 +106,24 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         }
       />
       <View
+        flexValue={1}
         style={
           {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "space-between",
           }
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,
@@ -774,16 +782,24 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         }
       />
       <View
+        flexValue={1}
         style={
           {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "space-between",
           }
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,
@@ -1340,16 +1356,24 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         }
       />
       <View
+        flexValue={1}
         style={
           {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "space-between",
           }
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,
