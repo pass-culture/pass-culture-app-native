@@ -37,8 +37,8 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
         <TitleMainWrapper>
           <StyledTitleMainView>
             <StyledTitleMainText
-              htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
+              htmlFor={searchInputID}
               small={shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>

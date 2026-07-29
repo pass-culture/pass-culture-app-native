@@ -10,6 +10,7 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type ActionCardLayout = 'split' | 'overlay'
 
@@ -72,12 +73,12 @@ export const ActionCardBase: FunctionComponent<Props> = ({
         </DateText>
       ) : null}
       {title ? (
-        <Title testID="firstLine" numberOfLines={3} {...getHeadingAttrs(1)}>
+        <Title testID="firstLine" numberOfLines={3} {...getHeadingAttrs(2)}>
           {title}
         </Title>
       ) : null}
       {subtitle ? (
-        <Subtitle testID="secondLine" numberOfLines={3} {...getHeadingAttrs(2)}>
+        <Subtitle testID="secondLine" numberOfLines={3} {...getNoHeadingAttrs()}>
           {subtitle}
         </Subtitle>
       ) : null}

@@ -13,16 +13,20 @@ const isHeadingLevel = (level: unknown): level is HeadingLevel => {
 
 const DEFAULT_COLOR_TEXT = 'default'
 
+type HeadingProps = {
+  accessibilityLevel?: HeadingLevel
+  noHeading?: boolean
+}
+
 const createStyledText = (
   typographyStyle: keyof typeof theme.designSystem.typography,
   defaultLevel?: HeadingLevel
 ) => {
-  return styled(RNText).attrs<{ accessibilityLevel?: HeadingLevel }>(({ accessibilityLevel }) => {
-    if (isHeadingLevel(accessibilityLevel)) {
-      return getHeadingAttrs(accessibilityLevel)
-    } else if (isHeadingLevel(defaultLevel)) {
-      return getHeadingAttrs(defaultLevel)
-    }
+  return styled(RNText).attrs<HeadingProps>(({ accessibilityLevel, noHeading }) => {
+    if (noHeading) return getHeadingAttrs(undefined)
+    if (isHeadingLevel(accessibilityLevel)) return getHeadingAttrs(accessibilityLevel)
+    if (isHeadingLevel(defaultLevel)) return getHeadingAttrs(defaultLevel)
+
     return {}
   })<{ color?: TextColorKey }>(({ theme, color }) => ({
     ...theme.designSystem.typography[typographyStyle],
