@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
+import { isValidUbbleUrl } from 'features/identityCheck/pages/helpers/isValidUrl'
 import { parseUrlParams } from 'features/identityCheck/pages/helpers/parseUrlParams'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -18,7 +19,13 @@ const ORIGIN_WHITELIST = ['*']
 export const UbbleWebview: React.FC = () => {
   const { params } = useRoute<UseRouteType<'UbbleWebview'>>()
   const identificationUrl = params?.identificationUrl
+  const isValidUrl = isValidUbbleUrl(identificationUrl)
   const { navigate } = useNavigation<UseNavigationType>()
+
+  if (!isValidUrl) {
+    navigate('IncorrectLink')
+    return null
+  }
 
   function onNavigationStateChange({ url }: { url: string }) {
     const parsedUrlParams = parseUrlParams(url)
