@@ -1,11 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { QueryClient } from '@tanstack/react-query'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
+import * as API from 'api/api'
 import { analytics } from 'libs/analytics/provider'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { QueryKeys } from 'libs/queryKeys'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
+import { queryClient } from 'libs/react-query/queryClient'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
@@ -13,12 +15,7 @@ import { useLogoutRoutine } from './useLogoutRoutine'
 
 jest.mock('libs/keychain/keychain')
 
-let queryClient: QueryClient
-const removeQueriesMock = jest.fn()
-const setupQueryClient = (client: QueryClient) => {
-  queryClient = client
-  jest.spyOn(queryClient, 'removeQueries').mockImplementation(removeQueriesMock)
-}
+const apiSignOutSpy = jest.spyOn(API.api, 'postNativeV1Signout')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -105,12 +102,46 @@ describe('useLogoutRoutine', () => {
   })
 
   it('should remove private queries', async () => {
+    // Set query options
+    const privateQueryOptions = { meta: { private: true } }
+    queryClient.setQueryDefaults([QueryKeys.ACCOUNT_SUSPENSION_DATE], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.ACCOUNT_SUSPENSION_STATUS], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.USER_PROFILE], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.CULTURAL_SURVEY_QUESTIONS], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.FAVORITES], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.HOME_BANNER, true], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.RECOMMENDATION_OFFER_IDS, {}], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.ACTIVITY_TYPES], privateQueryOptions)
+    queryClient.setQueryDefaults(
+      [QueryKeys.STEPPER_INFO, 'phoneNumberInProfileStepper'],
+      privateQueryOptions
+    )
+    queryClient.setQueryDefaults([QueryKeys.REMINDERS], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.AVAILABLE_REACTION], privateQueryOptions)
+    queryClient.setQueryDefaults([QueryKeys.BOOKINGSV2], privateQueryOptions)
+
+    // Set data
+    queryClient.setQueryData([QueryKeys.ACCOUNT_SUSPENSION_DATE], 'toto')
+    queryClient.setQueryData([QueryKeys.ACCOUNT_SUSPENSION_STATUS], 'toto')
+    queryClient.setQueryData([QueryKeys.USER_PROFILE], 'toto')
+    queryClient.setQueryData([QueryKeys.CULTURAL_SURVEY_QUESTIONS], 'toto')
+    queryClient.setQueryData([QueryKeys.FAVORITES], 'toto')
+    queryClient.setQueryData([QueryKeys.HOME_BANNER, true], 'toto')
+    queryClient.setQueryData([QueryKeys.RECOMMENDATION_OFFER_IDS, {}], 'toto')
+    queryClient.setQueryData([QueryKeys.ACTIVITY_TYPES], 'toto')
+    queryClient.setQueryData([QueryKeys.STEPPER_INFO, 'phoneNumberInProfileStepper'], 'toto')
+    queryClient.setQueryData([QueryKeys.REMINDERS], 'toto')
+    queryClient.setQueryData([QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP], 'toto')
+    queryClient.setQueryData([QueryKeys.AVAILABLE_REACTION], 'toto')
+    queryClient.setQueryData([QueryKeys.BOOKINGSV2], 'toto')
+
     const { result } = renderUseLogoutRoutine()
     await result.current()
 
-    expect(removeQueriesMock).toHaveBeenCalledWith({
-      predicate: expect.any(Function),
-    })
+    const cache = queryClient.getQueriesData({ predicate: (query) => !!query.meta?.private })
+
+    expect(cache).toStrictEqual([])
   })
 
   it('should logout from Google account', async () => {
@@ -119,10 +150,17 @@ describe('useLogoutRoutine', () => {
 
     expect(googleLogout).toHaveBeenCalledTimes(1)
   })
+
+  it('should logout from backend', async () => {
+    const { result } = renderUseLogoutRoutine()
+    await result.current()
+
+    expect(apiSignOutSpy).toHaveBeenCalledTimes(1)
+  })
 })
 
 const renderUseLogoutRoutine = () => {
   return renderHook(useLogoutRoutine, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children, setupQueryClient),
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }
