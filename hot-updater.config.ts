@@ -30,5 +30,5 @@ export default defineConfig({
     projectId: process.env.HOT_UPDATER_FIREBASE_PROJECT_ID,
     credential,
   }),
-  updateStrategy: 'appVersion',
+  updateStrategy: 'fingerprint',
 })

@@ -107,6 +107,9 @@ jobs:
         with:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
 
+      - name: Create hot-updater fingerprint
+        run: yarn hotupdater:fingerprint
+
       - name: Deploy hard ios for ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8
