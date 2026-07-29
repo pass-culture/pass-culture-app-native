@@ -31,10 +31,7 @@ export const useIsSignedIn = () => {
 
 const tabNavigatorDefinition = {
   initialRouteName: 'Home',
-  screenOptions: {
-    headerShown: false,
-    freezeOnBlur: true,
-  },
+  screenOptions: { headerShown: false, freezeOnBlur: true },
   tabBar: (
     props: React.JSX.IntrinsicAttributes & {
       navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>
@@ -44,40 +41,29 @@ const tabNavigatorDefinition = {
   screens: {
     Home: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(Home)),
-      linking: {
-        path: 'accueil',
-        parse: screenParamsParser.Home,
-        alias: ['home'],
-      },
+      options: { title: 'Accueil' },
+      linking: { path: 'accueil', parse: screenParamsParser.Home, alias: ['home'] },
     },
     SearchStackNavigator: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(SearchStackScreen)),
-      linking: {
-        screens: SEARCH_STACK_LINKING_SCREENS,
-      },
+      options: { title: 'Recherche' },
+      linking: { screens: SEARCH_STACK_LINKING_SCREENS },
     },
     Bookings: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(Bookings)),
       if: useIsSignedIn,
-      options: { title: 'Mes réservations' },
-      linking: {
-        path: 'reservations',
-        alias: ['bookings'],
-      },
+      options: { title: 'Réservations' },
+      linking: { path: 'reservations', alias: ['bookings'] },
     },
     Favorites: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(Favorites)),
-      options: { title: 'Mes favoris' },
-      linking: {
-        path: 'favoris',
-      },
+      options: { title: 'Favoris' },
+      linking: { path: 'favoris' },
     },
     Profile: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(Profile)),
-      options: { title: 'Mon profil' },
-      linking: {
-        path: 'profil',
-      },
+      options: { title: 'Profil' },
+      linking: { path: 'profil' },
     },
   },
 }
