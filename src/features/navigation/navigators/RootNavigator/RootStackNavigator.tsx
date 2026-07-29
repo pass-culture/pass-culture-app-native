@@ -102,6 +102,7 @@ type RouteConfig = {
 }
 
 const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
+  title: 'Choix de la localisation',
   presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal',
   animation: 'slide_from_bottom',
 }
@@ -476,12 +477,16 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'GeolocationActivationModal',
     component: GeolocationActivationModal,
-    options: { presentation: 'transparentModal' },
+    options: {
+      title: 'Choix de la localisation',
+      presentation: 'transparentModal',
+    },
   },
   {
     name: 'FakeDoorModal',
     component: FakeDoorModal,
     options: {
+      title: 'Questionnaire',
       presentation: 'transparentModal',
       animation: 'fade',
       headerShown: false,

@@ -186,7 +186,7 @@ const subscriptionStackNavigatorDefinition = {
       screen: IdentityCheckHonor,
       if: useIsSignedIn,
       linking: { path: 'confirmation' },
-      options: { title: 'Confirmation' },
+      options: { title: 'Déclaration sur l’honneur' },
     },
     BeneficiaryRequestSent: {
       screen: BeneficiaryRequestSent,
