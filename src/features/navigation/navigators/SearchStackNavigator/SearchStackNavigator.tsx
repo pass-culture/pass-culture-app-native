@@ -21,6 +21,7 @@ const searchStackNavigatorConfig = {
   screens: {
     SearchLanding: {
       screen: SearchLanding,
+      options: { title: 'Recherche - Accueil' },
       linking: {
         path: 'recherche/accueil',
         parse: screenParamsParser[SearchView.Landing],
@@ -29,6 +30,7 @@ const searchStackNavigatorConfig = {
     },
     SearchResults: {
       screen: SearchResultsContainer,
+      options: { title: 'Recherche - Résultats' },
       linking: {
         path: 'recherche/resultats',
         parse: screenParamsParser[SearchView.Results],
@@ -37,6 +39,7 @@ const searchStackNavigatorConfig = {
     },
     ThematicSearch: {
       screen: ThematicSearch,
+      options: { title: 'Recherche - Recherche thématique' },
       linking: {
         path: 'recherche/thematique',
         parse: screenParamsParser[SearchView.Thematic],
@@ -45,6 +48,7 @@ const searchStackNavigatorConfig = {
     },
     ThematicSearchSubcategories: {
       screen: ThematicSearchSubcategories,
+      options: { title: 'Recherche - Toutes les catégories' },
       linking: {
         path: 'recherche/thematique/toutes-les-categories',
         parse: screenParamsParser.ThematicSearchSubcategories,

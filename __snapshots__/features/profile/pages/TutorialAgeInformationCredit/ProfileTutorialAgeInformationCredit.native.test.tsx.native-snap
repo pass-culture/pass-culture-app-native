@@ -18,7 +18,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
     contentContainerStyle={
       {
         "alignSelf": "center",
-        "maxWidth": 500,
         "paddingHorizontal": 24,
         "width": "100%",
       }
@@ -1221,7 +1220,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
     contentContainerStyle={
       {
         "alignSelf": "center",
-        "maxWidth": 500,
         "paddingHorizontal": 24,
         "width": "100%",
       }

@@ -49,265 +49,223 @@ const profileStackNavigatorPathDefinition = {
   screens: {
     Achievements: {
       screen: Achievements,
-      linking: {
-        path: 'trophees',
-      },
+      linking: { path: 'trophees' },
       options: { title: 'Mes succès' },
     },
     Accessibility: {
       screen: Accessibility,
-      linking: {
-        path: 'accessibilite',
-      },
+      linking: { path: 'accessibilite' },
+      options: { title: 'Accessibilité' },
     },
     AccessibilityDeclarationMobileAndroid: {
       screen: AccessibilityDeclarationMobileAndroid,
-      linking: {
-        path: 'accessibilite/declaration-accessibilite-mobile-android',
-      },
+      linking: { path: 'accessibilite/declaration-accessibilite-mobile-android' },
+      options: { title: 'Déclaration d’accessibilité Android' },
     },
     AccessibilityDeclarationMobileIOS: {
       screen: AccessibilityDeclarationMobileIOS,
-      linking: {
-        path: 'accessibilite/declaration-accessibilite-mobile-ios',
-      },
+      linking: { path: 'accessibilite/declaration-accessibilite-mobile-ios' },
+      options: { title: 'Déclaration d’accessibilité iOS' },
     },
     AccessibilityDeclarationWeb: {
       screen: AccessibilityDeclarationWeb,
-      linking: {
-        path: 'accessibilite/declaration-accessibilite-web',
-      },
+      linking: { path: 'accessibilite/declaration-accessibilite-web' },
+      options: { title: 'Déclaration d’accessibilité Web' },
     },
     SiteMapScreen: {
       screen: SiteMapScreen,
-      linking: {
-        path: 'accessibilite/plan-du-site',
-      },
+      linking: { path: 'accessibilite/plan-du-site' },
+      options: { title: 'Plan du site' },
     },
     NotificationsSettings: {
       screen: NotificationsSettings,
-      linking: {
-        path: 'profil/notifications',
-      },
+      linking: { path: 'profil/notifications' },
+      options: { title: 'Notifications' },
     },
     Chatbot: {
       screen: Chatbot,
-      linking: {
-        path: 'profil/chatbot',
-      },
+      linking: { path: 'profil/chatbot' },
       options: { title: 'Chatbot' },
     },
     DeleteProfileReason: {
       screen: DeleteProfileReason,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suppression/raison',
-      },
+      linking: { path: 'profil/suppression/raison' },
+      options: { title: 'Suppression du profil - Raison' },
     },
     DeleteProfileContactSupport: {
       screen: DeleteProfileContactSupport,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suppression/support',
-      },
+      linking: { path: 'profil/suppression/support' },
+      options: { title: 'Suppression du profil - Support' },
     },
     DeleteProfileEmailHacked: {
       screen: DeleteProfileEmailHacked,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suppression/email-pirate',
-      },
+      linking: { path: 'profil/suppression/email-pirate' },
+      options: { title: 'Suppression du profil - Email piraté' },
     },
     DeleteProfileAccountHacked: {
       screen: DeleteProfileAccountHacked,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suppression/compte-pirate',
-      },
+      linking: { path: 'profil/suppression/compte-pirate' },
+      options: { title: 'Suppression du profil - Compte piraté' },
     },
     DeleteProfileAccountNotDeletable: {
       screen: DeleteProfileAccountNotDeletable,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suppression/information',
-      },
+      linking: { path: 'profil/suppression/information' },
+      options: { title: 'Suppression du profil - Information' },
     },
     DebugScreen: {
       screen: DebugScreen,
-      linking: {
-        path: 'profil/debuggage',
-      },
+      linking: { path: 'profil/debuggage' },
+      options: { title: 'Debuggage' },
     },
     ConfirmDeleteProfile: {
       screen: ConfirmDeleteProfile,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suppression',
-      },
+      linking: { path: 'profil/suppression' },
+      options: { title: 'Suppression du profil' },
     },
     DeleteProfileConfirmation: {
       screen: DeleteProfileConfirmation,
-      linking: {
-        path: 'profile/suppression/confirmation',
-      },
+      linking: { path: 'profil/suppression/confirmation' },
+      options: { title: 'Suppression du profil - Confirmation' },
     },
     // FIXME(PC-00000): Why is it not in the routes
     DeleteProfileSuccess: {
       screen: DeleteProfileSuccess,
-      linking: {
-        path: 'profile/suppression/succes',
-      },
+      linking: { path: 'profil/suppression/succes' },
+      options: { title: 'Suppression du profil - Succès' },
     },
     DeactivateProfileSuccess: {
       screen: DeactivateProfileSuccess,
-      linking: {
-        path: 'profile/desactivation/succes',
-      },
+      linking: { path: 'profil/desactivation/succes' },
+      options: { title: 'Désactivation du profil - Succès' },
     },
     SuspendAccountConfirmationWithoutAuthentication: {
       screen: SuspendAccountConfirmationWithoutAuthentication,
       if: useIsSignedIn,
-      linking: {
-        path: 'profile/suppression/demande-confirmation',
-      },
+      linking: { path: 'profil/suppression/demande-confirmation' },
+      options: { title: 'Suppression du profil - Demande de confirmation' },
     },
     SuspendAccountConfirmation: {
       screen: SuspendAccountConfirmation,
-      linking: {
-        path: 'suspension-compte/confirmation',
-      },
+      linking: { path: 'profil/suspension-compte/confirmation' },
+      options: { title: 'Suspension du profil - Confirmation' },
     },
     ChangeStatus: {
       screen: ChangeStatus,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/modification-statut',
-      },
+      linking: { path: 'profil/modification-statut' },
+      options: { title: 'Modification du profil - Statut' },
     },
     ChangePhoneNumber: {
       screen: ChangePhoneNumber,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/modification-telephone',
-      },
+      linking: { path: 'profil/modification-telephone' },
+      options: { title: 'Modification du profil - Téléphone' },
     },
     ChangeCity: {
       screen: ChangeCity,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/modification-ville',
-      },
+      linking: { path: 'profil/modification-ville' },
+      options: { title: 'Modification du profil - Ville' },
     },
     ChangeAddress: {
       screen: ChangeAddress,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/modification-adresse',
-      },
+      linking: { path: 'profil/modification-adresse' },
+      options: { title: 'Modification du profil - Adresse' },
     },
     ChangeEmail: {
       screen: ChangeEmail,
-      linking: {
-        path: 'profil/modification-email',
-      },
+      linking: { path: 'profil/modification-email' },
+      options: { title: 'Modification du profil - Email' },
     },
     TrackEmailChange: {
       screen: TrackEmailChange,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/suivi-modification-email',
-      },
+      linking: { path: 'profil/suivi-modification-email' },
+      options: { title: 'Suivi de la modification de l’email' },
     },
     LegalNotices: {
       screen: LegalNotices,
-      linking: {
-        path: 'notices-legales',
-      },
+      linking: { path: 'notices-legales' },
+      options: { title: 'Mentions légales' },
     },
     PersonalData: {
       screen: PersonalData,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/donnees-personnelles',
-      },
+      linking: { path: 'profil/donnees-personnelles' },
+      options: { title: 'Données personnelles' },
     },
     ValidateEmailChange: {
       screen: ValidateEmailChange,
-      linking: {
-        path: 'changement-email/validation',
-      },
+      linking: { path: 'changement-email/validation' },
+      options: { title: 'Validation du changement d’email' },
     },
     ChangePassword: {
       screen: ChangePassword,
-      linking: {
-        path: 'profil/modification-mot-de-passe',
-      },
+      linking: { path: 'profil/modification-mot-de-passe' },
+      options: { title: 'Modification du profil - Mot de passe' },
     },
     FeedbackInApp: {
       screen: FeedbackInApp,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/formulaire-suggestion',
-      },
+      linking: { path: 'profil/formulaire-suggestion' },
+      options: { title: 'Formulaire de suggestion' },
     },
     Appearance: {
       screen: Appearance,
-      linking: {
-        path: 'profil/preference-affichage',
-      },
+      linking: { path: 'profil/preference-affichage' },
+      options: { title: 'Préférence d’affichage' },
     },
     ConsentSettings: {
       screen: ConsentSettings,
-      linking: {
-        path: 'profil/confidentialite',
-      },
+      linking: { path: 'profil/confidentialite' },
+      options: { title: 'Confidentialité' },
     },
     ConfirmChangeEmail: {
       screen: ConfirmChangeEmail,
-      linking: {
-        path: 'changement-email/confirmation',
-      },
+      linking: { path: 'changement-email/confirmation' },
+      options: { title: 'Confirmation du changement d’email' },
     },
     ChangeEmailSetPassword: {
       screen: ChangeEmailSetPassword,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/creation-mot-de-passe',
-      },
+      linking: { path: 'profil/creation-mot-de-passe' },
+      options: { title: 'Création du mot de passe' },
     },
     NewEmailSelection: {
       screen: NewEmailSelection,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/nouvelle-adresse-email',
-      },
+      linking: { path: 'profil/nouvelle-adresse-email' },
+      options: { title: 'Nouvelle adresse email' },
     },
     ProfileTutorialAgeInformationCredit: {
       screen: ProfileTutorialAgeInformationCredit,
-      linking: {
-        path: 'profil/tutoriel',
-      },
+      linking: { path: 'profil/tutoriel' },
+      options: { title: 'Tutoriel' },
     },
     MandatoryUpdatePersonalData: {
       screen: MandatoryUpdatePersonalData,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/mise-a-jour-informations-personnelles',
-      },
+      linking: { path: 'profil/mise-a-jour-informations-personnelles' },
+      options: { title: 'Mise à jour des informations personnelles' },
     },
     UpdatePersonalDataConfirmation: {
       screen: UpdatePersonalDataConfirmation,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/confirmation-mise-a-jour-informations-personnelles',
-      },
+      linking: { path: 'profil/confirmation-mise-a-jour-informations-personnelles' },
+      options: { title: 'Confirmation mise à jour des informations personnelles' },
     },
     ProfileInformationValidationUpdate: {
       screen: ProfileInformationValidationUpdate,
       if: useIsSignedIn,
-      linking: {
-        path: 'profil/verification-informations-personnelles',
-      },
+      linking: { path: 'profil/verification-informations-personnelles' },
+      options: { title: 'Vérification des informations personnelles' },
     },
   },
 }

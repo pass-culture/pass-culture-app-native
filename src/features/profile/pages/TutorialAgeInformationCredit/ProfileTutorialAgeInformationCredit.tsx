@@ -97,7 +97,6 @@ const CreditTimelineContainer = styled.View({
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.designSystem.size.spacing.xl,
-    maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
   },
