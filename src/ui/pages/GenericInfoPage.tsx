@@ -230,13 +230,13 @@ const FeatureFlaggedIllustration = ({
 
 const ContainerFlex = styled.View<{ flexValue?: number }>(({ theme, flexValue }) => ({
   justifyContent: theme.isDesktopViewport ? 'center' : 'space-between',
-  ...(flexValue !== undefined && { flex: flexValue }),
+  ...(flexValue !== undefined && { flexGrow: flexValue }),
 }))
 
 const ContainerWithCenteredContent = styled.View<{ marginVertical: number; flexValue?: number }>(
   ({ marginVertical, theme, flexValue }) => ({
     justifyContent: 'center',
-    ...(flexValue !== undefined && { flex: flexValue }),
+    ...(flexValue !== undefined && { flexGrow: flexValue }),
     marginVertical,
     marginTop: theme.designSystem.size.spacing.s,
   })

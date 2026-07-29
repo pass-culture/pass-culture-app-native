@@ -109,9 +109,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
         flexValue={1}
         style={
           {
-            "flexBasis": 0,
             "flexGrow": 1,
-            "flexShrink": 1,
             "justifyContent": "space-between",
           }
         }
@@ -121,9 +119,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
           marginVertical={0}
           style={
             {
-              "flexBasis": 0,
               "flexGrow": 1,
-              "flexShrink": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,

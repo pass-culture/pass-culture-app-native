@@ -188,9 +188,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         flexValue={1}
         style={
           {
-            "flexBasis": 0,
             "flexGrow": 1,
-            "flexShrink": 1,
             "justifyContent": "space-between",
           }
         }
@@ -200,9 +198,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           marginVertical={0}
           style={
             {
-              "flexBasis": 0,
               "flexGrow": 1,
-              "flexShrink": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,
