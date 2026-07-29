@@ -59,293 +59,245 @@ const cheatcodesStackNavigatorPathDefinition = {
     /**** MENU ****/
     CheatcodesMenu: {
       screen: CheatcodesMenu,
-      linking: {
-        path: 'cheatcodes',
-      },
+      linking: { path: 'cheatcodes' },
+      options: { title: 'Cheatcodes' },
     },
     /**** FEATURES ****/
     CheatcodesNavigationAchievements: {
       screen: CheatcodesNavigationAchievements,
-      linking: {
-        path: 'cheatcodes/achievements',
-      },
+      linking: { path: 'cheatcodes/achievements' },
+      options: { title: 'Cheatcodes - Succès' },
     },
     CheatcodesNavigationBirthdayNotifications: {
       screen: CheatcodesNavigationBirthdayNotifications,
-      linking: {
-        path: 'cheatcodes/birthday-notifications',
-      },
+      linking: { path: 'cheatcodes/birthday-notifications' },
+      options: { title: 'Cheatcodes - Notifications anniversaire' },
     },
     CheatcodesNavigationBookings: {
       screen: CheatcodesNavigationBookings,
-      linking: {
-        path: 'cheatcodes/bookings',
-      },
+      linking: { path: 'cheatcodes/bookings' },
+      options: { title: 'Cheatcodes - Réservations' },
     },
     CheatcodesNavigationBookOffer: {
       screen: CheatcodesNavigationBookOffer,
-      linking: {
-        path: 'cheatcodes/book-offer',
-      },
+      linking: { path: 'cheatcodes/book-offer' },
+      options: { title: 'Cheatcodes - Réservation d’offre' },
     },
     CheatcodesNavigationBonification: {
       screen: CheatcodesNavigationBonification,
-      linking: {
-        path: 'cheatcodes/bonification',
-      },
+      linking: { path: 'cheatcodes/bonification' },
+      options: { title: 'Cheatcodes - Bonification' },
     },
     CheatcodesNavigationCulturalSurvey: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationCulturalSurvey),
-      linking: {
-        path: 'cheatcodes/cultural-survey',
-      },
+      linking: { path: 'cheatcodes/cultural-survey' },
+      options: { title: 'Cheatcodes - Questionnaire culturel' },
     },
     CheatcodesNavigationHome: {
       screen: CheatcodesNavigationHome,
-      linking: {
-        path: 'cheatcodes/home',
-      },
+      linking: { path: 'cheatcodes/home' },
+      options: { title: 'Cheatcodes - Accueil' },
     },
     CheatcodesNavigationIdentityCheck: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationIdentityCheck),
-      linking: {
-        path: 'cheatcodes/identity-check',
-      },
+      linking: { path: 'cheatcodes/identity-check' },
+      options: { title: 'Cheatcodes - Vérification d’identité' },
     },
     CheatcodesNavigationInternal: {
       screen: CheatcodesNavigationInternal,
-      linking: {
-        path: 'cheatcodes/internal',
-      },
+      linking: { path: 'cheatcodes/internal' },
+      options: { title: 'Cheatcodes - Interne' },
     },
     CheatcodesNavigationNewIdentificationFlow: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationNewIdentificationFlow),
-      linking: {
-        path: 'cheatcodes/identity-check/new-identification-flow',
-      },
+      linking: { path: 'cheatcodes/identity-check/new-identification-flow' },
+      options: { title: 'Cheatcodes - Nouveau parcours d’identification' },
     },
     CheatcodesNavigationOnboarding: {
       screen: CheatcodesNavigationOnboarding,
-      linking: {
-        path: 'cheatcodes/onboarding',
-      },
+      linking: { path: 'cheatcodes/onboarding' },
+      options: { title: 'Cheatcodes - Onboarding' },
     },
     CheatcodesNavigationProfile: {
       screen: CheatcodesNavigationProfile,
-      linking: {
-        path: 'cheatcodes/profile',
-      },
+      linking: { path: 'cheatcodes/profile' },
+      options: { title: 'Cheatcodes - Profil' },
     },
     CheatcodesNavigationReviewInApp: {
       screen: CheatcodesNavigationReviewInApp,
-      linking: {
-        path: 'cheatcodes/review-in-app',
-      },
+      linking: { path: 'cheatcodes/review-in-app' },
+      options: { title: 'Cheatcodes - Avis in-app' },
     },
     CheatcodesNavigationShare: {
       screen: CheatcodesNavigationShare,
-      linking: {
-        path: 'cheatcodes/share',
-      },
+      linking: { path: 'cheatcodes/share' },
+      options: { title: 'Cheatcodes - Partage' },
     },
     CheatcodesNavigationSubscription: {
       screen: CheatcodesNavigationSubscription,
-      linking: {
-        path: 'cheatcodes/subscription',
-      },
+      linking: { path: 'cheatcodes/subscription' },
+      options: { title: 'Cheatcodes - Abonnement' },
     },
     CheatcodesNavigationTrustedDevice: {
       screen: CheatcodesNavigationTrustedDevice,
-      linking: {
-        path: 'cheatcodes/trusted-device',
-      },
+      linking: { path: 'cheatcodes/trusted-device' },
+      options: { title: 'Cheatcodes - Appareil de confiance' },
     },
     CheatcodesScreenBookingNotFound: {
       screen: CheatcodesScreenBookingNotFound,
-      linking: {
-        path: 'cheatcodes/bookings/booking-not-found',
-      },
+      linking: { path: 'cheatcodes/bookings/booking-not-found' },
+      options: { title: 'Cheatcodes - Réservation introuvable' },
     },
     CheatcodesScreenCategoryThematicHomeHeader: {
       screen: CheatcodesScreenCategoryThematicHomeHeader,
-      linking: {
-        path: 'cheatcodes/home/category-thematic-home-header',
-      },
+      linking: { path: 'cheatcodes/home/category-thematic-home-header' },
+      options: { title: 'Cheatcodes - Header thématique (Catégorie)' },
     },
     CheatcodesScreenDefaultThematicHomeHeader: {
       screen: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
-      linking: {
-        path: 'cheatcodes/home/default-thematic-home-header',
-      },
+      linking: { path: 'cheatcodes/home/default-thematic-home-header' },
+      options: { title: 'Cheatcodes - Header thématique (Défaut)' },
     },
     CheatcodesScreenHighlightThematicHomeHeader: {
       screen: CheatcodesScreenHighlightThematicHomeHeader,
-      linking: {
-        path: 'cheatcodes/home/highlight-thematic-home-header',
-      },
+      linking: { path: 'cheatcodes/home/highlight-thematic-home-header' },
+      options: { title: 'Cheatcodes - Header thématique (Mise en avant)' },
     },
     CheatcodesScreenMaintenance: {
       screen: CheatcodesScreenMaintenance,
-      linking: {
-        path: 'cheatcodes/maintenance',
-      },
+      linking: { path: 'cheatcodes/maintenance' },
+      options: { title: 'Cheatcodes - Maintenance' },
     },
     CheatcodesScreenOffline: {
       screen: CheatcodesScreenOffline,
-      linking: {
-        path: 'cheatcodes/offline',
-      },
+      linking: { path: 'cheatcodes/offline' },
+      options: { title: 'Cheatcodes - Hors connexion' },
     },
     CheatcodesScreenNotEligibleEduConnect: {
       screen: CheatcodesScreenNotEligibleEduConnect,
-      linking: {
-        path: 'cheatcodes/identity-check/not-eligible-educonnect',
-      },
+      linking: { path: 'cheatcodes/identity-check/not-eligible-educonnect' },
+      options: { title: 'Cheatcodes - EduConnect non éligible' },
     },
     CheatcodesScreenTrustedDeviceInfos: {
       screen: CheatcodesScreenTrustedDeviceInfos,
-      linking: {
-        path: 'cheatcodes/trusted-device/trusted-device-infos',
-      },
+      linking: { path: 'cheatcodes/trusted-device/trusted-device-infos' },
+      options: { title: 'Cheatcodes - Informations appareil de confiance' },
     },
     CheatcodesScreenRemoteBanners: {
       screen: CheatcodesScreenRemoteBanners,
-      linking: {
-        path: 'cheatcodes/remote-banners',
-      },
+      linking: { path: 'cheatcodes/remote-banners' },
+      options: { title: 'Cheatcodes - Bannières distantes' },
     },
     /**** OTHER ****/
     CheatcodesNavigationErrors: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationErrors),
-      linking: {
-        path: 'cheatcodes/other/errors',
-      },
+      linking: { path: 'cheatcodes/other/errors' },
+      options: { title: 'Cheatcodes - Erreurs' },
     },
     CheatcodesNavigationForceUpdate: {
       screen: CheatcodesNavigationForceUpdate,
-      linking: {
-        path: 'cheatcodes/other/force-update',
-      },
+      linking: { path: 'cheatcodes/other/force-update' },
+      options: { title: 'Cheatcodes - Mise à jour forcée' },
     },
     CheatcodesNavigationGenericPages: {
       screen: CheatcodesNavigationGenericPages,
-      linking: {
-        path: 'cheatcodes/other/generic-pages',
-      },
+      linking: { path: 'cheatcodes/other/generic-pages' },
+      options: { title: 'Cheatcodes - Pages génériques' },
     },
     CheatcodesNavigationAccountManagement: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationAccountManagement),
-      linking: {
-        path: 'cheatcodes/other/account-management',
-      },
+      linking: { path: 'cheatcodes/other/account-management' },
+      options: { title: 'Cheatcodes - Gestion du compte' },
     },
     CheatcodesNavigationNotScreensPages: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationNotScreensPages),
-      linking: {
-        path: 'cheatcodes/other/not-screens-pages',
-      },
+      linking: { path: 'cheatcodes/other/not-screens-pages' },
+      options: { title: 'Cheatcodes - Pages non-écran' },
     },
     CheatcodeScreenLoadingPage: {
       screen: LoadingPage,
-      linking: {
-        path: 'cheatcodes/other/loading-page',
-      },
+      linking: { path: 'cheatcodes/other/loading-page' },
+      options: { title: 'Cheatcodes - Chargement' },
     },
     CheatcodesNavigationSignUp: {
       screen: withAsyncErrorBoundary(CheatcodesNavigationSignUp),
-      linking: {
-        path: 'cheatcodes/other/sign-up',
-      },
+      linking: { path: 'cheatcodes/other/sign-up' },
+      options: { title: 'Cheatcodes - Inscription' },
     },
     CheatcodesScreenAccesLibre: {
       screen: CheatcodesScreenAccesLibre,
-      linking: {
-        path: 'cheatcodes/other/acces-libre',
-      },
+      linking: { path: 'cheatcodes/other/acces-libre' },
+      options: { title: 'Cheatcodes - Accès libre' },
     },
     CheatcodesScreenDebugInformations: {
       screen: CheatcodesScreenDebugInformations,
-      linking: {
-        path: 'cheatcodes/other/debug-informations',
-      },
+      linking: { path: 'cheatcodes/other/debug-informations' },
+      options: { title: 'Cheatcodes - Informations de débogage' },
     },
     CheatcodesScreenFeatureFlags: {
       screen: CheatcodesScreenFeatureFlags,
-      linking: {
-        path: 'cheatcodes/other/feature-flags',
-      },
+      linking: { path: 'cheatcodes/other/feature-flags' },
+      options: { title: 'Cheatcodes - Feature flags' },
     },
     CheatcodesScreenGenericErrorPage: {
       screen: CheatcodesScreenGenericErrorPage,
-      linking: {
-        path: 'cheatcodes/other/generic-error-page',
-      },
+      linking: { path: 'cheatcodes/other/generic-error-page' },
+      options: { title: 'Cheatcodes - Page d’erreur générique' },
     },
     CheatcodesScreenGenericInfoPage: {
       screen: CheatcodesScreenGenericInfoPage,
-      linking: {
-        path: 'cheatcodes/other/generic-info-page',
-      },
+      linking: { path: 'cheatcodes/other/generic-info-page' },
+      options: { title: 'Cheatcodes - Page d’information générique' },
     },
     CheatcodesScreenGenericInfoPageIllustrations: {
       screen: CheatcodesScreenGenericInfoPageIllustrations,
-      linking: {
-        path: 'cheatcodes/other/generic-info-page-illustrations',
-      },
+      linking: { path: 'cheatcodes/other/generic-info-page-illustrations' },
+      options: { title: 'Cheatcodes - Illustrations des pages d’information' },
     },
     CheatcodesScreenGenericOfficialPage: {
       screen: CheatcodesScreenGenericOfficialPage,
-      linking: {
-        path: 'cheatcodes/other/generic-official-page',
-      },
+      linking: { path: 'cheatcodes/other/generic-official-page' },
+      options: { title: 'Cheatcodes - Page officielle' },
     },
     CheatcodesScreenLayoutExpiredLink: {
       screen: CheatcodesScreenLayoutExpiredLink,
-      linking: {
-        path: 'cheatcodes/other/layout-expired-link',
-      },
+      linking: { path: 'cheatcodes/other/layout-expired-link' },
+      options: { title: 'Cheatcodes - Lien expiré' },
     },
     CheatcodesScreenMandatoryUpdate: {
       screen: CheatcodesScreenMandatoryUpdate,
-      linking: {
-        path: 'cheatcodes/other/campagne-mise-a-jour-données',
-      },
+      linking: { path: 'cheatcodes/other/campagne-mise-a-jour-données' },
+      options: { title: 'Cheatcodes - Campagne de mise à jour des données' },
     },
     CheatcodesScreenNewCaledonia: {
       screen: CheatcodesScreenNewCaledonia,
-      linking: {
-        path: 'cheatcodes/other/new-caledonia',
-      },
+      linking: { path: 'cheatcodes/other/new-caledonia' },
+      options: { title: 'Cheatcodes - Nouvelle-Calédonie' },
     },
     CheatcodesScreenPageWithHeader: {
       screen: CheatcodesScreenPageWithHeader,
-      linking: {
-        path: 'cheatcodes/other/page-with-header',
-      },
+      linking: { path: 'cheatcodes/other/page-with-header' },
+      options: { title: 'Cheatcodes - Page avec header' },
     },
     CheatcodesScreenRemoteConfig: {
       screen: CheatcodesScreenRemoteConfig,
-      linking: {
-        path: 'cheatcodes/other/remote-config',
-      },
+      linking: { path: 'cheatcodes/other/remote-config' },
+      options: { title: 'Cheatcodes - Remote Config' },
     },
     CheatcodesScreenPageHeaderWithoutPlaceholder: {
       screen: CheatcodesScreenPageHeaderWithoutPlaceholder,
-      linking: {
-        path: 'cheatcodes/other/page-header-without-placeholder',
-      },
+      linking: { path: 'cheatcodes/other/page-header-without-placeholder' },
+      options: { title: 'Cheatcodes - Header sans placeholder' },
     },
     CheatcodesScreenABTest: {
       screen: CheatcodesScreenABTest,
-      linking: {
-        path: 'cheatcodes/other/ab-test',
-      },
+      linking: { path: 'cheatcodes/other/ab-test' },
+      options: { title: 'Cheatcodes - A/B Test' },
     },
     CheatcodesScreenDirectIdAccess: {
       screen: CheatcodesScreenDirectIdAccess,
-      linking: {
-        path: 'cheatcodes/other/direct-id-access',
-      },
+      linking: { path: 'cheatcodes/other/direct-id-access' },
+      options: { title: 'Cheatcodes - Accès direct par ID' },
     },
   },
 }
