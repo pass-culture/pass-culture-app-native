@@ -5,7 +5,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import {
+  useMobileFontScaleToDisplay,
+  useWebZoomToDisplay,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import type { ColorsType } from 'theme/types'
@@ -129,6 +132,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
     at200PercentZoom: 0,
   })
 
+  const flexWeb = useWebZoomToDisplay({ default: 1, at200PercentZoom: undefined })
   const illustrationContent = renderIllustrationContent({
     IllustrationComponent,
     remoteIllustration,
@@ -144,8 +148,8 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
       <StyledScrollView showsVerticalScrollIndicator={false}>
         {isLandscape ? null : <Placeholder height={placeholderHeight} />}
 
-        <ContainerFlex>
-          <ContainerWithCenteredContent marginVertical={marginVertical}>
+        <ContainerFlex flexValue={flexWeb}>
+          <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
             <IllustrationContainer animation={!!animation}>
               {illustrationContent}
               {animation ? (
@@ -224,13 +228,15 @@ const FeatureFlaggedIllustration = ({
   )
 }
 
-const ContainerFlex = styled.View(({ theme }) => ({
+const ContainerFlex = styled.View<{ flexValue?: number }>(({ theme, flexValue }) => ({
   justifyContent: theme.isDesktopViewport ? 'center' : 'space-between',
+  ...(flexValue !== undefined && { flexGrow: flexValue }),
 }))
 
-const ContainerWithCenteredContent = styled.View<{ marginVertical: number }>(
-  ({ marginVertical, theme }) => ({
+const ContainerWithCenteredContent = styled.View<{ marginVertical: number; flexValue?: number }>(
+  ({ marginVertical, theme, flexValue }) => ({
     justifyContent: 'center',
+    ...(flexValue !== undefined && { flexGrow: flexValue }),
     marginVertical,
     marginTop: theme.designSystem.size.spacing.s,
   })

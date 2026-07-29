@@ -106,16 +106,20 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         }
       />
       <View
+        flexValue={1}
         style={
           {
+            "flexGrow": 1,
             "justifyContent": "space-between",
           }
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
+              "flexGrow": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,
@@ -535,16 +539,20 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
         }
       />
       <View
+        flexValue={1}
         style={
           {
+            "flexGrow": 1,
             "justifyContent": "space-between",
           }
         }
       >
         <View
+          flexValue={1}
           marginVertical={0}
           style={
             {
+              "flexGrow": 1,
               "justifyContent": "center",
               "marginTop": 8,
               "marginVertical": 0,
