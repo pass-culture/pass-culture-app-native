@@ -15,45 +15,33 @@ const onboardingStackNavigatorPathDefinition = {
   screens: {
     OnboardingWelcome: {
       screen: OnboardingWelcome,
-      linking: {
-        path: 'bienvenue',
-      },
+      linking: { path: 'bienvenue' },
       options: { title: 'Bienvenue' },
     },
     OnboardingGeneralPublicWelcome: {
       screen: OnboardingGeneralPublicWelcome,
-      linking: {
-        path: 'bienvenue-grand-public',
-      },
+      linking: { path: 'bienvenue-grand-public' },
       options: { title: 'Bienvenue' },
     },
     OnboardingAgeSelectionFork: {
       screen: OnboardingAgeSelectionFork,
-      linking: {
-        path: 'selection-age/generique',
-      },
-      options: { title: 'Sélection d’âge' },
+      linking: { path: 'selection-age/generique' },
+      options: { title: 'Bienvenue - Sélection d’âge' },
     },
     OnboardingAgeInformation: {
       screen: OnboardingAgeInformation,
-      linking: {
-        path: 'selection-age/information',
-      },
-      options: { title: 'Information d’âge' },
+      linking: { path: 'selection-age/information' },
+      options: { title: 'Bienvenue - Information d’âge' },
     },
     OnboardingGeolocation: {
       screen: OnboardingGeolocation,
-      linking: {
-        path: 'geolocalisation',
-      },
-      options: { title: 'Active ta géolocalisation' },
+      linking: { path: 'geolocalisation' },
+      options: { title: 'Bienvenue - Active ta géolocalisation' },
     },
     OnboardingNotEligible: {
       screen: OnboardingNotEligible,
-      linking: {
-        path: 'non-eligible',
-      },
-      options: { title: 'Encore un peu de patience' },
+      linking: { path: 'non-eligible' },
+      options: { title: 'Bienvenue - Encore un peu de patience' },
     },
   },
 }
