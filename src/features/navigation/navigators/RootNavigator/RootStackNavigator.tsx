@@ -110,7 +110,7 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'AppleSSOCallback',
     component: AppleSSOCallback,
-    options: { title: 'Apple Sign In' },
+    options: { title: 'Connexion avec Apple' },
   },
   {
     name: 'PageNotFound',
@@ -120,7 +120,7 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'AccountCreated',
     component: AccountCreated,
-    options: { title: 'Compte créé\u00a0!' },
+    options: { title: 'Compte créé' },
   },
   {
     name: 'FavoritesSorts',
@@ -182,7 +182,11 @@ const rootScreens: RouteConfig[] = [
     component: NotYetUnderageEligibility,
     options: { title: 'C’est pour bientôt' },
   },
-  { name: 'VenueMap', component: VenueMap, options: { title: 'Carte des lieux' } },
+  {
+    name: 'VenueMap',
+    component: VenueMap,
+    options: { title: 'Carte des lieux' },
+  },
   {
     name: 'SignupConfirmationExpiredLink',
     component: SignupConfirmationExpiredLink,
@@ -213,10 +217,15 @@ const rootScreens: RouteConfig[] = [
     component: OfferPreview,
     options: { title: 'Aperçu de l’offre' },
   },
-  { name: 'BookingDetails', component: withAuthProtection(BookingDetails) },
+  {
+    name: 'BookingDetails',
+    component: withAuthProtection(BookingDetails),
+    options: { title: 'Détails de réservation' },
+  },
   {
     name: '_DeeplinkOnlyBookingDetails1',
     component: withAuthProtection(BookingDetails),
+    options: { title: 'Détails de réservation' },
   },
   {
     name: 'BookingConfirmation',
@@ -241,10 +250,12 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'AfterSignupEmailValidationBuffer',
     component: AfterSignupEmailValidationBuffer,
+    options: { title: 'Validation d’email' },
   },
   {
     name: '_DeeplinkOnlyAfterSignupEmailValidationBuffer1',
     component: AfterSignupEmailValidationBuffer,
+    options: { title: 'Validation d’email' },
   },
   {
     name: 'RecreditBirthdayNotification',
@@ -256,10 +267,26 @@ const rootScreens: RouteConfig[] = [
     component: RecreditBirthdayNotification,
     options: { title: 'Notification rechargement anniversaire' },
   },
-  { name: 'Login', component: Login, options: { title: 'Connexion' } },
-  { name: 'LoginMethods', component: LoginMethods, options: { title: 'Méthodes de connexion' } },
-  { name: 'BannedCountryError', component: BannedCountryError },
-  { name: 'IncorrectLink', component: IncorrectLink, options: { title: 'Lien incorrect' } },
+  {
+    name: 'Login',
+    component: Login,
+    options: { title: 'Connexion' },
+  },
+  {
+    name: 'LoginMethods',
+    component: LoginMethods,
+    options: { title: 'Méthodes de connexion' },
+  },
+  {
+    name: 'BannedCountryError',
+    component: BannedCountryError,
+    options: { title: 'Connexion non autorisée dans ce pays' },
+  },
+  {
+    name: 'IncorrectLink',
+    component: IncorrectLink,
+    options: { title: 'Lien incorrect' },
+  },
   {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
@@ -290,8 +317,16 @@ const rootScreens: RouteConfig[] = [
     component: SearchFilter,
     options: { title: 'Filtres de recherche' },
   },
-  { name: 'Venue', component: Venue, options: { title: 'Lieu' } },
-  { name: '_DeeplinkOnlyVenue1', component: Venue, options: { title: 'Lieu' } },
+  {
+    name: 'Venue',
+    component: Venue,
+    options: { title: 'Lieu' },
+  },
+  {
+    name: '_DeeplinkOnlyVenue1',
+    component: Venue,
+    options: { title: 'Lieu' },
+  },
   {
     name: 'VenuePreviewCarousel',
     component: VenuePreviewCarousel,
@@ -312,9 +347,21 @@ const rootScreens: RouteConfig[] = [
     component: VenuePreviewCarousel,
     options: { title: 'Aperçu du lieu' },
   },
-  { name: 'Artist', component: Artist, options: { title: 'Artiste' } },
-  { name: '_DeeplinkOnlyArtist1', component: Artist, options: { title: 'Artiste' } },
-  { name: 'ArtistWebview', component: ArtistWebview, options: { title: 'Artiste sur Wikipédia' } },
+  {
+    name: 'Artist',
+    component: Artist,
+    options: { title: 'Artiste' },
+  },
+  {
+    name: '_DeeplinkOnlyArtist1',
+    component: Artist,
+    options: { title: 'Artiste' },
+  },
+  {
+    name: 'ArtistWebview',
+    component: ArtistWebview,
+    options: { title: 'Artiste sur Wikipédia' },
+  },
   {
     name: 'ClubAdvices',
     component: ClubAdvices,
@@ -345,7 +392,11 @@ const rootScreens: RouteConfig[] = [
     component: ThematicHome,
     options: { title: 'Page d’accueil thématique' },
   },
-  { name: 'AccountSecurityBuffer', component: AccountSecurityBuffer },
+  {
+    name: 'AccountSecurityBuffer',
+    component: AccountSecurityBuffer,
+    options: { title: 'Sécurisation de compte' },
+  },
   {
     name: 'AccountSecurity',
     component: AccountSecurity,
@@ -375,16 +426,17 @@ const rootScreens: RouteConfig[] = [
     // This screen is the RootNavigator (and not SubscriptionStackNavigator with the other Bonification screens) so we can return it from useInitialScreen (the hook doesn't handle setting nested screens as initial screens)
     name: 'BonificationGranted',
     component: withAuthProtection(BonificationGranted),
+    options: { title: 'Bonus accordé' },
   },
   {
     name: 'ProAdvicesOffer',
     component: ProAdvicesOffer,
-    options: { title: 'Avis du pro' },
+    options: { title: 'Avis du professionnel' },
   },
   {
     name: 'ProAdvicesVenue',
     component: ProAdvicesVenue,
-    options: { title: 'Avis du pro' },
+    options: { title: 'Avis du professionnel' },
   },
   {
     name: 'VerticalPlaylistOffers',
@@ -424,9 +476,7 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'GeolocationActivationModal',
     component: GeolocationActivationModal,
-    options: {
-      presentation: 'transparentModal',
-    },
+    options: { presentation: 'transparentModal' },
   },
   {
     name: 'FakeDoorModal',
