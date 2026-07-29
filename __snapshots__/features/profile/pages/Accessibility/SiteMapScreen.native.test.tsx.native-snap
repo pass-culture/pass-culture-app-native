@@ -255,6 +255,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 {
                   "alignItems": "flex-start",
                   "flexDirection": "column",
+                  "gap": 0,
                   "paddingLeft": 0,
                 }
               }

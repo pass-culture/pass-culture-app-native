@@ -186,6 +186,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             style={
               {
                 "flexDirection": "column",
+                "gap": 0,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,

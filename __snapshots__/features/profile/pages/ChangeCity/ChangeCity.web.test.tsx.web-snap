@@ -244,7 +244,7 @@ exports[`ChangeCity should render correctly 1`] = `
                 role="radiogroup"
               >
                 <ul
-                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-1jnkns4 r-overflow-1dqxon3 r-paddingLeft-gy4na3"
                   role="list"
                 />
               </div>

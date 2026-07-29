@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabPropConfig } from 'features/navigation/TabBar/getTabPropConfig'
+import { AccessibilityFeatures } from 'features/profile/components/AccessibilityFeatures/AccessibilityFeatures'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -15,7 +16,6 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Button } from 'ui/designSystem/Button/Button'
 import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
@@ -78,10 +78,10 @@ export const AccessibilityDeclarationWeb = () => {
               Cette déclaration d’accessibilité s’applique au site internet&nbsp;
               {isWeb ? (
                 <InternalTouchableLink
-                  as={Button}
+                  as={Link}
+                  isInsideText
                   variant="tertiary"
                   wording="https://passculture.app/"
-                  internalNav={webappUrl}
                   accessibilityRole={AccessibilityRole.LINK}
                   navigateTo={getTabPropConfig('Home')}
                 />
@@ -90,7 +90,7 @@ export const AccessibilityDeclarationWeb = () => {
                   as={Link}
                   isInsideText
                   isExternal
-                  wording="https://passculture.app/"
+                  wording="https://passculture.app/ mobile"
                   externalNav={webappUrl}
                   accessibilityRole={AccessibilityRole.LINK}
                 />
@@ -166,7 +166,7 @@ export const AccessibilityDeclarationWeb = () => {
 
             <SubtitleText>Non conformité</SubtitleText>
 
-            <VerticalUl>
+            <VerticalUl gap={6}>
               {nonAccessibleContent.map((item, index) => (
                 <BulletListItem
                   key={item}
@@ -188,6 +188,10 @@ export const AccessibilityDeclarationWeb = () => {
 
             <Separator.Horizontal />
 
+            <AccessibilityFeatures />
+
+            <Separator.Horizontal />
+
             <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
 
             <Typo.BodyItalic>Cette déclaration a été établie le {auditDate}.</Typo.BodyItalic>
@@ -196,7 +200,7 @@ export const AccessibilityDeclarationWeb = () => {
               Technologies utilisées pour la réalisation du site pass Culture
             </SubtitleText>
 
-            <VerticalUl>
+            <VerticalUl gap={6}>
               <BulletListItem
                 groupLabel="Technologies utilisées pour le site"
                 text="HTML5"
@@ -227,7 +231,7 @@ export const AccessibilityDeclarationWeb = () => {
               lecteurs d’écran suivants&nbsp;:
             </Typo.Body>
 
-            <VerticalUl>
+            <VerticalUl gap={6}>
               <BulletListItem
                 groupLabel="Technologies pour vérifier l’accesibilité"
                 text="Firefox 152 et NVDA 2025"
@@ -270,7 +274,7 @@ export const AccessibilityDeclarationWeb = () => {
               Pages du site ayant fait l’objet de la vérification de conformité
             </SubtitleText>
 
-            <VerticalUl>
+            <VerticalUl gap={6}>
               <BulletListItem
                 groupLabel="Pages auditées"
                 text="Création de compte (6 écrans)"
@@ -383,7 +387,7 @@ export const AccessibilityDeclarationWeb = () => {
 
             <Typo.Body>Plusieurs moyens sont à votre disposition&nbsp;:</Typo.Body>
 
-            <VerticalUl>
+            <VerticalUl gap={6}>
               <BulletListItem
                 groupLabel="Moyens de recours"
                 text="Écrire un message au "

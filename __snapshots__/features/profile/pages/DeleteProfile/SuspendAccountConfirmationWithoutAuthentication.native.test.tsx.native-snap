@@ -273,6 +273,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               style={
                 {
                   "flexDirection": "column",
+                  "gap": 0,
                   "paddingLeft": 0,
                 }
               }

@@ -6,6 +6,7 @@
 import React from 'react'
 import webStyled, { CSSObject, DefaultTheme, useTheme } from 'styled-components'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -50,7 +51,7 @@ export const Link = ({
         accessibilityLabel={
           accessibilityLabel ??
           getInsideTextAccessibilityLabel({
-            accessibilityRole: anchorProps.accessibilityRole,
+            accessibilityRole: anchorProps.accessibilityRole ?? AccessibilityRole.LINK,
             isExternal,
             label: computedLabel,
           })
@@ -71,6 +72,7 @@ export const Link = ({
   return (
     <Container
       {...anchorProps}
+      accessibilityRole={anchorProps.accessibilityRole ?? AccessibilityRole.LINK}
       accessibilityLabel={
         accessibilityLabel ?? getAccessibilityLabel({ isExternal, label: computedLabel })
       }
@@ -92,7 +94,6 @@ function getAccessibilityLabel({ isExternal, label }: { isExternal: boolean; lab
 }
 
 function getInsideTextAccessibilityLabel({
-  accessibilityRole,
   isExternal,
   label,
 }: {
@@ -100,7 +101,7 @@ function getInsideTextAccessibilityLabel({
   isExternal: boolean
   label: string
 }) {
-  return isExternal || accessibilityRole === 'link' ? `${label}, lien externe` : label
+  return isExternal ? `${label}, lien externe` : label
 }
 
 const getContainerStyle = ({

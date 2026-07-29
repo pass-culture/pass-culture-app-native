@@ -280,6 +280,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               style={
                 {
                   "flexDirection": "column",
+                  "gap": 0,
                   "paddingLeft": 0,
                 }
               }
