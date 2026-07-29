@@ -465,6 +465,14 @@ describe('<BookingOfferModalComponent />', () => {
       }
 
       it('should update bookingState when bookingDataMovieScreening props is received', async () => {
+        mockUseBookingContext.mockReturnValueOnce({
+          bookingState: {
+            offerId: mockOffer.id,
+            step: Step.DATE,
+          } as BookingState,
+          dismissModal: mockDismissModal,
+          dispatch: mockDispatch,
+        })
         renderBookingOfferModal({ bookingDataMovieScreening })
 
         expect(mockDispatch).toHaveBeenNthCalledWith(2, {

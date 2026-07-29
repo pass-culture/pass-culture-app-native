@@ -4,7 +4,6 @@ import React, { FC, ReactNode } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferCineBlockV2 } from 'features/offer/components/OfferCine/OfferCineBlockV2'
@@ -56,7 +55,6 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   proAdvicesOnVenueSegment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { user } = useAuthContext()
   const queryClient = useQueryClient()
   const wipUseMovieScreeningEndpoint = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_USE_MOVIE_SCREENINGS_ENDPOINT
@@ -82,7 +80,7 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   const { coordinates } = offerVenue
   const { latitude: offerVenueLatitude, longitude: offerVenueLongitude } = coordinates
   const offerCineBlock =
-    wipUseMovieScreeningEndpoint && (!!allocineId || !!visa) && !user ? (
+    wipUseMovieScreeningEndpoint && (!!allocineId || !!visa) ? (
       <OfferCineBlockV2
         title={venueSectionTitle}
         offerId={offerId}

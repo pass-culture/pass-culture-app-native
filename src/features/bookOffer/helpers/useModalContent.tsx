@@ -34,7 +34,7 @@ const getDefaultModalContent = (): ModalContent => {
 
 const getEndedUseBookingModalContent = (offer: OfferResponse): ModalContent => {
   return {
-    children: <AlreadyBooked offer={offer} />,
+    children: <AlreadyBooked offerName={offer.name} />,
     title: 'Réservation impossible',
     leftIconAccessibilityLabel: undefined,
     leftIcon: undefined,
