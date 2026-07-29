@@ -33,7 +33,7 @@ const getUserId = async () => {
 const checkForAppUpdate = async () => {
   try {
     const updateInfo = await HotUpdater.checkForUpdate({
-      updateStrategy: 'appVersion',
+      updateStrategy: 'fingerprint',
     })
 
     if (!updateInfo) {

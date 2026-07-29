@@ -1,0 +1,216 @@
+name: '1 [on_push] POC fingerprint App Distribution'
+
+# Temporary POC workflow: hard build iOS + Android and upload only to the
+# App Distribution group `poc-fingerprint` (does not notify usual tester groups).
+on:
+  push:
+    branches:
+      - PC-43062
+  workflow_dispatch:
+
+concurrency:
+  group: poc-fingerprint-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy-ios:
+    name: POC fingerprint iOS
+    runs-on: macos-26
+    timeout-minutes: 60
+    environment:
+      name: app-native-testing
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - name: Set up Cloud SDK to get gsutils
+        uses: 'google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db' #v3.1.0
+        with:
+          version: '>= 416.0.0'
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
+        with:
+          node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup java
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 #v5.2.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Yarn install
+        run: yarn install
+      - uses: ruby/setup-ruby@89f90524b88a01fe6e0b732220432cc6142926af #v1.313.0
+        with:
+          bundler-cache: true
+      - name: Select XCode version
+        run: |
+          XCODE_VERSION="$(cat ./.xcode-version)"
+          sudo xcode-select --switch "/Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"
+      - name: Install iOS runtime
+        run: xcrun simctl list > /dev/null && xcodebuild -downloadPlatform iOS
+      - name: Show available XCode's SDKs
+        run: xcodebuild -showsdks
+      - name: Install cocoapods
+        run: cd ios/ && bundle exec pod install
+      - name: Authentification to Google
+        id: openid-auth
+        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+        with:
+          create_credentials_file: true
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+      - name: Get Secret from Secret Manager
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
+        with:
+          secrets: |-
+            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
+            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/pc-native-ios-google-service-testing
+            MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
+            MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
+            MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
+            MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+      - name: 'Render Sentry Template'
+        run: |
+          cp templates_github_ci/.sentryclirc .sentryclirc
+          sed '$d' .sentryclirc
+          echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
+      - name: Setup iOS Google services config
+        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+      - name: Add ssh key needed
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 #v0.10.0
+        with:
+          ssh-private-key: ${{ steps.secrets.outputs.MATCH_SSH_KEY }}
+      - name: Deploy POC fingerprint iOS
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ steps.secrets.outputs.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
+          MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
+          MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
+          ENV: testing
+        run: |
+          bundle exec fastlane ios deploy_poc_fingerprint \
+            firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" \
+            --env testing \
+            --verbose
+
+  deploy-android:
+    name: POC fingerprint Android
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    environment:
+      name: app-native-testing
+    steps:
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          android: false
+          tool-cache: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+          dotnet: true
+          haskell: true
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+      - name: Set up Cloud SDK to get gsutils
+        uses: 'google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db' #v3.1.0
+        with:
+          version: '>= 416.0.0'
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6.4.0
+        with:
+          node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
+      - name: Setup java
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 #v5.2.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 #v4.0.1
+        with:
+          cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Yarn install
+        run: yarn install
+      - uses: ruby/setup-ruby@89f90524b88a01fe6e0b732220432cc6142926af #v1.313.0
+        with:
+          bundler-cache: true
+      - name: Authentification to Google
+        id: openid-auth
+        uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
+        with:
+          create_credentials_file: true
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_DEPLOYER_SERVICE_ACCOUNT }}
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
+        with:
+          secrets: |-
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-testing
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+      - name: 'Render Sentry Template'
+        uses: chuhlomin/render-template@a7c644e341797d050d1cb24332d83791b9a46dae #v1.10
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
+      - name: Create a directory for keystores
+        run: mkdir --parents android/keystores/
+      - name: Setup android keystore for testing environment
+        run: |
+          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > "android/keystores/testing.keystore"
+      - name: Setup android keystore properties for testing environment
+        uses: chuhlomin/render-template@a7c644e341797d050d1cb24332d83791b9a46dae #v1.10
+        with:
+          template: templates_github_ci/testing.keystore.properties
+          vars: |
+            ENVIRONMENT: testing
+            ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+            ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
+          result_path: android/keystores/testing.keystore.properties
+      - name: Setup android Google services config
+        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+      - name: Deploy POC fingerprint Android
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
+          ENV: testing
+        run: |
+          bundle exec fastlane android deploy_poc_fingerprint \
+            firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" \
+            --env testing \
+            --verbose
