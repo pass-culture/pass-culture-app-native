@@ -1,16 +1,13 @@
 import UIKit
+internal import Expo
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
-import HotUpdater
-import RNBatchPush
 import Firebase
-import Batch
-import Lottie
 
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: ExpoAppDelegate {
   var window: UIWindow?
  
   var reactNativeDelegate: ReactNativeDelegate?
@@ -18,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     let delegate = ReactNativeDelegate()
-    let factory = RCTReactNativeFactory(delegate: delegate)
+    let factory = ExpoReactNativeFactory(delegate: delegate)
     delegate.dependencyProvider = RCTAppDependencyProvider()
  
     reactNativeDelegate = delegate
@@ -44,13 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       FirebaseApp.configure()
     }
     
-    // Setup Batch
-    let associatedDomain = RNCConfig.env(for: "WEBAPP_V2_DOMAIN")
-    BatchSDK.associatedDomains = associatedDomain.map { [$0] } ?? []
-    BatchEventDispatcher.add(BatchFirebaseDispatcher.instance())
-    RNBatch.start()
-    BatchUNUserNotificationCenterDelegate.registerAsDelegate()
-    BatchUNUserNotificationCenterDelegate.sharedInstance.showForegroundNotifications = true
+    PassCultureConfigureBatch()
 
     factory.startReactNative(
       withModuleName: "PassCulture",
@@ -58,10 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       launchOptions: launchOptions
     )
     
-    if window {
+    if let window {
       // We add this logic to get access to rootview
       guard let rootView = window.rootViewController?.view else {
-        return true
+        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
       }
       
       let t = Dynamic()
@@ -75,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       RNSplashScreen.setAnimationFinished(true)
     }
     
-    return true
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
   
   // Deeplink configuration
@@ -93,16 +84,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }  
 
-class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
+class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {
   override func sourceURL(for bridge: RCTBridge) -> URL? {
-    return self.bundleURL()
+    // needed to return the correct URL for expo-dev-client.
+    bridge.bundleURL ?? bundleURL()
   }
   
   override func bundleURL() -> URL? {
 #if DEBUG
     return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
 #else
-    return HotUpdater.bundleURL()
+    return HotUpdaterBridge.bundleURL()
 #endif
   } 
 } 
