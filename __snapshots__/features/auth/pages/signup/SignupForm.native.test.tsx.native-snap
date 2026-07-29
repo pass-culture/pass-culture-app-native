@@ -2320,6 +2320,8 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                     },
                     "size": {
                       "borderRadius": {
+                        "10xl": 96,
+                        "5xl": 56,
                         "l": 16,
                         "m": 8,
                         "pill": 999,

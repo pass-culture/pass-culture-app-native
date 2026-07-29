@@ -512,6 +512,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
               },
               "size": {
                 "borderRadius": {
+                  "10xl": 96,
+                  "5xl": 56,
                   "l": 16,
                   "m": 8,
                   "pill": 999,
@@ -1483,6 +1485,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
               },
               "size": {
                 "borderRadius": {
+                  "10xl": 96,
+                  "5xl": 56,
                   "l": 16,
                   "m": 8,
                   "pill": 999,
