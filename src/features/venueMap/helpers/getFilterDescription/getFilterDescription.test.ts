@@ -7,7 +7,6 @@ describe('getFilterDescription', () => {
       Activity.ART_GALLERY,
       Activity.CINEMA,
       Activity.FESTIVAL,
-      Activity.GAMES_CENTRE,
       Activity.LIBRARY,
       Activity.MUSEUM,
       Activity.PERFORMANCE_HALL,

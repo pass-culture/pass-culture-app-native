@@ -4,14 +4,14 @@ import { getClusterColorByDominantActivity } from './getClusterColorByDominantAc
 
 describe('getClusterColorByDominantActivity', () => {
   it('should return the color upon venue type occurences (orange)', () => {
-    const activities: Activity[] = [Activity.GAMES_CENTRE, Activity.ART_GALLERY, Activity.LIBRARY]
+    const activities: Activity[] = [Activity.CINEMA, Activity.ART_GALLERY, Activity.LIBRARY]
 
     expect(getClusterColorByDominantActivity(activities)).toBe('orange')
   })
 
   it('should return the color upon venue type occurences (blue_orange)', () => {
     const activities: Activity[] = [
-      Activity.GAMES_CENTRE,
+      Activity.CINEMA,
       Activity.ART_GALLERY,
       Activity.LIBRARY,
       Activity.OTHER,
@@ -42,7 +42,7 @@ describe('getClusterColorByDominantActivity', () => {
 
   it('should return the color upon venue type occurences (orange_pink)', () => {
     const activities: Activity[] = [
-      Activity.GAMES_CENTRE,
+      Activity.CINEMA,
       Activity.BOOKSTORE,
       Activity.CREATIVE_ARTS_STORE,
       Activity.DISTRIBUTION_STORE,
@@ -52,7 +52,7 @@ describe('getClusterColorByDominantActivity', () => {
   })
 
   it('should return the color with higher priority (blue_orange_pink)', () => {
-    const activities: Activity[] = [Activity.GAMES_CENTRE, Activity.BOOKSTORE, Activity.OTHER]
+    const activities: Activity[] = [Activity.CINEMA, Activity.BOOKSTORE, Activity.OTHER]
 
     expect(getClusterColorByDominantActivity(activities)).toBe('blue_orange_pink')
   })

@@ -372,10 +372,6 @@ export const ACTIVITY_CRITERIA: ActivityCriteria = {
     label: MAP_ACTIVITY_TO_LABEL[Activity.ART_GALLERY],
     facetFilter: Activity.ART_GALLERY,
   },
-  [Activity.ART_SCHOOL]: {
-    label: MAP_ACTIVITY_TO_LABEL[Activity.ART_SCHOOL],
-    facetFilter: Activity.ART_SCHOOL,
-  },
   [Activity.ARTS_CENTRE]: {
     label: MAP_ACTIVITY_TO_LABEL[Activity.ARTS_CENTRE],
     facetFilter: Activity.ARTS_CENTRE,
@@ -408,10 +404,6 @@ export const ACTIVITY_CRITERIA: ActivityCriteria = {
     label: MAP_ACTIVITY_TO_LABEL[Activity.FESTIVAL],
     facetFilter: Activity.FESTIVAL,
   },
-  [Activity.GAMES_CENTRE]: {
-    label: MAP_ACTIVITY_TO_LABEL[Activity.GAMES_CENTRE],
-    facetFilter: Activity.GAMES_CENTRE,
-  },
   [Activity.HERITAGE_SITE]: {
     label: MAP_ACTIVITY_TO_LABEL[Activity.HERITAGE_SITE],
     facetFilter: Activity.HERITAGE_SITE,
@@ -428,10 +420,6 @@ export const ACTIVITY_CRITERIA: ActivityCriteria = {
     label: MAP_ACTIVITY_TO_LABEL[Activity.MUSIC_INSTRUMENT_STORE],
     facetFilter: Activity.MUSIC_INSTRUMENT_STORE,
   },
-  [Activity.NOT_ASSIGNED]: {
-    label: MAP_ACTIVITY_TO_LABEL[Activity.NOT_ASSIGNED],
-    facetFilter: Activity.NOT_ASSIGNED,
-  },
   [Activity.OTHER]: {
     label: MAP_ACTIVITY_TO_LABEL[Activity.OTHER],
     facetFilter: Activity.OTHER,
@@ -443,10 +431,6 @@ export const ACTIVITY_CRITERIA: ActivityCriteria = {
   [Activity.RECORD_STORE]: {
     label: MAP_ACTIVITY_TO_LABEL[Activity.RECORD_STORE],
     facetFilter: Activity.RECORD_STORE,
-  },
-  [Activity.SCIENCE_CENTRE]: {
-    label: MAP_ACTIVITY_TO_LABEL[Activity.SCIENCE_CENTRE],
-    facetFilter: Activity.SCIENCE_CENTRE,
   },
   [Activity.TOURIST_INFORMATION_CENTRE]: {
     label: MAP_ACTIVITY_TO_LABEL[Activity.TOURIST_INFORMATION_CENTRE],

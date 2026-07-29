@@ -15,10 +15,10 @@ describe('activitiesMapping', () => {
     expect(activitiesMapping.other.title).toEqual('Autres')
   })
 
-  it('should have 7 children for trip venues', () => {
+  it('should have 6 children for trip venues', () => {
     const tripChildren = activitiesMapping.trip.children
 
-    expect(Object.keys(tripChildren)).toHaveLength(7)
+    expect(Object.keys(tripChildren)).toHaveLength(6)
   })
 
   it('should have correct child for trip venues', () => {
@@ -39,15 +39,15 @@ describe('activitiesMapping', () => {
     expect(shopChildren[Activity.BOOKSTORE]).toEqual(MAP_ACTIVITY_TO_LABEL[Activity.BOOKSTORE])
   })
 
-  it('should have 9 children for other venues', () => {
+  it('should have 6 children for other venues', () => {
     const otherChildren = activitiesMapping.other.children
 
-    expect(Object.keys(otherChildren)).toHaveLength(9)
+    expect(Object.keys(otherChildren)).toHaveLength(6)
   })
 
   it('should have correct child for other venues', () => {
     const otherChildren = activitiesMapping.other.children
 
-    expect(otherChildren[Activity.ART_SCHOOL]).toEqual(MAP_ACTIVITY_TO_LABEL[Activity.ART_SCHOOL])
+    expect(otherChildren[Activity.ARTS_CENTRE]).toEqual(MAP_ACTIVITY_TO_LABEL[Activity.ARTS_CENTRE])
   })
 })

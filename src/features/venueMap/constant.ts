@@ -27,7 +27,6 @@ export const FILTERS_ACTIVITY_MAPPING = {
     Activity.ART_GALLERY,
     Activity.CINEMA,
     Activity.FESTIVAL,
-    Activity.GAMES_CENTRE,
     Activity.LIBRARY,
     Activity.MUSEUM,
     Activity.PERFORMANCE_HALL,
@@ -40,15 +39,12 @@ export const FILTERS_ACTIVITY_MAPPING = {
     Activity.RECORD_STORE,
   ],
   OTHERS: [
-    Activity.ART_SCHOOL,
     Activity.ARTS_CENTRE,
     Activity.COMMUNITY_CENTRE,
     Activity.CULTURAL_CENTRE,
     Activity.HERITAGE_SITE,
     Activity.OTHER,
-    Activity.SCIENCE_CENTRE,
     Activity.TOURIST_INFORMATION_CENTRE,
-    Activity.NOT_ASSIGNED,
   ],
 }
 
