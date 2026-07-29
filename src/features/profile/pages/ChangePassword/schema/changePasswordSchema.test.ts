@@ -1,7 +1,5 @@
 import { ValidationError } from 'yup'
 
-import { PASSWORD_MIN_LENGTH } from 'features/auth/components/PasswordSecurityRules'
-
 import { changePasswordSchema } from './changePasswordSchema'
 
 describe('changePasswordSchema', () => {
@@ -32,7 +30,7 @@ describe('changePasswordSchema', () => {
         })
 
         await expect(result).rejects.toEqual(
-          new ValidationError('1 Caractère spécial (!@#$%^&*...)')
+          new ValidationError('1 caractère spécial (!@#$%^&*...)')
         )
       }
     )
@@ -62,10 +60,10 @@ describe('changePasswordSchema', () => {
           confirmedPassword: 'abc',
         },
       ],
-    ])(`should fail due to not being ${PASSWORD_MIN_LENGTH} character length`, async (values) => {
+    ])(`should fail due to not being 12 character length`, async (values) => {
       const result = changePasswordSchema.validate(values)
 
-      await expect(result).rejects.toEqual(new ValidationError('12 Caractères'))
+      await expect(result).rejects.toEqual(new ValidationError('12 caractères'))
     })
 
     it.each([
@@ -84,7 +82,7 @@ describe('changePasswordSchema', () => {
     ])('should fail due to not have 1 uppercase character', async (values) => {
       const result = changePasswordSchema.validate(values)
 
-      await expect(result).rejects.toEqual(new ValidationError('1 Majuscule'))
+      await expect(result).rejects.toEqual(new ValidationError('1 majuscule'))
     })
 
     it.each([
@@ -103,7 +101,7 @@ describe('changePasswordSchema', () => {
     ])('should fail due to not have 1 number character', async (values) => {
       const result = changePasswordSchema.validate(values)
 
-      await expect(result).rejects.toEqual(new ValidationError('1 Chiffre'))
+      await expect(result).rejects.toEqual(new ValidationError('1 chiffre'))
     })
 
     it.each([
@@ -126,7 +124,9 @@ describe('changePasswordSchema', () => {
     ])('should fail due to having more than 72 characters', async (values) => {
       const result = changePasswordSchema.validate(values)
 
-      await expect(result).rejects.toEqual(new ValidationError('72 Caractères'))
+      await expect(result).rejects.toEqual(
+        new ValidationError('Le mot de passe doit contenir 72 caractères maximum')
+      )
     })
   })
 })

@@ -224,5 +224,5 @@ You can find this measure on firebase performance monitor for the different envi
 
 ### Accessibility
 
-[Audits des applications](doc/accessibility/audits/auditMobileFollowUp.md)
-[Audits de la déclinaison web](doc/accessibility/audits/auditWebFollowUp.md)
+- [Audits des applications](doc/accessibility/audits/auditMobileFollowUp.md)
+- [Audits de la déclinaison web](doc/accessibility/audits/auditWebFollowUp.md)

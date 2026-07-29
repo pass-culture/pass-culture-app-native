@@ -1,6 +1,5 @@
 import { ValidationError } from 'yup'
 
-import { PASSWORD_MIN_LENGTH } from 'features/auth/components/PasswordSecurityRules'
 import { passwordSchema } from 'shared/forms/schemas/passwordSchema'
 
 describe('passwordSchema', () => {
@@ -18,28 +17,28 @@ describe('passwordSchema', () => {
       const value = 'userAZERTY123'
       const result = passwordSchema.validate(value)
 
-      await expect(result).rejects.toEqual(new ValidationError('1 Caractère spécial (!@#$%^&*...)'))
+      await expect(result).rejects.toEqual(new ValidationError('1 caractère spécial (!@#$%^&*...)'))
     })
 
-    it(`must have a minimum of ${PASSWORD_MIN_LENGTH} character length`, async () => {
+    it(`must have a minimum of 12 character length`, async () => {
       const value = 'abc'
       const result = passwordSchema.validate(value)
 
-      await expect(result).rejects.toEqual(new ValidationError('12 Caractères'))
+      await expect(result).rejects.toEqual(new ValidationError('12 caractères'))
     })
 
     it('must have at least 1 uppercase character', async () => {
       const value = 'user@azerty123'
       const result = passwordSchema.validate(value)
 
-      await expect(result).rejects.toEqual(new ValidationError('1 Majuscule'))
+      await expect(result).rejects.toEqual(new ValidationError('1 majuscule'))
     })
 
     it('must have at least 1 number character', async () => {
       const value = 'user@AZERTYyyyy'
       const result = passwordSchema.validate(value)
 
-      await expect(result).rejects.toEqual(new ValidationError('1 Chiffre'))
+      await expect(result).rejects.toEqual(new ValidationError('1 chiffre'))
     })
 
     it('must have less than 72 characters', async () => {
@@ -47,7 +46,9 @@ describe('passwordSchema', () => {
         'user@AZERTYyyyy1234567890123456789012345678901234567890123456789012345678901234567890'
       const result = passwordSchema.validate(value)
 
-      await expect(result).rejects.toEqual(new ValidationError('72 Caractères'))
+      await expect(result).rejects.toEqual(
+        new ValidationError('Le mot de passe doit contenir 72 caractères maximum')
+      )
     })
   })
 })
