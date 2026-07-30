@@ -92,7 +92,7 @@ export const SubscribeButtonWithTooltip = (props: {
       <Button {...buttonProps} />
       <StyledTooltip
         label="Suis ce thème pour recevoir de l’actualité sur ce sujet&nbsp;!"
-        pointerDirection="top"
+        pointerDirection="bottom"
         isVisible={isTooltipVisible}
         onHide={hideTooltip}
         onCloseIconPress={onCloseIconPress}
@@ -106,7 +106,7 @@ const TooltipAnchor = styled.View({ alignSelf: 'flex-start', position: 'relative
 
 const StyledTooltip = styled(Tooltip)<{ offset: number }>(({ theme, offset }) => ({
   position: 'absolute',
-  top: offset,
+  bottom: offset,
   right: 0,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
