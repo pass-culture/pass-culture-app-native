@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
+import { isWikipediaUrl } from 'features/artist/helpers/isWikipediaUrl'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -22,7 +23,9 @@ const ArtistWebviewContent = () => {
     if (isError) eventMonitoring.captureException(error)
   }, [error, isError])
 
-  if (!artist?.descriptionSource) return <PageNotFound />
+  if (!artist?.descriptionSource || !isWikipediaUrl(artist.descriptionSource)) {
+    return <PageNotFound />
+  }
 
   return (
     <React.Fragment>

@@ -25,6 +25,18 @@ describe('ArtistWebview', () => {
     expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
   })
 
+  it('should display page not found when artist has a description source with an invalid Wikipedia url', async () => {
+    mockServer.getApi(`/v1/artists/${mockArtist.id}`, {
+      ...mockArtist,
+      descriptionSource: 'https://attacker.com/fr.wikipedia.org',
+    })
+    setFeatureFlags()
+
+    render(reactQueryProviderHOC(<ArtistWebview />))
+
+    expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
+  })
+
   it('should display web view when artist has a description source', async () => {
     mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
     render(reactQueryProviderHOC(<ArtistWebview />))

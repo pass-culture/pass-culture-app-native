@@ -17,6 +17,7 @@ import {
   FOLLOW_ARTIST_SURVEY_KEY,
 } from 'features/artist/helpers/buildFollowArtistSurveyUrl'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
+import { isWikipediaUrl } from 'features/artist/helpers/isWikipediaUrl'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
@@ -210,7 +211,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
                 <CollapsibleText
                   text={capitalizedDescriptionWithDot}
                   onAdditionalPress={onExpandBioPress}>
-                  {artist.descriptionSource ? (
+                  {artist.descriptionSource && isWikipediaUrl(artist.descriptionSource) ? (
                     <ViewGap gap={1}>
                       <Credit accessibilityLabel={creditAccessibilityLabel.titleText}>
                         {artist.descriptionCredit}
