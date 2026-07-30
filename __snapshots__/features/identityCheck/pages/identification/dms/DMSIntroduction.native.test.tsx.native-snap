@@ -290,6 +290,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 0,
                     "paddingLeft": 0,
                   }
                 }
@@ -937,6 +938,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 0,
                     "paddingLeft": 0,
                   }
                 }

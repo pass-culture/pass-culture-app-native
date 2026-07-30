@@ -288,7 +288,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 Cette déclaration d’accessibilité s’applique au site internet 
                 <Text
-                  accessibilityLabel="https://passculture.app/, lien externe"
+                  accessibilityLabel="https://passculture.app/ mobile, lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -302,7 +302,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     }
                   }
                 >
-                  https://passculture.app/
+                  https://passculture.app/ mobile
                 </Text>
                 .
               </Text>
@@ -525,9 +525,11 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -1703,6 +1705,184 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   }
                 }
               >
+                Fonctionnalités d’accessibilité
+              </Text>
+              <View
+                accessibilityRole="list"
+                gap={6}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "gap": 24,
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Fonctionnalités d’accessibilité – Liste - Élément 1 sur 2 - Un mode sombre permettant d’utiliser l’application avec un thème sombre afin de réduire l’éblouissement, améliorer le confort visuel dans les environnements peu éclairés et répondre aux préférences d’affichage de l’utilisateur.  Voir la fonctionnalité."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Un mode sombre permettant d’utiliser l’application avec un thème sombre afin de réduire l’éblouissement, améliorer le confort visuel dans les environnements peu éclairés et répondre aux préférences d’affichage de l’utilisateur. 
+                      <Text
+                        accessibilityLabel="Voir la fonctionnalité."
+                        accessibilityRole="button"
+                        onPress={[Function]}
+                        style={
+                          {
+                            "color": "#6123df",
+                            "cursor": "pointer",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                      >
+                        Voir la fonctionnalité.
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Fonctionnalités d’accessibilité – Liste - Élément 2 sur 2 - Utiliser l’application en orientation paysage lorsque l’appareil est tourné, offrant une plus grande flexibilité d’utilisation et répondant aux besoins de certains utilisateurs ou dispositifs d’assistance.  Voir la fonctionnalité."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Utiliser l’application en orientation paysage lorsque l’appareil est tourné, offrant une plus grande flexibilité d’utilisation et répondant aux besoins de certains utilisateurs ou dispositifs d’assistance. 
+                      <Text
+                        accessibilityLabel="Voir la fonctionnalité."
+                        accessibilityRole="button"
+                        onPress={[Function]}
+                        style={
+                          {
+                            "color": "#6123df",
+                            "cursor": "pointer",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                      >
+                        Voir la fonctionnalité.
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
+                }
+              >
                 Établissement de cette déclaration d’accessibilité
               </Text>
               <Text
@@ -1736,9 +1916,11 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -1936,9 +2118,11 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -2246,9 +2430,11 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -3109,9 +3295,11 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }

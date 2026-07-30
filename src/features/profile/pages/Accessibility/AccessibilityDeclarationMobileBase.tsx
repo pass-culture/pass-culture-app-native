@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { AccessibilityFeatures } from 'features/profile/components/AccessibilityFeatures/AccessibilityFeatures'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -68,9 +69,9 @@ export function AccessibilityDeclarationMobileBase({
               />
               &nbsp;version&nbsp;{appVersion} du pass Culture.
             </Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-          <ViewGap gap={6}>
+
+            <Separator.Horizontal />
+
             <TitleText>État de conformité</TitleText>
             <Typo.Body>
               L’application pass Culture sur {platformName} est&nbsp;
@@ -79,9 +80,9 @@ export function AccessibilityDeclarationMobileBase({
               France et en Europe, en raison des non-conformités énumérées dans la section
               «&nbsp;Résultats des tests&nbsp;».
             </Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-          <ViewGap gap={6}>
+
+            <Separator.Horizontal />
+
             <TitleText>Résultats des tests</TitleText>
             <Typo.Body>
               L’audit de conformité réalisé le {auditDate} par la société Access42 révèle que
@@ -93,15 +94,15 @@ export function AccessibilityDeclarationMobileBase({
               L’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la
               norme européenne EN 301 549 v.3.2.1.
             </Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-          <ViewGap gap={6}>
+
+            <Separator.Horizontal />
+
             <TitleText>Contenus inaccessibles</TitleText>
             <Typo.Body>
               Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
             </Typo.Body>
             <SubtitleText>Non conformité</SubtitleText>
-            <VerticalUl>
+            <VerticalUl gap={6}>
               {nonAccessibleContent.map((item, index) => (
                 <BulletListItem
                   key={item}
@@ -112,16 +113,14 @@ export function AccessibilityDeclarationMobileBase({
                 />
               ))}
             </VerticalUl>
-
             <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
             <Typo.Body>Aucune</Typo.Body>
-
             <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
             <Typo.Body>
               Les contenus suivants n’entrent pas dans le calcul de la conformité ni dans le
               périmètre des éléments à rendre accessible, ils sont dérogés&nbsp;:
             </Typo.Body>
-            <VerticalUl>
+            <VerticalUl gap={6}>
               <BulletListItem
                 text="Les cartes Goggle Maps (motif&nbsp;: service externe)"
                 groupLabel="Contenus non soumis à l’obligation d’accessibilité"
@@ -141,15 +140,19 @@ export function AccessibilityDeclarationMobileBase({
                 total={3}
               />
             </VerticalUl>
-          </ViewGap>
-          <StyledSeparator />
-          <ViewGap gap={6}>
+
+            <Separator.Horizontal />
+
+            <AccessibilityFeatures />
+
+            <Separator.Horizontal />
+
             <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
             <Typo.BodyItalic>
               Cette déclaration a été établie le lundi 8 décembre 2025.
             </Typo.BodyItalic>
             <SubtitleText>Technologies utilisées pour la réalisation de l’application</SubtitleText>
-            <VerticalUl>
+            <VerticalUl gap={6}>
               <BulletListItem
                 text="react"
                 groupLabel="Technologies utilisées pour l’application"
@@ -173,7 +176,7 @@ export function AccessibilityDeclarationMobileBase({
               Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier
               l’accessibilité
             </SubtitleText>
-            <VerticalUl>
+            <VerticalUl gap={6}>
               {toolsUsed.map((item, index) => (
                 <BulletListItem
                   key={item}
@@ -188,9 +191,9 @@ export function AccessibilityDeclarationMobileBase({
               L’audit a été réalisé avec la version de système d’exploitation {platformName}&nbsp;:
               version {osVersion}
             </Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-          <ViewGap gap={6}>
+
+            <Separator.Horizontal />
+
             <TitleText>Retour d’information et contact</TitleText>
             <Typo.Body>
               Il est important de rappeler qu’en vertu de l’article 11 de la loi de février
@@ -222,9 +225,9 @@ export function AccessibilityDeclarationMobileBase({
                 }
               />
             </Typo.Body>
-          </ViewGap>
-          <StyledSeparator />
-          <ViewGap gap={6}>
+
+            <Separator.Horizontal />
+
             <TitleText>Voie de recours</TitleText>
             <Typo.Body>
               Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou
@@ -232,32 +235,30 @@ export function AccessibilityDeclarationMobileBase({
               pas à obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos
               doléances ou une demande de saisine au Défenseur des droits.
             </Typo.Body>
-            <ViewGap gap={3}>
-              <Typo.Body>
-                Écrire un message au&nbsp;
-                <ExternalTouchableLink
-                  as={Link}
-                  isInsideText
-                  wording="Défenseur des droits"
-                  externalNav={rightsDefenderUrl}
-                  accessibilityRole={AccessibilityRole.LINK}
-                />
-              </Typo.Body>
-              <Typo.Body>
-                Contacter le délégué du&nbsp;
-                <ExternalTouchableLink
-                  as={Link}
-                  isInsideText
-                  wording="Défenseur des droits dans votre région"
-                  externalNav={rightsDelegateUrl}
-                  accessibilityRole={AccessibilityRole.LINK}
-                />
-              </Typo.Body>
-              <Typo.Body>
-                Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
-                droits Libre réponse 71120 75342 Paris CEDEX 07
-              </Typo.Body>
-            </ViewGap>
+            <Typo.Body>
+              Écrire un message au&nbsp;
+              <ExternalTouchableLink
+                as={Link}
+                isInsideText
+                wording="Défenseur des droits"
+                externalNav={rightsDefenderUrl}
+                accessibilityRole={AccessibilityRole.LINK}
+              />
+            </Typo.Body>
+            <Typo.Body>
+              Contacter le délégué du&nbsp;
+              <ExternalTouchableLink
+                as={Link}
+                isInsideText
+                wording="Défenseur des droits dans votre région"
+                externalNav={rightsDelegateUrl}
+                accessibilityRole={AccessibilityRole.LINK}
+              />
+            </Typo.Body>
+            <Typo.Body>
+              Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des
+              droits Libre réponse 71120 75342 Paris CEDEX 07
+            </Typo.Body>
           </ViewGap>
           <Spacer.BottomScreen />
         </React.Fragment>
@@ -269,7 +270,3 @@ export function AccessibilityDeclarationMobileBase({
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
-
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xl,
-}))

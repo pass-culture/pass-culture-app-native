@@ -308,25 +308,15 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 1.395.0
                  du pass Culture.
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -367,25 +357,15 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </Text>
                  avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -464,25 +444,15 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </Text>
                  à la norme européenne EN 301 549 v.3.2.1.
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -523,9 +493,11 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -803,9 +775,11 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -976,25 +950,193 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   </View>
                 </View>
               </View>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
+              />
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                  }
                 }
-              }
-            >
+              >
+                Fonctionnalités d’accessibilité
+              </Text>
+              <View
+                accessibilityRole="list"
+                gap={6}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "gap": 24,
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Fonctionnalités d’accessibilité – Liste - Élément 1 sur 2 - Un mode sombre permettant d’utiliser l’application avec un thème sombre afin de réduire l’éblouissement, améliorer le confort visuel dans les environnements peu éclairés et répondre aux préférences d’affichage de l’utilisateur.  Voir la fonctionnalité."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Un mode sombre permettant d’utiliser l’application avec un thème sombre afin de réduire l’éblouissement, améliorer le confort visuel dans les environnements peu éclairés et répondre aux préférences d’affichage de l’utilisateur. 
+                      <Text
+                        accessibilityLabel="Voir la fonctionnalité."
+                        accessibilityRole="button"
+                        onPress={[Function]}
+                        style={
+                          {
+                            "color": "#6123df",
+                            "cursor": "pointer",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                      >
+                        Voir la fonctionnalité.
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Fonctionnalités d’accessibilité – Liste - Élément 2 sur 2 - Utiliser l’application en orientation paysage lorsque l’appareil est tourné, offrant une plus grande flexibilité d’utilisation et répondant aux besoins de certains utilisateurs ou dispositifs d’assistance.  Voir la fonctionnalité."
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Utiliser l’application en orientation paysage lorsque l’appareil est tourné, offrant une plus grande flexibilité d’utilisation et répondant aux besoins de certains utilisateurs ou dispositifs d’assistance. 
+                      <Text
+                        accessibilityLabel="Voir la fonctionnalité."
+                        accessibilityRole="button"
+                        onPress={[Function]}
+                        style={
+                          {
+                            "color": "#6123df",
+                            "cursor": "pointer",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textDecorationLine": "underline",
+                          }
+                        }
+                      >
+                        Voir la fonctionnalité.
+                      </Text>
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -1037,9 +1179,11 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -1225,9 +1369,11 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               </Text>
               <View
                 accessibilityRole="list"
+                gap={6}
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 24,
                     "paddingLeft": 0,
                   }
                 }
@@ -1413,25 +1559,15 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                  : version 
                 15
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -1512,25 +1648,15 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                   contacter le support
                 </Text>
               </Text>
-            </View>
-            <View
-              style={
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 1,
-                  "marginVertical": 24,
-                  "width": "100%",
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
                 }
-              }
-            />
-            <View
-              gap={6}
-              style={
-                {
-                  "gap": 24,
-                }
-              }
-            >
+              />
               <Text
                 accessibilityRole="header"
                 style={
@@ -1556,85 +1682,76 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité de l’application, que vous nous le signalez et que vous ne parvenez pas à obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.
               </Text>
-              <View
-                gap={3}
+              <Text
                 style={
                   {
-                    "gap": 12,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
                 }
               >
+                Écrire un message au 
                 <Text
+                  accessibilityLabel="Défenseur des droits, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
                   }
                 >
-                  Écrire un message au 
-                  <Text
-                    accessibilityLabel="Défenseur des droits, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#6123df",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
-                      }
-                    }
-                  >
-                    Défenseur des droits
-                  </Text>
+                  Défenseur des droits
                 </Text>
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Contacter le délégué du 
                 <Text
+                  accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
                   }
                 >
-                  Contacter le délégué du 
-                  <Text
-                    accessibilityLabel="Défenseur des droits dans votre région, lien externe"
-                    accessibilityRole="link"
-                    onPress={[Function]}
-                    style={
-                      {
-                        "color": "#6123df",
-                        "cursor": "pointer",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "textDecorationLine": "underline",
-                      }
-                    }
-                  >
-                    Défenseur des droits dans votre région
-                  </Text>
+                  Défenseur des droits dans votre région
                 </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
                   }
-                >
-                  Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
-                </Text>
-              </View>
+                }
+              >
+                Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits Libre réponse 71120 75342 Paris CEDEX 07
+              </Text>
             </View>
             <View
               customHeight={8}

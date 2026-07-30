@@ -280,6 +280,7 @@ exports[`ConfirmDeleteProfile should render confirm delete profile 1`] = `
               style={
                 {
                   "flexDirection": "column",
+                  "gap": 0,
                   "paddingLeft": 0,
                 }
               }

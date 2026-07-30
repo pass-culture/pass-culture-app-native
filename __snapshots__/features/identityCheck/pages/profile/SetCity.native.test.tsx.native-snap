@@ -444,6 +444,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   style={
                     {
                       "flexDirection": "column",
+                      "gap": 0,
                       "paddingLeft": 0,
                     }
                   }

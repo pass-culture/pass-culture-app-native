@@ -329,6 +329,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         style={
           {
             "flexDirection": "column",
+            "gap": 0,
             "paddingBottom": 0,
             "paddingLeft": 0,
             "paddingRight": 0,
@@ -609,6 +610,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         style={
           {
             "flexDirection": "column",
+            "gap": 0,
             "paddingBottom": 0,
             "paddingLeft": 0,
             "paddingRight": 0,
@@ -978,6 +980,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         style={
           {
             "flexDirection": "column",
+            "gap": 0,
             "paddingBottom": 0,
             "paddingLeft": 0,
             "paddingRight": 0,
@@ -1376,6 +1379,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         style={
           {
             "flexDirection": "column",
+            "gap": 0,
             "paddingBottom": 0,
             "paddingLeft": 0,
             "paddingRight": 0,
@@ -1595,6 +1599,7 @@ exports[`<ProfileLoggedOut /> should match snapshot 1`] = `
         style={
           {
             "flexDirection": "column",
+            "gap": 0,
             "paddingBottom": 0,
             "paddingLeft": 0,
             "paddingRight": 0,

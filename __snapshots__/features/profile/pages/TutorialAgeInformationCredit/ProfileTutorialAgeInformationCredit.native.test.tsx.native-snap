@@ -581,6 +581,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                     style={
                       {
                         "flexDirection": "column",
+                        "gap": 0,
                         "paddingBottom": 4,
                         "paddingLeft": 4,
                         "paddingRight": 4,
@@ -1783,6 +1784,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                     style={
                       {
                         "flexDirection": "column",
+                        "gap": 0,
                         "paddingBottom": 4,
                         "paddingLeft": 4,
                         "paddingRight": 4,
@@ -2433,6 +2435,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                         style={
                           {
                             "flexDirection": "column",
+                            "gap": 0,
                             "paddingBottom": 4,
                             "paddingLeft": 4,
                             "paddingRight": 4,
@@ -2655,6 +2658,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                         style={
                           {
                             "flexDirection": "column",
+                            "gap": 0,
                             "paddingBottom": 4,
                             "paddingLeft": 4,
                             "paddingRight": 4,

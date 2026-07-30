@@ -534,6 +534,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 0,
                     "paddingLeft": 0,
                   }
                 }
@@ -1251,6 +1252,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 0,
                     "paddingLeft": 0,
                   }
                 }
@@ -1968,6 +1970,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 style={
                   {
                     "flexDirection": "column",
+                    "gap": 0,
                     "paddingLeft": 0,
                   }
                 }
