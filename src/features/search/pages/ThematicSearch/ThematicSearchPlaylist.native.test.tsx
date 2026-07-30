@@ -32,7 +32,7 @@ describe('ThematicSearchPlaylist', () => {
       index: 0,
       offerId: '1',
       isHeadline: false,
-      displayAdvice: false,
+      displayAdvice: true,
     })
   })
 })

@@ -17,8 +17,6 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
@@ -39,7 +37,6 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({ offer, analytics
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
   const { subcategoryId, dates, releaseDate, isDuo, thumbUrl, name } = offer.offer
-  const proAdvicesOnOfferSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
 
   const displayPrice = getDisplayedPrice(
     offer?.offer?.prices,
@@ -79,7 +76,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({ offer, analytics
           triggerConsultOfferLog({
             offerId: +offer.objectID,
             venueId: offer.venue.id,
-            displayAdvice: proAdvicesOnOfferSegment === 'A',
+            displayAdvice: true,
             ...analyticsParams,
           })
         }}

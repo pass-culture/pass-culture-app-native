@@ -49,8 +49,6 @@ import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -111,7 +109,6 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
-  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
@@ -141,7 +138,7 @@ export const Venue: FunctionComponent = () => {
 
   const { data: advices } = useVenueProAdvicesQuery({
     venueId: params.id,
-    enableProAdvices: enableProAdvices && proAdvicesSegment === 'A',
+    enableProAdvices,
   })
   const nbAdvices = advices?.nbResults ?? 0
 
@@ -171,7 +168,6 @@ export const Venue: FunctionComponent = () => {
       userLocation,
     },
     advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
-    segment: proAdvicesSegment,
   })
 
   useEffect(() => {
@@ -179,10 +175,10 @@ export const Venue: FunctionComponent = () => {
       void analytics.logConsultVenue({
         venueId: venue.id.toString(),
         from: params.from,
-        displayAdvice: proAdvicesSegment === 'A',
+        displayAdvice: true,
       })
     }
-  }, [params.from, proAdvicesSegment, venue?.id])
+  }, [params.from, venue?.id])
 
   const handleOnPressFollowButton = async (originDetails: FollowVenueButtonOrigin) => {
     if (!venue) return
@@ -230,17 +226,10 @@ export const Venue: FunctionComponent = () => {
             arePlaylistsLoading={arePlaylistsLoading}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
-            advicesCardData={
-              proAdvicesSegment === 'A'
-                ? venueProAdvicesToAdviceCardData(
-                    getAdvicesWithoutHeadline(
-                      advices?.proAdvices.slice(0, 5),
-                      headlineOfferData?.id
-                    ),
-                    venue.id
-                  )
-                : undefined
-            }
+            advicesCardData={venueProAdvicesToAdviceCardData(
+              getAdvicesWithoutHeadline(advices?.proAdvices.slice(0, 5), headlineOfferData?.id),
+              venue.id
+            )}
             nbAdvices={advices?.nbResults ?? 0}
             onShowWritersModal={showAdvicesWritersModal}
           />

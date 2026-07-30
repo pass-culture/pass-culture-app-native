@@ -219,7 +219,7 @@ describe('BookingDetails', () => {
         venueId: 2185,
         from: 'bookings',
         isHeadline: false,
-        displayAdvice: false,
+        displayAdvice: true,
       })
     })
 

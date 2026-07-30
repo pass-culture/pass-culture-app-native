@@ -118,7 +118,7 @@ describe('EndedBookingItem', () => {
       venueId: 2185,
       from: 'endedbookings',
       isHeadline: false,
-      displayAdvice: false,
+      displayAdvice: true,
     })
   })
 

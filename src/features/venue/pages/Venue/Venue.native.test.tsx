@@ -36,8 +36,6 @@ import { Network } from 'libs/share/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
-import { abTestOverridesActions } from 'shared/useABSegment/abTestOverrideStore'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -198,28 +196,13 @@ describe('<Venue />', () => {
       ).toBeOnTheScreen()
     })
 
-    afterEach(() => {
-      abTestOverridesActions.resetAll()
-    })
-
-    it('should display advices section when AB testing segment is A', async () => {
-      abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'A')
+    it('should display advices section', async () => {
       renderVenue(venueId)
 
       expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
     })
 
-    it('should not display advices section when AB testing segment is B', async () => {
-      abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'B')
-      renderVenue(venueId)
-
-      await screen.findByText('À la une')
-
-      expect(screen.queryByText(`Les avis par “${venueDataTest.name}”`)).not.toBeOnTheScreen()
-    })
-
     it('should trigger ConsultOffer log when pressing pro advice card header', async () => {
-      abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'A')
       renderVenue(venueId)
 
       await screen.findByText(`Les avis par “${venueDataTest.name}”`)
@@ -311,23 +294,6 @@ describe('<Venue />', () => {
     it.each([['deeplink'], ['venueMap']])(
       'should log consult venue when URL from param equal to %s',
       async (from) => {
-        abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'B')
-        renderVenue(venueId, from as Referrals)
-
-        await waitFor(() => {
-          expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-            venueId: venueId.toString(),
-            from,
-            displayAdvice: false,
-          })
-        })
-      }
-    )
-
-    it.each([['deeplink'], ['venueMap']])(
-      'should log consult venue when URL from param equal to %s and pro advices segment AB Testing is A',
-      async (from) => {
-        abTestOverridesActions.setOverride(AB_TESTS.PRO_REVIEWS_ON_VENUE, 'A')
         renderVenue(venueId, from as Referrals)
 
         await waitFor(() => {

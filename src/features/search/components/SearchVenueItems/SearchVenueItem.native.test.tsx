@@ -84,7 +84,7 @@ describe('<SearchVenueItem />', () => {
       venueId: mockAlgoliaVenue.objectID,
       searchId,
       from: 'searchVenuePlaylist',
-      displayAdvice: false,
+      displayAdvice: true,
     })
   })
 

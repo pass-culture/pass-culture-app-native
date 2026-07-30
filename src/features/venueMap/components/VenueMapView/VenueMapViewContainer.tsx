@@ -41,8 +41,6 @@ import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { LENGTH_L } from 'ui/theme'
 
 import { VenueMapView } from './VenueMapView'
@@ -106,7 +104,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     transformHits,
     venue,
   })
-  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length
   const contentViewHeight = useMemo(() => {
@@ -196,7 +193,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     analytics.logConsultVenue({
       venueId: venueId.toString(),
       from: camelCase(routeName) as Referrals,
-      displayAdvice: proAdvicesOnVenueSegment === 'A',
+      displayAdvice: true,
     })
   }
 

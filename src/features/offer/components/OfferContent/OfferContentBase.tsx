@@ -105,7 +105,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onVideoConsentPress,
   HeaderComponent,
   proAdvicesCount,
-  proAdvicesSegment,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
@@ -430,8 +429,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
               proAdvicesCount={proAdvicesCount}
-              proAdvices={proAdvices}
-              proAdvicesSegment={proAdvicesSegment}>
+              proAdvices={proAdvices}>
               {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
@@ -506,7 +504,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               onBeforeNavigate,
               hideSearchSeeAll: true,
             }}
-            proAdvicesSegment={proAdvicesSegment}
           />
           {children}
         </IntersectionObserverScrollView>

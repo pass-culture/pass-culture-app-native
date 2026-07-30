@@ -47,7 +47,7 @@ describe('ArtistTopOffers', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledWith(
       expect.objectContaining({
         artistName: 'Céline Dion',
-        displayAdvice: false,
+        displayAdvice: true,
         from: 'artist',
         isHeadline: false,
         offerId: '16302',
@@ -136,7 +136,7 @@ describe('ArtistTopOffers', () => {
     expect(screen.getByText('Livre')).toBeOnTheScreen()
   })
 
-  it('should display pro advices tag when defined and pro advices AB testing segment is A and wipProReviewsPlaylist FF activated', () => {
+  it('should display pro advices tag when defined and wipProReviewsPlaylist FF activated', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
@@ -147,32 +147,11 @@ describe('ArtistTopOffers', () => {
               offer: { ...mockedAlgoliaOffersWithSameArtistResponse[1].offer, proAdvicesCount: 1 },
             },
           ]}
-          proAdvicesSegment="A"
           enableProAdvicesTag
         />
       )
     )
 
     expect(screen.getByText('1 avis')).toBeOnTheScreen()
-  })
-
-  it('should not display pro advices tag when defined and pro advices AB testing segment is B and wipProReviewsPlaylist FF activated', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ArtistTopOffers
-          artistName="Eiichiro Oda"
-          items={[
-            {
-              ...mockedAlgoliaOffersWithSameArtistResponse[1],
-              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[1].offer, proAdvicesCount: 1 },
-            },
-          ]}
-          proAdvicesSegment="B"
-          enableProAdvicesTag={false}
-        />
-      )
-    )
-
-    expect(screen.queryByText('1 avis')).not.toBeOnTheScreen()
   })
 })

@@ -97,7 +97,7 @@ describe('<BookingDetailsContent />', () => {
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
       venueId: '2185',
       from: 'bookings',
-      displayAdvice: false,
+      displayAdvice: true,
     })
   })
 

@@ -14,8 +14,6 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { Offer } from 'shared/offer/types'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 
 type Props = Omit<
@@ -38,7 +36,6 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const labelMapping = useCategoryHomeLabelMapping()
   const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
     item.offer
-  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
@@ -64,8 +61,7 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,
-    proAdvicesCount:
-      enableProAdvicesTag && proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
+    proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
     enableSceneClubTag,
   })
 
