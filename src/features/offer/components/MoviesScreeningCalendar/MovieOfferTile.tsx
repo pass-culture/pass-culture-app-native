@@ -59,7 +59,6 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
         offerId: Number(offerScreeningOnSelectedDates?.objectID),
         from: 'venue',
         venueId: offer.venue.id,
-        displayAdvice: true,
       })
     },
     movieScreeningUserData

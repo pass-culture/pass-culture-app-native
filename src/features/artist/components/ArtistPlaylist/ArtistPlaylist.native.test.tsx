@@ -92,7 +92,6 @@ describe('ArtistPlaylist', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledWith(
       expect.objectContaining({
         artistName: 'Céline Dion',
-        displayAdvice: true,
         from: 'artist',
         isHeadline: false,
         offerId: '2',

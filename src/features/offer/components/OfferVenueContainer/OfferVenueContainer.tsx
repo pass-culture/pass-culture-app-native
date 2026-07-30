@@ -107,7 +107,6 @@ export const OfferVenueContainer: FC<Props> = ({
       venueId: nextVenueId,
       from: 'offer',
       fromMultivenueOfferId: offer.id,
-      displayAdvice: true,
     })
     navigate('Offer', {
       fromOfferId: offer.id,

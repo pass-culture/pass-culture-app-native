@@ -29,7 +29,6 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
         analytics.logConsultVenue({
           venueId: venue.id.toString(),
           from: 'offer',
-          displayAdvice: true,
         })
       }
       accessibilityLabel={`Accéder à la page du lieu ${venue.name}`}

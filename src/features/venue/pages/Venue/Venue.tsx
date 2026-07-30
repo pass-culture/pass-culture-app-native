@@ -175,7 +175,6 @@ export const Venue: FunctionComponent = () => {
       void analytics.logConsultVenue({
         venueId: venue.id.toString(),
         from: params.from,
-        displayAdvice: true,
       })
     }
   }, [params.from, venue?.id])

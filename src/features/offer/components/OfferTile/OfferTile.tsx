@@ -89,7 +89,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       index,
       artistName,
       originDetails,
-      displayAdvice: true,
     })
   }
 

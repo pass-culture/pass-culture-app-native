@@ -127,7 +127,6 @@ export const SearchSuggestions = ({
     await analytics.logConsultVenue({
       venueId: venueId.toString(),
       from: 'searchAutoComplete',
-      displayAdvice: true,
     })
     navigate('Venue', { id: venueId })
   }

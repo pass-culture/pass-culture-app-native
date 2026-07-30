@@ -133,7 +133,6 @@ describe('OfferTile component', () => {
         from: 'home',
         moduleName: props.moduleName,
         isHeadline: false,
-        displayAdvice: true,
       })
     })
 
@@ -160,7 +159,6 @@ describe('OfferTile component', () => {
         fromOfferId: '1',
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         isHeadline: false,
-        displayAdvice: true,
       })
     })
 
@@ -174,7 +172,6 @@ describe('OfferTile component', () => {
         moduleName: props.moduleName,
         homeEntryId: 'abcd',
         isHeadline: false,
-        displayAdvice: true,
       })
     })
 
@@ -206,7 +203,6 @@ describe('OfferTile component', () => {
         venueId: 1,
         searchId,
         isHeadline: false,
-        displayAdvice: true,
       })
     })
 
@@ -236,7 +232,6 @@ describe('OfferTile component', () => {
         playlistType: undefined,
         venueId: undefined,
         isHeadline: false,
-        displayAdvice: true,
       })
     })
 
@@ -267,7 +262,6 @@ describe('OfferTile component', () => {
         moduleId: undefined,
         venueId: undefined,
         isHeadline: false,
-        displayAdvice: true,
       })
     })
   })

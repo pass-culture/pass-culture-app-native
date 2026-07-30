@@ -30,7 +30,6 @@ const UnmemoizedMarketingBlockExclusivity = ({
       homeEntryId,
       moduleName: offer.offer.name,
       moduleId,
-      displayAdvice: true,
     })
   }
   const bookingAllowedDatetime = offer.offer.bookingAllowedDatetime

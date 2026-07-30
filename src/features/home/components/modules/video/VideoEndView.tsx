@@ -50,7 +50,6 @@ export const VideoEndView: React.FC<{
                     moduleId,
                     moduleName,
                     homeEntryId,
-                    displayAdvice: true,
                   })
                 }}
                 navigateTo={{

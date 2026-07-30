@@ -319,7 +319,6 @@ describe('<OfferPlace />', () => {
       offerId: '2',
       venueId: 2,
       isHeadline: false,
-      displayAdvice: true,
     })
   })
 
@@ -408,7 +407,6 @@ describe('<OfferPlace />', () => {
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
         venueId: mockOffer.venue.id.toString(),
         from: 'offer',
-        displayAdvice: true,
       })
     })
   })

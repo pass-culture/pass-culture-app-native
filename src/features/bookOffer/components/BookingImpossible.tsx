@@ -62,7 +62,6 @@ export const BookingImpossible: React.FC<Props> = ({ venueId }) => {
       offerId,
       venueId,
       from,
-      displayAdvice: true,
     })
     navigate('Offer', { id: offerId, from })
   }

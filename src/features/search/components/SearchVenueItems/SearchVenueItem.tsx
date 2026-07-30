@@ -67,7 +67,6 @@ const UnmemoizedSearchVenueItem = ({
       venueId: venue.objectID,
       searchId,
       from: 'searchVenuePlaylist',
-      displayAdvice: true,
     })
 
     const currentQueryID = algoliaAnalyticsSelectors.selectCurrentQueryID()

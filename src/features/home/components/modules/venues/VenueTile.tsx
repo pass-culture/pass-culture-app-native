@@ -65,7 +65,6 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
       from: 'home',
       homeEntryId: props.homeEntryId,
       originDetails: props.originDetails,
-      displayAdvice: true,
     })
   }
 

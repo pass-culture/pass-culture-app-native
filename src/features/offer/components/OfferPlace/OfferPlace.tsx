@@ -66,7 +66,6 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
         await analytics.logConsultVenue({
           venueId: offer.venue.id.toString(),
           from: 'offer',
-          displayAdvice: true,
         })
         navigate('Venue', { id: offer.venue.id })
       }

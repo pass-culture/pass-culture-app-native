@@ -57,7 +57,6 @@ export const getEndedBookingItemProperties = ({
         offerId: offer.id,
         venueId: offer.venue.id,
         from: 'endedbookings',
-        displayAdvice: true,
       })
     } else {
       showErrorSnackBar(

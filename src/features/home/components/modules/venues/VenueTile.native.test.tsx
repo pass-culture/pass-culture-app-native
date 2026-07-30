@@ -55,7 +55,6 @@ describe('VenueTile component', () => {
       from: 'home',
       moduleName: 'le nom du module',
       moduleId: 'module-id',
-      displayAdvice: true,
     })
   })
 
@@ -70,7 +69,6 @@ describe('VenueTile component', () => {
       moduleName: 'le nom du module',
       moduleId: 'module-id',
       homeEntryId: 'abcd',
-      displayAdvice: true,
     })
   })
 
@@ -85,7 +83,6 @@ describe('VenueTile component', () => {
       from: 'home',
       moduleName: 'le nom du module',
       moduleId: 'module-id',
-      displayAdvice: true,
     })
   })
 

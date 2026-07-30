@@ -33,7 +33,6 @@ export const LinkToOffer = ({
         offerId: offer.id,
         venueId: offer.venue.id,
         from: 'bookings',
-        displayAdvice: true,
       })
     } else {
       showErrorSnackBar(

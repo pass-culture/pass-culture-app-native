@@ -76,7 +76,6 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({ offer, analytics
           triggerConsultOfferLog({
             offerId: +offer.objectID,
             venueId: offer.venue.id,
-            displayAdvice: true,
             ...analyticsParams,
           })
         }}

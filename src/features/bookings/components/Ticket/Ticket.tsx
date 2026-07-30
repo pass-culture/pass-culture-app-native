@@ -82,7 +82,6 @@ export const Ticket = ({
     await analytics.logConsultVenue({
       venueId: offer.venue.id.toString(),
       from: 'bookings',
-      displayAdvice: true,
     })
     navigate('Venue', { id: offer.venue.id })
   }

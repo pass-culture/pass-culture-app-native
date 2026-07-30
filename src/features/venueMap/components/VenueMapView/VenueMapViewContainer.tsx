@@ -193,7 +193,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     analytics.logConsultVenue({
       venueId: venueId.toString(),
       from: camelCase(routeName) as Referrals,
-      displayAdvice: true,
     })
   }
 

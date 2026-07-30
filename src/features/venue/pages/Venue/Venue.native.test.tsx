@@ -300,7 +300,6 @@ describe('<Venue />', () => {
           expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
             venueId: venueId.toString(),
             from,
-            displayAdvice: true,
           })
         })
       }

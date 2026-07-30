@@ -114,7 +114,6 @@ export const Favorite: React.FC<Props> = (props) => {
     triggerConsultOfferLog({
       offerId: offer.id,
       from: 'favorites',
-      displayAdvice: true,
     })
   }
 
