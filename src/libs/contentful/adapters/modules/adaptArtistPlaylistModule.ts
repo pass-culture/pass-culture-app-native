@@ -9,7 +9,8 @@ export const adaptArtistPlaylistModule = (
   if (module.fields === undefined) return null
   if (module.fields.displayParameters.fields === undefined) return null
 
-  const offersList = buildOffersParams(module.fields.algoliaParameters, [])
+  const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
+  const offersList = buildOffersParams(module.fields.algoliaParameters, additionalAlgoliaParameters)
 
   if (offersList.length === 0) return null
 
