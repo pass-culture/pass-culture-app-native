@@ -1,3 +1,0 @@
-*.pbxproj -text
-*.keystore.properties filter=crypt diff=crypt
-*.secret filter=crypt diff=crypt

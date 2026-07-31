@@ -1,4 +1,0 @@
-export enum RADIUS_FILTERS {
-  UNLIMITED_RADIUS = 'all',
-  RADIUS_IN_METERS_FOR_NO_OFFERS = 1,
-}

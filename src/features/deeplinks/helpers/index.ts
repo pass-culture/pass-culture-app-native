@@ -1,1 +1,0 @@
-export { getScreenFromDeeplink } from './getScreenFromDeeplink'

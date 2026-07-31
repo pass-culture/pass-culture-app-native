@@ -1,1 +1,0 @@
-[Suivi des recettes accessibilité de l'application](../accessibility/audits/auditFollowUp.md)
