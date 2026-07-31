@@ -1,24 +1,26 @@
 import argparse
+import collections
+import json
 import os
 import subprocess
-import json
-import collections
 
 
 def remove_resolution_from_lock(dependency: str, manifest: str):
     remove_lines = False
     curated_manifest = manifest + ".curated"
     line_dep = f'"{dependency}@npm:'
-    with open(manifest, "r") as yarn_file:
-        with open(curated_manifest, "w") as curated_yarn_file:
-            for line in yarn_file:
-                dep = line.find(line_dep)
-                if dep != -1:
-                    remove_lines = True
-                if not line.strip():
-                    remove_lines = False
-                if not remove_lines:
-                    curated_yarn_file.write(line)
+    with (
+        open(manifest, "r") as yarn_file,
+        open(curated_manifest, "w") as curated_yarn_file,
+    ):
+        for line in yarn_file:
+            dep = line.find(line_dep)
+            if dep != -1:
+                remove_lines = True
+            if not line.strip():
+                remove_lines = False
+            if not remove_lines:
+                curated_yarn_file.write(line)
 
     os.replace(curated_manifest, manifest)
 
@@ -97,29 +99,33 @@ def set_resolutions(dependencies_data: str, manifest: str, package_json: str):
         n_patch_max += 1
 
 
-def run_yarn():
-    subprocess.run(["yarn"], shell=True)
+def run_yarn(manifest):
+    dir = os.path.dirname(manifest)
+    yarn_command = f"cd {dir} && yarn && cd -" if dir else "yarn"
+    subprocess.run([f"{yarn_command}"], shell=True, check=False)
 
 
 def pull_master():
-    subprocess.run(["git switch master"], shell=True)
-    subprocess.run(["git pull"], shell=True)
+    subprocess.run(["git switch master"], shell=True, check=False)
+    subprocess.run(["git pull"], shell=True, check=False)
 
 
 def create_git_branch(branch: str):
-    subprocess.run([f"git switch -c {branch}"], shell=True)
+    subprocess.run([f"git switch -c {branch}"], shell=True, check=False)
 
 
 def stage_modifications():
-    subprocess.run(["git add package.json yarn.lock"], shell=True)
+    subprocess.run(["git add package.json yarn.lock"], shell=True, check=False)
 
 
 def commit_modifications(branch: str):
-    subprocess.run([f'git commit -m "({branch}) build(yarn): update dep"'], shell=True)
+    subprocess.run(
+        [f'git commit -m "({branch}) build(yarn): update dep"'], shell=True, check=False
+    )
 
 
 def push_modifications(branch: str):
-    subprocess.run([f"git push origin {branch}"], shell=True)
+    subprocess.run([f"git push origin {branch}"], shell=True, check=False)
 
 
 def get_dependabot_alerts(manifest: str):
@@ -134,9 +140,10 @@ def get_dependabot_alerts(manifest: str):
             "Accept: application/vnd.github+json",
             "-H",
             "X-GitHub-Api-Version: 2026-03-10",
-            f"/repos/pass-culture/pass-culture-app-native/dependabot/alerts?state=open&manifest={manifest}",
+            f"/repos/pass-culture/pass-culture-app-native/dependabot/alerts?state=open&manifest={manifest}&direction=asc",
         ],
         stdout=subprocess.PIPE,
+        check=False,
     )
 
 
@@ -179,7 +186,7 @@ if __name__ == "__main__":
         remove_resolution_from_lock(args.dep, manifest)
         set_resolution(args.dep, args.v_min, args.v_max, args.vt, package_json)
 
-    run_yarn()
+    run_yarn(manifest=manifest)
 
     if branch:
         stage_modifications()

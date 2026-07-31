@@ -5239,11 +5239,11 @@ __metadata:
   linkType: hard
 
 "@hono/node-server@npm:^1.19.9":
-  version: 1.19.14
-  resolution: "@hono/node-server@npm:1.19.14"
+  version: 1.19.15
+  resolution: "@hono/node-server@npm:1.19.15"
   peerDependencies:
     hono: ^4
-  checksum: 10/618dd95feeb3fd11ec8502e088879cd86529523788de19602edebd16892dd61899e73564d6e3d00875cc5a49488a908ddb2aa425d28f9cdeb7f22cfecabf022c
+  checksum: 10/7155b6c82de7e984c59a38a252f818e317c557f68997ac3d05af8f5bb54fe620ff3ab833738f4aa46ef57d7c0a705aacd8067f05c170e7e6d88dc65c29b7e56c
   languageName: node
   linkType: hard
 
@@ -5256,89 +5256,89 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hot-updater/android-helper@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/android-helper@npm:0.35.3"
+"@hot-updater/android-helper@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/android-helper@npm:0.35.6"
   dependencies:
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     execa: "npm:9.5.2"
-  checksum: 10/f11c3b9e6dd7918877f09b169a2d0f939cf572584cb81c8e120f70bf77264b72ea7e6cc653d81779247bda3b270c28e318a5b7252718a0cf81ab0f08f2fb0374
+  checksum: 10/59affb403392594cf1dae8e7bf8cbc461cae619c1d07020d95ffbd010b766f2494122c6a2a9f62a76a16f6dd59906e3b7fec0495c9e1dcc6f69e810afc25aae5
   languageName: node
   linkType: hard
 
-"@hot-updater/apple-helper@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/apple-helper@npm:0.35.3"
+"@hot-updater/apple-helper@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/apple-helper@npm:0.35.6"
   dependencies:
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     execa: "npm:9.5.2"
     fast-xml-parser: "npm:5.8.0"
-  checksum: 10/a87606c53317226771ba88d0a094699f5853e75aeb154c949af8da321be4b9b1adbef4a60bdbbef967a07484f1c375d1091d7d8bd2c3ee5d7b6737d88cfe2d21
+  checksum: 10/e8d3eaa302d790de513060c469053c655a75033459bebd0d71e4264a8b29153b2716818265caf2506824355c587e1f9acf7cb51aba5d2fd392a84155fcd914e8
   languageName: node
   linkType: hard
 
-"@hot-updater/bare@npm:^0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/bare@npm:0.35.3"
+"@hot-updater/bare@npm:^0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/bare@npm:0.35.6"
   dependencies:
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     uuidv7: "npm:^1.0.2"
-  checksum: 10/0bd7afa6c515c606d4f5552a2fafb498512280268773fe95e1799da7c514381768167fbcd52a83c06eb1877cbbc7eed5f60f0cc8af9b3991693bdda515989084
+  checksum: 10/7501017963287990d7be6d92698722d67e34aa6261f4186ae0b82a802862a11c5bd443bf427947056675e83dda5cebf3af082474d0865a1f80880899cf5c798e
   languageName: node
   linkType: hard
 
-"@hot-updater/bsdiff@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/bsdiff@npm:0.35.3"
-  checksum: 10/a07eda9c1bcbd06a846dd4ca3fd92e66a1f60ed9d942d64460caaf4f1b63cd783b744620d48a6216b1996ed0150575c816300f0f893afccb0b8b70bf52b6dc8b
+"@hot-updater/bsdiff@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/bsdiff@npm:0.35.6"
+  checksum: 10/8fc276f5f5b9a55190d109d7e1961b0b9f2fb46711d7e48e292724e93b2d2a0072800ff0666b2f46eb596be3344e99866ad5870e5cda417ac3288c176b0594cb
   languageName: node
   linkType: hard
 
-"@hot-updater/cli-tools@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/cli-tools@npm:0.35.3"
+"@hot-updater/cli-tools@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/cli-tools@npm:0.35.6"
   dependencies:
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     oxc-transform: "npm:0.121.0"
     typescript: "npm:6.0.2"
     unconfig: "npm:7.5.0"
-  checksum: 10/2bfe178ffc8d714eb84391d00a488c6afb26ebf7a50cea7265f2cb3056125ca719b12fa2b41a0e7b90a4bb5f136a6c65c67591cb481bf4a9c8f98938dda6b5b8
+  checksum: 10/f8a5e04cbd6a6fe57a84ccfbffc880c1c4eef8b60ec031cd0b25be070c2dff9c0c75be6d0eef6d713452ee9fb4800d906da9511cb64127a31f88c5718030814c
   languageName: node
   linkType: hard
 
-"@hot-updater/console@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/console@npm:0.35.3"
+"@hot-updater/console@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/console@npm:0.35.6"
   dependencies:
-    "@hot-updater/bsdiff": "npm:0.35.3"
-    "@hot-updater/server": "npm:0.35.3"
+    "@hot-updater/bsdiff": "npm:0.35.6"
+    "@hot-updater/server": "npm:0.35.6"
   peerDependencies:
     "@hot-updater/cli-tools": "*"
-  checksum: 10/db294d114e36ead98a781aee2caa50cc5b34d041ec0b1e9652c885966b81e4399a9ab8cb6ccd8298ab494d87b3d1bf8f55889b87e2894e80934da04e8a4f8a8e
+  checksum: 10/121baeb248c70cfe28d641e64ff6454bed80d325583df2014a135ec9335bc5353fe353407f01a9285b65573e5045d15593e373ba87e83cf26f818d45c9a45a9e
   languageName: node
   linkType: hard
 
-"@hot-updater/core@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/core@npm:0.35.3"
-  checksum: 10/3d9c819dc740871ab5e9c4c4bb41b50f3a799b2a064a6c6691b4067df8c1635f226f11f32be548e3c754a4fea82a6d817bd744f8c401e4162775bc258edecb6f
+"@hot-updater/core@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/core@npm:0.35.6"
+  checksum: 10/c99ce905846d70323f12f156bcb3ecac76bd2148dd5f54a56be4c3bd4dd64756abe00f1905882b6e99e177c9108ba4f5c0b218bdef3875d24dd22777d4d550d2
   languageName: node
   linkType: hard
 
-"@hot-updater/firebase@npm:^0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/firebase@npm:0.35.3"
+"@hot-updater/firebase@npm:^0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/firebase@npm:0.35.6"
   dependencies:
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
-    "@hot-updater/server": "npm:0.35.3"
-    hono: "npm:4.12.9"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
+    "@hot-updater/server": "npm:0.35.6"
+    hono: "npm:^4.12.9"
   peerDependencies:
     firebase-admin: "*"
     firebase-functions: "*"
@@ -5347,40 +5347,40 @@ __metadata:
       optional: false
     firebase-functions:
       optional: false
-  checksum: 10/5ab9ef26325e96533a61543396508949b342f644beb007f32e9bb7c270e5294b256c8e7bdece70a5361002960966df99fa9780a019a51db4bcd0e4d7a34f70f9
+  checksum: 10/784dbaea6b41929cfe1d9a0c9f8579f37ce7d50dffe6032715ff253a6ac3356ea59a7f38cc31919b838fccc6fc0ab9cdef32d24e4e6adbffee685d981463de86
   languageName: node
   linkType: hard
 
-"@hot-updater/js@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/js@npm:0.35.3"
+"@hot-updater/js@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/js@npm:0.35.6"
   dependencies:
-    "@hot-updater/core": "npm:0.35.3"
-  checksum: 10/ad11fbd89950992632bd5cd993cfddd74c51ef70e1d91b5ed23d6ba84bc5fc3cc58d73b27099ab571685eb3ccf9dc920be922fe4bfb278be443f0fb70d79efc6
+    "@hot-updater/core": "npm:0.35.6"
+  checksum: 10/cf310b0f293719ecfcd8494fca5d1efc0a0736f20490ca00df28b28a2d6e6fa2fd28c355ae43ebe4df8d7f7f83f2a6cf13a50527f8a7967fcdb365bd85b0ff02
   languageName: node
   linkType: hard
 
-"@hot-updater/plugin-core@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/plugin-core@npm:0.35.3"
+"@hot-updater/plugin-core@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/plugin-core@npm:0.35.6"
   dependencies:
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/js": "npm:0.35.3"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/js": "npm:0.35.6"
     es-toolkit: "npm:^1.32.0"
     mime: "npm:^4.0.4"
     semver: "npm:^7.7.2"
-  checksum: 10/4db701edbbe0a473d7a40912b47e546aa2537e7a907a425fdcaa0b7e7feecf50f670f7b9da6e90a5fedd4a4f3402a74976a1f0fc8aa241789fb64e285e74e50a
+  checksum: 10/8f99e8623f85b15705278b7d62bce91aa0fc981d53b44eb11c4f9aae9520061855b457752af8b46a671ffc4915f2a0739c2bb71ef425dac9aaba2464b034f0d7
   languageName: node
   linkType: hard
 
-"@hot-updater/react-native@npm:^0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/react-native@npm:0.35.3"
+"@hot-updater/react-native@npm:^0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/react-native@npm:0.35.6"
   dependencies:
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/js": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/js": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     use-sync-external-store: "npm:1.5.0"
   peerDependencies:
     expo: ">=50.0.0"
@@ -5392,30 +5392,30 @@ __metadata:
       optional: true
     hot-updater:
       optional: true
-  checksum: 10/2f9797731168ac7ccee861905eef651cac9b1cdb41d2f5d19d3c64255ee8edacf0b276200cab20c616bc6cdef632f1c18469cc87872a7597974f322cde1c8766
+  checksum: 10/f51a062823b98c71e333729bc2bd6cbc7fcb36326b0440b29e76d1c2db97227462ff1353199b340c56006875d16c91351147ea31086f11bb527578ebdb0195d1
   languageName: node
   linkType: hard
 
-"@hot-updater/sentry-plugin@npm:^0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/sentry-plugin@npm:0.35.3"
+"@hot-updater/sentry-plugin@npm:^0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/sentry-plugin@npm:0.35.6"
   dependencies:
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     "@sentry/cli": "npm:2.46.0"
-  checksum: 10/e19dcb64ccd107f83131706d8b5909ed46defeefa85c557d9c0869777dabc83818ed267e6ab46617924845ec759690ec8503642a319c9904e0ff8bedc4d44f7d
+  checksum: 10/9c2e91fffa47606015db0dd8539ffc60b6df92a8fefaeab8f7c1cff54af76da42fda7bbe6dd6d858465435bbaa48a0429fcb5978a0b9972a6f83a2d52bab4fe1
   languageName: node
   linkType: hard
 
-"@hot-updater/server@npm:0.35.3":
-  version: 0.35.3
-  resolution: "@hot-updater/server@npm:0.35.3"
+"@hot-updater/server@npm:0.35.6":
+  version: 0.35.6
+  resolution: "@hot-updater/server@npm:0.35.6"
   dependencies:
-    "@hot-updater/bsdiff": "npm:0.35.3"
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/js": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
+    "@hot-updater/bsdiff": "npm:0.35.6"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/js": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
     rou3: "npm:0.7.9"
     semver: "npm:^7.7.2"
   peerDependencies:
@@ -5432,7 +5432,7 @@ __metadata:
       optional: true
     mongodb:
       optional: true
-  checksum: 10/83885aea06a734a0cf38de80e82e3fee4a3e405f37dafa08afa278e545ca30279ff2c952a20a3bd06587f3bf363dbfe5821368040e805b523c0dbe471c39e274
+  checksum: 10/132d27661bae1f0f747952723bcb537f27f3df46c15f789d491ff83a9def4b5682bc8a91ec5111f4adce55c0b3fd5a281fdf5835700b0c3149b66952c5aebd23
   languageName: node
   linkType: hard
 
@@ -10771,10 +10771,10 @@ __metadata:
     "@emotion/is-prop-valid": "npm:^1.3.1"
     "@gorhom/bottom-sheet": "npm:^5.2.6"
     "@hookform/resolvers": "npm:^2.9.11"
-    "@hot-updater/bare": "npm:^0.35.3"
-    "@hot-updater/firebase": "npm:^0.35.3"
-    "@hot-updater/react-native": "npm:^0.35.3"
-    "@hot-updater/sentry-plugin": "npm:^0.35.3"
+    "@hot-updater/bare": "npm:^0.35.6"
+    "@hot-updater/firebase": "npm:^0.35.6"
+    "@hot-updater/react-native": "npm:^0.35.6"
+    "@hot-updater/sentry-plugin": "npm:^0.35.6"
     "@invertase/react-native-apple-authentication": "npm:^2.5.1"
     "@openspacelabs/react-native-zoomable-view": "npm:^2.1.5"
     "@pass-culture/design-system": "npm:0.12.0"
@@ -10889,7 +10889,7 @@ __metadata:
     geojson: "npm:^0.5.0"
     globalthis: "npm:^1.0.2"
     highlight-words-core: "npm:^1.2.2"
-    hot-updater: "npm:^0.35.3"
+    hot-updater: "npm:^0.35.6"
     husky: "npm:^9.1.7"
     instantsearch.js: "npm:^4.74.2"
     intl: "npm:^1.2.5"
@@ -17310,31 +17310,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hono@npm:4.12.9":
-  version: 4.12.9
-  resolution: "hono@npm:4.12.9"
-  checksum: 10/2466bab60ef6ca568f1636f27e0b735ce1a7c6f3a03bb2aa5bcab5b67e3a6ed6cb59edaddb5f836fbeb627804fb4c0ac21e59e73345e9e640b3fbd765163b9ed
-  languageName: node
-  linkType: hard
-
-"hono@npm:^4.11.4":
+"hono@npm:^4.11.4, hono@npm:^4.12.9":
   version: 4.12.31
   resolution: "hono@npm:4.12.31"
   checksum: 10/51183fb214e81617888fe379a0b1440e286f45f24fbb79eaaa3bd82f26de737afd1d68a22a4827624ce7617b772dd91ee0cb73516d9abf7f7454ee65f6aac2f7
   languageName: node
   linkType: hard
 
-"hot-updater@npm:^0.35.3":
-  version: 0.35.3
-  resolution: "hot-updater@npm:0.35.3"
+"hot-updater@npm:^0.35.6":
+  version: 0.35.6
+  resolution: "hot-updater@npm:0.35.6"
   dependencies:
-    "@hot-updater/android-helper": "npm:0.35.3"
-    "@hot-updater/apple-helper": "npm:0.35.3"
-    "@hot-updater/cli-tools": "npm:0.35.3"
-    "@hot-updater/console": "npm:0.35.3"
-    "@hot-updater/core": "npm:0.35.3"
-    "@hot-updater/plugin-core": "npm:0.35.3"
-    "@hot-updater/server": "npm:0.35.3"
+    "@hot-updater/android-helper": "npm:0.35.6"
+    "@hot-updater/apple-helper": "npm:0.35.6"
+    "@hot-updater/cli-tools": "npm:0.35.6"
+    "@hot-updater/console": "npm:0.35.6"
+    "@hot-updater/core": "npm:0.35.6"
+    "@hot-updater/plugin-core": "npm:0.35.6"
+    "@hot-updater/server": "npm:0.35.6"
     jiti: "npm:2.6.1"
   peerDependencies:
     "@expo/fingerprint": "*"
@@ -17357,7 +17350,7 @@ __metadata:
       optional: true
   bin:
     hot-updater: ./dist/index.mjs
-  checksum: 10/d884aed390f8383ab98599dc3dbb3887756477b6107e88de100c48f8d68b996809529653da742ed86c387c9a3c9af1ed306aa4624da88751738f4e517f526f7b
+  checksum: 10/da76678125c2f96bd72ae482f6a6d6799a72a802b7f8a336b2534a4442a267f01deec241718e747296de2a95e510ec8a754f62d2bf4478c647ecabe0f2dc096d
   languageName: node
   linkType: hard
 
@@ -22847,13 +22840,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.5.15":
-  version: 8.5.20
-  resolution: "postcss@npm:8.5.20"
+  version: 8.5.22
+  resolution: "postcss@npm:8.5.22"
   dependencies:
     nanoid: "npm:^3.3.16"
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
-  checksum: 10/bcae7818094f88030cb410f17efc312f24ee8f9bbc46483ac6536df5a9270f693c5fc41dcf0ccc254ab3fa6853d48468ee8707999ad1cc434a6084ed0a0e7a47
+  checksum: 10/7944444f267f2d94c7caeed66f3da56d5b947bd4a7e57a166a5161af25c6006dd73f40e2a1a6822f3d7fccc2fa005778c03058368eb7efca1b5038aec55abd14
   languageName: node
   linkType: hard
 
