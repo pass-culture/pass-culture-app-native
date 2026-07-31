@@ -85,11 +85,10 @@ SENTRY_AUTH_TOKEN=<token>
 - ⚠️ Make sure to change the version and release:
 
 ```bash
-node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 \
-  upload-sourcemaps sourcemaps \
+node_modules/@sentry/cli/bin/sentry-cli sourcemaps upload \
+  --release 1.132.3 \
   --dist 1013203 \
-  --url-prefix "app:///" \
-  --no-rewrite
+  sourcemaps
 ```
 
 ### 📦 Create the source maps locally (web) // if needed
