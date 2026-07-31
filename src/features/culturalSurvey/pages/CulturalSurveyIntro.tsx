@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
@@ -19,9 +18,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
 
   const navigateToCulturalSurvey = () => {
     void analytics.logHasStartedCulturalSurvey()
-    const firstQuestion = initialQuestions[0]
-    if (!firstQuestion) return
-    navigate(...getSubscriptionHookConfig('CulturalSurveyQuestions', { question: firstQuestion }))
+    navigate(...getSubscriptionHookConfig('CulturalSurveyQuestions'))
   }
 
   return (

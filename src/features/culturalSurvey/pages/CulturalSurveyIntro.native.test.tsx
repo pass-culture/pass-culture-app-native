@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
@@ -49,7 +48,6 @@ describe('CulturalSurveyIntro', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         screen: 'CulturalSurveyQuestions',
-        params: { question: CulturalSurveyQuestionEnum.SORTIES },
       })
     })
   })
