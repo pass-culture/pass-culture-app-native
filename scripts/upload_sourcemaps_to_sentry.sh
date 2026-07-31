@@ -86,8 +86,8 @@ upload_sourcemaps() {
   echo "RELEASE: ${RELEASE}"
   echo "DIST: ${DIST}"
 
-  node_modules/@sentry/cli/bin/sentry-cli releases files "${RELEASE}" \
-    upload-sourcemaps \
+  node_modules/@sentry/cli/bin/sentry-cli sourcemaps upload \
+    --release "${RELEASE}" \
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
     "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
