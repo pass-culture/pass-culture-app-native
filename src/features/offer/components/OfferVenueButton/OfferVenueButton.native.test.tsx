@@ -44,7 +44,6 @@ describe('<OfferVenueButton />', () => {
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
       venueId: offerResponseSnap.venue.id.toString(),
       from: 'offer',
-      displayAdvice: false,
     })
   })
 })

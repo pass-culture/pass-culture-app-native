@@ -69,7 +69,6 @@ describe('MarketingBlockExclusivity', () => {
       offerId: '102280',
       venueId: 1,
       isHeadline: false,
-      displayAdvice: false,
     })
   })
 

@@ -27,8 +27,6 @@ import {
   useLocationMode,
   useUserLocation,
 } from 'libs/locationV2/location.store'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -61,7 +59,6 @@ export const SearchSuggestions = ({
   const shouldDisplayArtistsSuggestions = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
-  const proAdvicesOnVenueSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_VENUE)
 
   useEffect(() => {
     setOptions({
@@ -130,7 +127,6 @@ export const SearchSuggestions = ({
     await analytics.logConsultVenue({
       venueId: venueId.toString(),
       from: 'searchAutoComplete',
-      displayAdvice: proAdvicesOnVenueSegment === 'A',
     })
     navigate('Venue', { id: venueId })
   }

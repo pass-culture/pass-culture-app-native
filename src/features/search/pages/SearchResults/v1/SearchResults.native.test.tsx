@@ -346,7 +346,6 @@ describe('<SearchResults/>', () => {
       expect(analytics.logConsultVenue).toHaveBeenCalledWith({
         from: 'searchAutoComplete',
         venueId: '1',
-        displayAdvice: false,
       })
     })
 

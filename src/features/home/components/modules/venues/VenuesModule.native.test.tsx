@@ -131,7 +131,6 @@ describe('VenuesModule component', () => {
         moduleId: props.moduleId,
         homeEntryId: props.homeEntryId,
         originDetails: 'volunteeringPlaylist',
-        displayAdvice: false,
       })
     })
   })
@@ -167,7 +166,6 @@ describe('VenuesModule component', () => {
         moduleName: props.displayParameters.title,
         moduleId: props.moduleId,
         homeEntryId: props.homeEntryId,
-        displayAdvice: false,
       })
     })
   })

@@ -31,8 +31,6 @@ import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -44,8 +42,6 @@ export function Offer() {
   const offerId = route.params?.id
 
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
-  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
-  const shouldDisplayProAdvices = enableProAdvices && proAdvicesSegment === 'A'
 
   const { user, isLoggedIn } = useAuthContext()
   const userLocation = useUserLocation()
@@ -128,7 +124,7 @@ export function Offer() {
 
   const { data: proAdvicesData } = useOfferProAdvicesQuery({
     offerId,
-    enableProAdvices: shouldDisplayProAdvices,
+    enableProAdvices,
     latitude: userLocation?.latitude,
     longitude: userLocation?.longitude,
     select: ({ proAdvices, nbResults }) => ({
@@ -136,7 +132,7 @@ export function Offer() {
       nbResults,
     }),
   })
-  const proAdvices = shouldDisplayProAdvices ? proAdvicesData : undefined
+  const proAdvices = enableProAdvices ? proAdvicesData : undefined
 
   const adviceVariantInfo = useClubAdviceVariant(offer?.subcategoryId)
 
@@ -198,7 +194,6 @@ export function Offer() {
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
         proAdvicesCount={proAdvices?.nbResults}
-        proAdvicesSegment={proAdvicesSegment}
       />
     </Page>
   )

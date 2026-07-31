@@ -16,8 +16,6 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -52,7 +50,6 @@ export const VenueMapOfferPlaylist = ({
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const isFocused = useIsFocused()
-  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
@@ -65,8 +62,7 @@ export const VenueMapOfferPlaylist = ({
         hasSmallLayout: true,
         isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
         subcategoryId: item.offer.subcategoryId,
-        proAdvicesCount:
-          enableProAdvicesTag && proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
+        proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
         enableSceneClubTag,
       })
       return (
@@ -95,7 +91,6 @@ export const VenueMapOfferPlaylist = ({
       labelMapping,
       mapping,
       playlistType,
-      proAdvicesSegment,
       theme,
     ]
   )

@@ -10,10 +10,9 @@ import { Typo } from 'ui/theme'
 
 interface Props {
   venue: OfferVenueResponse
-  proAdvicesOnVenueSegment?: string
 }
 
-export function OfferVenueButton({ venue, proAdvicesOnVenueSegment }: Readonly<Props>) {
+export function OfferVenueButton({ venue }: Readonly<Props>) {
   const { designSystem, icons } = useTheme()
 
   return (
@@ -30,7 +29,6 @@ export function OfferVenueButton({ venue, proAdvicesOnVenueSegment }: Readonly<P
         analytics.logConsultVenue({
           venueId: venue.id.toString(),
           from: 'offer',
-          displayAdvice: proAdvicesOnVenueSegment === 'A',
         })
       }
       accessibilityLabel={`Accéder à la page du lieu ${venue.name}`}

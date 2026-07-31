@@ -31,7 +31,6 @@ type OfferPlaylistItemProps = {
   priceDisplay: (item: Offer) => string
   navigationMethod?: OfferTileProps['navigationMethod']
   hasSmallLayout?: boolean
-  proAdvicesSegment?: string
   enableProAdvicesTag?: boolean
   enableSceneClubTag?: boolean
 }
@@ -55,7 +54,6 @@ export const OfferPlaylistItem = ({
   navigationMethod,
   priceDisplay,
   hasSmallLayout,
-  proAdvicesSegment,
   enableProAdvicesTag,
   enableSceneClubTag,
 }: OfferPlaylistItemProps) => {
@@ -70,8 +68,7 @@ export const OfferPlaylistItem = ({
       hasSmallLayout,
       isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
       subcategoryId: item.offer.subcategoryId,
-      proAdvicesCount:
-        enableProAdvicesTag && proAdvicesSegment === 'A' ? item.offer.proAdvicesCount : undefined,
+      proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
       enableSceneClubTag,
     })
     return (

@@ -37,7 +37,6 @@ type ArtistCategoryPlaylistProps = {
     artistId: string,
     playlistIndex?: number
   ) => void
-  proAdvicesSegment?: string
   enableProAdvicesTag?: boolean
 }
 
@@ -50,7 +49,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   playlistIndex,
   title,
   onViewableItemsChanged,
-  proAdvicesSegment,
   enableProAdvicesTag,
 }) => {
   const theme = useTheme()
@@ -108,7 +106,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
             hasSmallLayout: true,
             priceDisplay: (item: Offer) =>
               getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
-            proAdvicesSegment,
             enableProAdvicesTag,
             enableSceneClubTag,
           })}

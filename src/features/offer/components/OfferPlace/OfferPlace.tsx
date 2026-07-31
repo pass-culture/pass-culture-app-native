@@ -22,8 +22,6 @@ export type OfferPlaceProps = {
   subcategory: Subcategory
   isOfferAtSameAddressAsVenue: boolean
   distance?: string | null
-  proAdvicesOnOfferSegment?: string
-  proAdvicesOnVenueSegment?: string
 }
 
 type PartialVenue = Pick<
@@ -51,8 +49,6 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   subcategory,
   distance,
   isOfferAtSameAddressAsVenue,
-  proAdvicesOnOfferSegment,
-  proAdvicesOnVenueSegment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
@@ -70,7 +66,6 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
         await analytics.logConsultVenue({
           venueId: offer.venue.id.toString(),
           from: 'offer',
-          displayAdvice: proAdvicesOnVenueSegment === 'A',
         })
         navigate('Venue', { id: offer.venue.id })
       }
@@ -109,7 +104,6 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
           subcategory={subcategory}
           handleOnSeeVenuePress={handleOnSeeVenuePress}
           isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
-          proAdvicesSegment={proAdvicesOnOfferSegment}
         />
       )}
     </OfferPlaceWrapper>

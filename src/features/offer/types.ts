@@ -93,7 +93,6 @@ export type OfferContentProps = {
   onVideoConsentPress: VoidFunction
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
   proAdvicesCount?: number
-  proAdvicesSegment?: string
 }
 
 export type OfferImageContainerDimensions = {

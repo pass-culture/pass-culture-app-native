@@ -19,14 +19,12 @@ type OfferToHeadlineParams = {
   offer?: Offer
   transformParameters: OfferToHeadlineOfferData
   advice?: VenueProAdvice
-  segment?: string
 }
 
 export function offerToHeadlineOfferData({
   offer,
   transformParameters,
   advice,
-  segment,
 }: OfferToHeadlineParams): HeadlineOfferData | null {
   if (!offer) return null
 
@@ -44,6 +42,6 @@ export function offerToHeadlineOfferData({
     category: labelMapping[hitOffer.subcategoryId] ?? '',
     price: displayedPrice,
     distance: formatDistance({ lat: _geoloc?.lat, lng: _geoloc?.lng }, userLocation),
-    advice: segment === 'A' ? advice : undefined,
+    advice,
   }
 }

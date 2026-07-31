@@ -33,8 +33,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
-import { AB_TESTS } from 'shared/useABSegment/abTests'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -91,7 +89,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
   const { appBarHeight, designSystem } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
-  const proAdvicesSegment = useABSegment(AB_TESTS.PRO_REVIEWS_ON_OFFER)
   const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
@@ -246,7 +243,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
           <ArtistTopOffers
             artistName={name}
             items={artistTopOffers}
-            proAdvicesSegment={proAdvicesSegment}
             enableProAdvicesTag={enableProAdvicesTag}
           />
           {enablePlaylistByCategory ? (
@@ -254,7 +250,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
               artist={artist}
               items={artistPlaylist}
               onViewableItemsChanged={onViewableItemsChanged}
-              proAdvicesSegment={proAdvicesSegment}
               enableProAdvicesTag={enableProAdvicesTag}
             />
           ) : null}
