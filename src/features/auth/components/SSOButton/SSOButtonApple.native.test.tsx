@@ -3,7 +3,7 @@ import appleAuth from '@invertase/react-native-apple-authentication'
 import React from 'react'
 
 import * as API from 'api/api'
-import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
+import { AccountState, OauthStateResponseV2, SigninResponseV2, UserProfileResponse } from 'api/gen'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
 import { beneficiaryUserFromAPI } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -27,7 +27,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV2OauthssoProviderAuthorize')
 const onSignInFailureSpy = jest.fn()
 const showErrorSnackBarSpy = jest.spyOn(snackBarStoreModule, 'showErrorSnackBar')
 
@@ -46,7 +46,7 @@ const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuer
 
 describe('<SSOButtonApple />', () => {
   beforeEach(() => {
-    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+    mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
@@ -58,7 +58,7 @@ describe('<SSOButtonApple />', () => {
   })
 
   it('should sign in with device info when sso button is clicked', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
+    mockServer.postApi<SigninResponseV2>('/v2/oauth/apple/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
@@ -87,7 +87,7 @@ describe('<SSOButtonApple />', () => {
   })
 
   it('should call onSignInFailure when signin fails', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
+    mockServer.postApi<SigninResponseV2>('/v2/oauth/apple/authorize', {
       responseOptions: { statusCode: 500 },
     })
 
@@ -125,7 +125,7 @@ describe('<SSOButtonApple />', () => {
   })
 
   it('should log analytics when logging in with sso from signup', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
+    mockServer.postApi<SigninResponseV2>('/v2/oauth/apple/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
@@ -145,7 +145,7 @@ describe('<SSOButtonApple />', () => {
   })
 
   it('should log analytics when logging in with sso from login', async () => {
-    mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
+    mockServer.postApi<SigninResponseV2>('/v2/oauth/apple/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,

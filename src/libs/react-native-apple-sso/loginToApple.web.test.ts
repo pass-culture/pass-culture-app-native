@@ -21,7 +21,7 @@ describe('loginToApple (web)', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
-    mockedApi.getNativeV1OauthState.mockResolvedValue({ oauthStateToken: mockState })
+    mockedApi.getNativeV2OauthState.mockResolvedValue({ oauthStateToken: mockState })
     mockLoadAppleSSOContext.mockReturnValue({ type: 'login', oauthStateToken: '' })
     Object.defineProperty(env, 'APPLE_SERVICE_ID', { value: 'test.service.id', writable: true })
     Object.defineProperty(window, 'location', {
@@ -72,9 +72,9 @@ describe('loginToApple (web)', () => {
     expect(onError).toHaveBeenCalledWith(new Error('apple_service_id_not_configured'))
   })
 
-  it('should call onError when getNativeV1OauthState fails', async () => {
+  it('should call onError when getNativeV2OauthState fails', async () => {
     const error = new Error('Network error')
-    mockedApi.getNativeV1OauthState.mockRejectedValueOnce(error)
+    mockedApi.getNativeV2OauthState.mockRejectedValueOnce(error)
 
     await loginToApple({ onSuccess, onError })
 

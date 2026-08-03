@@ -15,7 +15,7 @@ export const loginToGoogle = async ({ onSuccess, onError }: GoogleLoginOptions) 
     if (serverAuthCode) {
       onSuccess({
         code: serverAuthCode,
-        state: (await api.getNativeV1OauthState()).oauthStateToken,
+        state: (await api.getNativeV2OauthState()).oauthStateToken,
       })
     }
   } catch (error) {

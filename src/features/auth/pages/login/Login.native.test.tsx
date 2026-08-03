@@ -6,7 +6,7 @@ import * as API from 'api/api'
 import {
   AccountState,
   FavoriteResponse,
-  OauthStateResponse,
+  OauthStateResponseV2,
   RecreditType,
   SigninResponseV2,
 } from 'api/gen'
@@ -69,7 +69,7 @@ describe('<Login/>', () => {
   beforeEach(() => {
     setFeatureFlags([])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+    mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
     simulateSignin200(AccountState.ACTIVE)

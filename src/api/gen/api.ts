@@ -2327,6 +2327,27 @@ export interface OAuthSigninRequest {
 }
 /**
  * @export
+ * @interface OAuthSigninRequestV2
+ */
+export interface OAuthSigninRequestV2 {
+  /**
+   * @type {string}
+   * @memberof OAuthSigninRequestV2
+   */
+  authorizationCode: string
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof OAuthSigninRequestV2
+   */
+  deviceInfo: DeviceInfoV2
+  /**
+   * @type {string}
+   * @memberof OAuthSigninRequestV2
+   */
+  oauthStateToken: string
+}
+/**
+ * @export
  * @interface SSOAccountRequest
  */
 export interface SSOAccountRequest {
@@ -2766,6 +2787,17 @@ export interface OauthStateResponse {
   /**
    * @type {string}
    * @memberof OauthStateResponse
+   */
+  oauthStateToken: string
+}
+/**
+ * @export
+ * @interface OauthStateResponseV2
+ */
+export interface OauthStateResponseV2 {
+  /**
+   * @type {string}
+   * @memberof OauthStateResponseV2
    */
   oauthStateToken: string
 }
@@ -6668,6 +6700,22 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary sso_oauth_state <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2OauthState(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/oauth/state`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_offer_v2 <GET>
      * @deprecated
      * @param {number} offer_id
@@ -7849,6 +7897,44 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary sso_authorize <POST>
+     * @param {OAuthSigninRequestV2} body
+     * @param {string} sso_provider
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2OauthssoProviderAuthorize(body: OAuthSigninRequestV2, sso_provider: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2OauthssoProviderAuthorize.'
+        )
+      }
+      // verify required parameter 'sso_provider' is not null or undefined
+      if (sso_provider === null || sso_provider === undefined) {
+        throw new RequiredError(
+          'sso_provider',
+          'Required parameter sso_provider was null or undefined when calling postNativeV2OauthssoProviderAuthorize.'
+        )
+      }
+      let pathname = `/native/v2/oauth/{sso_provider}/authorize`.replace(
+        `{${'sso_provider'}}`,
+        encodeURIComponent(String(sso_provider))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"OAuthSigninRequestV2" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_offers_and_stocks <POST>
      * @param {OffersStocksRequest} body
      * @param {*} [options] Override http request option.
@@ -8508,6 +8594,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
+     * @summary sso_oauth_state <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2OauthState(options?: any): Promise<OauthStateResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2OauthState(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     *
      * @summary get_email_update_status <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -9015,6 +9112,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ValidateEmail(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     *
+     * @summary sso_authorize <POST>
+     * @param {OAuthSigninRequestV2} body
+     * @param {string} sso_provider
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2OauthssoProviderAuthorize(body: OAuthSigninRequestV2, sso_provider: string, options?: any): Promise<SigninResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2OauthssoProviderAuthorize(body, sso_provider, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9540,6 +9650,17 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     *
+    * @summary sso_oauth_state <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2OauthState(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2OauthState(options)
+  }
+  /**
+    *
     * @summary get_email_update_status <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -10052,6 +10173,19 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
+    * @summary sso_authorize <POST>
+    * @param {OAuthSigninRequestV2} body
+    * @param {string} sso_provider
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2OauthssoProviderAuthorize(body: OAuthSigninRequestV2, sso_provider: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2OauthssoProviderAuthorize(body, sso_provider, options)
+  }
+  /**
+    *
     * @summary get_offers_and_stocks <POST>
     * @param {OffersStocksRequest} body
     * @param {*} [options] Override http request option.

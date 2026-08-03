@@ -32,13 +32,13 @@ describe('loginToGoogle', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     initCodeClientMock.mockReturnValue({ requestCode: requestCodeMock })
-    mockedApi.getNativeV1OauthState.mockResolvedValue({ oauthStateToken: mockState })
+    mockedApi.getNativeV2OauthState.mockResolvedValue({ oauthStateToken: mockState })
   })
 
   it('should initialize code client and request code on success', async () => {
     await loginToGoogle({ onSuccess, onError })
 
-    expect(mockedApi.getNativeV1OauthState).toHaveBeenCalledWith()
+    expect(mockedApi.getNativeV2OauthState).toHaveBeenCalledWith()
     expect(initCodeClientMock).toHaveBeenCalledWith({
       client_id: 'mock-google-client-id',
       scope: 'openid profile email',
@@ -49,9 +49,9 @@ describe('loginToGoogle', () => {
     expect(requestCodeMock).toHaveBeenCalledWith()
   })
 
-  it('should call onError if getNativeV1OauthState fails', async () => {
+  it('should call onError if getNativeV2OauthState fails', async () => {
     const error = new Error('API Error')
-    mockedApi.getNativeV1OauthState.mockRejectedValueOnce(error)
+    mockedApi.getNativeV2OauthState.mockRejectedValueOnce(error)
 
     await loginToGoogle({ onSuccess, onError })
 

@@ -21,7 +21,7 @@ describe('loginToGoogle', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
-    mockedApi.getNativeV1OauthState.mockResolvedValue({ oauthStateToken: mockState })
+    mockedApi.getNativeV2OauthState.mockResolvedValue({ oauthStateToken: mockState })
     mockedGoogleSignin.hasPlayServices.mockResolvedValue(true)
     mockedGoogleSignin.signIn.mockResolvedValue({
       serverAuthCode: mockServerAuthCode,
@@ -44,7 +44,7 @@ describe('loginToGoogle', () => {
       showPlayServicesUpdateDialog: true,
     })
     expect(mockedGoogleSignin.signIn).toHaveBeenCalledWith()
-    expect(mockedApi.getNativeV1OauthState).toHaveBeenCalledWith()
+    expect(mockedApi.getNativeV2OauthState).toHaveBeenCalledWith()
     expect(onSuccess).toHaveBeenCalledWith({ code: mockServerAuthCode, state: mockState })
     expect(onError).not.toHaveBeenCalled()
   })
