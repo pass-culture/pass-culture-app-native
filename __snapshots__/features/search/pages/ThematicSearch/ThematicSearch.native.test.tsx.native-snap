@@ -1831,7 +1831,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     <View
                       style={
                         {
-                          "flexShrink": 1,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
                         }
                       }
                     >
