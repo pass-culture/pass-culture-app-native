@@ -1151,7 +1151,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               style={
                                 {
-                                  "flexShrink": 1,
+                                  "flexDirection": "row",
+                                  "flexGrow": 1,
                                 }
                               }
                             >
@@ -4504,7 +4505,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             <View
                               style={
                                 {
-                                  "flexShrink": 1,
+                                  "flexDirection": "row",
+                                  "flexGrow": 1,
                                 }
                               }
                             >

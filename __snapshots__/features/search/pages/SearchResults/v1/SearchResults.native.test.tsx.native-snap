@@ -680,7 +680,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       <View
                         style={
                           {
-                            "flexShrink": 1,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
                           }
                         }
                       >
