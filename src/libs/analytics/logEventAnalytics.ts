@@ -38,7 +38,7 @@ import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { ConsultOfferLogParams } from 'libs/analytics/types'
+import { AdviceType, ConsultOfferLogParams } from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -208,8 +208,12 @@ export const logEventAnalytics = {
   logChooseEduConnectMethod: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD }),
   logChooseUbbleMethod: () => analytics.logEvent({ firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD }),
-  logClickAllClubRecos: (params: { offerId: string; from: Referrals; categoryName: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_ALL_CLUB_RECOS }, params),
+  logClickAllClubRecos: (params: {
+    offerId: string
+    from: Referrals
+    categoryName: string
+    adviceType?: AdviceType
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_ALL_CLUB_RECOS }, params),
   logClickBookOffer: (params: {
     offerId: number
     from?: Referrals
@@ -250,8 +254,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
   logClickVolunteerCTA: (params: { from: Referrals; venueId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_VOLUNTEER_CTA }, params),
-  logClickWhatsClub: (params: { offerId: string; from: Referrals; categoryName: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
+  logClickWhatsClub: (params: {
+    offerId: string
+    from: Referrals
+    categoryName: string
+    adviceType?: AdviceType
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
   logConnectionInfo: (params: { type: string; generation?: string | null }) =>
@@ -268,9 +276,10 @@ export const logEventAnalytics = {
   logConsultAdvice: (params: {
     from: Referrals
     originDetails: string
-    adviceType: 'book_club' | 'cine_club' | 'pro'
+    adviceType: AdviceType
     offerId?: string
     venueId?: string
+    chronicleId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ADVICE }, params),
   logConsultApplicationProcessingModal: (offerId: number) =>
     analytics.logEvent(
@@ -294,8 +303,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL }, { offerId }),
   logConsultAvailableDates: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AVAILABLE_DATES }, { offerId }),
-  logConsultChronicle: (params: { offerId?: number; chronicleId?: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_CHRONICLE }, params),
   logConsultDescriptionDetails: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS }, { offerId }),
   logConsultDisclaimerValidationMail: () =>
@@ -334,7 +341,7 @@ export const logEventAnalytics = {
     homeEntryId?: string
     searchId?: string
     originDetails?: string
-    adviceType?: 'book_club' | 'cine_club' | 'pro'
+    adviceType?: AdviceType
     offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
   logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>

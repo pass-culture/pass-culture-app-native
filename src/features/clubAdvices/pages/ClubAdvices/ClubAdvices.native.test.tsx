@@ -163,6 +163,7 @@ describe('ClubAdvices', () => {
         categoryName: 'CINEMA',
         from: 'chronicles',
         offerId: '116656',
+        adviceType: 'cine_club',
       })
     })
   })
@@ -244,6 +245,7 @@ describe('ClubAdvices', () => {
             categoryName: 'CINEMA',
             from: 'chronicles',
             offerId: '116656',
+            adviceType: 'cine_club',
           })
         })
       })

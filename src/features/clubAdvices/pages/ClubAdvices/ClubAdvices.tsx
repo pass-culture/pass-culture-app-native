@@ -31,6 +31,7 @@ export const ClubAdvices: FunctionComponent = () => {
       categoryName: offer?.subcategoryId
         ? subcategoriesMapping[offer.subcategoryId].categoryId
         : '',
+      adviceType: adviceVariantInfo?.adviceType,
     })
     runAfterInteractionsMobile(() => {
       navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })

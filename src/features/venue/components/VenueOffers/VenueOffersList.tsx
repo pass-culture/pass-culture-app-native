@@ -8,7 +8,10 @@ import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import {
+  getDisplayedClubAdviceType,
+  renderInteractionTag,
+} from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
@@ -86,7 +89,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
-    const tag = renderInteractionTag({
+    const interactionTagParams = {
       theme,
       likesCount: item.offer.likes,
       clubAdvicesCount: item.offer.chroniclesCount,
@@ -95,7 +98,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       proAdvicesCount:
         enableProAdvicesTag && shouldDisplayAdvicesSection ? item.offer.proAdvicesCount : undefined,
       enableSceneClubTag,
-    })
+    }
+    const tag = renderInteractionTag(interactionTagParams)
+    const clubAdviceType = getDisplayedClubAdviceType(interactionTagParams)
 
     return (
       <OfferTile
@@ -122,6 +127,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         height={height}
         searchId={routeParams?.searchId}
         interactionTag={tag}
+        clubAdviceType={clubAdviceType}
       />
     )
   }

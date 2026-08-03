@@ -18,6 +18,7 @@ import {
 } from 'api/gen'
 import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { offerProAdvicesCardDataFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
+import { AdviceVariantInfo } from 'features/advices/types'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
@@ -719,7 +720,7 @@ describe('<OfferContent />', () => {
         })
       })
 
-      it('should log consultChronicle when pressing "Voir plus" button', async () => {
+      it('should log consultAdvice with club advice type when pressing "Voir plus" button', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
@@ -733,9 +734,44 @@ describe('<OfferContent />', () => {
         const seeMoreButton = screen.getByLabelText(`Voir plus à propos de ${authorLabel}`)
         await user.press(seeMoreButton)
 
-        expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
-          offerId: 116656,
-          chronicleId: 1,
+        expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: '116656',
+          originDetails: adviceVariantInfoFixture.titleSection,
+          adviceType: 'book_club',
+          chronicleId: '1',
+        })
+      })
+
+      it('should log consultAdvice with scene club advice type when pressing "Voir plus" button', async () => {
+        const sceneClubVariantInfo: AdviceVariantInfo = {
+          ...adviceVariantInfoFixture,
+          adviceType: 'scene_club',
+          titleSection: 'Les avis de la scène club',
+        }
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+          },
+          adviceVariantInfo: sceneClubVariantInfo,
+        })
+
+        const descriptions = screen.getAllByTestId('description')
+
+        await act(async () => {
+          descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+        })
+
+        const seeMoreButton = screen.getByLabelText(`Voir plus à propos de ${authorLabel}`)
+        await user.press(seeMoreButton)
+
+        expect(analytics.logConsultAdvice).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: '116656',
+          originDetails: sceneClubVariantInfo.titleSection,
+          adviceType: 'scene_club',
+          chronicleId: '1',
         })
       })
 
@@ -1065,6 +1101,7 @@ function renderOfferContent({
   clubAdvices,
   proAdvices,
   proAdvicesCount,
+  adviceVariantInfo = adviceVariantInfoFixture,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
   const clubAdvicesData =
@@ -1079,7 +1116,7 @@ function renderOfferContent({
           clubAdvices={clubAdvicesData}
           proAdvices={proAdvices}
           proAdvicesCount={proAdvicesCount}
-          adviceVariantInfo={adviceVariantInfoFixture}
+          adviceVariantInfo={adviceVariantInfo}
           onShowClubAdviceWritersModal={jest.fn()}
           hasVideoCookiesConsent
           onVideoConsentPress={jest.fn()}

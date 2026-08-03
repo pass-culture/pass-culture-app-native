@@ -82,6 +82,7 @@ export function Offer() {
   const categoryId = offer?.subcategoryId
     ? subcategoriesMapping[offer?.subcategoryId]?.categoryId
     : ''
+  const adviceVariantInfo = useClubAdviceVariant(offer?.subcategoryId)
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
       saveReaction({ reactions: [{ offerId, reactionType }] })
@@ -95,6 +96,7 @@ export function Offer() {
       offerId: offerId.toString(),
       from: 'offer',
       categoryName: categoryId,
+      adviceType: adviceVariantInfo?.adviceType,
     })
     hideChroniclesWritersModal()
     runAfterInteractionsMobile(() => {
@@ -107,6 +109,7 @@ export function Offer() {
       offerId: offerId.toString(),
       from: 'offer',
       categoryName: categoryId,
+      adviceType: adviceVariantInfo?.adviceType,
     })
     showChroniclesWritersModal()
   }
@@ -133,8 +136,6 @@ export function Offer() {
     }),
   })
   const proAdvices = enableProAdvices ? proAdvicesData : undefined
-
-  const adviceVariantInfo = useClubAdviceVariant(offer?.subcategoryId)
 
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 

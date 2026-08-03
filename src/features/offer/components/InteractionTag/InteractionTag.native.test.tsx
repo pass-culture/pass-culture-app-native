@@ -1,5 +1,8 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { getTagProps } from 'features/offer/components/InteractionTag/InteractionTag'
+import {
+  getDisplayedClubAdviceType,
+  getTagProps,
+} from 'features/offer/components/InteractionTag/InteractionTag'
 import { computedTheme } from 'tests/computedTheme'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 
@@ -183,4 +186,59 @@ describe('getTagProps', () => {
       ).toBeNull()
     }
   )
+})
+
+describe('getDisplayedClubAdviceType', () => {
+  it.each([
+    [SubcategoryIdEnum.LIVRE_PAPIER, 'book_club'],
+    [SubcategoryIdEnum.SEANCE_CINE, 'cine_club'],
+    [SubcategoryIdEnum.SPECTACLE_REPRESENTATION, 'scene_club'],
+  ])('should return %s advice type for subcategory %s', (subcategoryId, expectedAdviceType) => {
+    expect(
+      getDisplayedClubAdviceType({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        subcategoryId,
+        enableSceneClubTag: true,
+      })
+    ).toEqual(expectedAdviceType)
+  })
+
+  it('should return undefined when there is no club advice', () => {
+    expect(
+      getDisplayedClubAdviceType({ theme: computedTheme, clubAdvicesCount: 0, subcategoryId })
+    ).toBeUndefined()
+  })
+
+  it('should return undefined when subcategory belongs to no club', () => {
+    expect(
+      getDisplayedClubAdviceType({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        subcategoryId: SubcategoryIdEnum.CONCERT,
+        enableSceneClubTag: true,
+      })
+    ).toBeUndefined()
+  })
+
+  it('should return undefined for a scene club subcategory when scene club tag is disabled', () => {
+    expect(
+      getDisplayedClubAdviceType({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+      })
+    ).toBeUndefined()
+  })
+
+  it('should return undefined when the coming soon tag takes precedence', () => {
+    expect(
+      getDisplayedClubAdviceType({
+        theme: computedTheme,
+        clubAdvicesCount: 3,
+        subcategoryId,
+        isComingSoonOffer: true,
+      })
+    ).toBeUndefined()
+  })
 })

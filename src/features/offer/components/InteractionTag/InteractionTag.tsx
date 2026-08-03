@@ -6,6 +6,7 @@ import { isBookClubSubcategory } from 'features/clubAdvices/helpers/isBookClubSu
 import { isCineClubSubcategory } from 'features/clubAdvices/helpers/isCineClubSubcategory'
 import { isSceneClubSubcategory } from 'features/clubAdvices/helpers/isSceneClubSubcategory'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
+import { ClubAdviceType } from 'libs/analytics/types'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagProps, TagVariant } from 'ui/designSystem/Tag/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -23,21 +24,46 @@ type InteractionTagParams = {
 
 type ClubTagConfig = {
   isClubSubcategory: (subcategoryId: SubcategoryIdEnum) => boolean
+  adviceType: ClubAdviceType
   wording: string
   variant: TagVariant
   isBehindSceneClubFlag?: boolean
 }
 
 const CLUB_TAGS: ClubTagConfig[] = [
-  { isClubSubcategory: isBookClubSubcategory, wording: 'book club', variant: TagVariant.BOOKCLUB },
-  { isClubSubcategory: isCineClubSubcategory, wording: 'ciné club', variant: TagVariant.CINECLUB },
+  {
+    isClubSubcategory: isBookClubSubcategory,
+    adviceType: 'book_club',
+    wording: 'book club',
+    variant: TagVariant.BOOKCLUB,
+  },
+  {
+    isClubSubcategory: isCineClubSubcategory,
+    adviceType: 'cine_club',
+    wording: 'ciné club',
+    variant: TagVariant.CINECLUB,
+  },
   {
     isClubSubcategory: isSceneClubSubcategory,
+    adviceType: 'scene_club',
     wording: 'scène club',
     variant: TagVariant.SCENECLUB,
     isBehindSceneClubFlag: true,
   },
 ]
+
+const findClubTag = ({
+  clubAdvicesCount = 0,
+  subcategoryId,
+  enableSceneClubTag,
+}: InteractionTagParams): ClubTagConfig | undefined => {
+  if (clubAdvicesCount === 0) return undefined
+
+  return CLUB_TAGS.find(
+    ({ isClubSubcategory, isBehindSceneClubFlag }) =>
+      isClubSubcategory(subcategoryId) && (!isBehindSceneClubFlag || enableSceneClubTag)
+  )
+}
 
 export const renderInteractionTag = (params: InteractionTagParams): ReactNode | undefined => {
   const tagProps = getTagProps(params)
@@ -46,24 +72,24 @@ export const renderInteractionTag = (params: InteractionTagParams): ReactNode | 
   return <Tag testID="interaction-tag" {...tagProps} />
 }
 
-const getClubTagProps = ({
-  clubAdvicesCount = 0,
-  subcategoryId,
-  hasSmallLayout,
-  enableSceneClubTag,
-}: InteractionTagParams): TagProps | null => {
-  if (clubAdvicesCount === 0) return null
+const getClubTagProps = (params: InteractionTagParams): TagProps | null => {
+  const { clubAdvicesCount = 0, hasSmallLayout } = params
 
-  const club = CLUB_TAGS.find(
-    ({ isClubSubcategory, isBehindSceneClubFlag }) =>
-      isClubSubcategory(subcategoryId) && (!isBehindSceneClubFlag || enableSceneClubTag)
-  )
+  const club = findClubTag(params)
   if (!club) return null
 
   return {
     label: hasSmallLayout ? `${clubAdvicesCount} avis` : `${clubAdvicesCount} avis ${club.wording}`,
     variant: club.variant,
   }
+}
+
+export const getDisplayedClubAdviceType = (
+  params: InteractionTagParams
+): ClubAdviceType | undefined => {
+  if (params.isComingSoonOffer) return undefined
+
+  return findClubTag(params)?.adviceType
 }
 
 export const getTagProps = (params: InteractionTagParams): TagProps | null => {

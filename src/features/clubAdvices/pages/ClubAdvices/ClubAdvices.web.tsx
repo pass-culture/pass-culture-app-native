@@ -34,12 +34,13 @@ export const ClubAdvices: FunctionComponent = () => {
   }
 
   const handleOnShowRecoButtonPress = () => {
-    analytics.logClickAllClubRecos({
+    void analytics.logClickAllClubRecos({
       offerId: offerId.toString(),
       from: 'chronicles',
       categoryName: offer?.subcategoryId
         ? subcategoriesMapping[offer.subcategoryId].categoryId
         : '',
+      adviceType: adviceVariantInfo?.adviceType,
     })
     navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
   }

@@ -4,7 +4,10 @@ import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
-import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import {
+  getDisplayedClubAdviceType,
+  renderInteractionTag,
+} from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -55,7 +58,7 @@ export const VenueMapOfferPlaylist = ({
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item }) => {
-      const tag = renderInteractionTag({
+      const interactionTagParams = {
         theme,
         likesCount: item.offer.likes,
         clubAdvicesCount: item.offer.chroniclesCount,
@@ -64,7 +67,9 @@ export const VenueMapOfferPlaylist = ({
         subcategoryId: item.offer.subcategoryId,
         proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
         enableSceneClubTag,
-      })
+      }
+      const tag = renderInteractionTag(interactionTagParams)
+      const clubAdviceType = getDisplayedClubAdviceType(interactionTagParams)
       return (
         <OfferTile
           offerId={Number(item.objectID)}
@@ -80,6 +85,7 @@ export const VenueMapOfferPlaylist = ({
           height={PLAYLIST_ITEM_HEIGHT}
           playlistType={playlistType}
           interactionTag={tag}
+          clubAdviceType={clubAdviceType}
         />
       )
     },

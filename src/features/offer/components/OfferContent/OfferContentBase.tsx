@@ -260,7 +260,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const onSeeMoreButtonPress = (adviceId: number) => {
     // It's dirty but necessary to use from parameter for the logs
     navigate('ClubAdvices', { offerId: offer.id, adviceId, from: 'chronicles' })
-    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId: adviceId })
+    if (!adviceVariantInfo) return
+    void analytics.logConsultAdvice({
+      from: 'offer',
+      offerId: offer.id.toString(),
+      originDetails: adviceVariantInfo.titleSection,
+      adviceType: adviceVariantInfo.adviceType,
+      chronicleId: adviceId.toString(),
+    })
   }
 
   const handleOnSeeAllReviewsPress = () => {

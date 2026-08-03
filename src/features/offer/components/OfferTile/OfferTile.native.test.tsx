@@ -136,6 +136,19 @@ describe('OfferTile component', () => {
       })
     })
 
+    it('should log ConsultOffer with the club advice type when the tile displays a club advices counter', async () => {
+      render(reactQueryProviderHOC(<OfferTile {...props} clubAdviceType="scene_club" />))
+      await user.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: String(OFFER_ID),
+        from: 'home',
+        moduleName: props.moduleName,
+        isHeadline: false,
+        adviceType: 'scene_club',
+      })
+    })
+
     it('should log ConsultOffer that user opened the offer from the list of similar offers', async () => {
       const propsFromSimilarOffers = {
         ...props,

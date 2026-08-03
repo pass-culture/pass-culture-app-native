@@ -35,6 +35,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     artistName,
     originDetails,
     interactionTag,
+    clubAdviceType,
     navigationMethod = NAVIGATION_METHOD.NAVIGATE,
     containerWidth,
     withCenterAlign = true,
@@ -89,6 +90,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       index,
       artistName,
       originDetails,
+      adviceType: clubAdviceType,
     })
   }
 
