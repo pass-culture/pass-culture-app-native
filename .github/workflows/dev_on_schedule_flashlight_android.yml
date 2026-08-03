@@ -11,9 +11,6 @@ permissions:
   id-token: write
   pages: write
 
-env:
-  CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-
 jobs:
   run-e2e-tests:
     name: 'Run Flashlight Android Performance Test'

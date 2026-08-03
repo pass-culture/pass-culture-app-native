@@ -9,9 +9,6 @@ on:
       BUCKET_NAME:
         type: string
         required: true
-      CACHE_BUCKET_NAME:
-        type: string
-        required: true
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -41,7 +38,6 @@ jobs:
         id: yarn-modules-cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn

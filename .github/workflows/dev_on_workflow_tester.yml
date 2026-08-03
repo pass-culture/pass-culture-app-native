@@ -3,9 +3,6 @@ name: '4 [on_workflow] Tester yaml'
 on:
   workflow_call:
     inputs:
-      CACHE_BUCKET_NAME:
-        type: string
-        required: true
       HAS_BREAKING_CHANGE_LABEL:
         type: boolean
         required: false

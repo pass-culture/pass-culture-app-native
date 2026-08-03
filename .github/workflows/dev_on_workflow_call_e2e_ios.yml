@@ -17,7 +17,6 @@ on:
         required: true
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
-      CACHE_BUCKET_NAME:
 
 permissions:
   contents: read
