@@ -67,11 +67,11 @@ export const CategoryListModule = ({
           const categoryColorMapping = colorMapping[color] ?? colorMapping.Information04
 
           const fillFromDesignSystem = enableNewCategoryBlocks
-            ? designSystem.color.illustration[categoryColorMapping.fill ?? 'default']
-            : designSystem.color.background[categoryColorMapping.fill ?? 'default']
+            ? designSystem.color.illustration[categoryColorMapping?.fill ?? 'default']
+            : designSystem.color.background[categoryColorMapping?.fill ?? 'default']
 
           const borderFromDesignSystem =
-            designSystem.color.border[categoryColorMapping.border ?? 'default']
+            designSystem.color.border[categoryColorMapping?.border ?? 'default']
           return enableNewCategoryBlocks ? (
             <StyledNewCategoryButton
               key={item.id}
