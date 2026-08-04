@@ -76,7 +76,6 @@ jobs:
         id: 'yarn-modules-cache'
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
-          compression-method: 'gzip'
           path: |
             **/node_modules
           key: v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}

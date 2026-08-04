@@ -3,9 +3,6 @@ name: '4 [on_workflow] Android deploy'
 on:
   workflow_call:
     inputs:
-      CACHE_BUCKET_NAME:
-        type: string
-        required: true
       ENV:
         type: string
         required: true
