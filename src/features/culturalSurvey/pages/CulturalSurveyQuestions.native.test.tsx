@@ -73,7 +73,7 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-describe('CulturalSurveyQuestions page', () => {
+describe('CulturalSurveyQuestions', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
@@ -82,6 +82,35 @@ describe('CulturalSurveyQuestions page', () => {
     render(<CulturalSurveyQuestions />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should reset questions and answers when restart cultural survey', async () => {
+    render(<CulturalSurveyQuestions />)
+
+    expect(dispatch).toHaveBeenLastCalledWith({
+      type: 'INIT_QUESTION_KEYS',
+      payload: {
+        answers: [
+          {
+            answerIds: [],
+            questionId: 'SORTIES',
+          },
+          {
+            answerIds: [],
+            questionId: 'FESTIVALS',
+          },
+          {
+            answerIds: [],
+            questionId: 'SPECTACLES',
+          },
+          {
+            answerIds: [],
+            questionId: 'ACTIVITES',
+          },
+        ],
+        questions: ['SORTIES', 'ACTIVITES'],
+      },
+    })
   })
 
   it('should navigate to next page when pressing Continuer', async () => {
@@ -177,27 +206,12 @@ describe('CulturalSurveyQuestions page', () => {
 
     await user.press(screen.getByTestId('Revenir en arrière'))
 
-    expect(dispatch).toHaveBeenNthCalledWith(1, {
+    expect(dispatch).toHaveBeenLastCalledWith({
       type: 'SET_ANSWERS',
       payload: {
         questionId: CulturalSurveyQuestionEnum.SORTIES,
         answers: [],
       },
-    })
-  })
-
-  it('should dispatch default questions on go back when current question is "sorties"', async () => {
-    render(<CulturalSurveyQuestions />)
-
-    await user.press(screen.getByTestId('Revenir en arrière'))
-
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
-      type: 'SET_QUESTIONS',
-      payload: [
-        CulturalSurveyQuestionEnum.SORTIES,
-        CulturalSurveyQuestionEnum.ACTIVITES,
-        CulturalSurveyQuestionEnum.PROJECTIONS,
-      ],
     })
   })
 

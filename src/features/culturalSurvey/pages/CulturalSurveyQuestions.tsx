@@ -8,6 +8,7 @@ import { CulturalSurveyAnswer, CulturalSurveyAnswerEnum, CulturalSurveyQuestionE
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
+import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/createInitialQuestionsList'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/mapQuestionIdToPageTitle'
 import {
   addSubQuestionToQuestionsToDisplay,
@@ -31,10 +32,11 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
-export function CulturalSurveyQuestions() {
+export const CulturalSurveyQuestions = () => {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const [isAtBottom, setIsAtBottom] = useState(false)
 
@@ -42,8 +44,11 @@ export function CulturalSurveyQuestions() {
   const { params } = useRoute<UseRouteType<'CulturalSurveyQuestions'>>()
 
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestionsQuery()
-  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(params?.question)
-  const culturalSurveyProgress = useCulturalSurveyProgress(params?.question)
+
+  const currentQuestion = params?.question || culturalSurveyQuestionsData?.questions[0]?.id
+
+  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(currentQuestion)
+  const culturalSurveyProgress = useCulturalSurveyProgress(currentQuestion)
 
   const { refetchUser } = useAuthContext()
 
@@ -51,7 +56,23 @@ export function CulturalSurveyQuestions() {
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
 
   const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])
-  const currentQuestion = params?.question
+
+  useEffect(() => {
+    if (culturalSurveyQuestionsData?.questions) {
+      const isFirstQuestion = currentQuestion === culturalSurveyQuestionsData?.questions[0]?.id
+      if (isFirstQuestion) {
+        const questions = createInitialQuestionsList(culturalSurveyQuestionsData)
+        const answers = culturalSurveyQuestionsData.questions.map((question) => ({
+          questionId: question.id,
+          answerIds: [] as CulturalSurveyAnswerEnum[],
+        }))
+        dispatch({
+          type: 'INIT_QUESTION_KEYS',
+          payload: { questions, answers },
+        })
+      }
+    }
+  }, [dispatch, culturalSurveyQuestionsData, currentQuestion])
 
   useEffect(() => {
     const currentQuestionAnswers = answers.find(
@@ -106,7 +127,7 @@ export function CulturalSurveyQuestions() {
     )
   )
 
-  if (!culturalSurveyQuestionsData || !culturalSurveyQuestion) return null
+  if (!culturalSurveyQuestionsData || !culturalSurveyQuestion) return <LoadingPage />
 
   const navigateToNextQuestion = () => {
     if (isCurrentQuestionLastQuestion) {
@@ -176,20 +197,17 @@ export function CulturalSurveyQuestions() {
     }))
 
   const onGoBack = () => {
-    goBack()
-    currentQuestion &&
-      dispatch({ type: 'SET_ANSWERS', payload: { questionId: currentQuestion, answers: [] } })
-
-    if (currentQuestion === CulturalSurveyQuestionEnum.SORTIES) {
+    if (currentQuestion) {
       dispatch({
-        type: 'SET_QUESTIONS',
-        payload: [
-          CulturalSurveyQuestionEnum.SORTIES,
-          CulturalSurveyQuestionEnum.ACTIVITES,
-          CulturalSurveyQuestionEnum.PROJECTIONS,
-        ],
+        type: 'SET_ANSWERS',
+        payload: {
+          questionId: currentQuestion,
+          answers: [],
+        },
       })
     }
+
+    goBack()
   }
 
   return (

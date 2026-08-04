@@ -1,67 +1,45 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
-import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-import { useGetCulturalSurveyContent } from 'features/culturalSurvey/helpers/useGetCulturalSurveyContent'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Button } from 'ui/designSystem/Button/Button'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
-const FAQTouchableLinkProps = {
-  as: Button,
-  wording: 'En savoir plus',
-  icon: InfoPlain,
-  accessibilityLabel: 'En savoir plus sur ce qu’on fait de tes données',
-}
-
 export const CulturalSurveyIntro = (): React.JSX.Element => {
-  const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...homeNavigationConfig)
 
-  const { intro } = useGetCulturalSurveyContent()
+  const navigateToCulturalSurvey = () => {
+    void analytics.logHasStartedCulturalSurvey()
+    navigate(...getSubscriptionHookConfig('CulturalSurveyQuestions'))
+  }
 
   return (
     <GenericInfoPage
       illustration={PhonePending}
-      title={intro.title}
-      subtitle={intro.customSubtitle}
+      subtitle={`Quelques questions et ton\u00a0crédit\u00a0est\u00a0à\u00a0toi.`}
+      title={'Tu y es presque\u00a0!'}
       buttonPrimary={{
         wording: 'Commencer le questionnaire',
-        onBeforeNavigate: analytics.logHasStartedCulturalSurvey,
-        navigateTo: getSubscriptionPropConfig('CulturalSurveyQuestions', {
-          question: initialQuestions[0],
-        }),
+        onPress: navigateToCulturalSurvey,
       }}
       buttonTertiary={{
-        wording: intro.secondaryButton.text,
-        icon: intro.secondaryButton.icon,
-        onPress: intro.secondaryButton.onPress,
+        wording: 'Retour',
+        icon: PlainArrowPrevious,
+        onPress: goBack,
       }}>
-      <StyledBody>{intro.bodyText}</StyledBody>
-      {intro.showFAQLink ? (
-        <View>
-          {Platform.OS === 'web' ? (
-            <ExternalTouchableLink
-              key={1}
-              externalNav={{ url: FAQ_LINK_USER_DATA }}
-              {...FAQTouchableLinkProps}
-            />
-          ) : (
-            <InternalTouchableLink
-              key={1}
-              navigateTo={getSubscriptionPropConfig('FAQWebview')}
-              {...FAQTouchableLinkProps}
-            />
-          )}
-        </View>
-      ) : null}
+      <StyledBody>
+        {
+          'Parle nous de tes activités culturelles préférées. Tes réponses vont nous aider à mieux te connaître.'
+        }
+      </StyledBody>
     </GenericInfoPage>
   )
 }
