@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { AnalyticsDebuggerModal } from 'features/analyticsDebugger/components/AnalyticsDebuggerModal'
 import { Artist } from 'features/artist/pages/Artist'
 import { ArtistWebview } from 'features/artist/pages/ArtistWebview'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -621,6 +622,8 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
       {showTabBar ? <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} /> : null}
       {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
+      {/* AppModal relies on navigation hooks on web: this modal must stay inside the NavigationContainer */}
+      <AnalyticsDebuggerModal />
     </TabNavigationStateProvider>
   )
 }

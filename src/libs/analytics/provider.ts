@@ -1,3 +1,4 @@
+import { analyticsDebuggerActions } from 'features/analyticsDebugger/store/analyticsDebuggerStore'
 import { ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 // eslint-disable-next-line no-restricted-imports
 import { isDuplicateEvent } from 'libs/analytics/eventDeduplication'
@@ -38,6 +39,7 @@ export const analytics: AnalyticsProvider = {
   logEvent: async (eventName, params) => {
     if (eventName.firebase) {
       if (isDuplicateEvent(eventName.firebase, params)) return
+      analyticsDebuggerActions.captureEvent(eventName.firebase, params)
       const locationType = locationSelectors.selectLocationType()
       await firebaseAnalytics.logEvent(eventName.firebase, { ...params, locationType })
     }

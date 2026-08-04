@@ -11,6 +11,7 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 // import './why-did-you-render'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { AnalyticsDebugger } from 'features/analyticsDebugger/AnalyticsDebugger'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
@@ -103,7 +104,9 @@ const App: FunctionComponent = function () {
                                   <ShareAppWrapper>
                                     <OfflineModeContainer>
                                       <ScreenErrorProvider>
-                                        <AppNavigationContainer />
+                                        <AnalyticsDebugger>
+                                          <AppNavigationContainer />
+                                        </AnalyticsDebugger>
                                       </ScreenErrorProvider>
                                     </OfflineModeContainer>
                                   </ShareAppWrapper>

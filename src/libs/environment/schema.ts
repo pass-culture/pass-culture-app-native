@@ -25,6 +25,7 @@ export const EnvironmentSchema = yup.object({
   ALGOLIA_VENUES_INDEX_NAME: yup.string().required(),
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST: yup.string().required(),
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: yup.string().required(),
+  ANALYTICS_DEBUGGER_ENABLED: yup.boolean().required(),
   ANDROID_APP_ID: yup.string().required(),
   API_BASE_URL: yup.string().ensure(), // Set to empty string in __DEV__ (see src/libs/environment/env.web.ts)
   APPLE_SERVICE_ID: yup.string().optional(),
