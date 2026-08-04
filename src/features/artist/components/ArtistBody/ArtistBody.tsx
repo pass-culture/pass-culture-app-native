@@ -17,7 +17,6 @@ import {
   FOLLOW_ARTIST_SURVEY_KEY,
 } from 'features/artist/helpers/buildFollowArtistSurveyUrl'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
-import { isWikipediaUrl } from 'features/artist/helpers/isWikipediaUrl'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
@@ -34,6 +33,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
+import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -211,7 +211,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
                 <CollapsibleText
                   text={capitalizedDescriptionWithDot}
                   onAdditionalPress={onExpandBioPress}>
-                  {artist.descriptionSource && isWikipediaUrl(artist.descriptionSource) ? (
+                  {artist.descriptionSource && isValidWikipediaUrl(artist.descriptionSource) ? (
                     <ViewGap gap={1}>
                       <Credit accessibilityLabel={creditAccessibilityLabel.titleText}>
                         {artist.descriptionCredit}

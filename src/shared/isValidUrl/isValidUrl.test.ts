@@ -1,4 +1,4 @@
-import * as isValidUrl from 'features/identityCheck/pages/helpers/isValidUrl'
+import * as isValidUrl from 'shared/isValidUrl/isValidUrl'
 
 describe('isValidHttpsUrl', () => {
   it('should be true when url is valid, and https', () => {
@@ -35,6 +35,16 @@ describe('isValidHttpsUrl', () => {
 
     expect(isValid).toBe(false)
   })
+
+  it('should return false for malformed or arbitrary string inputs', () => {
+    expect(isValidUrl.isValidHttpsUrl('not_a_url')).toBe(false)
+    expect(isValidUrl.isValidHttpsUrl('https://')).toBe(false)
+    expect(isValidUrl.isValidHttpsUrl('://invalid-url')).toBe(false)
+  })
+
+  it('should return false for an empty string', () => {
+    expect(isValidUrl.isValidHttpsUrl('')).toBe(false)
+  })
 })
 
 describe('isValidUbbleUrl', () => {
@@ -46,5 +56,22 @@ describe('isValidUbbleUrl', () => {
 
     expect(isValidHttpsUrlSpy).toHaveBeenCalledWith(url, 'id.ubble.ai')
     expect(isValid).toBe(true)
+  })
+})
+
+describe('isValidWikipediaUrl', () => {
+  it('should return true for a standard french Wikipedia url', () => {
+    const isValidHttpsUrlSpy = jest.spyOn(isValidUrl, 'isValidHttpsUrl')
+
+    const url = 'https://fr.wikipedia.org/wiki/Victor_Hugo'
+    const isValid = isValidUrl.isValidWikipediaUrl(url)
+
+    expect(isValidHttpsUrlSpy).toHaveBeenCalledWith(url, 'fr.wikipedia.org')
+    expect(isValid).toBe(true)
+  })
+
+  it('should return false for undefined or null', () => {
+    expect(isValidUrl.isValidWikipediaUrl(undefined)).toBe(false)
+    expect(isValidUrl.isValidWikipediaUrl(null)).toBe(false)
   })
 })

@@ -3,12 +3,12 @@ import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
-import { isValidUbbleUrl } from 'features/identityCheck/pages/helpers/isValidUrl'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { Helmet } from 'libs/react-helmet/Helmet'
+import { isValidUbbleUrl } from 'shared/isValidUrl/isValidUrl'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Ubble: any

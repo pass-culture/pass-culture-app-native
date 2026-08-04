@@ -4,12 +4,12 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
-import { isWikipediaUrl } from 'features/artist/helpers/isWikipediaUrl'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistQuery } from 'queries/artist/useArtistQuery'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
@@ -23,7 +23,7 @@ const ArtistWebviewContent = () => {
     if (isError) eventMonitoring.captureException(error)
   }, [error, isError])
 
-  if (!artist?.descriptionSource || !isWikipediaUrl(artist.descriptionSource)) {
+  if (!artist?.descriptionSource || !isValidWikipediaUrl(artist.descriptionSource)) {
     return <PageNotFound />
   }
 
