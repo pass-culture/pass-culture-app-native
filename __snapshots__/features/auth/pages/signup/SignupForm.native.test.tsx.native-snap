@@ -3298,7 +3298,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               En cochant ces 2 cases tu assures avoir lu :
             </Text>
             <View
-              accessibilityLabel="Conditions Générales d’Utilisation"
+              accessibilityLabel="Conditions Générales d’Utilisation - Nouvelle fenêtre"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -3350,7 +3350,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
-              testID="Conditions Générales d’Utilisation"
+              testID="Conditions Générales d’Utilisation - Nouvelle fenêtre"
             >
               <View
                 gap={8}
@@ -3408,7 +3408,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Charte des données personnelles"
+              accessibilityLabel="Charte des données personnelles - Nouvelle fenêtre"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -3460,7 +3460,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
-              testID="Charte des données personnelles"
+              testID="Charte des données personnelles - Nouvelle fenêtre"
             >
               <View
                 gap={8}
@@ -3518,7 +3518,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Charte d’utilisation et de bonne conduite"
+              accessibilityLabel="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -3570,7 +3570,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                   },
                 ]
               }
-              testID="Charte d’utilisation et de bonne conduite"
+              testID="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
             >
               <View
                 gap={8}

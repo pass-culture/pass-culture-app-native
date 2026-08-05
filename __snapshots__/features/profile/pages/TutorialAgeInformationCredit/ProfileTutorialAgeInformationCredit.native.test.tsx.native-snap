@@ -909,7 +909,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                   }
                 >
                   <View
-                    accessibilityLabel="Lien externe - Plus d’infos sur ton crédit"
+                    accessibilityLabel="Lien externe - Plus d’infos sur ton crédit - Nouvelle fenêtre"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -2984,7 +2984,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                   }
                 >
                   <View
-                    accessibilityLabel="Lien externe - Plus d’infos sur ton crédit"
+                    accessibilityLabel="Lien externe - Plus d’infos sur ton crédit - Nouvelle fenêtre"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -3054,7 +3054,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                     </Text>
                   </View>
                   <View
-                    accessibilityLabel="Lien externe - Plus d’infos sur les bonus sous conditions"
+                    accessibilityLabel="Lien externe - Plus d’infos sur les bonus sous conditions - Nouvelle fenêtre"
                     accessibilityRole="link"
                     accessibilityState={
                       {

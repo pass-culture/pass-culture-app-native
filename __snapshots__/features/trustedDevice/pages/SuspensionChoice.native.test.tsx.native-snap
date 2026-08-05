@@ -349,7 +349,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     >
                       tes réservations seront annulées sauf pour certains cas précisés dans les 
                       <Text
-                        accessibilityLabel="conditions générales d’utilisation, lien externe"
+                        accessibilityLabel="conditions générales d’utilisation - Nouvelle fenêtre"
                         accessibilityRole="link"
                         onPress={[Function]}
                         style={
@@ -362,6 +362,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                             "textDecorationLine": "underline",
                           }
                         }
+                        testID="conditions générales d’utilisation - Nouvelle fenêtre"
                       >
                         conditions générales d’utilisation
                       </Text>

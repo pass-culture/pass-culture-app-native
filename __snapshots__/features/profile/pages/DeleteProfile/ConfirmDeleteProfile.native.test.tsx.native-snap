@@ -343,7 +343,7 @@ exports[`ConfirmDeleteProfile should render confirm delete profile 1`] = `
                     
 
                     <Text
-                      accessibilityLabel="conditions générales d’utilisation, lien externe"
+                      accessibilityLabel="conditions générales d’utilisation - Nouvelle fenêtre"
                       accessibilityRole="link"
                       onPress={[Function]}
                       style={
@@ -356,6 +356,7 @@ exports[`ConfirmDeleteProfile should render confirm delete profile 1`] = `
                           "textDecorationLine": "underline",
                         }
                       }
+                      testID="conditions générales d’utilisation - Nouvelle fenêtre"
                     >
                       conditions générales d’utilisation
                     </Text>

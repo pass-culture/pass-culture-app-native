@@ -358,7 +358,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Lien externe - Consultez notre FAQ"
+                      accessibilityLabel="Lien externe - Consultez notre FAQ - Nouvelle fenêtre"
                       accessibilityRole="link"
                       accessibilityState={
                         {

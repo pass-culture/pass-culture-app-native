@@ -589,7 +589,7 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Identifiants oubliés ?"
+                    accessibilityLabel="Identifiants oubliés ? - Nouvelle fenêtre"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -634,7 +634,7 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                         "width": "auto",
                       }
                     }
-                    testID="Identifiants oubliés ?"
+                    testID="Identifiants oubliés ? - Nouvelle fenêtre"
                   >
                     <View
                       gap={8}

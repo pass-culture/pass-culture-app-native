@@ -24,6 +24,7 @@ export function ExternalTouchableLink({
       accessibilityRole={AccessibilityRole.LINK}
       handleNavigation={handleNavigation}
       linkProps={{ href: externalNav.url, target: '_blank' }}
+      accessibilityLabel={rest.wording ? `${rest.wording} - Nouvelle fenêtre` : undefined}
       {...rest}
     />
   )
