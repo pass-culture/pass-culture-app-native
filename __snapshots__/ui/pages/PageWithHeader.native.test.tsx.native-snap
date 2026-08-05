@@ -602,11 +602,11 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
               scroll children
             </Text>
             <View
-              customHeight={8}
+              customHeight={16}
               enable={true}
               style={
                 {
-                  "height": 8,
+                  "height": 16,
                 }
               }
             />
@@ -669,11 +669,11 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
             fixed bottom children
           </Text>
           <View
-            customHeight={8}
+            customHeight={16}
             enable={true}
             style={
               {
-                "height": 8,
+                "height": 16,
               }
             }
           />
