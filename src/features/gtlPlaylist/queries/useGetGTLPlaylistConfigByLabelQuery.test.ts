@@ -1,7 +1,7 @@
 import { Activity } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { useGetGTLPlaylistsConfigByLabelQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistConfigByLabelQuery'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -52,7 +52,7 @@ const mockedReturnedConfigPlaylist = [
 
 describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
   beforeEach(() => {
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulGtlPlaylistSnap)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, contentfulGtlPlaylistSnap)
   })
 
   it('should fetch gtl playlist config when a searchGroupLabel is provided', async () => {

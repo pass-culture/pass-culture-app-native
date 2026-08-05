@@ -1,15 +1,19 @@
 import { useQuery } from '@tanstack/react-query'
 
+import { getEnvironmentOverride } from 'libs/environment/envOverride/envOverride'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
+import { fetchOverriddenRemoteConfig } from '../helpers/fetchOverriddenRemoteConfig'
 import { DEFAULT_REMOTE_CONFIG } from '../remoteConfig.constants'
 import { remoteConfig } from '../remoteConfig.services'
 import { CustomRemoteConfig } from '../remoteConfig.types'
 
 const fetchRemoteConfig = async (): Promise<CustomRemoteConfig> => {
   try {
+    const environmentOverride = getEnvironmentOverride()
+    if (environmentOverride) return await fetchOverriddenRemoteConfig(environmentOverride)
     await remoteConfig.configure()
     await remoteConfig.refresh()
     return remoteConfig.getValues()

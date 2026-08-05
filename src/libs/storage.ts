@@ -8,6 +8,7 @@ export type StorageKey =
   | 'cookies'
   | 'credit_review_profile_started_at'
   | 'device_id'
+  | 'environment_override'
   | 'first_time_review_has_been_requested'
   | 'has_seen_birthday_notification_card'
   | 'has_seen_booking_page'

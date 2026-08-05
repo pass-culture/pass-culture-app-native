@@ -15,8 +15,6 @@ import { env } from 'libs/environment/env'
 
 const searchInputID = uuidv4()
 
-const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
-
 type Props = {
   offerCategories: SearchGroupNameEnumv2[]
   title: string
@@ -26,6 +24,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   offerCategories,
   title,
 }) => {
+  const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
   const { isFocusOnSuggestions } = useSearch()
 
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =

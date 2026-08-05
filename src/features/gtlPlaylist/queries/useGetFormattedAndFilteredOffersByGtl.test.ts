@@ -7,7 +7,7 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOffer, HitOffer, LocationMode, PlaylistOffersParams } from 'libs/algolia/types'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,7 +24,7 @@ mockFetchOffersByGTL.mockResolvedValue([mockedAlgoliaResponse])
 
 describe('useGetFormattedAndFilteredOffersByGtl', () => {
   beforeEach(() => {
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulGtlPlaylistSnap)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, contentfulGtlPlaylistSnap)
   })
 
   it('should return formatted playlists', async () => {

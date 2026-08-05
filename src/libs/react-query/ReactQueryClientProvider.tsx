@@ -5,6 +5,7 @@ import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client
 import React from 'react'
 import { AppState, AppStateStatus } from 'react-native'
 
+import { getEnvironmentOverride } from 'libs/environment/envOverride/envOverride'
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
@@ -43,6 +44,7 @@ export const ReactQueryClientProvider = ({ children }: { children: React.JSX.Ele
       persistOptions={{
         maxAge: MAX_AGE_TWENTY_FOUR_DAYS,
         persister,
+        buster: getEnvironmentOverride() ?? '',
         dehydrateOptions: {
           shouldDehydrateQuery: (query) =>
             query.state.status === 'success' && !!query.meta?.persist,
