@@ -175,7 +175,7 @@ describe('<ArtistBody />', () => {
     expect(screen.queryByText('Source : Wikipédia')).not.toBeOnTheScreen()
   })
 
-  it('should display source and credit description when defined and description expanded', async () => {
+  it('should display source and credit description when defined, description expanded and source is a valid Wikipedia url', async () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody
@@ -192,6 +192,25 @@ describe('<ArtistBody />', () => {
 
     expect(screen.getByText('© Contenu généré par IA')).toBeOnTheScreen()
     expect(screen.getByText('Source : Wikipédia')).toBeOnTheScreen()
+  })
+
+  it('should not display source and credit description when defined, description expanded and source is an invalid Wikipedia url', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={{ ...mockArtist, descriptionSource: 'https://attacker.com/fr.wikipedia.org' }}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Voir plus'))
+
+    expect(screen.queryByText('© Contenu généré par IA')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Source : Wikipédia')).not.toBeOnTheScreen()
   })
 
   it('should navigate to artist webview page when pressing Wikipedia button', async () => {

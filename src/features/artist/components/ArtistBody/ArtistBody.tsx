@@ -33,6 +33,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
+import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -210,7 +211,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
                 <CollapsibleText
                   text={capitalizedDescriptionWithDot}
                   onAdditionalPress={onExpandBioPress}>
-                  {artist.descriptionSource ? (
+                  {artist.descriptionSource && isValidWikipediaUrl(artist.descriptionSource) ? (
                     <ViewGap gap={1}>
                       <Credit accessibilityLabel={creditAccessibilityLabel.titleText}>
                         {artist.descriptionCredit}

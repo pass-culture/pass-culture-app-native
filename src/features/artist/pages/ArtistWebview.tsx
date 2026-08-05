@@ -9,6 +9,7 @@ import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistQuery } from 'queries/artist/useArtistQuery'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
@@ -22,7 +23,9 @@ const ArtistWebviewContent = () => {
     if (isError) eventMonitoring.captureException(error)
   }, [error, isError])
 
-  if (!artist?.descriptionSource) return <PageNotFound />
+  if (!artist?.descriptionSource || !isValidWikipediaUrl(artist.descriptionSource)) {
+    return <PageNotFound />
+  }
 
   return (
     <React.Fragment>
