@@ -10,11 +10,6 @@ import { HeadingLevel } from 'ui/theme/typographyAttrs/types'
 
 const DEFAULT_COLOR_TEXT = 'default'
 
-type HeadingProps = {
-  accessibilityLevel?: HeadingLevel
-  noHeading?: boolean
-}
-
 const createStyledText = (
   typographyStyle: keyof typeof theme.designSystem.typography,
   defaultLevel?: HeadingLevel
