@@ -526,12 +526,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -548,33 +550,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Concerts et festivals"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  CONCERTS ET FESTIVALS
-                </Text>
-              </View>
+                CONCERTS ET FESTIVALS
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Cinéma"
@@ -620,12 +609,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -642,33 +633,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Cinéma"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  CINÉMA
-                </Text>
-              </View>
+                CINÉMA
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Films, séries et documentaires"
@@ -714,12 +692,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -736,33 +716,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Films, séries et documentaires"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  FILMS, SÉRIES ET DOCUMENTAIRES
-                </Text>
-              </View>
+                FILMS, SÉRIES ET DOCUMENTAIRES
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Livres"
@@ -808,12 +775,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -830,33 +799,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Livres"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  LIVRES
-                </Text>
-              </View>
+                LIVRES
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Musique"
@@ -902,12 +858,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -924,33 +882,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Musique"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  MUSIQUE
-                </Text>
-              </View>
+                MUSIQUE
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Arts et loisirs créatifs"
@@ -996,12 +941,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1018,33 +965,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Arts et loisirs créatifs"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  ARTS ET LOISIRS CRÉATIFS
-                </Text>
-              </View>
+                ARTS ET LOISIRS CRÉATIFS
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Spectacles"
@@ -1090,12 +1024,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1112,33 +1048,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Spectacles"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  SPECTACLES
-                </Text>
-              </View>
+                SPECTACLES
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Musées et visites"
@@ -1184,12 +1107,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1206,33 +1131,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Musées et visites"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  MUSÉES ET VISITES
-                </Text>
-              </View>
+                MUSÉES ET VISITES
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Jeux et jeux vidéos"
@@ -1278,12 +1190,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1300,33 +1214,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Jeux et jeux vidéos"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  JEUX ET JEUX VIDÉOS
-                </Text>
-              </View>
+                JEUX ET JEUX VIDÉOS
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Médias et presse"
@@ -1372,12 +1273,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1394,33 +1297,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Médias et presse"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  MÉDIAS ET PRESSE
-                </Text>
-              </View>
+                MÉDIAS ET PRESSE
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Cartes jeunes"
@@ -1466,12 +1356,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1488,33 +1380,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Cartes jeunes"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  CARTES JEUNES
-                </Text>
-              </View>
+                CARTES JEUNES
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Conférences et rencontres"
@@ -1560,12 +1439,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1582,33 +1463,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Conférences et rencontres"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  CONFÉRENCES ET RENCONTRES
-                </Text>
-              </View>
+                CONFÉRENCES ET RENCONTRES
+              </Text>
             </View>
             <View
               accessibilityLabel="Catégorie Évènements en ligne"
@@ -1654,12 +1522,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
                       "borderWidth": 1.6,
-                      "display": "flex",
-                      "flexDirection": "column",
                       "height": 144,
                       "justifyContent": "flex-end",
                       "minHeight": 80,
                       "overflow": "hidden",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                     },
                     {
                       "flexBasis": 0,
@@ -1676,33 +1546,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
               testID="Catégorie Évènements en ligne"
             >
-              <View
+              <Text
+                numberOfLines={4}
                 style={
                   {
-                    "alignItems": "flex-start",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 14,
+                    "lineHeight": 22.4,
+                    "textAlign": "left",
                   }
                 }
               >
-                <Text
-                  numberOfLines={4}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 14,
-                      "lineHeight": 22.4,
-                      "textAlign": "left",
-                    }
-                  }
-                >
-                  ÉVÈNEMENTS EN LIGNE
-                </Text>
-              </View>
+                ÉVÈNEMENTS EN LIGNE
+              </Text>
             </View>
           </View>
           <View

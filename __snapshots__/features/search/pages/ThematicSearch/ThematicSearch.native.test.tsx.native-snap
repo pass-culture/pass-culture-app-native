@@ -720,6 +720,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -741,7 +742,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -797,6 +797,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -818,7 +819,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -874,6 +874,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -895,7 +896,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -951,6 +951,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -972,7 +973,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1028,6 +1028,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1049,7 +1050,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1105,6 +1105,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1126,7 +1127,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1182,6 +1182,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1203,7 +1204,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1268,6 +1268,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1289,7 +1290,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1345,6 +1345,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1366,7 +1367,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1422,6 +1422,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1443,7 +1444,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1499,6 +1499,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1520,7 +1521,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1576,6 +1576,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1597,7 +1598,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >
@@ -1653,6 +1653,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "borderWidth": 1.6,
                           "flexDirection": "row",
                           "minHeight": 56,
+                          "paddingHorizontal": 8,
                           "paddingVertical": 8,
                           "textAlign": "left",
                           "width": 156,
@@ -1674,7 +1675,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
-                        "marginHorizontal": 8,
                       }
                     }
                   >

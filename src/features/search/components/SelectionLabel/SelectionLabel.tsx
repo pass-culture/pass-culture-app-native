@@ -18,16 +18,18 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
   return (
     <StyledTouchableOpacity
       selected={selected}
-      {...accessibleCheckboxProps({ checked: selected, label })}
-      onPress={onPress}>
+      onPress={onPress}
+      {...accessibleCheckboxProps({ checked: selected, label })}>
       {selected ? (
         <IconContainer>
           <ValidateWhite />
         </IconContainer>
       ) : undefined}
-      <Label numberOfLines={1} selected={selected}>
-        {label}
-      </Label>
+      <LabelContainer selected={selected}>
+        <Label numberOfLines={1} selected={selected}>
+          {label}
+        </Label>
+      </LabelContainer>
       <HiddenCheckbox name={label} checked={selected} accessibilityLabel={label} />
     </StyledTouchableOpacity>
   )
@@ -62,9 +64,18 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
   })
 )
 
-const Label = styled(Typo.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
+const LabelContainer = styled.View<{ selected: boolean }>(({ theme, selected }) => ({
   marginLeft: selected ? undefined : theme.designSystem.size.spacing.xl,
   marginRight: selected ? theme.designSystem.size.spacing.s : theme.designSystem.size.spacing.xl,
   marginVertical: theme.designSystem.size.spacing.m,
+  flex: 1,
+  minWidth: 0,
+}))
+
+const Label = styled(Typo.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
   color: selected ? theme.designSystem.color.text.inverted : theme.designSystem.color.text.default,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  display: 'block',
 }))

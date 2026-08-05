@@ -2,6 +2,39 @@
 
 exports[`AsyncErrorBoundary component should render correctly 1`] = `
 .c2 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Bold;
+  font-size: 1.3125rem;
+  line-height: 2.1rem;
+}
+
+.c3 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c5 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
+.c4 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -25,7 +58,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c2:disabled {
+.c4:disabled {
   cursor: initial;
 }
 
@@ -117,18 +150,14 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
           class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6 r-marginBottom-zd98yo"
         >
           <h1
-            aria-level="1"
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
+            class="c2"
+            style="text-align: center;"
           >
             Oups !
           </h1>
           <h2
-            aria-level="2"
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
+            class="c3"
+            style="text-align: center;"
           >
             Une erreur s’est produite pendant le chargement.
           </h2>
@@ -138,7 +167,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
         >
           <button
             aria-label="Réessayer"
-            class="c2"
+            class="c4"
             data-testid="Réessayer"
             tabindex="0"
             type="button"
@@ -146,13 +175,12 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
             >
-              <div
-                class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
-                dir="ltr"
-                style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
+              <p
+                class="c5"
+                style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
               >
                 Réessayer
-              </div>
+              </p>
             </div>
           </button>
         </div>

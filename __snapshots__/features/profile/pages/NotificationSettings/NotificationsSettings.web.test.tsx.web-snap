@@ -1,6 +1,75 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NotificationsSettings should render correctly 1`] = `
+.c1 {
+  display: -webkit-box;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Bold;
+  font-size: 1.0625rem;
+  line-height: 1.7rem;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.c3 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Bold;
+  font-size: 1.0625rem;
+  line-height: 1.7rem;
+}
+
+.c4 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c7 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c2 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 0.875rem;
+  line-height: 1.4rem;
+}
+
+.c9 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
 .c0 {
   flex-direction: row;
   align-items: center;
@@ -26,7 +95,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
   cursor: initial;
 }
 
-.c3 {
+.c8 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -49,11 +118,11 @@ exports[`NotificationsSettings should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c3:disabled {
+.c8:disabled {
   cursor: initial;
 }
 
-.c2 {
+.c6 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
@@ -61,7 +130,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
   cursor: pointer;
 }
 
-.c1 {
+.c5 {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -116,10 +185,8 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <h1
-            aria-level="1"
-            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
+            class="c1"
+            style="text-align: center;"
           >
             Suivi et notifications
           </h1>
@@ -170,35 +237,30 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
                       role="presentation"
                     >
-                      <div
-                        class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-                        dir="ltr"
+                      <p
+                        class="c2"
                       >
                         Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture.
-                      </div>
+                      </p>
                     </div>
                   </div>
                 </div>
                 <h2
-                  aria-level="2"
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
-                  dir="ltr"
-                  role="heading"
+                  class="c3"
                 >
                   Type d’alerte
                 </h2>
                 <div
                   class="css-view-175oi2r r-marginBottom-5oul0u r-marginTop-1wzrnnt"
                 >
-                  <div
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                    dir="ltr"
+                  <p
+                    class="c4"
                   >
                     Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-                  </div>
+                  </p>
                 </div>
                 <form
-                  class="c1"
+                  class="c5"
                 >
                   <div
                     class="css-view-175oi2r r-paddingBlock-w7s2jr"
@@ -210,15 +272,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="186"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Autoriser l’envoi d’e-mails
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -272,10 +333,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-zd98yo r-marginTop-1wzrnnt r-width-13qz1uu"
                   />
                   <h2
-                    aria-level="2"
-                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j"
-                    dir="ltr"
-                    role="heading"
+                    class="c3"
                   >
                     Tes thèmes suivis
                   </h2>
@@ -292,15 +350,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                         >
                           <label
-                            class="c2"
+                            class="c6"
                             for="188"
                           >
-                            <div
-                              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                              dir="ltr"
+                            <p
+                              class="c7"
                             >
                               Suivre tous les thèmes
-                            </div>
+                            </p>
                           </label>
                         </div>
                         <div
@@ -361,15 +418,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="190"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Cinéma
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -429,15 +485,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="192"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Lecture
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -497,15 +552,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="194"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Musique
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -565,15 +619,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="196"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Spectacles
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -633,15 +686,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="198"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Activités créatives
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -701,15 +753,14 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
                       >
                         <label
-                          class="c2"
+                          class="c6"
                           for="200"
                         >
-                          <div
-                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
+                          <p
+                            class="c7"
                           >
                             Visites et sorties
-                          </div>
+                          </p>
                         </label>
                       </div>
                       <div
@@ -764,7 +815,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                   >
                     <button
                       aria-label="Enregistrer les modifications"
-                      class="c3"
+                      class="c8"
                       data-testid="Enregistrer les modifications"
                       disabled=""
                       type="button"
@@ -772,13 +823,12 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       <div
                         class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
                       >
-                        <div
-                          class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
-                          dir="ltr"
-                          style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                        <p
+                          class="c9"
+                          style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0; flex-shrink: 1;"
                         >
                           Enregistrer
-                        </div>
+                        </p>
                       </div>
                     </button>
                   </div>

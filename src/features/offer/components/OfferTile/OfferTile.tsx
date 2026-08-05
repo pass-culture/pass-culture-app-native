@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react'
-import { View } from 'react-native'
+import { View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
@@ -60,6 +60,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     subcategoryId
   )
 
+  const headingProps = Platform.OS === 'web' ? {} : getHeadingAttrs(3)
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
@@ -96,7 +97,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
 
   return (
     <StyledContainer
-      {...getHeadingAttrs(3)}
+      {...headingProps}
       testID="OfferTile"
       renderToHardwareTextureAndroid
       shouldRasterizeIOS

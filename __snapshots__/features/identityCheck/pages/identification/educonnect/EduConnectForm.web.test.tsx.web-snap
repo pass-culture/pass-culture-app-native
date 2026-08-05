@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
+.c1 {
+  display: -webkit-box;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Bold;
+  font-size: 1.0625rem;
+  line-height: 1.7rem;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.c3 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c2 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c4 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 0.875rem;
+  line-height: 1.4rem;
+}
+
+.c6 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
 .c0 {
   flex-direction: row;
   align-items: center;
@@ -26,7 +84,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
   cursor: initial;
 }
 
-.c1 {
+.c5 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -49,7 +107,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c5:disabled {
   cursor: initial;
 }
 
@@ -102,10 +160,8 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <h1
-            aria-level="1"
-            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
+            class="c1"
+            style="text-align: center;"
           >
             Mon identité
           </h1>
@@ -149,18 +205,18 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                     </div>
                   </div>
                 </div>
-                <div
-                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-                  dir="ltr"
+                <p
+                  class="c2"
+                  style="text-align: center; color: rgb(105, 106, 111);"
                 >
                   Identification
-                </div>
-                <div
-                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-marginBlock-12kyg2d r-textAlign-q4m81j"
-                  dir="ltr"
+                </p>
+                <p
+                  class="c3"
+                  style="text-align: center; color: rgb(105, 106, 111);"
                 >
                   Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-                </div>
+                </p>
                 <div
                   class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                 >
@@ -179,12 +235,11 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
                     role="presentation"
                   >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-                      dir="ltr"
+                    <p
+                      class="c4"
                     >
                       Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
-                    </div>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -201,7 +256,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
           >
             <button
               aria-label="Ouvrir un onglet ÉduConnect"
-              class="c1"
+              class="c5"
               data-testid="Ouvrir un onglet ÉduConnect"
               tabindex="0"
               type="button"
@@ -224,13 +279,12 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                     </div>
                   </div>
                 </div>
-                <div
-                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
-                  dir="ltr"
-                  style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                <p
+                  class="c6"
+                  style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0; flex-shrink: 1;"
                 >
                   Ouvrir un onglet ÉduConnect
-                </div>
+                </p>
               </div>
             </button>
             <div

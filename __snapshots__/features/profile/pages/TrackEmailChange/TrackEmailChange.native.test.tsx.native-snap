@@ -487,10 +487,7 @@ exports[`TrackEmailChange account with password should render correctly when cho
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -975,10 +972,7 @@ exports[`TrackEmailChange account with password should render correctly when cho
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -1775,10 +1769,7 @@ exports[`TrackEmailChange account with password should render correctly when con
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -2007,10 +1998,7 @@ exports[`TrackEmailChange account with password should render correctly when con
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -2540,10 +2528,7 @@ exports[`TrackEmailChange account with password should render correctly when val
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -2765,10 +2750,7 @@ exports[`TrackEmailChange account with password should render correctly when val
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -3550,10 +3532,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -3775,10 +3754,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -4263,10 +4239,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -5063,10 +5036,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -5299,10 +5269,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -5531,10 +5498,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -6064,10 +6028,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -6556,10 +6517,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -6788,10 +6746,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -7321,10 +7276,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -7546,10 +7498,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }
@@ -7771,10 +7720,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                           <View
                             style={
                               {
-                                "flexBasis": 0,
                                 "flexDirection": "column",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "paddingRight": 16,
                               }
                             }

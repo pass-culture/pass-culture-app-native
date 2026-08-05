@@ -215,7 +215,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                   >
                     Tu reçois 
                     <Text
-                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -486,7 +485,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                   >
                     Tu reçois 
                     <Text
-                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -1418,7 +1416,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                   >
                     Tu reçois 
                     <Text
-                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -1689,7 +1686,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                   >
                     Tu reçois 
                     <Text
-                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -2137,7 +2133,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                     Tu peux recevoir
                      
                     <Text
-                      accessibilityRole="header"
                       style={
                         {
                           "color": "#320096",
@@ -2245,7 +2240,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                       }
                     >
                       <Text
-                        accessibilityRole="header"
                         style={
                           {
                             "color": "#320096",

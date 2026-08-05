@@ -144,7 +144,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     }
                   }
                 >
@@ -3498,7 +3498,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     }
                   }
                 >
@@ -6852,7 +6852,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
-                      "lineHeight": 16,
+                      "lineHeight": 19.2,
                     }
                   }
                 >

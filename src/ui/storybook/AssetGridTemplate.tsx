@@ -53,7 +53,9 @@ export const AssetGridTemplate: React.FC<AssetGridTemplateProps> = ({
 
   return (
     <React.Fragment>
-      <StyledTitle2>{title}</StyledTitle2>
+      <TitleContainer>
+        <Typo.Title2>{title}</Typo.Title2>
+      </TitleContainer>
       <GridContainer>
         {sortedIcons.map(([name, Icon]) => {
           const isCopied = copiedAssetName === name
@@ -100,7 +102,7 @@ export const AssetGridTemplate: React.FC<AssetGridTemplateProps> = ({
   )
 }
 
-const StyledTitle2 = styled(Typo.Title2)(({ theme }) => ({
+const TitleContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.m,
 }))
 

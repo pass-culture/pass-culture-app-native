@@ -11,9 +11,7 @@ import { getTagColors } from 'ui/designSystem/Tag/helper/getTagColors'
 import { getTagIcon } from 'ui/designSystem/Tag/helper/getTagIcon'
 import { renderTagIcon } from 'ui/designSystem/Tag/helper/renderTagIcon'
 import { TagProps, TagVariant } from 'ui/designSystem/Tag/types'
-import { Typo, getSpacingString } from 'ui/theme'
-
-const NUMBER_OF_SPACES_LINE_HEIGHT = 4
+import { Typo } from 'ui/theme'
 
 export const Tag: FunctionComponent<TagProps> = ({
   label,
@@ -62,7 +60,6 @@ const Wrapper = styled.View<{ backgroundColor: string; isZoomed: boolean }>(
 )
 
 const LabelText = styled(Typo.BodyAccentXs)<{ isZoomed: boolean }>(({ isZoomed }) => ({
-  lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
   flexShrink: isZoomed ? 1 : undefined,
   ...(Platform.OS === 'web' && { textWrap: 'nowrap' }),
 }))

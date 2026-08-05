@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
+.c2 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Bold;
+  font-size: 1.1875rem;
+  line-height: 1.9rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Bold;
+  font-size: 1.0625rem;
+  line-height: 1.7rem;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.c3 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-Medium;
+  font-size: 0.75rem;
+  line-height: 1.2rem;
+}
+
+.c4 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c6 {
+  display: inline;
+  text-align: left;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  color: #161617;
+  font-family: Montserrat-SemiBold;
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
 .c0 {
   flex-direction: row;
   align-items: center;
@@ -26,7 +84,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
   cursor: initial;
 }
 
-.c1 {
+.c5 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -49,7 +107,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
   box-sizing: border-box;
 }
 
-.c1:disabled {
+.c5:disabled {
   cursor: initial;
 }
 
@@ -102,10 +160,8 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <h1
-            aria-level="1"
-            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
+            class="c1"
+            style="text-align: center;"
           >
             Informations personnelles
           </h1>
@@ -135,65 +191,55 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
               <div
                 class="css-view-175oi2r r-gap-16pcm1t"
               >
-                <div
-                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
-                  dir="ltr"
+                <p
+                  class="c2"
                 >
                   Voici les informations que nous avons récupérées. Vérifie qu’elles sont correctes.
-                </div>
+                </p>
                 <div
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-gap-1fdih9r r-paddingBlock-nj0m1c r-paddingInline-cxgwc0"
                 >
                   <div
                     class="css-view-175oi2r r-gap-9aw3ui"
                   >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                      dir="ltr"
+                    <p
+                      class="c3"
                     >
                       Ton prénom
-                    </div>
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      data-testid="validation-first-name"
-                      dir="ltr"
+                    </p>
+                    <p
+                      class="c4"
                     >
                       John
-                    </div>
+                    </p>
                   </div>
                   <div
                     class="css-view-175oi2r r-gap-9aw3ui"
                   >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                      dir="ltr"
+                    <p
+                      class="c3"
                     >
                       Ton nom de famille
-                    </div>
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      data-testid="validation-name"
-                      dir="ltr"
+                    </p>
+                    <p
+                      class="c4"
                     >
                       Doe
-                    </div>
+                    </p>
                   </div>
                   <div
                     class="css-view-175oi2r r-gap-9aw3ui"
                   >
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                      dir="ltr"
+                    <p
+                      class="c3"
                     >
                       Ville de résidence
-                    </div>
-                    <div
-                      class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                      data-testid="validation-birth-date"
-                      dir="ltr"
+                    </p>
+                    <p
+                      class="c4"
                     >
                       28/01/1993
-                    </div>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -210,7 +256,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           >
             <button
               aria-label="Continuer"
-              class="c1"
+              class="c5"
               data-testid="Continuer"
               tabindex="0"
               type="submit"
@@ -218,13 +264,12 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
               >
-                <div
-                  class="css-text-146c3p1 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv"
-                  dir="ltr"
-                  style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0px; flex-shrink: 1;"
+                <p
+                  class="c6"
+                  style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0; flex-shrink: 1;"
                 >
                   Continuer
-                </div>
+                </p>
               </div>
             </button>
             <div
