@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useTheme } from 'styled-components/native'
 
@@ -11,10 +12,11 @@ export const useCustomSafeInsets = () => {
   const {
     tabBar: { height },
   } = useTheme()
+  const computedBottomInset = Platform.OS === 'android' ? bottom : 0.5 * bottom
 
   return {
-    bottom: 0.5 * bottom,
-    tabBarHeight: 0.5 * bottom + height,
+    bottom: computedBottomInset,
+    tabBarHeight: computedBottomInset + height,
     top,
     right,
     left,
