@@ -3,12 +3,13 @@ import { TouchableWithoutFeedbackProps } from 'react-native'
 import styled from 'styled-components'
 
 const StyledTouchableWithoutFeedback = styled.button.attrs<TouchableWithoutFeedbackProps>(
-  ({ onClick, testID, accessibilityLabel, ...rest }) => ({
+  ({ onClick, testID, accessibilityLabel, style, ...rest }) => ({
     tabIndex: -1,
     onClick,
     'data-testid': accessibilityLabel || testID,
     'aria-label': accessibilityLabel,
     title: accessibilityLabel,
+    style: style ?? undefined,
     ...rest,
   })
 )({

@@ -1,4 +1,4 @@
-import { ComponentType, CSSProperties, FunctionComponent, MouseEventHandler } from 'react'
+import { ComponentType, CSSProperties, MouseEventHandler } from 'react'
 import {
   AccessibilityRole,
   GestureResponderEvent,
@@ -26,7 +26,7 @@ export interface TouchableOpacityButtonProps {
 
 export interface AppButtonInnerProps {
   adjustsFontSizeToFit?: boolean
-  icon?: FunctionComponent<AccessibleIcon>
+  icon?: ComponentType<AccessibleIcon>
   iconPosition: 'left' | 'right'
   loadingIndicator?: ComponentType<AccessibleIcon>
   isLoading?: boolean
@@ -52,7 +52,7 @@ export interface BaseButtonProps {
   fullWidth?: boolean
   hoverUnderlineColor?: ColorsType
   href?: string
-  icon?: FunctionComponent<AccessibleIcon>
+  icon?: ComponentType<AccessibleIcon>
   iconPosition?: 'left' | 'right'
   inline?: boolean
   isLoading?: boolean

@@ -9,13 +9,14 @@ import { TouchableProps } from './types'
 type TouchableStyleProps = TouchableProps & { theme: DefaultTheme }
 
 const StyledTouchable = styled.button.attrs<TouchableProps>(
-  ({ onClick, type, testID, accessibilityLabel, ...rest }) => ({
+  ({ onClick, type, testID, accessibilityLabel, style, ...rest }) => ({
     tabIndex: 0,
     type: type || 'button',
     onClick,
     'data-testid': accessibilityLabel || testID,
     'aria-label': accessibilityLabel,
     title: accessibilityLabel,
+    style: style ?? undefined,
     ...rest,
   })
 )((props: TouchableStyleProps) => appTouchableOpacityWebStyles({ ...props, buttonHeight: 'tall' }))
