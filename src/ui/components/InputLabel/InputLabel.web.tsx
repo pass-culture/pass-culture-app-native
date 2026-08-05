@@ -16,7 +16,6 @@ const StyledLabel = styled.label<{ color?: TextColorKey }>(({ theme }) => ({
   cursor: 'pointer',
 }))
 
-// Trouver un moyen d'utiliser le getHeadingAttrs() + role label en web
 export const InputLabel: React.FC<InputLabelProps> = ({ children, ...props }) => {
   return <StyledLabel {...props}>{children}</StyledLabel>
 }
