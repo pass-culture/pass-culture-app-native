@@ -69,7 +69,7 @@
     "test:lint:cleancode": "ESLINT_SCOPE=cleancode eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:lint:changed": "./scripts/lint_changed.sh",
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
-    "test:types": "tsc",
+    "test:types": "NODE_OPTIONS='--max-old-space-size=8192' tsc",
     "test:unit": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
     "test:unit:ci": "JEST_SILENT_REPORTER_DOTS=true yarn test:unit --maxWorkers=6 --coverage --ci --reporters=jest-junit --reporters=jest-silent-reporter",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",

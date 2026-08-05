@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { ComponentType, FunctionComponent, useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -41,7 +41,7 @@ type TouchableProps =
     }
 
 type Props = {
-  leftIcon: React.FunctionComponent<AccessibleIcon>
+  leftIcon: ComponentType<AccessibleIcon>
   title: string
   subtitle: string | React.ReactNode
   accessibilityLabel?: string
@@ -101,11 +101,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
       }))``
     : undefined
 
-  let TouchableComponent: React.ComponentType<
-    | React.ComponentProps<typeof StyledInternalTouchableLink>
-    | React.ComponentProps<typeof StyledExternalTouchableLink>
-    | React.ComponentProps<typeof StyledTouchableOpacity>
-  >
+  let TouchableComponent: React.ElementType
   if ('navigateTo' in touchableProps) {
     TouchableComponent = StyledInternalTouchableLink
   } else if ('externalNav' in touchableProps) {

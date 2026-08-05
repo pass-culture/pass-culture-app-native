@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { ComponentType, FunctionComponent } from 'react'
 import { AccessibilityRole, ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -22,8 +22,8 @@ type TouchableProps =
     }
 
 type BannerWithBackgroundProps = TouchableProps & {
-  leftIcon?: FunctionComponent<AccessibleIcon>
-  rightIcon?: FunctionComponent<AccessibleIcon>
+  leftIcon?: ComponentType<AccessibleIcon>
+  rightIcon?: ComponentType<AccessibleIcon>
   backgroundSource?: ImageSourcePropType
   noRightIcon?: boolean
   testID?: string
@@ -59,9 +59,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
         size: theme.designSystem.size.icon.m,
       }))``
 
-  let TouchableComponent: React.ComponentType<
-    React.ComponentProps<typeof StyledTouchableLink> | React.ComponentProps<typeof TouchableOpacity>
-  >
+  let TouchableComponent: React.ElementType
   if ('navigateTo' in touchableProps) {
     TouchableComponent = StyledTouchableLink
   } else {

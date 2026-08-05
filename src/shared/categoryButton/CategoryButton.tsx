@@ -61,7 +61,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
 
 const MIN_HEIGHT = getSpacing(20)
 
-const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
+const TouchableContainer = styled(InternalTouchableLink)<{
   onMouseDown: (e: Event) => void
   isFocus: boolean
   isHover: boolean

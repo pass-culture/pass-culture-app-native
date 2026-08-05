@@ -1,12 +1,27 @@
-import React, { ComponentProps, FunctionComponent } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import {
+  InternalNavigationProps,
+  InternalTouchableLinkProps,
+} from 'ui/components/touchableLink/types'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { getShadow } from 'ui/theme'
+
+type TouchableWrapperProps = Omit<InternalTouchableLinkProps, 'as' | 'navigateTo' | 'style'> & {
+  navigateTo: InternalNavigationProps['navigateTo']
+  style?: Exclude<InternalTouchableLinkProps['style'], null>
+}
+
+type WrapperProps = PropsWithChildren<
+  TouchableWrapperProps & {
+    noBorder?: boolean
+  }
+>
 
 type Props = {
   venueName: string
@@ -17,24 +32,29 @@ type Props = {
   noBorder?: boolean
   iconSize?: number
   withRightArrow?: boolean
-} & ComponentProps<typeof InternalTouchableLink>
+} & TouchableWrapperProps
 
 export const VenueMapPreview: FunctionComponent<Props> = ({
   venueName,
   address,
   bannerUrl,
   tags,
+  navigateTo,
   onClose,
   iconSize,
   noBorder,
   withRightArrow,
+  style,
   ...touchableProps
 }) => {
   const { designSystem } = useTheme()
-  const Wrapper = noBorder ? InternalTouchableLink : Container
 
   return (
-    <Wrapper {...touchableProps}>
+    <Wrapper
+      {...touchableProps}
+      navigateTo={navigateTo}
+      noBorder={noBorder}
+      style={style ?? undefined}>
       <Row>
         <StyledGroupTags tags={tags} />
         <StyledCloseButton onClose={onClose} size={iconSize} />
@@ -49,6 +69,13 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
     </Wrapper>
   )
 }
+
+const Wrapper = ({ children, noBorder, ...props }: WrapperProps) =>
+  noBorder ? (
+    <InternalTouchableLink {...props}>{children}</InternalTouchableLink>
+  ) : (
+    <Container {...props}>{children}</Container>
+  )
 
 const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,

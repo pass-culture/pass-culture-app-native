@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
@@ -54,13 +54,13 @@ export function SelectableListItem({
   )
 }
 
-const selectedStyles = (theme: DefaultTheme): CSSProperties => ({
+const selectedStyles = (theme: DefaultTheme) => ({
   borderWidth: 2,
   borderColor: theme.designSystem.color.border.default,
   padding: theme.designSystem.size.spacing.l - 1, // to avoid getting a jumping component
 })
 
-const unselectedStyles = (theme: DefaultTheme, disabled?: boolean): CSSProperties => ({
+const unselectedStyles = (theme: DefaultTheme, disabled?: boolean) => ({
   borderWidth: 1,
   borderColor: disabled
     ? theme.designSystem.color.border.disabled

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -14,11 +14,11 @@ type BookingListItemLabelProps = {
   icon: BookingListItemLabelIcon
 }
 
-const ICON_MAPING: Record<BookingListItemLabelIcon, FunctionComponent<{ color: string }>> = {
+const ICON_MAPING = {
   clock: ClockFilled,
   tickets: Stock,
   digital: Digital,
-}
+} satisfies Record<BookingListItemLabelIcon, unknown>
 
 export const BookingListItemLabel = ({ alert, text, icon }: BookingListItemLabelProps) => {
   const { designSystem } = useTheme()

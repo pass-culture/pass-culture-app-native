@@ -33,6 +33,7 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
 
     return {
       ...rest,
+      style: rest.style ?? undefined,
       inlineHeight: theme.designSystem.size.spacing.xl,
       icon: Icon,
       loadingIndicator: LoadingIndicator,

@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { ComponentType, FunctionComponent } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
-import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
@@ -82,7 +81,7 @@ type ButtonContentProps = {
   stepState: StepButtonState
   label: string
   subtitle?: string
-  Icon: FunctionComponent<AccessibleIcon>
+  Icon: ComponentType<AccessibleIcon>
   withRightIcon?: boolean
 }
 
@@ -162,12 +161,8 @@ const ChildrenContainer = styled.View(({ theme }) => ({
   paddingRight: theme.designSystem.size.spacing.l,
 }))
 
-const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
-  InternalTouchableLink
-).attrs<{
-  color: ColorsType
-}>(({ color }) => ({
-  hoverUnderlineColor: color,
+const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.designSystem.color.text.default,
 }))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
   width: '100%',
   justifyContent: 'center',

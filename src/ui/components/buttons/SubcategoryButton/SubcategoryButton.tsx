@@ -66,7 +66,7 @@ export const SubcategoryButton = ({
   )
 }
 
-const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
+const StyledInternalTouchable = styled(InternalTouchableLink)<{
   isFocus?: boolean
   backgroundColor: ColorsType
   borderColor: ColorsType
