@@ -291,7 +291,7 @@ exports[`LegalNotices should render correctly 1`] = `
               >
                 Éditeur du site : 
                 <Text
-                  accessibilityLabel="https://passculture.app/accueil, lien externe"
+                  accessibilityLabel="https://passculture.app/accueil - Nouvelle fenêtre"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -304,6 +304,7 @@ exports[`LegalNotices should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="https://passculture.app/accueil - Nouvelle fenêtre"
                 >
                   https://passculture.app/accueil
                 </Text>
@@ -474,7 +475,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 }
               />
               <View
-                accessibilityLabel="Conditions Générales d’Utilisation"
+                accessibilityLabel="Conditions Générales d’Utilisation - Nouvelle fenêtre"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -526,7 +527,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Conditions Générales d’Utilisation"
+                testID="Conditions Générales d’Utilisation - Nouvelle fenêtre"
               >
                 <View
                   gap={8}
@@ -584,7 +585,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Charte des données personnelles"
+                accessibilityLabel="Charte des données personnelles - Nouvelle fenêtre"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -636,7 +637,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Charte des données personnelles"
+                testID="Charte des données personnelles - Nouvelle fenêtre"
               >
                 <View
                   gap={8}
@@ -694,7 +695,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Charte d’utilisation et de bonne conduite"
+                accessibilityLabel="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -746,7 +747,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Charte d’utilisation et de bonne conduite"
+                testID="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
               >
                 <View
                   gap={8}

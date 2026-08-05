@@ -288,7 +288,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 La présente déclaration d’accessibilité s’applique à 
                 <Text
-                  accessibilityLabel="l’application Android, lien externe"
+                  accessibilityLabel="l’application Android - Nouvelle fenêtre"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -301,6 +301,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="l’application Android - Nouvelle fenêtre"
                 >
                   l’application Android
                 </Text>
@@ -1631,7 +1632,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée : 
                 <Text
-                  accessibilityLabel="contacter le support, lien externe"
+                  accessibilityLabel="contacter le support - Nouvelle fenêtre"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -1644,6 +1645,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="contacter le support - Nouvelle fenêtre"
                 >
                   contacter le support
                 </Text>
@@ -1694,7 +1696,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Écrire un message au 
                 <Text
-                  accessibilityLabel="Défenseur des droits, lien externe"
+                  accessibilityLabel="Défenseur des droits - Nouvelle fenêtre"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -1707,6 +1709,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="Défenseur des droits - Nouvelle fenêtre"
                 >
                   Défenseur des droits
                 </Text>
@@ -1723,7 +1726,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Contacter le délégué du 
                 <Text
-                  accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+                  accessibilityLabel="Défenseur des droits dans votre région - Nouvelle fenêtre"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -1736,6 +1739,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="Défenseur des droits dans votre région - Nouvelle fenêtre"
                 >
                   Défenseur des droits dans votre région
                 </Text>

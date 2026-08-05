@@ -438,7 +438,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="C’est quoi ÉduConnect ?"
+                  accessibilityLabel="C’est quoi ÉduConnect ? - Nouvelle fenêtre"
                   accessibilityRole="link"
                   accessibilityState={
                     {
@@ -490,7 +490,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="C’est quoi ÉduConnect ?"
+                  testID="C’est quoi ÉduConnect ? - Nouvelle fenêtre"
                 >
                   <View
                     gap={8}
@@ -817,7 +817,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                       }
                     >
                       <View
-                        accessibilityLabel="Lien externe - Voir la charte des données personnelles"
+                        accessibilityLabel="Lien externe - Voir la charte des données personnelles - Nouvelle fenêtre"
                         accessibilityRole="link"
                         accessibilityState={
                           {

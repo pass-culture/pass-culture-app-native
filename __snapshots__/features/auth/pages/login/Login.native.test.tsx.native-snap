@@ -429,7 +429,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Identifiants oubliés ?"
+                  accessibilityLabel="Identifiants oubliés ? - Nouvelle fenêtre"
                   accessibilityRole="link"
                   accessibilityState={
                     {
@@ -481,7 +481,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       },
                     ]
                   }
-                  testID="Identifiants oubliés ?"
+                  testID="Identifiants oubliés ? - Nouvelle fenêtre"
                 >
                   <View
                     gap={8}
