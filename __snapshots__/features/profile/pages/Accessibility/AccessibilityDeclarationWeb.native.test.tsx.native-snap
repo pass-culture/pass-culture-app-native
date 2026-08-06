@@ -288,7 +288,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 Cette déclaration d’accessibilité s’applique au site internet 
                 <Text
-                  accessibilityLabel="https://passculture.app/ mobile - Nouvelle fenêtre"
+                  accessibilityLabel="https://passculture.app/ mobile - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -301,7 +301,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
-                  testID="https://passculture.app/ mobile - Nouvelle fenêtre"
+                  testID="https://passculture.app/ mobile - Lien externe"
                 >
                   https://passculture.app/ mobile
                 </Text>
@@ -355,7 +355,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                  de l’application web pass Culture est non conforme avec la
                  
                 <Text
-                  accessibilityLabel="norme européenne 301 549 (v3.2.1) - Nouvelle fenêtre"
+                  accessibilityLabel="norme européenne 301 549 (v3.2.1) - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -368,7 +368,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
-                  testID="norme européenne 301 549 (v3.2.1) - Nouvelle fenêtre"
+                  testID="norme européenne 301 549 (v3.2.1) - Lien externe"
                 >
                   norme européenne 301 549 (v3.2.1)
                 </Text>
@@ -399,7 +399,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 L’application web pass Culture est partiellement conforme avec le
                  
                 <Text
-                  accessibilityLabel="RAWeb version 1.1 - Nouvelle fenêtre"
+                  accessibilityLabel="RAWeb version 1.1 - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -412,7 +412,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
-                  testID="RAWeb version 1.1 - Nouvelle fenêtre"
+                  testID="RAWeb version 1.1 - Lien externe"
                 >
                   RAWeb version 1.1
                 </Text>
@@ -420,7 +420,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 et
                  
                 <Text
-                  accessibilityLabel="Le RGAA version 4.1 - Nouvelle fenêtre"
+                  accessibilityLabel="Le RGAA version 4.1 - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -433,7 +433,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
-                  testID="Le RGAA version 4.1 - Nouvelle fenêtre"
+                  testID="Le RGAA version 4.1 - Lien externe"
                 >
                   Le RGAA version 4.1
                 </Text>
@@ -3232,7 +3232,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 pass Culture invite les personnes qui rencontreraient des difficultés à
                  
                 <Text
-                  accessibilityLabel="contacter le support - Nouvelle fenêtre"
+                  accessibilityLabel="contacter le support - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -3245,7 +3245,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
-                  testID="contacter le support - Nouvelle fenêtre"
+                  testID="contacter le support - Lien externe"
                 >
                   contacter le support
                 </Text>
@@ -3362,7 +3362,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     >
                       Écrire un message au 
                       <Text
-                        accessibilityLabel="Défenseur des droits - Nouvelle fenêtre"
+                        accessibilityLabel="Défenseur des droits - Lien externe"
                         accessibilityRole="link"
                         onPress={[Function]}
                         style={
@@ -3375,7 +3375,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             "textDecorationLine": "underline",
                           }
                         }
-                        testID="Défenseur des droits - Nouvelle fenêtre"
+                        testID="Défenseur des droits - Lien externe"
                       >
                         Défenseur des droits
                       </Text>
@@ -3435,7 +3435,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     >
                       Contacter le délégué du 
                       <Text
-                        accessibilityLabel="Défenseur des droits dans votre région - Nouvelle fenêtre"
+                        accessibilityLabel="Défenseur des droits dans votre région - Lien externe"
                         accessibilityRole="link"
                         onPress={[Function]}
                         style={
@@ -3448,7 +3448,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             "textDecorationLine": "underline",
                           }
                         }
-                        testID="Défenseur des droits dans votre région - Nouvelle fenêtre"
+                        testID="Défenseur des droits dans votre région - Lien externe"
                       >
                         Défenseur des droits dans votre région
                       </Text>

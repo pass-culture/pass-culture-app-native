@@ -106,14 +106,14 @@ describe('useGetArtistsFromPlaylist', () => {
     expect(result.current.nbItems).toBe(2)
     expect(result.current.items).toEqual([
       {
-        accessibilityLabel: 'Céline Dion Artiste - page artiste',
+        accessibilityLabel: 'Céline Dion - Artiste',
         id: '1',
         image: undefined,
         name: 'Céline Dion',
         role: 'Artiste',
       },
       {
-        accessibilityLabel: 'Sia Artiste - page artiste',
+        accessibilityLabel: 'Sia - Artiste',
         id: '2',
         image: undefined,
         name: 'Sia',

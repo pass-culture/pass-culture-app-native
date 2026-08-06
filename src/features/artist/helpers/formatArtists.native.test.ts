@@ -12,11 +12,11 @@ describe('formatArtists', () => {
         image: 'http://commons.wikimedia.org/wiki/Special:FilePath/Virginie%20Despentes%202012.jpg',
         name: 'Avril Lavigne',
         role: 'Artiste',
-        accessibilityLabel: 'Avril Lavigne Artiste - page artiste',
+        accessibilityLabel: 'Avril Lavigne - Artiste',
       },
       {
         id: '',
-        accessibilityLabel: 'Mika Artiste - page artiste',
+        accessibilityLabel: 'Mika - Artiste',
         image: 'http://example.com/mika.jpg',
         name: 'Mika',
         role: 'Artiste',
@@ -26,7 +26,7 @@ describe('formatArtists', () => {
         image: 'https://fr.wikipedia.org/wiki/Lady_Gaga#/media/Fichier:Lady_Gaga-65189.jpg',
         name: 'Lady Gaga',
         role: 'Artiste',
-        accessibilityLabel: 'Lady Gaga Artiste - page artiste',
+        accessibilityLabel: 'Lady Gaga - Artiste',
       },
     ])
   })

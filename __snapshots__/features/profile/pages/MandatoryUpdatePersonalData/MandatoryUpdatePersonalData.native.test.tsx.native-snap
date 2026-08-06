@@ -192,7 +192,7 @@ C’est rapide, promis.
             }
           >
             <View
-              accessibilityLabel="Charte des données personnelles - Nouvelle fenêtre"
+              accessibilityLabel="Charte des données personnelles - Lien externe"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -244,7 +244,7 @@ C’est rapide, promis.
                   },
                 ]
               }
-              testID="Charte des données personnelles - Nouvelle fenêtre"
+              testID="Charte des données personnelles - Lien externe"
             >
               <View
                 gap={8}

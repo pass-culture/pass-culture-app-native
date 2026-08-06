@@ -26,9 +26,10 @@ describe('<Link />', () => {
       />
     )
 
-    expect(
-      screen.getByRole('link', { name: 'Nouvelle fenêtre\u00a0: Documentation' })
-    ).toHaveAttribute('href', 'https://example.com')
+    expect(screen.getByRole('link', { name: 'Documentation - Nouvelle fenêtre' })).toHaveAttribute(
+      'href',
+      'https://example.com'
+    )
   })
 
   it('should open external href in a new tab', () => {
