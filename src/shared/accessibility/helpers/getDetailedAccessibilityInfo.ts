@@ -22,11 +22,7 @@ const descriptionTranslations: Record<string, string> = {
 }
 
 type DisabilityModel =
-  | AudioDisability
-  | MentalDisability
-  | MotorDisability
-  | VisualDisability
-  | null
+  AudioDisability | MentalDisability | MotorDisability | VisualDisability | null
 
 const translateDescriptions = (descriptions?: DisabilityModel): Record<string, string> => {
   if (descriptions) {
