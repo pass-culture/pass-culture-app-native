@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FieldError, UseFormReset, UseFormWatch } from 'react-hook-form'
-import { View } from 'react-native'
+import { Keyboard, View } from 'react-native'
 
 import { InseeCountry } from 'api/gen'
 import { useCountriesQuery } from 'features/bonification/queries/useCountriesQuery'
@@ -84,6 +84,7 @@ export const CountryPicker: React.FC<{
                     setCountryList([])
                     onChangeSelection(country)
                     onChangeInput(country.libcog)
+                    Keyboard.dismiss()
                     setShowCityField(
                       watch('birthCountrySelection')?.libcog?.toLocaleLowerCase() === 'france'
                     )
