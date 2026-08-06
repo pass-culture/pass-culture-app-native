@@ -7,7 +7,7 @@ export const loginToGoogle = async ({ onSuccess, onError }: GoogleLoginOptions) 
   let oauthStateToken: string
 
   try {
-    oauthStateToken = (await api.getNativeV1OauthState()).oauthStateToken
+    oauthStateToken = (await api.getNativeV2OauthState()).oauthStateToken
   } catch (error) {
     onError?.(error)
     return

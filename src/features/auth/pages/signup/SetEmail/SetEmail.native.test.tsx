@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OauthStateResponse } from 'api/gen'
+import { OauthStateResponseV2 } from 'api/gen'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -205,6 +205,8 @@ describe('<SetEmail />', () => {
 })
 
 const renderSetEmail = (props: PreValidationSignupNormalStepProps = defaultProps) => {
-  mockServer.getApi<OauthStateResponse>('/v1/oauth/state', { oauthStateToken: 'oauth_state_token' })
+  mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
+    oauthStateToken: 'oauth_state_token',
+  })
   render(reactQueryProviderHOC(<SetEmail {...props} />))
 }

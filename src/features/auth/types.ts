@@ -1,4 +1,4 @@
-import { OAuthSigninRequest, SigninRequest } from 'api/gen'
+import { OAuthSigninRequestV2, SigninRequest } from 'api/gen'
 
 export type SignInResponseFailure = {
   isSuccess: false
@@ -47,7 +47,9 @@ export type PreValidationSignupLastStepProps = {
 }
 
 // Frontend discriminator to distinguish Apple from Google (same API shape)
-type OAuthLoginRequest = OAuthSigninRequest & { provider: 'google' | 'apple' }
+type OAuthLoginRequest = Omit<OAuthSigninRequestV2, 'deviceInfo'> & {
+  provider: 'google' | 'apple'
+}
 export type LoginRequest = SigninRequest | OAuthLoginRequest
 
 export const isOAuthLoginRequest = (req: LoginRequest): req is OAuthLoginRequest =>
