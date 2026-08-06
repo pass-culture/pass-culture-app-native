@@ -368,7 +368,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Consulter notre centre d’aide"
+                    accessibilityLabel="Consulter notre centre d’aide - Lien externe"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -420,7 +420,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Consulter notre centre d’aide"
+                    testID="Consulter notre centre d’aide - Lien externe"
                   >
                     <View
                       gap={8}

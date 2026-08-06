@@ -513,7 +513,7 @@ describe('<BookingOfferModalComponent />', () => {
           />
         )
 
-        expect(await screen.findByTestId('Donner mon avis')).toBeOnTheScreen()
+        expect(await screen.findByLabelText('Donner mon avis - Lien externe')).toBeOnTheScreen()
       })
 
       it('should not render modal when user has already seen it', async () => {

@@ -40,7 +40,7 @@ describe('<Link />', () => {
       />
     )
 
-    expect(screen.getByLabelText('Nouvelle fenêtre\u00a0: Documentation')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Documentation - Lien externe')).toBeOnTheScreen()
   })
 
   it('should open href when pressed', async () => {

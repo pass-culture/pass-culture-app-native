@@ -46,7 +46,7 @@ describe('FakeDoorModal', () => {
     it('should display primary button', () => {
       render(<FakeDoorModal />)
 
-      const button = screen.getByLabelText('Donner mon avis')
+      const button = screen.getByLabelText('Donner mon avis - Lien externe')
 
       expect(button.props.style.backgroundColor).toEqual(
         theme.designSystem.color.background.brandPrimary
@@ -56,7 +56,7 @@ describe('FakeDoorModal', () => {
     it('should mark the survey as seen when pressing "Donner mon avis" button', async () => {
       render(<FakeDoorModal />)
 
-      await user.press(screen.getByLabelText('Donner mon avis'))
+      await user.press(screen.getByLabelText('Donner mon avis - Lien externe'))
 
       expect(asyncStorageSetItemSpy).toHaveBeenCalledWith(
         'has_seen_follow_venue_fake_door_survey',
@@ -68,7 +68,7 @@ describe('FakeDoorModal', () => {
     it('should redirect to qualtrics survey when pressing answer survey button', async () => {
       render(<FakeDoorModal />)
 
-      await user.press(screen.getByLabelText('Donner mon avis'))
+      await user.press(screen.getByLabelText('Donner mon avis - Lien externe'))
 
       expect(openUrlSpy).toHaveBeenCalledWith('https://passculture.qualtrics.com/', undefined, true)
     })
@@ -96,7 +96,7 @@ describe('FakeDoorModal', () => {
     it('should display secondary button', async () => {
       render(<FakeDoorModal />)
 
-      const button = await screen.findByLabelText('Répondre au questionnaire')
+      const button = await screen.findByLabelText('Répondre au questionnaire - Lien externe')
 
       expect(button.props.style.backgroundColor).toEqual(
         theme.designSystem.color.background.default
@@ -114,7 +114,7 @@ describe('FakeDoorModal', () => {
     it('should not log ConsultFakeDoorSurvey when no analytics params are provided', async () => {
       render(<FakeDoorModal />)
 
-      await user.press(screen.getByLabelText('Donner mon avis'))
+      await user.press(screen.getByLabelText('Donner mon avis - Lien externe'))
 
       expect(analytics.logConsultFakeDoorSurvey).not.toHaveBeenCalled()
     })
@@ -133,7 +133,7 @@ describe('FakeDoorModal', () => {
       it('should log ConsultFakeDoorSurvey when pressing "Donner mon avis" button', async () => {
         render(<FakeDoorModal />)
 
-        await user.press(screen.getByLabelText('Donner mon avis'))
+        await user.press(screen.getByLabelText('Donner mon avis - Lien externe'))
 
         expect(analytics.logConsultFakeDoorSurvey).toHaveBeenCalledWith({
           featureName: 'follow_artist',
@@ -146,7 +146,7 @@ describe('FakeDoorModal', () => {
         asyncStorageSpyOn.mockResolvedValueOnce('true')
         render(<FakeDoorModal />)
 
-        await user.press(await screen.findByLabelText('Répondre au questionnaire'))
+        await user.press(await screen.findByLabelText('Répondre au questionnaire - Lien externe'))
 
         expect(analytics.logConsultFakeDoorSurvey).toHaveBeenCalledWith({
           featureName: 'follow_artist',
