@@ -70,6 +70,3 @@ const addStyled = (Component: typeof RNTouchableOpacity | typeof GestureTouchabl
   }))
 const StyledRNTouchableOpacity = addStyled(RNTouchableOpacity)
 const StyledGestureTouchableOpacity = addStyled(GestureTouchableOpacity)
-
-// eslint-disable-next-line no-restricted-imports
-export { TouchableOpacity as RNTouchableOpacity } from 'react-native'
