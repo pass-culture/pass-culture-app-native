@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import { styled } from 'styled-components/native'
@@ -8,7 +8,7 @@ import { BonificationType } from 'features/bonification/enums'
 import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
@@ -20,7 +20,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner, BannerLink } from 'ui/designSystem/Banner/Banner'
 import { Link } from 'ui/designSystem/Link/Link'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { ButtonProps, GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -39,6 +39,7 @@ interface TertiaryButtonConfig {
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   Icon?: React.FunctionComponent<AccessibleIcon>
+  goBack?: boolean
 }
 
 interface PageConfigEntry {
@@ -69,8 +70,8 @@ const notFoundPageConfig = {
     }),
   },
   tertiaryButton: {
-    wording: 'Annuler',
-    navigateTo: navigateToHomeConfig,
+    wording: 'Fermer',
+    goBack: true,
     Icon: Invalidate,
   },
 }
@@ -97,8 +98,8 @@ const notInTaxHouseholdConfig = {
     }),
   },
   tertiaryButton: {
-    wording: 'Annuler',
-    navigateTo: navigateToHomeConfig,
+    wording: 'Fermer',
+    goBack: true,
     Icon: Invalidate,
   },
 }
@@ -161,6 +162,7 @@ export const PAGE_CONFIG: PageConfigMap = {
 }
 
 export const BonificationFamilyQuotientRefused = () => {
+  const { goBack } = useNavigation<UseNavigationType>()
   const disableQFBonificationManualRequest = useFeatureFlag(
     RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
   )
@@ -202,17 +204,28 @@ export const BonificationFamilyQuotientRefused = () => {
   ) : undefined
 
   const pageConfig = PAGE_CONFIG[bonificationRefusedType]
-  const { Icon, wording, navigateTo, externalNav } = pageConfig.tertiaryButton
+  const { Icon, wording, navigateTo, externalNav, goBack: shouldGoBack } = pageConfig.tertiaryButton
 
-  const tertiaryExternalNav =
-    Icon && wording && externalNav
-      ? { icon: Icon, wording: wording, externalNav: externalNav }
-      : undefined
-
-  const tertiaryNavigateTo =
-    Icon && wording && navigateTo
-      ? { icon: Icon, wording: wording, navigateTo: navigateTo }
-      : tertiaryExternalNav
+  const buildTertiaryButton = ({
+    Icon,
+    wording,
+    externalNav,
+    navigateTo,
+    shouldGoBack,
+    goBack,
+  }: {
+    Icon?: React.FunctionComponent<AccessibleIcon>
+    wording?: string
+    externalNav?: ExternalNavigationProps['externalNav']
+    navigateTo?: InternalNavigationProps['navigateTo']
+    shouldGoBack?: boolean
+    goBack: () => void
+  }): ButtonProps | undefined => {
+    if (Icon && wording && externalNav) return { icon: Icon, wording, externalNav }
+    if (Icon && wording && shouldGoBack) return { icon: Icon, wording, onPress: goBack }
+    if (Icon && wording && navigateTo) return { icon: Icon, wording, navigateTo }
+    return undefined
+  }
 
   return (
     <GenericInfoPage
@@ -224,7 +237,14 @@ export const BonificationFamilyQuotientRefused = () => {
         navigateTo: pageConfig.primaryButton.navigateTo,
         disabled: disableQFBonificationManualRequest,
       }}
-      buttonTertiary={tertiaryNavigateTo}>
+      buttonTertiary={buildTertiaryButton({
+        Icon,
+        wording,
+        externalNav,
+        navigateTo,
+        shouldGoBack,
+        goBack,
+      })}>
       <ViewGap gap={4}>
         <CenteredBody>{pageConfig.firstText}</CenteredBody>
         <View>

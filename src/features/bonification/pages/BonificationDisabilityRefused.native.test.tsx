@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { goBack, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BonificationType } from 'features/bonification/enums'
 import { BonificationDisabilityRefused } from 'features/bonification/pages/BonificationDisabilityRefused'
 import { BonificationDisabilityRefusedType } from 'features/bonification/types/BonificationRefusedType'
@@ -33,6 +33,15 @@ describe('BonificationDisabilityRefused', () => {
         params: { bonificationType: BonificationType.DISABILITY },
         screen: 'BonificationRequiredInformation',
       })
+    })
+
+    it('should call goBack when pressing "Fermer" button', async () => {
+      render(<BonificationDisabilityRefused />)
+
+      const button = screen.getByText('Fermer')
+      await userEvent.press(button)
+
+      expect(goBack).toHaveBeenCalledTimes(1)
     })
 
     it('should disable "Renouveler ma demande" button when feature flag is enabled', () => {
