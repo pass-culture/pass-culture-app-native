@@ -141,6 +141,7 @@ storybook-static
 
 # hot-updater
 .hot-updater/output
+fingerprint.json
 
 # ssl certificates
 proxy_cacert

@@ -1,0 +1,58 @@
+name: '1 [on_pr] Sticky QR comment'
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  sticky_qr_comment:
+    name: Post sticky QR comment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    steps:
+      - name: Publish loading sticky comment
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: sticky-qr-preview
+          message: |
+            ## Preview QR
+
+            <div align="center">
+
+            Génération du QR code en cours…
+
+            _Commit: `${{ github.sha }}`_
+
+            </div>
+
+      - name: Build QR comment body
+        id: qr
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          ENCODED_URL=$(python3 -c 'import os, urllib.parse; print(urllib.parse.quote(os.environ["PR_URL"], safe=""))')
+          {
+            echo 'body<<EOF'
+            echo '## Preview QR'
+            echo
+            echo '<div align="center">'
+            echo
+            echo "![QR code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${ENCODED_URL})"
+            echo
+            echo "[Ouvrir le lien](${PR_URL})"
+            echo
+            echo "_Commit: \`${GITHUB_SHA}\`_"
+            echo
+            echo '</div>'
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Publish sticky QR comment
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: sticky-qr-preview
+          message: ${{ steps.qr.outputs.body }}

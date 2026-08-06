@@ -123,6 +123,9 @@ jobs:
       - name: Setup android Google services config
         run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
 
+      - name: Create hot-updater fingerprint
+        run: yarn hotupdater:fingerprint
+
       - name: Deploy hard android for ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8

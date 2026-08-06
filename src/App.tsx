@@ -134,7 +134,7 @@ const AppWithHotUpdater: any =
     ? App
     : HotUpdater.wrap({
         baseURL: `${env.HOT_UPDATER_FUNCTION_URL}/api/check-update`,
-        updateStrategy: 'appVersion',
+        updateStrategy: 'fingerprint',
       })(App)
 
 export { AppWithHotUpdater as App }
