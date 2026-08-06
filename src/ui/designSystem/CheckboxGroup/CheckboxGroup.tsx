@@ -10,6 +10,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { InputError } from 'ui/components/inputs/InputError'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import {
@@ -99,35 +101,34 @@ export const CheckboxGroup = <T extends string = string>({
           if (variant === 'detailed') {
             if (option.collapsed) {
               return (
+                <Li key={option.value}>
+                  <Checkbox
+                    variant="detailed"
+                    sizing="fill"
+                    collapsed={option.collapsed}
+                    description={option.description}
+                    asset={option.asset}
+                    {...commonProps}
+                  />
+                </Li>
+              )
+            }
+            return (
+              <Li key={option.value}>
                 <Checkbox
-                  key={option.value}
                   variant="detailed"
-                  sizing="fill"
-                  collapsed={option.collapsed}
+                  sizing={computedCheckboxSizing}
                   description={option.description}
                   asset={option.asset}
                   {...commonProps}
                 />
-              )
-            }
-            return (
-              <Checkbox
-                key={option.value}
-                variant="detailed"
-                sizing={computedCheckboxSizing}
-                description={option.description}
-                asset={option.asset}
-                {...commonProps}
-              />
+              </Li>
             )
           }
           return (
-            <Checkbox
-              key={option.value}
-              variant="default"
-              sizing={computedCheckboxSizing}
-              {...commonProps}
-            />
+            <Li key={option.value}>
+              <Checkbox variant="default" sizing={computedCheckboxSizing} {...commonProps} />
+            </Li>
           )
         })}
       </CheckboxContainer>
@@ -146,18 +147,16 @@ const Description = styled(Typo.Body)(({ theme }) => ({
 
 type VariantProps = { variant: SelectableVariant }
 type DisplayProps = { display: CheckboxGroupDisplay }
-const CheckboxContainer = styled.View<VariantProps & DisplayProps>(
-  ({ theme, variant, display }) => {
-    const isVerticalDisplay = display === 'vertical'
-    const isHorizontalDisplay = display === 'horizontal'
-    const isDefaultVariant = variant === 'default'
-    return {
-      flexWrap: isHorizontalDisplay ? 'wrap' : 'nowrap',
-      flexDirection: isVerticalDisplay ? 'column' : 'row',
-      gap:
-        isDefaultVariant || isHorizontalDisplay
-          ? theme.designSystem.size.spacing.l
-          : theme.designSystem.size.spacing.s,
-    }
+const CheckboxContainer = styled(Ul)<VariantProps & DisplayProps>(({ theme, variant, display }) => {
+  const isVerticalDisplay = display === 'vertical'
+  const isHorizontalDisplay = display === 'horizontal'
+  const isDefaultVariant = variant === 'default'
+  return {
+    flexWrap: isHorizontalDisplay ? 'wrap' : 'nowrap',
+    flexDirection: isVerticalDisplay ? 'column' : 'row',
+    gap:
+      isDefaultVariant || isHorizontalDisplay
+        ? theme.designSystem.size.spacing.l
+        : theme.designSystem.size.spacing.s,
   }
-)
+})
