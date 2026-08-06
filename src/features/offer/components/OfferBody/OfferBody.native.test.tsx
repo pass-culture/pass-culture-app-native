@@ -534,7 +534,7 @@ describe('<OfferBody />', () => {
         subcategory: mockSubcategoryBook,
       })
 
-      await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
+      await user.press(screen.getByLabelText('Stephen King Artiste - page artiste'))
 
       expect(analytics.logConsultArtist).toHaveBeenCalledWith({
         artistId: '1',
@@ -555,7 +555,7 @@ describe('<OfferBody />', () => {
         subcategory: mockSubcategoryBook,
       })
 
-      await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
+      await user.press(screen.getByLabelText('Stephen King - page artiste'))
 
       expect(analytics.logConsultArtist).toHaveBeenCalledWith({
         artistId: '1',
@@ -579,7 +579,7 @@ describe('<OfferBody />', () => {
         subcategory: mockSubcategoryBook,
       })
 
-      await user.press(screen.getByLabelText('Accéder à la page artiste de Stephen King'))
+      await user.press(screen.getByLabelText('Stephen King Artiste - page artiste'))
 
       expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })

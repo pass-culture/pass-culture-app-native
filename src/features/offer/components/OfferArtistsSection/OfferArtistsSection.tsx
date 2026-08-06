@@ -100,17 +100,24 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   )
 
   const soloArtistPart = () => {
-    return soloArtist?.id ? (
-      <InternalTouchableLink
-        navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
-        accessibilityLabel={`Accéder à la page artiste de ${soloArtist.name}`}
-        accessibilityRole={accessibilityRoleInternalNavigation()}
-        onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
-        {soloArtistContent(<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />)}
-      </InternalTouchableLink>
-    ) : (
-      soloArtistContent()
-    )
+    if (soloArtist?.id) {
+      const role = soloArtist?.role ? getArtistRole(soloArtist.role, offerCategoryId) : undefined
+      const accessibilityLabel = role
+        ? `${soloArtist.name} ${role} - page artiste`
+        : `${soloArtist.name} - page artiste`
+
+      return (
+        <InternalTouchableLink
+          navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
+          accessibilityLabel={accessibilityLabel}
+          accessibilityRole={accessibilityRoleInternalNavigation()}
+          onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
+          {soloArtistContent(<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />)}
+        </InternalTouchableLink>
+      )
+    }
+
+    return soloArtistContent()
   }
 
   return (
