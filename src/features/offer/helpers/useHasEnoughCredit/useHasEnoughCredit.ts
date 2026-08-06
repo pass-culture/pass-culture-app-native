@@ -10,8 +10,7 @@ import { RoundUnit, convertCurrency } from 'shared/currency/convertCurrency'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 
 export type HasEnoughCredit =
-  | { hasEnoughCredit: true; message?: never }
-  | { hasEnoughCredit: false; message?: string }
+  { hasEnoughCredit: true; message?: never } | { hasEnoughCredit: false; message?: string }
 
 const message =
   'En raison des conversions monétaires, ton crédit disponible ne couvre pas le prix total.'

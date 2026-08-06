@@ -43,7 +43,7 @@ const checkForAppUpdate = async () => {
     }
 
     return updateInfo
-  } catch (error) {
+  } catch {
     return null
   }
 }
@@ -80,7 +80,7 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
       } else {
         setUpdateStatus(`${updateInfo === null ? 'NO UPDATE' : updateInfo.status}`)
       }
-    } catch (error) {
+    } catch {
       setUpdateStatus('ERROR')
     }
   }

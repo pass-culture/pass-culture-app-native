@@ -1,20 +1,17 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-const genericInfoPageIllustrationNames = [
-  'blockedPaintingLarge',
-  'brokenDinosaurSkeletonLarge',
-  'emptyDigitalWindowLarge',
-  'emptyWalletLarge',
-  'hourglass',
-  'mailBoxSendingLarge',
-  'questioningKnightLarge',
-  'sculptureMagnifyingGlassPaperLarge',
-  'stressedKnightLarge',
-  'trashMosaic',
-  'validStampMosaïcLarge',
-] as const
-
-type GenericInfoPageIllustrationName = (typeof genericInfoPageIllustrationNames)[number]
+type GenericInfoPageIllustrationName =
+  | 'blockedPaintingLarge'
+  | 'brokenDinosaurSkeletonLarge'
+  | 'emptyDigitalWindowLarge'
+  | 'emptyWalletLarge'
+  | 'hourglass'
+  | 'mailBoxSendingLarge'
+  | 'questioningKnightLarge'
+  | 'sculptureMagnifyingGlassPaperLarge'
+  | 'stressedKnightLarge'
+  | 'trashMosaic'
+  | 'validStampMosaïcLarge'
 
 export const genericInfoPageIllustrationUrls = {
   blockedPaintingLarge: buildCategoryIllustrationUrl('blockedPaintingLarge.png'),

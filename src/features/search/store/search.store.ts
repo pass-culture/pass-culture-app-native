@@ -28,8 +28,7 @@ searchStore.store.subscribe(searchStore.selectors.selectParams, (params) => {
   if (!navigationRef.isReady()) return
 
   const currentScreenName = navigationRef.getCurrentRoute()?.name as
-    | SearchStackRouteName
-    | undefined
+    SearchStackRouteName | undefined
   if (currentScreenName === 'SearchResults') {
     navigationRef.setParams(params)
   }
