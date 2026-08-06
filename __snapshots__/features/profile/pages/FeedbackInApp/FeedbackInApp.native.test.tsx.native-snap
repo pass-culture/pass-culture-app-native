@@ -362,7 +362,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       }
                     >
                       <View
-                        accessibilityLabel="Lien externe - Contacter le support - Nouvelle fenêtre"
+                        accessibilityLabel="Lien externe - Contacter le support - Lien externe"
                         accessibilityRole="link"
                         accessibilityState={
                           {

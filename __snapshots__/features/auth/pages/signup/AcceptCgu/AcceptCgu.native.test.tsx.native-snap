@@ -336,7 +336,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         En cochant ces 2 cases tu assures avoir lu :
       </Text>
       <View
-        accessibilityLabel="Conditions Générales d’Utilisation - Nouvelle fenêtre"
+        accessibilityLabel="Conditions Générales d’Utilisation - Lien externe"
         accessibilityRole="link"
         accessibilityState={
           {
@@ -388,7 +388,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             },
           ]
         }
-        testID="Conditions Générales d’Utilisation - Nouvelle fenêtre"
+        testID="Conditions Générales d’Utilisation - Lien externe"
       >
         <View
           gap={8}
@@ -446,7 +446,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         </View>
       </View>
       <View
-        accessibilityLabel="Charte des données personnelles - Nouvelle fenêtre"
+        accessibilityLabel="Charte des données personnelles - Lien externe"
         accessibilityRole="link"
         accessibilityState={
           {
@@ -498,7 +498,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             },
           ]
         }
-        testID="Charte des données personnelles - Nouvelle fenêtre"
+        testID="Charte des données personnelles - Lien externe"
       >
         <View
           gap={8}
@@ -556,7 +556,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         </View>
       </View>
       <View
-        accessibilityLabel="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
+        accessibilityLabel="Charte d’utilisation et de bonne conduite - Lien externe"
         accessibilityRole="link"
         accessibilityState={
           {
@@ -608,7 +608,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             },
           ]
         }
-        testID="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
+        testID="Charte d’utilisation et de bonne conduite - Lien externe"
       >
         <View
           gap={8}
@@ -1256,7 +1256,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         En cochant ces 2 cases tu assures avoir lu :
       </Text>
       <View
-        accessibilityLabel="Conditions Générales d’Utilisation - Nouvelle fenêtre"
+        accessibilityLabel="Conditions Générales d’Utilisation - Lien externe"
         accessibilityRole="link"
         accessibilityState={
           {
@@ -1308,7 +1308,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             },
           ]
         }
-        testID="Conditions Générales d’Utilisation - Nouvelle fenêtre"
+        testID="Conditions Générales d’Utilisation - Lien externe"
       >
         <View
           gap={8}
@@ -1366,7 +1366,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         </View>
       </View>
       <View
-        accessibilityLabel="Charte des données personnelles - Nouvelle fenêtre"
+        accessibilityLabel="Charte des données personnelles - Lien externe"
         accessibilityRole="link"
         accessibilityState={
           {
@@ -1418,7 +1418,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             },
           ]
         }
-        testID="Charte des données personnelles - Nouvelle fenêtre"
+        testID="Charte des données personnelles - Lien externe"
       >
         <View
           gap={8}
@@ -1476,7 +1476,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         </View>
       </View>
       <View
-        accessibilityLabel="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
+        accessibilityLabel="Charte d’utilisation et de bonne conduite - Lien externe"
         accessibilityRole="link"
         accessibilityState={
           {
@@ -1528,7 +1528,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             },
           ]
         }
-        testID="Charte d’utilisation et de bonne conduite - Nouvelle fenêtre"
+        testID="Charte d’utilisation et de bonne conduite - Lien externe"
       >
         <View
           gap={8}

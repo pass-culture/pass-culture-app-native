@@ -342,7 +342,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                     >
                       tes réservations seront annulées sauf pour certains cas précisés dans les 
                       <Text
-                        accessibilityLabel="conditions générales d’utilisation - Nouvelle fenêtre"
+                        accessibilityLabel="conditions générales d’utilisation - Lien externe"
                         accessibilityRole="link"
                         onPress={[Function]}
                         style={
@@ -355,7 +355,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                             "textDecorationLine": "underline",
                           }
                         }
-                        testID="conditions générales d’utilisation - Nouvelle fenêtre"
+                        testID="conditions générales d’utilisation - Lien externe"
                       >
                         conditions générales d’utilisation
                       </Text>

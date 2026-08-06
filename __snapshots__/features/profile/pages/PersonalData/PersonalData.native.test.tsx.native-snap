@@ -1260,7 +1260,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Lien externe - Comment gérer tes données personnelles ? - Nouvelle fenêtre"
+                      accessibilityLabel="Lien externe - Comment gérer tes données personnelles ? - Lien externe"
                       accessibilityRole="link"
                       accessibilityState={
                         {

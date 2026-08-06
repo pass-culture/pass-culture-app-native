@@ -206,7 +206,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
           </View>
         </View>
         <View
-          accessibilityLabel="Utiliser la version web - Nouvelle fenêtre"
+          accessibilityLabel="Utiliser la version web - Lien externe"
           accessibilityRole="link"
           accessibilityState={
             {
@@ -258,7 +258,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
               },
             ]
           }
-          testID="Utiliser la version web - Nouvelle fenêtre"
+          testID="Utiliser la version web - Lien externe"
         >
           <View
             gap={8}

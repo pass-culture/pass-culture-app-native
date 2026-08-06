@@ -75,7 +75,7 @@ describe('<OfferArtistsSection />', () => {
     it('should redirect to artist page when pressing button', async () => {
       renderOfferArtistsSection([mockArtist])
 
-      await user.press(screen.getByLabelText('Edith Piaf - page artiste'))
+      await user.press(screen.getByLabelText('Edith Piaf'))
 
       expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
@@ -83,7 +83,7 @@ describe('<OfferArtistsSection />', () => {
     it('should not have redirection to artist page when artist has not id', () => {
       renderOfferArtistsSection([{ ...mockArtist, id: undefined }])
 
-      expect(screen.queryByLabelText('Edith Piaf - page artiste')).not.toBeOnTheScreen()
+      expect(screen.queryByLabelText('Edith Piaf')).not.toBeOnTheScreen()
     })
 
     it('should display singular section title', () => {
