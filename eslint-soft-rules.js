@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { boundariesRule } = require('./eslint-custom-rules/boundaries-rule')
 
 const softRules = {

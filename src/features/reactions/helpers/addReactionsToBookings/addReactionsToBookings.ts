@@ -24,8 +24,7 @@ export const addReactionsToBookings = (
 }
 
 type BookingItem =
-  | BookingsResponseV2['endedBookings'][number]
-  | BookingsListResponseV2['bookings'][number]
+  BookingsResponseV2['endedBookings'][number] | BookingsListResponseV2['bookings'][number]
 
 const addReactions = <
   T extends BookingsResponseV2['endedBookings'] | BookingsListResponseV2['bookings'],
