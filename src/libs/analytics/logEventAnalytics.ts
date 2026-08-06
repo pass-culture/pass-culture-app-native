@@ -62,9 +62,7 @@ type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
 )
 
 type ScreenshotParams = { from: string } & (
-  | { offerId?: number }
-  | { venueId?: number }
-  | { bookingId?: number }
+  { offerId?: number } | { venueId?: number } | { bookingId?: number }
 )
 
 export type OfferAnalyticsData = {
@@ -110,11 +108,7 @@ export type CTAexitActivationFlow =
   | 'GoToDemarcheNumerique'
 
 export type ConsultArtistOriginDetails =
-  | 'similarArtistsPlaylist'
-  | 'venue'
-  | 'offer'
-  | 'searchResults'
-  | 'artistRecommendation'
+  'similarArtistsPlaylist' | 'venue' | 'offer' | 'searchResults' | 'artistRecommendation'
 
 export type FakeDoorAnalyticsParams = {
   featureName: string
