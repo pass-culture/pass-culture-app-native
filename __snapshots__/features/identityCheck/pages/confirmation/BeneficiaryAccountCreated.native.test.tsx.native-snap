@@ -278,7 +278,6 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
                 </View>
               </View>
               <Text
-                accessibilityRole="header"
                 style={
                   {
                     "color": "#6123df",
@@ -717,7 +716,6 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
                 </View>
               </View>
               <Text
-                accessibilityRole="header"
                 style={
                   {
                     "color": "#6123df",

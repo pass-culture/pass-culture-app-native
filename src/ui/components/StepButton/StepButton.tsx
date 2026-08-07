@@ -117,6 +117,7 @@ type BaseContainerProps = {
   LeftIcon?: React.ReactElement
   style?: StyleProp<ViewStyle>
 }
+
 const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style, children }) => (
   <BaseStyleComponent style={style}>
     {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
@@ -158,15 +159,12 @@ const IconContainer = styled.View(({ theme }) => ({ padding: theme.designSystem.
 
 const ChildrenContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
-  flex: 1,
   paddingRight: theme.designSystem.size.spacing.l,
 }))
 
 const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
   InternalTouchableLink
-).attrs<{
-  color: ColorsType
-}>(({ color }) => ({
+).attrs<{ color: ColorsType }>(({ color }) => ({
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
   width: '100%',

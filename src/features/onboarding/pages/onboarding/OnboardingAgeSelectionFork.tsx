@@ -23,7 +23,7 @@ type AgeButtonProps = {
 
 export const OnboardingAgeSelectionFork: FunctionComponent = () => {
   const onAgeChoice = async (age: NonEligible | EligibleAges) => {
-    analytics.logSelectAge({ age })
+    void analytics.logSelectAge({ age })
     await storage.saveObject('user_age', age)
   }
 
@@ -80,9 +80,11 @@ export const OnboardingAgeSelectionFork: FunctionComponent = () => {
     </TutorialPage>
   )
 }
+
 const Separator = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.l,
 }))
+
 const StyledTitle4 = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))

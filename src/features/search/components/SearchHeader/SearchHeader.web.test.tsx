@@ -1,6 +1,5 @@
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
@@ -21,8 +20,6 @@ jest.mock('react-instantsearch-core', () => ({
     hits: [],
   }),
 }))
-
-const searchInputID = uuidv4()
 
 const mockDispatch = jest.fn()
 const mockShowSuggestions = jest.fn()
@@ -54,7 +51,6 @@ describe('SearchHeader component', () => {
   it('should focus on location widget button', async () => {
     render(
       <SearchHeader
-        searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
         shouldDisplaySubtitle
@@ -89,14 +85,7 @@ describe('SearchHeader component', () => {
       searchState: { ...modifiedSearchState, minPrice: 10, maxPrice: 300 },
     })
 
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        withArrow
-      />
-    )
+    render(<SearchHeader addSearchHistory={jest.fn()} searchInHistory={jest.fn()} withArrow />)
     await userEvent.click(screen.getByLabelText('Revenir en arrière'))
 
     await waitFor(() => {
@@ -119,7 +108,6 @@ describe('SearchHeader component', () => {
     it('should not render a button to focus on suggestion', async () => {
       render(
         <SearchHeader
-          searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
           shouldDisplaySubtitle

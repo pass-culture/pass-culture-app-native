@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -8,7 +8,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Typo } from 'ui/theme'
-import { HeadingLevel, getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   isActive: boolean
@@ -16,7 +16,6 @@ type Props = {
   label: string
   testID?: string
   subtitle?: string
-  accessibilityLevel?: HeadingLevel
   disabled?: boolean
 }
 
@@ -26,7 +25,6 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   label,
   testID,
   subtitle,
-  accessibilityLevel,
   disabled,
 }) => {
   const checkboxID = uuidv4()
@@ -36,12 +34,11 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
 
   const computedAccessibilityLabel = getComputedAccessibilityLabel(label, subtitle)
 
-  const TitleWithSubtitle = useMemo(
-    () => (
-      <View
-        accessibilityLabel={computedAccessibilityLabel}
-        {...getHeadingAttrs(accessibilityLevel ?? 2)}
-        accessible>
+  const TitleWithSubtitle = useMemo(() => {
+    const headingProps = Platform.OS === 'web' ? {} : getHeadingAttrs(2)
+
+    return (
+      <View {...headingProps} accessibilityLabel={computedAccessibilityLabel} accessible>
         <StyledInputLabel
           id={labelID}
           htmlFor={checkboxID}
@@ -50,18 +47,8 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
         </StyledInputLabel>
         {subtitle ? <Subtitle nativeID={labelDescriptionID}>{subtitle}</Subtitle> : null}
       </View>
-    ),
-
-    [
-      accessibilityLevel,
-      computedAccessibilityLabel,
-      labelID,
-      checkboxID,
-      labelDescriptionID,
-      label,
-      subtitle,
-    ]
-  )
+    )
+  }, [computedAccessibilityLabel, labelID, checkboxID, labelDescriptionID, label, subtitle])
 
   return (
     <Container inverseLayout={!!isDesktopViewport}>

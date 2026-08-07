@@ -81,17 +81,18 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderWidth: 1.6,
   borderStyle: 'solid',
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ theme, isFocus }),
   textAlign: 'left',
   alignItems: 'center',
   paddingVertical: theme.designSystem.size.spacing.s,
-  ...(Platform.OS === 'web' && { paddingHorizontal: theme.designSystem.size.spacing.s }),
+  ...customFocusOutline({ theme, isFocus }),
+  ...(Platform.OS === 'web'
+    ? { paddingHorizontal: theme.designSystem.size.spacing.l }
+    : { paddingHorizontal: theme.designSystem.size.spacing.s }),
 }))
 
 const StyledText = styled(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 3,
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
-  marginHorizontal: Number(theme.designSystem.size.spacing.s),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
 }))

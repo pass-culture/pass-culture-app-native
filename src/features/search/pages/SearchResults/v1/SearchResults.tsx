@@ -26,7 +26,6 @@ import { Form } from 'ui/components/Form'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 
-const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchResults: FC = () => {
@@ -125,7 +124,6 @@ export const SearchResults: FC = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
-        searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         withFilterButton={!isFocusOnSuggestions}

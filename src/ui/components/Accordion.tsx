@@ -137,7 +137,7 @@ export const Accordion = ({
           {...focusProps}
           {...accessibilityProps}>
           <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
-            <Title {...getHeadingAttrs(2)}>{title}</Title>
+            <Title {...getHeadingAttrs(3)}>{title}</Title>
             <StyledArrowAnimatedView
               style={{ transform: [{ rotateZ: arrowAngle }] }}
               testID="accordionArrow">

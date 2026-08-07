@@ -8,19 +8,16 @@ import { LocationWidgetBadge } from 'features/location/components/LocationWidget
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
 import { SearchView } from 'features/search/types'
-import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Typo } from 'ui/theme'
 
 type Props = {
   shouldDisplaySubtitle?: boolean
-  searchInputID: string
   title: string
 }
 
 export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   shouldDisplaySubtitle = false,
-  searchInputID,
   title,
 }) => {
   const { isMobileViewport, isDesktopViewport } = useTheme()
@@ -36,10 +33,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
           <StyledTitleMainView>
-            <StyledTitleMainText
-              htmlFor={searchInputID}
-              {...getHeadingAttrs(1)}
-              small={shouldDisplayMobileLocationSmallWidget}>
+            <StyledTitleMainText small={shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
@@ -60,7 +54,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   )
 }
 
-const StyledTitleMainText = styledInputLabel(InputLabel)<{ small?: boolean }>(
+const StyledTitleMainText = styledInputLabel(Typo.Title1)<{ small?: boolean }>(
   ({ theme, small = false }) => ({
     ...(small ? theme.designSystem.typography.title3 : theme.designSystem.typography.title1),
     color: theme.designSystem.color.text.default,

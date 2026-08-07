@@ -15,7 +15,7 @@ export const Badge: FunctionComponent<Props> = ({ value, ...props }) => {
   return (
     <Container {...props}>
       <Wrapper BADGE_SIZE={BADGE_SIZE}>
-        <Caption BADGE_SIZE={BADGE_SIZE}>{value}</Caption>
+        <Caption>{value}</Caption>
       </Wrapper>
     </Container>
   )
@@ -36,8 +36,7 @@ const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => (
   paddingHorizontal: theme.designSystem.size.spacing.xxs,
 }))
 
-const Caption = styled(Typo.BodyAccentXs)<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.inverted,
-  lineHeight: `${BADGE_SIZE}px`,
 }))

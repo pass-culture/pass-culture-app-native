@@ -442,7 +442,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                                 "flexShrink": 1,
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               }
                             }
                           >
@@ -472,7 +472,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           </Text>
                         </View>
                         <Text
-                          accessibilityRole="header"
                           style={
                             {
                               "color": "#320096",
@@ -660,7 +659,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                                 "flexShrink": 1,
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               }
                             }
                           >
@@ -707,7 +706,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                               "color": "#696a6f",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 10,
-                              "lineHeight": 12,
+                              "lineHeight": 19.2,
                               "marginTop": 4,
                             }
                           }
@@ -1426,7 +1425,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                                 "flexShrink": 1,
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               }
                             }
                           >
@@ -1641,7 +1640,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                                 "flexShrink": 1,
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
-                                "lineHeight": 16,
+                                "lineHeight": 19.2,
                               }
                             }
                           >
@@ -1671,7 +1670,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           </Text>
                         </View>
                         <Text
-                          accessibilityRole="header"
                           style={
                             {
                               "color": "#320096",
@@ -1689,7 +1687,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                               "color": "#696a6f",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 10,
-                              "lineHeight": 12,
+                              "lineHeight": 19.2,
                               "marginTop": 4,
                             }
                           }

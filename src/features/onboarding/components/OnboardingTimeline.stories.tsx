@@ -24,14 +24,6 @@ const variantConfig: Variants<typeof OnboardingTimeline> = [
     label: 'OnboardingTimeline Seventeen',
     props: { age: 17 },
   },
-  {
-    label: 'OnboardingTimeline Sixteen',
-    props: { age: 16 },
-  },
-  {
-    label: 'OnboardingTimeline Fifteen',
-    props: { age: 15 },
-  },
 ]
 
 export const Template: VariantsStory<typeof OnboardingTimeline> = {

@@ -16,7 +16,7 @@ export const Summary: FC<{ title: string; data: InfoListItemProps[] }> = ({ data
 
   return (
     <ViewGap gap={5}>
-      <AccessibleTitle3>{title}</AccessibleTitle3>
+      <Typo.Title3 {...getNoHeadingAttrs()}>{title}</Typo.Title3>
       <BodyContainer gap={6}>
         {filteredData.map((item) => (
           <SummaryItem key={item.title} {...item} />
@@ -30,14 +30,10 @@ const SummaryItem: FC<InfoListItemProps> = ({ testID, title, value }) => {
   return (
     <ViewGap gap={1}>
       <Typo.BodyXs>{title}</Typo.BodyXs>
-      <Typo.BodyAccent testID={testID} {...getNoHeadingAttrs()}>
-        {value}
-      </Typo.BodyAccent>
+      <Typo.BodyAccent testID={testID}>{value}</Typo.BodyAccent>
     </ViewGap>
   )
 }
-
-const AccessibleTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs())``
 
 const BodyContainer = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,

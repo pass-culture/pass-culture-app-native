@@ -52,9 +52,9 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       borderColor={borderColor}
       style={style}
       height={effectiveHeight}>
-      <LabelContainer>
-        <Label>{label.toUpperCase()}</Label>
-      </LabelContainer>
+      {/* <LabelContainer> */}
+      <Label>{label.toUpperCase()}</Label>
+      {/* </LabelContainer> */}
     </TouchableContainer>
   )
 }
@@ -78,15 +78,8 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   backgroundColor: baseColor,
   borderColor,
   borderWidth: '1.6px',
-  flexDirection: 'column',
-  display: 'flex',
   justifyContent: height ? 'flex-end' : undefined,
-}))
-
-const LabelContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.s,
-  width: '100%',
-  alignItems: 'flex-start',
 }))
 
 const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) => ({
