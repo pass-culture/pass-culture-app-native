@@ -10,7 +10,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { Button } from 'ui/designSystem/Button/Button'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo, getSpacing } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type NoSearchResultProps = {
   setSelectedLocationMode: (locationMode: LocationMode) => void
@@ -112,7 +112,7 @@ const ContainerText = styled.View(({ theme }) => ({
 }))
 
 const Title = styled(Typo.Title4).attrs({
-  ...getHeadingAttrs(2),
+  ...getTextSemanticAttrs(2),
 })(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))

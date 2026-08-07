@@ -8,7 +8,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   isActive: boolean
@@ -35,7 +35,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const computedAccessibilityLabel = getComputedAccessibilityLabel(label, subtitle)
 
   const TitleWithSubtitle = useMemo(() => {
-    const headingProps = Platform.OS === 'web' ? {} : getHeadingAttrs(2)
+    const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(2)
 
     return (
       <View {...headingProps} accessibilityLabel={computedAccessibilityLabel} accessible>

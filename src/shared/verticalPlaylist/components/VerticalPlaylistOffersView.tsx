@@ -30,7 +30,7 @@ import { Page } from 'ui/pages/Page'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const isWeb = Platform.OS === 'web'
 const numColumns = 2
@@ -158,7 +158,7 @@ export const VerticalPlaylistOffersView = ({
           <React.Fragment>
             <Placeholder height={headerHeight} />
 
-            <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+            <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
             {artist ? (
               <InternalTouchableLink
                 navigateTo={{ screen: 'Artist', params: { id: artist.id } }}

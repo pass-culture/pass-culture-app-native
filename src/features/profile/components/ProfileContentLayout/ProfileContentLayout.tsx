@@ -7,7 +7,7 @@ import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleU
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Section = {
   section: string
@@ -39,9 +39,11 @@ const Container = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
 }))
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs(2))(
+  ({ theme }) => ({
+    color: theme.designSystem.color.text.subtle,
+  })
+)
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,

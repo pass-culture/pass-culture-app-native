@@ -7,7 +7,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { Link } from 'ui/designSystem/Link/Link'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const AccessibilityFeatures = () => (
   <React.Fragment>
@@ -43,4 +43,4 @@ export const AccessibilityFeatures = () => (
   </React.Fragment>
 )
 
-const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+const TitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))``

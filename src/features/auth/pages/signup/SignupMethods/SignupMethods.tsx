@@ -24,7 +24,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const SignupMethods: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'SignupMethods'>>()
@@ -58,7 +58,7 @@ export const SignupMethods: FunctionComponent = () => {
       scrollChildren={
         <React.Fragment>
           <TitleContainer>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs(2)}>Crée-toi un compte</Typo.Title3>
           </TitleContainer>
           <SeparatorWithText label="Méthode recommandée" icon={StepperValidate} color="primary" />
           <StyledViewGap gap={4}>

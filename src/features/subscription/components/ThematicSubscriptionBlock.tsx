@@ -10,7 +10,7 @@ import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainer
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 interface Props {
   thematic: SubscriptionTheme
@@ -37,7 +37,7 @@ export const ThematicSubscriptionBlock = ({
     <Container>
       <SubscriptionThematicIllustration thematic={thematic} size="medium" />
       <ContentContainer>
-        <Typo.BodyAccent {...getHeadingAttrs(2)}>{title}</Typo.BodyAccent>
+        <Typo.BodyAccent {...getTextSemanticAttrs(2)}>{title}</Typo.BodyAccent>
         <Subtitle>{subtitle}</Subtitle>
         <ButtonContainerFlexStart>
           <Button

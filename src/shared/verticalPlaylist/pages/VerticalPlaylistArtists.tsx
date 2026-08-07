@@ -15,7 +15,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const VerticalPlaylistArtists = () => {
   const headerHeight = useGetHeaderHeight()
@@ -47,7 +47,7 @@ export const VerticalPlaylistArtists = () => {
         ListHeaderComponent={
           <React.Fragment>
             <Placeholder height={headerHeight} />
-            <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
+            <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
             <TitleContainer>
               <NumberOfItems nbItems={nbItems} type="artists" />

@@ -19,7 +19,7 @@ import { showSuccessSnackBar, showErrorSnackBar } from 'ui/designSystem/Snackbar
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type FormValue = {
   feedback: string
@@ -65,7 +65,7 @@ export const FeedbackInApp = () => {
       scrollChildren={
         <StyledViewGap gap={6}>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(1)}>
+            <Typo.Title3 {...getTextSemanticAttrs(1)}>
               Comment pourrions-nous améliorer l’application&nbsp;?
             </Typo.Title3>
             <Typo.Body>
