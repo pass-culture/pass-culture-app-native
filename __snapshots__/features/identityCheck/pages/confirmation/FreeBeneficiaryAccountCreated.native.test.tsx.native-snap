@@ -151,6 +151,7 @@ exports[`FreeBeneficiaryAccountCreated should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {

@@ -162,6 +162,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -265,6 +266,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -880,6 +882,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -983,6 +986,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1598,6 +1602,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -1701,6 +1706,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {

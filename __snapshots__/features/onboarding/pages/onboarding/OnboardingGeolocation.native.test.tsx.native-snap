@@ -151,6 +151,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {
@@ -165,6 +166,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
               Découvre les offres près de chez toi
             </Text>
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {

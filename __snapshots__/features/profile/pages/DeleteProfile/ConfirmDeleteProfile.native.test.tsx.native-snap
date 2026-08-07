@@ -241,6 +241,7 @@ exports[`ConfirmDeleteProfile should render confirm delete profile 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {

@@ -127,6 +127,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}

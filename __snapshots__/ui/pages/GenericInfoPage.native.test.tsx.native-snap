@@ -320,6 +320,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {
@@ -334,6 +335,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
               Title
             </Text>
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {

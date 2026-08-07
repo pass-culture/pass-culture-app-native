@@ -76,6 +76,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -180,6 +181,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {

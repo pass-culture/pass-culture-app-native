@@ -149,6 +149,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -209,6 +210,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
             />
             <Styled(View)>
               <Styled(Text)
+                accessibilityLevel={2}
                 accessibilityRole="header"
               >
                 Sélectionne ton statut
@@ -333,6 +335,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -2207,6 +2210,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -2267,6 +2271,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
             />
             <Styled(View)>
               <Styled(Text)
+                accessibilityLevel={2}
                 accessibilityRole="header"
               >
                 Sélectionne ton statut
@@ -2391,6 +2396,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -4265,6 +4271,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -4325,6 +4332,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
             />
             <Styled(View)>
               <Styled(Text)
+                accessibilityLevel={2}
                 accessibilityRole="header"
               >
                 Sélectionne ton statut
@@ -4449,6 +4457,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {

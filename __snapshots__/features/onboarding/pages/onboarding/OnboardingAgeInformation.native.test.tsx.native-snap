@@ -219,6 +219,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             numberOfLines={3}
             style={
@@ -249,6 +250,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
             }
           >
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {
@@ -1205,6 +1207,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             numberOfLines={3}
             style={
@@ -1235,6 +1238,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
             }
           >
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {

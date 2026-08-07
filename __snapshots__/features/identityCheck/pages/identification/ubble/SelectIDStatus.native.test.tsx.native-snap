@@ -162,6 +162,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -273,6 +274,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {

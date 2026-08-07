@@ -156,6 +156,7 @@ exports[`CulturalSurveyIntro should render the page with correct layout and cont
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {
@@ -170,6 +171,7 @@ exports[`CulturalSurveyIntro should render the page with correct layout and cont
               Tu y es presque !
             </Text>
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {
