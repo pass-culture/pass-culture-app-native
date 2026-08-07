@@ -35,6 +35,7 @@ import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
+import { Ul } from 'ui/components/Ul'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const searchIdGenerated = v4()
@@ -198,7 +199,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled(Ul)({
   flex: 1,
 })
 

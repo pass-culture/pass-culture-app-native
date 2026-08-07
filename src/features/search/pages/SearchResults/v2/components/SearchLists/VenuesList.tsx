@@ -14,6 +14,7 @@ import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQue
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { Ul } from 'ui/components/Ul'
 
 export const VenuesList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ searchFilters }) => {
   const { data: venuesResponse, isLoading } = useSearchVenuesQuery(searchFilters, {
@@ -62,6 +63,6 @@ export const VenuesList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ sear
   )
 }
 
-const Container = styled.View({
+const Container = styled(Ul)({
   flex: 1,
 })

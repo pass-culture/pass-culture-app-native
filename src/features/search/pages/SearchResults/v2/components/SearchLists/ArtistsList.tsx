@@ -11,6 +11,7 @@ import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { Artist } from 'features/venue/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { Ul } from 'ui/components/Ul'
 
 export const ArtistsList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ searchFilters }) => {
   const { data: artistsResponse = [], isLoading } = useSearchArtistsQuery(searchFilters, {
@@ -44,7 +45,7 @@ export const ArtistsList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ sea
   )
 }
 
-const Container = styled.View({
+const Container = styled(Ul)({
   flex: 1,
 })
 
