@@ -20,6 +20,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: pass-culture/common-workflows/actions/actionlint-check@f4db7db202ff3cddc97fcbf08c3821ebc78b10fb
+        with:
+          version: 0.3.0
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
   check-proxy-version-staging:
