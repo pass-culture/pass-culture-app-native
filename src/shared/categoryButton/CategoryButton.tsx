@@ -78,19 +78,9 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   backgroundColor: baseColor,
   borderColor,
   borderWidth: '1.6px',
-  // flexDirection: 'column',
-  // alignItems: 'flex-start',
-  // display: 'flex',
   justifyContent: height ? 'flex-end' : undefined,
   padding: theme.designSystem.size.spacing.s,
-  // width: '100%',
-  // flex: 1,
 }))
-
-// const LabelContainer = styled.View(({ theme }) => ({
-//   flex: 1,
-//   minWidth: 0,
-// }))
 
 const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) => ({
   textAlign: 'left',
