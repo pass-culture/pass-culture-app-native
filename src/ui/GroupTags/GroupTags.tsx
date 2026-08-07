@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 
@@ -10,9 +11,9 @@ interface Props {
 
 export function GroupTags({ tags, ...props }: Readonly<Props>) {
   return (
-    <Container gap={2} testID="tagsContainer" {...props}>
+    <Container gap={2} testID="tagsContainer" {...props} accessibilityRole={AccessibilityRole.LIST}>
       {tags.map((tag) => (
-        <Tag label={tag} key={tag} />
+        <Tag label={tag} key={tag} accessibilityRole={AccessibilityRole.LISTITEM} />
       ))}
     </Container>
   )
