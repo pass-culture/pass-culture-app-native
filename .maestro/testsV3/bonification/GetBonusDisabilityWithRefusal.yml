@@ -1,0 +1,114 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - bonification
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+  - runScript:
+      file: ../common/helpers/generateBonusDisabilityResponse.js
+      env:
+        user_id: ${output.userId}
+        mock_type: 'PERSON_NOT_FOUND'
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+
+- assertVisible: 'Vérifier maintenant'
+
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
+
+- assertVisible: 'Bonus de 50 €'
+
+- tapOn: 'Comment ça marche ?'
+
+- scrollUntilVisible:
+    element: 'Des questions sur ton crédit ?'
+
+- tapOn: 'Faire une demande de bonus situation de handicap'
+
+- assertVisible: 'Nous avons besoins de quelques informations supplémentaires'
+
+- tapOn: '.*Commencer.*'
+
+- assertVisible: 'Étape 1 sur 2'
+
+- assertVisible: 'Quel est ton lieu de naissance ?'
+
+- tapOn: 'Champs de texte - Pays de naissance - Exemple : France - Obligatoire'
+
+- inputText: 'France'
+
+- tapOn: 'Proposition de pays 1 : France'
+
+- tapOn: 'Champs de texte - Commune de naissance - Exemple : Paris - Obligatoire'
+
+- inputText: 'Paris'
+
+- tapOn: 'Proposition de ville 1 : Paris (75)'
+
+- tapOn: 'Continuer vers le résumé'
+
+- assertVisible: 'Vérifie les informations avant d’envoyer ta demande'
+
+- scroll
+
+- tapOn: 'Je certifie que les informations saisies sont exactes.'
+
+- tapOn: 'Confirmer'
+
+- assertVisible: '.*Bonjour.*'
+
+- runFlow: ../common/navigation/GoToProfileFromTabBar.yml
+
+- assertVisible: 'Bonus de 50 €'
+
+- tapOn: 'Comment ça marche ?'
+
+- scrollUntilVisible:
+    element: 'Des questions sur ton crédit ?'
+
+- tapOn: 'Faire une demande de bonus situation de handicap'
+
+- assertVisible: 'Ton dossier est refusé'
+
+- tapOn: 'Renouveler ma demande'
+
+- assertVisible: 'Nous avons besoins de quelques informations supplémentaires'
+
+- tapOn: '.*Commencer.*'
+
+- assertVisible: 'Étape 1 sur 2'
+
+- assertVisible: 'Quel est ton lieu de naissance ?'
+
+- tapOn: 'Champs de texte - Pays de naissance - Exemple : France - Obligatoire'
+
+- inputText: 'France'
+
+- tapOn: 'Proposition de pays 1 : France'
+
+- tapOn: 'Champs de texte - Commune de naissance - Exemple : Paris - Obligatoire'
+
+- inputText: 'Paris'
+
+- tapOn: 'Proposition de ville 1 : Paris (75)'
+
+- tapOn: 'Continuer vers le résumé'
+
+- assertVisible: 'Vérifie les informations avant d’envoyer ta demande'
+
+- scroll
+
+- tapOn: 'Je certifie que les informations saisies sont exactes.'
+
+- tapOn: 'Confirmer'
+
+- assertVisible: '.*Bonjour.*'
+
+- runFlow: ../common/lifecycle/StopApp.yml
