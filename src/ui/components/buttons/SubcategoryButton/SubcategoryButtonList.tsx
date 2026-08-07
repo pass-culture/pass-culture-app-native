@@ -2,13 +2,14 @@ import React, { useCallback, useState } from 'react'
 import { FlexStyle, LayoutChangeEvent, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import {
   SubcategoryButton,
   SubcategoryButtonItem,
 } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
+import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { Ul } from 'ui/components/Ul'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
 import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
@@ -24,9 +25,7 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   seeAllNavigateTo,
   onBeforeSeeAllNavigate,
 }) => {
-  const isLandscape = useIsLandscape()
   const theme = useTheme()
-  const hasMultipleItems = subcategoryButtonContent.length > 2
   const shouldDisplaySeeAllButton =
     !!theme.isMobileViewport && subcategoryButtonContent.length > 4 && !!seeAllNavigateTo
   const [maxHeight, setMaxHeight] = useState(0)
@@ -106,18 +105,17 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
         seeAllNavigateTo={seeAllNavigateTo}
         onBeforeSeeAllNavigate={onBeforeSeeAllNavigate}
       />
-      <StyledScrollView
-        horizontal={hasMultipleItems || isLandscape}
-        showsHorizontalScrollIndicator={false}>
+      <StyledUl>
         {subcategoryButtonContent.map((item) => (
-          <SubcategoryButton
-            key={item.label}
-            {...item}
-            onLayout={handleLayout}
-            uniformHeight={maxHeight > 0 ? maxHeight : undefined}
-          />
+          <Li key={item.label}>
+            <SubcategoryButton
+              {...item}
+              onLayout={handleLayout}
+              uniformHeight={maxHeight > 0 ? maxHeight : undefined}
+            />
+          </Li>
         ))}
-      </StyledScrollView>
+      </StyledUl>
     </View>
   )
 }
@@ -175,14 +173,12 @@ const Row = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.l,
 }))
 
-const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
-  contentContainerStyle: theme.isMobileViewport
-    ? undefined
-    : {
-        width: '100%',
-        display: 'grid' as FlexStyle['display'],
-        gridTemplateColumns: `repeat(${theme.isTabletViewport ? 4 : 5}, 1fr)`,
-        padding: theme.designSystem.size.spacing.xl,
-        gap: theme.designSystem.size.spacing.l,
-      },
-}))``
+const StyledScrollView = styled.ScrollView``
+
+const StyledUl = styled(Ul)(({ theme }) => ({
+  width: '100%',
+  display: 'grid' as FlexStyle['display'],
+  gridTemplateColumns: `repeat(${theme.isTabletViewport ? 4 : 5}, 1fr)`,
+  padding: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.l,
+}))
