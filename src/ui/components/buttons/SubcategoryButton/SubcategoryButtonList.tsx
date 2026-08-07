@@ -2,7 +2,9 @@ import React, { useCallback, useState } from 'react'
 import { FlexStyle, LayoutChangeEvent, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import {
   SubcategoryButton,
   SubcategoryButtonItem,
@@ -108,15 +110,18 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
       />
       <StyledScrollView
         horizontal={hasMultipleItems || isLandscape}
-        showsHorizontalScrollIndicator={false}>
-        {subcategoryButtonContent.map((item) => (
-          <SubcategoryButton
-            key={item.label}
-            {...item}
-            onLayout={handleLayout}
-            uniformHeight={maxHeight > 0 ? maxHeight : undefined}
-          />
-        ))}
+        showsHorizontalScrollIndicator={false}
+        accessibilityRole={AccessibilityRole.LIST}>
+        <AccessibleUnorderedList
+          items={subcategoryButtonContent.map((item) => (
+            <SubcategoryButton
+              key={item.label}
+              {...item}
+              onLayout={handleLayout}
+              uniformHeight={maxHeight > 0 ? maxHeight : undefined}
+            />
+          ))}
+        />
       </StyledScrollView>
     </View>
   )
