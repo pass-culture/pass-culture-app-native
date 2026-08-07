@@ -29,6 +29,7 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: ${{ inputs.fetch-tags }}
+          persist-credentials: false
       - id: folder-check-changed-files
         uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 #v47.0.6
         with:

@@ -20,6 +20,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
       - name: Authenticate through github app ghactionci
         uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: github-app-token
@@ -45,6 +47,7 @@ jobs:
         with:
           token: ${{ steps.github-app-token.outputs.token }}
           ref: ${{ inputs.commitHash }}
+          persist-credentials: true
       - name: 'get package version'
         id: package-version
         uses: martinbeentjes/npm-get-version-action@3cf273023a0dda27efcd3164bdfb51908dd46a5b #v1.3.1
@@ -61,6 +64,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
       - name: Authenticate through github app ghactionci
         uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: github-app-token
@@ -85,6 +90,7 @@ jobs:
         with:
           token: ${{ steps.github-app-token.outputs.token }}
           ref: master
+          persist-credentials: true
       - name: 'Bump package version'
         uses: phips28/gh-action-bump-version@fdad52b3b3bbe8fad96b8ca18c56127a96f603db #v11.0.7
         env:
