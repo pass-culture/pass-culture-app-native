@@ -5,6 +5,10 @@ import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationType } from 'features/bonification/enums'
+import {
+  getBonificationTertiaryButtonProps,
+  TertiaryButtonProps,
+} from 'features/bonification/pages/getBonificationTertiaryButtonProps'
 import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -16,11 +20,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner, BannerLink } from 'ui/designSystem/Banner/Banner'
 import { Link } from 'ui/designSystem/Link/Link'
-import { ButtonProps, GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -34,12 +38,8 @@ interface PrimaryButtonConfig {
   wording: string
   navigateTo: InternalNavigationProps['navigateTo']
 }
-interface TertiaryButtonConfig {
-  wording?: string
-  navigateTo?: InternalNavigationProps['navigateTo']
-  externalNav?: ExternalNavigationProps['externalNav']
-  Icon?: React.FunctionComponent<AccessibleIcon>
-  goBack?: boolean
+interface TertiaryButtonEntry {
+  button?: TertiaryButtonProps
 }
 
 interface PageConfigEntry {
@@ -50,11 +50,11 @@ interface PageConfigEntry {
   bannerText?: string
   bannerLinks?: BannerLink[]
   primaryButton: PrimaryButtonConfig
-  tertiaryButton: TertiaryButtonConfig
+  tertiaryButton: TertiaryButtonEntry
 }
 type PageConfigMap = Record<BonificationQFRefusedType, PageConfigEntry>
 
-const notFoundPageConfig = {
+const notFoundPageConfig: PageConfigEntry = {
   Illustration: ErrorIllustration,
   title: 'Ton dossier est refusé',
   firstText:
@@ -70,13 +70,15 @@ const notFoundPageConfig = {
     }),
   },
   tertiaryButton: {
-    wording: 'Fermer',
-    goBack: true,
-    Icon: Invalidate,
+    button: {
+      wording: 'Fermer',
+      navigation: { type: 'goBack' },
+      icon: Invalidate,
+    } satisfies TertiaryButtonProps,
   },
 }
 
-const notInTaxHouseholdConfig = {
+const notInTaxHouseholdConfig: PageConfigEntry = {
   Illustration: ErrorIllustration,
   title: 'Ton dossier est refusé',
   firstText:
@@ -98,13 +100,15 @@ const notInTaxHouseholdConfig = {
     }),
   },
   tertiaryButton: {
-    wording: 'Fermer',
-    goBack: true,
-    Icon: Invalidate,
+    button: {
+      wording: 'Fermer',
+      navigation: { type: 'goBack' },
+      icon: Invalidate,
+    } satisfies TertiaryButtonProps,
   },
 }
 
-const quotientFamilyTooHighConfig = {
+const quotientFamilyTooHighConfig: PageConfigEntry = {
   Illustration: SadFace,
   title: 'Ton dossier est refusé',
   firstText:
@@ -118,13 +122,18 @@ const quotientFamilyTooHighConfig = {
     navigateTo: navigateToHomeConfig,
   },
   tertiaryButton: {
-    wording: 'Accéder à l’annuaire CAF',
-    externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
-    Icon: ExternalSiteFilled,
+    button: {
+      wording: 'Accéder à l’annuaire CAF',
+      navigation: {
+        type: 'externalNav',
+        externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
+      },
+      icon: ExternalSiteFilled,
+    } satisfies TertiaryButtonProps,
   },
 }
 
-const tooManyRetryConfig = {
+const tooManyRetryConfig: PageConfigEntry = {
   Illustration: SadFace,
   title: 'Tu as atteint le nombre maximum d’essais',
   firstText: (
@@ -145,11 +154,7 @@ const tooManyRetryConfig = {
   bannerText: undefined,
   bannerLinks: undefined,
   primaryButton: { wording: 'Retour à l’accueil', navigateTo: navigateToHomeConfig },
-  tertiaryButton: {
-    wording: undefined,
-    navigateTo: undefined,
-    Icon: undefined,
-  },
+  tertiaryButton: {},
 }
 
 export const PAGE_CONFIG: PageConfigMap = {
@@ -204,28 +209,7 @@ export const BonificationFamilyQuotientRefused = () => {
   ) : undefined
 
   const pageConfig = PAGE_CONFIG[bonificationRefusedType]
-  const { Icon, wording, navigateTo, externalNav, goBack: shouldGoBack } = pageConfig.tertiaryButton
-
-  const buildTertiaryButton = ({
-    Icon,
-    wording,
-    externalNav,
-    navigateTo,
-    shouldGoBack,
-    goBack,
-  }: {
-    Icon?: React.FunctionComponent<AccessibleIcon>
-    wording?: string
-    externalNav?: ExternalNavigationProps['externalNav']
-    navigateTo?: InternalNavigationProps['navigateTo']
-    shouldGoBack?: boolean
-    goBack: () => void
-  }): ButtonProps | undefined => {
-    if (Icon && wording && externalNav) return { icon: Icon, wording, externalNav }
-    if (Icon && wording && shouldGoBack) return { icon: Icon, wording, onPress: goBack }
-    if (Icon && wording && navigateTo) return { icon: Icon, wording, navigateTo }
-    return undefined
-  }
+  const { button: tertiaryButton } = pageConfig.tertiaryButton
 
   return (
     <GenericInfoPage
@@ -237,14 +221,11 @@ export const BonificationFamilyQuotientRefused = () => {
         navigateTo: pageConfig.primaryButton.navigateTo,
         disabled: disableQFBonificationManualRequest,
       }}
-      buttonTertiary={buildTertiaryButton({
-        Icon,
-        wording,
-        externalNav,
-        navigateTo,
-        shouldGoBack,
-        goBack,
-      })}>
+      buttonTertiary={
+        tertiaryButton
+          ? getBonificationTertiaryButtonProps({ button: tertiaryButton, onGoBack: goBack })
+          : undefined
+      }>
       <ViewGap gap={4}>
         <CenteredBody>{pageConfig.firstText}</CenteredBody>
         <View>
