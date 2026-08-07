@@ -5,20 +5,23 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { TextColorKey } from 'theme/types'
 import { isHeadingLevel } from 'ui/theme/isHeadingLevel'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { HeadingLevel } from 'ui/theme/typographyAttrs/types'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
 
 const DEFAULT_COLOR_TEXT = 'default'
 
 const createStyledText = (
   typographyStyle: keyof typeof theme.designSystem.typography,
-  defaultLevel?: HeadingLevel
+  defaultLevel?: TextSemanticLevel
 ) => {
-  return styled(RNText).attrs<{ accessibilityLevel?: HeadingLevel }>(({ accessibilityLevel }) => {
-    if (isHeadingLevel(accessibilityLevel)) return getHeadingAttrs(accessibilityLevel)
-    else if (isHeadingLevel(defaultLevel)) return getHeadingAttrs(defaultLevel)
-    return {}
-  })<{ color?: TextColorKey }>(({ theme, color }) => ({
+  return styled(RNText).attrs<{ accessibilityLevel?: TextSemanticLevel }>(
+    ({ accessibilityLevel }) => {
+      const level = accessibilityLevel ?? defaultLevel
+      if (isHeadingLevel(level)) return getTextSemanticAttrs(level)
+      return getNoHeadingAttrs()
+    }
+  )<{ color?: TextColorKey }>(({ theme, color }) => ({
     ...theme.designSystem.typography[typographyStyle],
     color: theme.designSystem.color.text[color ?? DEFAULT_COLOR_TEXT],
   }))
