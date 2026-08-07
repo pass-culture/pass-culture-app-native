@@ -200,6 +200,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={1}
                     accessibilityRole="header"
                     small={false}
                     style={
@@ -654,6 +655,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel={3}
                           accessibilityRole="header"
                           style={
                             {
@@ -1622,6 +1624,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={3}
                       accessibilityRole="header"
                       style={
                         {

@@ -134,6 +134,7 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             style={
               {

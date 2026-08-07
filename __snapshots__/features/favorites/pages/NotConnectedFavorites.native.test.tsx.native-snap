@@ -71,6 +71,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             style={
               {
@@ -85,6 +86,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             Identifie-toi pour retrouver tes favoris
           </Text>
           <Text
+            accessibilityLevel={2}
             accessibilityRole="header"
             style={
               {
