@@ -1,11 +1,11 @@
 import { fetchGTLPlaylistConfig } from 'features/gtlPlaylist/api/fetchGTLPlaylistConfig'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { mockServer } from 'tests/mswServer'
 
 describe('fetchGTLPlaylistConfig', () => {
   beforeEach(() => {
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulGtlPlaylistSnap)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, contentfulGtlPlaylistSnap)
   })
 
   it('should return correct data', async () => {

@@ -14,12 +14,14 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { EnvironmentOverrideBanner } from 'features/internal/components/EnvironmentOverrideBanner'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
+import { EnvironmentOverrideBootGate } from 'libs/environment/envOverride/EnvironmentOverrideBootGate'
 import { initLocation } from 'libs/locationV2/initLocation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -35,7 +37,7 @@ import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
 
 globalThisShim()
 
-export function App() {
+function AppContent() {
   useEffect(() => {
     void eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
@@ -82,6 +84,7 @@ export function App() {
                                   <Suspense fallback={<LoadingPage />}>
                                     <AppNavigationContainer />
                                   </Suspense>
+                                  <EnvironmentOverrideBanner />
                                 </ScreenErrorProvider>
                               </SubscriptionContextProvider>
                             </CulturalSurveyContextProvider>
@@ -97,5 +100,13 @@ export function App() {
         </StylesheetManagerWrapper>
       </ThemeWrapper>
     </ReactQueryClientProvider>
+  )
+}
+
+export function App() {
+  return (
+    <EnvironmentOverrideBootGate>
+      <AppContent />
+    </EnvironmentOverrideBootGate>
   )
 }

@@ -1,11 +1,11 @@
 import { fetchArtistPlaylistConfig } from 'features/artist/api/fetchArtistPlaylistConfig'
 import { contentfulArtistPlaylistSnap } from 'features/artist/fixtures/contentfulArtistPlaylistSnap'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { mockServer } from 'tests/mswServer'
 
 describe('fetchArtistPlaylistConfig', () => {
   beforeEach(() => {
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulArtistPlaylistSnap)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, contentfulArtistPlaylistSnap)
   })
 
   it('should return correct data', async () => {

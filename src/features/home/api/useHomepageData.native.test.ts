@@ -3,7 +3,7 @@ import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { getHomepageId, useHomepageData } from 'features/home/api/useHomepageData'
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { UserOnboardingRole } from 'features/onboarding/enums'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
@@ -79,7 +79,7 @@ describe('getHomepageId', () => {
 describe('useHomepageModules', () => {
   beforeEach(() => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, homepageEntriesAPIResponse)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, homepageEntriesAPIResponse)
   })
 
   it('calls the API and returns the data', async () => {

@@ -38,6 +38,7 @@ import { CheatcodesScreenAnalyticsDebugger } from 'cheatcodes/pages/others/Cheat
 import { CheatcodesScreenPageHeaderWithoutPlaceholder } from 'cheatcodes/pages/others/CheatcodesScreenCheatcodesScreenPageHeaderWithoutPlaceholder'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenDirectIdAccess } from 'cheatcodes/pages/others/CheatcodesScreenDirectIdAccess'
+import { CheatcodesScreenEnvironmentSwitch } from 'cheatcodes/pages/others/CheatcodesScreenEnvironmentSwitch'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
 import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPage'
@@ -305,6 +306,11 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenDirectIdAccess,
       linking: { path: 'cheatcodes/other/direct-id-access' },
       options: { title: 'Cheatcodes - Accès direct par ID' },
+    },
+    CheatcodesScreenEnvironmentSwitch: {
+      screen: CheatcodesScreenEnvironmentSwitch,
+      linking: { path: 'cheatcodes/other/environment-switch' },
+      options: { title: 'Cheatcodes - Environnement' },
     },
   },
 }

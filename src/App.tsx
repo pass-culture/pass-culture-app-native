@@ -18,12 +18,14 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { EnvironmentOverrideBanner } from 'features/internal/components/EnvironmentOverrideBanner'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { env } from 'libs/environment/env'
+import { EnvironmentOverrideBootGate } from 'libs/environment/envOverride/EnvironmentOverrideBootGate'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { initLocation } from 'libs/locationV2/initLocation'
@@ -106,6 +108,7 @@ const App: FunctionComponent = function () {
                                       <ScreenErrorProvider>
                                         <AnalyticsDebugger>
                                           <AppNavigationContainer />
+                                          <EnvironmentOverrideBanner />
                                         </AnalyticsDebugger>
                                       </ScreenErrorProvider>
                                     </OfflineModeContainer>
@@ -137,4 +140,11 @@ const AppWithHotUpdater: any =
         updateStrategy: 'appVersion',
       })(App)
 
-export { AppWithHotUpdater as App }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const AppWithEnvironmentOverride = (props: any) => (
+  <EnvironmentOverrideBootGate>
+    <AppWithHotUpdater {...props} />
+  </EnvironmentOverrideBootGate>
+)
+
+export { AppWithEnvironmentOverride as App }

@@ -1,7 +1,7 @@
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { useGetGTLPlaylistsConfigQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistsConfigQuery'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
@@ -13,7 +13,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('useGetGTLPlaylistConfigQuery', () => {
   beforeEach(() => {
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulGtlPlaylistSnap)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, contentfulGtlPlaylistSnap)
   })
 
   it('should allow selecting a subset of data', async () => {

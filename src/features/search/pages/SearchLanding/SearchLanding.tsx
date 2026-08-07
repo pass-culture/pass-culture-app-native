@@ -23,10 +23,9 @@ import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
-const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
-
 export const SearchLanding = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.SEARCH)
+  const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions } = useSearch()

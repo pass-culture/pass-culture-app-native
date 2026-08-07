@@ -33,6 +33,7 @@
     "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix --quiet",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client.sh",
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
+    "generate:envOverrideConfig": "node scripts/generate_env_override_config.js",
     "hotupdater:console": "NODE_ENV=testing yarn hot-updater console",
     "hotupdater:deploy:ios:testing": "NODE_ENV=testing yarn hot-updater deploy -p ios",
     "hotupdater:deploy:android:testing": "NODE_ENV=testing yarn hot-updater deploy -p android",

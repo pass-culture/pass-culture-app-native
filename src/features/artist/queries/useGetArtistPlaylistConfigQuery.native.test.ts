@@ -1,7 +1,7 @@
 import { contentfulArtistPlaylistSnap } from 'features/artist/fixtures/contentfulArtistPlaylistSnap'
 import { useGetArtistPlaylistConfigQuery } from 'features/artist/queries/useGetArtistPlaylistConfigQuery'
 import { ArtistPlaylistModule } from 'features/home/types'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { getContentfulBaseUrl } from 'libs/contentful/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -13,7 +13,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('useGetArtistPlaylistConfigQuery', () => {
   beforeEach(() => {
-    mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulArtistPlaylistSnap)
+    mockServer.universalGet(`${getContentfulBaseUrl()}/entries`, contentfulArtistPlaylistSnap)
   })
 
   it('should allow selecting a subset of data', async () => {

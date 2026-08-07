@@ -37,10 +37,9 @@ import { Page } from 'ui/pages/Page'
 
 const searchInputID = uuidv4()
 const searchIdGenerated = uuidv4()
-const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
-
 export const SearchResults: FC = () => {
   const netInfo = useNetInfoContext()
+  const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()

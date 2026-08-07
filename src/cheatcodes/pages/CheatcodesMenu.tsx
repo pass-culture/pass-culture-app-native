@@ -146,6 +146,12 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
+      title: 'Environnement 🌍',
+      navigationTarget: { screen: 'CheatcodesScreenEnvironmentSwitch' },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'Accès direct par ID 🎯',
       navigationTarget: { screen: 'CheatcodesScreenDirectIdAccess' },
       subscreens: [],
