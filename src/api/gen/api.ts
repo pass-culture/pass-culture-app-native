@@ -481,7 +481,6 @@ export enum Bookability {
   'FINISH_SUBSCRIPTION_REQUIRED' = 'FINISH_SUBSCRIPTION_REQUIRED',
   'USER_APPLICATION_STILL_PROCESSING' = 'USER_APPLICATION_STILL_PROCESSING',
   'USER_HAS_APPLICATION_ERROR' = 'USER_HAS_APPLICATION_ERROR',
-
 }
 /**
  * @export
@@ -5435,6 +5434,17 @@ export interface VenueContact {
 }
 /**
  * @export
+ * @interface VenueMovieCalendarResponse
+ */
+export interface VenueMovieCalendarResponse {
+  /**
+   * @type {Array<DayMovieScreenings>}
+   * @memberof VenueMovieCalendarResponse
+   */
+  calendar: Array<DayMovieScreenings>
+}
+/**
+ * @export
  * @interface VenueProAdvice
  */
 export interface VenueProAdvice {
@@ -5967,6 +5977,49 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_movie_screenings_by_venue <GET>
+     * @param {number} venue_id 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdMovieCalendar(venue_id: number, from?: string, to?: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'venue_id' is not null or undefined
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError(
+          'venue_id',
+          'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueIdMovieCalendar.'
+        )
+      }
+      let pathname = `/native/v1/venue/{venue_id}/movie/calendar`.replace(
+        `{${'venue_id'}}`,
+        encodeURIComponent(String(venue_id))
+      )
+      const queryParameters: any = {};
+
+        if (from != null) {
+            queryParameters['from'] = from;
+        }
+
+        if (to != null) {
+            queryParameters['to'] = to;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key as string)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6662,6 +6715,51 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }).join('&')
       pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_movie_screenings_by_venue_for_user <GET>
+     * @param {number} venue_id 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdMovieCalendarMe(venue_id: number, from?: string, to?: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'venue_id' is not null or undefined
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError(
+          'venue_id',
+          'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueIdMovieCalendarMe.'
+        )
+      }
+      let pathname = `/native/v1/venue/{venue_id}/movie/calendar/me`.replace(
+        `{${'venue_id'}}`,
+        encodeURIComponent(String(venue_id))
+      )
+      const queryParameters: any = {};
+
+        if (from != null) {
+            queryParameters['from'] = from;
+        }
+
+        if (to != null) {
+            queryParameters['to'] = to;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -8578,14 +8676,33 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
-     *
+     * 
      * @summary get_movie_screenings_by_venue <GET>
-     * @param {number} venue_id
-     * @param {string} [from]
-     * @param {string} [to]
+     * @param {number} venue_id 
+     * @param {string} [from] 
+     * @param {string} [to] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
+    async getNativeV1VenuevenueIdMovieCalendar(venue_id: number, from?: string, to?: string, options?: any): Promise<VenueMovieCalendarResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueIdMovieCalendar(venue_id, from, to, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary get_movie_screenings_by_venue_for_user <GET>
+     * @param {number} venue_id 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1VenuevenueIdMovieCalendarMe(venue_id: number, from?: string, to?: string, options?: any): Promise<VenueMovieCalendarResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueIdMovieCalendarMe(venue_id, from, to, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
     /**
      *
      * @summary get_bookings <GET>
@@ -9646,6 +9763,34 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
+  }
+  /**
+    * 
+    * @summary get_movie_screenings_by_venue <GET>
+    * @param {number} venue_id 
+    * @param {string} [from] 
+    * @param {string} [to] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1VenuevenueIdMovieCalendar(venue_id: number, from?: string, to?: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1VenuevenueIdMovieCalendar(venue_id, from, to, options)
+  }
+  /**
+    * 
+    * @summary get_movie_screenings_by_venue_for_user <GET>
+    * @param {number} venue_id 
+    * @param {string} [from] 
+    * @param {string} [to] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1VenuevenueIdMovieCalendarMe(venue_id: number, from?: string, to?: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1VenuevenueIdMovieCalendarMe(venue_id, from, to, options)
   }
   /**
     *

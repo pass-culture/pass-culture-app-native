@@ -12,11 +12,14 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
+import { VenueMoviesV2 } from 'features/venue/components/VenueOffers/VenueMoviesV2'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
@@ -80,6 +83,9 @@ export function VenueOffers({
     venue,
   })
   const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
+  const wipUseVenueMovieScreeningsEndpoint = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT
+  )
 
   const onPressAdviceCardSeeMore = (offerId: number) => {
     void analytics.logConsultAdvice({
@@ -126,7 +132,11 @@ export function VenueOffers({
   if (hasAMovieScreeningOffer) {
     return (
       <React.Fragment>
-        <VenueMovies venueOffers={venueOffers} />
+        {wipUseVenueMovieScreeningsEndpoint ? (
+          <VenueMoviesV2 venueOffers={venueOffers} venueId={venue.id} />
+        ) : (
+          <VenueMovies venueOffers={venueOffers} />
+        )}
         {shouldDisplayAdvicesSection ? (
           <VenueAdvicesSection
             advicesCardData={advicesCardData}

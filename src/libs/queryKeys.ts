@@ -53,6 +53,7 @@ export enum QueryKeys {
   SUBCATEGORIES = 'subcategories',
   USER_PROFILE = 'userProfile',
   VENUE = 'venue',
+  VENUE_MOVIES_CALENDAR = 'venueMoviesCalendar',
   VENUE_PRO_ADVICES = 'venueProAdvices',
   VENUE_OFFERS = 'venueOffers',
   VENUE_GTL_PLAYLISTS = 'venueGtlPlaylists',

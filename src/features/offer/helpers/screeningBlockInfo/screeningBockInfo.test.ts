@@ -4,7 +4,7 @@ import {
   getEventCardIsEnabled,
   getEventCardLeftSubtitle,
   getEventCardRightSubtitle,
-} from 'features/offer/components/OfferEventCardList/OfferEventCardListV2'
+} from 'features/offer/helpers/screeningBlockInfo/screeningBlockInfo'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
