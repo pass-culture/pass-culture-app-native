@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Avatar, AvatarProps } from 'ui/components/Avatar/Avatar'
@@ -36,7 +37,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
 }) => {
   const numberOfLines = useNumberOfLine(2)
   const content = (
-    <StyledView gap={2} isFullWidth={isFullWidth}>
+    <StyledView gap={2} isFullWidth={isFullWidth} accessibilityRole={AccessibilityRole.LISTITEM}>
       <Avatar size={size} {...props}>
         {image ? (
           <StyledImage url={image} testID="artistAvatar" />

@@ -10,6 +10,7 @@ import { selectSearchArtists } from 'features/search/queries/useSearchArtists/se
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { Artist } from 'features/venue/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
 export const ArtistsList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ searchFilters }) => {
@@ -25,6 +26,7 @@ export const ArtistsList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ sea
   return (
     <Container>
       <FlashList
+        accessibilityRole={AccessibilityRole.LIST}
         key="artists_search_results"
         data={artistsResponse}
         keyExtractor={(item: Artist) => item.id}

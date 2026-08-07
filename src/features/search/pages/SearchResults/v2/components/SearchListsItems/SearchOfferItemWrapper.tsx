@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import { Platform, useWindowDimensions, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
@@ -7,6 +7,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
@@ -41,7 +42,7 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
   const isGridLayout = enableGridList && !isWeb && gridListLayout === GridListLayout.GRID
 
   return (
-    <React.Fragment>
+    <View accessibilityRole={AccessibilityRole.LISTITEM}>
       {isGridLayout ? (
         <OfferTileWrapper
           item={item}
@@ -63,6 +64,6 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
           }}
         />
       )}
-    </React.Fragment>
+    </View>
   )
 }

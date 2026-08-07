@@ -25,6 +25,7 @@ import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { FetchSearchResultsArgs, GridListLayout, SearchView } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -158,6 +159,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
               )
             }
             renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
+            accessibilityRole={AccessibilityRole.LIST}
             contentContainerStyle={{
               paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
               paddingHorizontal: designSystem.size.spacing.xl,

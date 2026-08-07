@@ -12,6 +12,7 @@ import { VenuesListSkeleton } from 'features/search/pages/SearchResults/v2/compo
 import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
@@ -43,6 +44,7 @@ export const VenuesList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ sear
   return (
     <Container>
       <FlashList
+        accessibilityRole={AccessibilityRole.LIST}
         key="venues_search_results"
         data={searchResultVenues}
         keyExtractor={(item: AlgoliaVenue) => item.objectID}

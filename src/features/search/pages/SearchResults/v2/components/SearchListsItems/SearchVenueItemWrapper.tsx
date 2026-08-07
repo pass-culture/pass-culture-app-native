@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { MARGIN_DP } from 'ui/theme'
 
@@ -24,7 +25,7 @@ export const SearchVenueItemWrapper: FC<SearchVenueItemWrapper> = ({ item, index
     breakpoint: breakpoints.lg,
   })
   return (
-    <SearchVenueItemContainer>
+    <SearchVenueItemContainer accessibilityRole={AccessibilityRole.LISTITEM}>
       <SearchVenueItem
         venue={item}
         height={tiles.sizes.medium.height}
