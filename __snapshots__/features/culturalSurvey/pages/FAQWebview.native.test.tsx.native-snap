@@ -149,6 +149,7 @@ exports[`FAQVebview page should render the page with correct layout 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={

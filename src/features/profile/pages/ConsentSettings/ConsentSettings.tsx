@@ -36,7 +36,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const ConsentSettings = () => {
   const { popTo, addListener, dispatch } = useNavigation<UseNavigationType>()
@@ -182,7 +182,7 @@ export const ConsentSettings = () => {
                 setSettingsCookiesChoice={setCurrentCookieChoices}
                 offerId={offerId}
               />
-              <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
+              <StyledTitle4 {...getTextSemanticAttrs(2)}>Tu as la main dessus</StyledTitle4>
               <StyledBody>
                 Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
               </StyledBody>

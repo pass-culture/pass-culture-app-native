@@ -190,6 +190,7 @@ exports[`MarketingModal should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               nativeID="testUuidV4"
               style={

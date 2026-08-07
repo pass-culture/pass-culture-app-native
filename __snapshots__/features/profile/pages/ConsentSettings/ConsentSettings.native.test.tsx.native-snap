@@ -162,6 +162,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -281,6 +282,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               Tu peux choisir d’accepter ou non l’activation de leur suivi.
             </Text>
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {
@@ -634,6 +636,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -982,6 +985,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -1330,6 +1334,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -1681,6 +1686,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={3}
                       accessibilityRole="header"
                       style={
                         {
@@ -1995,6 +2001,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -2155,6 +2162,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
               }
             />
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {

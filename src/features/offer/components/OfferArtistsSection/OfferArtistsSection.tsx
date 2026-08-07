@@ -23,7 +23,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Typo } from 'ui/theme'
 import { AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 interface Props {
   artists: OfferArtist[]
@@ -117,7 +117,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
     <ViewGap gap={4}>
       <SeeAllButtonContainer gap={3}>
         <TitleContainer>
-          <Typo.Title4 {...getHeadingAttrs(2)}>{title}</Typo.Title4>
+          <Typo.Title4 {...getTextSemanticAttrs(2)}>{title}</Typo.Title4>
         </TitleContainer>
         {artists.length > 1 ? (
           <SeeAllButton

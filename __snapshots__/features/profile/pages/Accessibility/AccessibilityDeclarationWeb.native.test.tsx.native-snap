@@ -162,6 +162,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -316,6 +317,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -436,6 +438,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 , en raison des non-conformités énumérées dans la section « Résultats des tests ».
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -486,6 +489,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -511,6 +515,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1636,6 +1641,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1661,6 +1667,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 Pas de dérogation identifiée
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1695,6 +1702,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1873,6 +1881,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1902,6 +1911,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 .
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -2092,6 +2102,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -2416,6 +2427,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 La vérification de l’accessibilité est le résultat de tests manuels, assistés par des outils (feuilles CSS dédiés, extensions HeadingsMaps et WebDeveloper Toolbar, Color Contrast Analyser).
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -3165,6 +3177,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -3257,6 +3270,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {

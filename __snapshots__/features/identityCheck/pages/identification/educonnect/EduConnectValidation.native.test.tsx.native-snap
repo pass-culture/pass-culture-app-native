@@ -162,6 +162,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -266,6 +267,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
               }
             >
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {

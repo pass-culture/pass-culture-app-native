@@ -24,7 +24,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const SetPhoneNumberWithoutValidation = () => {
   const { dispatch, phoneValidation } = useSubscriptionContext()
@@ -82,7 +82,7 @@ export const SetPhoneNumberWithoutValidation = () => {
       scrollChildren={
         <ViewGap gap={8}>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
             <Banner label="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations." />
           </ViewGap>
           <Form.MaxWidth>

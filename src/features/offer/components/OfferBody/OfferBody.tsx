@@ -37,7 +37,7 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   offer: OfferResponse
@@ -154,7 +154,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </GroupWithoutGap>
 
         {prices.length > 0 ? (
-          <Typo.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs(2)}>{displayedPrice}</Typo.Title3>
         ) : null}
 
         <OfferReactionSection

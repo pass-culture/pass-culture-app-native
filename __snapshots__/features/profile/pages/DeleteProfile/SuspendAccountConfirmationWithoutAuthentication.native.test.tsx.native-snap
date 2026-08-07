@@ -234,6 +234,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {

@@ -13,7 +13,7 @@ import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainer
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   title: string
@@ -39,7 +39,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <IllustrationContainer>
         <StyledEmailSent />
       </IllustrationContainer>
-      <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
       <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
       <Typo.Body>{email}</Typo.Body>
       <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>

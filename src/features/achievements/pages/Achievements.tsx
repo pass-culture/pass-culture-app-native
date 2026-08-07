@@ -18,7 +18,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const emptyAchievement = {
   name: 'empty' as AchievementEnum,
@@ -57,7 +57,7 @@ const Achievements = () => {
               <ViewGap gap={4} key={category.name}>
                 <AchievementsGroupeHeader>
                   <View>
-                    <Typo.Title4 {...getHeadingAttrs(2)}>
+                    <Typo.Title4 {...getTextSemanticAttrs(2)}>
                       {achievementCategoryDisplayTitles[category.name]}
                     </Typo.Title4>
                     <StyledBody>{category.remainingAchievementsText}</StyledBody>
