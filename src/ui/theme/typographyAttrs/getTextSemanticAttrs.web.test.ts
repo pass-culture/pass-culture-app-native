@@ -8,6 +8,7 @@ describe('getTextSemanticAttrs()', () => {
     ${3}
     ${4}
     ${'p'}
+    ${'span'}
   `('should return accessibilityLevel $accessibilityLevel', ({ accessibilityLevel }) => {
     expect(getTextSemanticAttrs(accessibilityLevel)).toEqual({
       accessibilityRole: undefined,
