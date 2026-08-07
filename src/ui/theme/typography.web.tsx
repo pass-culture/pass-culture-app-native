@@ -42,7 +42,6 @@ const createStyledText = (
     const level = accessibilityLevel ?? defaultLevel
     let tag: React.ElementType = 'p'
     if (level === 'span') tag = 'span'
-    else if (level === 'p') tag = 'p'
     else if (isHeadingLevel(level)) tag = `h${level}`
     return <StyledText as={tag} numberOfLines={numberOfLines} {...props} />
   }

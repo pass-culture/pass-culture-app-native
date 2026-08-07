@@ -273,7 +273,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <label
                           class="c6"
-                          for="186"
+                          for="182"
                         >
                           <p
                             class="c7"
@@ -476,15 +476,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginBottom-zd98yo r-marginTop-1wzrnnt r-width-13qz1uu"
-                  />
-                  <h2
-                    class="c3"
-                  >
-                    Tes thèmes suivis
-                  </h2>
-                  <div
-                    class="css-view-175oi2r r-marginBottom-5oul0u r-marginTop-11c0sde"
+                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
                   >
                     <div
                       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
@@ -507,21 +499,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                        >
-                          <label
-                            class="c6"
-                            for="188"
-                          >
-                            <p
-                              class="c7"
-                            >
-                              Suivre tous les thèmes
-                            </p>
-                          </label>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                         >
                           <div
                             aria-checked="false"
@@ -580,7 +558,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <p
                             class="c7"
                           >
-                            Cinéma
+                            Musique
                           </p>
                         </label>
                       </div>
@@ -647,7 +625,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <p
                             class="c7"
                           >
-                            Lecture
+                            Spectacles
                           </p>
                         </label>
                       </div>
@@ -714,7 +692,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <p
                             class="c7"
                           >
-                            Musique
+                            Activités créatives
                           </p>
                         </label>
                       </div>
@@ -781,7 +759,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <p
                             class="c7"
                           >
-                            Spectacles
+                            Visites et sorties
                           </p>
                         </label>
                       </div>
@@ -825,140 +803,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           <input
                             hidden=""
                             id="196"
-                            readonly=""
-                            type="checkbox"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                      >
-                        <label
-                          class="c6"
-                          for="198"
-                        >
-                          <p
-                            class="c7"
-                          >
-                            Activités créatives
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                        >
-                          <div
-                            aria-checked="false"
-                            aria-disabled="true"
-                            aria-label="Activités créatives - Interrupteur à bascule - non coché"
-                            aria-labelledby="197"
-                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                            data-testid="Activités créatives - Interrupteur à bascule - non coché"
-                            role="switch"
-                            style="transition-duration: 0s;"
-                            tabindex="-1"
-                          >
-                            <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                            >
-                              <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                                style="transform: translateX(2px);"
-                              >
-                                <div
-                                  class="css-view-175oi2r"
-                                >
-                                  <div
-                                    class="css-text-146c3p1"
-                                    dir="ltr"
-                                  >
-                                    undefined-SVG-Mock
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <input
-                            hidden=""
-                            id="198"
-                            readonly=""
-                            type="checkbox"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-paddingBlock-w7s2jr"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
-                      >
-                        <label
-                          class="c6"
-                          for="200"
-                        >
-                          <p
-                            class="c7"
-                          >
-                            Visites et sorties
-                          </p>
-                        </label>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                        >
-                          <div
-                            aria-checked="false"
-                            aria-disabled="true"
-                            aria-label="Visites et sorties - Interrupteur à bascule - non coché"
-                            aria-labelledby="199"
-                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                            data-testid="Visites et sorties - Interrupteur à bascule - non coché"
-                            role="switch"
-                            style="transition-duration: 0s;"
-                            tabindex="-1"
-                          >
-                            <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
-                            >
-                              <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                                style="transform: translateX(2px);"
-                              >
-                                <div
-                                  class="css-view-175oi2r"
-                                >
-                                  <div
-                                    class="css-text-146c3p1"
-                                    dir="ltr"
-                                  >
-                                    undefined-SVG-Mock
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <input
-                            hidden=""
-                            id="200"
                             readonly=""
                             type="checkbox"
                           />

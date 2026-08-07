@@ -12,7 +12,6 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Show } from 'ui/svg/icons/Show'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
   const { isDesktopViewport } = useTheme()
@@ -38,9 +37,7 @@ export const ClubAdviceSection = (props: ClubAdviceSectionProps) => {
         <View style={style}>
           <Gutter>
             <Row>
-              <StyledTitle3
-                withBorderRight={shouldDisplayAllReviewsButton}
-                {...getTextSemanticAttrs(3)}>
+              <StyledTitle3 withBorderRight={shouldDisplayAllReviewsButton}>
                 {variantInfo.titleSection}
               </StyledTitle3>
               {showSectionTag && variantInfo.sectionTag ? (

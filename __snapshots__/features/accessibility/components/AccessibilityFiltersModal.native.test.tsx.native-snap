@@ -117,7 +117,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
           "bottom": 0,
           "height": 1334,
           "left": 0,
-          "opacity": 0,
+          "opacity": 0.7,
           "position": "absolute",
           "right": 0,
           "top": 0,
@@ -156,7 +156,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
           "top": "auto",
           "transform": [
             {
-              "translateY": 1334,
+              "translateY": 0,
             },
           ],
         }
