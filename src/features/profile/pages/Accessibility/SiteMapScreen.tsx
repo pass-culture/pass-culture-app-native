@@ -36,7 +36,7 @@ export function SiteMapScreen() {
               (subPage) => !subPage.isLoggedIn || isLoggedIn
             )
 
-            const parentJsx = (
+            return (
               <Li
                 key={item.wording}
                 groupLabel="Plan du site"
@@ -52,29 +52,33 @@ export function SiteMapScreen() {
                     <SiteMapLink wording={item.wording} navigateTo={item.navigateTo} />
                   </ListText>
                 </ItemContainer>
+                {visibleSubPages.length > 0 ? (
+                  <VerticalUl>
+                    {visibleSubPages.map((subPage, subIndex) => (
+                      <Li
+                        key={subPage.wording}
+                        groupLabel={item.wording}
+                        index={subIndex}
+                        total={visibleSubPages.length}
+                        accessibilityLabel={subPage.wording}
+                        accessibilityRole={AccessibilityRole.BUTTON}>
+                        <NestedItemContainer>
+                          <BulletContainer>
+                            <NestedBullet />
+                          </BulletContainer>
+                          <ListText>
+                            <SiteMapLink
+                              wording={subPage.wording}
+                              navigateTo={subPage.navigateTo}
+                            />
+                          </ListText>
+                        </NestedItemContainer>
+                      </Li>
+                    ))}
+                  </VerticalUl>
+                ) : null}
               </Li>
             )
-
-            const childrenJsx = visibleSubPages.map((subPage, subIndex) => (
-              <Li
-                key={subPage.wording}
-                groupLabel={item.wording}
-                index={subIndex}
-                total={visibleSubPages.length}
-                accessibilityLabel={subPage.wording}
-                accessibilityRole={AccessibilityRole.BUTTON}>
-                <NestedItemContainer>
-                  <BulletContainer>
-                    <NestedBullet />
-                  </BulletContainer>
-                  <ListText>
-                    <SiteMapLink wording={subPage.wording} navigateTo={subPage.navigateTo} />
-                  </ListText>
-                </NestedItemContainer>
-              </Li>
-            ))
-
-            return [parentJsx, ...childrenJsx]
           })}
         </StyledVerticalUl>
       }
