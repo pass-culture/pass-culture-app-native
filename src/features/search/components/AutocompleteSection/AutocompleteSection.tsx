@@ -6,7 +6,7 @@ import { styled } from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props<T> = {
   title: string
@@ -29,7 +29,7 @@ export function AutocompleteSection<T>({ title, renderItem, ...props }: Props<T>
   )
 }
 
-const Title = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const Title = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs(2))(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 

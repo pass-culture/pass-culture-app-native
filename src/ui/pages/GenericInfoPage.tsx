@@ -27,7 +27,7 @@ import { Page } from 'ui/pages/Page'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export type ButtonProps = {
   wording: string
@@ -164,8 +164,8 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               ) : null}
             </IllustrationContainer>
             <TextContainer gap={4} flex={flexMobile}>
-              <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
-              {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
+              <StyledTitle2 {...getTextSemanticAttrs(1)}>{title}</StyledTitle2>
+              {subtitle ? <StyledBody {...getTextSemanticAttrs(2)}>{subtitle}</StyledBody> : null}
             </TextContainer>
 
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}

@@ -12,7 +12,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 import { SeeAllButton } from './SeeAllButton/SeeAllButton'
 
@@ -144,7 +144,7 @@ const StyledViewGap = styled(ViewGap)<{ noMarginBottom?: boolean }>(
   })
 )
 
-const TitleLevel2 = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))``
 
 const StyledSubtitle = styled(Typo.BodyAccentXs).attrs<{
   windowWidth?: number

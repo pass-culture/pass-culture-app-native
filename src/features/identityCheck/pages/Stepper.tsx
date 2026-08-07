@@ -30,7 +30,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const Stepper = () => {
   useShowDisableActivation()
@@ -159,7 +159,7 @@ export const Stepper = () => {
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
+const StyledTitle1 = styled(Typo.Title1).attrs(() => getTextSemanticAttrs(1))``
 
 const TitleContainer = styled.View(({ theme }) => ({
   marginTop: theme.isDesktopViewport ? getSpacing(16) : theme.designSystem.size.spacing.l,

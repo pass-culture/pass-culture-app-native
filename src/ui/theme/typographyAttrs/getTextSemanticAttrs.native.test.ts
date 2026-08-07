@@ -1,7 +1,7 @@
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
-describe('getHeadingAttrs()', () => {
+describe('getTextSemanticAttrs()', () => {
   it.each`
     headingLevel | accessibilityLevel | accessibilityRole
     ${1}         | ${undefined}       | ${AccessibilityRole.HEADER}
@@ -11,9 +11,9 @@ describe('getHeadingAttrs()', () => {
     ${5}         | ${undefined}       | ${AccessibilityRole.HEADER}
     ${6}         | ${undefined}       | ${AccessibilityRole.HEADER}
   `(
-    "getHeadingAttrs($headingLevel) = {accessibilityRole: $accessibilityRole, accessibilityLevel: $accessibilityLevel, dir: 'ltr'}",
+    "getTextSemanticAttrs($headingLevel) = {accessibilityRole: $accessibilityRole, accessibilityLevel: $accessibilityLevel, dir: 'ltr'}",
     ({ headingLevel, accessibilityLevel, accessibilityRole }) => {
-      expect(getHeadingAttrs(headingLevel)).toEqual({
+      expect(getTextSemanticAttrs(headingLevel)).toEqual({
         accessibilityRole,
         accessibilityLevel,
       })

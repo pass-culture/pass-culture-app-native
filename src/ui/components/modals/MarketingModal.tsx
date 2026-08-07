@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 interface Props {
   visible: boolean
@@ -71,7 +71,7 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   marginTop: -GRADIENT_SIZE,
 })
 
-const Title = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))({
+const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs(1))({
   textAlign: 'center',
 })
 

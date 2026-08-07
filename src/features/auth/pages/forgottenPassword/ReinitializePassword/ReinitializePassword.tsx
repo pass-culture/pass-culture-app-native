@@ -21,7 +21,7 @@ import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type ReinitializePasswordFormData = {
   newPassword: string
@@ -111,7 +111,7 @@ export const ReinitializePassword = () => {
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}
       scrollChildren={
         <React.Fragment>
-          <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
           <Form.MaxWidth>
             <Container>
               <PasswordInputController

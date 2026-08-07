@@ -18,7 +18,7 @@ import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const cinemaCTAButtonName = 'Accéder aux séances'
 const playlistTitle = 'Les autres offres'
@@ -116,7 +116,7 @@ const Container = styled.View(({ theme }) => ({
     : theme.designSystem.size.spacing.xl,
 }))
 
-const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.xl,
 }))
 

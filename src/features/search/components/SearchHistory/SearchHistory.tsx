@@ -10,7 +10,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   history: HistoryItem[]
@@ -55,9 +55,11 @@ const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))
+const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs(2))(
+  ({ theme }) => ({
+    color: theme.designSystem.color.text.subtle,
+  })
+)
 
 const Container = styled.View<{ isEmptyQuery: boolean }>(({ isEmptyQuery, theme }) => ({
   flexDirection: 'row',
