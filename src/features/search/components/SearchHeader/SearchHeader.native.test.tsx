@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -158,12 +157,9 @@ function renderSearchHeader({
   isDesktopViewport,
   isMobileViewport,
 }: RenderSearchHeaderProps) {
-  const searchInputID = uuidv4()
-
   return render(
     reactQueryProviderHOC(
       <SearchHeader
-        searchInputID={searchInputID}
         shouldDisplaySubtitle={shouldDisplaySubtitle}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}

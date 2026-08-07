@@ -2,7 +2,6 @@ import React, { FC, PropsWithChildren, useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
@@ -12,8 +11,6 @@ import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { env } from 'libs/environment/env'
-
-const searchInputID = uuidv4()
 
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
@@ -54,7 +51,6 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
           title={title}
           withArrow
           shouldDisplayHeader={!isFocusOnSuggestions}
-          searchInputID={searchInputID}
           addSearchHistory={addToHistory}
           searchInHistory={setQueryHistoryMemoized}
           offerCategories={offerCategories}

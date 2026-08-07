@@ -35,7 +35,6 @@ import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHe
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { Page } from 'ui/pages/Page'
 
-const searchInputID = uuidv4()
 const searchIdGenerated = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
@@ -101,7 +100,6 @@ export const SearchResults: FC = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
-        searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         withFilterButton={!isFocusOnSuggestions}
