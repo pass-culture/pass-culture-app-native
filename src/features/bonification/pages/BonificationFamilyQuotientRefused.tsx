@@ -5,10 +5,11 @@ import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationType } from 'features/bonification/enums'
+import { getBonificationTertiaryButtonProps } from 'features/bonification/pages/getBonificationTertiaryButtonProps'
 import {
-  getBonificationTertiaryButtonProps,
-  TertiaryButtonProps,
-} from 'features/bonification/pages/getBonificationTertiaryButtonProps'
+  PageConfigEntry,
+  PageConfigMap,
+} from 'features/bonification/types/BonificationFamilyQuotientRefusedType'
 import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -20,9 +21,8 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Banner, BannerLink } from 'ui/designSystem/Banner/Banner'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Link } from 'ui/designSystem/Link/Link'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
@@ -30,29 +30,8 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
-
-interface PrimaryButtonConfig {
-  wording: string
-  navigateTo: InternalNavigationProps['navigateTo']
-}
-interface TertiaryButtonEntry {
-  button?: TertiaryButtonProps
-}
-
-interface PageConfigEntry {
-  Illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
-  title: string
-  firstText: React.ReactNode
-  secondText?: string
-  bannerText?: string
-  bannerLinks?: BannerLink[]
-  primaryButton: PrimaryButtonConfig
-  tertiaryButton: TertiaryButtonEntry
-}
-type PageConfigMap = Record<BonificationQFRefusedType, PageConfigEntry>
 
 const notFoundPageConfig: PageConfigEntry = {
   Illustration: ErrorIllustration,
@@ -74,7 +53,7 @@ const notFoundPageConfig: PageConfigEntry = {
       wording: 'Fermer',
       navigation: { type: 'goBack' },
       icon: Invalidate,
-    } satisfies TertiaryButtonProps,
+    },
   },
 }
 
@@ -104,7 +83,7 @@ const notInTaxHouseholdConfig: PageConfigEntry = {
       wording: 'Fermer',
       navigation: { type: 'goBack' },
       icon: Invalidate,
-    } satisfies TertiaryButtonProps,
+    },
   },
 }
 
@@ -129,7 +108,7 @@ const quotientFamilyTooHighConfig: PageConfigEntry = {
         externalNav: { url: env.FAMILY_QUOTIENT_TOO_HIGH_LINK },
       },
       icon: ExternalSiteFilled,
-    } satisfies TertiaryButtonProps,
+    },
   },
 }
 

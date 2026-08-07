@@ -1,27 +1,5 @@
-import { FunctionComponent } from 'react'
-
-import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { TertiaryButtonProps } from 'features/bonification/types/BonificationFamilyQuotientRefusedType'
 import { ButtonProps } from 'ui/pages/GenericInfoPage'
-import { AccessibleIcon } from 'ui/svg/icons/types'
-
-type TertiaryButtonNavigation =
-  | {
-      type: 'externalNav'
-      externalNav: ExternalNavigationProps['externalNav']
-    }
-  | {
-      type: 'goBack'
-    }
-  | {
-      type: 'navigateTo'
-      navigateTo: InternalNavigationProps['navigateTo']
-    }
-
-export type TertiaryButtonProps = {
-  icon: FunctionComponent<AccessibleIcon>
-  wording: string
-  navigation: TertiaryButtonNavigation
-}
 
 export const getBonificationTertiaryButtonProps = ({
   button,
