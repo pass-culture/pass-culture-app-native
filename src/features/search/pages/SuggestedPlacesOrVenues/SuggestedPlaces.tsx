@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
 import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { MIN_QUERY_LENGTH, usePlacesQuery } from 'libs/place/queries/usePlacesQuery'
 import { SuggestedPlace } from 'libs/place/types'
 import { Li } from 'ui/components/Li'
@@ -53,7 +52,7 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
   return (
     <React.Fragment>
       <HiddenAccessibleResultNumber nbResults={filteredPlaces.length} show={hasResults} />
-      <View accessibilityRole={AccessibilityRole.STATUS}>
+      <View role="status">
         <NoSuggestedPlaces show={!hasResults && !isQueryTooShort && isQueryProvided} />
         <NotLongEnough show={isQueryTooShort} />
       </View>

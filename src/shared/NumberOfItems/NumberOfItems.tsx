@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { plural } from 'libs/plural'
 import { Typo } from 'ui/theme'
 
@@ -24,7 +23,7 @@ export const NumberOfItems: React.FC<Props> = ({ nbItems, type = 'results', noMa
   const numberOfResults = plural(nbItems, LABELS[type])
 
   return (
-    <Container accessibilityRole={AccessibilityRole.STATUS} noMargin={noMargin}>
+    <Container role="status" noMargin={noMargin}>
       <Body>{numberOfResults}</Body>
     </Container>
   )

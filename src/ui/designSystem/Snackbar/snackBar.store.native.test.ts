@@ -98,6 +98,38 @@ describe('SnackBarStore', () => {
     })
   })
 
+  describe('lastAnnouncement', () => {
+    it('should store the last announcement when a snackbar is opened', () => {
+      snackBarStore.actions.open('Message', 'error')
+
+      expect(snackBarStore.selectors.selectLastSnackbarAnnouncement()).toMatchObject({
+        message: 'Message',
+        type: 'error',
+      })
+    })
+
+    it('should keep the last announcement after the snackbar is closed', () => {
+      snackBarStore.actions.open('Message', 'success')
+
+      getSnackbars()[0]?.onClose()
+
+      expect(snackBarStore.selectors.selectLastSnackbarAnnouncement()).toMatchObject({
+        message: 'Message',
+        type: 'success',
+      })
+    })
+
+    it('should give a different id to two consecutive identical messages', () => {
+      snackBarStore.actions.open('Message', 'success')
+      const firstAnnouncement = snackBarStore.selectors.selectLastSnackbarAnnouncement()
+
+      snackBarStore.actions.open('Message', 'success')
+      const secondAnnouncement = snackBarStore.selectors.selectLastSnackbarAnnouncement()
+
+      expect(secondAnnouncement?.id).not.toEqual(firstAnnouncement?.id)
+    })
+  })
+
   describe('accessibility props', () => {
     it('should expose accessibility props in selectSnackbarProps', () => {
       snackBarStore.actions.open('Opération réussie', 'success')

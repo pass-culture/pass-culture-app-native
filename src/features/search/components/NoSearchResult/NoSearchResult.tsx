@@ -51,7 +51,7 @@ export const NoSearchResult = ({
 
   return (
     <NoSearchResultsWrapper>
-      <Container accessibilityRole={AccessibilityRole.STATUS}>
+      <Container role="status">
         <ContainerNoOffer>
           <StyledNoOffer />
         </ContainerNoOffer>

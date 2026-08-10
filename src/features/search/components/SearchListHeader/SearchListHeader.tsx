@@ -13,7 +13,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
@@ -124,10 +123,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
         />
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
-        <BannerOfferNotPresentContainer
-          testID="banner-container"
-          accessibilityRole={AccessibilityRole.STATUS}
-          nbHits={nbHits}>
+        <BannerOfferNotPresentContainer testID="banner-container" role="status" nbHits={nbHits}>
           <Banner label={unavailableOfferMessage} Icon={Error} />
         </BannerOfferNotPresentContainer>
       ) : null}

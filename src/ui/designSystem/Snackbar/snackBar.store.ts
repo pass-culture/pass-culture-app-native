@@ -7,7 +7,8 @@ import { AccessibilityInfo, NativeSyntheticEvent } from 'react-native'
 import { v4 } from 'uuid'
 
 import { createStore } from 'libs/store/createStore'
-import { SnackBarProps } from 'ui/designSystem/Snackbar/SnackBar'
+import { LiveRegionAnnouncement } from 'ui/components/accessibility/liveRegion.types'
+import { SnackBarProps, SnackBarType } from 'ui/designSystem/Snackbar/SnackBar'
 
 type Snackbar = {
   label: string
@@ -15,7 +16,12 @@ type Snackbar = {
   animationDuration: number
 }
 
-type State = { snackbars: Record<string, Snackbar> }
+type SnackbarAnnouncement = LiveRegionAnnouncement & { type: SnackBarType }
+
+type State = {
+  snackbars: Record<string, Snackbar>
+  lastAnnouncement?: SnackbarAnnouncement
+}
 
 type SnackbarWithAccessibilityProps = SnackBarProps & {
   accessibilityLabel: string
@@ -51,6 +57,7 @@ export const snackBarStore = createStore({
       const id = v4()
       const animationDuration = getAnimationDuration(label)
 
+      // native only, no-op on web where the live region handles the announcement
       AccessibilityInfo.announceForAccessibility(label)
 
       set((state) => ({
@@ -58,6 +65,9 @@ export const snackBarStore = createStore({
           ...state.snackbars,
           [id]: { label, type, animationDuration },
         },
+        // kept after the snackbar is closed so screen readers can finish reading
+        // the message without extending its display duration
+        lastAnnouncement: { id, message: label, type },
       }))
       const timeout = setTimeout(() => {
         snackBarStore.actions.close(id)
@@ -79,6 +89,7 @@ export const snackBarStore = createStore({
   }),
   selectors: {
     selectById: (id: string) => (state) => state.snackbars[id],
+    selectLastSnackbarAnnouncement: () => (state) => state.lastAnnouncement,
     selectSnackbarProps:
       () =>
       (state): SnackbarWithAccessibilityProps[] => {
@@ -104,5 +115,5 @@ export const snackBarStore = createStore({
 
 export const snackBarActions = snackBarStore.actions
 export const { showErrorSnackBar, showSuccessSnackBar } = snackBarActions
-export const { useSnackbarProps } = snackBarStore.hooks
+export const { useSnackbarProps, useLastSnackbarAnnouncement } = snackBarStore.hooks
 export type { SnackbarWithAccessibilityProps }

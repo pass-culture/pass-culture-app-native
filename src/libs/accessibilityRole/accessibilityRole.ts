@@ -18,7 +18,6 @@ export enum AccessibilityRole {
   PROGRESSBAR = 'progressbar',
   RADIO = 'radio',
   RADIOGROUP = 'radiogroup',
-  STATUS = 'none',
   SWITCH = 'switch',
   TAB = 'tab',
   TABLIST = 'tablist',

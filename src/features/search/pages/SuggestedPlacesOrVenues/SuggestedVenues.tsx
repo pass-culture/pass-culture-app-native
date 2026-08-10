@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
 import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
 import { Venue } from 'features/venue/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useVenuesQuery } from 'libs/place/queries/useVenuesQuery'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
@@ -46,7 +45,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
   return (
     <StyledView>
       <HiddenAccessibleResultNumber nbResults={filteredVenues.length} show={hasResults} />
-      <View accessibilityRole={AccessibilityRole.STATUS}>
+      <View role="status">
         <NoSuggestedVenues show={!hasResults && isQueryProvided} />
       </View>
       {hasResults ? (

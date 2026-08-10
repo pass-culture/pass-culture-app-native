@@ -78,7 +78,7 @@ export const PASSWORD_RULES: PasswordRule[] = [
   },
 ]
 
-const getRuleLabel = (title: string, isValidated: boolean) =>
+export const getRuleLabel = (title: string, isValidated: boolean) =>
   `${title} ${isValidated ? '- critère validé' : '- au minimum'}`
 
 export const DISPLAYED_PASSWORD_RULES = PASSWORD_RULES.filter((rule) => rule.displayInRules)

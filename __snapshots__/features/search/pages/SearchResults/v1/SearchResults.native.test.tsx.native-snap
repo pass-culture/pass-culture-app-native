@@ -770,8 +770,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
                       noMargin={false}
+                      role="status"
                       style={
                         {
                           "marginBottom": 16,
@@ -1636,8 +1636,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       Les offres
                     </Text>
                     <View
-                      accessibilityRole="none"
                       noMargin={false}
+                      role="status"
                       style={
                         {
                           "marginBottom": 16,

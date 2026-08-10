@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { render, screen, fireEvent, waitFor } from 'tests/utils/web'
+import { render, screen, fireEvent, waitFor, within } from 'tests/utils/web'
 
 const writeText = jest.fn()
 
@@ -24,7 +24,10 @@ describe('<DeeplinkItem />', () => {
       expect(writeText).toHaveBeenCalledWith('https://universalLink')
     })
 
-    expect(screen.getByTestId('snackbar-success')).toBeInTheDocument()
-    expect(screen.getByText(/Copié/)).toBeInTheDocument()
+    const snackbar = screen.getByTestId('snackbar-success')
+
+    expect(snackbar).toBeInTheDocument()
+    // scoped to the snackbar because the message is duplicated in the live region
+    expect(within(snackbar).getByText(/Copié/)).toBeInTheDocument()
   })
 })

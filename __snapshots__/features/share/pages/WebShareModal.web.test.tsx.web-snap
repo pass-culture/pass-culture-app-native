@@ -4,6 +4,34 @@ exports[`<WebShareModal/> should render correctly when hidden 1`] = `
 <body>
   <div />
   <div />
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="status"
+  />
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="status"
+  />
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="alert"
+  />
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="alert"
+  />
 </body>
 `;
 
@@ -487,5 +515,33 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
       />
     </div>
   </div>
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="status"
+  />
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="status"
+  />
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="alert"
+  />
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="css-text-146c3p1 r-clipPath-129q975 r-display-1adg3ll r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+    dir="ltr"
+    role="alert"
+  />
 </body>
 `;
