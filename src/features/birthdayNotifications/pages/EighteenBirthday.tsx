@@ -13,7 +13,7 @@ export function EighteenBirthday() {
   const pageWording = useGetPageWording(user?.requiresIdCheck)
 
   useEffect(() => {
-    storage.saveObject('has_seen_eligible_card', true)
+    void storage.saveObject('has_seen_eligible_card', true)
   }, [])
 
   return (
