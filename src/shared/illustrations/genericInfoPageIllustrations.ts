@@ -15,6 +15,7 @@ const genericInfoPageIllustrationNames = [
   'stressedKnightLarge',
   'trashMosaic',
   'validStampMosaïcLarge',
+  'workedInPrgressSignSculptureLarge',
 ] as const
 
 type GenericInfoPageIllustrationName = (typeof genericInfoPageIllustrationNames)[number]
@@ -38,4 +39,7 @@ export const genericInfoPageIllustrationUrls = {
   stressedKnightLarge: buildCategoryIllustrationUrl('stressedKnightLarge.png'),
   trashMosaic: buildCategoryIllustrationUrl('trashMosaic.png'),
   validStampMosaïcLarge: buildCategoryIllustrationUrl('validStampMosaïcLarge.png'),
+  workedInPrgressSignSculptureLarge: buildCategoryIllustrationUrl(
+    'workedInPrgressSignSculptureLarge.png'
+  ),
 } as const satisfies Record<GenericInfoPageIllustrationName, string>
