@@ -1121,6 +1121,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             </View>
             <Text
               displayBlock={true}
+              role="none"
               style={
                 {
                   "display": "none",

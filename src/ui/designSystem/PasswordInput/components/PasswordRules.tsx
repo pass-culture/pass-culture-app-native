@@ -6,6 +6,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -27,7 +28,9 @@ export const PasswordRules: FunctionComponent<Props> = ({ password, visible }) =
   if (visible)
     return (
       <React.Fragment>
-        <HiddenAccessibleText displayBlock>{hiddenAccessibleText}</HiddenAccessibleText>
+        <HiddenAccessibleText displayBlock role={AccessibilityRole.STATUS}>
+          {hiddenAccessibleText}
+        </HiddenAccessibleText>
         <RulesContainer {...hiddenFromScreenReader()} gap={1}>
           {DISPLAYED_PASSWORD_RULES.map((rule) => (
             <PasswordRule
