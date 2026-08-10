@@ -4,7 +4,7 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OauthStateResponse } from 'api/gen'
+import { OauthStateResponseV2 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -39,7 +39,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<Login/>', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+    mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
   })

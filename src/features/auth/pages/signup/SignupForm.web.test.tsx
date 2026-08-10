@@ -4,7 +4,7 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { EmailValidationRemainingResendsResponse, OauthStateResponse } from 'api/gen'
+import { EmailValidationRemainingResendsResponse, OauthStateResponseV2 } from 'api/gen'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -46,7 +46,7 @@ describe('<SignupForm/>', () => {
     )
     useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
 
-    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+    mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
       requestOptions: { persist: true },
     })
