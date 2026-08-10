@@ -17,7 +17,7 @@ export function EighteenBirthday() {
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   useEffect(() => {
-    storage.saveObject('has_seen_eligible_card', true)
+    void storage.saveObject('has_seen_eligible_card', true)
   }, [])
 
   return (
