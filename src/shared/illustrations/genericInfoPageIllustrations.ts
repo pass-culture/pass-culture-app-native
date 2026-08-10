@@ -1,6 +1,7 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
 const genericInfoPageIllustrationNames = [
+  'birthdayCake',
   'blockedPaintingLarge',
   'brokenDinosaurSkeletonLarge',
   'emptyDigitalWindowLarge',
@@ -17,6 +18,7 @@ const genericInfoPageIllustrationNames = [
 type GenericInfoPageIllustrationName = (typeof genericInfoPageIllustrationNames)[number]
 
 export const genericInfoPageIllustrationUrls = {
+  birthdayCake: buildCategoryIllustrationUrl('birthdayCake.png'),
   blockedPaintingLarge: buildCategoryIllustrationUrl('blockedPaintingLarge.png'),
   brokenDinosaurSkeletonLarge: buildCategoryIllustrationUrl('brokenDinosaurSkeletonLarge.png'),
   emptyDigitalWindowLarge: buildCategoryIllustrationUrl('emptyDigitalWindowLarge.png'),

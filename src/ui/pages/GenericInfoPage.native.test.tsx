@@ -3,6 +3,7 @@ import React from 'react'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
+import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -75,6 +76,27 @@ describe('<GenericInfoPage />', () => {
     render(
       <GenericInfoPage
         illustration={MaintenanceCone}
+        remoteIllustration={{
+          url: 'https://example.com/illustration.png',
+          backgroundColor: 'positive01',
+        }}
+        title="Title"
+        buttonPrimary={{
+          wording: 'ButtonPrimary',
+          onPress,
+        }}
+      />
+    )
+
+    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+  })
+
+  it('should display remote illustation when animation and remote illustration defined', () => {
+    render(
+      <GenericInfoPage
+        animation={BirthdayCake}
+        animationColoringMode="targeted"
+        animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
         remoteIllustration={{
           url: 'https://example.com/illustration.png',
           backgroundColor: 'positive01',
