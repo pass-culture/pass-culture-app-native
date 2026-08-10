@@ -1,10 +1,18 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list'
-import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef } from 'react'
+import React, {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import {
   FlatListProps,
   Platform,
+  ScrollView,
   StyleProp,
   useWindowDimensions,
   ViewabilityConfig,
@@ -14,6 +22,8 @@ import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
+import { Li } from 'ui/components/Li'
+import { Ul } from 'ui/components/Ul'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
@@ -53,7 +63,7 @@ type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
   withMargins?: boolean
 }
 
-const isWeb = Platform.OS === 'web' ? true : undefined
+const isWeb = Platform.OS === 'web'
 
 const PLAYLIST_VIEWABILITY_CONFIG = {
   waitForInteraction: true,
@@ -88,18 +98,42 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
   const { width } = useWindowDimensions()
 
   const listRef = useRef<any>(null)
-  const {
-    handleScrollPrevious,
-    handleScrollNext,
-    onScroll,
-    onContentSizeChange,
-    onContainerLayout,
-    isEnd,
-    isStart,
-  } = useHorizontalFlatListScroll({
-    ref: listRef,
-    isActive: isWeb,
-  })
+  const webScrollRef = useRef<ScrollView>(null)
+  const [webScrollPosition, setWebScrollPosition] = useState(0)
+  const [webContainerWidth, setWebContainerWidth] = useState(0)
+
+  const { onScroll, onContentSizeChange, onContainerLayout, isEnd, isStart } =
+    useHorizontalFlatListScroll({
+      ref: listRef,
+      isActive: isWeb,
+    })
+
+  const handleWebScroll = useCallback(
+    (event: any) => {
+      onScroll(event)
+      setWebScrollPosition(event.nativeEvent.contentOffset.x)
+    },
+    [onScroll]
+  )
+
+  const handleWebContainerLayout = useCallback(
+    (event: any) => {
+      onContainerLayout(event)
+      setWebContainerWidth(event.nativeEvent.layout.width)
+    },
+    [onContainerLayout]
+  )
+
+  const handleWebScrollNext = useCallback(() => {
+    webScrollRef.current?.scrollTo({ x: webScrollPosition + webContainerWidth, animated: true })
+  }, [webScrollPosition, webContainerWidth])
+
+  const handleWebScrollPrevious = useCallback(() => {
+    webScrollRef.current?.scrollTo({
+      x: Math.max(webScrollPosition - webContainerWidth, 0),
+      animated: true,
+    })
+  }, [webScrollPosition, webContainerWidth])
 
   useImperativeHandle(ref, () => listRef.current as FlatList)
 
@@ -171,49 +205,73 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
   )
 
   return (
-    <FlatListContainer onLayout={onContainerLayout} minHeight={minHeight}>
+    <FlatListContainer onLayout={handleWebContainerLayout} minHeight={minHeight}>
       {!isStart && isWeb ? (
         <PlaylistArrowButton
           direction="left"
           top={scrollButtonOffsetY}
-          onPress={handleScrollPrevious}
+          onPress={handleWebScrollPrevious}
         />
       ) : null}
       {!isEnd && isWeb ? (
         <PlaylistArrowButton
           direction="right"
-          onPress={handleScrollNext}
+          onPress={handleWebScrollNext}
           top={scrollButtonOffsetY}
         />
       ) : null}
-      <FlatListComponent
-        onScroll={onScroll}
-        onContentSizeChange={onContentSizeChange}
-        testID={testID}
-        ref={listRef}
-        scrollEnabled={isTouch}
-        drawDistance={width / 4}
-        data={dataWithHeaderAndFooter}
-        renderItem={renderItemWithHeaderAndFooter}
-        keyExtractor={keyExtractorWithHeaderAndFooter}
-        showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={16}
-        horizontal
-        windowSize={7}
-        initialNumToRender={4}
-        maxToRenderPerBatch={6}
-        removeClippedSubviews
-        updateCellsBatchingPeriod={100}
-        getItemLayout={getItemLayout}
-        ItemSeparatorComponent={MemoizedItemSeparatorComponent}
-        ListHeaderComponent={withMargins ? MemoizedHorizontalMargin : undefined}
-        ListFooterComponent={MemoizedHorizontalMargin}
-        onEndReached={onEndReached}
-        onEndReachedThreshold={0.2}
-        viewabilityConfig={PLAYLIST_VIEWABILITY_CONFIG}
-        onViewableItemsChanged={onViewableItemsChanged}
-        contentContainerStyle={contentContainerStyle}
-      />
+
+      {isWeb ? (
+        <ScrollView
+          ref={webScrollRef}
+          testID={testID}
+          onScroll={handleWebScroll}
+          onContentSizeChange={onContentSizeChange}
+          horizontal
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          style={contentContainerStyle}>
+          <WebListContainer
+            style={withMargins ? { paddingHorizontal: horizontalMargin } : undefined}>
+            {dataWithHeaderAndFooter.map((item, index) => (
+              <Li
+                key={keyExtractorWithHeaderAndFooter(item, index)}
+                style={index > 0 ? { marginLeft: itemSeparatorSize } : undefined}>
+                {renderItemWithHeaderAndFooter({ item, index })}
+              </Li>
+            ))}
+          </WebListContainer>
+        </ScrollView>
+      ) : (
+        <FlatListComponent
+          onScroll={onScroll}
+          onContentSizeChange={onContentSizeChange}
+          testID={testID}
+          ref={listRef}
+          scrollEnabled={isTouch}
+          drawDistance={width / 4}
+          data={dataWithHeaderAndFooter}
+          renderItem={renderItemWithHeaderAndFooter}
+          keyExtractor={keyExtractorWithHeaderAndFooter}
+          showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={16}
+          horizontal
+          windowSize={7}
+          initialNumToRender={4}
+          maxToRenderPerBatch={6}
+          removeClippedSubviews
+          updateCellsBatchingPeriod={100}
+          getItemLayout={getItemLayout}
+          ItemSeparatorComponent={MemoizedItemSeparatorComponent}
+          ListHeaderComponent={withMargins ? MemoizedHorizontalMargin : undefined}
+          ListFooterComponent={MemoizedHorizontalMargin}
+          onEndReached={onEndReached}
+          onEndReachedThreshold={0.2}
+          viewabilityConfig={PLAYLIST_VIEWABILITY_CONFIG}
+          onViewableItemsChanged={onViewableItemsChanged}
+          contentContainerStyle={contentContainerStyle}
+        />
+      )}
     </FlatListContainer>
   )
 })
@@ -225,6 +283,13 @@ const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) =>
   width: '100%',
   minHeight,
 }))
+
+const WebListContainer = styled(Ul)({
+  display: 'flex',
+  flexDirection: 'row',
+  overflowX: 'auto',
+  width: '100%',
+})
 
 const HorizontalMargin = styled.View<{ width: number }>(({ width }) => ({
   width,
