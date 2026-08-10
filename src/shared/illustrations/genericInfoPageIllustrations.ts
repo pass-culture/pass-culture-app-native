@@ -8,6 +8,7 @@ const genericInfoPageIllustrationNames = [
   'emptyWalletLarge',
   'hourglass',
   'mailBoxSendingLarge',
+  'mobileDeviceAndParameters',
   'questioningKnightLarge',
   'sculptureMagnifyingGlassPaperLarge',
   'stressedKnightLarge',
@@ -25,6 +26,7 @@ export const genericInfoPageIllustrationUrls = {
   emptyWalletLarge: buildCategoryIllustrationUrl('emptyWalletLarge.png'),
   hourglass: buildCategoryIllustrationUrl('hourglass.png'),
   mailBoxSendingLarge: buildCategoryIllustrationUrl('mailBoxSendingLarge.png'),
+  mobileDeviceAndParameters: buildCategoryIllustrationUrl('mobileDeviceAndParameters.png'),
   questioningKnightLarge: buildCategoryIllustrationUrl('questioningKnightLarge.png'),
   sculptureMagnifyingGlassPaperLarge: buildCategoryIllustrationUrl(
     'sculptureMagnifyingGlassPaperLarge.png'

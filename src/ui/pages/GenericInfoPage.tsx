@@ -18,12 +18,10 @@ import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWi
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import {
-  GenericInfoPageIllustration,
-  type RemoteIllustration,
-} from 'ui/pages/GenericInfoPageIllustration'
+import { GenericInfoPageIllustration } from 'ui/pages/GenericInfoPageIllustration'
 import { getGenericInfoPageButtons } from 'ui/pages/helpers/getGenericInfoPageButtons'
 import { Page } from 'ui/pages/Page'
+import { RemoteIllustration } from 'ui/pages/types'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'

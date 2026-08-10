@@ -4,12 +4,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IllustrationColorKey } from 'theme/types'
+import { RemoteIllustration } from 'ui/pages/types'
 import { getSpacing } from 'ui/theme'
-
-export type RemoteIllustration = {
-  url: string
-  backgroundColor: IllustrationColorKey
-}
 
 export const GenericInfoPageIllustration = ({
   url,
@@ -18,7 +14,7 @@ export const GenericInfoPageIllustration = ({
   <Container
     illustrationBackgroundColor={backgroundColor}
     testID="generic-info-page-remote-illustration">
-    <RemoteIllustration source={{ uri: url }} resizeMode="contain" />
+    <RemoteIllustrationImage source={{ uri: url }} resizeMode="contain" />
   </Container>
 )
 
@@ -37,7 +33,7 @@ const Container = styled.View<{
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const RemoteIllustration = styled(FastImage)({
+const RemoteIllustrationImage = styled(FastImage)({
   width: '100%',
   height: '100%',
 })
