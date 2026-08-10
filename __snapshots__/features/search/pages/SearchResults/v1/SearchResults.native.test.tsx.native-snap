@@ -996,6 +996,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                                     "userSelect": "auto",
                                   },
                                   {},
+                                  {
+                                    "alignItems": "center",
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                    "width": "100%",
+                                  },
                                 ],
                                 {
                                   "opacity": 1,
@@ -1009,6 +1015,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               isFullWidth={false}
                               style={
                                 {
+                                  "alignItems": "center",
                                   "flexDirection": "column",
                                   "gap": 8,
                                 }
@@ -1160,6 +1167,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                                     "userSelect": "auto",
                                   },
                                   {},
+                                  {
+                                    "alignItems": "center",
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                    "width": "100%",
+                                  },
                                 ],
                                 {
                                   "opacity": 1,
@@ -1173,6 +1186,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               isFullWidth={false}
                               style={
                                 {
+                                  "alignItems": "center",
                                   "flexDirection": "column",
                                   "gap": 8,
                                 }
@@ -1324,6 +1338,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                                     "userSelect": "auto",
                                   },
                                   {},
+                                  {
+                                    "alignItems": "center",
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                    "width": "100%",
+                                  },
                                 ],
                                 {
                                   "opacity": 1,
@@ -1337,6 +1357,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               isFullWidth={false}
                               style={
                                 {
+                                  "alignItems": "center",
                                   "flexDirection": "column",
                                   "gap": 8,
                                 }
@@ -1488,6 +1509,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                                     "userSelect": "auto",
                                   },
                                   {},
+                                  {
+                                    "alignItems": "center",
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                    "width": "100%",
+                                  },
                                 ],
                                 {
                                   "opacity": 1,
@@ -1501,6 +1528,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               isFullWidth={false}
                               style={
                                 {
+                                  "alignItems": "center",
                                   "flexDirection": "column",
                                   "gap": 8,
                                 }

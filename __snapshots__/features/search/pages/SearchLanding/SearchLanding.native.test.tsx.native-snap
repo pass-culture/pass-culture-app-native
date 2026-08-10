@@ -464,1095 +464,1292 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             Parcours les catégories
           </Text>
           <View
+            accessibilityRole="list"
             style={
               {
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 8,
                 "marginTop": 8,
+                "paddingLeft": 0,
                 "paddingVertical": 8,
                 "width": "100%",
               }
             }
           >
             <View
-              accessibilityLabel="Catégorie Concerts et festivals"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#94f0d6",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#0e8474",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Concerts et festivals"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Concerts et festivals"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#94f0d6",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#0e8474",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Concerts et festivals"
               >
-                CONCERTS ET FESTIVALS
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  CONCERTS ET FESTIVALS
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Cinéma"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#ffeae2",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#d63d00",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Cinéma"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Cinéma"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#ffeae2",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#d63d00",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Cinéma"
               >
-                CINÉMA
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  CINÉMA
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Films, séries et documentaires"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#dcf3f8",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#14a0be",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Films, séries et documentaires"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Films, séries et documentaires"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#dcf3f8",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#14a0be",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Films, séries et documentaires"
               >
-                FILMS, SÉRIES ET DOCUMENTAIRES
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  FILMS, SÉRIES ET DOCUMENTAIRES
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Livres"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#ffa5c0",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#eb0055",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Livres"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Livres"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Livres"
               >
-                LIVRES
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  LIVRES
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Musique"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#c1a3ff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#320096",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Musique"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Musique"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#c1a3ff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#320096",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Musique"
               >
-                MUSIQUE
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  MUSIQUE
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Arts et loisirs créatifs"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#ffeae2",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#d63d00",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Arts et loisirs créatifs"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Arts et loisirs créatifs"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#ffeae2",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#d63d00",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Arts et loisirs créatifs"
               >
-                ARTS ET LOISIRS CRÉATIFS
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  ARTS ET LOISIRS CRÉATIFS
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Spectacles"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#ffa5c0",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#eb0055",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Spectacles"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Spectacles"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Spectacles"
               >
-                SPECTACLES
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  SPECTACLES
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Musées et visites"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#94f0d6",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#0e8474",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Musées et visites"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Musées et visites"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#94f0d6",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#0e8474",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Musées et visites"
               >
-                MUSÉES ET VISITES
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  MUSÉES ET VISITES
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Jeux et jeux vidéos"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#c1a3ff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#320096",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Jeux et jeux vidéos"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Jeux et jeux vidéos"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#c1a3ff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#320096",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Jeux et jeux vidéos"
               >
-                JEUX ET JEUX VIDÉOS
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  JEUX ET JEUX VIDÉOS
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Médias et presse"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#dcf3f8",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#14a0be",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Médias et presse"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Médias et presse"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#dcf3f8",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#14a0be",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Médias et presse"
               >
-                MÉDIAS ET PRESSE
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  MÉDIAS ET PRESSE
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Cartes jeunes"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#94f0d6",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#0e8474",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Cartes jeunes"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Cartes jeunes"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#94f0d6",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#0e8474",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Cartes jeunes"
               >
-                CARTES JEUNES
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  CARTES JEUNES
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Conférences et rencontres"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#ffeae2",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#d63d00",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Conférences et rencontres"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Conférences et rencontres"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#ffeae2",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#d63d00",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Conférences et rencontres"
               >
-                CONFÉRENCES ET RENCONTRES
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  CONFÉRENCES ET RENCONTRES
+                </Text>
+              </View>
             </View>
             <View
-              accessibilityLabel="Catégorie Évènements en ligne"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              mobileMaxWidth="49%"
+              mobileMinWidth="40%"
               style={
                 [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "backgroundColor": "#dcf3f8",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#14a0be",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1.6,
-                      "height": 144,
-                      "justifyContent": "flex-end",
-                      "minHeight": 80,
-                      "overflow": "hidden",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 0,
-                      "maxWidth": "49%",
-                      "minWidth": "40%",
-                    },
-                  ],
                   {
-                    "opacity": 1,
+                    "display": "flex",
+                  },
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "maxWidth": "49%",
+                    "minWidth": "40%",
                   },
                 ]
               }
-              testID="Catégorie Évènements en ligne"
             >
-              <Text
-                numberOfLines={4}
-                style={
+              <View
+                accessibilityLabel="Catégorie Évènements en ligne"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                    "textAlign": "left",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "#dcf3f8",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#14a0be",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "height": 144,
+                        "justifyContent": "flex-end",
+                        "minHeight": 80,
+                        "overflow": "hidden",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                      {
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégorie Évènements en ligne"
               >
-                ÉVÈNEMENTS EN LIGNE
-              </Text>
+                <Text
+                  numberOfLines={4}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  ÉVÈNEMENTS EN LIGNE
+                </Text>
+              </View>
             </View>
           </View>
           <View

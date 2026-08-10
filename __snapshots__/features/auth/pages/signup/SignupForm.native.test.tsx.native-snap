@@ -3406,110 +3406,83 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 </Text>
               </View>
               <View
+                accessibilityRole="list"
                 display="vertical"
                 style={
                   {
                     "flexDirection": "column",
                     "flexWrap": "nowrap",
                     "gap": 16,
+                    "paddingLeft": 0,
                   }
                 }
                 variant="default"
               >
                 <View
-                  accessibilityLabel="Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "cursor": "pointer",
-                          "width": "100%",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
-                  testID="Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
                 >
                   <View
-                    style={
+                    accessibilityLabel="Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "columnGap": 12,
-                        "flexDirection": "row",
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "cursor": "pointer",
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Conditions et confidentialité - J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire"
                   >
                     <View
-                      disabled={false}
-                      isHover={false}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      state={
-                        [
-                          "default",
-                        ]
-                      }
                       style={
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 4,
-                          "borderBottomRightRadius": 4,
-                          "borderColor": "#90949d",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 4,
-                          "borderTopRightRadius": 4,
-                          "borderWidth": 2,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        }
-                      }
-                      variant="default"
-                    />
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "columnGap": 12,
+                          "flexDirection": "row",
                         }
                       }
                     >
-                      <Text
+                      <View
+                        disabled={false}
                         isHover={false}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
@@ -3520,124 +3493,132 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                         }
                         style={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="default"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
-                        J’ai lu et j’accepte les conditions générales d’utilisation
                         <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
                           style={
                             {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             }
                           }
                         >
-                           - obligatoire
+                          J’ai lu et j’accepte les conditions générales d’utilisation
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
+                            }
+                          >
+                             - obligatoire
+                          </Text>
                         </Text>
-                      </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire"
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "cursor": "pointer",
-                          "width": "100%",
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "display": "flex",
+                    }
                   }
-                  testID="Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire"
                 >
                   <View
-                    style={
+                    accessibilityLabel="Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
                       {
-                        "alignItems": "center",
-                        "columnGap": 12,
-                        "flexDirection": "row",
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "cursor": "pointer",
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Conditions et confidentialité - J’ai lu les chartes des données personnelles - obligatoire"
                   >
                     <View
-                      disabled={false}
-                      isHover={false}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      state={
-                        [
-                          "default",
-                        ]
-                      }
                       style={
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 4,
-                          "borderBottomRightRadius": 4,
-                          "borderColor": "#90949d",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 4,
-                          "borderTopRightRadius": 4,
-                          "borderWidth": 2,
-                          "height": 20,
-                          "justifyContent": "center",
-                          "width": 20,
-                        }
-                      }
-                      variant="default"
-                    />
-                    <View
-                      style={
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "columnGap": 12,
+                          "flexDirection": "row",
                         }
                       }
                     >
-                      <Text
+                      <View
+                        disabled={false}
                         isHover={false}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
@@ -3648,27 +3629,64 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                         }
                         style={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="default"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
-                        J’ai lu les chartes des données personnelles
                         <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
                           style={
                             {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
                             }
                           }
                         >
-                           - obligatoire
+                          J’ai lu les chartes des données personnelles
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              }
+                            }
+                          >
+                             - obligatoire
+                          </Text>
                         </Text>
-                      </Text>
+                      </View>
                     </View>
                   </View>
                 </View>

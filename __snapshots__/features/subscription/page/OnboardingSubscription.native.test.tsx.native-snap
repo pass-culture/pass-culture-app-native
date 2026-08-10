@@ -310,122 +310,95 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   </Text>
                 </View>
                 <View
+                  accessibilityRole="list"
                   display="vertical"
                   style={
                     {
                       "flexDirection": "column",
                       "flexWrap": "nowrap",
                       "gap": 8,
+                      "paddingLeft": 0,
                     }
                   }
                   variant="detailed"
                 >
                   <View
-                    accessibilityLabel="Choisis des thèmes à suivre - Cinéma"
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Choisis des thèmes à suivre - Cinéma"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Choisis des thèmes à suivre - Cinéma"
+                      accessibilityRole="checkbox"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Choisis des thèmes à suivre - Cinéma"
                     >
                       <View
-                        disabled={false}
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        state={
-                          [
-                            "default",
-                          ]
-                        }
                         style={
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="detailed"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        <Text
+                        <View
+                          disabled={false}
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -436,65 +409,102 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                             }
                           }
                         >
-                          Cinéma
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "justifyContent": "center",
-                          }
-                        }
-                      >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            state={
+                              [
+                                "default",
+                              ]
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Cinéma
+                          </Text>
+                        </View>
                         <View
-                          size="small"
                           style={
                             {
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "height": 32,
-                              "overflow": "hidden",
-                              "width": 32,
+                              "justifyContent": "center",
                             }
                           }
                         >
                           <View
-                            fillColor="decorative01"
+                            size="small"
                             style={
                               {
-                                "backgroundColor": "#ffeae2",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 32,
+                                "overflow": "hidden",
+                                "width": 32,
                               }
                             }
                           >
                             <View
-                              size="small"
+                              fillColor="decorative01"
                               style={
                                 {
-                                  "position": "absolute",
-                                  "top": -32,
+                                  "backgroundColor": "#ffeae2",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 }
                               }
                             >
                               <View
-                                fill="none"
-                                height={92}
-                                width={54}
+                                size="small"
+                                style={
+                                  {
+                                    "position": "absolute",
+                                    "top": -32,
+                                  }
+                                }
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  fill="none"
+                                  height={92}
+                                  width={54}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -503,111 +513,82 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Choisis des thèmes à suivre - Lecture"
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Choisis des thèmes à suivre - Lecture"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Choisis des thèmes à suivre - Lecture"
+                      accessibilityRole="checkbox"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Choisis des thèmes à suivre - Lecture"
                     >
                       <View
-                        disabled={false}
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        state={
-                          [
-                            "default",
-                          ]
-                        }
                         style={
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="detailed"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        <Text
+                        <View
+                          disabled={false}
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -618,65 +599,102 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                             }
                           }
                         >
-                          Lecture
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "justifyContent": "center",
-                          }
-                        }
-                      >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            state={
+                              [
+                                "default",
+                              ]
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Lecture
+                          </Text>
+                        </View>
                         <View
-                          size="small"
                           style={
                             {
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "height": 32,
-                              "overflow": "hidden",
-                              "width": 32,
+                              "justifyContent": "center",
                             }
                           }
                         >
                           <View
-                            fillColor="decorative05"
+                            size="small"
                             style={
                               {
-                                "backgroundColor": "#ffa5c0",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 32,
+                                "overflow": "hidden",
+                                "width": 32,
                               }
                             }
                           >
                             <View
-                              size="small"
+                              fillColor="decorative05"
                               style={
                                 {
-                                  "position": "absolute",
-                                  "top": -32,
+                                  "backgroundColor": "#ffa5c0",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 }
                               }
                             >
                               <View
-                                fill="none"
-                                height={92}
-                                width={54}
+                                size="small"
+                                style={
+                                  {
+                                    "position": "absolute",
+                                    "top": -32,
+                                  }
+                                }
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  fill="none"
+                                  height={92}
+                                  width={54}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -685,111 +703,82 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Choisis des thèmes à suivre - Musique"
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Choisis des thèmes à suivre - Musique"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Choisis des thèmes à suivre - Musique"
+                      accessibilityRole="checkbox"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Choisis des thèmes à suivre - Musique"
                     >
                       <View
-                        disabled={false}
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        state={
-                          [
-                            "default",
-                          ]
-                        }
                         style={
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="detailed"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        <Text
+                        <View
+                          disabled={false}
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -800,65 +789,102 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                             }
                           }
                         >
-                          Musique
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "justifyContent": "center",
-                          }
-                        }
-                      >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            state={
+                              [
+                                "default",
+                              ]
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Musique
+                          </Text>
+                        </View>
                         <View
-                          size="small"
                           style={
                             {
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "height": 32,
-                              "overflow": "hidden",
-                              "width": 32,
+                              "justifyContent": "center",
                             }
                           }
                         >
                           <View
-                            fillColor="decorative03"
+                            size="small"
                             style={
                               {
-                                "backgroundColor": "#94f0d6",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 32,
+                                "overflow": "hidden",
+                                "width": 32,
                               }
                             }
                           >
                             <View
-                              size="small"
+                              fillColor="decorative03"
                               style={
                                 {
-                                  "position": "absolute",
-                                  "top": -32,
+                                  "backgroundColor": "#94f0d6",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 }
                               }
                             >
                               <View
-                                fill="none"
-                                height={92}
-                                width={54}
+                                size="small"
+                                style={
+                                  {
+                                    "position": "absolute",
+                                    "top": -32,
+                                  }
+                                }
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  fill="none"
+                                  height={92}
+                                  width={54}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -867,111 +893,82 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Choisis des thèmes à suivre - Spectacles"
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Choisis des thèmes à suivre - Spectacles"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Choisis des thèmes à suivre - Spectacles"
+                      accessibilityRole="checkbox"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Choisis des thèmes à suivre - Spectacles"
                     >
                       <View
-                        disabled={false}
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        state={
-                          [
-                            "default",
-                          ]
-                        }
                         style={
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="detailed"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        <Text
+                        <View
+                          disabled={false}
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -982,65 +979,102 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                             }
                           }
                         >
-                          Spectacles
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "justifyContent": "center",
-                          }
-                        }
-                      >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            state={
+                              [
+                                "default",
+                              ]
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Spectacles
+                          </Text>
+                        </View>
                         <View
-                          size="small"
                           style={
                             {
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "height": 32,
-                              "overflow": "hidden",
-                              "width": 32,
+                              "justifyContent": "center",
                             }
                           }
                         >
                           <View
-                            fillColor="decorative05"
+                            size="small"
                             style={
                               {
-                                "backgroundColor": "#ffa5c0",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 32,
+                                "overflow": "hidden",
+                                "width": 32,
                               }
                             }
                           >
                             <View
-                              size="small"
+                              fillColor="decorative05"
                               style={
                                 {
-                                  "position": "absolute",
-                                  "top": -32,
+                                  "backgroundColor": "#ffa5c0",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 }
                               }
                             >
                               <View
-                                fill="none"
-                                height={92}
-                                width={54}
+                                size="small"
+                                style={
+                                  {
+                                    "position": "absolute",
+                                    "top": -32,
+                                  }
+                                }
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  fill="none"
+                                  height={92}
+                                  width={54}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -1049,111 +1083,82 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Choisis des thèmes à suivre - Activités créatives"
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Choisis des thèmes à suivre - Activités créatives"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Choisis des thèmes à suivre - Activités créatives"
+                      accessibilityRole="checkbox"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Choisis des thèmes à suivre - Activités créatives"
                     >
                       <View
-                        disabled={false}
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        state={
-                          [
-                            "default",
-                          ]
-                        }
                         style={
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="detailed"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        <Text
+                        <View
+                          disabled={false}
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -1164,65 +1169,102 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                             }
                           }
                         >
-                          Activités créatives
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "justifyContent": "center",
-                          }
-                        }
-                      >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            state={
+                              [
+                                "default",
+                              ]
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Activités créatives
+                          </Text>
+                        </View>
                         <View
-                          size="small"
                           style={
                             {
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "height": 32,
-                              "overflow": "hidden",
-                              "width": 32,
+                              "justifyContent": "center",
                             }
                           }
                         >
                           <View
-                            fillColor="decorative01"
+                            size="small"
                             style={
                               {
-                                "backgroundColor": "#ffeae2",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 32,
+                                "overflow": "hidden",
+                                "width": 32,
                               }
                             }
                           >
                             <View
-                              size="small"
+                              fillColor="decorative01"
                               style={
                                 {
-                                  "position": "absolute",
-                                  "top": -32,
+                                  "backgroundColor": "#ffeae2",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 }
                               }
                             >
                               <View
-                                fill="none"
-                                height={92}
-                                width={54}
+                                size="small"
+                                style={
+                                  {
+                                    "position": "absolute",
+                                    "top": -32,
+                                  }
+                                }
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  fill="none"
+                                  height={92}
+                                  width={54}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
@@ -1231,111 +1273,82 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Choisis des thèmes à suivre - Visites et sorties"
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "borderWidth": 1,
-                            "cursor": "pointer",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "display": "flex",
+                      }
                     }
-                    testID="Choisis des thèmes à suivre - Visites et sorties"
                   >
                     <View
-                      style={
+                      accessibilityLabel="Choisis des thèmes à suivre - Visites et sorties"
+                      accessibilityRole="checkbox"
+                      accessibilityState={
                         {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "width": "100%",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Choisis des thèmes à suivre - Visites et sorties"
                     >
                       <View
-                        disabled={false}
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        state={
-                          [
-                            "default",
-                          ]
-                        }
                         style={
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 4,
-                            "borderBottomRightRadius": 4,
-                            "borderColor": "#90949d",
-                            "borderStyle": "solid",
-                            "borderTopLeftRadius": 4,
-                            "borderTopRightRadius": 4,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="detailed"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
+                            "columnGap": 12,
+                            "flexDirection": "row",
                           }
                         }
                       >
-                        <Text
+                        <View
+                          disabled={false}
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -1346,65 +1359,102 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                           style={
                             {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderColor": "#90949d",
+                              "borderStyle": "solid",
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "borderWidth": 2,
+                              "height": 20,
+                              "justifyContent": "center",
+                              "width": 20,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                        <View
+                          style={
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                             }
                           }
                         >
-                          Visites et sorties
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          {
-                            "justifyContent": "center",
-                          }
-                        }
-                      >
+                          <Text
+                            isHover={false}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            state={
+                              [
+                                "default",
+                              ]
+                            }
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Visites et sorties
+                          </Text>
+                        </View>
                         <View
-                          size="small"
                           style={
                             {
-                              "borderBottomLeftRadius": 4,
-                              "borderBottomRightRadius": 4,
-                              "borderTopLeftRadius": 4,
-                              "borderTopRightRadius": 4,
-                              "height": 32,
-                              "overflow": "hidden",
-                              "width": 32,
+                              "justifyContent": "center",
                             }
                           }
                         >
                           <View
-                            fillColor="decorative03"
+                            size="small"
                             style={
                               {
-                                "backgroundColor": "#94f0d6",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 32,
+                                "overflow": "hidden",
+                                "width": 32,
                               }
                             }
                           >
                             <View
-                              size="small"
+                              fillColor="decorative03"
                               style={
                                 {
-                                  "position": "absolute",
-                                  "top": -32,
+                                  "backgroundColor": "#94f0d6",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 }
                               }
                             >
                               <View
-                                fill="none"
-                                height={92}
-                                width={54}
+                                size="small"
+                                style={
+                                  {
+                                    "position": "absolute",
+                                    "top": -32,
+                                  }
+                                }
                               >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
+                                <View
+                                  fill="none"
+                                  height={92}
+                                  width={54}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
