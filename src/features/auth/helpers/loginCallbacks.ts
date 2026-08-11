@@ -58,7 +58,7 @@ export const handleAccountState = async (
   fetchUserProfile: (
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<UserProfile, Error>>,
-  setErrorMessage: ((message: string) => void) | undefined
+  setErrorMessage?: ((message: string) => void) | undefined
 ) => {
   try {
     switch (accountState) {

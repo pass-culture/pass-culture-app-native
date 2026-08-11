@@ -1,6 +1,7 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import {
+  OAuthSigninRequestV2,
   RefreshRequestV2,
   RefreshResponseV2,
   SigninRequestV2,
@@ -19,6 +20,16 @@ export const postNativeV2Signin = (
   options: AxiosRequestConfig = {}
 ): Promise<AxiosResponse<SigninResponseV2>> =>
   apiClient.post('/native/v2/signin', body, { ...options, omitCredentials: true })
+
+export const postNativeV2OauthSSOProviderAuthorize = (
+  provider: string,
+  body: OAuthSigninRequestV2,
+  options: AxiosRequestConfig = {}
+): Promise<AxiosResponse<SigninResponseV2>> =>
+  apiClient.post(`/native/v2/oauth/${provider}/authorize`, body, {
+    ...options,
+    omitCredentials: true,
+  })
 
 export const getNativeV1Me = (
   options: AxiosRequestConfig = {}
