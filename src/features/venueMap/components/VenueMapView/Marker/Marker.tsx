@@ -15,23 +15,29 @@ interface MarkerProps extends MapMarkerProps {
   isSelected: boolean
   showLabel: boolean
 }
+
 export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerProps) => {
   return (
     <CustomMarker
-      image={{
-        uri: getActivityIconName(isSelected, venue.activity),
-      }}
       anchor={{ x: 0.5, y: showLabel ? 0.6 : 1 }}
       testID={`marker-${venue.venueId}${isSelected ? '-selected' : ''}`}
       zIndex={isSelected ? PIN_MAX_Z_INDEX : undefined}
       {...otherProps}>
+      <PinImage source={{ uri: getActivityIconName(isSelected, venue.activity) }} />
       {showLabel ? <VenueMapLabel venue={venue} /> : null}
     </CustomMarker>
   )
 }
 
 const CustomMarker = styled(MapMarker)({
+  alignItems: 'center',
   minWidth: MARKER_SIZE.width,
   height: MARKER_SIZE.height + LABEL_HEIGHT,
   width: 'auto',
+})
+
+const PinImage = styled.Image({
+  width: MARKER_SIZE.width,
+  height: MARKER_SIZE.height,
+  resizeMode: 'contain',
 })
