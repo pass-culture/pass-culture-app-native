@@ -1,7 +1,9 @@
 import React from 'react'
+import styled from 'styled-components/native'
 // eslint-disable-next-line no-restricted-imports
 
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
+import { MARKER_SIZE } from 'features/venueMap/constant'
 import { getClusterImage } from 'features/venueMap/helpers/venueMapCluster/getClusterImage'
 import { Marker } from 'libs/maps/maps'
 /**
@@ -30,7 +32,8 @@ export type VenueMapClusterProps = {
 }
 
 export const VenueMapCluster = ({ geometry, properties, onPress, color }: VenueMapClusterProps) => {
-  const points = properties.point_count
+  const imageName = getClusterImage(properties.point_count, color)
+
   return (
     <Marker
       key={properties.cluster_id}
@@ -38,10 +41,16 @@ export const VenueMapCluster = ({ geometry, properties, onPress, color }: VenueM
         longitude: geometry.coordinates[0],
         latitude: geometry.coordinates[1],
       }}
-      image={{ uri: getClusterImage(points, color) }}
-      style={{ zIndex: points + 1 }}
+      style={{ zIndex: properties.point_count + 1 }}
       onPress={onPress}
-      testID="venue-map-cluster"
-    />
+      testID="venue-map-cluster">
+      {imageName ? <ClusterImage source={{ uri: imageName }} /> : null}
+    </Marker>
   )
 }
+
+const ClusterImage = styled.Image({
+  width: MARKER_SIZE.width,
+  height: MARKER_SIZE.height,
+  resizeMode: 'contain',
+})
