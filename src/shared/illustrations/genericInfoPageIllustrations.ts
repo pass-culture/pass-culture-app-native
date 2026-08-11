@@ -13,6 +13,7 @@ const genericInfoPageIllustrationNames = [
   'mobileDeviceAndParameters',
   'questioningKnightLarge',
   'sculptureMagnifyingGlassPaperLarge',
+  'signingDocumentPaintingLarge',
   'stressedKnightLarge',
   'trashMosaic',
   'validStampMosaïcLarge',
@@ -38,6 +39,7 @@ export const genericInfoPageIllustrationUrls = {
   sculptureMagnifyingGlassPaperLarge: buildCategoryIllustrationUrl(
     'sculptureMagnifyingGlassPaperLarge.png'
   ),
+  signingDocumentPaintingLarge: buildCategoryIllustrationUrl('signingDocumentPaintingLarge.png'),
   stressedKnightLarge: buildCategoryIllustrationUrl('stressedKnightLarge.png'),
   trashMosaic: buildCategoryIllustrationUrl('trashMosaic.png'),
   validStampMosaïcLarge: buildCategoryIllustrationUrl('validStampMosaïcLarge.png'),
