@@ -213,7 +213,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                 Si tu as besoin d’aide n’hésite pas à :
               </Text>
               <View
-                accessibilityLabel="Consulter l’article d’aide"
+                accessibilityLabel="Consulter l’article d’aide - Lien externe"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -265,7 +265,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Consulter l’article d’aide"
+                testID="Consulter l’article d’aide - Lien externe"
               >
                 <View
                   gap={8}

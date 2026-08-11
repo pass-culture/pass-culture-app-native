@@ -255,7 +255,7 @@ describe('<BookingConfirmation />', () => {
     it('should render modal', async () => {
       render(<BookingConfirmation />)
 
-      expect(await screen.findByTestId('Donner mon avis')).toBeOnTheScreen()
+      expect(await screen.findByTestId('Donner mon avis - Lien externe')).toBeOnTheScreen()
     })
 
     it('should not render modal when user has already seen it', async () => {
@@ -263,7 +263,7 @@ describe('<BookingConfirmation />', () => {
 
       render(<BookingConfirmation />)
 
-      expect(screen.queryByTestId('Donner mon avis')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('Donner mon avis - Lien externe')).not.toBeOnTheScreen()
     })
   })
 })
