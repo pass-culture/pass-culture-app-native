@@ -3004,8 +3004,6 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               }
             >
               <Text
-                accessibilityLevel={2}
-                accessibilityRole="header"
                 style={
                   {
                     "color": "#696a6f",
@@ -3362,6 +3360,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {

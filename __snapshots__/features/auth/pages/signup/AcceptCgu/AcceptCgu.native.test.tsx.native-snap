@@ -35,8 +35,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         }
       >
         <Text
-          accessibilityLevel={2}
-          accessibilityRole="header"
           style={
             {
               "color": "#696a6f",
@@ -393,6 +391,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={2}
             accessibilityRole="header"
             style={
               {
@@ -857,8 +856,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         }
       >
         <Text
-          accessibilityLevel={2}
-          accessibilityRole="header"
           style={
             {
               "color": "#696a6f",
@@ -1215,6 +1212,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           }
         >
           <Text
+            accessibilityLevel={2}
             accessibilityRole="header"
             style={
               {
