@@ -7,6 +7,12 @@ on:
     branches:
       - PC-43062
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force hard build even if fingerprint already registered in Firestore'
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: poc-fingerprint-${{ github.ref }}
@@ -109,6 +115,7 @@ jobs:
         run: |
           bundle exec fastlane ios deploy_poc_fingerprint \
             firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" \
+            force:"${{ github.event.inputs.force || 'false' }}" \
             --env testing \
             --verbose
 
@@ -212,5 +219,6 @@ jobs:
         run: |
           bundle exec fastlane android deploy_poc_fingerprint \
             firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" \
+            force:"${{ github.event.inputs.force || 'false' }}" \
             --env testing \
             --verbose

@@ -24,6 +24,7 @@ jest.mock('@hot-updater/react-native', () => ({
     getBundleId: jest.fn(() => '0199a453-9467-7933-b6d7-6b1020cb5b25'),
     getChannel: jest.fn(() => 'production'),
     getAppVersion: jest.fn(() => '1.0.0'),
+    getFingerprintHash: jest.fn(() => 'fingerprint-hash'),
     reload: jest.fn(),
     runUpdateProcess: jest.fn(),
   },
@@ -48,6 +49,8 @@ describe('<CheatcodesScreenDebugInformations/>', () => {
     expect(screen.getByText('Bundle ID: 0199a453-9467-7933-b6d7-6b1020cb5b25')).toBeOnTheScreen()
     expect(screen.getByText('Channel: production')).toBeOnTheScreen()
     expect(screen.getByText('App Version: 1.0.0')).toBeOnTheScreen()
+    expect(screen.getByText('Fingerprint: fingerprint-hash')).toBeOnTheScreen()
+    expect(screen.getByText('Lookup hard build (Firestore)')).toBeOnTheScreen()
   })
 
   it('should call installationID and display it', async () => {

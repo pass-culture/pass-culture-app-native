@@ -1,0 +1,7 @@
+# Required Firestore rules for the POC hardBuilds registry (pc-native-testing).
+# Merge into the project's firestore.rules (file not versioned in this repo today).
+#
+# match /hardBuilds/{docId} {
+#   allow read: if true; // or authenticated testers only
+#   allow write: if false; // CI service account bypasses rules via Admin SDK
+# }

@@ -1,10 +1,12 @@
 import { HotUpdater } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Alert, Button } from 'react-native'
+import { Alert, Button, Linking, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { CrashTestButton } from 'cheatcodes/components/CrashTestButton'
+import { getHardBuildByFingerprint } from 'libs/firebase/firestore/hardBuilds/getHardBuildByFingerprint'
+import { HardBuild } from 'libs/firebase/firestore/hardBuilds/types'
 import { decodeToken } from 'libs/jwt/jwt'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { BatchUser } from 'libs/react-native-batch'
@@ -53,7 +55,10 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
   const [userEmail, setUserEmail] = useState('')
   const [userId, setUserId] = useState<null | number>(null)
   const [updateStatus, setUpdateStatus] = useState<string | null>(null)
+  const [hardBuild, setHardBuild] = useState<HardBuild | null | undefined>(undefined)
   const bundleId = HotUpdater.getBundleId()
+  const fingerprintHash = HotUpdater.getFingerprintHash()
+  const hardBuildPlatform = Platform.OS === 'ios' ? 'ios' : 'android'
 
   useEffect(() => {
     void getBatchInstallationID().then(setBatchInstallationId)
@@ -85,6 +90,25 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
     }
   }
 
+  const handleLookupHardBuild = async () => {
+    if (!fingerprintHash) {
+      setHardBuild(null)
+      return
+    }
+    const result = await getHardBuildByFingerprint({
+      platform: hardBuildPlatform,
+      fingerprint: fingerprintHash,
+    })
+    setHardBuild(result)
+  }
+
+  const handleOpenHardBuildTestingUri = async () => {
+    if (!hardBuild?.testingUri) {
+      return
+    }
+    await Linking.openURL(hardBuild.testingUri)
+  }
+
   const setOldToken = async () => {
     await storage.saveString('access_token', oldAccesstoken)
   }
@@ -111,9 +135,26 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
           <Typo.Body>Bundle ID: {bundleId ?? 'unknown'}</Typo.Body>
           <Typo.Body>Channel: {HotUpdater.getChannel()}</Typo.Body>
           <Typo.Body>App Version: {HotUpdater.getAppVersion()}</Typo.Body>
+          <Typo.Body>Fingerprint: {fingerprintHash ?? 'unknown'}</Typo.Body>
           <Button title="Reload" onPress={() => HotUpdater.reload()} />
           <Button title="Check for App Update" onPress={handleCheckForAppUpdate} />
           <Typo.Body>Update Status: {updateStatus ?? 'unknown'}</Typo.Body>
+          <Separator.Horizontal />
+          <Typo.Title4>HARD BUILD REGISTRY</Typo.Title4>
+          <Button title="Lookup hard build (Firestore)" onPress={handleLookupHardBuild} />
+          <Typo.Body>
+            Hard build:{' '}
+            {hardBuild === undefined
+              ? 'not loaded'
+              : hardBuild === null
+                ? 'not found'
+                : hardBuild.testingUri}
+          </Typo.Body>
+          <Button
+            title="Open App Distribution testingUri"
+            onPress={handleOpenHardBuildTestingUri}
+            disabled={!hardBuild?.testingUri}
+          />
         </StyledViewGap>
       }
     />

@@ -1,11 +1,44 @@
 fastlane_require 'dotenv'
 fastlane_require 'spaceship'
+require 'json'
+require 'shellwords'
+
 release_notes_command = "git log HEAD --pretty=format:\"%s\" -1"
 
 import("FastfileConfig")
 import("FastfileCheck")
 import("FastfileEnvironment")
 import("FastfileIOSSigning")
+
+def hard_builds_fingerprint_script
+  "yarn ts-node --transpile-only scripts/hardBuildsFingerprint.ts"
+end
+
+def hard_build_already_registered?(platform:, fingerprint:)
+  output = sh(
+    "cd .. && #{hard_builds_fingerprint_script} exists --platform #{platform} --fingerprint #{Shellwords.escape(fingerprint)}",
+    log: true
+  )
+  JSON.parse(output.lines.last)["exists"] == true
+end
+
+def register_hard_build(platform:, fingerprint:, testing_uri:, firebase_console_uri:, force: false)
+  package = load_json(json_path: "package.json")
+  force_flag = force ? ' --force' : ''
+  sh(
+    [
+      "cd .. && #{hard_builds_fingerprint_script} register",
+      "--platform #{platform}",
+      "--fingerprint #{Shellwords.escape(fingerprint)}",
+      "--testing-uri #{Shellwords.escape(testing_uri)}",
+      "--firebase-console-uri #{Shellwords.escape(firebase_console_uri.to_s)}",
+      "--env #{Shellwords.escape(ENV['ENV'].to_s)}",
+      "--version #{Shellwords.escape(package['version'].to_s)}",
+      "--build-number #{Shellwords.escape(package['build'].to_s)}",
+    ].join(' ') + force_flag,
+    log: true
+  )
+end
 
 # iOS
 
@@ -53,11 +86,19 @@ platform :ios do
 
   # POC fingerprint preview: hard build + upload only to the poc-fingerprint App Distribution group.
   # Does not notify the usual tester groups (devs, pms, designers, qa).
+  # Registers the native build in Firestore hardBuilds/{platform}_{fingerprint}.
   lane :deploy_poc_fingerprint do |options|
     sh "cd .. && yarn hotupdater:fingerprint"
 
     fingerprint = JSON.parse(File.read("../fingerprint.json"))
     fingerprint_hash = fingerprint.dig("ios", "hash")
+    force = options[:force].to_s == 'true' || options[:force] == true
+
+    if !force && hard_build_already_registered?(platform: 'ios', fingerprint: fingerprint_hash)
+      UI.success("POC fingerprint iOS skipped: hard build already registered for #{fingerprint_hash}")
+      next
+    end
+
     release_notes_text = [
       %x[#{release_notes_command}].strip,
       "fingerprint=#{fingerprint_hash}",
@@ -76,6 +117,14 @@ platform :ios do
       ipa_path: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
       service_credentials_file: options[:firebase_token],
       groups: "poc-fingerprint"
+    )
+
+    register_hard_build(
+      platform: 'ios',
+      fingerprint: fingerprint_hash,
+      testing_uri: release[:testingUri],
+      firebase_console_uri: release[:firebaseConsoleUri],
+      force: force
     )
 
     UI.success("POC fingerprint iOS")
@@ -157,11 +206,19 @@ platform :android do
 
   # POC fingerprint preview: hard build + upload only to the poc-fingerprint App Distribution group.
   # Does not notify the usual tester groups (devs, pms, designers, qa).
+  # Registers the native build in Firestore hardBuilds/{platform}_{fingerprint}.
   lane :deploy_poc_fingerprint do |options|
     sh "cd .. && yarn hotupdater:fingerprint"
 
     fingerprint = JSON.parse(File.read("../fingerprint.json"))
     fingerprint_hash = fingerprint.dig("android", "hash")
+    force = options[:force].to_s == 'true' || options[:force] == true
+
+    if !force && hard_build_already_registered?(platform: 'android', fingerprint: fingerprint_hash)
+      UI.success("POC fingerprint Android skipped: hard build already registered for #{fingerprint_hash}")
+      next
+    end
+
     release_notes_text = [
       %x[#{release_notes_command}].strip,
       "fingerprint=#{fingerprint_hash}",
@@ -176,6 +233,14 @@ platform :android do
       service_credentials_file: options[:firebase_token],
       groups: "poc-fingerprint",
       release_notes: release_notes_text
+    )
+
+    register_hard_build(
+      platform: 'android',
+      fingerprint: fingerprint_hash,
+      testing_uri: release[:testingUri],
+      firebase_console_uri: release[:firebaseConsoleUri],
+      force: force
     )
 
     UI.success("POC fingerprint Android")

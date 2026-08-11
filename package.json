@@ -37,6 +37,8 @@
     "hotupdater:fingerprint": "hot-updater fingerprint create",
     "hotupdater:deploy:ios:testing": "yarn hotupdater:fingerprint && NODE_ENV=testing yarn hot-updater deploy -p ios",
     "hotupdater:deploy:android:testing": "yarn hotupdater:fingerprint && NODE_ENV=testing yarn hot-updater deploy -p android",
+    "hardBuilds:exists": "ts-node --transpile-only scripts/hardBuildsFingerprint.ts exists",
+    "hardBuilds:register": "ts-node --transpile-only scripts/hardBuildsFingerprint.ts register",
     "preios": "./scripts/check_xcode_version.sh",
     "ios": "yarn preios && CC=\"$(xcrun --find clang)\" CXX=\"$(xcrun --find clang++)\" react-native run-ios \"$@\" && yarn postios",
     "postios": "./scripts/add_certificate_to_ios_simulator.sh",
