@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { v4 as uuidv4 } from 'uuid'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
@@ -29,6 +30,8 @@ import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAt
 type BirthdayForm = {
   birthdate: Date
 }
+
+const titleId = uuidv4()
 
 export const BonificationBirthDate = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -74,7 +77,7 @@ export const BonificationBirthDate = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 3 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>
+            <Typo.Title3 id={titleId} {...getTextSemanticAttrs(2)}>
               Quelle est la date de naissance de ton représentant légal&nbsp;?
             </Typo.Title3>
 
@@ -83,6 +86,7 @@ export const BonificationBirthDate = () => {
               name="birthdate"
               render={({ field: { value, onChange }, formState: { errors } }) => (
                 <DateInput
+                  label={titleId}
                   onChange={onChange}
                   date={value}
                   errorMessage={
