@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OAuthSigninRequestV2, SigninRequest } from 'api/gen'
+import { OAuthSigninRequestV2, SigninRequest, SigninRequestV2 } from 'api/gen'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export enum Provider {
@@ -60,6 +60,7 @@ type OAuthLoginRequest = Omit<OAuthSigninRequestV2, 'deviceInfo'> & {
   provider: Provider.GOOGLE | Provider.APPLE
 }
 export type LoginRequest = SigninRequest | OAuthLoginRequest
+export type LoginRequestV2 = Omit<SigninRequestV2, 'deviceInfo'>
 
 export const isOAuthLoginRequest = (req: LoginRequest): req is OAuthLoginRequest =>
   'provider' in req
