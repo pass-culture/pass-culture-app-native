@@ -138,65 +138,73 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
             isVisible={isDoingReCaptchaChallenge}
           />
         ) : null}
-        <CheckboxGroup<string>
-          label="Conditions et confidentialité"
-          labelTag="h3"
-          labelTagOverrideForAccessibility={2}
-          options={checkboxOptions}
-          value={selectedValues}
-          onChange={setSelectedValues}
-        />
-        <Container gap={5}>
-          <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
-          <ExternalTouchableLink
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            wording="Conditions Générales d’Utilisation"
-            externalNav={{ url: env.CGU_LINK }}
-            icon={ExternalSiteFilled}
-            numberOfLines={numberOfLines}
+
+        <ReverseOrderContainer>
+          <Container gap={5}>
+            <CaptionNeutralInfo>
+              En cochant ces 2 cases tu assures avoir lu&nbsp;:
+            </CaptionNeutralInfo>
+            <ExternalTouchableLink
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              wording="Conditions Générales d’Utilisation"
+              externalNav={{ url: env.CGU_LINK }}
+              icon={ExternalSiteFilled}
+              numberOfLines={numberOfLines}
+            />
+            <ExternalTouchableLink
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              wording="Charte des données personnelles"
+              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+              icon={ExternalSiteFilled}
+              numberOfLines={numberOfLines}
+            />
+            <ExternalTouchableLink
+              as={Button}
+              variant="tertiary"
+              color="neutral"
+              wording="Charte d’utilisation et de bonne conduite"
+              externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+              icon={ExternalSiteFilled}
+              numberOfLines={numberOfLines}
+            />
+          </Container>
+
+          <CheckboxGroup<string>
+            label="Conditions et confidentialité"
+            labelTag="h3"
+            labelTagOverrideForAccessibility={2}
+            options={checkboxOptions}
+            value={selectedValues}
+            onChange={setSelectedValues}
           />
-          <ExternalTouchableLink
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            wording="Charte des données personnelles"
-            externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-            icon={ExternalSiteFilled}
-            numberOfLines={numberOfLines}
-          />
-          <ExternalTouchableLink
-            as={Button}
-            variant="tertiary"
-            color="neutral"
-            wording="Charte d’utilisation et de bonne conduite"
-            externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
-            icon={ExternalSiteFilled}
-            numberOfLines={numberOfLines}
-          />
-        </Container>
-        <ButtonContainer>
-          <Button
-            fullWidth
-            wording="S’inscrire"
-            accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
-            // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
-            // Cf. backend logic for token validation
-            onPress={onSubmit}
-            isLoading={isDoingReCaptchaChallenge || isFetching}
-            disabled={disabled}
-            accessibilityHint={
-              errorMessage ? `${errorMessage} - ${PRIVACY_NOTICE_TEXT}` : PRIVACY_NOTICE_TEXT
-            }
-          />
-        </ButtonContainer>
-        <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
-        <BottomContainer>
-          <CaptionNeutralInfo {...hiddenFromScreenReader()}>
-            {PRIVACY_NOTICE_TEXT}
-          </CaptionNeutralInfo>
-        </BottomContainer>
+        </ReverseOrderContainer>
+        <ReverseOrderContainer>
+          <BottomContainer>
+            <CaptionNeutralInfo {...hiddenFromScreenReader()}>
+              {PRIVACY_NOTICE_TEXT}
+            </CaptionNeutralInfo>
+          </BottomContainer>
+          <ButtonContainer>
+            <Button
+              fullWidth
+              wording="S’inscrire"
+              accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+              // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+              // Cf. backend logic for token validation
+              onPress={onSubmit}
+              isLoading={isDoingReCaptchaChallenge || isFetching}
+              disabled={disabled}
+              accessibilityHint={
+                errorMessage ? `${errorMessage} - ${PRIVACY_NOTICE_TEXT}` : PRIVACY_NOTICE_TEXT
+              }
+            />
+          </ButtonContainer>
+          <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
+        </ReverseOrderContainer>
       </Form.MaxWidth>
     </SetContainer>
   )
@@ -218,3 +226,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
   alignItems: 'flex-start',
 }))
+
+const ReverseOrderContainer = styled.View({
+  flexDirection: 'column-reverse',
+})
