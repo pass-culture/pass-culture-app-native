@@ -10,6 +10,7 @@ import { ProfileStackParamList } from 'features/navigation/navigators/ProfileSta
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 type useEmailUpdateStatusMock = ReturnType<
@@ -59,6 +60,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SuspendAccountConfirmation />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('should navigate to home', () => {
     it('When there is no email change', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({

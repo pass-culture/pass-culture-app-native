@@ -4,6 +4,7 @@ const genericInfoPageIllustrationNames = [
   'birthdayCake',
   'blockedPaintingLarge',
   'brokenDinosaurSkeletonLarge',
+  'cryingManPaintingLarge',
   'disconnectedCableStickManLarge',
   'emptyDigitalWindowLarge',
   'emptyWalletLarge',
@@ -24,6 +25,7 @@ export const genericInfoPageIllustrationUrls = {
   birthdayCake: buildCategoryIllustrationUrl('birthdayCake.png'),
   blockedPaintingLarge: buildCategoryIllustrationUrl('blockedPaintingLarge.png'),
   brokenDinosaurSkeletonLarge: buildCategoryIllustrationUrl('brokenDinosaurSkeletonLarge.png'),
+  cryingManPaintingLarge: buildCategoryIllustrationUrl('cryingManPaintingLarge.png'),
   disconnectedCableStickManLarge: buildCategoryIllustrationUrl(
     'disconnectedCableStickManLarge.png'
   ),
