@@ -127,6 +127,7 @@ exports[`PushNotificationsModal should render properly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             nativeID="testUuidV4"
             style={

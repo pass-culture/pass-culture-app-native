@@ -8,7 +8,7 @@ import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { NewCategoryButton } from 'shared/categoryButton/NewCategoryButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   sortedCategories: ListCategoryButtonProps
@@ -135,7 +135,7 @@ const CategoriesButtonsContainer = styled.View(({ theme }) => ({
 
 const CategoriesTitleV2 = styled(Typo.Title4).attrs({
   children: 'Parcours les catégories',
-  ...getHeadingAttrs(2),
+  ...getTextSemanticAttrs(2),
 })(({ theme }) => ({
   width: '100%',
   marginTop: theme.designSystem.size.spacing.l,

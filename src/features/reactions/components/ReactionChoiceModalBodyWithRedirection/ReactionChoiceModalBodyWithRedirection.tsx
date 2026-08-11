@@ -8,7 +8,7 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MultipleThumbs } from 'ui/svg/icons/MultipleThumbs'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   offerImages: OfferImageBasicProps[]
@@ -44,7 +44,7 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
         </ThumbsImageContainer>
       )}
 
-      <StyledTitle3 {...getHeadingAttrs(2)}>
+      <StyledTitle3 {...getTextSemanticAttrs(2)}>
         Qu’as-tu pensé de tes dernières réservations&nbsp;?
       </StyledTitle3>
     </Container>

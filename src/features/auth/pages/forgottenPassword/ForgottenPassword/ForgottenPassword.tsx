@@ -9,7 +9,7 @@ import { Form } from 'ui/components/Form'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const ForgottenPassword = () => {
   const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useIsRecaptchaEnabled()
@@ -43,7 +43,7 @@ export const ForgottenPassword = () => {
               isVisible={isDoingReCaptchaChallenge}
             />
           ) : null}
-          <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
           <Container>
             <Typo.Body>
               Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton

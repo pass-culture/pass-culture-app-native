@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const TicketCodeTitle = ({
   accessibilityLabel,
@@ -20,7 +20,7 @@ export const TicketCodeTitle = ({
   </StyledTouchable>
 )
 
-const StyledTitle = styled(Typo.Title4).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const StyledTitle = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
 }))
 

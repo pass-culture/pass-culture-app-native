@@ -18,7 +18,7 @@ import {
 } from 'ui/designSystem/CheckboxGroup/types'
 import { SelectableVariant } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const CheckboxGroup = <T extends string = string>({
   label,
@@ -59,7 +59,7 @@ export const CheckboxGroup = <T extends string = string>({
   }
 
   const headingAttrs = labelTagOverrideForAccessibility
-    ? getHeadingAttrs(labelTagOverrideForAccessibility)
+    ? getTextSemanticAttrs(labelTagOverrideForAccessibility)
     : {}
 
   return (

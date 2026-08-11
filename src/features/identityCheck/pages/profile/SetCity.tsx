@@ -15,7 +15,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export type CityForm = { city: SuggestedCity }
 
@@ -78,7 +78,7 @@ export const SetCity = () => {
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <ViewGap gap={5}>
-          <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
           <Controller
             control={control}
             name="city"

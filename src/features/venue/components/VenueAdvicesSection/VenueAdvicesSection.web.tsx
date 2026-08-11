@@ -15,7 +15,7 @@ import { TagVariant } from 'ui/designSystem/Tag/types'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Show } from 'ui/svg/icons/Show'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   venue: VenueResponse
@@ -44,7 +44,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   const TitleContent = (
     <Row>
       <StyledTitle3
-        {...getHeadingAttrs(3)}
+        {...getTextSemanticAttrs(3)}
         numberOfLines={2}
         enableNewTagProAdvices={enableNewTagProAdvices}>
         {`Les avis par “${venue.name}”`}

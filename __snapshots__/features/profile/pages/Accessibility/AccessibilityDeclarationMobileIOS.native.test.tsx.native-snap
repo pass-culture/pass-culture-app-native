@@ -162,6 +162,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -319,6 +320,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -368,6 +370,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -455,6 +458,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -480,6 +484,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -725,6 +730,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -750,6 +756,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 Aucune
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -961,6 +968,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1139,6 +1147,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1166,6 +1175,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 Cette déclaration a été établie le lundi 8 décembre 2025.
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1356,6 +1366,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1625,6 +1636,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1715,6 +1727,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {

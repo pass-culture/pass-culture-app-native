@@ -162,6 +162,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -264,6 +265,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   <Styled(Styled(SadFaceSvg)) />
                   <Styled(View)>
                     <Styled(Text)
+                      accessibilityLevel={1}
                       accessibilityRole="header"
                     >
                       Pourquoi souhaites-tu supprimer ton compte ?
@@ -408,6 +410,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel={1}
                         accessibilityRole="header"
                         style={
                           {

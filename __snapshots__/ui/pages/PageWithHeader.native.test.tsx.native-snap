@@ -162,6 +162,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -504,6 +505,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={

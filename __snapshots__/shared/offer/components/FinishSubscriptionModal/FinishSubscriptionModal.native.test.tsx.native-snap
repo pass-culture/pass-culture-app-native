@@ -174,6 +174,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -674,6 +675,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -1174,6 +1176,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
