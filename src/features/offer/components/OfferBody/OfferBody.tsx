@@ -147,10 +147,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     <Container>
       <MarginContainer gap={6}>
         <GroupWithoutGap>
-          <ViewGap gap={4}>
-            <GroupTags tags={tags} />
+          <ReverseOrderContainer gap={4}>
             <OfferTitle offerName={offer.name} />
-          </ViewGap>
+            <GroupTags tags={tags} />
+          </ReverseOrderContainer>
         </GroupWithoutGap>
 
         {prices.length > 0 ? (
@@ -284,4 +284,8 @@ const GroupWithSeparator = ({
 const VideoThumbnailImage = styled(FastImage)({
   width: '100%',
   height: '100%',
+})
+
+const ReverseOrderContainer = styled(ViewGap)({
+  flexDirection: 'column-reverse',
 })
