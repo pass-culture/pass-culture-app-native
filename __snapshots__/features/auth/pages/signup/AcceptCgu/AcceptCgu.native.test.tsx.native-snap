@@ -378,6 +378,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         </View>
       </View>
       <View
+        accessibilityLabelledBy="testUuidV4"
         accessibilityRole="none"
       >
         <View
@@ -393,6 +394,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           <Text
             accessibilityLevel={2}
             accessibilityRole="header"
+            id="testUuidV4"
             style={
               {
                 "color": "#161617",
@@ -1199,6 +1201,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         </View>
       </View>
       <View
+        accessibilityLabelledBy="testUuidV4"
         accessibilityRole="none"
       >
         <View
@@ -1214,6 +1217,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           <Text
             accessibilityLevel={2}
             accessibilityRole="header"
+            id="testUuidV4"
             style={
               {
                 "color": "#161617",
