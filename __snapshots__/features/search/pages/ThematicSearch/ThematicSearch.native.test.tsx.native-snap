@@ -1934,8 +1934,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   }
                 >
                   <View
-                    accessibilityRole="none"
                     noMargin={true}
+                    role="status"
                     style={
                       {
                         "marginBottom": 0,

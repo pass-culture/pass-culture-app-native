@@ -7,6 +7,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
+import { LiveRegion } from 'ui/components/accessibility/LiveRegion'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PasswordRule } from 'ui/designSystem/PasswordInput/components/PasswordRule'
@@ -15,6 +16,7 @@ import {
   getPasswordRulesAccessibilityLabel,
   DISPLAYED_PASSWORD_RULES,
 } from 'ui/designSystem/PasswordInput/helpers'
+import { usePasswordRulesAnnouncement } from 'ui/designSystem/PasswordInput/usePasswordRulesAnnouncement'
 
 type Props = {
   password: string
@@ -23,11 +25,13 @@ type Props = {
 
 export const PasswordRules: FunctionComponent<Props> = ({ password, visible }) => {
   const hiddenAccessibleText = getPasswordRulesAccessibilityLabel(password)
+  const announcement = usePasswordRulesAnnouncement(password)
 
   if (visible)
     return (
       <React.Fragment>
         <HiddenAccessibleText displayBlock>{hiddenAccessibleText}</HiddenAccessibleText>
+        <LiveRegion announcement={announcement} />
         <RulesContainer {...hiddenFromScreenReader()} gap={1}>
           {DISPLAYED_PASSWORD_RULES.map((rule) => (
             <PasswordRule

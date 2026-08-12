@@ -253,8 +253,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
             }
           >
             <View
-              accessibilityRole="none"
               noMargin={false}
+              role="status"
               style={
                 {
                   "marginBottom": 16,

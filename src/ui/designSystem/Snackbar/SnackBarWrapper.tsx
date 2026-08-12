@@ -8,19 +8,33 @@ import Animated, { LinearTransition } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styled, useTheme } from 'styled-components/native'
 
+import { LiveRegion } from 'ui/components/accessibility/LiveRegion'
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
-import { useSnackbarProps } from 'ui/designSystem/Snackbar/snackBar.store'
+import {
+  useLastSnackbarAnnouncement,
+  useSnackbarProps,
+} from 'ui/designSystem/Snackbar/snackBar.store'
 
 const DESKTOP_BOTTOM_OFFSET = 72
 
 export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { isDesktopViewport } = useTheme()
   const snackbarsProps = useSnackbarProps()
+  const lastAnnouncement = useLastSnackbarAnnouncement()
   const { top } = useSafeAreaInsets()
   const hasSnackbar = snackbarsProps.length > 0
 
   return (
     <React.Fragment>
+      {/* Always mounted so screen readers pick up the region before any message arrives */}
+      <LiveRegion
+        politeness="polite"
+        announcement={lastAnnouncement?.type === 'success' ? lastAnnouncement : undefined}
+      />
+      <LiveRegion
+        politeness="assertive"
+        announcement={lastAnnouncement?.type === 'error' ? lastAnnouncement : undefined}
+      />
       {hasSnackbar ? (
         <Container top={top} pointerEvents="box-none" accessibilityViewIsModal>
           {snackbarsProps.map(
@@ -42,8 +56,6 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
               <Animated.View
                 pointerEvents="box-none"
                 accessible
-                accessibilityRole="alert"
-                accessibilityLiveRegion="assertive"
                 accessibilityLabel={accessibilityLabel}
                 accessibilityHint={accessibilityHint}
                 accessibilityActions={accessibilityActions}

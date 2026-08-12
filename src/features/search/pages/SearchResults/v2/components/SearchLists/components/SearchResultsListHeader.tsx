@@ -8,7 +8,6 @@ import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { FetchSearchResultsArgs, GridListLayout } from 'features/search/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
@@ -84,10 +83,7 @@ export const SearchResultsListHeader: React.FC<SearchListHeaderProps> = ({
         />
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
-        <BannerOfferNotPresentContainer
-          testID="banner-container"
-          accessibilityRole={AccessibilityRole.STATUS}
-          nbHits={nbHits}>
+        <BannerOfferNotPresentContainer testID="banner-container" role="status" nbHits={nbHits}>
           <Banner label={unavailableOfferMessage} Icon={Error} />
         </BannerOfferNotPresentContainer>
       ) : null}
