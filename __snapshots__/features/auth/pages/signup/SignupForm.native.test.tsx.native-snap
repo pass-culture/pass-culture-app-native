@@ -1731,6 +1731,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           <Text
             accessibilityLevel={2}
             accessibilityRole="header"
+            id="testUuidV4"
             style={
               {
                 "color": "#161617",

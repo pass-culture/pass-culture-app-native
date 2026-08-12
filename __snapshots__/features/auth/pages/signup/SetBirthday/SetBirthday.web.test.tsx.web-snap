@@ -177,6 +177,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
     >
       <h2
         class="c1"
+        id="testUuidV4"
       >
         Renseigne ta date de naissance
       </h2>
@@ -213,8 +214,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           </div>
         </div>
         <div
+          aria-labelledby="testUuidV4"
           class="css-view-175oi2r r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           data-testid="date-picker-dropdown"
+          role="group"
         >
           <div
             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -1526,6 +1529,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
     >
       <h2
         class="c1"
+        id="testUuidV4"
       >
         Renseigne ta date de naissance
       </h2>

@@ -4,9 +4,10 @@ import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/Da
 
 interface Props {
   onChange: (date: Date | undefined) => void
+  label?: string
 }
 
-export function DateChoice({ onChange }: Props) {
+export function DateChoice({ onChange, label }: Props) {
   const [date, setDate] = React.useState<Date | undefined>()
   const onDateChange = (date: Date | undefined) => {
     onChange(date)
@@ -20,6 +21,7 @@ export function DateChoice({ onChange }: Props) {
       minimumDate={now}
       date={date}
       onChange={onDateChange}
+      label={label}
     />
   )
 }

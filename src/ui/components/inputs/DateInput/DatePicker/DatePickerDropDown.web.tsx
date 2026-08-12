@@ -7,6 +7,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 
 export type DatePickerDropDownProps = Omit<DatePickerProps, 'date'> & {
   date?: Date
+  label?: string
 }
 
 export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
@@ -15,6 +16,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
   minimumDate,
   maximumDate,
   errorMessage,
+  label,
 }) => {
   return (
     <React.Fragment>
@@ -24,6 +26,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
         minimumDate={minimumDate}
         maximumDate={maximumDate}
         errorMessage={errorMessage}
+        label={label}
       />
       <InputErrorContainer errorMessage={!!errorMessage}>
         <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={2} />
