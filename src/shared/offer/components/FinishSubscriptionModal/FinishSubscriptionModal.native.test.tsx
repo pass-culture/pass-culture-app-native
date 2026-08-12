@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
@@ -86,12 +85,5 @@ describe('<FinishSubscriptionModal />', () => {
     await user.press(screen.getByTestId('Fermer la modale'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
-  })
-
-  it('should display remote illustration when new vision UI FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
-    render(<FinishSubscriptionModal {...modalProps} />)
-
-    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

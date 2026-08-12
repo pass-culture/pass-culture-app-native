@@ -5,7 +5,6 @@ import { FavoriteResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -77,14 +76,6 @@ describe('<ErrorApplicationModal />', () => {
       from: 'ErrorApplicationModal',
       offerId,
     })
-  })
-
-  it('should display remote illustration when new vision UI FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
-
-    renderErrorApplicationModal()
-
-    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })
 

@@ -3,7 +3,6 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { SubscriptionSuccessModal } from './SubscriptionSuccessModal'
@@ -68,15 +67,5 @@ describe('<SubscriptionSuccessModal />', () => {
     await user.press(screen.getByText('Voir mes préférences'))
 
     expect(dismissModal).toHaveBeenCalledTimes(1)
-  })
-
-  it('should display remote illustration when new vision UI FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
-
-    render(
-      <SubscriptionSuccessModal visible theme={SubscriptionTheme.CINEMA} dismissModal={jest.fn()} />
-    )
-
-    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

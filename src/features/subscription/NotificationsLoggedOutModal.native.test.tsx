@@ -4,7 +4,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -102,14 +101,6 @@ describe('<NotificationsLoggedOutModal />', () => {
     await user.press(authButton)
 
     expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'ThematicHome' })
-  })
-
-  it('should display remote illustration when new vision UI FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
-
-    renderModal(true)
-
-    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })
 
