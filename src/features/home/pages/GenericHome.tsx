@@ -99,10 +99,10 @@ const FooterComponent = ({
 }) => {
   if (hasShownAll && Platform.OS === 'web') {
     return (
-      <FooterContainer>
+      <StyledFooter>
         <AccessibilityFooter withHorizontalMargin />
         <Spacer.TabBar />
-      </FooterContainer>
+      </StyledFooter>
     )
   }
   if (!hasShownAll) {
@@ -120,6 +120,11 @@ const FooterComponent = ({
     </SpacerTabBarContainer>
   )
 }
+
+const StyledFooter = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.s,
+  paddingBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
 const SpacerTabBarContainer = styled.View<{ isLandscape: boolean }>(({ isLandscape, theme }) => ({
   marginBottom: isLandscape
@@ -291,6 +296,29 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     [Header, HomeBanner]
   )
 
+  const renderMainContent = () => (
+    <MainContainer accessibilityRole={AccessibilityRole.MAIN}>
+      <FlatListContainer
+        ref={scrollRef}
+        testID="homeBodyScrollView"
+        onScroll={onScroll}
+        data={modulesToDisplayHandlingVideoCarousel}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        windowSize={5}
+        maxToRenderPerBatch={maxToRenderPerBatch}
+        ListHeaderComponent={ListHeader}
+        ListHeaderComponentStyle={flatListHeaderStyle}
+        initialNumToRender={initialNumToRender}
+        updateCellsBatchingPeriod={200}
+        removeClippedSubviews={false}
+        onContentSizeChange={onContentSizeChange}
+        scrollEventThrottle={16}
+        bounces
+      />
+    </MainContainer>
+  )
+
   return (
     <Container>
       {showSkeleton ? (
@@ -301,32 +329,48 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
         </ScrollView>
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
-        <FlatListContainer
-          accessibilityRole={AccessibilityRole.MAIN}
-          ref={scrollRef}
-          testID="homeBodyScrollView"
-          onScroll={onScroll}
-          data={modulesToDisplayHandlingVideoCarousel}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          windowSize={5}
-          maxToRenderPerBatch={maxToRenderPerBatch}
-          ListFooterComponent={
+        {Platform.OS === 'web' ? (
+          <ScrollView
+            testID="homeMainScrollView"
+            onScroll={onScroll}
+            scrollEventThrottle={16}
+            bounces>
+            {renderMainContent()}
             <FooterComponent
               hasShownAll={enrichedModules.length >= modules.length}
               isLandscape={isLandscape}
               footer={footer}
             />
-          }
-          ListHeaderComponent={ListHeader}
-          ListHeaderComponentStyle={flatListHeaderStyle}
-          initialNumToRender={initialNumToRender}
-          updateCellsBatchingPeriod={200}
-          removeClippedSubviews={false}
-          onContentSizeChange={onContentSizeChange}
-          scrollEventThrottle={16}
-          bounces
-        />
+          </ScrollView>
+        ) : (
+          <FlatListContainer
+            accessibilityRole={AccessibilityRole.MAIN}
+            ref={scrollRef}
+            testID="homeBodyScrollView"
+            onScroll={onScroll}
+            data={modulesToDisplayHandlingVideoCarousel}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            windowSize={5}
+            maxToRenderPerBatch={maxToRenderPerBatch}
+            ListFooterComponent={
+              <FooterComponent
+                hasShownAll={enrichedModules.length >= modules.length}
+                isLandscape={isLandscape}
+                footer={footer}
+              />
+            }
+            ListHeaderComponent={ListHeader}
+            ListHeaderComponentStyle={flatListHeaderStyle}
+            initialNumToRender={initialNumToRender}
+            updateCellsBatchingPeriod={200}
+            removeClippedSubviews={false}
+            onContentSizeChange={onContentSizeChange}
+            scrollEventThrottle={16}
+            bounces
+          />
+        )}
+
         {shouldDisplayScrollToTop ? (
           <ScrollToTopContainer>
             <ScrollToTopButton
@@ -352,6 +396,10 @@ export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
   }
   return <OfflinePage />
 }
+
+const MainContainer = styled.View({
+  width: '100%',
+})
 
 const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
   height: hide ? 0 : '100%',
