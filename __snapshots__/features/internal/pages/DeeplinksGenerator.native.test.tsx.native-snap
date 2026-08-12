@@ -395,6 +395,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
+                  accessibilityLabel="Sélectionne une page"
                   accessibilityRole="none"
                   style={
                     {

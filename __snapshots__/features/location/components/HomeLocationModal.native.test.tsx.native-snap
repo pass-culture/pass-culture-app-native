@@ -620,6 +620,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
     >
       <View>
         <View
+          accessibilityLabel="Sélectionne ta localisation"
           accessibilityRole="none"
           style={
             {

@@ -439,6 +439,7 @@ exports[`Appearance should render correctly 1`] = `
               />
               <View>
                 <View
+                  accessibilityLabel="Thème"
                   accessibilityRole="none"
                   style={
                     {

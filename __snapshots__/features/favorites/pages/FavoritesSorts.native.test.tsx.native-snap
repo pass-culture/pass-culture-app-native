@@ -258,6 +258,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         >
           <View>
             <View
+              accessibilityLabel="Trier par"
               accessibilityRole="none"
               style={
                 {
