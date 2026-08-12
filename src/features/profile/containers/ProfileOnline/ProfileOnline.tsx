@@ -4,22 +4,32 @@ import styled from 'styled-components/native'
 
 import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { Footer } from 'features/profile/components/Footer/Footer'
+import { DebugButton } from 'features/profile/components/Buttons/DebugButton/DebugButton'
+import { Version } from 'features/profile/components/Version/Version'
 import { ProfileLoggedIn } from 'features/profile/containers/ProfileLoggedIn/ProfileLoggedIn'
 import { ProfileLoggedOut } from 'features/profile/containers/ProfileLoggedOut/ProfileLoggedOut'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { Main } from 'shared/Main/Main'
+import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
 import { useDebounce } from 'ui/hooks/useDebounce'
+import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 
 export const ProfileOnline = () => {
   const { isLoggedIn, user } = useAuthContext()
   const isUserLoggedIn = isLoggedIn && user
+
+  const version = useVersion()
+  const commitHash = env.COMMIT_HASH
 
   const scrollRef = useRef<ScrollView | null>(null)
   const scrollToTop = useCallback(() => scrollRef.current?.scrollTo({ y: 0, animated: true }), [])
@@ -43,15 +53,24 @@ export const ProfileOnline = () => {
     <Page testID="profile-V2">
       <ScrollContainer ref={scrollRef} onScroll={onScroll}>
         <CheatMenuButton />
-        <Main>
-          <Spacer.TopScreen />
-          {isUserLoggedIn ? (
-            <ProfileLoggedIn featureFlags={featureFlags} user={user} />
-          ) : (
-            <ProfileLoggedOut user={user} featureFlags={featureFlags} />
-          )}
-        </Main>
-        <Footer />
+        <ViewGap gap={5}>
+          <Main>
+            <Spacer.TopScreen />
+            {isUserLoggedIn ? (
+              <ProfileLoggedIn featureFlags={featureFlags} user={user} />
+            ) : (
+              <ProfileLoggedOut user={user} featureFlags={featureFlags} />
+            )}
+            <ViewGap gap={5}>
+              <Separator.Horizontal />
+              <Version version={version} commitHash={commitHash} />
+              <ButtonContainerFlexStart>
+                <DebugButton />
+              </ButtonContainerFlexStart>
+            </ViewGap>
+          </Main>
+          <AccessibilityFooter />
+        </ViewGap>
       </ScrollContainer>
     </Page>
   )
