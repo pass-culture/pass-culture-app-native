@@ -1,5 +1,6 @@
 export enum AccessibilityRole {
   ALERT = 'alert',
+  BANNER = 'header',
   BUTTON = 'button',
   CHECKBOX = 'checkbox',
   DIALOG = 'none',

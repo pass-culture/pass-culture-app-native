@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
-import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
@@ -25,7 +25,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
   const isDesktopOffset = useMediaQuery({ minWidth })
 
   return (
-    <HeaderContainer>
+    <HeaderContainer accessibilityRole={AccessibilityRole.BANNER}>
       <QuickAccess href={`#${mainId}`} title="Aller au contenu principal" />
       {isDesktopOffset ? (
         <LeftContainer>
@@ -52,7 +52,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
   )
 })
 
-const HeaderContainer = webStyled.header.attrs({ role: 'banner' })(({ theme }) => {
+const HeaderContainer = styled.View(({ theme }) => {
   return {
     display: 'flex',
     flexDirection: 'row',

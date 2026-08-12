@@ -132,9 +132,9 @@ exports[`ChangeCity should render correctly 1`] = `
   <div
     class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
   >
-    <header
+    <div
       class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
-      role="banner"
+      role="presentation"
     >
       <div
         class="css-view-175oi2r r-height-10ptun7"
@@ -188,7 +188,7 @@ exports[`ChangeCity should render correctly 1`] = `
           data-testid="close-button-container"
         />
       </div>
-    </header>
+    </div>
     <div
       class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     >
