@@ -3,6 +3,8 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { FavoriteAuthModal } from './FavoriteAuthModal'
@@ -21,6 +23,10 @@ const dismissModal = jest.fn()
 const user = userEvent.setup()
 
 describe('FavoriteAuthModal', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match previous snapshot', () => {
     renderFavoriteAuthModal()
 
@@ -84,6 +90,14 @@ describe('FavoriteAuthModal', () => {
 
     expect(dismissModal).toHaveBeenCalledTimes(1)
     expect(analytics.logQuitFavoriteModalForSignIn).toHaveBeenNthCalledWith(1, OFFER_ID)
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    renderFavoriteAuthModal()
+
+    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
   })
 })
 

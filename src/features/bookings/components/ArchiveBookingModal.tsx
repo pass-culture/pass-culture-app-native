@@ -5,7 +5,11 @@ import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -22,6 +26,7 @@ export interface ArchiveBookingModalProps {
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
   const { goBack } = useGoBack(...getTabHookConfig('Bookings'))
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const { mutate, isPending } = useArchiveBookingMutation({
     bookingId: props.bookingId,
@@ -48,6 +53,14 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
       rightIcon={Close}
       onRightIconPress={props.onDismiss}>
       <ModalContent>
+        {enableNewVisionUi ? (
+          <IllustationContainer>
+            <AppModalIllustration
+              url={genericInfoPageIllustrationUrls.emptyWalletSmall}
+              backgroundColor="information03"
+            />
+          </IllustationContainer>
+        ) : null}
         <Title>{props.bookingTitle}</Title>
         <StyledBody>Tu pourras retrouver l’offre dans tes réservations teminées</StyledBody>
         <ButtonsContainer gap={3}>
@@ -86,3 +99,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 const ButtonsContainer = styled(ViewGap)({
   width: '100%',
 })
+
+const IllustationContainer = styled.View(({ theme }) => ({
+  alignItems: 'center',
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

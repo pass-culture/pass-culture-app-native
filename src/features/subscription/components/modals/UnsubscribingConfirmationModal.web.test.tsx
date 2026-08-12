@@ -1,11 +1,16 @@
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { UnsubscribingConfirmationModal } from './UnsubscribingConfirmationModal'
 
 describe('<UnsubscribingConfirmationModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

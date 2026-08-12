@@ -5,6 +5,10 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
@@ -28,6 +32,8 @@ export const MarketingModal: FunctionComponent<Props> = ({
   onBackdropPress,
 }) => {
   const titleID = uuidv4()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
+
   return (
     <Modal
       animationType="fade"
@@ -40,15 +46,25 @@ export const MarketingModal: FunctionComponent<Props> = ({
       <ModalCenteredContent>
         <Container>
           <Flex>
-            <FlexContainer>
-              <ImageBackground source={imageSource} />
-            </FlexContainer>
-            <Gradient />
+            {enableNewVisionUi ? null : (
+              <React.Fragment>
+                <FlexContainer>
+                  <ImageBackground source={imageSource} />
+                </FlexContainer>
+                <Gradient />
+              </React.Fragment>
+            )}
             <FlexContainer>
               <Content gap={6}>
                 <Title nativeID={titleID} numberOfLines={numberOfLinesTitle}>
                   {title}
                 </Title>
+                {enableNewVisionUi ? (
+                  <AppModalIllustration
+                    url={genericInfoPageIllustrationUrls.oldMegaphone}
+                    backgroundColor="positive01"
+                  />
+                ) : null}
                 {children}
               </Content>
             </FlexContainer>

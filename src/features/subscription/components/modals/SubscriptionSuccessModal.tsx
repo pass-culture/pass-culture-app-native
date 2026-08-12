@@ -5,6 +5,7 @@ import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStac
 import { mapSubscriptionThemeToDescription } from 'features/subscription/helpers/mapSubscriptionThemeToDescription'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -28,6 +29,10 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       visible={visible}
       title={`Tu suis le thème "${mapSubscriptionThemeToName[theme]}"`}
+      remoteIllustration={{
+        url: genericInfoPageIllustrationUrls.ringingBellSmall,
+        backgroundColor: 'information04',
+      }}
       Illustration={StyledIcon}
       hideModal={dismissModal}>
       <StyledBody>{mapSubscriptionThemeToDescription[theme]}</StyledBody>

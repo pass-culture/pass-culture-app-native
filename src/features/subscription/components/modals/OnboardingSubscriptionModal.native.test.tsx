@@ -2,6 +2,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { screen, render, userEvent } from 'tests/utils'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -13,6 +15,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<OnboardingSubscriptionModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display correctly', () => {
     render(<OnboardingSubscriptionModal visible dismissModal={jest.fn()} />)
 
@@ -34,5 +40,13 @@ describe('<OnboardingSubscriptionModal />', () => {
     await user.press(screen.getByText('Non merci'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(<OnboardingSubscriptionModal visible dismissModal={jest.fn()} />)
+
+    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
   })
 })

@@ -4,6 +4,10 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { OfferImageBasicProps } from 'features/reactions/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MultipleThumbs } from 'ui/svg/icons/MultipleThumbs'
@@ -17,7 +21,27 @@ type Props = {
 export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = ({
   offerImages,
 }) => {
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
+
   const offerImagesWithUrl = offerImages.filter((offerImage) => offerImage.imageUrl !== '')
+
+  const renderIllutration = () => {
+    if (enableNewVisionUi)
+      return (
+        <IllustrationContainer>
+          <AppModalIllustration
+            url={genericInfoPageIllustrationUrls.ratingHandsSmall}
+            backgroundColor="information04"
+          />
+        </IllustrationContainer>
+      )
+
+    return (
+      <ThumbsImageContainer testID="thumbsImage">
+        <MultipleThumbs />
+      </ThumbsImageContainer>
+    )
+  }
 
   return (
     <Container gap={6}>
@@ -39,9 +63,7 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
           </ImagesContainer>
         </GradientContainer>
       ) : (
-        <ThumbsImageContainer testID="thumbsImage">
-          <MultipleThumbs />
-        </ThumbsImageContainer>
+        renderIllutration()
       )}
 
       <StyledTitle3 {...getTextSemanticAttrs(2)}>
@@ -90,6 +112,11 @@ const ImagesContainerGradient = styled(LinearGradient).attrs<{ colors?: string[]
 const ThumbsImageContainer = styled.View({
   width: '100%',
   height: 124,
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
+const IllustrationContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
 })

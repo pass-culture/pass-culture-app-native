@@ -4,6 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { PaginatedFavoritesResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -27,6 +29,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ApplicationProcessingModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match previous snapshot', () => {
     render(
       reactQueryProviderHOC(
@@ -98,5 +104,16 @@ describe('<ApplicationProcessingModal />', () => {
       from: 'ApplicationProcessingModal',
       offerId,
     })
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+    render(
+      reactQueryProviderHOC(
+        <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
+      )
+    )
+
+    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
   })
 })
