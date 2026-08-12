@@ -8,7 +8,7 @@ import {
   useNumberOfLine,
 } from 'shared/accessibility/helpers/zoomHelpers'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { AppModalIllustration, RemoteIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration, RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { Close } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -19,7 +19,7 @@ type Props = {
   Illustration: React.FC<AccessibleIcon>
   hideModal: () => void
   onModalHide?: () => void
-  remoteIllustration?: RemoteIllustration
+  remoteIllustration?: RemoteIllustrationProps
 }
 
 export const AppModalWithIllustration: FunctionComponent<Props> = ({
@@ -35,7 +35,7 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
 
   const renderIllustration = () => {
     if (enableNewVisionUi && remoteIllustration) {
-      return <AppModalIllustration {...remoteIllustration} />
+      return <RemoteIllustration {...remoteIllustration} size="s" />
     }
     return <Illustration />
   }

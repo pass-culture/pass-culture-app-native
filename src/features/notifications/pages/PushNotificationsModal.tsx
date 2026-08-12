@@ -6,7 +6,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { RingingBell } from 'ui/svg/RingingBell'
@@ -33,9 +33,10 @@ export const PushNotificationsModal: React.FC<Props> = ({
       testIdSuffix="notifications-permission-modal">
       <React.Fragment>
         {enableNewVisionUi ? (
-          <AppModalIllustration
+          <RemoteIllustration
             url={remoteIllustrationUrls.ringingBellSmall}
             backgroundColor="information04"
+            size="s"
           />
         ) : (
           <BicolorLocationPointer />

@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
@@ -60,9 +60,10 @@ export const MarketingModal: FunctionComponent<Props> = ({
                   {title}
                 </Title>
                 {enableNewVisionUi ? (
-                  <AppModalIllustration
+                  <RemoteIllustration
                     url={remoteIllustrationUrls.oldMegaphone}
                     backgroundColor="positive01"
+                    size="s"
                   />
                 ) : null}
                 {children}

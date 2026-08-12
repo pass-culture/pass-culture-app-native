@@ -9,7 +9,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -55,9 +55,10 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
       <ModalContent>
         {enableNewVisionUi ? (
           <IllustationContainer>
-            <AppModalIllustration
+            <RemoteIllustration
               url={remoteIllustrationUrls.emptyWalletSmall}
               backgroundColor="information03"
+              size="s"
             />
           </IllustationContainer>
         ) : null}

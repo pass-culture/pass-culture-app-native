@@ -7,7 +7,7 @@ import { OfferImageBasicProps } from 'features/reactions/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MultipleThumbs } from 'ui/svg/icons/MultipleThumbs'
@@ -29,9 +29,10 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
     if (enableNewVisionUi)
       return (
         <IllustrationContainer>
-          <AppModalIllustration
+          <RemoteIllustration
             url={remoteIllustrationUrls.ratingHandsSmall}
             backgroundColor="information04"
+            size="s"
           />
         </IllustrationContainer>
       )

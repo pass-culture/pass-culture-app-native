@@ -11,7 +11,7 @@ import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { locationStore } from 'libs/locationV2/location.store'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
@@ -44,9 +44,10 @@ export const GeolocationActivationModal: React.FC = () => {
       testIdSuffix="geoloc-permission-modal">
       {/** Special case where theme.icons.sizes is not used */}
       {enableNewVisionUi ? (
-        <AppModalIllustration
+        <RemoteIllustration
           url={remoteIllustrationUrls.worldGlobeSmall}
           backgroundColor="information04"
+          size="s"
         />
       ) : (
         <LocationPointer />

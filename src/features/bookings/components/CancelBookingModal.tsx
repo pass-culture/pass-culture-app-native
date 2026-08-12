@@ -18,7 +18,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
@@ -91,9 +91,10 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
       <ModalContent>
         {enableNewVisionUi ? (
           <IllustationContainer>
-            <AppModalIllustration
+            <RemoteIllustration
               url={remoteIllustrationUrls.emptyWalletSmall}
               backgroundColor="information03"
+              size="s"
             />
           </IllustationContainer>
         ) : null}

@@ -6,7 +6,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Close } from 'ui/svg/icons/Close'
@@ -42,9 +42,10 @@ export const AdvicesWritersModal: FunctionComponent<Props> = ({
       <ViewGap gap={6}>
         {enableNewVisionUi ? (
           <IllustrationContainer>
-            <AppModalIllustration
+            <RemoteIllustration
               url={remoteIllustrationUrls.questioningKnightSmall}
               backgroundColor="information03"
+              size="s"
             />
           </IllustrationContainer>
         ) : null}
