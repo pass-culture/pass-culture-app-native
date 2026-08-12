@@ -117,6 +117,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logMultivenueOptionDisplayed: jest.fn(),
   logNoSearchResult: jest.fn(),
   logNotificationToggle: jest.fn(),
+  logOfferImagesScroll: jest.fn(),
   logOnboardingStarted: jest.fn(),
   logOpenDMSForeignCitizenURL: jest.fn(),
   logOpenDMSFrenchCitizenURL: jest.fn(),

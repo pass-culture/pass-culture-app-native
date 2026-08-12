@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import Animated, { FadeIn, FadeOut, SharedValue } from 'react-native-reanimated'
 import styled from 'styled-components/native'
@@ -8,6 +8,7 @@ import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyIm
 import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
+import { analytics } from 'libs/analytics/provider'
 import { ImageWithCredit } from 'shared/types'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Play } from 'ui/svg/icons/Play'
@@ -15,6 +16,7 @@ import { Play } from 'ui/svg/icons/Play'
 type Props = {
   categoryId: CategoryIdEnum | null
   imageDimensions: OfferImageContainerDimensions
+  offerId: number
   onSeeVideoPress?: VoidFunction
   offerImages?: ImageWithCredit[]
   placeholderImage?: string
@@ -24,6 +26,7 @@ type Props = {
 }
 
 export const OfferImageRenderer: FunctionComponent<Props> = ({
+  offerId,
   offerImages = [],
   imageDimensions,
   progressValue,
@@ -39,6 +42,18 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
     setCarouselReady(true)
   }, [setCarouselReady])
 
+  const nbImages = offerImages.length
+  const lastLoggedImageIndex = useRef(0)
+
+  const handleSnapToItem = useCallback(
+    (imageIndex: number) => {
+      if (imageIndex === lastLoggedImageIndex.current) return
+      lastLoggedImageIndex.current = imageIndex
+      analytics.logOfferImagesScroll({ offerId, nbImages, imageIndex, from: 'offer' })
+    },
+    [offerId, nbImages]
+  )
+
   return (
     <Animated.View entering={FadeIn} style={style} testID="imageRenderer">
       <StyledOfferImageCarousel
@@ -47,6 +62,7 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
         imageDimensions={imageDimensions}
         onItemPress={onPress}
         onLoad={handleCarouselLoad}
+        onSnapToItem={nbImages > 1 ? handleSnapToItem : undefined}
         isReady={carouselReady}
       />
       {carouselReady ? null : (

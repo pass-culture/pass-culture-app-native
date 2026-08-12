@@ -76,6 +76,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   return (
     <Wrapper>
       <StyledOfferImageRenderer
+        offerId={offer.id}
         offerImages={images}
         headerHeight={headerHeight}
         placeholderImage={placeholderImage}

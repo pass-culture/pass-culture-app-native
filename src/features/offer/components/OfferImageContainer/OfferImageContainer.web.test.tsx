@@ -7,8 +7,9 @@ import { ConsentStatus } from 'features/cookies/types'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 const mockOnPress = jest.fn()
 
@@ -106,6 +107,53 @@ describe('<OfferImageContainer />', () => {
 
     expect(container).not.toHaveStyle({
       position: 'sticky',
+    })
+  })
+
+  describe('analytics', () => {
+    it('should log OfferImagesScroll when navigating with the arrows', async () => {
+      render(
+        reactQueryProviderHOC(
+          <OfferImageContainer
+            images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+            categoryId={CategoryIdEnum.CINEMA}
+            onPress={mockOnPress}
+            imageDimensions={mockOfferImageDimensions}
+            offer={offerResponseSnap}
+          />
+        ),
+        { theme: { isDesktopViewport: true } }
+      )
+
+      fireEvent.click(await screen.findByTestId('Image suivante'))
+
+      await waitFor(() => {
+        expect(analytics.logOfferImagesScroll).toHaveBeenCalledWith({
+          offerId: offerResponseSnap.id,
+          nbImages: 2,
+          imageIndex: 1,
+          from: 'offer',
+        })
+      })
+    })
+
+    it('should not log OfferImagesScroll when the offer has only one image', async () => {
+      render(
+        reactQueryProviderHOC(
+          <OfferImageContainer
+            images={[{ url: 'some_url_to_some_resource' }]}
+            categoryId={CategoryIdEnum.CINEMA}
+            onPress={mockOnPress}
+            imageDimensions={mockOfferImageDimensions}
+            offer={offerResponseSnap}
+          />
+        ),
+        { theme: { isDesktopViewport: true } }
+      )
+
+      await screen.findByTestId('offerImageContainerCarousel')
+
+      expect(analytics.logOfferImagesScroll).not.toHaveBeenCalled()
     })
   })
 })

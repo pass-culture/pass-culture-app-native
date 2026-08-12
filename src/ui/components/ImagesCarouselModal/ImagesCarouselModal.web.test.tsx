@@ -131,6 +131,30 @@ describe('<ImagesCarouselModal />', () => {
     expect(await screen.findByText('2/3')).toBeInTheDocument()
   })
 
+  it('should call onSnapToItem with the new index when navigating with the arrows', async () => {
+    jest.useFakeTimers()
+    const mockOnSnapToItem = jest.fn()
+    render(
+      <ImagesCarouselModal
+        isVisible
+        imagesURL={['image1', 'image2', 'image3']}
+        hideModal={jest.fn()}
+        onSnapToItem={mockOnSnapToItem}
+      />
+    )
+
+    await forceOnLayout()
+    await screen.findByTestId('imagesCarouselContainer')
+
+    fireEvent.click(await screen.findByTestId('Image suivante'))
+
+    await act(async () => {
+      jest.advanceTimersByTime(500)
+    })
+
+    expect(mockOnSnapToItem).toHaveBeenCalledWith(1)
+  })
+
   it('should close modal on click on close button', async () => {
     jest.useFakeTimers()
     const mockOnClose = jest.fn()

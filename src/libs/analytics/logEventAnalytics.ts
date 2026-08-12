@@ -37,7 +37,7 @@ import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { AdviceType, ConsultOfferLogParams } from 'libs/analytics/types'
+import { AdviceType, ConsultOfferLogParams, OfferImagesScrollFrom } from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -543,6 +543,12 @@ export const logEventAnalytics = {
       { firebase: AnalyticsEvent.NOTIFICATION_TOGGLE },
       { enableEmail, enablePush: Platform.OS === 'android' ? true : enablePush }
     ),
+  logOfferImagesScroll: (params: {
+    offerId: number
+    nbImages: number
+    imageIndex: number
+    from: OfferImagesScrollFrom
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.OFFER_IMAGES_SCROLL }, params),
   logOnboardingStarted: (params: { type: 'login' | 'start' }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ONBOARDING_STARTED }, params),
   logOpenDMSForeignCitizenURL: () =>

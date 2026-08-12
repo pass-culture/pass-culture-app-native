@@ -62,6 +62,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       imageUrl={placeholderImage}
       paddingTop={designSystem.size.spacing.xxl * 4}>
       <OfferImageRenderer
+        offerId={offer.id}
         offerImages={images}
         placeholderImage={placeholderImage}
         progressValue={progressValue}

@@ -19,12 +19,14 @@ type Props = {
   images: string[]
   defaultIndex: number
   goBack: VoidFunction
+  onSnapToItem?: (index: number) => void
 }
 
 export const ImagesCarousel: FunctionComponent<Props> = ({
   images,
   defaultIndex,
   goBack,
+  onSnapToItem,
 }: Props) => {
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
 
@@ -51,6 +53,7 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
           progressValue.value = absoluteProgress
           setIndex(Math.round(absoluteProgress))
         }}
+        onSnapToItem={onSnapToItem}
         defaultIndex={defaultIndex}
         data={images}
         renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}

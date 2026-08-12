@@ -1,8 +1,9 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { analytics } from 'libs/analytics/provider'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
@@ -14,16 +15,29 @@ export const OfferPreview: FunctionComponent = () => {
   const { data: offer } = useOfferQuery({ offerId: params.id })
 
   const defaultIndex = params.defaultIndex ?? 0
+  const lastLoggedImageIndex = useRef(defaultIndex)
 
   if (!offer?.images) return null
 
   const images = getImagesUrlsWithCredit<ImageWithCredit>(offer.images)
+
+  const handleSnapToItem = (imageIndex: number) => {
+    if (imageIndex === lastLoggedImageIndex.current) return
+    lastLoggedImageIndex.current = imageIndex
+    analytics.logOfferImagesScroll({
+      offerId: params.id,
+      nbImages: images.length,
+      imageIndex,
+      from: 'offerPreview',
+    })
+  }
 
   return (
     <ImagesCarousel
       images={images.map((image) => image.url)}
       goBack={goBack}
       defaultIndex={defaultIndex}
+      onSnapToItem={images.length > 1 ? handleSnapToItem : undefined}
     />
   )
 }

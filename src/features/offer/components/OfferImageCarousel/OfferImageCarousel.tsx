@@ -17,6 +17,7 @@ type OfferImageCarouselProps = {
   imageDimensions: OfferImageContainerDimensions
   onItemPress?: (index: number) => void
   onLoad?: () => void
+  onSnapToItem?: (index: number) => void
   style?: StyleProp<ViewStyle>
 }
 
@@ -26,6 +27,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
   imageDimensions,
   onItemPress,
   onLoad,
+  onSnapToItem,
   style,
 }) => {
   const { designSystem } = useTheme()
@@ -82,6 +84,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
           progressValue.value = absoluteProgress
           setCurrentIndex(absoluteProgress)
         }}
+        onSnapToItem={onSnapToItem}
         data={offerImages}
         renderItem={renderItem}
         style={carouselStyle}

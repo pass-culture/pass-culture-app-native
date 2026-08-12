@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useMemo, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
+import { analytics } from 'libs/analytics/provider'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { ImageWithCredit } from 'shared/types'
@@ -39,11 +40,28 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 
   const offerImagesUrl = useMemo(() => offerImages.map((image) => image.url), [offerImages])
 
+  const lastLoggedImageIndex = useRef(0)
+
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
     setCarouselDefaultIndex(defaultIndex)
+    lastLoggedImageIndex.current = defaultIndex
     showModal()
   }
+
+  const handleCarouselSnapToItem = useCallback(
+    (imageIndex: number) => {
+      if (imageIndex === lastLoggedImageIndex.current) return
+      lastLoggedImageIndex.current = imageIndex
+      analytics.logOfferImagesScroll({
+        offerId: offer.id,
+        nbImages: offerImagesUrl.length,
+        imageIndex,
+        from: 'offerPreview',
+      })
+    },
+    [offer.id, offerImagesUrl.length]
+  )
 
   const BodyWrapper = useMemo(
     () =>
@@ -64,6 +82,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           isVisible={visible}
           imagesURL={offerImagesUrl}
           defaultIndex={carouselDefaultIndex}
+          onSnapToItem={offerImagesUrl.length > 1 ? handleCarouselSnapToItem : undefined}
         />
         <StyledOfferContentBase
           offer={offer}
