@@ -5,11 +5,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
+import { RemoteIllustration, RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { GenericInfoPageIllustration } from 'ui/pages/GenericInfoPageIllustration'
 import { Page } from 'ui/pages/Page'
-import { RemoteIllustration } from 'ui/pages/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
@@ -33,7 +32,7 @@ type Props = PropsWithChildren<{
   buttonPrimary?: ButtonProps
   buttonTertiary?: ButtonProps
   buttonTertiaryExternalNav?: ReactNode
-  remoteIllustration?: RemoteIllustration
+  remoteIllustration?: RemoteIllustrationProps
 }>
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
@@ -58,7 +57,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   const colorScheme = useColorScheme()
 
   const renderIllustration = () => {
-    if (remoteIllustration) return <GenericInfoPageIllustration {...remoteIllustration} />
+    if (remoteIllustration) return <RemoteIllustration {...remoteIllustration} />
 
     if (IllustrationComponent)
       return (

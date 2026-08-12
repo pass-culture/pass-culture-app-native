@@ -3,6 +3,7 @@ import React from 'react'
 import { PaginatedFavoritesResponse } from 'api/gen'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
@@ -34,6 +35,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<Favorites/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
