@@ -7,7 +7,9 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { GenericInfoPageIllustration } from 'ui/pages/GenericInfoPageIllustration'
 import { Page } from 'ui/pages/Page'
+import { RemoteIllustration } from 'ui/pages/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
@@ -31,6 +33,7 @@ type Props = PropsWithChildren<{
   buttonPrimary?: ButtonProps
   buttonTertiary?: ButtonProps
   buttonTertiaryExternalNav?: ReactNode
+  remoteIllustration?: RemoteIllustration
 }>
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
@@ -47,11 +50,26 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttonPrimary,
   buttonTertiary,
   buttonTertiaryExternalNav,
+  remoteIllustration,
   children,
 }) => {
   const { top } = useSafeAreaInsets()
   const { designSystem } = useTheme()
   const colorScheme = useColorScheme()
+
+  const renderIllustration = () => {
+    if (remoteIllustration) return <GenericInfoPageIllustration {...remoteIllustration} />
+
+    if (IllustrationComponent)
+      return (
+        <IllustrationComponent
+          size={illustrationSizes.fullPage}
+          color={designSystem.color.icon.brandPrimary}
+        />
+      )
+
+    return null
+  }
 
   return (
     <React.Fragment>
@@ -78,14 +96,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
         <Placeholder height={top} />
         <Container>
           <View>
-            <IllustrationContainer>
-              {IllustrationComponent ? (
-                <IllustrationComponent
-                  size={illustrationSizes.fullPage}
-                  color={designSystem.color.icon.brandPrimary}
-                />
-              ) : null}
-            </IllustrationContainer>
+            <IllustrationContainer>{renderIllustration()}</IllustrationContainer>
             <TextContainer gap={4}>
               <StyledTitle {...getTextSemanticAttrs(1)}>{title}</StyledTitle>
               {subtitle ? (

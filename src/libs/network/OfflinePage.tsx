@@ -2,10 +2,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
+import { GenericInfoPageIllustration } from 'ui/pages/GenericInfoPageIllustration'
 import { Page } from 'ui/pages/Page'
 import { BrokenConnection as InitialBrokenConnection } from 'ui/svg/BrokenConnection'
 import { Bookings } from 'ui/svg/icons/Bookings'
@@ -15,12 +19,20 @@ import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAt
 
 export const OfflinePage = () => {
   const { isLoggedIn } = useAuthContext()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   return (
     <Container>
       <Content>
         <Spacer.TopScreen />
-        <BrokenConnection />
+        {enableNewVisionUi ? (
+          <GenericInfoPageIllustration
+            backgroundColor="negative01"
+            url={genericInfoPageIllustrationUrls.disconnectedCableStickManLarge}
+          />
+        ) : (
+          <BrokenConnection />
+        )}
         <StyledViewGap gap={4}>
           <StyledTitle2>Oups, pas de réseau&nbsp;!</StyledTitle2>
           <StyledBody>
@@ -49,6 +61,7 @@ export const OfflinePage = () => {
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
 }))
+
 const BrokenConnection = styled(InitialBrokenConnection).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
