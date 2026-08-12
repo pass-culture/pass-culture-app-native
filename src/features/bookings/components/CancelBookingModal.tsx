@@ -16,7 +16,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -92,7 +92,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
         {enableNewVisionUi ? (
           <IllustationContainer>
             <AppModalIllustration
-              url={genericInfoPageIllustrationUrls.emptyWalletSmall}
+              url={remoteIllustrationUrls.emptyWalletSmall}
               backgroundColor="information03"
             />
           </IllustationContainer>

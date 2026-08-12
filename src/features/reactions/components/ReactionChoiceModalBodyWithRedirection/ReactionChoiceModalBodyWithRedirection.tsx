@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -30,7 +30,7 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
       return (
         <IllustrationContainer>
           <AppModalIllustration
-            url={genericInfoPageIllustrationUrls.ratingHandsSmall}
+            url={remoteIllustrationUrls.ratingHandsSmall}
             backgroundColor="information04"
           />
         </IllustrationContainer>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -13,7 +13,7 @@ export function BeneficiaryRequestSent() {
     <GenericInfoPage
       illustration={RequestSent}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.sculptureMagnifyingGlassPaperLarge,
+        url: remoteIllustrationUrls.sculptureMagnifyingGlassPaperLarge,
         backgroundColor: 'information02',
       }}
       title="Demande envoyée&nbsp;!"

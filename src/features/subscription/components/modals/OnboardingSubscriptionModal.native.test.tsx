@@ -47,6 +47,6 @@ describe('<OnboardingSubscriptionModal />', () => {
 
     render(<OnboardingSubscriptionModal visible dismissModal={jest.fn()} />)
 
-    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

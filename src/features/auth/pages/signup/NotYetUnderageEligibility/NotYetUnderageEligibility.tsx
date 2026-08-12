@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { formatToReadableFrenchDate } from 'libs/dates'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 
@@ -17,7 +17,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
     <GenericInfoPage
       illustration={CalendarIllustration}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.hourglass,
+        url: remoteIllustrationUrls.hourglass,
         backgroundColor: 'information04',
       }}
       title="C’est pour bientôt&nbsp;!"

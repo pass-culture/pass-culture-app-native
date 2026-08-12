@@ -77,6 +77,6 @@ describe('<SubscriptionSuccessModal />', () => {
       <SubscriptionSuccessModal visible theme={SubscriptionTheme.CINEMA} dismissModal={jest.fn()} />
     )
 
-    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

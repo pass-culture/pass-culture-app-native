@@ -92,6 +92,6 @@ describe('<FinishSubscriptionModal />', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
     render(<FinishSubscriptionModal {...modalProps} />)
 
-    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

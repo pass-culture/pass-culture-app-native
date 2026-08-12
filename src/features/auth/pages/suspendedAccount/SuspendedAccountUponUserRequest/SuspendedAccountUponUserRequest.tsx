@@ -10,7 +10,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { analytics } from 'libs/analytics/provider'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'
 import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -58,7 +58,7 @@ export const SuspendedAccountUponUserRequest = () => {
     <GenericInfoPage
       illustration={ProfileDeletion}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.trashMosaic,
+        url: remoteIllustrationUrls.trashMosaic,
         backgroundColor: 'negative01',
       }}
       title="Ton compte est désactivé"

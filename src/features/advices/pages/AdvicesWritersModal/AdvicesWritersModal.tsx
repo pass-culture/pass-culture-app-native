@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -43,7 +43,7 @@ export const AdvicesWritersModal: FunctionComponent<Props> = ({
         {enableNewVisionUi ? (
           <IllustrationContainer>
             <AppModalIllustration
-              url={genericInfoPageIllustrationUrls.questioningKnightSmall}
+              url={remoteIllustrationUrls.questioningKnightSmall}
               backgroundColor="information03"
             />
           </IllustrationContainer>

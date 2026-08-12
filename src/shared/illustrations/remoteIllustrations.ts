@@ -1,6 +1,6 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-const genericInfoPageIllustrationNames = [
+const remoteIllustrationNames = [
   'bellPaintingSmall',
   'birthdayCake',
   'blockedPaintingLarge',
@@ -25,14 +25,14 @@ const genericInfoPageIllustrationNames = [
   'signingDocumentPaintingLarge',
   'stressedKnightLarge',
   'trashMosaic',
-  'validStampMosaïcLarge',
+  'validStampMosaïcLarge',
   'workedInPrgressSignSculptureLarge',
   'worldGlobeSmall',
 ] as const
 
-type GenericInfoPageIllustrationName = (typeof genericInfoPageIllustrationNames)[number]
+export type RemoteIllustrationName = (typeof remoteIllustrationNames)[number]
 
-export const genericInfoPageIllustrationUrls = {
+export const remoteIllustrationUrls = {
   bellPaintingSmall: buildCategoryIllustrationUrl('bellPaintingSmall.png'),
   birthdayCake: buildCategoryIllustrationUrl('birthdayCake.png'),
   blockedPaintingLarge: buildCategoryIllustrationUrl('blockedPaintingLarge.png'),
@@ -63,9 +63,9 @@ export const genericInfoPageIllustrationUrls = {
   signingDocumentPaintingLarge: buildCategoryIllustrationUrl('signingDocumentPaintingLarge.png'),
   stressedKnightLarge: buildCategoryIllustrationUrl('stressedKnightLarge.png'),
   trashMosaic: buildCategoryIllustrationUrl('trashMosaic.png'),
-  validStampMosaïcLarge: buildCategoryIllustrationUrl('validStampMosaïcLarge.png'),
+  validStampMosaïcLarge: buildCategoryIllustrationUrl('validStampMosaïcLarge.png'),
   workedInPrgressSignSculptureLarge: buildCategoryIllustrationUrl(
     'workedInPrgressSignSculptureLarge.png'
   ),
   worldGlobeSmall: buildCategoryIllustrationUrl('worldGlobeSmall.png'),
-} as const satisfies Record<GenericInfoPageIllustrationName, string>
+} as const satisfies Record<RemoteIllustrationName, string>

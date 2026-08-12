@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -28,7 +28,7 @@ export const OfflinePage = () => {
         {enableNewVisionUi ? (
           <GenericInfoPageIllustration
             backgroundColor="negative01"
-            url={genericInfoPageIllustrationUrls.disconnectedCableStickManLarge}
+            url={remoteIllustrationUrls.disconnectedCableStickManLarge}
           />
         ) : (
           <BrokenConnection />

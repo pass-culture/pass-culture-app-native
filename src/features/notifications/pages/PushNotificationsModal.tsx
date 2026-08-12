@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -34,7 +34,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
       <React.Fragment>
         {enableNewVisionUi ? (
           <AppModalIllustration
-            url={genericInfoPageIllustrationUrls.ringingBellSmall}
+            url={remoteIllustrationUrls.ringingBellSmall}
             backgroundColor="information04"
           />
         ) : (

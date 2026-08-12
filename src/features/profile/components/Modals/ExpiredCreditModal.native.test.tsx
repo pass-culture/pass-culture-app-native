@@ -47,6 +47,6 @@ describe('<ExpiredCreditModal/>', () => {
 
     render(<ExpiredCreditModal visible hideModal={hideModalMock} />)
 
-    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

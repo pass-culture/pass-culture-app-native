@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
@@ -36,7 +36,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <GenericInfoPage
         illustration={NoOffer}
         remoteIllustration={{
-          url: genericInfoPageIllustrationUrls.emptyDigitalWindowLarge,
+          url: remoteIllustrationUrls.emptyDigitalWindowLarge,
           backgroundColor: 'pending01',
         }}
         title="Lieu introuvable&nbsp;!"

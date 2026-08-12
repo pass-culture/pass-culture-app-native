@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -61,7 +61,7 @@ export const MarketingModal: FunctionComponent<Props> = ({
                 </Title>
                 {enableNewVisionUi ? (
                   <AppModalIllustration
-                    url={genericInfoPageIllustrationUrls.oldMegaphone}
+                    url={remoteIllustrationUrls.oldMegaphone}
                     backgroundColor="positive01"
                   />
                 ) : null}

@@ -17,7 +17,7 @@ import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { getIsUserEligibleFree } from 'shared/user/checkEligibilityType'
 import { getAvailableCredit } from 'shared/user/getAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
@@ -102,7 +102,7 @@ export const BookingConfirmation: FC = () => {
       <GenericInfoPage
         illustration={TicketBooked}
         remoteIllustration={{
-          url: genericInfoPageIllustrationUrls.validStampMosaïcLarge,
+          url: remoteIllustrationUrls.validStampMosaïcLarge,
           backgroundColor: 'positive01',
         }}
         title="Réservation confirmée&nbsp;!"

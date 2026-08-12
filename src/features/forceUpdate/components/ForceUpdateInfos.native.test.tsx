@@ -50,6 +50,6 @@ describe('<ForceUpdateInfos/>', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
     render(<ForceUpdateInfos />)
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

@@ -149,7 +149,7 @@ describe('<CancelBookingModal />', () => {
 
     renderCancelBookingModal(booking)
 
-    expect(screen.getByTestId('app-modal-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })
 

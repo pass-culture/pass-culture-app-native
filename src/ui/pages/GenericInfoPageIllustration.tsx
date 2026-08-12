@@ -11,9 +11,7 @@ export const GenericInfoPageIllustration = ({
   url,
   backgroundColor,
 }: RemoteIllustration): React.JSX.Element => (
-  <Container
-    illustrationBackgroundColor={backgroundColor}
-    testID="generic-info-page-remote-illustration">
+  <Container illustrationBackgroundColor={backgroundColor} testID="remote-illustration">
     <RemoteIllustrationImage source={{ uri: url }} resizeMode="contain" />
   </Container>
 )

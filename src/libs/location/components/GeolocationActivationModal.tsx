@@ -9,7 +9,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { locationStore } from 'libs/locationV2/location.store'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -45,7 +45,7 @@ export const GeolocationActivationModal: React.FC = () => {
       {/** Special case where theme.icons.sizes is not used */}
       {enableNewVisionUi ? (
         <AppModalIllustration
-          url={genericInfoPageIllustrationUrls.worldGlobeSmall}
+          url={remoteIllustrationUrls.worldGlobeSmall}
           backgroundColor="information04"
         />
       ) : (

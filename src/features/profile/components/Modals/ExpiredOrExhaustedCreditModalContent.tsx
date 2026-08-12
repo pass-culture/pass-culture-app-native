@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -16,7 +16,7 @@ export function ExpiredOrExhaustedCreditModalContent() {
     <ModalChildrenContainer gap={6}>
       {enableNewVisionUi ? (
         <AppModalIllustration
-          url={genericInfoPageIllustrationUrls.questioningKnightSmall}
+          url={remoteIllustrationUrls.questioningKnightSmall}
           backgroundColor="information03"
         />
       ) : null}

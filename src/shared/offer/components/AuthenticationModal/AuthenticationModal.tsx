@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -46,7 +46,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       visible={visible}
       title="Crée-toi un compte ou connecte-toi"
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.emptyWalletSmall,
+        url: remoteIllustrationUrls.emptyWalletSmall,
         backgroundColor: 'information03',
       }}
       Illustration={UserIdentification}

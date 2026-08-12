@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -29,7 +29,7 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
       visible={visible}
       title="Es-tu sûr de ne plus vouloir suivre ce thème&nbsp;?"
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.brokenBellSmall,
+        url: remoteIllustrationUrls.brokenBellSmall,
         backgroundColor: 'pending01',
       }}
       Illustration={StyledIcon}

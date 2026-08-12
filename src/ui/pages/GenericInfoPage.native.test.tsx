@@ -67,7 +67,7 @@ describe('<GenericInfoPage />', () => {
       />
     )
 
-    expect(screen.queryByTestId('generic-info-page-remote-illustration')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('remote-illustration')).not.toBeOnTheScreen()
   })
 
   it('should display remote illustration when new vision UI FF is activated', () => {
@@ -88,7 +88,7 @@ describe('<GenericInfoPage />', () => {
       />
     )
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 
   it('should display remote illustation when animation and remote illustration defined', () => {
@@ -109,6 +109,6 @@ describe('<GenericInfoPage />', () => {
       />
     )
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

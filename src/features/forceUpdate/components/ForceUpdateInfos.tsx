@@ -6,7 +6,7 @@ import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
@@ -41,7 +41,7 @@ export const ForceUpdateInfos = () => {
       remoteIllustration={
         enableNewVisionUi
           ? {
-              url: genericInfoPageIllustrationUrls.mobileDeviceAndParameters,
+              url: remoteIllustrationUrls.mobileDeviceAndParameters,
               backgroundColor: 'pending01',
             }
           : undefined

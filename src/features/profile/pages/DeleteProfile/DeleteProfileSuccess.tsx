@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { Emoji } from 'ui/components/Emoji'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -13,7 +13,7 @@ export const DeleteProfileSuccess = () => (
   <GenericInfoPage
     illustration={ProfileDeletion}
     remoteIllustration={{
-      url: genericInfoPageIllustrationUrls.trashMosaic,
+      url: remoteIllustrationUrls.trashMosaic,
       backgroundColor: 'negative01',
     }}
     title="Ton compte a été supprimé"

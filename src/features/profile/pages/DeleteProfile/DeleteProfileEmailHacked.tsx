@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -27,7 +27,7 @@ export const DeleteProfileEmailHacked: FC = () => {
       withGoBack
       illustration={UserBlocked}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
+        url: remoteIllustrationUrls.blockedPaintingLarge,
         backgroundColor: 'information03',
       }}
       title="Sécurise ton compte"

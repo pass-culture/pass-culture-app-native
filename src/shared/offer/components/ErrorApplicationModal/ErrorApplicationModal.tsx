@@ -6,7 +6,7 @@ import { Referrals, UseNavigationType } from 'features/navigation/navigators/Roo
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
 import { UserError } from 'ui/svg/UserError'
@@ -45,7 +45,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
       visible={visible}
       title={'Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit'}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.emptyWalletSmall,
+        url: remoteIllustrationUrls.emptyWalletSmall,
         backgroundColor: 'information03',
       }}
       Illustration={UserError}

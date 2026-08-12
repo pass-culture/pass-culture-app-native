@@ -14,7 +14,7 @@ export const AppModalIllustration = ({
   url,
   backgroundColor,
 }: RemoteIllustration): React.JSX.Element => (
-  <Container illustrationBackgroundColor={backgroundColor} testID="app-modal-remote-illustration">
+  <Container illustrationBackgroundColor={backgroundColor} testID="remote-illustration">
     <RemoteIllustration source={{ uri: url }} resizeMode="contain" />
   </Container>
 )

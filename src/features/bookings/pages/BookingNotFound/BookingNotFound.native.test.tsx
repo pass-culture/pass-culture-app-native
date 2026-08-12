@@ -33,7 +33,7 @@ describe('<BookingNotFound/>', () => {
 
     render(<BookingNotFound error={new Error('error')} resetErrorBoundary={() => null} />)
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 
   it('should navigate to bookings when clicking on cta', async () => {

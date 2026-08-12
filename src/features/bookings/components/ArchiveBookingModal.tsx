@@ -7,7 +7,7 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { AppModalIllustration } from 'ui/components/modals/AppModalIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -56,7 +56,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
         {enableNewVisionUi ? (
           <IllustationContainer>
             <AppModalIllustration
-              url={genericInfoPageIllustrationUrls.emptyWalletSmall}
+              url={remoteIllustrationUrls.emptyWalletSmall}
               backgroundColor="information03"
             />
           </IllustationContainer>

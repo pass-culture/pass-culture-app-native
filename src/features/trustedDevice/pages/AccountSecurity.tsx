@@ -8,7 +8,7 @@ import { DeviceInformationsBanner } from 'features/trustedDevice/components/Devi
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { analytics } from 'libs/analytics/provider'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -31,7 +31,7 @@ export const AccountSecurity = () => {
     <GenericInfoPage
       illustration={UserBlocked}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
+        url: remoteIllustrationUrls.blockedPaintingLarge,
         backgroundColor: 'information03',
       }}
       title="Sécurise ton compte"

@@ -28,6 +28,6 @@ describe('<PageNotFound/>', () => {
 
     render(<PageNotFound />)
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

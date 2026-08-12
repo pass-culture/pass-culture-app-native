@@ -6,7 +6,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Link } from 'ui/designSystem/Link/Link'
@@ -27,7 +27,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
       withGoBack
       illustration={ErrorIllustration}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.brokenDinosaurSkeletonLarge,
+        url: remoteIllustrationUrls.brokenDinosaurSkeletonLarge,
         backgroundColor: 'negative01',
       }}
       title="Nous ne pouvons pas encore supprimer ton compte"

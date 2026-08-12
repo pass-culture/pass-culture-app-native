@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
 import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/env'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -42,7 +42,7 @@ export const DeleteProfileConfirmation = () => {
       withGoBack
       illustration={ProfileDeletion}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.trashMosaic,
+        url: remoteIllustrationUrls.trashMosaic,
         backgroundColor: 'negative01',
       }}
       title="Ta demande de suppression de compte"
