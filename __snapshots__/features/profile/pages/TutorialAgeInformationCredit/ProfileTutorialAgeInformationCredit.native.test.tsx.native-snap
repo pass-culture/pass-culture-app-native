@@ -948,8 +948,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                         "cursor": "pointer",
                         "flexDirection": "row",
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
+                    testID="Lien externe - Plus d’infos sur ton crédit - Lien externe"
                   >
                     <View
                       style={
@@ -3029,8 +3031,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                         "cursor": "pointer",
                         "flexDirection": "row",
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
+                    testID="Lien externe - Plus d’infos sur ton crédit - Lien externe"
                   >
                     <View
                       style={
@@ -3099,8 +3103,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                         "cursor": "pointer",
                         "flexDirection": "row",
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
+                    testID="Lien externe - Plus d’infos sur les bonus sous conditions - Lien externe"
                   >
                     <View
                       style={

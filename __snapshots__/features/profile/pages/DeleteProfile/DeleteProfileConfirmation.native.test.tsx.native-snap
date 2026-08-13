@@ -389,16 +389,22 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          {
-                            "alignItems": "flex-start",
-                            "cursor": "pointer",
-                            "flexDirection": "row",
-                          },
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "flex-start",
+                              "cursor": "pointer",
+                              "flexDirection": "row",
+                            },
+                          ],
                           {
                             "opacity": 1,
                           },
                         ]
                       }
+                      testID="Lien externe - Consultez notre FAQ - Lien externe"
                     >
                       <View
                         style={

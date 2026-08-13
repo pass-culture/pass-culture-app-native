@@ -849,16 +849,22 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                         onStartShouldSetResponder={[Function]}
                         style={
                           [
-                            {
-                              "alignItems": "flex-start",
-                              "cursor": "pointer",
-                              "flexDirection": "row",
-                            },
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "alignItems": "flex-start",
+                                "cursor": "pointer",
+                                "flexDirection": "row",
+                              },
+                            ],
                             {
                               "opacity": 1,
                             },
                           ]
                         }
+                        testID="Lien externe - Voir la charte des données personnelles - Lien externe"
                       >
                         <View
                           style={
