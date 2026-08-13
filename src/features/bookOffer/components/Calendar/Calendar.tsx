@@ -1,5 +1,5 @@
-import { format } from 'date-fns'
-import React, { useCallback } from 'react'
+import { addMonths, format, parseISO } from 'date-fns'
+import React, { useCallback, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { LocaleConfig, Calendar as RNCalendar } from 'react-native-calendars'
 import { MarkingProps } from 'react-native-calendars/src/calendar/day/marking'
@@ -70,10 +70,8 @@ const calendarHeaderStyle = (theme: DefaultTheme): CustomTheme => ({
   todayButtonFontWeight: 600,
   'stylesheet.calendar.header': {
     header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
       marginTop: 6,
-      alignItems: 'center',
+      width: '100%',
     },
     week: {
       flexDirection: 'row',
@@ -202,6 +200,7 @@ export const Calendar: React.FC<Props> = ({
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
+  const [currentMonth, setCurrentMonth] = useState<string>(minDate)
   const selectDay = useSelectDay()
   const theme = useTheme()
 
@@ -239,18 +238,30 @@ export const Calendar: React.FC<Props> = ({
     marginHorizontal: -theme.designSystem.size.spacing.m,
   }
 
+  const handleAddMonth = (num: number) => {
+    setCurrentMonth((prevDate) => {
+      const dateObj = parseISO(prevDate)
+      const newDate = addMonths(dateObj, num)
+      return format(newDate, 'yyyy-MM-dd')
+    })
+  }
+
   return (
     <RNCalendar
       style={RNCalendarTheme}
-      current={minDate}
+      current={currentMonth}
+      key={currentMonth}
       firstDay={1}
       enableSwipeMonths
-      renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
+      renderHeader={(date) => (
+        <MonthHeader date={date as unknown as Date} addMonth={handleAddMonth} />
+      )}
       hideExtraDays
       renderArrow={renderArrow}
       theme={calendarHeaderStyle(theme)}
       markedDates={markedDates}
       dayComponent={renderDay}
+      hideArrows
     />
   )
 }
