@@ -3,6 +3,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist, subscribeWithSelector } from 'zustand/middleware'
 
+import { keychainStorage } from 'libs/keychain/keychain'
+
 import {
   AnyFunction,
   CurriedAnyFunction,
@@ -29,7 +31,9 @@ export function createStore<
 
   const persistedStore = persist(defaultStore, {
     name,
-    storage: createJSONStorage(() => AsyncStorage),
+    storage: createJSONStorage(() =>
+      options?.storageType === 'SECURE' ? keychainStorage : AsyncStorage
+    ),
     partialize: persistKeys
       ? (state) => Object.fromEntries(persistKeys.map((key) => [key, state[key]]))
       : (state) => state,
