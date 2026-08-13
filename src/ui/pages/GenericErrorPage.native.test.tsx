@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { render, screen } from 'tests/utils'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { Typo } from 'ui/theme'
@@ -42,7 +42,7 @@ describe('<GenericErrorPage />', () => {
         helmetTitle="HelmetTitle"
         illustration={PhonePending}
         remoteIllustration={{
-          url: genericInfoPageIllustrationUrls.mobileDeviceAndParameters,
+          url: remoteIllustrationUrls.mobileDeviceAndParameters,
           backgroundColor: 'pending01',
         }}
         title="GenericErrorPage"
@@ -53,6 +53,6 @@ describe('<GenericErrorPage />', () => {
       </GenericErrorPage>
     )
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

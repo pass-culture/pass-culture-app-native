@@ -11,10 +11,14 @@ import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Close } from 'ui/svg/icons/Close'
@@ -43,6 +47,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     user,
   })
   const { navigate } = useNavigation<UseNavigationType>()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   function onSuccess() {
     navigate(...getTabHookConfig('Bookings'))
@@ -84,6 +89,15 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <ModalContent>
+        {enableNewVisionUi ? (
+          <IllustationContainer>
+            <RemoteIllustration
+              url={remoteIllustrationUrls.emptyWalletSmall}
+              backgroundColor="information03"
+              size="s"
+            />
+          </IllustationContainer>
+        ) : null}
         <OfferName>{booking.stock.offer.name}</OfferName>
         {refundRule ? <Refund>{refundRule}</Refund> : null}
         <CancelButtonContainer>
@@ -117,5 +131,10 @@ const Refund = styled(Typo.Body)(({ theme }) => ({
 
 const CancelButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const IllustationContainer = styled.View(({ theme }) => ({
+  alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.xl,
 }))

@@ -13,7 +13,7 @@ import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRe
 import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { getAge } from 'shared/user/getAge'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
@@ -69,7 +69,7 @@ export const RecreditBirthdayNotification = () => {
       remoteIllustration={
         enableNewVisionUi
           ? {
-              url: genericInfoPageIllustrationUrls.birthdayCake,
+              url: remoteIllustrationUrls.birthdayCake,
               backgroundColor: 'information02',
             }
           : undefined

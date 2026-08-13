@@ -70,7 +70,7 @@ describe('<RecreditBirthdayNotification />', () => {
     })
     renderRecreditBirthdayNotification()
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 
   describe('when pressing "Continuer"', () => {

@@ -266,9 +266,11 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
             }
           >
             <View
+              gap={6}
               style={
                 {
                   "alignItems": "center",
+                  "gap": 24,
                 }
               }
             >

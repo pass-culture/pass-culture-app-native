@@ -5,6 +5,7 @@ import { ReactionTypeEnum, SubcategoriesResponseModelv2, SubcategoryIdEnum } fro
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -33,6 +34,7 @@ jest.useFakeTimers()
 describe('IncomingReactionModalContainer', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
+    setFeatureFlags()
   })
 
   it('should render the modal if there is a booking without reaction after 24 hours, subcategory is in reactionCategories remote config', async () => {

@@ -5,7 +5,7 @@ import { getSubscriptionPropConfig } from 'features/navigation/navigators/Subscr
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -28,7 +28,7 @@ export function EighteenBirthday() {
       remoteIllustration={
         enableNewVisionUi
           ? {
-              url: genericInfoPageIllustrationUrls.birthdayCake,
+              url: remoteIllustrationUrls.birthdayCake,
               backgroundColor: 'information02',
             }
           : undefined

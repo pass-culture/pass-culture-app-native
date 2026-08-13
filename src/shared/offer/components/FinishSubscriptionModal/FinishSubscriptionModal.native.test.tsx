@@ -4,6 +4,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
@@ -38,6 +39,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<FinishSubscriptionModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly with undefined deposit amount', () => {
     mockDepositAmounts.mockReturnValueOnce(undefined)
 

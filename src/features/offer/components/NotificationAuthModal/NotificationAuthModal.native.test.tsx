@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { NotificationAuthModal } from 'features/offer/components/NotificationAuthModal/NotificationAuthModal'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -20,6 +21,10 @@ const dismissModal = jest.fn()
 const user = userEvent.setup()
 
 describe('NotificationAuthModal', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match previous snapshot', () => {
     renderNotificationAuthModal()
 

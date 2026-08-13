@@ -7,6 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -25,6 +26,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ReactionChoiceModal', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display body with validation when body type is validation', () => {
     renderReactionChoiceModal({})
 

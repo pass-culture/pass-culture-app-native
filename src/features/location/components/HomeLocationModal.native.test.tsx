@@ -3,6 +3,7 @@ import React from 'react'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
@@ -51,6 +52,7 @@ const user = userEvent.setup()
 
 describe('HomeLocationModal', () => {
   beforeEach(() => {
+    setFeatureFlags()
     initLocation()
   })
 

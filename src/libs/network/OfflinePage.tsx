@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Tag } from 'ui/designSystem/Tag/Tag'
-import { GenericInfoPageIllustration } from 'ui/pages/GenericInfoPageIllustration'
 import { Page } from 'ui/pages/Page'
 import { BrokenConnection as InitialBrokenConnection } from 'ui/svg/BrokenConnection'
 import { Bookings } from 'ui/svg/icons/Bookings'
@@ -26,9 +26,9 @@ export const OfflinePage = () => {
       <Content>
         <Spacer.TopScreen />
         {enableNewVisionUi ? (
-          <GenericInfoPageIllustration
+          <RemoteIllustration
             backgroundColor="negative01"
-            url={genericInfoPageIllustrationUrls.disconnectedCableStickManLarge}
+            url={remoteIllustrationUrls.disconnectedCableStickManLarge}
           />
         ) : (
           <BrokenConnection />

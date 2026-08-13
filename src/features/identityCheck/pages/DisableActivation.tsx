@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -30,7 +30,7 @@ export const DisableActivation = () => {
       illustration={Hourglass}
       remoteIllustration={{
         backgroundColor: 'pending01',
-        url: genericInfoPageIllustrationUrls.workedInPrgressSignSculptureLarge,
+        url: remoteIllustrationUrls.workedInPrgressSignSculptureLarge,
       }}
       title={title}
       buttonPrimary={{

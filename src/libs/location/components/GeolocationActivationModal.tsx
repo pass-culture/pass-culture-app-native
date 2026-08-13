@@ -5,9 +5,13 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { locationStore } from 'libs/locationV2/location.store'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
@@ -22,6 +26,7 @@ const isNative = Platform.OS === 'android' || Platform.OS === 'ios'
 export const GeolocationActivationModal: React.FC = () => {
   const { goBack } = useNavigation<UseNavigationType>()
   const permission = locationStore.hooks.usePermissionState()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   useFocusEffect(
     useCallback(() => {
@@ -38,7 +43,15 @@ export const GeolocationActivationModal: React.FC = () => {
       onCloseIconPress={goBack}
       testIdSuffix="geoloc-permission-modal">
       {/** Special case where theme.icons.sizes is not used */}
-      <LocationPointer />
+      {enableNewVisionUi ? (
+        <RemoteIllustration
+          url={remoteIllustrationUrls.worldGlobeSmall}
+          backgroundColor="information04"
+          size="s"
+        />
+      ) : (
+        <LocationPointer />
+      )}
       <FirstInformationText>
         Retrouve toutes les offres autour de chez toi en activant les données de localisation.
       </FirstInformationText>

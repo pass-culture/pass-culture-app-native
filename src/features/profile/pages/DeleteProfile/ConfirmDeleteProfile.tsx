@@ -9,7 +9,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -42,7 +42,7 @@ export function ConfirmDeleteProfile() {
       withGoBack
       illustration={ErrorIllustration}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.trashMosaic,
+        url: remoteIllustrationUrls.trashMosaic,
         backgroundColor: 'negative01',
       }}
       title="Veux-tu vraiment supprimer ton compte&nbsp;?"

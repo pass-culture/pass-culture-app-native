@@ -2,9 +2,15 @@ import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { ReactionChoiceModalBodyWithRedirection } from 'features/reactions/components/ReactionChoiceModalBodyWithRedirection/ReactionChoiceModalBodyWithRedirection'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 
 describe('ReactionChoiceModalBodyWithRedirection', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display image container when there is at least one offer booked with an image', () => {
     render(
       <ReactionChoiceModalBodyWithRedirection
@@ -74,5 +80,17 @@ describe('ReactionChoiceModalBodyWithRedirection', () => {
     )
 
     expect(screen.queryByTestId('offerImagesGradient')).not.toBeOnTheScreen()
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(
+      <ReactionChoiceModalBodyWithRedirection
+        offerImages={[{ imageUrl: '', categoryId: CategoryIdEnum.CINEMA }]}
+      />
+    )
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

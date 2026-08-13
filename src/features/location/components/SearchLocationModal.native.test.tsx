@@ -8,6 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
@@ -73,6 +74,7 @@ const user = userEvent.setup()
 
 describe('SearchLocationModal', () => {
   beforeEach(() => {
+    setFeatureFlags()
     locationActions.setPermissionState(GeolocPermissionState.GRANTED)
     initLocation()
   })

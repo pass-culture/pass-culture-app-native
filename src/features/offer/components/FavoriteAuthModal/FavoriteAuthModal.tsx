@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -38,6 +39,10 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris'}
+      remoteIllustration={{
+        url: remoteIllustrationUrls.heartMosaicSmall,
+        backgroundColor: 'positive01',
+      }}
       Illustration={Illustration}
       hideModal={closeModal}>
       <StyledBody>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -13,6 +14,10 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<FavoriteButton />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render favorite icon', async () => {
     renderFavoriteButton()
 

@@ -5,7 +5,7 @@ import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { useVersion } from 'ui/hooks/useVersion'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -28,7 +28,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
     <GenericInfoPage
       illustration={UserBlocked}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.blockedPaintingLarge,
+        url: remoteIllustrationUrls.blockedPaintingLarge,
         backgroundColor: 'information03',
       }}
       title="Ton compte a été suspendu"

@@ -70,6 +70,6 @@ describe('<EighteenBirthday />', () => {
 
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
-    expect(screen.getByTestId('generic-info-page-remote-illustration')).toBeOnTheScreen()
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

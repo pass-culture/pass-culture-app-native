@@ -1,11 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   useMobileFontScaleToDisplay,
   useNumberOfLine,
 } from 'shared/accessibility/helpers/zoomHelpers'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { RemoteIllustration, RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { Close } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -16,6 +19,7 @@ type Props = {
   Illustration: React.FC<AccessibleIcon>
   hideModal: () => void
   onModalHide?: () => void
+  remoteIllustration?: RemoteIllustrationProps
 }
 
 export const AppModalWithIllustration: FunctionComponent<Props> = ({
@@ -24,8 +28,18 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
   Illustration,
   hideModal,
   onModalHide,
+  remoteIllustration,
   children,
 }) => {
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
+
+  const renderIllustration = () => {
+    if (enableNewVisionUi && remoteIllustration) {
+      return <RemoteIllustration {...remoteIllustration} size="s" />
+    }
+    return <Illustration />
+  }
+
   return (
     <AppModal
       visible={visible}
@@ -37,7 +51,7 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
       onRightIconPress={hideModal}
       onModalHide={onModalHide}>
       <Container>
-        <Illustration />
+        {renderIllustration()}
         <ChildrenWrapper>{children}</ChildrenWrapper>
       </Container>
     </AppModal>

@@ -6,6 +6,7 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -37,6 +38,7 @@ jest.useFakeTimers()
 describe('<VenueThematicSection/>', () => {
   beforeEach(() => {
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
+    setFeatureFlags()
   })
 
   it('should render null if venue has no thematic', async () => {
