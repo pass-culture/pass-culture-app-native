@@ -34,7 +34,7 @@ onFlowStart:
       - tapOn: 'Valider et voir sur la carte'
 
 - assertVisible:
-    id: 'venue-map-view'
+    id: 'venue-map-view-container'
 
 - tapOn: 'Revenir en arrière'
 

@@ -249,7 +249,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   )
 
   return initialRegion ? (
-    <Container testID="venue-map-view">
+    <Container testID="venue-map-view-container">
       <VenueMapBottomSheet
         snapPoints={snapPoints}
         ref={bottomSheetRef}
