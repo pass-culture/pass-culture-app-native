@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import Animated, { FadeIn, FadeOut, SharedValue } from 'react-native-reanimated'
 import styled from 'styled-components/native'
@@ -7,8 +7,8 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
+import { useLogOfferImagesScroll } from 'features/offer/helpers/useLogOfferImagesScroll/useLogOfferImagesScroll'
 import { OfferImageContainerDimensions } from 'features/offer/types'
-import { analytics } from 'libs/analytics/provider'
 import { ImageWithCredit } from 'shared/types'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Play } from 'ui/svg/icons/Play'
@@ -42,17 +42,11 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
     setCarouselReady(true)
   }, [setCarouselReady])
 
-  const nbImages = offerImages.length
-  const lastLoggedImageIndex = useRef(0)
-
-  const handleSnapToItem = useCallback(
-    (imageIndex: number) => {
-      if (imageIndex === lastLoggedImageIndex.current) return
-      lastLoggedImageIndex.current = imageIndex
-      analytics.logOfferImagesScroll({ offerId, nbImages, imageIndex, from: 'offer' })
-    },
-    [offerId, nbImages]
-  )
+  const logImagesScroll = useLogOfferImagesScroll({
+    offerId,
+    nbImages: offerImages.length,
+    from: 'offer',
+  })
 
   return (
     <Animated.View entering={FadeIn} style={style} testID="imageRenderer">
@@ -62,7 +56,7 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
         imageDimensions={imageDimensions}
         onItemPress={onPress}
         onLoad={handleCarouselLoad}
-        onSnapToItem={nbImages > 1 ? handleSnapToItem : undefined}
+        onSnapToItem={logImagesScroll}
         isReady={carouselReady}
       />
       {carouselReady ? null : (

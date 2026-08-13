@@ -9,7 +9,7 @@ import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDime
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
+import { render, screen, userEvent, waitFor } from 'tests/utils/web'
 
 const mockOnPress = jest.fn()
 
@@ -111,6 +111,8 @@ describe('<OfferImageContainer />', () => {
   })
 
   describe('analytics', () => {
+    const user = userEvent.setup()
+
     it('should log OfferImagesScroll when navigating with the arrows', async () => {
       render(
         reactQueryProviderHOC(
@@ -125,7 +127,7 @@ describe('<OfferImageContainer />', () => {
         { theme: { isDesktopViewport: true } }
       )
 
-      fireEvent.click(await screen.findByTestId('Image suivante'))
+      await user.click(await screen.findByTestId('Image suivante'))
 
       await waitFor(() => {
         expect(analytics.logOfferImagesScroll).toHaveBeenCalledWith({
@@ -154,6 +156,95 @@ describe('<OfferImageContainer />', () => {
       await screen.findByTestId('offerImageContainerCarousel')
 
       expect(analytics.logOfferImagesScroll).not.toHaveBeenCalled()
+    })
+
+    it('should not log OfferImagesScroll when the offer has no image', async () => {
+      render(
+        reactQueryProviderHOC(
+          <OfferImageContainer
+            images={[]}
+            categoryId={CategoryIdEnum.CINEMA}
+            onPress={mockOnPress}
+            imageDimensions={mockOfferImageDimensions}
+            offer={offerResponseSnap}
+          />
+        ),
+        { theme: { isDesktopViewport: true } }
+      )
+
+      await screen.findByTestId('offerImageContainerCarousel')
+
+      expect(analytics.logOfferImagesScroll).not.toHaveBeenCalled()
+    })
+
+    it('should log OfferImagesScroll for each image change', async () => {
+      render(
+        reactQueryProviderHOC(
+          <OfferImageContainer
+            images={[
+              { url: 'some_url_to_some_resource' },
+              { url: 'some_url2_to_some_resource' },
+              { url: 'some_url3_to_some_resource' },
+            ]}
+            categoryId={CategoryIdEnum.CINEMA}
+            onPress={mockOnPress}
+            imageDimensions={mockOfferImageDimensions}
+            offer={offerResponseSnap}
+          />
+        ),
+        { theme: { isDesktopViewport: true } }
+      )
+
+      const nextButton = await screen.findByTestId('Image suivante')
+      await user.click(nextButton)
+      await user.click(nextButton)
+      await user.click(await screen.findByTestId('Image précédente'))
+
+      await waitFor(() => {
+        expect(analytics.logOfferImagesScroll).toHaveBeenCalledTimes(3)
+      })
+
+      expect(analytics.logOfferImagesScroll).toHaveBeenNthCalledWith(1, {
+        offerId: offerResponseSnap.id,
+        nbImages: 3,
+        imageIndex: 1,
+        from: 'offer',
+      })
+      expect(analytics.logOfferImagesScroll).toHaveBeenNthCalledWith(2, {
+        offerId: offerResponseSnap.id,
+        nbImages: 3,
+        imageIndex: 2,
+        from: 'offer',
+      })
+      expect(analytics.logOfferImagesScroll).toHaveBeenNthCalledWith(3, {
+        offerId: offerResponseSnap.id,
+        nbImages: 3,
+        imageIndex: 1,
+        from: 'offer',
+      })
+    })
+
+    it('should not log OfferImagesScroll when already on the last image', async () => {
+      render(
+        reactQueryProviderHOC(
+          <OfferImageContainer
+            images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+            categoryId={CategoryIdEnum.CINEMA}
+            onPress={mockOnPress}
+            imageDimensions={mockOfferImageDimensions}
+            offer={offerResponseSnap}
+          />
+        ),
+        { theme: { isDesktopViewport: true } }
+      )
+
+      const nextButton = await screen.findByTestId('Image suivante')
+      await user.click(nextButton)
+      await user.click(nextButton)
+
+      await waitFor(() => {
+        expect(analytics.logOfferImagesScroll).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })

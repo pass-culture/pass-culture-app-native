@@ -37,10 +37,12 @@ jest.mock('ui/components/ImagesCarousel/ImagesCarousel', () => {
         MockedReact.Fragment,
         null,
         MockedReact.createElement(ActualImagesCarousel, props),
-        MockedReact.createElement(
-          Text,
-          { onPress: () => props.onSnapToItem?.(1) },
-          'Aller à l’illustration 2'
+        ...props.images.map((_, index) =>
+          MockedReact.createElement(
+            Text,
+            { key: index, onPress: () => props.onSnapToItem?.(index) },
+            `Aller à l’illustration ${index + 1}`
+          )
         )
       ),
   }
@@ -75,5 +77,43 @@ describe('<OfferPreview />', () => {
       imageIndex: 1,
       from: 'offerPreview',
     })
+  })
+
+  it('should log OfferImagesScroll for each image change', async () => {
+    const user = userEvent.setup()
+    useRoute.mockReturnValueOnce({ params: { id: 42 } })
+    await renderAsync(<OfferPreview />)
+
+    await user.press(screen.getByText('Aller à l’illustration 2'))
+    await user.press(screen.getByText('Aller à l’illustration 1'))
+
+    expect(analytics.logOfferImagesScroll).toHaveBeenCalledTimes(2)
+    expect(analytics.logOfferImagesScroll).toHaveBeenNthCalledWith(2, {
+      offerId: 42,
+      nbImages: 2,
+      imageIndex: 0,
+      from: 'offerPreview',
+    })
+  })
+
+  it('should log OfferImagesScroll once when the same image is snapped twice', async () => {
+    const user = userEvent.setup()
+    useRoute.mockReturnValueOnce({ params: { id: 42 } })
+    await renderAsync(<OfferPreview />)
+
+    await user.press(screen.getByText('Aller à l’illustration 2'))
+    await user.press(screen.getByText('Aller à l’illustration 2'))
+
+    expect(analytics.logOfferImagesScroll).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not log OfferImagesScroll for the image the carousel is opened on', async () => {
+    const user = userEvent.setup()
+    useRoute.mockReturnValueOnce({ params: { id: 42, defaultIndex: 1 } })
+    await renderAsync(<OfferPreview />)
+
+    await user.press(screen.getByText('Aller à l’illustration 2'))
+
+    expect(analytics.logOfferImagesScroll).not.toHaveBeenCalled()
   })
 })
