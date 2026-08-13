@@ -297,8 +297,6 @@ export const logEventAnalytics = {
     searchId?: string
     originDetails?: ConsultArtistOriginDetails
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST }, params),
-  logConsultArtistFakeDoor: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST_FAKE_DOOR }),
   logConsultAuthenticationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL }, { offerId }),
   logConsultAvailableDates: (offerId: number) =>
