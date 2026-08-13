@@ -6,7 +6,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndWidget/SearchTitleAndWidget'
-import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { CreateHistoryItem } from 'features/search/types'
@@ -45,7 +44,7 @@ export const SearchHeader = ({
   const onGoBack = () => {
     dispatch({
       type: 'SET_STATE',
-      payload: { ...initialSearchState, locationFilter: searchState.locationFilter },
+      payload: { ...searchState, query: '', locationFilter: searchState.locationFilter },
     })
     goBack()
   }

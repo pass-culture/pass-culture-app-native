@@ -18,18 +18,11 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 type Props = {
   header?: React.ReactNode
   searchFilters: FetchSearchResultsArgs
-  hasBeenClicked: boolean
-  setHasBeenClicked: (hasBeenClicked: boolean) => void
 }
 
 const isWeb = Platform.OS === 'web'
 
-export const AllSearchResultsList: FC<Props> = ({
-  header,
-  searchFilters,
-  hasBeenClicked,
-  setHasBeenClicked,
-}) => {
+export const AllSearchResultsList: FC<Props> = ({ header, searchFilters }) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
 
   const isFocused = useIsFocused()
@@ -49,10 +42,7 @@ export const AllSearchResultsList: FC<Props> = ({
       />
       <NoSearchResultContainer searchFilters={searchFilters}>
         <Container testID="searchResults">
-          <OffersList
-            searchFilters={searchFilters}
-            hasBeenClicked={hasBeenClicked}
-            setHasBeenClicked={setHasBeenClicked}>
+          <OffersList searchFilters={searchFilters}>
             <React.Fragment>
               {header}
               <SearchResultsListHeader

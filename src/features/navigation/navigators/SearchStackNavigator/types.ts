@@ -7,6 +7,7 @@ import { SearchState } from 'features/search/types'
 
 const screensSearch = [
   'SearchLanding',
+  'SearchMap',
   'SearchResults',
   'ThematicSearch',
   'ThematicSearchSubcategories',
@@ -27,6 +28,7 @@ export type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThemat
 
 export type SearchStackParamList = {
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchMap?: Partial<SearchState>
   SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   ThematicSearch?: Partial<
     SearchState & {
