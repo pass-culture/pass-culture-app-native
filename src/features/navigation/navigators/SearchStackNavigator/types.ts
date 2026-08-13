@@ -6,7 +6,11 @@ import { SearchState } from 'features/search/types'
 type ExtendsScreenNames<T extends ScreenNames> = T
 
 export type SearchStackRouteName = ExtendsScreenNames<
-  'SearchLanding' | 'SearchResults' | 'ThematicSearch' | 'ThematicSearchSubcategories'
+  | 'SearchLanding'
+  | 'SearchMap'
+  | 'SearchResults'
+  | 'ThematicSearch'
+  | 'ThematicSearchSubcategories'
 >
 
 export const hasAThematicSearch = [
@@ -22,6 +26,7 @@ export type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThemat
 
 export type SearchStackParamList = {
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchMap?: Partial<SearchState>
   SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   ThematicSearch?: Partial<
     SearchState & {

@@ -365,6 +365,7 @@ export type RootStackParamList = {
   VenueMapLocationModal: {
     openedFrom: Referrals
     shouldOpenMapInTab?: boolean
+    shouldNavigateToSearchMap?: boolean
   }
   GeolocationActivationModal: undefined
 } & TrustedDeviceRootStackParamList

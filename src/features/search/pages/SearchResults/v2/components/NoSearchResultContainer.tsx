@@ -16,9 +16,12 @@ export const NoSearchResultContainer: FC<
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
 
-  const { data: hasOffersData } = useSearchOffersQuery(searchFilters, {
-    select: (offersResponse) => !!offersResponse.pages[0]?.offersResponse.nbHits,
-  })
+  const { data: hasOffersData, isFetching: isFetchingOffers } = useSearchOffersQuery(
+    searchFilters,
+    {
+      select: (offersResponse) => !!offersResponse.pages[0]?.offersResponse.nbHits,
+    }
+  )
 
   const { data: hasVenuesData } = useSearchVenuesQuery(searchFilters, {
     select: (venuesResponse) =>
@@ -38,7 +41,7 @@ export const NoSearchResultContainer: FC<
     ? hasOffersData
     : hasOffersData || hasVenuesData || hasArtistsData
 
-  if (!hasSearchResults)
+  if (!isFetchingOffers && !hasSearchResults)
     return (
       <NoSearchResult
         setSelectedLocationMode={locationActions.setLocationMode}

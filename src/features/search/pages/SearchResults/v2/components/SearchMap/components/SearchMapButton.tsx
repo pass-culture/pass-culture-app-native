@@ -5,6 +5,7 @@ import Animated, { LinearTransition } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
@@ -19,26 +20,27 @@ const isWeb = Platform.OS === 'web'
 type Props = {
   shouldDisplayMapButtonText: boolean
   searchId?: string
-  setHasBeenClicked: (hasBeenClicked: boolean) => void
 }
 
-export const SearchMapButton: FC<Props> = ({
-  shouldDisplayMapButtonText,
-  searchId,
-  setHasBeenClicked,
-}) => {
+export const SearchMapButton: FC<Props> = ({ shouldDisplayMapButtonText, searchId }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState } = useSearch()
 
   const handleSeeMapButtonPress = () => {
     removeSelectedVenue()
 
-    setHasBeenClicked(true)
     if (locationSelectors.selectLocationMode() === LocationMode.EVERYWHERE) {
       navigate('VenueMapLocationModal', {
         openedFrom: 'search',
+        shouldNavigateToSearchMap: true,
       })
       return
     }
+
+    navigate('TabNavigator', {
+      screen: 'SearchStackNavigator',
+      params: { screen: 'SearchMap', params: searchState },
+    })
 
     void analytics.logConsultVenueMap({
       from: 'search',
