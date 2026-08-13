@@ -127,54 +127,49 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilte
   if (showSkeleton) return <OffersListSkeleton />
 
   return (
-    <React.Fragment>
-      <Container>
-        <FlashList
-          ref={listRef}
-          key="offers_search_results"
-          data={offersResponse?.offers}
-          keyExtractor={(item: Offer) => item.objectID}
-          ListHeaderComponent={
-            children ? (
-              <React.Fragment>{children}</React.Fragment>
-            ) : (
-              <ListHeaderComponent
-                title="Les offres"
-                nbItems={offersResponse?.offers.length ?? 0}
-              />
-            )
-          }
-          renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
-          contentContainerStyle={{
-            paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
-            paddingHorizontal: designSystem.size.spacing.xl,
-          }}
-          ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
-          numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
-          refreshing={isRefetching}
-          onRefresh={refetch}
-          onEndReached={handleEndReached}
-          scrollEnabled={!!offersResponse?.nbHits}
-          onScroll={handleScroll}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-        />
+    <Container>
+      <FlashList
+        ref={listRef}
+        key="offers_search_results"
+        data={offersResponse?.offers}
+        keyExtractor={(item: Offer) => item.objectID}
+        ListHeaderComponent={
+          children ? (
+            <React.Fragment>{children}</React.Fragment>
+          ) : (
+            <ListHeaderComponent title="Les offres" nbItems={offersResponse?.offers.length ?? 0} />
+          )
+        }
+        renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
+        contentContainerStyle={{
+          paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+          paddingHorizontal: designSystem.size.spacing.xl,
+        }}
+        ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
+        numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
+        refreshing={isRefetching}
+        onRefresh={refetch}
+        onEndReached={handleEndReached}
+        scrollEnabled={!!offersResponse?.nbHits}
+        onScroll={handleScroll}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+      />
 
-        <FloatingButtonsWrapper
-          layout={LinearTransition.springify().damping(15).stiffness(20).duration(1000)}>
-          {shouldRenderScrollToTopButton ? (
-            <ScrollToTopButton
-              transition={scrollButtonTransition}
-              onPress={() => {
-                listRef.current?.scrollToOffset({ offset: 0 })
-              }}
-            />
-          ) : null}
+      <FloatingButtonsWrapper
+        layout={LinearTransition.springify().damping(15).stiffness(20).duration(1000)}>
+        {shouldRenderScrollToTopButton ? (
+          <ScrollToTopButton
+            transition={scrollButtonTransition}
+            onPress={() => {
+              listRef.current?.scrollToOffset({ offset: 0 })
+            }}
+          />
+        ) : null}
 
-          <SearchMapButton shouldDisplayMapButtonText={shouldDisplayMapButtonText} />
-        </FloatingButtonsWrapper>
-      </Container>
-    </React.Fragment>
+        <SearchMapButton shouldDisplayMapButtonText={shouldDisplayMapButtonText} />
+      </FloatingButtonsWrapper>
+    </Container>
   )
 }
 
