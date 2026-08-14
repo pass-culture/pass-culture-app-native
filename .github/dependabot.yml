@@ -3,6 +3,9 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     open-pull-requests-limit: 2
+    pull-request-branch-name:
+      max-length: 55
+      template: '{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
@@ -17,6 +20,9 @@ updates:
   - package-ecosystem: 'bundler'
     directory: '/'
     open-pull-requests-limit: 2
+    pull-request-branch-name:
+      max-length: 55
+      template: '{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
@@ -27,6 +33,9 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '.github/workflows'
     open-pull-requests-limit: 2
+    pull-request-branch-name:
+      max-length: 55
+      template: '{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
@@ -37,6 +46,9 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/server'
     open-pull-requests-limit: 2
+    pull-request-branch-name:
+      max-length: 55
+      template: '{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
