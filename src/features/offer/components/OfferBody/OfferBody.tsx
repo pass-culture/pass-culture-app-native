@@ -125,7 +125,12 @@ export const OfferBody: FunctionComponent<Props> = ({
   }
 
   const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
-    void analytics.logConsultArtist({ artistId, artistName, from: 'offer' })
+    void analytics.logConsultArtist({
+      artistId,
+      artistName,
+      from: 'offer',
+      offerId: offer.id.toString(),
+    })
   }
 
   const fullAddressOffer = formatFullAddress(

@@ -540,6 +540,7 @@ describe('<OfferBody />', () => {
         artistId: '1',
         artistName: 'Stephen King',
         from: 'offer',
+        offerId: offer.id.toString(),
       })
     })
 
@@ -561,6 +562,7 @@ describe('<OfferBody />', () => {
         artistId: '1',
         artistName: 'Stephen King',
         from: 'offer',
+        offerId: offer.id.toString(),
       })
     })
 
