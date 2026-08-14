@@ -162,6 +162,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -266,6 +267,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -771,6 +773,7 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -875,6 +878,7 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {

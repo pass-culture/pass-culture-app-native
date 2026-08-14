@@ -162,6 +162,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -288,7 +289,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 La présente déclaration d’accessibilité s’applique à 
                 <Text
-                  accessibilityLabel="l’application Android, lien externe"
+                  accessibilityLabel="l’application Android - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -301,6 +302,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="l’application Android - Lien externe"
                 >
                   l’application Android
                 </Text>
@@ -318,6 +320,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -367,6 +370,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -454,6 +458,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -479,6 +484,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -724,6 +730,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -749,6 +756,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Aucune
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -960,6 +968,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1138,6 +1147,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1165,6 +1175,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Cette déclaration a été établie le lundi 8 décembre 2025.
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1355,6 +1366,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1569,6 +1581,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1631,7 +1644,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée : 
                 <Text
-                  accessibilityLabel="contacter le support, lien externe"
+                  accessibilityLabel="contacter le support - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -1644,6 +1657,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="contacter le support - Lien externe"
                 >
                   contacter le support
                 </Text>
@@ -1658,6 +1672,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1694,7 +1709,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Écrire un message au 
                 <Text
-                  accessibilityLabel="Défenseur des droits, lien externe"
+                  accessibilityLabel="Défenseur des droits - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -1707,6 +1722,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="Défenseur des droits - Lien externe"
                 >
                   Défenseur des droits
                 </Text>
@@ -1723,7 +1739,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Contacter le délégué du 
                 <Text
-                  accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+                  accessibilityLabel="Défenseur des droits dans votre région - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -1736,6 +1752,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="Défenseur des droits dans votre région - Lien externe"
                 >
                   Défenseur des droits dans votre région
                 </Text>

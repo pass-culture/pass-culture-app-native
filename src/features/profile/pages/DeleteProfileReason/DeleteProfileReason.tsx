@@ -14,7 +14,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
@@ -106,7 +106,7 @@ export function DeleteProfileReason() {
             <HeaderContainer>
               <StyledIcon />
               <TitlesContainer>
-                <Typo.Title3 {...getHeadingAttrs(1)}>
+                <Typo.Title3 {...getTextSemanticAttrs(1)}>
                   Pourquoi souhaites-tu supprimer ton compte&nbsp;?
                 </Typo.Title3>
                 <Typo.Body>

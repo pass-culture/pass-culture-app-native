@@ -15,7 +15,7 @@ import { Spinner } from 'ui/components/Spinner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
@@ -108,7 +108,7 @@ export function StatusFlatList({
               <React.Fragment>
                 <HeaderHeightSpacer headerHeight={headerHeight} />
                 <Container>
-                  <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionne ton statut</Typo.Title3>
+                  <Typo.Title3 {...getTextSemanticAttrs(2)}>Sélectionne ton statut</Typo.Title3>
                 </Container>
               </React.Fragment>
             }

@@ -162,6 +162,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -265,6 +266,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -429,7 +431,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Identifiants oubliés ?"
+                  accessibilityLabel="Identifiants oubliés ? - Lien externe"
                   accessibilityRole="link"
                   accessibilityState={
                     {
@@ -481,7 +483,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       },
                     ]
                   }
-                  testID="Identifiants oubliés ?"
+                  testID="Identifiants oubliés ? - Lien externe"
                 >
                   <View
                     gap={8}

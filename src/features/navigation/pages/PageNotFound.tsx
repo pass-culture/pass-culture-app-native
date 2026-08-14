@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Page } from 'ui/pages/Page'
 import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
@@ -17,7 +17,7 @@ export const PageNotFound: React.FC = () => {
       <GenericInfoPage
         illustration={PageNotFoundIcon}
         remoteIllustration={{
-          url: genericInfoPageIllustrationUrls.emptyDigitalWindowLarge,
+          url: remoteIllustrationUrls.emptyDigitalWindowLarge,
           backgroundColor: 'pending01',
         }}
         title="Page introuvable&nbsp;!"

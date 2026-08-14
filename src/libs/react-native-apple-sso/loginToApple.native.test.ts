@@ -23,7 +23,7 @@ describe('loginToApple', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
-    mockedApi.getNativeV1OauthState.mockResolvedValue({ oauthStateToken: mockState })
+    mockedApi.getNativeV2OauthState.mockResolvedValue({ oauthStateToken: mockState })
     mockedAppleAuth.performRequest.mockResolvedValue({
       authorizationCode: mockAuthCode,
       identityToken: 'mockIdentityToken',
@@ -40,7 +40,7 @@ describe('loginToApple', () => {
   it('should call onSuccess with code and state when sign in is successful', async () => {
     await loginToApple({ onSuccess, onError })
 
-    expect(mockedApi.getNativeV1OauthState).toHaveBeenCalledWith()
+    expect(mockedApi.getNativeV2OauthState).toHaveBeenCalledWith()
     expect(mockedAppleAuth.performRequest).toHaveBeenCalledWith({
       requestedOperation: appleAuth.Operation.LOGIN,
       requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
@@ -68,9 +68,9 @@ describe('loginToApple', () => {
     expect(onSuccess).not.toHaveBeenCalled()
   })
 
-  it('should call onError when getNativeV1OauthState fails', async () => {
+  it('should call onError when getNativeV2OauthState fails', async () => {
     const error = new Error('OAuth state error')
-    mockedApi.getNativeV1OauthState.mockRejectedValueOnce(error)
+    mockedApi.getNativeV2OauthState.mockRejectedValueOnce(error)
 
     await loginToApple({ onSuccess, onError })
 

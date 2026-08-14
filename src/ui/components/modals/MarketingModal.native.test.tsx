@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingModal } from './MarketingModal'
@@ -20,6 +22,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('MarketingModal', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(<MarketingModal {...props} />)
 
@@ -32,5 +38,13 @@ describe('MarketingModal', () => {
     await user.press(clickAwayArea)
 
     expect(props.onBackdropPress).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(<MarketingModal {...props} />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

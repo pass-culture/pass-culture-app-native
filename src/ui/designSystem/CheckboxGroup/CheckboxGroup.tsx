@@ -6,6 +6,7 @@
 import React, { ElementType } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -18,7 +19,9 @@ import {
 } from 'ui/designSystem/CheckboxGroup/types'
 import { SelectableVariant } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+
+const labelId = uuidv4()
 
 export const CheckboxGroup = <T extends string = string>({
   label,
@@ -59,13 +62,15 @@ export const CheckboxGroup = <T extends string = string>({
   }
 
   const headingAttrs = labelTagOverrideForAccessibility
-    ? getHeadingAttrs(labelTagOverrideForAccessibility)
+    ? getTextSemanticAttrs(labelTagOverrideForAccessibility)
     : {}
 
   return (
-    <View accessibilityRole={AccessibilityRole.GROUP}>
+    <View accessibilityRole={AccessibilityRole.GROUP} accessibilityLabelledBy={labelId}>
       <Header gap={2} hasError={!!error}>
-        <LabelTag {...headingAttrs}>{label}</LabelTag>
+        <LabelTag {...headingAttrs} id={labelId}>
+          {label}
+        </LabelTag>
         {description ? <Description>{description}</Description> : null}
         {error ? <InputError errorMessage={error} visible /> : null}
       </Header>

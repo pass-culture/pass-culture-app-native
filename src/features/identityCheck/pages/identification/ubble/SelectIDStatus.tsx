@@ -22,7 +22,7 @@ import { IdCard as InitialIdCard } from 'ui/svg/icons/IdCard'
 import { LostId as InitialLostId } from 'ui/svg/icons/LostId'
 import { NoId as InitialNoId } from 'ui/svg/icons/NoId'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const SelectIDStatus: FunctionComponent = () => {
   const { data: subscription } = useGetStepperInfoQuery()
@@ -146,7 +146,7 @@ const Container = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xxl,
 }))
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
   textAlign: 'center',
 })
 

@@ -7,6 +7,7 @@ export type DatePickerProps = {
   maximumDate: Date
   errorMessage?: string
   isDisabled?: boolean
+  label?: string
 }
 
 export type MonthType<MonthNameType extends 'short' | 'long' = 'short'> =

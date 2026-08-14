@@ -13,7 +13,7 @@ import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { AVATAR_MEDIUM } from 'ui/theme/constants'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   artistId: string
@@ -48,26 +48,27 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
     <View>
       <HeaderContainer>
         <TitleRow gap={3}>
-          <TitleContainer>
-            <AccessibleTitle title={TITLE} TitleComponent={TitleLevel2} withMargin={false} />
-          </TitleContainer>
+          <AccessibleTitle title={TITLE} TitleComponent={TitleLevel2} withMargin={false} />
+
           {artists.length > 1 ? (
-            <SeeAllButton
-              playlistTitle={TITLE}
-              data={{
-                onBeforeNavigate,
-                navigateToVerticalPlaylist: {
-                  screen: 'VerticalPlaylistArtists',
-                  params: {
-                    title: TITLE,
-                    subtitle: undefined,
-                    similarToArtistId: artistId,
-                    originDetails: 'similarArtistsPlaylist',
+            <View>
+              <SeeAllButton
+                playlistTitle={TITLE}
+                data={{
+                  onBeforeNavigate,
+                  navigateToVerticalPlaylist: {
+                    screen: 'VerticalPlaylistArtists',
+                    params: {
+                      title: TITLE,
+                      subtitle: undefined,
+                      similarToArtistId: artistId,
+                      originDetails: 'similarArtistsPlaylist',
+                    },
                   },
-                },
-                hideSearchSeeAll: true,
-              }}
-            />
+                  hideSearchSeeAll: true,
+                }}
+              />
+            </View>
           ) : null}
         </TitleRow>
       </HeaderContainer>
@@ -82,16 +83,12 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
   )
 }
 
-const TitleLevel2 = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))``
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: theme.designSystem.size.spacing.m,
 }))
-
-const TitleContainer = styled.View({
-  flex: 1,
-})
 
 const TitleRow = styled(ViewGap)({
   flexDirection: 'row',

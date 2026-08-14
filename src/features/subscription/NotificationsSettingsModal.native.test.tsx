@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -26,6 +27,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<NotificationsSettingsModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     renderModal(true)
 

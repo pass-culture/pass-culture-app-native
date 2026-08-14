@@ -161,6 +161,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -235,6 +236,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         >
           <View>
             <Text
+              accessibilityLevel={4}
               accessibilityRole="header"
               style={
                 {
@@ -318,6 +320,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -392,6 +395,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
+                  accessibilityLabel="Sélectionne une page"
                   accessibilityRole="none"
                   style={
                     {
@@ -2287,6 +2291,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -2573,6 +2578,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={3}
                     accessibilityRole="header"
                     style={
                       {
@@ -3531,6 +3537,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         >
           <View>
             <Text
+              accessibilityLevel={4}
               accessibilityRole="header"
               style={
                 {
@@ -3621,6 +3628,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           }
         >
           <Text
+            accessibilityLevel={4}
             accessibilityRole="header"
             style={
               {

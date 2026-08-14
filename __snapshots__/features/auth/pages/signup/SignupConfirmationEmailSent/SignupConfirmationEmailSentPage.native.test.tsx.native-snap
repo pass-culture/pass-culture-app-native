@@ -162,6 +162,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -291,6 +292,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -368,7 +370,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Consulter notre centre d’aide"
+                    accessibilityLabel="Consulter notre centre d’aide - Lien externe"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -420,7 +422,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Consulter notre centre d’aide"
+                    testID="Consulter notre centre d’aide - Lien externe"
                   >
                     <View
                       gap={8}

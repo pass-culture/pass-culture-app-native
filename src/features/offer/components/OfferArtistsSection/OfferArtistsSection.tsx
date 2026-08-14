@@ -13,6 +13,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -23,7 +24,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Typo } from 'ui/theme'
 import { AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 interface Props {
   artists: OfferArtist[]
@@ -100,24 +101,28 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
   )
 
   const soloArtistPart = () => {
-    return soloArtist?.id ? (
-      <InternalTouchableLink
-        navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
-        accessibilityLabel={`Accéder à la page artiste de ${soloArtist.name}`}
-        accessibilityRole={accessibilityRoleInternalNavigation()}
-        onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
-        {soloArtistContent(<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />)}
-      </InternalTouchableLink>
-    ) : (
-      soloArtistContent()
-    )
+    if (soloArtist?.id) {
+      const role = soloArtist?.role ? getArtistRole(soloArtist.role, offerCategoryId) : undefined
+
+      return (
+        <InternalTouchableLink
+          navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
+          accessibilityLabel={getComputedAccessibilityLabel(soloArtist.name, role)}
+          accessibilityRole={accessibilityRoleInternalNavigation()}
+          onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
+          {soloArtistContent(<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />)}
+        </InternalTouchableLink>
+      )
+    }
+
+    return soloArtistContent()
   }
 
   return (
     <ViewGap gap={4}>
       <SeeAllButtonContainer gap={3}>
         <TitleContainer>
-          <Typo.Title4 {...getHeadingAttrs(2)}>{title}</Typo.Title4>
+          <Typo.Title4 {...getTextSemanticAttrs(2)}>{title}</Typo.Title4>
         </TitleContainer>
         {artists.length > 1 ? (
           <SeeAllButton

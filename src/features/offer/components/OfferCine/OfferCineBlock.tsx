@@ -16,7 +16,7 @@ import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getSpacing } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   title: string
@@ -58,7 +58,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
             showButton(!inView)
           }}>
           <TitleContainer>
-            <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
           </TitleContainer>
         </InView>
       </Anchor>

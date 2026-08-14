@@ -94,6 +94,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={3}
             accessibilityRole="header"
             style={
               {
@@ -207,6 +208,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     }
   >
     <Text
+      accessibilityLevel={2}
       accessibilityRole="header"
       style={
         {
@@ -560,6 +562,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={3}
             accessibilityRole="header"
             style={
               {
@@ -908,6 +911,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={3}
             accessibilityRole="header"
             style={
               {
@@ -1256,6 +1260,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel={3}
             accessibilityRole="header"
             style={
               {
@@ -1607,6 +1612,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel={3}
               accessibilityRole="header"
               style={
                 {
@@ -1921,6 +1927,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
           }
         >
           <Text
+            accessibilityLevel={3}
             accessibilityRole="header"
             style={
               {
@@ -2090,6 +2097,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
     }
   >
     <Text
+      accessibilityLevel={2}
       accessibilityRole="header"
       style={
         {
@@ -2138,7 +2146,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
     >
       Pour plus d’informations, nous t’invitons à consulter notre 
       <Text
-        accessibilityLabel="politique de gestion des cookies, lien externe"
+        accessibilityLabel="politique de gestion des cookies - Lien externe"
         accessibilityRole="link"
         onPress={[Function]}
         style={
@@ -2151,6 +2159,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
             "textDecorationLine": "underline",
           }
         }
+        testID="politique de gestion des cookies - Lien externe"
       >
         politique de gestion des cookies
       </Text>

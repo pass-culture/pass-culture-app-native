@@ -152,13 +152,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   } as ModalLeftIconProps
 
   useEffect(() => {
-    // In case the context's state is CONFIRMATION we don't need to switch back to DUO state.
-    // Probably when the component is used through useBookOfferModal hook bookingDataMovieScreening's
-    // value is not set at first render. But when used through BookOfferModal
-    // its value is already set at first component's render
-    if (step === Step.CONFIRMATION) {
-      return
-    }
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     if (!bookingDataMovieScreening) {
       return
@@ -169,7 +162,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     })
     dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
     dispatch({ type: 'SELECT_STOCK', payload: bookingDataMovieScreening.stockId })
-  }, [offerId, dispatch, bookingDataMovieScreening, step])
+  }, [offerId, dispatch, bookingDataMovieScreening])
 
   const {
     visible: qualtricsSurveyModalVisible,

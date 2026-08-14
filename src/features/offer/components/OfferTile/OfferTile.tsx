@@ -13,7 +13,7 @@ import { NAVIGATION_METHOD } from 'shared/constants'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 import { PlaylistCardOffer } from './PlaylistCardOffer'
 
@@ -60,7 +60,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     subcategoryId
   )
 
-  const headingProps = Platform.OS === 'web' ? {} : getHeadingAttrs(3)
+  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(3)
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,

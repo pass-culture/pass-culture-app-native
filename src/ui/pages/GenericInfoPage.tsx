@@ -15,19 +15,16 @@ import type { ColorsType } from 'theme/types'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { RemoteIllustration, RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import {
-  GenericInfoPageIllustration,
-  type RemoteIllustration,
-} from 'ui/pages/GenericInfoPageIllustration'
 import { getGenericInfoPageButtons } from 'ui/pages/helpers/getGenericInfoPageButtons'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export type ButtonProps = {
   wording: string
@@ -71,7 +68,7 @@ type AnimationColoringProps = {
 type AnimationProps =
   | {
       illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
-      remoteIllustration?: RemoteIllustration
+      remoteIllustration?: RemoteIllustrationProps
       animation?: never
       animationColoringMode?: never
       animationTargetShapeNames?: never
@@ -80,7 +77,7 @@ type AnimationProps =
   | ({
       animation: AnimationObject
       illustration?: never
-      remoteIllustration?: never
+      remoteIllustration?: RemoteIllustrationProps
     } & AnimationColoringProps)
 
 type Props = PropsWithChildren<{
@@ -139,6 +136,16 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
     legacyColor: designSystem.color.icon.brandPrimary,
   })
 
+  const animationContent = renderAnimationContent({
+    animation,
+    remoteIllustration,
+    animationColoringMode,
+    animationTargetLayerNames,
+    animationTargetShapeNames,
+  })
+
+  const hasAnimation = !!animation && !remoteIllustration
+
   return (
     <Page>
       <Header
@@ -150,22 +157,13 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
 
         <ContainerFlex flexValue={flexWeb}>
           <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
-            <IllustrationContainer animation={!!animation}>
+            <IllustrationContainer animation={hasAnimation}>
               {illustrationContent}
-              {animation ? (
-                <ThemedStyledLottieView
-                  source={animation}
-                  width="100%"
-                  height="100%"
-                  coloringMode={animationColoringMode}
-                  targetShapeNames={animationTargetShapeNames}
-                  targetLayerNames={animationTargetLayerNames}
-                />
-              ) : null}
+              {animation ? animationContent : null}
             </IllustrationContainer>
             <TextContainer gap={4} flex={flexMobile}>
-              <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
-              {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
+              <StyledTitle2 {...getTextSemanticAttrs(1)}>{title}</StyledTitle2>
+              {subtitle ? <StyledBody {...getTextSemanticAttrs(2)}>{subtitle}</StyledBody> : null}
             </TextContainer>
 
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
@@ -184,7 +182,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
 
 type IllustrationContentProps = {
   IllustrationComponent?: React.FC<AccessibleIcon | AccessibleRectangleIcon>
-  remoteIllustration?: RemoteIllustration
+  remoteIllustration?: RemoteIllustrationProps
   legacyColor: ColorsType
 }
 
@@ -208,9 +206,41 @@ const renderIllustrationContent = ({
   return <IllustrationComponent size={illustrationSizes.fullPage} color={legacyColor} />
 }
 
+type AnimationContentProps = {
+  animation?: AnimationObject
+  remoteIllustration?: RemoteIllustrationProps
+} & AnimationColoringProps
+
+const renderAnimationContent = ({
+  animation,
+  remoteIllustration,
+  animationColoringMode,
+  animationTargetShapeNames,
+  animationTargetLayerNames,
+}: AnimationContentProps): ReactNode => {
+  if (remoteIllustration) {
+    return <RemoteIllustration {...remoteIllustration} />
+  }
+
+  if (animation) {
+    return (
+      <ThemedStyledLottieView
+        source={animation}
+        width="100%"
+        height="100%"
+        coloringMode={animationColoringMode}
+        targetShapeNames={animationTargetShapeNames}
+        targetLayerNames={animationTargetLayerNames}
+      />
+    )
+  }
+
+  return null
+}
+
 type FeatureFlaggedIllustrationProps = {
   IllustrationComponent: React.FC<AccessibleIcon | AccessibleRectangleIcon>
-  remoteIllustration: RemoteIllustration
+  remoteIllustration: RemoteIllustrationProps
   legacyColor: ColorsType
 }
 
@@ -222,7 +252,7 @@ const FeatureFlaggedIllustration = ({
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   return enableNewVisionUi ? (
-    <GenericInfoPageIllustration {...remoteIllustration} />
+    <RemoteIllustration {...remoteIllustration} />
   ) : (
     <IllustrationComponent size={illustrationSizes.fullPage} color={legacyColor} />
   )

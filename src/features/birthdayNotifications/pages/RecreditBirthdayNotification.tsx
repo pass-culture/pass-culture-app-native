@@ -6,11 +6,14 @@ import { RecreditType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { getAge } from 'shared/user/getAge'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
@@ -30,6 +33,7 @@ export const RecreditBirthdayNotification = () => {
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const hasAlsoBonusRecreditToShow = user?.recreditTypeToShow === RecreditType.BonusCredit
   const bonifAmountToShow = hasAlsoBonusRecreditToShow ? bonificationBonusAmount : 0
@@ -62,6 +66,14 @@ export const RecreditBirthdayNotification = () => {
       animation={BirthdayCake}
       animationColoringMode="targeted"
       animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.birthdayCake,
+              backgroundColor: 'information02',
+            }
+          : undefined
+      }
       title="Bonne nouvelle&nbsp;!"
       subtitle={recreditMessage}
       buttonPrimary={{

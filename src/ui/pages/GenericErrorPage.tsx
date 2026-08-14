@@ -5,13 +5,14 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
+import { RemoteIllustration, RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type ButtonProps = {
   wording: string
@@ -31,6 +32,7 @@ type Props = PropsWithChildren<{
   buttonPrimary?: ButtonProps
   buttonTertiary?: ButtonProps
   buttonTertiaryExternalNav?: ReactNode
+  remoteIllustration?: RemoteIllustrationProps
 }>
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
@@ -47,11 +49,26 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttonPrimary,
   buttonTertiary,
   buttonTertiaryExternalNav,
+  remoteIllustration,
   children,
 }) => {
   const { top } = useSafeAreaInsets()
   const { designSystem } = useTheme()
   const colorScheme = useColorScheme()
+
+  const renderIllustration = () => {
+    if (remoteIllustration) return <RemoteIllustration {...remoteIllustration} />
+
+    if (IllustrationComponent)
+      return (
+        <IllustrationComponent
+          size={illustrationSizes.fullPage}
+          color={designSystem.color.icon.brandPrimary}
+        />
+      )
+
+    return null
+  }
 
   return (
     <React.Fragment>
@@ -78,18 +95,11 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
         <Placeholder height={top} />
         <Container>
           <View>
-            <IllustrationContainer>
-              {IllustrationComponent ? (
-                <IllustrationComponent
-                  size={illustrationSizes.fullPage}
-                  color={designSystem.color.icon.brandPrimary}
-                />
-              ) : null}
-            </IllustrationContainer>
+            <IllustrationContainer>{renderIllustration()}</IllustrationContainer>
             <TextContainer gap={4}>
-              <StyledTitle {...getHeadingAttrs(1)}>{title}</StyledTitle>
+              <StyledTitle {...getTextSemanticAttrs(1)}>{title}</StyledTitle>
               {subtitle ? (
-                <StyledSubtitle {...getHeadingAttrs(2)}>{subtitle}</StyledSubtitle>
+                <StyledSubtitle {...getTextSemanticAttrs(2)}>{subtitle}</StyledSubtitle>
               ) : null}
             </TextContainer>
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}

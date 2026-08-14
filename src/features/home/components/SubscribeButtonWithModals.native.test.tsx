@@ -4,6 +4,7 @@ import { UserProfile } from 'features/share/types'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
@@ -28,6 +29,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('SubscribeButtonWithModals', () => {
   beforeEach(() => {
     storage.clear('times_user_subscribed_to_a_theme')
+    setFeatureFlags()
   })
 
   it('should open logged out modal when user is not logged in', async () => {

@@ -241,6 +241,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {
@@ -358,7 +359,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Lien externe - Consultez notre FAQ"
+                      accessibilityLabel="Lien externe - Consultez notre FAQ - Lien externe"
                       accessibilityRole="link"
                       accessibilityState={
                         {

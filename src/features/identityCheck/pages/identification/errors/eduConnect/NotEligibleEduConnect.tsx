@@ -7,6 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { analytics } from 'libs/analytics/provider'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ButtonProps, GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
@@ -74,6 +75,10 @@ export const NotEligibleEduConnect = ({
       </Helmet>
       <GenericInfoPage
         illustration={Illustration}
+        remoteIllustration={{
+          backgroundColor: 'pending01',
+          url: remoteIllustrationUrls.workedInPrgressSignSculptureLarge,
+        }}
         title={title}
         buttonPrimary={buttonPrimary ?? defaultGoToHomeButton}
         buttonTertiary={isGoHomeTertiaryButtonVisible ? defaultGoToHomeButton : undefined}>

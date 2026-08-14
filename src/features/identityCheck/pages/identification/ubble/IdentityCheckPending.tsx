@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
@@ -13,7 +13,7 @@ export function IdentityCheckPending() {
     <GenericInfoPage
       illustration={IdCardError}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.sculptureMagnifyingGlassPaperLarge,
+        url: remoteIllustrationUrls.sculptureMagnifyingGlassPaperLarge,
         backgroundColor: 'information02',
       }}
       title="Oups&nbsp;!"

@@ -162,6 +162,7 @@ exports[`LegalNotices should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -267,6 +268,7 @@ exports[`LegalNotices should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -291,7 +293,7 @@ exports[`LegalNotices should render correctly 1`] = `
               >
                 Éditeur du site : 
                 <Text
-                  accessibilityLabel="https://passculture.app/accueil, lien externe"
+                  accessibilityLabel="https://passculture.app/accueil - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -304,6 +306,7 @@ exports[`LegalNotices should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="https://passculture.app/accueil - Lien externe"
                 >
                   https://passculture.app/accueil
                 </Text>
@@ -384,7 +387,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 8 Rue de Londres - 75009 Paris - France
               </Text>
               <View
-                accessibilityLabel="Nouvelle fenêtre : Contacter le support"
+                accessibilityLabel="Contacter le support - Lien externe"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -429,7 +432,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Nouvelle fenêtre : Contacter le support"
+                testID="Contacter le support - Lien externe"
               >
                 <View
                   size="default"
@@ -474,7 +477,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 }
               />
               <View
-                accessibilityLabel="Conditions Générales d’Utilisation"
+                accessibilityLabel="Conditions Générales d’Utilisation - Lien externe"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -526,7 +529,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Conditions Générales d’Utilisation"
+                testID="Conditions Générales d’Utilisation - Lien externe"
               >
                 <View
                   gap={8}
@@ -584,7 +587,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Charte des données personnelles"
+                accessibilityLabel="Charte des données personnelles - Lien externe"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -636,7 +639,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Charte des données personnelles"
+                testID="Charte des données personnelles - Lien externe"
               >
                 <View
                   gap={8}
@@ -694,7 +697,7 @@ exports[`LegalNotices should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Charte d’utilisation et de bonne conduite"
+                accessibilityLabel="Charte d’utilisation et de bonne conduite - Lien externe"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -746,7 +749,7 @@ exports[`LegalNotices should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Charte d’utilisation et de bonne conduite"
+                testID="Charte d’utilisation et de bonne conduite - Lien externe"
               >
                 <View
                   gap={8}

@@ -9,6 +9,7 @@ import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStac
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -74,6 +75,10 @@ export function SuspendAccountConfirmation({
   return (
     <GenericInfoPage
       illustration={StyledUserError}
+      remoteIllustration={{
+        url: remoteIllustrationUrls.cryingManPaintingLarge,
+        backgroundColor: 'negative01',
+      }}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',

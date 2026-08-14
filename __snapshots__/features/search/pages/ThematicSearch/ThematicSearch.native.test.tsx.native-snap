@@ -191,6 +191,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 }
               >
                 <Text
+                  accessibilityLevel={1}
                   accessibilityRole="header"
                   small={true}
                   style={
@@ -531,6 +532,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           }
         >
           <Text
+            accessibilityLevel={2}
             accessibilityRole="header"
             style={
               {
@@ -1780,6 +1782,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     >
                       <Text
                         accessibilityLabel="GTL playlist"
+                        accessibilityLevel={2}
                         accessibilityRole="header"
                         numberOfLines={2}
                         style={
@@ -1793,6 +1796,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       >
                         <Text
                           accessibilityElementsHidden={true}
+                          accessibilityLevel={2}
                           accessibilityRole="header"
                           accessible={false}
                           importantForAccessibility="no"
@@ -2776,6 +2780,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       }
                     >
                       <View
+                        accessibilityLevel={3}
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
@@ -3064,6 +3069,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       }
                     >
                       <View
+                        accessibilityLevel={3}
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
@@ -3352,6 +3358,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       }
                     >
                       <View
+                        accessibilityLevel={3}
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}
@@ -3640,6 +3647,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       }
                     >
                       <View
+                        accessibilityLevel={3}
                         accessibilityRole="header"
                         renderToHardwareTextureAndroid={true}
                         shouldRasterizeIOS={true}

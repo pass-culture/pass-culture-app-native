@@ -162,6 +162,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -288,7 +289,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               >
                 Cette déclaration d’accessibilité s’applique au site internet 
                 <Text
-                  accessibilityLabel="https://passculture.app/ mobile, lien externe"
+                  accessibilityLabel="https://passculture.app/ mobile - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -301,6 +302,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="https://passculture.app/ mobile - Lien externe"
                 >
                   https://passculture.app/ mobile
                 </Text>
@@ -316,6 +318,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -354,7 +357,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                  de l’application web pass Culture est non conforme avec la
                  
                 <Text
-                  accessibilityLabel="norme européenne 301 549 (v3.2.1), lien externe"
+                  accessibilityLabel="norme européenne 301 549 (v3.2.1) - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -367,6 +370,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="norme européenne 301 549 (v3.2.1) - Lien externe"
                 >
                   norme européenne 301 549 (v3.2.1)
                 </Text>
@@ -397,7 +401,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 L’application web pass Culture est partiellement conforme avec le
                  
                 <Text
-                  accessibilityLabel="RAWeb version 1.1, lien externe"
+                  accessibilityLabel="RAWeb version 1.1 - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -410,6 +414,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="RAWeb version 1.1 - Lien externe"
                 >
                   RAWeb version 1.1
                 </Text>
@@ -417,7 +422,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 et
                  
                 <Text
-                  accessibilityLabel="Le RGAA version 4.1, lien externe"
+                  accessibilityLabel="Le RGAA version 4.1 - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -430,12 +435,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="Le RGAA version 4.1 - Lien externe"
                 >
                   Le RGAA version 4.1
                 </Text>
                 , en raison des non-conformités énumérées dans la section « Résultats des tests ».
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -486,6 +493,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -511,6 +519,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1636,6 +1645,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1661,6 +1671,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 Pas de dérogation identifiée
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -1695,6 +1706,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1873,6 +1885,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -1902,6 +1915,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 .
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -2092,6 +2106,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -2416,6 +2431,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 La vérification de l’accessibilité est le résultat de tests manuels, assistés par des outils (feuilles CSS dédiés, extensions HeadingsMaps et WebDeveloper Toolbar, Color Contrast Analyser).
               </Text>
               <Text
+                accessibilityLevel={3}
                 accessibilityRole="header"
                 style={
                   {
@@ -3165,6 +3181,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -3228,7 +3245,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 pass Culture invite les personnes qui rencontreraient des difficultés à
                  
                 <Text
-                  accessibilityLabel="contacter le support, lien externe"
+                  accessibilityLabel="contacter le support - Lien externe"
                   accessibilityRole="link"
                   onPress={[Function]}
                   style={
@@ -3241,6 +3258,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                       "textDecorationLine": "underline",
                     }
                   }
+                  testID="contacter le support - Lien externe"
                 >
                   contacter le support
                 </Text>
@@ -3257,6 +3275,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -3357,7 +3376,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     >
                       Écrire un message au 
                       <Text
-                        accessibilityLabel="Défenseur des droits, lien externe"
+                        accessibilityLabel="Défenseur des droits - Lien externe"
                         accessibilityRole="link"
                         onPress={[Function]}
                         style={
@@ -3370,6 +3389,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             "textDecorationLine": "underline",
                           }
                         }
+                        testID="Défenseur des droits - Lien externe"
                       >
                         Défenseur des droits
                       </Text>
@@ -3429,7 +3449,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                     >
                       Contacter le délégué du 
                       <Text
-                        accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+                        accessibilityLabel="Défenseur des droits dans votre région - Lien externe"
                         accessibilityRole="link"
                         onPress={[Function]}
                         style={
@@ -3442,6 +3462,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                             "textDecorationLine": "underline",
                           }
                         }
+                        testID="Défenseur des droits dans votre région - Lien externe"
                       >
                         Défenseur des droits dans votre région
                       </Text>

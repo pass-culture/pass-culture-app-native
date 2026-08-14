@@ -14,6 +14,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
   minimumDate,
   onChange,
   errorMessage,
+  label,
 }) => {
   const { day, month, year } = getDefaultDateValues(initialDate)
 
@@ -37,7 +38,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
   }, [date])
 
   return (
-    <Container testID="date-picker-dropdown" gap={2} accessibilityLabel={errorMessage}>
+    <Container testID="date-picker-dropdown" gap={2} role="group" accessibilityLabelledBy={label}>
       <DropDownContainer>
         <DropDown
           value={date.day}

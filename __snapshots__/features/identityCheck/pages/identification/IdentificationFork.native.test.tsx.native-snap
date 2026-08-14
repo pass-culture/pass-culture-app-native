@@ -162,6 +162,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -275,6 +276,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -438,7 +440,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="C’est quoi ÉduConnect ?"
+                  accessibilityLabel="C’est quoi ÉduConnect ? - Lien externe"
                   accessibilityRole="link"
                   accessibilityState={
                     {
@@ -490,7 +492,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="C’est quoi ÉduConnect ?"
+                  testID="C’est quoi ÉduConnect ? - Lien externe"
                 >
                   <View
                     gap={8}
@@ -817,7 +819,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                       }
                     >
                       <View
-                        accessibilityLabel="Lien externe - Voir la charte des données personnelles"
+                        accessibilityLabel="Lien externe - Voir la charte des données personnelles - Lien externe"
                         accessibilityRole="link"
                         accessibilityState={
                           {

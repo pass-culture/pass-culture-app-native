@@ -5,6 +5,7 @@ import { reset, replace } from '__mocks__/@react-navigation/native'
 import { RecreditType } from 'api/gen'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -58,6 +59,18 @@ describe('<RecreditBirthdayNotification />', () => {
     )
 
     expect(recreditText).toBeOnTheScreen()
+  })
+
+  it('should render illustration rather than animation when wipNewVisionUi FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+    mockAuthContextWithUser({
+      ...underageBeneficiaryUser,
+      birthDate: birthdate.toISOString(),
+      recreditAmountToShow: 15000,
+    })
+    renderRecreditBirthdayNotification()
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 
   describe('when pressing "Continuer"', () => {

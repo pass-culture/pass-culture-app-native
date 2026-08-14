@@ -8,6 +8,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -45,6 +46,10 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
     <AppModalWithIllustration
       visible={visible}
       title={`Débloque ton crédit${LINE_BREAK}pour réserver cette offre`}
+      remoteIllustration={{
+        url: remoteIllustrationUrls.sculptureMagnifyingGlassPaperSmall,
+        backgroundColor: 'information02',
+      }}
       Illustration={IdCardWithMagnifyingGlass}
       hideModal={hideModal}>
       {user?.requiresIdCheck ? (

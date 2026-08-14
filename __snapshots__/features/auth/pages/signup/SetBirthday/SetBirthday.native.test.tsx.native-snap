@@ -18,7 +18,9 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     }
   >
     <Text
+      accessibilityLevel={2}
       accessibilityRole="header"
+      id="testUuidV4"
       style={
         {
           "color": "#161617",
@@ -969,7 +971,9 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     }
   >
     <Text
+      accessibilityLevel={2}
       accessibilityRole="header"
+      id="testUuidV4"
       style={
         {
           "color": "#161617",

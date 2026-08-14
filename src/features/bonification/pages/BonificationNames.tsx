@@ -22,7 +22,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type FormValues = {
   firstNames: string[]
@@ -69,7 +69,7 @@ export const BonificationNames = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>
+            <Typo.Title3 {...getTextSemanticAttrs(2)}>
               Quels sont les noms et prénoms de ton représentant légal&nbsp;?
             </Typo.Title3>
             <Controller

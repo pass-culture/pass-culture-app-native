@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 
@@ -36,7 +36,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <GenericInfoPage
         illustration={NoBookings}
         remoteIllustration={{
-          url: genericInfoPageIllustrationUrls.emptyWalletLarge,
+          url: remoteIllustrationUrls.emptyWalletLarge,
           backgroundColor: 'information03',
         }}
         title="Réservation introuvable&nbsp;!"

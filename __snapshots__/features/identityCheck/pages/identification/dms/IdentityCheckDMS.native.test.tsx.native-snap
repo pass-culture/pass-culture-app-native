@@ -162,6 +162,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -293,6 +294,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={2}
                     accessibilityRole="header"
                     style={
                       {
@@ -329,7 +331,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Je suis de nationalité française"
+                  accessibilityLabel="Je suis de nationalité française - Lien externe"
                   accessibilityRole="link"
                   accessibilityState={
                     {
@@ -381,7 +383,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Je suis de nationalité française"
+                  testID="Je suis de nationalité française - Lien externe"
                 >
                   <View
                     gap={8}
@@ -509,7 +511,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Je suis de nationalité étrangère"
+                  accessibilityLabel="Je suis de nationalité étrangère - Lien externe"
                   accessibilityRole="link"
                   accessibilityState={
                     {
@@ -561,7 +563,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Je suis de nationalité étrangère"
+                  testID="Je suis de nationalité étrangère - Lien externe"
                 >
                   <View
                     gap={8}

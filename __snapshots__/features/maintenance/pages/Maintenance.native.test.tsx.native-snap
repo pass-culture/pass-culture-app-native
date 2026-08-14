@@ -65,6 +65,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           style={
             {
@@ -79,6 +80,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
           Maintenance en cours
         </Text>
         <Text
+          accessibilityLevel={2}
           accessibilityRole="header"
           style={
             {
@@ -163,6 +165,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           style={
             {
@@ -177,6 +180,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
           Maintenance en cours
         </Text>
         <Text
+          accessibilityLevel={2}
           accessibilityRole="header"
           style={
             {

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { render, screen } from 'tests/utils'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { Typo } from 'ui/theme'
@@ -33,5 +34,25 @@ describe('<GenericErrorPage />', () => {
     )
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should display remote illustration when defined', () => {
+    render(
+      <GenericErrorPage
+        helmetTitle="HelmetTitle"
+        illustration={PhonePending}
+        remoteIllustration={{
+          url: remoteIllustrationUrls.mobileDeviceAndParameters,
+          backgroundColor: 'pending01',
+        }}
+        title="GenericErrorPage"
+        subtitle="Subtitle"
+        buttonPrimary={{ wording: 'Primary button', onPress: jest.fn() }}
+        buttonTertiary={{ wording: 'Tertiary button', onPress: jest.fn() }}>
+        <Typo.Body>Children...</Typo.Body>
+      </GenericErrorPage>
+    )
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -26,6 +27,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ErrorApplicationModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match previous snapshot', () => {
     renderErrorApplicationModal()
 

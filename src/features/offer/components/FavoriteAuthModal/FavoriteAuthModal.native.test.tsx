@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { FavoriteAuthModal } from './FavoriteAuthModal'
@@ -21,6 +22,10 @@ const dismissModal = jest.fn()
 const user = userEvent.setup()
 
 describe('FavoriteAuthModal', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should match previous snapshot', () => {
     renderFavoriteAuthModal()
 

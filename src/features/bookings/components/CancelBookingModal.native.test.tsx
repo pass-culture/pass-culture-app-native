@@ -8,6 +8,7 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { beneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -141,6 +142,14 @@ describe('<CancelBookingModal />', () => {
     expect(navigate).toHaveBeenCalledWith(...getTabHookConfig('Bookings'))
     expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
     expect(screen.getByText(response.message)).toBeOnTheScreen()
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    renderCancelBookingModal(booking)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })
 

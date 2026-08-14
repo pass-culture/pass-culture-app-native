@@ -24,7 +24,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const radioGroupLabel = 'Horaires'
 
@@ -129,7 +129,7 @@ export const BookHourChoice = () => {
     </View>
   ) : (
     <ViewGap gap={4}>
-      <Typo.Title3 {...getHeadingAttrs(3)}>{radioGroupLabel}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs(3)}>{radioGroupLabel}</Typo.Title3>
       <TouchableOpacity onPress={changeHour}>
         <Typo.Button>{buttonTitle}</Typo.Button>
       </TouchableOpacity>

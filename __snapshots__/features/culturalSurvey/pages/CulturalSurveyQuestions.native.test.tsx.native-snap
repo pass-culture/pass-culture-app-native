@@ -217,6 +217,7 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
         </View>
       </View>
       <Text
+        accessibilityLevel={1}
         accessibilityRole="header"
         numberOfLines={1}
         style={
@@ -258,6 +259,7 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
   >
     <View>
       <View
+        accessibilityLabelledBy="testUuidV4"
         accessibilityRole="none"
       >
         <View
@@ -271,7 +273,9 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
           }
         >
           <Text
+            accessibilityLevel={2}
             accessibilityRole="header"
+            id="testUuidV4"
             style={
               {
                 "color": "#161617",

@@ -177,6 +177,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
     >
       <h2
         class="c1"
+        id="testUuidV4"
       >
         Renseigne ta date de naissance
       </h2>
@@ -213,8 +214,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           </div>
         </div>
         <div
+          aria-labelledby="testUuidV4"
           class="css-view-175oi2r r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           data-testid="date-picker-dropdown"
+          role="group"
         >
           <div
             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -1416,12 +1419,12 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
             >
-              <p
+              <span
                 class="c11"
                 style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
               >
                 Continuer
-              </p>
+              </span>
             </div>
           </button>
         </div>
@@ -1526,6 +1529,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
     >
       <h2
         class="c1"
+        id="testUuidV4"
       >
         Renseigne ta date de naissance
       </h2>
@@ -2547,12 +2551,12 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
             >
-              <p
+              <span
                 class="c6"
                 style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0; flex-shrink: 1; flex-grow: 1; flex-basis: 0px; text-align: center;"
               >
                 Continuer
-              </p>
+              </span>
             </div>
           </button>
         </div>

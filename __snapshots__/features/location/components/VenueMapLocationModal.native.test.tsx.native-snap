@@ -140,6 +140,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               nativeID="testUuidV4"
               style={
@@ -487,6 +488,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             style={
               {
@@ -618,6 +620,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
     >
       <View>
         <View
+          accessibilityLabel="Sélectionne ta localisation"
           accessibilityRole="none"
           style={
             {

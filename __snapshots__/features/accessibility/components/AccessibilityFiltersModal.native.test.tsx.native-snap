@@ -244,6 +244,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 testID="back-button-container"
               />
               <Text
+                accessibilityLevel={1}
                 accessibilityRole="header"
                 nativeID="testUuidV4"
                 numberOfLines={1}
@@ -370,6 +371,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               }
             >
               <View
+                accessibilityLabelledBy="testUuidV4"
                 accessibilityRole="none"
               >
                 <View
@@ -383,6 +385,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   }
                 >
                   <Text
+                    id="testUuidV4"
                     style={
                       {
                         "color": "#161617",

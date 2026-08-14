@@ -134,6 +134,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           }
         >
           <Text
+            accessibilityLevel={1}
             accessibilityRole="header"
             style={
               {

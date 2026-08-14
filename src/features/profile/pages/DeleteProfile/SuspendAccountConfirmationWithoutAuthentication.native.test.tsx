@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
@@ -26,6 +27,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('SuspendAccountConfirmationWithoutAuthentication', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     renderSuspendAccountConfirmationWithoutAuthentication()
 

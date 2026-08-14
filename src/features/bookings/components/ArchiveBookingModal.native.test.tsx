@@ -5,6 +5,8 @@ import {
   ArchiveBookingModalProps,
 } from 'features/bookings/components/ArchiveBookingModal'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -37,6 +39,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ArchiveBookingModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should call on onDismiss', async () => {
     renderArchiveDigitalBookingOfferModal(props)
 
@@ -89,6 +95,14 @@ describe('<ArchiveBookingModal />', () => {
 
     expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
     expect(screen.getByText(response.message)).toBeOnTheScreen()
+  })
+
+  it('should display remote illustration when new vision UI FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    renderArchiveDigitalBookingOfferModal(props)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })
 
