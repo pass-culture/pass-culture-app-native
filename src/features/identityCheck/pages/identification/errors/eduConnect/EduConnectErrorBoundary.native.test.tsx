@@ -2,12 +2,17 @@ import React from 'react'
 
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { render } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('EduConnectErrorBoundary component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should not log error on sentry when error is an expected EduConnectError', () => {
     render(
       <EduConnectErrorBoundary

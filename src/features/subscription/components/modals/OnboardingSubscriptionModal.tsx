@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -19,6 +20,10 @@ export const OnboardingSubscriptionModal = ({ visible, dismissModal }: Props) =>
     <AppModalWithIllustration
       visible={visible}
       title="Suis tes thèmes préférés"
+      remoteIllustration={{
+        url: remoteIllustrationUrls.ringingBellSmall,
+        backgroundColor: 'information04',
+      }}
       Illustration={StyledIcon}
       hideModal={dismissModal}>
       <StyledBody>

@@ -28,7 +28,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const LoginMethods = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -93,7 +93,7 @@ export const LoginMethods = () => {
       scrollChildren={
         <React.Fragment>
           <TitleContainer>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs(2)}>Connecte-toi</Typo.Title3>
           </TitleContainer>
           <SeparatorWithText label="Méthode recommandée" icon={StepperValidate} color="primary" />
           <Form.MaxWidth>

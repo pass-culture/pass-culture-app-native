@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -11,16 +15,24 @@ import { BrokenConnection as InitialBrokenConnection } from 'ui/svg/BrokenConnec
 import { Bookings } from 'ui/svg/icons/Bookings'
 import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const OfflinePage = () => {
   const { isLoggedIn } = useAuthContext()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   return (
     <Container>
       <Content>
         <Spacer.TopScreen />
-        <BrokenConnection />
+        {enableNewVisionUi ? (
+          <RemoteIllustration
+            backgroundColor="negative01"
+            url={remoteIllustrationUrls.disconnectedCableStickManLarge}
+          />
+        ) : (
+          <BrokenConnection />
+        )}
         <StyledViewGap gap={4}>
           <StyledTitle2>Oups, pas de réseau&nbsp;!</StyledTitle2>
           <StyledBody>
@@ -49,6 +61,7 @@ export const OfflinePage = () => {
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
 }))
+
 const BrokenConnection = styled(InitialBrokenConnection).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.fullPage,
@@ -58,11 +71,11 @@ const Container = styled(Page)({
   alignItems: 'center',
 })
 
-const StyledTitle2 = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))({
+const StyledTitle2 = styled(Typo.Title2).attrs(() => getTextSemanticAttrs(1))({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
+const StyledBody = styled(Typo.Body).attrs(() => getTextSemanticAttrs(2))({
   textAlign: 'center',
 })
 

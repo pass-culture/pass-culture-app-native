@@ -6,7 +6,7 @@ import { CitySearchInput } from 'features/profile/components/CitySearchInput/Cit
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 import { useSubmitChangeCity } from './useSubmitChangeCity'
 
@@ -21,7 +21,7 @@ export const ChangeCity = () => {
       scrollChildren={
         <React.Fragment>
           <Container>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
           </Container>
           <Controller
             control={control}

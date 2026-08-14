@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
@@ -27,7 +27,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
       withGoBack
       illustration={IdCardError}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.questioningKnightLarge,
+        url: remoteIllustrationUrls.questioningKnightLarge,
         backgroundColor: 'information03',
       }}
       title="Ta pièce d’identité expirée ou perdue"

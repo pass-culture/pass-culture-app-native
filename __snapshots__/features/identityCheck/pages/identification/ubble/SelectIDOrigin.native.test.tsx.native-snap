@@ -162,6 +162,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -293,6 +294,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {

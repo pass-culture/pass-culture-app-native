@@ -1,9 +1,14 @@
 import React from 'react'
 
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 describe('<NotificationsSettingsModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -35,6 +36,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('useBookOfferModal', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('do not display anything when there is no modal to display', () => {
     const { result } = renderHook(() =>
       useBookOfferModal({ offerId: 1000, from: StepperOrigin.OFFER })

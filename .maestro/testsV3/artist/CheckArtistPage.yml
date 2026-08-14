@@ -43,7 +43,7 @@ onFlowStart:
     from:
       text: Livre
     direction: UP
-- tapOn: ".*Accéder à la page artiste de.*"
+- tapOn: '.*- Auteur.*'
 - assertVisible: 'Ses oeuvres populaires'
 - assertVisible: '.*Voir tout.*'
 

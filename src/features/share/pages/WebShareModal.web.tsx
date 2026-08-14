@@ -116,7 +116,7 @@ export const WebShareModal = ({
                 )}`,
               }}
               wording="E-mail"
-              accessibilityLabel="Ouvrir le gestionnaire mail"
+              accessibilityLabel="Email - Ouvrir le gestionnaire mail"
               icon={EmailFilled}
             />
           </NonSocialButtonsItem>
@@ -132,7 +132,7 @@ export const WebShareModal = ({
                     url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(url)}`,
                   }}
                   wording="SMS"
-                  accessibilityLabel="Ouvrir l’application de message"
+                  accessibilityLabel="SMS - Ouvrir l’application de message"
                   icon={SMSFilled}
                 />
               </NonSocialButtonsItem>

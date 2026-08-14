@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 
 import { NotEligibleEduConnect } from './NotEligibleEduConnect'
@@ -24,6 +25,10 @@ jest.mock(
 )
 
 describe('NotEligibleEduConnect', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', async () => {
     render(
       <NotEligibleEduConnect

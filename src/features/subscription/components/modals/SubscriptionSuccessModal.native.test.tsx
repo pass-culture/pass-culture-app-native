@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { SubscriptionSuccessModal } from './SubscriptionSuccessModal'
@@ -15,6 +16,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SubscriptionSuccessModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it.each(SUSBCRIPTION_THEMES)('should render correctly for %s', (theme) => {
     render(<SubscriptionSuccessModal visible theme={theme} dismissModal={jest.fn()} />)
 

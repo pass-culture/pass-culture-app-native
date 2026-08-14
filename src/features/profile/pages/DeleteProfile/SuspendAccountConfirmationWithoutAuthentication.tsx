@@ -11,6 +11,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -49,6 +50,10 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
     <GenericInfoPage
       withGoBack
       illustration={UserError}
+      remoteIllustration={{
+        url: remoteIllustrationUrls.cryingManPaintingLarge,
+        backgroundColor: 'negative01',
+      }}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
         wording: 'Oui, suspendre mon compte',

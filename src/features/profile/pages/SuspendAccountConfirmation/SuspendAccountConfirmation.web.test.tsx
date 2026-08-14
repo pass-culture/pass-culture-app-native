@@ -7,6 +7,7 @@ import { ProfileStackParamList } from 'features/navigation/navigators/ProfileSta
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -26,6 +27,10 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatusQuery').mockReturnValue({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SuspendAccountConfirmation />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     const navigation = {
       navigate: jest.fn(),

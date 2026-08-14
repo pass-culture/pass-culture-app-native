@@ -162,6 +162,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -266,6 +267,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -664,6 +666,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   }
                 />
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -2259,6 +2262,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -2425,6 +2429,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 </View>
               </View>
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {
@@ -2829,6 +2834,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   }
                 />
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {

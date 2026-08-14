@@ -7,6 +7,7 @@ import { UserProfile } from 'features/share/types'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -60,6 +61,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('NotificationsSettings', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly when user is logged in', () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 

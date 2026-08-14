@@ -13,6 +13,7 @@ import { OfferContentCTAs, Props } from 'features/offer/components/OfferFooter/O
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -49,7 +50,10 @@ describe('OfferContentCTAs', () => {
     useOfferCTASpy.mockReturnValue(mockUseOfferCTAReturnValue)
   })
 
-  beforeEach(() => mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse))
+  beforeEach(() => {
+    setFeatureFlags()
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse)
+  })
 
   describe('Content when offer is a movie screening', () => {
     beforeEach(() => {

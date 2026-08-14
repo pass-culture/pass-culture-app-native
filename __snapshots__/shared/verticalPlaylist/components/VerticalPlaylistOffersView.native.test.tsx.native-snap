@@ -37,6 +37,7 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           height={65}
         />
         <Styled(Text)
+          accessibilityLevel={1}
           accessibilityRole="header"
         >
           My title
@@ -208,6 +209,7 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           }
         />
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           style={
             {
@@ -1417,6 +1419,7 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
       >
         <Text
           accessibilityHidden={true}
+          accessibilityLevel={1}
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}

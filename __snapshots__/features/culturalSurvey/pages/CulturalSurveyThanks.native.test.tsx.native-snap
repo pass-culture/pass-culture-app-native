@@ -151,6 +151,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {
@@ -165,6 +166,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
               Un grand merci pour tes réponses !
             </Text>
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {

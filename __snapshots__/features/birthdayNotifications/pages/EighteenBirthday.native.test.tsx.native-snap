@@ -151,6 +151,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
             }
           >
             <Text
+              accessibilityLevel={1}
               accessibilityRole="header"
               style={
                 {
@@ -165,6 +166,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
               Tu as 18 ans !
             </Text>
             <Text
+              accessibilityLevel={2}
               accessibilityRole="header"
               style={
                 {

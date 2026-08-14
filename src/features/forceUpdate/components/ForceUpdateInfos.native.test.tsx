@@ -4,6 +4,7 @@ import { Linking } from 'react-native'
 import { analytics } from 'libs/analytics/provider'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as PackageJson from 'libs/packageJson'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -43,5 +44,12 @@ describe('<ForceUpdateInfos/>', () => {
     await user.press(goToWebappButton)
 
     expect(openURLSpy).toHaveBeenCalledWith(WEBAPP_V2_URL)
+  })
+
+  it('should display new vision ui illustration when wipNewVisionUi FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+    render(<ForceUpdateInfos />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

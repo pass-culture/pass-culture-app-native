@@ -2,13 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import {
-  AccountState,
-  FavoriteResponse,
-  OauthStateResponse,
-  SigninResponse,
-  SigninResponseV2,
-} from 'api/gen'
+import { AccountState, FavoriteResponse, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -41,7 +35,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 
-const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV1OauthssoProviderAuthorize')
+const apiPostOAuthAuthorize = jest.spyOn(API.api, 'postNativeV2OauthssoProviderAuthorize')
 
 jest.useFakeTimers()
 const user = userEvent.setup()
@@ -50,7 +44,7 @@ describe('<LoginMethods/>', () => {
   beforeEach(() => {
     setFeatureFlags([])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+    mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
     simulateSignin200(AccountState.ACTIVE)
@@ -124,7 +118,7 @@ describe('<LoginMethods/>', () => {
 
   describe('generic SSO errors', () => {
     it('should display rate limit snackbar when too many attempts error occurs with Google', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
         responseOptions: {
           statusCode: 429,
           data: { code: 'TOO_MANY_ATTEMPTS', general: [] },
@@ -143,7 +137,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should display network error snackbar when network request failed', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
         responseOptions: {
           statusCode: 500,
           data: { code: 'NETWORK_REQUEST_FAILED', general: [] },
@@ -162,7 +156,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should fallback to SSO error message when error code is unknown', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
         responseOptions: {
           statusCode: 500,
           data: {
@@ -188,7 +182,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should log analytics when signing in with Apple SSO', async () => {
-      mockServer.postApi<SigninResponse>('/v1/oauth/apple/authorize', {
+      mockServer.postApi<SigninResponseV2>('/v2/oauth/apple/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
@@ -205,7 +199,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should redirect to signup form when Apple SSO login fails because user does not exist', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/apple/authorize', {
         responseOptions: {
           statusCode: 401,
           data: {
@@ -232,7 +226,7 @@ describe('<LoginMethods/>', () => {
 
   describe('with Google SSO', () => {
     it('should sign in when SSO button is clicked with device info', async () => {
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SigninResponseV2>('/v2/oauth/google/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
@@ -258,7 +252,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should show snackbar when SSO login fails because account is invalid', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
         responseOptions: { statusCode: 400, data: { code: 'SSO_ERROR', general: [] } },
       })
 
@@ -274,7 +268,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should redirect to signup form when SSO login fails because user does not exist', async () => {
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: {
@@ -299,7 +293,7 @@ describe('<LoginMethods/>', () => {
     })
 
     it('should log analytics when signing in with SSO', async () => {
-      mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
+      mockServer.postApi<SigninResponseV2>('/v2/oauth/google/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
@@ -319,7 +313,7 @@ describe('<LoginMethods/>', () => {
   describe('with Apple SSO', () => {
     it('should show snackbar when Apple SSO login fails because account is invalid', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/apple/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/apple/authorize', {
         responseOptions: { statusCode: 400, data: { code: 'SSO_ERROR', general: [] } },
       })
       renderLogin()

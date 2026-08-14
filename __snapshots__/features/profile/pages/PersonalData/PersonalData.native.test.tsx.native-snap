@@ -162,6 +162,7 @@ exports[`PersonalData should render personal data success 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -1260,7 +1261,7 @@ exports[`PersonalData should render personal data success 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Lien externe - Comment gérer tes données personnelles ?"
+                      accessibilityLabel="Lien externe - Comment gérer tes données personnelles ? - Lien externe"
                       accessibilityRole="link"
                       accessibilityState={
                         {

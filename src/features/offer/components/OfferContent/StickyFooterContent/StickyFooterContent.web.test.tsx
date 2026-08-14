@@ -3,6 +3,7 @@ import React from 'react'
 import { FavoriteResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent.web'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils/web'
 import { ModalSettings } from 'ui/components/modals/useModal'
 
@@ -20,6 +21,10 @@ const defaultModalSettings = {
 }
 
 describe('StickyFooterContent', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it.each`
     favorite      | expectedButtonText
     ${null}       | ${'Mettre en favori'}

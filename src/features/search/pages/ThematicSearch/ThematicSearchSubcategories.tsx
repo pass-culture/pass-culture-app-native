@@ -16,7 +16,7 @@ import { SubcategoryButton } from 'ui/components/buttons/SubcategoryButton/Subca
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 const TITLE = 'Tout parcourir'
 const MOBILE_MIN_WIDTH = '40%'
@@ -72,7 +72,7 @@ export const ThematicSearchSubcategories = () => {
     <Page>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
-        <Title {...getHeadingAttrs(1)}>{TITLE}</Title>
+        <Title {...getTextSemanticAttrs(1)}>{TITLE}</Title>
         <SubcategoryButtonsContainer>
           {subcategoryButtonContent.map((item) => (
             <StyledSubcategoryButton

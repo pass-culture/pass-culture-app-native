@@ -162,6 +162,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                accessibilityLevel={1}
                 accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
@@ -367,7 +368,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityLabel="Voir l’itinéraire - Lien externe"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -412,7 +413,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "width": "auto",
                       }
                     }
-                    testID="Voir l’itinéraire"
+                    testID="Voir l’itinéraire - Lien externe"
                   >
                     <View
                       gap={8}
@@ -729,6 +730,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={2}
                     accessibilityRole="header"
                     style={
                       {
@@ -1109,6 +1111,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             >
                               <Text
                                 accessibilityLabel="Toutes les offres"
+                                accessibilityLevel={2}
                                 accessibilityRole="header"
                                 numberOfLines={2}
                                 style={
@@ -1122,6 +1125,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               >
                                 <Text
                                   accessibilityElementsHidden={true}
+                                  accessibilityLevel={2}
                                   accessibilityRole="header"
                                   accessible={false}
                                   importantForAccessibility="no"
@@ -1486,6 +1490,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -1694,6 +1699,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -1902,6 +1908,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -2163,6 +2170,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -2353,6 +2361,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -3046,6 +3055,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
+          accessibilityLevel={1}
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
@@ -3516,6 +3526,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                accessibilityLevel={1}
                 accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
@@ -3721,7 +3732,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityLabel="Voir l’itinéraire - Lien externe"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -3766,7 +3777,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "width": "auto",
                       }
                     }
-                    testID="Voir l’itinéraire"
+                    testID="Voir l’itinéraire - Lien externe"
                   >
                     <View
                       gap={8}
@@ -4083,6 +4094,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={2}
                     accessibilityRole="header"
                     style={
                       {
@@ -4463,6 +4475,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             >
                               <Text
                                 accessibilityLabel="Toutes les offres"
+                                accessibilityLevel={2}
                                 accessibilityRole="header"
                                 numberOfLines={2}
                                 style={
@@ -4476,6 +4489,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               >
                                 <Text
                                   accessibilityElementsHidden={true}
+                                  accessibilityLevel={2}
                                   accessibilityRole="header"
                                   accessible={false}
                                   importantForAccessibility="no"
@@ -4840,6 +4854,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -5048,6 +5063,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -5256,6 +5272,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -5517,6 +5534,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -5707,6 +5725,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -6400,6 +6419,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
+          accessibilityLevel={1}
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
@@ -6870,6 +6890,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                accessibilityLevel={1}
                 accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
@@ -7075,7 +7096,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityLabel="Voir l’itinéraire - Lien externe"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -7120,7 +7141,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "width": "auto",
                       }
                     }
-                    testID="Voir l’itinéraire"
+                    testID="Voir l’itinéraire - Lien externe"
                   >
                     <View
                       gap={8}
@@ -7445,6 +7466,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={2}
                       accessibilityRole="header"
                       style={
                         {
@@ -7488,6 +7510,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={2}
                       accessibilityRole="header"
                       style={
                         {
@@ -7531,6 +7554,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={2}
                       accessibilityRole="header"
                       style={
                         {
@@ -7553,7 +7577,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       }
                     >
                       <View
-                        accessibilityLabel="contact@venue.com"
+                        accessibilityLabel="contact@venue.com - Lien externe"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -7598,7 +7622,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "width": "auto",
                           }
                         }
-                        testID="contact@venue.com"
+                        testID="contact@venue.com - Lien externe"
                       >
                         <View
                           gap={8}
@@ -7654,7 +7678,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <View
-                        accessibilityLabel="+33102030405"
+                        accessibilityLabel="+33102030405 - Lien externe"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -7699,7 +7723,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "width": "auto",
                           }
                         }
-                        testID="+33102030405"
+                        testID="+33102030405 - Lien externe"
                       >
                         <View
                           gap={8}
@@ -7755,7 +7779,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <View
-                        accessibilityLabel="https://my@website.com"
+                        accessibilityLabel="https://my@website.com - Lien externe"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -7800,7 +7824,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "width": "auto",
                           }
                         }
-                        testID="https://my@website.com"
+                        testID="https://my@website.com - Lien externe"
                       >
                         <View
                           gap={8}
@@ -7876,6 +7900,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={2}
                       accessibilityRole="header"
                       style={
                         {
@@ -8026,6 +8051,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -8302,6 +8328,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -8565,6 +8592,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -8942,6 +8970,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel={3}
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -9174,7 +9203,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Lien externe - Voir plus d’infos sur l’accessibilité du lieu"
+                                accessibilityLabel="Lien externe - Voir plus d’infos sur l’accessibilité du lieu - Lien externe"
                                 accessibilityRole="link"
                                 accessibilityState={
                                   {
@@ -9267,6 +9296,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel={2}
                       accessibilityRole="header"
                       style={
                         {
@@ -9663,6 +9693,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -9853,6 +9884,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel={2}
                   accessibilityRole="header"
                   style={
                     {
@@ -10546,6 +10578,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
+          accessibilityLevel={1}
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}

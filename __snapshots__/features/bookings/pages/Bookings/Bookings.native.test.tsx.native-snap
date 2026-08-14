@@ -41,6 +41,7 @@ exports[`Bookings should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityLevel={1}
         accessibilityRole="header"
         numberOfLines={1}
         style={

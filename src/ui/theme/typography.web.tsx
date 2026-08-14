@@ -5,13 +5,13 @@ import styled from 'styled-components'
 import { theme } from 'theme'
 import { TextColorKey } from 'theme/types'
 import { isHeadingLevel } from 'ui/theme/isHeadingLevel'
-import { HeadingLevel } from 'ui/theme/typographyAttrs/types'
+import { TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
 
 const DEFAULT_COLOR_TEXT = 'default'
 
 const createStyledText = (
   typographyStyle: keyof typeof theme.designSystem.typography,
-  defaultLevel?: HeadingLevel
+  defaultLevel?: TextSemanticLevel
 ) => {
   const StyledText = styled.p<{ theme; color?: TextColorKey; numberOfLines?: number }>(
     ({ theme, color, numberOfLines }) => ({
@@ -33,16 +33,16 @@ const createStyledText = (
   )
 
   type Props = React.ComponentPropsWithoutRef<typeof StyledText> & {
-    accessibilityLevel?: HeadingLevel
+    accessibilityLevel?: TextSemanticLevel
     numberOfLines?: number
     color?: TextColorKey
   }
 
   const Component = ({ accessibilityLevel, numberOfLines, ...props }: Props) => {
     const level = accessibilityLevel ?? defaultLevel
-    const isValidHeading = level !== 'p' && isHeadingLevel(level)
-    const tag = isValidHeading ? `h${level}` : 'p'
-
+    let tag: React.ElementType = 'p'
+    if (level === 'span') tag = 'span'
+    else if (isHeadingLevel(level)) tag = `h${level}`
     return <StyledText as={tag} numberOfLines={numberOfLines} {...props} />
   }
 

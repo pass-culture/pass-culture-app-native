@@ -65,6 +65,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           style={
             {
@@ -79,6 +80,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
           Mise à jour requise !
         </Text>
         <Text
+          accessibilityLevel={2}
           accessibilityRole="header"
           style={
             {
@@ -206,7 +208,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
           </View>
         </View>
         <View
-          accessibilityLabel="Utiliser la version web"
+          accessibilityLabel="Utiliser la version web - Lien externe"
           accessibilityRole="link"
           accessibilityState={
             {
@@ -258,7 +260,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
               },
             ]
           }
-          testID="Utiliser la version web"
+          testID="Utiliser la version web - Lien externe"
         >
           <View
             gap={8}

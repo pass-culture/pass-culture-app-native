@@ -264,12 +264,12 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-columnGap-1ta3fxp r-flexDirection-18u37iz"
               >
-                <p
+                <span
                   class="c6"
                   style="color: rgb(255, 255, 255); max-width: 100%; min-width: 0; flex-shrink: 1;"
                 >
                   Continuer
-                </p>
+                </span>
               </div>
             </button>
             <div

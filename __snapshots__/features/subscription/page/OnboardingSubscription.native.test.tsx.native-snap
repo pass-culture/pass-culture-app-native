@@ -162,6 +162,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -267,6 +268,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             >
               <View
+                accessibilityLabelledBy="testUuidV4"
                 accessibilityRole="none"
               >
                 <View
@@ -280,7 +282,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel={2}
                     accessibilityRole="header"
+                    id="testUuidV4"
                     style={
                       {
                         "color": "#161617",

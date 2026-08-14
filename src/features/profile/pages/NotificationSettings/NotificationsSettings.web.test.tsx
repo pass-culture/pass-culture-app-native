@@ -2,6 +2,7 @@ import React from 'react'
 
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
 
@@ -27,6 +28,10 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('NotificationsSettings', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     const { container } = render(reactQueryProviderHOC(<NotificationsSettings />))
 

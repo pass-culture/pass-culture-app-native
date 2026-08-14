@@ -8,6 +8,7 @@ import { OnboardingSubscription } from 'features/subscription/page/OnboardingSub
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
@@ -35,6 +36,7 @@ jest.useFakeTimers()
 
 describe('OnboardingSubscription', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
     storage.clear('has_seen_onboarding_subscription')
   })

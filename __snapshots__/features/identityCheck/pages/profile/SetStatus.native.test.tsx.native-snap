@@ -149,6 +149,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -209,6 +210,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             />
             <Styled(View)>
               <Styled(Text)
+                accessibilityLevel={2}
                 accessibilityRole="header"
               >
                 Sélectionne ton statut
@@ -333,6 +335,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel={2}
                 accessibilityRole="header"
                 style={
                   {

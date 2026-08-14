@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { MandatoryUpdatePersonalData } from './MandatoryUpdatePersonalData'
@@ -23,6 +24,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<MandatoryUpdatePersonalData />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', async () => {
     render(<MandatoryUpdatePersonalData />)
 

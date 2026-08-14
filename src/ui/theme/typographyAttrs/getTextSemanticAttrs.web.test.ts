@@ -1,6 +1,6 @@
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
-describe('getHeadingAttrs()', () => {
+describe('getTextSemanticAttrs()', () => {
   it.each`
     accessibilityLevel
     ${1}
@@ -8,8 +8,9 @@ describe('getHeadingAttrs()', () => {
     ${3}
     ${4}
     ${'p'}
+    ${'span'}
   `('should return accessibilityLevel $accessibilityLevel', ({ accessibilityLevel }) => {
-    expect(getHeadingAttrs(accessibilityLevel)).toEqual({
+    expect(getTextSemanticAttrs(accessibilityLevel)).toEqual({
       accessibilityRole: undefined,
       accessibilityLevel,
     })

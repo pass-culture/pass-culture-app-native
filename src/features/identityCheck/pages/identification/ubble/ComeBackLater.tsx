@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { IdCardInvalid } from 'ui/svg/icons/IdCardInvalid'
 import { Typo } from 'ui/theme'
@@ -26,7 +26,7 @@ export const ComeBackLater: FunctionComponent = () => {
       withGoBack
       illustration={IdCardInvalid}
       remoteIllustration={{
-        url: genericInfoPageIllustrationUrls.stressedKnightLarge,
+        url: remoteIllustrationUrls.stressedKnightLarge,
         backgroundColor: 'negative01',
       }}
       title="Reviens plus tard"

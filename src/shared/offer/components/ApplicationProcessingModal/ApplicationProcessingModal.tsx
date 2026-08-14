@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -40,6 +41,10 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       hideModal={hideModal}
       visible={visible}
+      remoteIllustration={{
+        url: remoteIllustrationUrls.hourglass,
+        backgroundColor: 'pending01',
+      }}
       Illustration={BookingHold}
       title="C’est pour bientôt&nbsp;!">
       <StyledBody>

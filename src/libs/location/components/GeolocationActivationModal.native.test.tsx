@@ -3,6 +3,7 @@ import { Linking } from 'react-native'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { locationActions } from 'libs/locationV2/location.store'
@@ -18,6 +19,7 @@ const user = userEvent.setup()
 
 describe('GeolocationActivationModal', () => {
   beforeEach(() => {
+    setFeatureFlags()
     locationActions.setPermissionState(GeolocPermissionState.DENIED)
     goBack.mockClear()
   })

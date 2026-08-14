@@ -65,6 +65,7 @@ exports[`NoContentError should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel={1}
           accessibilityRole="header"
           style={
             {
@@ -79,6 +80,7 @@ exports[`NoContentError should render correctly 1`] = `
           Oups !
         </Text>
         <Text
+          accessibilityLevel={2}
           accessibilityRole="header"
           style={
             {

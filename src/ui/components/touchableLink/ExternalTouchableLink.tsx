@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react'
+import { Platform } from 'react-native'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { openItinerary } from 'libs/itinerary/openItinerary'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
@@ -24,6 +26,11 @@ export function ExternalTouchableLink({
       accessibilityRole={AccessibilityRole.LINK}
       handleNavigation={handleNavigation}
       linkProps={{ href: externalNav.url, target: '_blank' }}
+      accessibilityLabel={
+        Platform.OS === 'web'
+          ? getComputedAccessibilityLabel(rest.wording, rest.label, 'Nouvelle fenêtre')
+          : getComputedAccessibilityLabel(rest.wording, rest.label, 'Lien externe')
+      }
       {...rest}
     />
   )

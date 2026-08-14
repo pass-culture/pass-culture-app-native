@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { goBack, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BonificationType } from 'features/bonification/enums'
 import {
   BonificationFamilyQuotientRefused,
@@ -18,6 +18,15 @@ jest.mock('features/auth/context/AuthContext')
 
 describe('BonificationFamilyQuotientRefused', () => {
   beforeEach(() => setFeatureFlags([]))
+
+  it('should call goBack when pressing "Fermer" button', async () => {
+    render(<BonificationFamilyQuotientRefused />)
+
+    const button = screen.getByText('Fermer')
+    await userEvent.press(button)
+
+    expect(goBack).toHaveBeenCalledTimes(1)
+  })
 
   describe('Parent not found', () => {
     it('should go navigate to BonificationRequiredInformation when pressing "Renouveler ma demande" button', async () => {

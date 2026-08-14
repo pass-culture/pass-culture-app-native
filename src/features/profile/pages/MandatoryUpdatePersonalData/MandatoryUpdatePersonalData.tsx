@@ -2,6 +2,7 @@ import React from 'react'
 
 import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { env } from 'libs/environment/env'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Button } from 'ui/designSystem/Button/Button'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -12,6 +13,10 @@ import { LINE_BREAK } from 'ui/theme/constants'
 export const MandatoryUpdatePersonalData = () => (
   <GenericInfoPage
     illustration={UserError}
+    remoteIllustration={{
+      url: remoteIllustrationUrls.signingDocumentPaintingLarge,
+      backgroundColor: 'information02',
+    }}
     title="Mets à jour ton profil"
     subtitle={`Pour mieux t’accompagner, on a besoin de vérifier que tes informations personnelles sont toujours à jour.${LINE_BREAK}C’est rapide, promis.`}
     buttonPrimary={{

@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -62,5 +63,13 @@ describe('<EighteenBirthday />', () => {
 
     expect(screen.getByText('Vérifie ton identité pour débloquer tes 150 €.')).toBeOnTheScreen()
     expect(screen.getByText('Vérifier mon identité')).toBeOnTheScreen()
+  })
+
+  it('should render illustration rather than animation when wipNewVisionUi FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(reactQueryProviderHOC(<EighteenBirthday />))
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

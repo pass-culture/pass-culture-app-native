@@ -12,7 +12,7 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 import { supportedBrowsers } from 'web/supportedBrowsers'
 
 type SupportedBrowsers = typeof supportedBrowsers
@@ -63,8 +63,8 @@ export const BrowserNotSupportedPage: React.FC<{
           />
         </IllustrationContainer>
         <TextContainer gap={4}>
-          <StyledTitle2 {...getHeadingAttrs(1)}>{message?.title}</StyledTitle2>
-          <Typo.Body {...getHeadingAttrs(2)}>{message?.description}</Typo.Body>
+          <StyledTitle2 {...getTextSemanticAttrs(1)}>{message?.title}</StyledTitle2>
+          <Typo.Body {...getTextSemanticAttrs(2)}>{message?.description}</Typo.Body>
 
           <AccessibleUnorderedList
             withPadding

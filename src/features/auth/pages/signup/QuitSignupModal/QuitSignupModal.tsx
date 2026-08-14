@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
-import { genericInfoPageIllustrationUrls } from 'shared/illustrations/genericInfoPageIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -38,7 +38,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
       <GenericInfoPage
         illustration={ErrorIllustration}
         remoteIllustration={{
-          url: genericInfoPageIllustrationUrls.brokenDinosaurSkeletonLarge,
+          url: remoteIllustrationUrls.brokenDinosaurSkeletonLarge,
           backgroundColor: 'negative01',
         }}
         title="Veux-tu abandonner l’inscription&nbsp;?"

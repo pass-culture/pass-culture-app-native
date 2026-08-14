@@ -4,6 +4,7 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import { Controller, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
@@ -19,11 +20,13 @@ import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type BirthdayForm = {
   birthdate: Date
 }
+
+const titleId = uuidv4()
 
 export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = ({
   isSSOSubscription,
@@ -102,7 +105,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   return (
     <SetContainer>
       <Form.MaxWidth>
-        <Typo.Title3 {...getHeadingAttrs(2)}>{pageTitle}</Typo.Title3>
+        <Typo.Title3 id={titleId} {...getTextSemanticAttrs(2)}>
+          {pageTitle}
+        </Typo.Title3>
         {isSSOSubscriptionFromLogin ? (
           <StyledView>
             <Typo.Body>
@@ -120,6 +125,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
             name="birthdate"
             render={({ field: { value, onChange } }) => (
               <DateInput
+                label={titleId}
                 onChange={onChange}
                 date={value}
                 errorMessage={displayErrorMessage(value)}

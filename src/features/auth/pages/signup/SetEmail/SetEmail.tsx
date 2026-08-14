@@ -12,7 +12,7 @@ import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type FormValues = { email: string; marketingEmailSubscription: boolean }
 
@@ -47,7 +47,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs(2)}>Crée-toi un compte</Typo.Title3>
       <ControllersContainer gap={5}>
         <EmailInputController
           label="Adresse e-mail"
