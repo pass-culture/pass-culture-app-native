@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { Ref, useEffect } from 'react'
-import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
+import { Platform, StyleProp, View, ViewStyle, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -159,14 +159,16 @@ export const VenuePlaylist: React.FC<Props> = ({
             <TitleContainer>
               <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
             </TitleContainer>
-            <SeeAllButton
-              playlistTitle={venuePlaylistTitle}
-              data={{
-                onBeforeNavigate,
-                navigateToVerticalPlaylist,
-                hideSearchSeeAll: true,
-              }}
-            />
+            <View>
+              <SeeAllButton
+                playlistTitle={venuePlaylistTitle}
+                data={{
+                  onBeforeNavigate,
+                  navigateToVerticalPlaylist,
+                  hideSearchSeeAll: true,
+                }}
+              />
+            </View>
           </SeeAllButtonContainer>
           {shouldDisplaySeeOnMapButton ? (
             <ButtonContainer>

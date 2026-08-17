@@ -669,104 +669,106 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           Les artistes
                         </Text>
                       </View>
-                      <View
-                        style={
-                          {
-                            "flexDirection": "row",
-                            "flexGrow": 1,
-                          }
-                        }
-                      >
+                      <View>
                         <View
-                          accessibilityLabel="Voir tout pour la sélection Les artistes"
-                          accessibilityRole="button"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              [
-                                {
-                                  "userSelect": "auto",
-                                },
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "transparent",
-                                  "borderWidth": 0,
-                                  "flexDirection": "row",
-                                  "justifyContent": "center",
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 2,
-                                  "paddingRight": 2,
-                                  "paddingTop": 2,
-                                  "width": "auto",
-                                },
-                              ],
-                              {
-                                "opacity": 1,
-                              },
-                            ]
+                            {
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                            }
                           }
-                          testID="Voir tout pour la sélection Les artistes"
                         >
                           <View
-                            gap={8}
-                            hasIcon={false}
-                            isMultiline={false}
-                            style={
+                            accessibilityLabel="Voir tout pour la sélection Les artistes"
+                            accessibilityRole="button"
+                            accessibilityState={
                               {
-                                "alignItems": "center",
-                                "columnGap": 8,
-                                "flexDirection": "row",
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
                             }
-                          >
-                            <Text
-                              style={
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
                                 [
                                   {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 14,
-                                    "lineHeight": 14,
+                                    "userSelect": "auto",
                                   },
                                   {
-                                    "color": "#6123df",
-                                    "flexBasis": undefined,
-                                    "flexGrow": undefined,
-                                    "flexShrink": 1,
-                                    "maxWidth": "100%",
-                                    "minWidth": 0,
-                                    "textAlign": undefined,
+                                    "alignItems": "center",
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                    "flexDirection": "row",
+                                    "justifyContent": "center",
+                                    "paddingBottom": 2,
+                                    "paddingLeft": 2,
+                                    "paddingRight": 2,
+                                    "paddingTop": 2,
+                                    "width": "auto",
                                   },
-                                ]
+                                ],
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            testID="Voir tout pour la sélection Les artistes"
+                          >
+                            <View
+                              gap={8}
+                              hasIcon={false}
+                              isMultiline={false}
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "columnGap": 8,
+                                  "flexDirection": "row",
+                                }
                               }
                             >
-                              Voir tout
-                            </Text>
+                              <Text
+                                style={
+                                  [
+                                    {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 14,
+                                      "lineHeight": 14,
+                                    },
+                                    {
+                                      "color": "#6123df",
+                                      "flexBasis": undefined,
+                                      "flexGrow": undefined,
+                                      "flexShrink": 1,
+                                      "maxWidth": "100%",
+                                      "minWidth": 0,
+                                      "textAlign": undefined,
+                                    },
+                                  ]
+                                }
+                              >
+                                Voir tout
+                              </Text>
+                            </View>
                           </View>
                         </View>
                       </View>
