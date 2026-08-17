@@ -26,7 +26,8 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -277,12 +278,15 @@ const Caption = styled(Typo.BodyAccentXs)<{ status: OfferStatus }>(({ status, th
   textAlign: 'center',
 }))
 
-const Container = styled(TouchableOpacity).attrs({ hitSlop })(({ theme }) => ({
+const Container = styledButton(Touchable).attrs({ hitSlop })(({ theme }) => ({
   alignItems: 'center',
   width:
     theme.appContentWidth < theme.breakpoints.xs
       ? theme.designSystem.size.spacing.xxxl
       : theme.designSystem.size.spacing.xxxxl,
+  '&:hover': {
+    textDecorationLine: 'none',
+  },
 }))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
