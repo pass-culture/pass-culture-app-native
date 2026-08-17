@@ -140,6 +140,12 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
+      title: 'Last login info 📱',
+      navigationTarget: { screen: 'CheatcodesScreenLastLoginInfo' },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'Debug informations 🪲',
       navigationTarget: { screen: 'CheatcodesScreenDebugInformations' },
       subscreens: [],
