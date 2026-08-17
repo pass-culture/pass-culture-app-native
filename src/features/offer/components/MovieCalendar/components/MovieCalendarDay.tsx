@@ -87,6 +87,9 @@ const CalendarCell = styledButton(Touchable)({
   justifyContent: 'center',
   alignItems: 'center',
   flexWrap: 'wrap',
+  '&:hover': {
+    textDecorationLine: 'none',
+  },
 })
 
 const DefaultCalendarText = styled(Typo.BodyAccent)({

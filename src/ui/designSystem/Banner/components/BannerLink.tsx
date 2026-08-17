@@ -58,6 +58,9 @@ const InlineTouchable = styledButton(Touchable)({
   flexDirection: 'row',
   alignItems: 'flex-start',
   cursor: 'pointer',
+  '&:hover': {
+    textDecorationLine: 'none',
+  },
 })
 
 const IconWrapper = styled.View(({ theme }) => ({
