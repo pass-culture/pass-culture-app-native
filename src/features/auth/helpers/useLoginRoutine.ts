@@ -24,7 +24,7 @@ export function useLoginRoutine(): LoginRoutine {
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     scheduleAccessTokenRemoval(response.accessToken)
-    analytics.logLogin({ method, type: analyticsType })
+    void analytics.logLogin({ method, type: analyticsType })
     setIsLoggedIn(true)
     resetContexts()
   }

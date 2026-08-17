@@ -5,8 +5,14 @@ import { useCallback } from 'react'
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import { AccountState, FavoriteResponse, RecreditType } from 'api/gen'
+import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
-import { isOAuthLoginRequest, LoginRequest, SignInResponseFailure } from 'features/auth/types'
+import {
+  isOAuthLoginRequest,
+  LoginProvider,
+  LoginRequest,
+  SignInResponseFailure,
+} from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   RootStackParamList,
@@ -59,7 +65,7 @@ export const useSignInMutation = ({
         ? getSSOLoginMethod(body.provider, ssoKind)
         : analyticsMethod
       await loginRoutine(response, resolvedMethod, analyticsType || loginAnalyticsType)
-      onSuccess(response.accountState)
+      await onSuccess(response.accountState, isOAuth ? body.provider : 'email')
     },
 
     onError: (error, variables) => {
@@ -88,7 +94,7 @@ const useHandleSigninSuccess = (
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
-      analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
+      void analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
     }
   }, [])
 
@@ -99,45 +105,53 @@ const useHandleSigninSuccess = (
   const offerId = params?.offerId
   const comeFrom = params?.from
 
-  const navigateForActiveState = useCallback(async () => {
-    const user = await api.getNativeV1Me()
-    const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+  const navigateForActiveState = useCallback(
+    async (provider: LoginProvider) => {
+      const user = await api.getNativeV1Me()
 
-    if (user?.recreditAmountToShow) {
-      if (
-        user.recreditTypeToShow === RecreditType.BonusCredit &&
-        user.recreditAmountToShow === bonificationBonusAmount
-      ) {
-        navigate('BonificationGranted')
+      if (user?.email) {
+        await saveLastLoginInfo({ email: user.email, provider })
+      }
+
+      const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+
+      if (user?.recreditAmountToShow) {
+        if (
+          user.recreditTypeToShow === RecreditType.BonusCredit &&
+          user.recreditAmountToShow === bonificationBonusAmount
+        ) {
+          navigate('BonificationGranted')
+        } else {
+          navigate('RecreditBirthdayNotification')
+        }
+      } else if (!hasSeenEligibleCard && user.showEligibleCard) {
+        navigate('EighteenBirthday')
+      } else if (offerId) {
+        switch (comeFrom) {
+          case StepperOrigin.BOOKING:
+            navigate('Offer', { id: offerId, openModalOnNavigation: true })
+            return
+          case StepperOrigin.FAVORITE:
+            addFavorite({ offerId })
+            navigate('Offer', { id: offerId })
+            return
+          case StepperOrigin.OFFER:
+          case StepperOrigin.NOTIFICATION:
+            navigate('Offer', { id: offerId })
+            return
+          default:
+            navigateToHome()
+            return
+        }
       } else {
-        navigate('RecreditBirthdayNotification')
+        navigateToHome()
       }
-    } else if (!hasSeenEligibleCard && user.showEligibleCard) {
-      navigate('EighteenBirthday')
-    } else if (offerId) {
-      switch (comeFrom) {
-        case StepperOrigin.BOOKING:
-          navigate('Offer', { id: offerId, openModalOnNavigation: true })
-          return
-        case StepperOrigin.FAVORITE:
-          addFavorite({ offerId })
-          navigate('Offer', { id: offerId })
-          return
-        case StepperOrigin.OFFER:
-        case StepperOrigin.NOTIFICATION:
-          navigate('Offer', { id: offerId })
-          return
-        default:
-          navigateToHome()
-          return
-      }
-    } else {
-      navigateToHome()
-    }
-  }, [addFavorite, navigate, offerId, comeFrom, bonificationBonusAmount])
+    },
+    [addFavorite, navigate, offerId, comeFrom, bonificationBonusAmount]
+  )
 
   return useCallback(
-    async (accountState: AccountState) => {
+    async (accountState: AccountState, provider: LoginProvider) => {
       try {
         if (doNotNavigateOnSigninSuccess) {
           return
@@ -153,7 +167,7 @@ const useHandleSigninSuccess = (
           case AccountState.ANONYMIZED:
             return setErrorMessage?.('Ton compte à été supprimé')
           case AccountState.ACTIVE:
-            navigateForActiveState()
+            await navigateForActiveState(provider)
             return
         }
       } catch {
