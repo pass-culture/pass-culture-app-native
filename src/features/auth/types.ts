@@ -1,4 +1,7 @@
+import React from 'react'
+
 import { OAuthSigninRequestV2, SigninRequest } from 'api/gen'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type SignInResponseFailure = {
   isSuccess: false
@@ -54,3 +57,17 @@ export type LoginRequest = SigninRequest | OAuthLoginRequest
 
 export const isOAuthLoginRequest = (req: LoginRequest): req is OAuthLoginRequest =>
   'provider' in req
+
+export type LoginProvider = 'google' | 'apple' | 'email'
+
+export type LastLoginInfo = {
+  maskedEmail: string
+  provider: LoginProvider
+  lastLoginAt: string
+}
+
+export type FormattedLastLoginInfo = {
+  maskedEmail: string
+  provider: { label: string; icon: React.FC<AccessibleIcon> }
+  lastLoginAt: string
+}

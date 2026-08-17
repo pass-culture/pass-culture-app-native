@@ -19,6 +19,7 @@ export type StorageKey =
   | 'has_seen_push_notifications_modal_once'
   | 'has_seen_qualtrics_survey'
   | 'has_seen_tutorials'
+  | 'last_login_info'
   | 'logged_in_session_count'
   | 'offers_viewed_count'
   | 'PASSCULTURE_REFRESH_TOKEN'
