@@ -14,6 +14,7 @@ import {
   selectDepositAmountsByAge,
   selectEnableFrontImageResizing,
   selectIdCheckAddressAutocompletion,
+  selectImageResizingUrl,
   selectIneligiblePostalCodes,
   selectIsRecaptchaEnabled,
   selectObjectStorageUrl,
@@ -95,3 +96,5 @@ export const useBonificationQfThreshold = () =>
   useSettingsQuery({
     select: selectBonificationQfThreshold,
   })
+
+export const useImageResizingUrl = () => useSettingsQuery({ select: selectImageResizingUrl })
