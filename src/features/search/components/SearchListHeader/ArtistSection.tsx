@@ -47,14 +47,16 @@ export const ArtistSection = ({
             <Typo.Title3>{playlistTitle}</Typo.Title3>
           </TitleContainer>
           {artists.length > 1 ? (
-            <SeeAllButton
-              playlistTitle={playlistTitle}
-              data={{
-                onBeforeNavigate,
-                navigateToVerticalPlaylist,
-                hideSearchSeeAll: true,
-              }}
-            />
+            <View>
+              <SeeAllButton
+                playlistTitle={playlistTitle}
+                data={{
+                  onBeforeNavigate,
+                  navigateToVerticalPlaylist,
+                  hideSearchSeeAll: true,
+                }}
+              />
+            </View>
           ) : null}
         </SeeAllButtonContainer>
         <NumberOfItems nbItems={artists.length} />

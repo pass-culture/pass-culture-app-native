@@ -1,6 +1,6 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import { Platform, View, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -221,14 +221,16 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
               <Typo.Title3 {...getTextSemanticAttrs(2)}>{playlistTitle}</Typo.Title3>
             </TitleContainer>
             {artists.length > 1 ? (
-              <SeeAllButton
-                playlistTitle={playlistTitle}
-                data={{
-                  onBeforeNavigate: onSeeAllBeforeNavigate,
-                  navigateToVerticalPlaylist,
-                  hideSearchSeeAll: true,
-                }}
-              />
+              <View>
+                <SeeAllButton
+                  playlistTitle={playlistTitle}
+                  data={{
+                    onBeforeNavigate: onSeeAllBeforeNavigate,
+                    navigateToVerticalPlaylist,
+                    hideSearchSeeAll: true,
+                  }}
+                />
+              </View>
             ) : null}
           </SeeAllButtonContainer>
           <ObservedPlaylist onViewableItemsChanged={handleArtistsViewableItemsChanged}>

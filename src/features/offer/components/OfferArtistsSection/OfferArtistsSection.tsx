@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
+import { View } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferArtist, SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
@@ -125,14 +126,16 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
           <Typo.Title4 {...getTextSemanticAttrs(2)}>{title}</Typo.Title4>
         </TitleContainer>
         {artists.length > 1 ? (
-          <SeeAllButton
-            playlistTitle={title}
-            data={{
-              onBeforeNavigate: onSeeAllBeforeNavigate,
-              navigateToVerticalPlaylist,
-              hideSearchSeeAll: true,
-            }}
-          />
+          <View>
+            <SeeAllButton
+              playlistTitle={title}
+              data={{
+                onBeforeNavigate: onSeeAllBeforeNavigate,
+                navigateToVerticalPlaylist,
+                hideSearchSeeAll: true,
+              }}
+            />
+          </View>
         ) : null}
       </SeeAllButtonContainer>
 
