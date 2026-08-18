@@ -120,6 +120,7 @@ export enum StepperOrigin {
   HOME = 'home',
   LOGIN = 'login',
   LOGIN_METHODS = 'LoginMethods',
+  LOGIN_METHODS_WITH_LAST_LOGIN_INFO = 'LoginMethodsWithLastLoginInfo',
   NOTIFICATION = 'notification',
   OFFER = 'offer',
   ONBOARDING_GENERAL_PUBLIC_WELCOME = 'OnboardingGeneralPublicWelcome',
@@ -289,6 +290,7 @@ export type RootStackParamList = {
   LocationPicker: undefined
   Login?: LoginParams
   LoginMethods?: LoginParams
+  LoginMethodsWithLastLoginInfo?: LoginParams
   Maintenance: undefined
   MandatoryUpdatePersonalData: undefined
   MovieCalendar: undefined

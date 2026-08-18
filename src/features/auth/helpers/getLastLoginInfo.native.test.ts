@@ -80,4 +80,16 @@ describe('getLastLoginInfo', () => {
       })
     })
   })
+
+  describe('when the provider is invalid', () => {
+    it('should return null', async () => {
+      jest.mocked(storage.readObject).mockResolvedValueOnce({
+        maskedEmail: 'rog*************@passculture.gen',
+        provider: 'invalid-provider',
+        lastLoginAt: '2026-08-17T14:11:41.595Z',
+      })
+
+      await expect(getLastLoginInfo()).resolves.toBeNull()
+    })
+  })
 })

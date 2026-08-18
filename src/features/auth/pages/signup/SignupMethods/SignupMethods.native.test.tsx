@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountState, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
+import { getLastLoginInfo } from 'features/auth/helpers/getLastLoginInfo'
 import { SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
@@ -19,6 +20,7 @@ import { SignupMethods } from './SignupMethods'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/auth/helpers/getLastLoginInfo')
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ resetSearch: jest.fn() }),
@@ -42,11 +44,14 @@ const user = userEvent.setup()
 describe('<SignupMethods />', () => {
   beforeEach(() => {
     setFeatureFlags([])
+    jest.mocked(getLastLoginInfo).mockResolvedValue(null)
     mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
     })
     deviceInfoStoreActions.setDeviceInfo(deviceInfo)
   })
+
+  afterEach(() => jest.clearAllMocks())
 
   it('should render correctly', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
@@ -58,10 +63,7 @@ describe('<SignupMethods />', () => {
   describe('generic SSO errors', () => {
     it('should display rate limit snackbar when too many attempts error occurs with Google', async () => {
       mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 429,
-          data: { code: 'TOO_MANY_ATTEMPTS', general: [] },
-        },
+        responseOptions: { statusCode: 429, data: { code: 'TOO_MANY_ATTEMPTS', general: [] } },
       })
 
       await renderSignupMethods()
@@ -77,10 +79,7 @@ describe('<SignupMethods />', () => {
 
     it('should display network error snackbar when network request failed', async () => {
       mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 500,
-          data: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-        },
+        responseOptions: { statusCode: 500, data: { code: 'NETWORK_REQUEST_FAILED', general: [] } },
       })
 
       await renderSignupMethods()
@@ -116,7 +115,7 @@ describe('<SignupMethods />', () => {
   })
 
   describe('for SSO Google method', () => {
-    it('should sign in when sso button is clicked and sso account already exists', async () => {
+    it('should sign in when SSO button is clicked and SSO account already exists', async () => {
       mockServer.postApi<SigninResponseV2>('/v2/oauth/google/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
@@ -135,13 +134,11 @@ describe('<SignupMethods />', () => {
           deviceInfo,
         },
         'google',
-        {
-          credentials: 'omit',
-        }
+        { credentials: 'omit' }
       )
     })
 
-    it('should navigate to SignupMethods when clicking Google SSO button and account does not already exist', async () => {
+    it('should navigate to SignupForm when clicking Google SSO button and account does not already exist', async () => {
       mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -216,7 +213,7 @@ describe('<SignupMethods />', () => {
       expect(screen.queryByText('S’inscrire avec Apple')).not.toBeOnTheScreen()
     })
 
-    it('should navigate to SignupMethods when clicking Apple SSO button and account does not already exist', async () => {
+    it('should navigate to SignupForm when clicking Apple SSO button and account does not already exist', async () => {
       mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/apple/authorize', {
         responseOptions: {
           statusCode: 401,
@@ -261,7 +258,7 @@ describe('<SignupMethods />', () => {
   })
 
   describe('for email method', () => {
-    it('should navigate to Login when "S’inscrire avec mon e-mail" is clicked', async () => {
+    it('should navigate to SignupForm when "S’inscrire avec mon e-mail" is clicked', async () => {
       await renderSignupMethods()
 
       await user.press(screen.getByText('S’inscrire avec mon e-mail'))
