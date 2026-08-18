@@ -6,7 +6,6 @@ import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Spacer } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
@@ -21,7 +20,6 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   isLoggedIn,
   displayGradient,
 }) => {
-  const { bottom } = useCustomSafeInsets()
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
 
@@ -30,7 +28,7 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   }
 
   return (
-    <StyledStickyBottomWrapper bottom={-bottom} displayGradient={displayGradient}>
+    <StyledStickyBottomWrapper displayGradient={displayGradient}>
       {wording ? (
         <CallToActionContainer testID="sticky-booking-button" accessible>
           <ButtonWrapper>
@@ -52,9 +50,9 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   )
 }
 
-const StyledStickyBottomWrapper = styled(StickyBottomWrapper)<{ bottom: number }>(({ bottom }) => ({
-  bottom,
-}))
+const StyledStickyBottomWrapper = styled(StickyBottomWrapper)({
+  bottom: 0,
+})
 
 const CallToActionContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.l,
