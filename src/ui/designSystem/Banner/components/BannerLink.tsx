@@ -9,13 +9,15 @@ import styled, { useTheme } from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 type ButtonTextWithIconProps = {
   wording: string
   icon: FunctionComponent<AccessibleIcon>
-  onPress?: AppButtonEventNative
+  onPress?: () => void
   onLongPress?: AppButtonEventNative
   accessibilityLabel?: string
   accessibilityRole?: AccessibilityRole
@@ -52,10 +54,13 @@ export function BannerLink({
   )
 }
 
-const InlineTouchable = styled.TouchableOpacity({
+const InlineTouchable = styledButton(Touchable)({
   flexDirection: 'row',
   alignItems: 'flex-start',
   cursor: 'pointer',
+  '&:hover': {
+    textDecorationLine: 'none',
+  },
 })
 
 const IconWrapper = styled.View(({ theme }) => ({

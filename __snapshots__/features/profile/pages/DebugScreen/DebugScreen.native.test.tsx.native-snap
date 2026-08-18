@@ -750,8 +750,10 @@ exports[`DebugScreen should render correctly 1`] = `
                           "cursor": "pointer",
                           "flexDirection": "row",
                           "opacity": 1,
+                          "userSelect": "auto",
                         }
                       }
+                      testID="Lien externe - Contacter le support - Lien externe"
                     >
                       <View
                         style={

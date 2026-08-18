@@ -9238,8 +9238,10 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                     "cursor": "pointer",
                                     "flexDirection": "row",
                                     "opacity": 1,
+                                    "userSelect": "auto",
                                   }
                                 }
+                                testID="Lien externe - Voir plus d’infos sur l’accessibilité du lieu - Lien externe"
                               >
                                 <View
                                   style={

@@ -1291,16 +1291,22 @@ exports[`PersonalData should render personal data success 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          {
-                            "alignItems": "flex-start",
-                            "cursor": "pointer",
-                            "flexDirection": "row",
-                          },
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "flex-start",
+                              "cursor": "pointer",
+                              "flexDirection": "row",
+                            },
+                          ],
                           {
                             "opacity": 1,
                           },
                         ]
                       }
+                      testID="Lien externe - Comment gérer tes données personnelles ? - Lien externe"
                     >
                       <View
                         style={

@@ -3,7 +3,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { extractDate } from 'features/offer/components/MovieCalendar/hooks/useMovieCalendarDay'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/helpers/accessibilityRoleInternalNavigation'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
 
@@ -18,7 +19,7 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
   const accessibilityLabel = `${NEXT_SCREENING_WORDING} ${NEXT_SCREENING_DATE}`
 
   return (
-    <TouchableOpacity
+    <StyledTouchable
       onPress={onPress}
       accessibilityRole={accessibilityRoleInternalNavigation()}
       accessibilityLabel={accessibilityLabel}>
@@ -32,9 +33,15 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
           <StyledBodyAccentXs>{NEXT_SCREENING_DATE}</StyledBodyAccentXs>
         </DateContainer>
       </Container>
-    </TouchableOpacity>
+    </StyledTouchable>
   )
 }
+
+const StyledTouchable = styledButton(Touchable)({
+  '&:hover': {
+    textDecorationLine: 'none',
+  },
+})
 
 const Container = styled.View(({ theme }) => ({
   width: '100%',
