@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import Clipboard from '@react-native-clipboard/clipboard'
 import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
@@ -292,79 +291,12 @@ describe('<VenueTopComponent />', () => {
         venueId: venueOpenToPublic.id.toString(),
       })
     })
-
-    it('should display feedback component below volunteer card when venue has volunteering url and wipEnableVolunteerFeedback FF activated', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-        enableVolunteerFeedback: true,
-      })
-
-      expect(screen.getByText('Le bénévolat sur le pass t’intéresse t-il ?')).toBeOnTheScreen()
-    })
-
-    it('should not display feedback component below volunteer card when venue has volunteering url and wipEnableVolunteerFeedback FF deactivated', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
-
-      expect(
-        screen.queryByText('Le bénévolat sur le pass t’intéresse t-il ?')
-      ).not.toBeOnTheScreen()
-    })
-
-    it('should trigger FeatureFeedbackClicked log with yes answer when venue has volunteering url and answering yes to feedback quiz', async () => {
-      await AsyncStorage.removeItem('volunteering_feedback')
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-        enableVolunteerFeedback: true,
-      })
-
-      await user.press(screen.getByText('Oui'))
-
-      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
-        featureName: 'volunteer',
-        feedbackResponse: 'Oui',
-        from: 'venue',
-        venueId: venueOpenToPublic.id.toString(),
-      })
-    })
-
-    it('should trigger FeatureFeedbackClicked log with no answer when venue has volunteering url and answering no to feedback quiz', async () => {
-      await AsyncStorage.removeItem('volunteering_feedback')
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-        enableVolunteerFeedback: true,
-      })
-
-      await user.press(screen.getByText('Non'))
-
-      expect(analytics.logFeatureFeedbackClicked).toHaveBeenCalledWith({
-        featureName: 'volunteer',
-        feedbackResponse: 'Non',
-        from: 'venue',
-        venueId: venueOpenToPublic.id.toString(),
-      })
-    })
   })
 })
 
 type RenderVenueTopComponent = ComponentProps<typeof VenueTopComponent>
 
-const renderVenueTopComponent = ({
-  venue,
-  enableVolunteer,
-  enableVolunteerFeedback,
-}: RenderVenueTopComponent) =>
+const renderVenueTopComponent = ({ venue, enableVolunteer }: RenderVenueTopComponent) =>
   render(
-    reactQueryProviderHOC(
-      <VenueTopComponent
-        venue={venue}
-        enableVolunteer={enableVolunteer}
-        enableVolunteerFeedback={enableVolunteerFeedback}
-      />
-    )
+    reactQueryProviderHOC(<VenueTopComponent venue={venue} enableVolunteer={enableVolunteer} />)
   )

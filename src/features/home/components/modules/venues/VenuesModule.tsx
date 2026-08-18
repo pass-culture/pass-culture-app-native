@@ -3,15 +3,11 @@ import { ViewToken } from 'react-native'
 import { useTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
 
-import { ReactionTypeEnum } from 'api/gen'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { HomepageModuleType, ModuleData, VenuesModuleParameters } from 'features/home/types'
-import { FeedBack } from 'features/reactions/components/FeedBack'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -43,9 +39,6 @@ export const VenuesModule = ({
   data,
   onViewableItemsChanged,
 }: VenuesModuleProps) => {
-  const enableVolunteerFeedback = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
-  )
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
   const { designSystem } = useTheme()
@@ -66,7 +59,6 @@ export const VenuesModule = ({
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
-  const showFeedback = enableVolunteerFeedback && isExclusiveVolunteering
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -80,16 +72,6 @@ export const VenuesModule = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
-
-  const handleOnLogFeedback = (type: ReactionTypeEnum) => {
-    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
-    void analytics.logFeatureFeedbackClicked({
-      featureName: 'volunteer',
-      feedbackResponse,
-      from: 'home',
-      entryId: homeEntryId,
-    })
-  }
 
   if (!shouldModuleBeDisplayed) return null
 
@@ -132,24 +114,10 @@ export const VenuesModule = ({
           />
         )}
       </ObservedPlaylist>
-      {showFeedback ? (
-        <StyledFeedBack
-          storageKey="volunteering_feedback"
-          likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
-          dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_3sGi4gI6EEOmfsy"
-          title="Le bénévolat sur le pass t’intéresse t-il&nbsp;?"
-          onLogReaction={handleOnLogFeedback}
-        />
-      ) : null}
     </Container>
   )
 }
 
 const Container = styled(ViewGap)(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
-}))
-
-const StyledFeedBack = styled(FeedBack)(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-  width: theme.isDesktopViewport ? '50%' : 'auto',
 }))

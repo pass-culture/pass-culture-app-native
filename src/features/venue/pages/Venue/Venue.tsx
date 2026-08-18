@@ -90,9 +90,6 @@ export const Venue: FunctionComponent = () => {
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
   const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
-  const enableVolunteerFeedback = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER_FEEDBACK
-  )
   const enableVenueFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR)
   const {
     visible: searchInVenueModalVisible,
@@ -210,7 +207,6 @@ export const Venue: FunctionComponent = () => {
       <VenueTopComponent
         venue={venue}
         enableVolunteer={enableVolunteer}
-        enableVolunteerFeedback={enableVolunteerFeedback}
         enableVenueFakeDoor={enableVenueFakeDoor}
         onPressFollowButton={() => handleOnPressFollowButton('venueBanner')}
       />
