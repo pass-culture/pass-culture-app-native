@@ -619,7 +619,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
       <Main nativeID={mainId} accessibilityRole={mainAccessibilityRole}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
-      {showTabBar ? <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} /> : null}
+      {showTabBar ? <AccessibleTabBar id={tabBarId} /> : null}
       {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
       {/* AppModal relies on navigation hooks on web: this modal must stay inside the NavigationContainer */}
