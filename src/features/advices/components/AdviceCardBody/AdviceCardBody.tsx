@@ -60,7 +60,7 @@ export const AdviceCardBody: FunctionComponent<Props> = ({
         </Typo.BodyS>
       </DescriptionContainer>
       <PublicationDate>{date}</PublicationDate>
-      <BottomCardContainer>
+      <BottomCardContainer gap={6}>
         {tag}
         {shouldDisplayButton && children}
       </BottomCardContainer>
@@ -79,7 +79,7 @@ const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate
     shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden', flexGrow: 1 } : {}
 )
 
-const BottomCardContainer = styled.View({
+const BottomCardContainer = styled(ViewGap)({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
