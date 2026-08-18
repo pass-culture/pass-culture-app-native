@@ -5,7 +5,7 @@ updates:
     open-pull-requests-limit: 2
     pull-request-branch-name:
       max-length: 55
-      template: '{dependency}-{version}'
+      template: 'dependabot/{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
@@ -22,7 +22,7 @@ updates:
     open-pull-requests-limit: 2
     pull-request-branch-name:
       max-length: 55
-      template: '{dependency}-{version}'
+      template: 'dependabot/{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
@@ -35,7 +35,7 @@ updates:
     open-pull-requests-limit: 2
     pull-request-branch-name:
       max-length: 55
-      template: '{dependency}-{version}'
+      template: 'dependabot/{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
@@ -48,7 +48,7 @@ updates:
     open-pull-requests-limit: 2
     pull-request-branch-name:
       max-length: 55
-      template: '{dependency}-{version}'
+      template: 'dependabot/{dependency}-{version}'
     schedule:
       interval: 'weekly'
     labels:
