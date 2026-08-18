@@ -9,7 +9,7 @@ import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import {
   isOAuthLoginRequest,
-  LoginProvider,
+  Provider,
   LoginRequest,
   SignInResponseFailure,
 } from 'features/auth/types'
@@ -65,7 +65,7 @@ export const useSignInMutation = ({
         ? getSSOLoginMethod(body.provider, ssoKind)
         : analyticsMethod
       await loginRoutine(response, resolvedMethod, analyticsType || loginAnalyticsType)
-      await onSuccess(response.accountState, isOAuth ? body.provider : 'email')
+      await onSuccess(response.accountState, isOAuth ? body.provider : Provider.EMAIL)
     },
 
     onError: (error, variables) => {
@@ -106,7 +106,7 @@ const useHandleSigninSuccess = (
   const comeFrom = params?.from
 
   const navigateForActiveState = useCallback(
-    async (provider: LoginProvider) => {
+    async (provider: Provider) => {
       const user = await api.getNativeV1Me()
 
       if (user?.email) {
@@ -151,7 +151,7 @@ const useHandleSigninSuccess = (
   )
 
   return useCallback(
-    async (accountState: AccountState, provider: LoginProvider) => {
+    async (accountState: AccountState, provider: Provider) => {
       try {
         if (doNotNavigateOnSigninSuccess) {
           return

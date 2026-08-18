@@ -5,6 +5,7 @@ import React from 'react'
 import * as API from 'api/api'
 import { AccountState, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
 import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
+import { Provider } from 'features/auth/types'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -95,7 +96,7 @@ describe('<SSOButtonGoogle />', () => {
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-      provider: 'google',
+      provider: Provider.GOOGLE,
     })
   })
 

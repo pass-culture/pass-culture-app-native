@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import { Provider } from 'features/auth/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum } from 'libs/monitoring/errors'
@@ -19,7 +20,7 @@ type Props = {
   }: {
     authorizationCode: string
     oauthStateToken: string
-    provider: 'google'
+    provider: Provider.GOOGLE
   }) => void
 }
 
@@ -40,7 +41,11 @@ export const SSOButtonGoogleBase: FC<Props> = ({ type, onSuccess }) => {
   const handleLogin = async () =>
     loginToGoogle({
       onSuccess: ({ code, state = '' }) =>
-        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'google' }),
+        onSuccess({
+          authorizationCode: code,
+          oauthStateToken: state,
+          provider: Provider.GOOGLE,
+        }),
       onError,
     })
 

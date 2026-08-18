@@ -3,7 +3,7 @@ import React from 'react'
 
 import { AccountState } from 'api/gen'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
-import { SignInResponseFailure } from 'features/auth/types'
+import { Provider, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import * as appleSSOContextModule from 'libs/react-native-apple-sso/appleSSOContext'
 import { render } from 'tests/utils/web'
@@ -64,7 +64,7 @@ describe('AppleSSOCallback (web)', () => {
       expect(mockSignInAsync).toHaveBeenCalledWith({
         authorizationCode: 'apple-code',
         oauthStateToken: VALID_STATE,
-        provider: 'apple',
+        provider: Provider.APPLE,
       })
     })
   })
@@ -199,7 +199,7 @@ describe('AppleSSOCallback (web)', () => {
       const onFailure = getOnFailure()
       onFailure({
         isSuccess: false,
-        provider: 'apple',
+        provider: Provider.APPLE,
         content: {
           code: 'SSO_EMAIL_NOT_FOUND',
           accountCreationToken: 'token-123',
@@ -212,7 +212,7 @@ describe('AppleSSOCallback (web)', () => {
         accountCreationToken: 'token-123',
         email: 'user@apple.com',
         from: StepperOrigin.LOGIN,
-        ssoProvider: 'apple',
+        ssoProvider: Provider.APPLE,
       })
     })
 
@@ -225,7 +225,7 @@ describe('AppleSSOCallback (web)', () => {
       const onFailure = getOnFailure()
       onFailure({
         isSuccess: false,
-        provider: 'apple',
+        provider: Provider.APPLE,
         content: {
           code: 'SSO_EMAIL_NOT_FOUND',
           accountCreationToken: 'token-456',
@@ -238,7 +238,7 @@ describe('AppleSSOCallback (web)', () => {
         accountCreationToken: 'token-456',
         email: 'user@apple.com',
         from: StepperOrigin.SIGNUP,
-        ssoProvider: 'apple',
+        ssoProvider: Provider.APPLE,
       })
     })
   })

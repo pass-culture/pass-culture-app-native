@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountState, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
 import { getLastLoginInfo } from 'features/auth/helpers/getLastLoginInfo'
-import { SignInResponseFailure } from 'features/auth/types'
+import { Provider, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -159,7 +159,7 @@ describe('<SignupMethods />', () => {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
         from: StepperOrigin.SIGNUP_METHODS,
-        ssoProvider: 'google',
+        ssoProvider: Provider.GOOGLE,
       })
     })
 
@@ -234,7 +234,7 @@ describe('<SignupMethods />', () => {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
         from: StepperOrigin.SIGNUP_METHODS,
-        ssoProvider: 'apple',
+        ssoProvider: Provider.APPLE,
       })
     })
 

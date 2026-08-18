@@ -1,4 +1,5 @@
 import { maskEmail } from 'features/auth/helpers/maskEmail'
+import { Provider } from 'features/auth/types'
 import { storage } from 'libs/storage'
 
 import { saveLastLoginInfo } from './saveLastLoginInfo'
@@ -17,12 +18,12 @@ describe('saveLastLoginInfo', () => {
   it('should save the masked email, provider and login date', async () => {
     await saveLastLoginInfo({
       email: 'anne-onime@me.com',
-      provider: 'google',
+      provider: Provider.GOOGLE,
     })
 
     expect(storage.saveObject).toHaveBeenCalledWith('last_login_info', {
       maskedEmail: 'ann*******@me.com',
-      provider: 'google',
+      provider: Provider.GOOGLE,
       lastLoginAt: date.toISOString(),
     })
   })

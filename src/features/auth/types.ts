@@ -3,10 +3,16 @@ import React from 'react'
 import { OAuthSigninRequestV2, SigninRequest } from 'api/gen'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
+export enum Provider {
+  GOOGLE = 'google',
+  APPLE = 'apple',
+  EMAIL = 'email',
+}
+
 export type SignInResponseFailure = {
   isSuccess: false
   statusCode?: number
-  provider?: 'google' | 'apple'
+  provider?: Provider.GOOGLE | Provider.APPLE
   content?:
     | {
         code:
@@ -31,7 +37,7 @@ export type SignupData = {
   password: string
   birthdate: string
   accountCreationToken?: string
-  ssoProvider?: 'google' | 'apple'
+  ssoProvider?: Provider.GOOGLE | Provider.APPLE
 }
 
 export type PreValidationSignupNormalStepProps = {
@@ -51,23 +57,21 @@ export type PreValidationSignupLastStepProps = {
 
 // Frontend discriminator to distinguish Apple from Google (same API shape)
 type OAuthLoginRequest = Omit<OAuthSigninRequestV2, 'deviceInfo'> & {
-  provider: 'google' | 'apple'
+  provider: Provider.GOOGLE | Provider.APPLE
 }
 export type LoginRequest = SigninRequest | OAuthLoginRequest
 
 export const isOAuthLoginRequest = (req: LoginRequest): req is OAuthLoginRequest =>
   'provider' in req
 
-export type LoginProvider = 'google' | 'apple' | 'email'
-
 export type LastLoginInfo = {
   maskedEmail: string
-  provider: LoginProvider
+  provider: Provider
   lastLoginAt: string
 }
 
 export type FormattedLastLoginInfo = {
   maskedEmail: string
-  provider: { label: string; icon: React.FC<AccessibleIcon> }
+  provider: { type: Provider; label: string; icon: React.FC<AccessibleIcon> }
   lastLoginAt: string
 }

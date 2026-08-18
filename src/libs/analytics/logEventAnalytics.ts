@@ -10,6 +10,7 @@ import {
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
+import { Provider } from 'features/auth/types'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
@@ -81,13 +82,13 @@ type SSOType = 'SSO_login' | 'SSO_signup'
 type EmailType = 'email_login' | 'email_signup' | 'email_reinitialize' | 'email_change'
 export type LoginType = SSOType | EmailType
 
-type SSOProvider = 'apple' | 'google'
+type SSOProvider = Provider.APPLE | Provider.GOOGLE
 
 export function getSSOLoginMethod(
   provider: SSOProvider,
   kind: 'login' | 'signup'
 ): LoginRoutineMethod {
-  const suffix = provider === 'apple' ? 'Apple' : 'Google'
+  const suffix = provider === Provider.APPLE ? 'Apple' : 'Google'
   return `${kind === 'login' ? 'fromLogin' : 'fromSignup'}${suffix}` as LoginRoutineMethod
 }
 

@@ -3,6 +3,7 @@ import mockdate from 'mockdate'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as logAdjustRegistrationEventsModule from 'features/auth/pages/signup/helpers/logAdjustRegistrationEvents'
 import { useSSOSignupMutation } from 'features/auth/queries/signup/useSSOSignupMutation'
+import { Provider } from 'features/auth/types'
 import { getAge } from 'shared/user/getAge'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,7 +18,7 @@ describe('useSSOSignupMutation', () => {
     mockServer.postApi('/v1/oauth/google/account', {})
     const birthDate = '2002-12-01T00:00:00.000Z'
 
-    const { result } = renderUseSSOSignupMutation('google')
+    const { result } = renderUseSSOSignupMutation(Provider.GOOGLE)
 
     result.current.mutate({
       accountCreationToken: 'token',
@@ -36,7 +37,7 @@ describe('useSSOSignupMutation', () => {
     mockServer.postApi('/v1/oauth/apple/account', {})
     const birthDate = '2002-12-01T00:00:00.000Z'
 
-    const { result } = renderUseSSOSignupMutation('apple')
+    const { result } = renderUseSSOSignupMutation(Provider.APPLE)
 
     result.current.mutate({
       accountCreationToken: 'token',
@@ -66,7 +67,7 @@ describe('useSSOSignupMutation', () => {
   })
 })
 
-const renderUseSSOSignupMutation = (provider: 'google' | 'apple' | undefined) =>
+const renderUseSSOSignupMutation = (provider: Provider.GOOGLE | Provider.APPLE | undefined) =>
   renderHook(() => useSSOSignupMutation(provider), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

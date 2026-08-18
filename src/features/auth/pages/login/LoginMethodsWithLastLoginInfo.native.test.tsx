@@ -5,7 +5,7 @@ import * as API from 'api/api'
 import { AccountState, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { getLastLoginInfo } from 'features/auth/helpers/getLastLoginInfo'
-import { FormattedLastLoginInfo, SignInResponseFailure } from 'features/auth/types'
+import { FormattedLastLoginInfo, Provider, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
@@ -47,19 +47,19 @@ const user = userEvent.setup()
 
 const LAST_LOGIN_INFO_EMAIL: FormattedLastLoginInfo = {
   maskedEmail: 'rog*************@passculture.gen',
-  provider: { label: 'E-mail', icon: EmailFilled },
+  provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
   lastLoginAt: '17/08/2026',
 }
 
 const LAST_LOGIN_INFO_GOOGLE: FormattedLastLoginInfo = {
   maskedEmail: 'rog*************@passculture.gen',
-  provider: { label: 'Google', icon: Google },
+  provider: { label: 'Google', icon: Google, type: Provider.GOOGLE },
   lastLoginAt: '17/08/2026',
 }
 
 const LAST_LOGIN_INFO_APPLE: FormattedLastLoginInfo = {
   maskedEmail: 'rog*************@passculture.gen',
-  provider: { label: 'Apple', icon: Apple },
+  provider: { label: 'Apple', icon: Apple, type: Provider.APPLE },
   lastLoginAt: '17/08/2026',
 }
 
@@ -260,7 +260,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
         from: StepperOrigin.LOGIN_METHODS,
-        ssoProvider: 'google',
+        ssoProvider: Provider.GOOGLE,
       })
     })
   })

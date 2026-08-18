@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { getLastLoginInfo } from 'features/auth/helpers/getLastLoginInfo'
+import { Provider } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { render, screen, userEvent } from 'tests/utils'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -33,7 +34,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate to the LoginMethodsWithLastLoginInfo page when last login info exists', async () => {
     jest.mocked(getLastLoginInfo).mockResolvedValueOnce({
       maskedEmail: 'rog*************@passculture.gen',
-      provider: { label: 'E-mail', icon: EmailFilled },
+      provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
       lastLoginAt: '18/08/2026',
     })
 
@@ -69,7 +70,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate to the LoginMethodsWithLastLoginInfo page with additional params when last login info exists', async () => {
     jest.mocked(getLastLoginInfo).mockResolvedValueOnce({
       maskedEmail: 'rog*************@passculture.gen',
-      provider: { label: 'E-mail', icon: EmailFilled },
+      provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
       lastLoginAt: '18/08/2026',
     })
 

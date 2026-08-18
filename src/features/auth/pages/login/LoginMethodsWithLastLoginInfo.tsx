@@ -4,8 +4,7 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { LastLoginInfoBanner } from 'features/auth/components/LastLoginInfoBanner'
-import { SSOButtonAppleBase } from 'features/auth/components/SSOButton/SSOButtonAppleBase'
-import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
+import { ProviderButton } from 'features/auth/components/ProviderButton'
 import { getLastLoginInfo } from 'features/auth/helpers/getLastLoginInfo'
 import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
@@ -23,7 +22,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
 import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
@@ -89,24 +87,13 @@ export const LoginMethodsWithLastLoginInfo = () => {
 
           <LastLoginInfoBanner lastLoginInfo={lastLoginInfo} />
 
-          {lastLoginInfo?.provider.label === 'Google' ? (
-            <SSOButtonGoogleBase type="login" onSuccess={signInGoogle} />
-          ) : null}
-
-          {lastLoginInfo?.provider.label === 'Apple' && enableAppleSSO ? (
-            <SSOButtonAppleBase type="login" onSuccess={signInApple} />
-          ) : null}
-
-          {lastLoginInfo?.provider.label === 'E-mail' ? (
-            <InternalTouchableLink
-              as={Button}
-              variant="secondary"
-              color="neutral"
-              icon={EmailFilled}
-              wording="Continuer avec mon e-mail"
-              navigateTo={{ screen: 'Login', params }}
-            />
-          ) : null}
+          <ProviderButton
+            lastLoginInfo={lastLoginInfo}
+            params={params}
+            enableAppleSSO={enableAppleSSO}
+            onGoogleSuccess={signInGoogle}
+            onAppleSuccess={signInApple}
+          />
 
           <InternalTouchableLink
             as={Button}

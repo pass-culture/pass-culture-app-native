@@ -1,14 +1,14 @@
-import { SignInResponseFailure } from 'features/auth/types'
+import { SignInResponseFailure, Provider } from 'features/auth/types'
 
 type SSOErrorContext = 'signup' | 'login'
 
 type GetSSOErrorMessageParams = {
-  provider: 'google' | 'apple' | undefined
+  provider: Provider.APPLE | Provider.GOOGLE | undefined
   context: SSOErrorContext
 }
 
 export const getSSOErrorMessage = ({ provider, context }: GetSSOErrorMessageParams): string => {
-  const providerName = provider === 'apple' ? 'Apple' : 'Google'
+  const providerName = provider === Provider.APPLE ? 'Apple' : 'Google'
   const action = context === 'signup' ? 'L’inscription avec ce' : 'La connexion avec ton'
   return `${action} compte ${providerName} est refusée. Contacte le support pour plus d\u2019informations depuis le Profil.`
 }

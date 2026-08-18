@@ -8,6 +8,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { Provider } from 'features/auth/types'
 import { BookingsTab } from 'features/bookings/enum'
 import { Color, OffersModuleParameters, VenuesModule } from 'features/home/types'
 import { CheatcodesStackParamList } from 'features/navigation/navigators/CheatcodesStackNavigator/types'
@@ -180,7 +181,7 @@ type SignupParams =
       email?: string
       offerId?: number
       from: StepperOrigin
-      ssoProvider?: 'google' | 'apple'
+      ssoProvider?: Provider.GOOGLE | Provider.APPLE
       stepIndex?: number
     }
   | undefined

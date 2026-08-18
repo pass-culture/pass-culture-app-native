@@ -1,4 +1,4 @@
-import { FormattedLastLoginInfo, LastLoginInfo } from 'features/auth/types'
+import { FormattedLastLoginInfo, LastLoginInfo, Provider } from 'features/auth/types'
 import { storage } from 'libs/storage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Apple } from 'ui/svg/icons/socialNetwork/Apple'
@@ -8,12 +8,12 @@ const getProvider = (
   provider: LastLoginInfo['provider']
 ): FormattedLastLoginInfo['provider'] | null => {
   switch (provider) {
-    case 'google':
-      return { label: 'Google', icon: Google }
-    case 'apple':
-      return { label: 'Apple', icon: Apple }
-    case 'email':
-      return { label: 'E-mail', icon: EmailFilled }
+    case Provider.GOOGLE:
+      return { type: Provider.GOOGLE, label: 'Google', icon: Google }
+    case Provider.APPLE:
+      return { type: Provider.APPLE, label: 'Apple', icon: Apple }
+    case Provider.EMAIL:
+      return { type: Provider.EMAIL, label: 'E-mail', icon: EmailFilled }
     default:
       return null
   }
