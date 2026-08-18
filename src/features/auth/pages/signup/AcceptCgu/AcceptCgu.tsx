@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState, useCallback } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignupRecaptcha } from 'features/auth/helpers/useSignupRecaptcha'
@@ -144,33 +145,42 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
             <CaptionNeutralInfo>
               En cochant ces 2 cases tu assures avoir lu&nbsp;:
             </CaptionNeutralInfo>
-            <ExternalTouchableLink
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording="Conditions Générales d’Utilisation"
-              externalNav={{ url: env.CGU_LINK }}
-              icon={ExternalSiteFilled}
-              numberOfLines={numberOfLines}
-            />
-            <ExternalTouchableLink
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording="Charte des données personnelles"
-              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-              icon={ExternalSiteFilled}
-              numberOfLines={numberOfLines}
-            />
-            <ExternalTouchableLink
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              wording="Charte d’utilisation et de bonne conduite"
-              externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
-              icon={ExternalSiteFilled}
-              numberOfLines={numberOfLines}
-            />
+            <LinkWrapper>
+              <ExternalTouchableLink
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                wording="Conditions Générales d’Utilisation"
+                externalNav={{ url: env.CGU_LINK }}
+                icon={ExternalSiteFilled}
+                numberOfLines={numberOfLines}
+                fullWidth={Platform.OS === 'web'}
+              />
+            </LinkWrapper>
+            <LinkWrapper>
+              <ExternalTouchableLink
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                wording="Charte des données personnelles"
+                externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+                icon={ExternalSiteFilled}
+                numberOfLines={numberOfLines}
+                fullWidth={Platform.OS === 'web'}
+              />
+            </LinkWrapper>
+            <LinkWrapper>
+              <ExternalTouchableLink
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                wording="Charte d’utilisation et de bonne conduite"
+                externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+                icon={ExternalSiteFilled}
+                numberOfLines={numberOfLines}
+                fullWidth={Platform.OS === 'web'}
+              />
+            </LinkWrapper>
           </Container>
 
           <CheckboxGroup<string>
@@ -229,4 +239,8 @@ const Container = styled(ViewGap)(({ theme }) => ({
 
 const ReverseOrderContainer = styled.View({
   flexDirection: 'column-reverse',
+})
+
+const LinkWrapper = styled.View({
+  alignItems: 'flex-start',
 })
