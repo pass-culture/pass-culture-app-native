@@ -4,6 +4,7 @@ type ImagesCarouselModalProps = {
   hideModal: () => void
   onClose?: () => void
   defaultIndex?: number
+  onSnapToItem?: (index: number) => void
 }
 
 export const ImagesCarouselModal = (_props: ImagesCarouselModalProps) => null

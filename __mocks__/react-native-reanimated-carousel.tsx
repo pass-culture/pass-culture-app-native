@@ -9,7 +9,7 @@ export default forwardRef<
     onProgressChange: (offsetProgress: number, absoluteProgress: number) => void
   }
 >(function Carousel(
-  { renderItem, data, testID, width, height, onProgressChange, defaultIndex = 0 },
+  { renderItem, data, testID, width, height, onProgressChange, onSnapToItem, defaultIndex = 0 },
   ref
 ) {
   useImperativeHandle(ref, () => ({
@@ -17,6 +17,7 @@ export default forwardRef<
     prev: jest.fn(),
     scrollTo: ({ index }: { index: number }) => {
       onProgressChange(0, index)
+      onSnapToItem?.(index)
     },
     getCurrentIndex: jest.fn(),
   }))

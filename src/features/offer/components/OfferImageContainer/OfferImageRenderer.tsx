@@ -7,6 +7,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
+import { useLogOfferImagesScroll } from 'features/offer/helpers/useLogOfferImagesScroll/useLogOfferImagesScroll'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -15,6 +16,7 @@ import { Play } from 'ui/svg/icons/Play'
 type Props = {
   categoryId: CategoryIdEnum | null
   imageDimensions: OfferImageContainerDimensions
+  offerId: number
   onSeeVideoPress?: VoidFunction
   offerImages?: ImageWithCredit[]
   placeholderImage?: string
@@ -24,6 +26,7 @@ type Props = {
 }
 
 export const OfferImageRenderer: FunctionComponent<Props> = ({
+  offerId,
   offerImages = [],
   imageDimensions,
   progressValue,
@@ -39,6 +42,12 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
     setCarouselReady(true)
   }, [setCarouselReady])
 
+  const logImagesScroll = useLogOfferImagesScroll({
+    offerId,
+    nbImages: offerImages.length,
+    from: 'offer',
+  })
+
   return (
     <Animated.View entering={FadeIn} style={style} testID="imageRenderer">
       <StyledOfferImageCarousel
@@ -47,6 +56,7 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
         imageDimensions={imageDimensions}
         onItemPress={onPress}
         onLoad={handleCarouselLoad}
+        onSnapToItem={logImagesScroll}
         isReady={carouselReady}
       />
       {carouselReady ? null : (

@@ -18,6 +18,8 @@ export type ClubAdviceType = 'book_club' | 'cine_club' | 'scene_club'
 
 export type AdviceType = ClubAdviceType | 'pro'
 
+export type OfferImagesScrollFrom = 'offer' | 'offerPreview'
+
 export type OfferAnalyticsParams = {
   from: Referrals
   query?: string

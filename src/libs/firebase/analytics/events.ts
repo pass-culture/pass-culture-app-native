@@ -114,6 +114,7 @@ export enum AnalyticsEvent {
   MULTI_VENUE_OPTION_DISPLAYED = 'MultivenueOptionDisplayed',
   NO_SEARCH_RESULT = 'NoSearchResult',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
+  OFFER_IMAGES_SCROLL = 'OfferImagesScroll',
   ONBOARDING_STARTED = 'OnboardingStarted',
   OPEN_DMS_FOREIGN_CITIZEN_URL = 'OpenDMSForeignCitizenURL',
   OPEN_DMS_FRENCH_CITIZEN_URL = 'OpenDMSFrenchCitizenURL',

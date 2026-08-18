@@ -24,6 +24,7 @@ type ImagesCarouselModalProps = {
   hideModal: () => void
   onClose?: () => void
   defaultIndex?: number
+  onSnapToItem?: (index: number) => void
 }
 
 const renderCarouselItem = ({ item: image, index }: { item: string; index: number }) => (
@@ -36,6 +37,7 @@ export const ImagesCarouselModal = ({
   defaultIndex = 0,
   onClose,
   isVisible = false,
+  onSnapToItem,
 }: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
   const carouselRef = useRef<ICarouselInstance>(null)
@@ -105,6 +107,7 @@ export const ImagesCarouselModal = ({
               enabled={false}
               scrollAnimationDuration={500}
               onProgressChange={handleProgressChange}
+              onSnapToItem={onSnapToItem}
               data={imagesURL}
               renderItem={renderCarouselItem}
             />
@@ -119,7 +122,7 @@ export const ImagesCarouselModal = ({
     }
 
     return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
-  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange])
+  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange, onSnapToItem])
 
   const MODAL_PADDING = {
     x: designSystem.size.spacing.xxxl,

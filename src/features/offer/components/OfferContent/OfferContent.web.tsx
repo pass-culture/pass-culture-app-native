@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { useLogOfferImagesScroll } from 'features/offer/helpers/useLogOfferImagesScroll/useLogOfferImagesScroll'
 import { OfferContentProps } from 'features/offer/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
@@ -45,6 +46,13 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     showModal()
   }
 
+  const logImagesScroll = useLogOfferImagesScroll({
+    offerId: offer.id,
+    nbImages: offerImagesUrl.length,
+    from: 'offerPreview',
+    defaultIndex: carouselDefaultIndex,
+  })
+
   const BodyWrapper = useMemo(
     () =>
       styled(StyledWrapper).attrs(({ theme: { isDesktopViewport } }) => ({
@@ -64,6 +72,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           isVisible={visible}
           imagesURL={offerImagesUrl}
           defaultIndex={carouselDefaultIndex}
+          onSnapToItem={logImagesScroll}
         />
         <StyledOfferContentBase
           offer={offer}
