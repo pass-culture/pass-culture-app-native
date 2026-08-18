@@ -10,7 +10,7 @@ onFlowStart:
         step: 'BENEFICIARY'
         age: 18
   - runScript:
-      file: ../common/helpers/generateQFResponse.js
+      file: ../common/helpers/generateBonusQFResponse.js
       env:
         user_id: ${output.userId}
         mock_type: 'APPLICATION_NOT_FOUND'

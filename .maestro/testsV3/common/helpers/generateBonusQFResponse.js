@@ -7,5 +7,5 @@ const response = http.post(`${MAESTRO_E2E_ENDPOINT}/${user_id}/quotient_familial
 })
 
 if (response.status !== 200) {
-  throw new Error(`Failed to configure quotient familial: ${response.status} - ${response.body}`)
+  throw new Error(`Failed to configure bonus quotient familial: ${response.status} - ${response.body}`)
 }
