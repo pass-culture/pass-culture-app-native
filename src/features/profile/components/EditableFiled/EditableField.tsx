@@ -12,6 +12,7 @@ type EditableFieldProps = {
   value?: string | null
   navigateTo?: ProfileNavigateParams[0]
   navigateParams?: ProfileNavigateParams[1]
+  withPush?: boolean
   onBeforeNavigate?: () => void
   accessibilityLabel?: string
 }
@@ -21,6 +22,7 @@ export function EditableField({
   value,
   navigateTo,
   navigateParams,
+  withPush,
   onBeforeNavigate,
   accessibilityLabel,
 }: EditableFieldProps) {
@@ -44,7 +46,7 @@ export function EditableField({
         {showButton ? (
           <ButtonContainer>
             <EditButton
-              navigateTo={getProfilePropConfig(navigateTo, navigateParams)}
+              navigateTo={{ ...getProfilePropConfig(navigateTo, navigateParams), withPush }}
               onPress={onBeforeNavigate}
               wording={isCompleted ? 'Modifier' : 'Compléter'}
               accessibilityLabel={accessibilityLabel}
