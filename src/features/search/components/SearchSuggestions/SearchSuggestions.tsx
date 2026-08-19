@@ -171,11 +171,15 @@ export const SearchSuggestions = ({
   )
 }
 
-const StyledScrollView = styled.ScrollView(({ theme }) => ({
-  paddingTop: theme.designSystem.size.spacing.l,
-  paddingBottom: theme.designSystem.size.spacing.m,
+const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingTop: theme.designSystem.size.spacing.l,
+    paddingBottom: theme.isMobileViewport
+      ? theme.tabBar.height + theme.designSystem.size.spacing.m
+      : theme.designSystem.size.spacing.m,
+    paddingLeft: theme.designSystem.size.spacing.xl,
+    paddingRight: theme.designSystem.size.spacing.xl,
+  },
+}))({
   flex: 1,
-  paddingLeft: theme.designSystem.size.spacing.xl,
-  paddingRight: theme.designSystem.size.spacing.xl,
-  ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
-}))
+})
