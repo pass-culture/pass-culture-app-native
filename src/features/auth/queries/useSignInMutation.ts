@@ -21,6 +21,8 @@ import {
 } from 'features/navigation/navigators/RootNavigator/types'
 import { getSSOLoginMethod, LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useBonificationBonusAmount } from 'queries/settings/useSettings'
@@ -34,15 +36,23 @@ export const useSignInMutation = ({
   setErrorMessage,
   onFailure,
 }: {
-  params: RootStackParamList['LoginMethods' | 'SignupMethods']
+  params: RootStackParamList['LoginMethods' | 'LoginMethodsWithLastLoginInfo' | 'SignupMethods']
   doNotNavigateOnSigninSuccess?: boolean
   analyticsMethod?: LoginRoutineMethod
   analyticsType?: LoginType
   onFailure: (error: SignInResponseFailure) => void
   setErrorMessage?: (message: string) => void
 }) => {
+  const enabledSaveLastLoginInfo = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_SAVE_LAST_LOGIN_INFO
+  )
   const loginRoutine = useLoginRoutine()
-  const onSuccess = useHandleSigninSuccess(params, doNotNavigateOnSigninSuccess, setErrorMessage)
+  const onSuccess = useHandleSigninSuccess(
+    params,
+    doNotNavigateOnSigninSuccess,
+    setErrorMessage,
+    enabledSaveLastLoginInfo
+  )
 
   return useMutation({
     mutationFn: async (body: LoginRequest) => {
@@ -87,7 +97,8 @@ export const useSignInMutation = ({
 const useHandleSigninSuccess = (
   params: RootStackParamList['LoginMethods' | 'SignupMethods'],
   doNotNavigateOnSigninSuccess?: boolean,
-  setErrorMessage?: (message: string) => void
+  setErrorMessage?: (message: string) => void,
+  enabledSaveLastLoginInfo = false
 ) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
@@ -109,7 +120,7 @@ const useHandleSigninSuccess = (
     async (provider: Provider) => {
       const user = await api.getNativeV1Me()
 
-      if (user?.email) {
+      if (user?.email && enabledSaveLastLoginInfo) {
         await saveLastLoginInfo({ email: user.email, provider })
       }
 
@@ -147,7 +158,7 @@ const useHandleSigninSuccess = (
         navigateToHome()
       }
     },
-    [addFavorite, navigate, offerId, comeFrom, bonificationBonusAmount]
+    [enabledSaveLastLoginInfo, offerId, bonificationBonusAmount, navigate, comeFrom, addFavorite]
   )
 
   return useCallback(

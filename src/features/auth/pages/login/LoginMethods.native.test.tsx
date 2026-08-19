@@ -246,7 +246,7 @@ describe('<LoginMethods/>', () => {
             source: 'iPhone 13',
           },
         },
-        'google',
+        Provider.GOOGLE,
         { credentials: 'omit' }
       )
     })

@@ -5,6 +5,9 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { getLastLoginInfo } from 'features/auth/helpers/getLastLoginInfo'
 import { Provider } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
@@ -18,12 +21,12 @@ jest.mock('features/navigation/helpers/openUrl')
 jest.mock('features/auth/helpers/getLastLoginInfo')
 
 describe('<AuthenticationButton />', () => {
-  beforeEach(() => jest.clearAllMocks())
+  beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SAVE_LAST_LOGIN_INFO]))
 
   it('should navigate to the LoginMethods page when there is no last login info', async () => {
     jest.mocked(getLastLoginInfo).mockResolvedValueOnce(null)
 
-    render(<AuthenticationButton type="login" />)
+    render(reactQueryProviderHOC(<AuthenticationButton type="login" />))
 
     const connectButton = await screen.findByText('Se connecter')
     await user.press(connectButton)
@@ -38,7 +41,7 @@ describe('<AuthenticationButton />', () => {
       lastLoginAt: '18/08/2026',
     })
 
-    render(<AuthenticationButton type="login" />)
+    render(reactQueryProviderHOC(<AuthenticationButton type="login" />))
 
     const connectButton = await screen.findByText('Se connecter')
     await user.press(connectButton)
@@ -47,7 +50,7 @@ describe('<AuthenticationButton />', () => {
   })
 
   it('should navigate to the SignupMethods page when is type signup', async () => {
-    render(<AuthenticationButton type="signup" />)
+    render(reactQueryProviderHOC(<AuthenticationButton type="signup" />))
 
     const connectButton = screen.getByText('Créer un compte')
     await user.press(connectButton)
@@ -59,7 +62,7 @@ describe('<AuthenticationButton />', () => {
   it('should navigate to the LoginMethods page with additional params when there is no last login info', async () => {
     jest.mocked(getLastLoginInfo).mockResolvedValueOnce(null)
 
-    render(<AuthenticationButton type="login" params={NAV_PARAMS_LOGIN} />)
+    render(reactQueryProviderHOC(<AuthenticationButton type="login" params={NAV_PARAMS_LOGIN} />))
 
     const connectButton = await screen.findByText('Se connecter')
     await user.press(connectButton)
@@ -74,7 +77,7 @@ describe('<AuthenticationButton />', () => {
       lastLoginAt: '18/08/2026',
     })
 
-    render(<AuthenticationButton type="login" params={NAV_PARAMS_LOGIN} />)
+    render(reactQueryProviderHOC(<AuthenticationButton type="login" params={NAV_PARAMS_LOGIN} />))
 
     const connectButton = await screen.findByText('Se connecter')
     await user.press(connectButton)
@@ -83,7 +86,7 @@ describe('<AuthenticationButton />', () => {
   })
 
   it('should navigate to the SignupMethods page with additional params when is type signup', async () => {
-    render(<AuthenticationButton type="signup" params={NAV_PARAMS_SIGNUP} />)
+    render(reactQueryProviderHOC(<AuthenticationButton type="signup" params={NAV_PARAMS_SIGNUP} />))
 
     const connectButton = screen.getByText('Créer un compte')
     await user.press(connectButton)

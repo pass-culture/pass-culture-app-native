@@ -290,7 +290,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
           oauthStateToken: 'oauth_state_token',
           deviceInfo: { deviceId: '', os: undefined, source: undefined },
         },
-        'apple',
+        Provider.APPLE,
         { credentials: 'omit' }
       )
     })

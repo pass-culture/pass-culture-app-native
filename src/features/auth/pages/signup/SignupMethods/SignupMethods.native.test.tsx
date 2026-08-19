@@ -133,7 +133,7 @@ describe('<SignupMethods />', () => {
           oauthStateToken: 'oauth_state_token',
           deviceInfo,
         },
-        'google',
+        Provider.GOOGLE,
         { credentials: 'omit' }
       )
     })

@@ -82,7 +82,7 @@ describe('<SSOButtonApple />', () => {
           source: 'iPhone 13',
         },
       },
-      'apple',
+      Provider.APPLE,
       { credentials: 'omit' }
     )
   })

@@ -4,7 +4,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { OnboardingWelcome } from 'features/onboarding/pages/onboarding/OnboardingWelcome'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -17,14 +19,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('OnboardingWelcome', () => {
+  beforeEach(() => setFeatureFlags([]))
+
   it('should render correctly', () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to OnboardingGeolocation when "C’est parti !" is clicked', async () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     const button = screen.getByText('C’est parti\u00a0!')
     await user.press(button)
@@ -36,7 +40,7 @@ describe('OnboardingWelcome', () => {
   })
 
   it('should redirect to login when "Se connecter" is clicked', async () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     const loginButton = screen.getByText('Se connecter')
     await user.press(loginButton)
@@ -47,7 +51,7 @@ describe('OnboardingWelcome', () => {
   })
 
   it('should set has_seen_tutorials to true in local storage when "C’est parti !" is clicked', async () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     const button = screen.getByText('C’est parti\u00a0!')
     await user.press(button)
@@ -56,7 +60,7 @@ describe('OnboardingWelcome', () => {
   })
 
   it('should set has_seen_tutorials to true in local storage when "Se connecter" is clicked', async () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     const loginButton = screen.getByText('Se connecter')
     await user.press(loginButton)
@@ -65,7 +69,7 @@ describe('OnboardingWelcome', () => {
   })
 
   it('should log analytics when "C’est parti !" is clicked', async () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     const button = screen.getByText('C’est parti\u00a0!')
     await user.press(button)
@@ -74,7 +78,7 @@ describe('OnboardingWelcome', () => {
   })
 
   it('should log analytics when "Se connecter" is clicked', async () => {
-    render(<OnboardingWelcome />)
+    render(reactQueryProviderHOC(<OnboardingWelcome />))
 
     const loginButton = screen.getByText('Se connecter')
     await user.press(loginButton)
