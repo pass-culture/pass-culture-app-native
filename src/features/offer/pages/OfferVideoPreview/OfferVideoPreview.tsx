@@ -3,11 +3,12 @@ import React, { FunctionComponent, useCallback, useState } from 'react'
 import { Animated, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { getOfferVideoPlayerSize } from 'features/offer/helpers/getOfferVideoPlayerSize/getOfferVideoPlayerSize'
+import { useVideoOrientation } from 'features/offer/helpers/useVideoOrientation/useVideoOrientation'
 import { analytics } from 'libs/analytics/provider'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
@@ -25,8 +26,13 @@ export const OfferVideoPreview: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferVideoPreview'>>()
   const { goBack } = useGoBack('Offer', { id: params.id })
   const { width: viewportWidth } = useWindowDimensions()
-  const videoHeight = Math.min(viewportWidth, MAX_WIDTH) * RATIO169
   const { data: offer } = useOfferQuery({ offerId: params.id })
+  const { isPortrait, thumbnailUrl } = useVideoOrientation(offer?.video?.id)
+  const { width: playerWidth, height: videoHeight } = getOfferVideoPlayerSize({
+    viewportWidth,
+    maxWidth: MAX_WIDTH,
+    isPortrait,
+  })
   const [playVideo, setPlayVideo] = useState(false)
 
   const handleOnPlayPress = useCallback(() => {
@@ -50,9 +56,15 @@ export const OfferVideoPreview: FunctionComponent = () => {
           title={offer.video.title ?? offer.name}
           videoId={offer.video.id}
           height={videoHeight}
-          width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
+          width={playerWidth}
           initialPlayerParams={{ autoplay: true }}
-          thumbnail={<VideoThumbnailImage url={offer?.video.thumbUrl ?? ''} resizeMode="cover" />}
+          thumbnail={
+            <VideoThumbnailImage
+              testID="video-thumbnail"
+              url={thumbnailUrl ?? offer?.video.thumbUrl ?? ''}
+              resizeMode="cover"
+            />
+          }
           duration={
             offer.video.durationSeconds
               ? formatDuration(offer.video.durationSeconds, 'sec')
