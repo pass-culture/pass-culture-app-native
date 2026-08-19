@@ -15,6 +15,11 @@ SECRET_FILE = ".maestro/.env.secret"
 MOCK_ANALYTICS_PORT = 4001
 LOGBOX_RELOAD_WAIT_SECONDS = 3
 
+CLOUD_IOS_DEVICE_OS = "iOS-26-2"
+CLOUD_IOS_DEVICE_MODEL = "iPhone-17-Pro-Max"
+CLOUD_ANDROID_DEVICE_OS = "android-36"
+CLOUD_ANDROID_DEVICE_MODEL = "pixel_9"
+
 CYAN = "\033[96m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -237,8 +242,8 @@ def fill_missing(config: dict) -> dict:
         config["target"] = select(
             "Mode d'exécution",
             [
-                ("cloud", "☁️  Cloud (Maestro Cloud / Robin)"),
-                ("test", "💻 Local (sur ton poste)"),
+                ("cloud", "☁️  Cloud (Maestro Cloud, recommandé)"),
+                ("test", "💻 Local (moins fiable, déconseillé)"),
             ],
         )
 
@@ -343,10 +348,22 @@ def build_maestro_args(config: dict) -> list[str]:
         )
         if config["platform"] == "ios":
             args.extend(
-                ["--device-os", "iOS-26-2", "--device-model", "iPhone-17-Pro-Max"]
+                [
+                    "--device-os",
+                    CLOUD_IOS_DEVICE_OS,
+                    "--device-model",
+                    CLOUD_IOS_DEVICE_MODEL,
+                ]
             )
         elif config["platform"] == "android":
-            args.extend(["--device-os", "android-36", "--device-model", "pixel_9"])
+            args.extend(
+                [
+                    "--device-os",
+                    CLOUD_ANDROID_DEVICE_OS,
+                    "--device-model",
+                    CLOUD_ANDROID_DEVICE_MODEL,
+                ]
+            )
 
     if config.get("app_binary"):
         args.append(f"--app-binary-id={config['app_binary']}")
@@ -404,7 +421,7 @@ def setup_environment(config: dict) -> bool:
 
     _disable_recaptcha()
 
-    if config["platform"] in ("ios", "android"):
+    if config["target"] == "test" and config["platform"] in ("ios", "android"):
         return _inject_logbox_ignore()
 
     return False
@@ -441,6 +458,7 @@ def _stop_mock_server():
         f"lsof -ti :{MOCK_ANALYTICS_PORT} | xargs kill -INT 2>/dev/null || true",
         shell=True,
         capture_output=True,
+        check=False,
     )
 
 
@@ -530,7 +548,7 @@ def main():
         f"\n{GREEN}▸ Lancement : maestro {config['target']} sur {BOLD}{config['platform']}{RESET}{GREEN} ({ENV}){RESET}\n"
     )
 
-    result = subprocess.run(["maestro", *maestro_args])
+    result = subprocess.run(["maestro", *maestro_args], check=False)
     _cleanup(config, logbox_injected)
 
     if result.returncode == 0:
