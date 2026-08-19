@@ -7,14 +7,12 @@ import { VenueTopComponentBase } from 'features/venue/components/VenueTopCompone
 
 type Props = {
   venue: VenueResponse
-  enableVolunteer?: boolean
   enableVenueFakeDoor?: boolean
   onPressFollowButton?: () => void
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({
   venue,
-  enableVolunteer,
   enableVenueFakeDoor,
   onPressFollowButton,
 }) => {
@@ -28,7 +26,6 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
     <VenueTopComponentBase
       venue={venue}
       onPressBannerImage={handleImagePress}
-      enableVolunteer={enableVolunteer}
       enableVenueFakeDoor={enableVenueFakeDoor}
       onPressFollowButton={onPressFollowButton}
     />

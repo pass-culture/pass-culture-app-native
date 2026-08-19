@@ -25,7 +25,6 @@ import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAt
 type Props = {
   venue: VenueResponse
   onPressBannerImage?: () => void
-  enableVolunteer?: boolean
   enableVenueFakeDoor?: boolean
   onPressFollowButton?: () => void
 }
@@ -36,7 +35,6 @@ const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(73)
 export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
-  enableVolunteer,
   enableVenueFakeDoor,
   onPressFollowButton,
 }) => {
@@ -62,7 +60,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const isDynamicOpeningHoursDisplayed = venue.openingHours && venue.isOpenToPublic
 
-  const hasVolunteer = enableVolunteer && !!venue.volunteeringUrl
+  const hasVolunteer = !!venue.volunteeringUrl
 
   const onPressVolunteeringCard = async () => {
     if (venue.volunteeringUrl) {

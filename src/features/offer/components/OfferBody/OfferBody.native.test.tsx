@@ -17,7 +17,6 @@ import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mo
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import {
@@ -496,113 +495,89 @@ describe('<OfferBody />', () => {
     })
   })
 
-  describe('When wipArtistSectionRefacto FF activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO])
+  it('should display artist section', () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      artists: [
+        { id: '1', name: 'Stephen King' },
+        { id: '2', name: 'Robert McCammon' },
+      ],
+    }
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
     })
 
-    it('should display new artist section', () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [
-          { id: '1', name: 'Stephen King' },
-          { id: '2', name: 'Robert McCammon' },
-        ],
-      }
+    expect(screen.getByText('Écrivains')).toBeOnTheScreen()
+  })
 
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
+  it('should trigger ConsultArtist log when pressing artist playlist item and offer has several artists', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      artists: [
+        { id: '1', name: 'Stephen King' },
+        { id: '2', name: 'Robert McCammon' },
+      ],
+    }
 
-      expect(screen.getByText('Écrivains')).toBeOnTheScreen()
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
     })
 
-    it('should trigger ConsultArtist log when pressing artist playlist item and offer has several artists', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [
-          { id: '1', name: 'Stephen King' },
-          { id: '2', name: 'Robert McCammon' },
-        ],
-      }
+    await user.press(screen.getByLabelText('Stephen King - Artiste'))
 
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
+    expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+      artistId: '1',
+      artistName: 'Stephen King',
+      from: 'offer',
+      offerId: offer.id.toString(),
+    })
+  })
 
-      await user.press(screen.getByLabelText('Stephen King - Artiste'))
+  it('should trigger ConsultArtist log when pressing artist playlist item and offer has single artist', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      artists: [{ id: '1', name: 'Stephen King' }],
+    }
 
-      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
-        artistId: '1',
-        artistName: 'Stephen King',
-        from: 'offer',
-        offerId: offer.id.toString(),
-      })
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
     })
 
-    it('should trigger ConsultArtist log when pressing artist playlist item and offer has single artist', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [{ id: '1', name: 'Stephen King' }],
-      }
+    await user.press(screen.getByLabelText('Stephen King'))
 
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
+    expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+      artistId: '1',
+      artistName: 'Stephen King',
+      from: 'offer',
+      offerId: offer.id.toString(),
+    })
+  })
 
-      await user.press(screen.getByLabelText('Stephen King'))
+  it('should redirect to artist page when pressing artist playlist item', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      artists: [
+        { id: '1', name: 'Stephen King' },
+        { id: '2', name: 'Robert McCammon' },
+      ],
+    }
 
-      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
-        artistId: '1',
-        artistName: 'Stephen King',
-        from: 'offer',
-        offerId: offer.id.toString(),
-      })
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
     })
 
-    it('should redirect to artist page when pressing artist playlist item', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [
-          { id: '1', name: 'Stephen King' },
-          { id: '2', name: 'Robert McCammon' },
-        ],
-      }
+    await user.press(screen.getByLabelText('Stephen King - Artiste'))
 
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      await user.press(screen.getByLabelText('Stephen King - Artiste'))
-
-      expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
-    })
-
-    it('should not display old artist displaying', () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        artists: [
-          { id: '1', name: 'Stephen King' },
-          { id: '2', name: 'Robert McCammon' },
-        ],
-      }
-
-      renderOfferBody({
-        offer,
-        subcategory: mockSubcategoryBook,
-      })
-
-      expect(screen.queryByLabelText('de Stephen King, Robert McCammon')).not.toBeOnTheScreen()
-    })
+    expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
   })
 
   type RenderOfferBodyType = Partial<ComponentProps<typeof OfferBody>> & {
