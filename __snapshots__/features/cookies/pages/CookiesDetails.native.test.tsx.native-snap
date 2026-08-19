@@ -669,6 +669,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           marginTop={true}
           style={
             {
+              "flexDirection": "row",
+              "gap": 8,
               "marginBottom": 0,
               "marginTop": 8,
             }
@@ -677,7 +679,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           <View
             style={
               {
-                "position": "absolute",
+                "alignItems": "center",
+                "height": 16,
+                "justifyContent": "center",
+                "width": 16,
               }
             }
           >
@@ -701,13 +706,6 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               }
             }
           >
-            <View
-              style={
-                {
-                  "width": 20,
-                }
-              }
-            />
             Sans ces cookies, nous ne pourrons pas te proposer des recommandations adaptées.
           </Text>
         </View>
@@ -1018,6 +1016,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           marginTop={true}
           style={
             {
+              "flexDirection": "row",
+              "gap": 8,
               "marginBottom": 0,
               "marginTop": 8,
             }
@@ -1026,7 +1026,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           <View
             style={
               {
-                "position": "absolute",
+                "alignItems": "center",
+                "height": 16,
+                "justifyContent": "center",
+                "width": 16,
               }
             }
           >
@@ -1050,13 +1053,6 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               }
             }
           >
-            <View
-              style={
-                {
-                  "width": 20,
-                }
-              }
-            />
             Si tu désactives ces cookies, nous ne pourrons pas prendre en compte ton usage de l’application pour continuer à la créer au plus près de nos utilisateurs.
           </Text>
         </View>
@@ -1367,6 +1363,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           marginTop={true}
           style={
             {
+              "flexDirection": "row",
+              "gap": 8,
               "marginBottom": 0,
               "marginTop": 8,
             }
@@ -1375,7 +1373,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           <View
             style={
               {
-                "position": "absolute",
+                "alignItems": "center",
+                "height": 16,
+                "justifyContent": "center",
+                "width": 16,
               }
             }
           >
@@ -1399,13 +1400,6 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               }
             }
           >
-            <View
-              style={
-                {
-                  "width": 20,
-                }
-              }
-            />
             En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.
           </Text>
         </View>
@@ -2036,6 +2030,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
       marginBottom={true}
       style={
         {
+          "flexDirection": "row",
+          "gap": 8,
           "marginBottom": 8,
           "marginTop": 0,
         }
@@ -2044,7 +2040,10 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
       <View
         style={
           {
-            "position": "absolute",
+            "alignItems": "center",
+            "height": 16,
+            "justifyContent": "center",
+            "width": 16,
           }
         }
       >
@@ -2068,13 +2067,6 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 20,
-            }
-          }
-        />
         Nous ne demandons pas ton consentement pour ces cookies car ils sont obligatoires pour le bon fonctionnement du pass Culture.
       </Text>
     </View>
