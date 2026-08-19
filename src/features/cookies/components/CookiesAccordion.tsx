@@ -71,10 +71,7 @@ const InfoCaption: React.FC<PropsWithChildren<{ marginTop?: boolean; marginBotto
     <IconContainer>
       <StyledInfo />
     </IconContainer>
-    <CaptionNeutralInfo>
-      <IconSpacer />
-      {children}
-    </CaptionNeutralInfo>
+    <CaptionNeutralInfo>{children}</CaptionNeutralInfo>
   </StyledView>
 )
 
@@ -82,18 +79,17 @@ const StyledView = styled.View<{ marginTop?: boolean; marginBottom?: boolean }>(
   ({ theme, marginTop, marginBottom }) => ({
     marginTop: marginTop ? theme.designSystem.size.spacing.s : 0,
     marginBottom: marginBottom ? theme.designSystem.size.spacing.s : 0,
+    flexDirection: 'row',
+    gap: theme.designSystem.size.spacing.s,
   })
 )
-const IconSpacer = styled.View(({ theme }) => {
-  const SPACER_BETWEEN_ICON_AND_TEXT = theme.designSystem.size.spacing.xs
-  return {
-    width: theme.designSystem.size.icon.s + SPACER_BETWEEN_ICON_AND_TEXT,
-  }
-})
 
-const IconContainer = styled.View({
-  position: 'absolute',
-})
+const IconContainer = styled.View(({ theme }) => ({
+  width: theme.designSystem.size.icon.s,
+  height: theme.designSystem.size.icon.s,
+  justifyContent: 'center',
+  alignItems: 'center',
+}))
 
 const StyledInfo = styled(InfoPlain).attrs(({ theme }) => ({
   size: theme.designSystem.size.icon.s,
