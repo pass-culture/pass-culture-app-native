@@ -4,386 +4,219 @@
 
 ## Prérequis
 
-- Pouvoir builder l'app en local pour [Android](/doc/installation/Android.md) et [iOS](/doc/installation/iOS.md)
-- Java [11.0.20.1](/doc/installation/Android.md#troubleshooting)
+- App buildable en local : [Android](/doc/installation/Android.md) · [iOS](/doc/installation/iOS.md)
 - Xcode 16 ou plus
 
-## Installation commune à toutes les plateformes
+## Installation
 
-[Documentation d'installation complète](https://maestro.mobile.dev/getting-started/installing-maestro)
-
-> Résumé: Pour lancer les tests Android, vous n'avez qu'a installer la CLI maestro. Pour le web, vous devez avoir le ChromeDriver en plus. C'est la version iOS simulateur qui demande le plus de préparatifs. Il faut installer l'idb, et lui passer l'id du simulateur.
-
-**Il n'est pas possible de lancer les tests sur un iOS physique pour le moment.**
-
-Tableau récapitulatif des besoins de chaque plateforme pour lancer les tests:
-
-|                  | Build local | CLI | adb | idb | ChromeDriver |
-| ---------------- | ----------- | --- | --- | --- | ------------ |
-| Android Virtuel  | ✓           | ✓   | ✓   | ✗   | ✗            |
-| Android Physique | ✓           | ✓   | ✓   | ✗   | ✗            |
-| iOS Virtuel      | ✓           | ✓   | ✗   | ✓   | ✗            |
-| iOS Physique     | -           | -   | -   | -   | -            |
-| Web              | ✓           | ✓   | ✗   | ✗   | ✓            |
-
-### Installer la CLI Maestro
-
-Pour installer Maestro sur Mac OS, Linux ou Windows :
+### CLI Maestro
 
 ```bash
-curl -Ls "https://get.maestro.mobile.dev" | bash
+curl -fsSL "https://get.maestro.mobile.dev" | bash
 ```
 
-### Installer les secrets pour Maestro
+### Secrets
 
-Pour exécuter les tests avec Maestro, vous aurez besoin des secrets utilisés par les scénarios.  
-Ces secrets sont disponibles dans notre gestionnaire de mots de passe sous le nom **`Secrets E2E`**.
+Les secrets sont disponibles dans notre gestionnaire de mots de passe sous le nom **`Secrets E2E`**.
 
-Copiez ensuite le contenu dans le fichier `.maestro/.env.secret`  
-(créez ce fichier s’il n’existe pas déjà).
+Copiez-les dans `.maestro/.env.secret` (créez ce fichier s'il n'existe pas).
 
-## Mise en place spécifique à Android
+## Lancement des tests
 
-Téléphone à utilisé (virtuel et physique): Samsung Galaxy S9 (SM-G960F) && OS Android 10
+```bash
+yarn test:e2e
+```
 
-Sur téléphone physique, il se peut que vous deviez accepter l'installation via USB de `dev.mobile.maestro` lors du lancement des tests.
+Le script guide interactivement : choix du mode (local/cloud), plateforme, tags, binary ID si nécessaire.
 
-### Installer ADB
+L'environnement de référence est **staging**. L'environnement testing est trop sandboxé pour être fiable.
 
-Lorsque vous avez installé Android Studio, `platform-tools` (qui inclut `adb`) est installé par défaut.
+> Le mode **cloud est à privilégier** : les runs locales sont plus sujettes aux faux négatifs (réseau, état du simulateur, performances machine).
 
-Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à [vos variables d'environnement](README.md#troubleshooting).
+Les tests se trouvent dans `.maestro/testsV3/`.
 
-#### Pourquoi a-t-on besoin d'ADB ?
+## Configuration locale par plateforme
 
-Les devices Android font des requêtes aux adresses suivantes :
-||Simulateur|Physique|
-|--|--|--|
-|Android|10.0.2.2|localhost|
+### Android
 
-Pour rediriger les requêtes faites sur ces adresses-là vers notre machine, nous utilisons la commande `adb reverse`. Cette commande nous permet d'exposer un port de notre device Android à notre machine, et est nécessaire pour rediriger les requêtes faites sur `10.0.2.2:<port>` ou `localhost:<port>` sur notre device Android vers `localhost:<port>` sur notre machine.
+Buildez l'app une première fois avec `yarn android:staging`, puis `yarn start` pour les runs suivantes.
 
-### Lancez votre build local
+ADB est requis pour rediriger les ports réseau du device vers la machine hôte. Il est inclus dans Android Studio (`platform-tools`). Vérifiez avec `adb --version`.
 
-Lancez `yarn start` si le build est déjà présent sur votre appareil, sinon `yarn android:testing` (ou `yarn android:staging`).
+### iOS
 
-> La commande `maestro test` va détecter et utiliser automatiquement un émulateur local ou un appareil physique connecté en USB.
+**Les tests sur iOS physique ne sont pas supportés.**
 
-Vous êtes prêts pour lancer les tests Maestro Android.
+Buildez l'app une première fois avec `yarn ios:staging`, puis `yarn start` et ouvrez l'app sur le simulateur pour les runs suivantes.
 
-## Mise en place spécifique à iOS
-
-Au moment d'écrire cette documentation, [il n'est pas possible de lancer maestro sur un appareil iOS physique](https://maestro.mobile.dev/getting-started/installing-maestro#connecting-to-your-device).
-
-Simulateur utilisé: iPhone 14 Pro && OS 16.6.1
-
-### Installer IDB (iOS)
-
-Installez `idb` (iOS Development Bridge):
+IDB (iOS Development Bridge) est requis :
 
 ```bash
 brew tap facebook/fb
 brew install facebook/fb/idb-companion
 ```
 
-### Lancez votre build local
-
-Si vous avez déjà l'application buildée localement sur votre emulateur, lancez la commande `yarn start`, et sur le simulateur, ouvrez l'application. L'instance de Metro de la command `yarn start` devrait se connecté à votre emulateur. Si vous avez pas buildée avant, lancez `yarn ios:testing` ou `yarn ios:staging` selon l'environnement.
-
-### Obtenir l'UDID des devices virtuels
-
-Il faut que le simulateur où vous avez buildé votre application soit démarré.
+Récupérez l'UDID du simulateur démarré et lancez `idb_companion` :
 
 ```bash
 xcrun simctl list | grep "(Booted)"
+# → iPhone 16 Pro (XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX) (Booted)
+
+idb_companion --udid <UDID>
 ```
 
-Qui renvoie la ligne du device avec Booted:
+Tant que vous ne changez pas de simulateur, vous n'aurez pas à relancer ces commandes.
 
-```bash
-iPhone SE (3rd generation) (0669277D-1C16-461C-86DD-EF81E8C46E03) (Booted)
-```
+### Web
 
-Copiez le UDID de votre simulateur (le contenu des sécondes paranthèses) et executez la commande suivante:
+Les tests web tournent sur `https://app.staging.passculture.team`, aucun build local n'est nécessaire.
 
-```bash
-idb_companion --udid <UDID-du-device-ou-vous-avez-build-lapp-en-local>
-```
+## Tags
 
-Tant que vous ne changez pas de simulateur de test, vous n'aurez pas à refaire les commandes ci-dessus.
+Les tags identifient le domaine fonctionnel d'un test. Ils correspondent au nom du dossier parent dans `testsV3/` et sont référencés dans le `CODEOWNERS`.
 
-Vous pouvez procéder au lancement des tests sur iOS!
-
-## Mise en place spécifique au Web
-
-### Installer ChromeDriver
-
-Regardez la version de Chrome que vous utilisez.
-
-Allez chercher la version de ChromeDriver correspondante [ici](https://googlechromelabs.github.io/chrome-for-testing/#stable).
-
-Sur MacBook, si vous avez une erreur de type `org.openqa.selenium.remote.NoSuchDriverException: Unable to obtain: Capabilities`, il faut que vous installiez Rosetta:
-
-```bash
-softwareupdate --install-rosetta
-```
-
-### Ajouter ChromeDriver au PATH (optionnel)
-
-Si vous êtes obligé de lancer ChromeDriver manuellement à chaque redémarrage de votre ordinateur, vous pouvez ajouter ChromeDriver à vos variables d'environement pour faciliter son utilisation.
-
-- Déplacez le fichier téléchargé dans `/usr/local/bin`.
-
-La commande ci-dessous part du principe que vous allez téléchargé et décompressé la version arm64 du driver dans `/Downloads`.
-
-```
-sudo mv Downloads/chromedriver-mac-arm64/chromedriver /usr/local/bin
-```
-
-- Ajoutez le chemin au fichier téléchargé au `PATH`:
-
-Mettez la ligne suivante à la fin de de votre fichier de configuration du terminal (~/.zshrc si vous utilisez zsh):
-
-```
-export PATH="/usr/local/bin/chromedriver:$PATH"
-```
-
-### Configuration supplémentaire
-
-Les tests sont lancés à partir de testing/staging, vous n'avez pas besoin de lancer l'app web localement.
-
-## Lancement des tests
-
-Il faut avoir soit:
-
-- Un émulateur Android avec l'application buildé localement
-- Un téléphone physique Android avec l'application buildé localement
-- Un simulateur iOS avec l'application buildé localement
-- Pour le web, les tests se font à partir de https://app.testing.passculture.team ou https://app.staging.passculture.team et ne requirent pas de build local.
-
-```bash
-# Commandes pour lancer tous les tests sur les différents environnements, plateformes et target
-yarn test:e2e:android:staging
-yarn test:e2e:android:staging:cloud
-yarn test:e2e:ios:staging
-yarn test:e2e:ios:staging:cloud
-yarn test:e2e:web:staging
-yarn test:e2e:android:testing
-yarn test:e2e:ios:testing
-yarn test:e2e:web:testing
-```
-
-## Lancer un test simple sur le web
-
-Admettons que nous voulions tester que la version testing du web se lance bien.
-
-S'il n'existe pas encore, duplicons le fichier `.yml` pour lancer l'application que nous souhaitons tester pour en créer un pour le web.
-
-Le fichier d'origine s'appelle `.maestro/tests/reusableFlows/LaunchApp.yml`, créons donc `.maestro/tests/reusableFlows/LaunchApp.yaml`.
-
-Dans ce fichier, remplaçons l'application que vise les tests par l'url du site web de testing. Au final nous aurons:
+Les tests déclarent leurs tags dans l'en-tête du fichier `.yml` :
 
 ```yaml
-url: https://app.testing.passculture.team
----
-- launchApp:
-    clearState: true
-```
-
-Maintenant, lançons le test que nous venons de créer:
-
-```bash
-maestro test .maestro/tests/reusableFlows/LaunchApp.yaml
-```
-
-La commande ci-dessus lancera une fenêtre Chrome dans lequel on verra la banière suivante: `Chrome is being controlled by an automated test software`. Le site pass Culture devrait apparaître bièvement avant de se refermer.
-
-Dans le terminal d'où nous avons lancer le test, nous devrions voir:
-
-```yml
-║
-║  > Flow
-║
-║    ✅  Launch app "https://app.testing.passculture.team" with clear state
-```
-
-Le test à été lancé avec succès et a réussi toutes les tâches qu'il devait accomplir.
-
-Admettons que nous voulions nous assurer que la pop-up des cookies apparaisent bien, et si elle apparaît, que nous puissions accepter les cookies. Au test précédent, nous rajouterions:
-
-```
-- assertVisible: 'Respect de ta vie privée'
-- tapOn: 'Tout accepter'
-```
-
-Si on relance notre script de test avec ces deux nouvelles lignes, nous devrions voir la page web se lancer, et si la boîte d'acceptation des cookies apparaît, elle devrait se fermer en soulignant "Tout accepter" pendant un instant.
-
-Dans notre terminal, à la fin du test nous devrions avoir:
-
-```yml
-║  > Flow
-║
-║    ✅  Launch app "https://app.testing.passculture.team" with clear state
-║    ✅  Assert that "Respect de ta vie privée" is visible
-║    ✅  Tap on "Tout accepter"
-```
-
-Évidemment, il est préferable de ne pas rajouter ces deux nouvelles lignes dans `.maestro/tests/reusableFlows/LaunchApp.yml`, mais de créer un nouvel fichier qui aurait pour responsabilité de tester les cookies (voir `.maestro/tests/reusableFlows/features/cookies/CookiesConsent.yml`). Ensuite on créerait un nouveau flow qui reprendrait le lancement de l'app et le test des cookies.
-
-## Lancer un test spécifique
-
-Pour lancer un test spécifique peut importe la plateforme, il est préférable de mettre un tag dans le test choisi et de modifier la surcouche bash `run_e2e_tests.sh` pour que la commande de base execute seulement le tag choisi pour la plateforme désirée
-
-Par exemple pour un nouveau test web :
-
-```yaml
-url: http://localhost:5173/
 tags:
-  - web
-  - wip
+  - booking
+```
+
+| Tag | Usage |
+|-----|-------|
+| `auth` | Authentification |
+| `bonification` | Crédits et bonification |
+| `booking` | Réservation |
+| `cookies` | Consentement cookies |
+| `onboarding` | Parcours onboarding |
+| `profile` | Profil utilisateur |
+| `search` | Recherche |
+| `offer` | Fiche offre |
+| `artist` | Page artiste |
+| `web` | Tests web |
+| `fix` | Test en cours de correction (éphémère) |
+| `refacto` | Test en cours de refactoring (éphémère) |
+
+## Flows communs (`common/`)
+
+Les flows réutilisables sont organisés par catégorie dans `testsV3/common/` :
+
+- **`lifecycle/`** — démarrage (`LaunchApp`), arrêt (`StopApp`), reset keychain iOS (`ClearIOSKeychain`)
+- **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`
+- **`navigation/`** — interactions de navigation récurrentes (tab bar, retour)
+- **`cookies/`** — gestion du bandeau cookies
+- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateQFResponse.js`, voir sections dédiées)
+- **`assertions/`** — assertions réutilisables
+
+## Écrire un test
+
+Structure minimale d'un fichier de test :
+
+```yaml
+appId: ${MAESTRO_APP_ID}
+tags:
+  - mon-tag
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
 ---
-- launchApp
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- tapOn: 'Texte visible à l'écran'
 ```
 
-Et par exemple, ici pour le cas d'un test web
-il faut remplacer le `--include-tags` par celui voulu
+[Liste des commandes disponibles](https://maestro.mobile.dev/api-reference/commands)
 
-```bash
-case "$target" in
-  "test")
-    if [ "$platform" = "web" ]; then
-      TAGS="--include-tags web"
-    else
-```
+[Maestro Studio](https://docs.maestro.dev/maestro-studio/run-tests-with-maestro-studio) permet d'explorer les sélecteurs en live via une application dédiée (l'ancienne commande CLI `maestro studio` n'est plus maintenue).
 
-## Organisation des tests avec les tags
+## Générer un utilisateur de test
 
-Les tests Maestro sont organisés avec un système de tags qui permet de catégoriser et de filtrer les tests selon différents critères. Les principaux tags utilisés sont :
-
-- `local` : Tests qui peuvent être exécutés en local
-- `nightlyAndroid` : Tests spécifiques pour les runs nocturnes sur Android
-- `nightlyIOS` : Tests spécifiques pour les runs nocturnes sur iOS
-- `web` : Tests spécifiques aux runs web
-- `squad-conversion` : Tests liés aux parcours de conversion
-- `squad-activation` : Tests liés aux parcours d'activation
-- `squad-decouverte` : Tests liés aux parcours de découverte
-
-Pour lancer des tests avec un tag spécifique, vous pouvez utiliser l'option
-
-## Lancer les tests avec l'utilisation de variables
-
-```bash
-maestro test \
-  --env MAESTRO_VALID_EMAIL=${VALID_EMAIL} \
-  --env MAESTRO_INVALID_EMAIL=${INVALID_EMAIL} \
-  --env MAESTRO_UNREGISTERED_EMAIL=${UNREGISTERED_EMAIL} \
-  --env MAESTRO_NUMBER_PHONE=${NUMBER_PHONE} \
-  --env MAESTRO_PASSWORD=${PASSWORD} \
-  --env MAESTRO_PHYSICAL_OFFER=${PHYSICAL_OFFER} \
-  --env MAESTRO_EVENT_OFFER=${EVENT_OFFER} \
-  --env MAESTRO_MESSAGE_CODE_VALIDATION_TELEPHONE=${MESSAGE_CODE_VALIDATION_TELEPHONE} \
-  .maestro/
-```
-
-## Écrire un test avec Maestro studio
-
-L'utilisation de [Maestro studio](https://maestro.mobile.dev/getting-started/maestro-studio) simplifie l'écriture des tests car il permet de voir les différent sélecteurs possible a l'aide d'une interface. Pour démarrer Maestro Studio il faut :
-
-```bash
-yarn start
-maestro studio
-```
-
-Pour écrire un test il faut suivre cette structure :
-
-```yml
-appId: your.app.id > Mettre l'ID de l'app que vous voulez tester comme "app.passculture.staging".
----
-- launchApp
-- tapOn: 'Text on the screen'
-```
-
-Voici [une liste des commandes](https://maestro.mobile.dev/api-reference/commands) que nous pouvons utiliser pour écrire les tests.
-
-## Générer un user dans les tests
-
-Maestro permet d'appeler des hooks au début et à la fin d'un script.
-Nous avons un script qui permet de générer un user en fonction de critères définis au préalable.
-
-Au début du fichier de test, il faut appeler le script `generateUser.js` avec les variables d'environnement `id_provider` et `step` comme ceci :
+La plupart des tests nécessitent un utilisateur bénéficiaire créé à la volée via l'API E2E. Le script `common/helpers/generateUser.js` s'appelle dans `onFlowStart` :
 
 ```yaml
 onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
-      file: subFolder/commons/generateUser.js
+      file: ../common/helpers/generateUser.js
       env:
         id_provider: 'UBBLE'
         step: 'BENEFICIARY'
-        age: '17'
+        age: 18
 ```
 
-Voici la liste des valeurs possibles pour ces deux variables :
+Le script expose les variables suivantes utilisables dans le flow :
 
-| Variable      | Valeurs possibles                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `id_provider` | `DMS`, `EDUCONNECT`, `UBBLE` (défaut)                                                                            |
-| `step`        | `EMAIL_VALIDATION`, `PHONE_VALIDATION`, `PROFILE_COMPLETION`, `IDENTITY_CHECK`, `HONOR_STATEMENT`, `BENEFICIARY` |
-| `age`         | `15` à `20` (défaut : `18`)                                                                                      |
+| Variable | Contenu |
+|---|---|
+| `output.userId` | ID de l'utilisateur créé |
+| `output.userEmail` | Email de l'utilisateur |
+| `output.deeplinkIos` | Deeplink de confirmation d'email (iOS) |
+| `output.deeplinkAndroid` | Deeplink de confirmation d'email (Android) |
+
+## Mocker le quotient familial
+
+Pour les tests de bonification, `common/helpers/generateQFResponse.js` configure la réponse QF renvoyée par le mock. Il s'appelle après `generateUser.js` :
+
+```yaml
+  - runScript:
+      file: ../common/helpers/generateQFResponse.js
+      env:
+        user_id: ${output.userId}
+        mock_type: 'OK'
+```
+
+Valeurs disponibles pour `mock_type` :
+
+| Valeur | Scénario simulé |
+|---|---|
+| `OK` | QF valide, dossier accepté |
+| `HOUSEHOLDER_OK` | QF valide, déclarant principal |
+| `NOT_IN_TAX_HOUSEHOLD` | Utilisateur absent du foyer fiscal |
+| `PERSON_NOT_FOUND` | Personne introuvable |
+| `APPLICATION_NOT_FOUND` | Dossier introuvable |
+| `QUOTIENT_FAMILIAL_TOO_HIGH` | QF trop élevé |
 
 ## Tester des trackers
 
-Il faut ajouter le flow suivant dans le scénario de test pour tester un tracker.
-Remplacez `NomDeVotreEvent` par le nom de l'event que vous souhaitez tester.
+Pour vérifier qu'un event analytics est bien envoyé :
 
 ```yaml
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
-    file: subFolder/analytics/verifyTracking.yml
+    file: ../common/analytics/verifyTracking.yml
     env:
       EXPECTED_ANALYTICS_CALL: 'NomDeVotreEvent'
       MAESTRO_MOCK_ANALYTICS_SERVER: ${MAESTRO_MOCK_ANALYTICS_SERVER}
 ```
 
-### Limites
+Le serveur mock analytics ne supporte qu'un test à la fois.
 
-Le serveur étant très simple, il ne supporte l'exécution que d'un test à la fois
-
-# **Troubleshooting**
-
-### **Android**
+## Troubleshooting
 
 <details>
-  <summary>command not found adb</summary>
+  <summary>command not found: adb</summary>
   <br/>
-Pour vérifier si adb est installé il faut exécuter :
+
+Ajoutez ces lignes dans `~/.zshrc` puis redémarrez le terminal :
 
 ```bash
-~/Library/Android/sdk/platform-tools/adb
-```
-
-Il imprimera la version d'ADB et le chemin. Copier le chemin d'installation d'adb, qui peut ressembler à `(/Users/user-name/Library/Android/sdk/platform-tools/adb)`.
-
-Puis ouvrir le fichier `.zshrc` et ajouter comme ceci (ne pas ajouter `platform-tools/adb` dans `export ANDROID_HOME`):
-
-```bash
-export ANDROID_HOME=/Users/user-name/Library/Android/sdk
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/tools/bin:$PATH
 ```
-
-Enfin, redémarrer le terminal.
 
 </details>
+
 <details>
   <summary>Unable to launch app app.passculture.staging: null</summary>
   <br/>
 
-Fermer maestro studio et relancer le test.
+Fermez Maestro Studio et relancez le test.
 
 </details>
+
 <details>
-  <summary>Missing api key or any secret while trying to run test in local </summary>
-  Vérifier si vous avez bien les secrets E2E présent dans .maestro/.env.secret
+  <summary>Secrets manquants</summary>
+  <br/>
+
+Vérifiez que `.maestro/.env.secret` existe et contient tous les secrets E2E.
+
 </details>
