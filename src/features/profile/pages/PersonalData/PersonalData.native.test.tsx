@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, popTo } from '__mocks__/@react-navigation/native'
+import { navigate, popTo, push } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
@@ -94,7 +94,7 @@ describe('PersonalData', () => {
     expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
   })
 
-  it('should redirect to ChangeEmail when clicking on modify email button', async () => {
+  it('should push to ChangeEmail when clicking on modify email button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
       user: beneficiaryUserV2,
@@ -104,13 +104,13 @@ describe('PersonalData', () => {
 
     await user.press(screen.getByTestId('Modifier l’e-mail'))
 
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(push).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: 'ChangeEmail',
     })
   })
 
-  it('should redirect to ChangePassword when clicking on modify password button', async () => {
+  it('should push to ChangePassword when clicking on modify password button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
       user: nonBeneficiaryUserV2,
@@ -120,36 +120,43 @@ describe('PersonalData', () => {
 
     await user.press(screen.getByTestId('Modifier le mot de passe'))
 
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(push).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: 'ChangePassword',
     })
   })
 
-  it('should redirect to ChangeStatus when clicking on modify status button', async () => {
+  it('should push to ChangeStatus when clicking on modify status button', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
       user: nonBeneficiaryUserV2,
     })
 
+    push.mockClear()
+    navigate.mockClear()
+
     render(reactQueryProviderHOC(<PersonalData />))
 
     await user.press(screen.getByTestId('Modifier le statut'))
 
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(push).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'ChangeStatus',
+    })
+    expect(navigate).not.toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
       screen: 'ChangeStatus',
     })
   })
 
-  it('should redirect to ChangeCity when clicking on modify city button for beneficiaries', async () => {
+  it('should push to ChangeCity when clicking on modify city button for beneficiaries', async () => {
     mockedUseAuthContext.mockReturnValueOnce(initialAuthContext)
 
     render(reactQueryProviderHOC(<PersonalData />))
 
     await user.press(screen.getByTestId('Modifier l’adresse de résidence'))
 
-    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+    expect(push).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA },
       screen: 'ChangeCity',
     })
@@ -226,7 +233,7 @@ describe('PersonalData', () => {
     })
   })
 
-  it('should  not display phone number section when user has none', async () => {
+  it('should not display phone number section when user has none', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
       user: { ...mockedUser, phoneNumber: undefined },

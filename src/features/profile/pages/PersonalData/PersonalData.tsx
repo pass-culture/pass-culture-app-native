@@ -59,6 +59,7 @@ export function PersonalData() {
             navigateTo={updateEmailRoute}
             onBeforeNavigate={onEmailChangeClick}
             accessibilityLabel="Modifier l’e-mail"
+            withPush
           />
           {user?.phoneNumber ? (
             <EditableField
@@ -66,6 +67,7 @@ export function PersonalData() {
               value={user?.phoneNumber}
               navigateTo="ChangePhoneNumber"
               accessibilityLabel="Modifier le numéro de téléphone"
+              withPush
             />
           ) : null}
           {user?.hasPassword ? (
@@ -74,6 +76,7 @@ export function PersonalData() {
               value={'*'.repeat(12)}
               navigateTo="ChangePassword"
               accessibilityLabel="Modifier le mot de passe"
+              withPush
             />
           ) : null}
           <EditableField
@@ -81,6 +84,7 @@ export function PersonalData() {
             value={getActivityLabel(user?.activityId)}
             navigateTo="ChangeStatus"
             accessibilityLabel="Modifier le statut"
+            withPush
           />
           <EditableField
             label="Adresse de résidence"
@@ -88,6 +92,7 @@ export function PersonalData() {
             navigateTo="ChangeCity"
             navigateParams={{ type: PersonalDataTypes.PROFIL_PERSONAL_DATA }}
             accessibilityLabel="Modifier l’adresse de résidence"
+            withPush
           />
           <ViewGap gap={8}>
             <Banner
