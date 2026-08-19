@@ -67,7 +67,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GRID_LIST = 'wipEnableGridList',
   WIP_ENABLE_SIMILAR_ARTISTS = 'wipEnableSimilarArtists',
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
-  WIP_ENABLE_VOLUNTEER = 'wipEnableVolunteer',
   WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_CATEGORY_BLOCKS = 'wipNewCategoryBlocks',
   WIP_NEW_CATEGORY_BLOCKS_HOME = 'wipNewCategoryBlocksHome',

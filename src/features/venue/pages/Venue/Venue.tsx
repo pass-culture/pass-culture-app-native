@@ -89,7 +89,6 @@ export const Venue: FunctionComponent = () => {
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
-  const enableVolunteer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VOLUNTEER)
   const enableVenueFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR)
   const {
     visible: searchInVenueModalVisible,
@@ -206,7 +205,6 @@ export const Venue: FunctionComponent = () => {
     <React.Fragment>
       <VenueTopComponent
         venue={venue}
-        enableVolunteer={enableVolunteer}
         enableVenueFakeDoor={enableVenueFakeDoor}
         onPressFollowButton={() => handleOnPressFollowButton('venueBanner')}
       />

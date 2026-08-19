@@ -215,88 +215,69 @@ describe('<VenueTopComponent />', () => {
     })
   })
 
-  it('should not display volunteer card when wipEnableVolunteer FF deactivated and venue has volunteering url', () => {
-    renderVenueTopComponent({ venue: { ...venueOpenToPublic, volunteeringUrl: 'url' } })
+  it('should not display volunteer card when venue has not volunteering url', () => {
+    renderVenueTopComponent({ venue: venueOpenToPublic })
 
     expect(
       screen.queryByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
     ).not.toBeOnTheScreen()
   })
 
-  describe('When wipEnableVolunteer FF activated', () => {
-    it('should not display volunteer card when venue has not volunteering url', () => {
-      renderVenueTopComponent({ venue: venueOpenToPublic, enableVolunteer: true })
-
-      expect(
-        screen.queryByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
-      ).not.toBeOnTheScreen()
+  it('should display volunteer card when venue has volunteering url', () => {
+    renderVenueTopComponent({
+      venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
     })
 
-    it('should display volunteer card when venue has volunteering url', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
+    expect(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)).toBeOnTheScreen()
+  })
 
-      expect(
-        screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`)
-      ).toBeOnTheScreen()
+  it('should display volunteer card with GCP volunteer illustration', () => {
+    renderVenueTopComponent({
+      venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
     })
 
-    it('should display volunteer card with GCP volunteer illustration', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
+    expect(screen.getByTestId('imageBusinessIllustration').props.source.uri).toContain(
+      'benevolat.png'
+    )
+  })
 
-      expect(screen.getByTestId('imageBusinessIllustration').props.source.uri).toContain(
-        'benevolat.png'
-      )
+  it('should display volunteer card illustration with positive02 background color', () => {
+    renderVenueTopComponent({
+      venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
     })
 
-    it('should display volunteer card illustration with positive02 background color', () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
+    expect(screen.getByTestId('imageBusiness')).toHaveStyle({
+      backgroundColor: theme.designSystem.color.illustration.positive02,
+    })
+  })
 
-      expect(screen.getByTestId('imageBusiness')).toHaveStyle({
-        backgroundColor: theme.designSystem.color.illustration.positive02,
-      })
+  it('should redirect to voluteer page when venue has volunteering url and pressing volunteer card', async () => {
+    renderVenueTopComponent({
+      venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
     })
 
-    it('should redirect to voluteer page when venue has volunteering url and pressing volunteer card', async () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
+    await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
 
-      await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
+    expect(mockOpenUrl).toHaveBeenCalledWith(
+      'url?utm_source=pass-culture&utm_medium=app&utm_campaign=orga_non_inscrite'
+    )
+  })
 
-      expect(mockOpenUrl).toHaveBeenCalledWith(
-        'url?utm_source=pass-culture&utm_medium=app&utm_campaign=orga_non_inscrite'
-      )
+  it('should trigger ClickVolunteerCTA log when venue has volunteering url and pressing volunteer card', async () => {
+    renderVenueTopComponent({
+      venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
     })
 
-    it('should trigger ClickVolunteerCTA log when venue has volunteering url and pressing volunteer card', async () => {
-      renderVenueTopComponent({
-        venue: { ...venueOpenToPublic, volunteeringUrl: 'url' },
-        enableVolunteer: true,
-      })
+    await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
 
-      await user.press(screen.getByText(`Deviens bénévole pour\n“${venueOpenToPublic.name}”`))
-
-      expect(analytics.logClickVolunteerCTA).toHaveBeenCalledWith({
-        from: 'venue',
-        venueId: venueOpenToPublic.id.toString(),
-      })
+    expect(analytics.logClickVolunteerCTA).toHaveBeenCalledWith({
+      from: 'venue',
+      venueId: venueOpenToPublic.id.toString(),
     })
   })
 })
 
 type RenderVenueTopComponent = ComponentProps<typeof VenueTopComponent>
 
-const renderVenueTopComponent = ({ venue, enableVolunteer }: RenderVenueTopComponent) =>
-  render(
-    reactQueryProviderHOC(<VenueTopComponent venue={venue} enableVolunteer={enableVolunteer} />)
-  )
+const renderVenueTopComponent = ({ venue }: RenderVenueTopComponent) =>
+  render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
