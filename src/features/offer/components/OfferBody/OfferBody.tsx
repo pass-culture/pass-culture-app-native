@@ -23,8 +23,6 @@ import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
@@ -78,10 +76,6 @@ export const OfferBody: FunctionComponent<Props> = ({
       triggerConsultOfferLog({ offerId: params.id, venueId: offer.venue.id, from: 'deeplink' })
     }
   }, [offer.venue.id, params.from, params.id])
-
-  const enableOfferArtistSectionRefacto = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ARTIST_SECTION_REFACTO
-  )
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -191,7 +185,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </MarginContainer>
       ) : null}
 
-      {enableOfferArtistSectionRefacto && artists.length > 0 ? (
+      {artists.length > 0 ? (
         <MarginContainer gap={0}>
           <OfferArtistsSection
             artists={artists}
