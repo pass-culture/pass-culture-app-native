@@ -152,7 +152,8 @@ const StyledSubtitle = styled(Typo.BodyAccentXs).attrs<{
 }>({
   numberOfLines: 2,
 })(({ withMargin, theme }) => ({
-  marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
+  marginLeft: withMargin ? theme.contentPage.marginHorizontal : undefined,
+  marginRight: withMargin ? theme.contentPage.marginHorizontal : undefined,
   color: theme.designSystem.color.text.subtle,
 }))
 
