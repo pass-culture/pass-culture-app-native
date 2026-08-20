@@ -140,6 +140,7 @@ export enum AnalyticsEvent {
   SEE_MY_BOOKING = 'SeeMyBooking',
   SELECT_AGE = 'SelectAge',
   SELECT_DELETION_REASON = 'SelectDeletionReason',
+  SELECT_SUSPENSION_REASON = 'SELECT_SUSPENSION_REASON',
   SEND_ACTIVATION_MAIL_AGAIN = 'SendActivationMailAgain',
   SHARE = 'Share',
   SHARE_APP = 'ShareApp',

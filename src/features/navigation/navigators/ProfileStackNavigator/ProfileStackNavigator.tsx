@@ -23,7 +23,6 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { DebugScreen } from 'features/profile/pages/DebugScreen/DebugScreen'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
-import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
 import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
 import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
@@ -40,6 +39,8 @@ import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewE
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
+import { SuspendProfileAccountHacked } from 'features/profile/pages/SuspendProfile/SuspendProfileAccountHacked'
+import { SuspendProfileReason } from 'features/profile/pages/SuspendProfileReason/SuspendProfileReason'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
@@ -105,11 +106,11 @@ const profileStackNavigatorPathDefinition = {
       linking: { path: 'profil/suppression/email-pirate' },
       options: { title: 'Suppression du profil - Email piraté' },
     },
-    DeleteProfileAccountHacked: {
-      screen: DeleteProfileAccountHacked,
+    SuspendProfileAccountHacked: {
+      screen: SuspendProfileAccountHacked,
       if: useIsSignedIn,
-      linking: { path: 'profil/suppression/compte-pirate' },
-      options: { title: 'Suppression du profil - Compte piraté' },
+      linking: { path: 'profil/suspension/compte-pirate' },
+      options: { title: 'Suspension du profil - Compte piraté' },
     },
     DeleteProfileAccountNotDeletable: {
       screen: DeleteProfileAccountNotDeletable,
@@ -121,6 +122,12 @@ const profileStackNavigatorPathDefinition = {
       screen: DebugScreen,
       linking: { path: 'profil/debuggage' },
       options: { title: 'Debuggage' },
+    },
+    SuspendProfileReason: {
+      screen: SuspendProfileReason,
+      if: useIsSignedIn,
+      linking: { path: 'profil/suspension/raison' },
+      options: { title: 'Suspension du profil - Raison' },
     },
     ConfirmDeleteProfile: {
       screen: ConfirmDeleteProfile,

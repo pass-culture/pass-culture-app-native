@@ -12,7 +12,7 @@ import { Clear } from 'ui/svg/icons/Clear'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
-export const DeleteProfileAccountHacked: FC = () => {
+export const SuspendProfileAccountHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
