@@ -443,8 +443,9 @@ exports[`Appearance should render correctly 1`] = `
               />
               <View>
                 <View
-                  accessibilityLabel="Thème"
-                  accessibilityRole="none"
+                  accessibilityLabelledBy="Thème"
+                  accessibilityRole="radiogroup"
+                  onKeyDown={[Function]}
                   style={
                     {
                       "gap": 8,
