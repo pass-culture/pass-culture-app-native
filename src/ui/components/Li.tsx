@@ -62,7 +62,7 @@ export const Li: React.FC<LiProps> = ({
 }
 
 const StyledView = styled.View({
-  display: Platform.OS === 'web' ? 'list-item' : 'flex',
-  // list-item génère une marker box (puce) par défaut — on la supprime
-  ...(Platform.OS === 'web' ? { listStyleType: 'none' } : {}),
+  ...(Platform.OS === 'web'
+    ? { listStyleType: 'none', display: 'list-item' } // list-item create a marker box by default, to avoid this unsolicited space we remove it.
+    : { display: 'flex' }),
 })

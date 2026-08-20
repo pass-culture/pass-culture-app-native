@@ -641,7 +641,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         <RCTScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          style={{}}
         >
           <View>
             <View

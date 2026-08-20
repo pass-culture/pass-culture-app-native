@@ -42,14 +42,10 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
     AVATAR_DEFAULT_CONFIG,
     (value, srcValue) => value ?? srcValue
   )
-  const size = mergedAvatarConfig.size
-  const contentHeight = size * 1.8
-
   const renderAvatar = useCallback(
-    ({ item, height }: { item: Artist; height: number }) => (
+    ({ item }: { item: Artist }) => (
       <AvatarListItem
         id={item.id}
-        key={item.id}
         image={item.image}
         name={item.name}
         onItemPress={onItemPress}
@@ -57,12 +53,13 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
         accessibilityLabel={item.accessibilityLabel}
         withPush={withPush}
         footer={renderItemFooter?.(item)}
-        containerHeight={height}
         {...mergedAvatarConfig}
       />
     ),
     [onItemPress, mergedAvatarConfig, withPush, renderItemFooter]
   )
+
+  const size = mergedAvatarConfig.size
 
   const handleViewableItemsChanged = useCallback(
     (info: { viewableItems: ViewToken[] }) => {
@@ -76,8 +73,8 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
       data={data}
       keyExtractor={keyExtractor ?? ((item) => item.id)}
       renderItem={renderAvatar}
+      itemHeight={size}
       itemWidth={size}
-      itemHeight={contentHeight}
       FlatListComponent={FlatList}
       ref={listRef}
       onViewableItemsChanged={handleViewableItemsChanged}

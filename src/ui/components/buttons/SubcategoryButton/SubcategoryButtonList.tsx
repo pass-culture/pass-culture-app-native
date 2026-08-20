@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { FlexStyle, LayoutChangeEvent, View } from 'react-native'
+import { FlexStyle, LayoutChangeEvent, ScrollView, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -44,7 +44,7 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
             seeAllNavigateTo={seeAllNavigateTo}
             onBeforeSeeAllNavigate={onBeforeSeeAllNavigate}
           />
-          <StyledScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <SingleRowContainer>
               {subcategoryButtonContent.map((item) => (
                 <SubcategoryButton
@@ -55,7 +55,7 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
                 />
               ))}
             </SingleRowContainer>
-          </StyledScrollView>
+          </ScrollView>
         </View>
       )
     }
@@ -70,7 +70,7 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
           seeAllNavigateTo={seeAllNavigateTo}
           onBeforeSeeAllNavigate={onBeforeSeeAllNavigate}
         />
-        <StyledScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <RowsContainer>
             <Row>
               {firstRow.map((item) => (
@@ -93,7 +93,7 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
               ))}
             </Row>
           </RowsContainer>
-        </StyledScrollView>
+        </ScrollView>
       </View>
     )
   }
@@ -172,8 +172,6 @@ const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   gap: theme.designSystem.size.spacing.l,
 }))
-
-const StyledScrollView = styled.ScrollView``
 
 const StyledUl = styled(Ul)(({ theme }) => ({
   width: '100%',
