@@ -6,10 +6,12 @@ export const accessibleRadioProps = ({
   checked,
   label,
   accessibilityLabel,
+  tabIndex,
 }: {
   checked?: boolean
   label?: string
   accessibilityLabel?: string
+  tabIndex?: number
 }) => {
   const commonProps = {
     accessibilityRole: AccessibilityRole.RADIO,
@@ -19,6 +21,7 @@ export const accessibleRadioProps = ({
     web: {
       ...commonProps,
       accessibilityChecked: checked,
+      tabIndex,
     },
     default: {
       ...commonProps,

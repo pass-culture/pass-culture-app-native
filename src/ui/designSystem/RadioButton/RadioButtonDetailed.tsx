@@ -33,6 +33,7 @@ export const RadioButtonDetailed = ({
   sizing,
   setValue,
   accessibilityLabel,
+  tabIndex,
 }: DetailedRadioProps) => {
   const selected = value === label
   const focusProps = useHandleFocus()
@@ -56,7 +57,7 @@ export const RadioButtonDetailed = ({
         isHover={hoverProps.isHover}>
         <TouchableContentContainer
           onPress={onToggle}
-          {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}
+          {...accessibleRadioProps({ checked: selected, label, accessibilityLabel, tabIndex })}
           {...focusProps}
           {...hoverProps}>
           <RadioCircle radioState={radioState} variant="detailed" hoverProps={hoverProps} />

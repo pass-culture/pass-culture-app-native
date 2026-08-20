@@ -21,6 +21,7 @@ export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   variant,
   setValue,
   accessibilityLabel,
+  tabIndex,
 }) =>
   variant === 'detailed' ? (
     <RadioButtonDetailed
@@ -35,6 +36,7 @@ export const RadioButton: FunctionComponent<BaseRadioProps> = ({
       asset={asset ?? null}
       variant={variant}
       accessibilityLabel={accessibilityLabel}
+      tabIndex={tabIndex}
     />
   ) : (
     <RadioButtonDefault
@@ -46,5 +48,6 @@ export const RadioButton: FunctionComponent<BaseRadioProps> = ({
       variant={variant}
       sizing="hug"
       accessibilityLabel={accessibilityLabel}
+      tabIndex={tabIndex}
     />
   )

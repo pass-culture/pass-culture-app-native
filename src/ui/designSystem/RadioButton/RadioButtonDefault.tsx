@@ -31,6 +31,7 @@ export const RadioButtonDefault = ({
   sizing,
   setValue,
   accessibilityLabel,
+  tabIndex,
 }: DefaultRadioProps & { accessibilityLabel?: string }) => {
   const selected = value === label
   const hoverProps = useHandleHover()
@@ -49,7 +50,7 @@ export const RadioButtonDefault = ({
       sizing={sizing}
       onPress={onToggle}
       {...hoverProps}
-      {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}>
+      {...accessibleRadioProps({ checked: selected, label, accessibilityLabel, tabIndex })}>
       <ContentContainer>
         <RadioCircle radioState={radioState} variant="default" hoverProps={hoverProps} />
         <RightBox radioState={radioState} label={label} hoverProps={hoverProps} sizing={sizing} />
