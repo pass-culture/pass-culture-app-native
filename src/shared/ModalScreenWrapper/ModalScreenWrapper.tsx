@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 export type ModalScreenWrapperProps = {
+  title: string
   onClose: () => void
   children: (closeWithTransition: () => void) => React.ReactNode
   fullScreen?: boolean
 }
 
 export const ModalScreenWrapper = ({
+  title: _title,
   onClose,
   children,
   fullScreen: _fullScreen,

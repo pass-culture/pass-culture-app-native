@@ -57,7 +57,7 @@ export const FakeDoorModal = () => {
       }
 
   return (
-    <ModalScreenWrapper onClose={goBack}>
+    <ModalScreenWrapper onClose={goBack} title="Encore un peu de patience..">
       {(closeWithTransition) => (
         <React.Fragment>
           <HeaderContainer>

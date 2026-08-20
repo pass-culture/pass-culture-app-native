@@ -160,7 +160,7 @@ export const LocationModal = ({
   const currentValue = locationMode ? MODE_TO_LABEL_MAP[locationMode] : ''
 
   return (
-    <ModalScreenWrapper onClose={handleClose} fullScreen>
+    <ModalScreenWrapper onClose={handleClose} fullScreen title="Localisation">
       {(closeWithTransition) => (
         <React.Fragment>
           <HeaderContainer>
