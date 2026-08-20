@@ -11,22 +11,28 @@ import styled, { useTheme } from 'styled-components/native'
 type Props = {
   index: number
   animValue: SharedValue<number>
+  activeColor?: string
+  inactiveColor?: string
 }
 
 const SMALL_DOT_SIZE = 4
 const BIG_DOT_SIZE = SMALL_DOT_SIZE + 4
 
-export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }) => {
+export const CarouselDot: React.FunctionComponent<Props> = ({
+  animValue,
+  index,
+  activeColor,
+  inactiveColor,
+}) => {
   const { designSystem } = useTheme()
+
+  const dotActiveColor = activeColor ?? designSystem.color.icon.locked
+  const dotInactiveColor = inactiveColor ?? designSystem.color.icon.subtle
 
   const animStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1]
     const marginOutputRange = [2, 0, 2]
-    const colorOutputRange = [
-      designSystem.color.icon.subtle,
-      designSystem.color.icon.locked,
-      designSystem.color.icon.subtle,
-    ]
+    const colorOutputRange = [dotInactiveColor, dotActiveColor, dotInactiveColor]
     const widthOutputRange = [SMALL_DOT_SIZE, BIG_DOT_SIZE, SMALL_DOT_SIZE]
 
     return {
@@ -35,7 +41,7 @@ export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }
       height: interpolate(animValue?.value, inputRange, widthOutputRange, Extrapolation.CLAMP),
       margin: interpolate(animValue?.value, inputRange, marginOutputRange, Extrapolation.CLAMP),
     }
-  }, [animValue, index])
+  }, [animValue, index, dotActiveColor, dotInactiveColor])
 
   return <Dot testID="carousel-dot" style={animStyle} />
 }
