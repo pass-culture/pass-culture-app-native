@@ -3,6 +3,7 @@ import React from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import { styled } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'
@@ -20,9 +21,11 @@ export function AutocompleteSection<T>({ title, renderItem, ...props }: Props<T>
   return (
     <React.Fragment>
       <Title>{title}</Title>
-      <StyledVerticalUl>
+      <StyledVerticalUl accessibilityRole={AccessibilityRole.LIST} accessibilityLabel={title}>
         {hits.map((item) => (
-          <Li key={item.objectID}>{renderItem(item as T, sendEvent)}</Li>
+          <Li key={item.objectID} accessibilityRole={AccessibilityRole.LISTITEM}>
+            {renderItem(item as T, sendEvent)}
+          </Li>
         ))}
       </StyledVerticalUl>
     </React.Fragment>

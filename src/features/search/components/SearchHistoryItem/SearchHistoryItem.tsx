@@ -15,9 +15,8 @@ interface Props {
 }
 
 export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
-  const shouldDisplaySearchGroupOrNativeCategory = Boolean(
-    item.nativeCategoryLabel || item.categoryLabel
-  )
+  const categoryLabel = item.nativeCategoryLabel ?? item.categoryLabel
+  const shouldDisplaySearchGroupOrNativeCategory = !!categoryLabel
 
   const handlePress = useCallback(() => {
     onPress(item)
