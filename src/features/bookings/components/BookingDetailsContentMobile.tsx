@@ -18,6 +18,7 @@ export const BookingDetailsContentMobile = ({
   cancelBooking,
   showArchiveModal,
   hasTicket,
+  bottom,
 }: {
   topBlock: React.JSX.Element
   booking: BookingResponse
@@ -26,6 +27,7 @@ export const BookingDetailsContentMobile = ({
   cancelBooking: () => void
   showArchiveModal: () => void
   hasTicket: boolean
+  bottom: number
 }) => {
   return (
     <View testID="booking_details_mobile">
@@ -56,7 +58,7 @@ export const BookingDetailsContentMobile = ({
 
       <StyledSeparator />
       <SectionContainer>
-        <BookingDetailsCancelButtonContainer>
+        <BookingDetailsCancelButtonContainer paddingBottom={bottom}>
           <BookingDetailsCancelButton
             booking={booking}
             onCancel={cancelBooking}
@@ -93,9 +95,11 @@ const TicketCutoutContainer = styled.View({
   alignSelf: 'center',
 })
 
-const BookingDetailsCancelButtonContainer = styled(Container)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxxl,
-}))
+const BookingDetailsCancelButtonContainer = styled(Container)<{ paddingBottom: number }>(
+  ({ paddingBottom, theme }) => ({
+    paddingBottom: paddingBottom + theme.designSystem.size.spacing.xl,
+  })
+)
 
 const ErrorBannerContainer = styled(Container)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxl,
