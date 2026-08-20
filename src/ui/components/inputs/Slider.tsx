@@ -50,6 +50,12 @@ export function Slider(props: Props) {
   const [values, setValues] = useState<ValuesType>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
 
+  useEffect(() => {
+    if (props.values) {
+      setValues(props.values)
+    }
+  }, [props.values])
+
   const getRelativeStepFromKey = (key: string) => {
     if (['ArrowUp', 'ArrowRight'].includes(key)) {
       return step
@@ -60,6 +66,9 @@ export function Slider(props: Props) {
   const updateCursor = (e: Event, cursor: string) => {
     const relativeStep = getRelativeStepFromKey((e as KeyboardEvent).key)
     if (relativeStep === null || ![LEFT_CURSOR, RIGHT_CURSOR].includes(cursor)) return
+
+    e.preventDefault()
+    e.stopPropagation()
 
     let nextValues: ValuesType = [min, max]
     setValues((previousValues) => {
@@ -77,10 +86,12 @@ export function Slider(props: Props) {
                 Math.max(Math.min(max, previousValues[1] + relativeStep), previousValues[0]),
               ] // Right cursor's value needs to be greater than left cursor's value, but less than max
       }
+
+      props.onValuesChange?.(nextValues)
+      props.onValuesChangeFinish?.(nextValues)
+
       return nextValues
     })
-
-    props.onValuesChangeFinish?.(nextValues)
   }
 
   const updateLeftCursor = (e: Event) => {
@@ -100,7 +111,7 @@ export function Slider(props: Props) {
         ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[data-testid="slider-control"]')
         leftCursor?.addEventListener('keydown', updateLeftCursor)
         rightCursor?.addEventListener('keydown', updateRightCursor)
-
+        leftCursor?.setAttribute('tabindex', '0')
         leftCursor?.setAttribute('role', 'slider')
         leftCursor?.setAttribute('aria-valuemin', `${min}`)
         leftCursor?.setAttribute('aria-valuemax', `${values.length === 1 ? max : values[1]}`)
@@ -110,7 +121,7 @@ export function Slider(props: Props) {
           leftCursor?.setAttribute('aria-labelledby', props.accessibilityLabelledBy)
         leftCursor?.setAttribute('aria-valuetext', leftCursorValue)
         leftCursor?.setAttribute('title', leftCursorValue)
-
+        rightCursor?.setAttribute('tabindex', '0')
         rightCursor?.setAttribute('role', 'slider')
         rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
         rightCursor?.setAttribute('aria-valuemax', `${max}`)
