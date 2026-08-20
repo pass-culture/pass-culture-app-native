@@ -10,6 +10,7 @@ import Animated, {
 import { scheduleOnRN } from 'react-native-worklets'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 
 import { ModalScreenWrapperProps } from './ModalScreenWrapper'
@@ -51,7 +52,10 @@ export const ModalScreenWrapper = ({ onClose, children, fullScreen }: ModalScree
             accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
           />
           <ModalContainer
-            entering={MODAL_ENTERING}
+            role={AccessibilityRole.DIALOG}
+            aria-modal
+            aria-labelledby={title}
+            tabIndex={-1}
             exiting={createModalExiting(onClose)}
             fullScreen={fullScreen}>
             {children(closeWithTransition)}
