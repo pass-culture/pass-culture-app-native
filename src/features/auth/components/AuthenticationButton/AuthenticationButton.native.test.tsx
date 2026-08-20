@@ -36,7 +36,7 @@ describe('<AuthenticationButton />', () => {
 
   it('should navigate to the LoginMethodsWithLastLoginInfo page when last login info exists', async () => {
     jest.mocked(getLastLoginInfo).mockResolvedValueOnce({
-      maskedEmail: 'rog*************@passculture.gen',
+      maskedEmail: 'rog*************@gmail.com',
       provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
       lastLoginAt: '18/08/2026',
     })
@@ -72,7 +72,7 @@ describe('<AuthenticationButton />', () => {
 
   it('should navigate to the LoginMethodsWithLastLoginInfo page with additional params when last login info exists', async () => {
     jest.mocked(getLastLoginInfo).mockResolvedValueOnce({
-      maskedEmail: 'rog*************@passculture.gen',
+      maskedEmail: 'rog*************@gmail.com',
       provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
       lastLoginAt: '18/08/2026',
     })

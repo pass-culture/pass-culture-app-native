@@ -32,32 +32,20 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const LAST_LOGIN_INFO_EMAIL: FormattedLastLoginInfo = {
-  maskedEmail: 'rog*************@passculture.gen',
-  provider: {
-    label: 'E-mail',
-    icon: EmailFilled,
-    type: Provider.EMAIL,
-  },
+  maskedEmail: 'rog*************@gmail.com',
+  provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
   lastLoginAt: '17/08/2026',
 }
 
 const LAST_LOGIN_INFO_GOOGLE: FormattedLastLoginInfo = {
-  maskedEmail: 'rog*************@passculture.gen',
-  provider: {
-    label: 'Google',
-    icon: Google,
-    type: Provider.GOOGLE,
-  },
+  maskedEmail: 'rog*************@gmail.com',
+  provider: { label: 'Google', icon: Google, type: Provider.GOOGLE },
   lastLoginAt: '17/08/2026',
 }
 
 const LAST_LOGIN_INFO_APPLE: FormattedLastLoginInfo = {
-  maskedEmail: 'rog*************@passculture.gen',
-  provider: {
-    label: 'Apple',
-    icon: Apple,
-    type: Provider.APPLE,
-  },
+  maskedEmail: 'rog*************@apple.com',
+  provider: { label: 'Apple', icon: Apple, type: Provider.APPLE },
   lastLoginAt: '17/08/2026',
 }
 

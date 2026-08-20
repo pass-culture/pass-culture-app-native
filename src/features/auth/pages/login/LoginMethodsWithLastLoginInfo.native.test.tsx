@@ -46,19 +46,19 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 const LAST_LOGIN_INFO_EMAIL: FormattedLastLoginInfo = {
-  maskedEmail: 'rog*************@passculture.gen',
+  maskedEmail: 'rog*************@gmail.com',
   provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
   lastLoginAt: '17/08/2026',
 }
 
 const LAST_LOGIN_INFO_GOOGLE: FormattedLastLoginInfo = {
-  maskedEmail: 'rog*************@passculture.gen',
+  maskedEmail: 'rog*************@gmail.com',
   provider: { label: 'Google', icon: Google, type: Provider.GOOGLE },
   lastLoginAt: '17/08/2026',
 }
 
 const LAST_LOGIN_INFO_APPLE: FormattedLastLoginInfo = {
-  maskedEmail: 'rog*************@passculture.gen',
+  maskedEmail: 'rog*************@apple.com',
   provider: { label: 'Apple', icon: Apple, type: Provider.APPLE },
   lastLoginAt: '17/08/2026',
 }
@@ -87,7 +87,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
   it('should display the last login information', async () => {
     renderLoginMethodsWithLastLoginInfo()
 
-    expect(await screen.findByText('rog*************@passculture.gen')).toBeOnTheScreen()
+    expect(await screen.findByText('rog*************@gmail.com')).toBeOnTheScreen()
     expect(screen.getByText('E-mail')).toBeOnTheScreen()
     expect(screen.getByText('Connecté pour la dernière fois le 17/08/2026')).toBeOnTheScreen()
   })
@@ -99,21 +99,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       renderLoginMethodsWithLastLoginInfo()
 
       expect(await screen.findByText('Se connecter avec Google')).toBeOnTheScreen()
-    })
-
-    it('should not display the Apple sign in button', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO])
-
-      renderLoginMethodsWithLastLoginInfo()
-
-      expect(await screen.findByText('Se connecter avec Google')).toBeOnTheScreen()
       expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
-    })
-
-    it('should not display the email sign in button', async () => {
-      renderLoginMethodsWithLastLoginInfo()
-
-      expect(await screen.findByText('Se connecter avec Google')).toBeOnTheScreen()
       expect(screen.queryByText('Continuer avec mon e-mail')).not.toBeOnTheScreen()
     })
   })
@@ -127,6 +113,8 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       renderLoginMethodsWithLastLoginInfo()
 
       expect(await screen.findByText('Se connecter avec Apple')).toBeOnTheScreen()
+      expect(screen.queryByText('Se connecter avec Google')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Continuer avec mon e-mail')).not.toBeOnTheScreen()
     })
 
     it('should not display the Apple sign in button when Apple SSO is disabled', async () => {
@@ -143,6 +131,8 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       renderLoginMethodsWithLastLoginInfo()
 
       expect(await screen.findByText('Continuer avec mon e-mail')).toBeOnTheScreen()
+      expect(screen.queryByText('Se connecter avec Google')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Se connecter avec Apple')).not.toBeOnTheScreen()
     })
 
     it('should navigate to Login when the email sign in button is clicked', async () => {
@@ -152,14 +142,6 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       await user.press(emailButton)
 
       expect(navigate).toHaveBeenCalledWith('Login', {})
-    })
-
-    it('should not display the Google sign in button', async () => {
-      renderLoginMethodsWithLastLoginInfo()
-
-      await screen.findByText('Continuer avec mon e-mail')
-
-      expect(screen.queryByText('Se connecter avec Google')).not.toBeOnTheScreen()
     })
   })
 
@@ -190,9 +172,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       const signupButton = await screen.findByText('Créer un compte')
       await user.press(signupButton)
 
-      expect(analytics.logSignUpClicked).toHaveBeenCalledWith({
-        from: 'loginMethods',
-      })
+      expect(analytics.logSignUpClicked).toHaveBeenCalledWith({ from: 'loginMethods' })
     })
   })
 
@@ -201,10 +181,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       jest.mocked(getLastLoginInfo).mockResolvedValueOnce(LAST_LOGIN_INFO_GOOGLE)
 
       mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 429,
-          data: { code: 'TOO_MANY_ATTEMPTS', general: [] },
-        },
+        responseOptions: { statusCode: 429, data: { code: 'TOO_MANY_ATTEMPTS', general: [] } },
       })
 
       renderLoginMethodsWithLastLoginInfo()
@@ -221,10 +198,7 @@ describe('<LoginMethodsWithLastLoginInfo />', () => {
       jest.mocked(getLastLoginInfo).mockResolvedValueOnce(LAST_LOGIN_INFO_GOOGLE)
 
       mockServer.postApi<SignInResponseFailure['content']>('/v2/oauth/google/authorize', {
-        responseOptions: {
-          statusCode: 500,
-          data: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-        },
+        responseOptions: { statusCode: 500, data: { code: 'NETWORK_REQUEST_FAILED', general: [] } },
       })
 
       renderLoginMethodsWithLastLoginInfo()
@@ -325,6 +299,4 @@ const renderLoginMethodsWithLastLoginInfo = () => {
   )
 }
 
-const mockMeApiCall = (response: UserProfile) => {
-  mockServer.getApi<UserProfile>('/v1/me', response)
-}
+const mockMeApiCall = (response: UserProfile) => mockServer.getApi<UserProfile>('/v1/me', response)

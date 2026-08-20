@@ -21,13 +21,13 @@ describe('getLastLoginInfo', () => {
   describe('when the provider is Google', () => {
     it('should return the Google provider label and icon', async () => {
       jest.mocked(storage.readObject).mockResolvedValueOnce({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: Provider.GOOGLE,
         lastLoginAt: '2026-08-17T14:11:41.595Z',
       })
 
       await expect(getLastLoginInfo()).resolves.toEqual({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: { label: 'Google', icon: Google, type: Provider.GOOGLE },
         lastLoginAt: '17/08/2026',
       })
@@ -37,13 +37,13 @@ describe('getLastLoginInfo', () => {
   describe('when the provider is Apple', () => {
     it('should return the Apple provider label and icon', async () => {
       jest.mocked(storage.readObject).mockResolvedValueOnce({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@apple.com',
         provider: Provider.APPLE,
         lastLoginAt: '2026-08-17T14:11:41.595Z',
       })
 
       await expect(getLastLoginInfo()).resolves.toEqual({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@apple.com',
         provider: { label: 'Apple', icon: Apple, type: Provider.APPLE },
         lastLoginAt: '17/08/2026',
       })
@@ -53,13 +53,13 @@ describe('getLastLoginInfo', () => {
   describe('when the provider is email', () => {
     it('should return the email provider label and icon', async () => {
       jest.mocked(storage.readObject).mockResolvedValueOnce({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: Provider.EMAIL,
         lastLoginAt: '2026-08-17T14:11:41.595Z',
       })
 
       await expect(getLastLoginInfo()).resolves.toEqual({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
         lastLoginAt: '17/08/2026',
       })
@@ -69,13 +69,13 @@ describe('getLastLoginInfo', () => {
   describe('when the last login date is invalid', () => {
     it('should return an empty lastLoginAt', async () => {
       jest.mocked(storage.readObject).mockResolvedValueOnce({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: Provider.EMAIL,
         lastLoginAt: 'invalid-date',
       })
 
       await expect(getLastLoginInfo()).resolves.toEqual({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: { label: 'E-mail', icon: EmailFilled, type: Provider.EMAIL },
         lastLoginAt: '',
       })
@@ -85,7 +85,7 @@ describe('getLastLoginInfo', () => {
   describe('when the provider is invalid', () => {
     it('should return null', async () => {
       jest.mocked(storage.readObject).mockResolvedValueOnce({
-        maskedEmail: 'rog*************@passculture.gen',
+        maskedEmail: 'rog*************@gmail.com',
         provider: 'invalid-provider' as Provider,
         lastLoginAt: '2026-08-17T14:11:41.595Z',
       })
