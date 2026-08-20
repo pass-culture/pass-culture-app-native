@@ -301,779 +301,784 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
           </Text>
         </View>
         <View
+          accessibilityRole="list"
           display="vertical"
           style={
             {
               "flexDirection": "column",
               "flexWrap": "nowrap",
               "gap": 8,
+              "paddingLeft": 0,
             }
           }
           variant="detailed"
         >
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un festival,"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un festival,"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un festival,"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un festival,"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Participé à un festival,
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  à une avant-première
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  fill="#6123df"
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Participé à un festival,
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    à une avant-première
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    fill="#6123df"
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Assisté à un spectacle"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Assisté à un spectacle"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Assisté à un spectacle"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Assisté à un spectacle"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Assisté à un spectacle
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Pièce de théâtre, cirque, danse...
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Assisté à un spectacle
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Pièce de théâtre, cirque, danse...
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à la bibliothèque"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à la bibliothèque"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à la bibliothèque"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à la bibliothèque"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Allé à la bibliothèque
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  ou à la médiathèque
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Allé à la bibliothèque
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    ou à la médiathèque
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un jeu"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un jeu"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un jeu"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un jeu"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Participé à un jeu
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  escape game, jeu concours
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Participé à un jeu
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    escape game, jeu concours
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à un concert"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à un concert"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à un concert"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à un concert"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
-                <Text
+                <View
+                  disabled={false}
                   isHover={false}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
@@ -1084,140 +1089,148 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
-                  Allé à un concert
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Allé à un concert
                   </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé au cinéma"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé au cinéma"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé au cinéma"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé au cinéma"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
-                <Text
+                <View
+                  disabled={false}
                   isHover={false}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
@@ -1228,632 +1241,664 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
-                  Allé au cinéma
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Allé au cinéma
                   </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Visité un musée,"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Visité un musée,"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Visité un musée,"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Visité un musée,"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Visité un musée,
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  un monument, une exposition...
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Visité un musée,
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    un monument, une exposition...
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à une conférence,"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à une conférence,"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à une conférence,"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à une conférence,"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Participé à une conférence,
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  rencontre ou découverte des métiers de la culture
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Participé à une conférence,
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    rencontre ou découverte des métiers de la culture
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Pris un cours"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Pris un cours"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Pris un cours"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Pris un cours"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Pris un cours
-                </Text>
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  danse, théâtre, musique, dessin
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
                 <View
-                  height={32}
-                  width={32}
+                  disabled={false}
+                  isHover={false}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  state={
+                    [
+                      "default",
+                    ]
+                  }
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Pris un cours
                   </Text>
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    danse, théâtre, musique, dessin
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Aucune de ces sorties culturelles"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "display": "flex",
+              }
             }
-            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Aucune de ces sorties culturelles"
           >
             <View
-              style={
+              accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Aucune de ces sorties culturelles"
+              accessibilityRole="checkbox"
+              accessibilityState={
                 {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "cursor": "pointer",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Aucune de ces sorties culturelles"
             >
               <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
                 style={
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "columnGap": 12,
+                    "flexDirection": "row",
                   }
                 }
               >
-                <Text
+                <View
+                  disabled={false}
                   isHover={false}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
@@ -1864,30 +1909,67 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                   style={
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderColor": "#90949d",
+                      "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "borderWidth": 2,
+                      "height": 20,
+                      "justifyContent": "center",
+                      "width": 20,
+                    }
+                  }
+                  variant="detailed"
+                />
+                <View
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
-                  Aucune de ces sorties culturelles
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    isHover={false}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    state={
+                      [
+                        "default",
+                      ]
+                    }
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Aucune de ces sorties culturelles
                   </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <View
+                    height={32}
+                    width={32}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>

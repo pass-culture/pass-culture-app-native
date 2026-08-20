@@ -105,18 +105,20 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              gap={2}
+              accessibilityRole="list"
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
                   "overflow": "hidden",
+                  "paddingLeft": 0,
                 }
               }
               testID="tagsContainer"
             >
               <View
+                accessibilityRole="none"
                 backgroundColor="#f1f1f4"
                 isZoomed={true}
                 style={
@@ -3469,18 +3471,20 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             }
           >
             <View
-              gap={2}
+              accessibilityRole="list"
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
                   "overflow": "hidden",
+                  "paddingLeft": 0,
                 }
               }
               testID="tagsContainer"
             >
               <View
+                accessibilityRole="none"
                 backgroundColor="#f1f1f4"
                 isZoomed={true}
                 style={
@@ -6833,18 +6837,20 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             }
           >
             <View
-              gap={2}
+              accessibilityRole="list"
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
                   "overflow": "hidden",
+                  "paddingLeft": 0,
                 }
               }
               testID="tagsContainer"
             >
               <View
+                accessibilityRole="none"
                 backgroundColor="#f1f1f4"
                 isZoomed={true}
                 style={

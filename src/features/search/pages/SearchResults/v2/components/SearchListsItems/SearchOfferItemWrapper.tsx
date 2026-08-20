@@ -11,6 +11,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
+import { VerticalUl } from 'ui/components/Ul'
 import { RATIO_HOME_IMAGE } from 'ui/theme'
 
 type SearchOfferItemWrapper = {
@@ -41,7 +42,7 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
   const isGridLayout = enableGridList && !isWeb && gridListLayout === GridListLayout.GRID
 
   return (
-    <React.Fragment>
+    <VerticalUl>
       {isGridLayout ? (
         <OfferTileWrapper
           item={item}
@@ -63,6 +64,6 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
           }}
         />
       )}
-    </React.Fragment>
+    </VerticalUl>
   )
 }

@@ -5,9 +5,11 @@ import styled from 'styled-components/native'
 import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
+import { Li } from 'ui/components/Li'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainerFlexStart'
@@ -29,70 +31,82 @@ export const AccessibilityFooter = ({ withHorizontalMargin = false }: Accessibil
         <LogoContainer>
           <ColoredPassCultureLogo />
         </LogoContainer>
-        <LinksContainer gap={6}>
-          <ButtonContainerFlexStart>
-            <InternalTouchableLink
-              navigateTo={getProfilePropConfig('Accessibility')}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              size="small"
-              wording="Accessibilité&nbsp;: partiellement conforme"
-            />
-          </ButtonContainerFlexStart>
-          <ButtonContainerFlexStart>
-            <InternalTouchableLink
-              navigateTo={getProfilePropConfig('SiteMapScreen')}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              size="small"
-              wording="Plan du site"
-            />
-          </ButtonContainerFlexStart>
-          <ButtonContainerFlexStart>
-            <InternalTouchableLink
-              navigateTo={getProfilePropConfig('LegalNotices')}
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              size="small"
-              wording="Informations légales"
-            />
-          </ButtonContainerFlexStart>
-          <ButtonContainerFlexStart>
-            <ExternalTouchableLink
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              size="small"
-              wording="Conditions Générales d’Utilisation"
-              externalNav={{ url: env.CGU_LINK }}
-              icon={ExternalSiteFilled}
-            />
-          </ButtonContainerFlexStart>
-          <ButtonContainerFlexStart>
-            <ExternalTouchableLink
-              as={Button}
-              size="small"
-              variant="tertiary"
-              color="neutral"
-              wording="Charte des données personnelles"
-              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-              icon={ExternalSiteFilled}
-            />
-          </ButtonContainerFlexStart>
-          <ButtonContainerFlexStart>
-            <ExternalTouchableLink
-              as={Button}
-              size="small"
-              variant="tertiary"
-              color="neutral"
-              wording="Charte d’utilisation et de bonne conduite"
-              externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
-              icon={ExternalSiteFilled}
-            />
-          </ButtonContainerFlexStart>
+        <LinksContainer>
+          <Li>
+            <ButtonContainerFlexStart>
+              <InternalTouchableLink
+                navigateTo={getProfilePropConfig('Accessibility')}
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                size="small"
+                wording="Accessibilité&nbsp;: partiellement conforme"
+              />
+            </ButtonContainerFlexStart>
+          </Li>
+          <Li>
+            <ButtonContainerFlexStart>
+              <InternalTouchableLink
+                navigateTo={getProfilePropConfig('SiteMapScreen')}
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                size="small"
+                wording="Plan du site"
+              />
+            </ButtonContainerFlexStart>
+          </Li>
+          <Li>
+            <ButtonContainerFlexStart>
+              <InternalTouchableLink
+                navigateTo={getProfilePropConfig('LegalNotices')}
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                size="small"
+                wording="Informations légales"
+              />
+            </ButtonContainerFlexStart>
+          </Li>
+          <Li>
+            <ButtonContainerFlexStart>
+              <ExternalTouchableLink
+                as={Button}
+                variant="tertiary"
+                color="neutral"
+                size="small"
+                wording="Conditions Générales d’Utilisation"
+                externalNav={{ url: env.CGU_LINK }}
+                icon={ExternalSiteFilled}
+              />
+            </ButtonContainerFlexStart>
+          </Li>
+          <Li>
+            <ButtonContainerFlexStart>
+              <ExternalTouchableLink
+                as={Button}
+                size="small"
+                variant="tertiary"
+                color="neutral"
+                wording="Charte des données personnelles"
+                externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+                icon={ExternalSiteFilled}
+              />
+            </ButtonContainerFlexStart>
+          </Li>
+          <Li>
+            <ButtonContainerFlexStart>
+              <ExternalTouchableLink
+                as={Button}
+                size="small"
+                variant="tertiary"
+                color="neutral"
+                wording="Charte d’utilisation et de bonne conduite"
+                externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+                icon={ExternalSiteFilled}
+              />
+            </ButtonContainerFlexStart>
+          </Li>
         </LinksContainer>
         <LogoContainer>
           <LogoFrenchRepublic />
@@ -116,12 +130,13 @@ const Container = styled(ViewGap)(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
 }))
 
-const LinksContainer = styled(ViewGap)(({ theme }) => ({
+const LinksContainer = styled(Ul)(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : 'flex-start',
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
   flexWrap: theme.isDesktopViewport ? 'wrap' : undefined,
   flex: theme.isDesktopViewport ? 1 : undefined,
   justifyContent: 'center',
+  gap: theme.designSystem.size.spacing.xl,
   marginHorizontal: getSpacing(theme.isDesktopViewport ? 25 : 0),
 }))
 

@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Avatar, AvatarProps } from 'ui/components/Avatar/Avatar'
@@ -19,6 +20,7 @@ type AvatarListItemProps = {
   accessibilityLabel?: string
   withPush?: boolean
   footer?: React.ReactNode
+  containerHeight?: number
 } & AvatarProps
 
 export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
@@ -34,7 +36,27 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   footer,
   ...props
 }) => {
-  const numberOfLines = useNumberOfLine(2)
+  const theme = useTheme()
+  const MAX_NUMBER_OF_LINES = 2
+  const numberOfLines = useNumberOfLine(MAX_NUMBER_OF_LINES)
+
+  const avatarToTextGap = theme.designSystem.size.spacing.s
+  const contentToFooterGap = theme.designSystem.size.spacing.xl
+  const artistNameLineHeight = getLineHeightPx(
+    theme.designSystem.typography.bodyAccentS.lineHeight,
+    true
+  )
+  const artistRoleLineHeight = getLineHeightPx(
+    theme.designSystem.typography.bodyAccentXs.lineHeight,
+    true
+  )
+  const contentHeight =
+    (size ?? 0) +
+    avatarToTextGap +
+    artistNameLineHeight * MAX_NUMBER_OF_LINES +
+    artistRoleLineHeight * MAX_NUMBER_OF_LINES +
+    contentToFooterGap
+
   const content = (
     <StyledView gap={2} isFullWidth={isFullWidth}>
       <Avatar size={size} {...props}>
@@ -80,17 +102,19 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   }
 
   return (
-    <ItemWithFooter gap={2}>
+    <ItemWithFooter gap={2} containerHeight={contentHeight}>
       {wrapped}
       {footer}
     </ItemWithFooter>
   )
 }
 
-const ItemWithFooter = styled(ViewGap)({
+const ItemWithFooter = styled(ViewGap)<{ containerHeight?: number }>(({ containerHeight }) => ({
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'space-between',
-})
+  height: containerHeight,
+}))
 
 const ArtistName = styled(Typo.BodyAccentS)<{
   maxWidth: number

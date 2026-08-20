@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { AlgoliaVenue } from 'libs/algolia/types'
+import { Ul } from 'ui/components/Ul'
 import { MARGIN_DP } from 'ui/theme'
 
 type SearchVenueItemWrapper = {
@@ -35,6 +36,6 @@ export const SearchVenueItemWrapper: FC<SearchVenueItemWrapper> = ({ item, index
   )
 }
 
-const SearchVenueItemContainer = styled.View({
+const SearchVenueItemContainer = styled(Ul)({
   marginBottom: MARGIN_DP,
 })

@@ -341,7 +341,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           role="list"
                         >
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-175oi2r r-display-ixj5dj r-listStyleType-q6ctzv"
                             role="listitem"
                           >
                             <a
@@ -371,7 +371,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-175oi2r r-display-ixj5dj r-listStyleType-q6ctzv"
                             role="listitem"
                           >
                             <a
@@ -401,7 +401,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-175oi2r r-display-ixj5dj r-listStyleType-q6ctzv"
                             role="listitem"
                           >
                             <a
@@ -431,7 +431,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             </a>
                           </li>
                           <li
-                            class="css-view-175oi2r r-display-ixj5dj"
+                            class="css-view-175oi2r r-display-ixj5dj r-listStyleType-q6ctzv"
                             role="listitem"
                           >
                             <a

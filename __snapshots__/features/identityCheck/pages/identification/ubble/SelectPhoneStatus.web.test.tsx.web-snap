@@ -173,7 +173,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-listStyleType-q6ctzv"
                     role="listitem"
                   >
                     <div
@@ -235,7 +235,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                     />
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-listStyleType-q6ctzv"
                     role="listitem"
                   >
                     <div
