@@ -87,6 +87,7 @@ const ModalContainer = styled(Animated.View)<{ fullScreen?: boolean }>(({ theme,
   borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
   borderTopRightRadius: theme.designSystem.size.borderRadius.l,
   overflow: 'hidden',
+  paddingBottom: theme.isMobileViewport ? theme.tabBar.height : undefined,
   ...(theme.isDesktopViewport
     ? {
         borderBottomLeftRadius: theme.designSystem.size.borderRadius.l,
