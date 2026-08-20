@@ -73,7 +73,7 @@ describe('<SuspendProfileReason />', () => {
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
-      screen: 'DeleteProfileAccountHacked',
+      screen: 'SuspendProfileAccountHacked',
     })
   })
 })

@@ -67,12 +67,7 @@ const genericInfoPageIllustrations: GenericInfoPageIllustrationItem[] = [
   {
     name: 'ProfileDeletion',
     Illustration: ProfileDeletion,
-    contexts: [
-      'SuspendedAccountUponUserRequest',
-      'DeactivateProfileSuccess',
-      'DeleteProfileConfirmation',
-      'DeleteProfileSuccess',
-    ],
+    contexts: ['DeactivateProfileSuccess', 'DeleteProfileConfirmation', 'DeleteProfileSuccess'],
   },
   {
     name: 'ErrorIllustration',
