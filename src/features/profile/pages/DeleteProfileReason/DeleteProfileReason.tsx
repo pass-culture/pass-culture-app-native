@@ -1,32 +1,15 @@
-import React, { useMemo } from 'react'
-import { FlatList, Platform, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
-import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics/provider'
+import {
+  BaseLeaveProfileReason,
+  ReasonButton,
+} from 'features/profile/pages/SuspendProfileReason/BaseLeaveProfileReason'
 import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 import { getAge } from 'shared/user/getAge'
-import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { SadFace } from 'ui/svg/icons/SadFace'
-import { Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
-const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
-
-const isWeb = Platform.OS === 'web'
-
-type ReasonButton = {
-  wording: string
-  navigateTo: InternalNavigationProps['navigateTo']
-  analyticsReason: string
-}
-
-const reasonButtons = (canDelete: boolean): ReasonButton[] => [
+const deleteReasonButtons = (canDelete: boolean): ReasonButton[] => [
   {
     wording: 'J’aimerais créer un compte avec une adresse e-mail différente',
     navigateTo: { ...getProfilePropConfig('ChangeEmail', { showModal: true }) },
@@ -60,13 +43,6 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
     analyticsReason: 'dataDeletion',
   },
   {
-    wording: 'Je pense que quelqu’un d’autre a accès à mon compte',
-    navigateTo: {
-      ...getProfilePropConfig('DeleteProfileAccountHacked'),
-    },
-    analyticsReason: 'hackedAccount',
-  },
-  {
     wording: 'Autre',
     navigateTo: {
       ...getProfilePropConfig('DeleteProfileContactSupport'),
@@ -75,85 +51,18 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
   },
 ]
 
-export function DeleteProfileReason() {
+export const DeleteProfileReason = () => {
   const { user } = useAuthContext()
   const userIsDefinedAndAbove21 = user?.birthDate && getAge(user?.birthDate) >= 21
   const canDeleteProfile = (!!user && !isCurrentBeneficiary(user)) || userIsDefinedAndAbove21
-  const reasons = reasonButtons(!!canDeleteProfile)
-  const { goBack } = useGoBack(...getTabHookConfig('Profile'))
-  const theme = useTheme()
-  const flatListStyles: ViewStyle = useMemo(
-    () => ({
-      paddingHorizontal: theme.contentPage.marginHorizontal,
-      paddingBottom: theme.designSystem.size.spacing.xxl,
-      maxWidth: theme.contentPage.maxWidth,
-      width: '100%',
-      alignSelf: 'center',
-      gap: theme.designSystem.size.spacing.l, //works only on mobile
-    }),
-    [theme]
-  )
+  const reasons = deleteReasonButtons(!!canDeleteProfile)
 
   return (
-    <PageWithHeader
-      shouldLimitWidth
-      onGoBack={goBack}
-      title="Suppression de compte"
-      scrollChildren={
-        <FlatList
-          viewabilityConfig={VIEWABILITY_CONFIG}
-          ListHeaderComponent={
-            <HeaderContainer>
-              <StyledIcon />
-              <TitlesContainer>
-                <Typo.Title3 {...getTextSemanticAttrs(1)}>
-                  Pourquoi souhaites-tu supprimer ton compte&nbsp;?
-                </Typo.Title3>
-                <Typo.Body>
-                  Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
-                  l’application.
-                </Typo.Body>
-              </TitlesContainer>
-            </HeaderContainer>
-          }
-          ListFooterComponent={Spacer.BottomScreen}
-          contentContainerStyle={flatListStyles}
-          data={reasons}
-          renderItem={({ item }) => {
-            const { wording, navigateTo, analyticsReason } = item
-            return (
-              <ItemContainer>
-                <HeroButtonList
-                  Title={<Typo.BodyAccent>{wording}</Typo.BodyAccent>}
-                  navigateTo={navigateTo}
-                  onBeforeNavigate={() => analytics.logSelectDeletionReason(analyticsReason)}
-                  accessibilityLabel={wording}
-                />
-              </ItemContainer>
-            )
-          }}
-        />
-      }
+    <BaseLeaveProfileReason
+      pageTitle="Suppression de compte"
+      title="Pourquoi souhaites-tu supprimer ton compte&nbsp;?"
+      subtitle="Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer l’application."
+      reasonsButtons={reasons}
     />
   )
 }
-
-const ItemContainer = styled.View(({ theme }) => ({
-  paddingBottom: isWeb ? theme.designSystem.size.spacing.l : 0,
-}))
-
-const HeaderContainer = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  paddingBottom: theme.designSystem.size.spacing.s,
-}))
-
-const TitlesContainer = styled.View(({ theme }) => ({
-  alignItems: 'flex-start',
-  gap: theme.designSystem.size.spacing.l,
-  width: '100%',
-}))
-
-const StyledIcon = styled(SadFace).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.medium,
-  color: theme.designSystem.color.icon.brandPrimary,
-}))({ width: '100%' })

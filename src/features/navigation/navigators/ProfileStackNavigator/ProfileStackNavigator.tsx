@@ -40,6 +40,7 @@ import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewE
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
+import { SuspendProfileReason } from 'features/profile/pages/SuspendProfileReason/SuspendProfileReason'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
@@ -121,6 +122,12 @@ const profileStackNavigatorPathDefinition = {
       screen: DebugScreen,
       linking: { path: 'profil/debuggage' },
       options: { title: 'Debuggage' },
+    },
+    SuspendProfileReason: {
+      screen: SuspendProfileReason,
+      if: useIsSignedIn,
+      linking: { path: 'profil/suspension/raison' },
+      options: { title: 'Suspension du profil - Raison' },
     },
     ConfirmDeleteProfile: {
       screen: ConfirmDeleteProfile,

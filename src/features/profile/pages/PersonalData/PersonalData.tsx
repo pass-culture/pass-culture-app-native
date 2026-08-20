@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
@@ -19,6 +20,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Trash } from 'ui/svg/icons/Trash'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
@@ -89,19 +91,31 @@ export function PersonalData() {
             navigateParams={{ type: PersonalDataTypes.PROFIL_PERSONAL_DATA }}
             accessibilityLabel="Modifier l’adresse de résidence"
           />
-          <ViewGap gap={8}>
-            <Banner
-              label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
-              links={[
-                {
-                  wording: 'Comment gérer tes données personnelles\u00a0?',
-                  externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
-                },
-              ]}
-            />
+
+          <Banner
+            label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+            links={[
+              {
+                wording: 'Comment gérer tes données personnelles\u00a0?',
+                externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
+              },
+            ]}
+          />
+          <StyledViewGap gap={6}>
             <InternalTouchableLink
               as={Button}
               variant="secondary"
+              color="neutral"
+              type="navigable"
+              wording="Suspendre mon compte"
+              navigateTo={getProfilePropConfig('SuspendProfileReason')}
+              onBeforeNavigate={analytics.logAccountDeletion}
+              icon={ProfileDeletion}
+              iconSize={SECTION_ROW_ICON_SIZE}
+            />
+            <InternalTouchableLink
+              as={Button}
+              variant="tertiary"
               color="neutral"
               type="navigable"
               wording="Supprimer mon compte"
@@ -110,9 +124,13 @@ export function PersonalData() {
               icon={Trash}
               iconSize={SECTION_ROW_ICON_SIZE}
             />
-          </ViewGap>
+          </StyledViewGap>
         </React.Fragment>
       }
     />
   )
 }
+
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

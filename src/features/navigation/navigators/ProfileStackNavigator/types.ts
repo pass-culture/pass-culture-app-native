@@ -22,6 +22,7 @@ export type ProfileStackParamList = {
   ConsentSettings: { onGoBack?: () => void; offerId?: number } | undefined
   DeactivateProfileSuccess: undefined
   DebugScreen: undefined
+  SuspendProfileReason: undefined
   DeleteProfileAccountHacked: undefined
   DeleteProfileAccountNotDeletable: undefined
   DeleteProfileConfirmation: undefined
