@@ -15,6 +15,8 @@ import {
 } from 'features/profile/queries/useProfileTokenExpirationQuery'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -29,6 +31,7 @@ function onEmailChangeClick() {
 }
 
 export function PersonalData() {
+  const enableSuspendProfile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SUSPEND_PROFILE)
   const { user } = useAuthContext()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
@@ -96,40 +99,66 @@ export function PersonalData() {
             accessibilityLabel="Modifier l’adresse de résidence"
             withPush
           />
-
-          <Banner
-            label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
-            links={[
-              {
-                wording: 'Comment gérer tes données personnelles\u00a0?',
-                externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
-              },
-            ]}
-          />
-          <StyledViewGap gap={6}>
-            <InternalTouchableLink
-              as={Button}
-              variant="secondary"
-              color="neutral"
-              type="navigable"
-              wording="Suspendre mon compte"
-              navigateTo={getProfilePropConfig('SuspendProfileReason')}
-              onBeforeNavigate={analytics.logAccountDeletion}
-              icon={ProfileDeletion}
-              iconSize={SECTION_ROW_ICON_SIZE}
-            />
-            <InternalTouchableLink
-              as={Button}
-              variant="tertiary"
-              color="neutral"
-              type="navigable"
-              wording="Supprimer mon compte"
-              navigateTo={getProfilePropConfig('DeleteProfileReason')}
-              onBeforeNavigate={analytics.logAccountDeletion}
-              icon={Trash}
-              iconSize={SECTION_ROW_ICON_SIZE}
-            />
-          </StyledViewGap>
+          {enableSuspendProfile ? (
+            <React.Fragment>
+              <Banner
+                label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+                links={[
+                  {
+                    wording: 'Comment gérer tes données personnelles\u00a0?',
+                    externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
+                  },
+                ]}
+              />
+              <StyledViewGap gap={6}>
+                <InternalTouchableLink
+                  as={Button}
+                  variant="secondary"
+                  color="neutral"
+                  type="navigable"
+                  wording="Suspendre mon compte"
+                  navigateTo={getProfilePropConfig('SuspendProfileReason')}
+                  onBeforeNavigate={analytics.logAccountDeletion}
+                  icon={ProfileDeletion}
+                  iconSize={SECTION_ROW_ICON_SIZE}
+                />
+                <InternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  type="navigable"
+                  wording="Supprimer mon compte"
+                  navigateTo={getProfilePropConfig('DeleteProfileReason')}
+                  onBeforeNavigate={analytics.logAccountDeletion}
+                  icon={Trash}
+                  iconSize={SECTION_ROW_ICON_SIZE}
+                />
+              </StyledViewGap>
+            </React.Fragment>
+          ) : (
+            <ViewGap gap={8}>
+              <Banner
+                label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+                links={[
+                  {
+                    wording: 'Comment gérer tes données personnelles\u00a0?',
+                    externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
+                  },
+                ]}
+              />
+              <InternalTouchableLink
+                as={Button}
+                variant="secondary"
+                color="neutral"
+                type="navigable"
+                wording="Supprimer mon compte"
+                navigateTo={getProfilePropConfig('DeleteProfileReason')}
+                onBeforeNavigate={analytics.logAccountDeletion}
+                icon={Trash}
+                iconSize={SECTION_ROW_ICON_SIZE}
+              />
+            </ViewGap>
+          )}
         </React.Fragment>
       }
     />

@@ -5,6 +5,8 @@ import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -31,9 +33,20 @@ jest.useFakeTimers()
 describe('<DeleteProfileReason />', () => {
   beforeEach(() => {
     jest.setSystemTime(new Date('2020-01-01'))
+
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_SUSPEND_PROFILE])
   })
 
   it('should match snapshot', () => {
+    mockAuthContextWithUser(nonBeneficiaryUser)
+    render(<DeleteProfileReason />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should match snapshot when FF off', () => {
+    setFeatureFlags([])
+
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<DeleteProfileReason />)
 

@@ -9,6 +9,8 @@ import { UserProfile } from 'features/share/types'
 import { beneficiaryUser, beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -54,6 +56,7 @@ describe('PersonalData', () => {
     mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
       expiration: null,
     })
+    setFeatureFlags([])
   })
 
   it('should render personal data success', async () => {
@@ -241,5 +244,15 @@ describe('PersonalData', () => {
     render(reactQueryProviderHOC(<PersonalData />))
 
     expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
+  })
+
+  it('should display Suspend button when FF is on', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_SUSPEND_PROFILE])
+
+    mockedUseAuthContext.mockReturnValueOnce(initialAuthContext)
+
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    expect(screen.getByText('Suspendre mon compte')).toBeOnTheScreen()
   })
 })
