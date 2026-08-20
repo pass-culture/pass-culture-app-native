@@ -91,8 +91,6 @@ export const SearchResults: FC = () => {
     }
   }, [searchState.searchId, dispatch])
 
-  const [hasBeenClicked, setHasBeenClicked] = useState(false)
-
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -140,13 +138,7 @@ export const SearchResults: FC = () => {
             {(() => {
               switch (selectedSearchTab) {
                 case 'Offres':
-                  return (
-                    <OffersList
-                      searchFilters={searchFilters}
-                      hasBeenClicked={hasBeenClicked}
-                      setHasBeenClicked={setHasBeenClicked}
-                    />
-                  )
+                  return <OffersList searchFilters={searchFilters} />
                 case 'Lieux':
                   return <VenuesList searchFilters={searchFilters} />
                 case 'Artistes':
@@ -156,8 +148,6 @@ export const SearchResults: FC = () => {
                     <AllSearchResultsList
                       header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
                       searchFilters={searchFilters}
-                      hasBeenClicked={hasBeenClicked}
-                      setHasBeenClicked={setHasBeenClicked}
                     />
                   )
               }
