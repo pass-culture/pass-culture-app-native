@@ -620,8 +620,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
     >
       <View>
         <View
-          accessibilityLabel="Sélectionne ta localisation"
-          accessibilityRole="none"
+          accessibilityLabelledBy="Sélectionne ta localisation"
+          accessibilityRole="radiogroup"
+          onKeyDown={[Function]}
           style={
             {
               "gap": 8,

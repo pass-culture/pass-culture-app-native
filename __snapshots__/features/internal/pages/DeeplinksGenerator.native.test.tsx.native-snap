@@ -395,8 +395,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  accessibilityLabel="Sélectionne une page"
-                  accessibilityRole="none"
+                  accessibilityLabelledBy="Sélectionne une page"
+                  accessibilityRole="radiogroup"
+                  onKeyDown={[Function]}
                   style={
                     {
                       "gap": 8,

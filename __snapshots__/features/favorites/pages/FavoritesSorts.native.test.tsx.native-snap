@@ -258,8 +258,9 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         >
           <View>
             <View
-              accessibilityLabel="Trier par"
-              accessibilityRole="none"
+              accessibilityLabelledBy="Trier par"
+              accessibilityRole="radiogroup"
+              onKeyDown={[Function]}
               style={
                 {
                   "gap": 8,

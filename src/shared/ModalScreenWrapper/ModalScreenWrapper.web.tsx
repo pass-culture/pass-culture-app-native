@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Pressable, StyleSheet } from 'react-native'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Pressable, StyleSheet, View } from 'react-native'
 import Animated, {
   Easing,
   FadeIn,
@@ -32,8 +32,69 @@ const createModalExiting = (onClose: () => void) =>
     }
   })
 
-export const ModalScreenWrapper = ({ onClose, children, fullScreen }: ModalScreenWrapperProps) => {
+export const ModalScreenWrapper = ({
+  title,
+  onClose,
+  children,
+  fullScreen,
+}: ModalScreenWrapperProps) => {
   const [isOpen, setIsOpen] = useState(true)
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false)
+  const modalRef = useRef<View>(null)
+
+  const onAnimationFinished = useCallback(() => {
+    setIsAnimationFinished(true)
+  }, [])
+
+  const enteringAnimation = MODAL_ENTERING.withCallback((finished) => {
+    'worklet'
+    if (finished) {
+      scheduleOnRN(onAnimationFinished)
+    }
+  })
+
+  useEffect(() => {
+    if (isAnimationFinished && modalRef.current) {
+      const node = modalRef.current
+      node?.focus?.()
+    }
+  }, [isAnimationFinished])
+
+  useEffect(() => {
+    if (!isAnimationFinished) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab' || !modalRef.current) return
+
+      const modalElement = modalRef.current as unknown as HTMLElement
+      const focusables = modalElement.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+
+      if (focusables.length === 0) {
+        event.preventDefault()
+        return
+      }
+
+      const firstElement = focusables[0]
+      const lastElement = focusables[focusables.length - 1]
+
+      if (event.shiftKey) {
+        if (document.activeElement === firstElement || document.activeElement === modalElement) {
+          event.preventDefault()
+          lastElement?.focus()
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          event.preventDefault()
+          firstElement?.focus()
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isAnimationFinished])
 
   const closeWithTransition = () => {
     setIsOpen((open) => (open ? false : open))
@@ -52,10 +113,12 @@ export const ModalScreenWrapper = ({ onClose, children, fullScreen }: ModalScree
             accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
           />
           <ModalContainer
+            ref={modalRef}
             role={AccessibilityRole.DIALOG}
             aria-modal
             aria-labelledby={title}
             tabIndex={-1}
+            entering={enteringAnimation}
             exiting={createModalExiting(onClose)}
             fullScreen={fullScreen}>
             {children(closeWithTransition)}
