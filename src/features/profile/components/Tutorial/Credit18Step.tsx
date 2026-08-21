@@ -12,7 +12,7 @@ import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const Credit18Step = ({ amount }) => (
   <InternalStep
@@ -52,7 +52,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
-const StyledTitle3 = styled(Typo.Title3).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3).attrs(setTextSemantic('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 

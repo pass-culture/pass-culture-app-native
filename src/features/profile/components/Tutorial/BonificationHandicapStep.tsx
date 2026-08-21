@@ -28,7 +28,7 @@ import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = { amount: string; isLoggedIn: boolean; user?: UserProfile }
 
@@ -158,7 +158,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
-const StyledTitle3 = styled(Typo.Title3).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3).attrs(setTextSemantic('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
@@ -182,6 +182,6 @@ const Separator = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.l,
 }))
 
-const StyledPlus = styled(Typo.Title2).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
+const StyledPlus = styled(Typo.Title2).attrs(setTextSemantic('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))

@@ -12,7 +12,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Ul } from 'ui/components/Ul'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type SubcategoryButtonListProps = {
   subcategoryButtonContent: SubcategoryButtonItem[]
@@ -132,7 +132,7 @@ const Header = ({
   onBeforeSeeAllNavigate,
 }: HeaderProps) => (
   <HeaderContainer>
-    <Typo.Title4 {...getTextSemanticAttrs('h2')}>Tout parcourir</Typo.Title4>
+    <Typo.Title4 {...setTextSemantic('h2')}>Tout parcourir</Typo.Title4>
     {shouldDisplaySeeAllButton && seeAllNavigateTo ? (
       <InternalTouchableLink
         as={Button}

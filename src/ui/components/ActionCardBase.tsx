@@ -9,7 +9,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type ActionCardLayout = 'split' | 'overlay'
 
@@ -72,12 +72,12 @@ export const ActionCardBase: FunctionComponent<Props> = ({
         </DateText>
       ) : null}
       {title ? (
-        <Title testID="firstLine" numberOfLines={3} {...getTextSemanticAttrs('h2')}>
+        <Title testID="firstLine" numberOfLines={3} {...setTextSemantic('h2')}>
           {title}
         </Title>
       ) : null}
       {subtitle ? (
-        <Subtitle testID="secondLine" numberOfLines={3} {...getTextSemanticAttrs('p')}>
+        <Subtitle testID="secondLine" numberOfLines={3} {...setTextSemantic('p')}>
           {subtitle}
         </Subtitle>
       ) : null}

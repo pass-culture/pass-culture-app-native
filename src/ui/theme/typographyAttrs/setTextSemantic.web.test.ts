@@ -1,6 +1,6 @@
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-describe('getTextSemanticAttrs()', () => {
+describe('setTextSemantic()', () => {
   it.each`
     accessibilityLevel
     ${1}
@@ -10,7 +10,7 @@ describe('getTextSemanticAttrs()', () => {
     ${'p'}
     ${'span'}
   `('should return accessibilityLevel $accessibilityLevel', ({ accessibilityLevel }) => {
-    expect(getTextSemanticAttrs(accessibilityLevel)).toEqual({
+    expect(setTextSemantic(accessibilityLevel)).toEqual({
       accessibilityRole: undefined,
       accessibilityLevel,
     })
