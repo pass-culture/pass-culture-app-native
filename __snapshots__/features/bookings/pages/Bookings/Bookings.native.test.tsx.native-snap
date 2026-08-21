@@ -155,6 +155,8 @@ exports[`Bookings should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             isHover={false}
             isSelected={true}
             style={
@@ -250,6 +252,8 @@ exports[`Bookings should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             isHover={false}
             isSelected={false}
             style={

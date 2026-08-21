@@ -495,6 +495,8 @@ exports[`TrackEmailChange account with password should render correctly when cho
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -728,6 +730,8 @@ exports[`TrackEmailChange account with password should render correctly when cho
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -741,6 +745,8 @@ exports[`TrackEmailChange account with password should render correctly when cho
                               Choisis ta nouvelle adresse e-mail
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -980,6 +986,8 @@ exports[`TrackEmailChange account with password should render correctly when cho
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -1523,6 +1531,8 @@ exports[`TrackEmailChange account with password should render correctly when con
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -1536,6 +1546,8 @@ exports[`TrackEmailChange account with password should render correctly when con
                               Confirme ta demande
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -1779,6 +1791,8 @@ exports[`TrackEmailChange account with password should render correctly when con
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -2008,6 +2022,8 @@ exports[`TrackEmailChange account with password should render correctly when con
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -2540,6 +2556,8 @@ exports[`TrackEmailChange account with password should render correctly when val
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -2762,6 +2780,8 @@ exports[`TrackEmailChange account with password should render correctly when val
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -2991,6 +3011,8 @@ exports[`TrackEmailChange account with password should render correctly when val
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -3004,6 +3026,8 @@ exports[`TrackEmailChange account with password should render correctly when val
                               Valide ta nouvelle adresse
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -3546,6 +3570,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -3768,6 +3794,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -4001,6 +4029,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -4014,6 +4044,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               Choisis ta nouvelle adresse e-mail
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -4253,6 +4285,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -4796,6 +4830,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -4809,6 +4845,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               Confirme ta demande
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -5052,6 +5090,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -5285,6 +5325,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -5514,6 +5556,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -6046,6 +6090,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -6279,6 +6325,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -6292,6 +6340,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               Crée ton mot de passe
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -6535,6 +6585,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -6764,6 +6816,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="disabled"
                               style={
                                 {
@@ -7296,6 +7350,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -7518,6 +7574,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -7740,6 +7798,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="completed"
                               style={
                                 {
@@ -7969,6 +8029,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {
@@ -7982,6 +8044,8 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               Valide ta nouvelle adresse
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               stepState="current"
                               style={
                                 {

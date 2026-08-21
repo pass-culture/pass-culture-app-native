@@ -29,6 +29,8 @@ exports[`<LoadingPage /> should render correctly 1`] = `
     undefined-Lottie-Mock
   </View>
   <Text
+    accessibilityLevel="p"
+    accessibilityRole="text"
     style={
       {
         "color": "#6123df",

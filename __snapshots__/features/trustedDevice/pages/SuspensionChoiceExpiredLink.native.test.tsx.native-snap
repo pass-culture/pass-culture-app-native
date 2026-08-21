@@ -296,6 +296,8 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -411,6 +413,8 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

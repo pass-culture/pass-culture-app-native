@@ -266,6 +266,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -278,6 +280,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Le pass Culture s’engage à rendre ses applications mobiles accessibles conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -334,6 +338,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 État de conformité
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -347,6 +353,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Android
                  est 
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -384,6 +392,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Résultats des tests
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -397,6 +407,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 16/06/2026
                  par la société Access42 révèle que l’application est conforme à 
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -410,6 +422,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </Text>
                  au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -424,6 +438,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 .
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -435,6 +451,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 L’application est conforme à 
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -472,6 +490,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Contenus inaccessibles
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -546,6 +566,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -601,6 +623,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -656,6 +680,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -711,6 +737,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -744,6 +772,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Dérogations pour charge disproportionnée
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -770,6 +800,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Contenus non soumis à l’obligation d’accessibilité
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -830,6 +862,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -885,6 +919,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -940,6 +976,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1030,6 +1068,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1102,6 +1142,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1161,6 +1203,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Établissement de cette déclaration d’accessibilité
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1237,6 +1281,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1292,6 +1338,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1347,6 +1395,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1428,6 +1478,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1483,6 +1535,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1538,6 +1592,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1557,6 +1613,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1595,6 +1653,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Retour d’information et contact
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1606,6 +1666,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               >
                 Il est important de rappeler qu’en vertu de l’article 11 de la loi de février 2005 : 
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -1621,6 +1683,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </Text>
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1633,6 +1697,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Le pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un délai raisonnable, aux informations et fonctionnalités recherchées par la personne handicapée, que le contenu fasse l’objet d’une dérogation ou non.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1686,6 +1752,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Voie de recours
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1698,6 +1766,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou une fonctionnalité de l’application, que vous nous le signalez et que vous ne parvenez pas à obtenir une réponse de notre part, vous êtes en droit de faire parvenir vos doléances ou une demande de saisine au Défenseur des droits.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1728,6 +1798,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </Text>
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1758,6 +1830,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 </Text>
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",

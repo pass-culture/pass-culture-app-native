@@ -312,6 +312,8 @@ exports[`<SetAddress/> should render correctly 1`] = `
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -324,6 +326,8 @@ exports[`<SetAddress/> should render correctly 1`] = `
                           Recherche et sélectionne ton adresse
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -571,6 +575,8 @@ exports[`<SetAddress/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -923,6 +929,8 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -935,6 +943,8 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
                           Recherche et sélectionne ton adresse
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1182,6 +1192,8 @@ exports[`<SetAddress/> when ff phoneNumberInProfileStepper is enabled should ren
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

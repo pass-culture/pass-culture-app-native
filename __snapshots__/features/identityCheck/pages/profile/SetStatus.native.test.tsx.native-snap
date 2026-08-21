@@ -495,6 +495,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -662,6 +664,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -829,6 +833,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -996,6 +1002,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1163,6 +1171,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1330,6 +1340,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1497,6 +1509,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1510,6 +1524,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           Volontaire
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1677,6 +1693,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1690,6 +1708,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           Inactif
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1857,6 +1877,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1870,6 +1892,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           Chômeur
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -2023,6 +2047,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {

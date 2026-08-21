@@ -264,6 +264,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -325,6 +327,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -339,6 +343,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -409,6 +415,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -464,6 +472,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -483,6 +493,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               </View>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -496,6 +508,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               Les données que nous conservons :
             </Text>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -600,6 +614,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -716,6 +732,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

@@ -143,6 +143,8 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             isZoomed={true}
             style={
               {
@@ -245,6 +247,8 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {

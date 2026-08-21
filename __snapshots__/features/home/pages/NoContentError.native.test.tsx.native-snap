@@ -198,6 +198,8 @@ exports[`NoContentError should render correctly 1`] = `
               </View>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 [
                   {

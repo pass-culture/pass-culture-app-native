@@ -223,6 +223,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           My title
         </Text>
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#696a6f",
@@ -263,6 +265,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#696a6f",
@@ -373,6 +377,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   isSelected={true}
                   style={
                     {
@@ -632,6 +638,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       numberOfLines={1}
                       style={
                         {
@@ -647,6 +655,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   ellipsizeMode="tail"
                   numberOfLines={1}
                   style={
@@ -671,6 +681,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -896,6 +908,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       numberOfLines={1}
                       style={
                         {
@@ -911,6 +925,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   ellipsizeMode="tail"
                   numberOfLines={1}
                   style={
@@ -935,6 +951,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1164,6 +1182,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       numberOfLines={1}
                       style={
                         {
@@ -1179,6 +1199,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   ellipsizeMode="tail"
                   numberOfLines={1}
                   style={
@@ -1203,6 +1225,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1433,6 +1457,8 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",

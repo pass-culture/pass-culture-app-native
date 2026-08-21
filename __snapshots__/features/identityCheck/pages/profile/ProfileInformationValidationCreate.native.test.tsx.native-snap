@@ -260,8 +260,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityLevel={3}
-                accessibilityRole="header"
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -297,6 +297,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -309,6 +311,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                     Ton prénom
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -331,6 +335,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -343,6 +349,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                     Ton nom de famille
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -365,6 +373,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -377,6 +387,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                     Adresse
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -398,6 +410,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -410,6 +424,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                     Ville de résidence
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -432,6 +448,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -444,6 +462,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                     Statut
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -597,6 +617,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -698,6 +720,8 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

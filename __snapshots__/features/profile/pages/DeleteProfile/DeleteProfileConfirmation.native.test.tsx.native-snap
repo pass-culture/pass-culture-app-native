@@ -272,6 +272,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -284,6 +286,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                 Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -336,6 +340,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -425,6 +431,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",
@@ -534,6 +542,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -649,6 +659,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

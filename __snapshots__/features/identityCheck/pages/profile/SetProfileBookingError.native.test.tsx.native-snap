@@ -179,6 +179,8 @@ Un problème est survenu !
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -192,6 +194,8 @@ Un problème est survenu !
               Il semble que ta connexion ait été interrompue ou qu’un problème technique soit survenu.
             </Text>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -297,6 +301,8 @@ Un problème est survenu !
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -399,6 +405,8 @@ Un problème est survenu !
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

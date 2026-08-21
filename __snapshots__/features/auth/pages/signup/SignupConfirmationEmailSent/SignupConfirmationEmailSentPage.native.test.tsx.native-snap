@@ -306,6 +306,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   Confirme ton adresse e-mail
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -318,6 +320,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   Tu as reçu un lien à l’adresse :
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -330,6 +334,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   john.doe@gmail.com
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -351,6 +357,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                   }
                 />
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -454,6 +462,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -578,6 +588,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                           </View>
                         </View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             [
                               {
@@ -698,6 +710,8 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {

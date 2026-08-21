@@ -310,6 +310,8 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 </Text>
                  
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -427,6 +429,8 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     >
                       <Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -439,6 +443,8 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                           J’ai une carte d’identité ou un passeport 
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -496,6 +502,8 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     type="left"
                   />
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -606,6 +614,8 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",

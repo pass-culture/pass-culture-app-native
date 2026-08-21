@@ -314,6 +314,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 color="primary"
                 style={
                   {
@@ -446,6 +448,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -557,6 +561,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -668,6 +674,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -717,6 +725,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                     type="left"
                   />
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -826,6 +836,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -928,6 +940,8 @@ exports[`<LoginMethods/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",

@@ -282,6 +282,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 ÉDITEUR SAS pass Culture
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -312,6 +314,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 </Text>
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -324,6 +328,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 Société par actions simplifiée au capital de 1 000 000 €
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -336,6 +342,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 Siège social : 35 Boulevard de Sébastopol – 75001 Paris - France
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -348,6 +356,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 Immatriculée au RCS de Paris sous le numéro : 853 318 459
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -360,6 +370,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 N° TVA intracommunautaire : FR65853318459
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -372,6 +384,8 @@ exports[`LegalNotices should render correctly 1`] = `
                 Directrice de la publication : Laurence Tison-Vuillaume
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -561,6 +575,8 @@ exports[`LegalNotices should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     numberOfLines={2}
                     style={
                       [
@@ -671,6 +687,8 @@ exports[`LegalNotices should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     numberOfLines={2}
                     style={
                       [
@@ -781,6 +799,8 @@ exports[`LegalNotices should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     numberOfLines={2}
                     style={
                       [

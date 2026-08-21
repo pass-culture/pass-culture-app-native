@@ -149,6 +149,8 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
           </Text>
         </View>
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#161617",

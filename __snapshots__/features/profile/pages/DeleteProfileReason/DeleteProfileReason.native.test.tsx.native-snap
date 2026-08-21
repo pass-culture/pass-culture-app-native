@@ -424,6 +424,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                         Pourquoi souhaites-tu supprimer ton compte ?
                       </Text>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",
@@ -536,6 +538,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -661,6 +665,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -786,6 +792,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -911,6 +919,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -1036,6 +1046,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -1161,6 +1173,8 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",

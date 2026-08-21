@@ -258,6 +258,8 @@ exports[`<AccountCreated /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

@@ -274,6 +274,8 @@ exports[`DebugScreen should render correctly 1`] = `
               </Text>
               <View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -286,6 +288,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   App version
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -299,6 +303,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -311,6 +317,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   Device font scale
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -324,6 +332,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -336,6 +346,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   Device ID
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -349,6 +361,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -361,6 +375,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   Device model
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -374,6 +390,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -386,6 +404,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   Device OS
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -399,6 +419,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -411,6 +433,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   Device resolution
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -424,6 +448,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -436,6 +462,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   Device zoom
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -449,6 +477,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -461,6 +491,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   User CreditType
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -474,6 +506,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -486,6 +520,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   User EligibilityType
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -499,6 +535,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -511,6 +549,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   User ID
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -524,6 +564,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   </Text>
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -536,6 +578,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   User StatusType
                    : 
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -692,6 +736,8 @@ exports[`DebugScreen should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -774,6 +820,8 @@ exports[`DebugScreen should render correctly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",

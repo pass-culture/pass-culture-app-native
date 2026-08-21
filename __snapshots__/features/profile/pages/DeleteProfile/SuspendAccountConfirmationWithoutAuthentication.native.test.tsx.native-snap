@@ -257,6 +257,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -318,6 +320,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -332,6 +336,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -402,6 +408,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -457,6 +465,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -476,6 +486,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               </View>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -489,6 +501,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               Les données que nous conservons :
             </Text>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -586,6 +600,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -695,6 +711,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

@@ -346,6 +346,8 @@ retrouver tes favoris
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -441,6 +443,8 @@ retrouver tes favoris
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -478,6 +482,8 @@ retrouver tes favoris
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",

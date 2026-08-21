@@ -319,6 +319,8 @@ exports[`<SetCity/> should render correctly 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -331,6 +333,8 @@ exports[`<SetCity/> should render correctly 1`] = `
                             Indique ton code postal et choisis ta ville
                           </Text>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#696a6f",
@@ -591,6 +595,8 @@ exports[`<SetCity/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

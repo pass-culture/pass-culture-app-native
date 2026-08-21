@@ -273,6 +273,8 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

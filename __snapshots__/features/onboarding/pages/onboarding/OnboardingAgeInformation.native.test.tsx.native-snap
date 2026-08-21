@@ -437,6 +437,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           testID="tagWrapper"
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isZoomed={true}
                             style={
                               {
@@ -461,6 +463,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#320096",
@@ -474,6 +478,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           </Text>
                         </View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#320096",
@@ -654,6 +660,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           testID="tagWrapper"
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isZoomed={true}
                             style={
                               {
@@ -678,6 +686,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#696a6f",
@@ -691,6 +701,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           </Text>
                         </View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -703,6 +715,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           150 €
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -829,6 +843,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -950,6 +966,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -1422,6 +1440,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           testID="tagWrapper"
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isZoomed={true}
                             style={
                               {
@@ -1446,6 +1466,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#696a6f",
@@ -1459,6 +1481,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           </Text>
                         </View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -1637,6 +1661,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           testID="tagWrapper"
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isZoomed={true}
                             style={
                               {
@@ -1661,6 +1687,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#320096",
@@ -1674,6 +1702,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           </Text>
                         </View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#320096",
@@ -1686,6 +1716,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           150 €
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1812,6 +1844,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -1933,6 +1967,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {

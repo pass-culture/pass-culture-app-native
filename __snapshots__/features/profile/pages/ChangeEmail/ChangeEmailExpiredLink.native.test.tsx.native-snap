@@ -279,6 +279,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -394,6 +396,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -714,6 +718,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -829,6 +835,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

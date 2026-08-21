@@ -329,6 +329,8 @@ exports[`<SetPhoneNumber/> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -383,6 +385,8 @@ exports[`<SetPhoneNumber/> should render correctly 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -395,6 +399,8 @@ exports[`<SetPhoneNumber/> should render correctly 1`] = `
                             Numéro de téléphone
                           </Text>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#696a6f",
@@ -496,6 +502,8 @@ exports[`<SetPhoneNumber/> should render correctly 1`] = `
                           testID="+33 - Ouvrir la modale de choix de l’indicatif téléphonique"
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -720,6 +728,8 @@ exports[`<SetPhoneNumber/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

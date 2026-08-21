@@ -339,6 +339,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 >
                   <Text
                     accessibilityDescribedBy="testUuidV4"
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     htmlFor="testUuidV4"
                     id="testUuidV4"
                     style={
@@ -361,6 +363,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     Uniquement les offres duo
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     nativeID="testUuidV4"
                     style={
                       {
@@ -615,6 +619,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -729,6 +735,8 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {

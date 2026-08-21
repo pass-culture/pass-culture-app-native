@@ -206,6 +206,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     numberOfLines={3}
                     style={
                       {
@@ -310,6 +312,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                         >
                           <View>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -560,6 +564,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Concerts et festivals"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -658,6 +664,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Cinéma"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -756,6 +764,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Films, séries et documentaires"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -854,6 +864,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Livres"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -952,6 +964,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Musique"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1050,6 +1064,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Arts et loisirs créatifs"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1148,6 +1164,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Spectacles"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1246,6 +1264,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Musées et visites"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1344,6 +1364,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Jeux et jeux vidéos"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1442,6 +1464,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Médias et presse"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1540,6 +1564,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Cartes jeunes"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1638,6 +1664,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Conférences et rencontres"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {
@@ -1736,6 +1764,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 testID="Catégorie Évènements en ligne"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={4}
                   style={
                     {

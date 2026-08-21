@@ -303,6 +303,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         >
                           <View>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -525,6 +527,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#ffffff",
@@ -746,6 +750,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 style={
                                   [
                                     {
@@ -784,6 +790,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -1076,6 +1084,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               </View>
                               <View>
                                 <Text
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   isDisabled={false}
                                   isFullWidth={false}
                                   maxWidth={72}
@@ -1240,6 +1250,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               </View>
                               <View>
                                 <Text
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   isDisabled={false}
                                   isFullWidth={false}
                                   maxWidth={72}
@@ -1404,6 +1416,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               </View>
                               <View>
                                 <Text
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   isDisabled={false}
                                   isFullWidth={false}
                                   maxWidth={72}
@@ -1568,6 +1582,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               </View>
                               <View>
                                 <Text
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   isDisabled={false}
                                   isFullWidth={false}
                                   maxWidth={72}
@@ -1651,6 +1667,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -1855,6 +1873,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={1}
                           style={
                             {
@@ -1868,6 +1888,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           La nuit des temps
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           ellipsizeMode="tail"
                           numberOfLines={1}
                           style={
@@ -1892,6 +1914,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -1931,6 +1955,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isZoomed={true}
                           style={
                             {
@@ -2204,6 +2230,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={1}
                           style={
                             {
@@ -2217,6 +2245,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           I want something more
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           ellipsizeMode="tail"
                           numberOfLines={1}
                           style={
@@ -2241,6 +2271,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -2280,6 +2312,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isZoomed={true}
                           style={
                             {
@@ -2549,6 +2583,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={1}
                           style={
                             {
@@ -2562,6 +2598,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           Un lit sous une rivière
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           ellipsizeMode="tail"
                           numberOfLines={1}
                           style={
@@ -2586,6 +2624,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -2625,6 +2665,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isZoomed={true}
                           style={
                             {
@@ -2893,6 +2935,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={1}
                           style={
                             {
@@ -2906,6 +2950,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           I want something more
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           ellipsizeMode="tail"
                           numberOfLines={1}
                           style={
@@ -2930,6 +2976,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -2969,6 +3017,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isZoomed={true}
                           style={
                             {

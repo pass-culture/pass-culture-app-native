@@ -385,6 +385,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     id="testUuidV4"
                     style={
                       {
@@ -524,6 +526,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -677,6 +681,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -830,6 +836,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -983,6 +991,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1161,6 +1171,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -1275,6 +1287,8 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {

@@ -278,6 +278,8 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -380,6 +382,8 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -495,6 +499,8 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

@@ -329,6 +329,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -368,6 +370,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -383,6 +387,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                     Vérifie que tu as un bon réseau
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#696a6f",
@@ -427,6 +433,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -442,6 +450,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                     Assure-toi d’indiquer ton numéro de téléphone personnel
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#696a6f",
@@ -533,6 +543,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

@@ -272,6 +272,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#320096",
@@ -283,6 +285,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     >
                       J’ai 
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#320096",
@@ -392,6 +396,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#320096",
@@ -403,6 +409,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     >
                       J’ai 
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#320096",
@@ -511,6 +519,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#320096",
@@ -522,6 +532,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     >
                       J’ai 
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#320096",
@@ -630,6 +642,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#320096",
@@ -641,6 +655,8 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
                     >
                       J’ai 
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#320096",

@@ -297,6 +297,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     Choisis des thèmes à suivre
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#696a6f",
@@ -435,6 +437,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -625,6 +629,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -815,6 +821,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1005,6 +1013,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1195,6 +1205,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1385,6 +1397,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1616,6 +1630,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -1724,6 +1740,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

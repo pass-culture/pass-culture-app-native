@@ -192,6 +192,8 @@ exports[`Home page should render correctly 1`] = `
                     Bienvenue !
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#696a6f",
@@ -288,6 +290,8 @@ exports[`Home page should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       numberOfLines={3}
                       style={
                         {
@@ -425,6 +429,8 @@ exports[`Home page should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         color="default"
                         style={
                           {
@@ -438,6 +444,8 @@ exports[`Home page should render correctly 1`] = `
                         Débloque ton crédit
                       </Text>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         color="default"
                         style={
                           {

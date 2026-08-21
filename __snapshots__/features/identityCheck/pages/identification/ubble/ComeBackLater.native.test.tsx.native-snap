@@ -265,6 +265,8 @@ exports[`ComeBackLater should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -277,6 +279,8 @@ exports[`ComeBackLater should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -289,6 +293,8 @@ exports[`ComeBackLater should render correctly 1`] = `
                 Pour profiter du pass Culture, tu dois avoir 
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -302,6 +308,8 @@ exports[`ComeBackLater should render correctly 1`] = `
               </Text>
             </Text>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -408,6 +416,8 @@ exports[`ComeBackLater should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

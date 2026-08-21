@@ -89,6 +89,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -127,6 +129,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           >
             <View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -139,6 +143,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                 Date de naissance
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#696a6f",
@@ -923,6 +929,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 [
                   {
@@ -993,6 +1001,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       }
     >
       <Text
+        accessibilityLevel="p"
+        accessibilityRole="text"
         style={
           {
             "color": "#161617",
@@ -1064,6 +1074,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -1102,6 +1114,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           >
             <View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1114,6 +1128,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                 Date de naissance
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#696a6f",
@@ -1898,6 +1914,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 [
                   {

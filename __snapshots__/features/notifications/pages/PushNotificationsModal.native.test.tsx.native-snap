@@ -283,6 +283,8 @@ exports[`PushNotificationsModal should render properly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -296,6 +298,8 @@ exports[`PushNotificationsModal should render properly 1`] = `
                 Reste informé des actualités du pass Culture en activant les notifications.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -383,6 +387,8 @@ exports[`PushNotificationsModal should render properly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

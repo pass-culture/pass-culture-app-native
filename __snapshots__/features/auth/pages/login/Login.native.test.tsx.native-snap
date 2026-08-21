@@ -312,6 +312,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   >
                     <View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",
@@ -324,6 +326,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                         Adresse e-mail
                       </Text>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -338,6 +342,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -515,6 +521,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -564,6 +572,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   >
                     <View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",
@@ -577,6 +587,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -810,6 +822,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -913,6 +927,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
