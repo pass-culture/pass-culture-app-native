@@ -12,7 +12,7 @@ import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo, getSpacing } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
@@ -73,7 +73,7 @@ export const ContentHeader = ({
         {LeftElement}
         <TitleContainer>
           <Title
-            {...getTextSemanticAttrs(1)}
+            {...setTextSemantic('h1')}
             testID={titleTestID}
             style={{
               opacity: customHeaderTitleTransition ?? headerTransition,

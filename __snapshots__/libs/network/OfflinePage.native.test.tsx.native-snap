@@ -58,7 +58,7 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
       }
     >
       <Text
-        accessibilityLevel={1}
+        accessibilityLevel="h1"
         accessibilityRole="header"
         style={
           {
@@ -73,7 +73,7 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
         Oups, pas de réseau !
       </Text>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {
@@ -345,7 +345,7 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
       }
     >
       <Text
-        accessibilityLevel={1}
+        accessibilityLevel="h1"
         accessibilityRole="header"
         style={
           {
@@ -360,7 +360,7 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
         Oups, pas de réseau !
       </Text>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {

@@ -31,7 +31,7 @@ import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const SetPhoneNumber = () => {
   const { params } = useRoute<UseRouteType<'SetPhoneNumber'>>()
@@ -86,7 +86,7 @@ export const SetPhoneNumber = () => {
       scrollChildren={
         <ViewGap gap={8}>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
+            <Typo.Title3 {...setTextSemantic('h2')}>Saisis ton numéro de téléphone</Typo.Title3>
             <Banner label="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations." />
           </ViewGap>
           <Form.MaxWidth>

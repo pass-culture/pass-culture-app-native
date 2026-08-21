@@ -186,7 +186,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           <CheckboxGroup<string>
             label="Conditions et confidentialité"
             labelTag="h3"
-            labelTagOverrideForAccessibility={2}
+            labelTagOverrideForAccessibility="h2"
             options={checkboxOptions}
             value={selectedValues}
             onChange={setSelectedValues}

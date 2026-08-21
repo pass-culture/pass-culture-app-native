@@ -219,7 +219,7 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
         </View>
       </View>
       <Text
-        accessibilityLevel={1}
+        accessibilityLevel="h1"
         accessibilityRole="header"
         numberOfLines={1}
         style={
@@ -275,7 +275,7 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
           }
         >
           <Text
-            accessibilityLevel={2}
+            accessibilityLevel="h2"
             accessibilityRole="header"
             id="testUuidV4"
             style={

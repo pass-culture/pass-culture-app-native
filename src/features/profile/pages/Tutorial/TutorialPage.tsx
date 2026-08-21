@@ -7,7 +7,7 @@ import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHe
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   title?: string
@@ -44,7 +44,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
         <Container buttons={buttons}>
           {title ? (
             <TitleContainer>
-              <Typo.Title3 numberOfLines={numberOfLines} {...getTextSemanticAttrs(1)}>
+              <Typo.Title3 numberOfLines={numberOfLines} {...setTextSemantic('h1')}>
                 {title}
               </Typo.Title3>
             </TitleContainer>

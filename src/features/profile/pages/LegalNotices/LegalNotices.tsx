@@ -16,7 +16,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export function LegalNotices() {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
@@ -30,7 +30,7 @@ export function LegalNotices() {
       onGoBack={goBack}
       scrollChildren={
         <Container gap={5}>
-          <Typo.Title4 {...getTextSemanticAttrs(2)}>ÉDITEUR SAS pass Culture</Typo.Title4>
+          <Typo.Title4 {...setTextSemantic('h2')}>ÉDITEUR SAS pass Culture</Typo.Title4>
           <Typo.Body>
             Éditeur du site&nbsp;:&nbsp;
             <ExternalTouchableLink

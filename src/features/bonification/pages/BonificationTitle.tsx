@@ -16,7 +16,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export type Title = 'Madame' | 'Monsieur'
 
@@ -47,7 +47,7 @@ export const BonificationTitle = () => {
       scrollChildren={
         <React.Fragment>
           <StyledBodyXsSteps>Étape 2 sur 5</StyledBodyXsSteps>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>
+          <Typo.Title3 {...setTextSemantic('h2')}>
             Quelle est la civilité de ton représentant légal&nbsp;?
           </Typo.Title3>
           <SelectorContainer

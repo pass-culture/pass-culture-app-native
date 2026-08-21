@@ -13,7 +13,7 @@ import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { AVATAR_MEDIUM } from 'ui/theme/constants'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   artistId: string
@@ -83,7 +83,7 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
   )
 }
 
-const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(setTextSemantic('h2'))``
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

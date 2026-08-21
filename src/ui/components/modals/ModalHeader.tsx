@@ -8,7 +8,7 @@ import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHe
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 import { ModalIconProps } from './types'
 
@@ -111,6 +111,6 @@ const HeaderActionContainer = styled.View<{ justifyContent: 'left' | 'right' }>(
   }
 )
 
-const Title = styled(Typo.Title4).attrs(() => getTextSemanticAttrs(1))({
+const Title = styled(Typo.Title4).attrs(() => setTextSemantic('h1'))({
   textAlign: 'center',
 })

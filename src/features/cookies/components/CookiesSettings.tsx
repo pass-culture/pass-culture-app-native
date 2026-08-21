@@ -18,7 +18,7 @@ import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const checkboxID = uuidv4()
 const labelID = uuidv4()
@@ -71,7 +71,7 @@ export const CookiesSettings = ({
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getTextSemanticAttrs(2)}>
+      <Typo.Title4 {...setTextSemantic('h2')}>
         À quoi servent tes cookies et tes données&nbsp;?
       </Typo.Title4>
       <ChoiceContainer>

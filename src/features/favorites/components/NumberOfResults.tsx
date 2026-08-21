@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { plural } from 'libs/plural'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites }) => {
   if (!nbFavorites) return null
@@ -24,6 +24,6 @@ const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const Caption = styled(Typo.BodyAccentXs).attrs(() => getTextSemanticAttrs(2))(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs).attrs(() => setTextSemantic('h2'))(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))

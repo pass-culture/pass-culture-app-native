@@ -12,7 +12,7 @@ import { Earth as InitialEarth } from 'ui/svg/icons/Earth'
 import { France as FranceIcon } from 'ui/svg/icons/France'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const SelectIDOrigin: FunctionComponent = () => (
   <PageWithHeader
@@ -79,7 +79,7 @@ const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(setTextSemantic('h2'))({
   textAlign: 'center',
 })
 

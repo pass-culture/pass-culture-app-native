@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export type InfoListItemProps = {
   title: string
@@ -16,7 +16,7 @@ export const Summary: FC<{ title: string; data: InfoListItemProps[] }> = ({ data
 
   return (
     <ViewGap gap={5}>
-      <Typo.Title3 {...getTextSemanticAttrs('p')}>{title}</Typo.Title3>
+      <Typo.Title3 {...setTextSemantic('p')}>{title}</Typo.Title3>
       <BodyContainer gap={6}>
         {filteredData.map((item) => (
           <SummaryItem key={item.title} {...item} />

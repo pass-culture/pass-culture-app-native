@@ -15,7 +15,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Link } from 'ui/designSystem/Link/Link'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   appVersion: string
@@ -267,6 +267,6 @@ export function AccessibilityDeclarationMobileBase({
   )
 }
 
-const TitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))``
+const TitleText = styled(Typo.Title4).attrs(setTextSemantic('h2'))``
 
-const SubtitleText = styled(Typo.BodyAccent).attrs(getTextSemanticAttrs(3))``
+const SubtitleText = styled(Typo.BodyAccent).attrs(setTextSemantic('h3'))``

@@ -26,7 +26,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -252,7 +252,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   return (
     <RowContainer>
       {accessibleHiddenTitle ? (
-        <HiddenAccessibleText {...getTextSemanticAttrs(1)}>
+        <HiddenAccessibleText {...setTextSemantic('h1')}>
           {accessibleHiddenTitle}
         </HiddenAccessibleText>
       ) : null}

@@ -6,7 +6,7 @@ import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { Typo } from 'ui/theme'
 import { AVATAR_MEDIUM } from 'ui/theme/constants'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const NUMBER_OF_AVATARS = 10
 const AVATAR_SKELETON_KEYS = Array.from(
@@ -48,7 +48,7 @@ export const ArtistSimilarArtistsSkeleton: FunctionComponent<Props> = ({ title }
   )
 }
 
-const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(setTextSemantic('h2'))``
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

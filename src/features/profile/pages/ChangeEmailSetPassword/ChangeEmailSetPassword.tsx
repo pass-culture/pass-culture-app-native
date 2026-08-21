@@ -18,7 +18,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type FormValues = {
   newPassword: string
@@ -73,7 +73,7 @@ export const ChangeEmailSetPassword = () => {
       scrollChildren={
         <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Crée ton mot de passe</Typo.Title3>
+            <Typo.Title3 {...setTextSemantic('h2')}>Crée ton mot de passe</Typo.Title3>
             <Typo.Body>
               Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
             </Typo.Body>

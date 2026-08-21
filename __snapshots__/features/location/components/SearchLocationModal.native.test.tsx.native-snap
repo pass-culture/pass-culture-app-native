@@ -133,7 +133,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               nativeID="testUuidV4"
               style={
@@ -473,7 +473,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             style={
               {

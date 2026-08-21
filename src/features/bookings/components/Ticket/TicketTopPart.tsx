@@ -12,7 +12,7 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Stock } from 'ui/svg/icons/Stock'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type TicketTopPartProps = {
   title: string
@@ -43,7 +43,7 @@ export const TicketTopPart = ({
 }: TicketTopPartProps) => {
   return (
     <ViewGap gap={6}>
-      <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
+      <Typo.Title2 {...setTextSemantic('h1')}>{title}</Typo.Title2>
       <ViewGap gap={2}>
         {user.firstName && user.lastName ? (
           <Row>

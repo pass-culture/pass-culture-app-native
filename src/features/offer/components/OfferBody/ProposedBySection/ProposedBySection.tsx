@@ -12,7 +12,7 @@ import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Venue } from 'ui/svg/icons/Venue'
 import { Typo } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type ProposedBySectionProps = {
   name: string
@@ -53,7 +53,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
   return (
     <Wrapper>
       <ViewGap gap={4}>
-        <Typo.Title3 {...getTextSemanticAttrs(2)}>Proposé par</Typo.Title3>
+        <Typo.Title3 {...setTextSemantic('h2')}>Proposé par</Typo.Title3>
         {navigateTo ? (
           <InternalTouchableLink navigateTo={navigateTo} accessibilityLabel={name}>
             {content}

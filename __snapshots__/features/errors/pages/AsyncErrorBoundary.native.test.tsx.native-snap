@@ -123,7 +123,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           style={
             {
@@ -138,7 +138,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
           Oups !
         </Text>
         <Text
-          accessibilityLevel={2}
+          accessibilityLevel="h2"
           accessibilityRole="header"
           style={
             {

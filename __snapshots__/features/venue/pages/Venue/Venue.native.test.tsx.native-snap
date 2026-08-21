@@ -166,7 +166,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
-                accessibilityLevel={1}
+                accessibilityLevel="h1"
                 accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
@@ -748,7 +748,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <Text
-                    accessibilityLevel={2}
+                    accessibilityLevel="h2"
                     accessibilityRole="header"
                     style={
                       {
@@ -1135,7 +1135,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             >
                               <Text
                                 accessibilityLabel="Toutes les offres"
-                                accessibilityLevel={2}
+                                accessibilityLevel="h2"
                                 accessibilityRole="header"
                                 numberOfLines={2}
                                 style={
@@ -1149,7 +1149,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               >
                                 <Text
                                   accessibilityElementsHidden={true}
-                                  accessibilityLevel={2}
+                                  accessibilityLevel="h2"
                                   accessibilityRole="header"
                                   accessible={false}
                                   importantForAccessibility="no"
@@ -1516,7 +1516,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -1733,7 +1733,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -1950,7 +1950,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <View
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -2220,7 +2220,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   style={
                     {
@@ -2415,7 +2415,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   style={
                     {
@@ -3117,7 +3117,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
@@ -3596,7 +3596,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
-                accessibilityLevel={1}
+                accessibilityLevel="h1"
                 accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
@@ -4178,7 +4178,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 >
                   <Text
-                    accessibilityLevel={2}
+                    accessibilityLevel="h2"
                     accessibilityRole="header"
                     style={
                       {
@@ -4565,7 +4565,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             >
                               <Text
                                 accessibilityLabel="Toutes les offres"
-                                accessibilityLevel={2}
+                                accessibilityLevel="h2"
                                 accessibilityRole="header"
                                 numberOfLines={2}
                                 style={
@@ -4579,7 +4579,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               >
                                 <Text
                                   accessibilityElementsHidden={true}
-                                  accessibilityLevel={2}
+                                  accessibilityLevel="h2"
                                   accessibilityRole="header"
                                   accessible={false}
                                   importantForAccessibility="no"
@@ -4946,7 +4946,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -5163,7 +5163,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -5380,7 +5380,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <View
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 renderToHardwareTextureAndroid={true}
                                 shouldRasterizeIOS={true}
@@ -5650,7 +5650,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   style={
                     {
@@ -5845,7 +5845,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   style={
                     {
@@ -6547,7 +6547,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
@@ -7026,7 +7026,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             >
               <Text
                 accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
-                accessibilityLevel={1}
+                accessibilityLevel="h1"
                 accessibilityRole="header"
                 adjustsFontSizeToFit={true}
                 style={
@@ -7616,7 +7616,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
-                      accessibilityLevel={2}
+                      accessibilityLevel="h2"
                       accessibilityRole="header"
                       style={
                         {
@@ -7662,7 +7662,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
-                      accessibilityLevel={2}
+                      accessibilityLevel="h2"
                       accessibilityRole="header"
                       style={
                         {
@@ -7708,7 +7708,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
-                      accessibilityLevel={2}
+                      accessibilityLevel="h2"
                       accessibilityRole="header"
                       style={
                         {
@@ -8060,7 +8060,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
-                      accessibilityLevel={2}
+                      accessibilityLevel="h2"
                       accessibilityRole="header"
                       style={
                         {
@@ -8211,7 +8211,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -8494,7 +8494,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -8762,7 +8762,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -9156,7 +9156,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <Text
-                                accessibilityLevel={3}
+                                accessibilityLevel="h3"
                                 accessibilityRole="header"
                                 style={
                                   {
@@ -9496,7 +9496,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
-                      accessibilityLevel={2}
+                      accessibilityLevel="h2"
                       accessibilityRole="header"
                       style={
                         {
@@ -9921,7 +9921,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   style={
                     {
@@ -10116,7 +10116,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   style={
                     {
@@ -10818,7 +10818,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}

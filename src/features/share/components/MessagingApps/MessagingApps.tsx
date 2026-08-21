@@ -11,7 +11,7 @@ import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   shareContent: ShareContent
@@ -36,7 +36,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
 
   return (
     <ViewGap gap={4}>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>{'Passe le bon plan\u00a0!'}</Typo.Title3>
+      <Typo.Title3 {...setTextSemantic('h2')}>{'Passe le bon plan\u00a0!'}</Typo.Title3>
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps

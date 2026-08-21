@@ -7,7 +7,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   title: string
@@ -41,7 +41,7 @@ const BarAndTitle = styled.View(({ theme }) => ({
   flex: 1,
 }))
 
-const Title = styled(Typo.Title4).attrs(() => ({ ...getTextSemanticAttrs(1), numberOfLines: 1 }))(
+const Title = styled(Typo.Title4).attrs(() => ({ ...setTextSemantic('h1'), numberOfLines: 1 }))(
   ({ theme }) => ({
     flex: 1,
     marginRight: theme.designSystem.size.spacing.xl,

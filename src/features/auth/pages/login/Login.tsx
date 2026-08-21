@@ -34,7 +34,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type LoginFormData = { email: string; password: string }
 type Props = { doNotNavigateOnSigninSuccess?: boolean }
@@ -189,7 +189,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         scrollChildren={
           <React.Fragment>
             <TitleContainer>
-              <Typo.Title3 {...getTextSemanticAttrs(2)}>Connecte-toi</Typo.Title3>
+              <Typo.Title3 {...setTextSemantic('h2')}>Connecte-toi</Typo.Title3>
             </TitleContainer>
             <Form.MaxWidth>
               <InputError

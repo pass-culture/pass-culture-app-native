@@ -6,7 +6,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   date: Date
@@ -27,7 +27,7 @@ export const MonthHeader: React.FC<Props> = ({ date, addMonth }) => {
         color="neutral"
       />
 
-      <Typo.Body {...getTextSemanticAttrs(2)} accessibilityLiveRegion="polite">
+      <Typo.Body {...setTextSemantic('h2')} accessibilityLiveRegion="polite">
         {month}
       </Typo.Body>
 

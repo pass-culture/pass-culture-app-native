@@ -12,7 +12,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   venue: VenueResponse
@@ -38,7 +38,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   return (
     <Container gap={4}>
       <Gutter>
-        <StyledTitle3 {...getTextSemanticAttrs(3)} numberOfLines={2}>
+        <StyledTitle3 {...setTextSemantic('h3')} numberOfLines={2}>
           {`Les avis par “${venue.name}”`}
         </StyledTitle3>
       </Gutter>

@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   offerName: string
@@ -18,7 +18,7 @@ export const OfferTitle: FunctionComponent<Props> = ({ offerName }) => {
       adjustsFontSizeToFit
       allowFontScaling={false}
       {...accessibilityAndTestId(`Nom de l’offre\u00a0: ${offerName}`)}
-      {...getTextSemanticAttrs(1)}>
+      {...setTextSemantic('h1')}>
       {offerName}
     </TitleComponent>
   )

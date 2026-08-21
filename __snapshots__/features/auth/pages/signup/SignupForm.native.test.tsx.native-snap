@@ -161,7 +161,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -251,7 +251,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         }
       >
         <Text
-          accessibilityLevel={2}
+          accessibilityLevel="h2"
           accessibilityRole="header"
           style={
             {
@@ -785,7 +785,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -947,7 +947,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           }
         >
           <Text
-            accessibilityLevel={2}
+            accessibilityLevel="h2"
             accessibilityRole="header"
             style={
               {
@@ -1594,7 +1594,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -1756,7 +1756,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           }
         >
           <Text
-            accessibilityLevel={2}
+            accessibilityLevel="h2"
             accessibilityRole="header"
             id="testUuidV4"
             style={
@@ -2863,7 +2863,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -3434,7 +3434,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 }
               >
                 <Text
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   id="testUuidV4"
                   style={

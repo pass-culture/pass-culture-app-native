@@ -7,6 +7,7 @@ import { ElementType } from 'react'
 
 import { CheckboxProps } from 'ui/designSystem/Checkbox/Checkbox'
 import { SelectableVariant } from 'ui/designSystem/types'
+import { TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
 
 export type CheckboxGroupOptionSimple<T = string> = Omit<
   CheckboxProps,
@@ -37,7 +38,7 @@ export type CheckboxGroupDisplay = 'vertical' | 'horizontal'
 export type CheckboxGroupProps<T = string> = {
   label: string
   labelTag?: ElementType
-  labelTagOverrideForAccessibility?: 1 | 2 | 3
+  labelTagOverrideForAccessibility?: TextSemanticLevel
   description?: string
   error?: string
   options: CheckboxGroupOption<T>[]

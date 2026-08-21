@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const CenteredTitle = ({ title, titleID }: { title: string; titleID?: string }) => (
   <TitleContainer>
@@ -15,6 +15,6 @@ const TitleContainer = styled.View({
   width: '100%',
 })
 
-const Title = styled(Typo.Title4).attrs(() => getTextSemanticAttrs(2))({
+const Title = styled(Typo.Title4).attrs(() => setTextSemantic('h2'))({
   textAlign: 'center',
 })

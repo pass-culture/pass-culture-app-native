@@ -5,7 +5,7 @@ import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const NOT_CANCELLABLE_MESSAGE =
   'En confirmant la réservation, j’accepte son exécution immédiate et renonce à mon droit de rétractation. Une confirmation de cet accord me sera envoyée par email.'
@@ -32,7 +32,7 @@ export const CancellationDetails: React.FC = () => {
 
   return (
     <ViewGap gap={2}>
-      <Typo.Title4 {...getTextSemanticAttrs(2)}>Conditions d’annulation</Typo.Title4>
+      <Typo.Title4 {...setTextSemantic('h2')}>Conditions d’annulation</Typo.Title4>
       <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs>
     </ViewGap>
   )

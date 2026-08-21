@@ -39,7 +39,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export interface BookingDetailsProps {
   stocks: OfferStockResponse[]
@@ -200,7 +200,7 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
         Icon={Error}
       />
       <Container>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>Informations</Typo.Title4>
+        <Typo.Title4 {...setTextSemantic('h2')}>Informations</Typo.Title4>
       </Container>
       <BookingInformationsContainer>
         <BookingInformations />
@@ -333,7 +333,7 @@ const VenueTitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const VenueTitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const VenueTitleText = styled(Typo.Title4).attrs(setTextSemantic('h2'))({
   flexShrink: 1,
 })
 

@@ -9,7 +9,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { Button } from 'ui/designSystem/Button/Button'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const ClubAdviceSectionBase = ({
   data,
@@ -30,7 +30,7 @@ export const ClubAdviceSectionBase = ({
     <View style={style}>
       <Gutter>
         <Row>
-          <StyledTitle3 {...getTextSemanticAttrs(3)}>{variantInfo.titleSection}</StyledTitle3>
+          <StyledTitle3 {...setTextSemantic('h3')}>{variantInfo.titleSection}</StyledTitle3>
           {showSectionTag && variantInfo.sectionTag ? (
             <TagContainer>{variantInfo.sectionTag}</TagContainer>
           ) : null}

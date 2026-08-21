@@ -155,7 +155,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {
@@ -170,7 +170,7 @@ exports[`<OfferNotFound /> should render correctly 1`] = `
               Offre introuvable !
             </Text>
             <Text
-              accessibilityLevel={2}
+              accessibilityLevel="h2"
               accessibilityRole="header"
               style={
                 {

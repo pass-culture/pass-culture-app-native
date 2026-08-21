@@ -174,7 +174,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -786,7 +786,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -1398,7 +1398,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -2010,7 +2010,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -2622,7 +2622,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -3234,7 +3234,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}

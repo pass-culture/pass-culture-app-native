@@ -12,7 +12,7 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MultipleThumbs } from 'ui/svg/icons/MultipleThumbs'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   offerImages: OfferImageBasicProps[]
@@ -67,7 +67,7 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
         renderIllutration()
       )}
 
-      <StyledTitle3 {...getTextSemanticAttrs(2)}>
+      <StyledTitle3 {...setTextSemantic('h2')}>
         Qu’as-tu pensé de tes dernières réservations&nbsp;?
       </StyledTitle3>
     </Container>

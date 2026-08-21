@@ -20,7 +20,7 @@ import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type BirthdayForm = {
   birthdate: Date
@@ -105,7 +105,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   return (
     <SetContainer>
       <Form.MaxWidth>
-        <Typo.Title3 id={titleId} {...getTextSemanticAttrs(2)}>
+        <Typo.Title3 id={titleId} {...setTextSemantic('h2')}>
           {pageTitle}
         </Typo.Title3>
         {isSSOSubscriptionFromLogin ? (

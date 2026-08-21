@@ -239,7 +239,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {
@@ -254,7 +254,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
               Encore un peu de patience !
             </Text>
             <Text
-              accessibilityLevel={2}
+              accessibilityLevel="h2"
               accessibilityRole="header"
               style={
                 {

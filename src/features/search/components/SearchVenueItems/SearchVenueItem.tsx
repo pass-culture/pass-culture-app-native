@@ -21,7 +21,7 @@ import { ImageTile } from 'ui/components/ImageTile'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface SearchVenueItemProps {
   venue: AlgoliaVenue
@@ -54,7 +54,7 @@ const UnmemoizedSearchVenueItem = ({
   const { lat, lng } = venue._geoloc
   const distance = getDistance({ lat, lng }, { userLocation, selectedPlace, selectedLocationMode })
 
-  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(3)
+  const headingProps = Platform.OS === 'web' ? {} : setTextSemantic('h3')
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, {
     ...venue,
     distance: distance ? `à ${distance}` : undefined,

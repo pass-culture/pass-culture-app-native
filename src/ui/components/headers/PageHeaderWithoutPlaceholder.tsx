@@ -10,7 +10,7 @@ import { useGetHeaderHeightDS } from 'shared/header/useGetHeaderHeight'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   title?: string
@@ -102,7 +102,7 @@ const TitleContainer = styled.View({ flex: 1, alignItems: 'center' })
 
 const Title = styled(Typo.Title4).attrs<{ numberOfLines?: number }>(({ numberOfLines }) => ({
   numberOfLines,
-  ...getTextSemanticAttrs(1),
+  ...setTextSemantic('h1'),
 }))({
   textAlign: 'center',
 })

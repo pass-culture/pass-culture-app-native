@@ -50,7 +50,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               numberOfLines={3}
               style={
@@ -140,7 +140,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
             testID="credit-info"
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {
@@ -412,7 +412,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
   >
     <View>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {
@@ -697,7 +697,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
     </View>
     <View>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {
@@ -983,7 +983,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
     </View>
     <View>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {
@@ -1255,7 +1255,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
     </View>
     <View>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {
@@ -1782,7 +1782,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
     </View>
     <View>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {
@@ -2007,7 +2007,7 @@ exports[`<ProfileLoggedIn /> should match snapshot 1`] = `
     </View>
     <View>
       <Text
-        accessibilityLevel={2}
+        accessibilityLevel="h2"
         accessibilityRole="header"
         style={
           {

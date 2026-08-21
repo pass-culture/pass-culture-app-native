@@ -20,7 +20,7 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { Typo, getSpacing } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   venue: VenueResponse
@@ -160,7 +160,7 @@ const TopContainer = styled.View<{ hasVolunteer?: boolean }>(({ theme, hasVolunt
   }
 })
 
-const VenueTitle = styled(Typo.Title3).attrs(getTextSemanticAttrs(1))``
+const VenueTitle = styled(Typo.Title3).attrs(setTextSemantic('h1'))``
 
 const MarginContainer = styled.View(({ theme }) => ({
   marginLeft: theme.isDesktopViewport ? getSpacing(13.5) : theme.designSystem.size.spacing.xl,

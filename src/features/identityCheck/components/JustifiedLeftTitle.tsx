@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const JustifiedLeftTitle = ({ title, titleID }: { title: string; titleID?: string }) => (
   <TitleContainer>
@@ -16,4 +16,4 @@ const TitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs(2))({})
+const Title = styled(Typo.Title3).attrs(() => setTextSemantic('h2'))({})

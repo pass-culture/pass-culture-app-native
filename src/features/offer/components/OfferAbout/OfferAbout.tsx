@@ -7,7 +7,7 @@ import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/O
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   offer: OfferResponse
@@ -18,7 +18,7 @@ type Props = {
 export const OfferAbout: FunctionComponent<Props> = ({ offer, metadata, hasMetadata }) => {
   return (
     <ViewGap gap={2}>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>À propos</Typo.Title3>
+      <Typo.Title3 {...setTextSemantic('h2')}>À propos</Typo.Title3>
       <ViewGap gap={2}>
         {hasMetadata ? <OfferMetadataList metadata={metadata} /> : null}
 

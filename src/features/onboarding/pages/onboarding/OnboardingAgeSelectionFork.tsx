@@ -11,7 +11,7 @@ import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type AgeButtonProps = {
   startButtonTitle: string
@@ -85,7 +85,7 @@ const Separator = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.l,
 }))
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4).attrs(setTextSemantic('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 

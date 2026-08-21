@@ -161,7 +161,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -236,7 +236,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         >
           <View>
             <Text
-              accessibilityLevel={4}
+              accessibilityLevel="h4"
               accessibilityRole="header"
               style={
                 {
@@ -320,7 +320,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -2323,7 +2323,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -2614,7 +2614,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -3597,7 +3597,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         >
           <View>
             <Text
-              accessibilityLevel={4}
+              accessibilityLevel="h4"
               accessibilityRole="header"
               style={
                 {
@@ -3690,7 +3690,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           }
         >
           <Text
-            accessibilityLevel={4}
+            accessibilityLevel="h4"
             accessibilityRole="header"
             style={
               {
