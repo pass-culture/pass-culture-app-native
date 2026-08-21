@@ -183,7 +183,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               testID="back-button-container"
             />
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               nativeID="testUuidV4"
               numberOfLines={1}

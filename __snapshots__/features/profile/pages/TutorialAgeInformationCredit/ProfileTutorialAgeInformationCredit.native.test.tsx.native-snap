@@ -46,7 +46,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           style={
             {
@@ -60,7 +60,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
           Comment ça marche ?
         </Text>
         <Text
-          accessibilityLevel={2}
+          accessibilityLevel="h2"
           accessibilityRole="header"
           style={
             {
@@ -207,7 +207,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                     à 17 ans
                   </Text>
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -486,7 +486,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
                     à 18 ans
                   </Text>
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -1204,7 +1204,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification disabled shou
       >
         <Text
           accessibilityHidden={true}
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
@@ -1284,7 +1284,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           style={
             {
@@ -1298,7 +1298,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
           Comment ça marche ?
         </Text>
         <Text
-          accessibilityLevel={2}
+          accessibilityLevel="h2"
           accessibilityRole="header"
           style={
             {
@@ -1445,7 +1445,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                     à 17 ans
                   </Text>
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -1724,7 +1724,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                     à 18 ans
                   </Text>
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -2181,7 +2181,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
                   }
                 >
                   <Text
-                    accessibilityLevel={3}
+                    accessibilityLevel="h3"
                     accessibilityRole="header"
                     style={
                       {
@@ -3417,7 +3417,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> with bonification enabled shoul
       >
         <Text
           accessibilityHidden={true}
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}

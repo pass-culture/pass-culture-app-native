@@ -94,7 +94,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityLevel={3}
+            accessibilityLevel="h3"
             accessibilityRole="header"
             style={
               {
@@ -212,7 +212,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
     }
   >
     <Text
-      accessibilityLevel={2}
+      accessibilityLevel="h2"
       accessibilityRole="header"
       style={
         {
@@ -570,7 +570,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityLevel={3}
+            accessibilityLevel="h3"
             accessibilityRole="header"
             style={
               {
@@ -923,7 +923,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityLevel={3}
+            accessibilityLevel="h3"
             accessibilityRole="header"
             style={
               {
@@ -1276,7 +1276,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityLevel={3}
+            accessibilityLevel="h3"
             accessibilityRole="header"
             style={
               {
@@ -1632,7 +1632,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityLevel={3}
+              accessibilityLevel="h3"
               accessibilityRole="header"
               style={
                 {
@@ -1951,7 +1951,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
           }
         >
           <Text
-            accessibilityLevel={3}
+            accessibilityLevel="h3"
             accessibilityRole="header"
             style={
               {
@@ -2125,7 +2125,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
     }
   >
     <Text
-      accessibilityLevel={2}
+      accessibilityLevel="h2"
       accessibilityRole="header"
       style={
         {

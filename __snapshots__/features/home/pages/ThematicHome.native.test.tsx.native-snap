@@ -484,7 +484,7 @@ exports[`ThematicHome should render correctly 1`] = `
       >
         <Text
           accessibilityHidden={true}
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
@@ -632,7 +632,7 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityLevel={4}
+              accessibilityLevel="h4"
               accessibilityRole="header"
               numberOfLines={1}
               style={
@@ -671,7 +671,7 @@ exports[`ThematicHome should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityLevel={3}
+                accessibilityLevel="h3"
                 accessibilityRole="header"
                 numberOfLines={1}
                 style={

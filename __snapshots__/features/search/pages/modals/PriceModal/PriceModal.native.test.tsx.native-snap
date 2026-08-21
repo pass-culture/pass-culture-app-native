@@ -183,7 +183,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               testID="back-button-container"
             />
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               nativeID="testUuidV4"
               numberOfLines={1}
@@ -404,7 +404,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   <View
                     accessibilityLabel="Uniquement les offres gratuites"
-                    accessibilityLevel={2}
+                    accessibilityLevel="h2"
                     accessibilityRole="header"
                     accessible={true}
                   >
@@ -570,7 +570,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   <View
                     accessibilityLabel="Limiter la recherche à mon crédit"
-                    accessibilityLevel={2}
+                    accessibilityLevel="h2"
                     accessibilityRole="header"
                     accessible={true}
                   >

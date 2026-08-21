@@ -155,7 +155,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -277,7 +277,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
                 >
                   <View>
                     <Text
-                      accessibilityLevel={2}
+                      accessibilityLevel="h2"
                       accessibilityRole="header"
                       style={
                         {
