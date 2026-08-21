@@ -2,7 +2,9 @@ import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import FastImage from '__mocks__/@d11/react-native-fast-image'
+import { RATIO169, RATIO916 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
+import { MAX_HEIGHT_VIDEO_PORTRAIT, MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -69,6 +71,32 @@ describe('<VideoSection />', () => {
         'En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.'
       )
     ).toBeOnTheScreen()
+  })
+
+  it('should size the placeholder in 16/9 for a landscape video', () => {
+    renderVideoSection()
+
+    expect(screen.getByLabelText('Le lecteur vidéo est désactivé.')).toHaveStyle({
+      width: MAX_WIDTH_VIDEO,
+      height: MAX_WIDTH_VIDEO * RATIO169,
+    })
+  })
+
+  it('should size the placeholder in 9/16 for a portrait video', () => {
+    renderVideoSection({ isPortrait: true })
+
+    expect(screen.getByLabelText('Le lecteur vidéo est désactivé.')).toHaveStyle({
+      width: MAX_HEIGHT_VIDEO_PORTRAIT / RATIO916,
+      height: MAX_HEIGHT_VIDEO_PORTRAIT,
+    })
+  })
+
+  it('should center the placeholder for a portrait video', () => {
+    renderVideoSection({ isPortrait: true })
+
+    expect(screen.getByLabelText('Le lecteur vidéo est désactivé.')).toHaveStyle({
+      alignSelf: 'center',
+    })
   })
 })
 

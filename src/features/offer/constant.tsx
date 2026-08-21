@@ -1,6 +1,7 @@
 import { PlaylistType } from 'features/offer/enums'
 
 export const MAX_WIDTH_VIDEO = 540
+export const MAX_HEIGHT_VIDEO_PORTRAIT = 540
 
 export const OFFER_SIMILAR_PLAYLIST_TITLES: Partial<Record<PlaylistType, string>> = {
   [PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS]: 'Les fans aiment aussi',

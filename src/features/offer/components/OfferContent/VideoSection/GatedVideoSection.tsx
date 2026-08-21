@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react'
+import { ViewStyle } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
 import { PlayerPreview } from 'features/home/components/modules/video/PlayerPreview/PlayerPreview'
@@ -8,6 +9,8 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { Typo } from 'ui/theme'
 
+const CENTERED_PLAYER_STYLE: ViewStyle = { alignSelf: 'center' }
+
 type Props = {
   height: number
   onManageCookiesPress: VoidFunction
@@ -16,6 +19,7 @@ type Props = {
   title?: string
   duration?: Duration
   width?: number
+  isPortrait?: boolean
 }
 
 export const GatedVideoSection = ({
@@ -24,13 +28,14 @@ export const GatedVideoSection = ({
   title,
   duration,
   width,
+  isPortrait,
   onManageCookiesPress,
   onVideoConsentPress,
 }: Props) => {
   const { isDesktopViewport } = useTheme()
 
   return (
-    <Container gap={4} width={width}>
+    <Container gap={4} width={isPortrait ? undefined : width}>
       <Typo.Title3>Vidéo</Typo.Title3>
       <PlayerPreview
         thumbnail={thumbnail}
@@ -38,6 +43,7 @@ export const GatedVideoSection = ({
         duration={duration}
         height={height}
         width={width}
+        style={isPortrait ? CENTERED_PLAYER_STYLE : undefined}
       />
       <Typo.BodyAccentS>
         En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.
