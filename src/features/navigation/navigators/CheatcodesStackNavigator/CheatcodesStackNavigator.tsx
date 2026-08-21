@@ -43,6 +43,7 @@ import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/Cheatc
 import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPage'
 import { CheatcodesScreenGenericInfoPageIllustrations } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPageIllustrations'
 import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericOfficialPage'
+import { CheatcodesScreenLastLoginInfo } from 'cheatcodes/pages/others/CheatcodesScreenLastLoginInfo'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
@@ -229,6 +230,11 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenAccesLibre,
       linking: { path: 'cheatcodes/other/acces-libre' },
       options: { title: 'Cheatcodes - Accès libre' },
+    },
+    CheatcodesScreenLastLoginInfo: {
+      screen: CheatcodesScreenLastLoginInfo,
+      linking: { path: 'cheatcodes/other/last-login-info' },
+      options: { title: 'Cheatcodes - Informations de connexion' },
     },
     CheatcodesScreenAnalyticsDebugger: {
       screen: CheatcodesScreenAnalyticsDebugger,

@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { AccountState } from 'api/gen'
 import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
-import { SignInResponseFailure } from 'features/auth/types'
+import { Provider, SignInResponseFailure } from 'features/auth/types'
 import { resetFromRef } from 'features/navigation/navigationRef'
 import {
   RootStackParamList,
@@ -62,7 +62,7 @@ export const AppleSSOCallback = () => {
           accountCreationToken: response.content?.accountCreationToken,
           email: response.content?.email,
           from: context?.type === 'signup' ? StepperOrigin.SIGNUP : StepperOrigin.LOGIN,
-          ssoProvider: 'apple',
+          ssoProvider: Provider.APPLE,
         })
       } else {
         showErrorSnackBar(
@@ -121,7 +121,7 @@ export const AppleSSOCallback = () => {
         const response = await signInAsync({
           authorizationCode: code,
           oauthStateToken: context.oauthStateToken,
-          provider: 'apple' as const,
+          provider: Provider.APPLE,
         })
 
         if (response.accountState === AccountState.ACTIVE) {

@@ -5,6 +5,7 @@ import React from 'react'
 import * as API from 'api/api'
 import { AccountState, OauthStateResponseV2, SigninResponseV2, UserProfileResponse } from 'api/gen'
 import { SSOButtonApple } from 'features/auth/components/SSOButton/SSOButtonApple'
+import { Provider } from 'features/auth/types'
 import { beneficiaryUserFromAPI } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -81,7 +82,7 @@ describe('<SSOButtonApple />', () => {
           source: 'iPhone 13',
         },
       },
-      'apple',
+      Provider.APPLE,
       { credentials: 'omit' }
     )
   })
@@ -97,7 +98,7 @@ describe('<SSOButtonApple />', () => {
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-      provider: 'apple',
+      provider: Provider.APPLE,
     })
   })
 

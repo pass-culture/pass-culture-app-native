@@ -8,6 +8,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { Provider } from 'features/auth/types'
 import { BookingsTab } from 'features/bookings/enum'
 import { Color, OffersModuleParameters, VenuesModule } from 'features/home/types'
 import { CheatcodesStackParamList } from 'features/navigation/navigators/CheatcodesStackNavigator/types'
@@ -120,6 +121,7 @@ export enum StepperOrigin {
   HOME = 'home',
   LOGIN = 'login',
   LOGIN_METHODS = 'LoginMethods',
+  LOGIN_METHODS_WITH_LAST_LOGIN_INFO = 'LoginMethodsWithLastLoginInfo',
   NOTIFICATION = 'notification',
   OFFER = 'offer',
   ONBOARDING_GENERAL_PUBLIC_WELCOME = 'OnboardingGeneralPublicWelcome',
@@ -179,7 +181,7 @@ type SignupParams =
       email?: string
       offerId?: number
       from: StepperOrigin
-      ssoProvider?: 'google' | 'apple'
+      ssoProvider?: Provider.GOOGLE | Provider.APPLE
       stepIndex?: number
     }
   | undefined
@@ -289,6 +291,7 @@ export type RootStackParamList = {
   LocationPicker: undefined
   Login?: LoginParams
   LoginMethods?: LoginParams
+  LoginMethodsWithLastLoginInfo?: LoginParams
   Maintenance: undefined
   MandatoryUpdatePersonalData: undefined
   MovieCalendar: undefined

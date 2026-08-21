@@ -3,6 +3,8 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, userEvent, screen } from 'tests/utils'
 
 import { LoggedOutHeader } from './LoggedOutHeader'
@@ -13,8 +15,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('LoggedOutHeader', () => {
+  beforeEach(() => setFeatureFlags([]))
+
   it('should navigate to the SignupForm page', async () => {
-    render(<LoggedOutHeader />)
+    render(reactQueryProviderHOC(<LoggedOutHeader />))
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -25,7 +29,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should navigate to the LoginMethods page', async () => {
-    render(<LoggedOutHeader />)
+    render(reactQueryProviderHOC(<LoggedOutHeader />))
 
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
@@ -36,7 +40,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte"', async () => {
-    render(<LoggedOutHeader />)
+    render(reactQueryProviderHOC(<LoggedOutHeader />))
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -46,7 +50,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should not display subtitle', () => {
-    render(<LoggedOutHeader />)
+    render(reactQueryProviderHOC(<LoggedOutHeader />))
 
     const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 

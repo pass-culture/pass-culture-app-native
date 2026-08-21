@@ -5,9 +5,11 @@ import React from 'react'
 import * as API from 'api/api'
 import { AccountState, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
 import { SSOButtonGoogle } from 'features/auth/components/SSOButton/SSOButtonGoogle'
+import { Provider } from 'features/auth/types'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -47,6 +49,7 @@ const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuer
 
 describe('<SSOButtonGoogle />', () => {
   beforeEach(() => {
+    setFeatureFlags([])
     mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
@@ -79,7 +82,7 @@ describe('<SSOButtonGoogle />', () => {
           source: 'iPhone 13',
         },
       },
-      'google',
+      Provider.GOOGLE,
       { credentials: 'omit' }
     )
   })
@@ -95,7 +98,7 @@ describe('<SSOButtonGoogle />', () => {
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-      provider: 'google',
+      provider: Provider.GOOGLE,
     })
   })
 

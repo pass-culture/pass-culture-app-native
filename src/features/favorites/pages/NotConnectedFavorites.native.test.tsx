@@ -3,6 +3,8 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { NotConnectedFavorites } from './NotConnectedFavorites'
@@ -17,14 +19,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('NotConnectedFavorites component', () => {
+  beforeEach(() => setFeatureFlags([]))
+
   it('should render not connected favorites', () => {
-    render(<NotConnectedFavorites />)
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to SignupMethods  when click on "Créer un compte"', async () => {
-    render(<NotConnectedFavorites />)
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
 
     await user.press(screen.getByText(`Créer un compte`))
 
@@ -32,7 +36,7 @@ describe('NotConnectedFavorites component', () => {
   })
 
   it('should log analytic "logSignUpFromFavorite" when click on "Créer un compte"', async () => {
-    render(<NotConnectedFavorites />)
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
 
     await user.press(screen.getByText(`Créer un compte`))
 
@@ -40,7 +44,7 @@ describe('NotConnectedFavorites component', () => {
   })
 
   it('should log analytic "logSignUpClicked" when click on "Créer un compte"', async () => {
-    render(<NotConnectedFavorites />)
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
 
     await user.press(screen.getByText(`Créer un compte`))
 
@@ -48,7 +52,7 @@ describe('NotConnectedFavorites component', () => {
   })
 
   it('should navigate to LoginMethods when click on "Se connecter"', async () => {
-    render(<NotConnectedFavorites />)
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
 
     await user.press(screen.getByText(`Se connecter`))
 
@@ -56,7 +60,7 @@ describe('NotConnectedFavorites component', () => {
   })
 
   it('should log analytic "logSignInFromFavorite" when click on "Se connecter"', async () => {
-    render(<NotConnectedFavorites />)
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
 
     await user.press(screen.getByText(`Se connecter`))
 

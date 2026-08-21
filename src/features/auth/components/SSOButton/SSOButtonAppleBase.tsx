@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Platform } from 'react-native'
 
+import { Provider } from 'features/auth/types'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -23,7 +24,7 @@ type Props = {
   }: {
     authorizationCode: string
     oauthStateToken: string
-    provider: 'apple'
+    provider: Provider.APPLE
   }) => void
   // Used on web - saved to sessionStorage before redirect to Apple
   params?: RootStackParamList['LoginMethods' | 'SignupMethods']
@@ -49,7 +50,11 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
     saveAppleSSOContext({ type, params, oauthStateToken: '' })
     return loginToApple({
       onSuccess: ({ code, state }) =>
-        onSuccess({ authorizationCode: code, oauthStateToken: state, provider: 'apple' }),
+        onSuccess({
+          authorizationCode: code,
+          oauthStateToken: state,
+          provider: Provider.APPLE,
+        }),
       onError,
     })
   }

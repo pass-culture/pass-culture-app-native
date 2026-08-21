@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { AccountState, FavoriteResponse, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { SignInResponseFailure } from 'features/auth/types'
+import { Provider, SignInResponseFailure } from 'features/auth/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
@@ -219,7 +219,7 @@ describe('<LoginMethods/>', () => {
         accountCreationToken: 'accountCreationToken',
         email: 'user@icloud.com',
         from: StepperOrigin.LOGIN_METHODS,
-        ssoProvider: 'apple',
+        ssoProvider: Provider.APPLE,
       })
     })
   })
@@ -246,7 +246,7 @@ describe('<LoginMethods/>', () => {
             source: 'iPhone 13',
           },
         },
-        'google',
+        Provider.GOOGLE,
         { credentials: 'omit' }
       )
     })
@@ -288,7 +288,7 @@ describe('<LoginMethods/>', () => {
         accountCreationToken: 'accountCreationToken',
         email: 'user@gmail.com',
         from: StepperOrigin.LOGIN_METHODS,
-        ssoProvider: 'google',
+        ssoProvider: Provider.GOOGLE,
       })
     })
 
