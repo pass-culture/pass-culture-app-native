@@ -8,15 +8,12 @@ describe('getTextSemanticAttrs()', () => {
     ${2}         | ${2}               | ${AccessibilityRole.HEADER}
     ${3}         | ${3}               | ${AccessibilityRole.HEADER}
     ${4}         | ${4}               | ${AccessibilityRole.HEADER}
-    ${'p'}       | ${'p'}             | ${AccessibilityRole.HEADER}
-    ${'span'}    | ${'span'}          | ${AccessibilityRole.HEADER}
+    ${'p'}       | ${'p'}             | ${AccessibilityRole.TEXT}
+    ${'span'}    | ${'span'}          | ${AccessibilityRole.TEXT}
   `(
     "getTextSemanticAttrs($headingLevel) = {accessibilityRole: $accessibilityRole, accessibilityLevel: $accessibilityLevel, dir: 'ltr'}",
     ({ headingLevel, accessibilityLevel, accessibilityRole }) => {
-      expect(getTextSemanticAttrs(headingLevel)).toEqual({
-        accessibilityRole,
-        accessibilityLevel,
-      })
+      expect(getTextSemanticAttrs(headingLevel)).toEqual({ accessibilityRole, accessibilityLevel })
     }
   )
 })

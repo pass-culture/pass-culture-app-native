@@ -1,7 +1,8 @@
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { isHeadingLevel } from 'ui/theme/isHeadingLevel'
 import { HeadingAttrs, TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
 
 export const getTextSemanticAttrs = (level: TextSemanticLevel): HeadingAttrs => ({
-  accessibilityRole: AccessibilityRole.HEADER,
+  accessibilityRole: isHeadingLevel(level) ? AccessibilityRole.HEADER : AccessibilityRole.TEXT,
   accessibilityLevel: level,
 })

@@ -9,7 +9,6 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type ActionCardLayout = 'split' | 'overlay'
@@ -78,7 +77,7 @@ export const ActionCardBase: FunctionComponent<Props> = ({
         </Title>
       ) : null}
       {subtitle ? (
-        <Subtitle testID="secondLine" numberOfLines={3} {...getNoHeadingAttrs()}>
+        <Subtitle testID="secondLine" numberOfLines={3} {...getTextSemanticAttrs('p')}>
           {subtitle}
         </Subtitle>
       ) : null}
