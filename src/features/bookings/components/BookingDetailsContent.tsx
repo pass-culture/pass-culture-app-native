@@ -26,6 +26,7 @@ import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const scrollIndicatorInsets = { right: 1 }
 
@@ -42,6 +43,7 @@ export const BookingDetailsContent = ({
 }) => {
   const { isDesktopViewport, designSystem } = useTheme()
   const { height: windowHeight } = useWindowDimensions()
+  const { bottom: contentBottomPadding } = useCustomSafeInsets()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
   const display = properties.isEvent === true ? 'punched' : 'full'
   const EXTRA_ANDROID_MARGIN = designSystem.size.spacing.xxl
@@ -158,6 +160,7 @@ export const BookingDetailsContent = ({
             cancelBooking={cancelBooking}
             showArchiveModal={showArchiveModal}
             hasTicket={hasTicket}
+            bottom={contentBottomPadding}
           />
         )}
         <CancelBookingModal

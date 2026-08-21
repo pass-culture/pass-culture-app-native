@@ -206,7 +206,7 @@ exports[`ThematicHome should render correctly 1`] = `
       <View
         style={
           {
-            "bottom": 88,
+            "bottom": 24,
             "position": "absolute",
             "right": 24,
             "zIndex": 1,

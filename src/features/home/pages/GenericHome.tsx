@@ -420,7 +420,7 @@ const FooterContainer = styled.View(({ theme }) => ({
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   right: theme.designSystem.size.spacing.xl,
-  bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
+  bottom: theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))
 
