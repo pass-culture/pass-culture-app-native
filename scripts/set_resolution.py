@@ -98,28 +98,28 @@ def set_resolutions(dependencies_data: str, manifest: str, package_json: str):
 
 
 def run_yarn():
-    subprocess.run(["yarn"], shell=True)
+    subprocess.run(["yarn"], shell=False)
 
 
 def pull_master():
-    subprocess.run(["git switch master"], shell=True)
-    subprocess.run(["git pull"], shell=True)
+    subprocess.run(["git switch master"], shell=False)
+    subprocess.run(["git pull"], shell=False)
 
 
 def create_git_branch(branch: str):
-    subprocess.run([f"git switch -c {branch}"], shell=True)
+    subprocess.run([f"git switch -c {branch}"], shell=False)
 
 
 def stage_modifications():
-    subprocess.run(["git add package.json yarn.lock"], shell=True)
+    subprocess.run(["git add package.json yarn.lock"], shell=False)
 
 
 def commit_modifications(branch: str):
-    subprocess.run([f'git commit -m "({branch}) build(yarn): update dep"'], shell=True)
+    subprocess.run([f'git commit -m "({branch}) build(yarn): update dep"'], shell=False)
 
 
 def push_modifications(branch: str):
-    subprocess.run([f"git push origin {branch}"], shell=True)
+    subprocess.run([f"git push origin {branch}"], shell=False)
 
 
 def get_dependabot_alerts(manifest: str):
