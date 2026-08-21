@@ -16,4 +16,4 @@ const TitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs(2))({})
+const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs('h2'))({})

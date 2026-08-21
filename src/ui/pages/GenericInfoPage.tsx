@@ -162,8 +162,8 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               {animation ? animationContent : null}
             </IllustrationContainer>
             <TextContainer gap={4} flex={flexMobile}>
-              <StyledTitle2 {...getTextSemanticAttrs(1)}>{title}</StyledTitle2>
-              {subtitle ? <StyledBody {...getTextSemanticAttrs(2)}>{subtitle}</StyledBody> : null}
+              <StyledTitle2 {...getTextSemanticAttrs('h1')}>{title}</StyledTitle2>
+              {subtitle ? <StyledBody {...getTextSemanticAttrs('h2')}>{subtitle}</StyledBody> : null}
             </TextContainer>
 
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}

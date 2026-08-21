@@ -77,7 +77,7 @@ export const OfferCineBlockV2: FC<Props> = ({
             showButton(!inView)
           }}>
           <TitleContainer>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>{title}</Typo.Title3>
           </TitleContainer>
         </InView>
       </Anchor>

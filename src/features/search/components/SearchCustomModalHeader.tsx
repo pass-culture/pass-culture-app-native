@@ -53,7 +53,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
             />
           ) : null}
         </ButtonContainer>
-        <StyledTitle4 numberOfLines={numberOfLine} nativeID={titleId} {...getTextSemanticAttrs(1)}>
+        <StyledTitle4 numberOfLines={numberOfLine} nativeID={titleId} {...getTextSemanticAttrs('h1')}>
           {title}
         </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">

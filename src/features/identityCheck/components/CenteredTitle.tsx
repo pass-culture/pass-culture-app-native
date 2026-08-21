@@ -15,6 +15,6 @@ const TitleContainer = styled.View({
   width: '100%',
 })
 
-const Title = styled(Typo.Title4).attrs(() => getTextSemanticAttrs(2))({
+const Title = styled(Typo.Title4).attrs(() => getTextSemanticAttrs('h2'))({
   textAlign: 'center',
 })

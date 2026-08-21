@@ -71,11 +71,11 @@ const Container = styled(Page)({
   alignItems: 'center',
 })
 
-const StyledTitle2 = styled(Typo.Title2).attrs(() => getTextSemanticAttrs(1))({
+const StyledTitle2 = styled(Typo.Title2).attrs(() => getTextSemanticAttrs('h1'))({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body).attrs(() => getTextSemanticAttrs(2))({
+const StyledBody = styled(Typo.Body).attrs(() => getTextSemanticAttrs('h2'))({
   textAlign: 'center',
 })
 

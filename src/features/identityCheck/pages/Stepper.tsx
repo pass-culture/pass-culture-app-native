@@ -159,7 +159,7 @@ export const Stepper = () => {
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1).attrs(() => getTextSemanticAttrs(1))``
+const StyledTitle1 = styled(Typo.Title1).attrs(() => getTextSemanticAttrs('h1'))``
 
 const TitleContainer = styled.View(({ theme }) => ({
   marginTop: theme.isDesktopViewport ? getSpacing(16) : theme.designSystem.size.spacing.l,

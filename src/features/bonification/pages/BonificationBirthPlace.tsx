@@ -108,7 +108,7 @@ export const BonificationBirthPlace = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>{step}</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>{title}</Typo.Title3>
             <Controller
               control={control}
               name="birthCountrySelection"

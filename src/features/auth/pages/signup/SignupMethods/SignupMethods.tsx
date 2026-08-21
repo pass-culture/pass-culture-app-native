@@ -58,7 +58,7 @@ export const SignupMethods: FunctionComponent = () => {
       scrollChildren={
         <React.Fragment>
           <TitleContainer>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Crée-toi un compte</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>Crée-toi un compte</Typo.Title3>
           </TitleContainer>
           <SeparatorWithText label="Méthode recommandée" icon={StepperValidate} color="primary" />
           <StyledViewGap gap={4}>

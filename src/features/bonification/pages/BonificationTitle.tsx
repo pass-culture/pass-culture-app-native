@@ -47,7 +47,7 @@ export const BonificationTitle = () => {
       scrollChildren={
         <React.Fragment>
           <StyledBodyXsSteps>Étape 2 sur 5</StyledBodyXsSteps>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>
+          <Typo.Title3 {...getTextSemanticAttrs('h2')}>
             Quelle est la civilité de ton représentant légal&nbsp;?
           </Typo.Title3>
           <SelectorContainer

@@ -55,7 +55,7 @@ export const BonificationRequiredInformation = () => {
             <Container>
               <IdCardWithMagnifyingGlass />
             </Container>
-            <StyledTitle3 {...getTextSemanticAttrs(2)}>{title}</StyledTitle3>
+            <StyledTitle3 {...getTextSemanticAttrs('h2')}>{title}</StyledTitle3>
             <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
               {isDisabilityBonification ? (

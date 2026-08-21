@@ -35,7 +35,7 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
     : ''
   return (
     <StyledView>
-      <Typo.Title3 {...getTextSemanticAttrs(3)} testID="DateStep">
+      <Typo.Title3 {...getTextSemanticAttrs('h3')} testID="DateStep">
         Date
       </Typo.Title3>
       {bookingState.step === Step.DATE ? (

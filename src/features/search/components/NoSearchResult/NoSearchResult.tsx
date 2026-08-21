@@ -112,7 +112,7 @@ const ContainerText = styled.View(({ theme }) => ({
 }))
 
 const Title = styled(Typo.Title4).attrs({
-  ...getTextSemanticAttrs(2),
+  ...getTextSemanticAttrs('h2'),
 })(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))

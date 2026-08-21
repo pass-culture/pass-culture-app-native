@@ -39,7 +39,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
 }))
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs(2))(
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs('h2'))(
   ({ theme }) => ({
     color: theme.designSystem.color.text.subtle,
   })

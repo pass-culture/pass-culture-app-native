@@ -267,6 +267,6 @@ export function AccessibilityDeclarationMobileBase({
   )
 }
 
-const TitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))``
+const TitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))``
 
-const SubtitleText = styled(Typo.BodyAccent).attrs(getTextSemanticAttrs(3))``
+const SubtitleText = styled(Typo.BodyAccent).attrs(getTextSemanticAttrs('h3'))``

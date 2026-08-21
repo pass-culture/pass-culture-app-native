@@ -111,7 +111,7 @@ export const ReinitializePassword = () => {
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}
       scrollChildren={
         <React.Fragment>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs('h2')}>Choisis un nouveau mot de passe</Typo.Title3>
           <Form.MaxWidth>
             <Container>
               <PasswordInputController

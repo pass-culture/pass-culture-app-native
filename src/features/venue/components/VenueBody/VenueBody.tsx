@@ -93,7 +93,7 @@ export const VenueBody: FunctionComponent<Props> = ({
       <React.Fragment>
         {headlineOfferData ? (
           <MarginContainer>
-            <StyledTitle3 {...getTextSemanticAttrs(2)}>À la une</StyledTitle3>
+            <StyledTitle3 {...getTextSemanticAttrs('h2')}>À la une</StyledTitle3>
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}

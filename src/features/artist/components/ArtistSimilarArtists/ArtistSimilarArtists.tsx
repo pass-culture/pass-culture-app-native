@@ -83,7 +83,7 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
   )
 }
 
-const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs('h2'))``
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

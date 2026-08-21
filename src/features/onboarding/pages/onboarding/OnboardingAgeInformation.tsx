@@ -72,7 +72,7 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
   return (
     <TutorialPage title={`À ${userAge} ans, profite de ton pass Culture\u00a0!`} buttons={buttons}>
       <ViewGap gap={2}>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>Comment ça marche&nbsp;?</Typo.Title4>
+        <Typo.Title4 {...getTextSemanticAttrs('h2')}>Comment ça marche&nbsp;?</Typo.Title4>
         <OnboardingTimeline age={userAge} />
       </ViewGap>
     </TutorialPage>

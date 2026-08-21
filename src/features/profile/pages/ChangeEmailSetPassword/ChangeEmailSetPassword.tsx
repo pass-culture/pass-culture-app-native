@@ -73,7 +73,7 @@ export const ChangeEmailSetPassword = () => {
       scrollChildren={
         <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Crée ton mot de passe</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>Crée ton mot de passe</Typo.Title3>
             <Typo.Body>
               Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
             </Typo.Body>

@@ -54,7 +54,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   )
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
-  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(3)
+  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs('h3')
 
   function handlePressVenue() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition

@@ -49,7 +49,7 @@ export function GenericOfficialPage({
       <Content>
         {isTouch ? <TopTouch /> : null}
         <TitleContainer>
-          <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
+          <Typo.Title2 {...getTextSemanticAttrs('h1')}>{title}</Typo.Title2>
         </TitleContainer>
         {children}
         {isTouch ? <BottomTouch marginTop={getButtonSpaces()} /> : null}

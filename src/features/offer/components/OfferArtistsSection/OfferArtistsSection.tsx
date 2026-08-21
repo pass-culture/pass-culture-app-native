@@ -123,7 +123,7 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
     <ViewGap gap={4}>
       <SeeAllButtonContainer gap={3}>
         <TitleContainer>
-          <Typo.Title4 {...getTextSemanticAttrs(2)}>{title}</Typo.Title4>
+          <Typo.Title4 {...getTextSemanticAttrs('h2')}>{title}</Typo.Title4>
         </TitleContainer>
         {artists.length > 1 ? (
           <View>

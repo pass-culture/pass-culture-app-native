@@ -132,7 +132,7 @@ const Header = ({
   onBeforeSeeAllNavigate,
 }: HeaderProps) => (
   <HeaderContainer>
-    <Typo.Title4 {...getTextSemanticAttrs(2)}>Tout parcourir</Typo.Title4>
+    <Typo.Title4 {...getTextSemanticAttrs('h2')}>Tout parcourir</Typo.Title4>
     {shouldDisplaySeeAllButton && seeAllNavigateTo ? (
       <InternalTouchableLink
         as={Button}

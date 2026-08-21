@@ -145,7 +145,7 @@ export const NotificationsSettings = () => {
               <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
             </BannerContainer>
           )}
-          <Typo.Title4 {...getTextSemanticAttrs(2)}>Type d’alerte</Typo.Title4>
+          <Typo.Title4 {...getTextSemanticAttrs('h2')}>Type d’alerte</Typo.Title4>
           <TextContainer>
             <Typo.Body>
               Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
@@ -177,7 +177,7 @@ export const NotificationsSettings = () => {
               </SectionWithSwitchContainer>
             )}
             <StyledSeparator />
-            <Typo.Title4 {...getTextSemanticAttrs(2)}>Tes thèmes suivis</Typo.Title4>
+            <Typo.Title4 {...getTextSemanticAttrs('h2')}>Tes thèmes suivis</Typo.Title4>
             {!isLoggedIn || areNotificationsEnabled ? null : (
               <BannerThemeContainer>
                 <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />

@@ -71,7 +71,7 @@ export const CookiesSettings = ({
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getTextSemanticAttrs(2)}>
+      <Typo.Title4 {...getTextSemanticAttrs('h2')}>
         À quoi servent tes cookies et tes données&nbsp;?
       </Typo.Title4>
       <ChoiceContainer>

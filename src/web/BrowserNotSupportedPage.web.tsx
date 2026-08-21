@@ -63,8 +63,8 @@ export const BrowserNotSupportedPage: React.FC<{
           />
         </IllustrationContainer>
         <TextContainer gap={4}>
-          <StyledTitle2 {...getTextSemanticAttrs(1)}>{message?.title}</StyledTitle2>
-          <Typo.Body {...getTextSemanticAttrs(2)}>{message?.description}</Typo.Body>
+          <StyledTitle2 {...getTextSemanticAttrs('h1')}>{message?.title}</StyledTitle2>
+          <Typo.Body {...getTextSemanticAttrs('h2')}>{message?.description}</Typo.Body>
 
           <AccessibleUnorderedList
             withPadding

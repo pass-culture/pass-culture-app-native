@@ -88,7 +88,7 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   marginTop: -GRADIENT_SIZE,
 })
 
-const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs(1))({
+const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs('h1'))({
   textAlign: 'center',
 })
 

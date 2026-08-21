@@ -218,7 +218,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         <ArtistsPlaylistContainer gap={2}>
           <SeeAllButtonContainer gap={3}>
             <TitleContainer>
-              <Typo.Title3 {...getTextSemanticAttrs(2)}>{playlistTitle}</Typo.Title3>
+              <Typo.Title3 {...getTextSemanticAttrs('h2')}>{playlistTitle}</Typo.Title3>
             </TitleContainer>
             {artists.length > 1 ? (
               <View>

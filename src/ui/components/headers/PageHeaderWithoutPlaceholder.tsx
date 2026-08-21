@@ -102,7 +102,7 @@ const TitleContainer = styled.View({ flex: 1, alignItems: 'center' })
 
 const Title = styled(Typo.Title4).attrs<{ numberOfLines?: number }>(({ numberOfLines }) => ({
   numberOfLines,
-  ...getTextSemanticAttrs(1),
+  ...getTextSemanticAttrs('h1'),
 }))({
   textAlign: 'center',
 })

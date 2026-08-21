@@ -137,7 +137,7 @@ export const Accordion = ({
           {...focusProps}
           {...accessibilityProps}>
           <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
-            <Title {...getTextSemanticAttrs(3)}>{title}</Title>
+            <Title {...getTextSemanticAttrs('h3')}>{title}</Title>
             <StyledArrowAnimatedView
               style={{ transform: [{ rotateZ: arrowAngle }] }}
               testID="accordionArrow">

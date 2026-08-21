@@ -47,7 +47,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>Crée-toi un compte</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs('h2')}>Crée-toi un compte</Typo.Title3>
       <ControllersContainer gap={5}>
         <EmailInputController
           label="Adresse e-mail"

@@ -189,7 +189,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         scrollChildren={
           <React.Fragment>
             <TitleContainer>
-              <Typo.Title3 {...getTextSemanticAttrs(2)}>Connecte-toi</Typo.Title3>
+              <Typo.Title3 {...getTextSemanticAttrs('h2')}>Connecte-toi</Typo.Title3>
             </TitleContainer>
             <Form.MaxWidth>
               <InputError

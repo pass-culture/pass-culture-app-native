@@ -27,7 +27,7 @@ export const MonthHeader: React.FC<Props> = ({ date, addMonth }) => {
         color="neutral"
       />
 
-      <Typo.Body {...getTextSemanticAttrs(2)} accessibilityLiveRegion="polite">
+      <Typo.Body {...getTextSemanticAttrs('h2')} accessibilityLiveRegion="polite">
         {month}
       </Typo.Body>
 

@@ -35,7 +35,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const computedAccessibilityLabel = getComputedAccessibilityLabel(label, subtitle)
 
   const TitleWithSubtitle = useMemo(() => {
-    const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(2)
+    const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs('h2')
 
     return (
       <View {...headingProps} accessibilityLabel={computedAccessibilityLabel} accessible>

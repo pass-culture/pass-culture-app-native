@@ -27,10 +27,10 @@ const createStyledText = (
 }
 
 export const Typo = {
-  Title1: createStyledText('title1', 1),
-  Title2: createStyledText('title2', 2),
-  Title3: createStyledText('title3', 3),
-  Title4: createStyledText('title4', 4),
+  Title1: createStyledText('title1', 'h1'),
+  Title2: createStyledText('title2', 'h2'),
+  Title3: createStyledText('title3', 'h3'),
+  Title4: createStyledText('title4', 'h4'),
   Body: createStyledText('body'),
   BodyS: createStyledText('bodyS'),
   BodyXs: createStyledText('bodyXs'),

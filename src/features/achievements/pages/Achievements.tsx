@@ -57,7 +57,7 @@ const Achievements = () => {
               <ViewGap gap={4} key={category.name}>
                 <AchievementsGroupeHeader>
                   <View>
-                    <Typo.Title4 {...getTextSemanticAttrs(2)}>
+                    <Typo.Title4 {...getTextSemanticAttrs('h2')}>
                       {achievementCategoryDisplayTitles[category.name]}
                     </Typo.Title4>
                     <StyledBody>{category.remainingAchievementsText}</StyledBody>

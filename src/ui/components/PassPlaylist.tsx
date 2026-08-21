@@ -144,7 +144,7 @@ const StyledViewGap = styled(ViewGap)<{ noMarginBottom?: boolean }>(
   })
 )
 
-const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(getTextSemanticAttrs('h2'))``
 
 const StyledSubtitle = styled(Typo.BodyAccentXs).attrs<{
   windowWidth?: number

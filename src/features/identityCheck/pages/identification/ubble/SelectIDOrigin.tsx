@@ -79,7 +79,7 @@ const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))({
   textAlign: 'center',
 })
 

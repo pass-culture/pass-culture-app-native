@@ -92,7 +92,7 @@ export const SetName = () => {
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <Form.MaxWidth>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs('h2')}>{pageConfigByType[type].title}</Typo.Title3>
           <BannerContainer>
             <Banner Icon={IdCard} label={pageConfigByType[type].bannerMessage} />
           </BannerContainer>

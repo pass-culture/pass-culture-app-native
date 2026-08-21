@@ -37,7 +37,7 @@ export const ThematicSubscriptionBlock = ({
     <Container>
       <SubscriptionThematicIllustration thematic={thematic} size="medium" />
       <ContentContainer>
-        <Typo.BodyAccent {...getTextSemanticAttrs(2)}>{title}</Typo.BodyAccent>
+        <Typo.BodyAccent {...getTextSemanticAttrs('h2')}>{title}</Typo.BodyAccent>
         <Subtitle>{subtitle}</Subtitle>
         <ButtonContainerFlexStart>
           <Button

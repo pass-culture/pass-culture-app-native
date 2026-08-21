@@ -29,7 +29,7 @@ export function AutocompleteSection<T>({ title, renderItem, ...props }: Props<T>
   )
 }
 
-const Title = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs(2))(({ theme }) => ({
+const Title = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs('h2'))(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 

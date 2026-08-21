@@ -73,7 +73,7 @@ export const ContentHeader = ({
         {LeftElement}
         <TitleContainer>
           <Title
-            {...getTextSemanticAttrs(1)}
+            {...getTextSemanticAttrs('h1')}
             testID={titleTestID}
             style={{
               opacity: customHeaderTitleTransition ?? headerTransition,

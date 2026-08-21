@@ -68,7 +68,7 @@ export const BonificationExplanations = () => {
             <Container>
               <StyledSpeaker />
             </Container>
-            <StyledTitle3 {...getTextSemanticAttrs(2)}>
+            <StyledTitle3 {...getTextSemanticAttrs('h2')}>
               Quel est ce bonus et comment en bénéficier&nbsp;?
             </StyledTitle3>
             <Typo.Body>

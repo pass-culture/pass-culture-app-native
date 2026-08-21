@@ -129,7 +129,7 @@ export const BookHourChoice = () => {
     </View>
   ) : (
     <ViewGap gap={4}>
-      <Typo.Title3 {...getTextSemanticAttrs(3)}>{radioGroupLabel}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs('h3')}>{radioGroupLabel}</Typo.Title3>
       <TouchableOpacity onPress={changeHour}>
         <Typo.Button>{buttonTitle}</Typo.Button>
       </TouchableOpacity>

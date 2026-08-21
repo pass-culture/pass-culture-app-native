@@ -111,6 +111,6 @@ const HeaderActionContainer = styled.View<{ justifyContent: 'left' | 'right' }>(
   }
 )
 
-const Title = styled(Typo.Title4).attrs(() => getTextSemanticAttrs(1))({
+const Title = styled(Typo.Title4).attrs(() => getTextSemanticAttrs('h1'))({
   textAlign: 'center',
 })

@@ -18,7 +18,7 @@ export const OfferTitle: FunctionComponent<Props> = ({ offerName }) => {
       adjustsFontSizeToFit
       allowFontScaling={false}
       {...accessibilityAndTestId(`Nom de l’offre\u00a0: ${offerName}`)}
-      {...getTextSemanticAttrs(1)}>
+      {...getTextSemanticAttrs('h1')}>
       {offerName}
     </TitleComponent>
   )

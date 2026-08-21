@@ -54,7 +54,7 @@ const UnmemoizedSearchVenueItem = ({
   const { lat, lng } = venue._geoloc
   const distance = getDistance({ lat, lng }, { userLocation, selectedPlace, selectedLocationMode })
 
-  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(3)
+  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs('h3')
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, {
     ...venue,
     distance: distance ? `à ${distance}` : undefined,

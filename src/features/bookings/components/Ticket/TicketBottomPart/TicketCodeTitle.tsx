@@ -20,7 +20,7 @@ export const TicketCodeTitle = ({
   </StyledTouchable>
 )
 
-const StyledTitle = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))(({ theme }) => ({
+const StyledTitle = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
 }))
 

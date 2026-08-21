@@ -54,8 +54,8 @@ export const ProfileTutorialAgeInformationCredit = () => {
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
         <Container gap={6}>
-          <Typo.Title3 {...getTextSemanticAttrs(1)}>{headerTitle}</Typo.Title3>
-          <Typo.BodyS {...getTextSemanticAttrs(2)}>
+          <Typo.Title3 {...getTextSemanticAttrs('h1')}>{headerTitle}</Typo.Title3>
+          <Typo.BodyS {...getTextSemanticAttrs('h2')}>
             De 17 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des
             activités culturelles.
           </Typo.BodyS>

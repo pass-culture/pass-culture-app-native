@@ -39,7 +39,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
   return (
     <SetContainer>
       <Form.MaxWidth>
-        <Typo.Title3 {...getTextSemanticAttrs(2)}>Choisis un mot de passe</Typo.Title3>
+        <Typo.Title3 {...getTextSemanticAttrs('h2')}>Choisis un mot de passe</Typo.Title3>
         <PasswordInputContainer>
           <PasswordInputController
             label="Mot de passe"

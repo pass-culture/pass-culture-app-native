@@ -105,7 +105,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   return (
     <SetContainer>
       <Form.MaxWidth>
-        <Typo.Title3 id={titleId} {...getTextSemanticAttrs(2)}>
+        <Typo.Title3 id={titleId} {...getTextSemanticAttrs('h2')}>
           {pageTitle}
         </Typo.Title3>
         {isSSOSubscriptionFromLogin ? (

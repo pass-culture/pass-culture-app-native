@@ -43,7 +43,7 @@ export const IdentityCheckEnd: FC = () => {
           />
         </IllustrationContainer>
         <TextContainer>
-          <StyledTitle2 {...getTextSemanticAttrs(1)}>
+          <StyledTitle2 {...getTextSemanticAttrs('h1')}>
             Ta pièce d’identité a bien été transmise&nbsp;!
           </StyledTitle2>
         </TextContainer>

@@ -55,7 +55,7 @@ const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs(2))(
+const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getTextSemanticAttrs('h2'))(
   ({ theme }) => ({
     color: theme.designSystem.color.text.subtle,
   })

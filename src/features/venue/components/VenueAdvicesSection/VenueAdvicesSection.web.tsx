@@ -44,7 +44,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   const TitleContent = (
     <Row>
       <StyledTitle3
-        {...getTextSemanticAttrs(3)}
+        {...getTextSemanticAttrs('h3')}
         numberOfLines={2}
         enableNewTagProAdvices={enableNewTagProAdvices}>
         {`Les avis par “${venue.name}”`}

@@ -60,7 +60,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     subcategoryId
   )
 
-  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs(3)
+  const headingProps = Platform.OS === 'web' ? {} : getTextSemanticAttrs('h3')
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,

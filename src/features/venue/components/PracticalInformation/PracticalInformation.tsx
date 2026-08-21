@@ -135,7 +135,7 @@ const SectionComponent: FunctionComponent<{ title: string; children?: ReactNode 
   children,
 }) => (
   <StyledViewGap>
-    <Typo.BodyAccentXs {...getTextSemanticAttrs(2)}>{title}</Typo.BodyAccentXs>
+    <Typo.BodyAccentXs {...getTextSemanticAttrs('h2')}>{title}</Typo.BodyAccentXs>
     {children}
   </StyledViewGap>
 )

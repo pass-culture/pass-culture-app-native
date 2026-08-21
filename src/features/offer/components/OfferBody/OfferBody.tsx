@@ -153,7 +153,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </GroupWithoutGap>
 
         {prices.length > 0 ? (
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>{displayedPrice}</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs('h2')}>{displayedPrice}</Typo.Title3>
         ) : null}
 
         <OfferReactionSection

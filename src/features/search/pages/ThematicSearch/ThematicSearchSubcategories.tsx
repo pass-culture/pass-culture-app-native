@@ -72,7 +72,7 @@ export const ThematicSearchSubcategories = () => {
     <Page>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
-        <Title {...getTextSemanticAttrs(1)}>{TITLE}</Title>
+        <Title {...getTextSemanticAttrs('h1')}>{TITLE}</Title>
         <SubcategoryButtonsContainer>
           {subcategoryButtonContent.map((item) => (
             <StyledSubcategoryButton

@@ -146,7 +146,7 @@ const Container = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xxl,
 }))
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))({
   textAlign: 'center',
 })
 

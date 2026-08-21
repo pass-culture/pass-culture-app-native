@@ -78,7 +78,7 @@ export const SetCity = () => {
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <ViewGap gap={5}>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs('h2')}>Renseigne ta ville de résidence</Typo.Title3>
           <Controller
             control={control}
             name="city"

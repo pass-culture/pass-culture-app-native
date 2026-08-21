@@ -49,7 +49,7 @@ export function OfferVenueBlock({
 
   return (
     <Wrapper>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs('h2')}>{title}</Typo.Title3>
 
       <Container>
         <VenueBlock

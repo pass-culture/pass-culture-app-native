@@ -97,9 +97,9 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <View>
             <IllustrationContainer>{renderIllustration()}</IllustrationContainer>
             <TextContainer gap={4}>
-              <StyledTitle {...getTextSemanticAttrs(1)}>{title}</StyledTitle>
+              <StyledTitle {...getTextSemanticAttrs('h1')}>{title}</StyledTitle>
               {subtitle ? (
-                <StyledSubtitle {...getTextSemanticAttrs(2)}>{subtitle}</StyledSubtitle>
+                <StyledSubtitle {...getTextSemanticAttrs('h2')}>{subtitle}</StyledSubtitle>
               ) : null}
             </TextContainer>
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}

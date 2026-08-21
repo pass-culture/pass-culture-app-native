@@ -28,7 +28,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
         <CookiesSettings {...props} />
       </CookiesSettingsContainer>
       <ViewGap gap={4}>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>Tu as la main dessus</Typo.Title4>
+        <Typo.Title4 {...getTextSemanticAttrs('h2')}>Tu as la main dessus</Typo.Title4>
         <Typo.Body>
           Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
           confidentialité de ton profil à tout moment.

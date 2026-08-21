@@ -53,7 +53,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
   return (
     <Wrapper>
       <ViewGap gap={4}>
-        <Typo.Title3 {...getTextSemanticAttrs(2)}>Proposé par</Typo.Title3>
+        <Typo.Title3 {...getTextSemanticAttrs('h2')}>Proposé par</Typo.Title3>
         {navigateTo ? (
           <InternalTouchableLink navigateTo={navigateTo} accessibilityLabel={name}>
             {content}

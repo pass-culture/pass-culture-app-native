@@ -36,7 +36,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
 
   return (
     <ViewGap gap={4}>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>{'Passe le bon plan\u00a0!'}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs('h2')}>{'Passe le bon plan\u00a0!'}</Typo.Title3>
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps

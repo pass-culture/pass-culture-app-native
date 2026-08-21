@@ -4,10 +4,10 @@ import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAt
 describe('getTextSemanticAttrs()', () => {
   it.each`
     headingLevel | accessibilityLevel | accessibilityRole
-    ${1}         | ${1}               | ${AccessibilityRole.HEADER}
-    ${2}         | ${2}               | ${AccessibilityRole.HEADER}
-    ${3}         | ${3}               | ${AccessibilityRole.HEADER}
-    ${4}         | ${4}               | ${AccessibilityRole.HEADER}
+    ${'h1'}      | ${'h1'}            | ${AccessibilityRole.HEADER}
+    ${'h2'}      | ${'h2'}            | ${AccessibilityRole.HEADER}
+    ${'h3'}      | ${'h3'}            | ${AccessibilityRole.HEADER}
+    ${'h4'}      | ${'h4'}            | ${AccessibilityRole.HEADER}
     ${'p'}       | ${'p'}             | ${AccessibilityRole.TEXT}
     ${'span'}    | ${'span'}          | ${AccessibilityRole.TEXT}
   `(

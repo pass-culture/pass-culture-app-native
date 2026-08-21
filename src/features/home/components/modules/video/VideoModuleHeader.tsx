@@ -49,7 +49,7 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
         <Tag label={videoTag} variant={TagVariant.DEFAULT} />
       </StyledTagContainer>
 
-      <Typo.Title3 {...getTextSemanticAttrs(1)}>{moduleName}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs('h1')}>{moduleName}</Typo.Title3>
 
       <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
         new Date(videoPublicationDate)
@@ -62,7 +62,7 @@ export const VideoModuleHeader: FunctionComponent<Props> = ({
       ) : null}
 
       <OfferTitleContainer>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>{offerTitle}</Typo.Title4>
+        <Typo.Title4 {...getTextSemanticAttrs('h2')}>{offerTitle}</Typo.Title4>
       </OfferTitleContainer>
 
       {!isMultiOffer && offers[0] && !hasThematicHomeEntry ? (

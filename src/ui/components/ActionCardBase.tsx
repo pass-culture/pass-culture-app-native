@@ -72,7 +72,7 @@ export const ActionCardBase: FunctionComponent<Props> = ({
         </DateText>
       ) : null}
       {title ? (
-        <Title testID="firstLine" numberOfLines={3} {...getTextSemanticAttrs(2)}>
+        <Title testID="firstLine" numberOfLines={3} {...getTextSemanticAttrs('h2')}>
           {title}
         </Title>
       ) : null}

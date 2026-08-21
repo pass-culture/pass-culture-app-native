@@ -24,6 +24,6 @@ const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const Caption = styled(Typo.BodyAccentXs).attrs(() => getTextSemanticAttrs(2))(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs).attrs(() => getTextSemanticAttrs('h2'))(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))

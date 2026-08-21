@@ -65,7 +65,7 @@ export const FeedbackInApp = () => {
       scrollChildren={
         <StyledViewGap gap={6}>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(1)}>
+            <Typo.Title3 {...getTextSemanticAttrs('h1')}>
               Comment pourrions-nous améliorer l’application&nbsp;?
             </Typo.Title3>
             <Typo.Body>

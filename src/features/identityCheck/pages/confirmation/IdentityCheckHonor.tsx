@@ -63,11 +63,11 @@ export const IdentityCheckHonor = () => {
     <Page>
       <StyledScrollView>
         <HeaderHeightSpacer headerHeight={headerHeight} />
-        <Typo.Title2 {...getTextSemanticAttrs(1)}>
+        <Typo.Title2 {...getTextSemanticAttrs('h1')}>
           Les informations que tu as renseignées sont-elles correctes&nbsp;?
         </Typo.Title2>
         <TextContainer>
-          <Typo.Title4 {...getTextSemanticAttrs(2)}>
+          <Typo.Title4 {...getTextSemanticAttrs('h2')}>
             &quot;Je déclare que l’ensemble des informations que j’ai renseignées durant mon
             inscription sont correctes.&quot;
           </Typo.Title4>

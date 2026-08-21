@@ -137,7 +137,7 @@ const CategoriesButtonsContainer = styled(Ul)(({ theme }) => ({
 
 const CategoriesTitleV2 = styled(Typo.Title4).attrs({
   children: 'Parcours les catégories',
-  ...getTextSemanticAttrs(2),
+  ...getTextSemanticAttrs('h2'),
 })(({ theme }) => ({
   width: '100%',
   marginTop: theme.designSystem.size.spacing.l,

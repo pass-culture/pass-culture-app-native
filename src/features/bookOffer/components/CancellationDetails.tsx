@@ -32,7 +32,7 @@ export const CancellationDetails: React.FC = () => {
 
   return (
     <ViewGap gap={2}>
-      <Typo.Title4 {...getTextSemanticAttrs(2)}>Conditions d’annulation</Typo.Title4>
+      <Typo.Title4 {...getTextSemanticAttrs('h2')}>Conditions d’annulation</Typo.Title4>
       <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs>
     </ViewGap>
   )

@@ -69,7 +69,7 @@ export const BonificationNames = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>
               Quels sont les noms et prénoms de ton représentant légal&nbsp;?
             </Typo.Title3>
             <Controller

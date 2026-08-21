@@ -160,7 +160,7 @@ const TopContainer = styled.View<{ hasVolunteer?: boolean }>(({ theme, hasVolunt
   }
 })
 
-const VenueTitle = styled(Typo.Title3).attrs(getTextSemanticAttrs(1))``
+const VenueTitle = styled(Typo.Title3).attrs(getTextSemanticAttrs('h1'))``
 
 const MarginContainer = styled.View(({ theme }) => ({
   marginLeft: theme.isDesktopViewport ? getSpacing(13.5) : theme.designSystem.size.spacing.xl,

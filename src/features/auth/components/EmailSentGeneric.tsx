@@ -39,7 +39,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <IllustrationContainer>
         <StyledEmailSent />
       </IllustrationContainer>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
+      <Typo.Title3 {...getTextSemanticAttrs('h2')}>{title}</Typo.Title3>
       <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
       <Typo.Body>{email}</Typo.Body>
       <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>

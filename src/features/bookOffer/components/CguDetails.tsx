@@ -11,7 +11,7 @@ type Props = {
 export const CguDetails: React.FC<Props> = ({ children }) => {
   return (
     <ViewGap gap={4}>
-      <Typo.Title4 {...getTextSemanticAttrs(2)}>Conditions d’utilisation</Typo.Title4>
+      <Typo.Title4 {...getTextSemanticAttrs('h2')}>Conditions d’utilisation</Typo.Title4>
       {children}
     </ViewGap>
   )

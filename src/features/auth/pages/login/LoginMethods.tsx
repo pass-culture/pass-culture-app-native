@@ -93,7 +93,7 @@ export const LoginMethods = () => {
       scrollChildren={
         <React.Fragment>
           <TitleContainer>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Connecte-toi</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>Connecte-toi</Typo.Title3>
           </TitleContainer>
           <SeparatorWithText label="Méthode recommandée" icon={StepperValidate} color="primary" />
           <Form.MaxWidth>

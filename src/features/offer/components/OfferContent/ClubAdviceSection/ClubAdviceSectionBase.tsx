@@ -30,7 +30,7 @@ export const ClubAdviceSectionBase = ({
     <View style={style}>
       <Gutter>
         <Row>
-          <StyledTitle3 {...getTextSemanticAttrs(3)}>{variantInfo.titleSection}</StyledTitle3>
+          <StyledTitle3 {...getTextSemanticAttrs('h3')}>{variantInfo.titleSection}</StyledTitle3>
           {showSectionTag && variantInfo.sectionTag ? (
             <TagContainer>{variantInfo.sectionTag}</TagContainer>
           ) : null}

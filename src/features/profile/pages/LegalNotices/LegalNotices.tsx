@@ -30,7 +30,7 @@ export function LegalNotices() {
       onGoBack={goBack}
       scrollChildren={
         <Container gap={5}>
-          <Typo.Title4 {...getTextSemanticAttrs(2)}>ÉDITEUR SAS pass Culture</Typo.Title4>
+          <Typo.Title4 {...getTextSemanticAttrs('h2')}>ÉDITEUR SAS pass Culture</Typo.Title4>
           <Typo.Body>
             Éditeur du site&nbsp;:&nbsp;
             <ExternalTouchableLink

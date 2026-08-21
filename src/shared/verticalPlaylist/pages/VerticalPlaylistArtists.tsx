@@ -47,7 +47,7 @@ export const VerticalPlaylistArtists = () => {
         ListHeaderComponent={
           <React.Fragment>
             <Placeholder height={headerHeight} />
-            <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
+            <Typo.Title2 {...getTextSemanticAttrs('h1')}>{title}</Typo.Title2>
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
             <TitleContainer>
               <NumberOfItems nbItems={nbItems} type="artists" />

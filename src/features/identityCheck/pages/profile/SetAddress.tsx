@@ -149,7 +149,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>{pageConfigByType[type].title}</Typo.Title3>
             <Container>
               <SearchInput
                 onChangeText={onChangeAddress}

@@ -200,7 +200,7 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
         Icon={Error}
       />
       <Container>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>Informations</Typo.Title4>
+        <Typo.Title4 {...getTextSemanticAttrs('h2')}>Informations</Typo.Title4>
       </Container>
       <BookingInformationsContainer>
         <BookingInformations />
@@ -333,7 +333,7 @@ const VenueTitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 
-const VenueTitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const VenueTitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))({
   flexShrink: 1,
 })
 

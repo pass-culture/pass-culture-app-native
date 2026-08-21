@@ -158,7 +158,7 @@ export const VerticalPlaylistOffersView = ({
           <React.Fragment>
             <Placeholder height={headerHeight} />
 
-            <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
+            <Typo.Title2 {...getTextSemanticAttrs('h1')}>{title}</Typo.Title2>
             {artist ? (
               <InternalTouchableLink
                 navigateTo={{ screen: 'Artist', params: { id: artist.id } }}

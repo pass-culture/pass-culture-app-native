@@ -21,7 +21,7 @@ export const ChangeCity = () => {
       scrollChildren={
         <React.Fragment>
           <Container>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
+            <Typo.Title3 {...getTextSemanticAttrs('h2')}>Renseigne ta ville de résidence</Typo.Title3>
           </Container>
           <Controller
             control={control}

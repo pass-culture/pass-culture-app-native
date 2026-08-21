@@ -38,7 +38,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
   return (
     <Container gap={4}>
       <Gutter>
-        <StyledTitle3 {...getTextSemanticAttrs(3)} numberOfLines={2}>
+        <StyledTitle3 {...getTextSemanticAttrs('h3')} numberOfLines={2}>
           {`Les avis par “${venue.name}”`}
         </StyledTitle3>
       </Gutter>

@@ -75,7 +75,7 @@ const PhonePending = styled(InitialPhonePending).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))({
   textAlign: 'center',
 })
 const StyledBody = styled(Typo.Body)({

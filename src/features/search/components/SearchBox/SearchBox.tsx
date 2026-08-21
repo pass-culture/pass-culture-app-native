@@ -252,7 +252,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   return (
     <RowContainer>
       {accessibleHiddenTitle ? (
-        <HiddenAccessibleText {...getTextSemanticAttrs(1)}>
+        <HiddenAccessibleText {...getTextSemanticAttrs('h1')}>
           {accessibleHiddenTitle}
         </HiddenAccessibleText>
       ) : null}

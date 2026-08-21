@@ -83,7 +83,7 @@ export const LoginMethodsWithLastLoginInfo = () => {
       title="Connexion"
       scrollChildren={
         <ViewGap gap={6}>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>Connecte-toi</Typo.Title3>
+          <Typo.Title3 {...getTextSemanticAttrs('h2')}>Connecte-toi</Typo.Title3>
 
           <LastLoginInfoBanner lastLoginInfo={lastLoginInfo} />
 

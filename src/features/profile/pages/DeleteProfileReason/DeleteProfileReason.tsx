@@ -106,7 +106,7 @@ export function DeleteProfileReason() {
             <HeaderContainer>
               <StyledIcon />
               <TitlesContainer>
-                <Typo.Title3 {...getTextSemanticAttrs(1)}>
+                <Typo.Title3 {...getTextSemanticAttrs('h1')}>
                   Pourquoi souhaites-tu supprimer ton compte&nbsp;?
                 </Typo.Title3>
                 <Typo.Body>

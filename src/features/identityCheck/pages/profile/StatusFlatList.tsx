@@ -108,7 +108,7 @@ export function StatusFlatList({
               <React.Fragment>
                 <HeaderHeightSpacer headerHeight={headerHeight} />
                 <Container>
-                  <Typo.Title3 {...getTextSemanticAttrs(2)}>Sélectionne ton statut</Typo.Title3>
+                  <Typo.Title3 {...getTextSemanticAttrs('h2')}>Sélectionne ton statut</Typo.Title3>
                 </Container>
               </React.Fragment>
             }

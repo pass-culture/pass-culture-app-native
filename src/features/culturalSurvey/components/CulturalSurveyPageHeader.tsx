@@ -41,7 +41,7 @@ const BarAndTitle = styled.View(({ theme }) => ({
   flex: 1,
 }))
 
-const Title = styled(Typo.Title4).attrs(() => ({ ...getTextSemanticAttrs(1), numberOfLines: 1 }))(
+const Title = styled(Typo.Title4).attrs(() => ({ ...getTextSemanticAttrs('h1'), numberOfLines: 1 }))(
   ({ theme }) => ({
     flex: 1,
     marginRight: theme.designSystem.size.spacing.xl,

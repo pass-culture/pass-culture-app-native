@@ -67,7 +67,7 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
         renderIllutration()
       )}
 
-      <StyledTitle3 {...getTextSemanticAttrs(2)}>
+      <StyledTitle3 {...getTextSemanticAttrs('h2')}>
         Qu’as-tu pensé de tes dernières réservations&nbsp;?
       </StyledTitle3>
     </Container>

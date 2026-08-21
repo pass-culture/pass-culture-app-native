@@ -11,7 +11,7 @@ export const TrackEmailChange = () => (
     title="Modifier mon e-mail"
     scrollChildren={
       <React.Fragment>
-        <Typo.Title3 {...getTextSemanticAttrs(2)}>Suivi de ton changement d’e-mail</Typo.Title3>
+        <Typo.Title3 {...getTextSemanticAttrs('h2')}>Suivi de ton changement d’e-mail</Typo.Title3>
         <TrackEmailChangeContent />
       </React.Fragment>
     }

@@ -43,4 +43,4 @@ export const AccessibilityFeatures = () => (
   </React.Fragment>
 )
 
-const TitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))``
+const TitleText = styled(Typo.Title4).attrs(getTextSemanticAttrs('h2'))``

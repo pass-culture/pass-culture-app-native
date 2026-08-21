@@ -182,7 +182,7 @@ export const ConsentSettings = () => {
                 setSettingsCookiesChoice={setCurrentCookieChoices}
                 offerId={offerId}
               />
-              <StyledTitle4 {...getTextSemanticAttrs(2)}>Tu as la main dessus</StyledTitle4>
+              <StyledTitle4 {...getTextSemanticAttrs('h2')}>Tu as la main dessus</StyledTitle4>
               <StyledBody>
                 Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
               </StyledBody>
