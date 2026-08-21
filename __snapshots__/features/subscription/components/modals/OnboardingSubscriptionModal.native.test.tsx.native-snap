@@ -345,6 +345,8 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -444,6 +446,8 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -552,6 +556,8 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {

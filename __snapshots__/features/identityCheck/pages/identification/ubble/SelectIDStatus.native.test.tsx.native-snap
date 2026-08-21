@@ -290,6 +290,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 </Text>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -301,6 +303,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -313,6 +317,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   Tu dois avoir ta pièce d’identité 
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -325,6 +331,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   originale 
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -337,6 +345,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   et 
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -349,6 +359,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   en cours de validité 
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -472,6 +484,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -491,6 +505,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -541,6 +557,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     type="left"
                   />
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -672,6 +690,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -801,6 +821,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",

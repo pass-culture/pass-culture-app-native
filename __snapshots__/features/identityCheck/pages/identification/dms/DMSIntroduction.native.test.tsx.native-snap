@@ -274,6 +274,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -327,6 +329,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -374,6 +378,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -421,6 +427,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -469,6 +477,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -487,6 +497,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -609,6 +621,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -923,6 +937,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -976,6 +992,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1023,6 +1041,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1071,6 +1091,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -1089,6 +1111,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1211,6 +1235,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

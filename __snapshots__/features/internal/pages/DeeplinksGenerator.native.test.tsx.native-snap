@@ -412,6 +412,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -528,6 +530,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -645,6 +649,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -762,6 +768,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -907,6 +915,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1024,6 +1034,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1141,6 +1153,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1258,6 +1272,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1375,6 +1391,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1492,6 +1510,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1609,6 +1629,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1726,6 +1748,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1843,6 +1867,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -1960,6 +1986,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -2077,6 +2105,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -2194,6 +2224,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             isHover={false}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -2396,6 +2428,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -2485,6 +2519,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -2683,6 +2719,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -2772,6 +2810,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -2825,6 +2865,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -2914,6 +2956,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -2967,6 +3011,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -3056,6 +3102,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -3109,6 +3157,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -3198,6 +3248,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -3251,6 +3303,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -3341,6 +3395,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -3395,6 +3451,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               </Text>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#a20121",
@@ -3486,6 +3544,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -3589,6 +3649,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -3775,6 +3837,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   isHover={false}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}

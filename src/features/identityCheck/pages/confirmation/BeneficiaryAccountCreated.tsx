@@ -21,7 +21,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export function BeneficiaryAccountCreated() {
   const { designSystem } = useTheme()
@@ -106,7 +106,7 @@ const ProgressBarContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xxxl,
 }))
 
-const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+const Amount = styled(Typo.Title2).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.brandPrimary,
 }))

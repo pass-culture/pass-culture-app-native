@@ -322,6 +322,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -376,6 +378,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -388,6 +392,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                             Numéro de téléphone
                           </Text>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#696a6f",
@@ -482,6 +488,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                           testID="+33 - Ouvrir la modale de choix de l’indicatif téléphonique"
                         >
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -699,6 +707,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

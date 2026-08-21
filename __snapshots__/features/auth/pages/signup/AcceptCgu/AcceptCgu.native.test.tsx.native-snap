@@ -35,6 +35,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#696a6f",
@@ -139,6 +141,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 numberOfLines={2}
                 style={
                   [
@@ -258,6 +262,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 numberOfLines={2}
                 style={
                   [
@@ -377,6 +383,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 numberOfLines={2}
                 style={
                   [
@@ -548,6 +556,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -567,6 +577,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                   >
                     J’ai lu et j’accepte les conditions générales d’utilisation
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -684,6 +696,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -703,6 +717,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
                   >
                     J’ai lu les chartes des données personnelles
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -738,6 +754,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       >
         <Text
           accessibilityElementsHidden={true}
+          accessibilityLevel="p"
+          accessibilityRole="text"
           accessible={false}
           importantForAccessibility="no"
           style={
@@ -838,6 +856,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 [
                   {
@@ -903,6 +923,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         }
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#696a6f",
@@ -1007,6 +1029,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 numberOfLines={2}
                 style={
                   [
@@ -1126,6 +1150,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 numberOfLines={2}
                 style={
                   [
@@ -1245,6 +1271,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 numberOfLines={2}
                 style={
                   [
@@ -1416,6 +1444,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1540,6 +1570,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1559,6 +1591,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                   >
                     J’ai lu et j’accepte les conditions générales d’utilisation
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -1676,6 +1710,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1695,6 +1731,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
                   >
                     J’ai lu les chartes des données personnelles
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#696a6f",
@@ -1730,6 +1768,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       >
         <Text
           accessibilityElementsHidden={true}
+          accessibilityLevel="p"
+          accessibilityRole="text"
           accessible={false}
           importantForAccessibility="no"
           style={
@@ -1830,6 +1870,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 [
                   {

@@ -245,6 +245,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -257,6 +259,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
             </Text>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -269,6 +273,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre politique de gestion des cookies.
             </Text>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#696a6f",
@@ -397,6 +403,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -517,6 +525,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -621,6 +631,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

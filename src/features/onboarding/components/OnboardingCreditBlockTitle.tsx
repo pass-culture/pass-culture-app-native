@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 interface Props {
   age: number
@@ -24,8 +24,6 @@ export const OnboardingCreditBlockTitle = ({
   return <TitleText>{deposit}</TitleText>
 }
 
-const Title = styled(Typo.Title3).attrs(getNoHeadingAttrs)``
-
-const TitleSecondary = styled(Title)(({ theme }) => ({
+const TitleSecondary = styled(Typo.Title3).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))

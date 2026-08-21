@@ -256,6 +256,8 @@ Reviens lundi pour débloquer ton crédit !
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -365,6 +367,8 @@ Reviens lundi pour débloquer ton crédit !
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -661,6 +665,8 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -770,6 +776,8 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

@@ -347,6 +347,8 @@ pour réserver cette offre
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -360,6 +362,8 @@ pour réserver cette offre
                 >
                   Vérifie ton identité pour débloquer
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -374,6 +378,8 @@ pour réserver cette offre
                      
                     tes 
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -467,6 +473,8 @@ pour réserver cette offre
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -848,6 +856,8 @@ pour réserver cette offre
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -861,6 +871,8 @@ pour réserver cette offre
                 >
                   Confirme tes informations personnelles pour débloquer
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -875,6 +887,8 @@ pour réserver cette offre
                      
                     tes 
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -968,6 +982,8 @@ pour réserver cette offre
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -1349,6 +1365,8 @@ pour réserver cette offre
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -1442,6 +1460,8 @@ pour réserver cette offre
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {

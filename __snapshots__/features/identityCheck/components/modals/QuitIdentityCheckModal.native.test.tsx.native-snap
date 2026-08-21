@@ -388,6 +388,8 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -504,6 +506,8 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {

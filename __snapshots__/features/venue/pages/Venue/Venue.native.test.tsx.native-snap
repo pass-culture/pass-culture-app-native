@@ -139,6 +139,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 testID="tagWrapper"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   isZoomed={true}
                   style={
                     {
@@ -197,6 +199,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   </Text>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   state="close"
                   style={
                     {
@@ -220,6 +224,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               >
                 <View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -232,6 +238,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     Adresse
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -337,6 +345,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -447,6 +457,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -594,6 +606,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       isSelected={true}
                       style={
@@ -682,6 +696,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       isSelected={false}
                       style={
@@ -977,6 +993,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 style={
                                   {
                                     "color": "#ffffff",
@@ -989,6 +1007,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 Cinéma
                               </Text>
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 numberOfLines={2}
                                 style={
                                   {
@@ -1002,6 +1022,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 Titane - VF
                               </Text>
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 style={
                                   {
                                     "color": "#ffffff",
@@ -1240,6 +1262,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                   </View>
                                   <Text
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       [
                                         {
@@ -1595,6 +1619,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -1608,6 +1634,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Cinéma
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={2}
                                         style={
                                           {
@@ -1623,6 +1651,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         style={
                                           {
                                             "color": "#161617",
@@ -1636,6 +1666,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Gratuit
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -1804,6 +1836,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -1817,6 +1851,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Cinéma
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={2}
                                         style={
                                           {
@@ -1832,6 +1868,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         style={
                                           {
                                             "color": "#161617",
@@ -1845,6 +1883,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Gratuit
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -2013,6 +2053,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -2026,6 +2068,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Cinéma
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={2}
                                         style={
                                           {
@@ -2041,6 +2085,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         style={
                                           {
                                             "color": "#161617",
@@ -2054,6 +2100,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Gratuit
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -2186,6 +2234,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   Fan de lecture ?
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -2297,6 +2347,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -2488,6 +2540,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -2594,6 +2648,8 @@ Instagram
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -2700,6 +2756,8 @@ WhatsApp
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -2823,6 +2881,8 @@ iMessage
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -3072,6 +3132,8 @@ d’options
           testID="venueHeaderName"
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -3328,6 +3390,8 @@ d’options
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -3505,6 +3569,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 testID="tagWrapper"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   isZoomed={true}
                   style={
                     {
@@ -3563,6 +3629,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   </Text>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   state="close"
                   style={
                     {
@@ -3586,6 +3654,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               >
                 <View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -3598,6 +3668,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     Adresse
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -3703,6 +3775,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -3813,6 +3887,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -3960,6 +4036,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       isSelected={true}
                       style={
@@ -4048,6 +4126,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       isSelected={false}
                       style={
@@ -4343,6 +4423,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             >
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 style={
                                   {
                                     "color": "#ffffff",
@@ -4355,6 +4437,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 Cinéma
                               </Text>
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 numberOfLines={2}
                                 style={
                                   {
@@ -4368,6 +4452,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 Titane - VF
                               </Text>
                               <Text
+                                accessibilityLevel="p"
+                                accessibilityRole="text"
                                 style={
                                   {
                                     "color": "#ffffff",
@@ -4606,6 +4692,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                   </View>
                                   <Text
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       [
                                         {
@@ -4961,6 +5049,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -4974,6 +5064,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Cinéma
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={2}
                                         style={
                                           {
@@ -4989,6 +5081,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         style={
                                           {
                                             "color": "#161617",
@@ -5002,6 +5096,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Gratuit
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -5170,6 +5266,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -5183,6 +5281,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Cinéma
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={2}
                                         style={
                                           {
@@ -5198,6 +5298,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         style={
                                           {
                                             "color": "#161617",
@@ -5211,6 +5313,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Gratuit
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -5379,6 +5483,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -5392,6 +5498,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Cinéma
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={2}
                                         style={
                                           {
@@ -5407,6 +5515,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     </View>
                                     <View>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         style={
                                           {
                                             "color": "#161617",
@@ -5420,6 +5530,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Gratuit
                                       </Text>
                                       <Text
+                                        accessibilityLevel="p"
+                                        accessibilityRole="text"
                                         numberOfLines={1}
                                         style={
                                           {
@@ -5552,6 +5664,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   Fan de lecture ?
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -5663,6 +5777,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -5854,6 +5970,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -5960,6 +6078,8 @@ Instagram
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -6066,6 +6186,8 @@ WhatsApp
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -6189,6 +6311,8 @@ iMessage
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -6438,6 +6562,8 @@ d’options
           testID="venueHeaderName"
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -6694,6 +6820,8 @@ d’options
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -6871,6 +6999,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 testID="tagWrapper"
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   isZoomed={true}
                   style={
                     {
@@ -6929,6 +7059,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   </Text>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   state="close"
                   style={
                     {
@@ -6952,6 +7084,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               >
                 <View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -6964,6 +7098,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     Adresse
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -7069,6 +7205,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -7179,6 +7317,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -7326,6 +7466,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       isSelected={false}
                       style={
@@ -7414,6 +7556,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       isSelected={true}
                       style={
@@ -7486,6 +7630,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       Modalités de retrait
                     </Text>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -7530,6 +7676,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       Description
                     </Text>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -7659,6 +7807,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               [
                                 {
@@ -7760,6 +7910,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               [
                                 {
@@ -7862,6 +8014,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               [
                                 {
@@ -8150,6 +8304,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -8164,6 +8320,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -8177,6 +8335,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </Text>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -8427,6 +8587,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -8441,6 +8603,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -8691,6 +8855,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -8705,6 +8871,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -8729,6 +8897,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -8743,6 +8913,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -8767,6 +8939,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -8781,6 +8955,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -8805,6 +8981,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -8819,6 +8997,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -9069,6 +9249,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -9083,6 +9265,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -9107,6 +9291,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 >
                                   <Text
                                     accessibilityHidden={true}
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
                                     style={
                                       {
                                         "color": "#161617",
@@ -9121,6 +9307,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </View>
                                 <Text
                                   accessibilityHidden={true}
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -9186,6 +9374,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               style={
                                 {
                                   "color": "#161617",
@@ -9268,6 +9458,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                   </View>
                                 </View>
                                 <Text
+                                  accessibilityLevel="p"
+                                  accessibilityRole="text"
                                   style={
                                     {
                                       "color": "#161617",
@@ -9344,6 +9536,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9357,6 +9551,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9385,6 +9581,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9398,6 +9596,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9426,6 +9626,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9439,6 +9641,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9467,6 +9671,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9480,6 +9686,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9508,6 +9716,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9521,6 +9731,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9549,6 +9761,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9562,6 +9776,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9590,6 +9806,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       >
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9603,6 +9821,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </Text>
                         <Text
                           accessibilityHidden={true}
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -9715,6 +9935,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   Fan de lecture ?
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -9826,6 +10048,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -10017,6 +10241,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -10123,6 +10349,8 @@ Instagram
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -10229,6 +10457,8 @@ WhatsApp
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -10352,6 +10582,8 @@ iMessage
                             </View>
                           </View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             disabled={false}
                             style={
                               {
@@ -10601,6 +10833,8 @@ d’options
           testID="venueHeaderName"
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -10857,6 +11091,8 @@ d’options
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {

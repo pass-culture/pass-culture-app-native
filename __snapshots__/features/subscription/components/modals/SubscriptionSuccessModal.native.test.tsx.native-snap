@@ -345,6 +345,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -358,6 +360,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   Tu recevras nos bons plans et toute l’actu des ateliers, cours et masterclass près de chez toi !
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -460,6 +464,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -569,6 +575,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -949,6 +957,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -962,6 +972,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   Tu recevras toute l’actu ciné (sorties, avant-premières…) et les bons plans !
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -1064,6 +1076,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -1173,6 +1187,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -1553,6 +1569,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -1566,6 +1584,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   Tu recevras nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -1668,6 +1688,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -1777,6 +1799,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -2157,6 +2181,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -2170,6 +2196,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   Tu recevras les bons plans musique et l’actu des événements près de chez toi !
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -2272,6 +2300,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -2381,6 +2411,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -2761,6 +2793,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -2774,6 +2808,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   Stand-up, théâtre, comédies musicales... tu recevras toute l’actu des événements près de chez toi !
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -2876,6 +2912,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -2985,6 +3023,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -3365,6 +3405,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -3378,6 +3420,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   Tu recevras les meilleurs plans de sorties, visites, expos et évènements près de chez toi !
                 </Text>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -3480,6 +3524,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {
@@ -3589,6 +3635,8 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                         </View>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           [
                             {

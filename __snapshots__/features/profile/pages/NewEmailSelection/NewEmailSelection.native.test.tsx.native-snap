@@ -294,6 +294,8 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                   >
                     <View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",
@@ -306,6 +308,8 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                         Nouvelle adresse e-mail
                       </Text>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -438,6 +442,8 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -526,6 +532,8 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {

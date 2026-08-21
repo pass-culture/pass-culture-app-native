@@ -463,6 +463,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -601,6 +603,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -728,6 +732,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -856,6 +862,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -984,6 +992,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1112,6 +1122,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1240,6 +1252,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1368,6 +1382,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1496,6 +1512,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1624,6 +1642,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1752,6 +1772,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -1880,6 +1902,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -2008,6 +2032,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -2136,6 +2162,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           numberOfLines={2}
                           style={
                             {
@@ -2338,6 +2366,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -2452,6 +2482,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {

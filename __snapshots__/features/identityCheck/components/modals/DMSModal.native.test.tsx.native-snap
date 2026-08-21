@@ -321,6 +321,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
         >
           <View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#696a6f",
@@ -424,6 +426,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -450,6 +454,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
               </View>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "alignSelf": "center",
@@ -554,6 +560,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -587,6 +595,8 @@ exports[`<DMSModal/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "alignSelf": "center",

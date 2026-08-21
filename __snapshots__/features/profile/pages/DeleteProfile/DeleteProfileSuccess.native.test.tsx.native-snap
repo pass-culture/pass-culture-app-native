@@ -186,6 +186,8 @@ exports[`DeleteProfileSuccess should render delete profile success 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -206,6 +208,8 @@ exports[`DeleteProfileSuccess should render delete profile success 1`] = `
                 On est super triste de te voir partir.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -312,6 +316,8 @@ exports[`DeleteProfileSuccess should render delete profile success 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

@@ -275,6 +275,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#696a6f",
@@ -287,6 +289,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                     Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#696a6f",
@@ -353,6 +357,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                       >
                         <View>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#161617",
@@ -365,6 +371,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                             Adresse e-mail actuelle
                           </Text>
                           <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
                             style={
                               {
                                 "color": "#696a6f",
@@ -496,6 +504,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -598,6 +608,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             [
                               {

@@ -272,6 +272,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -283,6 +285,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               >
                 Tu as indiqué
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -296,6 +300,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
                 </Text>
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -307,6 +313,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               >
                 Pour des raisons de 
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -361,6 +369,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -468,6 +478,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -584,6 +596,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

@@ -37,7 +37,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Warning } from 'ui/svg/icons/Warning'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 type Props = {
   amount: string
@@ -268,7 +268,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
-const StyledTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
@@ -276,7 +276,7 @@ const RowView = styled.View({
   flexDirection: 'row',
 })
 
-const StyledPlus = styled(Typo.Title2).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const StyledPlus = styled(Typo.Title2).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 

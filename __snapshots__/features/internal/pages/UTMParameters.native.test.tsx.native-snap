@@ -222,6 +222,8 @@ exports[`<UTMParameters /> should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -234,6 +236,8 @@ exports[`<UTMParameters /> should render correctly 1`] = `
             traffic_gen: 
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -246,6 +250,8 @@ exports[`<UTMParameters /> should render correctly 1`] = `
             traffic_campaign : 
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -258,6 +264,8 @@ exports[`<UTMParameters /> should render correctly 1`] = `
             traffic_content : 
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -270,6 +278,8 @@ exports[`<UTMParameters /> should render correctly 1`] = `
             traffic_medium : 
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -282,6 +292,8 @@ exports[`<UTMParameters /> should render correctly 1`] = `
             traffic_source : 
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",

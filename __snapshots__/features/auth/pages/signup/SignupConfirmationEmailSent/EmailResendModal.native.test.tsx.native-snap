@@ -329,6 +329,8 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -350,6 +352,8 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",
@@ -362,6 +366,8 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                   Attention, il te reste :
                    
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -453,6 +459,8 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {

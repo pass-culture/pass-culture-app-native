@@ -150,6 +150,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         </View>
         <View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#696a6f",
@@ -163,6 +165,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière de l’État.
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -286,6 +290,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -403,6 +409,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

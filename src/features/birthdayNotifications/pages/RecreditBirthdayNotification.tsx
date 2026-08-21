@@ -21,7 +21,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 
 export const RecreditBirthdayNotification = () => {
   const { replace } = useNavigation<UseNavigationType>()
@@ -112,7 +112,7 @@ const ProgressBarContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xxxl,
 }))
 
-const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+const Amount = styled(Typo.Title2).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.brandPrimary,
 }))

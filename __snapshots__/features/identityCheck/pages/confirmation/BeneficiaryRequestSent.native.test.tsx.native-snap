@@ -278,6 +278,8 @@ Tu recevras un e-mail lorsque ta demande sera validée.
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

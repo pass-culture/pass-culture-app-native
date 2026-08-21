@@ -274,6 +274,8 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

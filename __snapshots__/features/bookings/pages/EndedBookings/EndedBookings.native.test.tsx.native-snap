@@ -248,6 +248,8 @@ exports[`EndedBookings should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   numberOfLines={2}
                   shrink={true}
                   style={
@@ -287,6 +289,8 @@ exports[`EndedBookings should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     color="error"
                     noFullWidth={true}
                     style={
@@ -322,6 +326,8 @@ exports[`EndedBookings should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#696a6f",

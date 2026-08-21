@@ -263,6 +263,8 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -378,6 +380,8 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

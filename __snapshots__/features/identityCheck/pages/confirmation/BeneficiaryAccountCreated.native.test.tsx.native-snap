@@ -280,6 +280,8 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#6123df",
@@ -294,6 +296,8 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
               </Text>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -400,6 +404,8 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -720,6 +726,8 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#6123df",
@@ -734,6 +742,8 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
               </Text>
             </View>
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -840,6 +850,8 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

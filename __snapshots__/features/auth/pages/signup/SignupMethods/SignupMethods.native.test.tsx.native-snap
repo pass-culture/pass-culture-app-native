@@ -314,6 +314,8 @@ exports[`<SignupMethods /> should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 color="primary"
                 style={
                   {
@@ -438,6 +440,8 @@ exports[`<SignupMethods /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -549,6 +553,8 @@ exports[`<SignupMethods /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -597,6 +603,8 @@ exports[`<SignupMethods /> should render correctly 1`] = `
                   type="left"
                 />
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -706,6 +714,8 @@ exports[`<SignupMethods /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -807,6 +817,8 @@ exports[`<SignupMethods /> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",

@@ -330,6 +330,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -376,6 +378,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     </Text>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     htmlFor="testUuidV4"
                     style={
                       {
@@ -387,6 +391,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -542,6 +548,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     </Text>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     htmlFor="testUuidV4"
                     style={
                       {
@@ -553,6 +561,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -674,6 +684,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 </View>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#696a6f",
@@ -759,6 +771,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -867,6 +881,8 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {

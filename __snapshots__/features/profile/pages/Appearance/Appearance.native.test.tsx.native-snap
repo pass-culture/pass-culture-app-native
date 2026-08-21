@@ -285,6 +285,8 @@ exports[`Appearance should render correctly 1`] = `
                   >
                     <Text
                       accessibilityDescribedBy="testUuidV4"
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       htmlFor="testUuidV4"
                       id="testUuidV4"
                       style={
@@ -307,6 +309,8 @@ exports[`Appearance should render correctly 1`] = `
                       Permettre l’orientation
                     </Text>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       nativeID="testUuidV4"
                       style={
                         {
@@ -595,6 +599,8 @@ exports[`Appearance should render correctly 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               isHover={false}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -617,6 +623,8 @@ exports[`Appearance should render correctly 1`] = `
                               Mode clair
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               isHover={false}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -773,6 +781,8 @@ exports[`Appearance should render correctly 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               isHover={false}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -795,6 +805,8 @@ exports[`Appearance should render correctly 1`] = `
                               Mode sombre
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               isHover={false}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -979,6 +991,8 @@ exports[`Appearance should render correctly 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               isHover={false}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -1001,6 +1015,8 @@ exports[`Appearance should render correctly 1`] = `
                               Réglages appareil
                             </Text>
                             <Text
+                              accessibilityLevel="p"
+                              accessibilityRole="text"
                               isHover={false}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}

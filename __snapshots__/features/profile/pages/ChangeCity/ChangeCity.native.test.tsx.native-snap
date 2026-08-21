@@ -319,6 +319,8 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -331,6 +333,8 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                           Indique ton code postal et choisis ta ville
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -680,6 +684,8 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -1039,6 +1045,8 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -1051,6 +1059,8 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                           Indique ton code postal et choisis ta ville
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1400,6 +1410,8 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -1759,6 +1771,8 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -1771,6 +1785,8 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                           Indique ton code postal et choisis ta ville
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -2120,6 +2136,8 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

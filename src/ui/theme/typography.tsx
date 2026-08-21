@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { TextColorKey } from 'theme/types'
 import { isHeadingLevel } from 'ui/theme/isHeadingLevel'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
 import { TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
 
@@ -19,7 +18,7 @@ const createStyledText = (
     ({ accessibilityLevel }) => {
       const level = accessibilityLevel ?? defaultLevel
       if (isHeadingLevel(level)) return getTextSemanticAttrs(level)
-      return getNoHeadingAttrs()
+      return getTextSemanticAttrs('p')
     }
   )<{ color?: TextColorKey }>(({ theme, color }) => ({
     ...theme.designSystem.typography[typographyStyle],

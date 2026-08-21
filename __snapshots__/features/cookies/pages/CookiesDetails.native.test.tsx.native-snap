@@ -107,6 +107,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -186,6 +188,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         testID="accordionBodyContainer"
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#161617",
@@ -232,6 +236,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityLevel="p"
+        accessibilityRole="text"
         style={
           {
             "color": "#696a6f",
@@ -255,6 +261,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         }
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           htmlFor="testUuidV4"
           id="testUuidV4"
           style={
@@ -575,6 +583,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -654,6 +664,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         testID="accordionBodyContainer"
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#161617",
@@ -697,6 +709,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#696a6f",
@@ -922,6 +936,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -1001,6 +1017,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         testID="accordionBodyContainer"
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#161617",
@@ -1044,6 +1062,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#696a6f",
@@ -1269,6 +1289,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -1348,6 +1370,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         testID="accordionBodyContainer"
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#161617",
@@ -1391,6 +1415,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             </View>
           </View>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#696a6f",
@@ -1619,6 +1645,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1698,6 +1726,8 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           testID="accordionBodyContainer"
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#161617",
@@ -1934,6 +1964,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -2013,6 +2045,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         testID="accordionBodyContainer"
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             {
               "color": "#161617",
@@ -2058,6 +2092,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         </View>
       </View>
       <Text
+        accessibilityLevel="p"
+        accessibilityRole="text"
         style={
           {
             "color": "#696a6f",
@@ -2103,6 +2139,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
       Tu as la main dessus
     </Text>
     <Text
+      accessibilityLevel="p"
+      accessibilityRole="text"
       style={
         {
           "color": "#161617",
@@ -2115,6 +2153,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
       Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de confidentialité de ton profil à tout moment.
     </Text>
     <Text
+      accessibilityLevel="p"
+      accessibilityRole="text"
       style={
         {
           "color": "#161617",
@@ -2127,6 +2167,8 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
       On te redemandera bien sûr ton consentement si notre politique évolue.
     </Text>
     <Text
+      accessibilityLevel="p"
+      accessibilityRole="text"
       style={
         {
           "color": "#696a6f",

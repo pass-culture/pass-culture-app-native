@@ -186,6 +186,8 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -199,6 +201,8 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                 Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -305,6 +309,8 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

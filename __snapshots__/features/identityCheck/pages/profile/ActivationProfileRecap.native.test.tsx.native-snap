@@ -260,8 +260,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
               }
             >
               <Text
-                accessibilityLevel={3}
-                accessibilityRole="header"
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -297,6 +297,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -309,6 +311,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                     Nom
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -330,6 +334,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -342,6 +348,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                     Prénom
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -363,6 +371,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -375,6 +385,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                     Adresse
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -396,6 +408,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -408,6 +422,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                     Ville de résidence
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -429,6 +445,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -441,6 +459,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                     Numéro de téléphone
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -462,6 +482,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -474,6 +496,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                     Statut
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -627,6 +651,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -718,6 +744,8 @@ exports[`<ActivationProfileRecap /> ff WIP_PHONE_NUMBER_IN_PROFILE_STEPPER is en
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -1019,8 +1047,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityLevel={3}
-                accessibilityRole="header"
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -1056,6 +1084,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1068,6 +1098,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                     Nom
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1089,6 +1121,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1101,6 +1135,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                     Prénom
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1122,6 +1158,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1134,6 +1172,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                     Adresse
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1155,6 +1195,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1167,6 +1209,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                     Ville de résidence
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1188,6 +1232,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1200,6 +1246,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                     Statut
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
                         "color": "#161617",
@@ -1353,6 +1401,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {
@@ -1444,6 +1494,8 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                 }
               >
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

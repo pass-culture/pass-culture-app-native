@@ -346,6 +346,8 @@ exports[`Accessibility should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -482,6 +484,8 @@ exports[`Accessibility should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -601,6 +605,8 @@ exports[`Accessibility should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -700,6 +706,8 @@ exports[`Accessibility should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -816,6 +824,8 @@ exports[`Accessibility should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -932,6 +942,8 @@ exports[`Accessibility should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {

@@ -426,6 +426,8 @@ exports[`VenueModal should render correctly 1`] = `
                   >
                     <View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#161617",
@@ -438,6 +440,8 @@ exports[`VenueModal should render correctly 1`] = `
                         Trouver un lieu culturel
                       </Text>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -733,6 +737,8 @@ exports[`VenueModal should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -847,6 +853,8 @@ exports[`VenueModal should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {

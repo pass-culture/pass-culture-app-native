@@ -202,6 +202,8 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -299,6 +301,8 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       [
                         {
@@ -417,6 +421,8 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -532,6 +538,8 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                   </View>
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     [
                       {

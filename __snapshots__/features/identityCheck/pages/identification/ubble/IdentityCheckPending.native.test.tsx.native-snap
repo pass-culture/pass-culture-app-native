@@ -187,6 +187,8 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -200,6 +202,8 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
                 Il y a déjà une demande de crédit pass Culture en cours sur ton compte.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -306,6 +310,8 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

@@ -190,6 +190,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {
@@ -226,6 +228,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",

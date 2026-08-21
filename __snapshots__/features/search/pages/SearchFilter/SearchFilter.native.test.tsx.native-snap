@@ -366,6 +366,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -499,6 +501,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -514,6 +518,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       </Text>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       numberOfLines={1}
                       style={
                         {
@@ -646,6 +652,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -779,6 +787,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -911,6 +921,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       }
                     >
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         numberOfLines={2}
                         style={
                           {
@@ -1118,6 +1130,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       </View>
                     </View>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -1232,6 +1246,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {

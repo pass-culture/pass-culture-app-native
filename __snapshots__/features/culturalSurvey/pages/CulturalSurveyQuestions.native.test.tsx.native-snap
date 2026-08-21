@@ -198,6 +198,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   />
                 </View>
                 <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
                   style={
                     {
                       "color": "#161617",
@@ -288,6 +290,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
             Au cours de l’année précédente, tu as/es au moins une fois ...
           </Text>
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               {
                 "color": "#696a6f",
@@ -426,6 +430,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -446,6 +452,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Participé à un festival,
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -599,6 +607,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -619,6 +629,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Assisté à un spectacle
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -771,6 +783,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -791,6 +805,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Allé à la bibliothèque
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -943,6 +959,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -963,6 +981,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Participé à un jeu
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1115,6 +1135,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1267,6 +1289,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1419,6 +1443,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1439,6 +1465,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Visité un musée,
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1591,6 +1619,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1611,6 +1641,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Participé à une conférence,
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1763,6 +1795,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1783,6 +1817,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                     Pris un cours
                   </Text>
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -1935,6 +1971,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
                   }
                 >
                   <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     isHover={false}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
@@ -2110,6 +2148,8 @@ exports[`CulturalSurveyQuestions should render the page with correct layout 1`] 
         }
       >
         <Text
+          accessibilityLevel="p"
+          accessibilityRole="text"
           style={
             [
               {

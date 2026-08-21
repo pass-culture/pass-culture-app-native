@@ -327,6 +327,8 @@ exports[`<SetName/> should render correctly 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         {
                           "color": "#161617",
@@ -373,6 +375,8 @@ exports[`<SetName/> should render correctly 1`] = `
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -386,6 +390,8 @@ exports[`<SetName/> should render correctly 1`] = `
                         </Text>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -489,6 +495,8 @@ exports[`<SetName/> should render correctly 1`] = `
                     >
                       <View>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#161617",
@@ -502,6 +510,8 @@ exports[`<SetName/> should render correctly 1`] = `
                         </Text>
                       </View>
                       <Text
+                        accessibilityLevel="p"
+                        accessibilityRole="text"
                         style={
                           {
                             "color": "#696a6f",
@@ -721,6 +731,8 @@ exports[`<SetName/> should render correctly 1`] = `
               }
             >
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   [
                     {

@@ -495,6 +495,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -662,6 +664,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -829,6 +833,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -996,6 +1002,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1163,6 +1171,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1330,6 +1340,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1497,6 +1509,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1510,6 +1524,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                           Volontaire
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1677,6 +1693,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1690,6 +1708,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                           Inactif
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -1857,6 +1877,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -1870,6 +1892,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                           Chômeur
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -2023,6 +2047,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -2556,6 +2582,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -2723,6 +2751,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -2890,6 +2920,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3057,6 +3089,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3224,6 +3258,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3391,6 +3427,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3558,6 +3596,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3571,6 +3611,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                           Volontaire
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -3738,6 +3780,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3751,6 +3795,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                           Inactif
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -3918,6 +3964,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -3931,6 +3979,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                           Chômeur
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -4084,6 +4134,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {
@@ -4617,6 +4669,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -4784,6 +4838,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -4951,6 +5007,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5118,6 +5176,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5285,6 +5345,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5452,6 +5514,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5619,6 +5683,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5632,6 +5698,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                           Volontaire
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -5799,6 +5867,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5812,6 +5882,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                           Inactif
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -5979,6 +6051,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                         }
                       >
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           isHover={false}
                           style={
                             {
@@ -5992,6 +6066,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                           Chômeur
                         </Text>
                         <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
                           style={
                             {
                               "color": "#696a6f",
@@ -6145,6 +6221,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           }
         >
           <Text
+            accessibilityLevel="p"
+            accessibilityRole="text"
             style={
               [
                 {

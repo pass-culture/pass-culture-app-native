@@ -272,6 +272,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 </Text>
               </View>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -286,6 +288,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 Retrouve toutes les offres autour de chez toi en activant les données de localisation.
               </Text>
               <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
                 style={
                   {
                     "color": "#161617",
@@ -377,6 +381,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       style={
                         [
                           {
@@ -609,6 +615,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 {
                   "color": "#161617",
@@ -747,6 +755,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
@@ -904,6 +914,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
@@ -926,6 +938,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       Choisir une zone géographique
                     </Text>
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
@@ -1110,6 +1124,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     }
                   >
                     <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
                       isHover={false}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
@@ -1243,6 +1259,8 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
             }
           >
             <Text
+              accessibilityLevel="p"
+              accessibilityRole="text"
               style={
                 [
                   {
