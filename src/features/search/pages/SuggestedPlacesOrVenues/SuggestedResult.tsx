@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -24,7 +24,7 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
 
   const accessibilityLabel = `${label} ${info}`
   return (
-    <TouchableOpacity
+    <Touchable
       // so that an iOS user can press it without dismissing the keyboard
       shouldUseGestureHandler
       accessibilityRole={AccessibilityRole.BUTTON}
@@ -40,7 +40,7 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
           {info}
         </Typo.Body>
       </RefContainer>
-    </TouchableOpacity>
+    </Touchable>
   )
 }
 

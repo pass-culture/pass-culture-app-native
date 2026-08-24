@@ -156,13 +156,15 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
     )
   }
 
+  const labelId = `${groupId}-label`
+
   return (
     <RadioButtonGroupContainer
       accessibilityRole={AccessibilityRole.GROUP}
       useFlatList={!!flatListProps}
       accessibilityLabel={label}>
       <TitleContainer>
-        {renderRadioGroupLabel(label, labelVariant)}
+        {renderRadioGroupLabel(label, labelVariant, labelId)}
         {renderDescription(description, labelVariant)}
         {error && errorText ? (
           <ErrorContainer>

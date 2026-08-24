@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
 import Animated, {
   Easing,
@@ -9,9 +9,11 @@ import Animated, {
 } from 'react-native-reanimated'
 import { scheduleOnRN } from 'react-native-worklets'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
+import { useModalFocusTrap } from 'ui/hooks/useModalFocusTrap'
 
 import { ModalScreenWrapperProps } from './ModalScreenWrapper'
 
@@ -38,6 +40,7 @@ export const ModalScreenWrapper = ({
   children,
   fullScreen,
 }: ModalScreenWrapperProps) => {
+  const titleId = uuidv4()
   const [isOpen, setIsOpen] = useState(true)
   const [isAnimationFinished, setIsAnimationFinished] = useState(false)
   const modalRef = useRef<View>(null)
@@ -46,12 +49,16 @@ export const ModalScreenWrapper = ({
     setIsAnimationFinished(true)
   }, [])
 
-  const enteringAnimation = MODAL_ENTERING.withCallback((finished) => {
-    'worklet'
-    if (finished) {
-      scheduleOnRN(onAnimationFinished)
-    }
-  })
+  const enteringAnimation = useMemo(
+    () =>
+      MODAL_ENTERING.withCallback((finished) => {
+        'worklet'
+        if (finished) {
+          scheduleOnRN(onAnimationFinished)
+        }
+      }),
+    [onAnimationFinished]
+  )
 
   useEffect(() => {
     if (isAnimationFinished && modalRef.current) {
@@ -60,41 +67,7 @@ export const ModalScreenWrapper = ({
     }
   }, [isAnimationFinished])
 
-  useEffect(() => {
-    if (!isAnimationFinished) return
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Tab' || !modalRef.current) return
-
-      const modalElement = modalRef.current as unknown as HTMLElement
-      const focusables = modalElement.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      )
-
-      if (focusables.length === 0) {
-        event.preventDefault()
-        return
-      }
-
-      const firstElement = focusables[0]
-      const lastElement = focusables[focusables.length - 1]
-
-      if (event.shiftKey) {
-        if (document.activeElement === firstElement || document.activeElement === modalElement) {
-          event.preventDefault()
-          lastElement?.focus()
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          event.preventDefault()
-          firstElement?.focus()
-        }
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isAnimationFinished])
+  useModalFocusTrap(modalRef, isAnimationFinished)
 
   const closeWithTransition = () => {
     setIsOpen((open) => (open ? false : open))
@@ -116,12 +89,13 @@ export const ModalScreenWrapper = ({
             ref={modalRef}
             role={AccessibilityRole.DIALOG}
             aria-modal
-            aria-labelledby={title}
+            aria-label={title}
+            aria-labelledby={titleId}
             tabIndex={-1}
             entering={enteringAnimation}
             exiting={createModalExiting(onClose)}
             fullScreen={fullScreen}>
-            {children(closeWithTransition)}
+            {children(closeWithTransition, titleId)}
           </ModalContainer>
         </React.Fragment>
       ) : null}

@@ -189,6 +189,12 @@ describe('<RadioButtonGroup />', () => {
     ).toBeChecked()
   })
 
+  it('should keep an accessible name on the radiogroup', () => {
+    render(<ControlledRadioGroup />)
+
+    expect(screen.getByLabelText(label)).toBeOnTheScreen()
+  })
+
   it('should render Error text when RadioButtonGroup is in error', () => {
     render(<ControlledRadioGroup error />)
 

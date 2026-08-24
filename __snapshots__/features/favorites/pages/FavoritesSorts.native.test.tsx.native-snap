@@ -258,9 +258,9 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         >
           <View>
             <View
-              accessibilityLabelledBy="Trier par"
+              accessibilityLabel="Trier par"
               accessibilityRole="radiogroup"
-              onKeyDown={[Function]}
+              nativeID="_r_0_"
               style={
                 {
                   "gap": 8,
@@ -278,6 +278,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 <Text
                   accessibilityLevel="h2"
                   accessibilityRole="header"
+                  nativeID="_r_0_-label"
                   style={
                     {
                       "color": "#161617",
@@ -323,6 +324,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   }
                   accessible={true}
                   focusable={true}
+                  nativeID="_r_0_-radio-RECENTLY_ADDED"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -470,6 +472,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   }
                   accessible={true}
                   focusable={true}
+                  nativeID="_r_0_-radio-ASCENDING_PRICE"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -589,6 +592,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   }
                   accessible={true}
                   focusable={true}
+                  nativeID="_r_0_-radio-AROUND_ME"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}

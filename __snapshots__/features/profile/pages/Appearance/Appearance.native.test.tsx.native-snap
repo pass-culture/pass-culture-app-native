@@ -443,9 +443,9 @@ exports[`Appearance should render correctly 1`] = `
               />
               <View>
                 <View
-                  accessibilityLabelledBy="Thème"
+                  accessibilityLabel="Thème"
                   accessibilityRole="radiogroup"
-                  onKeyDown={[Function]}
+                  nativeID="_r_0_"
                   style={
                     {
                       "gap": 8,
@@ -463,6 +463,7 @@ exports[`Appearance should render correctly 1`] = `
                     <Text
                       accessibilityLevel="h2"
                       accessibilityRole="header"
+                      nativeID="_r_0_-label"
                       style={
                         {
                           "color": "#161617",
@@ -545,6 +546,7 @@ exports[`Appearance should render correctly 1`] = `
                           accessible={true}
                           collapsable={false}
                           focusable={true}
+                          nativeID="_r_0_-radio-light"
                           onClick={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
@@ -727,6 +729,7 @@ exports[`Appearance should render correctly 1`] = `
                           accessible={true}
                           collapsable={false}
                           focusable={true}
+                          nativeID="_r_0_-radio-dark"
                           onClick={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
@@ -909,6 +912,7 @@ exports[`Appearance should render correctly 1`] = `
                           accessible={true}
                           collapsable={false}
                           focusable={true}
+                          nativeID="_r_0_-radio-system"
                           onClick={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}

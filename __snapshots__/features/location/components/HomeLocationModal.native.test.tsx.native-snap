@@ -436,6 +436,8 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
     </View>
   </Modal>,
   <View
+    accessibilityLabel="Localisation"
+    accessibilityViewIsModal={true}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -496,6 +498,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
           <Text
             accessibilityLevel="h1"
             accessibilityRole="header"
+            nativeID="testUuidV4"
             style={
               {
                 "color": "#161617",
@@ -626,9 +629,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
     >
       <View>
         <View
-          accessibilityLabelledBy="Sélectionne ta localisation"
+          accessibilityLabel="Sélectionne ta localisation"
           accessibilityRole="radiogroup"
-          onKeyDown={[Function]}
+          nativeID="_r_0_"
           style={
             {
               "gap": 8,
@@ -646,6 +649,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
             <Text
               accessibilityLevel="p"
               accessibilityRole="text"
+              nativeID="_r_0_-label"
               style={
                 {
                   "color": "#161617",
@@ -728,6 +732,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   }
                   accessible={true}
                   focusable={true}
+                  nativeID="_r_0_-radio-AROUND_ME"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -894,6 +899,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   }
                   accessible={true}
                   focusable={true}
+                  nativeID="_r_0_-radio-AROUND_PLACE"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1083,6 +1089,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   }
                   accessible={true}
                   focusable={true}
+                  nativeID="_r_0_-radio-EVERYWHERE"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}

@@ -9,4 +9,5 @@ export type TouchableProps = {
   accessibilityLabel?: string
   accessibilityRole?: string
   hoverUnderlineColor?: ColorsType | null
+  shouldUseGestureHandler?: boolean
 } & TouchableOpacityProps

@@ -395,9 +395,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  accessibilityLabelledBy="Sélectionne une page"
+                  accessibilityLabel="Sélectionne une page"
                   accessibilityRole="radiogroup"
-                  onKeyDown={[Function]}
+                  nativeID="_r_0_"
                   style={
                     {
                       "gap": 8,
@@ -415,6 +415,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     <Text
                       accessibilityLevel="p"
                       accessibilityRole="text"
+                      nativeID="_r_0_-label"
                       style={
                         {
                           "color": "#161617",
@@ -460,6 +461,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Offer"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -579,6 +581,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-VenueMap"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -698,6 +701,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Venue"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -817,6 +821,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Home"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -964,6 +969,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-ThematicHome"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1083,6 +1089,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-SearchResults"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1202,6 +1209,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-ThematicSearch"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1321,6 +1329,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Profile"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1440,6 +1449,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-SignupForm"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1559,6 +1569,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-SignupMethods"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1678,6 +1689,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Stepper"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1797,6 +1809,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Bookings"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -1916,6 +1929,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-SearchStackNavigator"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -2035,6 +2049,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-Favorites"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -2154,6 +2169,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                       accessible={true}
                       focusable={true}
+                      nativeID="_r_0_-radio-SearchLanding"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}

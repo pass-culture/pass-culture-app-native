@@ -161,11 +161,12 @@ export const LocationModal = ({
 
   return (
     <ModalScreenWrapper onClose={handleClose} fullScreen title="Localisation">
-      {(closeWithTransition) => (
+      {(closeWithTransition, titleId) => (
         <React.Fragment>
           <HeaderContainer>
             <ModalHeader
               title="Localisation"
+              titleID={titleId}
               rightIconAccessibilityLabel="Fermer la modale"
               rightIcon={Close}
               onRightIconPress={closeWithTransition}
