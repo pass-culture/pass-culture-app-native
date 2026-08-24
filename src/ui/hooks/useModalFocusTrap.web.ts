@@ -47,6 +47,8 @@ export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boo
   }, [isReady, modalRef])
 
   useEffect(() => {
+    if (!isReady) return
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Tab') return
 
@@ -78,8 +80,11 @@ export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boo
 
     const handleFocusIn = (event: FocusEvent) => {
       const modalElement = getModalElement(modalRef)
-      const target = event.target as Node | null
+      const target = event.target as HTMLElement | null
       if (!modalElement || !target || modalElement.contains(target)) return
+
+      const isTargetInAnyModal = !!target.closest('[role="dialog"], [aria-modal="true"]')
+      if (isTargetInAnyModal) return
 
       modalElement.focus()
     }
@@ -91,5 +96,5 @@ export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boo
       globalThis.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('focusin', handleFocusIn)
     }
-  }, [modalRef])
+  }, [modalRef, isReady]) // Ajout de isReady dans le tableau de dépendances
 }

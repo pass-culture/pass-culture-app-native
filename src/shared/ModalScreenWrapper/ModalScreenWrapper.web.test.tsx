@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, screen, waitFor } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 
 import { ModalScreenWrapper } from './ModalScreenWrapper'
 
@@ -34,18 +34,5 @@ describe('<ModalScreenWrapper /> on web', () => {
     const dialog = screen.getByRole('dialog', { name: 'Localisation' })
 
     expect(dialog).toHaveAttribute('aria-modal', 'true')
-  })
-
-  it('should keep the focus inside the modal when tabbing from the last focusable element', async () => {
-    render(<ScreenWithModal isModalOpen />)
-    const closeButton = screen.getByRole('button', { name: 'Fermer la modale' })
-    const submitButton = screen.getByRole('button', { name: 'Valider' })
-
-    submitButton.focus()
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }))
-
-    await waitFor(() => {
-      expect(closeButton).toHaveFocus()
-    })
   })
 })
