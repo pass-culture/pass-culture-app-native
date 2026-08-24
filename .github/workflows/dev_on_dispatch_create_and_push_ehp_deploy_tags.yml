@@ -47,6 +47,7 @@ jobs:
         with:
           token: ${{ steps.github-app-token.outputs.token }}
           ref: ${{ inputs.commitHash }}
+          persist-credentials: true
       - name: 'get package version'
         id: package-version
         uses: martinbeentjes/npm-get-version-action@3cf273023a0dda27efcd3164bdfb51908dd46a5b #v1.3.1
@@ -89,6 +90,7 @@ jobs:
         with:
           token: ${{ steps.github-app-token.outputs.token }}
           ref: master
+          persist-credentials: true
       - name: 'Bump package version'
         uses: phips28/gh-action-bump-version@fdad52b3b3bbe8fad96b8ca18c56127a96f603db #v11.0.7
         env:
