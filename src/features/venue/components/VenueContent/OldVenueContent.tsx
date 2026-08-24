@@ -9,7 +9,6 @@ import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProv
 import { VenueHeaderWrapper } from 'features/venue/components/VenueContent/VenueHeaderWrapper'
 import { OldVenueCTA } from 'features/venue/components/VenueCTA/OldVenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
-import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -17,6 +16,7 @@ import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemo
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -101,7 +101,7 @@ export const OldVenueContent: React.FunctionComponent<Props> = ({
   return (
     <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
       <Container>
-        <VenueWebMetaHeader title={venue.name} description={venue.description} />
+        <WebMetaHeader title={venue.name} description={venue.description} />
         <VenueHeaderWrapper
           header={
             <VenueHeader

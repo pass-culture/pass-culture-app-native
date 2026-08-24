@@ -37,7 +37,6 @@ import { OfferReactionHeaderButton } from 'features/offer/components/OfferHeader
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
-import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
@@ -59,6 +58,7 @@ import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImage
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -389,7 +389,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
-        <OfferWebMetaHeader offer={offer} />
+        <WebMetaHeader title={offer.name} description={offer.description} />
         <HeaderToRender title={offer.name} headerTransition={headerTransition} offer={offer}>
           {onReactionButtonPress ? (
             <OfferReactionHeaderButton

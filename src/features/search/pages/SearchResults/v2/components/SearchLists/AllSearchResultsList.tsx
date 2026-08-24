@@ -13,7 +13,7 @@ import { VenuesPlaylistContainer } from 'features/search/pages/SearchResults/v2/
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { Helmet } from 'libs/react-helmet/Helmet'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 
 type Props = {
   header?: React.ReactNode
@@ -41,7 +41,7 @@ export const AllSearchResultsList: FC<Props> = ({
 
   return (
     <React.Fragment>
-      {isFocused ? <Helmet title="Recherche | pass Culture" /> : null}
+      {isFocused ? <WebMetaHeader title="Recherche" /> : null}
       <AutoScrollSwitch
         title="Activer le chargement automatique des résultats"
         active={autoScrollEnabled}
