@@ -53,7 +53,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             style={
               {

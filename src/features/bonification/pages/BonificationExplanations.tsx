@@ -28,7 +28,7 @@ import { Speaker } from 'ui/svg/icons/Speaker'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const BonificationExplanations = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -68,7 +68,7 @@ export const BonificationExplanations = () => {
             <Container>
               <StyledSpeaker />
             </Container>
-            <StyledTitle3 {...getTextSemanticAttrs(2)}>
+            <StyledTitle3 {...setTextSemantic('h2')}>
               Quel est ce bonus et comment en bénéficier&nbsp;?
             </StyledTitle3>
             <Typo.Body>

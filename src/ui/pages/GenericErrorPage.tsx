@@ -12,7 +12,7 @@ import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type ButtonProps = {
   wording: string
@@ -97,9 +97,9 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <View>
             <IllustrationContainer>{renderIllustration()}</IllustrationContainer>
             <TextContainer gap={4}>
-              <StyledTitle {...getTextSemanticAttrs(1)}>{title}</StyledTitle>
+              <StyledTitle {...setTextSemantic('h1')}>{title}</StyledTitle>
               {subtitle ? (
-                <StyledSubtitle {...getTextSemanticAttrs(2)}>{subtitle}</StyledSubtitle>
+                <StyledSubtitle {...setTextSemantic('h2')}>{subtitle}</StyledSubtitle>
               ) : null}
             </TextContainer>
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}

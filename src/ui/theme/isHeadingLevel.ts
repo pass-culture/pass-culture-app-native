@@ -1,7 +1,9 @@
 import { TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
 
+const HEADING_LEVELS = new Set(['h1', 'h2', 'h3', 'h4'])
+
 export const isHeadingLevel = (
-  level: unknown
-): level is Exclude<TextSemanticLevel, 'p' | 'span'> => {
-  return typeof level === 'number' && [1, 2, 3, 4].includes(level)
+  level: TextSemanticLevel | undefined
+): level is 'h1' | 'h2' | 'h3' | 'h4' => {
+  return HEADING_LEVELS.has(level ?? '')
 }

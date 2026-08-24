@@ -174,7 +174,7 @@ exports[`FavoriteAuthModal should match previous snapshot 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}

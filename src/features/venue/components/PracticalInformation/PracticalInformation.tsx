@@ -9,7 +9,7 @@ import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessi
 import { DetailedAccessibilityInfo } from 'ui/components/accessibility/DetailedAccessibilityInfo'
 import { Separator } from 'ui/components/Separator'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
@@ -135,7 +135,7 @@ const SectionComponent: FunctionComponent<{ title: string; children?: ReactNode 
   children,
 }) => (
   <StyledViewGap>
-    <Typo.BodyAccentXs {...getTextSemanticAttrs(2)}>{title}</Typo.BodyAccentXs>
+    <Typo.BodyAccentXs {...setTextSemantic('h2')}>{title}</Typo.BodyAccentXs>
     {children}
   </StyledViewGap>
 )

@@ -11,7 +11,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const NotConnectedFavorites = () => {
   const { bottom } = useSafeAreaInsets()
@@ -33,10 +33,10 @@ export const NotConnectedFavorites = () => {
             <Illustration />
           </IllustrationContainer>
           <TextContainer gap={4}>
-            <StyledTitle2 {...getTextSemanticAttrs(1)}>
+            <StyledTitle2 {...setTextSemantic('h1')}>
               Identifie-toi pour retrouver tes favoris
             </StyledTitle2>
-            <StyledBody {...getTextSemanticAttrs(2)}>
+            <StyledBody {...setTextSemantic('h2')}>
               Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
             </StyledBody>
           </TextContainer>

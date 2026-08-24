@@ -29,7 +29,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export type FormValues = {
   birthCountrySelection: InseeCountry
@@ -108,7 +108,7 @@ export const BonificationBirthPlace = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>{step}</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
+            <Typo.Title3 {...setTextSemantic('h2')}>{title}</Typo.Title3>
             <Controller
               control={control}
               name="birthCountrySelection"

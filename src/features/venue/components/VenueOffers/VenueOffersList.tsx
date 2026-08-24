@@ -33,7 +33,7 @@ import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const keyExtractor = (item: Offer) => item.objectID
 
@@ -218,7 +218,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         <ArtistsPlaylistContainer gap={2}>
           <SeeAllButtonContainer gap={3}>
             <TitleContainer>
-              <Typo.Title3 {...getTextSemanticAttrs(2)}>{playlistTitle}</Typo.Title3>
+              <Typo.Title3 {...setTextSemantic('h2')}>{playlistTitle}</Typo.Title3>
             </TitleContainer>
             {artists.length > 1 ? (
               <View>

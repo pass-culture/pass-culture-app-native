@@ -12,7 +12,7 @@ import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { ColorsType } from 'theme/types'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 import { getButtonColors } from './Button.colors'
 import {
@@ -131,7 +131,7 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
           {leftIcon ? <IconWrapper style={iconAnimatedStyle}>{leftIcon}</IconWrapper> : null}
           {labelText ? (
             <LabelTypo
-              {...getTextSemanticAttrs('span')}
+              {...setTextSemantic('span')}
               style={labelStyle}
               numberOfLines={numberOfLines}
               ellipsizeMode={ellipsizeMode}>

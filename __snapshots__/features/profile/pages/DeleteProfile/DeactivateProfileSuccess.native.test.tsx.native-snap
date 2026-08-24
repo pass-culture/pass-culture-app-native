@@ -155,7 +155,7 @@ exports[`DeactivateProfileSuccess should render deactivate profile success 1`] =
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {

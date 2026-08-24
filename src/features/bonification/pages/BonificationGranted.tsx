@@ -13,7 +13,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const BonificationGranted = () => {
   const { designSystem } = useTheme()
@@ -85,7 +85,7 @@ const ProgressBarContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xxxl,
 }))
 
-const Amount = styled(Typo.Title2).attrs(getTextSemanticAttrs('p'))(({ theme }) => ({
+const Amount = styled(Typo.Title2).attrs(setTextSemantic('p'))(({ theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.brandPrimary,
 }))

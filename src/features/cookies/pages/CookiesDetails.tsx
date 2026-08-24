@@ -10,7 +10,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Link } from 'ui/designSystem/Link/Link'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
   return (
@@ -28,7 +28,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
         <CookiesSettings {...props} />
       </CookiesSettingsContainer>
       <ViewGap gap={4}>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>Tu as la main dessus</Typo.Title4>
+        <Typo.Title4 {...setTextSemantic('h2')}>Tu as la main dessus</Typo.Title4>
         <Typo.Body>
           Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
           confidentialité de ton profil à tout moment.

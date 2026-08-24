@@ -13,7 +13,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   title: string
@@ -49,7 +49,7 @@ export function OfferVenueBlock({
 
   return (
     <Wrapper>
-      <Typo.Title3 {...getTextSemanticAttrs(2)}>{title}</Typo.Title3>
+      <Typo.Title3 {...setTextSemantic('h2')}>{title}</Typo.Title3>
 
       <Container>
         <VenueBlock

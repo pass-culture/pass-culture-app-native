@@ -10,7 +10,7 @@ import { Page } from 'ui/pages/Page'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const IdentityCheckEnd: FC = () => {
   const { designSystem } = useTheme()
@@ -43,7 +43,7 @@ export const IdentityCheckEnd: FC = () => {
           />
         </IllustrationContainer>
         <TextContainer>
-          <StyledTitle2 {...getTextSemanticAttrs(1)}>
+          <StyledTitle2 {...setTextSemantic('h1')}>
             Ta pièce d’identité a bien été transmise&nbsp;!
           </StyledTitle2>
         </TextContainer>

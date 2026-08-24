@@ -10,7 +10,7 @@ import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookin
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -35,7 +35,7 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
     : ''
   return (
     <StyledView>
-      <Typo.Title3 {...getTextSemanticAttrs(3)} testID="DateStep">
+      <Typo.Title3 {...setTextSemantic('h3')} testID="DateStep">
         Date
       </Typo.Title3>
       {bookingState.step === Step.DATE ? (

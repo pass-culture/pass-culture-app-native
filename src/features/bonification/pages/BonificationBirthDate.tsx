@@ -25,7 +25,7 @@ import { ButtonContainerFlexStart } from 'ui/designSystem/Button/ButtonContainer
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type BirthdayForm = {
   birthdate: Date
@@ -77,7 +77,7 @@ export const BonificationBirthDate = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 3 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 id={titleId} {...getTextSemanticAttrs(2)}>
+            <Typo.Title3 id={titleId} {...setTextSemantic('h2')}>
               Quelle est la date de naissance de ton représentant légal&nbsp;?
             </Typo.Title3>
 

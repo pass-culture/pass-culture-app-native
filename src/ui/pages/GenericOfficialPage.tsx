@@ -6,7 +6,7 @@ import { Page } from 'ui/pages/Page'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   noIndex?: boolean
@@ -49,7 +49,7 @@ export function GenericOfficialPage({
       <Content>
         {isTouch ? <TopTouch /> : null}
         <TitleContainer>
-          <Typo.Title2 {...getTextSemanticAttrs(1)}>{title}</Typo.Title2>
+          <Typo.Title2 {...setTextSemantic('h1')}>{title}</Typo.Title2>
         </TitleContainer>
         {children}
         {isTouch ? <BottomTouch marginTop={getButtonSpaces()} /> : null}

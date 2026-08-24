@@ -24,7 +24,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const LoginMethodsWithLastLoginInfo = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -83,7 +83,7 @@ export const LoginMethodsWithLastLoginInfo = () => {
       title="Connexion"
       scrollChildren={
         <ViewGap gap={6}>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>Connecte-toi</Typo.Title3>
+          <Typo.Title3 {...setTextSemantic('h2')}>Connecte-toi</Typo.Title3>
 
           <LastLoginInfoBanner lastLoginInfo={lastLoginInfo} />
 

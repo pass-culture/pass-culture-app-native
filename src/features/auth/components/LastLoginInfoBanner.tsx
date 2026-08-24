@@ -5,7 +5,7 @@ import { FormattedLastLoginInfo } from 'features/auth/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = { lastLoginInfo: FormattedLastLoginInfo | null }
 
@@ -15,7 +15,7 @@ export const LastLoginInfoBanner: FunctionComponent<Props> = ({ lastLoginInfo })
   return (
     <Container gap={4}>
       <Tag label={lastLoginInfo.provider.label} Icon={lastLoginInfo.provider.icon} />
-      <Typo.Title4 {...getTextSemanticAttrs('p')}>{lastLoginInfo.maskedEmail}</Typo.Title4>
+      <Typo.Title4 {...setTextSemantic('p')}>{lastLoginInfo.maskedEmail}</Typo.Title4>
       <Typo.BodyXs>Connecté pour la dernière fois le {lastLoginInfo.lastLoginAt}</Typo.BodyXs>
     </Container>
   )

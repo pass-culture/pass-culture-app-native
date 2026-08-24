@@ -427,7 +427,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityLevel={2}
+            accessibilityLevel="h2"
             accessibilityRole="header"
             id="testUuidV4"
             style={
@@ -1315,7 +1315,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
           }
         >
           <Text
-            accessibilityLevel={2}
+            accessibilityLevel="h2"
             accessibilityRole="header"
             id="testUuidV4"
             style={

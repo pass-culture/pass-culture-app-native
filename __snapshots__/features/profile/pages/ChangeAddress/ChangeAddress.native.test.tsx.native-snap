@@ -162,7 +162,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -267,7 +267,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
               }
             >
               <Text
-                accessibilityLevel={2}
+                accessibilityLevel="h2"
                 accessibilityRole="header"
                 style={
                   {
@@ -831,7 +831,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
         }
       >
         <Text
-          accessibilityLevel={1}
+          accessibilityLevel="h1"
           accessibilityRole="header"
           numberOfLines={2}
           style={
@@ -936,7 +936,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityLevel={2}
+                accessibilityLevel="h2"
                 accessibilityRole="header"
                 style={
                   {

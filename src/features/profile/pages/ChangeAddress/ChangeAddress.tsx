@@ -12,7 +12,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 import { useSubmitChangeAddress } from './useSubmitChangeAddress'
 
@@ -44,7 +44,7 @@ export const ChangeAddress = () => {
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>Renseigne ton adresse</Typo.Title3>
+            <Typo.Title3 {...setTextSemantic('h2')}>Renseigne ton adresse</Typo.Title3>
             <Container>
               <Controller
                 control={control}

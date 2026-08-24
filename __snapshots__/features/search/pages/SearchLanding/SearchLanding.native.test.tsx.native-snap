@@ -102,7 +102,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    accessibilityLevel={1}
+                    accessibilityLevel="h1"
                     accessibilityRole="header"
                     small={false}
                     style={
@@ -452,7 +452,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
       >
         <View>
           <Text
-            accessibilityLevel={2}
+            accessibilityLevel="h2"
             accessibilityRole="header"
             style={
               {

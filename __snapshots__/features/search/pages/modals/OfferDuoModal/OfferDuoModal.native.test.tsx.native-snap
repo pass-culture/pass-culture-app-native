@@ -183,7 +183,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               testID="back-button-container"
             />
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               nativeID="testUuidV4"
               numberOfLines={1}
@@ -333,7 +333,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               >
                 <View
                   accessibilityLabel="Uniquement les offres duo - Seules les sorties seront affichées"
-                  accessibilityLevel={2}
+                  accessibilityLevel="h2"
                   accessibilityRole="header"
                   accessible={true}
                 >

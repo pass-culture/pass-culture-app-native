@@ -136,7 +136,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
             testID="listHeader"
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {
@@ -219,7 +219,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
   >
     <View>
       <Text
-        accessibilityLevel={1}
+        accessibilityLevel="h1"
         accessibilityRole="header"
         style={
           {
@@ -4481,7 +4481,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             testID="listHeader"
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {

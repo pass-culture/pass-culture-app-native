@@ -269,7 +269,7 @@ exports[`VenueModal should render correctly 1`] = `
               </View>
             </View>
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               nativeID="testUuidV4"
               numberOfLines={1}

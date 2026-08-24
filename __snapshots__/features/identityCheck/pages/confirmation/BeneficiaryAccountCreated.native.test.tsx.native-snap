@@ -151,7 +151,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {
@@ -166,7 +166,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
               Bonne nouvelle !
             </Text>
             <Text
-              accessibilityLevel={2}
+              accessibilityLevel="h2"
               accessibilityRole="header"
               style={
                 {
@@ -597,7 +597,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
             }
           >
             <Text
-              accessibilityLevel={1}
+              accessibilityLevel="h1"
               accessibilityRole="header"
               style={
                 {
@@ -612,7 +612,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
               Bonne nouvelle !
             </Text>
             <Text
-              accessibilityLevel={2}
+              accessibilityLevel="h2"
               accessibilityRole="header"
               style={
                 {

@@ -20,7 +20,7 @@ import { extractTextFromReactNode } from 'shared/extractTextFromReactNode/extrac
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
 import { Typo } from '../theme'
@@ -137,7 +137,7 @@ export const Accordion = ({
           {...focusProps}
           {...accessibilityProps}>
           <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
-            <Title {...getTextSemanticAttrs(3)}>{title}</Title>
+            <Title {...setTextSemantic('h3')}>{title}</Title>
             <StyledArrowAnimatedView
               style={{ transform: [{ rotateZ: arrowAngle }] }}
               testID="accordionArrow">

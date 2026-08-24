@@ -20,7 +20,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type FormValues = {
   firstName: string
@@ -92,7 +92,7 @@ export const SetName = () => {
       title={pageConfigByType[type].headerTitle}
       scrollChildren={
         <Form.MaxWidth>
-          <Typo.Title3 {...getTextSemanticAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
+          <Typo.Title3 {...setTextSemantic('h2')}>{pageConfigByType[type].title}</Typo.Title3>
           <BannerContainer>
             <Banner Icon={IdCard} label={pageConfigByType[type].bannerMessage} />
           </BannerContainer>

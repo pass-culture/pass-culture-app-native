@@ -10,7 +10,7 @@ import { PasswordInputController } from 'shared/forms/controllers/PasswordInputC
 import { Form } from 'ui/components/Form'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type FormValues = {
   password: string
@@ -39,7 +39,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
   return (
     <SetContainer>
       <Form.MaxWidth>
-        <Typo.Title3 {...getTextSemanticAttrs(2)}>Choisis un mot de passe</Typo.Title3>
+        <Typo.Title3 {...setTextSemantic('h2')}>Choisis un mot de passe</Typo.Title3>
         <PasswordInputContainer>
           <PasswordInputController
             label="Mot de passe"

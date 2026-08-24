@@ -14,7 +14,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = NativeStackScreenProps<OnboardingStackParamList, 'OnboardingAgeInformation'>
 
@@ -72,7 +72,7 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
   return (
     <TutorialPage title={`À ${userAge} ans, profite de ton pass Culture\u00a0!`} buttons={buttons}>
       <ViewGap gap={2}>
-        <Typo.Title4 {...getTextSemanticAttrs(2)}>Comment ça marche&nbsp;?</Typo.Title4>
+        <Typo.Title4 {...setTextSemantic('h2')}>Comment ça marche&nbsp;?</Typo.Title4>
         <OnboardingTimeline age={userAge} />
       </ViewGap>
     </TutorialPage>

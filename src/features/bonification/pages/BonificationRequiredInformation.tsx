@@ -19,7 +19,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const BonificationRequiredInformation = () => {
   const { params } = useRoute<UseRouteType<'BonificationRequiredInformation'>>()
@@ -55,7 +55,7 @@ export const BonificationRequiredInformation = () => {
             <Container>
               <IdCardWithMagnifyingGlass />
             </Container>
-            <StyledTitle3 {...getTextSemanticAttrs(2)}>{title}</StyledTitle3>
+            <StyledTitle3 {...setTextSemantic('h2')}>{title}</StyledTitle3>
             <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
               {isDisabilityBonification ? (

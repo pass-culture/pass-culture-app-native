@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   isOpenToPublic: boolean
@@ -13,7 +13,7 @@ type Props = {
 export const NoOfferPlaceholder = ({ isOpenToPublic }: Props) => (
   <Container gap={2}>
     <NoOfferIllustration />
-    <Text {...getTextSemanticAttrs('p')}>
+    <Text {...setTextSemantic('p')}>
       {isOpenToPublic
         ? 'Il n’y a pas encore d’offre disponible dans ce lieu'
         : 'Cette structure ne propose pas encore d’offre'}

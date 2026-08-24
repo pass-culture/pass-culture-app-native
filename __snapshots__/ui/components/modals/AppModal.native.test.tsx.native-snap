@@ -179,7 +179,7 @@ exports[`<AppModal /> on big screen 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -434,7 +434,7 @@ exports[`<AppModal /> on small screen 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -655,7 +655,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -910,7 +910,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -1165,7 +1165,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -1506,7 +1506,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -1761,7 +1761,7 @@ exports[`<AppModal /> with minimal props 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -2016,7 +2016,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}
@@ -2358,7 +2358,7 @@ exports[`<AppModal /> without children 1`] = `
           }
         >
           <Text
-            accessibilityLevel={1}
+            accessibilityLevel="h1"
             accessibilityRole="header"
             nativeID="testUuidV4"
             numberOfLines={2}

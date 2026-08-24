@@ -12,7 +12,7 @@ import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   visible: boolean
@@ -88,7 +88,7 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   marginTop: -GRADIENT_SIZE,
 })
 
-const Title = styled(Typo.Title3).attrs(() => getTextSemanticAttrs(1))({
+const Title = styled(Typo.Title3).attrs(() => setTextSemantic('h1'))({
   textAlign: 'center',
 })
 

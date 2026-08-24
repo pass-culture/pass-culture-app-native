@@ -20,7 +20,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   venue: VenueResponse
@@ -93,7 +93,7 @@ export const VenueBody: FunctionComponent<Props> = ({
       <React.Fragment>
         {headlineOfferData ? (
           <MarginContainer>
-            <StyledTitle3 {...getTextSemanticAttrs(2)}>À la une</StyledTitle3>
+            <StyledTitle3 {...setTextSemantic('h2')}>À la une</StyledTitle3>
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}

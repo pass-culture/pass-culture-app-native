@@ -15,7 +15,7 @@ import { BrokenConnection as InitialBrokenConnection } from 'ui/svg/BrokenConnec
 import { Bookings } from 'ui/svg/icons/Bookings'
 import { Connect } from 'ui/svg/icons/Connect'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const OfflinePage = () => {
   const { isLoggedIn } = useAuthContext()
@@ -71,11 +71,11 @@ const Container = styled(Page)({
   alignItems: 'center',
 })
 
-const StyledTitle2 = styled(Typo.Title2).attrs(() => getTextSemanticAttrs(1))({
+const StyledTitle2 = styled(Typo.Title2).attrs(() => setTextSemantic('h1'))({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body).attrs(() => getTextSemanticAttrs(2))({
+const StyledBody = styled(Typo.Body).attrs(() => setTextSemantic('h2'))({
   textAlign: 'center',
 })
 

@@ -12,7 +12,7 @@ import { CloseButton } from 'ui/components/headers/CloseButton'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Typo, getSpacing } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 interface Props {
   title: string
@@ -53,7 +53,7 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
             />
           ) : null}
         </ButtonContainer>
-        <StyledTitle4 numberOfLines={numberOfLine} nativeID={titleId} {...getTextSemanticAttrs(1)}>
+        <StyledTitle4 numberOfLines={numberOfLine} nativeID={titleId} {...setTextSemantic('h1')}>
           {title}
         </StyledTitle4>
         <ButtonContainer positionInHeader="right" testID="close-button-container">

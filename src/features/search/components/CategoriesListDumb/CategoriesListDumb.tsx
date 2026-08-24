@@ -10,7 +10,7 @@ import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   sortedCategories: ListCategoryButtonProps
@@ -137,7 +137,7 @@ const CategoriesButtonsContainer = styled(Ul)(({ theme }) => ({
 
 const CategoriesTitleV2 = styled(Typo.Title4).attrs({
   children: 'Parcours les catégories',
-  ...getTextSemanticAttrs(2),
+  ...setTextSemantic('h2'),
 })(({ theme }) => ({
   width: '100%',
   marginTop: theme.designSystem.size.spacing.l,

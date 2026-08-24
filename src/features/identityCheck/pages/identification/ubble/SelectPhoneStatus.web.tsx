@@ -9,7 +9,7 @@ import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { PhonePending as InitialPhonePending } from 'ui/svg/icons/PhonePending'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
   return (
@@ -75,7 +75,7 @@ const PhonePending = styled(InitialPhonePending).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getTextSemanticAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(setTextSemantic('h2'))({
   textAlign: 'center',
 })
 const StyledBody = styled(Typo.Body)({

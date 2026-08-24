@@ -29,7 +29,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
@@ -149,7 +149,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <Typo.Title3 {...getTextSemanticAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
+            <Typo.Title3 {...setTextSemantic('h2')}>{pageConfigByType[type].title}</Typo.Title3>
             <Container>
               <SearchInput
                 onChangeText={onChangeAddress}

@@ -19,7 +19,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Page } from 'ui/pages/Page'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { getTextSemanticAttrs } from 'ui/theme/typographyAttrs/getTextSemanticAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const IdentityCheckHonor = () => {
   const headerHeight = useGetHeaderHeight()
@@ -63,11 +63,11 @@ export const IdentityCheckHonor = () => {
     <Page>
       <StyledScrollView>
         <HeaderHeightSpacer headerHeight={headerHeight} />
-        <Typo.Title2 {...getTextSemanticAttrs(1)}>
+        <Typo.Title2 {...setTextSemantic('h1')}>
           Les informations que tu as renseignées sont-elles correctes&nbsp;?
         </Typo.Title2>
         <TextContainer>
-          <Typo.Title4 {...getTextSemanticAttrs(2)}>
+          <Typo.Title4 {...setTextSemantic('h2')}>
             &quot;Je déclare que l’ensemble des informations que j’ai renseignées durant mon
             inscription sont correctes.&quot;
           </Typo.Title4>
