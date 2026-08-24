@@ -40,5 +40,10 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
+- tapOn: 'Outils et services publics pour les personnes en situation de handicap'
+- assertVisible: 'Outils et services publics'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
+
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml

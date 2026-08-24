@@ -137,8 +137,12 @@ import { Warning } from 'ui/svg/icons/Warning'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
+import { LogoAccesLibre } from 'ui/svg/LogoAccesLibre'
+import { LogoAidantConnect } from 'ui/svg/LogoAidantConnect'
+import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
+import { LogoMonParcoursHandicap } from 'ui/svg/LogoMonParcoursHandicap'
 import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
 import { SceneClubCertification } from 'ui/svg/SceneClubCertification'
 
@@ -294,8 +298,12 @@ export const UnconventionalIcons = {
   CineClubCertification,
   DarkThemeIllustration,
   DefaultThemeIllustration,
+  LogoAccesLibre,
+  LogoAidantConnect,
+  LogoAudioDescription,
   LogoDMS,
   LogoFrenchRepublic,
+  LogoMonParcoursHandicap,
   LogoPassCulture,
   ProEditoCertification,
   SceneClubCertification,

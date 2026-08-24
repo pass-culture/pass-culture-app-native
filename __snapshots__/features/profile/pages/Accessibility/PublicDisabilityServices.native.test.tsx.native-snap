@@ -1,0 +1,1032 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<PublicDisabilityServices /> should render correctly 1`] = `
+<View
+  isLandscape={false}
+  style={
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "marginLeft": 0,
+      "marginRight": 0,
+    }
+  }
+>
+  <View
+    accessibilityRole="header"
+    onLayout={[Function]}
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        {
+          "height": 16,
+        }
+      }
+    />
+    <View
+      headerHeight={48}
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        positionInHeader="left"
+        style={
+          {
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "userSelect": "auto",
+              "width": "auto",
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexShrink": 0,
+                }
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      >
+        <Text
+          accessibilityLevel="h1"
+          accessibilityRole="header"
+          numberOfLines={2}
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
+          }
+        >
+          Outils et services publics
+        </Text>
+      </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
+    }
+  >
+    <View
+      onLayout={[Function]}
+      shouldBeAlignedFlexStart={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        shouldLimitWidth={false}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "width": "100%",
+          }
+        }
+      >
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 65,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          onScroll={[Function]}
+          paddingHeaderHeight={65}
+          scrollEventThrottle={16}
+          style={{}}
+        >
+          <View>
+            <View
+              gap={5}
+              style={
+                {
+                  "gap": 20,
+                }
+              }
+            >
+              <Text
+                accessibilityLevel="h2"
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
+                }
+              >
+                Des services pensés pour toi
+              </Text>
+              <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Retrouve ici les outils et services publics pensés pour t’accompagner et rendre la société plus accessible à tous.
+              </Text>
+              <View
+                accessibilityRole="list"
+                gap={4}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "gap": 16,
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Lien externe"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Lien externe"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#90949d",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "padding": 16,
+                            "width": "100%",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "alignContent": "center",
+                            "marginRight": 16,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="AccesLibre"
+                          fill="none"
+                          height={80}
+                          width={80}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          }
+                        }
+                      >
+                        <View
+                          gap={2}
+                          style={
+                            {
+                              "gap": 8,
+                            }
+                          }
+                        >
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              }
+                            }
+                          >
+                            AccesLibre
+                          </Text>
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            L’accessibilité des lieux publics, selon votre handicap, à portée de clic.
+                          </Text>
+                        </View>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Lien externe"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Lien externe"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#90949d",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "padding": 16,
+                            "width": "100%",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "alignContent": "center",
+                            "marginRight": 16,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Aidant Connect"
+                          fill="none"
+                          height={80}
+                          width={80}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          }
+                        }
+                      >
+                        <View
+                          gap={2}
+                          style={
+                            {
+                              "gap": 8,
+                            }
+                          }
+                        >
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              }
+                            }
+                          >
+                            Aidant connect
+                          </Text>
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            Accompagnez vos usagers en toute sécurité
+                          </Text>
+                        </View>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Lien externe"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Lien externe"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#90949d",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "padding": 16,
+                            "width": "100%",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "alignContent": "center",
+                            "marginRight": 16,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="République Française - Liberté Égalité Fraternité"
+                          fill="none"
+                          height={80}
+                          width={80}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          }
+                        }
+                      >
+                        <View
+                          gap={2}
+                          style={
+                            {
+                              "gap": 8,
+                            }
+                          }
+                        >
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              }
+                            }
+                          >
+                            Aides simplifiées
+                          </Text>
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            Trouvez les aides adaptées à votre situation OU La bonne aide, au bon moment, au bon endroit.
+                          </Text>
+                        </View>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Lien externe"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Lien externe"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#90949d",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "padding": 16,
+                            "width": "100%",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "alignContent": "center",
+                            "marginRight": 16,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Mon parcours handicap"
+                          fill="none"
+                          height={80}
+                          width={80}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          }
+                        }
+                      >
+                        <View
+                          gap={2}
+                          style={
+                            {
+                              "gap": 8,
+                            }
+                          }
+                        >
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              }
+                            }
+                          >
+                            Mon parcours handicap
+                          </Text>
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            Le site d’information officiel pour les personnes en situation de handicap et leurs aidants.
+                          </Text>
+                        </View>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Lien externe"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Lien externe"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "borderColor": "#90949d",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "padding": 16,
+                            "width": "100%",
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "alignContent": "center",
+                            "marginRight": 16,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Portail de l’audiodescription"
+                          fill="none"
+                          height={80}
+                          width={80}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          }
+                        }
+                      >
+                        <View
+                          gap={2}
+                          style={
+                            {
+                              "gap": 8,
+                            }
+                          }
+                        >
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 22,
+                              }
+                            }
+                          >
+                            Portail de l’audiodescription
+                          </Text>
+                          <Text
+                            accessibilityLevel="p"
+                            accessibilityRole="text"
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 14,
+                                "lineHeight": 22.4,
+                              }
+                            }
+                          >
+                            Catalogue de films disponibles en version audiodécrite.
+                          </Text>
+                        </View>
+                      </View>
+                      <View>
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
+              }
+            />
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</View>
+`;
