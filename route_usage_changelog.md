@@ -1,14 +1,15 @@
-# v1.404.0
+# v1.405.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 Pathname not found for deleteNativeV1MeFavoritesfavoriteId
 Pathname not found for deleteNativeV1MeRemindersreminderId
 Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
-- /native/v1/account/suspension_date
+Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/account/suspension_status
 - /native/v1/artists/{artist_id}
 - /native/v1/artists/{artist_id}/similar
 - /native/v1/banner
+- /native/v1/venue/{venue_id}/movie/calendar
 - /native/v1/countries
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
@@ -17,18 +18,19 @@ Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
 - /native/v1/me/reminders
 - /native/v1/movie/calendar
 - /native/v1/movie/calendar/me
-- /native/v1/oauth/state
 - /native/v1/offer/{offer_id}/chronicles
 - /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
 - /native/v1/recommendation/similar_offers/{offer_id}
-- /native/v1/settings
-- /native/v1/subcategories/v2
+Pathname not found for getNativeV1Settings
+Pathname not found for getNativeV1SubcategoriesV2
 - /native/v1/subscription/activity_types
 - /native/v1/venue/{venue_id}/advices
+- /native/v1/venue/{venue_id}/movie/calendar/me
 - /native/v2/bookings
 - /native/v2/bookings/{booking_id}
 - /native/v2/bookings/{status}
+- /native/v2/oauth/state
 - /native/v2/profile/email_update/status
 - /native/v2/reaction/available
 - /native/v2/subscription/stepper
@@ -53,7 +55,6 @@ Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
 - /native/v1/me/favorites
 - /native/v1/me/reminders
 - /native/v1/oauth/{sso_provider}/account
-- /native/v1/oauth/{sso_provider}/authorize
 - /native/v1/profile/email_update/cancel
 - /native/v1/recommendation/playlist
 - /native/v1/request_password_reset
@@ -69,6 +70,7 @@ Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
 - /native/v1/subscription/profile
 - /native/v1/ubble_identification
 - /native/v1/validate_email
+- /native/v2/oauth/{sso_provider}/authorize
 - /native/v2/offers/stocks
 - /native/v2/profile/email_update/confirm
 - /native/v2/profile/email_update/new_email
@@ -81,12 +83,14 @@ Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
 ## Unused routes:
 - /native/v1/bookings
 - /native/v1/categories
+- /native/v1/oauth/state
 - /native/v1/offerer/{offerer_id}/headline-offer
 - /native/v1/offer/{offer_id}
 - /native/v1/reaction/available
 - /native/v1/subscription/profile
 - /native/v1/venue/{venue_id}
 - /native/v2/offer/{offer_id}
+- /native/v1/oauth/{sso_provider}/authorize
 - /native/v1/profile
 - /native/v1/reaction
 - /native/v1/refresh_access_token
