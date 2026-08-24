@@ -283,6 +283,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               focusable={isFocusOnSuggestions}
               testID="searchInput"
               disableClearButton={disableInputClearButton}
+              aria-describedby="search-suggestions-accessibility-message"
             />
           </FlexView>
         </SearchInputA11yContainer>

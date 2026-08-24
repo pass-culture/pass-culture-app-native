@@ -27,6 +27,7 @@ import {
   useLocationMode,
   useUserLocation,
 } from 'libs/locationV2/location.store'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -137,6 +138,19 @@ export const SearchSuggestions = ({
     navigate('Artist', { id: artistId })
   }
 
+  const isQuerying = queryHistory.trim().length > 0
+  const hasHistory = filteredHistory.length > 0
+
+  const getAccessibilityMessage = () => {
+    if (isQuerying) {
+      return `Suggestions pour ${queryHistory}`
+    }
+    if (hasHistory) {
+      const count = filteredHistory.length
+      return `Historique de recherche, ${count} élément${count > 1 ? 's' : ''}`
+    }
+    return 'Aucun résultat ou historique'
+  }
   return (
     <StyledScrollView
       testID="autocompleteScrollView"
@@ -144,6 +158,14 @@ export const SearchSuggestions = ({
       onScroll={Keyboard.dismiss}
       scrollEventThrottle={16}>
       {header}
+
+      <HiddenAccessibleText
+        accessibilityLiveRegion="polite"
+        accessibilityRole="alert"
+        id="search-suggestions-accessibility-message">
+        {getAccessibilityMessage()}
+      </HiddenAccessibleText>
+
       <SearchHistory
         history={filteredHistory}
         queryHistory={queryHistory}
