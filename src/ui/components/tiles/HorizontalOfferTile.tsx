@@ -11,6 +11,8 @@ import { logClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDistance } from 'libs/location/getDistance'
 import { LocationMode } from 'libs/location/types'
 import {
@@ -73,6 +75,9 @@ export const HorizontalOfferTile = ({
     releaseDate,
     isDuo,
     bookingAllowedDatetime,
+    likes,
+    chroniclesCount,
+    proAdvicesCount,
   } = offerDetails
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
@@ -81,6 +86,8 @@ export const HorizontalOfferTile = ({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
+  const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
   const userPosition =
     currentRoute === 'SearchResults' &&
@@ -156,6 +163,10 @@ export const HorizontalOfferTile = ({
     theme,
     isComingSoonOffer: isAComingSoonOffer,
     subcategoryId,
+    likesCount: likes,
+    clubAdvicesCount: chroniclesCount,
+    proAdvicesCount: enableProAdvicesTag ? proAdvicesCount : undefined,
+    enableSceneClubTag,
   })
 
   const interactionTagLabel = getInteractionTagLabel(interactionTag)

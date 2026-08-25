@@ -6,6 +6,7 @@ import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -44,6 +45,7 @@ jest.useFakeTimers()
 describe('VideoModulePage', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    setFeatureFlags()
   })
 
   describe('When isMultiOffer is false', () => {
