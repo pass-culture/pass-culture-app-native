@@ -11,7 +11,7 @@ import { Button } from 'ui/designSystem/Button/Button'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Key } from 'ui/svg/icons/Key'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type LoginFormProps = {
   errorMessage: string | null
@@ -31,7 +31,7 @@ export const LoginForm = ({
 }: LoginFormProps) => (
   <React.Fragment>
     <TitleContainer>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
+      <Typo.Title3 {...setTextSemantic('h2')}>Connecte-toi</Typo.Title3>
     </TitleContainer>
     <Form.MaxWidth>
       <InputError

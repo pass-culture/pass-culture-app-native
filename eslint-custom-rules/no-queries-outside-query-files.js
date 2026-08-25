@@ -1,5 +1,6 @@
 const path = require('path')
 
+const REFACTOR_FILE_PATTERN = '.refacto.ts'
 const QUERY_FILE_PATTERN = 'Query.ts'
 const MUTATION_FILE_PATTERN = 'Mutation.ts'
 
@@ -42,17 +43,20 @@ module.exports = {
 
   create(context) {
     const filename = context.getFilename()
+    const isRefactorFile = filename.endsWith(REFACTOR_FILE_PATTERN)
     const isQueryFile = filename.endsWith(QUERY_FILE_PATTERN)
     const isMutationFile = filename.endsWith(MUTATION_FILE_PATTERN)
     const fileNameWithoutExtension = path.parse(filename).name
 
     return {
       CallExpression(node) {
-        if (!isQueryFile) {
-          checkForUseQuery(node, context)
-        }
-        if (!isMutationFile) {
-          checkForUseMutation(node, context)
+        if (!isRefactorFile) {
+          if (!isQueryFile) {
+            checkForUseQuery(node, context)
+          }
+          if (!isMutationFile) {
+            checkForUseMutation(node, context)
+          }
         }
       },
     }
