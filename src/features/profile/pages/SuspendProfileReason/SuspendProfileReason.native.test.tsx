@@ -44,7 +44,7 @@ describe('<SuspendProfileReason />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to Home page when clicking on "Autre" button', async () => {
+  it('should redirect to DeleteProfileContactSupport page when clicking on "Autre" button', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<SuspendProfileReason />)
 
@@ -65,7 +65,7 @@ describe('<SuspendProfileReason />', () => {
     expect(analytics.logSelectSuspensionReason).toHaveBeenNthCalledWith(1, 'other')
   })
 
-  it('should redirect to SuspendProfileConfirmation page when clicking on reason', async () => {
+  it('should redirect to SuspendProfileAccountHacked page when clicking on reason', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<SuspendProfileReason />)
 
