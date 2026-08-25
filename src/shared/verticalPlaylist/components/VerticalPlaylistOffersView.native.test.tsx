@@ -5,6 +5,7 @@ import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -29,6 +30,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<VerticalPlaylistOffersView />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', async () => {
     render(
       reactQueryProviderHOC(

@@ -7,6 +7,7 @@ import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { UserProps } from 'libs/location/getDistance'
 import { LocationMode, Position } from 'libs/location/types'
 import {
@@ -101,6 +102,7 @@ describe('HorizontalOfferTile component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
     useLocationV2.setState(defaultLocationState)
+    setFeatureFlags()
   })
 
   it('should navigate to the offer when pressing an offer', async () => {
