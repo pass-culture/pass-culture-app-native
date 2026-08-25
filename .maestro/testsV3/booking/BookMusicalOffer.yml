@@ -93,7 +93,11 @@ onFlowStart:
 - doubleTapOn: '.*Confirmer la réservation.*'
 
 - assertVisible: "Réservation confirmée\_!"
+
 - tapOn: 'Voir ma réservation'
+- tapOn:
+    text: 'Voir ma réservation'
+    optional: true
 
 - runFlow:
     when:
