@@ -22,11 +22,6 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'SuspendedAccountUponUserRequest',
-      navigationTarget: { screen: 'SuspendedAccountUponUserRequest' },
-    },
-    {
-      id: uuidv4(),
       title: 'AccountReactivationSuccess',
       navigationTarget: { screen: 'AccountReactivationSuccess' },
     },

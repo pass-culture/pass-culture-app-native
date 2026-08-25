@@ -29,7 +29,6 @@ import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/V
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
@@ -143,11 +142,6 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'AccountStatusScreenHandler',
     component: AccountStatusScreenHandler,
-    options: { title: 'Compte désactivé' },
-  },
-  {
-    name: 'SuspendedAccountUponUserRequest',
-    component: SuspendedAccountUponUserRequest,
     options: { title: 'Compte désactivé' },
   },
   {

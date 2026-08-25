@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
+exports[`SuspendProfileAccountHacked should render correctly 1`] = `
 <View
   isLandscape={false}
   style={
@@ -68,7 +68,93 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
           }
         }
         testID="back-button-container"
-      />
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "width": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            gap={0}
+            hasIcon={true}
+            isMultiline={false}
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 0,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexShrink": 0,
+                }
+              }
+            >
+              <View
+                height={22}
+                width={22}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
       <View
         positionInHeader="right"
         style={
@@ -98,10 +184,10 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
   >
     <View>
       <View
-        height={16}
+        height={65}
         style={
           {
-            "height": 16,
+            "height": 65,
           }
         }
       />
@@ -167,22 +253,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
                 }
               }
             >
-              Ton compte est désactivé
-            </Text>
-            <Text
-              accessibilityLevel="h2"
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textAlign": "center",
-                }
-              }
-            >
-              Tu as jusqu’au 10 juillet 2022 à 10h29 pour réactiver ton compte.
+              Sécurise ton compte
             </Text>
           </View>
           <View
@@ -192,21 +263,128 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
               }
             }
           >
-            <Text
-              accessibilityLevel="p"
-              accessibilityRole="text"
+            <View
+              gap={6}
               style={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textAlign": "center",
+                  "gap": 24,
                 }
               }
             >
-              Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
-            </Text>
+              <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Tu as indiqué
+                <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                   que quelqu’un d’autre a accès à ton compte.
+                </Text>
+              </Text>
+              <Text
+                accessibilityLevel="p"
+                accessibilityRole="text"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pour des raisons de 
+                <Text
+                  accessibilityLevel="p"
+                  accessibilityRole="text"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  sécurité
+                </Text>
+                , nous te conseillons de suspendre ton compte temporairement.
+              </Text>
+              <View
+                background="#f3edff"
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 12,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
+                }
+              >
+                <View
+                  fill="#320096"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte"
+                  accessibilityRole="none"
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 4,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
         <View
@@ -223,7 +401,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
           }
         >
           <View
-            accessibilityLabel="Réactiver mon compte"
+            accessibilityLabel="Suspendre mon compte"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -282,7 +460,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
                 },
               ]
             }
-            testID="Réactiver mon compte"
+            testID="Suspendre mon compte"
           >
             <View
               fullWidth={true}
@@ -322,7 +500,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
                   ]
                 }
               >
-                Réactiver mon compte
+                Suspendre mon compte
               </Text>
             </View>
           </View>
@@ -334,7 +512,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
             }
           >
             <View
-              accessibilityLabel="Retourner à l’accueil"
+              accessibilityLabel="Ne pas sécuriser mon compte"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -386,7 +564,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
                   },
                 ]
               }
-              testID="Retourner à l’accueil"
+              testID="Ne pas sécuriser mon compte"
             >
               <View
                 gap={8}
@@ -408,6 +586,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
                   }
                 >
                   <View
+                    fill="#161617"
                     height={22}
                     width={22}
                   >
@@ -439,7 +618,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Retourner à l’accueil
+                  Ne pas sécuriser mon compte
                 </Text>
               </View>
             </View>

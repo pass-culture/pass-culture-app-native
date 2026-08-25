@@ -28,9 +28,6 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
   AccountStatusScreenHandler: {
     path: 'compte-desactive',
   },
-  SuspendedAccountUponUserRequest: {
-    path: 'compte-suspendu-a-la-demande',
-  },
   FraudulentSuspendedAccount: {
     path: 'compte-suspendu-pour-fraude',
   },

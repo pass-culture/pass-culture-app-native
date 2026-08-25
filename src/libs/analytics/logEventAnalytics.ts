@@ -621,6 +621,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SELECT_AGE }, { age }),
   logSelectDeletionReason: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SELECT_DELETION_REASON }, { type }),
+  logSelectSuspensionReason: (type: string) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SELECT_SUSPENSION_REASON }, { type }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN },

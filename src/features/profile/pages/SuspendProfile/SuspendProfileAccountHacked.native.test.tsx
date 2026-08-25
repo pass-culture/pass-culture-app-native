@@ -1,10 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SuspendProfileAccountHacked } from 'features/profile/pages/SuspendProfile/SuspendProfileAccountHacked'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
-
-import { DeleteProfileAccountHacked } from './DeleteProfileAccountHacked'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -17,19 +16,19 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('DeleteProfileAccountHacked', () => {
+describe('SuspendProfileAccountHacked', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
   it('should render correctly', () => {
-    render(<DeleteProfileAccountHacked />)
+    render(<SuspendProfileAccountHacked />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to profile on press ne pas sécuriser mon compte', async () => {
-    render(<DeleteProfileAccountHacked />)
+    render(<SuspendProfileAccountHacked />)
     const button = screen.getByText('Ne pas sécuriser mon compte')
 
     await user.press(button)
@@ -38,7 +37,7 @@ describe('DeleteProfileAccountHacked', () => {
   })
 
   it('should navigate to confirm delete profile on press Susprendre mon compte', async () => {
-    render(<DeleteProfileAccountHacked />)
+    render(<SuspendProfileAccountHacked />)
     const button = screen.getByText('Suspendre mon compte')
 
     await user.press(button)

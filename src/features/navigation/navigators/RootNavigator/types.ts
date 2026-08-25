@@ -332,7 +332,6 @@ export type RootStackParamList = {
   SignupForm: SignupParams
   _DeeplinkOnlySignupForm1: SignupParams
   SubscriptionStackNavigator?: NavigatorScreenParams<SubscriptionStackParamList>
-  SuspendedAccountUponUserRequest: undefined
   TabNavigator: NavigatorScreenParams<TabParamList>
   ThematicHome: ThematicHomeParams
   _DeeplinkOnlyThematicHome1: ThematicHomeParams

@@ -12,12 +12,7 @@ const mockSuspensionStatus = { status: AccountState.SUSPENDED_UPON_USER_REQUEST 
 jest.mock('features/auth/queries/useAccountSuspensionStatusQuery', () => ({
   useAccountSuspensionStatusQuery: jest.fn(() => ({ data: mockSuspensionStatus })),
 }))
-jest.mock('features/auth/queries/useAccountSuspensionDateQuery', () => ({
-  useAccountSuspensionDateQuery: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
-}))
-jest.mock('features/auth/queries/useAccountUnsuspendMutation', () => ({
-  useAccountUnsuspendMutation: jest.fn(() => ({ mutate: jest.fn() })),
-}))
+
 jest.mock('features/navigation/helpers/useCurrentRoute')
 
 const mockSignOut = jest.fn()
@@ -37,11 +32,11 @@ describe('<AccountStatusScreenHandler />', () => {
     setFeatureFlags()
   })
 
-  it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
+  it('should display SuspiciousLoginSuspendedAccount component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<AccountStatusScreenHandler />)
 
-    expect(screen.getByText('Ton compte est désactivé')).toBeOnTheScreen()
+    expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should display SuspiciousLoginSuspendedAccount component if account is suspended for suspicious login reported by user', () => {
