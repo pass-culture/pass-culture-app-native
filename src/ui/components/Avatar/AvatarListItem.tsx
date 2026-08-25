@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
@@ -44,11 +44,11 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   const contentToFooterGap = theme.designSystem.size.spacing.xl
   const artistNameLineHeight = getLineHeightPx(
     theme.designSystem.typography.bodyAccentS.lineHeight,
-    true
+    Platform.OS === 'web'
   )
   const artistRoleLineHeight = getLineHeightPx(
     theme.designSystem.typography.bodyAccentXs.lineHeight,
-    true
+    Platform.OS === 'web'
   )
   const contentHeight =
     (size ?? 0) +
