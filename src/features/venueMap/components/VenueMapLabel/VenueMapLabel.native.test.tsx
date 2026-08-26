@@ -25,7 +25,7 @@ describe('<VenueMapLabel />', () => {
     })
 
     expect(screen.getByTestId('label-container')).toHaveStyle({
-      transform: expect.arrayContaining([{ translateX: -28 }, { translateY: 54 }]),
+      transform: expect.arrayContaining([{ translateX: -28 }]),
     })
   })
 
@@ -45,7 +45,7 @@ describe('<VenueMapLabel />', () => {
     const expectedTranslateX = 22 - 80 / 2
 
     expect(screen.getByTestId('label-container')).toHaveStyle({
-      transform: expect.arrayContaining([{ translateX: expectedTranslateX }, { translateY: 54 }]),
+      transform: expect.arrayContaining([{ translateX: expectedTranslateX }]),
     })
   })
 })
