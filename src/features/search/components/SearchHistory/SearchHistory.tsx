@@ -25,7 +25,7 @@ export function SearchHistory({ history, queryHistory, removeItem, onPress }: Pr
   return history.length > 0 ? (
     <React.Fragment>
       <SearchHistoryTitleText>Historique de recherche</SearchHistoryTitleText>
-      <StyledVerticalUl>
+      <StyledVerticalUl accessibilityLabel="Historique de recherche">
         {history.map((item) => (
           <Container
             key={item.createdAt}

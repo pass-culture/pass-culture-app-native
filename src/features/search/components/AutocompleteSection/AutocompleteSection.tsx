@@ -20,7 +20,7 @@ export function AutocompleteSection<T>({ title, renderItem, ...props }: Props<T>
   return (
     <React.Fragment>
       <Title>{title}</Title>
-      <StyledVerticalUl>
+      <StyledVerticalUl accessibilityLabel={title}>
         {hits.map((item) => (
           <Li key={item.objectID}>{renderItem(item as T, sendEvent)}</Li>
         ))}

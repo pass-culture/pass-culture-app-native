@@ -5,6 +5,8 @@ import { HistoryItemHighlight } from 'features/search/components/Highlight/Highl
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 
@@ -15,9 +17,8 @@ interface Props {
 }
 
 export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
-  const shouldDisplaySearchGroupOrNativeCategory = Boolean(
-    item.nativeCategoryLabel || item.categoryLabel
-  )
+  const categoryLabel = item.nativeCategoryLabel ?? item.categoryLabel
+  const shouldDisplaySearchGroupOrNativeCategory = !!categoryLabel
 
   const handlePress = useCallback(() => {
     onPress(item)
@@ -55,7 +56,7 @@ const Container = styled.View({
   flex: 1,
 })
 
-const HistoryItemTouchable = styled.TouchableOpacity({
+const HistoryItemTouchable = styledButton(Touchable)({
   flexDirection: 'row',
   alignItems: 'center',
 })
