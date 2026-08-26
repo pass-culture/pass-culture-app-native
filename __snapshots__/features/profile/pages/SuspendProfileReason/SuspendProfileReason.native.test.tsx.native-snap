@@ -259,6 +259,7 @@ exports[`<SuspendProfileReason /> should match snapshot 1`] = `
         >
           <View>
             <View
+              gap={4}
               style={
                 {
                   "alignSelf": "center",

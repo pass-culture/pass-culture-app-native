@@ -7,6 +7,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo } from 'ui/theme'
@@ -43,7 +44,7 @@ export const BaseLeaveProfileReason = ({
       onGoBack={goBack}
       title={pageTitle}
       scrollChildren={
-        <ContentContainer>
+        <ContentContainer gap={4}>
           <HeaderContainer>
             <StyledIcon />
             <TitlesContainer>
@@ -72,12 +73,11 @@ export const BaseLeaveProfileReason = ({
   )
 }
 
-const ContentContainer = styled.View(({ theme }) => ({
+const ContentContainer = styled(ViewGap)(({ theme }) => ({
   paddingBottom: theme.designSystem.size.spacing.xxl,
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
-  gap: theme.designSystem.size.spacing.l, // works only on mobile
 }))
 
 const ItemContainer = styled.View(({ theme }) => ({
