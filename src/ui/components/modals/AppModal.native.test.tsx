@@ -106,18 +106,6 @@ describe('<AppModal />', () => {
 
       expect(screen).toMatchSnapshot()
     })
-
-    it('explicitly enabled', () => {
-      render(<AppModal {...defaultProps} shouldDisplayOverlay />)
-
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('disabled', () => {
-      render(<AppModal {...defaultProps} shouldDisplayOverlay={false} />)
-
-      expect(screen).toMatchSnapshot()
-    })
   })
 
   describe('with left icon', () => {

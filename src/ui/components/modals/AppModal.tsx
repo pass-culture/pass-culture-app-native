@@ -30,13 +30,13 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
 import { ModalIconProps, ModalSwipeDirection } from './types'
+import { KeyboardAvoidingViewWrapper } from 'ui/pages/components/KeyboardAvoidingViewWrapper'
 
 type Props = {
   animationOutTiming?: number
   title: string
   visible: boolean
   titleNumberOfLines?: number
-  shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
   onModalHide?: () => void
@@ -44,7 +44,6 @@ type Props = {
   fixedModalBottom?: React.JSX.Element
   isFullscreen?: boolean
   noPadding?: boolean
-  noPaddingBottom?: boolean
   modalSpacing?: ModalSpacing
   maxHeight?: number
   shouldScrollToEnd?: boolean
@@ -82,13 +81,11 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  shouldDisplayOverlay = true,
   onBackdropPress,
   onModalHide,
   scrollEnabled = true,
   isFullscreen,
   noPadding,
-  noPaddingBottom,
   customModalHeader,
   fixedModalBottom,
   modalSpacing,
@@ -243,7 +240,7 @@ export const AppModal: FunctionComponent<Props> = ({
       style={styles.modal}
       supportedOrientations={['portrait', 'landscape']}
       statusBarTranslucent
-      hasBackdrop={shouldDisplayOverlay}
+      hasBackdrop
       isVisible={visible}
       onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID={testID}
@@ -265,8 +262,7 @@ export const AppModal: FunctionComponent<Props> = ({
           noPadding={noPadding}
           isLandscape={isLandscape}
           rightNootch={right}
-          leftNootch={left}
-          noPaddingBottom={noPaddingBottom}>
+          leftNootch={left}>
           {customModalHeader ? (
             <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
               {customModalHeader}
@@ -363,7 +359,6 @@ export type ModalContainerProps = {
   height?: number
   maxHeight?: number
   noPadding?: boolean
-  noPaddingBottom?: boolean
   desktopConstraints?: Pick<CSSObject, 'maxWidth' | 'maxHeight'>
   isLandscape: boolean
   rightNootch: number
@@ -377,7 +372,6 @@ const ModalContainer = styled.View<ModalContainerProps>(
     maxHeight,
     noPadding,
     theme,
-    noPaddingBottom,
     isLandscape,
     rightNootch,
     leftNootch,
@@ -388,7 +382,6 @@ const ModalContainer = styled.View<ModalContainerProps>(
       desktopConstraints,
       maxHeight: maxHeight ?? MAX_HEIGHT,
       noPadding,
-      noPaddingBottom,
       isLandscape,
       rightNootch,
       leftNootch,

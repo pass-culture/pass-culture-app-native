@@ -7,7 +7,6 @@ export const appModalContainerStyle = ({
   height,
   maxHeight,
   noPadding,
-  noPaddingBottom,
   desktopConstraints,
   isLandscape,
   rightNootch,
@@ -30,7 +29,7 @@ export const appModalContainerStyle = ({
       : {
           padding: theme.modal.spacing.MD,
         }),
-    ...(noPaddingBottom ? {} : { paddingBottom: theme.modal.spacing.LG }),
+    ...{ paddingBottom: theme.modal.spacing.LG },
     ...(theme.isDesktopViewport
       ? {
           borderBottomRightRadius: theme.designSystem.size.borderRadius.l,
