@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -25,6 +26,8 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Trash } from 'ui/svg/icons/Trash'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+
+const isWeb = Platform.OS === 'web'
 
 function onEmailChangeClick() {
   void analytics.logModifyMail()
@@ -167,5 +170,5 @@ export function PersonalData() {
 
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  alignItems: 'center',
+  alignItems: isWeb ? 'center' : 'stretch',
 }))
