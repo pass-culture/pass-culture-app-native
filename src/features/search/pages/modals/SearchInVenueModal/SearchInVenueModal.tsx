@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SearchFixedModalBottomContainer } from 'features/search/components/SearchFixedModalBottomContainer'
 import { useSearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/useSearchInVenueModal'
 import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { Venue } from 'features/venue/types'
+import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -31,7 +31,25 @@ export const SearchInVenueModal = ({
     onClose,
     doResetVenue,
   } = useSearchInVenueModal({ dismissModal, venueSelected, onBeforeNavigate })
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+  useForHeightKeyboardEvents(setKeyboardHeight)
   const theme = useTheme()
+  const modalHeader = (
+    <StyledModalHeader
+      title="Rechercher une offre"
+      rightIconAccessibilityLabel="Fermer la modale"
+      rightIcon={Close}
+      onRightIconPress={onClose}
+    />
+  )
+  const searchButton = (
+    <StyledButton
+      wording="Lancer la recherche"
+      onPress={doApplySearch}
+      disabled={isSearchButtonDisabled}
+    />
+  )
+  const searchButtonForMobile = <Container paddingBottom={keyboardHeight}>{searchButton}</Container>
 
   return (
     <AppModal
@@ -42,60 +60,33 @@ export const SearchInVenueModal = ({
       onRightIconPress={onClose}
       keyboardShouldPersistTaps="handled"
       rightIconAccessibilityLabel="Fermer la modale"
-      customModalHeader={
-        <HeaderContainer>
-          <ModalHeader
-            title="Rechercher une offre"
-            rightIconAccessibilityLabel="Fermer la modale"
-            rightIcon={Close}
-            onRightIconPress={onClose}
-          />
-        </HeaderContainer>
-      }
-      fixedModalBottom={
-        theme.isDesktopViewport ? undefined : (
-          <SearchFixedModalBottomContainer>
-            <Container>
-              <Button
-                wording="Lancer la recherche"
-                onPress={doApplySearch}
-                disabled={isSearchButtonDisabled}
-              />
-            </Container>
-          </SearchFixedModalBottomContainer>
-        )
-      }>
-      <SearchInputContainer>
-        <SearchInput
-          onClear={doResetVenue}
-          onChangeText={setSearchInVenueQuery}
-          value={searchInVenueQuery}
-          label="Rechercher dans ce lieu"
-          onSubmitEditing={doApplySearch}
-          testID="searchInput"
-        />
-      </SearchInputContainer>
-      {theme.isDesktopViewport ? (
-        <Container>
-          <Button
-            wording="Lancer la recherche"
-            onPress={doApplySearch}
-            disabled={isSearchButtonDisabled}
-          />
-        </Container>
-      ) : null}
+      customModalHeader={modalHeader}
+      fixedModalBottom={theme.isDesktopViewport ? undefined : searchButtonForMobile}>
+      <StyledSearchInput
+        onClear={doResetVenue}
+        onChangeText={setSearchInVenueQuery}
+        value={searchInVenueQuery}
+        label="Rechercher dans ce lieu"
+        onSubmitEditing={doApplySearch}
+        testID="searchInput"
+      />
+      {theme.isDesktopViewport ? searchButton : null}
     </AppModal>
   )
 }
 
-const SearchInputContainer = styled.View(({ theme }) => ({
+const StyledSearchInput = styled(SearchInput)(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.xl,
 }))
 
-const HeaderContainer = styled.View({
+const StyledModalHeader = styled(ModalHeader)({
   width: '100%',
 })
 
-const Container = styled.View({
-  justifyContent: 'center',
+const StyledButton = styled(Button)({
+  alignSelf: 'center',
 })
+
+const Container = styled.View<{ paddingBottom: number }>(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.default,
+}))

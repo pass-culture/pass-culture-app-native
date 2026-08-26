@@ -28,18 +28,8 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   isResetDisabled,
   displayGradient,
 }) => {
-  let searchButtonText = ''
-  switch (filterBehaviour) {
-    case FilterBehaviour.SEARCH: {
-      searchButtonText = 'Rechercher'
-      break
-    }
-    case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
-      searchButtonText = 'Appliquer le filtre'
-      break
-    }
-  }
-
+  const searchButtonText =
+    filterBehaviour === FilterBehaviour.SEARCH ? 'Rechercher' : 'Appliquer le filtre'
   const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
 
   return (

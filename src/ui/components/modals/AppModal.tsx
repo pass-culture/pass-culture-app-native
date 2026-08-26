@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import {
   LayoutChangeEvent,
-  NativeSyntheticEvent,
   NativeScrollEvent,
+  NativeSyntheticEvent,
   Platform,
   ScrollView,
   ScrollViewProps,
@@ -19,13 +19,12 @@ import { v4 as uuidv4 } from 'uuid'
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
-import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
+import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
-import { KeyboardAvoidingViewWrapper } from 'ui/pages/components/KeyboardAvoidingViewWrapper'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -36,7 +35,6 @@ type Props = {
   title: string
   visible: boolean
   titleNumberOfLines?: number
-  shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
   onModalHide?: () => void
@@ -44,7 +42,6 @@ type Props = {
   fixedModalBottom?: React.JSX.Element
   isFullscreen?: boolean
   noPadding?: boolean
-  noPaddingBottom?: boolean
   modalSpacing?: ModalSpacing
   maxHeight?: number
   shouldScrollToEnd?: boolean
@@ -82,13 +79,11 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  shouldDisplayOverlay = true,
   onBackdropPress,
   onModalHide,
   scrollEnabled = true,
   isFullscreen,
   noPadding,
-  noPaddingBottom,
   customModalHeader,
   fixedModalBottom,
   modalSpacing,
@@ -116,7 +111,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom, top, right, left } = useCustomSafeInsets()
-  const { isSmallScreen, modal, isDesktopViewport, designSystem } = useTheme()
+  const { isSmallScreen, modal, designSystem } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -124,59 +119,36 @@ export const AppModal: FunctionComponent<Props> = ({
   const scrollViewRef = useRef<ScrollView | null>(null)
   const fullscreenScrollViewRef = useRef<ScrollView | null>(null)
   const isLandscape = useIsLandscape()
+  useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const getDesktopMaxHeight = useCallback(() => {
-    if (isFullscreen || isUpToStatusBar) {
-      return windowHeight * DESKTOP_FULLSCREEN_RATIO
-    }
-    return maxHeight ? maxHeight * DESKTOP_FULLSCREEN_RATIO : undefined
-  }, [isFullscreen, isUpToStatusBar, windowHeight, maxHeight])
+  let desktopHeight = maxHeight ? maxHeight * DESKTOP_FULLSCREEN_RATIO : undefined
+  if (isFullscreen || isUpToStatusBar) desktopHeight = windowHeight * DESKTOP_FULLSCREEN_RATIO
 
-  const containerDesktopConstraints = useMemo(() => {
-    if (isDesktopViewport) {
-      return {
-        maxWidth: desktopConstraints?.maxWidth ?? modal.desktopMaxWidth,
-        maxHeight: desktopConstraints?.maxHeight ?? getDesktopMaxHeight(),
-      }
-    }
-    return undefined
-  }, [isDesktopViewport, desktopConstraints, modal.desktopMaxWidth, getDesktopMaxHeight])
-
-  useKeyboardEvents({
-    onBeforeShow(data) {
-      setKeyboardHeight(data.keyboardHeight)
-    },
-    onBeforeHide() {
-      setKeyboardHeight(0)
-    },
-  })
-  const SPACE_BETWEEN_HEADER_AND_CONTENT = designSystem.size.spacing.xl
+  const containerDesktopConstraints = {
+    maxWidth: desktopConstraints?.maxWidth ?? modal.desktopMaxWidth,
+    maxHeight: desktopConstraints?.maxHeight ?? desktopHeight,
+  }
 
   const scrollViewPaddingBottom = keyboardHeight || bottom
-  const modalHeight = useMemo(() => {
-    const SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL = 10
-    return (
-      scrollViewContentHeight +
-      scrollViewPaddingBottom +
-      headerHeight +
-      SPACE_BETWEEN_HEADER_AND_CONTENT +
-      2 * MODAL_PADDING +
-      SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
-    )
-  }, [
-    scrollViewContentHeight,
-    scrollViewPaddingBottom,
-    headerHeight,
-    SPACE_BETWEEN_HEADER_AND_CONTENT,
-  ])
+  const modalHeight =
+    scrollViewContentHeight +
+    scrollViewPaddingBottom +
+    headerHeight +
+    designSystem.size.spacing.xl + // space between header and content
+    2 * getSpacing(5) + // modal padding
+    10 // small buffer to avoid unnecessary scroll
+
+  const maxContainerHeight =
+    isFullscreen || isUpToStatusBar ? windowHeight : (maxHeight ?? MAX_HEIGHT)
+
+  let modalContainerHeight = modalHeight
+  if (isSmallScreen || isFullscreen) modalContainerHeight = windowHeight
+  if (isUpToStatusBar) modalContainerHeight = windowHeight - top
 
   const updateHeaderHeight = useCallback(
-    ({ nativeEvent }: LayoutChangeEvent): void => {
-      setHeaderHeight(nativeEvent.layout.height)
-    },
+    ({ nativeEvent }: LayoutChangeEvent) => setHeaderHeight(nativeEvent.layout.height),
     [setHeaderHeight]
   )
-
   const updateScrollViewContentHeight = useCallback(
     (_width: number, height: number): void => {
       setScrollViewContentHeight(height)
@@ -197,15 +169,6 @@ export const AppModal: FunctionComponent<Props> = ({
   const titleId = uuidv4()
 
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
-
-  let maxContainerHeight = maxHeight
-  let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
-
-  // no fullscreen in desktop view
-  if (isFullscreen || isUpToStatusBar) {
-    maxContainerHeight = windowHeight
-    modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
-  }
 
   const fullscreenModalBody = useMemo(() => {
     return scrollEnabled ? (
@@ -243,7 +206,7 @@ export const AppModal: FunctionComponent<Props> = ({
       style={styles.modal}
       supportedOrientations={['portrait', 'landscape']}
       statusBarTranslucent
-      hasBackdrop={shouldDisplayOverlay}
+      hasBackdrop
       isVisible={visible}
       onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID={testID}
@@ -255,64 +218,61 @@ export const AppModal: FunctionComponent<Props> = ({
       swipeDirection={swipeDirection}
       backdropTransitionOutTiming={1}
       propagateSwipe={propagateSwipe}>
-      <KeyboardAvoidingViewWrapper>
-        <ModalContainer
-          height={maxHeight ? undefined : modalContainerHeight}
-          testID="modalContainer"
-          maxHeight={maxContainerHeight}
-          desktopConstraints={containerDesktopConstraints}
-          onLayout={onLayout}
-          noPadding={noPadding}
-          isLandscape={isLandscape}
-          rightNootch={right}
-          leftNootch={left}
-          noPaddingBottom={noPaddingBottom}>
-          {customModalHeader ? (
-            <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
-              {customModalHeader}
-            </CustomModalHeaderContainer>
-          ) : (
-            <ModalHeader
-              title={title}
-              numberOfLines={numberOfLines}
-              onLayout={updateHeaderHeight}
-              titleID={titleId}
-              modalSpacing={modalSpacing}
-              {...iconProps}
-            />
-          )}
-          {isFullscreen || maxHeight || isUpToStatusBar ? (
-            fullscreenModalBody
-          ) : (
-            <React.Fragment>
-              {shouldAddSpacerBetweenHeaderAndContent ? (
-                <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
-              ) : null}
-              <ScrollViewContainer
-                paddingBottom={scrollViewPaddingBottom}
-                modalSpacing={modalSpacing}>
-                <ScrollView
-                  contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
-                  ref={scrollViewRef}
-                  scrollEnabled={scrollEnabled}
-                  onContentSizeChange={updateScrollViewContentHeight}
-                  onScroll={onScroll}
-                  testID="modalScrollView">
-                  {children}
-                </ScrollView>
-              </ScrollViewContainer>
-            </React.Fragment>
-          )}
-          {fixedModalBottom ? (
-            <React.Fragment>
-              <FixedModalBottomContainer testID="fixedModalBottom">
-                {fixedModalBottom}
-              </FixedModalBottomContainer>
-              <Spacer.BottomScreen />
-            </React.Fragment>
-          ) : null}
-        </ModalContainer>
-      </KeyboardAvoidingViewWrapper>
+      <ModalContainer
+        height={maxHeight ? undefined : modalContainerHeight}
+        testID="modalContainer"
+        maxHeight={maxContainerHeight}
+        desktopConstraints={containerDesktopConstraints}
+        onLayout={onLayout}
+        noPadding={noPadding}
+        isLandscape={isLandscape}
+        rightNootch={right}
+        leftNootch={left}>
+        {customModalHeader ? (
+          <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
+            {customModalHeader}
+          </CustomModalHeaderContainer>
+        ) : (
+          <ModalHeader
+            title={title}
+            numberOfLines={numberOfLines}
+            onLayout={updateHeaderHeight}
+            titleID={titleId}
+            modalSpacing={modalSpacing}
+            {...iconProps}
+          />
+        )}
+        {isFullscreen || maxHeight || isUpToStatusBar ? (
+          fullscreenModalBody
+        ) : (
+          <React.Fragment>
+            {shouldAddSpacerBetweenHeaderAndContent ? (
+              <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
+            ) : null}
+            <ScrollViewContainer
+              paddingBottom={scrollViewPaddingBottom}
+              modalSpacing={modalSpacing}>
+              <ScrollView
+                contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
+                ref={scrollViewRef}
+                scrollEnabled={scrollEnabled}
+                onContentSizeChange={updateScrollViewContentHeight}
+                onScroll={onScroll}
+                testID="modalScrollView">
+                {children}
+              </ScrollView>
+            </ScrollViewContainer>
+          </React.Fragment>
+        )}
+        {fixedModalBottom ? (
+          <React.Fragment>
+            <FixedModalBottomContainer testID="fixedModalBottom">
+              {fixedModalBottom}
+            </FixedModalBottomContainer>
+            <Spacer.BottomScreen />
+          </React.Fragment>
+        ) : null}
+      </ModalContainer>
     </StyledModal>
   )
 }
@@ -343,7 +303,6 @@ const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ the
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))
 
-const MODAL_PADDING = getSpacing(5)
 // https://github.com/react-native-modal/react-native-modal/issues/381
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {
@@ -363,7 +322,6 @@ export type ModalContainerProps = {
   height?: number
   maxHeight?: number
   noPadding?: boolean
-  noPaddingBottom?: boolean
   desktopConstraints?: Pick<CSSObject, 'maxWidth' | 'maxHeight'>
   isLandscape: boolean
   rightNootch: number
@@ -377,7 +335,6 @@ const ModalContainer = styled.View<ModalContainerProps>(
     maxHeight,
     noPadding,
     theme,
-    noPaddingBottom,
     isLandscape,
     rightNootch,
     leftNootch,
@@ -386,9 +343,8 @@ const ModalContainer = styled.View<ModalContainerProps>(
       theme,
       height,
       desktopConstraints,
-      maxHeight: maxHeight ?? MAX_HEIGHT,
+      maxHeight,
       noPadding,
-      noPaddingBottom,
       isLandscape,
       rightNootch,
       leftNootch,

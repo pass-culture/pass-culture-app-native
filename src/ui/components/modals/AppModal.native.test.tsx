@@ -106,18 +106,6 @@ describe('<AppModal />', () => {
 
       expect(screen).toMatchSnapshot()
     })
-
-    it('explicitly enabled', () => {
-      render(<AppModal {...defaultProps} shouldDisplayOverlay />)
-
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('disabled', () => {
-      render(<AppModal {...defaultProps} shouldDisplayOverlay={false} />)
-
-      expect(screen).toMatchSnapshot()
-    })
   })
 
   describe('with left icon', () => {
@@ -311,7 +299,6 @@ describe('<AppModal />', () => {
           onBeforeShow({
             keyboardShown: true,
             keyboardHeight: keyboardShowCoordinates.end.height,
-            coordinates: keyboardShowCoordinates,
           })
         })
 
@@ -330,12 +317,10 @@ describe('<AppModal />', () => {
           onBeforeShow({
             keyboardShown: true,
             keyboardHeight: keyboardShowCoordinates.end.height,
-            coordinates: keyboardShowCoordinates,
           })
           onBeforeHide({
             keyboardShown: false,
             keyboardHeight: keyboardHideCoordinates.end.height,
-            coordinates: keyboardHideCoordinates,
           })
         })
 
