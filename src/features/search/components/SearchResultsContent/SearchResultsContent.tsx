@@ -56,6 +56,7 @@ import {
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import {
   HeaderSearchResultsPlaceholder,
@@ -67,7 +68,6 @@ import { Grid } from 'ui/svg/icons/Grid'
 import { List } from 'ui/svg/icons/List'
 import { Map } from 'ui/svg/icons/Map'
 import { RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
-import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
 
@@ -307,7 +307,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         })
       : 'Pas de résultat'
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
-  const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
+  const pageTitle = numberOfResults + searchStateQuery + ' | Recherche'
 
   // We don't want to render it on the web, even if it's not plugged in, since it avoids the user
   // to press on a working button
@@ -384,7 +384,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   return (
     <React.Fragment>
-      {isFocused ? <Helmet title={helmetTitle} /> : null}
+      {isFocused ? <WebMetaHeader title={pageTitle} /> : null}
       <AutoScrollSwitch
         title="Activer le chargement automatique des résultats"
         active={autoScrollEnabled}

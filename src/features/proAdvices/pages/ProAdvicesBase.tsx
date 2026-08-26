@@ -6,13 +6,13 @@ import { styled, useTheme } from 'styled-components/native'
 import { AdviceCardList } from 'features/advices/components/AdviceCardList/AdviceCardList'
 import { AdviceCardListHeader } from 'features/advices/components/AdviceCardListHeader/AdviceCardListHeader'
 import { AdvicesHeader } from 'features/advices/components/AdvicesHeader/AdvicesHeader'
-import { AdvicesWebMetaHeader } from 'features/advices/components/AdvicesWebMetaHeader/AdvicesWebMetaHeader'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData } from 'features/advices/types'
 import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
 import { getScrollMetrics } from 'features/proAdvices/helpers/getScrollMetrics'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spinner } from 'ui/components/Spinner'
@@ -109,7 +109,7 @@ export const ProAdvicesBase: FunctionComponent<Props> = ({
   const isZoomed = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   return (
     <React.Fragment>
-      <AdvicesWebMetaHeader title={title} />
+      <WebMetaHeader title={title} />
       <AdvicesHeader headerTransition={headerTransition} title={title} handleGoBack={goBack} />
       <Container isZoomed={isZoomed}>
         {children}

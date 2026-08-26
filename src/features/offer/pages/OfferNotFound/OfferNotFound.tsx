@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
-import { Helmet } from 'libs/react-helmet/Helmet'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
@@ -24,12 +24,9 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
-  const helmetTitle = 'Offre introuvable | pass Culture'
   return (
     <React.Fragment>
-      <Helmet>
-        <title>{helmetTitle}</title>
-      </Helmet>
+      <WebMetaHeader title="Offre introuvable" />
       <GenericInfoPage
         illustration={NoOffer}
         remoteIllustration={{

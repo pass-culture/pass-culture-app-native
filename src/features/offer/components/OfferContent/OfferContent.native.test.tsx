@@ -112,7 +112,7 @@ const setupLocation = () => {
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn(), setOptions: jest.fn() }),
   useRoute: () => ({ params: { id: 123 } }),
 }))
 

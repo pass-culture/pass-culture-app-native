@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
-import { Helmet } from 'libs/react-helmet/Helmet'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
@@ -25,14 +25,9 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
-  const helmetTitle = 'Lieu introuvable | pass Culture'
-
   return (
     <React.Fragment>
-      <Helmet>
-        <title>{helmetTitle}</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <WebMetaHeader title="Lieu introuvable" noIndex />
       <GenericInfoPage
         illustration={NoOffer}
         remoteIllustration={{

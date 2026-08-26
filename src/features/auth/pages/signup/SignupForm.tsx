@@ -21,11 +21,11 @@ import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
-import { Helmet } from 'ui/web/global/Helmet'
 
 export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ currentStep = 0 }) => {
   const { mutateAsync: appSignup } = useAppSignupMutation()
@@ -64,7 +64,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const isSecondStep = stepIndex === 1
   const isConfirmationEmailSentStep =
     signupStepConfig[stepIndex]?.name === PreValidationSignupStep.ConfirmationEmailSent
-  const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
+  const pageTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription`
   const nextStep = signupStepConfig[stepIndex + 1]
   const accessibilityLabelForNextStep =
     stepIndex < numberOfSteps - 1 && nextStep?.accessibilityTitle
@@ -209,7 +209,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
   return (
     <Page>
-      <Helmet title={helmetTitle} />
+      <WebMetaHeader title={pageTitle} />
       <PageHeaderWithoutPlaceholder
         title="Inscription"
         shouldDisplayBackButton={!isConfirmationEmailSentStep}

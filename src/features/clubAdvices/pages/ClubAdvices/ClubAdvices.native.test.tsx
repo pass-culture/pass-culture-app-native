@@ -20,14 +20,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
-const mockOnLayout = {
-  nativeEvent: {
-    layout: {
-      width: 375,
-      height: 2100,
-    },
-  },
-}
+const mockOnLayout = { nativeEvent: { layout: { width: 375, height: 2100 } } }
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -42,6 +35,7 @@ jest.mock('features/clubAdvices/queries/useClubAdvicesQuery', () => ({
 const mockNavigate = jest.fn()
 jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   navigate: mockNavigate,
+  setOptions: jest.fn(),
 })
 
 const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA

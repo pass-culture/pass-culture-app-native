@@ -10,7 +10,6 @@ import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHead
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
-import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import {
   buildFollowArtistSurveyUrl,
   FOLLOW_ARTIST_FEATURE_NAME,
@@ -34,6 +33,7 @@ import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
@@ -172,8 +172,8 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   return (
     <Page>
-      <ArtistWebMetaHeader artist={name} />
-      {/* On web header is called before Body for accessibility navigate order */}
+      <WebMetaHeader title={name} />
+      {/* On web, header is called before Body for accessibility navigate order */}
       {isWeb ? (
         <ContentHeader
           headerTitle={name}

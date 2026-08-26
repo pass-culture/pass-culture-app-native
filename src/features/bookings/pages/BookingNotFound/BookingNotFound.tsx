@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
-import { Helmet } from 'libs/react-helmet/Helmet'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 
@@ -12,9 +12,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
 
   useEffect(
     () => () => {
-      if (timer.current) {
-        clearTimeout(timer.current)
-      }
+      if (timer.current) clearTimeout(timer.current)
     },
     []
   )
@@ -26,13 +24,9 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
-  const title = 'Réservation introuvable | pass Culture'
-
   return (
     <React.Fragment>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
+      <WebMetaHeader title="Réservation introuvable" />
       <GenericInfoPage
         illustration={NoBookings}
         remoteIllustration={{

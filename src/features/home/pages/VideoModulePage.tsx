@@ -6,7 +6,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { VideoModuleHeader } from 'features/home/components/modules/video/VideoModuleHeader'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { YoutubePlayerRef } from 'features/home/components/modules/video/YoutubePlayer/types'
-import { VideoModulePageMetaHeader } from 'features/home/components/VideoModulePageMetaHeader'
 import { TranscriptionModal } from 'features/home/pages/TranscriptionModal'
 import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -15,6 +14,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -97,8 +97,8 @@ export const VideoModulePage: FunctionComponent = () => {
   return (
     <React.Fragment>
       <Page>
-        <VideoModulePageMetaHeader title={moduleName} />
-        {/* On web header is called before Body for accessibility navigate order */}
+        <WebMetaHeader title={moduleName} />
+        {/* On web, header is called before Body for accessibility navigate order */}
         {isWeb ? (
           <ContentHeader
             headerTitle={videoTitle}

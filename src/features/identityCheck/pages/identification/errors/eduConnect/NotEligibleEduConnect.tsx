@@ -6,8 +6,8 @@ import { useNotEligibleEduConnectErrorData } from 'features/identityCheck/pages/
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
-import { Helmet } from 'libs/react-helmet/Helmet'
 import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { ButtonProps, GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
@@ -41,8 +41,6 @@ export const NotEligibleEduConnect = ({
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
-  const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
-
   let buttonPrimary: ButtonProps | undefined = undefined
   if (primaryButton) {
     if (primaryButton.navigateTo) {
@@ -70,9 +68,7 @@ export const NotEligibleEduConnect = ({
 
   return (
     <React.Fragment>
-      <Helmet>
-        <title>{helmetTitle}</title>
-      </Helmet>
+      <WebMetaHeader title={`Page erreur\u00a0: ${title}`} />
       <GenericInfoPage
         illustration={Illustration}
         remoteIllustration={{
