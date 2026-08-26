@@ -87,7 +87,7 @@
     "@batch.com/react-native-plugin": "11.1.0",
     "@d11/react-native-fast-image": "^8.13.0",
     "@emotion/is-prop-valid": "^1.3.1",
-    "@gorhom/bottom-sheet": "^5.2.6",
+    "@gorhom/bottom-sheet": "^5.2.14",
     "@hookform/resolvers": "^2.9.11",
     "@hot-updater/react-native": "^0.35.3",
     "@invertase/react-native-apple-authentication": "^2.5.1",

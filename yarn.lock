@@ -5187,9 +5187,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gorhom/bottom-sheet@npm:^5.2.6":
-  version: 5.2.7
-  resolution: "@gorhom/bottom-sheet@npm:5.2.7"
+"@gorhom/bottom-sheet@npm:^5.2.14":
+  version: 5.2.14
+  resolution: "@gorhom/bottom-sheet@npm:5.2.14"
   dependencies:
     "@gorhom/portal": "npm:1.0.14"
     invariant: "npm:^2.2.4"
@@ -5205,7 +5205,7 @@ __metadata:
       optional: true
     "@types/react-native":
       optional: true
-  checksum: 10/370787f062149f0f8ce645f0d942ebd62ac0e75ad31746db8da9d1b6e19940ef811987b6cb9ef52cc1f920929db915ea9f5d5017ebfcd8211a59cf932c36ea95
+  checksum: 10/6d2008a7b47fcc26bd15d6fa6aa827a2df64a3b07754ddfc861a1a70f52762268f09f386e1d469d256ba0ed04602f9af99195fa01b799306750012fc4774e3bd
   languageName: node
   linkType: hard
 
@@ -11085,7 +11085,7 @@ __metadata:
     "@chromatic-com/storybook": "npm:^5.1.2"
     "@d11/react-native-fast-image": "npm:^8.13.0"
     "@emotion/is-prop-valid": "npm:^1.3.1"
-    "@gorhom/bottom-sheet": "npm:^5.2.6"
+    "@gorhom/bottom-sheet": "npm:^5.2.14"
     "@hookform/resolvers": "npm:^2.9.11"
     "@hot-updater/bare": "npm:^0.35.3"
     "@hot-updater/firebase": "npm:^0.35.3"
