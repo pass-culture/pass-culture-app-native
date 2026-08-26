@@ -19,7 +19,6 @@ interface MarkerProps extends MapMarkerProps {
 export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerProps) => (
   <MapMarker
     anchor={{ x: 0.5, y: showLabel ? 0.6 : 1 }}
-    centerOffset={{ x: 1, y: 0 }}
     testID={`marker-${venue.venueId}${isSelected ? '-selected' : ''}`}
     zIndex={PIN_MAX_Z_INDEX}
     {...otherProps}>
@@ -36,8 +35,6 @@ const PinImage = styled.Image({
   resizeMode: 'contain',
 })
 
-const MarkerImageView = styled.View({
-  flex: 1,
-  display: 'flex',
-  padding: 4,
-})
+const MarkerImageView = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xs,
+}))
