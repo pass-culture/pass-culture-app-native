@@ -22,10 +22,10 @@ import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
+import { AbsoluteRoundedButton } from 'ui/components/buttons/AbsoluteRoundedButton'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
 type ItemDimensions = { width: number; height: number }
 
@@ -207,17 +207,21 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
   return (
     <FlatListContainer onLayout={handleWebContainerLayout} minHeight={minHeight}>
       {!isStart && isWeb ? (
-        <PlaylistArrowButton
+        <AbsoluteRoundedButton
           direction="left"
           top={scrollButtonOffsetY}
+          iconName="previous"
           onPress={handleWebScrollPrevious}
+          accessibilityLabel="Faire défiler la liste vers la gauche"
         />
       ) : null}
       {!isEnd && isWeb ? (
-        <PlaylistArrowButton
+        <AbsoluteRoundedButton
           direction="right"
-          onPress={handleWebScrollNext}
           top={scrollButtonOffsetY}
+          iconName="next"
+          onPress={handleWebScrollNext}
+          accessibilityLabel="Faire défiler la liste vers la droite"
         />
       ) : null}
 
