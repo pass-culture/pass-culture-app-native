@@ -1,18 +1,17 @@
-import React, { useMemo } from 'react'
-import { FlatList, Platform, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React from 'react'
+import { Platform } from 'react-native'
+import styled from 'styled-components/native'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
-
-const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 const isWeb = Platform.OS === 'web'
 
@@ -38,18 +37,6 @@ export const BaseLeaveProfileReason = ({
   onAnalyticsLog,
 }: BaseLeaveProfileReasonProps) => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
-  const theme = useTheme()
-  const flatListStyles: ViewStyle = useMemo(
-    () => ({
-      paddingHorizontal: theme.contentPage.marginHorizontal,
-      paddingBottom: theme.designSystem.size.spacing.xxl,
-      maxWidth: theme.contentPage.maxWidth,
-      width: '100%',
-      alignSelf: 'center',
-      gap: theme.designSystem.size.spacing.l, //works only on mobile
-    }),
-    [theme]
-  )
 
   return (
     <PageWithHeader
@@ -57,42 +44,41 @@ export const BaseLeaveProfileReason = ({
       onGoBack={goBack}
       title={pageTitle}
       scrollChildren={
-        <FlatList
-          viewabilityConfig={VIEWABILITY_CONFIG}
-          ListHeaderComponent={
-            <HeaderContainer>
-              <StyledIcon />
-              <TitlesContainer>
-                <Typo.Title3 {...setTextSemantic('h1')}>{title}</Typo.Title3>
-                <Typo.Body>{subtitle}</Typo.Body>
-              </TitlesContainer>
-            </HeaderContainer>
-          }
-          ListFooterComponent={Spacer.BottomScreen}
-          contentContainerStyle={flatListStyles}
-          data={reasonsButtons}
-          renderItem={({ item }) => {
-            const { wording, navigateTo, analyticsReason } = item
-            return (
-              <ItemContainer>
-                <HeroButtonList
-                  Title={<Typo.BodyAccent>{wording}</Typo.BodyAccent>}
-                  navigateTo={navigateTo}
-                  onBeforeNavigate={() =>
-                    onAnalyticsLog
-                      ? onAnalyticsLog(analyticsReason)
-                      : analytics.logSelectSuspensionReason(analyticsReason)
-                  }
-                  accessibilityLabel={wording}
-                />
-              </ItemContainer>
-            )
-          }}
-        />
+        <ContentContainer gap={4}>
+          <HeaderContainer>
+            <StyledIcon />
+            <TitlesContainer>
+              <Typo.Title3 {...setTextSemantic('h1')}>{title}</Typo.Title3>
+              <Typo.Body>{subtitle}</Typo.Body>
+            </TitlesContainer>
+          </HeaderContainer>
+          {reasonsButtons.map(({ wording, navigateTo, analyticsReason }) => (
+            <ItemContainer key={analyticsReason}>
+              <HeroButtonList
+                Title={<Typo.BodyAccent>{wording}</Typo.BodyAccent>}
+                navigateTo={navigateTo}
+                onBeforeNavigate={() =>
+                  onAnalyticsLog
+                    ? onAnalyticsLog(analyticsReason)
+                    : analytics.logSelectSuspensionReason(analyticsReason)
+                }
+                accessibilityLabel={wording}
+              />
+            </ItemContainer>
+          ))}
+          <Spacer.BottomScreen />
+        </ContentContainer>
       }
     />
   )
 }
+
+const ContentContainer = styled(ViewGap)(({ theme }) => ({
+  paddingBottom: theme.designSystem.size.spacing.xxl,
+  maxWidth: theme.contentPage.maxWidth,
+  width: '100%',
+  alignSelf: 'center',
+}))
 
 const ItemContainer = styled.View(({ theme }) => ({
   paddingBottom: isWeb ? theme.designSystem.size.spacing.l : 0,
