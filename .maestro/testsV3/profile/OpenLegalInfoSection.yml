@@ -23,7 +23,7 @@ onFlowStart:
 
 - assertVisible: 'Informations légales'
 - tapOn:
-    id: 'Conditions Générales d’Utilisation'
+    id: 'Conditions Générales d’Utilisation - Lien externe'
 - waitForAnimationToEnd
 
 - runFlow:
@@ -46,7 +46,7 @@ onFlowStart:
       - tapOn:
           text: 'Informations légales'
 
-- tapOn: 'Charte des données personnelles'
+- tapOn: 'Charte des données personnelles - Lien externe'
 - waitForAnimationToEnd
 - runFlow:
     when:
