@@ -15,6 +15,7 @@ import { SearchHistory } from 'features/search/components/SearchHistory/SearchHi
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, Highlighted, HistoryItem, SearchState } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics/provider'
@@ -161,7 +162,7 @@ export const SearchSuggestions = ({
 
       <HiddenAccessibleText
         accessibilityLiveRegion="polite"
-        accessibilityRole="alert"
+        accessibilityRole={AccessibilityRole.ALERT}
         id="search-suggestions-accessibility-message">
         {getAccessibilityMessage()}
       </HiddenAccessibleText>
