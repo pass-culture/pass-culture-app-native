@@ -1,14 +1,10 @@
 // based on https://github.com/react-native-community/hooks/blob/master/src/useKeyboard.ts
 import { useEffect } from 'react'
-import { Keyboard, KeyboardEventListener, KeyboardMetrics, Platform } from 'react-native'
+import { Keyboard, KeyboardEventListener, Platform } from 'react-native'
 
 interface UseKeyboardReturnData {
   keyboardShown: boolean
   keyboardHeight: number
-  coordinates: {
-    start: KeyboardMetrics | undefined
-    end: KeyboardMetrics | undefined
-  }
 }
 
 interface UseKeyboardEventsConfig {
@@ -23,7 +19,6 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
     onBeforeShow({
       keyboardShown: true,
       keyboardHeight: newKeyboardHeight,
-      coordinates: newCoordinates,
     })
   }
   const handleKeyboardDidShow: KeyboardEventListener = (e) => {
@@ -42,7 +37,6 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
     onBeforeHide({
       keyboardShown: false,
       keyboardHeight: newKeyboardHeight,
-      coordinates: newCoordinates,
     })
   }
   const handleKeyboardDidHide: KeyboardEventListener = (e) => {
@@ -71,17 +65,8 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
   }, [onBeforeHide, onBeforeShow])
 }
 
-export const useForHeightKeyboardEvents = (setKeyboardHeight: (height: number) => void) => {
-  return useKeyboardEvents({
-    onBeforeShow(data) {
-      if (data.keyboardShown) {
-        setKeyboardHeight(data.keyboardHeight)
-      }
-    },
-    onBeforeHide(data) {
-      if (!data.keyboardShown) {
-        setKeyboardHeight(0)
-      }
-    },
+export const useForHeightKeyboardEvents = (setKeyboardHeight: (height: number) => void) =>
+  useKeyboardEvents({
+    onBeforeShow: (data) => data.keyboardShown && setKeyboardHeight(data.keyboardHeight),
+    onBeforeHide: (data) => !data.keyboardShown && setKeyboardHeight(0),
   })
-}

@@ -311,7 +311,6 @@ describe('<AppModal />', () => {
           onBeforeShow({
             keyboardShown: true,
             keyboardHeight: keyboardShowCoordinates.end.height,
-            coordinates: keyboardShowCoordinates,
           })
         })
 
@@ -330,12 +329,10 @@ describe('<AppModal />', () => {
           onBeforeShow({
             keyboardShown: true,
             keyboardHeight: keyboardShowCoordinates.end.height,
-            coordinates: keyboardShowCoordinates,
           })
           onBeforeHide({
             keyboardShown: false,
             keyboardHeight: keyboardHideCoordinates.end.height,
-            coordinates: keyboardHideCoordinates,
           })
         })
 
