@@ -1,8 +1,9 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
+import styled from 'styled-components/native'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
-import { SearchFixedModalBottomContainer } from 'features/search/components/SearchFixedModalBottomContainer'
 import { FilterBehaviour } from 'features/search/enums'
+import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 
 type Props = {
   onResetPress: () => void
@@ -21,17 +22,24 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   isResetDisabled,
   displayGradient,
 }: Props) {
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+  useForHeightKeyboardEvents(setKeyboardHeight)
   return (
-    <SearchFixedModalBottomContainer>
-      <FilterPageButtons
-        onResetPress={onResetPress}
-        onSearchPress={onSearchPress}
-        isModal
-        isSearchDisabled={isSearchDisabled}
-        filterBehaviour={filterBehaviour}
-        isResetDisabled={isResetDisabled}
-        displayGradient={displayGradient}
-      />
-    </SearchFixedModalBottomContainer>
+    <StyledFilterPageButtons
+      paddingBottom={keyboardHeight}
+      onResetPress={onResetPress}
+      onSearchPress={onSearchPress}
+      isModal
+      isSearchDisabled={isSearchDisabled}
+      filterBehaviour={filterBehaviour}
+      isResetDisabled={isResetDisabled}
+      displayGradient={displayGradient}
+    />
   )
 })
+
+const StyledFilterPageButtons = styled(FilterPageButtons)<{ paddingBottom: number }>(
+  ({ theme }) => ({
+    backgroundColor: theme.designSystem.color.background.default,
+  })
+)
