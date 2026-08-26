@@ -21,6 +21,7 @@ import { MARKER_LABEL_VISIBILITY_LIMIT } from 'features/venueMap/constant'
 import { getClusterColorByDominantActivity } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantActivity'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { MapView, Map, MapViewProps } from 'libs/maps/maps'
+import { useColorScheme } from 'libs/styled/useColorScheme'
 import { Button } from 'ui/designSystem/Button/Button'
 
 import { Marker } from './Marker/Marker'
@@ -71,6 +72,7 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
   },
   ref
 ) {
+  const colorScheme = useColorScheme()
   const [labelVisible, setLabelVisible] = useState(false)
   const superClusterRef = useRef<Supercluster>(null)
   const mapRef = useRef<Map>(null)
@@ -137,6 +139,7 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
         animationEnabled={false}
         testID="venue-map-view"
         customMapStyle={CUSTOM_MAP_STYLES}
+        userInterfaceStyle={colorScheme}
         {...mapProps}>
         {venues.map((venue) => (
           <Marker
