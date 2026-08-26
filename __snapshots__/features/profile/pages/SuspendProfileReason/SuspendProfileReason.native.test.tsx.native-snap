@@ -258,411 +258,324 @@ exports[`<SuspendProfileReason /> should match snapshot 1`] = `
           style={{}}
         >
           <View>
-            <RCTScrollView
-              ListFooterComponent={[Function]}
-              ListHeaderComponent={
-                <Styled(View)>
-                  <Styled(Styled(SadFaceSvg)) />
-                  <Styled(View)>
-                    <Styled(Text)
-                      accessibilityLevel="h1"
-                      accessibilityRole="header"
-                    >
-                      Pourquoi souhaites-tu suspendre ton compte ?
-                    </Styled(Text)>
-                    <Styled(Text)>
-                      Tu mets ton compte en pause ? Dis-nous pourquoi pour nous aider à améliorer l’application.
-                    </Styled(Text)>
-                  </Styled(View)>
-                </Styled(View)>
-              }
-              contentContainerStyle={
+            <View
+              style={
                 {
                   "alignSelf": "center",
                   "gap": 16,
                   "maxWidth": 500,
                   "paddingBottom": 32,
-                  "paddingHorizontal": 24,
                   "width": "100%",
                 }
               }
-              data={
-                [
-                  {
-                    "analyticsReason": "hackedAccount",
-                    "navigateTo": {
-                      "params": {
-                        "params": undefined,
-                        "screen": "SuspendProfileAccountHacked",
-                      },
-                      "screen": "ProfileStackNavigator",
-                    },
-                    "wording": "Je pense que quelqu’un d’autre a accès à mon compte",
-                  },
-                  {
-                    "analyticsReason": "other",
-                    "navigateTo": {
-                      "params": {
-                        "params": undefined,
-                        "screen": "DeleteProfileContactSupport",
-                      },
-                      "screen": "ProfileStackNavigator",
-                    },
-                    "wording": "Autre",
-                  },
-                ]
-              }
-              getItem={[Function]}
-              getItemCount={[Function]}
-              keyExtractor={[Function]}
-              onContentSizeChange={[Function]}
-              onLayout={[Function]}
-              onMomentumScrollBegin={[Function]}
-              onMomentumScrollEnd={[Function]}
-              onScroll={[Function]}
-              onScrollBeginDrag={[Function]}
-              onScrollEndDrag={[Function]}
-              removeClippedSubviews={false}
-              renderItem={[Function]}
-              scrollEventThrottle={0.0001}
-              stickyHeaderIndices={[]}
-              viewabilityConfig={
-                {
-                  "itemVisiblePercentThreshold": 100,
-                }
-              }
-              viewabilityConfigCallbackPairs={[]}
             >
-              <View>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "paddingBottom": 8,
+                  }
+                }
+              >
                 <View
-                  collapsable={false}
-                  onLayout={[Function]}
+                  height={109.2}
+                  width={140}
                 >
-                  <View
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "gap": 16,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityLevel="h1"
+                    accessibilityRole="header"
                     style={
                       {
-                        "alignItems": "center",
-                        "paddingBottom": 8,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
                       }
                     }
                   >
-                    <View
-                      height={109.2}
-                      width={140}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "alignItems": "flex-start",
-                          "gap": 16,
-                          "width": "100%",
-                        }
-                      }
-                    >
-                      <Text
-                        accessibilityLevel="h1"
-                        accessibilityRole="header"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                          }
-                        }
-                      >
-                        Pourquoi souhaites-tu suspendre ton compte ?
-                      </Text>
-                      <Text
-                        accessibilityLevel="p"
-                        accessibilityRole="text"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        Tu mets ton compte en pause ? Dis-nous pourquoi pour nous aider à améliorer l’application.
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  onFocusCapture={[Function]}
-                  onLayout={[Function]}
-                  style={null}
-                >
-                  <View
+                    Pourquoi souhaites-tu suspendre ton compte ?
+                  </Text>
+                  <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
                     style={
                       {
-                        "paddingBottom": 0,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       }
                     }
                   >
-                    <View
-                      accessibilityLabel="Je pense que quelqu’un d’autre a accès à mon compte"
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {},
-                            {
-                              "borderBottomLeftRadius": 8,
-                              "borderBottomRightRadius": 8,
-                              "borderTopLeftRadius": 8,
-                              "borderTopRightRadius": 8,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Je pense que quelqu’un d’autre a accès à mon compte"
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949d",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "padding": 16,
-                              "width": "100%",
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "justifyContent": "center",
-                                "minHeight": 58,
-                              }
-                            }
-                          >
-                            <Text
-                              accessibilityLevel="p"
-                              accessibilityRole="text"
-                              style={
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                }
-                              }
-                            >
-                              Je pense que quelqu’un d’autre a accès à mon compte
-                            </Text>
-                          </View>
-                        </View>
-                        <View>
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  onFocusCapture={[Function]}
-                  onLayout={[Function]}
-                  style={null}
-                >
-                  <View
-                    style={
-                      {
-                        "paddingBottom": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Autre"
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {},
-                            {
-                              "borderBottomLeftRadius": 8,
-                              "borderBottomRightRadius": 8,
-                              "borderTopLeftRadius": 8,
-                              "borderTopRightRadius": 8,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Autre"
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949d",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "padding": 16,
-                              "width": "100%",
-                            },
-                            undefined,
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "justifyContent": "center",
-                                "minHeight": 58,
-                              }
-                            }
-                          >
-                            <Text
-                              accessibilityLevel="p"
-                              accessibilityRole="text"
-                              style={
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 16,
-                                  "lineHeight": 25.6,
-                                }
-                              }
-                            >
-                              Autre
-                            </Text>
-                          </View>
-                        </View>
-                        <View>
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  onLayout={[Function]}
-                >
-                  <View
-                    customHeight={8}
-                    enable={true}
-                    style={
-                      {
-                        "height": 8,
-                      }
-                    }
-                  />
+                    Tu mets ton compte en pause ? Dis-nous pourquoi pour nous aider à améliorer l’application.
+                  </Text>
                 </View>
               </View>
-            </RCTScrollView>
+              <View
+                style={
+                  {
+                    "paddingBottom": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Je pense que quelqu’un d’autre a accès à mon compte"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Je pense que quelqu’un d’autre a accès à mon compte"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#90949d",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "padding": 16,
+                          "width": "100%",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                            "minHeight": 58,
+                          }
+                        }
+                      >
+                        <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Je pense que quelqu’un d’autre a accès à mon compte
+                        </Text>
+                      </View>
+                    </View>
+                    <View>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "paddingBottom": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Autre"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Autre"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#90949d",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "padding": 16,
+                          "width": "100%",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                            "minHeight": 58,
+                          }
+                        }
+                      >
+                        <Text
+                          accessibilityLevel="p"
+                          accessibilityRole="text"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Autre
+                        </Text>
+                      </View>
+                    </View>
+                    <View>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                customHeight={8}
+                enable={true}
+                style={
+                  {
+                    "height": 8,
+                  }
+                }
+              />
+            </View>
             <View
               customHeight={8}
               enable={true}
