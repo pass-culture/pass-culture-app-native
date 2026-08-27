@@ -4,8 +4,8 @@ import { AuthContext } from 'features/auth/context/AuthContext'
 import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
 import { useUserProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery'
-import { navigateFromRef } from 'features/navigation/navigationRef'
 // eslint-disable-next-line no-restricted-imports
+import { navigateToLoginMethods } from 'features/navigation/navigateToLoginMethods'
 import { useAppStateChange } from 'libs/appState'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt/jwt'
@@ -15,9 +15,6 @@ import { storage } from 'libs/storage'
 const NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS = 1000
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
-
-const navigateToLoginWithHelpMessage = () =>
-  navigateFromRef('LoginMethods', { displayForcedLoginHelpMessage: true })
 
 export const AuthWrapper = memo(function AuthWrapper({
   children,
@@ -51,7 +48,7 @@ export const AuthWrapper = memo(function AuthWrapper({
           setIsLoggedIn(false)
           // We need to delay this navigation to avoid conflit between this navigation and the initial screen defined by react-navigation on app launch
           navigationTimeoutRef.current = setTimeout(async () => {
-            navigateToLoginWithHelpMessage()
+            navigateToLoginMethods({ displayForcedLoginHelpMessage: true })
             await clearRefreshToken()
           }, NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS)
           return
@@ -69,7 +66,7 @@ export const AuthWrapper = memo(function AuthWrapper({
             ) {
               timeoutRef.current = globalThis.setTimeout(async () => {
                 setIsLoggedIn(false)
-                navigateToLoginWithHelpMessage()
+                navigateToLoginMethods({ displayForcedLoginHelpMessage: true })
                 await clearRefreshToken()
               }, remainingLifetimeInMs)
             }

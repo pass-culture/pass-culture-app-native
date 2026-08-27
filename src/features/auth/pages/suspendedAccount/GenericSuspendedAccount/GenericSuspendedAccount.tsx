@@ -39,8 +39,14 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
       }}
       buttonTertiary={{
         wording: 'Retourner à l’accueil',
-        onBeforeNavigate: signOut,
-        navigateTo: { ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } },
+        navigateTo: {
+          ...navigateToHomeConfig,
+          withReset: true,
+          params: { ...navigateToHomeConfig.params },
+        },
+        onAfterNavigate: () => {
+          void signOut()
+        },
         icon: PlainArrowPrevious,
       }}>
       {children}

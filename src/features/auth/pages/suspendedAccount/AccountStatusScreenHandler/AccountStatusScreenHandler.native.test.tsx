@@ -69,8 +69,13 @@ describe('<AccountStatusScreenHandler />', () => {
     expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 
-  it('should not call sign out function if user is redirect to reactivation success screen', () => {
-    mockUseCurrentRoute('AccountReactivationSuccess')
+  it.each`
+    routeName
+    ${'AccountReactivationSuccess'}
+    ${'SuspiciousLoginSuspendedAccount'}
+    ${'LoginMethods'}
+  `('should not call sign out function if $routeName', ({ routeName }) => {
+    mockUseCurrentRoute(routeName)
     render(<AccountStatusScreenHandler />)
 
     screen.unmount()

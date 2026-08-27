@@ -359,6 +359,12 @@ describe('[api] helpers', () => {
 
   describe('handleGeneratedApiResponse', () => {
     const navigateFromRef = jest.spyOn(NavigationRef, 'navigateFromRef')
+    const resetFromRef = jest.spyOn(NavigationRef, 'resetFromRef')
+    const getCurrentRouteNameFromRef = jest.spyOn(NavigationRef, 'getCurrentRouteNameFromRef')
+
+    beforeEach(() => {
+      getCurrentRouteNameFromRef.mockReturnValue(undefined)
+    })
 
     it('should return body when status is ok', async () => {
       const response = await respondWith('apiResponse')
@@ -431,7 +437,7 @@ describe('[api] helpers', () => {
 
       const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
-      expect(navigateFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
+      expect(resetFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
       expect(result).toEqual({})
     })
 
@@ -468,7 +474,17 @@ describe('[api] helpers', () => {
       const response = await respondWith('apiResponse', 401)
       const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
 
-      expect(navigateFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
+      expect(resetFromRef).toHaveBeenCalledWith('LoginMethods', undefined)
+      expect(result).toEqual({})
+    })
+
+    it('should not navigate to LoginMethods on 401 if user is already on suspended account flow', async () => {
+      getCurrentRouteNameFromRef.mockReturnValueOnce('AccountStatusScreenHandler')
+      const response = await respondWith('apiResponse', 401)
+
+      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
+
+      expect(resetFromRef).not.toHaveBeenCalled()
       expect(result).toEqual({})
     })
   })

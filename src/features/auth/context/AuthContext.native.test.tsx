@@ -25,7 +25,8 @@ import { AuthWrapper } from './AuthWrapper'
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
-const navigateFromRefSpy = jest.spyOn(NavigationRef, 'navigateFromRef')
+const resetFromRefSpy = jest.spyOn(NavigationRef, 'resetFromRef')
+const getCurrentRouteNameFromRefSpy = jest.spyOn(NavigationRef, 'getCurrentRouteNameFromRef')
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000
@@ -42,6 +43,7 @@ jest
 describe('AuthContext', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
+    getCurrentRouteNameFromRefSpy.mockReturnValue(undefined)
     await storage.clear('access_token')
     await clearRefreshToken()
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
@@ -151,7 +153,7 @@ describe('AuthContext', () => {
 
       await act(async () => {})
 
-      expect(navigateFromRefSpy).not.toHaveBeenCalled()
+      expect(resetFromRefSpy).not.toHaveBeenCalled()
     })
 
     it('should navigate to LoginMethods with the force display message when the refresh token is expired', async () => {
@@ -173,7 +175,7 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(navigateFromRefSpy).toHaveBeenCalledWith('LoginMethods', {
+      expect(resetFromRefSpy).toHaveBeenCalledWith('LoginMethods', {
         displayForcedLoginHelpMessage: true,
       })
     })
@@ -191,7 +193,7 @@ describe('AuthContext', () => {
       })
 
       await waitFor(() =>
-        expect(navigateFromRefSpy).toHaveBeenCalledWith('LoginMethods', {
+        expect(resetFromRefSpy).toHaveBeenCalledWith('LoginMethods', {
           displayForcedLoginHelpMessage: true,
         })
       )
@@ -217,6 +219,29 @@ describe('AuthContext', () => {
       })
 
       expect(await getRefreshToken()).toBe('')
+    })
+
+    it('should not navigate to LoginMethods when refresh token is expired on suspended account flow', async () => {
+      await storage.saveString('access_token', 'access_token')
+      await saveRefreshToken('token')
+      getCurrentRouteNameFromRefSpy.mockReturnValueOnce('AccountStatusScreenHandler')
+
+      const expiredToken = {
+        ...decodedTokenWithRemainingLifetime,
+        exp: (CURRENT_DATE.getTime() - 1) / 1000,
+      }
+      decodeTokenSpy.mockReturnValueOnce(expiredToken)
+      decodeTokenSpy.mockReturnValueOnce(expiredToken)
+      decodeTokenSpy.mockReturnValueOnce(expiredToken)
+
+      renderUseAuthContext()
+
+      await act(async () => {})
+      await act(async () => {
+        jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
+      })
+
+      expect(resetFromRefSpy).not.toHaveBeenCalled()
     })
   })
 })

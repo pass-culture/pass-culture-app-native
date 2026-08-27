@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/GenericSuspendedAccount/GenericSuspendedAccount'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -18,6 +18,7 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
 }))
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('features/navigation/navigationRef')
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockDeviceMetrics = {
@@ -68,8 +69,7 @@ describe('<GenericSuspendedAccount />', () => {
     const homeButton = screen.getByText('Retourner à l’accueil')
     await user.press(homeButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(
-      1,
+    expect(resetFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
       navigateToHomeConfig.params
     )

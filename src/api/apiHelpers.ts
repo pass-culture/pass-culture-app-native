@@ -2,6 +2,7 @@
 import { Platform } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { navigateToLoginMethods } from 'features/navigation/navigateToLoginMethods'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment/env'
 import { Headers } from 'libs/fetch'
@@ -21,10 +22,6 @@ import {
   REFRESH_TOKEN_IS_EXPIRED_ERROR,
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
 } from './types'
-
-function navigateToLoginMethods(params?: Record<string, unknown>) {
-  navigateFromRef('LoginMethods', params)
-}
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
   if (options?.credentials === 'omit') return {}

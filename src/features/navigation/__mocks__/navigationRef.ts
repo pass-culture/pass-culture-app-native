@@ -30,5 +30,7 @@ export const navigationRef: typeof actualNavigationRef = {
 
 export const navigateFromRef = jest.fn()
 export const pushFromRef = jest.fn()
+export const resetFromRef = jest.fn()
 export const canGoBackFromRef = jest.fn()
 export const goBackFromRef = jest.fn()
+export const getCurrentRouteNameFromRef = jest.fn()

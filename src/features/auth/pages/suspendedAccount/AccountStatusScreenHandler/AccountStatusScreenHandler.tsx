@@ -11,6 +11,15 @@ import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/Delet
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
+const ROUTES_EXCLUDED_FROM_AUTO_SIGN_OUT = new Set([
+  'AccountReactivationSuccess',
+  'AccountStatusScreenHandler',
+  'SuspiciousLoginSuspendedAccount',
+  'Login',
+  'LoginMethods',
+  'LoginMethodsWithLastLoginInfo',
+])
+
 export const AccountStatusScreenHandler = () => {
   const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatusQuery()
   const suspensionStatus = accountSuspensionStatus?.status
@@ -35,11 +44,10 @@ export const AccountStatusScreenHandler = () => {
 
   useEffect(() => {
     return () => {
-      const excludedRoutesFromSignOut =
-        currentRoute?.name &&
-        !['AccountReactivationSuccess', 'AccountStatusScreenHandler'].includes(currentRoute?.name)
+      const shouldSignOutOnCleanup =
+        currentRoute?.name && !ROUTES_EXCLUDED_FROM_AUTO_SIGN_OUT.has(currentRoute?.name)
 
-      if (excludedRoutesFromSignOut) {
+      if (shouldSignOutOnCleanup) {
         void signOut()
       }
     }

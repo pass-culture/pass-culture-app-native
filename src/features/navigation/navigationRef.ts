@@ -51,3 +51,10 @@ export const goBackFromRef = () => {
     navigationRef.goBack()
   }
 }
+
+export const getCurrentRouteNameFromRef = (): string | undefined => {
+  if (navigationRef.isReady()) {
+    return navigationRef.getCurrentRoute()?.name
+  }
+  return undefined
+}
