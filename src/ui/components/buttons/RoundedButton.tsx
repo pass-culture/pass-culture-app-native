@@ -12,7 +12,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-interface Props {
+export interface RoundedButtonProps {
   iconName?: IconNames
   Icon?: React.FC<AccessibleIcon>
   initialColor?: ColorsType
@@ -30,7 +30,7 @@ interface Props {
   disabled?: boolean
 }
 
-export const RoundedButton = (props: Props) => {
+export const RoundedButton = (props: RoundedButtonProps) => {
   const iconFactory = useIconFactory() // TODO(PC-38419): investigate: why context? why not just a function?
   const Icon = props.Icon ?? iconFactory.getIcon(props.iconName)
   const { icons, designSystem } = useTheme()

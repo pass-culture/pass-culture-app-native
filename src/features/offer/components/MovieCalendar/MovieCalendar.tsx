@@ -7,8 +7,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { AbsoluteRoundedButton } from 'ui/components/buttons/AbsoluteRoundedButton'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
 
 import { handleMovieCalendarScroll } from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
@@ -84,9 +84,11 @@ export const MovieCalendar: React.FC<Props> = ({
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
       {isDesktopViewport && !isStart ? (
-        <PlaylistArrowButton
+        <AbsoluteRoundedButton
           direction="left"
+          iconName="previous"
           onPress={handleScrollPrevious}
+          accessibilityLabel="Faire défiler le calendrier vers la gauche"
           testID="movie-calendar-left-arrow"
         />
       ) : null}
@@ -118,9 +120,11 @@ export const MovieCalendar: React.FC<Props> = ({
         ) : null}
       </View>
       {isDesktopViewport && !isEnd ? (
-        <PlaylistArrowButton
+        <AbsoluteRoundedButton
           direction="right"
+          iconName="next"
           onPress={handleScrollNext}
+          accessibilityLabel="Faire défiler le calendrier vers la droite"
           testID="movie-calendar-right-arrow"
         />
       ) : null}
