@@ -1,0 +1,40 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - search
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+
+- runFlow:
+    commands:
+      - assertVisible: 'Parcours les catégories'
+      - scroll
+      - tapOn: 'Spectacles'
+
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- assertVisible: 'Prix'
+
+- tapOn: 'Prix'
+- assertVisible: 'Prix minimum.*'
+- assertVisible: 'Prix maximum.*'
+- assertVisible: 'Appliquer le filtre'
+- tapOn:
+    id: 'Entrée pour le prix maximum'
+
+- assertVisible: 'Prix minimum.*'
+- assertVisible: 'Prix maximum.*'
+- assertVisible: 'Appliquer le filtre'
+
+- inputText: '50'
+- tapOn: 'Appliquer le filtre'
+- assertVisible: '50 € et moins'
+- tapOn: 'Rechercher'
+
+- runFlow: ../common/lifecycle/StopApp.yml
