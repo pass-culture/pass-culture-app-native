@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useRef } from 'react'
 import styled from 'styled-components'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
@@ -6,6 +6,10 @@ import { theme } from 'theme'
 import { TextColorKey } from 'theme/types'
 import { isHeadingLevel } from 'ui/theme/isHeadingLevel'
 import { TextSemanticLevel } from 'ui/theme/typographyAttrs/types'
+
+type WebLayoutChangeEvent = {
+  nativeEvent: { layout: { x: number; y: number; width: number; height: number } }
+}
 
 const DEFAULT_COLOR_TEXT = 'default'
 
@@ -36,14 +40,42 @@ const createStyledText = (
     accessibilityLevel?: TextSemanticLevel
     numberOfLines?: number
     color?: TextColorKey
+    onLayout?: (event: WebLayoutChangeEvent) => void
   }
 
-  const Component = ({ accessibilityLevel, numberOfLines, ...props }: Props) => {
+  const Component = ({ accessibilityLevel, numberOfLines, onLayout, ...props }: Props) => {
     const level = accessibilityLevel ?? defaultLevel
     let tag: React.ElementType = 'p'
     if (level === 'span') tag = 'span'
     else if (isHeadingLevel(level)) tag = level
-    return <StyledText as={tag} numberOfLines={numberOfLines} {...props} />
+
+    const observerRef = useRef<ResizeObserver | null>(null)
+
+    const setRef = useCallback(
+      (node: HTMLElement | null) => {
+        if (observerRef.current) {
+          observerRef.current.disconnect()
+          observerRef.current = null
+        }
+
+        if (node && onLayout) {
+          const emit = () => {
+            const rect = node.getBoundingClientRect()
+            onLayout({
+              nativeEvent: {
+                layout: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+              },
+            })
+          }
+          emit() // equivalent to the first onLayout call upon mounting on the RN side
+          observerRef.current = new ResizeObserver(emit)
+          observerRef.current.observe(node)
+        }
+      },
+      [onLayout]
+    )
+
+    return <StyledText as={tag} ref={setRef} numberOfLines={numberOfLines} {...props} />
   }
 
   Component.displayName = typographyStyle
