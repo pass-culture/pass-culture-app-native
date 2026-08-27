@@ -1,5 +1,5 @@
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import { styled } from 'styled-components/native'
 
@@ -11,10 +11,21 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 type Props<T> = {
   title: string
   renderItem: (hit: T, sendEvent: SendEventForHits) => React.ReactNode
+  onHitsCountChange?: (counter: number) => void
 } & UseInfiniteHitsProps
 
-export function AutocompleteSection<T>({ title, renderItem, ...props }: Props<T>) {
+export function AutocompleteSection<T>({
+  title,
+  renderItem,
+  onHitsCountChange,
+  ...props
+}: Props<T>) {
   const { hits, sendEvent } = useInfiniteHits(props)
+
+  useEffect(() => {
+    onHitsCountChange?.(hits.length)
+  }, [hits.length, onHitsCountChange])
+
   if (!hits.length) return null
 
   return (

@@ -9,9 +9,10 @@ import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 type Props = {
   addSearchHistory: (item: CreateHistoryItem) => void
   offerCategories?: SearchGroupNameEnumv2[]
+  onHitsCountChange?: (counter: number) => void
 }
 
-export function AutocompleteOffer({ addSearchHistory, offerCategories }: Props) {
+export function AutocompleteOffer({ addSearchHistory, offerCategories, onHitsCountChange }: Props) {
   return (
     <AutocompleteSection<AlgoliaSuggestionHit>
       title="Suggestions"
@@ -24,6 +25,7 @@ export function AutocompleteOffer({ addSearchHistory, offerCategories }: Props) 
           offerCategories={offerCategories || []}
         />
       )}
+      onHitsCountChange={onHitsCountChange}
     />
   )
 }
