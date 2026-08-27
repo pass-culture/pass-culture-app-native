@@ -17,7 +17,17 @@ appId: ${MAESTRO_APP_ID}
 - evalScript: '${console.log(output.userEmail)}'
 - waitForAnimationToEnd
 - runFlow: ../cookies/AcceptCookiesOptional.yml
-- tapOn: 'On y va !'
+- runFlow: # Compte bénéficiaire
+    when:
+      visible: 'On y va !'
+    commands:
+      - tapOn: 'On y va !'
+
+- runFlow: # Compte adresse mail validé
+    when:
+      visible: 'Commencer la vérification'
+    commands:
+      - tapOn: 'Commencer la vérification'
 
 - runFlow: # Si apparition de la modale de partage
     when:
