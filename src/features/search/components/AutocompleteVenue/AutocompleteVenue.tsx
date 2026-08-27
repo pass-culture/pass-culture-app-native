@@ -10,9 +10,10 @@ import { Typo } from 'ui/theme'
 
 type Props = {
   onItemPress: (venueId: number) => void
+  onHitsCountChange?: (counter: number) => void
 }
 
-export function AutocompleteVenue({ onItemPress }: Props) {
+export function AutocompleteVenue({ onItemPress, onHitsCountChange }: Props) {
   return (
     <AutocompleteSection<AlgoliaVenue>
       title="Lieux culturels"
@@ -31,6 +32,7 @@ export function AutocompleteVenue({ onItemPress }: Props) {
           </AutocompleteItem>
         )
       }}
+      onHitsCountChange={onHitsCountChange}
     />
   )
 }

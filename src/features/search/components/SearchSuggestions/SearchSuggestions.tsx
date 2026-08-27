@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Configure, Index } from 'react-instantsearch-core'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
@@ -61,6 +61,11 @@ export const SearchSuggestions = ({
   const shouldDisplayArtistsSuggestions = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
+  const [suggestionsCounts, setSuggestionsCounts] = useState({
+    offers: 0,
+    artists: 0,
+    venues: 0,
+  })
 
   useEffect(() => {
     setOptions({
@@ -142,16 +147,37 @@ export const SearchSuggestions = ({
   const isQuerying = queryHistory.trim().length > 0
   const hasHistory = filteredHistory.length > 0
 
+  const historyCount = filteredHistory.length
+  const totalSuggestions =
+    suggestionsCounts.offers + suggestionsCounts.artists + suggestionsCounts.venues
+
+  const handleOffersCountChange = (count: number) => {
+    setSuggestionsCounts((prev) => (prev.offers === count ? prev : { ...prev, offers: count }))
+  }
+
+  const handleArtistsCountChange = (count: number) => {
+    setSuggestionsCounts((prev) => (prev.artists === count ? prev : { ...prev, artists: count }))
+  }
+
+  const handleVenuesCountChange = (count: number) => {
+    setSuggestionsCounts((prev) => (prev.venues === count ? prev : { ...prev, venues: count }))
+  }
+
   const getAccessibilityMessage = () => {
     if (isQuerying) {
-      return `Suggestions pour ${queryHistory}`
+      if (totalSuggestions > 0) {
+        return `${totalSuggestions} suggestion${totalSuggestions > 1 ? 's' : ''} pour ${queryHistory}`
+      }
+      return `Aucune suggestion pour ${queryHistory}`
     }
+
     if (hasHistory) {
-      const count = filteredHistory.length
-      return `Historique de recherche, ${count} élément${count > 1 ? 's' : ''}`
+      return `Historique de recherche, ${historyCount} élément${historyCount > 1 ? 's' : ''}`
     }
-    return 'Aucun résultat ou historique'
+
+    return 'Aucun résultat ni historique'
   }
+
   return (
     <StyledScrollView
       testID="autocompleteScrollView"
@@ -173,11 +199,18 @@ export const SearchSuggestions = ({
         removeItem={removeFromHistory}
         onPress={onPressHistoryItem}
       />
-      <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
+      <AutocompleteOffer
+        addSearchHistory={addToHistory}
+        offerCategories={offerCategories}
+        onHitsCountChange={handleOffersCountChange}
+      />
       {shouldDisplayArtistsSuggestions ? (
         <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
           <Configure hitsPerPage={5} clickAnalytics analytics />
-          <AutocompleteArtist onItemPress={onArtistPress} />
+          <AutocompleteArtist
+            onItemPress={onArtistPress}
+            onHitsCountChange={handleArtistsCountChange}
+          />
         </Index>
       ) : null}
       <Index indexName={currentVenuesIndex}>
@@ -188,7 +221,7 @@ export const SearchSuggestions = ({
           aroundRadius="all"
           aroundLatLng={searchVenuePosition.aroundLatLng}
         />
-        <AutocompleteVenue onItemPress={onVenuePress} />
+        <AutocompleteVenue onItemPress={onVenuePress} onHitsCountChange={handleVenuesCountChange} />
       </Index>
     </StyledScrollView>
   )

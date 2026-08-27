@@ -9,9 +9,10 @@ import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 
 type Props = {
   onItemPress: (artistId: string, artistName: string) => void
+  onHitsCountChange?: (counter: number) => void
 }
 
-export function AutocompleteArtist({ onItemPress }: Props) {
+export function AutocompleteArtist({ onItemPress, onHitsCountChange }: Props) {
   return (
     <AutocompleteSection<AlgoliaArtist>
       title="Artistes"
@@ -29,6 +30,7 @@ export function AutocompleteArtist({ onItemPress }: Props) {
           </AutocompleteItem>
         )
       }}
+      onHitsCountChange={onHitsCountChange}
     />
   )
 }
