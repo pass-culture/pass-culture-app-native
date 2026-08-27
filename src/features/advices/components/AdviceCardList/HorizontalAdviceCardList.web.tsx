@@ -8,8 +8,8 @@ import styled from 'styled-components/native'
 
 import { ADVICE_CARD_WIDTH } from 'features/advices/constants'
 import { AdviceCardData, AdviceCardListProps } from 'features/advices/types'
+import { AbsoluteRoundedButton } from 'ui/components/buttons/AbsoluteRoundedButton'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 
 import { AdviceCardListBase, SEPARATOR_DEFAULT_VALUE } from './AdviceCardListBase'
 
@@ -76,18 +76,12 @@ export const HorizontalAdviceCardList = forwardRef<
     <View onLayout={onContainerLayout} style={style}>
       <ArrowWrapper>
         {isStart ? null : (
-          <PlaylistArrowButton
+          <AbsoluteRoundedButton
             direction="left"
+            iconName="previous"
             onPress={handleScrollPrevious}
+            accessibilityLabel="Faire défiler la liste vers la gauche"
             testID="advice-list-left-arrow"
-          />
-        )}
-
-        {isEnd ? null : (
-          <PlaylistArrowButton
-            direction="right"
-            onPress={handleScrollNext}
-            testID="advice-list-right-arrow"
           />
         )}
       </ArrowWrapper>
@@ -116,6 +110,16 @@ export const HorizontalAdviceCardList = forwardRef<
         tag={tag}
         thumbnailHeight={thumbnailHeight}
       />
+
+      {isEnd ? null : (
+        <AbsoluteRoundedButton
+          direction="right"
+          iconName="next"
+          onPress={handleScrollNext}
+          accessibilityLabel="Faire défiler la liste vers la droite"
+          testID="advice-list-right-arrow"
+        />
+      )}
     </View>
   )
 })
