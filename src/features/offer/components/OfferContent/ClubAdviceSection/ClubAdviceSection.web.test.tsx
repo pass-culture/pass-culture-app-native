@@ -12,6 +12,12 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   push: jest.fn(),
 })
 
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
 describe('ClubAdviceSection', () => {
   it('should render correctly in mobile', () => {
     render(

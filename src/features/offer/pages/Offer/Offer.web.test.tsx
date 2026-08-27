@@ -69,6 +69,12 @@ const defaultUseCookies = {
 }
 jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {

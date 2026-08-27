@@ -5,6 +5,12 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { proAdvicesCardDataFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import { render, screen } from 'tests/utils/web'
 
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
 describe('VenueAdvicesSection', () => {
   it('should display see all advices button below the list in mobile', () => {
     render(
