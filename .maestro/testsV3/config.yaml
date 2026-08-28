@@ -7,5 +7,7 @@ flows:
   - search/*
   - booking/*
   - artist/*
+  - favorite/*
   - offer/*
+  - venue/*
   - web/*
