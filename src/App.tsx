@@ -13,6 +13,8 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AnalyticsDebugger } from 'features/analyticsDebugger/AnalyticsDebugger'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
+import { prefetchProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery.refacto'
+import { authSelectors } from 'features/auth/store/auth.store'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -25,7 +27,9 @@ import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { initLocation } from 'libs/locationV2/initLocation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
@@ -51,10 +55,17 @@ LogBox.ignoreLogs([
   'EventEmitter.removeListener',
 ])
 
-const App: FunctionComponent = function () {
+const App: FunctionComponent = () => {
   useLaunchPerformanceObserver()
 
   useOrientationLocked()
+
+  const wipRefactorFetch = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REFACTOR_FETCH)
+  if (wipRefactorFetch) {
+    const isLoggedIn = authSelectors.selectIsLoggedIn()
+    if (isLoggedIn) void prefetchProfileInfoQuery()
+  }
+  const AuthWrapperComponent = wipRefactorFetch ? React.Fragment : AuthWrapper
 
   useEffect(() => {
     void eventMonitoring.init({ enabled: !__DEV__ })
@@ -93,7 +104,7 @@ const App: FunctionComponent = function () {
               <AnalyticsInitializer>
                 <NetInfoWrapper>
                   <FirestoreNetworkObserver />
-                  <AuthWrapper>
+                  <AuthWrapperComponent>
                     <AccessibilityFiltersWrapper>
                       <FavoritesWrapper>
                         <SearchWrapper>
@@ -117,7 +128,7 @@ const App: FunctionComponent = function () {
                         </SearchWrapper>
                       </FavoritesWrapper>
                     </AccessibilityFiltersWrapper>
-                  </AuthWrapper>
+                  </AuthWrapperComponent>
                 </NetInfoWrapper>
               </AnalyticsInitializer>
             </ErrorBoundary>

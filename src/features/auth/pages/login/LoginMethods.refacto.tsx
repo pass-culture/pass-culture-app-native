@@ -11,7 +11,7 @@ import { useResetContexts } from 'features/auth/context/useResetContexts'
 import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { loginTriggeredActions, handleAccountState } from 'features/auth/helpers/loginCallbacks'
 import { useSSOLoginMutation } from 'features/auth/queries/useLoginMutation'
-import { useUserProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery'
+import { useUserProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery.refacto'
 import { SignInResponseFailure } from 'features/auth/types'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import {

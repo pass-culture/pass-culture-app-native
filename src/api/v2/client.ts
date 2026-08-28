@@ -79,7 +79,7 @@ apiClient.interceptors.response.use(
             originalRequest.headers.Authorization = `Bearer ${token}`
           }
 
-          return await apiClient(originalRequest)
+          return apiClient(originalRequest)
         } catch (err) {
           return Promise.reject(err)
         }

@@ -16,7 +16,9 @@ import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/Rein
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/pages/login/Login'
+import { Login as LoginRefactor } from 'features/auth/pages/login/Login.refacto'
 import { LoginMethods } from 'features/auth/pages/login/LoginMethods'
+import { LoginMethods as LoginMethodsRefactor } from 'features/auth/pages/login/LoginMethods.refacto'
 import { LoginMethodsWithLastLoginInfo } from 'features/auth/pages/login/LoginMethodsWithLastLoginInfo'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
@@ -75,6 +77,8 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
@@ -99,6 +103,8 @@ type RouteConfig = {
   name: RootScreenNames
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  refactorComponent?: React.ComponentType<any>
   options?: NativeStackNavigationOptions
 }
 
@@ -267,11 +273,13 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'Login',
     component: Login,
+    refactorComponent: LoginRefactor,
     options: { title: 'Connexion' },
   },
   {
     name: 'LoginMethods',
     component: LoginMethods,
+    refactorComponent: LoginMethodsRefactor,
     options: { title: 'Méthodes de connexion' },
   },
   {
@@ -511,6 +519,8 @@ const AchievementsScreen = lazy(() => import('features/achievements/pages/Achiev
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
+    const wipRefactorFetch = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REFACTOR_FETCH)
+
     const { top } = useSafeAreaInsets()
     return (
       <IconFactoryProvider>
@@ -549,11 +559,13 @@ const RootStackNavigator = withWebWrapper(
               }
             />
           )}
-          {rootScreens.map(({ name, component, options }) => (
+          {rootScreens.map(({ name, component, refactorComponent, options }) => (
             <RootStackNavigatorBase.Screen
               key={name}
               name={name}
-              component={withAsyncErrorBoundary(component)}
+              component={withAsyncErrorBoundary(
+                !!refactorComponent && wipRefactorFetch ? refactorComponent : component
+              )}
               options={options}
             />
           ))}
