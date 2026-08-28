@@ -27,13 +27,46 @@ Copiez-les dans `.maestro/.env.secret` (créez ce fichier s'il n'existe pas).
 yarn test:e2e
 ```
 
-Le script guide interactivement : choix du mode (local/cloud), plateforme, tags, binary ID si nécessaire.
+Le script guide interactivement à travers les choix suivants :
+
+| Étape | Options |
+|---|---|
+| **Mode** | `cloud` (recommandé) · `local` |
+| **Plateforme** | `android` · `ios` · `web` (local uniquement) |
+| **Tags** | Sélection dans la liste des tags existants · tag custom · tous les tests |
+| **Application** | Binary ID d'un build uploadé · fichier `.apk`/`.app` local _(cloud uniquement)_ |
+| **Nom de run** | Libre, optionnel _(cloud uniquement)_ |
+
+La dernière configuration est mémorisée : au prochain lancement, il est possible de la réutiliser, de modifier quelques paramètres, ou de repartir de zéro.
 
 L'environnement de référence est **staging**. L'environnement testing est trop sandboxé pour être fiable.
 
 > Le mode **cloud est à privilégier** : les runs locales sont plus sujettes aux faux négatifs (réseau, état du simulateur, performances machine).
 
 Les tests se trouvent dans `.maestro/testsV3/`.
+
+## Obtenir un binary ID
+
+Les tests cloud nécessitent un build de debug (`.apk` Android ou `.app` iOS) uploadé sur Maestro.
+
+**Option recommandée — déclencher un build depuis la CI :** posez le label prévu à cet effet sur votre branche. La CI va build et upload l'app, et le binary ID est disponible dans les détails de la run sur le dashboard Maestro.
+
+**Option locale :**
+
+```bash
+# Android
+ENVFILE=.env.staging ./gradlew assembleDebug
+# → android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
+
+# iOS
+bundle exec fastlane ios build_e2e --env staging
+```
+
+Une fois obtenu, le binary ID ou l'apk/.app peut être réutilisé pour toutes les runs suivantes tant que l'app n'a pas changé.
+
+**Pour un simple fix de test sans modification de l'app, préférez le binary ID de la dernière run du nightly — cela garantit d'être aligné sur master.**
+
+> Le binary ID se trouve sur le [dashboard Maestro](https://app.maestro.dev/) dans les détails d'une run.
 
 ## Configuration locale par plateforme
 
