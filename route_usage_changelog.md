@@ -1,14 +1,13 @@
-# v1.405.0
+# v1.406.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
-Pathname not found for deleteNativeV1MeFavoritesfavoriteId
+- /native/v1/me/favorites/{favorite_id}
 Pathname not found for deleteNativeV1MeRemindersreminderId
 Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
-Pathname not found for getNativeV1AccountSuspensionDate
-- /native/v1/account/suspension_status
+Pathname not found for getNativeV1AccountSuspensionStatus
 - /native/v1/artists/{artist_id}
 - /native/v1/artists/{artist_id}/similar
-- /native/v1/banner
+Pathname not found for getNativeV1Banner
 - /native/v1/venue/{venue_id}/movie/calendar
 - /native/v1/countries
 - /native/v1/cultural_survey/questions
@@ -22,8 +21,8 @@ Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/offer/{offer_id}/advices
 - /native/v1/profile/token_expiration
 - /native/v1/recommendation/similar_offers/{offer_id}
-Pathname not found for getNativeV1Settings
-Pathname not found for getNativeV1SubcategoriesV2
+- /native/v1/settings
+- /native/v1/subcategories/v2
 - /native/v1/subscription/activity_types
 - /native/v1/venue/{venue_id}/advices
 - /native/v1/venue/{venue_id}/movie/calendar/me
@@ -43,7 +42,6 @@ Pathname not found for getNativeV1SubcategoriesV2
 - /native/v1/account/suspend
 - /native/v1/account/suspend_for_hack_suspicion
 - /native/v1/account/suspend_for_suspicious_login
-- /native/v1/account/unsuspend
 - /native/v1/achievements/mark_as_seen
 - /native/v1/bookings
 - /native/v1/bookings/{booking_id}/cancel
@@ -81,6 +79,7 @@ Pathname not found for getNativeV1SubcategoriesV2
 - /native/v2/signin
 - /native/v1/profile/email_update/validate
 ## Unused routes:
+- /native/v1/account/suspension_date
 - /native/v1/bookings
 - /native/v1/categories
 - /native/v1/oauth/state
@@ -90,6 +89,7 @@ Pathname not found for getNativeV1SubcategoriesV2
 - /native/v1/subscription/profile
 - /native/v1/venue/{venue_id}
 - /native/v2/offer/{offer_id}
+- /native/v1/account/unsuspend
 - /native/v1/oauth/{sso_provider}/authorize
 - /native/v1/profile
 - /native/v1/reaction
