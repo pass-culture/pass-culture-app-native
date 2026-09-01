@@ -1,0 +1,92 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - venue
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+
+- scrollUntilVisible:
+    element: 'A côté'
+- tapOn: 'A côté'
+
+- runFlow:
+    when:
+      visible: 'Localisation'
+    commands:
+      - tapOn:
+          text: '.*Choisir une zone géographique.*'
+          point: '50%,25%'
+      - tapOn:
+          id: 'styled-input-container'
+      - inputText: 'Paris'
+      - tapOn: 'Paris Paris'
+      - tapOn: 'Valider et voir sur la carte'
+
+- tapOn: 'A côté'
+
+- assertVisible:
+    text: 'Carte des lieux'
+    optional: true
+- tapOn: 'Sorties'
+- tapOn: 'Boutiques'
+- tapOn: 'Autres'
+- tapOn: 'Voir tous les filtres : 3 filtres actifs'
+- assertVisible: '.*Sorties.*'
+- assertVisible: '.*Boutiques.*'
+- assertVisible: '.*Autres.*'
+- tapOn: 'Réinitialiser'
+- tapOn: '.*Sorties.*'
+- tapOn: '.*Cinéma.*'
+- tapOn: 'Rechercher'
+- tapOn: 
+    text: 'Repère sur la carte'
+    optional: true
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- tapOn: 'Réinitialiser'
+- tapOn: 'Rechercher'
+- tapOn: 'Revenir en arrière'
+
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+- tapOn: 'Explore la carte'
+
+- runFlow:
+    when:
+      visible: 'Localisation'
+    commands:
+      - tapOn:
+          text: '.*Choisir une zone géographique.*'
+          point: '50%,25%'
+      - tapOn:
+          id: 'styled-input-container'
+      - inputText: 'Paris'
+      - tapOn: 'Paris Paris'
+      - tapOn: 'Valider et voir sur la carte'
+
+- assertVisible:
+    text: 'Carte des lieux'
+    optional: true
+- tapOn: 'Sorties'
+- tapOn: 'Boutiques'
+- tapOn: 'Autres'
+- tapOn: 'Voir tous les filtres : 3 filtres actifs'
+- assertVisible: '.*Sorties.*'
+- assertVisible: '.*Boutiques.*'
+- assertVisible: '.*Autres.*'
+- tapOn: 'Réinitialiser'
+- tapOn: '.*Sorties.*'
+- tapOn: '.*Cinéma.*'
+- tapOn: 'Rechercher'
+- tapOn: 
+    text: 'Repère sur la carte'
+    optional: true
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- tapOn: 'Réinitialiser'
+- tapOn: 'Rechercher'
+- tapOn: 'Revenir en arrière'
+
+- runFlow: ../common/lifecycle/StopApp.yml

@@ -1,0 +1,154 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - favorite
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'BENEFICIARY'
+        age: 18
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/navigation/GoToFavoritesFromTabBar.yml
+
+- assertVisible:
+    text: 'Mes favoris'
+    index: 0
+- repeat:
+    while:
+      notVisible: 'Découvrir le catalogue'
+    commands:
+      - tapOn: 'Supprimer.*'
+- tapOn: 'Découvrir le catalogue'
+
+- runFlow: ../common/navigation/GoToSearchFromTabBar.yml
+
+- assertVisible: 'Rechercher'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: 'Catégorie Musique.*'
+      - tapOn: 'Catégorie Musique.*'
+      - tapOn: 'CDs'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: 'MUSIQUE'
+      - tapOn: 'MUSIQUE'
+      - tapOn: 'CDs'
+
+- assertVisible: 'Rechercher'
+- runFlow:
+    when:
+      visible: 'Ma position'
+    commands:
+      - tapOn: 'Ma position'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+
+- swipe:
+    from:
+      text: 'Les offres'
+    direction: UP
+
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres CD visible dans les résultats de recherche dont le titre n'est pas cropé"
+    outputVariable: 'offer1'
+- tapOn: .*${offer1}.*
+
+- tapOn:
+    id: 'Mettre en favori'
+- tapOn:
+    id: 'Revenir en arrière'
+
+- scroll
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres CD visible dans les résultats de recherche dont le titre est différent de '${offer1}'"
+    outputVariable: 'offer2'
+- tapOn: .*${offer2}.*
+- tapOn:
+    id: 'Mettre en favori'
+- tapOn:
+    id: 'Revenir en arrière'
+
+- scroll
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres CD visible dans les résultats de recherche dont le titre est différent de '${offer1}' et '${offer2}'"
+    outputVariable: 'offer3'
+- tapOn: .*${offer3}.*
+- tapOn:
+    id: 'Mettre en favori'
+- tapOn:
+    id: 'Revenir en arrière'
+
+- runFlow: ../common/navigation/GoToFavoritesFromTabBar.yml
+
+- assertVisible: '3 favoris'
+- assertVisible:
+    id: 'Trier'
+- tapOn:
+    id: 'Trier'
+- assertVisible: 'Trier par'
+- assertVisible: '.*Ajouté récemment.*'
+- assertVisible: '.*Prix croissant.*'
+- assertVisible: '.*Proximité géographique.*'
+- tapOn: '.*Prix croissant.*'
+- tapOn: 'Valider'
+- assertVisible: '3 favoris'
+- tapOn:
+    id: 'Trier'
+- tapOn: '.*Proximité géographique.*'
+- runFlow:
+    when:
+      visible: 'Paramètres de localisation'
+    commands:
+      - tapOn: 'Fermer la modale'
+- tapOn: 'Valider'
+- assertVisible: '3 favoris'
+
+- assertVisible: '3 favoris'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          text: 'Supprimer'
+          index: 0
+      - assertVisible: '2 favoris'
+      - tapOn:
+          text: 'Supprimer'
+          index: 0
+      - assertVisible: '1 favori'
+      - tapOn:
+          text: 'Supprimer'
+          index: 0
+      - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          text: 'Supprimer.*'
+          index: 0
+      - assertVisible: '2 favoris'
+      - tapOn:
+          text: 'Supprimer.*'
+          index: 0
+      - assertVisible: '1 favori'
+      - tapOn:
+          text: 'Supprimer.*'
+          index: 0
+      - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+
+- runFlow: ../common/lifecycle/StopApp.yml
