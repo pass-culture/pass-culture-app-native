@@ -15,5 +15,6 @@ export const ModalScreenWrapper = ({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
+  paddingTop: theme.appBarHeight,
   backgroundColor: theme.designSystem.color.background.default,
 }))

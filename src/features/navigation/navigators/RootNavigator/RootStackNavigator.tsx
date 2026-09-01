@@ -104,7 +104,7 @@ type RouteConfig = {
 
 const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
   title: 'Choix de la localisation',
-  presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal',
+  presentation: 'transparentModal',
   animation: 'slide_from_bottom',
 }
 
