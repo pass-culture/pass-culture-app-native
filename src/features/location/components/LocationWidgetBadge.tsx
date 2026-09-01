@@ -12,6 +12,7 @@ import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHe
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const LocationWidgetBadge = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -43,7 +44,9 @@ export const LocationWidgetBadge = () => {
         ) : (
           <LocationPointerDefault testID="location pointer default" />
         )}
-        <LocationTitle numberOfLines={numberOfLines}>{locationTitle}</LocationTitle>
+        <LocationTitle {...setTextSemantic('span')} numberOfLines={numberOfLines}>
+          {locationTitle}
+        </LocationTitle>
       </LocationButton>
     </Container>
   )

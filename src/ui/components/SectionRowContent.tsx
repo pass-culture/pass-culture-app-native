@@ -6,6 +6,7 @@ import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export type SectionRowContentProps = {
   title: string
@@ -40,7 +41,9 @@ export const SectionRowContent = ({
   const Title = renderTitle ? (
     renderTitle(title)
   ) : (
-    <Typo.BodyAccent numberOfLines={titleNumberOfLines}>{title}</Typo.BodyAccent>
+    <Typo.BodyAccent {...setTextSemantic('span')} numberOfLines={titleNumberOfLines}>
+      {title}
+    </Typo.BodyAccent>
   )
 
   return (

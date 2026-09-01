@@ -8,6 +8,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   icon?: React.FunctionComponent<AccessibleIcon>
@@ -58,14 +59,22 @@ export const FilterRow = ({
       ) : null}
       <TextContainer>
         <TitleAndComplement>
-          <Title numberOfLines={2}>{title}</Title>
+          <Title {...setTextSemantic('span')} numberOfLines={2}>
+            {title}
+          </Title>
           {complement ? (
             <ComplementContainer>
-              <ComplementLabel numberOfLines={1}>{complement}</ComplementLabel>
+              <ComplementLabel {...setTextSemantic('span')} numberOfLines={1}>
+                {complement}
+              </ComplementLabel>
             </ComplementContainer>
           ) : null}
         </TitleAndComplement>
-        {description ? <Description numberOfLines={1}>{description}</Description> : null}
+        {description ? (
+          <Description {...setTextSemantic('span')} numberOfLines={1}>
+            {description}
+          </Description>
+        ) : null}
       </TextContainer>
       <ArrowNext accessibilityLabel="Affiner la recherche" />
     </TouchableRow>
