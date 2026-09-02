@@ -84,6 +84,11 @@ onFlowStart:
 - runFlow:
     file: ../common/navigation/TapOnBack.yml
 
+- tapOn: 'Outils et services publics pour les personnes en situation de handicap'
+- assertVisible: 'Outils et services publics'
+- runFlow:
+    file: ../common/navigation/TapOnBack.yml
+
 - runFlow:
     file: ../common/navigation/TapOnBack.yml
 

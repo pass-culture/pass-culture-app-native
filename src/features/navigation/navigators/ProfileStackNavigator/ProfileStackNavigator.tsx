@@ -8,6 +8,7 @@ import { Accessibility } from 'features/profile/pages/Accessibility/Accessibilit
 import { AccessibilityDeclarationMobileAndroid } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileAndroid'
 import { AccessibilityDeclarationMobileIOS } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileIOS'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
+import { PublicDisabilityServices } from 'features/profile/pages/Accessibility/PublicDisabilityServices'
 import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { Appearance } from 'features/profile/pages/Appearance/Appearance'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
@@ -207,6 +208,11 @@ const profileStackNavigatorPathDefinition = {
       if: useIsSignedIn,
       linking: { path: 'profil/donnees-personnelles' },
       options: { title: 'Données personnelles' },
+    },
+    PublicDisabilityServices: {
+      screen: PublicDisabilityServices,
+      linking: { path: 'profil/outils-services-publics' },
+      options: { title: 'Outils et services publics' },
     },
     ValidateEmailChange: {
       screen: ValidateEmailChange,

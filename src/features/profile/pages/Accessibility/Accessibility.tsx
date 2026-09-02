@@ -40,6 +40,10 @@ const sectionConfig: AccessibilityRowConfig[] = [
     title: 'Déclaration d’accessibilité - web',
     screen: 'AccessibilityDeclarationWeb',
   },
+  {
+    title: 'Outils et services publics pour les personnes en situation de handicap',
+    screen: 'PublicDisabilityServices',
+  },
 ]
 
 export const Accessibility = () => {
