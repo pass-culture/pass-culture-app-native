@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { addMonths, addYears, format, parse } from 'date-fns'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -300,9 +300,18 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
           monthTextColor: designSystem.color.text.default,
           textSectionTitleColor: designSystem.color.text.subtle,
           backgroundColor: designSystem.color.background.default,
-          textDayFontFamily: designSystem.typography.body.fontFamily,
-          textMonthFontFamily: designSystem.typography.body.fontFamily,
-          textDayHeaderFontFamily: designSystem.typography.body.fontFamily,
+          textDayFontFamily:
+            Platform.OS === 'ios'
+              ? designSystem.typography.bodyItalic.fontFamily
+              : designSystem.typography.body.fontFamily,
+          textMonthFontFamily:
+            Platform.OS === 'ios'
+              ? designSystem.typography.bodyItalic.fontFamily
+              : designSystem.typography.body.fontFamily,
+          textDayHeaderFontFamily:
+            Platform.OS === 'ios'
+              ? designSystem.typography.bodyItalic.fontFamily
+              : designSystem.typography.body.fontFamily,
           textDayFontWeight: 500,
           textMonthFontWeight: 500,
           textDayHeaderFontWeight: 500,
