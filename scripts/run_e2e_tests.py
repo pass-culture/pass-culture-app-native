@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import os
 import re
@@ -9,7 +10,7 @@ import sys
 import time
 
 ENV = "staging"
-TESTS_DIR = ".maestro/testsV3"
+TESTS_DIR = ".maestro/tests"
 CONFIG_FILE = "/tmp/.maestro_e2e_last_config.json"
 SECRET_FILE = ".maestro/.env.secret"
 MOCK_ANALYTICS_PORT = 4001
@@ -237,6 +238,31 @@ def empty_config() -> dict:
     }
 
 
+def parse_args() -> tuple[argparse.Namespace, list[str]]:
+    parser = argparse.ArgumentParser(
+        description="Lance les tests E2E Maestro. Sans --target ni --platform, le mode interactif est utilisé."
+    )
+    parser.add_argument("--target", choices=["cloud", "test"])
+    parser.add_argument("--platform", choices=["android", "ios", "web"])
+    parser.add_argument("--tags", nargs="*", default=None)
+    parser.add_argument("--app-binary", default="")
+    parser.add_argument("--app-file", default="")
+    parser.add_argument("--run-name", default="")
+    # les arguments inconnus (ex: --headless) sont transmis tels quels à maestro
+    return parser.parse_known_args()
+
+
+def config_from_args(args: argparse.Namespace) -> dict:
+    config = empty_config()
+    config["target"] = args.target
+    config["platform"] = args.platform
+    config["tags"] = args.tags or []
+    config["app_binary"] = args.app_binary
+    config["app_file"] = args.app_file
+    config["run_name"] = args.run_name
+    return config
+
+
 def fill_missing(config: dict) -> dict:
     if not config.get("target"):
         config["target"] = select(
@@ -312,7 +338,6 @@ def build_maestro_args(config: dict) -> list[str]:
         "MAESTRO_INVALID_EMAIL": "dev-tests-e2e-invalid@passculture.team",
         "MAESTRO_UNREGISTERED_EMAIL": "dev-tests-unregistered+e2e@passculture.team",
         "MAESTRO_MOCK_ANALYTICS_SERVER": f"http://localhost:{MOCK_ANALYTICS_PORT}",
-        "MAESTRO_NUMBER_PHONE": "0607080910",
         "MAESTRO_PASSWORD": secrets["password"],
         "MAESTRO_RUN_TRACKING_TESTS": "false",
         "MAESTRO_RUN_CLOUD_COMMANDS": "true"
@@ -516,22 +541,28 @@ def _remove_logbox_ignore():
 
 
 def main():
-    print("\n" * 2)
-    banner()
+    args, extra_maestro_args = parse_args()
+    non_interactive = bool(args.target and args.platform)
 
-    config = prompt_config()
+    if non_interactive:
+        config = config_from_args(args)
+    else:
+        print("\n" * 2)
+        banner()
 
-    print(f"\n{BOLD}{CYAN}  📋 Récapitulatif{RESET}")
-    print(format_config(config))
+        config = prompt_config()
 
-    if not confirm("Lancer les tests ?"):
-        warn("Annulé.")
-        sys.exit(0)
+        print(f"\n{BOLD}{CYAN}  📋 Récapitulatif{RESET}")
+        print(format_config(config))
 
-    save_config(config)
+        if not confirm("Lancer les tests ?"):
+            warn("Annulé.")
+            sys.exit(0)
+
+        save_config(config)
 
     print(f"\n{GREEN}▸ Préparation...{RESET}")
-    maestro_args = build_maestro_args(config)
+    maestro_args = build_maestro_args(config) + extra_maestro_args
     logbox_injected = setup_environment(config)
 
     signal.signal(
