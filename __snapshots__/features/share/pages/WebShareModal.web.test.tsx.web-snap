@@ -198,6 +198,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <h1
                       class="c0"
+                      id="testUuidV4"
                       style="text-align: center;"
                     >
                       Partager l’offre

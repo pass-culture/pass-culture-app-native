@@ -436,6 +436,8 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
     </View>
   </Modal>,
   <View
+    accessibilityLabel="Localisation"
+    accessibilityViewIsModal={true}
     style={
       {
         "backgroundColor": "#ffffff",
@@ -496,6 +498,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
           <Text
             accessibilityLevel="h1"
             accessibilityRole="header"
+            nativeID="testUuidV4"
             style={
               {
                 "color": "#161617",

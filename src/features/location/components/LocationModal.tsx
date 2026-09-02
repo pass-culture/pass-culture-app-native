@@ -160,12 +160,13 @@ export const LocationModal = ({
   const currentValue = locationMode ? MODE_TO_LABEL_MAP[locationMode] : ''
 
   return (
-    <ModalScreenWrapper onClose={handleClose} fullScreen>
-      {(closeWithTransition) => (
+    <ModalScreenWrapper onClose={handleClose} fullScreen title="Localisation">
+      {(closeWithTransition, titleId) => (
         <React.Fragment>
           <HeaderContainer>
             <ModalHeader
               title="Localisation"
+              titleID={titleId}
               rightIconAccessibilityLabel="Fermer la modale"
               rightIcon={Close}
               onRightIconPress={closeWithTransition}

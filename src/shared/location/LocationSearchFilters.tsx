@@ -40,7 +40,7 @@ export const LocationSearchFilters = ({
         onValuesChange={onValuesChange}
         shouldShowMinMaxValues
         minMaxValuesComplement={`\u00a0km`}
-        maxLabel="Dans un rayon de&nbsp;:"
+        maxLabel={`Dans un rayon de\u00a0:`}
         formatValues={formatKm}
         sliderLength={sliderLength}
         accessibilityLabelledBy={radiusLabelId}
