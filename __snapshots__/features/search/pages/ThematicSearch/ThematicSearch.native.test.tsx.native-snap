@@ -1548,7 +1548,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   </Text>
                 </View>
                 <View
-                  accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
+                  accessibilityLabel="Abonnements aux bibliothèques"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -1607,7 +1607,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       },
                     ]
                   }
-                  testID="Abonnements aux médiathèques et bibliothèques"
+                  testID="Abonnements aux bibliothèques"
                 >
                   <Text
                     accessibilityLevel="p"
@@ -1623,7 +1623,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       }
                     }
                   >
-                    Abonnements aux médiathèques et bibliothèques
+                    Abonnements aux bibliothèques
                   </Text>
                 </View>
                 <View
