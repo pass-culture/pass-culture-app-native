@@ -1,8 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- runFlow:
-    when:
-      visible: '.*Paris.*'
-    commands:
-      - tapOn: '.*Paris.*'
-      - tapOn: 'Valider la localisation'

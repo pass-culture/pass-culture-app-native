@@ -1,9 +1,0 @@
-appId: app.passculture.webapp
----
-- runFlow: ./../commons/Close.yml
-
-- openLink:
-    link: ${output.links.production.venue}
-    autoVerify: true
-- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
-- assertVisible: '.*OLYMPIA'
