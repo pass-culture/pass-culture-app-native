@@ -5,8 +5,7 @@ import { HistoryItemHighlight } from 'features/search/components/Highlight/Highl
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 
@@ -56,7 +55,7 @@ const Container = styled.View({
   flex: 1,
 })
 
-const HistoryItemTouchable = styledButton(Touchable)({
+const HistoryItemTouchable = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
 })
