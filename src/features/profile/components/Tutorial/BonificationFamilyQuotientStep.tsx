@@ -12,6 +12,7 @@ import { BlockDescriptionItem } from 'features/profile/components/Tutorial/Block
 import { DashedStepContainer } from 'features/profile/components/Tutorial/DashedStepContainer'
 import { PlainMoreSeparator } from 'features/profile/components/Tutorial/PlainMoreSeparator'
 import { getBonificationButtonContent } from 'features/profile/helpers/getBonificationButtonContent'
+import { getQFBonificationRefusedType } from 'features/profile/helpers/getQFBonificationRefusedType'
 import { UserProfile } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -52,27 +53,30 @@ export const BonificationFamilyQuotientStep = ({
 
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
 
-  const bonificationTooManyRetries = user?.remainingBonusAttempts === 0
-
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
 
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
 
-  const navigateToBonificationRefused = () => {
-    navigate(
-      ...getSubscriptionHookConfig('BonificationFamilyQuotientRefused', {
-        bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
-      })
-    )
-  }
+  const bonificationRefusedType = getQFBonificationRefusedType(bonificationStatus)
 
   const navigateToBonificationFlow = () => {
     navigate(...getSubscriptionHookConfig('BonificationExplanations'))
   }
 
+  const navigateToBonificationRefused = (bonificationRefusedType: BonificationQFRefusedType) => {
+    navigate(
+      ...getSubscriptionHookConfig('BonificationFamilyQuotientRefused', {
+        bonificationRefusedType,
+      })
+    )
+  }
+
   const onPressBonificationButton = () => {
-    if (bonificationTooManyRetries) navigateToBonificationRefused()
-    else navigateToBonificationFlow()
+    if (bonificationRefusedType) {
+      navigateToBonificationRefused(bonificationRefusedType)
+    } else {
+      navigateToBonificationFlow()
+    }
     resetBannerVisibility()
   }
 
