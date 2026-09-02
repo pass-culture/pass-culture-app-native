@@ -48,8 +48,8 @@ const cases = [
     type: BonificationType.FAMILY_QUOTIENT,
     status: QFBonificationStatus.not_eligible,
     expected: {
-      label: 'Faire une demande',
-      accessibilityLabel: 'Faire une demande de bonus quotient familial',
+      label: 'Vérifier ma demande',
+      accessibilityLabel: 'Vérifier ma demande de bonus quotient familial',
       disabled: false,
     },
   },
@@ -58,8 +58,8 @@ const cases = [
     type: BonificationType.DISABILITY,
     status: DisabilityBonificationStatus.not_eligible,
     expected: {
-      label: 'Faire une demande',
-      accessibilityLabel: 'Faire une demande de bonus situation de handicap',
+      label: 'Vérifier ma demande',
+      accessibilityLabel: 'Vérifier ma demande de bonus situation de handicap',
       disabled: false,
     },
   },
@@ -68,8 +68,8 @@ const cases = [
     type: BonificationType.FAMILY_QUOTIENT,
     status: null,
     expected: {
-      label: 'Faire une demande',
-      accessibilityLabel: 'Faire une demande de bonus quotient familial',
+      label: 'Vérifier ma demande',
+      accessibilityLabel: 'Vérifier ma demande de bonus quotient familial',
       disabled: false,
     },
   },
@@ -78,8 +78,8 @@ const cases = [
     type: BonificationType.DISABILITY,
     status: undefined,
     expected: {
-      label: 'Faire une demande',
-      accessibilityLabel: 'Faire une demande de bonus situation de handicap',
+      label: 'Vérifier ma demande',
+      accessibilityLabel: 'Vérifier ma demande de bonus situation de handicap',
       disabled: false,
     },
   },
