@@ -32,7 +32,7 @@ onFlowStart:
 
 - tapOn: 'Faire une demande de bonus situation de handicap'
 
-- assertVisible: 'Nous avons besoins de quelques informations supplémentaires'
+- assertVisible: 'Nous avons besoin de quelques informations supplémentaires'
 
 - tapOn: '.*Commencer.*'
 

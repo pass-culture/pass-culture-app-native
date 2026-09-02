@@ -27,7 +27,7 @@ export const BonificationRequiredInformation = () => {
   const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
 
   const title = isDisabilityBonification
-    ? 'Nous avons besoins de quelques informations supplémentaires'
+    ? 'Nous avons besoin de quelques informations supplémentaires'
     : 'Quelles sont les informations requises d’un de tes parents ou représentants légaux\u00a0?'
 
   const dataPrivacyText = isDisabilityBonification
