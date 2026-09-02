@@ -10,8 +10,13 @@ const FOCUSABLE_SELECTOR = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(', ')
 
-const getModalElement = (modalRef: RefObject<View | null>) =>
-  modalRef.current as unknown as HTMLElement | null
+const isHTMLElement = (node: unknown): node is HTMLElement =>
+  typeof HTMLElement !== 'undefined' && node instanceof HTMLElement
+
+const getModalElement = (modalRef: RefObject<View | null>) => {
+  const node = modalRef.current
+  return isHTMLElement(node) ? node : null
+}
 
 const getFocusableElements = (modalElement: HTMLElement) => {
   const candidates = Array.from(
@@ -96,5 +101,5 @@ export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boo
       globalThis.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('focusin', handleFocusIn)
     }
-  }, [modalRef, isReady]) // Ajout de isReady dans le tableau de dépendances
+  }, [modalRef, isReady])
 }
