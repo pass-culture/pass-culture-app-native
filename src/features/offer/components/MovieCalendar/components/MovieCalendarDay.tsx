@@ -6,8 +6,7 @@ import styled from 'styled-components/native'
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo } from 'ui/theme'
 
 import { useMovieCalendarDay } from '../hooks/useMovieCalendarDay'
@@ -83,13 +82,10 @@ const CalendarTextView = styled(View)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,
 }))
 
-const CalendarCell = styledButton(Touchable)({
+const CalendarCell = styled(TouchableOpacity)({
   justifyContent: 'center',
   alignItems: 'center',
   flexWrap: 'wrap',
-  '&:hover': {
-    textDecorationLine: 'none',
-  },
 })
 
 const DefaultCalendarText = styled(Typo.BodyAccent)({
