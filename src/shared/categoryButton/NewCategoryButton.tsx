@@ -147,8 +147,10 @@ const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) =
   color: theme.designSystem.color.text.default,
   backgroundColor: theme.designSystem.color.text.inverted,
   borderRadius: theme.designSystem.size.borderRadius.s,
-  paddingVertical: theme.designSystem.size.spacing.xxs,
-  paddingHorizontal: theme.designSystem.size.spacing.xs,
+  paddingTop: theme.designSystem.size.spacing.xxs,
+  paddingBottom: theme.designSystem.size.spacing.xxs,
+  paddingLeft: theme.designSystem.size.spacing.xs,
+  paddingRight: theme.designSystem.size.spacing.xs,
 }))
 
 const CATEGORY_ICON_TOP = getSpacing(3.5)
