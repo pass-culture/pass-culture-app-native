@@ -248,9 +248,7 @@ describe('AutocompleteOfferItem component', () => {
 
       await screen.findByText('cinéma')
 
-      await expect(
-        screen.getByText('Abonnements aux médiathèques et bibliothèques')
-      ).toBeOnTheScreen()
+      await expect(screen.getByText('Abonnements aux bibliothèques')).toBeOnTheScreen()
     })
   })
 
