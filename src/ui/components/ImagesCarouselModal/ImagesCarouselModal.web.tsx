@@ -41,7 +41,7 @@ export const ImagesCarouselModal = ({
 }: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
   const carouselRef = useRef<ICarouselInstance>(null)
-  const progressValue = useSharedValue<number>(0)
+  const progressValue = useSharedValue<number>(defaultIndex)
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
   const { isDesktopViewport, designSystem } = useTheme()
 
@@ -50,7 +50,15 @@ export const ImagesCarouselModal = ({
     [imagesURL]
   )
 
+  const getAccessibilityTitleLabel = useCallback(
+    (progress: number) => `Image ${Math.round(progress) + 1} sur ${imagesURL.length}`,
+    [imagesURL.length]
+  )
+
   const [title, setTitle] = useState(getTitleLabel(progressValue.value))
+  const [accessibilityTitle, setAccessibilityTitle] = useState(() =>
+    getAccessibilityTitleLabel(defaultIndex)
+  )
 
   const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : designSystem.size.spacing.xxxxl
 
@@ -69,16 +77,18 @@ export const ImagesCarouselModal = ({
       progressValue.value = newIndex
       carouselRef.current?.scrollTo({ index: newIndex, animated: true })
       setTitle(getTitleLabel(newIndex))
+      setAccessibilityTitle(getAccessibilityTitleLabel(newIndex))
     },
-    [getTitleLabel, imagesURL, progressValue]
+    [getAccessibilityTitleLabel, getTitleLabel, imagesURL.length, progressValue]
   )
 
   const handleProgressChange = useCallback(
     (_: unknown, absoluteProgress: number) => {
       progressValue.value = absoluteProgress
       setTitle(getTitleLabel(absoluteProgress))
+      setAccessibilityTitle(getAccessibilityTitleLabel(absoluteProgress))
     },
-    [getTitleLabel, progressValue]
+    [getAccessibilityTitleLabel, getTitleLabel, progressValue]
   )
 
   const displayModalBody = useCallback(() => {
@@ -140,7 +150,8 @@ export const ImagesCarouselModal = ({
 
   return (
     <AppModal
-      title={imagesURL.length > 1 ? title : ''}
+      title={title}
+      accessibilityLabel={accessibilityTitle}
       visible={isVisible}
       isFullscreen
       rightIcon={Close}
