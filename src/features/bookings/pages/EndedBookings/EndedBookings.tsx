@@ -1,6 +1,6 @@
+import { FlashList } from '@shopify/flash-list'
 import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { FlatList, ListRenderItem } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -119,7 +119,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
     [hideReactionModal, onSaveReaction, requestReview]
   )
 
-  const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
+  const renderItem = useCallback(
     ({ item }) => {
       return enableNewBookings ? (
         <EndedBookingListItemWrapper booking={item} handleShowReactionModal={openReactionModal} />
@@ -136,7 +136,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
 
   return (
     <React.Fragment>
-      <FlatList
+      <FlashList
         contentContainerStyle={contentContainerStyle(designSystem)}
         data={endedBookings ?? []}
         keyExtractor={keyExtractor}
@@ -144,6 +144,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
         ItemSeparatorComponent={enableNewBookings ? null : StyledSeparator}
         ListHeaderComponent={hasEndedBookings ? <Placeholder /> : null}
         ListEmptyComponent={<NoBookingsView />}
+        ListFooterComponent={hasEndedBookings ? <Placeholder /> : null}
       />
 
       {shareContent ? (
