@@ -4,11 +4,25 @@ import { CategoryIdEnum } from 'api/gen'
 import { ReactionChoiceModalBodyWithRedirection } from 'features/reactions/components/ReactionChoiceModalBodyWithRedirection/ReactionChoiceModalBodyWithRedirection'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 describe('ReactionChoiceModalBodyWithRedirection', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
   })
 
   it('should display image container when there is at least one offer booked with an image', () => {

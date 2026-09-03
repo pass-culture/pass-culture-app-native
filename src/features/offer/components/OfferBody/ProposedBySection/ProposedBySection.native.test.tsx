@@ -3,7 +3,14 @@ import React from 'react'
 
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockNavigate = jest.fn()
 jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
@@ -16,6 +23,16 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ProposedBySection />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display venue name', () => {
     render(
       <ProposedBySection

@@ -10,10 +10,17 @@ import { venueProAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -49,6 +56,13 @@ describe('ProAdvicesVenue', () => {
     mockServer.getApi<VenueProAdvices>(`/v1/venue/${venueDataTest.id}/advices`, {
       proAdvices: [...venueProAdvicesFixture.proAdvices],
       nbResults: venueProAdvicesFixture.nbResults,
+    })
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
     })
   })
 

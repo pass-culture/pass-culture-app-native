@@ -1,11 +1,28 @@
 import React from 'react'
 
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { fireEvent, render, screen } from 'tests/utils/web'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockHandleImagePress = jest.fn()
 
 describe('<VenueBanner />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should call press handler when pressing image not from google', () => {
     render(
       <VenueBanner

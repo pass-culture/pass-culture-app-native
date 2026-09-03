@@ -15,6 +15,7 @@ export type CustomRemoteConfig = {
   shouldDisplayReassuranceMention: boolean
   shouldLogInfo: boolean
   showAccessScreeningButton: boolean
+  imageResizingUrl: string
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
   test_param: string
 }

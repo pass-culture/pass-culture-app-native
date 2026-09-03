@@ -4,9 +4,16 @@ import { View } from 'react-native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { AdviceCard, AdviceCardProps } from 'features/advices/components/AdviceCard/AdviceCard'
 import { advicesFixture } from 'features/advices/fixtures/advices.fixture'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { Button } from 'ui/designSystem/Button/Button'
 import { TagVariant } from 'ui/designSystem/Tag/types'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockOnLayoutWithButton = {
   nativeEvent: {
@@ -29,6 +36,16 @@ const mockOnSeeMoreButtonPress = jest.fn()
 jest.useFakeTimers()
 
 describe('AdviceCard (Mobile)', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should render the AdviceCard component with correct title', () => {
     renderAdviceCard()
 

@@ -7,8 +7,15 @@ import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils/web'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const searchId = uuidv4()
 const mockUseSearch = jest.fn(() => ({
@@ -38,6 +45,16 @@ jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
 }))
 
 describe('<VenuePlaylist />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       jest.spyOn(console, 'warn').mockImplementation()
