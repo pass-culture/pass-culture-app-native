@@ -4,11 +4,10 @@ import styled from 'styled-components/native'
 
 import { DayMovieScreenings } from 'api/gen'
 import {
-  useDisplayCalendar,
-  useMovieCalendar,
-} from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+  useDisplayCalendarV2,
+  useMovieCalendarV2,
+} from 'features/offer/components/MoviesScreeningCalendarV2/MovieCalendarContextV2'
 import { MovieOfferTileV2 } from 'features/offer/components/MoviesScreeningCalendarV2/MovieOfferTileV2'
-import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 
 type Props = {
   calendar: DayMovieScreenings[]
@@ -16,7 +15,7 @@ type Props = {
 }
 
 export const VenueCalendarV2: FunctionComponent<Props> = ({ calendar, venueId }) => {
-  const { selectedDate, disableDates } = useMovieCalendar()
+  const { selectedDate, disableDates } = useMovieCalendarV2()
   const shouldDisplayCalendar = calendar.some((dayMovieScreenings) =>
     dayMovieScreenings.screenings.some(
       (movieScreenings) => movieScreenings.dayScreenings.length > 0
@@ -29,15 +28,15 @@ export const VenueCalendarV2: FunctionComponent<Props> = ({ calendar, venueId })
           (movieScreenings) => movieScreenings.dayScreenings.length === 0
         )
       )
-      .map((dayMovieScreenings) => new Date(dayMovieScreenings.date))
+      .map((dayMovieScreenings) => dayMovieScreenings.date)
   )
+
   const selectedDateMovies = calendar.find(
-    (dayMovieScreenings) =>
-      dayMovieScreenings.date === formatDateToISOStringWithoutTime(selectedDate)
+    (dayMovieScreenings) => dayMovieScreenings.date === selectedDate
   )
   const dayScreenings = selectedDateMovies?.screenings
 
-  useDisplayCalendar(shouldDisplayCalendar)
+  useDisplayCalendarV2(shouldDisplayCalendar)
 
   const getIsLast = (index: number) => {
     const length = selectedDateMovies?.screenings.length ?? 0

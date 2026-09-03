@@ -5,14 +5,13 @@ import styled from 'styled-components/native'
 import { DayVenueScreenings } from 'api/gen'
 import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/ExpandingFlatList'
 import {
-  useDisableCalendarDates,
-  useDisplayCalendar,
-  useMovieCalendar,
-} from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+  useDisableCalendarDatesV2,
+  useDisplayCalendarV2,
+  useMovieCalendarV2,
+} from 'features/offer/components/MoviesScreeningCalendarV2/MovieCalendarContextV2'
 import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
 import { CineBlockV2 } from 'features/offer/components/OfferCine/CineBlockV2'
 import { INITIAL_LIST_SIZE, expandList, hasReachedEnd } from 'features/offer/helpers/expandableList'
-import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Typo } from 'ui/theme'
@@ -30,23 +29,21 @@ export const OfferCineContentV2: FC<Props> = ({
   isLoading,
   onSeeVenuePress,
 }) => {
-  const { selectedDate } = useMovieCalendar()
-  const venues =
-    calendar?.find((value) => value.date === formatDateToISOStringWithoutTime(selectedDate))
-      ?.screenings || []
+  const { selectedDate } = useMovieCalendarV2()
+  const venues = calendar?.find((value) => value.date === selectedDate)?.screenings || []
   const disabledDates = calendar
     .filter((dayVenueScreenings) =>
       dayVenueScreenings.screenings.every((screenings) => screenings.dayScreenings.length === 0)
     )
-    .map((dayVenueScreenings) => new Date(dayVenueScreenings.date))
+    .map((dayVenueScreenings) => dayVenueScreenings.date)
 
   const [displayedLen, setDisplayedLen] = useState(INITIAL_LIST_SIZE)
   const hasAnyScreening = calendar.some((dayVenueScreenings) =>
     dayVenueScreenings.screenings.some((screenings) => screenings.dayScreenings.length > 0)
   )
 
-  useDisplayCalendar(hasAnyScreening)
-  useDisableCalendarDates(disabledDates)
+  useDisplayCalendarV2(hasAnyScreening)
+  useDisableCalendarDatesV2(disabledDates)
 
   useEffect(() => {
     setDisplayedLen(INITIAL_LIST_SIZE)
