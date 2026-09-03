@@ -5,8 +5,10 @@ import styled, { useTheme } from 'styled-components/native'
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { GatedVideoSection } from 'features/offer/components/OfferContent/VideoSection/GatedVideoSection'
-import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
+import { PORTRAIT_PLAYER_STYLE } from 'features/offer/components/OfferContent/VideoSection/portraitPlayerStyle'
+import { MAX_HEIGHT_VIDEO_PORTRAIT, MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { getOfferVideoPlayerSize } from 'features/offer/helpers/getOfferVideoPlayerSize/getOfferVideoPlayerSize'
 import { analytics } from 'libs/analytics/provider'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
@@ -27,6 +29,7 @@ type VideoSectionProps = {
   playerRatio?: number
   duration?: number | null
   hasVideoCookiesConsent?: boolean
+  isPortrait?: boolean
 }
 
 export const VideoSection = ({
@@ -40,12 +43,21 @@ export const VideoSection = ({
   offerId,
   duration,
   hasVideoCookiesConsent,
+  isPortrait,
   onManageCookiesPress,
   onVideoConsentPress,
 }: VideoSectionProps) => {
-  const { isDesktopViewport } = useTheme()
-  const { width: viewportWidth } = useWindowDimensions()
-  const videoHeight = Math.min(viewportWidth, maxWidth) * playerRatio
+  const { isDesktopViewport, contentPage } = useTheme()
+  const { width: viewportWidth, height: viewportHeight } = useWindowDimensions()
+  const { width: playerWidth, height: videoHeight } = isPortrait
+    ? getOfferVideoPlayerSize({
+        isPortrait: true,
+        viewportWidth,
+        maxWidth,
+        horizontalMargin: isDesktopViewport ? 0 : contentPage.marginHorizontal,
+        maxHeight: isDesktopViewport ? MAX_HEIGHT_VIDEO_PORTRAIT : viewportHeight,
+      })
+    : getOfferVideoPlayerSize({ viewportWidth, maxWidth, playerRatio })
   const [playVideo, setPlayVideo] = useState(false)
 
   const handleOnPlayPress = useCallback(() => {
@@ -63,7 +75,8 @@ export const VideoSection = ({
           videoId={videoId}
           thumbnail={videoThumbnail}
           height={videoHeight}
-          width={viewportWidth < maxWidth ? undefined : maxWidth}
+          width={playerWidth}
+          style={isPortrait ? PORTRAIT_PLAYER_STYLE : undefined}
           initialPlayerParams={{ autoplay: true }}
           duration={duration ? formatDuration(duration, 'sec') : undefined}
           onPlayPress={handleOnPlayPress}
@@ -74,14 +87,14 @@ export const VideoSection = ({
   }, [
     duration,
     handleOnPlayPress,
-    maxWidth,
+    isPortrait,
     playVideo,
+    playerWidth,
     subtitle,
     title,
     videoHeight,
     videoId,
     videoThumbnail,
-    viewportWidth,
   ])
 
   const handleConsentAndPlay = useCallback(() => {
@@ -96,7 +109,8 @@ export const VideoSection = ({
         title={title}
         duration={duration ? formatDuration(duration, 'sec') : undefined}
         height={videoHeight}
-        width={viewportWidth < maxWidth ? undefined : maxWidth}
+        width={playerWidth}
+        isPortrait={isPortrait}
         onManageCookiesPress={onManageCookiesPress}
         onVideoConsentPress={handleConsentAndPlay}
       />
@@ -104,12 +118,12 @@ export const VideoSection = ({
   }, [
     duration,
     handleConsentAndPlay,
-    maxWidth,
+    isPortrait,
     onManageCookiesPress,
+    playerWidth,
     title,
     videoHeight,
     videoThumbnail,
-    viewportWidth,
   ])
 
   return (
