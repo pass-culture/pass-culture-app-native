@@ -75,6 +75,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_PRO_REVIEWS_OFFER = 'wipProReviewsOffer',
   WIP_PRO_REVIEWS_PLAYLIST = 'wipProReviewsPlaylist',
   WIP_PRO_REVIEWS_VENUE = 'wipProReviewsVenue',
+  WIP_REFACTOR_FETCH = 'wipRefactorFetch',
   WIP_REVIEW_TRIGGER_BOOKING = 'wipReviewTriggerBooking',
   WIP_REVIEW_TRIGGER_CREDIT = 'wipReviewTriggerCredit',
   WIP_REVIEW_TRIGGER_LIKE = 'wipReviewTriggerLike',
