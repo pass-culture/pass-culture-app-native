@@ -32,8 +32,7 @@ type ItemDimensions = { width: number; height: number }
 type RenderHeaderItem = ((itemDimensions: ItemDimensions) => React.ReactElement<any>) | undefined
 
 type RenderFooterItem =
-  | ((itemDimensions: ItemDimensions) => React.ReactElement<any> | null)
-  | undefined
+  ((itemDimensions: ItemDimensions) => React.ReactElement<any> | null) | undefined
 
 export type CustomListRenderItem<ItemT> = (
   info: ListRenderItemInfo<ItemT> &

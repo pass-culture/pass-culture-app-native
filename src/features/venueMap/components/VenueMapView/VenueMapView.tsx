@@ -26,17 +26,16 @@ import { Button } from 'ui/designSystem/Button/Button'
 
 import { Marker } from './Marker/Marker'
 
-interface VenueMapViewProps
-  extends Omit<
-    MapClusteringProps & MapViewProps,
-    | 'rotateEnabled'
-    | 'pitchEnabled'
-    | 'moveOnMarkerPress'
-    | 'renderCluster'
-    | 'radius'
-    | 'animationEnabled'
-    | 'showsUserLocation'
-  > {
+interface VenueMapViewProps extends Omit<
+  MapClusteringProps & MapViewProps,
+  | 'rotateEnabled'
+  | 'pitchEnabled'
+  | 'moveOnMarkerPress'
+  | 'renderCluster'
+  | 'radius'
+  | 'animationEnabled'
+  | 'showsUserLocation'
+> {
   venues: GeolocatedVenue[]
   selectedVenueId?: number
   showLabel?: boolean

@@ -1,36 +1,33 @@
 import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategoryIllustrationUrl'
 
-const remoteIllustrationNames = [
-  'bellPaintingSmall',
-  'birthdayCake',
-  'blockedPaintingLarge',
-  'brokenBellSmall',
-  'brokenDinosaurSkeletonLarge',
-  'cryingManPaintingLarge',
-  'disconnectedCableStickManLarge',
-  'emptyDigitalWindowLarge',
-  'emptyWalletLarge',
-  'emptyWalletSmall',
-  'heartMosaicSmall',
-  'hourglass',
-  'mailBoxSendingLarge',
-  'mobileDeviceAndParameters',
-  'oldMegaphone',
-  'questioningKnightLarge',
-  'questioningKnightSmall',
-  'ratingHandsSmall',
-  'ringingBellSmall',
-  'sculptureMagnifyingGlassPaperLarge',
-  'sculptureMagnifyingGlassPaperSmall',
-  'signingDocumentPaintingLarge',
-  'stressedKnightLarge',
-  'trashMosaic',
-  'validStampMosaïcLarge',
-  'workedInPrgressSignSculptureLarge',
-  'worldGlobeSmall',
-] as const
-
-export type RemoteIllustrationName = (typeof remoteIllustrationNames)[number]
+export type RemoteIllustrationName =
+  | 'bellPaintingSmall'
+  | 'birthdayCake'
+  | 'blockedPaintingLarge'
+  | 'brokenBellSmall'
+  | 'brokenDinosaurSkeletonLarge'
+  | 'cryingManPaintingLarge'
+  | 'disconnectedCableStickManLarge'
+  | 'emptyDigitalWindowLarge'
+  | 'emptyWalletLarge'
+  | 'emptyWalletSmall'
+  | 'heartMosaicSmall'
+  | 'hourglass'
+  | 'mailBoxSendingLarge'
+  | 'mobileDeviceAndParameters'
+  | 'oldMegaphone'
+  | 'questioningKnightLarge'
+  | 'questioningKnightSmall'
+  | 'ratingHandsSmall'
+  | 'ringingBellSmall'
+  | 'sculptureMagnifyingGlassPaperLarge'
+  | 'sculptureMagnifyingGlassPaperSmall'
+  | 'signingDocumentPaintingLarge'
+  | 'stressedKnightLarge'
+  | 'trashMosaic'
+  | 'validStampMosaïcLarge'
+  | 'workedInPrgressSignSculptureLarge'
+  | 'worldGlobeSmall'
 
 export const remoteIllustrationUrls = {
   bellPaintingSmall: buildCategoryIllustrationUrl('bellPaintingSmall.png'),

@@ -104,11 +104,7 @@ export type CTAexitActivationFlow =
   | 'GoToDemarcheNumerique'
 
 export type ConsultArtistOriginDetails =
-  | 'similarArtistsPlaylist'
-  | 'venue'
-  | 'offer'
-  | 'searchResults'
-  | 'artistRecommendation'
+  'similarArtistsPlaylist' | 'venue' | 'offer' | 'searchResults' | 'artistRecommendation'
 
 export type FakeDoorAnalyticsParams = {
   featureName: string

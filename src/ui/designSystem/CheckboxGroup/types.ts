@@ -30,8 +30,7 @@ export type CheckboxGroupOptionDetailed<T = string> = Omit<
 }
 
 export type CheckboxGroupOption<T = string> =
-  | CheckboxGroupOptionSimple<T>
-  | CheckboxGroupOptionDetailed<T>
+  CheckboxGroupOptionSimple<T> | CheckboxGroupOptionDetailed<T>
 
 export type CheckboxGroupDisplay = 'vertical' | 'horizontal'
 

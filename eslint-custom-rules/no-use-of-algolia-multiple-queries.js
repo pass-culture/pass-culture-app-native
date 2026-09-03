@@ -11,13 +11,22 @@
  * await multipleQueries(queries)
  */
 
-module.exports = function(context) {
-  return {
-    'MemberExpression[object.name=client][property.name=multipleQueries]': function(node) {
-      context.report({
-        node,
-        message: 'Avoid using client.multipleQueries. Use another method instead.',
-      });
+module.exports = {
+  meta: {
+    type: 'problem',
+    docs: {
+      description: 'Avoid using client.multipleQueries. Use another method instead.',
     },
-  };
-};
+    schema: [],
+  },
+  create(context) {
+    return {
+      'MemberExpression[object.name=client][property.name=multipleQueries]'(node) {
+        context.report({
+          node,
+          message: 'Avoid using client.multipleQueries. Use another method instead.',
+        })
+      },
+    }
+  },
+}
