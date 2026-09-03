@@ -1,0 +1,33 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - activation
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        id_provider: 'EDUCONNECT'
+        step: 'EMAIL_VALIDATION'
+        age: 17
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
+
+- runFlow:
+    file: FillProfile.yml
+
+- tapOn: 'Identification - non complété'
+
+- assertVisible: 'Ma pièce d’identité'
+
+- tapOn: 'Mes codes ÉduConnect'
+
+- assertVisible: 'Un compte unique pour les services numériques des écoles et des établissements'
+
+- runFlow:
+    file: ../common/navigation/TapOnBack.yml
+
+- tapOn: 'Mes codes ÉduConnect'
+
+- runFlow: ../common/lifecycle/StopApp.yml

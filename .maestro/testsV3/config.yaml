@@ -9,3 +9,4 @@ flows:
   - artist/*
   - offer/*
   - web/*
+  - activation/*
