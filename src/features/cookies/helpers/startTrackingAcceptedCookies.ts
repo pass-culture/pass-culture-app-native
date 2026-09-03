@@ -38,7 +38,9 @@ export const startTrackingAcceptedCookies = (
 
   if (acceptedGoogleAnalytics && !hasLoggedAppThemeStatus) {
     hasLoggedAppThemeStatus = true
-    void logAppThemeStatus()
+    void logAppThemeStatus().then((success) => {
+      if (!success) hasLoggedAppThemeStatus = false
+    })
   }
 
   const acceptedAdjust = acceptedCookies.includes(CookieNameEnum.ADJUST)
