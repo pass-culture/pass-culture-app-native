@@ -1,5 +1,5 @@
 import { isAfter, isFirstDayOfMonth } from 'date-fns'
-import { utcToZonedTime } from 'date-fns-tz'
+import { formatInTimeZone, utcToZonedTime } from 'date-fns-tz'
 
 import { DAYS } from 'shared/date/days'
 import { CAPITALIZED_SHORT_MONTHS, FullMonth, MONTHS, SHORT_MONTHS } from 'shared/date/months'
@@ -298,11 +298,26 @@ export const isTomorrow = (someDate: Date) => {
 
 export const localizeUTCDate = (someDate: Date | string) => {
   const utcDate = new Date(someDate)
-  const timeZoneOffest = new Date(someDate).getTimezoneOffset()
-  return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffest)
+  const timeZoneOffset = new Date(someDate).getTimezoneOffset()
+  return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffset)
 }
 
 export const getTimeZonedDate = ({ date, timezone }: { date: Date | string; timezone: string }) => {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
+}
+
+const getIsoOffset = (isoFormattedDate: string): string | null => {
+  // Matches trailing 'Z' or offset like '+05:30' / '-04:00'
+  const regex = /(Z|[+-]\d{2}:?\d{2})$/
+  const match = regex.exec(isoFormattedDate)
+  return match ? match[0] : null
+}
+
+export const formatDateWithTimeZoneOffset = (
+  isoFormattedDate: string,
+  outputFormat: string
+): string => {
+  const offset = getIsoOffset(isoFormattedDate) ?? 'utc'
+  return formatInTimeZone(isoFormattedDate, offset, outputFormat)
 }

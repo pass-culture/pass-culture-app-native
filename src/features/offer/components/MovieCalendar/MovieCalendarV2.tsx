@@ -1,0 +1,163 @@
+import { FlashList, FlashListRef } from '@shopify/flash-list'
+import React, { Ref, useCallback } from 'react'
+import { LayoutChangeEvent, View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import styled, { useTheme } from 'styled-components/native'
+
+import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
+import { MovieCalendarDayV2 } from 'features/offer/components/MovieCalendar/components/MovieCalendarDayV2'
+import { AbsoluteRoundedButton } from 'ui/components/buttons/AbsoluteRoundedButton'
+import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
+import { getSpacing } from 'ui/theme'
+
+import { handleMovieCalendarScroll } from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
+
+type Props = {
+  dates: string[]
+  selectedDate: string | undefined
+  onTabChange: (date: string) => void
+  listRef: Ref<FlashListRef<string>> | null
+  disabledDates?: string[]
+  listWidth?: number
+  onFlatListLayout?: (event: LayoutChangeEvent) => void
+  itemWidth?: number
+  onItemLayout?: (event: LayoutChangeEvent) => void
+}
+
+export const MovieCalendarV2: React.FC<Props> = ({
+  dates,
+  selectedDate,
+  onTabChange,
+  listRef,
+  listWidth,
+  onFlatListLayout,
+  itemWidth,
+  onItemLayout,
+  disabledDates,
+}) => {
+  const { isDesktopViewport, designSystem } = useTheme()
+  const {
+    handleScrollPrevious,
+    handleScrollNext,
+    onScroll,
+    onContentSizeChange,
+    onContainerLayout,
+    isEnd,
+    isStart,
+  } = useHorizontalFlatListScroll({
+    ref: listRef,
+    isActive: isDesktopViewport,
+  })
+  const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
+
+  const scrollToMiddleElement = useCallback(
+    (currentIndex: number) => {
+      if (!listWidth || !itemWidth) return
+      const { offset } = handleMovieCalendarScroll(
+        currentIndex,
+        listWidth,
+        itemWidth,
+        MOVIE_CALENDAR_PADDING
+      )
+
+      if (listRef && 'current' in listRef) {
+        listRef.current?.scrollToOffset({
+          animated: true,
+          offset,
+        })
+      }
+    },
+    [listWidth, itemWidth, MOVIE_CALENDAR_PADDING, listRef]
+  )
+
+  const onInternalTabChange = useCallback(
+    (date: string) => {
+      const currentIndex = dates.indexOf(date)
+      onTabChange(date)
+      scrollToMiddleElement(currentIndex)
+    },
+    [onTabChange, scrollToMiddleElement, dates]
+  )
+
+  return (
+    <View onLayout={onContainerLayout}>
+      <MovieCalendarBottomBar />
+      {isDesktopViewport && !isStart ? (
+        <AbsoluteRoundedButton
+          direction="left"
+          iconName="previous"
+          onPress={handleScrollPrevious}
+          accessibilityLabel="Faire défiler le calendrier vers la gauche"
+          testID="movie-calendar-left-arrow"
+        />
+      ) : null}
+      <View>
+        <FlashList
+          onLayout={onFlatListLayout}
+          ref={listRef}
+          data={dates}
+          horizontal
+          contentContainerStyle={{ paddingHorizontal: MOVIE_CALENDAR_PADDING }}
+          showsHorizontalScrollIndicator={false}
+          onScroll={onScroll}
+          onContentSizeChange={onContentSizeChange}
+          testID="movie-calendar-flat-list"
+          renderItem={({ item: date }) => (
+            <MovieCalendarDayV2
+              onLayout={onItemLayout}
+              date={date}
+              selectedDate={selectedDate}
+              onTabChange={onInternalTabChange}
+              disabled={disabledDates?.includes(date)}
+            />
+          )}
+        />
+        {isDesktopViewport ? (
+          <React.Fragment>
+            <FadeLeft /> <FadeRight />
+          </React.Fragment>
+        ) : null}
+      </View>
+      {isDesktopViewport && !isEnd ? (
+        <AbsoluteRoundedButton
+          direction="right"
+          iconName="next"
+          onPress={handleScrollNext}
+          accessibilityLabel="Faire défiler le calendrier vers la droite"
+          testID="movie-calendar-right-arrow"
+        />
+      ) : null}
+    </View>
+  )
+}
+
+const FadeComponent = styled(LinearGradient)(
+  ({ theme }) => `
+  position: absolute;
+  top: 0;
+  bottom: ${theme.designSystem.size.spacing.xs}px;
+  width: ${getSpacing(20)}px;
+`
+)
+
+const FadeLeft = styled(FadeComponent).attrs<{ colors?: string[] }>(({ theme }) => ({
+  colors: [
+    theme.designSystem.color.background.gradientMaximum,
+    theme.designSystem.color.background.gradientMinimum,
+  ],
+  start: { x: 0.2, y: 0.5 },
+  end: { x: 1, y: 0.5 },
+}))`
+  left: -1px;
+`
+
+const FadeRight = styled(FadeComponent).attrs<{ colors?: string[] }>(({ theme }) => ({
+  colors: [
+    theme.designSystem.color.background.gradientMinimum,
+    theme.designSystem.color.background.gradientMaximum,
+  ],
+  start: { x: 0, y: 0.5 },
+  end: { x: 0.8, y: 0.5 },
+}))`
+  right: -1px;
+`
