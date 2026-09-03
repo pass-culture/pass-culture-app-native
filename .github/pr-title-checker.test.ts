@@ -1,7 +1,7 @@
 // See https://github.com/Slashgear/action-check-pr-title/blob/main/src/run.js#L17
 
 const REGEX = new RegExp(
-  /^(\((PC|IC)-\d+\) )?(build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+/i
+  /^\((PC|IC)-\d+\) (build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+/i
 )
 
 const invalidPullRequestTitles: string[] = [
@@ -14,12 +14,12 @@ const invalidPullRequestTitles: string[] = [
   '(BSR): add a lib', //no scope nor type
   '(BSR)chore(lib): add a lib', //no space between BSR and scope
   '(BSR) chore(lib): update lib version', // BSR is no longer allowed
+  'feat(home): add color to button', // missing Jira ticket
 ]
 
 const validPullRequestTitles: string[] = [
   '(PC-1234) feat(home): add color to button',
   '(IC-206) ci(checks): allow firebase CF deployments from pass-culture-app-native ci',
-  'feat(home): add color to button', // jira ticket is optional, although better to have it
 ]
 
 describe('pr-title-checker', () => {
