@@ -34,3 +34,9 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Partager l’appli'
     commands:
       - tapOn: 'Fermer la modale'
+
+- runFlow: # Ouvertures suivantes de l'application
+    when:
+      visible: 'Débloque ton crédit Crée ton compte si tu as 17 ou 18 ans !'
+    commands:
+      - tapOn: 'Débloque ton crédit Crée ton compte si tu as 17 ou 18 ans !'
