@@ -76,7 +76,7 @@ describe('<ImagesCarouselModal />', () => {
     expect(screen.getByRole('button', { name: 'Image précédente' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Image suivante' })).toBeInTheDocument()
     expect(screen.getByText('1/3')).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/Image [0-9]/)).toHaveLength(3)
+    expect(screen.getAllByLabelText(/^Image \d+$/)).toHaveLength(3)
   })
 
   it('should display offer preview modal correctly with one image', async () => {
