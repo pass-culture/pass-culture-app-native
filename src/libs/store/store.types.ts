@@ -6,6 +6,7 @@ export type CurriedAnyFunction<State> = (...args: never[]) => (state: State) => 
 type Options<State> = {
   persist?: boolean
   persistKeys?: readonly (keyof State)[]
+  storageType?: 'SECURE' | 'DEFAULT'
 }
 type ReplaceSelectByUse<T extends string> = T extends `select${infer U}` ? `use${U}` : never
 type StoreType<State> = UseBoundStore<
