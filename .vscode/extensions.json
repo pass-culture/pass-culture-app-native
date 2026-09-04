@@ -7,19 +7,13 @@
     "christian-kohler.path-intellisense",
     "dsznajder.es7-react-js-snippets",
     "timonwong.shellcheck",
-    "streetsidesoftware.code-spell-checker",
-    "streetsidesoftware.code-spell-checker-french",
     "mhutchie.git-graph",
     "usernamehw.errorlens",
-    "wayou.vscode-todo-highlight",
     "yoavbls.pretty-ts-errors",
     "p42ai.refactor",
     "mikestead.dotenv",
-    "firsttris.vscode-jest-runner",
-    "shopify.ruby-lsp",
     "pinage404.nix-extension-pack",
     "github.vscode-github-actions",
-    "blazejkustra.react-compiler-marker",
     "charliermarsh.ruff"
   ]
 }
