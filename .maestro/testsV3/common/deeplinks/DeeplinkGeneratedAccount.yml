@@ -17,10 +17,26 @@ appId: ${MAESTRO_APP_ID}
 - evalScript: '${console.log(output.userEmail)}'
 - waitForAnimationToEnd
 - runFlow: ../cookies/AcceptCookiesOptional.yml
-- tapOn: 'On y va !'
+- runFlow: # Compte bénéficiaire
+    when:
+      visible: 'On y va !'
+    commands:
+      - tapOn: 'On y va !'
+
+- runFlow: # Compte adresse mail validé
+    when:
+      visible: 'Commencer la vérification'
+    commands:
+      - tapOn: 'Commencer la vérification'
 
 - runFlow: # Si apparition de la modale de partage
     when:
       visible: 'Partager l’appli'
     commands:
       - tapOn: 'Fermer la modale'
+
+- runFlow: # Ouvertures suivantes de l'application
+    when:
+      visible: 'Débloque ton crédit Crée ton compte si tu as 17 ou 18 ans !'
+    commands:
+      - tapOn: 'Débloque ton crédit Crée ton compte si tu as 17 ou 18 ans !'
