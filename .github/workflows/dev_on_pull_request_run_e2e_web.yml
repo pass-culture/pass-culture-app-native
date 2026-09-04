@@ -91,7 +91,7 @@ jobs:
         run: |
           echo "Running Maestro tests from your branch on web Staging build"
           export PATH="$HOME/.maestro/bin:$PATH"
-          yarn test:e2e:web:staging --headless
+          yarn test:e2e --target test --platform web --tags web --headless
 
   slack_notify:
     runs-on: ubuntu-24.04
