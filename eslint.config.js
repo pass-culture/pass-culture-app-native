@@ -32,6 +32,7 @@ module.exports = [
       'src/api/gen/**',
       '.maestro/**',
       'e2e/**',
+      'playwright.config.ts',
       '.github/**',
       '.storybook/**',
       '.yarn/**',
