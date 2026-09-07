@@ -1,6 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
+import { Keyboard } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 
@@ -9,6 +10,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader/SearchHead
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { SEARCH_CATEGORIES_ANCHOR_ID } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
+import { SearchSuggestionsAccessibilityProvider } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -72,43 +74,21 @@ export const SearchLanding = () => {
       />
     </Container>
   )
-  const content = () => {
-    if (isFocusOnSuggestions) {
-      return (
-        <React.Fragment>
-          {isZoomedAt200 || isLandscape ? null : searchHeader}
-          <SearchSuggestions
-            queryHistory={queryHistory}
-            addToHistory={addToHistory}
-            removeFromHistory={removeFromHistory}
-            filteredHistory={filteredHistory}
-            shouldNavigateToSearchResults
-            header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
-          />
-        </React.Fragment>
-      )
-    }
-
-    if (isZoomedAt200 || isLandscape) {
-      return (
-        <LandingScrollView keyboardShouldPersistTaps="handled">
-          {searchHeader}
-          <CategoriesButtonsContainer>
-            <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-          </CategoriesButtonsContainer>
-        </LandingScrollView>
-      )
-    }
-
-    return (
-      <React.Fragment>
-        {searchHeader}
-        <CategoriesButtonsContainer>
-          <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-        </CategoriesButtonsContainer>
-      </React.Fragment>
-    )
-  }
+  const scrollHeader = isZoomedAt200 || isLandscape
+  const body = isFocusOnSuggestions ? (
+    <SearchSuggestions
+      queryHistory={queryHistory}
+      addToHistory={addToHistory}
+      removeFromHistory={removeFromHistory}
+      filteredHistory={filteredHistory}
+      shouldNavigateToSearchResults
+      embedded={scrollHeader}
+    />
+  ) : (
+    <CategoriesButtonsContainer>
+      <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
+    </CategoriesButtonsContainer>
+  )
 
   return (
     <Page>
@@ -118,9 +98,26 @@ export const SearchLanding = () => {
           searchClient={getSearchClient}
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
-          <Configure hitsPerPage={5} clickAnalytics analytics />
+          <SearchSuggestionsAccessibilityProvider
+            query={queryHistory}
+            visible={isFocusOnSuggestions}>
+            <Configure hitsPerPage={5} clickAnalytics analytics />
 
-          {content()}
+            {scrollHeader ? (
+              <LandingScrollView
+                keyboardShouldPersistTaps="handled"
+                onScroll={isFocusOnSuggestions ? Keyboard.dismiss : undefined}
+                scrollEventThrottle={16}>
+                {searchHeader}
+                {body}
+              </LandingScrollView>
+            ) : (
+              <React.Fragment>
+                {searchHeader}
+                {body}
+              </React.Fragment>
+            )}
+          </SearchSuggestionsAccessibilityProvider>
         </InstantSearch>
       </Form.Flex>
     </Page>

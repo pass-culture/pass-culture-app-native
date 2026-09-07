@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { Configure, Index } from 'react-instantsearch-core'
+import { Configure, Index, useInstantSearch } from 'react-instantsearch-core'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -12,10 +12,13 @@ import { AutocompleteArtist } from 'features/search/components/AutocompleteArtis
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
+import {
+  SuggestionsSnapshot,
+  useSearchSuggestionsAccessibility,
+} from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, Highlighted, HistoryItem, SearchState } from 'features/search/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics/provider'
@@ -28,7 +31,6 @@ import {
   useLocationMode,
   useUserLocation,
 } from 'libs/locationV2/location.store'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -38,6 +40,7 @@ type SearchSuggestionsParams = {
   shouldNavigateToSearchResults?: boolean
   offerCategories?: SearchGroupNameEnumv2[]
   header?: React.ReactNode
+  embedded?: boolean
 }
 export const SearchSuggestions = ({
   queryHistory,
@@ -47,6 +50,7 @@ export const SearchSuggestions = ({
   shouldNavigateToSearchResults,
   offerCategories,
   header,
+  embedded = false,
 }: SearchSuggestionsParams) => {
   const { navigate, setOptions } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
@@ -61,11 +65,24 @@ export const SearchSuggestions = ({
   const shouldDisplayArtistsSuggestions = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
-  const [suggestionsCounts, setSuggestionsCounts] = useState({
-    offers: 0,
-    artists: 0,
-    venues: 0,
-  })
+  const { status: searchStatus } = useInstantSearch()
+  const accessibility = useSearchSuggestionsAccessibility()
+  const publish = accessibility?.publish
+  const [suggestions, setSuggestions] = useState<{
+    offers?: SuggestionsSnapshot
+    artists?: SuggestionsSnapshot
+    venues?: SuggestionsSnapshot
+  }>({})
+
+  const handleOffersChange = useCallback((snapshot: SuggestionsSnapshot) => {
+    setSuggestions((previous) => ({ ...previous, offers: snapshot }))
+  }, [])
+  const handleArtistsChange = useCallback((snapshot: SuggestionsSnapshot) => {
+    setSuggestions((previous) => ({ ...previous, artists: snapshot }))
+  }, [])
+  const handleVenuesChange = useCallback((snapshot: SuggestionsSnapshot) => {
+    setSuggestions((previous) => ({ ...previous, venues: snapshot }))
+  }, [])
 
   useEffect(() => {
     setOptions({
@@ -144,54 +161,44 @@ export const SearchSuggestions = ({
     navigate('Artist', { id: artistId })
   }
 
-  const isQuerying = queryHistory.trim().length > 0
-  const hasHistory = filteredHistory.length > 0
-
-  const historyCount = filteredHistory.length
-  const totalSuggestions =
-    suggestionsCounts.offers + suggestionsCounts.artists + suggestionsCounts.venues
-
-  const handleOffersCountChange = (count: number) => {
-    setSuggestionsCounts((prev) => (prev.offers === count ? prev : { ...prev, offers: count }))
+  const sections = [suggestions.offers, suggestions.venues]
+  if (shouldDisplayArtistsSuggestions) sections.push(suggestions.artists)
+  const isEmptyQuery = queryHistory.length === 0
+  const ready =
+    isEmptyQuery ||
+    (searchStatus === 'idle' && sections.every((section) => section?.query === queryHistory))
+  const totalSuggestions = isEmptyQuery
+    ? 0
+    : sections.reduce((total, section) => total + (section?.itemKeys.length ?? 0), 0)
+  const historyItemLabel = filteredHistory.length > 1 ? 'éléments' : 'élément'
+  let historyMessage = ''
+  if (filteredHistory.length > 0) {
+    historyMessage = ` Historique de recherche\u00a0: ${filteredHistory.length} ${historyItemLabel}.`
   }
 
-  const handleArtistsCountChange = (count: number) => {
-    setSuggestionsCounts((prev) => (prev.artists === count ? prev : { ...prev, artists: count }))
+  const suggestionLabel = totalSuggestions > 1 ? 'suggestions' : 'suggestion'
+  let suggestionsMessage = 'Aucune suggestion'
+  if (totalSuggestions > 0) {
+    suggestionsMessage = `${totalSuggestions} ${suggestionLabel}`
   }
+  const message = isEmptyQuery
+    ? `Aucune suggestion de recherche.${historyMessage}`
+    : `${suggestionsMessage} pour «\u00a0${queryHistory}\u00a0».${historyMessage}`
+  const key = JSON.stringify([
+    queryHistory,
+    isEmptyQuery ? [] : sections.map((section) => section?.itemKeys),
+    filteredHistory.map((item) => [item.createdAt, item.label]),
+  ])
 
-  const handleVenuesCountChange = (count: number) => {
-    setSuggestionsCounts((prev) => (prev.venues === count ? prev : { ...prev, venues: count }))
-  }
+  useEffect(() => {
+    publish?.({ query: queryHistory, key, message, ready })
+  }, [publish, queryHistory, key, message, ready])
 
-  const getAccessibilityMessage = () => {
-    if (isQuerying) {
-      if (totalSuggestions > 0) {
-        return `${totalSuggestions} suggestion${totalSuggestions > 1 ? 's' : ''} pour ${queryHistory}`
-      }
-      return `Aucune suggestion pour ${queryHistory}`
-    }
+  useEffect(() => () => publish?.(null), [publish])
 
-    if (hasHistory) {
-      return `Historique de recherche, ${historyCount} élément${historyCount > 1 ? 's' : ''}`
-    }
-
-    return 'Aucun résultat ni historique'
-  }
-
-  return (
-    <StyledScrollView
-      testID="autocompleteScrollView"
-      keyboardShouldPersistTaps="handled"
-      onScroll={Keyboard.dismiss}
-      scrollEventThrottle={16}>
+  const content = (
+    <SuggestionsContent>
       {header}
-
-      <HiddenAccessibleText
-        accessibilityLiveRegion="polite"
-        accessibilityRole={AccessibilityRole.ALERT}
-        id="search-suggestions-accessibility-message">
-        {getAccessibilityMessage()}
-      </HiddenAccessibleText>
 
       <SearchHistory
         history={filteredHistory}
@@ -202,14 +209,14 @@ export const SearchSuggestions = ({
       <AutocompleteOffer
         addSearchHistory={addToHistory}
         offerCategories={offerCategories}
-        onHitsCountChange={handleOffersCountChange}
+        onSuggestionsChange={handleOffersChange}
       />
       {shouldDisplayArtistsSuggestions ? (
         <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
           <Configure hitsPerPage={5} clickAnalytics analytics />
           <AutocompleteArtist
             onItemPress={onArtistPress}
-            onHitsCountChange={handleArtistsCountChange}
+            onSuggestionsChange={handleArtistsChange}
           />
         </Index>
       ) : null}
@@ -221,21 +228,31 @@ export const SearchSuggestions = ({
           aroundRadius="all"
           aroundLatLng={searchVenuePosition.aroundLatLng}
         />
-        <AutocompleteVenue onItemPress={onVenuePress} onHitsCountChange={handleVenuesCountChange} />
+        <AutocompleteVenue onItemPress={onVenuePress} onSuggestionsChange={handleVenuesChange} />
       </Index>
+    </SuggestionsContent>
+  )
+
+  return embedded ? (
+    content
+  ) : (
+    <StyledScrollView
+      testID="autocompleteScrollView"
+      keyboardShouldPersistTaps="handled"
+      onScroll={Keyboard.dismiss}
+      scrollEventThrottle={16}>
+      {content}
     </StyledScrollView>
   )
 }
 
-const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
-  contentContainerStyle: {
-    paddingTop: theme.designSystem.size.spacing.l,
-    paddingBottom: theme.isMobileViewport
-      ? theme.tabBar.height + theme.designSystem.size.spacing.m
-      : theme.designSystem.size.spacing.m,
-    paddingLeft: theme.designSystem.size.spacing.xl,
-    paddingRight: theme.designSystem.size.spacing.xl,
-  },
-}))({
-  flex: 1,
-})
+const SuggestionsContent = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.l,
+  paddingBottom: theme.isMobileViewport
+    ? theme.tabBar.height + theme.designSystem.size.spacing.m
+    : theme.designSystem.size.spacing.m,
+  paddingLeft: theme.designSystem.size.spacing.xl,
+  paddingRight: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledScrollView = styled.ScrollView({ flex: 1 })

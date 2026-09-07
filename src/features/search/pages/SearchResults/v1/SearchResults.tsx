@@ -10,6 +10,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
+import { SearchSuggestionsAccessibilityProvider } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { usePrevious } from 'features/search/helpers/usePrevious'
@@ -140,30 +141,34 @@ export const SearchResults: FC = () => {
           searchClient={getSearchClient}
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
-          <Configure hitsPerPage={5} clickAnalytics analytics />
-          {isZoomedAt200 ? null : searchHeader}
-          {isFocusOnSuggestions ? (
-            <SearchSuggestions
-              queryHistory={queryHistory}
-              addToHistory={addToHistory}
-              removeFromHistory={removeFromHistory}
-              filteredHistory={filteredHistory}
-              header={isZoomedAt200 ? searchHeader : undefined}
-            />
-          ) : (
-            <SearchResultsContent
-              hits={searchResultHits}
-              onEndReached={handleEndReached}
-              onSearchResultsRefresh={refetch}
-              nbHits={nbHits}
-              isLoading={isLoading}
-              isRefetching={isRefetching}
-              userData={userData}
-              venuesUserData={venuesUserData}
-              offerVenues={offerVenues}
-              onViewableItemsChanged={handleViewableItemsChanged}
-            />
-          )}
+          <SearchSuggestionsAccessibilityProvider
+            query={queryHistory}
+            visible={isFocusOnSuggestions}>
+            <Configure hitsPerPage={5} clickAnalytics analytics />
+            {isZoomedAt200 ? null : searchHeader}
+            {isFocusOnSuggestions ? (
+              <SearchSuggestions
+                queryHistory={queryHistory}
+                addToHistory={addToHistory}
+                removeFromHistory={removeFromHistory}
+                filteredHistory={filteredHistory}
+                header={isZoomedAt200 ? searchHeader : undefined}
+              />
+            ) : (
+              <SearchResultsContent
+                hits={searchResultHits}
+                onEndReached={handleEndReached}
+                onSearchResultsRefresh={refetch}
+                nbHits={nbHits}
+                isLoading={isLoading}
+                isRefetching={isRefetching}
+                userData={userData}
+                venuesUserData={venuesUserData}
+                offerVenues={offerVenues}
+                onViewableItemsChanged={handleViewableItemsChanged}
+              />
+            )}
+          </SearchSuggestionsAccessibilityProvider>
         </InstantSearch>
       </Form.Flex>
     </Page>
