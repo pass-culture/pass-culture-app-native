@@ -6,6 +6,7 @@ import {
   // eslint-disable-next-line no-restricted-imports
   TouchableOpacity as RNTouchableOpacity,
   TouchableOpacityProps,
+  ViewProps,
 } from 'react-native'
 import { TouchableOpacity as GestureTouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -14,7 +15,8 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
-type Props = TouchableOpacityProps & { shouldUseGestureHandler?: boolean }
+type Props = TouchableOpacityProps &
+  Pick<ViewProps, 'tabIndex'> & { shouldUseGestureHandler?: boolean }
 type StyledProps = { unselectable?: boolean; isFocus?: boolean }
 
 export function TouchableOpacity({
