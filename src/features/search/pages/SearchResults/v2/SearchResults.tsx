@@ -8,6 +8,7 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
+import { SearchSuggestionsAccessibilityProvider } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -122,48 +123,50 @@ export const SearchResults: FC = () => {
         searchClient={getSearchClient}
         indexName={suggestionsIndex}
         insights={{ insightsClient: AlgoliaSearchInsights }}>
-        <Configure hitsPerPage={5} clickAnalytics analytics />
-        {isFocusOnSuggestions ? (
-          <React.Fragment>
-            {isZoomedAt200 || isLandscape ? null : searchHeader}
-            <SearchSuggestions
-              queryHistory={queryHistory}
-              addToHistory={addToHistory}
-              removeFromHistory={removeFromHistory}
-              filteredHistory={filteredHistory}
-              header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
-            />
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            {isZoomedAt200 || isLandscape ? null : searchHeader}
-            {(() => {
-              switch (selectedSearchTab) {
-                case 'Offres':
-                  return (
-                    <OffersList
-                      searchFilters={searchFilters}
-                      hasBeenClicked={hasBeenClicked}
-                      setHasBeenClicked={setHasBeenClicked}
-                    />
-                  )
-                case 'Lieux':
-                  return <VenuesList searchFilters={searchFilters} />
-                case 'Artistes':
-                  return <ArtistsList searchFilters={searchFilters} />
-                default:
-                  return (
-                    <AllSearchResultsList
-                      header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
-                      searchFilters={searchFilters}
-                      hasBeenClicked={hasBeenClicked}
-                      setHasBeenClicked={setHasBeenClicked}
-                    />
-                  )
-              }
-            })()}
-          </React.Fragment>
-        )}
+        <SearchSuggestionsAccessibilityProvider query={queryHistory} visible={isFocusOnSuggestions}>
+          <Configure hitsPerPage={5} clickAnalytics analytics />
+          {isFocusOnSuggestions ? (
+            <React.Fragment>
+              {isZoomedAt200 || isLandscape ? null : searchHeader}
+              <SearchSuggestions
+                queryHistory={queryHistory}
+                addToHistory={addToHistory}
+                removeFromHistory={removeFromHistory}
+                filteredHistory={filteredHistory}
+                header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
+              />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {isZoomedAt200 || isLandscape ? null : searchHeader}
+              {(() => {
+                switch (selectedSearchTab) {
+                  case 'Offres':
+                    return (
+                      <OffersList
+                        searchFilters={searchFilters}
+                        hasBeenClicked={hasBeenClicked}
+                        setHasBeenClicked={setHasBeenClicked}
+                      />
+                    )
+                  case 'Lieux':
+                    return <VenuesList searchFilters={searchFilters} />
+                  case 'Artistes':
+                    return <ArtistsList searchFilters={searchFilters} />
+                  default:
+                    return (
+                      <AllSearchResultsList
+                        header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
+                        searchFilters={searchFilters}
+                        hasBeenClicked={hasBeenClicked}
+                        setHasBeenClicked={setHasBeenClicked}
+                      />
+                    )
+                }
+              })()}
+            </React.Fragment>
+          )}
+        </SearchSuggestionsAccessibilityProvider>
       </InstantSearch>
     </Page>
   )

@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
@@ -27,8 +28,13 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
+const mockUuidV4 = uuidv4 as jest.Mock
+
 describe('NotificationsSettings', () => {
   beforeEach(() => {
+    // Keep IDs unique without depending on UUIDs allocated during module imports or other tests.
+    let value = 0
+    mockUuidV4.mockImplementation(() => `notification-settings-${value++}`)
     setFeatureFlags()
   })
 

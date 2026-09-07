@@ -19,7 +19,7 @@ import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.st
 import { QueryKeys } from 'libs/queryKeys'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -360,11 +360,14 @@ describe('<ThematicSearch/>', () => {
       })
 
       it('should hide header', async () => {
-        render(reactQueryProviderHOC(<ThematicSearch />))
+        const { unmount } = render(reactQueryProviderHOC(<ThematicSearch />))
 
         await screen.findByTestId('searchInput')
+        await act(async () => {})
 
         expect(screen.queryByText('Livres')).not.toBeOnTheScreen()
+
+        unmount()
       })
     })
   })

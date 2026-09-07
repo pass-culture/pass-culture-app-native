@@ -4,16 +4,17 @@ import { styled } from 'styled-components/native'
 import { AutocompleteItem } from 'features/search/components/AutocompleteItem/AutocompleteItem'
 import { AutocompleteSection } from 'features/search/components/AutocompleteSection/AutocompleteSection'
 import { VenueHitHighlight } from 'features/search/components/Highlight/Highlight'
+import { SuggestionsSnapshot } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { Typo } from 'ui/theme'
 
 type Props = {
   onItemPress: (venueId: number) => void
-  onHitsCountChange?: (counter: number) => void
+  onSuggestionsChange?: (snapshot: SuggestionsSnapshot) => void
 }
 
-export function AutocompleteVenue({ onItemPress, onHitsCountChange }: Props) {
+export function AutocompleteVenue({ onItemPress, onSuggestionsChange }: Props) {
   return (
     <AutocompleteSection<AlgoliaVenue>
       title="Lieux culturels"
@@ -32,7 +33,7 @@ export function AutocompleteVenue({ onItemPress, onHitsCountChange }: Props) {
           </AutocompleteItem>
         )
       }}
-      onHitsCountChange={onHitsCountChange}
+      onSuggestionsChange={onSuggestionsChange}
     />
   )
 }
