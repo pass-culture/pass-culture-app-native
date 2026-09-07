@@ -1,4 +1,0 @@
-appId: team.passculture.app.staging
----
-- assertVisible: "Bienvenue\_!"
-- assertVisible: 'Débloque ton crédit'
