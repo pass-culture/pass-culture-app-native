@@ -32,7 +32,6 @@ export const SearchMapButton: FC<Props> = ({ shouldDisplayMapButtonText, searchI
     if (locationSelectors.selectLocationMode() === LocationMode.EVERYWHERE) {
       navigate('VenueMapLocationModal', {
         openedFrom: 'search',
-        shouldNavigateToSearchMap: true,
       })
       return
     }

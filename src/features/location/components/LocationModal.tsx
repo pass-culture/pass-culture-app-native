@@ -28,7 +28,7 @@ type LocationModalProps = {
   shouldShowRadiusSlider?: boolean
   buttonWording?: string
   from: 'home' | 'search' | 'venueMap'
-  withGoBack: boolean
+  withGoBack?: boolean
 }
 
 const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
@@ -54,7 +54,7 @@ export const LocationModal = ({
   buttonWording,
   shouldHideEverywhereSection,
   from,
-  withGoBack,
+  withGoBack = true,
 }: LocationModalProps) => {
   const locationMode = locationModalStore.hooks.useLocationMode()
   const selectedPlace = locationModalStore.hooks.usePlace()

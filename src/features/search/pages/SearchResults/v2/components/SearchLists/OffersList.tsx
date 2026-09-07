@@ -43,10 +43,7 @@ type Props = {
   searchFilters: FetchSearchResultsArgs
 }
 
-export const OffersList: FC<PropsWithChildren<Props>> = ({
-  children,
-  searchFilters,
-}) => {
+export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilters }) => {
   const { tabBarHeight } = useCustomSafeInsets()
   const transformHits = useTransformOfferHits()
 
@@ -143,10 +140,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
           children ? (
             <React.Fragment>{children}</React.Fragment>
           ) : (
-            <ListHeaderComponent
-              title="Les offres"
-              nbItems={offersResponse?.offers.length ?? 0}
-            />
+            <ListHeaderComponent title="Les offres" nbItems={offersResponse?.offers.length ?? 0} />
           )
         }
         renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}

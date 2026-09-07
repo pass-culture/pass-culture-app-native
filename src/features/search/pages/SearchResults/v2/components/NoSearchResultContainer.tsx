@@ -23,17 +23,23 @@ export const NoSearchResultContainer: FC<
     }
   )
 
-  const { data: hasVenuesData } = useSearchVenuesQuery(searchFilters, {
-    select: (venuesResponse) =>
-      !!(
-        (venuesResponse?.venuesResponse?.hits.length ?? 0) +
-        (venuesResponse.venueNotOpenToPublic?.hits.length ?? 0)
-      ),
-  })
+  const { data: hasVenuesData, isFetching: isFetchingVenues } = useSearchVenuesQuery(
+    searchFilters,
+    {
+      select: (venuesResponse) =>
+        !!(
+          (venuesResponse?.venuesResponse?.hits.length ?? 0) +
+          (venuesResponse.venueNotOpenToPublic?.hits.length ?? 0)
+        ),
+    }
+  )
 
-  const { data: hasArtistsData } = useSearchArtistsQuery(searchFilters, {
-    select: (artistsResponse) => !!artistsResponse?.artistsResponse.nbHits,
-  })
+  const { data: hasArtistsData, isFetching: isFetchingArtists } = useSearchArtistsQuery(
+    searchFilters,
+    {
+      select: (artistsResponse) => !!artistsResponse?.artistsResponse.nbHits,
+    }
+  )
 
   const hasSelectedSearchFilters = hasActiveSearchFilters(searchFilters)
 
@@ -41,7 +47,11 @@ export const NoSearchResultContainer: FC<
     ? hasOffersData
     : hasOffersData || hasVenuesData || hasArtistsData
 
-  if (!isFetchingOffers && !hasSearchResults)
+  const isFetchingSearchResults = hasSelectedSearchFilters
+    ? isFetchingOffers
+    : isFetchingOffers || isFetchingVenues || isFetchingArtists
+
+  if (!isFetchingSearchResults && !hasSearchResults)
     return (
       <NoSearchResult
         setSelectedLocationMode={locationActions.setLocationMode}

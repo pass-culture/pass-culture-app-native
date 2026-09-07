@@ -18,10 +18,6 @@ export const VenueMapLocationModal: FC = () => {
 
   const handleSubmit = () => {
     removeSelectedVenue()
-    if (!shouldOpenMapInTab) {
-      void analytics.logConsultVenueMap({ from: openedFrom })
-      replace('VenueMap')
-    }
 
     if (openedFrom === 'search') {
       void analytics.logConsultVenueMap({
@@ -35,6 +31,9 @@ export const VenueMapLocationModal: FC = () => {
         screen: 'SearchStackNavigator',
         params: { screen: 'SearchMap', params: searchState },
       })
+    } else if (!shouldOpenMapInTab) {
+      void analytics.logConsultVenueMap({ from: openedFrom })
+      replace('VenueMap')
     }
   }
 

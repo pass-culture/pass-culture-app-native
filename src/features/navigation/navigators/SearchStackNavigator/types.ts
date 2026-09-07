@@ -6,11 +6,7 @@ import { SearchState } from 'features/search/types'
 type ExtendsScreenNames<T extends ScreenNames> = T
 
 export type SearchStackRouteName = ExtendsScreenNames<
-  | 'SearchLanding'
-  | 'SearchMap'
-  | 'SearchResults'
-  | 'ThematicSearch'
-  | 'ThematicSearchSubcategories'
+  'SearchLanding' | 'SearchMap' | 'SearchResults' | 'ThematicSearch' | 'ThematicSearchSubcategories'
 >
 
 export const hasAThematicSearch = [

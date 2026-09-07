@@ -89,7 +89,7 @@ export const SearchMapContainer: FC = () => {
 
   const { addToHistory, setQueryHistory } = useSearchHistory()
 
-  const setQueryHistoryMemoized = (query: string) => setQueryHistory(query)
+  const handleSetQueryHistory = (query: string) => setQueryHistory(query)
 
   return (
     <Page>
@@ -103,7 +103,7 @@ export const SearchMapContainer: FC = () => {
           <SearchHeaderContainer>
             <SearchHeader
               addSearchHistory={addToHistory}
-              searchInHistory={setQueryHistoryMemoized}
+              searchInHistory={handleSetQueryHistory}
               withFilterButton={!isFocusOnSuggestions}
               withArrow
               shouldDisplayHeader={!isFocusOnSuggestions}
