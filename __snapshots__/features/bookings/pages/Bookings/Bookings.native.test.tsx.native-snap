@@ -288,6 +288,8 @@ exports[`Bookings should render correctly 1`] = `
     </View>
     <View
       accessibilityRole="none"
+      aria-labelledby="en-cours"
+      nativeID="panel-en-cours"
       style={
         {
           "flexGrow": 1,

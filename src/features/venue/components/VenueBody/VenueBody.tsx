@@ -136,6 +136,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   return (
     <SectionContainer visible gap={6}>
       <TabLayout
+        accessibilityLabel="Informations du lieu"
         tabPanels={tabPanels}
         tabs={tabs}
         defaultTab={Tab.OFFERS}
