@@ -298,6 +298,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {
@@ -2301,6 +2302,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {
@@ -2592,6 +2594,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {
