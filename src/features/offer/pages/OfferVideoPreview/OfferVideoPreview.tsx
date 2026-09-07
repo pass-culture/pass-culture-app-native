@@ -1,13 +1,16 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { Animated, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import styled, { useTheme } from 'styled-components/native'
 
-import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { MAX_HEIGHT_VIDEO_PORTRAIT } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { getOfferVideoPlayerSize } from 'features/offer/helpers/getOfferVideoPlayerSize/getOfferVideoPlayerSize'
+import { useVideoOrientation } from 'features/offer/helpers/useVideoOrientation/useVideoOrientation'
 import { analytics } from 'libs/analytics/provider'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
@@ -24,9 +27,22 @@ const interpolated = animatedValue.interpolate({
 export const OfferVideoPreview: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferVideoPreview'>>()
   const { goBack } = useGoBack('Offer', { id: params.id })
-  const { width: viewportWidth } = useWindowDimensions()
-  const videoHeight = Math.min(viewportWidth, MAX_WIDTH) * RATIO169
+  const { isDesktopViewport, appBarHeight, contentPage } = useTheme()
+  const { top } = useSafeAreaInsets()
+  const { width: viewportWidth, height: viewportHeight } = useWindowDimensions()
   const { data: offer } = useOfferQuery({ offerId: params.id })
+  const { isPortrait, thumbnailUrl } = useVideoOrientation(offer?.video?.id)
+  const headerHeight = appBarHeight + top
+  const availableHeight = Math.max(0, viewportHeight - 2 * headerHeight)
+  const { width: playerWidth, height: videoHeight } = isPortrait
+    ? getOfferVideoPlayerSize({
+        isPortrait: true,
+        viewportWidth,
+        maxWidth: MAX_WIDTH,
+        horizontalMargin: isDesktopViewport ? 0 : contentPage.marginHorizontal,
+        maxHeight: isDesktopViewport ? MAX_HEIGHT_VIDEO_PORTRAIT : availableHeight,
+      })
+    : getOfferVideoPlayerSize({ viewportWidth, maxWidth: MAX_WIDTH })
   const [playVideo, setPlayVideo] = useState(false)
 
   const handleOnPlayPress = useCallback(() => {
@@ -50,9 +66,15 @@ export const OfferVideoPreview: FunctionComponent = () => {
           title={offer.video.title ?? offer.name}
           videoId={offer.video.id}
           height={videoHeight}
-          width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
+          width={playerWidth}
           initialPlayerParams={{ autoplay: true }}
-          thumbnail={<VideoThumbnailImage url={offer?.video.thumbUrl ?? ''} resizeMode="cover" />}
+          thumbnail={
+            <VideoThumbnailImage
+              testID="video-thumbnail"
+              url={thumbnailUrl ?? offer?.video.thumbUrl ?? ''}
+              resizeMode="cover"
+            />
+          }
           duration={
             offer.video.durationSeconds
               ? formatDuration(offer.video.durationSeconds, 'sec')

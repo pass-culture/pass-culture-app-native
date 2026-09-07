@@ -21,6 +21,7 @@ import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOff
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { useVideoOrientation } from 'features/offer/helpers/useVideoOrientation/useVideoOrientation'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { formatPrice, getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
@@ -102,6 +103,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     offer,
     isCinemaOffer,
   })
+
+  const { isPortrait: isVideoPortrait, thumbnailUrl: videoThumbnailUrl } = useVideoOrientation(
+    offer.video?.id
+  )
 
   const metadata = getOfferMetadata(extraData, subcategory.categoryId, artists.length > 0)
   const hasMetadata = metadata.length > 0
@@ -207,8 +212,12 @@ export const OfferBody: FunctionComponent<Props> = ({
       {offer.video?.id ? (
         <VideoSection
           videoId={offer.video.id}
+          isPortrait={isVideoPortrait}
           videoThumbnail={
-            <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
+            <VideoThumbnailImage
+              url={videoThumbnailUrl ?? offer.video.thumbUrl ?? ''}
+              resizeMode="cover"
+            />
           }
           title={offer.video?.title ?? offer.name}
           offerId={offer.id}
