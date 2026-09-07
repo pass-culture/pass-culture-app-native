@@ -217,14 +217,9 @@ export const HorizontalOfferTile = ({
                   {subtitle}
                 </Body>
               ))}
-            <PriceAndComingSoonTagContainer gap={1}>
+            <PriceAndComingSoonTagContainer gap={2}>
               {shouldDisplayPrice ? <Typo.BodyAccentS>{formattedPrice}</Typo.BodyAccentS> : null}
-              {interactionTag ? (
-                <React.Fragment>
-                  {shouldDisplayPrice ? <Typo.BodyAccentS>{'\u2022'}</Typo.BodyAccentS> : null}
-                  {interactionTag}
-                </React.Fragment>
-              ) : null}
+              {interactionTag}
             </PriceAndComingSoonTagContainer>
           </Column>
           {distanceToOffer ? (
@@ -283,4 +278,5 @@ const DistanceTag = styled(Tag)(({ theme }) => ({
 
 const PriceAndComingSoonTagContainer = styled(ViewGap)({
   flexDirection: 'row',
+  alignItems: 'center',
 })

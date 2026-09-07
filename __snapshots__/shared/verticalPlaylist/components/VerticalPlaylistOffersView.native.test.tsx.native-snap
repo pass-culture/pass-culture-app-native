@@ -672,11 +672,12 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   Livre
                 </Text>
                 <View
-                  gap={1}
+                  gap={2}
                   style={
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
-                      "gap": 4,
+                      "gap": 8,
                     }
                   }
                 >
@@ -942,11 +943,12 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   Concert
                 </Text>
                 <View
-                  gap={1}
+                  gap={2}
                   style={
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
-                      "gap": 4,
+                      "gap": 8,
                     }
                   }
                 >
@@ -1216,11 +1218,12 @@ exports[`<VerticalPlaylistOffersView /> should render correctly 1`] = `
                   Concert
                 </Text>
                 <View
-                  gap={1}
+                  gap={2}
                   style={
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
-                      "gap": 4,
+                      "gap": 8,
                     }
                   }
                 >
