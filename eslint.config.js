@@ -31,6 +31,7 @@ module.exports = [
       'storybook-static/**',
       'src/api/gen/**',
       '.maestro/**',
+      'e2e/**',
       '.github/**',
       '.storybook/**',
       '.yarn/**',
