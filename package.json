@@ -300,6 +300,7 @@
     "knip": "^6.26.0",
     "mockdate": "^3.0.2",
     "msw": "^2.7.3",
+    "playwright-slack-report": "^1.1.113",
     "prettier": "^3.6.2",
     "react-native-svg-web": "^1.0.9",
     "react-native-web-linear-gradient": "^1.1.2",

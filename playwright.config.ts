@@ -3,7 +3,16 @@ import { defineConfig } from '@playwright/test'
 export default defineConfig({
   testDir: './e2e/web',
   retries: process.env.CI ? 2 : 0,
-  reporter: process.env.CI ? 'github' : 'list',
+  // #équipe-e2e-jeunes, same channel/bot token already used for other CI Slack notifications.
+  reporter: process.env.CI
+    ? [
+        ['github'],
+        [
+          './node_modules/playwright-slack-report/dist/src/SlackReporter.js',
+          { channels: ['C05MH81G9LY'], sendResults: 'always', slackLogLevel: 'error' },
+        ],
+      ]
+    : 'list',
   use: {
     baseURL: 'http://127.0.0.1:5173',
   },
