@@ -821,7 +821,7 @@ export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
-      value: 'Abonnements aux m\u00e9diath\u00e8ques et biblioth\u00e8ques',
+      value: 'Abonnements aux biblioth\u00e8ques',
       genreType: null,
       parents: [SearchGroupNameEnumv2.LIVRES],
     },
