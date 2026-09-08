@@ -19,6 +19,7 @@ type ModalHeaderProps = {
   numberOfLines?: number
   modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
+  titleAccessibilityLabel?: string
 } & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
@@ -33,6 +34,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   numberOfLines,
   modalSpacing,
   onLayout,
+  titleAccessibilityLabel,
 }) => {
   const RightIcon =
     !!rightIcon &&
@@ -64,6 +66,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         <Title
           numberOfLines={numberOfLines}
           {...accessibleLabelIdProps(titleID)}
+          accessibilityLabel={titleAccessibilityLabel}
           testID="modalHeaderTitle">
           {title}
         </Title>

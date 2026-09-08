@@ -57,6 +57,7 @@ type Props = {
   propagateSwipe?: boolean
   desktopConstraints?: CSSObject
   onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
+  accessibilityLabel?: string
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
@@ -103,6 +104,7 @@ export const AppModal: FunctionComponent<Props> = ({
   onLayout,
   desktopConstraints,
   onScroll,
+  accessibilityLabel,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -248,12 +250,13 @@ export const AppModal: FunctionComponent<Props> = ({
       testID={testID}
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
-      accessibilityLabelledBy={titleId}
+      accessibilityLabelledBy={accessibilityLabel ? undefined : titleId}
       onModalHide={onModalHide}
       onSwipeComplete={onSwipe}
       swipeDirection={swipeDirection}
       backdropTransitionOutTiming={1}
-      propagateSwipe={propagateSwipe}>
+      propagateSwipe={propagateSwipe}
+      accessibilityLabel={accessibilityLabel}>
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"
@@ -276,6 +279,7 @@ export const AppModal: FunctionComponent<Props> = ({
             onLayout={updateHeaderHeight}
             titleID={titleId}
             modalSpacing={modalSpacing}
+            titleAccessibilityLabel={accessibilityLabel}
             {...iconProps}
           />
         )}
