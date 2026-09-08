@@ -25,10 +25,22 @@ type ImagesCarouselModalProps = {
   onClose?: () => void
   defaultIndex?: number
   onSnapToItem?: (index: number) => void
+  imageDescription: string
 }
 
-const renderCarouselItem = ({ item: image, index }: { item: string; index: number }) => (
-  <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
+const renderCarouselItem = ({
+  item: image,
+  index,
+  imageDescription,
+}: {
+  item: string
+  index: number
+  imageDescription: string
+}) => (
+  <CarouselImage
+    source={{ uri: image }}
+    accessibilityLabel={`Illustration ${index + 1} de ${imageDescription}`}
+  />
 )
 
 export const ImagesCarouselModal = ({
@@ -38,6 +50,7 @@ export const ImagesCarouselModal = ({
   onClose,
   isVisible = false,
   onSnapToItem,
+  imageDescription,
 }: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
   const carouselRef = useRef<ICarouselInstance>(null)
@@ -119,7 +132,9 @@ export const ImagesCarouselModal = ({
               onProgressChange={handleProgressChange}
               onSnapToItem={onSnapToItem}
               data={imagesURL}
-              renderItem={renderCarouselItem}
+              renderItem={({ item, index }) =>
+                renderCarouselItem({ item, index, imageDescription })
+              }
             />
           ) : null}
           <RoundedButton
@@ -131,8 +146,21 @@ export const ImagesCarouselModal = ({
       )
     }
 
-    return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
-  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange, onSnapToItem])
+    return (
+      <CarouselImage
+        source={{ uri: String(imagesURL[0]) }}
+        accessibilityLabel={`Illustration de ${imageDescription}`}
+      />
+    )
+  }, [
+    imagesURL,
+    imageDescription,
+    carouselSize,
+    defaultIndex,
+    handleProgressChange,
+    onSnapToItem,
+    handlePressButton,
+  ])
 
   const MODAL_PADDING = {
     x: designSystem.size.spacing.xxxl,

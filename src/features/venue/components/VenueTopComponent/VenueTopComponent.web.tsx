@@ -26,6 +26,7 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({
         imagesURL={[venue.bannerUrl || '']}
         hideModal={hideModal}
         isVisible={visible}
+        imageDescription={venue.name}
       />
       <VenueTopComponentBase
         venue={venue}

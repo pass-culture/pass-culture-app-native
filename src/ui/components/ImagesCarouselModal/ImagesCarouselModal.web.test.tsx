@@ -66,6 +66,7 @@ describe('<ImagesCarouselModal />', () => {
         isVisible
         imagesURL={['image1', 'image2', 'image3']}
         hideModal={jest.fn()}
+        imageDescription="Image description"
       />
     )
 
@@ -76,11 +77,18 @@ describe('<ImagesCarouselModal />', () => {
     expect(screen.getByRole('button', { name: 'Image précédente' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Image suivante' })).toBeInTheDocument()
     expect(screen.getByText('1/3')).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/^Image \d+$/)).toHaveLength(3)
+    expect(screen.getAllByLabelText(/^Illustration \d+ .+/)).toHaveLength(3)
   })
 
   it('should display offer preview modal correctly with one image', async () => {
-    render(<ImagesCarouselModal isVisible imagesURL={['image1']} hideModal={jest.fn()} />)
+    render(
+      <ImagesCarouselModal
+        isVisible
+        imagesURL={['image1']}
+        hideModal={jest.fn()}
+        imageDescription="Image description"
+      />
+    )
 
     await waitFor(() => expect(screen.getByTestId('fullscreenModalView')).toBeInTheDocument())
 
@@ -97,6 +105,7 @@ describe('<ImagesCarouselModal />', () => {
         imagesURL={['image1', 'image2', 'image3']}
         hideModal={jest.fn()}
         defaultIndex={1}
+        imageDescription="Image description"
       />
     )
 
@@ -116,6 +125,7 @@ describe('<ImagesCarouselModal />', () => {
         isVisible
         imagesURL={['image1', 'image2', 'image3']}
         hideModal={jest.fn()}
+        imageDescription="Image description"
       />
     )
 
@@ -140,6 +150,7 @@ describe('<ImagesCarouselModal />', () => {
         imagesURL={['image1', 'image2', 'image3']}
         hideModal={jest.fn()}
         onSnapToItem={mockOnSnapToItem}
+        imageDescription="Image description"
       />
     )
 
@@ -164,6 +175,7 @@ describe('<ImagesCarouselModal />', () => {
         imagesURL={['image1', 'image2', 'image3']}
         hideModal={jest.fn()}
         onClose={mockOnClose}
+        imageDescription="Image description"
       />
     )
 
