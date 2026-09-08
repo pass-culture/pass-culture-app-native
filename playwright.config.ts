@@ -1,5 +1,9 @@
 import { defineConfig } from '@playwright/test'
 
+const runUrl =
+  process.env.GITHUB_SERVER_URL &&
+  `<${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}|Voir le run>`
+
 export default defineConfig({
   testDir: './e2e/web',
   retries: process.env.CI ? 2 : 0,
@@ -9,7 +13,16 @@ export default defineConfig({
         ['github'],
         [
           './node_modules/playwright-slack-report/dist/src/SlackReporter.js',
-          { channels: ['C05MH81G9LY'], sendResults: 'always', slackLogLevel: 'error' },
+          {
+            channels: ['C05MH81G9LY'],
+            sendResults: 'always',
+            slackLogLevel: 'error',
+            meta: [
+              { key: '🌿 Branche', value: process.env.GITHUB_REF_NAME ?? 'inconnue' },
+              { key: '📁 Suite', value: 'e2e/web (smoke)' },
+              ...(runUrl ? [{ key: '🔗 Détails', value: runUrl }] : []),
+            ],
+          },
         ],
       ]
     : 'list',
