@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
 
-interface IGNAddressProperties {
+type IGNAddressProperties = {
   type: 'housenumber' | 'street' | 'locality' | 'municipality'
   name: string
   label: string
@@ -21,7 +21,7 @@ interface IGNAddressProperties {
   score: number
 }
 
-interface IGNFeature {
+type IGNFeature = {
   type: 'Feature'
   geometry: {
     type: 'Point'
@@ -30,7 +30,7 @@ interface IGNFeature {
   properties: IGNAddressProperties
 }
 
-interface IGNReverseResponse {
+type IGNReverseResponse = {
   type: 'FeatureCollection'
   features: IGNFeature[]
   total?: number

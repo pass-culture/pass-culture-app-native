@@ -40,7 +40,7 @@ describe('initLocation', () => {
   })
 
   describe('when app starts', () => {
-    it('should switch to around place with last known position if permission is not GRANTED', async () => {
+    it('should switch to around place with last known position when permission is not GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
       locationActions.setGeolocPosition(position)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
@@ -59,7 +59,7 @@ describe('initLocation', () => {
       )
     })
 
-    it('should keep location mode if permission is GRANTED', async () => {
+    it('should keep location mode when permission is GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
@@ -72,7 +72,7 @@ describe('initLocation', () => {
   })
 
   describe('when app is resumed', () => {
-    it('should switch to around place with last known position if permission is not GRANTED', async () => {
+    it('should switch to around place with last known position when permission is not GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
       locationActions.setGeolocPosition(position)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
@@ -88,7 +88,7 @@ describe('initLocation', () => {
       })
     })
 
-    it('should keep location mode if permission is GRANTED', async () => {
+    it('should keep location mode when permission is GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 

@@ -31,8 +31,8 @@ const updateGeolocPosition = async () => {
 
 const switchFromAroundMeToAroundPlace = async () => {
   const locationMode = locationSelectors.selectLocationMode()
-  const aroundMeConfig = locationSelectors.selectLocationConfiguration(LocationMode.AROUND_ME)
   if (locationMode === LocationMode.AROUND_ME) {
+    const aroundMeConfig = locationSelectors.selectLocationConfiguration(LocationMode.AROUND_ME)
     if (aroundMeConfig.geolocation) {
       await setAroundPlaceFromCoords(aroundMeConfig.geolocation)
     } else {
