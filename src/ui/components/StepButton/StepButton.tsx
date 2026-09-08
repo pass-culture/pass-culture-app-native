@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { StyleProp, View, ViewStyle } from 'react-native'
+import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -22,6 +22,8 @@ interface Props {
   onPress?: () => void
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const StepButton = ({ step, navigateTo, onPress }: Props) => {
   const focusProps = useHandleFocus()
 
@@ -37,10 +39,10 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
       iconLabel = 'complété'
       break
     case StepButtonState.CURRENT:
-      iconLabel = 'non complété'
+      iconLabel = isWeb ? '' : 'non complété'
       break
     case StepButtonState.DISABLED:
-      iconLabel = 'non complété'
+      iconLabel = 'indisponible tant que l‘étape précédente n‘est pas complétée'
       break
     case StepButtonState.RETRY:
       iconLabel = 'à essayer de nouveau'
@@ -54,20 +56,27 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
     stepState === StepButtonState.COMPLETED ||
     (!navigateTo && !onPress)
 
-  return navigateTo ? (
+  const isCurrent = stepState === StepButtonState.CURRENT
+  const shouldRenderLink = navigateTo && !isDisabled
+
+  return shouldRenderLink ? (
     <StyledInternalTouchableLink
       {...focusProps}
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={isDisabled}
-      accessibilityLabel={accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}
+      aria-disabled={isDisabled}
+      aria-current={isCurrent ? 'step' : undefined}>
       <ButtonContent stepState={stepState} label={label} subtitle={subtitle} Icon={Icon} />
     </StyledInternalTouchableLink>
   ) : (
     <StyledTouchableOpacity
-      onPress={onPress}
+      onPress={isDisabled ? undefined : onPress}
       disabled={isDisabled}
-      accessibilityLabel={accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}
+      aria-disabled={isDisabled}
+      aria-current={isCurrent ? 'step' : undefined}>
       <ButtonContent
         stepState={stepState}
         label={label}
