@@ -175,7 +175,6 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
               stepperAnalyticsType === 'SSO_login' ? 'login' : 'signup'
             ),
             analyticsType: stepperAnalyticsType,
-            provider: ssoProvider,
           }
         )
       } else {
