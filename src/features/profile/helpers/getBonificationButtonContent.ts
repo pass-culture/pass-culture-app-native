@@ -34,11 +34,17 @@ export const getBonificationButtonContent = (
         accessibilityLabel: `Bonus obtenu pour le ${bonificationLabel}`,
         disabled: true,
       }
-
-    default:
+    case QFBonificationStatus.eligible:
+    case DisabilityBonificationStatus.eligible:
       return {
         label: 'Faire une demande',
         accessibilityLabel: `Faire une demande de ${bonificationLabel}`,
+        disabled: false,
+      }
+    default:
+      return {
+        label: 'Vérifier ma demande',
+        accessibilityLabel: `Vérifier ma demande de ${bonificationLabel}`,
         disabled: false,
       }
   }

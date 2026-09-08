@@ -6,10 +6,10 @@ import { ColorsType } from 'theme/types'
 import { Typo, getSpacing } from 'ui/theme'
 
 enum BarHeight {
-  'large' = 6,
-  'normal' = 4.5,
-  'small' = 2,
-  'smaller' = 1,
+  large = 6,
+  normal = 4.5,
+  small = 2,
+  smaller = 1,
 }
 
 interface CreditProgressBarProps {

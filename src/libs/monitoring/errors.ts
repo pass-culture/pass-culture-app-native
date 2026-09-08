@@ -4,9 +4,9 @@ import { FallbackProps } from 'react-error-boundary'
 import { eventMonitoring } from 'libs/monitoring/services'
 
 export enum LogTypeEnum {
-  'INFO' = 'info',
-  'ERROR' = 'error',
-  'IGNORED' = 'ignored',
+  INFO = 'info',
+  ERROR = 'error',
+  IGNORED = 'ignored',
 }
 
 type CaptureExceptionContext = Parameters<typeof eventMonitoring.captureException>[1]

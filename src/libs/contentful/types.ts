@@ -55,8 +55,9 @@ interface EntryCollectionInclusions<T, ContentType extends ContentTypes> {
   string: Array<Asset<ContentType> | Entry<T, ContentType>>
 }
 
-export interface EntryCollection<T, ContentType extends ContentTypes>
-  extends ContentfulCollection<Entry<T, ContentType>> {
+export interface EntryCollection<T, ContentType extends ContentTypes> extends ContentfulCollection<
+  Entry<T, ContentType>
+> {
   errors?: Array<EntryCollectionError>
   includes?: EntryCollectionInclusions<T, ContentType>
 }

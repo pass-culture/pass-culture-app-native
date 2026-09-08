@@ -10,6 +10,7 @@ import {
   mapBookingsStatusToActiveTab,
   mapBookingsToActiveTab,
 } from 'features/bookings/enum'
+import { createBookingsLabels } from 'features/bookings/helpers/createBookingsLabels'
 import { convertBookingsResponseV2 } from 'features/bookings/helpers/v2/convertBookingsResponseV2'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { convertBookingsListResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
@@ -26,7 +27,6 @@ import {
   useBookingsV2WithConvertedTimezoneQuery,
 } from 'queries/bookings/useBookingsQuery'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 
 const checkBookingPage = async () => {
@@ -71,10 +71,7 @@ export const Bookings = () => {
   const { data: availableReactions } = useAvailableReactionQuery()
   const numberOfReactableBookings = availableReactions?.numberOfReactableBookings ?? 0
 
-  const { fullCountLabel, accessibilityLabel } = createLabels(
-    numberOfReactableBookings,
-    'réservations'
-  )
+  const { fullCountLabel, accessibilityLabel } = createBookingsLabels(numberOfReactableBookings)
 
   const updateReactions = useCallback(async () => {
     if (isPending) return

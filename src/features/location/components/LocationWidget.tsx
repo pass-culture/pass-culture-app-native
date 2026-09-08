@@ -12,6 +12,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { getSpacing, Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const LOCATION_TITLE_MAX_WIDTH = getSpacing(25)
 
@@ -53,7 +54,9 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
         onPress={onPress}
         accessibilityLabel={computedAccessibilityLabel}>
         <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
-        <StyledCaption numberOfLines={numberOfLines}>{locationTitle}</StyledCaption>
+        <StyledCaption {...setTextSemantic('span')} numberOfLines={numberOfLines}>
+          {locationTitle}
+        </StyledCaption>
       </StyledTouchable>
     </WidgetContainer>
   )

@@ -14,6 +14,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   step: StepDetails
@@ -97,8 +98,14 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
 
   return (
     <StyleContainer LeftIcon={<Icon />} RightIcon={withRightIcon ? undefined : () => null}>
-      <StyledButtonText stepState={stepState}>{label}</StyledButtonText>
-      {subtitle ? <StepSubtitle stepState={stepState}>{subtitle}</StepSubtitle> : null}
+      <StyledButtonText {...setTextSemantic('span')} stepState={stepState}>
+        {label}
+      </StyledButtonText>
+      {subtitle ? (
+        <StepSubtitle {...setTextSemantic('span')} stepState={stepState}>
+          {subtitle}
+        </StepSubtitle>
+      ) : null}
     </StyleContainer>
   )
 }

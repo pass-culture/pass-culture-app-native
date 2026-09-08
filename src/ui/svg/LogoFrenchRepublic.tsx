@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
-function LogoFrenchRepublicSvg({ width, height }: AccessibleRectangleIcon) {
+const LogoFrenchRepublicSvg = ({ width, height }: AccessibleRectangleIcon) => {
   const theme = useTheme()
   return (
     <AccessibleSvg

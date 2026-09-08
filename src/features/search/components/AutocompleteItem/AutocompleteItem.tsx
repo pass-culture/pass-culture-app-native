@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 type Props = {
   icon: React.ReactNode
@@ -25,7 +24,7 @@ export function AutocompleteItem({ icon, onPress, children, testID }: Props) {
 
 const IconWrapper = styled.View({ flexShrink: 0 })
 
-const ItemTouchable = styledButton(Touchable)(({ theme }) => ({
+const ItemTouchable = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.l,

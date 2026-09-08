@@ -73,9 +73,11 @@ export const BonificationExplanations = () => {
             </StyledTitle3>
             <Typo.Body>
               Ce bonus de
-              <Typo.BodyAccent>{SPACE + formattedBonificationAmount + SPACE}</Typo.BodyAccent>
+              <Typo.BodyAccent {...setTextSemantic('span')}>
+                {SPACE + formattedBonificationAmount + SPACE}
+              </Typo.BodyAccent>
               est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
-              <Typo.BodyAccent>
+              <Typo.BodyAccent {...setTextSemantic('span')}>
                 {` quotient familial inférieur ou égal à ${familyQuotientLevel}.`}
               </Typo.BodyAccent>
             </Typo.Body>
@@ -113,8 +115,11 @@ export const BonificationExplanations = () => {
           />
           {enableHandicapBonification ? null : (
             <StyledBodyS>
-              Si tu es en <Typo.BodyAccentS>situation de handicap</Typo.BodyAccentS>, un peu de
-              patience, ton cas sera pris en compte prochainement.
+              Si tu es en{SPACE}
+              <Typo.BodyAccentS {...setTextSemantic('span')}>
+                situation de handicap
+              </Typo.BodyAccentS>
+              , un peu de patience, ton cas sera pris en compte prochainement.
             </StyledBodyS>
           )}
         </ViewGap>

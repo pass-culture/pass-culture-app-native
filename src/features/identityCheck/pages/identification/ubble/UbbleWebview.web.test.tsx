@@ -10,7 +10,7 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 import { UbbleWebview } from './UbbleWebview'
 
 describe('<UbbleWebview/>', () => {
-  describe('Accessibility', () => {
+  ;(describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockServer.postApi<IdentificationSessionResponse>('/v1/ubble_identification', {
         identificationUrl: 'http://ubble.webview.com',
@@ -47,5 +47,5 @@ describe('<UbbleWebview/>', () => {
           expect(navigate).toHaveBeenCalledWith('IncorrectLink')
         })
       })
-    })
+    }))
 })

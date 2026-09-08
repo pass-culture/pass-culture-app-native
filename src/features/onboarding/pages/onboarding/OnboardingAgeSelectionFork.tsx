@@ -67,9 +67,9 @@ export const OnboardingAgeSelectionFork: FunctionComponent = () => {
             onBeforeNavigate={button.onBeforeNavigate}
             navigateTo={button.navigateTo}
             accessibilityLabel={`${button.startButtonTitle}${button.age}${button.endButtonTitle}`}>
-            <StyledBody>
+            <StyledBody {...setTextSemantic('span')}>
               {button.startButtonTitle}
-              <StyledTitle4>{button.age}</StyledTitle4>
+              <StyledTitle4 {...setTextSemantic('span')}>{button.age}</StyledTitle4>
               {button.endButtonTitle}
             </StyledBody>
           </AgeButton>

@@ -4,8 +4,10 @@ import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { EmailInput, EmailInputProps } from 'ui/components/inputs/EmailInput/EmailInput'
 import { EmailInputWithSpellingHelp } from 'ui/components/inputs/EmailInputWithSpellingHelp/EmailInputWithSpellingHelp'
 
-interface Props<TFieldValues extends FieldValues, TName>
-  extends Omit<EmailInputProps, 'onEmailChange' | 'email'> {
+interface Props<TFieldValues extends FieldValues, TName> extends Omit<
+  EmailInputProps,
+  'onEmailChange' | 'email'
+> {
   name: TName
   control: Control<TFieldValues>
   withSpellingHelp?: boolean

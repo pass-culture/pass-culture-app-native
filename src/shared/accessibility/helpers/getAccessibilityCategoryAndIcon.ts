@@ -5,10 +5,10 @@ import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export enum HandicapCategory {
-  'VISUAL',
-  'MENTAL',
-  'MOTOR',
-  'AUDIO',
+  VISUAL,
+  MENTAL,
+  MOTOR,
+  AUDIO,
 }
 
 export const getAccessibilityCategoryAndIcon = (

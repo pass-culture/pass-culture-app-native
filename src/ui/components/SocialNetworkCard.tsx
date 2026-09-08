@@ -4,9 +4,11 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { capitalize } from 'libs/formatter/capitalize'
+import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -15,6 +17,7 @@ interface SocialNetworkCardProps {
 }
 
 function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
+  const numberOfLines = useNumberOfLine(2)
   const { network } = props
   const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
   const name = capitalize(network)
@@ -25,7 +28,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
 
   const onBeforeNavigate = () => {
     const network = name === 'X' ? 'Twitter' : name
-    analytics.logClickSocialNetwork(network)
+    void analytics.logClickSocialNetwork(network)
   }
 
   return (
@@ -38,7 +41,9 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
         <NetworkIconBox>
           <StyledIcon />
         </NetworkIconBox>
-        <Typo.BodyAccentXs numberOfLines={2}>{name}</Typo.BodyAccentXs>
+        <Typo.BodyAccentXs {...setTextSemantic('span')} numberOfLines={numberOfLines}>
+          {name}
+        </Typo.BodyAccentXs>
       </Container>
     </ExternalTouchableLink>
   )

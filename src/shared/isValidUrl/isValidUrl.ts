@@ -4,7 +4,7 @@ export const isValidHttpsUrl = (identificationUrl: string, hostname?: string): b
   try {
     const url = new URL(identificationUrl)
     return url.protocol === 'https:' && (hostname ? url.hostname === hostname : true)
-  } catch (e) {
+  } catch {
     return false
   }
 }

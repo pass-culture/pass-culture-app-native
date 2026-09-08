@@ -160,9 +160,7 @@ describe('<VenueTopComponent />', () => {
       },
     })
 
-    await user.press(
-      screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo')
-    )
+    await user.press(screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo'))
 
     expect(navigate).toHaveBeenCalledWith('VenuePreviewCarousel', {
       id: venueOpenToPublic.id,

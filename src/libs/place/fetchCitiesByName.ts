@@ -13,7 +13,7 @@ export const fetchCitiesByName = async (name: string): Promise<CitiesResponse> =
     const response = await fetch(url)
     if (!response.ok) throw new Error('Failed to fetch cities')
     return await response.json()
-  } catch (_error) {
+  } catch {
     return []
   }
 }

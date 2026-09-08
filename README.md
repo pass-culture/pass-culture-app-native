@@ -177,32 +177,6 @@ You can find most of the code related to performance measurement in `src/perform
 
 For local development, you can monitor the performances by pressing `d` in your metro console. The developer menu should popup on your emulator. Press the "performance monitor" button. You can track the JS thread, UI thread and RAM usage on features you are developing.
 
-#### Deployed versions (Android only)
-
-Thanks to maestro and flashlight, we are able to have a measure for each version of the app in the CI.
-
-[Here are examples of runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_schedule_flashlight_android.yml).
-
-Additionally, you can add a tag `e2e perfs` to your PR to get the flashlight performance score of your feature.
-
-Here is an example of a flashlight performance report:
-
-```
-===== Aggregated Performance Summary =====
-  - Overall Score            82.00 / 100
-  - Successful Iterations    10 / 10
-
-===== Averaged Metrics (across all successful runs) =====
-  - Average FPS              39
-  - Average RAM Usage        250 MB
-  - Average Total CPU        51 %
-
-===== Average CPU Usage Per Thread =====
-  - UI Thread                4.45 %
-  - mqt_js                   0.00 %
-  - RenderThread             30.27 %
-```
-
 #### Production measurements
 
 Starting in the version v344, to measure performances, we have decided to measure the time to interactive of the home (see [adr](./doc/decision-records/DR007%20-%20mesure-performances.md))

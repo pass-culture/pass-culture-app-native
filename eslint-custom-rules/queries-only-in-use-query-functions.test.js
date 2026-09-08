@@ -2,7 +2,7 @@ const { RuleTester } = require('eslint')
 const rule = require('./queries-only-in-use-query-functions')
 
 const ruleTester = new RuleTester({
-  parserOptions: {
+  languageOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
   },

@@ -5,6 +5,7 @@ import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Typo, getSpacing } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type TrendProps = TrendBlock &
   TrendNavigationProps & {
@@ -20,7 +21,9 @@ export const Trend = ({ image, title, ...rest }: TrendProps) => {
   return (
     <Item key={title} accessibilityLabel={title} {...rest}>
       <ItemIcon source={image} />
-      <StyledText numberOfLines={numberOfLines}>{title}</StyledText>
+      <StyledText {...setTextSemantic('span')} numberOfLines={numberOfLines}>
+        {title}
+      </StyledText>
     </Item>
   )
 }

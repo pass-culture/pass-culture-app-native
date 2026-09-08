@@ -3,8 +3,10 @@ import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 
-interface Props<TFieldValues extends FieldValues, TName>
-  extends Omit<React.ComponentProps<typeof TextInput>, 'value' | 'onChangeText'> {
+interface Props<TFieldValues extends FieldValues, TName> extends Omit<
+  React.ComponentProps<typeof TextInput>,
+  'value' | 'onChangeText'
+> {
   name: TName
   control: Control<TFieldValues>
   label: string

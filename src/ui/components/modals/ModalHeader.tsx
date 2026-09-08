@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
+import { accessibleLabelIdProps } from 'shared/accessibilityProps/accessibleLabelIdProps'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -18,6 +19,7 @@ type ModalHeaderProps = {
   numberOfLines?: number
   modalSpacing?: ModalSpacing
   onLayout?: (event: LayoutChangeEvent) => void
+  titleAccessibilityLabel?: string
 } & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
@@ -32,6 +34,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   numberOfLines,
   modalSpacing,
   onLayout,
+  titleAccessibilityLabel,
 }) => {
   const RightIcon =
     !!rightIcon &&
@@ -60,7 +63,11 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         ) : null}
       </HeaderActionContainer>
       <TitleContainer>
-        <Title numberOfLines={numberOfLines} nativeID={titleID} testID="modalHeaderTitle">
+        <Title
+          numberOfLines={numberOfLines}
+          {...accessibleLabelIdProps(titleID)}
+          accessibilityLabel={titleAccessibilityLabel}
+          testID="modalHeaderTitle">
           {title}
         </Title>
       </TitleContainer>

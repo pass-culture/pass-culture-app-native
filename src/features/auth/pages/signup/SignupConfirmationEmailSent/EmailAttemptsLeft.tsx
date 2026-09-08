@@ -2,6 +2,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   attemptsLeft?: number
@@ -15,14 +17,16 @@ export const EmailAttemptsLeft: FunctionComponent<Props> = ({ attemptsLeft }) =>
   if (attemptsLeft < 2) {
     return (
       <StyledCaption>
-        Attention, il te reste&nbsp;: <StyledErrorText>{`${attemptsLeft} demande`}</StyledErrorText>
+        Attention, il te reste&nbsp;:{SPACE}
+        <StyledErrorText {...setTextSemantic('span')}>{`${attemptsLeft} demande`}</StyledErrorText>
       </StyledCaption>
     )
   }
   return (
     <StyledCaption>
-      Attention, il te reste&nbsp;:{' '}
-      <Typo.BodyAccentXs>{`${attemptsLeft} demandes`}</Typo.BodyAccentXs>
+      Attention, il te reste&nbsp;:{SPACE}
+      <Typo.BodyAccentXs
+        {...setTextSemantic('span')}>{`${attemptsLeft} demandes`}</Typo.BodyAccentXs>
     </StyledCaption>
   )
 }

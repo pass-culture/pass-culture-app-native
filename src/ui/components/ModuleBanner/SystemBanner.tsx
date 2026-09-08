@@ -19,6 +19,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type TouchableProps =
   | {
@@ -133,11 +134,15 @@ export const SystemBanner: FunctionComponent<Props> = ({
           </IconContainer>
         ) : null}
         <DescriptionContainer gap={1}>
-          <Typo.BodyAccent color={color}>{title}</Typo.BodyAccent>
+          <Typo.BodyAccent {...setTextSemantic('span')} color={color}>
+            {title}
+          </Typo.BodyAccent>
           {React.isValidElement(subtitle) ? (
             subtitle
           ) : (
-            <Typo.Body color={color}>{subtitle}</Typo.Body>
+            <Typo.Body {...setTextSemantic('span')} color={color}>
+              {subtitle}
+            </Typo.Body>
           )}
         </DescriptionContainer>
         <View>

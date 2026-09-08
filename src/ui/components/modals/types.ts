@@ -28,8 +28,8 @@ type ModalRightIconProps = DefinedRightIconProps | UndefinedRightIconProps
 export type ModalIconProps = ModalLeftIconProps & ModalRightIconProps
 
 export enum ModalSwipeDirection {
-  'UP' = 'up',
-  'DOWN' = 'down',
-  'LEFT' = 'left',
-  'RIGHT' = 'right',
+  UP = 'up',
+  DOWN = 'down',
+  LEFT = 'left',
+  RIGHT = 'right',
 }

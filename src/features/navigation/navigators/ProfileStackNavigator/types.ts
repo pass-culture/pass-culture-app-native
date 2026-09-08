@@ -41,8 +41,7 @@ export type ProfileStackParamList = {
   TrackEmailChange: undefined
   ValidateEmailChange: { token: string } | undefined
   ChangeEmailSetPassword:
-    | { token: string | null | undefined; emailSelectionToken: string | null | undefined }
-    | undefined
+    { token: string | null | undefined; emailSelectionToken: string | null | undefined } | undefined
   NewEmailSelection: { token: string | null | undefined } | undefined
 } & AccessibilityRootStackParamList
 

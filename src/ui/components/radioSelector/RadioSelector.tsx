@@ -7,6 +7,7 @@ import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioP
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type RightContentProps =
   | { rightText: string; rightElement?: never }
@@ -62,6 +63,7 @@ export const RadioSelector = ({
         <Container gap={4}>
           <LeftContent>
             <Label
+              {...setTextSemantic('span')}
               disabled={disabled}
               testID={testID ? `${testID}-label` : undefined}
               isHover={isHover}>
@@ -69,13 +71,18 @@ export const RadioSelector = ({
             </Label>
             {
               description ? (
-                <Description disabled={disabled}>{description}</Description>
+                <Description {...setTextSemantic('span')} disabled={disabled}>
+                  {description}
+                </Description>
               ) : null /* conditionally render description since it applies a margin even when nothing is displayed */
             }
           </LeftContent>
           <RightContent>
             {rightText ? (
-              <RightText disabled={disabled} testID={testID ? `${testID}-right-text` : undefined}>
+              <RightText
+                {...setTextSemantic('span')}
+                disabled={disabled}
+                testID={testID ? `${testID}-right-text` : undefined}>
                 {rightText}
               </RightText>
             ) : null}

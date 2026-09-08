@@ -57,12 +57,13 @@ export const FakeDoorModal = () => {
       }
 
   return (
-    <ModalScreenWrapper onClose={goBack}>
-      {(closeWithTransition) => (
+    <ModalScreenWrapper onClose={goBack} title="Encore un peu de patience...">
+      {(closeWithTransition, titleId) => (
         <React.Fragment>
           <HeaderContainer>
             <ModalHeader
               title="Encore un peu de patience..."
+              titleID={titleId}
               rightIconAccessibilityLabel="Fermer la fenêtre"
               rightIcon={Close}
               onRightIconPress={closeWithTransition}

@@ -43,9 +43,9 @@ export const getBannerActivationType = ({
 
   const isActivationBannerVisible = Boolean(
     bannerActivationDefault ||
-      bannerActivationRetry ||
-      bannerActivationWithSubscriptionMessage ||
-      bannerActivationPending
+    bannerActivationRetry ||
+    bannerActivationWithSubscriptionMessage ||
+    bannerActivationPending
   )
 
   const bannerActivationDisabled = Boolean(

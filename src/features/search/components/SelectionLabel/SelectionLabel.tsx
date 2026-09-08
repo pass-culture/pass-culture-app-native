@@ -5,6 +5,7 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
@@ -26,7 +27,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
         </IconContainer>
       ) : undefined}
       <LabelContainer selected={selected}>
-        <Label numberOfLines={1} selected={selected}>
+        <Label {...setTextSemantic('span')} numberOfLines={1} selected={selected}>
           {label}
         </Label>
       </LabelContainer>

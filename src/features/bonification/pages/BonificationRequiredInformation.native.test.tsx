@@ -63,7 +63,7 @@ describe('BonificationRequiredInformation', () => {
     it('should correct wording', () => {
       render(<BonificationRequiredInformation />)
 
-      const title = screen.getByText('Nous avons besoins de quelques informations supplémentaires')
+      const title = screen.getByText('Nous avons besoin de quelques informations supplémentaires')
       const dataPrivacyText = screen.getByText(
         /Tu peux en savoir plus sur la collecte de données et tes droits/
       )

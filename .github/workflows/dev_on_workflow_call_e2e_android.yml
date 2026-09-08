@@ -152,7 +152,7 @@ jobs:
           device-locale: fr_FR
           device-os: android-36
           device-model: pixel_9
-          workspace: .maestro/testsV3/
+          workspace: .maestro/tests/
           include-tags: ${{ inputs.test_tags }}
           async: true
           env: |

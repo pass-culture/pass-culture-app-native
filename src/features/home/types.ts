@@ -9,25 +9,25 @@ import type { CategoryButtonIllustrationName } from 'shared/illustrations/catego
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
-  'ArtistPlaylistModule' = 'ArtistPlaylistModule',
-  'OffersModule' = 'OffersModule',
-  'VenuesModule' = 'VenuesModule',
-  'BusinessModule' = 'BusinessModule',
-  'RecommendedOffersModule' = 'RecommendedOffersModule',
-  'ThematicHighlightModule' = 'ThematicHighlightModule',
-  'TrendsModule' = 'TrendsModule',
-  'CategoryListModule' = 'CategoryListModule',
-  'VideoModule' = 'VideoModule',
-  'HighlightOfferModule' = 'HighlightOfferModule',
-  'VenueMapModule' = 'VenueMapModule',
+  ArtistPlaylistModule = 'ArtistPlaylistModule',
+  OffersModule = 'OffersModule',
+  VenuesModule = 'VenuesModule',
+  BusinessModule = 'BusinessModule',
+  RecommendedOffersModule = 'RecommendedOffersModule',
+  ThematicHighlightModule = 'ThematicHighlightModule',
+  TrendsModule = 'TrendsModule',
+  CategoryListModule = 'CategoryListModule',
+  VideoModule = 'VideoModule',
+  HighlightOfferModule = 'HighlightOfferModule',
+  VenueMapModule = 'VenueMapModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
 
 export enum ThematicHeaderType {
-  'Default' = 'Default',
-  'Highlight' = 'Highlight',
-  'Category' = 'Category',
+  Default = 'Default',
+  Highlight = 'Highlight',
+  Category = 'Category',
 }
 
 export type DefaultThematicHeader = {
@@ -61,16 +61,10 @@ export type CategoryThematicHeader = {
 }
 
 export type CategoryHeaderColor =
-  | 'Positive01'
-  | 'Negative01'
-  | 'Pending01'
-  | 'Information01'
-  | 'Information04'
+  'Positive01' | 'Negative01' | 'Pending01' | 'Information01' | 'Information04'
 
 export type ThematicHeader =
-  | DefaultThematicHeader
-  | HighlightThematicHeader
-  | CategoryThematicHeader
+  DefaultThematicHeader | HighlightThematicHeader | CategoryThematicHeader
 
 export type Homepage = {
   tags: HomepageTag[]

@@ -32,6 +32,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const notFoundPageConfig: PageConfigEntry = {
   Illustration: ErrorIllustration,
@@ -176,7 +177,7 @@ export const BonificationFamilyQuotientRefused = () => {
   const buttonsSurtitle = showNumberOfRemainingRetries ? (
     <StyledBodyXs>
       Attention, il te reste&nbsp;:{SPACE}
-      <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry}>
+      <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry} {...setTextSemantic('span')}>
         {remainingBonusAttempts}
         {remainingBonusAttempts
           ? plural(remainingBonusAttempts, { plural: ' demandes', singular: ' demande' })

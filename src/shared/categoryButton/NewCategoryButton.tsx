@@ -16,6 +16,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type CategoryButtonProps = {
   label: string
@@ -68,13 +69,15 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
       height={effectiveHeight}>
       {shouldUseAccessibleLayout ? (
         <AccessibleLabelContainer>
-          <Label>{label}</Label>
+          <Label {...setTextSemantic('span')}>{label}</Label>
         </AccessibleLabelContainer>
       ) : (
         <Container gap={2}>
           <LabelContainer>
             {labelPartsToDisplay.map((labelPart) => (
-              <Label key={labelPart}>{labelPart}</Label>
+              <Label key={labelPart} {...setTextSemantic('span')}>
+                {labelPart}
+              </Label>
             ))}
           </LabelContainer>
           {illustrationUrlToDisplay ? (
@@ -147,8 +150,10 @@ const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) =
   color: theme.designSystem.color.text.default,
   backgroundColor: theme.designSystem.color.text.inverted,
   borderRadius: theme.designSystem.size.borderRadius.s,
-  paddingVertical: theme.designSystem.size.spacing.xxs,
-  paddingHorizontal: theme.designSystem.size.spacing.xs,
+  paddingTop: theme.designSystem.size.spacing.xxs,
+  paddingBottom: theme.designSystem.size.spacing.xxs,
+  paddingLeft: theme.designSystem.size.spacing.xs,
+  paddingRight: theme.designSystem.size.spacing.xs,
 }))
 
 const CATEGORY_ICON_TOP = getSpacing(3.5)

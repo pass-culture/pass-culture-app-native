@@ -7,6 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   venue: OfferVenueResponse
@@ -17,9 +18,13 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
 
   return (
     <HeroButtonList
-      Title={<Typo.BodyAccent>{venue.name}</Typo.BodyAccent>}
+      Title={<Typo.BodyAccent {...setTextSemantic('span')}>{venue.name}</Typo.BodyAccent>}
       Subtitle={
-        venue.city ? <SubtitleText testID="subtitle">{venue.city}</SubtitleText> : undefined
+        venue.city ? (
+          <SubtitleText {...setTextSemantic('span')} testID="subtitle">
+            {venue.city}
+          </SubtitleText>
+        ) : undefined
       }
       Icon={
         <LocationBuildingFilled color={designSystem.color.icon.default} size={icons.sizes.small} />

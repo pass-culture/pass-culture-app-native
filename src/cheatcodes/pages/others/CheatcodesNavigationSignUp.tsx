@@ -16,11 +16,7 @@ import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationM
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 
 type VisibleModal =
-  | 'finishSubscription'
-  | 'authentication'
-  | 'applicationProcessing'
-  | 'errorApplication'
-  | null
+  'finishSubscription' | 'authentication' | 'applicationProcessing' | 'errorApplication' | null
 
 const signUpCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),

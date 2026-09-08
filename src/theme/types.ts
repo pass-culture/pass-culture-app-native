@@ -18,16 +18,10 @@ import {
 } from '@pass-culture/design-system/lib/jeune/light.web_typo_rem'
 
 export type ColorsType =
-  | ColorsTypeDarkMobile
-  | ColorsTypeDarkWeb
-  | ColorsTypeLightMobile
-  | ColorsTypeLightWeb
+  ColorsTypeDarkMobile | ColorsTypeDarkWeb | ColorsTypeLightMobile | ColorsTypeLightWeb
 
 export type DesignTokensType =
-  | typeof themeDarkMobile
-  | typeof themeLightMobile
-  | typeof themeDarkWeb
-  | typeof themeLightWeb
+  typeof themeDarkMobile | typeof themeLightMobile | typeof themeDarkWeb | typeof themeLightWeb
 
 export type TextColorKey = keyof DesignTokensType['color']['text']
 export type IconColorKey = keyof DesignTokensType['color']['icon']

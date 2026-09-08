@@ -14,4 +14,11 @@ const focusStyle = () => {
 }
 
 export const touchableFocusOutline = ({ theme, isFocus }: TouchableFocusOutlineProps) =>
-  isFocus ? { ...focusStyle(), outlineColor: theme.designSystem.color.outline.default } : {}
+  isFocus
+    ? {
+        ...focusStyle(),
+        outlineColor: theme.designSystem.color.outline.default,
+        outlineWidth: theme.outline.width,
+        outlineStyle: theme.outline.style,
+      }
+    : {}

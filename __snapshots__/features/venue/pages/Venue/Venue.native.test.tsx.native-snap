@@ -526,6 +526,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             >
               <View
+                accessibilityLabel="Informations du lieu"
                 accessibilityRole="tablist"
                 gap={6}
                 style={
@@ -732,6 +733,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                aria-labelledby="offres-disponibles"
+                nativeID="panel-offres-disponibles"
                 style={
                   {
                     "flexGrow": 1,
@@ -3956,6 +3959,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               }
             >
               <View
+                accessibilityLabel="Informations du lieu"
                 accessibilityRole="tablist"
                 gap={6}
                 style={
@@ -4162,6 +4166,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                aria-labelledby="offres-disponibles"
+                nativeID="panel-offres-disponibles"
                 style={
                   {
                     "flexGrow": 1,
@@ -7386,6 +7392,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               }
             >
               <View
+                accessibilityLabel="Informations du lieu"
                 accessibilityRole="tablist"
                 gap={6}
                 style={
@@ -7592,6 +7599,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                aria-labelledby="infos-pratiques"
+                nativeID="panel-infos-pratiques"
                 style={
                   {
                     "flexGrow": 1,

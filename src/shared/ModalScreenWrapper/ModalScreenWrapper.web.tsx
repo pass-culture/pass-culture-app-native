@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Pressable, StyleSheet } from 'react-native'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Pressable, StyleSheet, View } from 'react-native'
 import Animated, {
   Easing,
   FadeIn,
@@ -9,8 +9,11 @@ import Animated, {
 } from 'react-native-reanimated'
 import { scheduleOnRN } from 'react-native-worklets'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
+import { useModalFocusTrap } from 'ui/hooks/useModalFocusTrap'
 
 import { ModalScreenWrapperProps } from './ModalScreenWrapper'
 
@@ -31,8 +34,40 @@ const createModalExiting = (onClose: () => void) =>
     }
   })
 
-export const ModalScreenWrapper = ({ onClose, children, fullScreen }: ModalScreenWrapperProps) => {
+export const ModalScreenWrapper = ({
+  title,
+  onClose,
+  children,
+  fullScreen,
+}: ModalScreenWrapperProps) => {
+  const titleId = uuidv4()
   const [isOpen, setIsOpen] = useState(true)
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false)
+  const modalRef = useRef<View>(null)
+
+  const onAnimationFinished = useCallback(() => {
+    setIsAnimationFinished(true)
+  }, [])
+
+  const enteringAnimation = useMemo(
+    () =>
+      MODAL_ENTERING.withCallback((finished) => {
+        'worklet'
+        if (finished) {
+          scheduleOnRN(onAnimationFinished)
+        }
+      }),
+    [onAnimationFinished]
+  )
+
+  useEffect(() => {
+    if (isAnimationFinished && modalRef.current) {
+      const node = modalRef.current
+      node?.focus?.()
+    }
+  }, [isAnimationFinished])
+
+  useModalFocusTrap(modalRef, isAnimationFinished)
 
   const closeWithTransition = () => {
     setIsOpen((open) => (open ? false : open))
@@ -51,10 +86,16 @@ export const ModalScreenWrapper = ({ onClose, children, fullScreen }: ModalScree
             accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
           />
           <ModalContainer
-            entering={MODAL_ENTERING}
+            ref={modalRef}
+            role={AccessibilityRole.DIALOG}
+            aria-modal
+            aria-label={title}
+            aria-labelledby={titleId}
+            tabIndex={-1}
+            entering={enteringAnimation}
             exiting={createModalExiting(onClose)}
             fullScreen={fullScreen}>
-            {children(closeWithTransition)}
+            {children(closeWithTransition, titleId)}
           </ModalContainer>
         </React.Fragment>
       ) : null}

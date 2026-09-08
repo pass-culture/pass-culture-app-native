@@ -21,6 +21,7 @@ function renderComponent(userOverrides = {}, propsOverrides = {}) {
       user={{
         ...beneficiaryUser,
         qfBonificationStatus: QFBonificationStatus.eligible,
+        disabilityBonificationStatus: DisabilityBonificationStatus.eligible,
         ...userOverrides,
       }}
       {...propsOverrides}
@@ -54,9 +55,9 @@ describe('BonificationAllStep', () => {
     })
 
     it('should navigate to refused screen when too many retries', async () => {
-      renderComponent({ remainingBonusAttempts: 0 })
+      renderComponent({ qfBonificationStatus: QFBonificationStatus.too_many_retries })
 
-      await userEvent.press(screen.getByLabelText('Faire une demande de bonus quotient familial'))
+      await userEvent.press(screen.getByLabelText('Vérifier ma demande de bonus quotient familial'))
 
       expect(navigate).toHaveBeenCalledWith(
         'SubscriptionStackNavigator',
@@ -139,7 +140,7 @@ describe('BonificationAllStep', () => {
       })
 
       await userEvent.press(
-        screen.getByLabelText('Faire une demande de bonus situation de handicap')
+        screen.getByLabelText('Vérifier ma demande de bonus situation de handicap')
       )
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
@@ -155,7 +156,7 @@ describe('BonificationAllStep', () => {
       })
 
       await userEvent.press(
-        screen.getByLabelText('Faire une demande de bonus situation de handicap')
+        screen.getByLabelText('Vérifier ma demande de bonus situation de handicap')
       )
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {

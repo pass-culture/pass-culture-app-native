@@ -25,8 +25,7 @@ import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Typo } from 'ui/theme'
 
@@ -249,7 +248,7 @@ const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ category
 
 const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
 
-const AutocompleteItemTouchable = styledButton(Touchable)(({ theme }) => ({
+const AutocompleteItemTouchable = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.l,

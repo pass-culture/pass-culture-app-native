@@ -15,14 +15,14 @@ type CinemaPlaylistPropsContainingVenue = ThematicSearchPlaylist & {
 
 export const useRenderPassPlaylist = ({
   analyticsFrom,
-  route,
+  route: _route,
   playlist,
   venue,
   searchId,
 }: Readonly<
   CinemaPlaylistPropsContainingVenue | Omit<GtlPlaylistProps, 'onViewableItemsChanged'>
 >): CustomListRenderItem<Offer> => {
-  const currentRoute = useRoute<UseRouteType<typeof route>>()
+  const currentRoute = useRoute<UseRouteType<typeof _route>>()
   const entryId = 'entryId' in playlist ? playlist.entryId : undefined
 
   return useCallback(

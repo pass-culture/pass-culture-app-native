@@ -20,6 +20,7 @@ type InfoTabProps<TabKeyType extends string> = {
   onPress: () => void
   Icon?: React.FC<AccessibleIcon>
   pastille?: PastilleType
+  panelId?: string
 }
 
 const isWeb = Platform.OS === 'web'
@@ -32,6 +33,7 @@ export const InfoTab = <TabKeyType extends string>({
   onPress,
   Icon,
   pastille,
+  panelId,
 }: InfoTabProps<TabKeyType>) => {
   const isSelected = selectedTab === tab
   const { isHover, ...webHoverProps } = useHandleHover()
@@ -65,6 +67,7 @@ export const InfoTab = <TabKeyType extends string>({
       id={tab}
       onPress={onPress}
       selected={isSelected}
+      aria-controls={panelId}
       {...hoverProps}>
       <TabTitleContainer gap={2}>
         {StyledIcon ? <StyledIcon testID="tabIcon" /> : null}
