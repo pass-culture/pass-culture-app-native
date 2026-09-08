@@ -1,9 +1,26 @@
 import React from 'react'
 
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen } from 'tests/utils'
 import { AvatarListItem } from 'ui/components/Avatar/AvatarListItem'
 
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
+
 describe('<AvatarListItem />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should display artist avatar name + image', () => {
     render(<AvatarListItem id={1} name="Oda" image="url" onItemPress={jest.fn()} />)
 

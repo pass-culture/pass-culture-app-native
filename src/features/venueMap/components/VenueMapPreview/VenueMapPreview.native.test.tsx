@@ -3,12 +3,29 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { userEvent, render, screen } from 'tests/utils'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<VenueMapPreview />', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   it('should render correctly with border by default', () => {
     renderVenueMapPreview({})
 

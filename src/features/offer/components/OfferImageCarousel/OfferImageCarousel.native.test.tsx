@@ -2,11 +2,28 @@ import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
 
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
+
 describe('OfferImageCarousel', () => {
+  beforeEach(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
+  })
+
   const user = userEvent.setup()
 
   it('should render one image without pagination', async () => {

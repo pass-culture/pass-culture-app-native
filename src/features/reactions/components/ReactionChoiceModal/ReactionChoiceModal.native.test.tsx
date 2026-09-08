@@ -8,8 +8,15 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
+
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockCloseModal = jest.fn()
 
@@ -28,6 +35,13 @@ jest.useFakeTimers()
 describe('ReactionChoiceModal', () => {
   beforeEach(() => {
     setFeatureFlags()
+    useRemoteConfigSpy.mockReturnValue({
+      ...remoteConfigResponseFixture,
+      data: {
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      },
+    })
   })
 
   it('should display body with validation when body type is validation', () => {
