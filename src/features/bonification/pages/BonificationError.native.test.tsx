@@ -18,10 +18,7 @@ describe('BonificationError', () => {
       const button = screen.getByText('Revenir vers le formulaire')
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: undefined,
-        screen: 'BonificationNames',
-      })
+      expect(navigate).toHaveBeenCalledWith('BonificationNames', undefined)
     })
   })
 
@@ -33,9 +30,8 @@ describe('BonificationError', () => {
       const button = screen.getByText('Revenir vers le formulaire')
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationType: BonificationType.DISABILITY },
-        screen: 'BonificationBirthPlace',
+      expect(navigate).toHaveBeenCalledWith('BonificationBirthPlace', {
+        bonificationType: BonificationType.DISABILITY,
       })
     })
   })

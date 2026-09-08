@@ -1,8 +1,5 @@
 import { CheatcodesStackRouteName } from 'features/navigation/navigators/CheatcodesStackNavigator/types'
-import {
-  RootScreenNames,
-  RootStackParamList,
-} from 'features/navigation/navigators/RootNavigator/types'
+import { AllNavigateParams } from 'features/navigation/navigators/RootNavigator/types'
 
 /**
  * A dedicated object for all navigation-related data.
@@ -12,8 +9,8 @@ type NavigationTarget = {
 }
 
 type SubscreenNavigationTarget = {
-  screen: RootScreenNames
-  params?: RootStackParamList[RootScreenNames]
+  screen: AllNavigateParams[0]
+  params?: AllNavigateParams[1]
 }
 
 /**

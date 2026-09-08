@@ -21,9 +21,8 @@ describe('ErrorBonificationBanner', () => {
     const button = screen.getByText('Voir plus de détails')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      screen: 'BonificationFamilyQuotientRefused',
-      params: { bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES },
+    expect(navigate).toHaveBeenCalledWith('BonificationFamilyQuotientRefused', {
+      bonificationRefusedType: BonificationQFRefusedType.TOO_MANY_RETRIES,
     })
   })
 })

@@ -39,10 +39,7 @@ describe('SelectIDOrigin', () => {
     )
     await user.press(HeroButtonListFrench)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'SelectIDStatus',
-    })
+    expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
   })
 
   it('should navigate to DMSIntroduction with foreign parameter on press foreign HeroButtonList', async () => {
@@ -53,11 +50,6 @@ describe('SelectIDOrigin', () => {
     )
     await user.press(ButtonForeign)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      screen: 'DMSIntroduction',
-      params: {
-        isForeignDMSInformation: true,
-      },
-    })
+    expect(navigate).toHaveBeenCalledWith('DMSIntroduction', { isForeignDMSInformation: true })
   })
 })

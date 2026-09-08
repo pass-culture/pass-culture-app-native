@@ -16,8 +16,6 @@ describe('DefaultBonificationBanner', () => {
     const button = screen.getByText('Vérifier maintenant')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      screen: 'BonificationExplanations',
-    })
+    expect(navigate).toHaveBeenCalledWith('BonificationExplanations', undefined)
   })
 })

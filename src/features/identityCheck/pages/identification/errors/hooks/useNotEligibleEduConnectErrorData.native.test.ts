@@ -38,7 +38,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     descriptionAlignment: 'center',
     primaryButton: {
       wording: 'Vérifier mon identité',
-      navigateTo: { screen: 'SubscriptionStackNavigator', params: { screen: 'SelectIDOrigin' } },
+      navigateTo: { screen: 'SelectIDOrigin', params: undefined },
     },
     isGoHomeTertiaryButtonVisible: true,
   }
@@ -52,13 +52,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     primaryButton: {
       wording: 'Réessayer de m’identifier',
       onPress: expect.any(Function),
-      navigateTo: {
-        params: {
-          params: undefined,
-          screen: 'EduConnectForm',
-        },
-        screen: 'SubscriptionStackNavigator',
-      },
+      navigateTo: { screen: 'EduConnectForm', params: undefined },
     },
     isGoHomeTertiaryButtonVisible: true,
   }

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { BonificationType } from 'features/bonification/enums'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
@@ -15,11 +15,12 @@ import { LINE_BREAK } from 'ui/theme/constants'
 export function BonificationError() {
   const { params } = useRoute<UseRouteType<'BonificationError'>>()
   const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
-  const navigateToForm = isDisabilityBonification
-    ? getSubscriptionPropConfig('BonificationBirthPlace', {
-        bonificationType: BonificationType.DISABILITY,
-      })
-    : getSubscriptionPropConfig('BonificationNames')
+  const navigateToForm: InternalNavigationProps['navigateTo'] = isDisabilityBonification
+    ? {
+        screen: 'BonificationBirthPlace',
+        params: { bonificationType: BonificationType.DISABILITY },
+      }
+    : { screen: 'BonificationNames' }
 
   return (
     <GenericInfoPage

@@ -13,7 +13,6 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -108,9 +107,7 @@ export const Stepper = () => {
         <StepButtonContainer key={step.name}>
           <StepButton
             step={step}
-            navigateTo={getSubscriptionPropConfig(step.firstScreen, {
-              type: step.firstScreenType,
-            })}
+            navigateTo={{ screen: step.firstScreen, params: { type: step.firstScreenType } }}
             onPress={() => {
               if (step.name === IdentityCheckStep.PROFILE) {
                 void recordProfileCompletionStart()

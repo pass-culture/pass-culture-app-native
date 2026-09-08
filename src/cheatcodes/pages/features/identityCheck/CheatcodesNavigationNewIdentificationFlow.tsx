@@ -5,7 +5,6 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeButton } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 export function CheatcodesNavigationNewIdentificationFlow(): React.JSX.Element {
@@ -15,41 +14,37 @@ export function CheatcodesNavigationNewIdentificationFlow(): React.JSX.Element {
     {
       id: uuidv4(),
       title: 'SelectIDOrigin',
-      navigationTarget: getSubscriptionPropConfig('SelectIDOrigin'),
+      navigationTarget: { screen: 'SelectIDOrigin' },
     },
     {
       id: uuidv4(),
       title: 'SelectIDStatus',
-      navigationTarget: getSubscriptionPropConfig('SelectIDStatus'),
+      navigationTarget: { screen: 'SelectIDStatus' },
     },
     {
       id: uuidv4(),
       title: 'SelectPhoneStatus',
-      navigationTarget: getSubscriptionPropConfig('SelectPhoneStatus'),
+      navigationTarget: { screen: 'SelectPhoneStatus' },
     },
     {
       id: uuidv4(),
       title: 'DMS français',
-      navigationTarget: getSubscriptionPropConfig('DMSIntroduction', {
-        isForeignDMSInformation: false,
-      }),
+      navigationTarget: { screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } },
     },
     {
       id: uuidv4(),
       title: 'DMS étranger',
-      navigationTarget: getSubscriptionPropConfig('DMSIntroduction', {
-        isForeignDMSInformation: true,
-      }),
+      navigationTarget: { screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } },
     },
     {
       id: uuidv4(),
       title: 'ExpiredOrLostID',
-      navigationTarget: getSubscriptionPropConfig('ExpiredOrLostID'),
+      navigationTarget: { screen: 'ExpiredOrLostID' },
     },
     {
       id: uuidv4(),
       title: 'ComeBackLater',
-      navigationTarget: getSubscriptionPropConfig('ComeBackLater'),
+      navigationTarget: { screen: 'ComeBackLater' },
     },
   ]
 

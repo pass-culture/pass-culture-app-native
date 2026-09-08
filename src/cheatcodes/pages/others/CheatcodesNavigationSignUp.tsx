@@ -8,7 +8,6 @@ import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
@@ -29,12 +28,12 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'BeneficiaryAccountCreated',
-      navigationTarget: getSubscriptionPropConfig('BeneficiaryAccountCreated'),
+      navigationTarget: { screen: 'BeneficiaryAccountCreated' },
     },
     {
       id: uuidv4(),
       title: 'FreeBeneficiaryAccountCreated',
-      navigationTarget: getSubscriptionPropConfig('FreeBeneficiaryAccountCreated'),
+      navigationTarget: { screen: 'FreeBeneficiaryAccountCreated' },
     },
     {
       id: uuidv4(),

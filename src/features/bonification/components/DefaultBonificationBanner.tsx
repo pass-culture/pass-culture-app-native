@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
-import { Banner } from 'ui/designSystem/Banner/Banner'
+import { Banner, BannerLink } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 
@@ -11,9 +10,9 @@ type DefaultBonificationBannerProps = {
 }
 
 export const DefaultBonificationBanner = ({ amount, onClose }: DefaultBonificationBannerProps) => {
-  const links = [
+  const links: BannerLink[] = [
     {
-      navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
+      navigateTo: { screen: 'BonificationExplanations' },
       wording: 'Vérifier maintenant',
     },
   ]

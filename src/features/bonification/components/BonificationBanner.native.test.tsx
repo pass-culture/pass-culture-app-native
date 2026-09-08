@@ -96,9 +96,8 @@ describe('BonificationBanner', () => {
 
       await userEvent.press(bannerLink)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationRefusedType: 'custodian_not_found' },
-        screen: 'BonificationFamilyQuotientRefused',
+      expect(navigate).toHaveBeenCalledWith('BonificationFamilyQuotientRefused', {
+        bonificationRefusedType: 'custodian_not_found',
       })
     })
 
@@ -131,9 +130,8 @@ describe('BonificationBanner', () => {
 
       await userEvent.press(bannerLink)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationRefusedType: 'application_not_found' },
-        screen: 'BonificationFamilyQuotientRefused',
+      expect(navigate).toHaveBeenCalledWith('BonificationFamilyQuotientRefused', {
+        bonificationRefusedType: 'application_not_found',
       })
     })
 
@@ -166,9 +164,8 @@ describe('BonificationBanner', () => {
 
       await userEvent.press(bannerLink)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationRefusedType: 'quotient_familial_too_high' },
-        screen: 'BonificationFamilyQuotientRefused',
+      expect(navigate).toHaveBeenCalledWith('BonificationFamilyQuotientRefused', {
+        bonificationRefusedType: 'quotient_familial_too_high',
       })
     })
 
@@ -201,9 +198,8 @@ describe('BonificationBanner', () => {
 
       await userEvent.press(bannerLink)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationRefusedType: 'not_in_tax_household' },
-        screen: 'BonificationFamilyQuotientRefused',
+      expect(navigate).toHaveBeenCalledWith('BonificationFamilyQuotientRefused', {
+        bonificationRefusedType: 'not_in_tax_household',
       })
     })
 
@@ -236,9 +232,8 @@ describe('BonificationBanner', () => {
 
       await userEvent.press(bannerLink)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationRefusedType: 'too_many_retries' },
-        screen: 'BonificationFamilyQuotientRefused',
+      expect(navigate).toHaveBeenCalledWith('BonificationFamilyQuotientRefused', {
+        bonificationRefusedType: 'too_many_retries',
       })
     })
   })

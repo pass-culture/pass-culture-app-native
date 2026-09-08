@@ -3,7 +3,6 @@ import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -40,9 +39,9 @@ const SelectIDOriginContent: FunctionComponent = () => {
           </Text>
         }
         Icon={<France />}
-        navigateTo={getSubscriptionPropConfig(
-          Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus'
-        )}
+        navigateTo={{
+          screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus',
+        }}
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
       />
@@ -52,7 +51,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
       <SecondButtonList
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
         leftIcon={Earth}
-        navigateTo={getSubscriptionPropConfig('DMSIntroduction', { isForeignDMSInformation: true })}
+        navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
       />
     </Container>
   )

@@ -3,7 +3,6 @@ import React from 'react'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileOrigin } from 'features/identityCheck/pages/profile/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Offers } from 'ui/svg/icons/Offers'
 
@@ -19,13 +18,13 @@ export const EligibleFreeBanner = () => {
         type: 'freeBeneficiaryBanner',
         from: 'home',
       }}
-      navigateTo={getSubscriptionPropConfig(
-        storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-        {
+      navigateTo={{
+        screen: storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
+        params: {
           type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
           origin: ProfileOrigin.HOME_BANNER,
-        }
-      )}
+        },
+      }}
     />
   )
 }
