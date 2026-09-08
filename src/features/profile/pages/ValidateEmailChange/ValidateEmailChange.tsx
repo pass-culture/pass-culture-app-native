@@ -5,7 +5,9 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
+import { Provider } from 'features/auth/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { resetFromRef } from 'features/navigation/navigationRef'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
@@ -51,6 +53,10 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     try {
       await mutate()
 
+      if (emailUpdateStatus?.newEmail) {
+        await saveLastLoginInfo({ email: emailUpdateStatus.newEmail, provider: Provider.EMAIL })
+      }
+
       // A technical constraint requires disconnection for the moment. Possible improvement later
       if (isLoggedIn) {
         await signOut()
@@ -76,7 +82,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     } finally {
       setIsLoading(false)
     }
-  }, [isLoggedIn, mutate, navigation, signOut])
+  }, [emailUpdateStatus?.newEmail, isLoggedIn, mutate, navigation, signOut])
 
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {
