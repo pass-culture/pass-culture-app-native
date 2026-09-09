@@ -19,7 +19,7 @@ export default defineConfig({
             slackLogLevel: 'error',
             meta: [
               { key: '🌿 Branche', value: process.env.GITHUB_REF_NAME ?? 'inconnue' },
-              { key: '📁 Suite', value: 'e2e/web (smoke)' },
+              { key: '📁 Suite', value: process.env.E2E_SUITE_LABEL ?? 'inconnue' },
               ...(runUrl ? [{ key: '🔗 Détails', value: runUrl }] : []),
             ],
           },
