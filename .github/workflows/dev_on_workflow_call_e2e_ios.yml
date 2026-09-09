@@ -75,8 +75,8 @@ jobs:
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
             SENTRY_AUTH_TOKEN:pc-native-production/sentry-saas-token
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
-            MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
-            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
+            MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
+            MAESTRO_CLOUD_API_KEY:pc-native-production/e2e-maestro-cloud-api-key
             MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
             MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
       - name: 'Render Template'
