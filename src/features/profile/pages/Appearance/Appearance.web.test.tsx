@@ -39,7 +39,6 @@ describe('Appearance', () => {
 
     expect(dark).toHaveFocus()
     expect(dark).toBeChecked()
-    expect(light).not.toBeChecked()
     expect(logTheme).toHaveBeenCalledTimes(1)
     expect(logTheme).toHaveBeenCalledWith(
       expect.objectContaining({

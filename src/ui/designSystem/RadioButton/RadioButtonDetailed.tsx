@@ -58,7 +58,7 @@ export const RadioButtonDetailed = ({
         isHover={hoverProps.isHover}>
         <TouchableContentContainer
           onPress={onToggle}
-          disabled={disabled || undefined}
+          disabled={disabled}
           id={id}
           tabIndex={tabIndex}
           {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}

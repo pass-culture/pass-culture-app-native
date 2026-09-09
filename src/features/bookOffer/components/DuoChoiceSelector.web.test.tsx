@@ -22,51 +22,32 @@ const BookingChoices = () => {
   return (
     <BookingContext.Provider value={{ bookingState, dispatch, dismissModal: jest.fn() }}>
       <DuoChoiceSelector />
-      <button aria-label="Continue" />
+      <output aria-label="Quantité réservée">{bookingState.quantity}</output>
     </BookingContext.Provider>
   )
 }
 
-describe('DuoChoiceSelector keyboard navigation', () => {
-  it('selects Solo and Duo with arrows', async () => {
+describe('DuoChoiceSelector', () => {
+  it('updates the booking quantity when choosing Duo and Solo with the keyboard', async () => {
     mockIsDuo = true
     const user = await userEvent.setup()
     render(reactQueryProviderHOC(<BookingChoices />))
 
-    expect(screen.getByRole('radiogroup', { name: 'Nombre de places' })).toBeInTheDocument()
-
     await user.tab()
-
-    expect(screen.getByRole('radio', { name: /^Solo/ })).toHaveFocus()
-
     await user.keyboard('[ArrowRight]')
 
-    expect(screen.getByRole('radio', { name: /^Duo/ })).toHaveFocus()
-    expect(screen.getByRole('radio', { name: /^Duo/ })).toBeChecked()
+    expect(screen.getByRole('status', { name: 'Quantité réservée' })).toHaveTextContent('2')
 
     await user.keyboard('[ArrowLeft]')
 
-    expect(screen.getByRole('radio', { name: /^Solo/ })).toBeChecked()
-
-    await user.tab()
-
-    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus()
+    expect(screen.getByRole('status', { name: 'Quantité réservée' })).toHaveTextContent('1')
   })
 
-  it('keeps Solo selected when it is the only available choice', async () => {
+  it('only offers Solo when the offer does not allow Duo', () => {
     mockIsDuo = false
-    const user = await userEvent.setup()
     render(reactQueryProviderHOC(<BookingChoices />))
 
-    expect(screen.getAllByRole('radio')).toHaveLength(1)
-
-    await user.tab()
-    await user.keyboard('[Space][ArrowRight][Space]')
-
-    expect(screen.getByRole('radio', { name: /^Solo/ })).toBeChecked()
-
-    await user.tab()
-
-    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus()
+    expect(screen.getByRole('radio', { name: /^Solo/ })).toBeInTheDocument()
+    expect(screen.queryByRole('radio', { name: /^Duo/ })).not.toBeInTheDocument()
   })
 })

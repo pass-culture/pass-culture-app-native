@@ -50,7 +50,7 @@ export const RadioButtonDefault = ({
       radioState={radioState}
       sizing={sizing}
       onPress={onToggle}
-      disabled={disabled || undefined}
+      disabled={disabled}
       id={id}
       tabIndex={tabIndex}
       {...hoverProps}

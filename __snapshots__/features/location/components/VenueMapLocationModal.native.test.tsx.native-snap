@@ -715,7 +715,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -881,7 +881,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
