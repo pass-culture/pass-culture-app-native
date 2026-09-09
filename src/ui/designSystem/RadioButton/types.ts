@@ -28,6 +28,8 @@ export type BaseRadioProps = {
   asset?: SelectableAssetProps | null
   sizing?: SelectableSizing
   accessibilityLabel?: string
+  id?: string
+  tabIndex?: 0 | -1
 }
 
 export type DefaultRadioProps = Omit<BaseRadioProps, 'description' | 'asset' | 'collapsed'> & {

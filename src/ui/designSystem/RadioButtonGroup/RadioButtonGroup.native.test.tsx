@@ -38,6 +38,27 @@ const ControlledRadioGroup = (props: Partial<ComponentProps<typeof RadioButtonGr
 }
 
 describe('<RadioButtonGroup />', () => {
+  it('keeps every option disabled when the group is disabled', async () => {
+    render(
+      <ControlledRadioGroup
+        disabled
+        options={options.map((option) => ({ ...option, disabled: false }))}
+      />
+    )
+
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    )
+
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    ).not.toBeChecked()
+  })
+
   it('should render a RadioButtonGroup', () => {
     render(<ControlledRadioGroup />)
 

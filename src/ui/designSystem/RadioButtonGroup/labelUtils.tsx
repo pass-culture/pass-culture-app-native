@@ -9,11 +9,11 @@ import { Typo } from 'ui/theme'
 
 export type LabelVariant = 'title2' | 'title3' | 'body'
 
-export const renderRadioGroupLabel = (label: string, labelVariant: LabelVariant) => {
+export const renderRadioGroupLabel = (label: string, labelVariant: LabelVariant, id?: string) => {
   const labelComponentByVariant: Record<LabelVariant, React.ElementType> = {
     title2: Typo.Title2,
     title3: Typo.Title3,
     body: Typo.Body,
   }
-  return React.createElement(labelComponentByVariant[labelVariant], null, label)
+  return React.createElement(labelComponentByVariant[labelVariant], { id }, label)
 }
