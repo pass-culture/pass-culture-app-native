@@ -35,7 +35,7 @@ describe('<VenueTopComponent />', () => {
     fireEvent.click(screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo'))
 
     expect(await screen.findByTestId('fullscreenModalView')).toBeInTheDocument()
-    expect(screen.getByLabelText('Image 1')).toBeInTheDocument()
+    expect(screen.getByLabelText(`Illustration de ${venueDataTest.name}`)).toBeInTheDocument()
   })
 
   it('should not display preview in modal if breakpoint is not desktop', async () => {

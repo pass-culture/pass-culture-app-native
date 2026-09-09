@@ -73,6 +73,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           imagesURL={offerImagesUrl}
           defaultIndex={carouselDefaultIndex}
           onSnapToItem={logImagesScroll}
+          imageDescription={offer.name}
         />
         <StyledOfferContentBase
           offer={offer}

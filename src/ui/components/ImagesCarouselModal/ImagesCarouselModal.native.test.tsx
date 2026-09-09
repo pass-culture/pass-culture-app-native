@@ -5,7 +5,9 @@ import { ImagesCarouselModal } from 'ui/components/ImagesCarouselModal/ImagesCar
 
 describe('ImagesCarouselModal', () => {
   it('should return null on native side', () => {
-    const { root } = render(<ImagesCarouselModal imagesURL={[]} hideModal={jest.fn()} />)
+    const { root } = render(
+      <ImagesCarouselModal imagesURL={[]} hideModal={jest.fn()} imageDescription="" />
+    )
 
     expect(root).toBeUndefined()
   })

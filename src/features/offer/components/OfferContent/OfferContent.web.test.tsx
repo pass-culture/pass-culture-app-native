@@ -20,7 +20,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils/web'
+import { render, screen, waitFor, userEvent } from 'tests/utils/web'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
@@ -65,8 +65,6 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<OfferContent />', () => {
-  const user = userEvent.setup()
-
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
@@ -149,7 +147,9 @@ describe('<OfferContent />', () => {
     unmount()
   })
 
-  it.skip('should not show preview modal when clicking on offer placeholder image', async () => {
+  it('should not show preview modal when clicking on offer placeholder image', async () => {
+    const user = await userEvent.setup()
+
     const offer: OfferResponse = {
       ...offerResponseSnap,
       images: null,
