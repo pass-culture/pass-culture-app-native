@@ -55,9 +55,10 @@ jobs:
       - name: Run Playwright E2E Web Tests
         env:
           SLACK_BOT_USER_OAUTH_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+          E2E_SUITE_LABEL: ${{ github.workflow }}
         run: |
           echo "Running Playwright smoke tests from your branch on web Staging build"
-          yarn test:e2e:web:playwright
+          yarn test:e2e:web
 
       - name: Upload Playwright report
         if: failure()

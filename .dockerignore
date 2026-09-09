@@ -1,0 +1,11 @@
+node_modules
+.git
+android
+ios
+build
+test-results
+playwright-report
+blob-report
+.jest
+coverage
+doc

@@ -28,11 +28,12 @@ export default defineConfig({
     : 'list',
   use: {
     baseURL: 'http://127.0.0.1:5173',
+    // Chromium's own cert store doesn't trust the Netskope proxy cert injected in Docker.
+    launchOptions: { args: ['--ignore-certificate-errors'] },
   },
   webServer: {
     command: 'yarn start:web:staging --host 127.0.0.1',
-    // Playwright's readiness probe checks '/' then falls back to '/index.html', neither served here
-    // (Vite serves the app only at '/src/index.html', see vite.config.js createHtmlPlugin entry).
+    // Vite only serves the app at '/src/index.html', not '/' or '/index.html'.
     url: 'http://127.0.0.1:5173/src/index.html',
     reuseExistingServer: !process.env.CI,
     timeout: 60000,
