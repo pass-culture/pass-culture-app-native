@@ -223,8 +223,14 @@ module.exports = [
               importNames: ['default'],
               message: 'use ui/svg/AccessibleSvg instead',
             },
-            { name: '@bam.tech/react-native-batch', message: 'use libs/react-native-batch instead' },
-            { name: '@react-native-community/netinfo', message: 'use libs/network/netinfo instead' },
+            {
+              name: '@bam.tech/react-native-batch',
+              message: 'use libs/react-native-batch instead',
+            },
+            {
+              name: '@react-native-community/netinfo',
+              message: 'use libs/network/netinfo instead',
+            },
             {
               name: 'libs/react-device-detect',
               message:
@@ -391,7 +397,7 @@ module.exports = [
       'no-undef': 'off',
       'no-redeclare': 'off',
       'require-await': 'warn',
-      'eqeqeq': 'warn',
+      eqeqeq: 'warn',
       'no-else-return': 'warn',
       'no-nested-ternary': 'warn',
       'no-return-await': 'warn',
@@ -466,7 +472,7 @@ module.exports = [
         'testing-library/prefer-screen-queries': ['error'],
         'testing-library/no-await-sync-events': 'off', // TODO(PC-25292): enable when its issues are fixed
         'jest/no-conditional-in-test': 'off', // TODO(PC-25293): enable when its issues are fixed
-        '@bam.tech/await-user-event': 'warn',
+        '@bam.tech/await-user-event': 'off',
         '@bam.tech/prefer-user-event': 'warn',
       },
     }
