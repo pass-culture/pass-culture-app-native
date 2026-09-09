@@ -159,6 +159,7 @@ const StyledSubtitle = styled(Typo.BodyAccentXs).attrs<{
 
 const StyledView = styled.View({
   flexDirection: 'row',
+  alignItems: 'baseline',
 })
 
 const TagContainer = styled.View(({ theme }) => ({
@@ -169,7 +170,7 @@ const TagContainer = styled.View(({ theme }) => ({
 
 const SeeAllButtonContainer = styled.View<{ withMargin?: boolean }>(({ withMargin, theme }) => ({
   marginRight: withMargin ? theme.contentPage.marginHorizontal : undefined,
-  justifyContent: 'center',
+  flexShrink: 0,
 }))
 
 const TitleContainer = styled.View(({ theme }) => ({
