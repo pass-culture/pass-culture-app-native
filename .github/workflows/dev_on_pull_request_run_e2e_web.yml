@@ -50,7 +50,7 @@ jobs:
             MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:pc-native-production/e2e-maestro-cloud-api-key
             MAESTRO_E2E_API_KEY:pc-native-production/pcapi-staging-e2e-api-key
-            MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
+            MAESTRO_E2E_ENDPOINT:pc-native-production/pcapi-staging-e2e-endpoint
 
       - name: Determine latest Maestro version
         run: |
