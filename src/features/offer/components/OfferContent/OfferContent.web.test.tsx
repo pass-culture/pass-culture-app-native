@@ -148,7 +148,7 @@ describe('<OfferContent />', () => {
   })
 
   it('should not show preview modal when clicking on offer placeholder image', async () => {
-    const user = await userEvent.setup()
+    const user = userEvent.setup()
 
     const offer: OfferResponse = {
       ...offerResponseSnap,
