@@ -12,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/lifecycle/StopApp.yml
-- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 - runFlow: ../common/navigation/GoToFavoritesFromTabBar.yml
 
 - assertVisible:
@@ -132,7 +132,7 @@ onFlowStart:
       - tapOn:
           text: 'Supprimer'
           index: 0
-      - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+      - assertVisible: 'Retrouve toutes tes offres en un clin d’oeil'
 
 - runFlow:
     when:
@@ -149,6 +149,6 @@ onFlowStart:
       - tapOn:
           text: 'Supprimer.*'
           index: 0
-      - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+      - assertVisible: 'Retrouve toutes tes offres en un clin d’oeil'
 
 - runFlow: ../common/lifecycle/StopApp.yml

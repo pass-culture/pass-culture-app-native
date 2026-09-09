@@ -12,7 +12,7 @@ onFlowStart:
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/lifecycle/StopApp.yml
-- runFlow: ../common/deeplinks/DeeplinkBeneficiaryUser.yml
+- runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 - runFlow: ../common/navigation/GoToProfileFromTabBar.yml
 
 - scrollUntilVisible:
