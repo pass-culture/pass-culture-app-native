@@ -30,7 +30,7 @@ const baseProps: ComponentProps<typeof RadioButtonGroup> = {
   onChange: () => undefined,
 }
 
-let user: ReturnType<typeof userEvent.setup>
+const user = userEvent.setup()
 
 const ControlledRadioGroup = (props: Partial<ComponentProps<typeof RadioButtonGroup>>) => {
   const [value, setValue] = useState('')
@@ -38,10 +38,6 @@ const ControlledRadioGroup = (props: Partial<ComponentProps<typeof RadioButtonGr
 }
 
 describe('<RadioButtonGroup />', () => {
-  beforeEach(async () => {
-    user = await userEvent.setup()
-  })
-
   it('keeps every option disabled when the group is disabled', async () => {
     render(
       <ControlledRadioGroup

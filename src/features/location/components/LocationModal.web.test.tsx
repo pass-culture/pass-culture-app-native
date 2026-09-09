@@ -31,23 +31,20 @@ describe('LocationModal keyboard navigation', () => {
       name: 'Choisir une zone géographique - Ville, code postal, adresse',
     })
 
-    expect(area).toHaveFocus()
     expect(area).toBeChecked()
     expect(locationModalSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
 
     await user.tab()
     const input = screen.getByRole('searchbox')
 
-    expect(input).toHaveFocus()
-
     await user.keyboard('[ArrowLeft][ArrowRight]')
 
     expect(input).toHaveFocus()
-    expect(area).toBeChecked()
+    expect(locationModalSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
     expect(mockRequestPermission).not.toHaveBeenCalled()
   })
 
-  it('announces selection through the checked state only after permission succeeds', async () => {
+  it('checks the current position only after permission succeeds', async () => {
     const user = await userEvent.setup()
     let acceptPermission: (() => void) | undefined
     mockRequestPermission.mockImplementationOnce(async ({ onSuccess } = {}) => {

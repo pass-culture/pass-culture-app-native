@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { FlatListProps } from 'react-native'
 
-import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import {
   RadioButtonGroupNavigation,
   RadioButtonGroupNavigationParams,
-} from 'ui/hooks/useRadioButtonGroupNavigation.types'
+  RadioButtonGroupOption,
+} from 'ui/designSystem/RadioButtonGroup/types'
 
 type PendingFocus = { key: string; select: boolean }
 

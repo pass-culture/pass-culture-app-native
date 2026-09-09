@@ -1,7 +1,7 @@
 import {
   RadioButtonGroupNavigation,
   RadioButtonGroupNavigationParams,
-} from 'ui/hooks/useRadioButtonGroupNavigation.types'
+} from 'ui/designSystem/RadioButtonGroup/types'
 
 export const useRadioButtonGroupNavigation = (
   _params: RadioButtonGroupNavigationParams

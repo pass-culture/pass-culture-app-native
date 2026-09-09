@@ -15,8 +15,10 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
-type Props = TouchableOpacityProps &
-  Pick<ViewProps, 'tabIndex'> & { shouldUseGestureHandler?: boolean }
+type Props = TouchableOpacityProps & {
+  tabIndex?: ViewProps['tabIndex']
+  shouldUseGestureHandler?: boolean
+}
 type StyledProps = { unselectable?: boolean; isFocus?: boolean }
 
 export function TouchableOpacity({
