@@ -1,7 +1,7 @@
-# How to test SSO login locally
+# How to test SSO Google authentification locally
 
 ## On iOS
-No special configuration needed. It will work when you run `yarn ios:testing`.
+Not authorized at the moment.
 
 ## On Android
 You need to create a OAuth Client ID of type Android [here][1], with the following values :
@@ -17,8 +17,7 @@ The SSO will work when you run `yarn android:testing`.
 
 ## On Web
 - Start the webapp with a local backend, you can refer to [this documentation](./run-local-api.md) to do so.
-- You need to add the following environment variables in the `.env.local.secret` file, in the `api` folder of the backend repo : `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, which can be both found [here][2].
-
+- You need to add the following environment variables in the `.env.local.secret` file, in the `api` folder of the backend repo : `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, which can be both found [on Google console][2] or on our password manager under 'Google oAuth client'.
 
 [1]: https://console.cloud.google.com/apis/credentials/oauthclient?project=passculture-native
 [2]: https://console.cloud.google.com/apis/credentials/oauthclient/605788939445-jbn4bv8q35gdpmg777pfcu055j4ltf4f.apps.googleusercontent.com
