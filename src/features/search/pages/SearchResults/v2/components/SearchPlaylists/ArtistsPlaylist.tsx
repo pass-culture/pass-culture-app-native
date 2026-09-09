@@ -90,5 +90,5 @@ const TitleContainer = styled.View({
 const SeeAllButtonContainer = styled(ViewGap)({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  alignItems: 'center',
+  alignItems: 'baseline',
 })

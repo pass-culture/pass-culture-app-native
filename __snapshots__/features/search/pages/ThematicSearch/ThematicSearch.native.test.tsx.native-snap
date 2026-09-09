@@ -1787,6 +1787,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 <View
                   style={
                     {
+                      "alignItems": "baseline",
                       "flexDirection": "row",
                     }
                   }
@@ -1848,7 +1849,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   <View
                     style={
                       {
-                        "justifyContent": "center",
+                        "flexShrink": 0,
                         "marginRight": 24,
                       }
                     }
@@ -1932,6 +1933,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           <Text
                             accessibilityLevel="p"
                             accessibilityRole="text"
+                            numberOfLines={1}
                             style={
                               [
                                 {

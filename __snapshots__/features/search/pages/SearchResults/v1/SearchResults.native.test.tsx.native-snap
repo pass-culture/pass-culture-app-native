@@ -642,7 +642,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       gap={3}
                       style={
                         {
-                          "alignItems": "center",
+                          "alignItems": "baseline",
                           "flexDirection": "row",
                           "gap": 12,
                           "justifyContent": "space-between",
@@ -752,6 +752,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               <Text
                                 accessibilityLevel="p"
                                 accessibilityRole="text"
+                                numberOfLines={1}
                                 style={
                                   [
                                     {

@@ -1112,6 +1112,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         <View
                           style={
                             {
+                              "alignItems": "baseline",
                               "flexDirection": "row",
                             }
                           }
@@ -1173,7 +1174,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
-                                "justifyContent": "center",
+                                "flexShrink": 0,
                                 "marginRight": 24,
                               }
                             }
@@ -1267,6 +1268,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     accessibilityLevel="p"
                                     accessibilityRole="text"
+                                    numberOfLines={1}
                                     style={
                                       [
                                         {
@@ -4545,6 +4547,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         <View
                           style={
                             {
+                              "alignItems": "baseline",
                               "flexDirection": "row",
                             }
                           }
@@ -4606,7 +4609,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
-                                "justifyContent": "center",
+                                "flexShrink": 0,
                                 "marginRight": 24,
                               }
                             }
@@ -4700,6 +4703,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   <Text
                                     accessibilityLevel="p"
                                     accessibilityRole="text"
+                                    numberOfLines={1}
                                     style={
                                       [
                                         {
