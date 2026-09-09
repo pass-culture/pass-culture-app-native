@@ -13,8 +13,6 @@ type Fixtures = {
   favoritesPage: FavoritesPage
 }
 
-// Every smoke test starts from a fresh home screen with the cookie banner already dismissed,
-// mirroring the onFlowStart (DeepLink + AcceptCookies) shared by every Maestro test.
 export const test = base.extend<Fixtures>({
   homePage: async ({ page }, use) => {
     const homePage = new HomePage(page)

@@ -7,7 +7,6 @@ const runUrl =
 export default defineConfig({
   testDir: './e2e/web',
   retries: process.env.CI ? 2 : 0,
-  // #équipe-e2e-jeunes, same channel/bot token already used for other CI Slack notifications.
   reporter: process.env.CI
     ? [
         ['github'],
