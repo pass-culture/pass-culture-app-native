@@ -67,7 +67,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
+            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:pc-native-production/ios-fastlane-password
             IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/pc-native-ios-google-service-staging
             MATCH_GIT_URL:pc-native-production/ios-match-git-url
             MATCH_PASSWORD:pc-native-production/ios-match-password
