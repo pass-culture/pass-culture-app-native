@@ -88,11 +88,13 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-android-google-service-${{ inputs.ENV }}
+            # TODO: ensure value is cloned
+            # ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-android-google-service-${{ inputs.ENV }}
+            ANDROID_GOOGLE_SERVICES_JSON:pc-native-production/android-${{ inputs.ENV }}-google-service
             ANDROID_KEYSTORE_STORE_PASSWORD:pc-native-production/android-${{ inputs.ENV }}-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:pc-native-production/android-${{ inputs.ENV }}-keystore-key-password
             ANDROID_KEYSTORE:pc-native-production/android-${{ inputs.ENV }}-keystore
-            ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
+            ANDROID_PLAYSTORE_SERVICE_ACCOUNT:pc-native-production/android-production-service-account
             SENTRY_AUTH_TOKEN:pc-native-production/sentry-saas-token
 
       - name: 'Render Sentry Template'
