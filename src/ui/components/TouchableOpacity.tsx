@@ -13,12 +13,14 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
+import { isDisabled } from 'node_modules/@testing-library/user-event/dist/types/utils'
 
 type Props = TouchableOpacityProps & { shouldUseGestureHandler?: boolean }
 type StyledProps = { unselectable?: boolean; isFocus?: boolean }
 
 export function TouchableOpacity({
   shouldUseGestureHandler = false,
+  disabled,
   onFocus,
   onBlur,
   children,
@@ -28,6 +30,7 @@ export function TouchableOpacity({
 }: Props) {
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
 
+  const isWeb = Platform.OS === 'web'
   const onStyledFocus = (e: NativeSyntheticEvent<TargetedEvent>) => {
     onFocusDefault()
     onFocus?.(e)
@@ -54,6 +57,7 @@ export function TouchableOpacity({
       isFocus={isFocus}
       onFocus={onStyledFocus}
       onBlur={onStyledBlur}
+      {...(isWeb && !disabled ? { tabIndex: 0 } : {})}
       {...props}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
