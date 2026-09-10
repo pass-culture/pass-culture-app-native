@@ -616,6 +616,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {
@@ -969,6 +970,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {
@@ -1322,6 +1324,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {
@@ -1678,6 +1681,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "width": "100%",
                         },
                       ],
                       {
@@ -1997,6 +2001,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "width": "100%",
                       },
                     ],
                     {

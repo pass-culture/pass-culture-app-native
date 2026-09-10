@@ -1,5 +1,5 @@
 import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
-import { Animated, Easing } from 'react-native'
+import { Animated, Easing, Platform } from 'react-native'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -21,6 +21,8 @@ interface FilterSwitchProps {
   toggle: () => void
   testID?: string
 }
+
+const isWeb = Platform.OS === 'web'
 
 const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
@@ -51,10 +53,13 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   const testIdFull = testID ? `Interrupteur ${testID}` : 'Interrupteur'
 
-  const baseLabel = `Interrupteur à bascule - ${hiddenTextStatus}`
-  const accessibilityLabel = props.accessibilityLabel
-    ? `${props.accessibilityLabel} - ${baseLabel}`
-    : baseLabel
+  const baseLabel = isWeb
+    ? 'Interrupteur à bascule'
+    : `Interrupteur à bascule - ${hiddenTextStatus}`
+  const customAccessibilityLabel = isWeb
+    ? props.accessibilityLabel
+    : `${props.accessibilityLabel} - ${baseLabel}`
+  const accessibilityLabel = props.accessibilityLabel ? customAccessibilityLabel : baseLabel
 
   useSpaceBarAction(isFocus ? toggle : undefined)
 

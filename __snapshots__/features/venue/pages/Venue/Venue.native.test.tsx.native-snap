@@ -8201,6 +8201,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap auditif: Non accessible - Accordéon - Développer l’accordéon"
@@ -8484,6 +8485,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap psychique ou cognitif: Accessible - Accordéon - Développer l’accordéon"
@@ -8752,6 +8754,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap moteur: Non accessible - Accordéon - Développer l’accordéon"
@@ -9146,6 +9149,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap visuel: Non accessible - Accordéon - Développer l’accordéon"

@@ -194,7 +194,19 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
     <View
       accessibilityLabel="Étape 1 sur 5"
       accessibilityRole="progressbar"
+      accessibilityValue={
+        {
+          "max": 5,
+          "min": 1,
+          "now": 1,
+          "text": "Étape 1 sur 5",
+        }
+      }
       accessible={true}
+      aria-valuemax={5}
+      aria-valuemin={1}
+      aria-valuenow={1}
+      aria-valuetext="Étape 1 sur 5"
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -882,7 +894,19 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
     <View
       accessibilityLabel="Étape 2 sur 5"
       accessibilityRole="progressbar"
+      accessibilityValue={
+        {
+          "max": 5,
+          "min": 1,
+          "now": 2,
+          "text": "Étape 2 sur 5",
+        }
+      }
       accessible={true}
+      aria-valuemax={5}
+      aria-valuemin={1}
+      aria-valuenow={2}
+      aria-valuetext="Étape 2 sur 5"
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -1691,7 +1715,19 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
     <View
       accessibilityLabel="Étape 3 sur 5"
       accessibilityRole="progressbar"
+      accessibilityValue={
+        {
+          "max": 5,
+          "min": 1,
+          "now": 3,
+          "text": "Étape 3 sur 5",
+        }
+      }
       accessible={true}
+      aria-valuemax={5}
+      aria-valuemin={1}
+      aria-valuenow={3}
+      aria-valuetext="Étape 3 sur 5"
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -2960,7 +2996,19 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
     <View
       accessibilityLabel="Étape 4 sur 5"
       accessibilityRole="progressbar"
+      accessibilityValue={
+        {
+          "max": 5,
+          "min": 1,
+          "now": 4,
+          "text": "Étape 4 sur 5",
+        }
+      }
       accessible={true}
+      aria-valuemax={5}
+      aria-valuemin={1}
+      aria-valuenow={4}
+      aria-valuetext="Étape 4 sur 5"
       style={
         {
           "backgroundColor": "#f1f1f4",
