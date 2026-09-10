@@ -55,7 +55,6 @@
     "test:deadcode": "yarn knip --treat-config-hints-as-errors && NODE_ENV=production yarn knip --production",
     "test:e2e": "python3 -B scripts/run_e2e_tests.py",
     "test:e2e:web": "playwright test",
-    "test:e2e:web:docker": "./scripts/run_e2e_web_docker.sh",
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache --quiet",
     "test:lint:count": "./scripts/eslint-warnings.sh",
     "test:lint:archi": "ESLINT_SCOPE=archi eslint . --ext .js,.ts,.tsx,.mjs --cache",
