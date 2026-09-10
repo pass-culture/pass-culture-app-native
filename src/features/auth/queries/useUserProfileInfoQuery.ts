@@ -21,21 +21,25 @@ const sanitizeUser = (user: UserProfileResponse): UserProfile => {
   const { statusType, creditType, eligibilityType } = getUserProfileState(user)
   return {
     ...rest,
-    subscriptionStatus: user.status?.subscriptionStatus,
+    subscriptionStatus: user.status.subscriptionStatus,
     statusType,
     creditType,
     eligibilityType,
   }
 }
 
-const getUserProfile = async () => {
-  const user = await api.getNativeV1Me()
+const saveLoginInfo = async (user: UserProfileResponse) => {
   const info = await getLastLoginInfo()
   const provider = info ? info.provider.type : Provider.EMAIL
   await saveLastLoginInfo({
     email: user.email,
     provider,
   })
+}
+
+const getUserProfile = async () => {
+  const user = await api.getNativeV1Me()
+  saveLoginInfo(user).catch(() => {})
   return user
 }
 
