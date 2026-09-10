@@ -8,6 +8,7 @@ import {
   ModuleData,
   ArtistPlaylistModule as ArtistPlaylistModuleType,
 } from 'features/home/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -61,6 +62,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   const route = useRoute()
   const isHomeScreen = route.name === 'Home'
   const isArtistScreen = route.name === 'Artist'
+  const from: Referrals = isArtistScreen ? 'artist' : 'home'
 
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -97,7 +99,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   )
 
   const onBeforeNavigate = () =>
-    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from: 'home' })
+    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from })
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
@@ -111,13 +113,13 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           originDetails="artistRecommendation"
           width={width}
           height={height}
-          analyticsFrom="home"
+          analyticsFrom={from}
           hasSmallLayout
         />
       )
     },
 
-    [moduleName, moduleId, homeEntryId, artist?.name]
+    [moduleName, moduleId, homeEntryId, artist?.name, from]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
@@ -180,7 +182,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     void analytics.logConsultArtist({
       artistId: id,
       artistName: name,
-      from: 'home',
+      from,
       originDetails: 'artistRecommendation',
     })
   }

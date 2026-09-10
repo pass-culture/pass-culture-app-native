@@ -187,6 +187,37 @@ describe('ArtistPlaylistModule', () => {
           offers: ['102280', '102272'],
         })
       })
+
+      it('should trigger analytics with from param as home when we click on "Voir tout" button', async () => {
+        renderArtistPlaylistModule({
+          data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+        })
+
+        await user.press(await screen.findByText('Voir tout'))
+
+        expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+          from: 'home',
+          type: 'offers',
+          moduleId: 'fakeModuleId',
+          moduleName: 'Module title',
+        })
+      })
+
+      it('should trigger ConsultArtist log when pressing artist button', async () => {
+        renderArtistPlaylistModule({
+          data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+          artistId: mockArtist.id,
+        })
+
+        await user.press(await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne'))
+
+        expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+          artistId: mockArtist.id,
+          artistName: mockArtist.name,
+          from: 'home',
+          originDetails: 'artistRecommendation',
+        })
+      })
     })
 
     describe('When route is Artist', () => {
@@ -207,6 +238,21 @@ describe('ArtistPlaylistModule', () => {
           moduleId: props.moduleId,
         })
       })
+
+      it('should trigger analytics with from param as artist when we click on "Voir tout" button', async () => {
+        renderArtistPlaylistModule({
+          data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
+        })
+
+        await user.press(await screen.findByText('Voir tout'))
+
+        expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+          from: 'artist',
+          type: 'offers',
+          moduleId: 'fakeModuleId',
+          moduleName: 'Module title',
+        })
+      })
     })
 
     it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
@@ -216,37 +262,6 @@ describe('ArtistPlaylistModule', () => {
       })
 
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
-    })
-
-    it('should trigger analytics when we click on "Voir tout" button', async () => {
-      renderArtistPlaylistModule({
-        data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
-      })
-
-      await user.press(await screen.findByText('Voir tout'))
-
-      expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
-        from: 'home',
-        type: 'offers',
-        moduleId: 'fakeModuleId',
-        moduleName: 'Module title',
-      })
-    })
-
-    it('should trigger ConsultArtist log when pressing artist button', async () => {
-      renderArtistPlaylistModule({
-        data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
-        artistId: mockArtist.id,
-      })
-
-      await user.press(await screen.findByLabelText('Accéder à la page artiste de Avril Lavigne'))
-
-      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
-        artistId: mockArtist.id,
-        artistName: mockArtist.name,
-        from: 'home',
-        originDetails: 'artistRecommendation',
-      })
     })
   })
 
