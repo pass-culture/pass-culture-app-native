@@ -81,7 +81,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   }
   const searchTabConfig = getSearchPropConfig('SearchResults', searchParams)
 
-  const moduleName = displayParameters.title ?? parameters?.title
+  const moduleName = displayParameters.title
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen({
@@ -123,7 +123,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     !isArtistLoading &&
     !hasArtistError
 
-  useEffect(() => {
+  const triggerLogModuleDisplayedOnHomepage = useCallback(() => {
     if (shouldModuleBeDisplayed) {
       void analytics.logModuleDisplayedOnHomepage({
         moduleId,
@@ -134,6 +134,10 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
       })
     }
   }, [homeEntryId, index, moduleId, playlistItems, shouldModuleBeDisplayed])
+
+  useEffect(() => {
+    triggerLogModuleDisplayedOnHomepage()
+  }, [triggerLogModuleDisplayedOnHomepage])
 
   if (!shouldModuleBeDisplayed) return null
 
@@ -152,10 +156,10 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     },
   }
 
-  const onArtistPress = (artistId: string, artistName: string) => {
+  const onArtistPress = (id: string, name: string) => {
     void analytics.logConsultArtist({
-      artistId,
-      artistName,
+      artistId: id,
+      artistName: name,
       from: 'home',
       originDetails: 'artistRecommendation',
     })
