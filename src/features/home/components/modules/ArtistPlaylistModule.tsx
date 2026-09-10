@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
@@ -57,6 +58,10 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     onViewableItemsChanged,
     disableArtistNavigation,
   } = props
+  const route = useRoute()
+  const isHomeScreen = route.name === 'Home'
+  const isArtistScreen = route.name === 'Artist'
+
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const {
@@ -124,7 +129,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     !hasArtistError
 
   const triggerLogModuleDisplayedOnHomepage = useCallback(() => {
-    if (shouldModuleBeDisplayed) {
+    if (shouldModuleBeDisplayed && isHomeScreen) {
       void analytics.logModuleDisplayedOnHomepage({
         moduleId,
         moduleType: ContentTypes.ARTIST_PLAYLIST,
@@ -133,7 +138,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
         offers: (playlistItems as Offer[]).map((item) => item.objectID),
       })
     }
-  }, [homeEntryId, index, moduleId, playlistItems, shouldModuleBeDisplayed])
+  }, [homeEntryId, index, isHomeScreen, moduleId, playlistItems, shouldModuleBeDisplayed])
 
   useEffect(() => {
     triggerLogModuleDisplayedOnHomepage()

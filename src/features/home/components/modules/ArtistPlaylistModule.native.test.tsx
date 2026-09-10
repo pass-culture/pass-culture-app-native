@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import {
@@ -165,19 +165,27 @@ describe('ArtistPlaylistModule', () => {
       expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
     })
 
-    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
-      renderArtistPlaylistModule()
+    describe('When route is Home', () => {
+      beforeEach(() => {
+        useRoute.mockReturnValue({
+          name: 'Home',
+        })
+      })
 
-      await screen.findByLabelText('Module title')
+      it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true and route is Home', async () => {
+        renderArtistPlaylistModule()
 
-      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
-        call_id: undefined,
-        hybridModuleOffsetIndex: undefined,
-        moduleId: props.moduleId,
-        moduleType: ContentTypes.ARTIST_PLAYLIST,
-        index: props.index,
-        homeEntryId: props.homeEntryId,
-        offers: ['102280', '102272'],
+        await screen.findByLabelText('Module title')
+
+        expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+          call_id: undefined,
+          hybridModuleOffsetIndex: undefined,
+          moduleId: props.moduleId,
+          moduleType: ContentTypes.ARTIST_PLAYLIST,
+          index: props.index,
+          homeEntryId: props.homeEntryId,
+          offers: ['102280', '102272'],
+        })
       })
     })
 
