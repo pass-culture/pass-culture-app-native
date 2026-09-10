@@ -68,7 +68,7 @@ jobs:
         with:
           secrets: |-
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:pc-native-production/ios-fastlane-password
-            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/pc-native-ios-google-service-staging
+            IOS_GOOGLE_SERVICES_PLIST:pc-native-production/ios-staging-google-service
             MATCH_GIT_URL:pc-native-production/ios-match-git-url
             MATCH_PASSWORD:pc-native-production/ios-match-password
             MATCH_SSH_KEY:pc-native-production/ios-match-ssh-key
