@@ -78,7 +78,7 @@ jobs:
           secrets: |-
             ANDROID_GOOGLE_SERVICES_JSON:pc-native-production/android-staging-google-service
             ANDROID_KEYSTORE_STORE_PASSWORD:pc-native-production/android-staging-keystore-store-password
-            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:pc-native-production/android-staging-keystore-key-password
             ANDROID_KEYSTORE:pc-native-production/android-staging-keystore
             ROBIN_API_KEY:pc-native-production/e2e-robin-api-key
             MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
