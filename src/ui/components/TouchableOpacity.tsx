@@ -13,7 +13,6 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
-import { isDisabled } from 'node_modules/@testing-library/user-event/dist/types/utils'
 
 type Props = TouchableOpacityProps & { shouldUseGestureHandler?: boolean }
 type StyledProps = { unselectable?: boolean; isFocus?: boolean }
