@@ -3,8 +3,10 @@ import mockdate from 'mockdate'
 import { replace } from '__mocks__/@react-navigation/native'
 import { EligibilityType, UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
+import { Provider } from 'features/auth/types'
 import { UserProfile } from 'features/share/types'
 import {
   beneficiaryUserFromAPI,
@@ -23,6 +25,7 @@ jest.useFakeTimers()
 mockdate.set(CURRENT_DATE)
 
 jest.mock('features/auth/helpers/useLoginRoutine')
+jest.mock('features/auth/helpers/saveLastLoginInfo')
 const loginRoutine = jest.fn()
 const mockUseLoginRoutine = Login.useLoginRoutine as jest.Mock
 
@@ -72,6 +75,34 @@ describe('useLoginAndRedirect', () => {
       'fromSignupGoogle',
       'SSO_signup'
     )
+  })
+
+  it('should save authenticated user email as last login info', async () => {
+    mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
+    mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
+
+    await loginAndRedirect()
+
+    expect(saveLastLoginInfo).toHaveBeenCalledWith({
+      email: nonBeneficiaryUser.email,
+      provider: Provider.EMAIL,
+    })
+  })
+
+  it('should save SSO provider as last login info after SSO signup', async () => {
+    mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
+    mockServer.getApi<UserProfile>('/v1/me', nonBeneficiaryUser)
+
+    const { result } = renderUseLoginAndRedirect()
+    await result.current(
+      { accessToken: 'accessToken', refreshToken: 'refreshToken' },
+      { provider: Provider.GOOGLE }
+    )
+
+    expect(saveLastLoginInfo).toHaveBeenCalledWith({
+      email: nonBeneficiaryUser.email,
+      provider: Provider.GOOGLE,
+    })
   })
 
   it('should redirect to DisableActivation when disableActivation is true', async () => {

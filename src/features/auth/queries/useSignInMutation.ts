@@ -104,7 +104,7 @@ const useHandleSigninSuccess = (
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
-    if (data?.offer?.id) {
+    if (data?.offer.id) {
       void analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
     }
   }, [])
@@ -120,13 +120,13 @@ const useHandleSigninSuccess = (
     async (provider: Provider) => {
       const user = await api.getNativeV1Me()
 
-      if (user?.email && enabledSaveLastLoginInfo) {
+      if (user.email && enabledSaveLastLoginInfo) {
         await saveLastLoginInfo({ email: user.email, provider })
       }
 
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
-      if (user?.recreditAmountToShow) {
+      if (user.recreditAmountToShow) {
         if (
           user.recreditTypeToShow === RecreditType.BonusCredit &&
           user.recreditAmountToShow === bonificationBonusAmount

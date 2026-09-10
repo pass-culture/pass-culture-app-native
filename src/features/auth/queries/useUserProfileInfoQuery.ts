@@ -28,14 +28,18 @@ const sanitizeUser = (user: UserProfileResponse): UserProfile => {
   }
 }
 
-const getUserProfile = async () => {
-  const user = await api.getNativeV1Me()
+const saveLoginInfo = async (user: UserProfileResponse) => {
   const info = await getLastLoginInfo()
   const provider = info ? info.provider.type : Provider.EMAIL
   await saveLastLoginInfo({
     email: user.email,
     provider,
   })
+}
+
+const getUserProfile = async () => {
+  const user = await api.getNativeV1Me()
+  await saveLoginInfo(user).catch(() => {})
   return user
 }
 
