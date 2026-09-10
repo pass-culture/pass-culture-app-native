@@ -73,7 +73,7 @@ onFlowStart:
 - scrollUntilVisible:
     element: 'Des questions sur ton crédit ?'
 
-- tapOn: 'Faire une demande de bonus situation de handicap'
+- tapOn: 'Vérifier ma demande de bonus situation de handicap'
 
 - assertVisible: 'Ton dossier est refusé'
 

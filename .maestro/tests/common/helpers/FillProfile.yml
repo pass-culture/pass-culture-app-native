@@ -20,6 +20,7 @@ appId: ${MAESTRO_APP_ID}
     text: '1'
 
 - tapOn: 'Champs de texte - Nom - Obligatoire'
+- tapOn: 'Champs de texte - Nom - Obligatoire'
 
 - inputText:
     text: '('
@@ -43,11 +44,6 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
       - hideKeyboard
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn: 'Next'
 
 - tapOn: 'Continuer vers la ville de résidence'
 
@@ -76,11 +72,6 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
       - hideKeyboard
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn: 'Next'
 
 - runFlow:
     when:
