@@ -85,7 +85,7 @@ jobs:
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
             IOS_GOOGLE_SERVICES_PLIST:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-ios-google-service-${{ inputs.ENV }}
             MATCH_GIT_URL:pc-native-production/ios-match-git-url
-            MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
+            MATCH_PASSWORD:pc-native-production/ios-match-password
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:pc-native-production/ios-match-username
             SENTRY_AUTH_TOKEN:pc-native-production/sentry-saas-token
