@@ -140,9 +140,24 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     }
   }, [homeEntryId, index, isHomeScreen, moduleId, playlistItems, shouldModuleBeDisplayed])
 
-  useEffect(() => {
+  const triggerModuleDisplayed = useCallback(() => {
+    if (shouldModuleBeDisplayed && isArtistScreen) {
+      void analytics.logModuleDisplayed({
+        moduleId,
+        displayedOn: 'artist',
+        artistId,
+      })
+    }
+  }, [artistId, isArtistScreen, moduleId, shouldModuleBeDisplayed])
+
+  const triggerModuleBeDisplayed = useCallback(() => {
     triggerLogModuleDisplayedOnHomepage()
-  }, [triggerLogModuleDisplayedOnHomepage])
+    triggerModuleDisplayed()
+  }, [triggerLogModuleDisplayedOnHomepage, triggerModuleDisplayed])
+
+  useEffect(() => {
+    triggerModuleBeDisplayed()
+  }, [triggerModuleBeDisplayed])
 
   if (!shouldModuleBeDisplayed) return null
 

@@ -172,7 +172,7 @@ describe('ArtistPlaylistModule', () => {
         })
       })
 
-      it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true and route is Home', async () => {
+      it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
         renderArtistPlaylistModule()
 
         await screen.findByLabelText('Module title')
@@ -185,6 +185,26 @@ describe('ArtistPlaylistModule', () => {
           index: props.index,
           homeEntryId: props.homeEntryId,
           offers: ['102280', '102272'],
+        })
+      })
+    })
+
+    describe('When route is Artist', () => {
+      beforeEach(() => {
+        useRoute.mockReturnValue({
+          name: 'Artist',
+        })
+      })
+
+      it('should trigger logEvent "ModuleDisplayed" when shouldModuleBeDisplayed is true', async () => {
+        renderArtistPlaylistModule()
+
+        await screen.findByLabelText('Module title')
+
+        expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
+          artistId: mockArtist.id,
+          displayedOn: 'artist',
+          moduleId: props.moduleId,
         })
       })
     })
