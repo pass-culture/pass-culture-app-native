@@ -79,7 +79,7 @@ jobs:
             ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-staging
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
-            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
+            ANDROID_KEYSTORE:pc-native-production/android-staging-keystore
             ROBIN_API_KEY:pc-native-production/e2e-robin-api-key
             MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:pc-native-production/e2e-maestro-cloud-api-key
