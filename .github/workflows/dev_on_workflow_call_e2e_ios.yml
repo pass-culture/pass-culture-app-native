@@ -71,7 +71,7 @@ jobs:
             IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/pc-native-ios-google-service-staging
             MATCH_GIT_URL:pc-native-production/ios-match-git-url
             MATCH_PASSWORD:pc-native-production/ios-match-password
-            MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
+            MATCH_SSH_KEY:pc-native-production/ios-match-ssh-key
             MATCH_USERNAME:pc-native-production/ios-match-username
             SENTRY_AUTH_TOKEN:pc-native-production/sentry-saas-token
             ROBIN_API_KEY:pc-native-production/e2e-robin-api-key
