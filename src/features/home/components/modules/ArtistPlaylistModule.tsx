@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
@@ -7,6 +8,7 @@ import {
   ModuleData,
   ArtistPlaylistModule as ArtistPlaylistModuleType,
 } from 'features/home/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -57,6 +59,11 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     onViewableItemsChanged,
     disableArtistNavigation,
   } = props
+  const route = useRoute()
+  const isHomeScreen = route.name === 'Home'
+  const isArtistScreen = route.name === 'Artist'
+  const from: Referrals = isArtistScreen ? 'artist' : 'home'
+
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const {
@@ -81,7 +88,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   }
   const searchTabConfig = getSearchPropConfig('SearchResults', searchParams)
 
-  const moduleName = displayParameters.title ?? parameters?.title
+  const moduleName = displayParameters.title
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen({
@@ -92,7 +99,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   )
 
   const onBeforeNavigate = () =>
-    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from: 'home' })
+    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from })
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
@@ -106,13 +113,13 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           originDetails="artistRecommendation"
           width={width}
           height={height}
-          analyticsFrom="home"
+          analyticsFrom={from}
           hasSmallLayout
         />
       )
     },
 
-    [moduleName, moduleId, homeEntryId, artist?.name]
+    [moduleName, moduleId, homeEntryId, artist?.name, from]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
@@ -123,8 +130,8 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     !isArtistLoading &&
     !hasArtistError
 
-  useEffect(() => {
-    if (shouldModuleBeDisplayed) {
+  const triggerLogModuleDisplayedOnHomepage = useCallback(() => {
+    if (shouldModuleBeDisplayed && isHomeScreen) {
       void analytics.logModuleDisplayedOnHomepage({
         moduleId,
         moduleType: ContentTypes.ARTIST_PLAYLIST,
@@ -133,7 +140,26 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
         offers: (playlistItems as Offer[]).map((item) => item.objectID),
       })
     }
-  }, [homeEntryId, index, moduleId, playlistItems, shouldModuleBeDisplayed])
+  }, [homeEntryId, index, isHomeScreen, moduleId, playlistItems, shouldModuleBeDisplayed])
+
+  const triggerModuleDisplayed = useCallback(() => {
+    if (shouldModuleBeDisplayed && isArtistScreen) {
+      void analytics.logModuleDisplayed({
+        moduleId,
+        displayedOn: 'artist',
+        artistId,
+      })
+    }
+  }, [artistId, isArtistScreen, moduleId, shouldModuleBeDisplayed])
+
+  const triggerModuleBeDisplayed = useCallback(() => {
+    triggerLogModuleDisplayedOnHomepage()
+    triggerModuleDisplayed()
+  }, [triggerLogModuleDisplayedOnHomepage, triggerModuleDisplayed])
+
+  useEffect(() => {
+    triggerModuleBeDisplayed()
+  }, [triggerModuleBeDisplayed])
 
   if (!shouldModuleBeDisplayed) return null
 
@@ -152,11 +178,11 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     },
   }
 
-  const onArtistPress = (artistId: string, artistName: string) => {
+  const onArtistPress = (id: string, name: string) => {
     void analytics.logConsultArtist({
-      artistId,
-      artistName,
-      from: 'home',
+      artistId: id,
+      artistName: name,
+      from,
       originDetails: 'artistRecommendation',
     })
   }
