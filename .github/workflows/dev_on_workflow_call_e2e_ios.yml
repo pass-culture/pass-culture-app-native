@@ -72,7 +72,7 @@ jobs:
             MATCH_GIT_URL:pc-native-production/ios-match-git-url
             MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
-            MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
+            MATCH_USERNAME:pc-native-production/ios-match-username
             SENTRY_AUTH_TOKEN:pc-native-production/sentry-saas-token
             ROBIN_API_KEY:pc-native-production/e2e-robin-api-key
             MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
