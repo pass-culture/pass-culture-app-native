@@ -83,7 +83,8 @@ jobs:
         with:
           secrets: |-
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:pc-native-production/ios-fastlane-password
-            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-ios-google-service-${{ inputs.ENV }}
+            # TODO: Ensure token is cloned
+            IOS_GOOGLE_SERVICES_PLIST:pc-native-production/ios-${{ inputs.ENV }}-google-service
             MATCH_GIT_URL:pc-native-production/ios-match-git-url
             MATCH_PASSWORD:pc-native-production/ios-match-password
             MATCH_SSH_KEY:pc-native-production/ios-match-ssh-key
