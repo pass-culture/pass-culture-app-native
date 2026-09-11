@@ -12,7 +12,7 @@ export const VenueMapLocationModal: FC = () => {
     params: { openedFrom, shouldOpenMapInTab },
   } = useRoute<UseRouteType<'VenueMapLocationModal'>>()
 
-  const { replace, navigate, goBack } = useNavigation<UseNavigationType>()
+  const { replace, popTo, goBack } = useNavigation<UseNavigationType>()
 
   const { searchState } = useSearch()
 
@@ -24,17 +24,20 @@ export const VenueMapLocationModal: FC = () => {
         from: 'search',
         searchId: searchState.searchId,
       })
-
-      goBack()
-
-      navigate('TabNavigator', {
+      popTo('TabNavigator', {
         screen: 'SearchStackNavigator',
         params: { screen: 'SearchMap', params: searchState },
       })
-    } else if (!shouldOpenMapInTab) {
+      return
+    }
+
+    if (!shouldOpenMapInTab) {
       void analytics.logConsultVenueMap({ from: openedFrom })
       replace('VenueMap')
+      return
     }
+
+    goBack()
   }
 
   return (
@@ -44,7 +47,6 @@ export const VenueMapLocationModal: FC = () => {
       shouldShowRadiusSlider
       buttonWording="Valider et voir sur la carte"
       shouldHideEverywhereSection
-      withGoBack={openedFrom !== 'search'}
     />
   )
 }

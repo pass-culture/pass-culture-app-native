@@ -86,7 +86,7 @@ export const SearchMapContainer: FC = () => {
   useEffect(updateRegionFromLocation, [width, height, initialRegion, userLocation])
 
   const updateVenuesFromOffers = () => {
-    const geolocatedVenues = offersResponse?.offerVenues?.filter(
+    const geolocatedVenues = offersResponse?.offerVenues.filter(
       (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
     )
 
