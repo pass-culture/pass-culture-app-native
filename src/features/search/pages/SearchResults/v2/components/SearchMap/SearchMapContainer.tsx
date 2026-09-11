@@ -26,7 +26,11 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { LocationMode } from 'libs/location/types'
-import { locationSelectors, useLocationConfiguration } from 'libs/locationV2/location.store'
+import {
+  useLocationConfiguration,
+  useLocationMode,
+  useUserLocation,
+} from 'libs/locationV2/location.store'
 import { Page } from 'ui/pages/Page'
 
 export const SearchMapContainer: FC = () => {
@@ -44,11 +48,14 @@ export const SearchMapContainer: FC = () => {
   )
   const { radius: aroundPlaceRadius } = useLocationConfiguration(LocationMode.AROUND_PLACE)
 
+  const userLocation = useUserLocation()
+  const selectedLocationMode = useLocationMode()
+
   const searchFilters = {
     parameters: { page: 0, ...searchState },
     buildLocationParameterParams: {
-      userLocation: locationSelectors.selectUserLocation(),
-      selectedLocationMode: locationSelectors.selectLocationMode(),
+      userLocation,
+      selectedLocationMode,
       aroundPlaceRadius,
       aroundMeRadius,
       geolocPosition,
@@ -59,14 +66,13 @@ export const SearchMapContainer: FC = () => {
   }
 
   const { data: offersResponse } = useSearchOffersQuery(searchFilters, {
-    select: (offersResponse) => selectSearchOffers({ data: offersResponse, transformHits }),
+    select: (data) => selectSearchOffers({ data, transformHits }),
   })
 
   const initialRegion = useVenueMapStore((state) => state.initialRegion)
   const { width, height } = useWindowDimensions()
 
-  useEffect(() => {
-    const userLocation = locationSelectors.selectUserLocation()
+  const updateRegionFromLocation = () => {
     if (!userLocation) {
       return
     }
@@ -75,9 +81,11 @@ export const SearchMapContainer: FC = () => {
       setInitialRegion(region)
     }
     setRegion(region)
-  }, [width, height, initialRegion])
+  }
 
-  useEffect(() => {
+  useEffect(updateRegionFromLocation, [width, height, initialRegion, userLocation])
+
+  const updateVenuesFromOffers = () => {
     const geolocatedVenues = offersResponse?.offerVenues?.filter(
       (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
     )
@@ -85,7 +93,9 @@ export const SearchMapContainer: FC = () => {
     if (geolocatedVenues?.length) {
       setVenues(geolocatedVenues)
     }
-  }, [offersResponse?.offerVenues])
+  }
+
+  useEffect(updateVenuesFromOffers, [offersResponse?.offerVenues])
 
   const { addToHistory, setQueryHistory } = useSearchHistory()
 
