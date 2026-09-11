@@ -5,7 +5,6 @@ import { styled } from 'styled-components/native'
 import { BonificationType } from 'features/bonification/enums'
 import { BonificationDisabilityRefusedType } from 'features/bonification/types/BonificationRefusedType'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -39,9 +38,12 @@ export const BonificationDisabilityRefused = () => {
       buttonPrimary={{
         disabled: disabledNewRequest,
         wording: 'Renouveler ma demande',
-        navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
-          bonificationType: BonificationType.DISABILITY,
-        }),
+        navigateTo: {
+          screen: 'BonificationRequiredInformation',
+          params: {
+            bonificationType: BonificationType.DISABILITY,
+          },
+        },
       }}
       buttonTertiary={{
         wording: 'Fermer',

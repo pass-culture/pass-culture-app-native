@@ -42,10 +42,7 @@ describe('<IdentificationFork />', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'SelectIDOrigin',
-    })
+    expect(navigate).toHaveBeenCalledWith('SelectIDOrigin', undefined)
   })
 
   it('should navigate to next screen "EduConnectForm" on press "Mes codes ÉduConnect"', async () => {
@@ -54,10 +51,7 @@ describe('<IdentificationFork />', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'EduConnectForm',
-    })
+    expect(navigate).toHaveBeenCalledWith('EduConnectForm', undefined)
   })
 
   it('should log analytics on press "Ma pièce d’identité"', async () => {

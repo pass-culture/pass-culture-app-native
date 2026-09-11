@@ -99,14 +99,11 @@ describe('getCtaWordingAndAction', () => {
         wording: 'Réserver l’offre',
         navigateTo: {
           params: {
-            params: {
-              type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-              origin: ProfileOrigin.OFFER,
-              freeOfferId: baseOffer.id,
-            },
-            screen: 'SetName',
+            type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+            origin: ProfileOrigin.OFFER,
+            freeOfferId: baseOffer.id,
           },
-          screen: 'SubscriptionStackNavigator',
+          screen: 'SetName',
         },
       })
     })
@@ -129,14 +126,11 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         wording: 'Réserver l’offre',
         navigateTo: {
-          screen: 'SubscriptionStackNavigator',
+          screen: 'ProfileInformationValidationCreate',
           params: {
-            screen: 'ProfileInformationValidationCreate',
-            params: {
-              type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-              origin: ProfileOrigin.OFFER,
-              freeOfferId: baseOffer.id,
-            },
+            type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+            origin: ProfileOrigin.OFFER,
+            freeOfferId: baseOffer.id,
           },
         },
       })

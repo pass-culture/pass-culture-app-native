@@ -75,10 +75,7 @@ describe('SelectIDStatus', () => {
     const button = screen.getByText('Je n’ai pas ma pièce d’identité originale avec moi')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'ComeBackLater',
-    })
+    expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
   })
 
   it("should navigate to ExpiredOrLostID when pressing 'Ma pièce d'identité est expirée ou perdue' button", async () => {
@@ -87,9 +84,6 @@ describe('SelectIDStatus', () => {
     const button = screen.getByText('Ma pièce d’identité est expirée ou perdue')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'ExpiredOrLostID',
-    })
+    expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
   })
 })

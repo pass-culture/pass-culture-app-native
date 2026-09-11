@@ -50,10 +50,7 @@ describe('<EighteenBirthday />', () => {
 
     await userEvent.setup().press(screen.getByText('Confirmer mes informations'))
 
-    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
-      screen: 'Stepper',
-    })
+    expect(navigate).toHaveBeenCalledWith('Stepper', undefined)
   })
 
   it('should render right wording when user require IdCheck', () => {

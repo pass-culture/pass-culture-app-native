@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
@@ -37,7 +36,7 @@ export function EighteenBirthday() {
       subtitle={pageWording.text}
       buttonPrimary={{
         wording: pageWording.buttonText,
-        navigateTo: getSubscriptionPropConfig('Stepper'),
+        navigateTo: { screen: 'Stepper' },
       }}
       buttonTertiary={{
         wording: 'Plus tard',

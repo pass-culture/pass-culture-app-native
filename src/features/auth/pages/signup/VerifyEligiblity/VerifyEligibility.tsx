@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { useShowDisableActivation } from 'features/forceUpdate/helpers/useShowDisableActivation'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -33,9 +32,7 @@ export const VerifyEligibility: FunctionComponent = () => {
           key={1}
           as={Button}
           wording="Commencer la vérification"
-          navigateTo={getSubscriptionPropConfig('Stepper', {
-            from: StepperOrigin.VERIFY_ELIGIBILITY,
-          })}
+          navigateTo={{ screen: 'Stepper', params: { from: StepperOrigin.VERIFY_ELIGIBILITY } }}
         />,
         <InternalTouchableLink
           key={2}

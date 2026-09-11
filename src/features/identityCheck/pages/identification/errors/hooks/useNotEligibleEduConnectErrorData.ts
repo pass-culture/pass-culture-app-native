@@ -3,7 +3,6 @@ import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -64,10 +63,7 @@ const InvalidInformationErrorData: NotEligibleEduConnectErrorData = {
     DOUBLE_LINE_BREAK +
     'Refais une demande en vérifiant ton identité avec ta pièce d’identité.',
   descriptionAlignment: 'center',
-  primaryButton: {
-    wording: 'Vérifier mon identité',
-    navigateTo: getSubscriptionPropConfig('SelectIDOrigin'),
-  },
+  primaryButton: { wording: 'Vérifier mon identité', navigateTo: { screen: 'SelectIDOrigin' } },
   isGoHomeTertiaryButtonVisible: true,
 }
 
@@ -126,7 +122,7 @@ export function useNotEligibleEduConnectErrorData(message: EduConnectErrorMessag
         () => {
           goBack()
         },
-        { ...getSubscriptionPropConfig('EduConnectForm') }
+        { screen: 'EduConnectForm' }
       )
 
     case EduConnectErrorMessageEnum.DuplicateUser:
