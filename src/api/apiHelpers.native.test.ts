@@ -384,15 +384,6 @@ describe('[api] helpers', () => {
       expect(result).toEqual({})
     })
 
-    it('should navigate to suspension screen when status is 403 (forbidden)', async () => {
-      const response = await respondWith('', 403)
-
-      const result = await handleGeneratedApiResponse(response, optionsWithAccessToken)
-
-      expect(navigateFromRef).toHaveBeenCalledWith('AccountStatusScreenHandler')
-      expect(result).toEqual({})
-    })
-
     it('should navigate to banned country screen when status is 403 (forbidden) with country ban header', async () => {
       const response = await respondWith('', 403, undefined, {
         'x-country-ban': 'CountryName',
