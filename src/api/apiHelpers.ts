@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Platform } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -142,8 +141,6 @@ export async function handleGeneratedApiResponse(
       navigateFromRef('BannedCountryError')
       return {}
     }
-    navigateFromRef('AccountStatusScreenHandler')
-    return {}
   }
 
   // We are not suppose to have side-effects in this function but this is a special case
