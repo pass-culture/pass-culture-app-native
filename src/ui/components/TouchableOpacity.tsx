@@ -56,6 +56,7 @@ export function TouchableOpacity({
       isFocus={isFocus}
       onFocus={onStyledFocus}
       onBlur={onStyledBlur}
+      disabled={disabled}
       {...(isWeb && !disabled ? { tabIndex: 0 } : {})}
       {...props}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
