@@ -29,6 +29,7 @@
     "build/**",
     "dist/**",
     "maestro/**",
+    "e2e/**",
     "node_modules/**",
     "babel.config.js",
     "metro.config.js",

@@ -31,6 +31,8 @@ module.exports = [
       'storybook-static/**',
       'src/api/gen/**',
       '.maestro/**',
+      'e2e/**',
+      'playwright.config.ts',
       '.github/**',
       '.storybook/**',
       '.yarn/**',
