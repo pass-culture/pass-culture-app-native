@@ -57,7 +57,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+            SENTRY_AUTH_TOKEN:pc-native-production/sentry-saas-token
 
       - name: Render Sentry Template
         id: render_template
@@ -102,7 +102,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
+            SLACK_BOT_TOKEN:pc-native-production/slack-bot-token
       - name: Post to a Slack channel
         id: slack
         uses: slackapi/slack-github-action@45a88b9581bfab2566dc881e2cd66d334e621e2c #v3.0.3

@@ -47,10 +47,10 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262 #v3.0.0
         with:
           secrets: |-
-            MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
-            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
-            MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
-            MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
+            MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
+            MAESTRO_CLOUD_API_KEY:pc-native-production/e2e-maestro-cloud-api-key
+            MAESTRO_E2E_API_KEY:pc-native-production/pcapi-staging-e2e-api-key
+            MAESTRO_E2E_ENDPOINT:pc-native-production/pcapi-staging-e2e-endpoint
 
       - name: Determine latest Maestro version
         run: |
@@ -109,7 +109,7 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262 #v3.0.0
         with:
           secrets: |-
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
+            SLACK_BOT_TOKEN:pc-native-production/slack-bot-token
       - name: Post to a Slack channel
         id: slack
         uses: slackapi/slack-github-action@45a88b9581bfab2566dc881e2cd66d334e621e2c #v3.0.3

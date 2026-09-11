@@ -76,15 +76,15 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-staging
-            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-store-password
-            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-staging-keystore-key-password
-            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
-            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
-            MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
-            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
-            MAESTRO_E2E_API_KEY:passculture-metier-ehp/pcapi-staging_e2e_api_key
-            MAESTRO_E2E_ENDPOINT:passculture-metier-ehp/pcapi-staging-e2e-endpoint
+            ANDROID_GOOGLE_SERVICES_JSON:pc-native-production/android-staging-google-service
+            ANDROID_KEYSTORE_STORE_PASSWORD:pc-native-production/android-staging-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:pc-native-production/android-staging-keystore-key-password
+            ANDROID_KEYSTORE:pc-native-production/android-staging-keystore
+            ROBIN_API_KEY:pc-native-production/e2e-robin-api-key
+            MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
+            MAESTRO_CLOUD_API_KEY:pc-native-production/e2e-maestro-cloud-api-key
+            MAESTRO_E2E_API_KEY:pc-native-production/pcapi-staging-e2e-api-key
+            MAESTRO_E2E_ENDPOINT:pc-native-production/pcapi-staging-e2e-endpoint
 
       - name: Create a directory for keystores
         run: mkdir --parents android/keystores/
