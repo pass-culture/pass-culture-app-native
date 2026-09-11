@@ -7,6 +7,8 @@ import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
+import { Provider } from 'features/auth/types'
 import { resetFromRef } from 'features/navigation/navigationRef'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
 import {
@@ -30,6 +32,7 @@ const useEmailUpdateStatusSpy = jest
   } as UseQueryResult<EmailUpdateStatusResponse>)
 
 jest.mock('features/navigation/helpers/navigateToHome')
+jest.mock('features/auth/helpers/saveLastLoginInfo')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
@@ -98,6 +101,17 @@ describe('ValidateEmailChange', () => {
     await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(mockSignOut).toHaveBeenCalledTimes(1)
+  })
+
+  it('should save the validated email as last login info on submit success', async () => {
+    renderValidateEmailChange()
+
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
+
+    expect(saveLastLoginInfo).toHaveBeenCalledWith({
+      email: 'john@doe.com',
+      provider: Provider.EMAIL,
+    })
   })
 
   it('should not sign out if submit is success and user is not logged in', async () => {
