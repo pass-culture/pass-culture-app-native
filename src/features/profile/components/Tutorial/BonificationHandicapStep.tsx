@@ -124,7 +124,7 @@ export const BonificationHandicapStep = ({ amount, user, isLoggedIn }: Props) =>
                 <BlockDescriptionItem
                   key={2}
                   icon={<SmallConfirmation />}
-                  text="Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH."
+                  text="Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH à 18 ans."
                 />,
               ]}
             />

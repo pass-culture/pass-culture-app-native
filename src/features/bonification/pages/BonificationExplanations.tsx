@@ -78,13 +78,13 @@ export const BonificationExplanations = () => {
               </Typo.BodyAccent>
               est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
               <Typo.BodyAccent {...setTextSemantic('span')}>
-                {` quotient familial inférieur ou égal à ${familyQuotientLevel}.`}
+                {` quotient familial inférieur ou égal à ${familyQuotientLevel} au cours de l’année de leurs 17 ans.`}
               </Typo.BodyAccent>
             </Typo.Body>
             <Banner label={bannerLabel} Icon={WarningFilled} />
             <Typo.Body>
-              Remplis les informations de ton parent ou représentant légal pour savoir si tu peux en
-              bénéficier.
+              Remplis les informations de ton parent ou représentant légal au moment de tes 17 ans
+              pour savoir si tu peux en bénéficier.
             </Typo.Body>
           </ViewGap>
         </Form.MaxWidth>
