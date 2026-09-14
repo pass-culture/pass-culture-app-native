@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
+import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -97,9 +98,8 @@ export const SearchMapContainer: FC = () => {
 
   useEffect(updateVenuesFromOffers, [offersResponse?.offerVenues])
 
-  const { addToHistory, setQueryHistory } = useSearchHistory()
-
-  const handleSetQueryHistory = (query: string) => setQueryHistory(query)
+  const { addToHistory, setQueryHistory, queryHistory, removeFromHistory, filteredHistory } =
+    useSearchHistory()
 
   return (
     <Page>
@@ -113,13 +113,22 @@ export const SearchMapContainer: FC = () => {
           <SearchHeaderContainer>
             <SearchHeader
               addSearchHistory={addToHistory}
-              searchInHistory={handleSetQueryHistory}
+              searchInHistory={setQueryHistory}
               withFilterButton={!isFocusOnSuggestions}
               withArrow
               shouldDisplayHeader={!isFocusOnSuggestions}
             />
           </SearchHeaderContainer>
-          <VenueMapViewContainer />
+          {isFocusOnSuggestions ? (
+            <SearchSuggestions
+              queryHistory={queryHistory}
+              addToHistory={addToHistory}
+              removeFromHistory={removeFromHistory}
+              filteredHistory={filteredHistory}
+            />
+          ) : (
+            <VenueMapViewContainer />
+          )}
         </Container>
       </InstantSearch>
     </Page>

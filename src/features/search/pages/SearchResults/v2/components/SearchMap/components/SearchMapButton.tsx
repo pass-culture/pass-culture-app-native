@@ -5,7 +5,6 @@ import Animated, { LinearTransition } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
-import { useSearch } from 'features/search/context/SearchWrapper'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
@@ -24,7 +23,6 @@ type Props = {
 
 export const SearchMapButton: FC<Props> = ({ shouldDisplayMapButtonText, searchId }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
 
   const handleSeeMapButtonPress = () => {
     removeSelectedVenue()
@@ -38,7 +36,7 @@ export const SearchMapButton: FC<Props> = ({ shouldDisplayMapButtonText, searchI
 
     navigate('TabNavigator', {
       screen: 'SearchStackNavigator',
-      params: { screen: 'SearchMap', params: searchState },
+      params: { screen: 'SearchMap' },
     })
 
     void analytics.logConsultVenueMap({

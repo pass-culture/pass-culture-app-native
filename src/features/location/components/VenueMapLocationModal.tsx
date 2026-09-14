@@ -9,10 +9,10 @@ import { analytics } from 'libs/analytics/provider'
 
 export const VenueMapLocationModal: FC = () => {
   const {
-    params: { openedFrom, shouldOpenMapInTab },
+    params: { openedFrom },
   } = useRoute<UseRouteType<'VenueMapLocationModal'>>()
 
-  const { replace, popTo, goBack } = useNavigation<UseNavigationType>()
+  const { replace, popTo } = useNavigation<UseNavigationType>()
 
   const { searchState } = useSearch()
 
@@ -31,13 +31,8 @@ export const VenueMapLocationModal: FC = () => {
       return
     }
 
-    if (!shouldOpenMapInTab) {
-      void analytics.logConsultVenueMap({ from: openedFrom })
-      replace('VenueMap')
-      return
-    }
-
-    goBack()
+    void analytics.logConsultVenueMap({ from: openedFrom })
+    replace('VenueMap')
   }
 
   return (
