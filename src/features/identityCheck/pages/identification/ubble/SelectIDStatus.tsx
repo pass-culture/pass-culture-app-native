@@ -11,7 +11,6 @@ import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetSte
 import { useUbbleIdentificationMutation } from 'features/identityCheck/queries/useUbbleIdentificationMutation'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonListWithOnPress } from 'ui/components/buttons/HeroButtonListWithOnPress'
@@ -120,7 +119,7 @@ const FirstOtherOption = (
   <SecondButtonList
     label="Je n’ai pas ma pièce d’identité originale avec moi"
     leftIcon={NoId}
-    navigateTo={getSubscriptionPropConfig('ComeBackLater')}
+    navigateTo={{ screen: 'ComeBackLater' }}
   />
 )
 
@@ -132,7 +131,7 @@ const SecondOtherOption = (
   <SecondButtonList
     label="Ma pièce d’identité est expirée ou perdue"
     leftIcon={LostId}
-    navigateTo={getSubscriptionPropConfig('ExpiredOrLostID')}
+    navigateTo={{ screen: 'ExpiredOrLostID' }}
   />
 )
 
