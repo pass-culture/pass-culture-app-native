@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useIsFocused, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -47,6 +47,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 
 describe('<ThematicSearch/>', () => {
   beforeEach(() => {
+    useIsFocused.mockReturnValue(true)
     useLocationV2.setState(defaultLocationState)
     mockServer.universalGet(
       `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
@@ -62,18 +63,16 @@ describe('<ThematicSearch/>', () => {
   })
 
   it('should render', async () => {
-    await act(async () => {
-      render(reactQueryProviderHOC(<ThematicSearch />))
-    })
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
     await screen.findByText('Musique')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should dispatch action with offerCategories when params change', async () => {
-    await act(async () => {
-      render(reactQueryProviderHOC(<ThematicSearch />))
-    })
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
     await screen.findByText('Musique')
 
     await act(async () => {})
@@ -82,6 +81,16 @@ describe('<ThematicSearch/>', () => {
       type: 'SET_OFFER_CATEGORIES',
       payload: [SearchGroupNameEnumv2.MUSIQUE],
     })
+  })
+
+  it('should not dispatch offerCategories when screen is not focused', async () => {
+    useIsFocused.mockReturnValueOnce(false)
+
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
+    await screen.findByText('Musique')
+
+    expect(mockDispatch).not.toHaveBeenCalled()
   })
 
   it('should not have basic accessibility issues', async () => {
@@ -109,8 +118,8 @@ describe('<ThematicSearch/>', () => {
   })
 })
 
-const renderThematicSearch = async () =>
-  act(async () => {
+const renderThematicSearch = () =>
+  act(() => {
     return render(reactQueryProviderHOC(<ThematicSearch />))
   })
 
