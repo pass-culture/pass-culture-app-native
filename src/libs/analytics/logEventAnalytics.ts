@@ -507,8 +507,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
-  logModuleDisplayed: (params: { moduleId: string; displayedOn: Referrals; venueId?: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
+  logModuleDisplayed: (params: {
+    moduleId: string
+    displayedOn: Referrals
+    venueId?: number
+    artistId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
   logModuleDisplayedOnHomepage: (params: {
     moduleId: string
     moduleType: ContentTypes
