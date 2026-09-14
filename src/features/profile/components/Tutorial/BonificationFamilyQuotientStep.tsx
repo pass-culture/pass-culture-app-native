@@ -133,7 +133,7 @@ export const BonificationFamilyQuotientStep = ({
                 <BlockDescriptionItem
                   key={2}
                   icon={<SmallConfirmation />}
-                  text="Le bonus dépend des ressources de ton foyer."
+                  text="Le bonus dépend des ressources de ton foyer l’année de tes 17 ans."
                 />,
               ]}
             />
