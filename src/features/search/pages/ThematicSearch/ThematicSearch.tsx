@@ -98,13 +98,13 @@ export const ThematicSearch: React.FC = () => {
   )
 
   useEffect(() => {
-    if (params?.offerCategories && isWeb) {
+    if (isFocused && params?.offerCategories && isWeb) {
       dispatch({
         type: 'SET_OFFER_CATEGORIES',
         payload: params.offerCategories,
       })
     }
-  }, [dispatch, isWeb, params?.offerCategories])
+  }, [dispatch, isFocused, isWeb, params?.offerCategories])
 
   const offerCategories = (params?.offerCategories ?? []) as ThematicSearchCategories[]
   const offerCategory = offerCategories[0]
