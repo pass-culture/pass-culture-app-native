@@ -1,5 +1,6 @@
 import { BookingHold } from 'ui/svg/BookingHold'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
+import { ErrorServer } from 'ui/svg/ErrorServer'
 import { FirstArtLessonBookingLockedDetailed } from 'ui/svg/icons/achievements/Detailed/FirstArtLessonBookingLockedDetailed'
 import { FirstArtLessonBookingUnlockedDetailed } from 'ui/svg/icons/achievements/Detailed/FirstArtLessonBookingUnlockedDetailed'
 import { FirstBookBookingLockedDetailed } from 'ui/svg/icons/achievements/Detailed/FirstBookBookingLockedDetailed'
@@ -80,6 +81,7 @@ export const BasicsIllustrations = {
   EmailSent,
   EmptyFavorites,
   ErrorIllustration,
+  ErrorServer,
   HappyFace,
   HappyFaceWithTear,
   IdCardError,
