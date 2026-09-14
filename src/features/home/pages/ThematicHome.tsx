@@ -67,14 +67,7 @@ const SubHeader: FunctionComponent<{ homeId: string; thematicHeader?: ThematicHe
         </IntroductionContainer>
       )
     }
-    return (
-      <React.Fragment>
-        {Platform.OS === 'web' ? null : (
-          <HeaderSpacerPlaceholder height={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT} />
-        )}
-        <HighlightThematicHomeHeader {...thematicHeader} />
-      </React.Fragment>
-    )
+    return <HighlightThematicHomeHeader {...thematicHeader} />
   }
 
   if (thematicHeader?.type === ThematicHeaderType.Category) {
@@ -284,8 +277,4 @@ const IntroductionContainer = styled.View<{ marginTopHeader: number }>(({ margin
 
 const Placeholder = styled.View<{ marginTopHeader: number }>(({ marginTopHeader }) => ({
   height: getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT) + marginTopHeader,
-}))
-
-const HeaderSpacerPlaceholder = styled.View<{ height: number }>(({ height }) => ({
-  height: getSpacing(height),
 }))
