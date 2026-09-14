@@ -79,6 +79,11 @@ coverage/
 # @react-native-config codegen
 ios/react-native-config.xcconfig
 
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
 # Deploy
 android/keystores/*
 fastlane/playStoreServiceAccount.json

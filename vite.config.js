@@ -26,8 +26,7 @@ const packageJson = require('./package.json')
 const getGitInfo = (command) => {
   try {
     return execSync(command).toString().trim()
-  } catch (e) {
-    console.error(`Failed to execute command: ${command}`, e)
+  } catch {
     return 'unknown'
   }
 }
