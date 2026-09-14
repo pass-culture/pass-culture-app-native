@@ -7,10 +7,12 @@ import { QueryKeys } from 'libs/queryKeys'
 
 type props = {
   venueId: number
+  from: Date
+  to: Date
 }
 
 export const useVenueMoviesCalendarQuery = <TData = VenueMovieCalendarResponse>(
-  { venueId }: props,
+  { venueId, from, to }: props,
   options?: {
     enabled: boolean
     select?: (data: VenueMovieCalendarResponse) => TData
@@ -21,10 +23,10 @@ export const useVenueMoviesCalendarQuery = <TData = VenueMovieCalendarResponse>(
   return useQuery<VenueMovieCalendarResponse, Error, TData>({
     queryFn: async () => {
       return isLoggedIn
-        ? api.getNativeV1VenuevenueIdMovieCalendarMe(venueId)
-        : api.getNativeV1VenuevenueIdMovieCalendar(venueId)
+        ? api.getNativeV1VenuevenueIdMovieCalendarMe(venueId, from.toISOString(), to.toISOString()) // auto convert dates to utc timezone
+        : api.getNativeV1VenuevenueIdMovieCalendar(venueId, from.toISOString(), to.toISOString()) // auto convert date to utc timezone
     },
-    queryKey: [QueryKeys.VENUE_MOVIES_CALENDAR, user?.id, venueId],
+    queryKey: [QueryKeys.VENUE_MOVIES_CALENDAR, user?.id, venueId, from, to],
     select: options?.select,
     enabled: options?.enabled,
   })

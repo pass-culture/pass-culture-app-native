@@ -3,10 +3,9 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, type MovieScreenings, type Screening } from 'api/gen'
-import { formatHour } from 'features/bookOffer/helpers/utils'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
-import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { useMovieCalendarV2 } from 'features/offer/components/MoviesScreeningCalendarV2/MovieCalendarContextV2'
+import { NextScreeningButtonV2 } from 'features/offer/components/MoviesScreeningCalendarV2/NextScreeningButtonV2'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import {
   getEventCardIsEnabled,
@@ -14,10 +13,11 @@ import {
   getEventCardRightSubtitle,
 } from 'features/offer/helpers/screeningBlockInfo/screeningBlockInfo'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { formatDateWithTimeZoneOffset } from 'libs/parsers/formatDates'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { BookOfferModal } from 'shared/offer/components/BookOfferModal/BookOfferModal'
-import { EventCardProps } from 'ui/components/eventCard/EventCard'
+import type { EventCardProps } from 'ui/components/eventCard/EventCard'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { useModal } from 'ui/components/modals/useModal'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
@@ -48,7 +48,7 @@ const transformScreening = (
       showModal()
     },
     isDisabled: !getEventCardIsEnabled(screening),
-    title: formatHour(screening.beginningDatetime).replace(':', 'h'),
+    title: formatDateWithTimeZoneOffset(screening.beginningDatetime, "HH'h'mm"),
     subtitleLeft: getEventCardLeftSubtitle(screening),
     subtitleRight: getEventCardRightSubtitle(screening, currency, euroToPacificFrancRate),
   }) as EventCardProps
@@ -58,9 +58,11 @@ export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
   venueId,
   isLast,
 }) => {
-  const { goToDate } = useMovieCalendar()
+  const { goToDate } = useMovieCalendarV2()
   const { offerId, nextScreening } = movieScreenings
-  const nextScreeningDate = nextScreening ? new Date(nextScreening.beginningDatetime) : null
+  const nextScreeningDate = nextScreening
+    ? formatDateWithTimeZoneOffset(nextScreening.beginningDatetime, 'yyyy-MM-dd')
+    : null
 
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
@@ -70,7 +72,7 @@ export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
   return (
     <React.Fragment>
       <StyledView>
-        {movieScreenings.dayScreenings ? (
+        {movieScreenings.dayScreenings?.length ? (
           <HorizontalOfferTile
             offer={{
               offer: {
@@ -91,7 +93,7 @@ export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
       </StyledView>
       {nextScreeningDate && !movieScreenings.dayScreenings?.length ? (
         <View>
-          <NextScreeningButton
+          <NextScreeningButtonV2
             date={nextScreeningDate}
             onPress={() => goToDate(nextScreeningDate)}
           />

@@ -2,12 +2,13 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { VenueScreenings } from 'api/gen'
-import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { useMovieCalendarV2 } from 'features/offer/components/MoviesScreeningCalendarV2/MovieCalendarContextV2'
+import { NextScreeningButtonV2 } from 'features/offer/components/MoviesScreeningCalendarV2/NextScreeningButtonV2'
 import { OfferEventCardListV2 } from 'features/offer/components/OfferEventCardList/OfferEventCardListV2'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { LocationMode } from 'libs/location/types'
 import { locationStore } from 'libs/locationV2/location.store'
+import { formatDateWithTimeZoneOffset } from 'libs/parsers/formatDates'
 import { humanizeDistance } from 'libs/parsers/formatDistance'
 
 type CineBlockV2Props = {
@@ -23,12 +24,12 @@ export const CineBlockV2: FunctionComponent<CineBlockV2Props> = ({
   onSeeVenuePress,
   withDivider,
 }) => {
-  const { goToDate } = useMovieCalendar()
+  const { goToDate } = useMovieCalendarV2()
   const locationMode = locationStore.hooks.useLocationMode()
 
   const distance = humanizeDistance(venueScreenings.distance).replace('.', ',')
   const nextDate = venueScreenings.nextScreening?.beginningDatetime
-    ? new Date(venueScreenings.nextScreening?.beginningDatetime)
+    ? formatDateWithTimeZoneOffset(venueScreenings.nextScreening?.beginningDatetime, 'yyyy-MM-dd')
     : null
   const showNextScreeningButton = venueScreenings.dayScreenings.length === 0 && !!nextDate
 
@@ -50,7 +51,7 @@ export const CineBlockV2: FunctionComponent<CineBlockV2Props> = ({
         />
 
         {showNextScreeningButton ? (
-          <NextScreeningButton date={nextDate} onPress={() => goToDate(nextDate)} />
+          <NextScreeningButtonV2 date={nextDate} onPress={() => goToDate(nextDate)} />
         ) : (
           <OfferEventCardListV2 venueScreenings={venueScreenings} offerId={offerId} />
         )}
