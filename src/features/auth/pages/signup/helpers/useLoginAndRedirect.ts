@@ -7,19 +7,12 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
-// eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export const useLoginAndRedirect = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const { replace } = useNavigation<UseNavigationType>()
-  const delayedReplace: typeof replace = useCallback(
-    (...args) => {
-      setTimeout(() => replace(...args), 2000)
-    },
-    [replace]
-  )
 
   const loginRoutine = useLoginRoutine()
 
@@ -38,7 +31,7 @@ export const useLoginAndRedirect = () => {
         const user = await api.getNativeV1Me()
 
         if (disableActivation) {
-          delayedReplace(...getSubscriptionHookConfig('DisableActivation'))
+          replace(...getSubscriptionHookConfig('DisableActivation'))
           return
         }
 
@@ -46,7 +39,7 @@ export const useLoginAndRedirect = () => {
           user.isEligibleForBeneficiaryUpgrade &&
           user.eligibility === EligibilityType['age-17-18']
         ) {
-          delayedReplace('VerifyEligibility')
+          replace('VerifyEligibility')
           return
         }
 
@@ -54,16 +47,16 @@ export const useLoginAndRedirect = () => {
           user.eligibilityStartDatetime &&
           new Date(user.eligibilityStartDatetime) >= new Date()
         ) {
-          delayedReplace('NotYetUnderageEligibility', {
+          replace('NotYetUnderageEligibility', {
             eligibilityStartDatetime: user.eligibilityStartDatetime.toString(),
           })
           return
         }
-        delayedReplace('AccountCreated')
+        replace('AccountCreated')
       } catch {
-        delayedReplace('AccountCreated')
+        replace('AccountCreated')
       }
     },
-    [delayedReplace, disableActivation, loginRoutine]
+    [replace, disableActivation, loginRoutine]
   )
 }
