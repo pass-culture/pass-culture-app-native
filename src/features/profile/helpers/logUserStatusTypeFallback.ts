@@ -6,7 +6,7 @@ export const logUserStatusTypeFallback = ({ user }: { user: UserProfileResponse 
     level: 'info',
     extra: {
       id: user.id,
-      status: user.status?.statusType,
+      status: user.status.statusType,
       depositType: user.depositType,
       birthDate: user.birthDate,
     },

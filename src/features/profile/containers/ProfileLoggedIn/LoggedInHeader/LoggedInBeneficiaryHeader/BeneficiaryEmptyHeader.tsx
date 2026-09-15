@@ -44,7 +44,7 @@ export const BeneficiaryEmptyHeader = ({ user }: Props) => {
     17: eighteenYearsOldDeposit,
   }
 
-  const isUserFreeStatus = getIsUserEligibleFree(user?.eligibilityType)
+  const isUserFreeStatus = getIsUserEligibleFree(user.eligibilityType)
 
   const nextCreditIntroText = isUserFreeStatus
     ? 'Tu pourras débloquer ton prochain crédit de '
