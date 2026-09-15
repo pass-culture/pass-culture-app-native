@@ -15,6 +15,10 @@ export const logHeaderFallback = ({ user, headerType }: LogHeaderFallbackParams)
       eligibilityType: user.eligibilityType,
       creditType: user.creditType,
       statusType: user.statusType,
+      birthDate: user.birthDate,
+      domainsCredit: user.domainsCredit,
+      depositExpirationDate: user.depositExpirationDate,
+      hasProfileExpired: user.hasProfileExpired,
       headerType,
     },
   })
