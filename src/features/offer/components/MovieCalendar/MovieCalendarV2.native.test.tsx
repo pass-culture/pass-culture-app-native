@@ -1,6 +1,7 @@
 import { FlashListRef } from '@shopify/flash-list'
 import mockDate from 'mockdate'
 import React from 'react'
+import { Platform } from 'react-native'
 
 import { MovieCalendarV2 } from 'features/offer/components/MovieCalendar/MovieCalendarV2'
 import { toMutable } from 'shared/types/toMutable'
@@ -50,8 +51,10 @@ describe('<MovieCalendarV2/>', () => {
   })
 
   describe('Right arrow button', () => {
+    beforeAll(() => (Platform.OS = 'web'))
+
     it('should appear when the component renders before any user interaction', () => {
-      renderMovieCalendar(dummyDates, { isDesktopViewport: true })
+      renderMovieCalendar(dummyDates)
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
         nativeEvent: {
@@ -65,7 +68,7 @@ describe('<MovieCalendarV2/>', () => {
     })
 
     it('should not appear when the content reached the end', () => {
-      renderMovieCalendar(dummyDates, { isDesktopViewport: true })
+      renderMovieCalendar(dummyDates)
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
         nativeEvent: {
@@ -80,8 +83,10 @@ describe('<MovieCalendarV2/>', () => {
   })
 
   describe('Left arrow button', () => {
+    beforeAll(() => (Platform.OS = 'web'))
+
     it('should not appear when the component renders before any user interaction', () => {
-      renderMovieCalendar(dummyDates, { isDesktopViewport: true })
+      renderMovieCalendar(dummyDates)
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
         nativeEvent: {
@@ -95,7 +100,7 @@ describe('<MovieCalendarV2/>', () => {
     })
 
     it('should appear when the content is scrolled', () => {
-      renderMovieCalendar(dummyDates, { isDesktopViewport: true })
+      renderMovieCalendar(dummyDates)
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
         nativeEvent: {
