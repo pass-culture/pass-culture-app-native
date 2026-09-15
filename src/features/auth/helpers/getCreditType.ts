@@ -35,8 +35,6 @@ export const getCreditType = (user: UserProfileResponse): UserCreditType => {
   const isEighteenToTwenty = age && age >= 18 && age <= 20
 
   const isCreditV2Underage = depositType === DepositType.GRANT_15_17
-  const isCreditV2UnderageExpiredByAge = isCreditV2Underage && isEighteenToTwenty
-  const isDepositExpired = getIsDepositExpired({ depositExpirationDate })
   const isNotEligibleForBeneficiaryUpgrade = !isEligibleForBeneficiaryUpgrade
   const actualyNotPossibleInFrontend = false
 
@@ -57,8 +55,8 @@ export const getCreditType = (user: UserProfileResponse): UserCreditType => {
   const isCreditV3_18 = isCreditV3 && isNotEligibleForBeneficiaryUpgrade && isEighteenToTwenty
 
   //OTHER CREDIT TYPES
-  const isEmptyCredit = domainsCredit?.all?.remaining === 0 && !isCreditV3_free
-  const isCreditExpired = isDepositExpired || isCreditV2UnderageExpiredByAge
+  const isCreditExpired = getIsDepositExpired({ depositExpirationDate })
+  const isEmptyCredit = domainsCredit?.all.remaining === 0 && !isCreditV3_free
   const isCreditBonus = actualyNotPossibleInFrontend
   const isNoCredit = !depositType
 
