@@ -6,12 +6,16 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/
 import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getSubcategoryLabelParts } from 'features/search/helpers/getSubcategoryLabelParts/getSubcategoryLabelParts'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSubcategoryButtonContent } from 'ui/components/buttons/SubcategoryButton/helpers'
+import { NewSubcategoryButton } from 'ui/components/buttons/SubcategoryButton/NewSubcategoryButton'
 import { SubcategoryButton } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Page } from 'ui/pages/Page'
@@ -25,6 +29,9 @@ const MOBILE_MAX_WIDTH = '49%'
 const MOBILE_MAX_WIDTH_WHEN_FONT_ZOOMED = '100%'
 
 export const ThematicSearchSubcategories = () => {
+  const enableNewSubcategoryBlocks = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS_HOME
+  )
   const headerHeight = useGetHeaderHeight()
   const { params } = useRoute<UseRouteType<'ThematicSearchSubcategories'>>()
   const { goBack } = useNavigation<UseNavigationType>()
@@ -74,14 +81,24 @@ export const ThematicSearchSubcategories = () => {
         <Placeholder height={headerHeight} />
         <Title {...setTextSemantic('h1')}>{TITLE}</Title>
         <SubcategoryButtonsContainer>
-          {subcategoryButtonContent.map((item) => (
-            <StyledSubcategoryButton
-              key={item.label}
-              {...item}
-              mobileMinWidth={mobileMinWidth}
-              mobileMaxWidth={mobileMaxWidth}
-            />
-          ))}
+          {subcategoryButtonContent.map((item) =>
+            enableNewSubcategoryBlocks ? (
+              <StyledNewSubcategoryButton
+                key={item.label}
+                {...item}
+                mobileMinWidth={mobileMinWidth}
+                mobileMaxWidth={mobileMaxWidth}
+                labelParts={getSubcategoryLabelParts(item.label)}
+              />
+            ) : (
+              <StyledSubcategoryButton
+                key={item.label}
+                {...item}
+                mobileMinWidth={mobileMinWidth}
+                mobileMaxWidth={mobileMaxWidth}
+              />
+            )
+          )}
         </SubcategoryButtonsContainer>
         <Spacer.BottomScreen />
       </StyledScrollView>
@@ -94,7 +111,8 @@ export const ThematicSearchSubcategories = () => {
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.contentPage.marginHorizontal,
-    paddingVertical: theme.contentPage.marginVertical,
+    paddingTop: theme.contentPage.marginVertical,
+    paddingBottom: theme.tabBar.height,
   },
 }))``
 
@@ -114,6 +132,18 @@ const SubcategoryButtonsContainer = styled.View(({ theme }) => ({
 }))
 
 const StyledSubcategoryButton = styled(SubcategoryButton)<{
+  mobileMinWidth: string
+  mobileMaxWidth: string
+}>(({ mobileMinWidth, mobileMaxWidth }) => ({
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
+  width: 'auto',
+  minWidth: mobileMinWidth,
+  maxWidth: mobileMaxWidth,
+}))
+
+const StyledNewSubcategoryButton = styled(NewSubcategoryButton)<{
   mobileMinWidth: string
   mobileMaxWidth: string
 }>(({ mobileMinWidth, mobileMaxWidth }) => ({
