@@ -855,7 +855,6 @@ describe('SearchResultsContent component', () => {
 
         expect(navigate).toHaveBeenCalledWith('VenueMapLocationModal', {
           openedFrom: 'search',
-          shouldOpenMapInTab: true,
         })
       })
 

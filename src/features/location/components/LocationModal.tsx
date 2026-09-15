@@ -88,7 +88,10 @@ export const LocationModal = ({
   const handleSubmit = () => {
     locationModalActions.submit()
     void analytics.logUserSetLocation(from)
-    onSubmit?.()
+    if (onSubmit) {
+      onSubmit()
+      return
+    }
     goBack()
   }
 

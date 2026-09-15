@@ -16,21 +16,30 @@ export const NoSearchResultContainer: FC<
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
 
-  const { data: hasOffersData } = useSearchOffersQuery(searchFilters, {
-    select: (offersResponse) => !!offersResponse.pages[0]?.offersResponse.nbHits,
-  })
+  const { data: hasOffersData, isFetching: isFetchingOffers } = useSearchOffersQuery(
+    searchFilters,
+    {
+      select: (offersResponse) => !!offersResponse.pages[0]?.offersResponse.nbHits,
+    }
+  )
 
-  const { data: hasVenuesData } = useSearchVenuesQuery(searchFilters, {
-    select: (venuesResponse) =>
-      !!(
-        (venuesResponse?.venuesResponse?.hits.length ?? 0) +
-        (venuesResponse.venueNotOpenToPublic?.hits.length ?? 0)
-      ),
-  })
+  const { data: hasVenuesData, isFetching: isFetchingVenues } = useSearchVenuesQuery(
+    searchFilters,
+    {
+      select: (venuesResponse) =>
+        !!(
+          (venuesResponse?.venuesResponse?.hits.length ?? 0) +
+          (venuesResponse.venueNotOpenToPublic?.hits.length ?? 0)
+        ),
+    }
+  )
 
-  const { data: hasArtistsData } = useSearchArtistsQuery(searchFilters, {
-    select: (artistsResponse) => !!artistsResponse?.artistsResponse.nbHits,
-  })
+  const { data: hasArtistsData, isFetching: isFetchingArtists } = useSearchArtistsQuery(
+    searchFilters,
+    {
+      select: (artistsResponse) => !!artistsResponse?.artistsResponse.nbHits,
+    }
+  )
 
   const hasSelectedSearchFilters = hasActiveSearchFilters(searchFilters)
 
@@ -38,7 +47,11 @@ export const NoSearchResultContainer: FC<
     ? hasOffersData
     : hasOffersData || hasVenuesData || hasArtistsData
 
-  if (!hasSearchResults)
+  const isFetchingSearchResults = hasSelectedSearchFilters
+    ? isFetchingOffers
+    : isFetchingOffers || isFetchingVenues || isFetchingArtists
+
+  if (!isFetchingSearchResults && !hasSearchResults)
     return (
       <NoSearchResult
         setSelectedLocationMode={locationActions.setLocationMode}

@@ -286,7 +286,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     removeSelectedVenue()
     setDefaultTab(Tab.MAP)
     if (selectedLocationMode === LocationMode.EVERYWHERE) {
-      navigate('VenueMapLocationModal', { openedFrom: 'search', shouldOpenMapInTab: true })
+      navigate('VenueMapLocationModal', { openedFrom: 'search' })
       return
     }
 
