@@ -2,7 +2,7 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { env } from 'libs/environment/env'
-import { useEnableFrontImageResizing, useObjectStorageUrl } from 'queries/settings/useSettings'
+import { useEnableFrontImageResizing, useImageResizingUrl } from 'queries/settings/useSettings'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432
@@ -18,18 +18,26 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
   const { scale: pixelRatio } = useWindowDimensions()
 
   const { data: enableFrontImageResizing } = useEnableFrontImageResizing()
-  const { data: objectStorageUrl } = useObjectStorageUrl()
+  const { data: imageResizingUrl } = useImageResizingUrl()
 
-  if (!enableFrontImageResizing || !objectStorageUrl) {
+  if (!enableFrontImageResizing) {
     return imageURL
   }
 
   const imageMaxSize = isDesktopViewport ? DESKTOP_MAX_SIZE : MOBILE_MAX_SIZE
   const customSize = height && width && Math.max(height, width)
   const sizeWithRatio = (customSize ?? imageMaxSize) * pixelRatio
-
-  return imageURL.replace(
-    objectStorageUrl,
-    `${env.RESIZE_IMAGE_ON_DEMAND_URL}/?size=${sizeWithRatio}&filename=${env.GCP_IMAGE_COULD_STORAGE_NAME}`
-  )
+  const imageResizingHost = imageResizingUrl ?? env.RESIZE_IMAGE_ON_DEMAND_URL
+  try {
+    const parsedImageURL = new URL(imageURL)
+    if (parsedImageURL.hostname != "storage.googleapis.com") {
+      return imageURL
+    }
+    const trimmedPathName = parsedImageURL.pathname.replace(/^\//, '')
+    const newPath = `?size=${sizeWithRatio}&filename=${trimmedPathName}`
+    const resizedImageURL = new URL(newPath, imageResizingHost)
+    return resizedImageURL.href
+  } catch {
+    return imageURL
+  }
 }
