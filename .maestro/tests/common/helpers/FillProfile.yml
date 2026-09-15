@@ -4,13 +4,9 @@ appId: ${MAESTRO_APP_ID}
     id: 'Profil - non complété'
     enabled: true
 
-- assertVisible:
-    id: 'Identification - non complété'
-    enabled: false
+- assertVisible: "Identification - indisponible tant que l‘étape précédente n‘est pas complétée"
 
-- assertVisible:
-    id: 'Confirmation - non complété'
-    enabled: false
+- assertVisible: "Confirmation - indisponible tant que l‘étape précédente n‘est pas complétée"
 
 - tapOn: 'Profil - non complété'
 
@@ -19,6 +15,7 @@ appId: ${MAESTRO_APP_ID}
 - inputText:
     text: '1'
 
+- tapOn: 'Champs de texte - Nom - Obligatoire'
 - tapOn: 'Champs de texte - Nom - Obligatoire'
 
 - inputText:
@@ -43,11 +40,6 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
       - hideKeyboard
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn: 'Next'
 
 - tapOn: 'Continuer vers la ville de résidence'
 
@@ -76,11 +68,6 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
       - hideKeyboard
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn: 'Next'
 
 - runFlow:
     when:

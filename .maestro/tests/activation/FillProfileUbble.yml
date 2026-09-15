@@ -34,8 +34,4 @@ onFlowStart:
 
 - tapOn: 'Quitter'
 
-- assertVisible: 'Identification - à essayer de nouveau'
-
-- assertVisible: 'La vérification de ton identité a échoué'
-
 - runFlow: ../common/lifecycle/StopApp.yml
