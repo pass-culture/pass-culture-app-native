@@ -27,6 +27,7 @@ jobs:
         uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 #v4.0.1
         with:
           cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
+          packages: 'platform-tools'
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
