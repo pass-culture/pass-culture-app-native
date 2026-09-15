@@ -1,6 +1,6 @@
 import { FlashList, FlashListRef } from '@shopify/flash-list'
 import React, { Ref, useCallback } from 'react'
-import { LayoutChangeEvent, View } from 'react-native'
+import { LayoutChangeEvent, Platform, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -35,7 +35,8 @@ export const MovieCalendarV2: React.FC<Props> = ({
   onItemLayout,
   disabledDates,
 }) => {
-  const { isDesktopViewport, designSystem } = useTheme()
+  const isWeb = Platform.OS === 'web'
+  const { designSystem } = useTheme()
   const {
     handleScrollPrevious,
     handleScrollNext,
@@ -46,7 +47,7 @@ export const MovieCalendarV2: React.FC<Props> = ({
     isStart,
   } = useHorizontalFlatListScroll({
     ref: listRef,
-    isActive: isDesktopViewport,
+    isActive: isWeb,
   })
   const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
 
@@ -82,7 +83,7 @@ export const MovieCalendarV2: React.FC<Props> = ({
   return (
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
-      {isDesktopViewport && !isStart ? (
+      {isWeb && !isStart ? (
         <AbsoluteRoundedButton
           direction="left"
           iconName="previous"
@@ -112,13 +113,13 @@ export const MovieCalendarV2: React.FC<Props> = ({
             />
           )}
         />
-        {isDesktopViewport ? (
+        {isWeb ? (
           <React.Fragment>
             <FadeLeft /> <FadeRight />
           </React.Fragment>
         ) : null}
       </View>
-      {isDesktopViewport && !isEnd ? (
+      {isWeb && !isEnd ? (
         <AbsoluteRoundedButton
           direction="right"
           iconName="next"
