@@ -4,13 +4,9 @@ appId: ${MAESTRO_APP_ID}
     id: 'Profil - non complété'
     enabled: true
 
-- assertVisible:
-    id: 'Identification - non complété'
-    enabled: false
+- assertVisible: "Identification - indisponible tant que l‘étape précédente n‘est pas complétée"
 
-- assertVisible:
-    id: 'Confirmation - non complété'
-    enabled: false
+- assertVisible: "Confirmation - indisponible tant que l‘étape précédente n‘est pas complétée"
 
 - tapOn: 'Profil - non complété'
 
