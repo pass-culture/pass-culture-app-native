@@ -23,12 +23,14 @@ import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
   locationActions,
+  locationSelectors,
   useLocationV2,
 } from 'libs/locationV2/location.store'
+import { queryClient } from 'libs/react-query/queryClient'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -111,6 +113,8 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
 jest.useFakeTimers()
 
 const user = userEvent.setup()
+
+const REVERSE_GEOCODE_URL = 'https://data.geopf.fr/geocodage/reverse'
 
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
@@ -373,6 +377,23 @@ describe('ThematicHome', () => {
     const latitude = 12
     const longitude = 14
 
+    queryClient.clear()
+    mockServer.universalGet(REVERSE_GEOCODE_URL, {
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [longitude, latitude],
+          },
+          properties: {
+            type: 'locality',
+            label: 'Lieu depuis URL',
+          },
+        },
+      ],
+    })
     useRoute.mockReturnValueOnce({
       params: { entryId: 'fakeEntryId', latitude, longitude },
     })
@@ -380,16 +401,18 @@ describe('ThematicHome', () => {
 
     await screen.findByText('Suivre')
 
-    expect(setLocationModeSpy).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
-
-    expect(setPlaceSpy).toHaveBeenCalledWith({
-      label: 'Géolocalisation',
-      geolocation: {
-        latitude,
-        longitude,
-      },
-      info: '',
+    await waitFor(() => {
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
     })
+
+    expect(locationSelectors.selectLocationConfiguration(LocationMode.AROUND_PLACE)).toEqual(
+      expect.objectContaining({
+        geolocation: { latitude, longitude },
+        label: 'Lieu depuis URL',
+        type: 'locality',
+        info: '',
+      })
+    )
   })
 })
 
