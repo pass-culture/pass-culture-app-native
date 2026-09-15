@@ -415,7 +415,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 </View>
               </View>
               <Text
-                nativeID="testUuidV4"
+                nativeID="_r_1_"
                 style={
                   {
                     "display": "none",
