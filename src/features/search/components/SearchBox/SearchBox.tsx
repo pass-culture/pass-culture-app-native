@@ -161,10 +161,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         return
       }
       if (queryText.length < 1 && Platform.OS !== 'android') return
-      // When we hit enter, we may have selected a category or a venue on the search landing page
-      // these are the two potentially 'staged' filters that we want to commit to the global search state.
-      // We also want to commit the price filter, as beneficiary users may have access to different offer
-      // price range depending on their available credit.
+      // When we hit enter from landing, keep a venue selected on this page but drop a
+      // category previously applied by a category button (that navigation is a separate flow).
       addSearchHistory({ query: queryText })
       const searchId = uuidv4()
 
@@ -180,10 +178,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         isFromHistory: undefined,
       }
 
-      if (currentView === SearchView.Thematic) {
+      if (currentView === SearchView.Thematic || currentView === SearchView.Landing) {
         partialSearchState = {
           ...partialSearchState,
-          offerCategories,
+          offerCategories: offerCategories ?? [],
           offerNativeCategories: [],
           gtls: [],
         }

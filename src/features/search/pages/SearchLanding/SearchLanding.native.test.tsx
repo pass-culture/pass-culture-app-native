@@ -246,6 +246,20 @@ describe('<SearchLanding />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should reset search filters except location when focused', async () => {
+    render(reactQueryProviderHOC(<SearchLanding />))
+
+    await screen.findByText('Rechercher')
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        locationFilter: mockSearchState.locationFilter,
+      },
+    })
+  })
+
   describe('When SearchLanding is focus on suggestions', () => {
     beforeEach(() => {
       mockIsFocusOnSuggestions = true
