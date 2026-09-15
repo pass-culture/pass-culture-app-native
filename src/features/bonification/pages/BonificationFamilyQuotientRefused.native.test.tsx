@@ -40,9 +40,8 @@ describe('BonificationFamilyQuotientRefused', () => {
       )
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
-        screen: 'BonificationRequiredInformation',
+      expect(navigate).toHaveBeenCalledWith('BonificationRequiredInformation', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
       })
     })
 
@@ -114,9 +113,8 @@ describe('BonificationFamilyQuotientRefused', () => {
       )
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
-        screen: 'BonificationRequiredInformation',
+      expect(navigate).toHaveBeenCalledWith('BonificationRequiredInformation', {
+        bonificationType: BonificationType.FAMILY_QUOTIENT,
       })
     })
 

@@ -16,7 +16,6 @@ export type SubscriptionStackParamList = {
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
   SetPhoneNumberWithoutValidation: undefined
-
   NewSignup: undefined
   // Profile
   ProfileInformationValidationCreate?: ProfileScreenType
