@@ -1,4 +1,4 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -10,17 +10,11 @@ import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHead
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
-import {
-  buildFollowArtistSurveyUrl,
-  FOLLOW_ARTIST_FEATURE_NAME,
-  FOLLOW_ARTIST_SURVEY_KEY,
-} from 'features/artist/helpers/buildFollowArtistSurveyUrl'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import { ArtistPlaylistModule as ArtistPlaylistModuleType } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
@@ -31,7 +25,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
-import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -118,38 +111,14 @@ export const ArtistBody: FunctionComponent<Props> = ({
     utmMedium: 'header',
   })
 
-  const { navigate } = useNavigation<UseNavigationType>()
   const isFocused = useIsFocused()
 
-  const handlePressFollow = async () => {
-    const [firstArtistPlaylist] = enablePlaylistByCategory
+  const handlePressFollow = () => {
+    const [_firstArtistPlaylist] = enablePlaylistByCategory
       ? getDisplayableArtistPlaylists(artistPlaylist)
       : []
 
-    const hasSeenSurveyPromise = getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
-
-    navigate('FakeDoorModal', {
-      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
-      surveyUrl: buildFollowArtistSurveyUrl({
-        artistId: artist.id,
-        offerType: firstArtistPlaylist?.searchGroupName,
-      }),
-      analyticsParams: {
-        featureName: FOLLOW_ARTIST_FEATURE_NAME,
-        from: 'artist',
-        artistId: artist.id,
-      },
-    })
-
-    const hasSeenSurvey = await hasSeenSurveyPromise
-
-    void analytics.logHasClickedFakeDoorCTA({
-      featureName: FOLLOW_ARTIST_FEATURE_NAME,
-      from: 'artist',
-      artistId: artist.id,
-      hasSeenSurvey,
-      originDetails: 'artistHeader',
-    })
+    return
   }
 
   const pressShareArtist = () => {
