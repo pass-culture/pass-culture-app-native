@@ -18,6 +18,8 @@ Ce workflow est celui lancé à chaque merge sur la branche master et en cas de 
 
 Ces workflows sont utilisés pour déployer le web sur les buckets GCP, et le proxy si il a été modifié
 
+## New line for testing purpose
+
 ![schéma deploy_web](/doc/ci-cd/github_action_workflows/dev_on_workflow_web_deploy.drawio.svg)
 ![schéma deploy_proxy](/doc/ci-cd/github_action_workflows/dev_on_workflow_web_proxy_deploy.drawio.svg)
 
