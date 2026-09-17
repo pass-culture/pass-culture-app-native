@@ -2,7 +2,10 @@ import mockdate from 'mockdate'
 
 import { BookingsResponseV2 } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
+import {
+  convertBookingResponseDateToTimezone,
+  convertBookingsResponseV2DatesToTimezone,
+} from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { mockBuilder } from 'tests/mockBuilder'
 
 const offerWithoutAddress = mockBuilder.bookingOfferResponseV2({
@@ -66,5 +69,23 @@ describe('convertBookingsDatesToTimezone', () => {
     const result = convertBookingsResponseV2DatesToTimezone(emptyBookingsResponseV2)
 
     expect(result).toStrictEqual(emptyBookingsResponseV2)
+  })
+
+  it('should return the booking unchanged when stock is missing', () => {
+    const bookingWithoutStock = {} as typeof bookingResponseMock
+
+    expect(convertBookingResponseDateToTimezone(bookingWithoutStock)).toBe(bookingWithoutStock)
+  })
+
+  it('should not throw when a bookings list contains a booking without stock', () => {
+    const bookingsResponseWithInvalidBooking: BookingsResponseV2 = {
+      ongoingBookings: [{} as typeof bookingResponseMock],
+      endedBookings: [],
+      hasBookingsAfter18: false,
+    }
+
+    expect(() =>
+      convertBookingsResponseV2DatesToTimezone(bookingsResponseWithInvalidBooking)
+    ).not.toThrow()
   })
 })
