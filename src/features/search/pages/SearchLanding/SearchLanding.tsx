@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { CategoriesList } from 'features/search/components/CategoriesList/CategoriesList'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
+import { SEARCH_CATEGORIES_ANCHOR_ID } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -49,6 +50,10 @@ export const SearchLanding = () => {
         shouldDisplaySubtitle
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
+        quickAccess={{
+          targetId: SEARCH_CATEGORIES_ANCHOR_ID,
+          title: 'Aller aux catégories',
+        }}
       />
     </Container>
   )
@@ -67,26 +72,26 @@ export const SearchLanding = () => {
           />
         </React.Fragment>
       )
-    } else
-      return (
-        <React.Fragment>
-          {isZoomedAt200 || isLandscape ? (
-            <LandingScrollView keyboardShouldPersistTaps="handled">
-              {searchHeader}
-              <CategoriesButtonsContainer>
-                <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-              </CategoriesButtonsContainer>
-            </LandingScrollView>
-          ) : (
-            <React.Fragment>
-              {searchHeader}
-              <CategoriesButtonsContainer>
-                <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-              </CategoriesButtonsContainer>
-            </React.Fragment>
-          )}
-        </React.Fragment>
-      )
+    }
+    return (
+      <React.Fragment>
+        {isZoomedAt200 || isLandscape ? (
+          <LandingScrollView keyboardShouldPersistTaps="handled">
+            {searchHeader}
+            <CategoriesButtonsContainer>
+              <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
+            </CategoriesButtonsContainer>
+          </LandingScrollView>
+        ) : (
+          <React.Fragment>
+            {searchHeader}
+            <CategoriesButtonsContainer>
+              <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
+            </CategoriesButtonsContainer>
+          </React.Fragment>
+        )}
+      </React.Fragment>
+    )
   }
 
   return (

@@ -231,6 +231,17 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
         <View
           style={
             {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "zIndex": 1,
+            }
+          }
+        />
+        <View
+          style={
+            {
               "alignItems": "flex-end",
               "flexDirection": "row",
               "gap": 8,
@@ -451,22 +462,32 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
         testID="categoriesButtons"
       >
         <View>
-          <Text
-            accessibilityLevel="h2"
-            accessibilityRole="header"
+          <View
+            nativeID="search-categories"
             style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "marginTop": 16,
                 "width": "100%",
               }
             }
+            tabIndex={-1}
           >
-            Parcours les catégories
-          </Text>
+            <Text
+              accessibilityLevel="h2"
+              accessibilityRole="header"
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                  "marginTop": 16,
+                  "width": "100%",
+                }
+              }
+            >
+              Parcours les catégories
+            </Text>
+          </View>
           <View
             accessibilityRole="list"
             style={
