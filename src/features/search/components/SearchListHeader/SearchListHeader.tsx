@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/native'
 import { SearchResponse } from 'algoliasearch/lite'
 import React from 'react'
-import { ScrollViewProps, View, ViewToken } from 'react-native'
+import { ScrollViewProps, View } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -15,6 +15,7 @@ import { gridListLayoutActions, useGridListLayout } from 'features/search/store/
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { locationStore } from 'libs/locationV2/location.store'
@@ -36,12 +37,6 @@ interface SearchListHeaderProps extends ScrollViewProps {
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
   shouldDisplayGridList?: boolean
-  onViewableVenuePlaylistItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -52,11 +47,10 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venuesUserData,
   artistSection,
   shouldDisplayGridList,
-  onViewableVenuePlaylistItemsChanged,
 }) => {
   const { disabilities } = useAccessibilityFiltersContext()
   const {
-    searchState: { venue, offerCategories },
+    searchState: { venue, offerCategories, searchId },
   } = useSearch()
   const isFocused = useIsFocused()
   const { designSystem, contentPage } = useTheme()
@@ -101,14 +95,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     onPress: () => onGridListButtonPress(layout),
   })
 
-  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      onViewableVenuePlaylistItemsChanged?.(items, 'searchResultsVenuePlaylist', 'venue', 0)
-    },
-    [isFocused, onViewableVenuePlaylistItemsChanged]
-  )
-
   return (
     <View testID="searchListHeader">
       {shouldDisplayGeolocationBanner ? (
@@ -134,7 +120,20 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       {artistSection}
       {shouldDisplayVenuesPlaylist ? (
         <IOScrollView>
-          <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+          <ObservedPlaylist
+            onItemViewed={({ index, item }) => {
+              if (isFocused) {
+                void logViewItem({
+                  origin: 'search',
+                  playlistIndex: 0,
+                  index: index,
+                  type: 'venue',
+                  id: item.objectID,
+                  moduleId: 'searchResultsVenuePlaylist',
+                  searchId: searchId ?? '',
+                })
+              }
+            }}>
             {({ listRef, handleViewableItemsChanged }) => (
               <StyledVenuePlaylist
                 venuePlaylistTitle={venuePlaylistTitle}

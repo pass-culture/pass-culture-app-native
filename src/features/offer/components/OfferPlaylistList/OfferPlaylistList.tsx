@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
-import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferPagePlaylist, OfferResponse } from 'api/gen'
@@ -14,12 +13,6 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 export type OfferPlaylistListProps = {
   offer: OfferResponse
   playlists?: OfferPagePlaylist[]
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   seeAllButton: {
     navigateToVerticalPlaylist: (
       type: PlaylistType | string
@@ -30,12 +23,7 @@ export type OfferPlaylistListProps = {
   }
 }
 
-export function OfferPlaylistList({
-  offer,
-  playlists,
-  onViewableItemsChanged,
-  seeAllButton,
-}: OfferPlaylistListProps) {
+export function OfferPlaylistList({ offer, playlists, seeAllButton }: OfferPlaylistListProps) {
   const isLandscape = useIsLandscape()
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params.fromOfferId
@@ -52,7 +40,6 @@ export function OfferPlaylistList({
           offer={offer}
           fromOfferId={fromOfferId}
           seeAllButton={seeAllButton}
-          onViewableItemsChanged={onViewableItemsChanged}
         />
       ))}
       {isLandscape ? <PlaceholderBehindButton /> : null}

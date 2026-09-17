@@ -6,7 +6,6 @@ import BottomSheet, {
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { Fragment, FunctionComponent, forwardRef, useMemo } from 'react'
-import { ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -28,14 +27,7 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
   offersPlaylistType: PlaylistType | string
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   analyticsFrom?: Referrals
-  moduleId?: string
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
@@ -45,9 +37,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       venue,
       venueOffers,
       offersPlaylistType,
-      onViewableItemsChanged,
       analyticsFrom = 'venueMap',
-      moduleId = 'venue_map',
       ...bottomSheetProps
     },
     ref
@@ -90,24 +80,14 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
                 offers={venueOffers}
                 onPressMore={handlePressMore}
                 playlistType={offersPlaylistType}
-                onViewableItemsChanged={onViewableItemsChanged}
                 analyticsFrom={analyticsFrom}
-                moduleId={moduleId}
               />
             </IOScrollView>
           </Fragment>
         )
       }
       return null
-    }, [
-      venueOffers,
-      venue,
-      offersPlaylistType,
-      onViewableItemsChanged,
-      navigate,
-      analyticsFrom,
-      moduleId,
-    ])
+    }, [venueOffers, venue, offersPlaylistType, navigate, analyticsFrom])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {

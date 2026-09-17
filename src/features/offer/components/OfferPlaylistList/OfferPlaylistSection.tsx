@@ -1,6 +1,5 @@
 import { useIsFocused } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
-import { ViewToken } from 'react-native'
+import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -9,6 +8,7 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { OfferPlaylistListProps } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -31,7 +31,6 @@ type OfferPlaylistSectionProps = {
   offer: OfferResponse
   fromOfferId?: number
   seeAllButton: OfferPlaylistListProps['seeAllButton']
-  onViewableItemsChanged: OfferPlaylistListProps['onViewableItemsChanged']
 }
 
 export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> = ({
@@ -40,7 +39,6 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
   offer,
   fromOfferId,
   seeAllButton,
-  onViewableItemsChanged,
 }) => {
   const theme = useTheme()
   const isFocused = useIsFocused()
@@ -68,14 +66,6 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
 
   const handlePlaylistDisplay = useLogScrollHandler(logPlaylistVerticalScroll)
 
-  const handleViewableItemsChanged = useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      onViewableItemsChanged(items, playlist.analyticsPlaylistType, 'offer', playlistIndex)
-    },
-    [isFocused, onViewableItemsChanged, playlist.analyticsPlaylistType, playlistIndex]
-  )
-
   const trackingOnHorizontalScroll = (type: string, params?: RecommendationApiParams) => {
     void analytics.logPlaylistHorizontalScroll(fromOfferId, type, params)
   }
@@ -90,9 +80,20 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
   return (
     <ObservedPlaylist
       key={playlist.analyticsPlaylistType}
-      onViewableItemsChanged={handleViewableItemsChanged}
+      onItemViewed={({ index: itemIndex, item }) => {
+        if (isFocused) {
+          void logViewItem({
+            origin: 'offer',
+            playlistIndex,
+            index: itemIndex,
+            type: 'offer',
+            id: item.objectID,
+            moduleId: playlistType,
+          })
+        }
+      }}
       onIntersectionChange={handlePlaylistDisplay}>
-      {({ listRef }) => (
+      {({ listRef, handleViewableItemsChanged }) => (
         <StyledPassPlaylist
           data={offers}
           itemWidth={itemWidth}
@@ -114,6 +115,7 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
           playlistType={playlistType}
           onEndReached={() => trackingOnHorizontalScroll(playlistType, apiRecoParams)}
           playlistRef={listRef}
+          onViewableItemsChanged={handleViewableItemsChanged}
           FlatListComponent={FlatList}
           keyExtractor={keyExtractor}
           seeAllButton={{

@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { ViewToken } from 'react-native'
 
 import { ArtistResponse } from 'api/gen'
 import { ArtistCategoryPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistCategoryPlaylist'
@@ -9,20 +8,9 @@ import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 type ArtistPlaylistProps = {
   artist: ArtistResponse
   items: AlgoliaOfferWithArtistAndEan[]
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    artistId: string,
-    playlistIndex?: number
-  ) => void
 }
 
-export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
-  artist,
-  items,
-  onViewableItemsChanged,
-}) => {
+export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ artist, items }) => {
   const artistPlaylists = getDisplayableArtistPlaylists(items)
 
   if (artistPlaylists.length === 0) return null
@@ -37,7 +25,6 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
           items={items}
           playlistIndex={playlistIndex}
           title={title}
-          onViewableItemsChanged={onViewableItemsChanged}
         />
       ))}
     </React.Fragment>
