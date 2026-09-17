@@ -1,12 +1,13 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { UserProfile } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
@@ -17,7 +18,10 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
 
-import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
+import {
+  AfterSignupEmailValidationBuffer,
+  clearEmailValidationCache,
+} from './AfterSignupEmailValidationBuffer'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
@@ -30,6 +34,7 @@ jest.useFakeTimers()
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/navigation/navigationRef')
 
 describe('<AfterSignupEmailValidationBuffer />', () => {
   beforeEach(() =>
@@ -53,6 +58,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   afterEach(() => {
     navigate.mockRestore()
+    jest.mocked(navigateFromRef).mockClear()
+    clearEmailValidationCache()
   })
 
   describe('when timestamp is NOT expired', () => {
@@ -68,11 +75,11 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       renderPage()
 
-      await act(async () => {})
-
-      expect(loginAndRedirectMock).toHaveBeenCalledWith({
-        accessToken: 'access_token',
-        refreshToken: 'refresh_token',
+      await waitFor(() => {
+        expect(loginAndRedirectMock).toHaveBeenCalledWith({
+          accessToken: 'access_token',
+          refreshToken: 'refresh_token',
+        })
       })
     })
 
@@ -87,10 +94,11 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(
         () => {
-          expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+          expect(screen.getAllByTestId('snackbar-error')).toHaveLength(1)
           expect(screen.getByText('Ce lien de validation n’est plus valide')).toBeOnTheScreen()
-          expect(replace).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledWith(...homeNavigationConfig)
+          expect(apiValidateEmailSpy).toHaveBeenCalledTimes(1)
+          expect(navigateFromRef).toHaveBeenCalledTimes(1)
+          expect(navigateFromRef).toHaveBeenCalledWith(...homeNavigationConfig)
         },
         { timeout: 10_000 }
       )
@@ -116,8 +124,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(
         () => {
-          expect(replace).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
+          expect(navigateFromRef).toHaveBeenCalledTimes(1)
+          expect(navigateFromRef).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
             email: 'john@wick.com',
           })
         },
@@ -155,6 +163,17 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         },
         emailValidationToken: 'reerereskjlmkdlsf',
       })
+    })
+
+    it('should reuse the validation request after a remount', async () => {
+      const { unmount } = renderPage()
+      unmount()
+
+      renderPage()
+
+      await act(async () => {})
+
+      expect(apiValidateEmailSpy).toHaveBeenCalledTimes(1)
     })
   })
 })
