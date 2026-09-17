@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { SEARCH_CATEGORIES_ANCHOR_ID } from 'features/search/constants'
 import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
@@ -59,7 +60,9 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
           </ContainerVenueMapBlock>
         </Container>
       ) : null}
-      <CategoriesTitleV2 />
+      <CategoriesTitleAnchor nativeID={SEARCH_CATEGORIES_ANCHOR_ID} tabIndex={-1}>
+        <CategoriesTitleV2 />
+      </CategoriesTitleAnchor>
       <CategoriesButtonsContainer>
         {sortedCategories.map((item) => {
           return enableNewCategoryBlocks ? (
@@ -134,6 +137,10 @@ const CategoriesButtonsContainer = styled(Ul)(({ theme }) => ({
         gridTemplateColumns: `repeat(5, 1fr)`,
       }),
 }))
+
+const CategoriesTitleAnchor = styled.View({
+  width: '100%',
+})
 
 const CategoriesTitleV2 = styled(Typo.Title4).attrs({
   children: 'Parcours les catégories',
