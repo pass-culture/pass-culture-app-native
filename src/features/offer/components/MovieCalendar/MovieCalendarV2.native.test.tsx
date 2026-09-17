@@ -1,12 +1,12 @@
 import { FlashListRef } from '@shopify/flash-list'
 import mockDate from 'mockdate'
 import React from 'react'
+import { Platform } from 'react-native'
 
 import { MovieCalendarV2 } from 'features/offer/components/MovieCalendar/MovieCalendarV2'
 import { toMutable } from 'shared/types/toMutable'
 import type { CustomRenderOptions } from 'tests/utils'
 import { fireEvent, render, screen, userEvent } from 'tests/utils'
-import { Platform } from 'react-native'
 
 const dummyDates = toMutable([
   '2024-07-18', // Jeudi 18 juillet 2024
@@ -52,6 +52,7 @@ describe('<MovieCalendarV2/>', () => {
 
   describe('Right arrow button', () => {
     beforeAll(() => (Platform.OS = 'web'))
+
     it('should appear when the component renders before any user interaction', () => {
       renderMovieCalendar(dummyDates)
 
@@ -83,6 +84,7 @@ describe('<MovieCalendarV2/>', () => {
 
   describe('Left arrow button', () => {
     beforeAll(() => (Platform.OS = 'web'))
+
     it('should not appear when the component renders before any user interaction', () => {
       renderMovieCalendar(dummyDates)
 
