@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useId, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import { ViewToken } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
@@ -10,7 +10,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
-import { SearchSuggestionsAccessibilityProvider } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
+import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSuggestionsStatus/SearchSuggestionsAnnouncer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { usePrevious } from 'features/search/helpers/usePrevious'
@@ -32,6 +32,7 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 export const SearchResults: FC = () => {
   const [searchIdGenerated] = useState(() => uuidv4())
 
+  const suggestionsDescriptionId = useId()
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -125,6 +126,7 @@ export const SearchResults: FC = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
+        suggestionsDescriptionId={suggestionsDescriptionId}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         withFilterButton={!isFocusOnSuggestions}
@@ -141,34 +143,36 @@ export const SearchResults: FC = () => {
           searchClient={getSearchClient}
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
-          <SearchSuggestionsAccessibilityProvider
+          <Configure hitsPerPage={5} clickAnalytics analytics />
+          {isZoomedAt200 ? null : searchHeader}
+          {isFocusOnSuggestions ? (
+            <SearchSuggestions
+              suggestionsDescriptionId={suggestionsDescriptionId}
+              queryHistory={queryHistory}
+              addToHistory={addToHistory}
+              removeFromHistory={removeFromHistory}
+              filteredHistory={filteredHistory}
+              header={isZoomedAt200 ? searchHeader : undefined}
+            />
+          ) : (
+            <SearchResultsContent
+              hits={searchResultHits}
+              onEndReached={handleEndReached}
+              onSearchResultsRefresh={refetch}
+              nbHits={nbHits}
+              isLoading={isLoading}
+              isRefetching={isRefetching}
+              userData={userData}
+              venuesUserData={venuesUserData}
+              offerVenues={offerVenues}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+          )}
+          <SearchSuggestionsAnnouncer
+            id={suggestionsDescriptionId}
             query={queryHistory}
-            visible={isFocusOnSuggestions}>
-            <Configure hitsPerPage={5} clickAnalytics analytics />
-            {isZoomedAt200 ? null : searchHeader}
-            {isFocusOnSuggestions ? (
-              <SearchSuggestions
-                queryHistory={queryHistory}
-                addToHistory={addToHistory}
-                removeFromHistory={removeFromHistory}
-                filteredHistory={filteredHistory}
-                header={isZoomedAt200 ? searchHeader : undefined}
-              />
-            ) : (
-              <SearchResultsContent
-                hits={searchResultHits}
-                onEndReached={handleEndReached}
-                onSearchResultsRefresh={refetch}
-                nbHits={nbHits}
-                isLoading={isLoading}
-                isRefetching={isRefetching}
-                userData={userData}
-                venuesUserData={venuesUserData}
-                offerVenues={offerVenues}
-                onViewableItemsChanged={handleViewableItemsChanged}
-              />
-            )}
-          </SearchSuggestionsAccessibilityProvider>
+            visible={isFocusOnSuggestions}
+          />
         </InstantSearch>
       </Form.Flex>
     </Page>

@@ -12,12 +12,11 @@ import { AutocompleteArtist } from 'features/search/components/AutocompleteArtis
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
-import {
-  SuggestionsSnapshot,
-  useSearchSuggestionsAccessibility,
-} from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { getSearchSuggestionsStatus } from 'features/search/helpers/getSearchSuggestionsStatus'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
+import { SuggestionsSnapshot } from 'features/search/store/searchSuggestionsAccessibility.store'
 import { CreateHistoryItem, Highlighted, HistoryItem, SearchState } from 'features/search/types'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
@@ -33,6 +32,7 @@ import {
 } from 'libs/locationV2/location.store'
 
 type SearchSuggestionsParams = {
+  suggestionsDescriptionId?: string
   queryHistory: string
   addToHistory: (item: CreateHistoryItem) => Promise<void>
   removeFromHistory: (item: HistoryItem) => Promise<void>
@@ -43,6 +43,7 @@ type SearchSuggestionsParams = {
   embedded?: boolean
 }
 export const SearchSuggestions = ({
+  suggestionsDescriptionId,
   queryHistory,
   addToHistory,
   removeFromHistory,
@@ -66,8 +67,8 @@ export const SearchSuggestions = ({
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
   const { status: searchStatus } = useInstantSearch()
-  const accessibility = useSearchSuggestionsAccessibility()
-  const publish = accessibility?.publish
+  const accessibility = useSearchSuggestionsAccessibility(suggestionsDescriptionId)
+  const publish = accessibility.publish
   const [suggestions, setSuggestions] = useState<{
     offers?: SuggestionsSnapshot
     artists?: SuggestionsSnapshot
@@ -161,40 +162,19 @@ export const SearchSuggestions = ({
     navigate('Artist', { id: artistId })
   }
 
-  const sections = [suggestions.offers, suggestions.venues]
-  if (shouldDisplayArtistsSuggestions) sections.push(suggestions.artists)
-  const isEmptyQuery = queryHistory.length === 0
-  const ready =
-    isEmptyQuery ||
-    (searchStatus === 'idle' && sections.every((section) => section?.query === queryHistory))
-  const totalSuggestions = isEmptyQuery
-    ? 0
-    : sections.reduce((total, section) => total + (section?.itemKeys.length ?? 0), 0)
-  const historyItemLabel = filteredHistory.length > 1 ? 'éléments' : 'élément'
-  let historyMessage = ''
-  if (filteredHistory.length > 0) {
-    historyMessage = ` Historique de recherche\u00a0: ${filteredHistory.length} ${historyItemLabel}.`
-  }
-
-  const suggestionLabel = totalSuggestions > 1 ? 'suggestions' : 'suggestion'
-  let suggestionsMessage = 'Aucune suggestion'
-  if (totalSuggestions > 0) {
-    suggestionsMessage = `${totalSuggestions} ${suggestionLabel}`
-  }
-  const message = isEmptyQuery
-    ? `Aucune suggestion de recherche.${historyMessage}`
-    : `${suggestionsMessage} pour «\u00a0${queryHistory}\u00a0».${historyMessage}`
-  const key = JSON.stringify([
+  const { key, message, ready } = getSearchSuggestionsStatus({
     queryHistory,
-    isEmptyQuery ? [] : sections.map((section) => section?.itemKeys),
-    filteredHistory.map((item) => [item.createdAt, item.label]),
-  ])
+    suggestions,
+    filteredHistory,
+    searchStatus,
+    shouldDisplayArtistsSuggestions,
+  })
 
   useEffect(() => {
-    publish?.({ query: queryHistory, key, message, ready })
+    publish({ query: queryHistory, key, message, ready })
   }, [publish, queryHistory, key, message, ready])
 
-  useEffect(() => () => publish?.(null), [publish])
+  useEffect(() => () => publish(null), [publish])
 
   const content = (
     <SuggestionsContent>

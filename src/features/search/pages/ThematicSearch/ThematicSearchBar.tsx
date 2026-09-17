@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, useCallback } from 'react'
+import React, { FC, PropsWithChildren, useCallback, useId } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
-import { SearchSuggestionsAccessibilityProvider } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
+import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSuggestionsStatus/SearchSuggestionsAnnouncer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -24,6 +24,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   offerCategories,
   title,
 }) => {
+  const suggestionsDescriptionId = useId()
   const { isFocusOnSuggestions } = useSearch()
 
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -46,31 +47,36 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       indexName={suggestionsIndex}
       future={{ preserveSharedStateOnUnmount: true }}
       insights={{ insightsClient: AlgoliaSearchInsights }}>
-      <SearchSuggestionsAccessibilityProvider query={queryHistory} visible={isFocusOnSuggestions}>
-        <Configure facetFilters={[facetFilters]} clickAnalytics analytics hitsPerPage={5} />
-        <SearchHeaderContainer>
-          <SearchHeader
-            title={title}
-            withArrow
-            shouldDisplayHeader={!isFocusOnSuggestions}
-            addSearchHistory={addToHistory}
-            searchInHistory={setQueryHistoryMemoized}
-            offerCategories={offerCategories}
-          />
-        </SearchHeaderContainer>
-        {isFocusOnSuggestions ? (
-          <SearchSuggestions
-            queryHistory={queryHistory}
-            addToHistory={addToHistory}
-            removeFromHistory={removeFromHistory}
-            filteredHistory={filteredHistory}
-            shouldNavigateToSearchResults
-            offerCategories={offerCategories}
-          />
-        ) : (
-          <React.Fragment>{children}</React.Fragment>
-        )}
-      </SearchSuggestionsAccessibilityProvider>
+      <Configure facetFilters={[facetFilters]} clickAnalytics analytics hitsPerPage={5} />
+      <SearchHeaderContainer>
+        <SearchHeader
+          suggestionsDescriptionId={suggestionsDescriptionId}
+          title={title}
+          withArrow
+          shouldDisplayHeader={!isFocusOnSuggestions}
+          addSearchHistory={addToHistory}
+          searchInHistory={setQueryHistoryMemoized}
+          offerCategories={offerCategories}
+        />
+      </SearchHeaderContainer>
+      {isFocusOnSuggestions ? (
+        <SearchSuggestions
+          suggestionsDescriptionId={suggestionsDescriptionId}
+          queryHistory={queryHistory}
+          addToHistory={addToHistory}
+          removeFromHistory={removeFromHistory}
+          filteredHistory={filteredHistory}
+          shouldNavigateToSearchResults
+          offerCategories={offerCategories}
+        />
+      ) : (
+        <React.Fragment>{children}</React.Fragment>
+      )}
+      <SearchSuggestionsAnnouncer
+        id={suggestionsDescriptionId}
+        query={queryHistory}
+        visible={isFocusOnSuggestions}
+      />
     </InstantSearch>
   )
 }

@@ -15,9 +15,9 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
-import { useSearchSuggestionsAccessibility } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import Animated, { LinearTransition } from 'libs/react-native-reanimated'
@@ -32,6 +32,7 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
+  suggestionsDescriptionId?: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
@@ -43,13 +44,14 @@ const CINEMA_KEYWORD_PATTERN = /\bCIN[ÉE]MA?S?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
   accessibleHiddenTitle,
+  suggestionsDescriptionId,
   addSearchHistory,
   searchInHistory,
   offerCategories,
   ...props
 }) => {
   const accessibilityDescribedBy = useId()
-  const suggestionsAccessibility = useSearchSuggestionsAccessibility()
+  const suggestionsAccessibility = useSearchSuggestionsAccessibility(suggestionsDescriptionId)
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
@@ -236,7 +238,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   useEffect(() => () => debounceSetAutocompleteQuery.cancel(), [debounceSetAutocompleteQuery])
 
   const onFocus = () => {
-    suggestionsAccessibility?.setInputFocused(true)
+    suggestionsAccessibility.setInputFocused(true)
     if (isFocusOnSuggestions && appEnableAutocomplete) return
     // Avoid the redirection on suggestions view when user is on a results view
     // (not useful in this case because we don't have suggestions)
@@ -282,11 +284,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               onClear={resetQuery}
               nativeAutoFocus={Platform.OS !== 'web'}
               onFocus={onFocus}
-              onBlur={() => suggestionsAccessibility?.setInputFocused(false)}
+              onBlur={() => suggestionsAccessibility.setInputFocused(false)}
               focusable={isFocusOnSuggestions}
               testID="searchInput"
               disableClearButton={disableInputClearButton}
-              aria-describedby={[accessibilityDescribedBy, suggestionsAccessibility?.descriptionId]
+              aria-describedby={[accessibilityDescribedBy, suggestionsAccessibility.descriptionId]
                 .filter(Boolean)
                 .join(' ')}
             />

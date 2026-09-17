@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import { styled } from 'styled-components/native'
 
-import { SuggestionsSnapshot } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
+import { SuggestionsSnapshot } from 'features/search/store/searchSuggestionsAccessibility.store'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'

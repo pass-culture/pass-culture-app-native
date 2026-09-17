@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useId } from 'react'
 import { AccessibilityInfo } from 'react-native'
 
-import {
-  SearchSuggestionsAccessibilityProvider,
-  SuggestionsSnapshot,
-  useSearchSuggestionsAccessibility,
-} from 'features/search/context/SearchSuggestionsAccessibilityProvider'
+import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSuggestionsStatus/SearchSuggestionsAnnouncer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
+import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
+import { SuggestionsSnapshot } from 'features/search/store/searchSuggestionsAccessibility.store'
 import { act, render } from 'tests/utils'
 
 import { SearchSuggestions } from './SearchSuggestions'
@@ -63,9 +61,9 @@ jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () 
 }))
 jest.mock('libs/firebase/analytics/analytics')
 
-function FocusInput({ focused }: { focused: boolean }) {
-  const setInputFocused = useSearchSuggestionsAccessibility()?.setInputFocused
-  useEffect(() => setInputFocused?.(focused), [setInputFocused, focused])
+function FocusInput({ focused, id }: { focused: boolean; id: string }) {
+  const setInputFocused = useSearchSuggestionsAccessibility(id).setInputFocused
+  useEffect(() => setInputFocused(focused), [setInputFocused, focused])
   return null
 }
 
@@ -80,11 +78,13 @@ function Search({
   focused?: boolean
   history?: boolean
 }) {
+  const suggestionsDescriptionId = useId()
   return (
-    <SearchSuggestionsAccessibilityProvider query={query} visible={visible}>
-      <FocusInput focused={focused} />
+    <React.Fragment>
+      <FocusInput id={suggestionsDescriptionId} focused={focused} />
       {visible ? (
         <SearchSuggestions
+          suggestionsDescriptionId={suggestionsDescriptionId}
           queryHistory={query}
           addToHistory={jest.fn()}
           removeFromHistory={jest.fn()}
@@ -95,7 +95,8 @@ function Search({
           }
         />
       ) : null}
-    </SearchSuggestionsAccessibilityProvider>
+      <SearchSuggestionsAnnouncer id={suggestionsDescriptionId} query={query} visible={visible} />
+    </React.Fragment>
   )
 }
 

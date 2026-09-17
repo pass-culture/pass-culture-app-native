@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useId } from 'react'
 import { AccessibilityInfo } from 'react-native'
 
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
+import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSuggestionsStatus/SearchSuggestionsAnnouncer'
+import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
 import {
-  SearchSuggestionsAccessibilityProvider,
+  searchSuggestionsAccessibilityStore,
   SuggestionsStatus,
-  useSearchSuggestionsAccessibility,
-} from 'features/search/context/SearchSuggestionsAccessibilityProvider'
+} from 'features/search/store/searchSuggestionsAccessibility.store'
 import { act, render, screen } from 'tests/utils/web'
 
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -39,12 +40,12 @@ const firstStatus: SuggestionsStatus = {
   ready: true,
 }
 
-function Publisher({ status }: { status: SuggestionsStatus }) {
-  const accessibility = useSearchSuggestionsAccessibility()
-  const publish = accessibility?.publish
+function Publisher({ status, id }: { status: SuggestionsStatus; id: string }) {
+  const accessibility = useSearchSuggestionsAccessibility(id)
+  const publish = accessibility.publish
   useEffect(() => {
-    publish?.(status)
-    return () => publish?.(null)
+    publish(status)
+    return () => publish(null)
   }, [publish, status])
   return null
 }
@@ -58,11 +59,17 @@ function Search({
   visible?: boolean
   query?: string
 }) {
+  const suggestionsDescriptionId = useId()
   return (
-    <SearchSuggestionsAccessibilityProvider query={query} visible={visible}>
-      <SearchBox addSearchHistory={jest.fn()} searchInHistory={jest.fn()} />
-      {visible ? <Publisher status={status} /> : null}
-    </SearchSuggestionsAccessibilityProvider>
+    <React.Fragment>
+      <SearchBox
+        suggestionsDescriptionId={suggestionsDescriptionId}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+      {visible ? <Publisher id={suggestionsDescriptionId} status={status} /> : null}
+      <SearchSuggestionsAnnouncer id={suggestionsDescriptionId} query={query} visible={visible} />
+    </React.Fragment>
   )
 }
 
@@ -143,5 +150,44 @@ describe('SearchBox accessibility on the web', () => {
 
     expect(new Set(ids).size).toBe(4)
     expect(ids.every((id) => document.getElementById(id))).toBe(true)
+  })
+
+  it('isolates announcements and cleans up only the unmounted search instance', () => {
+    const secondStatus = { ...firstStatus, key: 'other', message: '2 suggestions pour « manga ».' }
+    const { rerender, unmount } = render(
+      <React.Fragment>
+        <Search key="first" />
+        <Search key="second" status={secondStatus} />
+      </React.Fragment>
+    )
+    const inputs = screen.getAllByRole('searchbox')
+    const statuses = screen.getAllByRole('status')
+    act(() => inputs[0]?.focus())
+    act(() => jest.advanceTimersByTime(200))
+
+    expect(statuses[0]).toHaveTextContent(firstStatus.message)
+    expect(statuses[1]).toBeEmptyDOMElement()
+
+    act(() => inputs[1]?.focus())
+    act(() => jest.advanceTimersByTime(200))
+
+    expect(statuses[0]).toBeEmptyDOMElement()
+    expect(statuses[1]).toHaveTextContent(secondStatus.message)
+
+    rerender(
+      <React.Fragment>
+        <Search key="second" status={secondStatus} />
+      </React.Fragment>
+    )
+
+    expect(screen.getByRole('status')).toBe(statuses[1])
+    expect(screen.getByRole('status')).toHaveTextContent(secondStatus.message)
+    expect(
+      Object.keys(searchSuggestionsAccessibilityStore.store.getState().instances)
+    ).toHaveLength(1)
+
+    unmount()
+
+    expect(searchSuggestionsAccessibilityStore.store.getState().instances).toEqual({})
   })
 })

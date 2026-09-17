@@ -3,7 +3,7 @@ import React from 'react'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { AutocompleteSection } from 'features/search/components/AutocompleteSection/AutocompleteSection'
-import { SuggestionsSnapshot } from 'features/search/context/SearchSuggestionsAccessibilityProvider'
+import { SuggestionsSnapshot } from 'features/search/store/searchSuggestionsAccessibility.store'
 import { CreateHistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 
