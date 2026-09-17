@@ -1,3 +1,4 @@
+import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
@@ -7,6 +8,7 @@ import { CategoriesList } from 'features/search/components/CategoriesList/Catego
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { SEARCH_CATEGORIES_ANCHOR_ID } from 'features/search/constants'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -28,7 +30,20 @@ export const SearchLanding = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.SEARCH)
 
   const netInfo = useNetInfoContext()
-  const { isFocusOnSuggestions } = useSearch()
+  const { isFocusOnSuggestions, dispatch, searchState } = useSearch()
+
+  const resetSearchFiltersOnLanding = () => {
+    dispatch({
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        locationFilter: searchState.locationFilter,
+      },
+    })
+  }
+
+  useFocusEffect(resetSearchFiltersOnLanding)
+
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const enableNewCategoryBlocks = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS)
@@ -73,23 +88,24 @@ export const SearchLanding = () => {
         </React.Fragment>
       )
     }
+
+    if (isZoomedAt200 || isLandscape) {
+      return (
+        <LandingScrollView keyboardShouldPersistTaps="handled">
+          {searchHeader}
+          <CategoriesButtonsContainer>
+            <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
+          </CategoriesButtonsContainer>
+        </LandingScrollView>
+      )
+    }
+
     return (
       <React.Fragment>
-        {isZoomedAt200 || isLandscape ? (
-          <LandingScrollView keyboardShouldPersistTaps="handled">
-            {searchHeader}
-            <CategoriesButtonsContainer>
-              <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-            </CategoriesButtonsContainer>
-          </LandingScrollView>
-        ) : (
-          <React.Fragment>
-            {searchHeader}
-            <CategoriesButtonsContainer>
-              <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-            </CategoriesButtonsContainer>
-          </React.Fragment>
-        )}
+        {searchHeader}
+        <CategoriesButtonsContainer>
+          <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
+        </CategoriesButtonsContainer>
       </React.Fragment>
     )
   }
