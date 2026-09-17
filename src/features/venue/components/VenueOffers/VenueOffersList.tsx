@@ -1,6 +1,6 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
-import { Platform, View, ViewToken } from 'react-native'
+import React, { FunctionComponent } from 'react'
+import { Platform, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -17,6 +17,7 @@ import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOf
 import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -42,12 +43,6 @@ type VenueOffersListProps = VenueOffersProps & {
   labelMapping: CategoryHomeLabelMapping
   currency: Currency
   euroToPacificFrancRate: number
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   onPressAdviceCardSeeMore: (offerId: number) => void
   onPressAllAdvicesButton: () => void
   onFeedbackLog: (type: ReactionTypeEnum) => void
@@ -64,7 +59,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   labelMapping,
   currency,
   euroToPacificFrancRate,
-  onViewableItemsChanged,
   advicesCardData,
   nbAdvices,
   onShowWritersModal,
@@ -141,31 +135,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     })
   }
 
-  const handleAllOffersViewableItemsChanged = useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      onViewableItemsChanged(items, 'venue_offers_list', 'offer', 0)
-    },
-    [isFocused, onViewableItemsChanged]
-  )
-
-  const handleArtistsViewableItemsChanged = useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      onViewableItemsChanged(items, 'venue_artists_carousel', 'artist', 1)
-    },
-    [isFocused, onViewableItemsChanged]
-  )
-
-  const handleGtlViewableItemsChanged = useCallback(
-    (playlistTitle: string, playlistIndex: number) =>
-      (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-        if (!isFocused) return
-        onViewableItemsChanged(items, playlistTitle, 'offer', playlistIndex)
-      },
-    [isFocused, onViewableItemsChanged]
-  )
-
   const onSeeAllBeforeNavigate = () => {
     void analytics.logClickSeeAll({ type: 'artists', moduleName: playlistTitle, from: 'venue' })
   }
@@ -182,7 +151,18 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
   return (
     <Container>
-      <ObservedPlaylist onViewableItemsChanged={handleAllOffersViewableItemsChanged}>
+      <ObservedPlaylist
+        onItemViewed={({ index, item }) => {
+          if (!isFocused) return
+          void logViewItem({
+            origin: 'venue',
+            playlistIndex: 0,
+            index,
+            type: 'offer',
+            id: item.objectID,
+            moduleId: 'venue_offers_list',
+          })
+        }}>
         {({ listRef, handleViewableItemsChanged }) => (
           <PassPlaylist
             testID="offersModuleList"
@@ -233,7 +213,18 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
               </View>
             ) : null}
           </SeeAllButtonContainer>
-          <ObservedPlaylist onViewableItemsChanged={handleArtistsViewableItemsChanged}>
+          <ObservedPlaylist
+            onItemViewed={({ index, item }) => {
+              if (!isFocused) return
+              void logViewItem({
+                origin: 'venue',
+                playlistIndex: 1,
+                index,
+                type: 'artist',
+                id: item.id,
+                moduleId: 'venue_artists_carousel',
+              })
+            }}>
             {({ listRef, handleViewableItemsChanged }) => (
               <AvatarList
                 data={artists}
@@ -252,10 +243,17 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             return (
               <ObservedPlaylist
                 key={playlist.entryId}
-                onViewableItemsChanged={handleGtlViewableItemsChanged(
-                  playlist.title,
-                  playlistIndex
-                )}>
+                onItemViewed={({ index: itemIndex, item }) => {
+                  if (!isFocused) return
+                  void logViewItem({
+                    origin: 'venue',
+                    playlistIndex,
+                    index: itemIndex,
+                    type: 'offer',
+                    id: item.objectID,
+                    moduleId: playlist.title,
+                  })
+                }}>
                 {({ listRef, handleViewableItemsChanged }) => (
                   <GtlPlaylist
                     venue={venue}

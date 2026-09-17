@@ -20,7 +20,6 @@ const MUSIC_PLAYLISTS_TITLES = [
 
 export const MusicPlaylists: React.FC<ThematicPlaylistProps> = ({
   shouldDisplayVenuesPlaylist,
-  onViewableItemsChanged,
   searchId,
 }) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
@@ -40,7 +39,6 @@ export const MusicPlaylists: React.FC<ThematicPlaylistProps> = ({
       playlists={musicPlaylists}
       isLoading={areMusicPlaylistsLoading}
       shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-      onViewableItemsChanged={onViewableItemsChanged}
       searchId={searchId}
     />
   )

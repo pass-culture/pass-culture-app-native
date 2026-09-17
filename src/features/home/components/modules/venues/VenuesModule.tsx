@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
-import { ViewToken } from 'react-native'
 import { useTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { HomepageModuleType, ModuleData, VenuesModuleParameters } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -22,7 +22,6 @@ type VenuesModuleProps = {
   homeEntryId: string | undefined
   index: number
   data?: ModuleData
-  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
 const ITEM_HEIGHT = LENGTH_S
@@ -37,7 +36,6 @@ export const VenuesModule = ({
   index,
   homeEntryId,
   data,
-  onViewableItemsChanged,
 }: VenuesModuleProps) => {
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
@@ -94,7 +92,19 @@ export const VenuesModule = ({
 
   return (
     <Container gap={4}>
-      <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+      <ObservedPlaylist
+        onItemViewed={({ index: itemIndex, item }) => {
+          if (!homeEntryId) return
+          void logViewItem({
+            origin: 'home',
+            playlistIndex: index,
+            index: itemIndex,
+            type: 'venue',
+            id: item.id.toString(),
+            homeEntryId,
+            moduleId,
+          })
+        }}>
         {({ listRef, handleViewableItemsChanged }) => (
           <PassPlaylist
             title={displayParameters.title}

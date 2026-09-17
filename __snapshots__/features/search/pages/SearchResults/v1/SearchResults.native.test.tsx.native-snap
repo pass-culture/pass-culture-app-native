@@ -901,7 +901,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       handlerTag={1}
                       handlerType="NativeViewGestureHandler"
                       horizontal={true}
-                      initialNumToRender={4}
+                      initialNumToRender={6}
                       keyExtractor={[Function]}
                       maxToRenderPerBatch={6}
                       onContentSizeChange={[Function]}
@@ -914,7 +914,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       onScroll={[Function]}
                       onScrollBeginDrag={[Function]}
                       onScrollEndDrag={[Function]}
-                      onViewableItemsChanged={[Function]}
                       removeClippedSubviews={true}
                       renderItem={[Function]}
                       renderScrollComponent={[Function]}
@@ -930,18 +929,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "waitForInteraction": true,
                         }
                       }
-                      viewabilityConfigCallbackPairs={
-                        [
-                          {
-                            "onViewableItemsChanged": [Function],
-                            "viewabilityConfig": {
-                              "minimumViewTime": 300,
-                              "viewAreaCoveragePercentThreshold": 20,
-                              "waitForInteraction": true,
-                            },
-                          },
-                        ]
-                      }
+                      viewabilityConfigCallbackPairs={[]}
                       windowSize={7}
                     >
                       <View>

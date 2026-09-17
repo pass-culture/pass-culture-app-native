@@ -1,6 +1,5 @@
 import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components/native'
 
@@ -8,6 +7,7 @@ import { ArtistResponse } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -30,13 +30,6 @@ type ArtistCategoryPlaylistProps = {
   items: AlgoliaOfferWithArtistAndEan[]
   playlistIndex: number
   title: string
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    artistId: string,
-    playlistIndex?: number
-  ) => void
   enableProAdvicesTag?: boolean
 }
 
@@ -48,7 +41,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   items,
   playlistIndex,
   title,
-  onViewableItemsChanged,
   enableProAdvicesTag,
 }) => {
   const theme = useTheme()
@@ -59,11 +51,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const isFocused = useIsFocused()
-
-  const handleArtistOffersViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-    if (!isFocused) return
-    onViewableItemsChanged(items, entryId, 'offer', artist.id, playlistIndex)
-  }
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistOffers' as const,
@@ -87,7 +74,19 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   }
 
   return (
-    <ObservedPlaylist onViewableItemsChanged={handleArtistOffersViewableItemsChanged}>
+    <ObservedPlaylist
+      onItemViewed={({ index, item }) => {
+        if (isFocused) {
+          void logViewItem({
+            origin: 'artist',
+            playlistIndex,
+            index,
+            type: 'offer',
+            id: item.objectID,
+            moduleId: entryId,
+          })
+        }
+      }}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           playlistType={PlaylistType.ARTIST_CATEGORY_PLAYLIST}
