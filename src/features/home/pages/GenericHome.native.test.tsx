@@ -33,13 +33,6 @@ const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('shared/analytics/logViewItem')
-jest.mock('shared/tracking/usePageTracking', () => ({
-  usePageTracking: () => ({
-    trackViewableItems: jest.fn(),
-  }),
-  createViewableItemsHandler: () => jest.fn(),
-}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

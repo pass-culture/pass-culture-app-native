@@ -1,6 +1,5 @@
-import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -54,13 +53,6 @@ type Props = {
   artist: ArtistResponse
   artistPlaylist: AlgoliaOfferWithArtistAndEan[]
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    artistId: string,
-    playlistIndex?: number
-  ) => void
   onExpandBioPress: () => void
   artistPlaylistModule?: ArtistPlaylistModuleType
   artistEditorialModule?: ArtistEditorialModuleType
@@ -85,12 +77,12 @@ export const ArtistBody: FunctionComponent<Props> = ({
   artistTopOffers,
   artistPlaylistModule,
   artistEditorialModule,
-  onViewableItemsChanged,
   onExpandBioPress,
 }) => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
   const { appBarHeight, designSystem } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
+  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
@@ -128,8 +120,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
     utmMedium: 'header',
   })
 
-  const isFocused = useIsFocused()
-
   const pressShareArtist = () => {
     void analytics.logShare({
       type: 'Artist',
@@ -139,13 +129,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
     })
     void shareArtist()
     showShareArtistModal()
-  }
-
-  const handleArtistPlaylistModuleOffersViewableItemsChanged = (
-    items: Pick<ViewToken, 'key' | 'index'>[]
-  ) => {
-    if (!isFocused || !artistPlaylistModule) return
-    onViewableItemsChanged(items, `artistPage${artistPlaylistModule.id}`, 'offer', artist.id)
   }
 
   return (
@@ -223,7 +206,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
             <ArtistPlaylist
               artist={artist}
               items={artistPlaylist}
-              onViewableItemsChanged={onViewableItemsChanged}
+              enableProAdvicesTag={enableProAdvicesTag}
             />
           ) : null}
           {artistPlaylistModule ? (
@@ -234,7 +217,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
               index={0}
               moduleId={artistPlaylistModule.id}
               data={offersArtistPlaylistModulesData}
-              onViewableItemsChanged={handleArtistPlaylistModuleOffersViewableItemsChanged}
               homeEntryId={undefined}
               disableArtistNavigation
             />

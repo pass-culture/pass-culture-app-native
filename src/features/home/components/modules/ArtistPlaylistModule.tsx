@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useEffect } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import { Platform } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
 import { getOffersModuleQueryKey } from 'features/home/queries/useGetOffersDataQuery'
@@ -15,6 +15,7 @@ import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackN
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
@@ -44,7 +45,6 @@ export type ArtistPlaylistModuleProps = {
   index: number
   homeEntryId: string | undefined
   data: ModuleData | undefined
-  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
   disableArtistNavigation?: boolean
 }
 
@@ -59,7 +59,6 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     moduleId,
     homeEntryId,
     data,
-    onViewableItemsChanged,
     disableArtistNavigation,
   } = props
   const route = useRoute()
@@ -246,7 +245,22 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
   }
 
   return (
-    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+    <ObservedPlaylist
+      onItemViewed={({ index: itemIndex, item }) => {
+        const itemParams = {
+          playlistIndex: index,
+          index: itemIndex,
+          type: 'offer' as const,
+          id: item.objectID,
+          moduleId,
+        }
+        if (isArtistScreen) {
+          void logViewItem({ origin: 'artist', ...itemParams })
+          return
+        }
+        if (!homeEntryId) return
+        void logViewItem({ origin: 'home', homeEntryId, ...itemParams })
+      }}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           title={displayParameters.title}

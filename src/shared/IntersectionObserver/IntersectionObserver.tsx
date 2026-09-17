@@ -3,8 +3,6 @@ import { LayoutChangeEvent } from 'react-native'
 import { InView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
-import { logPlaylistDebug } from 'shared/analytics/logViewItem'
-
 import { parseThreshold } from './helpers'
 import { IntersectionObserverProps } from './types'
 
@@ -16,10 +14,6 @@ export function IntersectionObserver({
   const [containerHeight, setContainerHeight] = useState<number>(0)
 
   const handleChange = (inView: boolean) => {
-    logPlaylistDebug('INTERSECTION_OBSERVER_NATIVE', 'IntersectionObserver state changed', {
-      inView,
-      threshold,
-    })
     onChange(inView)
   }
 

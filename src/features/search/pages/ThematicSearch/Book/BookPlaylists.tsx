@@ -1,6 +1,5 @@
 import { useIsFocused } from '@react-navigation/native'
-import React, { useCallback } from 'react'
-import { ViewToken } from 'react-native'
+import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
@@ -10,6 +9,7 @@ import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/The
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -22,7 +22,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
   shouldDisplayVenuesPlaylist,
-  onViewableItemsChanged,
   searchId,
 }) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
@@ -54,15 +53,6 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
     transformHits,
   })
 
-  const handleGtlViewableItemsChanged = useCallback(
-    (playlistTitle: string, playlistIndex: number) =>
-      (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-        if (!isFocused) return
-        onViewableItemsChanged(items, playlistTitle, 'offer', playlistIndex)
-      },
-    [isFocused, onViewableItemsChanged]
-  )
-
   return areGtlPlaylistsLoading ? (
     <ThematicSearchSkeleton />
   ) : (
@@ -74,7 +64,18 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
         return (
           <ObservedPlaylist
             key={playlist.entryId}
-            onViewableItemsChanged={handleGtlViewableItemsChanged(playlist.title, playlistIndex)}>
+            onItemViewed={({ index: itemIndex, item }) => {
+              if (!isFocused) return
+              void logViewItem({
+                origin: 'search',
+                playlistIndex,
+                index: itemIndex,
+                type: 'offer',
+                id: item.objectID,
+                moduleId: playlist.title,
+                searchId: searchId ?? '',
+              })
+            }}>
             {({ listRef, handleViewableItemsChanged }) => (
               <GtlPlaylist
                 playlist={playlist}

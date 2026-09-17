@@ -4,10 +4,6 @@ import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionOb
 import { render, screen } from 'tests/utils/web'
 import { Typo } from 'ui/theme'
 
-jest.mock('shared/analytics/logViewItem', () => ({
-  logPlaylistDebug: jest.fn(),
-}))
-
 // Mock IntersectionObserver API
 const mockIntersectionObserver = jest.fn()
 const mockObserve = jest.fn()
