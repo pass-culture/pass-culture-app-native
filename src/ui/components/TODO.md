@@ -1,0 +1,3 @@
+- implem web : trouver un comportement similaire à onViewableItemsChanged de la flatlist sur la scrollview
+- app : logViewItemV3 dans onViewableItemsChanged dans OffersModule/VenueModule/ArtistModule
+- faire la mm chose sur la recherche et sur les playlists additionnelles de la page offre
