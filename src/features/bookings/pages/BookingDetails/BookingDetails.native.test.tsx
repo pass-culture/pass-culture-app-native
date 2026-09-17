@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import {
   BookingResponse,
   BookingsResponseV2,
@@ -76,6 +76,12 @@ describe('BookingDetails', () => {
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
+    })
+
+    it('should display BookingNotFound when booking has no stock', async () => {
+      renderBookingDetailsWithBookingById({} as BookingResponse, { dataUpdatedAt: Date.now() })
+
+      expect(await screen.findByText('Réservation introuvable\u00a0!')).toBeOnTheScreen()
     })
 
     it('should render the itinerary button when offer is Event', async () => {
@@ -482,6 +488,7 @@ describe('BookingDetails', () => {
 })
 
 const renderBookingDetailsWithBookingById = (booking?: BookingResponse, options = {}) => {
+  useRoute.mockReturnValue({ params: { id: booking?.id ?? 123 } })
   jest.spyOn(useBookingByIdQueryAPI, 'useBookingByIdQuery').mockReturnValue({
     data: booking,
     isLoading: false,

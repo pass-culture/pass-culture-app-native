@@ -43,35 +43,35 @@ const BookingDetailsContainer = ({
   const mapping = useSubcategoriesMapping()
   const { logType } = useLogTypeFromRemoteConfig()
 
-  if ((isLoading || !dataUpdatedAt) && !booking) {
-    return <LoadingPage />
-  } else if (!isLoading && !booking && !isFetching) {
-    if (Platform.OS !== 'web') {
-      const bookingNotFoundError = new Error('BookingNotFound')
-      bookingNotFoundError.name = 'BookingNotFound'
-      eventMonitoring.captureException(bookingNotFoundError, {
-        extra: {
-          status,
-          isLoading,
-          booking,
-          dataUpdatedAt,
-        },
+  if (!booking || !('stock' in booking)) {
+    if (isLoading || !dataUpdatedAt) {
+      return <LoadingPage />
+    }
+
+    if (!isFetching) {
+      if (Platform.OS !== 'web') {
+        const bookingNotFoundError = new Error('BookingNotFound')
+        bookingNotFoundError.name = 'BookingNotFound'
+        eventMonitoring.captureException(bookingNotFoundError, {
+          extra: { status, isLoading, booking, dataUpdatedAt },
+        })
+      }
+      throw new ScreenError(`Booking #${bookingId} not found`, {
+        Screen: BookingNotFound,
+        logType,
       })
     }
-    throw new ScreenError(`Booking #${bookingId} not found`, {
-      Screen: BookingNotFound,
-      logType,
-    })
-  } else if (isError) {
-    throw error
-  } else if (!booking) {
-    // dead code to satisfy typescript Web compilation
+
     return null
+  }
+
+  if (isError) {
+    throw error
   }
 
   const properties = getBookingPropertiesV2.getBookingProperties(
     booking,
-    mapping[booking.stock?.offer?.subcategoryId]?.isEvent
+    mapping[booking.stock.offer.subcategoryId].isEvent
   )
 
   return user ? (
