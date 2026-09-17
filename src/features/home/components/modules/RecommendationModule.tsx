@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from 'react'
-import { ViewToken } from 'react-native'
 import { useTheme } from 'styled-components'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -7,6 +6,7 @@ import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOf
 import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
@@ -24,23 +24,12 @@ type RecommendationModuleProps = {
   index: number
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
   homeEntryId: string | undefined
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    callId?: string | null
-  ) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const {
-    displayParameters,
-    index,
-    recommendationParameters,
-    moduleId,
-    homeEntryId,
-    onViewableItemsChanged,
-  } = props
+  const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const position = useUserLocation()
   const { user: profile } = useAuthContext()
   const { designSystem } = useTheme()
@@ -93,10 +82,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     [moduleId, moduleName, recommendationApiParams, homeEntryId]
   )
 
-  const handleOnViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-    onViewableItemsChanged?.(items, recommendationApiParams?.callId)
-  }
-
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return null
@@ -115,7 +100,19 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   }
 
   return (
-    <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
+    <ObservedPlaylist
+      onItemViewed={({ index: itemIndex, item }) => {
+        if (!homeEntryId) return
+        void logViewItem({
+          origin: 'home',
+          playlistIndex: index,
+          index: itemIndex,
+          type: 'offer',
+          id: item.objectID,
+          homeEntryId,
+          moduleId,
+        })
+      }}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           testID="recommendationModuleList"

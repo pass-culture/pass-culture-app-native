@@ -395,7 +395,6 @@ const renderVenueOffers = ({
             labelMapping={labelMapping}
             currency={currency}
             euroToPacificFrancRate={euroToPacificFrancRate}
-            onViewableItemsChanged={jest.fn()}
             advicesCardData={advicesCardData}
             nbAdvices={nbAdvices}
             onShowWritersModal={jest.fn()}

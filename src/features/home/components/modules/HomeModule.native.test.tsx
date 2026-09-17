@@ -32,7 +32,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
@@ -110,11 +110,7 @@ const defaultDataVenues: ModuleData = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockModuleViewableItemsChanged = jest.fn()
-
 describe('<HomeModule />', () => {
-  const user = userEvent.setup()
-
   beforeEach(() => {
     setFeatureFlags()
     useLocationV2.setState(defaultLocationState)
@@ -134,62 +130,6 @@ describe('<HomeModule />', () => {
     await waitFor(async () => {
       expect(await screen.findByLabelText('L’offre du moment')).toBeOnTheScreen()
     })
-  })
-
-  it('should dispatch viewable items for module', async () => {
-    renderHomeModule(formattedOffersModule, defaultData)
-
-    const allPlaylistElements = await screen.findAllByTestId('offersModuleList')
-    const playlistElement = allPlaylistElements.at(0)
-
-    if (!playlistElement) {
-      throw new Error('playlist not found')
-    }
-
-    act(() => {
-      const items = screen.getAllByTestId(/OfferTile/)
-      items.forEach((item, index) => {
-        fireEvent(item, 'layout', {
-          nativeEvent: {
-            layout: {
-              width: 200,
-              x: 200 * index,
-            },
-          },
-        })
-      })
-
-      fireEvent(playlistElement, 'layout', {
-        nativeEvent: {
-          layout: {
-            width: 1400,
-          },
-        },
-      })
-    })
-
-    mockInView(true)
-
-    await user.scrollTo(playlistElement, {
-      layoutMeasurement: { width: 600, height: 300 },
-      contentSize: { width: 1200, height: 300 },
-      x: 0,
-    })
-
-    await waitFor(() =>
-      expect(mockModuleViewableItemsChanged).toHaveBeenCalledWith({
-        viewableItems: [
-          { index: 0, key: '102280' },
-          { index: 1, key: '102272' },
-          { index: 2, key: '102249' },
-          { index: 3, key: '102310' },
-        ],
-        homeEntryId: '7tfixfH64pd5TMZeEKfNQ',
-        index: 1,
-        moduleId: '2DYuR6KoSLElDuiMMjxx8g',
-        moduleType: 'OffersModule',
-      })
-    )
   })
 
   it('should display BusinessModule', async () => {
@@ -278,13 +218,7 @@ describe('<HomeModule />', () => {
 function renderHomeModule(item: HomepageModule, data?: ModuleData) {
   return render(
     reactQueryProviderHOC(
-      <HomeModule
-        item={item}
-        index={index}
-        homeEntryId={homeEntryId}
-        data={data}
-        onModuleViewableItemsChanged={mockModuleViewableItemsChanged}
-      />
+      <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
     )
   )
 }

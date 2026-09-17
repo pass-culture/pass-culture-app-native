@@ -4,12 +4,8 @@ import { FlatList, Text, View } from 'react-native'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('shared/analytics/logViewItem', () => ({
-  logPlaylistDebug: jest.fn(),
-}))
-
 const onIntersectionChangeMock = jest.fn()
-const onViewableItemsChangedMock = jest.fn()
+const onItemViewedMock = jest.fn()
 
 describe('<ObservedPlaylist />', () => {
   beforeEach(() => {
@@ -20,7 +16,7 @@ describe('<ObservedPlaylist />', () => {
     render(
       <ObservedPlaylist
         onIntersectionChange={onIntersectionChangeMock}
-        onViewableItemsChanged={onViewableItemsChangedMock}>
+        onItemViewed={onItemViewedMock}>
         {({ listRef, handleViewableItemsChanged }) => (
           <View>
             <FlatList
@@ -46,7 +42,7 @@ describe('<ObservedPlaylist />', () => {
     render(
       <ObservedPlaylist
         onIntersectionChange={onIntersectionChangeMock}
-        onViewableItemsChanged={onViewableItemsChangedMock}>
+        onItemViewed={onItemViewedMock}>
         {({ listRef, handleViewableItemsChanged }) => (
           <View>
             <FlatList
@@ -70,7 +66,7 @@ describe('<ObservedPlaylist />', () => {
 
   it('should work without onIntersectionChange prop', () => {
     render(
-      <ObservedPlaylist onViewableItemsChanged={onViewableItemsChangedMock}>
+      <ObservedPlaylist onItemViewed={onItemViewedMock}>
         {({ listRef, handleViewableItemsChanged }) => (
           <View>
             <FlatList
@@ -95,7 +91,7 @@ describe('<ObservedPlaylist />', () => {
     render(
       <ObservedPlaylist
         onIntersectionChange={onIntersectionChangeMock}
-        onViewableItemsChanged={onViewableItemsChangedMock}>
+        onItemViewed={onItemViewedMock}>
         {({ listRef, handleViewableItemsChanged }) => (
           <View>
             <FlatList

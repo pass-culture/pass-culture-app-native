@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { View, ViewToken } from 'react-native'
+import { View } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -42,7 +42,6 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -54,31 +53,6 @@ type FollowVenueButtonOrigin = 'venueBanner' | 'venueHeader'
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
-
-  const pageTracking = usePageTracking({
-    pageName: 'Venue',
-    pageLocation: 'venue',
-    pageId: params.id.toString(),
-  })
-
-  // Handler for modules with the new system
-  const handleViewableItemsChanged = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        playlistIndex,
-        entryId: params.id.toString(),
-      })
-    },
-    [pageTracking, params.id]
-  )
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
@@ -197,7 +171,6 @@ export const Venue: FunctionComponent = () => {
             headlineOfferData={headlineOfferData}
             arePlaylistsLoading={arePlaylistsLoading}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
-            onViewableItemsChanged={handleViewableItemsChanged}
             advicesCardData={venueProAdvicesToAdviceCardData(
               getAdvicesWithoutHeadline(advices?.proAdvices.slice(0, 5), headlineOfferData?.id),
               venue.id

@@ -44,7 +44,25 @@ import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { LocationMode } from 'libs/location/types'
 import { ColorSchemeType } from 'libs/styled/useColorScheme'
-import { PageTrackingInfo } from 'shared/tracking/TrackingManager'
+
+type PlaylistTrackingInfo = {
+  moduleId: string
+  itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+  callId: string
+  index: number
+  viewedAt: Date
+  items: { key: string; index: number | null }[]
+  extra?: Record<string, string | undefined>
+  searchId?: string
+  pageLocation?: string
+  entryId?: string
+}
+
+type PageTrackingInfo = {
+  pageLocation: string
+  pageId: string
+  playlists: PlaylistTrackingInfo[]
+}
 
 type ConsultHomeParams = { homeEntryId: string }
 
