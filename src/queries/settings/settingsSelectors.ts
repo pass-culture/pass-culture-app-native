@@ -30,3 +30,5 @@ export const selectBonificationBonusAmount = (settings: SettingsResponse) =>
 
 export const selectBonificationQfThreshold = (settings: SettingsResponse) =>
   settings.bonification.qfThreshold
+
+export const selectImageResizingUrl = (settings: SettingsResponse) => settings.imageResizingUrl
