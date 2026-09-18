@@ -352,6 +352,28 @@ describe('NotificationsSettings', () => {
 
       expect(toggleSwitch).toHaveAccessibilityState({ checked: true })
     })
+
+    it('should toggle push switch off without opening the permission modal', async () => {
+      usePushPermissionSpy.mockReturnValueOnce({
+        pushPermission: 'blocked',
+        refreshPermission: jest.fn(),
+      })
+      mockAuthContextWithUser({
+        ...beneficiaryUser,
+        subscriptions: {
+          marketingEmail: false,
+          marketingPush: true,
+          subscribedThemes: [],
+        },
+      })
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleSwitch = screen.getByTestId(NOTIFICATIONS_SWITCH)
+      await user.press(toggleSwitch)
+
+      expect(toggleSwitch).toHaveAccessibilityState({ checked: false })
+      expect(screen.queryByText('Paramètres de notifications')).not.toBeOnTheScreen()
+    })
   })
 
   describe('When user has unsaved changes and attempts to go back', () => {
