@@ -501,7 +501,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               </View>
             </View>
             <Text
-              nativeID="testUuidV4"
+              nativeID="_r_1_"
               style={
                 {
                   "display": "none",

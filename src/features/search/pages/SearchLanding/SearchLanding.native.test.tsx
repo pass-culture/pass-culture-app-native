@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { Keyboard } from 'react-native'
+import DeviceInfo from 'react-native-device-info'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -258,6 +259,27 @@ describe('<SearchLanding />', () => {
         locationFilter: mockSearchState.locationFilter,
       },
     })
+  })
+
+  it.each([
+    { landscape: true, fontScale: 1 },
+    { landscape: false, fontScale: 2 },
+  ])('preserves the input when opening suggestions with %o', async ({ landscape, fontScale }) => {
+    const landscapeSpy = jest.spyOn(DeviceInfo, 'isLandscape').mockResolvedValue(landscape)
+    const fontScaleSpy = jest.spyOn(DeviceInfo, 'getFontScale').mockResolvedValue(fontScale)
+    mockIsFocusOnSuggestions = false
+    const { rerender } = render(reactQueryProviderHOC(<SearchLanding />))
+    await act(async () => {})
+    const input = screen.getByTestId('searchInput')
+
+    mockIsFocusOnSuggestions = true
+    rerender(reactQueryProviderHOC(<SearchLanding />))
+    await act(async () => {})
+
+    expect(screen.getByTestId('searchInput')).toBe(input)
+
+    landscapeSpy.mockRestore()
+    fontScaleSpy.mockRestore()
   })
 
   describe('When SearchLanding is focus on suggestions', () => {

@@ -1,12 +1,14 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useId } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
+import { Keyboard } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 
 import { CategoriesList } from 'features/search/components/CategoriesList/CategoriesList'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
+import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSuggestionsStatus/SearchSuggestionsAnnouncer'
 import { SEARCH_CATEGORIES_ANCHOR_ID } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -27,6 +29,7 @@ import { Page } from 'ui/pages/Page'
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchLanding = () => {
+  const suggestionsDescriptionId = useId()
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.SEARCH)
 
   const netInfo = useNetInfoContext()
@@ -62,6 +65,7 @@ export const SearchLanding = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
+        suggestionsDescriptionId={suggestionsDescriptionId}
         shouldDisplaySubtitle
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
@@ -72,43 +76,22 @@ export const SearchLanding = () => {
       />
     </Container>
   )
-  const content = () => {
-    if (isFocusOnSuggestions) {
-      return (
-        <React.Fragment>
-          {isZoomedAt200 || isLandscape ? null : searchHeader}
-          <SearchSuggestions
-            queryHistory={queryHistory}
-            addToHistory={addToHistory}
-            removeFromHistory={removeFromHistory}
-            filteredHistory={filteredHistory}
-            shouldNavigateToSearchResults
-            header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
-          />
-        </React.Fragment>
-      )
-    }
-
-    if (isZoomedAt200 || isLandscape) {
-      return (
-        <LandingScrollView keyboardShouldPersistTaps="handled">
-          {searchHeader}
-          <CategoriesButtonsContainer>
-            <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-          </CategoriesButtonsContainer>
-        </LandingScrollView>
-      )
-    }
-
-    return (
-      <React.Fragment>
-        {searchHeader}
-        <CategoriesButtonsContainer>
-          <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
-        </CategoriesButtonsContainer>
-      </React.Fragment>
-    )
-  }
+  const scrollHeader = isZoomedAt200 || isLandscape
+  const body = isFocusOnSuggestions ? (
+    <SearchSuggestions
+      suggestionsDescriptionId={suggestionsDescriptionId}
+      queryHistory={queryHistory}
+      addToHistory={addToHistory}
+      removeFromHistory={removeFromHistory}
+      filteredHistory={filteredHistory}
+      shouldNavigateToSearchResults
+      embedded={scrollHeader}
+    />
+  ) : (
+    <CategoriesButtonsContainer>
+      <CategoriesList enableNewCategoryBlocks={enableNewCategoryBlocks} />
+    </CategoriesButtonsContainer>
+  )
 
   return (
     <Page>
@@ -120,7 +103,25 @@ export const SearchLanding = () => {
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics analytics />
 
-          {content()}
+          {scrollHeader ? (
+            <LandingScrollView
+              keyboardShouldPersistTaps="handled"
+              onScroll={isFocusOnSuggestions ? Keyboard.dismiss : undefined}
+              scrollEventThrottle={16}>
+              {searchHeader}
+              {body}
+            </LandingScrollView>
+          ) : (
+            <React.Fragment>
+              {searchHeader}
+              {body}
+            </React.Fragment>
+          )}
+          <SearchSuggestionsAnnouncer
+            id={suggestionsDescriptionId}
+            query={queryHistory}
+            visible={isFocusOnSuggestions}
+          />
         </InstantSearch>
       </Form.Flex>
     </Page>

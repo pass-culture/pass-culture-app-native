@@ -17,6 +17,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer } from 'ui/theme'
 
 type Props = {
+  suggestionsDescriptionId?: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   offerCategories?: SearchGroupNameEnumv2[]
@@ -29,6 +30,7 @@ type Props = {
 }
 
 export const SearchHeader = ({
+  suggestionsDescriptionId,
   addSearchHistory,
   searchInHistory,
   shouldDisplaySubtitle = false,
@@ -82,6 +84,7 @@ export const SearchHeader = ({
         <Container>
           <SearchBoxContainer>
             <SearchBox
+              suggestionsDescriptionId={suggestionsDescriptionId}
               addSearchHistory={addSearchHistory}
               searchInHistory={searchInHistory}
               offerCategories={offerCategories}
