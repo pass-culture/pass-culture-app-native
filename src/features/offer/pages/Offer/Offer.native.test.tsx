@@ -293,7 +293,7 @@ describe('<Offer />', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_SCENE_CLUB])
       renderOfferPage({ mockOffer: sceneClubOffer })
 
-      expect(await screen.findByText('Les avis de la scène club')).toBeOnTheScreen()
+      expect(await screen.findByText('Les avis du scène club')).toBeOnTheScreen()
     })
 
     it('should not display scène club advices section when offer has no advice', async () => {
@@ -302,7 +302,7 @@ describe('<Offer />', () => {
 
       await screen.findByTestId('offerv2-container')
 
-      expect(screen.queryByText('Les avis de la scène club')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Les avis du scène club')).not.toBeOnTheScreen()
     })
 
     it('should not display scène club advices section when feature flag is disabled', async () => {
@@ -311,16 +311,16 @@ describe('<Offer />', () => {
 
       await screen.findByTestId('offerv2-container')
 
-      expect(screen.queryByText('Les avis de la scène club')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Les avis du scène club')).not.toBeOnTheScreen()
     })
 
     it('should trigger ClickWhatsClub log with scène club advice type', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_SCENE_CLUB])
       renderOfferPage({ mockOffer: sceneClubOffer })
 
-      await screen.findByText('Les avis de la scène club')
+      await screen.findByText('Les avis du scène club')
 
-      await user.press(screen.getByText('Qui écrit les avis de la scène club ?'))
+      await user.press(screen.getByText('Qui écrit les avis du scène club ?'))
 
       expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
         categoryName: 'SPECTACLE',
