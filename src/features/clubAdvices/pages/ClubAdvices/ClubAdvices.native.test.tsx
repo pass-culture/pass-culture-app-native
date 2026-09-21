@@ -111,7 +111,7 @@ describe('ClubAdvices', () => {
 
       render(reactQueryProviderHOC(<ClubAdvices />))
 
-      await screen.findByText('Qui écrit les avis de la scène club ?')
+      await screen.findByText('Qui écrit les avis du scène club ?')
 
       expect(screen.getAllByTestId('sceneClubIcon')[0]).toBeOnTheScreen()
     })

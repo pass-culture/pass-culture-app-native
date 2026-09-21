@@ -39,7 +39,7 @@ describe('useClubAdviceVariant', () => {
       useClubAdviceVariant(SubcategoryIdEnum.SPECTACLE_REPRESENTATION)
     )
 
-    expect(result.current?.titleSection).toEqual('Les avis de la scène club')
+    expect(result.current?.titleSection).toEqual('Les avis du scène club')
   })
 
   it('should not return the scène club variant when feature flag is disabled', () => {
