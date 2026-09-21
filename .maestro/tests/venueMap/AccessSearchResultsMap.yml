@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - search
+  - venueMap
   - searchResultsMap
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js

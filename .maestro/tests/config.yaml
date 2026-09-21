@@ -9,6 +9,6 @@ flows:
   - artist/*
   - favorite/*
   - offer/*
-  - venue/*
+  - venueMap/*
   - web/*
   - activation/*
