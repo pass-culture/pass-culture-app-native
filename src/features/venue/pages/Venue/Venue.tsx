@@ -1,5 +1,5 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { View, ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
@@ -9,7 +9,7 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
-import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -21,11 +21,6 @@ import { VenueContent } from 'features/venue/components/VenueContent/VenueConten
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
-import {
-  buildFollowVenueSurveyUrl,
-  FOLLOW_VENUE_FEATURE_NAME,
-  FOLLOW_VENUE_SURVEY_KEY,
-} from 'features/venue/helpers/buildFollowVenueSurveyUrl'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
@@ -47,7 +42,6 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -59,7 +53,6 @@ type FollowVenueButtonOrigin = 'venueBanner' | 'venueHeader'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: venue } = useVenueQuery(params.id)
 
   const pageTracking = usePageTracking({
@@ -108,7 +101,7 @@ export const Venue: FunctionComponent = () => {
 
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
-    searchGroupLabel: params?.fromThematicSearch,
+    searchGroupLabel: params.fromThematicSearch,
     userLocation,
     selectedLocationMode,
     isUserUnderage,
@@ -166,35 +159,21 @@ export const Venue: FunctionComponent = () => {
     advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
   })
 
-  useEffect(() => {
+  const triggerLogConsultVenue = useCallback(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
       void analytics.logConsultVenue({
         venueId: venue.id.toString(),
         from: params.from,
       })
     }
-  }, [params.from, venue?.id])
+  }, [params.from, venue])
 
-  const handleOnPressFollowButton = async (originDetails: FollowVenueButtonOrigin) => {
-    if (!venue) return
+  useEffect(() => {
+    triggerLogConsultVenue()
+  }, [triggerLogConsultVenue])
 
-    const analyticsParams = {
-      featureName: FOLLOW_VENUE_FEATURE_NAME,
-      from: 'venue' as const,
-      venueId: venue.id.toString(),
-    }
-
-    const hasSeenSurveyPromise = getHasSeenFakeDoorSurvey(FOLLOW_VENUE_SURVEY_KEY)
-
-    navigate('FakeDoorModal', {
-      surveyKey: FOLLOW_VENUE_SURVEY_KEY,
-      surveyUrl: buildFollowVenueSurveyUrl(venue.activity),
-      analyticsParams,
-    })
-
-    const hasSeenSurvey = await hasSeenSurveyPromise
-
-    void analytics.logHasClickedFakeDoorCTA({ ...analyticsParams, originDetails, hasSeenSurvey })
+  const handleOnPressFollowButton = (_originDetails: FollowVenueButtonOrigin) => {
+    return
   }
 
   const isCTADisplayed =
