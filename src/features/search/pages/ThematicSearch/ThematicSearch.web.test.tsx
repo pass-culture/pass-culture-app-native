@@ -6,6 +6,7 @@ import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/content
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { SearchState } from 'features/search/types'
 import { env } from 'libs/environment/env'
 import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -40,9 +41,9 @@ const defaultUseSearchResults = {
   fetchNextPage: jest.fn(),
   isFetchingNextPage: false,
 }
-const mockUseSearchResults = jest.fn(() => defaultUseSearchResults)
+const mockUseSearchResults = jest.fn((_searchState: SearchState) => defaultUseSearchResults)
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResults(),
+  useSearchInfiniteQuery: (searchState: SearchState) => mockUseSearchResults(searchState),
 }))
 
 describe('<ThematicSearch/>', () => {
@@ -68,6 +69,24 @@ describe('<ThematicSearch/>', () => {
     await screen.findByText('Musique')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should query the route category on direct access and after regaining focus', async () => {
+    const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+    await screen.findByText('Musique')
+
+    mockScreenFocus(false)
+    rerender(reactQueryProviderHOC(<ThematicSearch />))
+    mockScreenFocus(true)
+    rerender(reactQueryProviderHOC(<ThematicSearch />))
+    await act(async () => {})
+
+    for (const [state] of mockUseSearchResults.mock.calls) {
+      expect(state).toEqual({
+        ...initialSearchState,
+        offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
+      })
+    }
   })
 
   it('should dispatch action with offerCategories when params change', async () => {
@@ -130,4 +149,8 @@ const MockOfferCategoriesParams = (offerCategoriesParams: {
     params: offerCategoriesParams,
     name: 'ThematicSearch',
   }))
+}
+
+function mockScreenFocus(isFocused: boolean) {
+  useIsFocused.mockReturnValue(isFocused)
 }
