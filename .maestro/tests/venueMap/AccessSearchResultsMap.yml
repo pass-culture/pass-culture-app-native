@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - search
-  - searchMap
+  - venueMap
+  - searchResultsMap
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
 ---
@@ -14,9 +14,10 @@ onFlowStart:
 - runFlow:
     commands:
       - assertVisible: 'Parcours les catégories'
-      - scroll
-      - scroll
-      - tapOn: 'Spectacles'
+      - scrollUntilVisible:
+          element:
+            text: 'Catégorie Spectacles'
+      - tapOn: 'Catégorie Spectacles'
 
 - assertVisible: 'Voir la carte'
 - tapOn: 'Voir la carte'
