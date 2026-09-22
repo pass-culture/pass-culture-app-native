@@ -28,7 +28,7 @@ index ec9227892217fedcd6ad92b836ad8afb55f7ce40..b6a43cb1ef752ea4dea3ac21686766ec
    if (returnKeyType != null) {
      warnOnce('returnKeyType', 'returnKeyType is deprecated. Use enterKeyHint.');
 diff --git a/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js b/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
-index 2099ca6ca059a420542fbff0982699f1ffb17802..82081d09d12acd9e581a15eaded9d330f4784cd9 100644
+index 2099ca6ca059a420542fbff0982699f1ffb17802..ac6383f07bd258e33e3a1478fe8ff1155061bc60 100644
 --- a/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
 +++ b/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
 @@ -143,7 +143,7 @@ class CellRenderer extends React.Component {
@@ -36,15 +36,31 @@ index 2099ca6ca059a420542fbff0982699f1ffb17802..82081d09d12acd9e581a15eaded9d330
      return /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListCellContextProvider, {
        cellKey: this.props.cellKey
 -    }, result);
-+    }, this.props.parentProps && this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
++    }, this.props.itemAs ? React.createElement(this.props.itemAs, {}, result) : result);
    }
  }
  exports.default = CellRenderer;
 diff --git a/dist/cjs/vendor/react-native/VirtualizedList/index.js b/dist/cjs/vendor/react-native/VirtualizedList/index.js
-index 84eee173e582a8fd4ae5d3bba98f9eb5744e48c0..ee694969886e9063f00de3c19d2f9586b2310db3 100644
+index 84eee173e582a8fd4ae5d3bba98f9eb5744e48c0..1432742c829216f15d2c82fce69d666aae5c0750 100644
 --- a/dist/cjs/vendor/react-native/VirtualizedList/index.js
 +++ b/dist/cjs/vendor/react-native/VirtualizedList/index.js
-@@ -1134,6 +1134,13 @@ class VirtualizedList extends _StateSafePureComponent.default {
+@@ -934,6 +934,7 @@ class VirtualizedList extends _StateSafePureComponent.default {
+       getItemCount = _this$props4.getItemCount,
+       getItemLayout = _this$props4.getItemLayout,
+       horizontal = _this$props4.horizontal,
++      itemAs = _this$props4.itemAs,
+       renderItem = _this$props4.renderItem;
+     var stickyOffset = ListHeaderComponent ? 1 : 0;
+     var end = getItemCount(data) - 1;
+@@ -961,6 +962,7 @@ class VirtualizedList extends _StateSafePureComponent.default {
+         onUpdateSeparators: _this._onUpdateSeparators,
+         onCellFocusCapture: e => _this._onCellFocusCapture(key),
+         onUnmount: _this._onCellUnmount,
++        itemAs: itemAs,
+         ref: _ref => {
+           _this._cellRefs[key] = _ref;
+         },
+@@ -1134,6 +1136,13 @@ class VirtualizedList extends _StateSafePureComponent.default {
        style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
      });
      this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
@@ -58,7 +74,63 @@ index 84eee173e582a8fd4ae5d3bba98f9eb5744e48c0..ee694969886e9063f00de3c19d2f9586
      var innerRet = /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListContextProvider, {
        value: {
          cellKey: null,
-@@ -1145,7 +1152,7 @@ class VirtualizedList extends _StateSafePureComponent.default {
+@@ -1145,7 +1154,7 @@ class VirtualizedList extends _StateSafePureComponent.default {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
++    }, cellsToDisplay));
+     var ret = innerRet;
+     /* https://github.com/necolas/react-native-web/issues/2239: Re-enable when ScrollView.Context.Consumer is available.
+     if (__DEV__) {
+diff --git a/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js b/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
+index 813b005adc5b83d8126addf6cda3183e020677cc..c9bad54cf7f787a3f15ec407966bf37117a72bff 100644
+--- a/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
++++ b/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
+@@ -137,7 +137,7 @@ export default class CellRenderer extends React.Component {
+     }), element, itemSeparator);
+     return /*#__PURE__*/React.createElement(VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.itemAs ? React.createElement(this.props.itemAs, {}, result) : result);
+   }
+ }
+ var styles = StyleSheet.create({
+diff --git a/dist/vendor/react-native/VirtualizedList/index.js b/dist/vendor/react-native/VirtualizedList/index.js
+index e5618992adb5890fd11fc2670e0c1e4488c63804..4b11f9372c763bf14536bb164f4b8d8ba75bbf0c 100644
+--- a/dist/vendor/react-native/VirtualizedList/index.js
++++ b/dist/vendor/react-native/VirtualizedList/index.js
+@@ -928,6 +928,7 @@ class VirtualizedList extends StateSafePureComponent {
+       getItemCount = _this$props4.getItemCount,
+       getItemLayout = _this$props4.getItemLayout,
+       horizontal = _this$props4.horizontal,
++      itemAs = _this$props4.itemAs,
+       renderItem = _this$props4.renderItem;
+     var stickyOffset = ListHeaderComponent ? 1 : 0;
+     var end = getItemCount(data) - 1;
+@@ -955,6 +956,7 @@ class VirtualizedList extends StateSafePureComponent {
+         onUpdateSeparators: _this._onUpdateSeparators,
+         onCellFocusCapture: e => _this._onCellFocusCapture(key),
+         onUnmount: _this._onCellUnmount,
++        itemAs: itemAs,
+         ref: _ref => {
+           _this._cellRefs[key] = _ref;
+         },
+@@ -1128,6 +1130,13 @@ class VirtualizedList extends StateSafePureComponent {
+       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
+     });
+     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
++    const headerIdx = cells.findIndex((cell) => cell.key === "$header");
++    const footerIdx = cells.findIndex((cell) => cell.key === "$footer");
++    const emptyComponentIdx = cells.findIndex((cell) => cell.key === "$empty");
++    const cellsWithoutHeaderAndFooter = cells.filter((_, idx) => !([headerIdx, footerIdx].includes(idx)));
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs && emptyComponentIdx === -1;
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null;
++    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells;
+     var innerRet = /*#__PURE__*/React.createElement(VirtualizedListContextProvider, {
+       value: {
+         cellKey: null,
+@@ -1139,7 +1148,7 @@ class VirtualizedList extends StateSafePureComponent {
        }
      }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
        ref: this._captureScrollRef
