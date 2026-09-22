@@ -14,11 +14,11 @@ import {
 import type { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { BooksNativeCategoriesEnum, NativeCategoryEnum, SearchState } from 'features/search/types'
-import { BackgroundColorKey, BorderColorKey, ColorsType } from 'theme/types'
+import { BackgroundColorKey, BorderColorKey, ColorsType, IllustrationColorKey } from 'theme/types'
 import { SubcategoryButtonItem } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
 
 type SubcategoryButtonTheme = {
-  backgroundColor: BackgroundColorKey
+  backgroundColor: BackgroundColorKey | IllustrationColorKey
   borderColor: BorderColorKey
 }
 
@@ -79,10 +79,73 @@ const SUBCATEGORY_BUTTON_THEME_BY_CATEGORY = {
   },
 } satisfies Record<ThematicSearchCategory, SubcategoryButtonTheme>
 
-const getSubcategoryButtonTheme = (offerCategory: SearchGroupNameEnumv2): SubcategoryButtonTheme =>
-  offerCategory === SearchGroupNameEnumv2.NONE
-    ? { backgroundColor: 'default', borderColor: 'default' }
+const NEW_SUBCATEGORY_BUTTON_THEME_BY_CATEGORY = {
+  [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
+    backgroundColor: 'pending01',
+    borderColor: 'decorative01',
+  },
+  [SearchGroupNameEnumv2.CINEMA]: {
+    backgroundColor: 'information04',
+    borderColor: 'decorative02',
+  },
+  [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
+    backgroundColor: 'information03',
+    borderColor: 'decorative04',
+  },
+  [SearchGroupNameEnumv2.LIVRES]: {
+    backgroundColor: 'negative01',
+    borderColor: 'decorative05',
+  },
+  [SearchGroupNameEnumv2.MUSIQUE]: {
+    backgroundColor: 'positive01',
+    borderColor: 'decorative03',
+  },
+  [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
+    backgroundColor: 'information04',
+    borderColor: 'decorative02',
+  },
+  [SearchGroupNameEnumv2.SPECTACLES]: {
+    backgroundColor: 'negative01',
+    borderColor: 'decorative05',
+  },
+  [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
+    backgroundColor: 'pending01',
+    borderColor: 'decorative01',
+  },
+  [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
+    backgroundColor: 'information03',
+    borderColor: 'decorative04',
+  },
+  [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
+    backgroundColor: 'information04',
+    borderColor: 'decorative04',
+  },
+  [SearchGroupNameEnumv2.CARTES_JEUNES]: {
+    backgroundColor: 'pending01',
+    borderColor: 'decorative01',
+  },
+  [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
+    backgroundColor: 'positive01',
+    borderColor: 'decorative03',
+  },
+  [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
+    backgroundColor: 'information03',
+    borderColor: 'decorative04',
+  },
+} satisfies Record<ThematicSearchCategory, SubcategoryButtonTheme>
+
+const getSubcategoryButtonTheme = (
+  offerCategory: SearchGroupNameEnumv2,
+  enableNewSubcategoryBlocks?: boolean
+): SubcategoryButtonTheme => {
+  if (offerCategory === SearchGroupNameEnumv2.NONE) {
+    return { backgroundColor: 'default', borderColor: 'default' }
+  }
+
+  return enableNewSubcategoryBlocks
+    ? NEW_SUBCATEGORY_BUTTON_THEME_BY_CATEGORY[offerCategory]
     : SUBCATEGORY_BUTTON_THEME_BY_CATEGORY[offerCategory]
+}
 
 type NativeCategories = ReturnType<typeof useNativeCategories>
 
@@ -92,8 +155,10 @@ type GetSubcategoryButtonContentParams = {
   subcategories: SubcategoriesResponseModelv2
   searchState: SearchState
   dispatch: Dispatch<Action>
-  backgroundColors: Record<BackgroundColorKey, ColorsType>
+  backgroundColors:
+    Record<BackgroundColorKey, ColorsType> | Record<IllustrationColorKey, ColorsType>
   borderColors: Record<BorderColorKey, ColorsType>
+  enableNewSubcategoryBlocks?: boolean
 }
 
 export const getSubcategoryButtonContent = ({
@@ -104,10 +169,11 @@ export const getSubcategoryButtonContent = ({
   dispatch,
   backgroundColors,
   borderColors,
+  enableNewSubcategoryBlocks,
 }: GetSubcategoryButtonContentParams): SubcategoryButtonItem[] => {
   if (!offerCategory) return []
 
-  const offerCategoryTheme = getSubcategoryButtonTheme(offerCategory)
+  const offerCategoryTheme = getSubcategoryButtonTheme(offerCategory, enableNewSubcategoryBlocks)
 
   return nativeCategories
     .map((nativeCategory): SubcategoryButtonItem => {
@@ -161,10 +227,9 @@ const getOfferNativeCategories = (category: NativeCategoryEnum) => {
   if (isBookNativeCategory(category)) {
     const bookNativeCategory: BooksNativeCategoriesEnum[] = [category]
     return { offerNativeCategories: bookNativeCategory }
-  } else {
-    const nativeCategory: NativeCategoryIdEnumv2[] = [category]
-    return { offerNativeCategories: nativeCategory }
   }
+  const nativeCategory: NativeCategoryIdEnumv2[] = [category]
+  return { offerNativeCategories: nativeCategory }
 }
 
 function isBookNativeCategory(category: NativeCategoryEnum): category is BooksNativeCategoriesEnum {
