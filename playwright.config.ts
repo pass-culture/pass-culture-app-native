@@ -9,21 +9,21 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI
     ? [
-        ['github'],
-        [
-          './node_modules/playwright-slack-report/dist/src/SlackReporter.js',
-          {
-            channels: ['C05MH81G9LY'],
-            sendResults: 'always',
-            slackLogLevel: 'error',
-            meta: [
-              { key: '🌿 Branche', value: process.env.GITHUB_REF_NAME ?? 'inconnue' },
-              { key: '📁 Suite', value: process.env.E2E_SUITE_LABEL ?? 'inconnue' },
-              ...(runUrl ? [{ key: '🔗 Détails', value: runUrl }] : []),
-            ],
-          },
-        ],
-      ]
+      ['github'],
+      [
+        './node_modules/playwright-slack-report/dist/src/SlackReporter.js',
+        {
+          channels: ['C05MH81G9LY'],
+          sendResults: 'always',
+          slackLogLevel: 'error',
+          meta: [
+            { key: '🌿 Branche', value: process.env.GITHUB_REF_NAME ?? 'inconnue' },
+            { key: '📁 Suite', value: process.env.E2E_SUITE_LABEL ?? 'inconnue' },
+            ...(runUrl ? [{ key: '🔗 Détails', value: runUrl }] : []),
+          ],
+        },
+      ],
+    ]
     : 'list',
   use: {
     baseURL: 'http://127.0.0.1:5173',

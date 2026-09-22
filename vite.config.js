@@ -141,6 +141,7 @@ export default ({ mode }) => {
     server: { ...proxyConfig, open: true },
     preview: proxyConfig,
     optimizeDeps: {
+      entries: ['src/index.tsx'],
       include: ['react-native', 'react-native-web'],
       rolldownOptions: {
         resolve: {
