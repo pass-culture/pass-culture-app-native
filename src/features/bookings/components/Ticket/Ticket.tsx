@@ -67,8 +67,7 @@ export const Ticket = ({
   const shouldArchiveOnPartnerPress = subcategoryId !== SubcategoryIdEnum.CINE_VENTE_DISTANCE
 
   const handleArchiveOnPartnerPress = () => {
-    if (!shouldArchiveOnPartnerPress) return
-    archiveBooking()
+    if (shouldArchiveOnPartnerPress) archiveBooking()
   }
 
   const { hourLabel, dayLabel } = getBookingLabelsV2.getBookingLabels(booking, properties)
