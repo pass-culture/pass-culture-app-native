@@ -23,9 +23,7 @@ export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }
 
   switch (user.eligibilityType) {
     case UserEligibilityType.ELIGIBLE_CREDIT_V1_18:
-    case UserEligibilityType.ELIGIBLE_CREDIT_V2_15:
-    case UserEligibilityType.ELIGIBLE_CREDIT_V2_16:
-    case UserEligibilityType.ELIGIBLE_CREDIT_V2_17:
+    case UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17:
     case UserEligibilityType.ELIGIBLE_CREDIT_V2_18:
     case UserEligibilityType.ELIGIBLE_CREDIT_V3_17:
     case UserEligibilityType.ELIGIBLE_CREDIT_V3_18:

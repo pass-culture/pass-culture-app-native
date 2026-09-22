@@ -95,7 +95,7 @@ describe('getUserProfileState', () => {
 
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.ELIGIBLE,
-        creditType: UserCreditType.CREDIT_EXPIRED,
+        creditType: UserCreditType.CREDIT_V2_15_17,
         eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
       })
     })

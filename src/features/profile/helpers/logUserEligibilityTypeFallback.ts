@@ -11,6 +11,9 @@ export const logUserEligibilityTypeFallback = ({ user }: { user: UserProfileResp
       qfBonificationStatus: user.qfBonificationStatus,
       isEligibleForBeneficiaryUpgrade: user.isEligibleForBeneficiaryUpgrade,
       birthDate: user.birthDate,
+      domainsCredit: user.domainsCredit,
+      depositExpirationDate: user.depositExpirationDate,
+      hasProfileExpired: user.hasProfileExpired,
     },
   })
 }
