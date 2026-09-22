@@ -3,7 +3,7 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { BookingResponse, TicketResponse, WithdrawalTypeEnum } from 'api/gen'
+import { BookingResponse, SubcategoryIdEnum, TicketResponse, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
@@ -57,13 +57,18 @@ export const Ticket = ({
     },
   })
 
-  const { address } = booking?.stock.offer ?? {}
+  const { offer } = booking.stock
+  const { address, subcategoryId } = offer
 
   const offerFullAddress = address
     ? formatFullAddress(address.street, address.postalCode, address.city)
     : undefined
 
-  const { offer } = booking.stock
+  const shouldArchiveOnPartnerPress = subcategoryId !== SubcategoryIdEnum.CINE_VENTE_DISTANCE
+
+  const handleArchiveOnPartnerPress = () => {
+    if (shouldArchiveOnPartnerPress) archiveBooking()
+  }
 
   const { hourLabel, dayLabel } = getBookingLabelsV2.getBookingLabels(booking, properties)
 
@@ -145,7 +150,7 @@ export const Ticket = ({
           completedUrl={booking.completedUrl ?? undefined}
           offerId={offer.id}
           subcategoryId={offer.subcategoryId}
-          onBeforeNavigate={archiveBooking}
+          onBeforeNavigate={handleArchiveOnPartnerPress}
         />
       }
       infoBanner={properties.isDigital ? undefined : infoBanner}
