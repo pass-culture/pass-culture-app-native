@@ -4,9 +4,7 @@ import { getAge } from 'shared/user/getAge'
 
 export enum UserEligibilityType {
   ELIGIBLE_CREDIT_V1_18 = 'ELIGIBLE_CREDIT_V1_18',
-  ELIGIBLE_CREDIT_V2_15 = 'ELIGIBLE_CREDIT_V2_15',
-  ELIGIBLE_CREDIT_V2_16 = 'ELIGIBLE_CREDIT_V2_16',
-  ELIGIBLE_CREDIT_V2_17 = 'ELIGIBLE_CREDIT_V2_17',
+  ELIGIBLE_CREDIT_V2_15_17 = 'ELIGIBLE_CREDIT_V2_15_17',
   ELIGIBLE_CREDIT_V2_18 = 'ELIGIBLE_CREDIT_V2_18',
   ELIGIBLE_CREDIT_V3_15 = 'ELIGIBLE_CREDIT_V3_15',
   ELIGIBLE_CREDIT_V3_16 = 'ELIGIBLE_CREDIT_V3_16',
@@ -41,10 +39,7 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isEligibleCreditV1_18 = isTooOldForThisTypeOfEligibility
 
   // CREDIT_V2
-  const isEligibleCreditV2Underage = eligibility === EligibilityType['underage']
-  const isEligibleCreditV2_15 = isEligibleCreditV2Underage && isFifteen
-  const isEligibleCreditV2_16 = isEligibleCreditV2Underage && isSixteen
-  const isEligibleCreditV2_17 = isEligibleCreditV2Underage && isSeventeen
+  const isEligibleCreditV2_15_17 = eligibility === EligibilityType['underage']
   const isEligibleCreditV2_18 = eligibility === EligibilityType['age-18']
 
   // CREDIT_V3
@@ -66,9 +61,7 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
 
   if (isEligibleBonus) return UserEligibilityType.ELIGIBLE_BONUS
   if (isEligibleCreditV1_18) return UserEligibilityType.ELIGIBLE_CREDIT_V1_18
-  if (isEligibleCreditV2_15) return UserEligibilityType.ELIGIBLE_CREDIT_V2_15
-  if (isEligibleCreditV2_16) return UserEligibilityType.ELIGIBLE_CREDIT_V2_16
-  if (isEligibleCreditV2_17) return UserEligibilityType.ELIGIBLE_CREDIT_V2_17
+  if (isEligibleCreditV2_15_17) return UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17
   if (isEligibleCreditV2_18) return UserEligibilityType.ELIGIBLE_CREDIT_V2_18
   if (isEligibleCreditV3_15) return UserEligibilityType.ELIGIBLE_CREDIT_V3_15
   if (isEligibleCreditV3_16) return UserEligibilityType.ELIGIBLE_CREDIT_V3_16

@@ -41,7 +41,7 @@ describe('getEligibilityType', () => {
   })
 
   describe('ELIGIBLE V2', () => {
-    it('should return ELIGIBLE_CREDIT_V2_15', () => {
+    it('should return ELIGIBLE_CREDIT_V2_15_17 when 15 years old', () => {
       mockedGetAge.mockReturnValueOnce(15)
 
       const result = getEligibilityType(
@@ -50,10 +50,10 @@ describe('getEligibilityType', () => {
         })
       )
 
-      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_15)
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17)
     })
 
-    it('should return ELIGIBLE_CREDIT_V2_16', () => {
+    it('should return ELIGIBLE_CREDIT_V2_15_17 when 16 years old', () => {
       mockedGetAge.mockReturnValueOnce(16)
 
       const result = getEligibilityType(
@@ -62,10 +62,10 @@ describe('getEligibilityType', () => {
         })
       )
 
-      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_16)
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17)
     })
 
-    it('should return ELIGIBLE_CREDIT_V2_17', () => {
+    it('should return ELIGIBLE_CREDIT_V2_15_17 when 17 years old', () => {
       mockedGetAge.mockReturnValueOnce(17)
 
       const result = getEligibilityType(
@@ -74,7 +74,7 @@ describe('getEligibilityType', () => {
         })
       )
 
-      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_17)
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17)
     })
 
     it('should return ELIGIBLE_CREDIT_V2_18', () => {
