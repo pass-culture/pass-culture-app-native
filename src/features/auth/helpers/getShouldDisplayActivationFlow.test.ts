@@ -11,7 +11,7 @@ describe('getShouldDisplayActivationFlow', () => {
       [UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17, UserCreditType.CREDIT_V2_15_17, false],
       [UserEligibilityType.ELIGIBLE_CREDIT_V2_18, UserCreditType.CREDIT_V2_15_17, true],
       [UserEligibilityType.ELIGIBLE_CREDIT_V2_18, UserCreditType.CREDIT_V2_18, false],
-      [UserEligibilityType.ELIGIBLE_CREDIT_V3_16, UserCreditType.CREDIT_V3_FREE, false],
+      [UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16, UserCreditType.CREDIT_V3_FREE, false],
       [UserEligibilityType.ELIGIBLE_CREDIT_V3_17, UserCreditType.CREDIT_V3_FREE, true],
       [UserEligibilityType.ELIGIBLE_CREDIT_V3_17, UserCreditType.CREDIT_V2_15_17, false],
       [UserEligibilityType.ELIGIBLE_CREDIT_V3_17, UserCreditType.CREDIT_V3_FREE, true],

@@ -85,18 +85,18 @@ describe('getEligibilityType', () => {
   })
 
   describe('ELIGIBLE V3', () => {
-    it('should return ELIGIBLE_CREDIT_V3_15', () => {
+    it('should return ELIGIBLE_CREDIT_V3_15_16 when 15 years old', () => {
       mockedGetAge.mockReturnValueOnce(15)
       const result = getEligibilityType(buildUser({ eligibility: EligibilityType.free }))
 
-      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V3_15)
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16)
     })
 
-    it('should return ELIGIBLE_CREDIT_V3_16', () => {
+    it('should return ELIGIBLE_CREDIT_V3_15_16 when 16 years old', () => {
       mockedGetAge.mockReturnValueOnce(16)
       const result = getEligibilityType(buildUser({ eligibility: EligibilityType.free }))
 
-      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V3_16)
+      expect(result).toBe(UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16)
     })
 
     it('should return ELIGIBLE_CREDIT_V3_17', () => {

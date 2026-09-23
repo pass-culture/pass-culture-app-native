@@ -30,12 +30,8 @@ export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }
       header = <EligibleHeader {...commonProps} subscriptionInfos={subscriptionInfos} />
       break
 
-    case UserEligibilityType.ELIGIBLE_CREDIT_V3_15:
-      header = <EligibleFreeHeader {...commonProps} defaultAge={15} />
-      break
-
-    case UserEligibilityType.ELIGIBLE_CREDIT_V3_16:
-      header = <EligibleFreeHeader {...commonProps} defaultAge={16} />
+    case UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16:
+      header = <EligibleFreeHeader {...commonProps} />
       break
 
     case UserEligibilityType.NOT_ELIGIBLE:

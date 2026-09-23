@@ -10,18 +10,15 @@ import { getAge } from 'shared/user/getAge'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = {
-  user: UserProfile
-  defaultAge: 15 | 16
-}
+type Props = { user: UserProfile }
 
-export const EligibleFreeHeader = ({ user, defaultAge }: Props) => {
+export const EligibleFreeHeader = ({ user }: Props) => {
   const { firstName, lastName, birthDate, eligibilityType } = user
   const title = getProfileHeaderTitle({ firstName, lastName })
-  const age = getAge(birthDate) ?? defaultAge
+  const age = getAge(birthDate)
   const showEligibleFreeBanner = getShouldShowEligibleFreeBanner(
-    user?.eligibilityType,
-    user?.subscriptionStatus
+    user.eligibilityType,
+    user.subscriptionStatus
   )
   return (
     <ViewGap gap={6} testID="eligible-free-header">
