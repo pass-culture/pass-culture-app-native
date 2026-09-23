@@ -60,6 +60,9 @@ jobs:
           github_app_id: ${{ secrets.github_app_id }}
           github_app_private_key: ${{ secrets.github_app_private_key }}
 
+      - name: Install firebase-tools
+        uses: pass-culture/common-workflows/actions/setup-firebase-tools@5a1dc2af9db42434fec30b2579cc7030e2624582 # setup-firebase-tools/v1.0.0
+
       - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
