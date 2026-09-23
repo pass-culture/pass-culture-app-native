@@ -56,7 +56,7 @@ jobs:
       - name: Install passdirector
         uses: pass-culture/common-workflows/actions/setup-passdirector@b470d76b19d7f3ebcda367f5e17484228021d388 # setup-passdirector/v1.0.0
         with:
-          version: v0.7.2
+          version: v0.8.2
           github_app_id: ${{ secrets.github_app_id }}
           github_app_private_key: ${{ secrets.github_app_private_key }}
 
