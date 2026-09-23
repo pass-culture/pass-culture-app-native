@@ -708,7 +708,7 @@ exports[`<PublicDisabilityServices /> should render correctly 1`] = `
                               }
                             }
                           >
-                            Trouvez les aides adaptées à votre situation OU La bonne aide, au bon moment, au bon endroit.
+                            La bonne aide, au bon moment, au bon endroit.
                           </Text>
                         </View>
                       </View>
