@@ -15,7 +15,7 @@ export const EmptyCredit = ({
   age,
   eligibilityType,
 }: {
-  age: number
+  age?: number
   eligibilityType?: UserEligibilityType | null
 }) => {
   const {
@@ -30,7 +30,7 @@ export const EmptyCredit = ({
     17: eighteenYearsOldDeposit,
   }
 
-  if (!incomingCreditMap[age]) return null
+  if (!age || !incomingCreditMap[age]) return null
 
   const ageToShowCreditV3 = age === 17 ? 17 : 16
 

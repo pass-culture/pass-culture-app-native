@@ -721,7 +721,7 @@ describe('<BookingDetails />', () => {
   it('should not display deducted amount message when free user status', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
     })
 
     renderBookingDetails({

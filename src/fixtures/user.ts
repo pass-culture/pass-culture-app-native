@@ -195,7 +195,7 @@ export const eligibleUserV2: UserProfile = {
   ...baseEligibleUser,
   statusType: UserStatusType.ELIGIBLE,
   creditType: UserCreditType.CREDIT_V3_FREE,
-  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
 }
 
 export const exBeneficiaryUserFromAPI: UserProfileResponse = {

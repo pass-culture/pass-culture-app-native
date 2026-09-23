@@ -273,7 +273,7 @@ describe('<HomeBanner/>', () => {
         {
           ...beneficiaryUser,
           statusType: UserStatusType.ELIGIBLE,
-          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
           subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
         },
         { persist: true }
