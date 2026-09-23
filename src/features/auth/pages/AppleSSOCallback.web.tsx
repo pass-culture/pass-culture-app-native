@@ -118,17 +118,11 @@ export const AppleSSOCallback = () => {
 
     const doSignIn = async () => {
       try {
-        const response = await signInAsync({
+        await signInAsync({
           authorizationCode: code,
           oauthStateToken: context.oauthStateToken,
           provider: Provider.APPLE,
         })
-
-        if (response.accountState === AccountState.ACTIVE) {
-          resetFromRef('TabNavigator')
-        } else {
-          resetFromRef('AccountStatusScreenHandler')
-        }
       } catch {
         // Errors are already handled by handleFailure (via onError → onFailure).
         // This catch handles the rethrow from mutateAsync.

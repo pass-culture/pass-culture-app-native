@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
-import { AccountState, FavoriteResponse, RecreditType } from 'api/gen'
+import { AccountState, FavoriteResponse, RecreditType, SigninResponseV2 } from 'api/gen'
 import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import {
@@ -46,9 +46,10 @@ export const useSignInMutation = ({
   const enabledSaveLastLoginInfo = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_SAVE_LAST_LOGIN_INFO
   )
-  const loginRoutine = useLoginRoutine()
   const onSuccess = useHandleSigninSuccess(
     params,
+    analyticsMethod,
+    analyticsType,
     doNotNavigateOnSigninSuccess,
     setErrorMessage,
     enabledSaveLastLoginInfo
@@ -68,14 +69,7 @@ export const useSignInMutation = ({
     },
 
     onSuccess: async (response, body) => {
-      const isOAuth = isOAuthLoginRequest(body)
-      const loginAnalyticsType: LoginType = isOAuth ? 'SSO_login' : 'email_login'
-      const ssoKind = analyticsMethod === 'fromSignup' ? 'signup' : 'login'
-      const resolvedMethod: LoginRoutineMethod = isOAuth
-        ? getSSOLoginMethod(body.provider, ssoKind)
-        : analyticsMethod
-      await loginRoutine(response, resolvedMethod, analyticsType || loginAnalyticsType)
-      await onSuccess(response.accountState, isOAuth ? body.provider : Provider.EMAIL)
+      await onSuccess(response, body)
     },
 
     onError: (error, variables) => {
@@ -96,10 +90,14 @@ export const useSignInMutation = ({
 
 const useHandleSigninSuccess = (
   params: RootStackParamList['LoginMethods' | 'SignupMethods'],
+  analyticsMethod: LoginRoutineMethod,
+  analyticsType?: LoginType,
   doNotNavigateOnSigninSuccess?: boolean,
   setErrorMessage?: (message: string) => void,
   enabledSaveLastLoginInfo = false
 ) => {
+  const loginRoutine = useLoginRoutine()
+
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
 
@@ -162,29 +160,46 @@ const useHandleSigninSuccess = (
   )
 
   return useCallback(
-    async (accountState: AccountState, provider: Provider) => {
+    async (response: SigninResponseV2, body: LoginRequest) => {
       try {
         if (doNotNavigateOnSigninSuccess) {
           return
         }
-        switch (accountState) {
-          case AccountState.INACTIVE:
-          case AccountState.SUSPENDED:
+        switch (response.accountState) {
           case AccountState.SUSPENDED_UPON_USER_REQUEST:
           case AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER:
+            return navigate('SuspiciousLoginSuspendedAccount')
+          case AccountState.INACTIVE:
+          case AccountState.SUSPENDED:
+            return navigate('FraudulentSuspendedAccount')
           case AccountState.WAITING_FOR_ANONYMIZATION:
-            return navigate('AccountStatusScreenHandler')
           case AccountState.DELETED:
           case AccountState.ANONYMIZED:
             return setErrorMessage?.('Ton compte à été supprimé')
-          case AccountState.ACTIVE:
-            await navigateForActiveState(provider)
+          case AccountState.ACTIVE: {
+            const isOAuth = isOAuthLoginRequest(body)
+            const loginAnalyticsType: LoginType = isOAuth ? 'SSO_login' : 'email_login'
+            const ssoKind = analyticsMethod === 'fromSignup' ? 'signup' : 'login'
+            const resolvedMethod: LoginRoutineMethod = isOAuth
+              ? getSSOLoginMethod(body.provider, ssoKind)
+              : analyticsMethod
+            await loginRoutine(response, resolvedMethod, analyticsType || loginAnalyticsType)
+            await navigateForActiveState(isOAuth ? body.provider : Provider.EMAIL)
             return
+          }
         }
       } catch {
         setErrorMessage?.('Il y a eu un problème. Tu peux réessayer plus tard')
       }
     },
-    [doNotNavigateOnSigninSuccess, navigate, navigateForActiveState, setErrorMessage]
+    [
+      analyticsMethod,
+      analyticsType,
+      doNotNavigateOnSigninSuccess,
+      loginRoutine,
+      navigate,
+      navigateForActiveState,
+      setErrorMessage,
+    ]
   )
 }
