@@ -27,6 +27,7 @@ export const LoginWithOneTimePassword = () => {
   const [resendAttempts, setResendAttempts] = useState(0)
   const [resendCooldownEnd, setResendCooldownEnd] = useState<number | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
+
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
 
   const onChange = (nextCode: string[]) => setCode(nextCode)
@@ -42,28 +43,32 @@ export const LoginWithOneTimePassword = () => {
         AsyncStorage.getItem(RESEND_ATTEMPTS_KEY),
       ])
 
-      if (storedCooldown) {
-        const cooldownEnd = Number(storedCooldown)
+      const cooldownEnd = storedCooldown ? Number(storedCooldown) : null
+      const attempts = storedAttempts ? Number(storedAttempts) : 0
+
+      if (cooldownEnd) {
         const remainingSeconds = Math.max(Math.ceil((cooldownEnd - Date.now()) / 1000), 0)
 
         if (remainingSeconds > 0) {
           setResendCooldownEnd(cooldownEnd)
           setResendCountdown(remainingSeconds)
+
+          if (attempts <= MAX_RESEND_ATTEMPTS) {
+            setResendAttempts(attempts)
+          }
         } else {
           await AsyncStorage.removeItem(RESEND_COOLDOWN_KEY)
 
-          if (Number(storedAttempts) >= MAX_RESEND_ATTEMPTS) {
+          if (attempts >= MAX_RESEND_ATTEMPTS) {
             await AsyncStorage.removeItem(RESEND_ATTEMPTS_KEY)
+            setResendAttempts(0)
+          } else {
+            setResendAttempts(attempts)
+            await AsyncStorage.removeItem(RESEND_COOLDOWN_KEY)
           }
         }
-      }
-
-      if (storedAttempts) {
-        const attempts = Number(storedAttempts)
-
-        if (attempts < MAX_RESEND_ATTEMPTS) {
-          setResendAttempts(attempts)
-        }
+      } else if (attempts < MAX_RESEND_ATTEMPTS) {
+        setResendAttempts(attempts)
       }
 
       setIsInitialized(true)
@@ -84,6 +89,12 @@ export const LoginWithOneTimePassword = () => {
 
       if (remainingSeconds === 0) {
         setResendCooldownEnd(null)
+
+        if (resendAttempts >= MAX_RESEND_ATTEMPTS) {
+          setResendAttempts(0)
+          void AsyncStorage.removeItem(RESEND_ATTEMPTS_KEY)
+          void AsyncStorage.removeItem(RESEND_COOLDOWN_KEY)
+        }
       }
     }
 
@@ -94,10 +105,12 @@ export const LoginWithOneTimePassword = () => {
     return () => clearInterval(interval)
   }
 
-  useEffect(startResendCountdown, [resendCooldownEnd])
+  useEffect(startResendCountdown, [resendCooldownEnd, resendAttempts])
 
   const handleResendEmail = async () => {
-    if (resendCountdown > 0 || resendAttempts >= MAX_RESEND_ATTEMPTS) return
+    if (resendCountdown > 0 || resendAttempts >= MAX_RESEND_ATTEMPTS) {
+      return
+    }
 
     const nextAttempts = resendAttempts + 1
     const isLastAttempt = nextAttempts === MAX_RESEND_ATTEMPTS
