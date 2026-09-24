@@ -8,4 +8,5 @@ export enum VerticalPlaylist {
   ThematicSearchVenues = 'thematicSearchVenues',
   VenueOffers = 'venueOffers',
   ArtistOffers = 'artistOffers',
+  RecommendationOffers = 'recommendationOffers',
 }
