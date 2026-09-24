@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
-import { RecommendedOffersModule } from 'features/home/types'
+import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { analytics } from 'libs/analytics/provider'
@@ -14,6 +14,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useUserLocation } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
@@ -100,6 +101,19 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
+  const navigateToVerticalPlaylist = {
+    screen: 'VerticalPlaylistOffers' as const,
+    params: {
+      type: VerticalPlaylist.RecommendationOffers,
+      module: {
+        id: moduleId,
+        type: HomepageModuleType.RecommendedOffersModule,
+        displayParameters,
+        recommendationParameters,
+      },
+    },
+  }
+
   return (
     <ObservedPlaylist onViewableItemsChanged={handleOnViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
@@ -117,7 +131,11 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           onViewableItemsChanged={handleViewableItemsChanged}
           withMargin
           contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
-          seeAllButton={{ navigateToSearchPlaylist: searchTabConfig, onBeforeNavigate }}
+          seeAllButton={{
+            onBeforeNavigate,
+            navigateToVerticalPlaylist,
+            navigateToSearchPlaylist: searchTabConfig,
+          }}
         />
       )}
     </ObservedPlaylist>
