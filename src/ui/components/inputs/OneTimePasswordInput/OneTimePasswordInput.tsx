@@ -83,7 +83,7 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
   })
 
   const handlePaste = (inputValue: string) => {
-    const characters = inputValue.slice(0, numberOfInputs).split('')
+    const characters = inputValue.toUpperCase().slice(0, numberOfInputs).split('')
     const nextValues = Array.from({ length: numberOfInputs }, (_, index) => characters[index] ?? '')
     valuesRef.current = nextValues
     onCodeChange(nextValues)
@@ -92,17 +92,20 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
   }
 
   const handleChangeText = (inputValue: string, index: number) => {
-    if (inputValue.length > 1) {
-      handlePaste(inputValue)
+    const normalizedValue = inputValue.toUpperCase()
+
+    if (normalizedValue.length > 1) {
+      handlePaste(normalizedValue)
       return
     }
 
-    if (!inputValue) return
+    if (!normalizedValue) return
 
     const nextValues = [...valuesRef.current]
-    nextValues[index] = inputValue
+    nextValues[index] = normalizedValue
     valuesRef.current = nextValues
     onCodeChange(nextValues)
+
     const nextIndex = (index + 1) % numberOfInputs
     inputRefs.current[nextIndex]?.focus()
   }
@@ -144,7 +147,7 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
           const isError = hasGenericError || isInvalidInput
           return (
             <StyledTextInputContainer
-              key={index}
+              key={`${textInputID}-${index}`}
               size={size}
               isError={isError}
               isDisabled={!!customProps.disabled}
@@ -152,6 +155,7 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
               <StyledBaseTextInput
                 {...nativeProps}
                 nativeID={`${textInputID}-${index}`}
+                accessibilityLabel={`${customProps.label} - caractère ${index + 1} sur ${numberOfInputs}`}
                 ref={(ref) => {
                   inputRefs.current[index] = ref
                   if (index === 0) {

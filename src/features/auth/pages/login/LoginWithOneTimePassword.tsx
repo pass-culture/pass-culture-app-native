@@ -14,7 +14,7 @@ import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-const RESEND_COUNTDOWN = 30
+const RESEND_COUNTDOWN = 2 * 60
 const MAX_RESEND_ATTEMPTS = 5
 const MAX_ATTEMPTS_COUNTDOWN = 60 * 60
 
