@@ -40,11 +40,10 @@ const wrapWords = (label: string): readonly string[] => {
 export const getSubcategoryLabelParts = (label: string): readonly string[] | undefined => {
   if (!label) return undefined
   if (LABEL_EXCEPTIONS[label]) return LABEL_EXCEPTIONS[label]
+  if (label.length <= MAX_LINE_LENGTH) return undefined
 
   const partsFromSeparator = splitBySeparator(label)
   if (partsFromSeparator) return partsFromSeparator
-
-  if (label.length <= MAX_LINE_LENGTH) return undefined
 
   const lines = wrapWords(label)
   return lines.length > 1 ? lines : undefined
