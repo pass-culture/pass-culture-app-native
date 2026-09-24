@@ -147,7 +147,7 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
           const isError = hasGenericError || isInvalidInput
           return (
             <StyledTextInputContainer
-              key={`${textInputID}-${index}`}
+              key={index} // index is stable here because OTP inputs are fixed and never reordered
               size={size}
               isError={isError}
               isDisabled={!!customProps.disabled}
@@ -166,7 +166,7 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
                 value={value}
                 disabled={customProps.disabled}
                 keyboardType="number-pad"
-                maxLength={numberOfInputs}
+                maxLength={1}
                 selectTextOnFocus
                 onChangeText={(inputValue) => handleChangeText(inputValue, index)}
                 onKeyPress={(event) => {
