@@ -54,6 +54,35 @@ describe('useAdjustBeneficiaryEvent', () => {
     expect(adjustBeneficiaryEventSent).toBeNull()
   })
 
+  it('should log new beneficiary events when the user was registered before becoming beneficiary', async () => {
+    await storage.saveObject('adjust_beneficiary_event_sent', false)
+
+    renderUseAdjustBeneficiaryEvent({
+      ...beneficiaryUserV2,
+      birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+    })
+
+    await waitFor(() => {
+      expect(Adjust.logEvent).toHaveBeenNthCalledWith(1, AdjustEvents.COMPLETE_BENEFICIARY)
+      expect(Adjust.logEvent).toHaveBeenNthCalledWith(2, AdjustEvents.NEW_BENEFICIARY)
+      expect(Adjust.logEvent).toHaveBeenNthCalledWith(3, AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
+      expect(Adjust.logEvent).toHaveBeenNthCalledWith(4, AdjustEvents.NEW_BENEFICIARY_UNDERAGE)
+    })
+  })
+
+  it('should not log new beneficiary events when the beneficiary marker is missing', async () => {
+    renderUseAdjustBeneficiaryEvent({
+      ...beneficiaryUserV2,
+      birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+    })
+
+    await waitFor(() => {
+      expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY)
+      expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+      expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_UNDERAGE)
+    })
+  })
+
   it('should log underage beneficiary event when user is beneficiary and is underage', async () => {
     renderUseAdjustBeneficiaryEvent({
       ...beneficiaryUserV2,
