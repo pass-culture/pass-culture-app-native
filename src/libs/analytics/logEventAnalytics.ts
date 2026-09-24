@@ -733,6 +733,94 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
   logViewItem: (params: PageTrackingInfo & { locationType: LocationMode }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM }, params),
-  logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
+  logViewItemListV2: (params: ViewItemListParams) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM_LIST_V2 }, params),
+  logViewItemV2: (params: PageTrackingInfo & { locationType: LocationMode }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM_LIST_V2 }, params),
+  logViewItemV3: (params: PageTrackingInfo & { locationType: LocationMode }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM_LIST_V2 }, params),
+  logViewedBookingPage: (params: ViewItemParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),
 }
+
+// list
+
+// {
+// 	origin: "home" | "search" | "offer"
+// 	homeEntryId: string (ID contentful de la Home)
+// 	moduleId: string (ID Contentful du module)
+// 	index: number (index du module dans la page en vertical)
+// 	viewedAt: number (Timestamp ISO de la première apparition du module en ms avec TZ) ** A redéfinir chez Jeunes **`
+// 	id: string (hash unique du ViewItem généré côté front pour récupérer les items associés hash(homeEntryID, moduleID, index, viewedAt))`
+// 	eventName: string ("ViewItem")
+// }
+
+type ViewItemListParams = {
+  origin: 'home' | 'search' | 'offer'
+  id: string
+  index: number
+  viewedAt: string // new Date().toISOString() // Timestamp ISO de la première apparition du module en ms avec TZ
+  homeEntryId?: string
+  moduleId?: string
+}
+
+const logViewItemListV2 = (params: Omit<ViewItemListParams, 'viewedAt' | 'id'>) => {
+  const viewedAt = new Date().toISOString()
+  return analytics.logEvent(
+    { firebase: AnalyticsEvent.VIEW_ITEM_LIST_V2 },
+    {
+      id: `${params.homeEntryId ? params.homeEntryId : 'null'}-${params.moduleId ? params.moduleId : 'null'}-${params.index ? params.index : 'null'}-${viewedAt}`,
+      viewedAt,
+      ...params,
+    }
+  )
+}
+
+// item
+
+// {
+//     index: number
+//     track_def_id: string
+//     id: string
+//     viewedAt: number
+//     itemType: "offer" | "venue" | "artist" | **etc. donner la liste fermée**
+//     eventName: string ("ViewItem")
+// }
+
+type ViewItemParams = {
+  viewItemListId: string
+  index: number
+  type: 'offer' | 'venue' | 'artist'
+  id: string
+  viewedAt: string // new Date().toISOString() // Timestamp ISO de la première apparition du module en ms avec TZ
+}
+
+const logViewItemV2 = (params: Omit<ViewItemParams, 'viewedAt'>) =>
+  analytics.logEvent(
+    { firebase: AnalyticsEvent.VIEW_ITEM },
+    {
+      viewedAt: new Date().toISOString(),
+      ...params,
+    }
+  )
+
+type ViewItemParamsV3 = {
+  origin: 'home' | 'search' | 'offer'
+  playlistIndex: number
+  viewItemListId: string
+  index: number
+  type: 'offer' | 'venue' | 'artist'
+  id: string
+  viewedAt: string // new Date().toISOString() // Timestamp ISO de la première apparition du module en ms avec TZ
+  homeEntryId?: string
+  moduleId?: string
+}
+
+const logViewItemV3 = (params: Omit<ViewItemParamsV3, 'viewedAt'>) =>
+  analytics.logEvent(
+    { firebase: AnalyticsEvent.VIEW_ITEM },
+    {
+      viewedAt: new Date().toISOString(),
+      ...params,
+    }
+  )

@@ -168,7 +168,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       },
     },
   }
-
+  console.log("module d'offre")
   return (
     <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
@@ -182,7 +182,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           keyExtractor={keyExtractor}
           onEndReached={logHasSeenAllTilesOnce}
           playlistRef={listRef}
-          onViewableItemsChanged={handleViewableItemsChanged}
+          onViewableItemsChanged={(toto) => console.log({ toto })}
           contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           seeAllButton={{
             onBeforeNavigate,
