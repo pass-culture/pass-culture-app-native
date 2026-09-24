@@ -47,14 +47,16 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
   const syncStepIndexWithNavigation = useCallback(
     (newStepIndex: number | ((prev: number) => number)) => {
-      setStepIndex((prev) => {
-        const value = typeof newStepIndex === 'function' ? newStepIndex(prev) : newStepIndex
-        setParams({ stepIndex: value })
-        return value
-      })
+      setStepIndex((prev) =>
+        typeof newStepIndex === 'function' ? newStepIndex(prev) : newStepIndex
+      )
     },
-    [setParams]
+    []
   )
+
+  useEffect(() => {
+    setParams({ stepIndex })
+  }, [stepIndex, setParams])
 
   const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)
   const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
