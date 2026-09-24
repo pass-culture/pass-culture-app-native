@@ -1,6 +1,7 @@
 import { isEmpty } from 'lodash'
 
 import { HomepageModule } from 'features/home/types'
+import { adaptArtistHighlightingModule } from 'libs/contentful/adapters/modules/adaptArtistHighlightingModule'
 import { adaptArtistPlaylistModule } from 'libs/contentful/adapters/modules/adaptArtistPlaylistModule'
 import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusinessModule'
 import { adaptCategoryListModule } from 'libs/contentful/adapters/modules/adaptCategoryListModule'
@@ -15,6 +16,7 @@ import { adaptVideoModule } from 'libs/contentful/adapters/modules/adaptVideoMod
 import {
   HomepageNatifModule,
   isAlgoliaContentModel,
+  isArtistHighlightingContentModel,
   isArtistPlaylistContentModel,
   isBusinessContentModel,
   isCategoryListContentModel,
@@ -36,6 +38,10 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
     try {
       if (isAlgoliaContentModel(module)) {
         return adaptOffersModule(module)
+      }
+
+      if (isArtistHighlightingContentModel(module)) {
+        return adaptArtistHighlightingModule(module)
       }
 
       if (isArtistPlaylistContentModel(module)) {

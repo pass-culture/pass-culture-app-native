@@ -6,6 +6,7 @@ import type { CategoryButtonIllustrationName } from 'shared/illustrations/catego
 export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
+  ARTIST_HIGHLIGHTING = 'artistHighlighting',
   ARTIST_PLAYLIST = 'artistPlaylist',
   BOOK_TYPES = 'bookTypes',
   BUSINESS = 'business',
@@ -228,6 +229,13 @@ export interface AlgoliaFields {
   cover?: Cover
   additionalAlgoliaParameters?: AlgoliaParameters[]
   recommendationParameters?: RecommendationParameters
+}
+
+export interface ArtistHighlightingFields {
+  artistId: string
+  subtitle: string
+  description: string
+  color: Color
 }
 
 export interface ArtistPlaylistFields {
@@ -457,6 +465,7 @@ interface HomepageNatifFields {
 
 export type HomepageNatifModule =
   | AlgoliaContentModel
+  | ArtistHighlightingContentModel
   | ArtistPlaylistContentModel
   | BusinessContentModel
   | RecommendationContentModel
@@ -472,6 +481,11 @@ export type HomepageNatifModule =
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
 
 export type ArtistPlaylistContentModel = Entry<ArtistPlaylistFields, ContentTypes.ARTIST_PLAYLIST>
+
+export type ArtistHighlightingContentModel = Entry<
+  ArtistHighlightingFields,
+  ContentTypes.ARTIST_HIGHLIGHTING
+>
 
 export type BusinessContentModel = Entry<BusinessFields, ContentTypes.BUSINESS>
 
@@ -520,6 +534,11 @@ export type TrendsContentModel = Entry<TrendsFields, ContentTypes.TRENDS>
 
 export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
+
+export const isArtistHighlightingContentModel = (
+  module: HomepageNatifModule
+): module is ArtistHighlightingContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.ARTIST_HIGHLIGHTING
 
 export const isArtistPlaylistContentModel = (
   module: HomepageNatifModule
