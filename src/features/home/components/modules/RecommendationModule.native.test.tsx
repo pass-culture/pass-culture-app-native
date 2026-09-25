@@ -1,13 +1,16 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { RecommendationApiParams, SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
 
@@ -33,10 +36,12 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('RecommendationModule', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -75,6 +80,21 @@ describe('RecommendationModule', () => {
 
     await waitFor(() => {
       expect(screen.toJSON()).toBeNull()
+    })
+  })
+
+  it('should navigate to vertical playlist screen when pressing see all button', async () => {
+    renderRecommendationModule()
+
+    await user.press(screen.getByLabelText('Voir tout pour la sélection Tes offres recommandées'))
+
+    expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffers', {
+      module: {
+        displayParameters,
+        id: 'abcd',
+        type: 'RecommendedOffersModule',
+      },
+      type: VerticalPlaylist.RecommendationOffers,
     })
   })
 })
