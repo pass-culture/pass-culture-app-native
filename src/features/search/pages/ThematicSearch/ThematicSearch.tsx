@@ -8,8 +8,9 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
+import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
@@ -20,7 +21,7 @@ import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSea
 import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
@@ -47,14 +48,23 @@ export const ThematicSearch: React.FC = () => {
   const [fallbackSearchId] = useState(() => uuidv4())
   const currentSearchId = params?.searchId ?? fallbackSearchId
   const isLandscape = useIsLandscape()
+  const { searchState, dispatch } = useSearch()
+  const thematicSearchState = useMemo<SearchState>(() => {
+    const { accessibilityFilter: _accessibilityFilter, ...searchParams } = params ?? {}
+    return {
+      ...initialSearchState,
+      ...searchParams,
+      locationFilter: searchState.locationFilter,
+    }
+  }, [params, searchState.locationFilter])
+
   const {
     hits: { venues },
     venuesUserData,
     nbHits,
     isLoading,
-  } = useSearchResults()
+  } = useSearchInfiniteQuery(thematicSearchState)
 
-  const { searchState, dispatch } = useSearch()
   const isFocused = useIsFocused()
 
   const pageTracking = usePageTracking({
@@ -86,11 +96,16 @@ export const ThematicSearch: React.FC = () => {
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      void analytics.logPerformSearch(searchState, disabilities, nbHits, SearchView.Thematic)
+      void analytics.logPerformSearch(
+        thematicSearchState,
+        disabilities,
+        nbHits,
+        SearchView.Thematic
+      )
     }
-  }, [disabilities, isLoading, nbHits, previousIsLoading, searchState])
+  }, [disabilities, isLoading, nbHits, previousIsLoading, thematicSearchState])
 
-  const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
+  const shouldDisplayVenuesPlaylist = !thematicSearchState.venue && !!venues?.length
 
   const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,

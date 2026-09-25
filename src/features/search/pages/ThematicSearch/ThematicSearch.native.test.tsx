@@ -1,20 +1,22 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { popTo, navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { popTo, navigate, useIsFocused, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { SearchStackParamList } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
-import { SearchView } from 'features/search/types'
+import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { LocationMode } from 'libs/location/types'
 import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -98,9 +100,9 @@ const defaultUseSearchResults = {
   fetchNextPage: jest.fn(),
   isFetchingNextPage: false,
 }
-const mockUseSearchResults = jest.fn(() => defaultUseSearchResults)
+const mockUseSearchResults = jest.fn((_searchState: SearchState) => defaultUseSearchResults)
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResults(),
+  useSearchInfiniteQuery: (searchState: SearchState) => mockUseSearchResults(searchState),
 }))
 
 const mockData = PLACEHOLDER_DATA
@@ -118,6 +120,9 @@ describe('<ThematicSearch/>', () => {
   beforeEach(() => {
     setFeatureFlags()
     useLocationV2.setState(defaultLocationState)
+    useIsFocused.mockReturnValue(true)
+    mockedUseSearch.mockReturnValue(defaultUseSearch)
+    mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
   })
 
   describe('book offerCategory', () => {
@@ -224,10 +229,7 @@ describe('<ThematicSearch/>', () => {
     beforeEach(() => {
       mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
       mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
-      mockedUseSearch.mockReturnValue({
-        ...defaultUseSearch,
-        searchState: { ...mockSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] },
-      })
+      mockedUseSearch.mockReturnValue(defaultUseSearch)
     })
 
     it('should log PerformSearch when search query execution ends', async () => {
@@ -371,6 +373,83 @@ describe('<ThematicSearch/>', () => {
       })
     })
   })
+
+  describe('route search parameters', () => {
+    it.each([SearchGroupNameEnumv2.CINEMA, SearchGroupNameEnumv2.CONCERTS_FESTIVALS])(
+      'should keep %s when the shared search is reset across three focus cycles',
+      async (category) => {
+        mockOfferCategoriesParams({ offerCategories: [category] })
+        const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+        await act(async () => {})
+
+        expect(mockUseSearchResults).toHaveBeenCalledWith({
+          ...initialSearchState,
+          offerCategories: [category],
+        })
+
+        for (let cycle = 0; cycle < 3; cycle++) {
+          useIsFocused.mockReturnValue(false)
+          mockedUseSearch.mockReturnValue({
+            ...defaultUseSearch,
+            searchState: {
+              ...initialSearchState,
+              offerCategories: [SearchGroupNameEnumv2.LIVRES],
+              offerNativeCategories: [BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE],
+              query: 'roman',
+            },
+          })
+          rerender(reactQueryProviderHOC(<ThematicSearch />))
+          mockedUseSearch.mockReturnValue(defaultUseSearch)
+          useIsFocused.mockReturnValue(true)
+          rerender(reactQueryProviderHOC(<ThematicSearch />))
+          await act(async () => {})
+        }
+
+        for (const [state] of mockUseSearchResults.mock.calls) {
+          expect(state).toEqual({ ...initialSearchState, offerCategories: [category] })
+        }
+      }
+    )
+
+    it('should update the query when the route category changes', async () => {
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
+      const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+      await act(async () => {})
+
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      await act(async () => {})
+
+      expect(mockUseSearchResults).toHaveBeenLastCalledWith({
+        ...initialSearchState,
+        offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
+      })
+    })
+
+    it('should preserve route filters while following the current location', async () => {
+      mockThematicRouteParams({
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
+        query: 'cinéma',
+        searchId: 'thematic-search',
+        accessibilityFilter: { isAudioDisabilityCompliant: true },
+        locationFilter: initialSearchState.locationFilter,
+      })
+      const { rerender } = render(reactQueryProviderHOC(<ThematicSearch />))
+      await act(async () => {})
+      const locationFilter = { locationType: LocationMode.AROUND_ME, aroundRadius: 20 } as const
+      mockSharedSearchState({ ...initialSearchState, locationFilter })
+      rerender(reactQueryProviderHOC(<ThematicSearch />))
+      await act(async () => {})
+
+      expect(mockUseSearchResults).toHaveBeenLastCalledWith({
+        ...initialSearchState,
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
+        query: 'cinéma',
+        searchId: 'thematic-search',
+        locationFilter,
+      })
+    })
+  })
 })
 
 function mockOfferCategoriesParams(offerCategoriesParams: {
@@ -380,4 +459,12 @@ function mockOfferCategoriesParams(offerCategoriesParams: {
     params: offerCategoriesParams,
     name: 'ThematicSearch',
   }))
+}
+
+function mockThematicRouteParams(params: SearchStackParamList['ThematicSearch']) {
+  useRoute.mockReturnValue({ name: 'ThematicSearch', params })
+}
+
+function mockSharedSearchState(searchState: SearchState) {
+  mockedUseSearch.mockReturnValue({ ...defaultUseSearch, searchState })
 }
