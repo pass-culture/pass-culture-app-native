@@ -36,8 +36,7 @@ const PUBLIC_SERVICES: PublicService[] = [
   {
     name: 'Aides simplifiées',
     url: 'https://aides.beta.numerique.gouv.fr/',
-    description:
-      'Trouvez les aides adaptées à votre situation OU La bonne aide, au bon moment, au bon endroit.',
+    description: 'La bonne aide, au bon moment, au bon endroit.',
     illustration: <LogoFrenchRepublic />,
   },
   {
