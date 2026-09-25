@@ -95,14 +95,14 @@ describe('getUserProfileState', () => {
 
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.ELIGIBLE,
-        creditType: UserCreditType.CREDIT_EXPIRED,
+        creditType: UserCreditType.CREDIT_V2_15_17,
         eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V2_18,
       })
     })
   })
 
   describe('CREDIT V3', () => {
-    it('should return ELIGIBLE + NO_CREDIT + ELIGIBLE_CREDIT_V3_15 when user is fifteen with no deposit', () => {
+    it('should return ELIGIBLE + NO_CREDIT + ELIGIBLE_CREDIT_V3_15_16 when user is fifteen with no deposit', () => {
       mockAge(15)
       const user = buildUser({
         status: { statusType: YoungStatusType.eligible },
@@ -113,11 +113,11 @@ describe('getUserProfileState', () => {
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.ELIGIBLE,
         creditType: UserCreditType.NO_CREDIT,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
       })
     })
 
-    it('should return BENEFICIARY + CREDIT_V3_FREE + ELIGIBLE_CREDIT_V3_15 when user is fifteen with free deposit', () => {
+    it('should return BENEFICIARY + CREDIT_V3_FREE + ELIGIBLE_CREDIT_V3_15_16 when user is fifteen with free deposit', () => {
       mockAge(15)
       const user = buildUser({
         status: { statusType: YoungStatusType.beneficiary },
@@ -128,11 +128,11 @@ describe('getUserProfileState', () => {
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.BENEFICIARY,
         creditType: UserCreditType.CREDIT_V3_FREE,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
       })
     })
 
-    it('should return ELIGIBLE + NO_CREDIT + ELIGIBLE_CREDIT_V3_16 when user is sixteen with no deposit', () => {
+    it('should return ELIGIBLE + NO_CREDIT + ELIGIBLE_CREDIT_V3_15_16 when user is sixteen with no deposit', () => {
       mockAge(16)
       const user = buildUser({
         status: { statusType: YoungStatusType.eligible },
@@ -143,11 +143,11 @@ describe('getUserProfileState', () => {
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.ELIGIBLE,
         creditType: UserCreditType.NO_CREDIT,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
       })
     })
 
-    it('should return BENEFICIARY + CREDIT_V3_FREE + ELIGIBLE_CREDIT_V3_16 when user is sixteen with free deposit', () => {
+    it('should return BENEFICIARY + CREDIT_V3_FREE + ELIGIBLE_CREDIT_V3_15_16 when user is sixteen with free deposit', () => {
       mockAge(16)
       const user = buildUser({
         status: { statusType: YoungStatusType.beneficiary },
@@ -158,7 +158,7 @@ describe('getUserProfileState', () => {
       expect(getUserProfileState(user)).toEqual({
         statusType: UserStatusType.BENEFICIARY,
         creditType: UserCreditType.CREDIT_V3_FREE,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
       })
     })
 

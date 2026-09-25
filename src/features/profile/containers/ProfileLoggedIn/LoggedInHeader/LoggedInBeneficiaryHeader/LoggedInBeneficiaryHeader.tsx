@@ -44,9 +44,7 @@ export const LoggedInBeneficiaryHeader = ({ user, featureFlags, bonificationInfo
       break
 
     case UserCreditType.CREDIT_V1_18:
-    case UserCreditType.CREDIT_V2_15:
-    case UserCreditType.CREDIT_V2_16:
-    case UserCreditType.CREDIT_V2_17:
+    case UserCreditType.CREDIT_V2_15_17:
     case UserCreditType.CREDIT_V2_18:
     case UserCreditType.CREDIT_V3_17:
     case UserCreditType.CREDIT_V3_18:

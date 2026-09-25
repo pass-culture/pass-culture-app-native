@@ -5,14 +5,10 @@ import { UserProfile } from 'features/share/types'
 const activationFlowByEligibility: Partial<
   Record<UserEligibilityType, ReadonlyArray<UserCreditType>>
 > = {
-  [UserEligibilityType.ELIGIBLE_CREDIT_V2_15]: [UserCreditType.CREDIT_UNKNOWN],
-  [UserEligibilityType.ELIGIBLE_CREDIT_V2_16]: [UserCreditType.CREDIT_UNKNOWN],
-  [UserEligibilityType.ELIGIBLE_CREDIT_V2_17]: [UserCreditType.CREDIT_UNKNOWN],
+  [UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17]: [UserCreditType.CREDIT_UNKNOWN],
   [UserEligibilityType.ELIGIBLE_CREDIT_V2_18]: [
     UserCreditType.CREDIT_UNKNOWN,
-    UserCreditType.CREDIT_V2_15,
-    UserCreditType.CREDIT_V2_16,
-    UserCreditType.CREDIT_V2_17,
+    UserCreditType.CREDIT_V2_15_17,
   ],
   [UserEligibilityType.ELIGIBLE_CREDIT_V3_17]: [
     UserCreditType.CREDIT_UNKNOWN,
@@ -20,9 +16,7 @@ const activationFlowByEligibility: Partial<
   ],
   [UserEligibilityType.ELIGIBLE_CREDIT_V3_18]: [
     UserCreditType.CREDIT_UNKNOWN,
-    UserCreditType.CREDIT_V2_15,
-    UserCreditType.CREDIT_V2_16,
-    UserCreditType.CREDIT_V2_17,
+    UserCreditType.CREDIT_V2_15_17,
     UserCreditType.CREDIT_V3_FREE,
     UserCreditType.CREDIT_V3_17,
   ],

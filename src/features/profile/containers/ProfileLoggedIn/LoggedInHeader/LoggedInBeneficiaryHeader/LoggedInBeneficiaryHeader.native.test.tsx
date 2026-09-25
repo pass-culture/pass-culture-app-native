@@ -57,28 +57,10 @@ describe('LoggedInBeneficiaryHeader', () => {
     expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()
   })
 
-  it('should render BeneficiaryHeader for CREDIT_V2_15', () => {
+  it('should render BeneficiaryHeader for CREDIT_V2_15_17', () => {
     renderLoggedInBeneficiaryHeader({
       ...beneficiaryUser,
-      creditType: UserCreditType.CREDIT_V2_15,
-    })
-
-    expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()
-  })
-
-  it('should render BeneficiaryHeader for CREDIT_V2_16', () => {
-    renderLoggedInBeneficiaryHeader({
-      ...beneficiaryUser,
-      creditType: UserCreditType.CREDIT_V2_16,
-    })
-
-    expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()
-  })
-
-  it('should render BeneficiaryHeader for CREDIT_V2_17', () => {
-    renderLoggedInBeneficiaryHeader({
-      ...beneficiaryUser,
-      creditType: UserCreditType.CREDIT_V2_17,
+      creditType: UserCreditType.CREDIT_V2_15_17,
     })
 
     expect(screen.getByTestId('beneficiary-header')).toBeOnTheScreen()

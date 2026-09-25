@@ -37,25 +37,25 @@ describe('getCreditType', () => {
   })
 
   describe('CREDIT V2', () => {
-    it('should return CREDIT_V2_15', () => {
+    it('should return CREDIT_V2_15_17 when 15 years old', () => {
       mockedGetAge.mockReturnValueOnce(15)
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_15_17 }))
 
-      expect(result).toBe(UserCreditType.CREDIT_V2_15)
+      expect(result).toBe(UserCreditType.CREDIT_V2_15_17)
     })
 
-    it('should return CREDIT_V2_16', () => {
+    it('should return CREDIT_V2_15_17 when 16 years old', () => {
       mockedGetAge.mockReturnValueOnce(16)
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_15_17 }))
 
-      expect(result).toBe(UserCreditType.CREDIT_V2_16)
+      expect(result).toBe(UserCreditType.CREDIT_V2_15_17)
     })
 
-    it('should return CREDIT_V2_17', () => {
+    it('should return CREDIT_V2_15_17 when 17 years old', () => {
       mockedGetAge.mockReturnValueOnce(17)
       const result = getCreditType(buildUser({ depositType: DepositType.GRANT_15_17 }))
 
-      expect(result).toBe(UserCreditType.CREDIT_V2_17)
+      expect(result).toBe(UserCreditType.CREDIT_V2_15_17)
     })
 
     it('should return CREDIT_V2_18', () => {
@@ -108,8 +108,7 @@ describe('getCreditType', () => {
 
   describe('CREDIT UNKNOWN', () => {
     it('should log fallback when credit type is unknown', () => {
-      mockedGetAge.mockReturnValueOnce(14)
-      const result = getCreditType(buildUser({ depositType: DepositType.GRANT_15_17 }))
+      const result = getCreditType(buildUser({ depositType: 'unknown' as DepositType }))
 
       expect(result).toBe(UserCreditType.CREDIT_UNKNOWN)
 
