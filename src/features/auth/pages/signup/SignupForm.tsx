@@ -36,25 +36,30 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const accountCreationToken = params?.accountCreationToken
   const [stepIndex, setStepIndex] = React.useState(params?.stepIndex ?? currentStep)
 
-  useEffect(() => {
-    const navigationStepIndex = params?.stepIndex
-    if (navigationStepIndex !== undefined && navigationStepIndex !== stepIndex) {
-      setStepIndex(navigationStepIndex)
-    }
+  useEffect(
+    function syncStepIndexFromNavigationParams() {
+      const navigationStepIndex = params?.stepIndex
+      if (navigationStepIndex !== undefined && navigationStepIndex !== stepIndex) {
+        setStepIndex(navigationStepIndex)
+      }
+    },
     // stepIndex is not in the useEffect dependencies to avoid multiple re-render
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.stepIndex])
+    [params?.stepIndex]
+  )
 
   const syncStepIndexWithNavigation = useCallback(
     (newStepIndex: number | ((prev: number) => number)) => {
-      setStepIndex((prev) => {
-        const value = typeof newStepIndex === 'function' ? newStepIndex(prev) : newStepIndex
-        setParams({ stepIndex: value })
-        return value
-      })
+      setStepIndex((prev) =>
+        typeof newStepIndex === 'function' ? newStepIndex(prev) : newStepIndex
+      )
     },
-    [setParams]
+    []
   )
+
+  useEffect(() => {
+    setParams({ stepIndex })
+  }, [stepIndex, setParams])
 
   const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)
   const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
@@ -93,19 +98,25 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const ssoType = accountCreationToken ? 'SSO_login' : 'SSO_signup'
   const stepperAnalyticsType = isSSOSubscription ? ssoType : undefined
 
-  useEffect(() => {
-    if (accountCreationToken && isFirstStep) {
-      goToNextStep({ accountCreationToken, ssoProvider: params?.ssoProvider })
-    }
-  }, [accountCreationToken, goToNextStep, isFirstStep, params?.ssoProvider])
+  useEffect(
+    function goToNextStepAfterSSOAccountCreation() {
+      if (accountCreationToken && isFirstStep) {
+        goToNextStep({ accountCreationToken, ssoProvider: params.ssoProvider })
+      }
+    },
+    [accountCreationToken, goToNextStep, isFirstStep, params?.ssoProvider]
+  )
 
-  useEffect(() => {
-    if (params?.from && stepConfig?.name) {
-      analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
-    }
+  useEffect(
+    function logStepperDisplayed() {
+      if (params?.from && stepConfig?.name) {
+        void analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
+      }
+    },
     // stepperAnalyticsType is not in the useEffect dependencies to avoid multiple re-render
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.from, stepConfig?.name])
+    [params?.from, stepConfig?.name]
+  )
 
   const headerHeight = useGetHeaderHeight()
 
@@ -149,7 +160,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
       if (commonParams.accountCreationToken) {
         const {
-          accountCreationToken,
+          accountCreationToken: ssoAccountCreationToken,
           email: _email,
           password: _password,
           ssoProvider: _ssoProvider,
@@ -157,7 +168,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
         } = commonParams
         const { accessToken, refreshToken } = await ssoSignup({
           ...rest,
-          accountCreationToken,
+          accountCreationToken: ssoAccountCreationToken,
         })
         const ssoProvider = signupData.ssoProvider
         if (!ssoProvider) {
@@ -188,7 +199,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   }
 
   const onExitPress = (origin_detail: CTAexitActivationFlow) =>
-    analytics.logHasExitedActivationFlow({
+    void analytics.logHasExitedActivationFlow({
       from: 'signupform',
       origin_detail,
     })
