@@ -22,11 +22,9 @@ export function getSentryConfig() {
     sampleRate: Number(env.SENTRY_SAMPLE_RATE || 1),
     attachScreenshot: true,
     integrations: [sentryReactNavigationIntegration],
-    _experiments: {
-      // profilesSampleRate is relative to tracesSampleRate.
-      // Here, we'll capture profiles for 1% of transactions.
-      profilesSampleRate: Number(env.SENTRY_PROFILES_SAMPLE_RATE || 1),
-    },
+    // profilesSampleRate is relative to tracesSampleRate.
+    // Here, we'll capture profiles for 1% of transactions.
+    profilesSampleRate: Number(env.SENTRY_PROFILES_SAMPLE_RATE || 1),
     enableAppHangTracking: false,
     ignoreErrors: [
       'Non-Error promise rejection captured with value: Timeout', // Sentry Issue: APPLICATION-NATIVE-77ZQ
