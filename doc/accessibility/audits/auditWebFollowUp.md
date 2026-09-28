@@ -2,8 +2,8 @@
 
 | Référentiel | 22/07/2026 | 24/09/2026 | 26/11/2026 |
 | ----------- | ---------- | ---------- | ---------- |
-| RGAA 4.1    | 66.67%     | ⏳         | ⏳         |
-| RAWeb 1.1   | 65.45%     | ⏳         | ⏳         |
+| RGAA 4.1    | 66.67%     | 80.36%     | ⏳         |
+| RAWeb 1.1   | 65.45%     | 81.03%     | ⏳         |
 
 <br>
 
@@ -15,10 +15,10 @@
 🟠 : partiellement accessible
 
 **E01** : Création de compte (6 écrans) 🟠  
-**E02** : Authentification 🟠  
+**E02** : Authentification 🟢  
 **E03** : Accessibilité 🟠  
-**E04** : Plan du site 🟠  
-**E05** : Profil (connecté et déconnecté) 🟠  
+**E04** : Plan du site 🟢  
+**E05** : Profil (connecté et déconnecté) 🟢  
 **E06** : Apparence 🟠  
 **E07** : Mentions légales 🟠  
 **E08** : Recherche 🟠  
