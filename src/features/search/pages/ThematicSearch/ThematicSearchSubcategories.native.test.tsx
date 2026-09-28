@@ -4,6 +4,8 @@ import { goBack, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ThematicSearchSubcategories } from 'features/search/pages/ThematicSearch/ThematicSearchSubcategories'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderAsync, screen, userEvent } from 'tests/utils'
 
@@ -24,6 +26,7 @@ jest.useFakeTimers()
 describe('<ThematicSearchSubcategories/>', () => {
   beforeEach(() => {
     useRoute.mockReturnValue({ params: { offerCategories: [SearchGroupNameEnumv2.LIVRES] } })
+    setFeatureFlags()
   })
 
   it('should display the page title', async () => {
@@ -58,6 +61,19 @@ describe('<ThematicSearchSubcategories/>', () => {
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
       }),
     })
+  })
+
+  it('should use subcategory button when wipNewCategoryBlocksHome FF deactivated', async () => {
+    await renderThematicSearchSubcategories()
+
+    expect(await screen.findByLabelText('Romans et littérature')).toBeOnTheScreen()
+  })
+
+  it('should use new subcategory button when wipNewCategoryBlocksHome FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS])
+    await renderThematicSearchSubcategories()
+
+    expect(await screen.findByLabelText('Sous-catégorie Romans et littérature')).toBeOnTheScreen()
   })
 })
 
