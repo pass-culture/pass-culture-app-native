@@ -1,4 +1,5 @@
 import {
+  formattedArtistHighlightingModule,
   formattedBusinessModule,
   formattedCategoryListModule,
   formattedOffersModule,
@@ -9,6 +10,7 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
 import { algoliaNatifModuleFixture } from 'libs/contentful/fixtures/algoliaModules.fixture'
+import { artistHighlightingModuleFixture } from 'libs/contentful/fixtures/artistHighlightingModule.fixture'
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
 import { categoryListFixture } from 'libs/contentful/fixtures/categoryList.fixture'
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
@@ -27,6 +29,7 @@ describe('adaptHomepageModules', () => {
       thematicHighlightModuleFixture,
       categoryListFixture,
       trendsModuleFixture,
+      artistHighlightingModuleFixture,
     ]
 
     const formattedHomepageModules = [
@@ -37,6 +40,7 @@ describe('adaptHomepageModules', () => {
       formattedThematicHighlightModule,
       formattedCategoryListModule,
       formattedTrendsModule,
+      formattedArtistHighlightingModule,
     ]
 
     expect(adaptHomepageNatifModules(rawHomepageNatifModules)).toStrictEqual(
