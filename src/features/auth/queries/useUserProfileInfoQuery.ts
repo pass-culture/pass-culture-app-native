@@ -21,7 +21,7 @@ const sanitizeUser = (user: UserProfileResponse): UserProfile => {
   const { statusType, creditType, eligibilityType } = getUserProfileState(user)
   return {
     ...rest,
-    subscriptionStatus: user.status.subscriptionStatus,
+    subscriptionStatus: user.status?.subscriptionStatus, // Keep optional chaining for backwards compatibility with persisted data from older app versions.
     statusType,
     creditType,
     eligibilityType,
