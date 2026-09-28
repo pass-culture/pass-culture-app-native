@@ -1,6 +1,9 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { RecommendationApiParams } from 'api/gen'
+import { HomepageModuleType } from 'features/home/types'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
@@ -48,6 +51,20 @@ jest.mock('features/venue/helpers/useVenueSearchParameters', () => ({
   useVenueSearchParameters: () => ({}),
 }))
 
+const defaultRecommendationApiParams: RecommendationApiParams = {
+  callId: '1',
+  recoOrigin: 'unknown',
+}
+
+const mockUseHomeRecommendedOffers = jest.fn().mockReturnValue({
+  offers: mockedAlgoliaResponse.hits,
+  recommendationApiParams: defaultRecommendationApiParams,
+})
+
+jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
+  useHomeRecommendedOffers: () => mockUseHomeRecommendedOffers(),
+}))
+
 describe('VerticalPlaylistOffers', () => {
   beforeEach(() => {
     useLocationV2.setState(defaultLocationState)
@@ -93,6 +110,23 @@ describe('VerticalPlaylistOffers', () => {
     renderVerticalPlaylistOffers()
 
     expect(screen.getAllByText('Similar playlist')[0]).toBeOnTheScreen()
+  })
+
+  it('should render VerticalPlaylistRecommendedOffers', () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        type: VerticalPlaylist.RecommendationOffers,
+        module: {
+          type: HomepageModuleType.RecommendedOffersModule,
+          displayParameters: { title: 'Tes offres recommandées' },
+        },
+      },
+    })
+
+    renderVerticalPlaylistOffers()
+
+    expect(screen.getAllByText('Tes offres recommandées')[0]).toBeOnTheScreen()
+    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
   })
 
   it('should render VerticalPlaylistSearchOffers', () => {

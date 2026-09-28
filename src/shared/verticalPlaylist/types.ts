@@ -4,7 +4,7 @@ import {
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
 } from 'api/gen'
-import { ArtistPlaylistModule, OffersModule } from 'features/home/types'
+import { ArtistPlaylistModule, OffersModule, RecommendedOffersModule } from 'features/home/types'
 import { PlaylistType } from 'features/offer/enums'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { Artist } from 'features/venue/types'
@@ -33,6 +33,7 @@ export type VerticalPlaylistOffersSource =
   | { type: VerticalPlaylist.SimilarOffers; module: OffersSimilars }
   | { type: VerticalPlaylist.ThematicSearchOffers; module: ThematicSearchPlaylistData }
   | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
+  | { type: VerticalPlaylist.RecommendationOffers; module: RecommendedOffersModule }
 
 export type VerticalPlaylistOffersData = {
   items: Offer[]
