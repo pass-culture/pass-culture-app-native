@@ -5,13 +5,13 @@ import { render, screen } from 'tests/utils'
 
 describe('<ArtistAvatar />', () => {
   it('should display artist avatar when imageURL defined', () => {
-    render(<ArtistAvatar imageUrl="url" size={144} accessibilityLabel="Voir l’image de Théodora" />)
+    render(<ArtistAvatar imageUrl="url" size={144} />)
 
     expect(screen.getByTestId('artistAvatar')).toBeOnTheScreen()
   })
 
   it('should display default artist avatar when imageURL not defined', () => {
-    render(<ArtistAvatar size={144} accessibilityLabel="Voir l’image de Théodora" />)
+    render(<ArtistAvatar size={144} />)
 
     expect(screen.getByTestId('defaultArtistAvatar')).toBeOnTheScreen()
   })

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -9,23 +8,13 @@ import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 type ArtistAvatarProps = {
   imageUrl?: string | null
   size: number
-  accessibilityLabel: string
 }
 
-export const ArtistAvatar: FunctionComponent<ArtistAvatarProps> = ({
-  imageUrl,
-  size,
-  accessibilityLabel,
-}) => {
+export const ArtistAvatar: FunctionComponent<ArtistAvatarProps> = ({ imageUrl, size }) => {
   return (
     <Avatar size={size}>
       {imageUrl ? (
-        <StyledImage
-          url={imageUrl}
-          testID="artistAvatar"
-          accessibilityRole={AccessibilityRole.IMAGE}
-          accessibilityLabel={accessibilityLabel}
-        />
+        <StyledImage url={imageUrl} testID="artistAvatar" />
       ) : (
         <DefaultAvatar testID="defaultArtistAvatar" size={size} />
       )}

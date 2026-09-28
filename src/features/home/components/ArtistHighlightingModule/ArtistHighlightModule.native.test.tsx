@@ -53,7 +53,9 @@ describe('ArtistHighlightingModule', () => {
   it('should navigate to the artist page when pressing the button', async () => {
     renderModule(defaultProps)
 
-    await user.press(await screen.findByLabelText(`Découvre la page artiste de ${mockArtist.name}`))
+    await user.press(
+      await screen.findByLabelText(`Découvrir la page artiste de ${mockArtist.name}`)
+    )
 
     expect(navigate).toHaveBeenCalledWith('Artist', { id: mockArtist.id })
   })

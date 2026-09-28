@@ -48,17 +48,16 @@ export const ArtistHighlightingModule: FunctionComponent<ArtistHighlightingModul
     navigate('Artist', { id: artist.id })
   }
 
+  const wording = 'Découvrir'
+  const accessibilityLabel = `${wording} la page artiste de ${artist.name}`
+
   return isDesktopViewport ? (
     <Container color={color} testID="desktopArtistHighlighting">
       <StickerContainer>
         <ArtistHighlightingStickerDesktop />
       </StickerContainer>
       <ContentDesktop gap={10}>
-        <ArtistAvatar
-          imageUrl={artist.image}
-          size={designSystem.size.image.l}
-          accessibilityLabel={`Image de ${artist.name}`}
-        />
+        <ArtistAvatar imageUrl={artist.image} size={designSystem.size.image.l} />
         <ViewGap gap={4}>
           <ArtistInformation name={artist.name} subtitle={subtitle} description={description} />
           <ButtonContainer>
@@ -66,8 +65,8 @@ export const ArtistHighlightingModule: FunctionComponent<ArtistHighlightingModul
               variant="secondary"
               color="neutral"
               onPress={onPress}
-              wording="Découvrir"
-              accessibilityLabel={`Découvre la page artiste de ${artist.name}`}
+              wording={wording}
+              accessibilityLabel={accessibilityLabel}
               size="small"
             />
           </ButtonContainer>
@@ -80,19 +79,15 @@ export const ArtistHighlightingModule: FunctionComponent<ArtistHighlightingModul
         <ArtistHighlightingStickerMobile />
       </StickerContainer>
       <Content gap={3}>
-        <ArtistAvatar
-          imageUrl={artist.image}
-          size={designSystem.size.image.l}
-          accessibilityLabel={`Image de ${artist.name}`}
-        />
+        <ArtistAvatar imageUrl={artist.image} size={designSystem.size.image.l} />
         <ArtistInformation name={artist.name} subtitle={subtitle} description={description} />
         <ButtonContainer>
           <Button
             variant="secondary"
             color="neutral"
             onPress={onPress}
-            wording="Découvrir"
-            accessibilityLabel={`Découvre la page artiste de ${artist.name}`}
+            wording={wording}
+            accessibilityLabel={accessibilityLabel}
             size="small"
           />
         </ButtonContainer>
