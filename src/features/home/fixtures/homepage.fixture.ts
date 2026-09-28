@@ -1,5 +1,6 @@
 import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
+  ArtistHighlightingModule,
   ArtistPlaylistModule,
   BusinessModule,
   CategoryListModule,
@@ -250,6 +251,16 @@ export const formattedArtitPlaylistModule: ArtistPlaylistModule = {
       bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
     },
   ],
+}
+
+export const formattedArtistHighlightingModule: ArtistHighlightingModule = {
+  type: HomepageModuleType.ArtistHighlightingModule,
+  id: '7xXCA0GB0nDxARLEUJYN0Y',
+  artistId: '836a38c9-da23-40ad-b28d-d5337023590b',
+  subtitle: 'Interprète',
+  description:
+    'En attendant la sortie de son nouvel album, retrouve l’intégralité de sa discographie.',
+  color: Color.Information04,
 }
 
 const venueModules: VenuesModule[] = [formattedVenuesModule]
