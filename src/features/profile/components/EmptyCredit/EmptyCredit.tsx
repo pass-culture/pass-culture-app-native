@@ -15,12 +15,13 @@ export const EmptyCredit = ({
   age,
   eligibilityType,
 }: {
-  age?: number
+  age: number
   eligibilityType?: UserEligibilityType | null
 }) => {
   const {
     data: { homeEntryIdFreeOffers },
   } = useRemoteConfigQuery()
+
   const { sixteenYearsOldDeposit, seventeenYearsOldDeposit, eighteenYearsOldDeposit } =
     useDepositAmountsByAge()
 
@@ -30,14 +31,16 @@ export const EmptyCredit = ({
     17: eighteenYearsOldDeposit,
   }
 
-  if (!age || !incomingCreditMap[age]) return null
+  if (!incomingCreditMap[age]) return null
 
   const ageToShowCreditV3 = age === 17 ? 17 : 16
 
   const isUserFreeStatus = getIsUserEligibleFree(eligibilityType)
+
   const nextCreditIntroText = isUserFreeStatus
     ? 'Tu pourras débloquer ton prochain crédit de '
     : 'Ton prochain crédit de '
+
   const nextCreditTimingText = isUserFreeStatus ? ' à ' : ' sera débloqué à '
 
   return (

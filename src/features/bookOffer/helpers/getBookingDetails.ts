@@ -33,8 +33,9 @@ export function getBookingDetails({
     currency,
     euroToPacificFrancRate
   )
+
   const isNotUserFreeStatus =
-    user && ![UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16].includes(user.eligibilityType)
+    !!user && user.eligibilityType !== UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16
 
   const isStockBookable = !(isUserUnderage && selectedStock?.isForbiddenToUnderage)
 

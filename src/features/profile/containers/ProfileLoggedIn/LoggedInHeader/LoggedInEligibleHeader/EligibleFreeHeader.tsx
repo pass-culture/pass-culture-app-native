@@ -20,16 +20,17 @@ export const EligibleFreeHeader = ({ user }: Props) => {
     user.eligibilityType,
     user.subscriptionStatus
   )
+  const shouldShowEmptyCredit = !showEligibleFreeBanner && age
+
   return (
     <ViewGap gap={6} testID="eligible-free-header">
       <PageHeader title={title} numberOfLines={3} />
-      {showEligibleFreeBanner ? (
-        <EligibleFreeBanner />
-      ) : (
+      {showEligibleFreeBanner ? <EligibleFreeBanner /> : null}
+      {shouldShowEmptyCredit ? (
         <ContainerHeader gap={0}>
           <EmptyCredit age={age} eligibilityType={eligibilityType} />
         </ContainerHeader>
-      )}
+      ) : null}
     </ViewGap>
   )
 }

@@ -85,7 +85,7 @@ describe('getUserProfileState', () => {
   })
 
   describe('CREDIT V2', () => {
-    it('should return ELIGIBLE + CREDIT_EXPIRED + ELIGIBLE_CREDIT_V2_18 when user is eighteen with no deposit', () => {
+    it('should return ELIGIBLE + CREDIT_V2_15_17 + ELIGIBLE_CREDIT_V2_18 when user is eighteen with no deposit', () => {
       mockAge(18)
       const user = buildUser({
         status: { statusType: YoungStatusType.eligible },
