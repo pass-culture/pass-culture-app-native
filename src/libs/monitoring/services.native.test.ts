@@ -1,5 +1,6 @@
 import * as SentryModule from '@sentry/react-native'
 
+import { env } from 'libs/environment/__mocks__/env.web'
 import { waitFor } from 'tests/utils'
 
 import { eventMonitoring } from './services'
@@ -25,6 +26,19 @@ describe('eventMonitoring', () => {
 
       await waitFor(() => {
         expect(SentryModule.setExtras).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should set correct config on initialisation', async () => {
+      eventMonitoring.init({ enabled: true })
+
+      await waitFor(() => {
+        expect(SentryModule.init).toHaveBeenCalledWith(
+          expect.objectContaining({
+            profilesSampleRate: Number(env.SENTRY_PROFILES_SAMPLE_RATE || 1),
+            tracesSampleRate: Number(env.SENTRY_TRACES_SAMPLE_RATE || 1),
+          })
+        )
       })
     })
   })
