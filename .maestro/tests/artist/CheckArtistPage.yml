@@ -11,7 +11,7 @@ onFlowStart:
 - runFlow: ../common/navigation/GoToSearchFromTabBar.yml
 
 - tapOn: 'Catégorie Livres'
-- tapOn: 'Mangas'
+- tapOn: 'Sous-catégorie Mangas'
 
 - assertVisible: 'Rechercher'
 - runFlow: ../common/helpers/SetEverywhere.yml

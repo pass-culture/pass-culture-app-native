@@ -16,7 +16,7 @@ onFlowStart:
     commands:
       - assertVisible: 'Parcours les catégories'
       - scroll
-      - tapOn: 'Spectacles'
+      - tapOn: 'Catégorie Spectacles'
 
 - tapOn: 'Voir tous les filtres : 1 filtre actif'
 - assertVisible: 'Prix'

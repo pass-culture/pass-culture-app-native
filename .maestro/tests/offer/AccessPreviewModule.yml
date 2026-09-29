@@ -20,7 +20,7 @@ onFlowStart:
           element:
             text: 'Catégorie livre.*'
       - tapOn: 'Catégorie livre.*'
-      - tapOn: 'Romans & littérature'
+      - tapOn: 'Sous-catégorie Romans & littérature'
 
 - runFlow:
     when:
@@ -30,7 +30,7 @@ onFlowStart:
           element:
             text: 'LIVRES'
       - tapOn: 'LIVRES'
-      - tapOn: 'Romans & littérature'
+      - tapOn: 'Romans.*'
 
 - runFlow:
     when:
