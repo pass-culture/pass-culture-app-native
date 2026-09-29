@@ -509,6 +509,8 @@ export const logEventAnalytics = {
   logLoginClicked: (params: { from: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
+  logMapSeenDuration: (params: { duration: number; mapType: MapType }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.MAP_SEEN_DURATION }, params),
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
   logModuleDisplayed: (params: {
     moduleId: string
@@ -724,8 +726,6 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
   logVenueContact: (params: { type: keyof VenueContact; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
-  logVenueMapSeenDuration: (duration: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),
   logVenueMapSessionDuration: (duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SESSION_DURATION }, { duration }),
   logVenuePlaylistDisplayedOnSearchResults: ({
