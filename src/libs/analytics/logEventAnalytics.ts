@@ -726,8 +726,6 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
   logVenueContact: (params: { type: keyof VenueContact; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
-  logVenueMapSessionDuration: (duration: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SESSION_DURATION }, { duration }),
   logVenuePlaylistDisplayedOnSearchResults: ({
     searchId,
     isLocated,

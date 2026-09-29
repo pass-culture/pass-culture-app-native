@@ -85,11 +85,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 
   const fontScale = PixelRatio.getFontScale()
 
-  const trackMapSessionDuration = useTrackDuration(analytics.logVenueMapSessionDuration)
-  // We only want to log when the component unmounts
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => trackMapSessionDuration(), [])
-
   const trackMapSeenDuration = useTrackDuration((duration: number) => {
     void analytics.logMapSeenDuration({ duration, mapType })
   })
