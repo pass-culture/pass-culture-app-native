@@ -99,7 +99,7 @@ export const ArtistHighlightingModule: FunctionComponent<ArtistHighlightingModul
 const Container = styled.View<{
   color: Color
 }>(({ theme, color }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.m,
+  borderRadius: theme.designSystem.size.borderRadius.l,
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.home.spaceBetweenModules,
   backgroundColor: theme.designSystem.color.illustration[colorMapping[color].fill],
