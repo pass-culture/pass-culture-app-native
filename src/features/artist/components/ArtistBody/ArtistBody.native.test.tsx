@@ -8,7 +8,7 @@ import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
-import { HomepageModuleType } from 'features/home/types'
+import { Color, HomepageModuleType } from 'features/home/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -465,6 +465,42 @@ describe('<ArtistBody />', () => {
     await screen.findAllByText('Avril Lavigne')
 
     expect(screen.queryByText('te partage ses pépites')).not.toBeOnTheScreen()
+  })
+
+  it('should display artist editorial module when defined', async () => {
+    mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
+    mockUseGetOffersDataQuery.mockReturnValueOnce([
+      {
+        playlistItems: [mockedAlgoliaResponse.hits[0], mockedAlgoliaResponse.hits[1]],
+      },
+    ])
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          artistEditorialModule={{
+            type: HomepageModuleType.ArtistEditorialModule,
+            id: '2DYuR6KoSLElDuiMMjxx8g',
+            title: 'Son incroyable discographie',
+            artistId: mockArtist.id,
+            color: Color.Information04,
+            illustration: 'Book',
+            offersModuleParameters: [
+              {
+                title: 'Son incroyable discographie',
+                hitsPerPage: 3,
+              },
+            ],
+          }}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    expect(await screen.findByText('Son incroyable discographie')).toBeOnTheScreen()
   })
 })
 

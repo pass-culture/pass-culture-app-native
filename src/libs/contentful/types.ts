@@ -6,6 +6,7 @@ import type { CategoryButtonIllustrationName } from 'shared/illustrations/catego
 export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
+  ARTIST_EDITORIAL = 'artistEditorial',
   ARTIST_HIGHLIGHTING = 'artistHighlighting',
   ARTIST_PLAYLIST = 'artistPlaylist',
   BOOK_TYPES = 'bookTypes',
@@ -229,6 +230,14 @@ export interface AlgoliaFields {
   cover?: Cover
   additionalAlgoliaParameters?: AlgoliaParameters[]
   recommendationParameters?: RecommendationParameters
+}
+
+interface ArtistEditorialFields {
+  title: string
+  artistId: string
+  color: Color
+  illustration: CategoryButtonIllustrationName
+  algoliaParameters: AlgoliaParameters
 }
 
 interface ArtistHighlightingFields {
@@ -465,6 +474,7 @@ interface HomepageNatifFields {
 
 export type HomepageNatifModule =
   | AlgoliaContentModel
+  | ArtistEditorialContentModel
   | ArtistHighlightingContentModel
   | ArtistPlaylistContentModel
   | BusinessContentModel
@@ -479,6 +489,11 @@ export type HomepageNatifModule =
   | VenueMapBlockContentModel
 
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
+
+export type ArtistEditorialContentModel = Entry<
+  ArtistEditorialFields,
+  ContentTypes.ARTIST_EDITORIAL
+>
 
 export type ArtistPlaylistContentModel = Entry<ArtistPlaylistFields, ContentTypes.ARTIST_PLAYLIST>
 

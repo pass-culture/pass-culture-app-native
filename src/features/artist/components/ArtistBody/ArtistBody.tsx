@@ -11,10 +11,14 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
+import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
-import { ArtistPlaylistModule as ArtistPlaylistModuleType } from 'features/home/types'
+import {
+  ArtistPlaylistModule as ArtistPlaylistModuleType,
+  ArtistEditorialModule as ArtistEditorialModuleType,
+} from 'features/home/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
@@ -57,6 +61,7 @@ type Props = {
   ) => void
   onExpandBioPress: () => void
   artistPlaylistModule?: ArtistPlaylistModuleType
+  artistEditorialModule?: ArtistEditorialModuleType
 }
 
 const ShareButton = ({ onPress }: { onPress: () => void }) => {
@@ -77,6 +82,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   artistPlaylist,
   artistTopOffers,
   artistPlaylistModule,
+  artistEditorialModule,
   onViewableItemsChanged,
   onExpandBioPress,
 }) => {
@@ -92,9 +98,13 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
-  const offersArtistPlaylistModulesData = useGetOffersDataQuery(
-    artistPlaylistModule ? [artistPlaylistModule] : []
+  const offersModulesData = useGetOffersDataQuery(
+    [artistPlaylistModule, artistEditorialModule].filter((item) => item !== undefined)
   )
+  const offersArtistPlaylistModulesData = artistPlaylistModule ? offersModulesData[0] : undefined
+  const offersArtistEditorialModulesData = artistEditorialModule
+    ? offersModulesData[artistPlaylistModule ? 1 : 0]
+    : undefined
 
   const { name, description, image } = artist
   const descriptionWithDot = ensureEndingDot(description ?? '')
@@ -208,6 +218,16 @@ export const ArtistBody: FunctionComponent<Props> = ({
               </Description>
             ) : null}
           </ViewGap>
+          {artistEditorialModule ? (
+            <ArtistEditorialModule
+              title={artistEditorialModule.title}
+              offersModuleParameters={artistEditorialModule.offersModuleParameters}
+              color={artistEditorialModule.color}
+              illustration={artistEditorialModule.illustration}
+              moduleId={artistEditorialModule.id}
+              data={offersArtistEditorialModulesData}
+            />
+          ) : null}
           <ArtistTopOffers
             artistName={name}
             items={artistTopOffers}
@@ -228,7 +248,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
               artistId={artist.id}
               index={0}
               moduleId={artistPlaylistModule.id}
-              data={offersArtistPlaylistModulesData[0]}
+              data={offersArtistPlaylistModulesData}
               onViewableItemsChanged={handleArtistPlaylistModuleOffersViewableItemsChanged}
               homeEntryId={undefined}
               disableArtistNavigation
