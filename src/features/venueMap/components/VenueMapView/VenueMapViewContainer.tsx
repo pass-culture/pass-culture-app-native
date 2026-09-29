@@ -166,7 +166,12 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     }
 
     setShowSearchButton(false)
-    analytics.logPinMapPressed({ venueType: foundVenue.activity, venueId: foundVenue.venueId })
+
+    void analytics.logPinMapPressed({
+      mapType: routeName === 'VenueMap' ? 'VenueMap' : 'SearchMap',
+      venueType: foundVenue.activity,
+      venueId: foundVenue.venueId,
+    })
     if (isPreviewEnabled) {
       setSelectedVenue(foundVenue)
       centerOnLocation(

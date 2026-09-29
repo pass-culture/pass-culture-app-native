@@ -38,7 +38,12 @@ import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { AdviceType, ConsultOfferLogParams, OfferImagesScrollFrom } from 'libs/analytics/types'
+import {
+  AdviceType,
+  ConsultOfferLogParams,
+  MapType,
+  OfferImagesScrollFrom,
+} from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -577,8 +582,19 @@ export const logEventAnalytics = {
         searchNbResults: nbHits,
       }
     ),
-  logPinMapPressed: ({ venueType, venueId }: { venueType?: string | null; venueId: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, { venueId, venueType }),
+  logPinMapPressed: ({
+    mapType,
+    venueType,
+    venueId,
+  }: {
+    mapType: MapType
+    venueType?: string | null
+    venueId: number
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.PIN_MAP_PRESSED },
+      { mapType, venueId, venueType }
+    ),
   logPlaylistHorizontalScroll: (
     fromOfferId?: number,
     playlistType?: PlaylistType,
@@ -731,7 +747,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
   logViewItem: (params: PageTrackingInfo & { locationType: LocationMode }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM }, params),
-  logViewMap: (params: { from: Referrals; mapType: 'SearchMap' | 'VenueMap'; searchId?: string }) =>
+  logViewMap: (params: { from: Referrals; mapType: MapType; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_MAP }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),

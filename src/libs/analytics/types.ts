@@ -14,6 +14,8 @@ export type AnalyticsProvider = {
 
 export type LocationType = 'UserGeolocation' | 'UserSpecificLocation' | 'undefined'
 
+export type MapType = Extract<ScreenNames, 'SearchMap' | 'VenueMap'>
+
 export type ClubAdviceType = 'book_club' | 'cine_club' | 'scene_club'
 
 export type AdviceType = ClubAdviceType | 'pro'
