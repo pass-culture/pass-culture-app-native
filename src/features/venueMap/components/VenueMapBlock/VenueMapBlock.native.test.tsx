@@ -43,11 +43,14 @@ describe('<VenueMapBlock />', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', undefined)
   })
 
-  it('should trigger log ConsultVenueMap', async () => {
+  it('should trigger log ViewMap', async () => {
     render(<VenueMapBlock from="searchLanding" />)
 
     await user.press(screen.getByText('Explore la carte'))
 
-    expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchLanding' })
+    expect(analytics.logViewMap).toHaveBeenNthCalledWith(1, {
+      from: 'searchLanding',
+      mapType: 'VenueMap',
+    })
   })
 })

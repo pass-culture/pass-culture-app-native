@@ -96,7 +96,10 @@ describe('TrendsModule', () => {
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
-    expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'trend_block' })
+    expect(analytics.logViewMap).toHaveBeenNthCalledWith(1, {
+      from: 'trend_block',
+      mapType: 'VenueMap',
+    })
   })
 
   it('should not log analytics when pressing venue map block content type and user location is everywhere', async () => {
@@ -105,7 +108,7 @@ describe('TrendsModule', () => {
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
-    expect(analytics.logConsultVenueMap).not.toHaveBeenCalled()
+    expect(analytics.logViewMap).not.toHaveBeenCalled()
   })
 
   it('should log trends block clicked when pressing a trend', async () => {

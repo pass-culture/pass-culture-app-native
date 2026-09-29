@@ -57,7 +57,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logConsultThematicHome: jest.fn(),
   logConsultTutorial: jest.fn(),
   logConsultVenue: jest.fn(),
-  logConsultVenueMap: jest.fn(),
   logConsultVenueOffers: jest.fn(),
   logConsultVideo: jest.fn(),
   logConsultWholeOffer: jest.fn(),
@@ -174,5 +173,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logVenuePlaylistDisplayedOnSearchResults: jest.fn(),
   logVenueSeeAllOffersClicked: jest.fn(),
   logVenueSeeMoreClicked: jest.fn(),
+  logViewMap: jest.fn(),
   logViewedBookingPage: jest.fn(),
 }

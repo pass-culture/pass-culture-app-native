@@ -57,7 +57,7 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
           removeSelectedVenue()
           void handleLogTrendsBlockClicked(props)
           if (shouldOpenMapDirectly) {
-            void analytics.logConsultVenueMap({ from: 'trend_block' })
+            void analytics.logViewMap({ from: 'trend_block', mapType: 'VenueMap' })
             return
           }
           navigate('VenueMapLocationModal', { openedFrom: 'trend_block' })

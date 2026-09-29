@@ -315,8 +315,6 @@ export const logEventAnalytics = {
     adviceType?: AdviceType
     offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
-  logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
   logConsultVenueOffers: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_OFFERS }, params),
   logConsultVideo: (params: {
@@ -733,6 +731,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
   logViewItem: (params: PageTrackingInfo & { locationType: LocationMode }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM }, params),
+  logViewMap: (params: { from: Referrals; mapType: 'SearchMap' | 'VenueMap'; searchId?: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_MAP }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),
 }

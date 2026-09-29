@@ -798,14 +798,15 @@ describe('SearchResultsContent component', () => {
       expect(await screen.findByText('Résultats')).toBeOnTheScreen()
     })
 
-    it('should log consult venue map when pressing map tab', async () => {
+    it('should log ViewMap event when pressing map tab', async () => {
       renderSearchResultContent()
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
 
-      expect(analytics.logConsultVenueMap).toHaveBeenCalledWith({
+      expect(analytics.logViewMap).toHaveBeenCalledWith({
         from: 'search',
+        mapType: 'SearchMap',
         searchId: 'testUuidV4',
       })
     })

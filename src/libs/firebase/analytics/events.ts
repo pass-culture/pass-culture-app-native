@@ -56,7 +56,6 @@ export enum AnalyticsEvent {
   CONSULT_SUBSCRIPTION_MODAL = 'ConsultSubscriptionModal',
   CONSULT_TUTORIAL = 'ConsultTutorial',
   CONSULT_VENUE = 'ConsultVenue',
-  CONSULT_VENUE_MAP = 'ConsultVenueMap',
   CONSULT_VENUE_OFFERS = 'ConsultVenueOffers',
   CONSULT_VIDEO = 'ConsultVideo',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
@@ -172,6 +171,7 @@ export enum AnalyticsEvent {
   VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS = 'VenuePlaylistDisplayedOnSearchResults',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
+  VIEW_MAP = 'ViewMap',
   VIEWED_BOOKING_PAGE = 'ViewedBookingPage',
 }
 

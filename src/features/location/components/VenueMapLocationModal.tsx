@@ -20,8 +20,9 @@ export const VenueMapLocationModal: FC = () => {
     removeSelectedVenue()
 
     if (openedFrom === 'search') {
-      void analytics.logConsultVenueMap({
+      void analytics.logViewMap({
         from: 'search',
+        mapType: 'SearchMap',
         searchId: searchState.searchId,
       })
       popTo('TabNavigator', {
@@ -31,7 +32,11 @@ export const VenueMapLocationModal: FC = () => {
       return
     }
 
-    void analytics.logConsultVenueMap({ from: openedFrom })
+    void analytics.logViewMap({
+      from: openedFrom,
+      mapType: 'VenueMap',
+      searchId: searchState.searchId,
+    })
     replace('VenueMap')
   }
 

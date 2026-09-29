@@ -290,8 +290,9 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
       return
     }
 
-    void analytics.logConsultVenueMap({
+    void analytics.logViewMap({
       from: 'search',
+      mapType: 'SearchMap',
       searchId: searchState.searchId,
     })
     setIsSearchListTab(false)
