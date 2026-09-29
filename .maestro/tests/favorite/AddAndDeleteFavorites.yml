@@ -36,7 +36,7 @@ onFlowStart:
           element:
             text: 'Catégorie Musique.*'
       - tapOn: 'Catégorie Musique.*'
-      - tapOn: 'CDs'
+      - tapOn: 'Sous-catégorie CDs'
 
 - runFlow:
     when:

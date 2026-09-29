@@ -22,7 +22,7 @@ onFlowStart:
       - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
 
 - tapOn: '.*Cinéma.*'
-- tapOn: "Films à l'affiche"
+- tapOn: "Sous-catégorie Films à l'affiche"
 
 - tapOn: 'Voir tous les filtres : 1 filtre actif'
 - assertVisible: "Filtre - Catégorie - Films à l'affiche"
