@@ -8,13 +8,14 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { QueryKeys } from 'libs/queryKeys'
 import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { computedTheme } from 'tests/computedTheme'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 import { OffersModule, OffersModuleProps } from './OffersModule'
@@ -109,6 +110,16 @@ describe('OffersModule', () => {
           title: 'Module title',
         },
       },
+    })
+    expect(
+      queryCache.find({
+        queryKey: [QueryKeys.HOME_MODULE, 'fakeModuleId'],
+        exact: false,
+      })?.state.data
+    ).toEqual({
+      playlistItems: mockHitsItems,
+      nbPlaylistResults: 10,
+      moduleId: 'fakeModuleId',
     })
   })
 

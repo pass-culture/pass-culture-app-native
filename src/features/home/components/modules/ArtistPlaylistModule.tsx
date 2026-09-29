@@ -1,8 +1,10 @@
 import { useRoute } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useEffect } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
+import { getOffersModuleQueryKey } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModuleType,
   ModuleData,
@@ -11,6 +13,7 @@ import {
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
@@ -66,6 +69,8 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
 
   const { designSystem } = useTheme()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const queryClient = useQueryClient()
+  const isUserUnderage = useIsUserUnderage()
   const {
     data: artist,
     isError: hasArtistError,
@@ -98,8 +103,21 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     })
   )
 
-  const onBeforeNavigate = () =>
+  const onBeforeNavigate = () => {
+    if (data) {
+      queryClient.setQueryData(
+        getOffersModuleQueryKey(
+          moduleId,
+          offersModuleParameters.map((moduleParameters) =>
+            adaptedPlaylistParameters(moduleParameters)
+          ),
+          isUserUnderage
+        ),
+        data
+      )
+    }
     analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from })
+  }
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {

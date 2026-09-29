@@ -1,4 +1,4 @@
-import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
+import { useGetOffersModuleDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import { OffersModule } from 'features/home/types'
 import { renderHook } from 'tests/utils'
 
@@ -8,9 +8,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { query: 'test-query', searchId: 'search-id' } }),
 }))
 
-const mockUseGetOffersDataQuery = useGetOffersDataQuery as jest.Mock
+const mockUseGetOffersModuleDataQuery = useGetOffersModuleDataQuery as jest.Mock
 jest.mock('features/home/queries/useGetOffersDataQuery', () => ({
-  useGetOffersDataQuery: jest.fn(),
+  useGetOffersModuleDataQuery: jest.fn(),
 }))
 
 const mockModule = {
@@ -24,9 +24,9 @@ const mockModule = {
 
 describe('useGetOffersFromPlaylist', () => {
   it('should return items from query', () => {
-    mockUseGetOffersDataQuery.mockReturnValueOnce([
-      { playlistItems: [{ objectID: '1' }, { objectID: '2' }] },
-    ])
+    mockUseGetOffersModuleDataQuery.mockReturnValueOnce({
+      data: { playlistItems: [{ objectID: '1' }, { objectID: '2' }] },
+    })
 
     const { result } = renderHook(() => useGetOffersFromPlaylist({ ...mockModule }))
 
@@ -34,7 +34,7 @@ describe('useGetOffersFromPlaylist', () => {
   })
 
   it('should return correct metadata', () => {
-    mockUseGetOffersDataQuery.mockReturnValueOnce([{ playlistItems: [] }])
+    mockUseGetOffersModuleDataQuery.mockReturnValueOnce({ data: { playlistItems: [] } })
 
     const { result } = renderHook(() => useGetOffersFromPlaylist({ ...mockModule }))
 
@@ -45,7 +45,7 @@ describe('useGetOffersFromPlaylist', () => {
   })
 
   it('should return empty items when no data', () => {
-    mockUseGetOffersDataQuery.mockReturnValueOnce(undefined)
+    mockUseGetOffersModuleDataQuery.mockReturnValueOnce({ data: undefined })
 
     const { result } = renderHook(() => useGetOffersFromPlaylist({ ...mockModule }))
 
