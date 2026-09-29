@@ -7,6 +7,8 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
+import { getProviderName } from 'features/auth/helpers/getProviderName'
+import { isApplePrivateRelayEmail } from 'features/auth/helpers/isApplePrivateRelayEmail'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { SetContainer } from 'features/auth/pages/signup/SetContainer'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
@@ -36,6 +38,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 }) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const isSSOSubscriptionFromLogin = isSSOSubscription && !!params?.accountCreationToken
+  const providerName = getProviderName(params?.ssoProvider)
+  const ssoEmail = params?.email
+  const shouldDisplaySSOEmail = !!ssoEmail && !isApplePrivateRelayEmail(ssoEmail)
 
   const currentYear = new Date().getFullYear()
   const previousBirthdateProvided = previousSignupData.birthdate
@@ -111,8 +116,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
         {isSSOSubscriptionFromLogin ? (
           <StyledView>
             <Typo.Body>
-              Ton compte Google “{params?.email ?? ''}” n’est pas lié à un compte existant. Pour
-              continuer, tu peux créer un compte.
+              Ton compte {providerName}
+              {shouldDisplaySSOEmail ? ` “${ssoEmail}”` : ''} n’est pas lié à un compte existant.
+              Pour continuer, tu peux créer un compte.
             </Typo.Body>
           </StyledView>
         ) : null}
