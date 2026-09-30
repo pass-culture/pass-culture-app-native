@@ -6,6 +6,9 @@ import { DMSModal } from 'features/identityCheck/components/modals/DMSModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -15,6 +18,7 @@ import { Typo } from 'ui/theme'
 
 export function IdentityCheckUnavailable() {
   const { params } = useRoute<UseRouteType<'IdentityCheckUnavailable'>>()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const { visible, showModal, hideModal } = useModal(false)
 
@@ -38,6 +42,14 @@ export function IdentityCheckUnavailable() {
               wording: 'Retourner à l’accueil',
               navigateTo: navigateToHomeConfig,
               icon: PlainArrowPrevious,
+            }
+          : undefined
+      }
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.brokenRobotLarge,
+              backgroundColor: 'pending01',
             }
           : undefined
       }>

@@ -18,6 +18,7 @@ import {
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -89,6 +90,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ValidateEmailChange', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render new email address', () => {
     renderValidateEmailChange()
 

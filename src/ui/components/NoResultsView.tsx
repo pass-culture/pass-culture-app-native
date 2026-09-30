@@ -12,10 +12,11 @@ import { Typo } from 'ui/theme'
 
 type Props = {
   explanations: string
-  icon: FunctionComponent<AccessibleIcon>
+  icon?: FunctionComponent<AccessibleIcon>
   trackingExplorerOffersFrom: 'bookings' | 'favorites'
   title?: string
   offline?: boolean
+  remoteIllustration?: React.ReactNode
 }
 
 export const NoResultsView = ({
@@ -24,10 +25,12 @@ export const NoResultsView = ({
   icon: Icon,
   offline = false,
   trackingExplorerOffersFrom,
+  remoteIllustration,
   ...props
 }: Props) => {
   const { illustrations, designSystem } = useTheme()
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
+  const hasRemoteIllustration = !!remoteIllustration
 
   return (
     <React.Fragment>
@@ -36,12 +39,13 @@ export const NoResultsView = ({
           <CaptionTitle>{title}</CaptionTitle>
         </Container>
       ) : null}
-      <ContentContainer gap={4} {...props}>
-        <ContainerText>
+      <ContentContainer gap={6} hasRemoteIllustration={hasRemoteIllustration} {...props}>
+        <ContainerText hasRemoteIllustration={hasRemoteIllustration}>
           {Icon ? (
             <Icon color={designSystem.color.icon.subtle} size={illustrations.sizes.fullPage} />
           ) : null}
-          <StyledBody>{explanations}</StyledBody>
+          {remoteIllustration}
+          <StyledBody hasRemoteIllustration={hasRemoteIllustration}>{explanations}</StyledBody>
         </ContainerText>
         {offline ? null : (
           <InternalTouchableLink
@@ -61,26 +65,33 @@ const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const ContentContainer = styled(ViewGap)(({ theme }) => ({
-  height: '100%',
-  width: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  paddingBottom: theme.tabBar.height,
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-}))
+const ContentContainer = styled(ViewGap)<{ hasRemoteIllustration: boolean }>(
+  ({ theme, hasRemoteIllustration }) => ({
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: hasRemoteIllustration ? undefined : theme.tabBar.height,
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+  })
+)
 
 const CaptionTitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  maxWidth: theme.contentPage.maxWidth,
-  textAlign: 'center',
-}))
+const StyledBody = styled(Typo.Body)<{ hasRemoteIllustration: boolean }>(
+  ({ theme, hasRemoteIllustration }) => ({
+    maxWidth: theme.contentPage.maxWidth,
+    textAlign: 'center',
+    marginTop: hasRemoteIllustration ? theme.designSystem.size.spacing.xl : undefined,
+  })
+)
 
-const ContainerText = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.l,
-  maxWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
-}))
+const ContainerText = styled.View<{ hasRemoteIllustration: boolean }>(
+  ({ theme, hasRemoteIllustration }) => ({
+    alignItems: 'center',
+    marginBottom: hasRemoteIllustration ? undefined : theme.designSystem.size.spacing.l,
+    maxWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
+  })
+)

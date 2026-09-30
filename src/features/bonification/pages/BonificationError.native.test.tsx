@@ -3,11 +3,16 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BonificationType } from 'features/bonification/enums'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('BonificationError', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Family quotient bonification', () => {
     it('should navigate to bonification name when pressing "Revenir vers le formulaire" when checkbox is checked', async () => {
       useRoute.mockReturnValueOnce({

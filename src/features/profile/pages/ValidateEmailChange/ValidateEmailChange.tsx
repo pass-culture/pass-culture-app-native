@@ -17,7 +17,10 @@ import {
 } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { Separator } from 'ui/components/Separator'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -38,6 +41,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
 
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const mutate = useCallback(async () => {
     if (!params?.token || typeof params?.token !== 'string') {
@@ -109,7 +113,15 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         navigateTo: navigateToHomeConfig,
         icon: Invalidate,
         disabled: isLoading,
-      }}>
+      }}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.phoneHourglass,
+              backgroundColor: 'pending01',
+            }
+          : undefined
+      }>
       <Wrapper>
         <Typo.Body>Nouvelle adresse e-mail&nbsp;:</Typo.Body>
         <Typo.BodyAccent>{emailUpdateStatus?.newEmail}</Typo.BodyAccent>

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -11,6 +12,10 @@ useRoute.mockReturnValue({
 })
 
 describe('<SetProfileBookingError/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderSetProfileBookingError()
