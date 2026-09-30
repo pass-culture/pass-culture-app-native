@@ -10,6 +10,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
+import { Blocquote } from 'ui/components/accessibility/Blocquote'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -333,11 +334,11 @@ export const AccessibilityDeclarationWeb = () => {
               2005&nbsp;:
             </Typo.Body>
 
-            <Typo.BodyItalic>
-              «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
-              handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son
-              mode de vie.&nbsp;»
-            </Typo.BodyItalic>
+            <Blocquote
+              cite="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006682235"
+              TextComponent={Typo.BodyItalic}
+              text="«&nbsp;la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie.&nbsp;»"
+            />
 
             <Typo.Body>
               pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un

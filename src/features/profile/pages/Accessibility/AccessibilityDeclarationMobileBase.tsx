@@ -7,6 +7,7 @@ import { AccessibilityFeatures } from 'features/profile/components/Accessibility
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { Blocquote } from 'ui/components/accessibility/Blocquote'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -198,11 +199,11 @@ export function AccessibilityDeclarationMobileBase({
             <Typo.Body>
               Il est important de rappeler qu’en vertu de l’article 11 de la loi de février
               2005&nbsp;:&nbsp;
-              <Typo.BodyItalic>
-                «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
-                handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son
-                mode de vie.&nbsp;»
-              </Typo.BodyItalic>
+              <Blocquote
+                cite="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006682235"
+                TextComponent={Typo.BodyItalic}
+                text="«&nbsp;la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie.&nbsp;»"
+              />
             </Typo.Body>
             <Typo.Body>
               Le pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans
