@@ -36,13 +36,15 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const accountCreationToken = params?.accountCreationToken
   const [stepIndex, setStepIndex] = React.useState(params?.stepIndex ?? currentStep)
 
+  const syncStepIndexFromNavigationParams = () => {
+    const navigationStepIndex = params?.stepIndex
+    if (navigationStepIndex !== undefined && navigationStepIndex !== stepIndex) {
+      setStepIndex(navigationStepIndex)
+    }
+  }
+
   useEffect(
-    function syncStepIndexFromNavigationParams() {
-      const navigationStepIndex = params?.stepIndex
-      if (navigationStepIndex !== undefined && navigationStepIndex !== stepIndex) {
-        setStepIndex(navigationStepIndex)
-      }
-    },
+    syncStepIndexFromNavigationParams,
     // stepIndex is not in the useEffect dependencies to avoid multiple re-render
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params?.stepIndex]
@@ -98,21 +100,27 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const ssoType = accountCreationToken ? 'SSO_login' : 'SSO_signup'
   const stepperAnalyticsType = isSSOSubscription ? ssoType : undefined
 
-  useEffect(
-    function goToNextStepAfterSSOAccountCreation() {
-      if (accountCreationToken && isFirstStep) {
-        goToNextStep({ accountCreationToken, ssoProvider: params.ssoProvider })
-      }
-    },
-    [accountCreationToken, goToNextStep, isFirstStep, params?.ssoProvider]
-  )
+  const goToNextStepAfterSSOAccountCreation = () => {
+    if (accountCreationToken && isFirstStep) {
+      goToNextStep({ accountCreationToken, ssoProvider: params.ssoProvider })
+    }
+  }
+
+  useEffect(goToNextStepAfterSSOAccountCreation, [
+    accountCreationToken,
+    goToNextStep,
+    isFirstStep,
+    params?.ssoProvider,
+  ])
+
+  const logStepperDisplayed = () => {
+    if (params?.from && stepConfig?.name) {
+      void analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
+    }
+  }
 
   useEffect(
-    function logStepperDisplayed() {
-      if (params?.from && stepConfig?.name) {
-        void analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
-      }
-    },
+    logStepperDisplayed,
     // stepperAnalyticsType is not in the useEffect dependencies to avoid multiple re-render
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params?.from, stepConfig?.name]
