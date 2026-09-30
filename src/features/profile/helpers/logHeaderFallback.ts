@@ -10,12 +10,6 @@ type LogHeaderFallbackParams = {
 export const logHeaderFallback = ({ user, headerType }: LogHeaderFallbackParams) => {
   eventMonitoring.captureException('Profile V2 - Header fallback', {
     level: 'info',
-    extra: {
-      id: user.id,
-      eligibilityType: user.eligibilityType,
-      creditType: user.creditType,
-      statusType: user.statusType,
-      headerType,
-    },
+    extra: { user, headerType },
   })
 }

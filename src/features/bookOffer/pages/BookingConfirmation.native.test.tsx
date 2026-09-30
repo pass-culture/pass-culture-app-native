@@ -104,7 +104,7 @@ describe('<BookingConfirmation />', () => {
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
       },
       { persist: true }
     )

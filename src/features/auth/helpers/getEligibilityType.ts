@@ -4,12 +4,9 @@ import { getAge } from 'shared/user/getAge'
 
 export enum UserEligibilityType {
   ELIGIBLE_CREDIT_V1_18 = 'ELIGIBLE_CREDIT_V1_18',
-  ELIGIBLE_CREDIT_V2_15 = 'ELIGIBLE_CREDIT_V2_15',
-  ELIGIBLE_CREDIT_V2_16 = 'ELIGIBLE_CREDIT_V2_16',
-  ELIGIBLE_CREDIT_V2_17 = 'ELIGIBLE_CREDIT_V2_17',
+  ELIGIBLE_CREDIT_V2_15_17 = 'ELIGIBLE_CREDIT_V2_15_17',
   ELIGIBLE_CREDIT_V2_18 = 'ELIGIBLE_CREDIT_V2_18',
-  ELIGIBLE_CREDIT_V3_15 = 'ELIGIBLE_CREDIT_V3_15',
-  ELIGIBLE_CREDIT_V3_16 = 'ELIGIBLE_CREDIT_V3_16',
+  ELIGIBLE_CREDIT_V3_15_16 = 'ELIGIBLE_CREDIT_V3_15_16',
   ELIGIBLE_CREDIT_V3_17 = 'ELIGIBLE_CREDIT_V3_17',
   ELIGIBLE_CREDIT_V3_18 = 'ELIGIBLE_CREDIT_V3_18',
   ELIGIBLE_BONUS = 'ELIGIBLE_BONUS',
@@ -28,8 +25,6 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isTooOldForThisTypeOfEligibility = false
 
   const age = getAge(birthDate)
-  const isFifteen = age === 15
-  const isSixteen = age === 16
   const isSeventeen = age === 17
   const isEighteen = age && age === 18
   const isNineteen = age && age === 19
@@ -41,16 +36,11 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
   const isEligibleCreditV1_18 = isTooOldForThisTypeOfEligibility
 
   // CREDIT_V2
-  const isEligibleCreditV2Underage = eligibility === EligibilityType['underage']
-  const isEligibleCreditV2_15 = isEligibleCreditV2Underage && isFifteen
-  const isEligibleCreditV2_16 = isEligibleCreditV2Underage && isSixteen
-  const isEligibleCreditV2_17 = isEligibleCreditV2Underage && isSeventeen
+  const isEligibleCreditV2_15_17 = eligibility === EligibilityType['underage']
   const isEligibleCreditV2_18 = eligibility === EligibilityType['age-18']
 
   // CREDIT_V3
-  const isEligibleCreditV3_free = eligibility === EligibilityType['free']
-  const isEligibleCreditV3_15 = isEligibleCreditV3_free && isFifteen
-  const isEligibleCreditV3_16 = isEligibleCreditV3_free && isSixteen
+  const isEligibleCreditV3_15_16 = eligibility === EligibilityType['free']
   const isEligibleCreditV3_17 = eligibility === EligibilityType['age-17-18'] && isSeventeen
   const isEligibleCreditV3_18 = eligibility === EligibilityType['age-17-18'] && isEighteenOrNineteen
 
@@ -66,12 +56,9 @@ export const getEligibilityType = (user: UserProfileResponse): UserEligibilityTy
 
   if (isEligibleBonus) return UserEligibilityType.ELIGIBLE_BONUS
   if (isEligibleCreditV1_18) return UserEligibilityType.ELIGIBLE_CREDIT_V1_18
-  if (isEligibleCreditV2_15) return UserEligibilityType.ELIGIBLE_CREDIT_V2_15
-  if (isEligibleCreditV2_16) return UserEligibilityType.ELIGIBLE_CREDIT_V2_16
-  if (isEligibleCreditV2_17) return UserEligibilityType.ELIGIBLE_CREDIT_V2_17
+  if (isEligibleCreditV2_15_17) return UserEligibilityType.ELIGIBLE_CREDIT_V2_15_17
   if (isEligibleCreditV2_18) return UserEligibilityType.ELIGIBLE_CREDIT_V2_18
-  if (isEligibleCreditV3_15) return UserEligibilityType.ELIGIBLE_CREDIT_V3_15
-  if (isEligibleCreditV3_16) return UserEligibilityType.ELIGIBLE_CREDIT_V3_16
+  if (isEligibleCreditV3_15_16) return UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16
   if (isEligibleCreditV3_17) return UserEligibilityType.ELIGIBLE_CREDIT_V3_17
   if (isEligibleCreditV3_18) return UserEligibilityType.ELIGIBLE_CREDIT_V3_18
   if (isNotEligible) return UserEligibilityType.NOT_ELIGIBLE

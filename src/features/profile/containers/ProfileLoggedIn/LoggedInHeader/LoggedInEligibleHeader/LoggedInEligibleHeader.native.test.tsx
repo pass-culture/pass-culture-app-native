@@ -41,13 +41,13 @@ describe('LoggedInEligibleHeader', () => {
   })
 
   it('should render EligibleFreeHeader with age 15 for V3_15', async () => {
-    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15)
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16)
 
     expect(screen.getByTestId('eligible-free-header')).toBeOnTheScreen()
   })
 
   it('should render EligibleFreeBanner when age 15 and not free beneficiary', async () => {
-    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15, {
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16, {
       subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
     })
 
@@ -55,13 +55,13 @@ describe('LoggedInEligibleHeader', () => {
   })
 
   it('should render EligibleFreeBanner with age 16 for V3_16', async () => {
-    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_16)
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16)
 
     expect(screen.getByTestId('eligible-free-header')).toBeOnTheScreen()
   })
 
   it('should render EligibleFreeBanner when age 16 and not free beneficiary', async () => {
-    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_16, {
+    await renderLoggedInEligibleHeader(UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16, {
       subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
     })
 
