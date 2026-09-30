@@ -1,6 +1,6 @@
 ---
-agent: agent
-description: Write or update the description (and title) of the current PR following pass Culture app-native conventions.
+name: pr-description
+description: Write or update the description (and title) of the current PR following pass Culture app-native conventions. Use when asked to write, generate or update a pull request description or title.
 ---
 
 # PR description (pass Culture app-native)

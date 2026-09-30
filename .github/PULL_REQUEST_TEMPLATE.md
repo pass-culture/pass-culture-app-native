@@ -1,27 +1,14 @@
-## 🤖 Générer la description de cette PR avec Copilot
+## 📝 Décris ta PR
 
 > [!IMPORTANT]
-> Ce contenu est un **guide** : remplace-le entièrement par la description générée.
-> Tu préfères rédiger à la main ? Utilise [l'ancien template][manual] (ajoute `&template=manual.md` à l'URL de cette page, ou copie-le depuis le lien).
+> Ce contenu est un **aiguillage** : remplace-le entièrement par ta description.
 
-### Prérequis
+La description est le **point d'entrée du reviewer** : elle lui donne le contexte (le _pourquoi_), la liste des changements, comment tester et les visuels. Une description claire, c'est une review plus rapide et une trace utile pour plus tard.
 
-- VS Code + extension **GitHub Copilot Chat**
-- `chat.promptFiles` activé (déjà configuré dans `.vscode/settings.json` du repo)
+Choisis ta méthode :
 
-### Étapes
+- 🤖 **Générée par IA** (Copilot, Cursor, Claude Code) : suis le [guide IA][ai-guide], puis colle le résultat ici.
+- ✍️ **Manuelle** : ajoute `&template=manual.md` à l'URL de cette page, ou copie le [template manuel][manual].
 
-1. Sur ta branche, ouvre **Copilot Chat** en mode **Agent** (il doit pouvoir lancer des commandes `git`).
-2. Tape `/pr-description` — tu peux ajouter du contexte : `/pr-description le but est de …`
-3. Copilot analyse le diff avec `master`, déduit le ticket depuis le nom de branche et propose :
-   - un **titre** au format `(PC-XXXXX) type(scope): summary`
-   - une **description** dans un bloc markdown copiable
-4. Colle la description ici **à la place de ce guide**, et le titre dans le champ titre.
-5. Ajoute tes **screenshots / vidéos** à la main (Copilot ne peut pas les uploader).
-
-### Mettre à jour une description existante
-
-Relance `/pr-description` en collant la description actuelle : seules les sections impactées par les nouveaux commits sont réécrites.
-
+[ai-guide]: https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/pull-request-ai-description.md
 [manual]: https://github.com/pass-culture/pass-culture-app-native/blob/master/.github/PULL_REQUEST_TEMPLATE/manual.md?plain=1
-[prompt]: https://github.com/pass-culture/pass-culture-app-native/blob/master/.github/prompts/pr-description.prompt.md

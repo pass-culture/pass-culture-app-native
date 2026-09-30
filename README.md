@@ -66,6 +66,7 @@ In the `doc/` folder you will find the `dev standards` the team members follow:
 - [variable naming](./doc/development/naming.md).
 - [testing strategy](./doc/development/tests/unit-test/).
 - [PR title format](./doc/pull-request.md).
+- [PR description with AI](./doc/pull-request-ai-description.md).
 
 <details>
   <summary>To add a dev standard</summary>
