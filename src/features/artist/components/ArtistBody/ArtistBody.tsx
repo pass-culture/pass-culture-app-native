@@ -10,6 +10,10 @@ import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHead
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
+import {
+  ArtistModuleItem,
+  getArtistModuleDataByIndex,
+} from 'features/artist/helpers/getArtistModuleDataByIndex'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
 import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
@@ -98,13 +102,20 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
-  const offersModulesData = useGetOffersDataQuery(
-    [artistPlaylistModule, artistEditorialModule].filter((item) => item !== undefined)
+  const modules = [artistPlaylistModule, artistEditorialModule].filter(
+    (item): item is ArtistModuleItem => item !== undefined
   )
-  const offersArtistPlaylistModulesData = artistPlaylistModule ? offersModulesData[0] : undefined
-  const offersArtistEditorialModulesData = artistEditorialModule
-    ? offersModulesData[artistPlaylistModule ? 1 : 0]
-    : undefined
+  const offersModulesData = useGetOffersDataQuery(modules)
+  const offersArtistPlaylistModulesData = getArtistModuleDataByIndex(
+    modules,
+    offersModulesData,
+    artistPlaylistModule
+  )
+  const offersArtistEditorialModulesData = getArtistModuleDataByIndex(
+    modules,
+    offersModulesData,
+    artistEditorialModule
+  )
 
   const { name, description, image } = artist
   const descriptionWithDot = ensureEndingDot(description ?? '')

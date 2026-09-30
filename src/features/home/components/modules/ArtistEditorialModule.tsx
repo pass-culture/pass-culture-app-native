@@ -10,7 +10,10 @@ import {
   ModuleData,
 } from 'features/home/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
-import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
+import {
+  useMobileFontScaleToDisplay,
+  useNumberOfLine,
+} from 'shared/accessibility/helpers/zoomHelpers'
 import {
   CategoryButtonIllustrationName,
   categoryButtonIllustrationUrls,
@@ -48,6 +51,7 @@ export const ArtistEditorialModule: FunctionComponent<ArtistEditorialModuleProps
   const theme = useTheme()
   const { isDesktopViewport, designSystem } = theme
   const numberOfLines = useNumberOfLine(2)
+  const isZoomedAt200 = useMobileFontScaleToDisplay({ default: false, at200PercentZoom: true })
   const [containerWidth, setContainerWidth] = useState<number>(0)
 
   const items = data?.playlistItems ?? []
@@ -79,7 +83,7 @@ export const ArtistEditorialModule: FunctionComponent<ArtistEditorialModuleProps
     <Container
       onLayout={handleLayout}
       testID={isDesktopViewport ? 'desktopArtistEditorial' : 'mobileArtistEditorial'}>
-      <HeaderCard color={color} height={headerHeight}>
+      <HeaderCard color={color} minHeight={headerHeight}>
         <TitleText {...setTextSemantic('h2')} numberOfLines={numberOfLines}>
           {title}
         </TitleText>
@@ -90,7 +94,7 @@ export const ArtistEditorialModule: FunctionComponent<ArtistEditorialModuleProps
       </HeaderCard>
 
       {items.length > 0 ? (
-        <OffersContainer gap={4}>
+        <OffersContainer gap={4} isZoomedAt200={isZoomedAt200}>
           {items.slice(0, NUMBER_OF_ITEMS).map((item) => (
             <OfferTileWrapper
               key={item.id}
@@ -116,11 +120,11 @@ const Container = styled.View(({ theme }) => ({
 
 const HeaderCard = styled.View<{
   color: Color
-  height: number
-}>(({ theme, color, height }) => ({
+  minHeight: number
+}>(({ theme, color, minHeight }) => ({
   borderRadius: theme.designSystem.size.borderRadius.l,
   backgroundColor: theme.designSystem.color.illustration[colorMapping[color].fill],
-  height,
+  minHeight,
   overflow: theme.isDesktopViewport ? 'visible' : 'hidden',
   position: 'relative',
 }))
@@ -144,11 +148,15 @@ const Sticker = styled(FastImage)(({ theme }) => ({
   height: theme.designSystem.size.illustration.xl,
 }))
 
-const MobileOffersContainer = styled(ViewGap)(({ theme }) => ({
-  flexDirection: 'row',
-  marginTop: MARGIN_TOP_OFFERS_CONTAINER_MOBILE,
-  paddingHorizontal: theme.designSystem.size.spacing.s,
-}))
+const MobileOffersContainer = styled(ViewGap)<{ isZoomedAt200: boolean }>(
+  ({ theme, isZoomedAt200 }) => ({
+    flexDirection: 'row',
+    marginTop: isZoomedAt200
+      ? theme.designSystem.size.spacing.m
+      : MARGIN_TOP_OFFERS_CONTAINER_MOBILE,
+    paddingHorizontal: theme.designSystem.size.spacing.s,
+  })
+)
 
 const DesktopOffersContainer = styled(ViewGap)({
   flexDirection: 'row',
