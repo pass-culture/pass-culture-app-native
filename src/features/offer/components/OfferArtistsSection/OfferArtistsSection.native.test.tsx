@@ -1,17 +1,10 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  ArtistType,
-  CategoryIdEnum,
-  OfferArtist,
-  SearchGroupNameEnumv2,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { ArtistType, CategoryIdEnum, OfferArtist, SubcategoryIdEnum } from 'api/gen'
 import { OfferArtistsSection } from 'features/offer/components/OfferArtistsSection/OfferArtistsSection'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -34,7 +27,6 @@ const renderOfferArtistsSection = (artists: OfferArtist[]) =>
         artists={artists}
         offerCategoryId={CategoryIdEnum.MUSIQUE_ENREGISTREE}
         offerSubcategoryId={SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}
-        offerSearchGroupName={SearchGroupNameEnumv2.MUSIQUE}
         onPlaylistItemPress={jest.fn()}
         offerId={1}
       />
@@ -199,30 +191,6 @@ describe('<OfferArtistsSection />', () => {
         title: 'Artistes',
         originDetails: 'offer',
       })
-    })
-  })
-
-  describe('Follow artist fake door', () => {
-    it('should display follow button for the single artist when FF activated', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
-      renderOfferArtistsSection([mockArtist])
-
-      expect(screen.getByLabelText('Suivre Edith Piaf')).toBeOnTheScreen()
-    })
-
-    it('should display follow button for each artist when FF activated', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
-      renderOfferArtistsSection(mockMultiArtists)
-
-      expect(screen.getByLabelText('Suivre Sam Worthington')).toBeOnTheScreen()
-      expect(screen.getByLabelText('Suivre Zoe Saldana')).toBeOnTheScreen()
-      expect(screen.getByLabelText('Suivre Sigourney Weaver')).toBeOnTheScreen()
-    })
-
-    it('should not display follow button when FF deactivated', () => {
-      renderOfferArtistsSection([mockArtist])
-
-      expect(screen.queryByLabelText('Suivre Edith Piaf')).not.toBeOnTheScreen()
     })
   })
 })

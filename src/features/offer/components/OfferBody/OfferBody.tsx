@@ -196,7 +196,6 @@ export const OfferBody: FunctionComponent<Props> = ({
             artists={artists}
             offerCategoryId={subcategory.categoryId}
             offerSubcategoryId={offer.subcategoryId}
-            offerSearchGroupName={subcategory.searchGroupName}
             offerId={offer.id}
             onPlaylistItemPress={handleOnArtistPlaylistItemPress}
           />
