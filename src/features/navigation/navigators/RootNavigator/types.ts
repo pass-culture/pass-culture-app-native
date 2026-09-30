@@ -261,7 +261,6 @@ export type RootStackParamList = {
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
-  AccountStatusScreenHandler: undefined
   Achievements: { from: 'profile' | 'success' } | undefined
   AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams

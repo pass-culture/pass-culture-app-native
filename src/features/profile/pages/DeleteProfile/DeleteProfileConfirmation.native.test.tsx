@@ -36,7 +36,7 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
-  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+  useLogoutRoutine: jest.fn(() => mockSignOut),
 }))
 
 const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')

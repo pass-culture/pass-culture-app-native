@@ -1,10 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useAccountSuspendForHackSuspicionMutation } from 'features/auth/queries/useAccountSuspendForHackSuspicionMutation'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -24,7 +24,7 @@ import { UserError } from 'ui/svg/UserError'
 import { Typo } from 'ui/theme'
 
 export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const signOut = useLogoutRoutine()
   const { user } = useAuthContext()
   const version = useVersion()
   const metrics = useDeviceMetrics()
@@ -34,8 +34,11 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   }
 
   const { accountSuspendForHackSuspicion, isLoading } = useAccountSuspendForHackSuspicionMutation({
-    onSuccess: () => {
-      navigate('SuspiciousLoginSuspendedAccount')
+    onSuccess: async () => {
+      await signOut()
+      // We use resetFromRef instead of navigation because signOut() may unmount the current screen
+      // (RootNavigator rebuild). resetFromRef ensures navigation still works after logout.
+      resetFromRef('SuspiciousLoginSuspendedAccount')
     },
     onError: () => {
       showErrorSnackBar(

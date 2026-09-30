@@ -1,7 +1,5 @@
 import React, { PropsWithChildren } from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { useDeviceMetrics } from 'features/trustedDevice/helpers/useDeviceMetrics'
@@ -19,8 +17,6 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
   children,
   onBeforeNavigateContactFraudTeam,
 }) => {
-  const signOut = useLogoutRoutine()
-  const { user } = useAuthContext()
   const version = useVersion()
   const metrics = useDeviceMetrics()
 
@@ -35,12 +31,15 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
       buttonPrimary={{
         wording: 'Contacter le service fraude',
         onBeforeNavigate: onBeforeNavigateContactFraudTeam,
-        externalNav: { url: buildZendeskUrlForFraud({ user, metrics, version }) },
+        externalNav: { url: buildZendeskUrlForFraud({ metrics, version }) },
       }}
       buttonTertiary={{
         wording: 'Retourner à l’accueil',
-        onBeforeNavigate: signOut,
-        navigateTo: { ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } },
+        navigateTo: {
+          ...navigateToHomeConfig,
+          withReset: true,
+          params: { ...navigateToHomeConfig.params },
+        },
         icon: PlainArrowPrevious,
       }}>
       {children}

@@ -222,54 +222,56 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for inactive account', async () => {
+  it('should redirect to FraudulentSuspendedAccount for inactive account', async () => {
     simulateSignin200(AccountState.INACTIVE)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'FraudulentSuspendedAccount')
   })
 
-  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account', async () => {
+  it('should redirect to FraudulentSuspendedAccount for suspended account', async () => {
     simulateSignin200(AccountState.SUSPENDED)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'FraudulentSuspendedAccount')
   })
 
-  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account upon user request', async () => {
+  it('should redirect to SuspiciousLoginSuspendedAccount for suspended account upon user request', async () => {
     simulateSignin200(AccountState.SUSPENDED_UPON_USER_REQUEST)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
-  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account suspicious login report by user', async () => {
+  it('should redirect to SuspiciousLoginSuspendedAccount for suspended account suspicious login report by user', async () => {
     simulateSignin200(AccountState.SUSPENDED_UPON_USER_REQUEST)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
-  it('should redirect to AccountStatusScreenHandler WHEN signin is successful for waiting for anonymization account', async () => {
+  it('should show appropriate message for waiting for anonymization account', async () => {
     simulateSignin200(AccountState.WAITING_FOR_ANONYMIZATION)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
+    const errorMessage = screen.getByText('Ton compte à été supprimé', { hidden: true })
+
+    expect(errorMessage).toBeTruthy()
   })
 
   it('should show appropriate message if account is deleted', async () => {
@@ -715,6 +717,7 @@ function simulateSigninEmailNotValidated() {
 function simulateSigninNetworkFailure() {
   mockServer.postApi('/v2/signin', {
     responseOptions: {
+      statusCode: 500,
       data: {
         code: 'NETWORK_REQUEST_FAILED',
         general: ['Erreur réseau. Tu peux réessayer une fois la connexion réétablie'],

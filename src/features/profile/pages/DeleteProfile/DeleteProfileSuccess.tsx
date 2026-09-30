@@ -19,7 +19,11 @@ export const DeleteProfileSuccess = () => (
     title="Ton compte a été supprimé"
     buttonPrimary={{
       wording: 'Retourner à l’accueil',
-      navigateTo: { ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } },
+      navigateTo: {
+        ...navigateToHomeConfig,
+        withReset: true,
+        params: { ...navigateToHomeConfig.params },
+      },
     }}>
     <ViewGap gap={4}>
       <StyledBody>
