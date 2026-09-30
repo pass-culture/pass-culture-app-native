@@ -75,7 +75,8 @@ export const ChangeEmailSetPassword = () => {
           <ViewGap gap={4}>
             <Typo.Title3 {...setTextSemantic('h2')}>Crée ton mot de passe</Typo.Title3>
             <Typo.Body>
-              Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
+              Tu t’es inscrit via Google ou Apple, tu ne possèdes donc pas de mot de passe
+              actuellement.
             </Typo.Body>
             <Typo.Body>
               Ce mot de passe te permettra de te connecter avec ta nouvelle adresse e-mail.
