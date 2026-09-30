@@ -1,33 +1,27 @@
-Link to JIRA ticket: https://passculture.atlassian.net/browse/PC-XXXXX
+## 🤖 Générer la description de cette PR avec Copilot
 
-## Context
+> [!IMPORTANT]
+> Ce contenu est un **guide** : remplace-le entièrement par la description générée.
+> Tu préfères rédiger à la main ? Utilise [l'ancien template][manual] (ajoute `&template=manual.md` à l'URL de cette page, ou copie-le depuis le lien).
 
-## Flakiness
+### Prérequis
 
-If I had to re-run tests in the CI due to flakiness, I add the incident [on Notion][2]
+- VS Code + extension **GitHub Copilot Chat**
+- `chat.promptFiles` activé (déjà configuré dans `.vscode/settings.json` du repo)
 
-## Checklist
+### Étapes
 
-I have:
+1. Sur ta branche, ouvre **Copilot Chat** en mode **Agent** (il doit pouvoir lancer des commandes `git`).
+2. Tape `/pr-description` — tu peux ajouter du contexte : `/pr-description le but est de …`
+3. Copilot analyse le diff avec `master`, déduit le ticket depuis le nom de branche et propose :
+   - un **titre** au format `(PC-XXXXX) type(scope): summary`
+   - une **description** dans un bloc markdown copiable
+4. Colle la description ici **à la place de ce guide**, et le titre dans le champ titre.
+5. Ajoute tes **screenshots / vidéos** à la main (Copilot ne peut pas les uploader).
 
-- [ ] Made sure my feature is working on web.
-- [ ] Made sure my feature is working on mobile (depending on relevance : real or virtual devices)
-- [ ] Written **unit tests** native (and web when implementation is different) for my feature.
-- [ ] Added a **screenshot** for UI tickets or deleted the screenshot section if no UI change
-- [ ] If my PR is a bugfix, I add the link of the "résolution de problème sur le bug" [on Notion][1]
-- [ ] I am aware of all the [best practices][3] and respected them.
+### Mettre à jour une description existante
 
-## Screenshots
+Relance `/pr-description` en collant la description actuelle : seules les sections impactées par les nouveaux commits sont réécrites.
 
-**delete** _if no UI change_
-
-| Platform         | Mockup/Before | After |
-| :--------------- | :-----------: | :---: |
-| iOS              |               |       |
-| Android          |               |       |
-| Phone - Chrome   |               |       |
-| Desktop - Chrome |               |       |
-
-[1]: https://www.notion.so/passcultureapp/R-solution-de-probl-mes-sur-les-bugs-5dd6df8f6a754e6887066cf613467d0a
-[2]: https://www.notion.so/passcultureapp/cb45383351b44723a6f2d9e1481ad6bb?v=10fe47258701423985aa7d25bb04cfee&pvs=4
-[3]: https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/development/best-practices.md
+[manual]: https://github.com/pass-culture/pass-culture-app-native/blob/master/.github/PULL_REQUEST_TEMPLATE/manual.md?plain=1
+[prompt]: https://github.com/pass-culture/pass-culture-app-native/blob/master/.github/prompts/pr-description.prompt.md
