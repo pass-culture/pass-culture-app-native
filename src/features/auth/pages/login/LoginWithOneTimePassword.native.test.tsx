@@ -1,40 +1,49 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { useResendEmail } from 'features/auth/helpers/useResendEmail'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { LoginWithOneTimePassword } from './LoginWithOneTimePassword'
 
 const user = userEvent.setup()
 
-jest.mock('@react-native-async-storage/async-storage', () => ({
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
+const mockNavigateToHomeWithReset = jest.fn()
+const mockHandleResendEmail = jest.fn()
+
+jest.mock('features/auth/helpers/useResendEmail')
+jest.mock('features/navigation/helpers/useNavigateToHomeWithReset', () => ({
+  useNavigateToHomeWithReset: () => ({ navigateToHomeWithReset: mockNavigateToHomeWithReset }),
 }))
+
+const mockedUseResendEmail = jest.mocked(useResendEmail)
+
+const getDefaultResendState = () => ({
+  resendCountdown: 0,
+  resendAttempts: 0,
+  isInitialized: true,
+  isCooldownActive: false,
+  hasReachedMaxAttempts: false,
+  isDisabled: false,
+  handleResendEmail: mockHandleResendEmail,
+})
 
 describe('LoginWithOneTimePassword', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-
-    jest.mocked(AsyncStorage.getItem).mockResolvedValue(null)
-    jest.mocked(AsyncStorage.setItem).mockResolvedValue(undefined)
-    jest.mocked(AsyncStorage.removeItem).mockResolvedValue(undefined)
+    mockedUseResendEmail.mockReturnValue(getDefaultResendState())
   })
 
-  it('should match snapshot', async () => {
+  it('should match snapshot', () => {
     render(<LoginWithOneTimePassword />)
-
-    await waitFor(() => expect(screen.getByText('Consulte ta boîte mail')).toBeOnTheScreen())
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render the verification code inputs', async () => {
+  it('should render the verification code inputs', () => {
     render(<LoginWithOneTimePassword />)
 
     expect(
-      await screen.findByLabelText(
+      screen.getByLabelText(
         'Saisis le code de vérification que tu as reçu à l’adresse adresse@mail.com - caractère 1 sur 6'
       )
     ).toBeOnTheScreen()
@@ -46,18 +55,24 @@ describe('LoginWithOneTimePassword', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should disable the continue button when the code is incomplete', async () => {
+  it('should not render the screen before resend state is initialized', () => {
+    mockedUseResendEmail.mockReturnValueOnce({ ...getDefaultResendState(), isInitialized: false })
+
     render(<LoginWithOneTimePassword />)
 
-    const continueButton = await screen.findByRole('button', { name: 'Continuer' })
+    expect(screen.queryByText('Consulte ta boîte mail')).not.toBeOnTheScreen()
+  })
 
-    expect(continueButton).toBeDisabled()
+  it('should disable the continue button when the code is incomplete', () => {
+    render(<LoginWithOneTimePassword />)
+
+    expect(screen.getByRole('button', { name: 'Continuer' })).toBeDisabled()
   })
 
   it('should enable the continue button when the code is complete', async () => {
     render(<LoginWithOneTimePassword />)
 
-    const firstInput = await screen.findByLabelText(
+    const firstInput = screen.getByLabelText(
       'Saisis le code de vérification que tu as reçu à l’adresse adresse@mail.com - caractère 1 sur 6'
     )
 
@@ -66,121 +81,117 @@ describe('LoginWithOneTimePassword', () => {
     expect(screen.getByRole('button', { name: 'Continuer' })).toBeEnabled()
   })
 
-  it('should allow requesting a new email', async () => {
+  it('should navigate home when continuing with a complete code', async () => {
     render(<LoginWithOneTimePassword />)
 
-    const resendButton = await screen.findByRole('button', { name: 'Renvoyer l’email' })
+    const firstInput = screen.getByLabelText(
+      'Saisis le code de vérification que tu as reçu à l’adresse adresse@mail.com - caractère 1 sur 6'
+    )
 
-    expect(resendButton).toBeEnabled()
+    await user.paste(firstInput, '123456')
+    await user.press(screen.getByRole('button', { name: 'Continuer' }))
+
+    expect(mockNavigateToHomeWithReset).toHaveBeenCalledTimes(1)
+  })
+
+  it('should request a new email when pressing the resend button', async () => {
+    render(<LoginWithOneTimePassword />)
+
+    const resendButton = screen.getByRole('button', { name: 'Renvoyer l’email' })
 
     await user.press(resendButton)
 
-    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
-      'login-one-time-password-resend-cooldown',
-      expect.any(String)
-    )
-
-    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
-      'login-one-time-password-resend-attempts',
-      '1'
-    )
-
-    expect(screen.getByText(/Tu pourras effectuer une nouvelle demande dans/)).toBeOnTheScreen()
+    expect(mockHandleResendEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should display the remaining number of attempts after requesting a new email', async () => {
-    render(<LoginWithOneTimePassword />)
+  it('should display the remaining number of attempts', () => {
+    mockedUseResendEmail.mockReturnValueOnce({ ...getDefaultResendState(), resendAttempts: 1 })
 
-    await user.press(await screen.findByRole('button', { name: 'Renvoyer l’email' }))
+    render(<LoginWithOneTimePassword />)
 
     expect(screen.getByText('Attention, il te reste 4 tentatives')).toBeOnTheScreen()
   })
 
-  it('should disable the resend button after requesting a new email', async () => {
+  it('should disable the resend button during the cooldown', () => {
+    mockedUseResendEmail.mockReturnValueOnce({
+      ...getDefaultResendState(),
+      resendCountdown: 30,
+      isCooldownActive: true,
+      isDisabled: true,
+    })
+
     render(<LoginWithOneTimePassword />)
 
-    const resendButton = await screen.findByRole('button', { name: 'Renvoyer l’email' })
-    await user.press(resendButton)
-
-    expect(resendButton).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Renvoyer l’email' })).toBeDisabled()
   })
 
-  it('should restore the resend state from AsyncStorage', async () => {
-    const cooldownEnd = Date.now() + 60_000
-
-    jest
-      .mocked(AsyncStorage.getItem)
-      .mockResolvedValueOnce(String(cooldownEnd))
-      .mockResolvedValueOnce('2')
+  it('should display the cooldown message', () => {
+    mockedUseResendEmail.mockReturnValueOnce({
+      ...getDefaultResendState(),
+      resendCountdown: 30,
+      isCooldownActive: true,
+      isDisabled: true,
+    })
 
     render(<LoginWithOneTimePassword />)
 
-    expect(await screen.findByText('Attention, il te reste 3 tentatives')).toBeOnTheScreen()
-
+    expect(screen.getByText('Un nouveau code t’a été envoyé.')).toBeOnTheScreen()
     expect(screen.getByText(/Tu pourras effectuer une nouvelle demande dans/)).toBeOnTheScreen()
-
-    expect(screen.getByRole('button', { name: 'Renvoyer l’email' })).toBeDisabled()
+    expect(screen.getByText('30 secondes')).toBeOnTheScreen()
   })
 
-  it('should remove expired cooldown from AsyncStorage', async () => {
-    const expiredCooldown = Date.now() - 1_000
-
-    jest.mocked(AsyncStorage.getItem).mockImplementationOnce(async (key) => {
-      if (key === 'login-one-time-password-resend-cooldown') return String(expiredCooldown)
-      if (key === 'login-one-time-password-resend-attempts') return '2'
-      return null
+  it('should display the countdown in minutes', () => {
+    mockedUseResendEmail.mockReturnValueOnce({
+      ...getDefaultResendState(),
+      resendCountdown: 120,
+      isCooldownActive: true,
+      isDisabled: true,
     })
 
     render(<LoginWithOneTimePassword />)
 
-    await waitFor(() => {
-      expect(AsyncStorage.removeItem).toHaveBeenCalledWith(
-        'login-one-time-password-resend-cooldown'
-      )
+    expect(screen.getByText('2 minutes')).toBeOnTheScreen()
+  })
+
+  it('should display the maximum attempts message', () => {
+    mockedUseResendEmail.mockReturnValueOnce({
+      ...getDefaultResendState(),
+      resendAttempts: 5,
+      resendCountdown: 60,
+      isCooldownActive: true,
+      hasReachedMaxAttempts: true,
+      isDisabled: true,
     })
 
-    expect(screen.getByRole('button', { name: 'Renvoyer l’email' })).toBeEnabled()
-  })
-
-  it('should block resend after the fifth attempt', async () => {
-    const cooldownEnd = Date.now() + 60_000
-
-    jest
-      .mocked(AsyncStorage.getItem)
-      .mockResolvedValueOnce(String(cooldownEnd))
-      .mockResolvedValueOnce('5')
-
     render(<LoginWithOneTimePassword />)
 
-    expect(await screen.findByText('Tu as effectué trop de demandes.')).toBeOnTheScreen()
-
-    expect(screen.getByRole('button', { name: 'Renvoyer l’email' })).toBeDisabled()
-    expect(screen.getByRole('button', { name: 'Continuer' })).toBeDisabled()
-  })
-
-  it('should use a one hour cooldown after the fifth attempt', async () => {
-    jest.mocked(AsyncStorage.getItem).mockResolvedValueOnce(null).mockResolvedValueOnce('4')
-
-    render(<LoginWithOneTimePassword />)
-
-    const resendButton = await screen.findByRole('button', { name: 'Renvoyer l’email' })
-
-    await user.press(resendButton)
-
-    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
-      'login-one-time-password-resend-cooldown',
-      expect.any(String)
-    )
-
-    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
-      'login-one-time-password-resend-attempts',
-      '5'
-    )
-
+    expect(screen.getByText('Tu as effectué trop de demandes.')).toBeOnTheScreen()
     expect(
       screen.getByText(
-        'Tu as effectué trop de demandes. Tu pourras effectuer une nouvelle demande dans 60 minutes'
+        /Tu as effectué trop de demandes\. Tu pourras effectuer une nouvelle demande dans/
       )
     ).toBeOnTheScreen()
+    expect(screen.getByText('1 minute')).toBeOnTheScreen()
+  })
+
+  it('should not display the remaining attempts when the maximum is reached', () => {
+    mockedUseResendEmail.mockReturnValueOnce({
+      ...getDefaultResendState(),
+      resendAttempts: 5,
+      hasReachedMaxAttempts: true,
+      isDisabled: true,
+    })
+
+    render(<LoginWithOneTimePassword />)
+
+    expect(screen.queryByText(/tentative/)).not.toBeOnTheScreen()
+  })
+
+  it('should disable the continue button when resend is disabled', () => {
+    mockedUseResendEmail.mockReturnValueOnce({ ...getDefaultResendState(), isDisabled: true })
+
+    render(<LoginWithOneTimePassword />)
+
+    expect(screen.getByRole('button', { name: 'Continuer' })).toBeDisabled()
   })
 })

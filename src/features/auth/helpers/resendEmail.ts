@@ -1,0 +1,39 @@
+export const ONE_MINUTE = 60
+export const RESEND_COUNTDOWN = 2 * ONE_MINUTE
+export const MAX_RESEND_ATTEMPTS = 5
+export const MAX_ATTEMPTS_COUNTDOWN = ONE_MINUTE * ONE_MINUTE
+
+export const RESEND_COOLDOWN_KEY = 'login-one-time-password-resend-cooldown'
+export const RESEND_ATTEMPTS_KEY = 'login-one-time-password-resend-attempts'
+
+export const getRemainingSeconds = (endTime: number, now = Date.now()) =>
+  Math.max(Math.ceil((endTime - now) / 1000), 0)
+
+export const getResendCooldownDuration = (attempts: number) =>
+  attempts === MAX_RESEND_ATTEMPTS ? MAX_ATTEMPTS_COUNTDOWN : RESEND_COUNTDOWN
+
+export const getResendState = (cooldownEnd: number | null, attempts: number, now = Date.now()) => {
+  if (!cooldownEnd) {
+    return {
+      cooldownEnd: null,
+      countdown: 0,
+      attempts,
+    }
+  }
+
+  const countdown = getRemainingSeconds(cooldownEnd, now)
+
+  if (countdown > 0) {
+    return {
+      cooldownEnd,
+      countdown,
+      attempts,
+    }
+  }
+
+  return {
+    cooldownEnd: null,
+    countdown: 0,
+    attempts: attempts === MAX_RESEND_ATTEMPTS ? 0 : attempts,
+  }
+}
