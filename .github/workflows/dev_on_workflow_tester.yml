@@ -135,7 +135,7 @@ jobs:
           npx nyc merge coverage coverage/coverage-final.json
           npx nyc report -t coverage --report-dir coverage --reporter=clover --reporter=lcov
       - name: SonarCloud scan - App & Webapp
-        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
+        uses: SonarSource/sonarqube-scan-action@ba9859eae8dd6bd29e412f25ddbbef3d032000f4 # v8.2.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
@@ -224,7 +224,7 @@ jobs:
           secrets: |-
             SONAR_TOKEN:pc-native-production/sonar-token
       - name: SonarCloud scan - Proxy
-        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
+        uses: SonarSource/sonarqube-scan-action@ba9859eae8dd6bd29e412f25ddbbef3d032000f4 # v8.2.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
