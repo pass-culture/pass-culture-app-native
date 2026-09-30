@@ -7,7 +7,6 @@
 
 import { useSettingsQuery } from 'queries/settings/settingsQuery'
 import {
-  selectAccountUnsuspensionLimit,
   selectAppEnableAutocomplete,
   selectBonificationBonusAmount,
   selectBonificationQfThreshold,
@@ -49,11 +48,6 @@ export const useEnableFrontImageResizing = () =>
 export const useIsRecaptchaEnabled = () =>
   useSettingsQuery({
     select: selectIsRecaptchaEnabled,
-  })
-
-export const useAccountUnsuspensionLimit = () =>
-  useSettingsQuery({
-    select: selectAccountUnsuspensionLimit,
   })
 
 export const useIdCheckAddressAutocompletion = () =>

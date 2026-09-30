@@ -36,7 +36,7 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
-  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+  useLogoutRoutine: jest.fn(() => mockSignOut),
 }))
 
 const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')
@@ -113,7 +113,7 @@ describe('DeleteProfileConfirmation', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(mockSignOut).toHaveBeenCalledTimes(1)
+    expect(mockSignOut).toHaveBeenNthCalledWith(1, false)
   })
 
   it('should show error snackbar when account anonymization fails', async () => {

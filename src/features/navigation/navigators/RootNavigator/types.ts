@@ -115,7 +115,6 @@ type TrustedDeviceRootStackParamList = {
 
 export enum StepperOrigin {
   BOOKING = 'booking',
-  DEACTIVATE_PROFILE_SUCCESS = 'DeactivateProfileSuccess',
   DEEPLINK = 'deeplink',
   FAVORITE = 'favorite',
   FORGOTTEN_PASSWORD = 'forgottenPassword',
@@ -261,7 +260,6 @@ export type RootStackParamList = {
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
-  AccountStatusScreenHandler: undefined
   Achievements: { from: 'profile' | 'success' } | undefined
   AfterSignupEmailValidationBuffer: AfterSignupEmailValidationBufferParams
   _DeeplinkOnlyAfterSignupEmailValidationBuffer1: AfterSignupEmailValidationBufferParams

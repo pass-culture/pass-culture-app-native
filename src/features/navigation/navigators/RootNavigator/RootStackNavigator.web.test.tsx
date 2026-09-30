@@ -3,7 +3,6 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
-import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
@@ -15,7 +14,6 @@ import { act, render, screen } from 'tests/utils/web'
 import { RootNavigator } from './RootStackNavigator'
 
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
-const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
 
 jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
@@ -29,7 +27,6 @@ jest.mock('react-error-boundary', () => ({
 jest.mock('features/navigation/navigators/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))
-jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen/splashscreen')
 
@@ -56,7 +53,6 @@ describe('<RootNavigator />', () => {
   })
 
   beforeEach(() => {
-    mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -94,7 +90,6 @@ describe('<RootNavigator />', () => {
 
   it('should not display quick access button if current route is not TabNavigator', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
-    mockUseCurrentRoute.mockReturnValueOnce({ name: 'Offer', key: 'key' })
 
     await renderRootNavigator()
 

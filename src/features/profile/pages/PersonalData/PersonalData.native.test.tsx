@@ -165,7 +165,7 @@ describe('PersonalData', () => {
     })
   })
 
-  it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+  it('should log analytics when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
       user: nonBeneficiaryUserV2,
@@ -178,7 +178,7 @@ describe('PersonalData', () => {
     expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
   })
 
-  it('should  redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+  it('should redirect to DeleteProfileReason page when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,
       user: nonBeneficiaryUserV2,
