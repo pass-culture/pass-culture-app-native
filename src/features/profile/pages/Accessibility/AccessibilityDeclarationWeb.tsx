@@ -335,7 +335,7 @@ export const AccessibilityDeclarationWeb = () => {
             </Typo.Body>
 
             <Blocquote
-              cite="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006682235"
+              cite={env.ARTICLE_11_LAW_02_2005}
               TextComponent={Typo.BodyItalic}
               text="«&nbsp;la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie.&nbsp;»"
             />
