@@ -24,8 +24,6 @@ type Props = {
   venue: VenueResponse
   isCTADisplayed?: boolean
   children: React.ReactNode
-  enableVenueFakeDoor?: boolean
-  onPressFollowButton: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () =>
@@ -35,8 +33,6 @@ export const OldVenueContent: React.FunctionComponent<Props> = ({
   venue,
   isCTADisplayed,
   children,
-  enableVenueFakeDoor,
-  onPressFollowButton,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -103,14 +99,7 @@ export const OldVenueContent: React.FunctionComponent<Props> = ({
       <Container>
         <WebMetaHeader title={venue.name} description={venue.description} />
         <VenueHeaderWrapper
-          header={
-            <VenueHeader
-              headerTransition={headerTransition}
-              venue={venue}
-              enableVenueFakeDoor={enableVenueFakeDoor}
-              onPressFollowButton={onPressFollowButton}
-            />
-          }>
+          header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
           <ContentContainer
             testID="venue-container"
             onScroll={handleScroll}
