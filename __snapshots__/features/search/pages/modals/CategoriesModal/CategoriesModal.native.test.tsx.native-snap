@@ -349,7 +349,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       {
                         "busy": undefined,
                         "checked": true,
-                        "disabled": undefined,
+                        "disabled": false,
                         "expanded": undefined,
                         "selected": undefined,
                       }
@@ -517,7 +517,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       {
                         "busy": undefined,
                         "checked": false,
-                        "disabled": undefined,
+                        "disabled": false,
                         "expanded": undefined,
                         "selected": undefined,
                       }

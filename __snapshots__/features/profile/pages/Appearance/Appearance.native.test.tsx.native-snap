@@ -528,7 +528,7 @@ exports[`Appearance should render correctly 1`] = `
                             {
                               "busy": undefined,
                               "checked": false,
-                              "disabled": undefined,
+                              "disabled": false,
                               "expanded": undefined,
                               "selected": undefined,
                             }
@@ -710,7 +710,7 @@ exports[`Appearance should render correctly 1`] = `
                             {
                               "busy": undefined,
                               "checked": false,
-                              "disabled": undefined,
+                              "disabled": false,
                               "expanded": undefined,
                               "selected": undefined,
                             }
@@ -892,7 +892,7 @@ exports[`Appearance should render correctly 1`] = `
                             {
                               "busy": undefined,
                               "checked": true,
-                              "disabled": undefined,
+                              "disabled": false,
                               "expanded": undefined,
                               "selected": undefined,
                             }

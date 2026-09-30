@@ -6,7 +6,7 @@
 import userEvent from '@testing-library/user-event'
 import React, { ComponentProps } from 'react'
 
-import { act, render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { RadioButton } from './RadioButton'
 
@@ -27,6 +27,28 @@ const baseProps: ComponentProps<typeof RadioButton> = {
 }
 
 describe('<RadioButton />', () => {
+  it.each(['default', 'detailed'] as const)(
+    'forwards navigation properties to the %s radio',
+    (variant) => {
+      render(<RadioButton {...baseProps} variant={variant} id="choice" tabIndex={-1} />)
+
+      expect(screen.getByRole('radio')).toHaveAttribute('id', 'choice')
+      expect(screen.getByRole('radio')).toHaveAttribute('tabindex', '-1')
+    }
+  )
+
+  it.each(['default', 'detailed'] as const)(
+    'prevents activation of a disabled %s radio',
+    (variant) => {
+      render(<RadioButton {...baseProps} variant={variant} disabled />)
+
+      fireEvent.click(screen.getByRole('radio'))
+
+      expect(screen.getByRole('radio')).toHaveAttribute('aria-disabled', 'true')
+      expect(setValueMock).not.toHaveBeenCalled()
+    }
+  )
+
   it('should render an accessible RadioButton', () => {
     render(<RadioButton {...baseProps} />)
 
