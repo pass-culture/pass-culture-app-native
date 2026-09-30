@@ -4,6 +4,8 @@ import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPerm
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { LocationMode } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
+import { queryClient } from 'libs/react-query/queryClient'
+import { mockServer } from 'tests/mswServer'
 import { waitFor } from 'tests/utils'
 
 import { initLocation } from './initLocation'
@@ -11,20 +13,53 @@ import { initLocation } from './initLocation'
 jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
 
+const REVERSE_GEOCODE_URL = 'https://data.geopf.fr/geocodage/reverse'
+const position = { latitude: 48.85, longitude: 2.35 }
+
+const mockReverseGeocodeResponse = {
+  type: 'FeatureCollection' as const,
+  features: [
+    {
+      type: 'Feature' as const,
+      geometry: {
+        type: 'Point' as const,
+        coordinates: [position.longitude, position.latitude] as [number, number],
+      },
+      properties: {
+        type: 'locality' as const,
+        label: 'Paris',
+      },
+    },
+  ],
+}
+
 describe('initLocation', () => {
+  beforeEach(() => {
+    queryClient.clear()
+    mockServer.universalGet(REVERSE_GEOCODE_URL, mockReverseGeocodeResponse)
+  })
+
   describe('when app starts', () => {
-    it('should set location mode to EVERYWHERE if permission is not GRANTED', async () => {
+    it('should switch to around place with last known position when permission is not GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
+      locationActions.setGeolocPosition(position)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
       initLocation()
 
       await waitFor(() => {
-        expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+        expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
       })
+
+      expect(locationSelectors.selectLocationConfiguration(LocationMode.AROUND_PLACE)).toEqual(
+        expect.objectContaining({
+          geolocation: position,
+          label: 'Paris',
+        })
+      )
     })
 
-    it('should keep location mode if permission is GRANTED', async () => {
+    it('should keep location mode when permission is GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
@@ -37,8 +72,9 @@ describe('initLocation', () => {
   })
 
   describe('when app is resumed', () => {
-    it('should set location mode to EVERYWHERE if permission is not GRANTED', async () => {
+    it('should switch to around place with last known position when permission is not GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
+      locationActions.setGeolocPosition(position)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
       initLocation()
@@ -48,11 +84,11 @@ describe('initLocation', () => {
       AppState.__triggerChange('active')
 
       await waitFor(() => {
-        expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+        expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
       })
     })
 
-    it('should keep location mode if permission is GRANTED', async () => {
+    it('should keep location mode when permission is GRANTED', async () => {
       locationActions.setLocationMode(LocationMode.AROUND_ME)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 

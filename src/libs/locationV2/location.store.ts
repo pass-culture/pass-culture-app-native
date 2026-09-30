@@ -92,14 +92,8 @@ export const locationStore = createStore({
       setGeolocPosition: (geolocation: GeoCoordinates | null) =>
         setConfiguration(LocationMode.AROUND_ME, { geolocation }),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),
-      setPermissionState: (permissionState: GeolocPermissionState | null) => {
-        set((state) => ({
-          permissionState,
-          ...(permissionsRejectedWhileAroundMe(state) && {
-            locationMode: LocationMode.EVERYWHERE,
-          }),
-        }))
-      },
+      setPermissionState: (permissionState: GeolocPermissionState | null) =>
+        set(() => ({ permissionState })),
     }
   },
   selectors: {
@@ -134,17 +128,6 @@ export const locationStore = createStore({
 locationStore.store.subscribe(locationStore.selectors.selectLocationType, (locationType) =>
   firebaseAnalytics.setDefaultEventParameters({ locationType })
 )
-
-const isRejected = (permission: GeolocPermissionState | null) => {
-  return (
-    !permission ||
-    permission === GeolocPermissionState.DENIED ||
-    permission === GeolocPermissionState.NEVER_ASK_AGAIN
-  )
-}
-
-const permissionsRejectedWhileAroundMe = (state: LocationState) =>
-  state.locationMode === LocationMode.AROUND_ME && isRejected(state.permissionState)
 
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors
