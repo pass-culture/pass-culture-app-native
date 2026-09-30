@@ -1,28 +1,32 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 
+import { useResendEmail } from 'features/auth/helpers/useResendEmail'
 import { render, checkAccessibilityFor, waitFor } from 'tests/utils/web'
 
 import { LoginWithOneTimePassword } from './LoginWithOneTimePassword'
 
-jest.mock('@react-native-async-storage/async-storage', () => ({
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-}))
+jest.mock('features/auth/helpers/useResendEmail')
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+const mockedUseResendEmail = jest.mocked(useResendEmail)
+
 describe('<LoginWithOneTimePassword />', () => {
   beforeEach(() => {
     jest.clearAllMocks()
 
-    jest.mocked(AsyncStorage.getItem).mockResolvedValue(null)
-    jest.mocked(AsyncStorage.setItem).mockResolvedValue(undefined)
-    jest.mocked(AsyncStorage.removeItem).mockResolvedValue(undefined)
+    mockedUseResendEmail.mockReturnValue({
+      resendCountdown: 0,
+      resendAttempts: 0,
+      isInitialized: true,
+      isCooldownActive: false,
+      hasReachedMaxAttempts: false,
+      isDisabled: false,
+      handleResendEmail: jest.fn(),
+    })
   })
 
   describe('Accessibility', () => {
