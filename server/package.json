@@ -46,7 +46,7 @@
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-typescript": "^7.29.7",
-    "@happy-dom/jest-environment": "^20.9.0",
+    "@happy-dom/jest-environment": "^20.11.2",
     "@swc/core": "^1.12.7",
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
