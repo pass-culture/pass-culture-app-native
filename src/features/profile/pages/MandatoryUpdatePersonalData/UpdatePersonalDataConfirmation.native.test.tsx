@@ -2,6 +2,7 @@ import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { UpdatePersonalDataConfirmation } from './UpdatePersonalDataConfirmation'
@@ -21,6 +22,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<UpdatePersonalDataConfirmation />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', async () => {
     render(<UpdatePersonalDataConfirmation />)
 

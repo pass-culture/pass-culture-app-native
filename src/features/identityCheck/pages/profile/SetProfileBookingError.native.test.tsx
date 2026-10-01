@@ -3,6 +3,7 @@ import React from 'react'
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -21,6 +22,10 @@ useRoute.mockReturnValue({
 })
 
 describe('<SetProfileBookingError/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     renderSetProfileBookingError()
 

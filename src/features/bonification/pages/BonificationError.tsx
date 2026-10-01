@@ -5,6 +5,9 @@ import styled from 'styled-components/native'
 import { BonificationType } from 'features/bonification/enums'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -14,6 +17,7 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 export function BonificationError() {
   const { params } = useRoute<UseRouteType<'BonificationError'>>()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
   const navigateToForm = (
     isDisabilityBonification
@@ -29,7 +33,15 @@ export function BonificationError() {
       illustration={HappyFaceWithTear}
       title={`Oups...${LINE_BREAK} Un problème est survenu\u00a0!`}
       buttonPrimary={{ wording: 'Revenir vers le formulaire', navigateTo: navigateToForm }}
-      buttonSecondary={{ wording: 'Revenir au catalogue', navigateTo: navigateToHomeConfig }}>
+      buttonSecondary={{ wording: 'Revenir au catalogue', navigateTo: navigateToHomeConfig }}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.brokenDinosaurSkeletonLarge,
+              backgroundColor: 'negative01',
+            }
+          : undefined
+      }>
       <ViewGap gap={4}>
         <StyledBody>
           Il semble que ta connexion ait été interrompue ou qu’un problème technique soit survenu.
