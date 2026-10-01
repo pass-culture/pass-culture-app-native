@@ -1,13 +1,16 @@
 import React, { forwardRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
-import styled, { DefaultTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
-import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import {
+  OneTimePasswordInputField,
+  SIZE_TO_HEIGHT,
+} from 'ui/components/inputs/OneTimePasswordInput/OneTimePasswordInputField'
 import { useOneTimePasswordInput } from 'ui/components/inputs/OneTimePasswordInput/useOneTimePasswordInput'
 import {
   getCustomTextInputProps,
@@ -15,18 +18,11 @@ import {
   TextInputProps,
 } from 'ui/components/inputs/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TextInputContainer } from 'ui/designSystem/TextInput/TextInputContainer'
 import { ErrorFilled } from 'ui/svg/icons/ErrorFilled'
 import { Typo } from 'ui/theme'
 
 const hiddenFromScreenReaderMobile = Platform.OS === 'web' ? {} : hiddenFromScreenReader()
 const FORMAT_EXAMPLE_BASE = '538299'
-
-const SIZE_TO_HEIGHT = (theme: DefaultTheme) => ({
-  small: theme.inputs.height.small,
-  regular: theme.inputs.height.regular,
-  tall: theme.inputs.height.tall,
-})
 
 export interface OneTimePasswordInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   code: string[]
@@ -90,61 +86,45 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
 
   const hasGenericError = !!customProps.errorMessage
 
+  const handleInputRef = (index: number, ref: RNTextInput | null) => {
+    setInputRef(index, ref)
+    if (index === 0) {
+      if (typeof forwardedRef === 'function') forwardedRef(ref)
+      else if (forwardedRef) forwardedRef.current = ref
+    }
+  }
+
   return (
     <Container>
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer {...hiddenFromScreenReaderMobile}>{labels}</LabelContainer>
       </FlexInputLabel>
-
       <InputsContainer gap={2}>
         {Array.from({ length: numberOfInputs }).map((_, index) => {
           const value = values[index] ?? ''
           const isInvalidInput = invalidIndexes.includes(index)
           const isError = hasGenericError || isInvalidInput
-
           return (
-            <StyledTextInputContainer
+            <OneTimePasswordInputField
               key={index}
+              index={index} // Safe to use index as key: inputs are fixed and never reordered.
+              value={value}
+              numberOfInputs={numberOfInputs}
               size={size}
+              label={customProps.label}
               isError={isError}
               isDisabled={!!customProps.disabled}
-              isFocused={focusedIndex === index}>
-              <StyledBaseTextInput
-                {...nativeProps}
-                nativeID={`${textInputID}-${index}`}
-                accessibilityLabel={`${customProps.label} - caractère ${
-                  index + 1
-                } sur ${numberOfInputs}`}
-                ref={(ref) => {
-                  setInputRef(index, ref)
-
-                  if (index === 0) {
-                    if (typeof forwardedRef === 'function') {
-                      forwardedRef(ref)
-                    } else if (forwardedRef) {
-                      forwardedRef.current = ref
-                    }
-                  }
-                }}
-                value={value}
-                disabled={customProps.disabled}
-                keyboardType="number-pad"
-                maxLength={1}
-                selectTextOnFocus
-                onChangeText={(inputValue) => handleChangeText(inputValue, index)}
-                onKeyPress={(event) => {
-                  if (event.nativeEvent.key !== 'Backspace') return
-
-                  handleBackspace(index)
-                }}
-                onFocus={() => setFocusedIndex(index)}
-                onBlur={() => setFocusedIndex(null)}
-              />
-            </StyledTextInputContainer>
+              isFocused={focusedIndex === index}
+              textInputID={textInputID}
+              textInputProps={nativeProps}
+              setInputRef={handleInputRef}
+              handleChangeText={handleChangeText}
+              handleBackspace={handleBackspace}
+              setFocusedIndex={setFocusedIndex}
+            />
           )
         })}
       </InputsContainer>
-
       {errorMessage ? (
         <ErrorContainer {...hiddenFromScreenReaderMobile}>
           <ErrorIcon />
@@ -168,14 +148,6 @@ const InputsContainer = styled(ViewGap)({
   flexDirection: 'row',
   flexWrap: 'wrap',
 })
-
-const StyledTextInputContainer = styled(TextInputContainer)<{
-  size: keyof ReturnType<typeof SIZE_TO_HEIGHT>
-}>(({ theme, size }) => ({
-  width: SIZE_TO_HEIGHT(theme)[size],
-  height: SIZE_TO_HEIGHT(theme)[size],
-  justifyContent: 'center',
-}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
@@ -209,7 +181,3 @@ const ErrorIcon = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
   size: theme.designSystem.size.icon.s,
 }))({ flexShrink: 0 })
-
-const StyledBaseTextInput = styled(BaseTextInput)({
-  textAlign: 'center',
-})

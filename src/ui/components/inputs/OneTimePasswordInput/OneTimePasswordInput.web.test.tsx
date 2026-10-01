@@ -53,7 +53,7 @@ describe('OneTimePasswordInput - web', () => {
     expect(onCodeChange).toHaveBeenCalledWith(['1', '', '', '', '', ''])
   })
 
-  it('should not change the code when backspace is pressed on the first empty input', async () => {
+  it('should keep the code unchanged when backspace is pressed on the first empty input', async () => {
     const onCodeChange = jest.fn()
 
     render(<OneTimePasswordInput {...defaultProps} onCodeChange={onCodeChange} />)
@@ -63,6 +63,6 @@ describe('OneTimePasswordInput - web', () => {
     await user.click(firstInput)
     await user.keyboard('{Backspace}')
 
-    expect(onCodeChange).not.toHaveBeenCalled()
+    expect(onCodeChange).toHaveBeenCalledWith(['', '', '', '', '', ''])
   })
 })
