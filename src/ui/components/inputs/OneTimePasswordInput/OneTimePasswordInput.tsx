@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -8,6 +8,7 @@ import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHe
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import { useOneTimePasswordInput } from 'ui/components/inputs/OneTimePasswordInput/useOneTimePasswordInput'
 import {
   getCustomTextInputProps,
   getRNTextInputProps,
@@ -38,20 +39,22 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
   RNTextInput,
   OneTimePasswordInputProps
 > = ({ code, onCodeChange, numberOfInputs = 6, size = 'regular', ...props }, forwardedRef) => {
-  const inputRefs = useRef<Array<RNTextInput | null>>([])
-  const [focusedIndex, setFocusedIndex] = useState<number | null>(null)
+  const {
+    values,
+    invalidIndexes,
+    focusedIndex,
+    setFocusedIndex,
+    setInputRef,
+    handleChangeText,
+    handleBackspace,
+  } = useOneTimePasswordInput({
+    code,
+    numberOfInputs,
+    onCodeChange,
+  })
 
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
-
-  const values = Array.from({ length: numberOfInputs }, (_, index) => code[index] ?? '')
-  const valuesRef = useRef(values)
-
-  const syncValuesRef = () => {
-    valuesRef.current = values
-  }
-
-  useEffect(syncValuesRef, [values])
 
   const textInputID = nativeProps.testID ?? uuidv4()
 
@@ -82,57 +85,9 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
     at200PercentZoom: <FlexViewColumn>{descriptionAndRequired}</FlexViewColumn>,
   })
 
-  const handlePaste = (inputValue: string) => {
-    const characters = inputValue.toUpperCase().slice(0, numberOfInputs).split('')
-    const nextValues = Array.from({ length: numberOfInputs }, (_, index) => characters[index] ?? '')
-    valuesRef.current = nextValues
-    onCodeChange(nextValues)
-    const lastFilledIndex = characters.length - 1
-    if (lastFilledIndex >= 0) inputRefs.current[lastFilledIndex]?.focus()
-  }
+  const errorMessage =
+    invalidIndexes.length > 0 ? 'Le code saisi est invalide.' : customProps.errorMessage
 
-  const handleChangeText = (inputValue: string, index: number) => {
-    const normalizedValue = inputValue.toUpperCase()
-
-    if (normalizedValue.length > 1) {
-      handlePaste(normalizedValue)
-      return
-    }
-
-    if (!normalizedValue) return
-
-    const nextValues = [...valuesRef.current]
-    nextValues[index] = normalizedValue
-    valuesRef.current = nextValues
-    onCodeChange(nextValues)
-
-    const nextIndex = (index + 1) % numberOfInputs
-    inputRefs.current[nextIndex]?.focus()
-  }
-
-  const handleKeyPress = (index: number) => {
-    const currentValues = valuesRef.current
-
-    if (currentValues[index]) {
-      const nextValues = [...currentValues]
-      nextValues[index] = ''
-      valuesRef.current = nextValues
-      onCodeChange(nextValues)
-      return
-    }
-
-    if (index > 0) {
-      const previousIndex = index - 1
-      const nextValues = [...currentValues]
-      nextValues[previousIndex] = ''
-      valuesRef.current = nextValues
-      onCodeChange(nextValues)
-      inputRefs.current[previousIndex]?.focus()
-    }
-  }
-
-  const hasInvalidInput = values.some((value) => value !== '' && !/^\d$/.test(value))
-  const errorMessage = hasInvalidInput ? 'Le code saisi est invalide.' : customProps.errorMessage
   const hasGenericError = !!customProps.errorMessage
 
   return (
@@ -140,14 +95,16 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer {...hiddenFromScreenReaderMobile}>{labels}</LabelContainer>
       </FlexInputLabel>
+
       <InputsContainer gap={2}>
         {Array.from({ length: numberOfInputs }).map((_, index) => {
           const value = values[index] ?? ''
-          const isInvalidInput = value !== '' && !/^\d$/.test(value)
+          const isInvalidInput = invalidIndexes.includes(index)
           const isError = hasGenericError || isInvalidInput
+
           return (
             <StyledTextInputContainer
-              key={index} // index is stable here because OTP inputs are fixed and never reordered
+              key={index}
               size={size}
               isError={isError}
               isDisabled={!!customProps.disabled}
@@ -155,12 +112,18 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
               <StyledBaseTextInput
                 {...nativeProps}
                 nativeID={`${textInputID}-${index}`}
-                accessibilityLabel={`${customProps.label} - caractère ${index + 1} sur ${numberOfInputs}`}
+                accessibilityLabel={`${customProps.label} - caractère ${
+                  index + 1
+                } sur ${numberOfInputs}`}
                 ref={(ref) => {
-                  inputRefs.current[index] = ref
+                  setInputRef(index, ref)
+
                   if (index === 0) {
-                    if (typeof forwardedRef === 'function') forwardedRef(ref)
-                    else if (forwardedRef) forwardedRef.current = ref
+                    if (typeof forwardedRef === 'function') {
+                      forwardedRef(ref)
+                    } else if (forwardedRef) {
+                      forwardedRef.current = ref
+                    }
                   }
                 }}
                 value={value}
@@ -171,7 +134,8 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
                 onChangeText={(inputValue) => handleChangeText(inputValue, index)}
                 onKeyPress={(event) => {
                   if (event.nativeEvent.key !== 'Backspace') return
-                  handleKeyPress(index)
+
+                  handleBackspace(index)
                 }}
                 onFocus={() => setFocusedIndex(index)}
                 onBlur={() => setFocusedIndex(null)}
@@ -180,6 +144,7 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
           )
         })}
       </InputsContainer>
+
       {errorMessage ? (
         <ErrorContainer {...hiddenFromScreenReaderMobile}>
           <ErrorIcon />
