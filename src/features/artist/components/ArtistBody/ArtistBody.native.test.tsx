@@ -476,7 +476,6 @@ describe('<ArtistBody />', () => {
               },
             ],
           }}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
