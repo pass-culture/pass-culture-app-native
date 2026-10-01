@@ -125,7 +125,7 @@ export const Accordion = ({
         accordionStateDescription
       )
 
-  const titleTextProps = isWeb ? {} : setTextSemantic('h3')
+  const titleTextProps = setTextSemantic(isWeb ? 'span' : 'h3')
 
   const AccordionButton = (
     <StyledTouchableOpacity
@@ -154,7 +154,7 @@ export const Accordion = ({
         {leftComponent ? (
           <LeftComponentView style={titleStyle}>{leftComponent}</LeftComponentView>
         ) : null}
-        {isWeb ? <WebHeadingWrapper>{AccordionButton}</WebHeadingWrapper> : AccordionButton}
+        {AccordionButton}
       </SwitchContainer>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
         <StyledView
@@ -172,13 +172,6 @@ export const Accordion = ({
     </React.Fragment>
   )
 }
-
-const WebHeadingWrapper = styled.View.attrs({
-  as: 'h3',
-})({
-  flex: 1,
-  width: '100%',
-})
 
 const StyledTitleContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
