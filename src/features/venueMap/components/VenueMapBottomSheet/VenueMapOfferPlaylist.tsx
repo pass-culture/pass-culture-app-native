@@ -28,6 +28,7 @@ import { LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
   playlistType: PlaylistType
+  venueId: number
   onPressMore?: () => void
   analyticsFrom?: Referrals
 }
@@ -41,6 +42,7 @@ export const VenueMapOfferPlaylist = ({
   offers,
   onPressMore,
   playlistType,
+  venueId,
   analyticsFrom = 'venueMap',
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
@@ -106,7 +108,8 @@ export const VenueMapOfferPlaylist = ({
             index,
             type: 'offer',
             id: item.objectID,
-            moduleId: 'venue_map',
+            playlistId: 'venue_map',
+            originId: venueId.toString(),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (

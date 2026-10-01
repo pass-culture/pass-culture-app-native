@@ -172,8 +172,6 @@ export enum AnalyticsEvent {
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
   VIEW_MAP = 'ViewMap',
   VIEWED_BOOKING_PAGE = 'ViewedBookingPage',
-  VIEW_ITEM_LIST_V2 = 'ViewItemListV2',
-  VIEW_ITEM_V2 = 'ViewItemV2',
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

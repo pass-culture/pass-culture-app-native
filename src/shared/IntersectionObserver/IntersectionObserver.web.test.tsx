@@ -45,18 +45,29 @@ describe('IntersectionObserver (web)', () => {
 
     it('should call onChange when intersection changes', () => {
       render(
-        <IntersectionObserver onChange={onChangeMock}>
+        <IntersectionObserver onChange={onChangeMock} threshold="100%">
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
 
-      // Simulate intersection change
       const callback = mockIntersectionObserverConstructor.mock.calls[0]?.[0]
-      callback([{ isIntersecting: true }])
+      callback([
+        {
+          isIntersecting: true,
+          boundingClientRect: { height: 100 },
+          intersectionRect: { height: 100 },
+        },
+      ])
 
       expect(onChangeMock).toHaveBeenCalledWith(true)
 
-      callback([{ isIntersecting: false }])
+      callback([
+        {
+          isIntersecting: true,
+          boundingClientRect: { height: 100 },
+          intersectionRect: { height: 20 },
+        },
+      ])
 
       expect(onChangeMock).toHaveBeenCalledWith(false)
     })
@@ -81,23 +92,33 @@ describe('IntersectionObserver (web)', () => {
         </IntersectionObserver>
       )
 
-      // All threshold types should use threshold: 0 (positioning is handled by element placement)
-      expect(mockIntersectionObserverConstructor).toHaveBeenCalledWith(
-        expect.any(Function),
-        expect.objectContaining({ threshold: 0 })
-      )
+      const callback = mockIntersectionObserverConstructor.mock.calls[0]?.[0]
+      callback([
+        {
+          isIntersecting: true,
+          boundingClientRect: { height: 100, width: 2000 },
+          intersectionRect: { height: 80, width: 400 },
+        },
+      ])
 
-      // Test pixel threshold
+      expect(onChangeMock).toHaveBeenCalledWith(true)
+
       rerender(
-        <IntersectionObserver onChange={onChangeMock} threshold={100}>
+        <IntersectionObserver onChange={onChangeMock} threshold="100%">
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
 
-      expect(mockIntersectionObserverConstructor).toHaveBeenLastCalledWith(
-        expect.any(Function),
-        expect.objectContaining({ threshold: 0 })
-      )
+      const fullThresholdCallback = mockIntersectionObserverConstructor.mock.calls.at(-1)?.[0]
+      fullThresholdCallback([
+        {
+          isIntersecting: true,
+          boundingClientRect: { height: 100, width: 2000 },
+          intersectionRect: { height: 80, width: 400 },
+        },
+      ])
+
+      expect(onChangeMock).toHaveBeenLastCalledWith(false)
     })
   })
 

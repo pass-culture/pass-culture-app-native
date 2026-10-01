@@ -83,7 +83,8 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
             index,
             type: 'offer',
             id: item.objectID,
-            moduleId: entryId,
+            playlistId: entryId,
+            originId: artist.id,
           })
         }
       }}>

@@ -149,7 +149,8 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             index,
             type: 'offer',
             id: item.objectID,
-            moduleId: 'venue_offers_list',
+            playlistId: 'venue_offers_list',
+            originId: venue.id.toString(),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (
@@ -200,7 +201,8 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
                 index,
                 type: 'artist',
                 id: item.id,
-                moduleId: 'venue_artists_carousel',
+                playlistId: 'venue_artists_carousel',
+                originId: venue.id.toString(),
               })
             }}>
             {({ listRef, handleViewableItemsChanged }) => (
@@ -229,7 +231,8 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
                     index: itemIndex,
                     type: 'offer',
                     id: item.objectID,
-                    moduleId: playlist.title,
+                    playlistId: playlist.title,
+                    originId: venue.id.toString(),
                   })
                 }}>
                 {({ listRef, handleViewableItemsChanged }) => (

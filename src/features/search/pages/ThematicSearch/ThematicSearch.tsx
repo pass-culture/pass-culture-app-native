@@ -152,17 +152,16 @@ export const ThematicSearch: React.FC = () => {
       {shouldDisplayVenuesPlaylist ? (
         <ObservedPlaylist
           onItemViewed={({ index, item }) => {
-            if (isFocused) {
-              void logViewItem({
-                origin: 'search',
-                playlistIndex: 0,
-                index,
-                type: 'venue',
-                searchId: currentSearchId,
-                id: item.objectID,
-                moduleId: 'thematicSearchVenuePlaylist',
-              })
-            }
+            if (!isFocused) return
+            void logViewItem({
+              origin: 'search',
+              playlistIndex: 0,
+              index,
+              type: 'venue',
+              id: item.objectID,
+              playlistId: 'thematicSearchVenuePlaylist',
+              originId: currentSearchId,
+            })
           }}>
           {({ listRef, handleViewableItemsChanged }) => (
             <VenuePlaylist

@@ -45,17 +45,16 @@ export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters 
     <IOScrollView>
       <ObservedPlaylist
         onItemViewed={({ index, item }) => {
-          if (isFocused) {
-            void logViewItem({
-              origin: 'search',
-              playlistIndex: 0,
-              index: index,
-              type: 'venue',
-              id: item.objectID,
-              moduleId: 'searchResultsVenuePlaylist',
-              searchId: searchId ?? '',
-            })
-          }
+          if (!isFocused || !searchId) return
+          void logViewItem({
+            origin: 'search',
+            playlistIndex: 0,
+            index: index,
+            type: 'venue',
+            id: item.objectID,
+            playlistId: 'searchResultsVenuePlaylist',
+            originId: searchId,
+          })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (
           <StyledVenuePlaylist

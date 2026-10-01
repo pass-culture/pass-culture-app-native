@@ -107,8 +107,9 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           index: itemIndex,
           type: 'offer',
           id: item.objectID,
-          homeEntryId,
-          moduleId,
+          playlistId: moduleId,
+          originId: homeEntryId,
+          callId: recommendationApiParams?.callId,
         })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (
