@@ -198,7 +198,7 @@ describe('<VenuePlaylist />', () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
     })
 
-    it('should trigger ConsultVenueMap log when pressing Voir sur la carte button and user is located', async () => {
+    it('should trigger ViewMap log when pressing Voir sur la carte button and user is located', async () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
@@ -211,10 +211,14 @@ describe('<VenuePlaylist />', () => {
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchPlaylist' })
+      expect(analytics.logViewMap).toHaveBeenNthCalledWith(1, {
+        from: 'searchPlaylist',
+        mapType: 'VenueMap',
+        searchId,
+      })
     })
 
-    it('should not trigger ConsultVenueMap log when pressing Voir sur la carte button and user is not located', async () => {
+    it('should not trigger ViewMap log when pressing Voir sur la carte button and user is not located', async () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
@@ -227,7 +231,7 @@ describe('<VenuePlaylist />', () => {
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(analytics.logConsultVenueMap).not.toHaveBeenCalled()
+      expect(analytics.logViewMap).not.toHaveBeenCalled()
     })
   })
 

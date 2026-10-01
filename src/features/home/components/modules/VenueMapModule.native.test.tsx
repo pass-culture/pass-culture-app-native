@@ -51,11 +51,11 @@ describe('VenueMapModule', () => {
     expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()
   })
 
-  it('should log consult venue map from home when pressing venue map block', async () => {
+  it('should log ViewMap from home when pressing venue map block', async () => {
     render(<VenueMapModule />)
 
     await user.press(screen.getByText('Explore la carte'))
 
-    expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'home' })
+    expect(analytics.logViewMap).toHaveBeenNthCalledWith(1, { from: 'home', mapType: 'VenueMap' })
   })
 })

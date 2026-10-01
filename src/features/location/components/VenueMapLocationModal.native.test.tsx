@@ -56,6 +56,7 @@ jest.mock('libs/place/queries/usePlacesQuery', () => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     dispatch: jest.fn(),
+    searchState: { searchId: 'uuid1234' },
   }),
 }))
 
@@ -189,7 +190,7 @@ describe('VenueMapLocationModal', () => {
     expect(replace).toHaveBeenCalledWith('VenueMap')
   })
 
-  it('should trigger ConsultVenueMap log on submit when we choose a location and openedFrom defined', async () => {
+  it('should trigger ViewMap log on submit when we choose a location and openedFrom defined', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
     mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
@@ -219,7 +220,11 @@ describe('VenueMapLocationModal', () => {
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
 
-    expect(analytics.logConsultVenueMap).toHaveBeenCalledWith({ from: 'searchPlaylist' })
+    expect(analytics.logViewMap).toHaveBeenCalledWith({
+      from: 'searchPlaylist',
+      mapType: 'VenueMap',
+      searchId: 'uuid1234',
+    })
   })
 
   it('should reset selected venue in store on submit when we choose a location', async () => {

@@ -34,14 +34,15 @@ export const SearchMapButton: FC<Props> = ({ shouldDisplayMapButtonText, searchI
       return
     }
 
+    void analytics.logViewMap({
+      from: 'search',
+      mapType: 'SearchMap',
+      searchId,
+    })
+
     navigate('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: { screen: 'SearchMap' },
-    })
-
-    void analytics.logConsultVenueMap({
-      from: 'search',
-      searchId,
     })
   }
 
