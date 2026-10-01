@@ -584,19 +584,8 @@ export const logEventAnalytics = {
         searchNbResults: nbHits,
       }
     ),
-  logPinMapPressed: ({
-    mapType,
-    venueType,
-    venueId,
-  }: {
-    mapType: MapType
-    venueType?: string | null
-    venueId: number
-  }) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.PIN_MAP_PRESSED },
-      { mapType, venueId, venueType }
-    ),
+  logPinMapPressed: (params: { mapType: MapType; venueType?: string | null; venueId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, params),
   logPlaylistHorizontalScroll: (
     fromOfferId?: number,
     playlistType?: PlaylistType,
