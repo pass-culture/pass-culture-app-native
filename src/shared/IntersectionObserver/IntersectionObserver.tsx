@@ -9,7 +9,7 @@ import { IntersectionObserverProps } from './types'
 export function IntersectionObserver({
   children,
   onChange,
-  threshold = 0,
+  threshold = 100,
 }: Readonly<IntersectionObserverProps>) {
   const [containerHeight, setContainerHeight] = useState<number>(0)
 
@@ -23,6 +23,13 @@ export function IntersectionObserver({
   }
 
   const thresholdConfig = parseThreshold(threshold, containerHeight)
+
+  console.log(
+    'IntersectionObserver: thresholdConfig',
+    thresholdConfig,
+    'containerHeight',
+    containerHeight
+  )
 
   return (
     <Container onLayout={handleLayout}>

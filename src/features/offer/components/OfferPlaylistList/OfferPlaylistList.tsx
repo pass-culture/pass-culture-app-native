@@ -162,7 +162,9 @@ export function OfferPlaylistList({
                   index: itemIndex,
                   type: 'offer',
                   id: item.objectID,
-                  moduleId: playlist.type,
+                  playlistId: playlist.type,
+                  originId: offer.id.toString(),
+                  callId: playlist.apiRecoParams?.callId,
                 })
               }
             }}

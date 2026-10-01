@@ -66,27 +66,26 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     }, [venue, distanceToVenue])
 
     const offersPlaylist = useMemo(() => {
-      if (venueOffers?.length) {
-        const handlePressMore = venue
-          ? () => navigate('Venue', { id: venue.venueId, from: analyticsFrom })
-          : undefined
-        return (
-          <Fragment>
-            <StyledView>
-              <StyledSeparator />
-            </StyledView>
-            <IOScrollView>
-              <VenueMapOfferPlaylist
-                offers={venueOffers}
-                onPressMore={handlePressMore}
-                playlistType={offersPlaylistType}
-                analyticsFrom={analyticsFrom}
-              />
-            </IOScrollView>
-          </Fragment>
-        )
-      }
-      return null
+      if (!venue || !venueOffers?.length) return null
+
+      const handlePressMore = () =>
+        navigate('Venue', { id: venue.venueId, from: analyticsFrom })
+      return (
+        <Fragment>
+          <StyledView>
+            <StyledSeparator />
+          </StyledView>
+          <IOScrollView>
+            <VenueMapOfferPlaylist
+              offers={venueOffers}
+              onPressMore={handlePressMore}
+              playlistType={offersPlaylistType}
+              venueId={venue.venueId}
+              analyticsFrom={analyticsFrom}
+            />
+          </IOScrollView>
+        </Fragment>
+      )
     }, [venueOffers, venue, offersPlaylistType, navigate, analyticsFrom])
 
     const venueMapPreview = useMemo(() => {

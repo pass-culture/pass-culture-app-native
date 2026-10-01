@@ -194,8 +194,9 @@ export const OffersModule: FC<OffersModuleProps> = ({
           index: itemIndex,
           type: 'offer',
           id: item.objectID,
-          homeEntryId,
-          moduleId,
+          playlistId: moduleId,
+          originId: homeEntryId,
+          callId: recommendationParameters ? recommendationApiParams?.callId : undefined,
         })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (
