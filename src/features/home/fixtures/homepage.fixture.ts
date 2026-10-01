@@ -1,5 +1,6 @@
 import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
+  ArtistEditorialModule,
   ArtistHighlightingModule,
   ArtistPlaylistModule,
   BusinessModule,
@@ -249,6 +250,21 @@ export const formattedArtitPlaylistModule: ArtistPlaylistModule = {
       musicTypes: ['Pop', 'Gospel'],
       showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
       bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
+    },
+  ],
+}
+
+export const formattedArtistEditorialModule: ArtistEditorialModule = {
+  type: HomepageModuleType.ArtistEditorialModule,
+  id: '5WgvNwbkdDj4BmtwYwWc9e',
+  title: 'Son incroyable discographie',
+  artistId: '05b6af23-84b1-43a3-b648-a74433400c70',
+  color: Color.Information04,
+  illustration: 'MusicSheet',
+  offersModuleParameters: [
+    {
+      title: 'Son incroyable discographie',
+      hitsPerPage: 3,
     },
   ],
 }

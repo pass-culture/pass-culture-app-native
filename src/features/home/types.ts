@@ -9,6 +9,7 @@ import type { CategoryButtonIllustrationName } from 'shared/illustrations/catego
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
+  ArtistEditorialModule = 'ArtistEditorialModule',
   ArtistHighlightingModule = 'ArtistHighlightingModule',
   ArtistPlaylistModule = 'ArtistPlaylistModule',
   OffersModule = 'OffersModule',
@@ -75,6 +76,7 @@ export type Homepage = {
 }
 
 export type HomepageModule =
+  | ArtistEditorialModule
   | ArtistHighlightingModule
   | ArtistPlaylistModule
   | OffersModule
@@ -86,6 +88,17 @@ export type HomepageModule =
   | CategoryListModule
   | VideoModule
   | HighlightOfferModule
+
+export type ArtistEditorialModule = {
+  type: HomepageModuleType.ArtistEditorialModule
+  id: string
+  title: string
+  artistId: string
+  offersModuleParameters: OffersModuleParameters[]
+  color: Color
+  illustration: CategoryButtonIllustrationName
+  data?: ModuleData
+}
 
 export type ArtistHighlightingModule = {
   type: HomepageModuleType.ArtistHighlightingModule

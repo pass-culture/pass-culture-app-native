@@ -42,6 +42,7 @@ const TextContent = styled(ViewGap)(({ theme }) => ({
 
 const TitleText = styled(Typo.Title2)(({ theme }) => ({
   color: theme.designSystem.color.text.default,
+  textAlign: 'center',
 }))
 
 const SubtitleText = styled(Typo.BodyAccentS)(({ theme }) => ({
