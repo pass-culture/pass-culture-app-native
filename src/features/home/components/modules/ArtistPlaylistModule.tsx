@@ -234,14 +234,14 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           index: itemIndex,
           type: 'offer' as const,
           id: item.objectID,
-          moduleId,
+          playlistId: moduleId,
         }
         if (isArtistScreen) {
-          void logViewItem({ origin: 'artist', ...itemParams })
+          void logViewItem({ origin: 'artist', originId: artistId, ...itemParams })
           return
         }
         if (!homeEntryId) return
-        void logViewItem({ origin: 'home', homeEntryId, ...itemParams })
+        void logViewItem({ origin: 'home', originId: homeEntryId, ...itemParams })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist

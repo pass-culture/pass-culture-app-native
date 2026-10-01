@@ -44,8 +44,8 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
                   index: itemIndex,
                   type: 'offer',
                   id: item.objectID,
-                  moduleId: playlist.title,
-                  searchId,
+                  playlistId: playlist.title,
+                  originId: searchId,
                 })
               }}>
               {({ listRef, handleViewableItemsChanged }) => (

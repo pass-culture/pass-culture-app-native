@@ -1,32 +1,38 @@
 import { analytics } from 'libs/analytics/provider'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
-type ViewItemCommonParams = {
+export type ViewItemParams = {
+  origin: 'home' | 'search' | 'offer' | 'artist' | 'venue' | 'venueMap'
+  originId: HomeEntryId | SearchId | OfferId | ArtistId | VenueId
+  type: 'offer' | 'venue' | 'artist'
+  id: OfferId | VenueId | ArtistId
+  playlistId:
+    | HomeEntryId
+    | 'searchResults'
+    | 'searchResultsVenuePlaylist'
+    | 'thematicSearchVenuePlaylist'
+    | 'venue_offers_list'
+    | 'venue_artists_carousel'
+    | 'venue_map'
+    | 'sameCategorySimilarOffers'
+    | 'booksSameCategorySimilarOffers'
+    | 'otherCategoriesSimilarOffers'
   playlistIndex: number
   index: number
-  type: 'offer' | 'venue' | 'artist'
-  id: string
-  moduleId: string
+  callId?: string
 }
 
-export type ViewItemParams =
-  | (ViewItemCommonParams & {
-      origin: 'home'
-      homeEntryId: string
-    })
-  | (ViewItemCommonParams & {
-      origin: 'search'
-      searchId: string
-    })
-  | (ViewItemCommonParams & {
-      origin: 'offer' | 'artist' | 'venue' | 'venueMap'
-    })
+type HomeEntryId = string & {}
+type SearchId = string & {}
+type VenueId = string & {}
+type ArtistId = string & {}
+type OfferId = string & {}
 
 export const logViewItem = (params: ViewItemParams) => {
   void analytics.logEvent(
     { firebase: AnalyticsEvent.VIEW_ITEM },
     {
-      viewedAt: new Date().toISOString(),
+      event_timestamp: new Date().toISOString(),
       ...params,
     }
   )

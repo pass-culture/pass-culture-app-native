@@ -121,8 +121,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             index: index ?? -1,
             type: 'offer',
             id: key,
-            moduleId: 'searchResults',
-            searchId: searchState.searchId,
+            playlistId: 'searchResults',
+            originId: searchState.searchId,
           })
         })
     },

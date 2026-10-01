@@ -38,9 +38,10 @@ export const ObservedPlaylist = ({
       if (isInView.current) {
         changed
           .filter((token) => token.isViewable)
-          .forEach(({ key, index, item }) =>
-            onItemViewedRef.current?.({ key, index: index ?? -1, item })
-          )
+          .forEach(({ key, index, item }) => {
+            console.log('ObservedPlaylist: item viewed', { key, index, item })
+            return onItemViewedRef.current?.({ key, index: index ?? -1, item })
+          })
       }
 
       // Ignore the empty reset FlatList emits between two layouts, so the last
@@ -83,7 +84,7 @@ export const ObservedPlaylist = ({
   )
 
   return (
-    <IntersectionObserver onChange={handleIntersectionObserverChange}>
+    <IntersectionObserver onChange={handleIntersectionObserverChange} threshold="80%">
       {children({ listRef, handleViewableItemsChanged })}
     </IntersectionObserver>
   )
