@@ -129,7 +129,7 @@ const HeaderCard = styled.View<{
   position: 'relative',
 }))
 
-const TitleText = styled(Typo.Title2)(({ theme }) => ({
+const TitleText = styled(Typo.Title3)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.xl,
   marginLeft: theme.isDesktopViewport
