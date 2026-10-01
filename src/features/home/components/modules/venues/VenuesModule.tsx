@@ -99,8 +99,8 @@ export const VenuesModule = ({
             index: itemIndex,
             type: 'venue',
             id: item.id.toString(),
-            homeEntryId,
-            moduleId,
+            playlistId: moduleId,
+            originId: homeEntryId,
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (

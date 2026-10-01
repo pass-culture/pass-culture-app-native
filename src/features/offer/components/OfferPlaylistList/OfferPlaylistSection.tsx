@@ -88,7 +88,9 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
             index: itemIndex,
             type: 'offer',
             id: item.objectID,
-            moduleId: playlistType,
+            playlistId: playlistType,
+            originId: offer.id.toString(),
+            callId: apiRecoParams?.callId,
           })
         }
       }}
