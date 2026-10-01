@@ -4,10 +4,6 @@ import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionOb
 import { fireEvent, render, screen } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
-jest.mock('shared/analytics/logViewItem', () => ({
-  logPlaylistDebug: jest.fn(),
-}))
-
 const onChangeMock = jest.fn()
 
 describe('<IntersectionObserver /> (native)', () => {

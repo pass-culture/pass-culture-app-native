@@ -21,14 +21,11 @@ const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffe
 
 const offerPlaylistListProps: OfferPlaylistListProps = {
   offer: mockOffer,
-  onViewableItemsChanged: jest.fn(),
   seeAllButton: { navigateToVerticalPlaylist: jest.fn(), onBeforeNavigate: jest.fn() },
 }
 
 const user = userEvent.setup()
 jest.useFakeTimers()
-
-const mockPlaylistViewableItemsChanged = jest.fn()
 
 describe('<OfferPlaylistList />', () => {
   beforeEach(() => {
@@ -138,7 +135,6 @@ const renderOfferPlaylistList = ({
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         booksSameCategorySimilarOffers={booksSameCategorySimilarOffers}
-        onViewableItemsChanged={mockPlaylistViewableItemsChanged}
         seeAllButton={{ navigateToVerticalPlaylist: jest.fn(), onBeforeNavigate: jest.fn() }}
       />
     )

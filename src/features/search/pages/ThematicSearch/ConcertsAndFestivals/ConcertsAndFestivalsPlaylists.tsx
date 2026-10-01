@@ -13,7 +13,6 @@ const CONCERTS_AND_FESTIVALS_PLAYLISTS_TITLES = ['Concerts', 'Festivals']
 
 export const ConcertsAndFestivalsPlaylists: React.FC<ThematicPlaylistProps> = ({
   shouldDisplayVenuesPlaylist,
-  onViewableItemsChanged,
   searchId,
 }) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
@@ -34,7 +33,6 @@ export const ConcertsAndFestivalsPlaylists: React.FC<ThematicPlaylistProps> = ({
       playlists={concertsAndFestivals}
       isLoading={areConcertsAndFestivalsPlaylistsLoading}
       shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-      onViewableItemsChanged={onViewableItemsChanged}
       searchId={searchId}
     />
   )

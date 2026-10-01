@@ -6,7 +6,6 @@ import BottomSheet, {
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { Fragment, FunctionComponent, forwardRef, useMemo } from 'react'
-import { ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -28,24 +27,11 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
   offersPlaylistType: PlaylistType
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
   function VenueMapBottomSheet(
-    {
-      onClose,
-      venue,
-      venueOffers,
-      offersPlaylistType,
-      onViewableItemsChanged,
-      ...bottomSheetProps
-    },
+    { onClose, venue, venueOffers, offersPlaylistType, ...bottomSheetProps },
     ref
   ) {
     const userLocation = useUserLocation()
@@ -84,14 +70,13 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
                 offers={venueOffers}
                 onPressMore={handlePressMore}
                 playlistType={offersPlaylistType}
-                onViewableItemsChanged={onViewableItemsChanged}
               />
             </IOScrollView>
           </Fragment>
         )
       }
       return null
-    }, [venueOffers, venue, offersPlaylistType, onViewableItemsChanged, navigate])
+    }, [venueOffers, venue, offersPlaylistType, navigate])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {

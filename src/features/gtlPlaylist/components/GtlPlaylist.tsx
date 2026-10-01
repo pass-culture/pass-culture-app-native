@@ -23,7 +23,10 @@ export interface GtlPlaylistProps {
   venue?: VenueResponse
   noMarginBottom?: boolean
   playlistRef?: Ref<FlatList>
-  onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void
+  onViewableItemsChanged?: (info: {
+    viewableItems: ViewToken<unknown>[]
+    changed: ViewToken<unknown>[]
+  }) => void
   searchId?: string
 }
 
