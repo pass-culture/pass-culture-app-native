@@ -207,7 +207,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         scrollEventThrottle={16}
         horizontal
         windowSize={7}
-        initialNumToRender={6}
+        initialNumToRender={isWeb ? 6 : 4}
         maxToRenderPerBatch={6}
         removeClippedSubviews
         updateCellsBatchingPeriod={100}
