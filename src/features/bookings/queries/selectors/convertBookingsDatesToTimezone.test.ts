@@ -1,9 +1,10 @@
 import mockdate from 'mockdate'
 
-import { BookingsResponseV2 } from 'api/gen'
+import { BookingsListResponseV2, BookingsResponseV2 } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import {
   convertBookingResponseDateToTimezone,
+  convertBookingsListResponseV2DatesToTimezone,
   convertBookingsResponseV2DatesToTimezone,
 } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -87,5 +88,37 @@ describe('convertBookingsDatesToTimezone', () => {
     expect(() =>
       convertBookingsResponseV2DatesToTimezone(bookingsResponseWithInvalidBooking)
     ).not.toThrow()
+  })
+
+  it('should not throw when BookingsResponseV2 ongoing or ended bookings are missing', () => {
+    const result = convertBookingsResponseV2DatesToTimezone({} as BookingsResponseV2)
+
+    expect(result.ongoingBookings).toEqual([])
+    expect(result.endedBookings).toEqual([])
+  })
+
+  it('should convert BookingsListResponseV2 dates to the offer timezone', () => {
+    const bookingsListResponse: BookingsListResponseV2 = {
+      bookings: [
+        mockBuilder.ongoingBookingListItemResponse({
+          stock: mockBuilder.bookingListItemStockResponse({
+            beginningDatetime: '2024-05-08T12:50:00Z',
+            offer: mockBuilder.bookingListItemOfferResponse({
+              address: { city: 'Fort-de-France', label: null, timezone: 'America/Martinique' },
+            }),
+          }),
+        }),
+      ],
+    }
+
+    const result = convertBookingsListResponseV2DatesToTimezone(bookingsListResponse)
+
+    expect(result.bookings[0]?.stock.beginningDatetime).toEqual('2024-05-08T08:50:00.000Z')
+  })
+
+  it('should not throw when BookingsListResponseV2.bookings are missing', () => {
+    const result = convertBookingsListResponseV2DatesToTimezone({} as BookingsListResponseV2)
+
+    expect(result.bookings).toEqual([])
   })
 })

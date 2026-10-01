@@ -6,15 +6,20 @@ import {
 } from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
-const convertBookingsListDatesToTimezone = (bookings: BookingResponse[]): BookingResponse[] => {
-  return bookings.map(convertBookingResponseDateToTimezone)
+type Bookings = BookingResponse | BookingListItemResponse
+
+const convertBookingsListDatesToTimezone = <T extends Bookings>(bookings: T[]): T[] => {
+  if (!bookings.length) {
+    return bookings
+  }
+
+  return bookings.map((booking) => convertBookingResponseDateToTimezone(booking))
 }
 
-export const convertBookingResponseDateToTimezone = <
-  T extends BookingResponse | BookingListItemResponse,
->(
-  booking: T
-): T => {
+const checkBookingsList = <T extends Bookings>(bookings: T[]): T[] =>
+  Array.isArray(bookings) ? bookings : []
+
+export const convertBookingResponseDateToTimezone = <T extends Bookings>(booking: T): T => {
   if (!('stock' in booking)) {
     return booking
   }
@@ -38,13 +43,13 @@ export const convertBookingsResponseV2DatesToTimezone = (
   bookings: BookingsResponseV2
 ): BookingsResponseV2 => ({
   hasBookingsAfter18: bookings.hasBookingsAfter18,
-  ongoingBookings: convertBookingsListDatesToTimezone(bookings.ongoingBookings),
-  endedBookings: convertBookingsListDatesToTimezone(bookings.endedBookings),
+  ongoingBookings: convertBookingsListDatesToTimezone(checkBookingsList(bookings.ongoingBookings)),
+  endedBookings: convertBookingsListDatesToTimezone(checkBookingsList(bookings.endedBookings)),
 })
 
 export const convertBookingsListResponseV2DatesToTimezone = (
   bookingsResponse: BookingsListResponseV2
 ): BookingsListResponseV2 => ({
   ...bookingsResponse,
-  bookings: bookingsResponse.bookings.map(convertBookingResponseDateToTimezone),
+  bookings: convertBookingsListDatesToTimezone(checkBookingsList(bookingsResponse.bookings)),
 })
