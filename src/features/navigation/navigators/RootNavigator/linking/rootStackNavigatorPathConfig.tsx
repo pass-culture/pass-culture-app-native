@@ -75,6 +75,9 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
     path: 'connexion-avec-dernieres-informations-de-connexion',
     parse: screenParamsParser.LoginMethodsWithLastLoginInfo,
   },
+  LoginWithOneTimePassword: {
+    path: 'connexion-avec-code-unique',
+  },
   ReinitializePassword: {
     path: 'mot-de-passe-perdu',
     parse: screenParamsParser.ReinitializePassword,
