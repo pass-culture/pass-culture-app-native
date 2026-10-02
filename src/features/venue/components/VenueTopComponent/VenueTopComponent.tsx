@@ -7,27 +7,14 @@ import { VenueTopComponentBase } from 'features/venue/components/VenueTopCompone
 
 type Props = {
   venue: VenueResponse
-  enableVenueFakeDoor?: boolean
-  onPressFollowButton?: () => void
 }
 
-export const VenueTopComponent: React.FunctionComponent<Props> = ({
-  venue,
-  enableVenueFakeDoor,
-  onPressFollowButton,
-}) => {
+export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const handleImagePress = () => {
     navigate('VenuePreviewCarousel', { id: venue.id })
   }
 
-  return (
-    <VenueTopComponentBase
-      venue={venue}
-      onPressBannerImage={handleImagePress}
-      enableVenueFakeDoor={enableVenueFakeDoor}
-      onPressFollowButton={onPressFollowButton}
-    />
-  )
+  return <VenueTopComponentBase venue={venue} onPressBannerImage={handleImagePress} />
 }

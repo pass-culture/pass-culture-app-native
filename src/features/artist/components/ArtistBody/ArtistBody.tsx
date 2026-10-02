@@ -14,7 +14,6 @@ import {
   ArtistModuleItem,
   getArtistModuleDataByIndex,
 } from 'features/artist/helpers/getArtistModuleDataByIndex'
-import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
 import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
@@ -45,7 +44,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
-import { Bell } from 'ui/svg/icons/Bell'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { Typo } from 'ui/theme'
@@ -97,7 +95,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
-  const enableArtistFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR)
 
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -133,12 +130,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
   })
 
   const isFocused = useIsFocused()
-
-  const handlePressFollow = () => {
-    const [_firstArtistPlaylist] = enablePlaylistByCategory
-      ? getDisplayableArtistPlaylists(artistPlaylist)
-      : []
-  }
 
   const pressShareArtist = () => {
     void analytics.logShare({
@@ -181,18 +172,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
         }}>
         <ViewGap gap={6}>
           <ViewGap gap={6}>
-            <ArtistHeader name={name} avatarImage={image}>
-              {enableArtistFakeDoor ? (
-                <Button
-                  wording="Suivre"
-                  icon={Bell}
-                  variant="secondary"
-                  color="neutral"
-                  accessibilityLabel="Suivre cet artiste"
-                  onPress={handlePressFollow}
-                />
-              ) : null}
-            </ArtistHeader>
+            <ArtistHeader name={name} avatarImage={image} />
             {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>À propos</Typo.BodyAccent>

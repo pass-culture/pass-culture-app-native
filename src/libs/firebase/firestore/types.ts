@@ -59,7 +59,6 @@ export enum RemoteStoreFeatureFlags {
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
   SHOW_TECHNICAL_PROBLEM_BANNER = 'showTechnicalProblemBanner',
   WIP_ARTIST_CATEGORY_PLAYLISTS = 'wipArtistCategoryPlaylists',
-  WIP_ARTIST_FAKE_DOOR = 'wipArtistFakeDoor',
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_ENABLE_APPLE_SSO = 'wipEnableAppleSSO',
@@ -88,7 +87,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',
   WIP_USE_MOVIE_SCREENINGS_ENDPOINT = 'wipUseMovieScreeningsEndpoint',
   WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT = 'wipUseVenueMovieScreeningsEndpoint',
-  WIP_VENUE_FAKE_DOOR = 'wipVenueFakeDoor',
   WIP_VENUE_MAP = 'wipVenueMap',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
 }

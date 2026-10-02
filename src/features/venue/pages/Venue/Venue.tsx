@@ -49,8 +49,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
-type FollowVenueButtonOrigin = 'venueBanner' | 'venueHeader'
-
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
@@ -82,7 +80,6 @@ export const Venue: FunctionComponent = () => {
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
-  const enableVenueFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
@@ -172,21 +169,13 @@ export const Venue: FunctionComponent = () => {
     triggerLogConsultVenue()
   }, [triggerLogConsultVenue])
 
-  const handleOnPressFollowButton = (_originDetails: FollowVenueButtonOrigin) => {
-    return
-  }
-
   const isCTADisplayed =
     venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
 
   const VenueContentChildren = venue ? (
     <React.Fragment>
-      <VenueTopComponent
-        venue={venue}
-        enableVenueFakeDoor={enableVenueFakeDoor}
-        onPressFollowButton={() => handleOnPressFollowButton('venueBanner')}
-      />
+      <VenueTopComponent venue={venue} />
       <ViewGap gap={isDesktopViewport ? 10 : 6}>
         <Animated.View layout={Layout.duration(200)}>
           <VenueBody
@@ -233,9 +222,7 @@ export const Venue: FunctionComponent = () => {
           <VenueContent
             venue={venue}
             isCTADisplayed={isCTADisplayed}
-            showSearchInVenueModal={showSearchInVenueModal}
-            enableVenueFakeDoor={enableVenueFakeDoor}
-            onPressFollowButton={() => handleOnPressFollowButton('venueHeader')}>
+            showSearchInVenueModal={showSearchInVenueModal}>
             {VenueContentChildren}
           </VenueContent>
           <SearchInVenueModal
@@ -246,11 +233,7 @@ export const Venue: FunctionComponent = () => {
           />
         </React.Fragment>
       ) : (
-        <OldVenueContent
-          venue={venue}
-          isCTADisplayed={isCTADisplayed}
-          enableVenueFakeDoor={enableVenueFakeDoor}
-          onPressFollowButton={() => handleOnPressFollowButton('venueHeader')}>
+        <OldVenueContent venue={venue} isCTADisplayed={isCTADisplayed}>
           {VenueContentChildren}
         </OldVenueContent>
       )}
