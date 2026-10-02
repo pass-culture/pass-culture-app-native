@@ -61,7 +61,7 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
     const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
     await user.press(suspendAccountButton)
 
-    expect(mockSignOut).toHaveBeenCalledTimes(1)
+    expect(mockSignOut).toHaveBeenNthCalledWith(1, false)
   })
 
   it('should navigate to SuspiciousLoginSuspendedAccount when account is suspended', async () => {

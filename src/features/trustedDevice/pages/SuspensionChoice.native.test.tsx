@@ -86,7 +86,7 @@ describe('<SuspensionChoice/>', () => {
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
     await user.press(acceptSuspensionButton)
 
-    expect(mockSignOut).toHaveBeenCalledTimes(1)
+    expect(mockSignOut).toHaveBeenNthCalledWith(1, false)
   })
 
   it('should navigate to suspension confirmation screen on suspension success', async () => {

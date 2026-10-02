@@ -113,7 +113,7 @@ describe('DeleteProfileConfirmation', () => {
 
     await user.press(screen.getByText('Supprimer mon compte'))
 
-    expect(mockSignOut).toHaveBeenCalledTimes(1)
+    expect(mockSignOut).toHaveBeenNthCalledWith(1, false)
   })
 
   it('should show error snackbar when account anonymization fails', async () => {

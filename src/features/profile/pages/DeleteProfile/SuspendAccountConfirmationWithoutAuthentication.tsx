@@ -35,7 +35,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
 
   const { accountSuspendForHackSuspicion, isLoading } = useAccountSuspendForHackSuspicionMutation({
     onSuccess: async () => {
-      await signOut()
+      await signOut(false)
       // We use resetFromRef instead of navigation because signOut() may unmount the current screen
       // (RootNavigator rebuild). resetFromRef ensures navigation still works after logout.
       resetFromRef('SuspiciousLoginSuspendedAccount')
