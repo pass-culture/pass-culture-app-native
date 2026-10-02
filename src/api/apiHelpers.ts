@@ -21,29 +21,12 @@ import {
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
 } from './types'
 
-function navigateToLoginMethods(params?: Record<string, unknown>) {
-  navigateFromRef('LoginMethods', params)
-}
-
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
   if (options?.credentials === 'omit') return {}
 
   const accessToken = await storage.readString('access_token')
   return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
 }
-
-// At the moment, we can't Promise.reject inside of safeFetch and expect
-// the wrapping AsyncBoundary to catch it. As a result, we resolve a fake
-// response that we then catch to redirect to the login page.
-// this happens when there is a problem retrieving or refreshing
-// the access token.
-const NeedsAuthenticationStatus = {
-  status: 401,
-  statusText: 'NeedsAuthenticationResponse',
-}
-
-export const createNeedsAuthenticationResponse = (url: string) =>
-  new Response(url, NeedsAuthenticationStatus)
 
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
@@ -88,7 +71,7 @@ export const safeFetch = async (
         case REFRESH_TOKEN_IS_EXPIRED_ERROR:
         case FAILED_TO_GET_REFRESH_TOKEN_ERROR:
         case LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN:
-          return createNeedsAuthenticationResponse(url)
+          return new Response(url, { status: 401 })
         case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
           throw new Error(UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN)
         case undefined: // When no error
@@ -108,19 +91,11 @@ export const safeFetch = async (
       eventMonitoring.captureException(new Error(`safeFetch ${errorMessage}`, { cause: error }), {
         extra: { url, error },
       })
-      return createNeedsAuthenticationResponse(url)
+      return new Response(url, { status: 401 })
     }
   }
 
   return fetch(url, runtimeOptions)
-}
-
-const extractResponseBody = async (response: Response): Promise<string> => {
-  const contentType = response.headers.get('content-type')
-  if (contentType?.includes('application/json')) {
-    return response.json()
-  }
-  return response.text()
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage
@@ -128,45 +103,28 @@ const extractResponseBody = async (response: Response): Promise<string> => {
 // !!! Not encouraging to use `any` anywhere else !!!
 export async function handleGeneratedApiResponse(
   response: Response,
-  options: RequestInit
+  _options: RequestInit
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
   if (response.status === 204) {
-    return {}
+    return
   }
 
-  if (response.status === 403) {
-    const bannedCountry = response.headers.get('x-country-ban')
-    if (bannedCountry) {
-      navigateFromRef('BannedCountryError')
-      return {}
-    }
+  if (response.status === 403 && response.headers.get('x-country-ban')) {
+    navigateFromRef('BannedCountryError')
+    return
   }
 
-  // We are not suppose to have side-effects in this function but this is a special case
-  // where the access token is corrupted and we need to recreate it by logging-in again
-  if (
-    response.status === NeedsAuthenticationStatus.status &&
-    response.statusText === NeedsAuthenticationStatus.statusText
-  ) {
-    navigateToLoginMethods()
-    return {}
+  if (response.status === 401) {
+    navigateFromRef('LoginMethods')
+    return
   }
 
-  const responseBody = await extractResponseBody(response)
+  const responseBody = response.headers.get('content-type')?.includes('application/json')
+    ? await response.json()
+    : await response.text()
 
   if (!response.ok) {
-    if (response.status === 401) {
-      eventMonitoring.captureException(new Error(`handleGeneratedApiResponse`), {
-        extra: { responseBody },
-      })
-      // We navigate to Login in case of a 401 -> user not connected / session revoked server side
-      if (options?.credentials !== 'omit') {
-        navigateToLoginMethods()
-        return {}
-      }
-    }
-
     throw new ApiError(
       response.status,
       responseBody,
@@ -182,22 +140,19 @@ export function isApiError(error: unknown): error is ApiError {
 }
 
 export function extractApiErrorMessage(error: unknown) {
-  let message = 'Une erreur est survenue'
   if (isApiError(error)) {
     const { content } = error as { content: { code: string; message: string } }
-    if (content?.code && content.message) {
-      message = content.message
+    if (content.code && content.message) {
+      return content.message
     }
   }
-  return message
+  return 'Une erreur est survenue'
 }
 
 export function isAPIExceptionCapturedAsInfo(statusCode: number) {
-  return Boolean(statusCode === 401)
+  return statusCode === 401
 }
 
-const notCapturedStatusCodes = new Set([500, 502, 503, 504])
-
 export function isAPIExceptionNotCaptured(statusCode: number) {
-  return notCapturedStatusCodes.has(statusCode)
+  return [500, 502, 503, 504].includes(statusCode)
 }

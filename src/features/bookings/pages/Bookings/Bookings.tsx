@@ -39,9 +39,7 @@ const checkBookingPage = async () => {
 }
 
 export const Bookings = () => {
-  useEffect(() => {
-    void checkBookingPage()
-  }, [])
+  useEffect(() => void checkBookingPage(), [])
 
   const { params } = useRoute<UseRouteType<'Bookings'>>()
 

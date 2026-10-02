@@ -22,23 +22,18 @@ type TokenStatus = 'valid' | 'expired' | 'unknown'
 
 const TOKEN_EXPIRATION_BUFFER_MS = 1 * 60 * 1000 // 1 minute buffer in milliseconds
 
-export const getTokenStatus = (token: string | null): TokenStatus => {
-  if (!token) return 'unknown'
-  const tokenContent = decodeToken(token)
-  if (!tokenContent?.exp) return 'unknown'
+export const getTokenStatus = (encodedToken: string | null): TokenStatus => {
+  if (!encodedToken) return 'unknown'
+  const token = decodeToken(encodedToken)
+  if (!token?.exp) return 'unknown'
   const currentTimeWithBuffer = Date.now() + TOKEN_EXPIRATION_BUFFER_MS
-  return tokenContent.exp * 1000 > currentTimeWithBuffer ? 'valid' : 'expired'
+  return token.exp * 1000 > currentTimeWithBuffer ? 'valid' : 'expired'
 }
 
 export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
   const token = decodeToken(encodedToken)
+  if (!token) return undefined
 
-  if (token) {
-    const tokenExpirationInMs = token.exp * 1000
-    const currentDateInMs = Date.now()
-    const lifetimeInMs = tokenExpirationInMs - currentDateInMs
-    return lifetimeInMs
-  }
-
-  return undefined
+  const tokenExpirationInMs = token.exp * 1000
+  return tokenExpirationInMs - Date.now()
 }
