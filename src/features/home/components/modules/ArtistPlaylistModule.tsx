@@ -116,7 +116,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
         data
       )
     }
-    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from })
+    void analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from })
   }
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
