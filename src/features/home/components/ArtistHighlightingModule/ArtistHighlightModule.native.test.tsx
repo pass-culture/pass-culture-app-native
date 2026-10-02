@@ -8,6 +8,8 @@ import {
   ArtistHighlightingModuleProps,
 } from 'features/home/components/ArtistHighlightingModule/ArtistHighlightingModule'
 import { Color } from 'features/home/types'
+import { analytics } from 'libs/analytics/provider'
+import { ContentTypes } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -18,6 +20,7 @@ const defaultProps: ArtistHighlightingModuleProps = {
   subtitle: 'Interprète',
   description: 'Redécouvre sa disco en attendant la suite...',
   color: Color.Information04,
+  index: 1,
 }
 
 jest.mock('api/api')
@@ -70,6 +73,36 @@ describe('ArtistHighlightingModule', () => {
     renderModule(defaultProps, true)
 
     expect(await screen.findByTestId('desktopArtistHighlighting')).toBeOnTheScreen()
+  })
+
+  it('should trigger logEvent "ModuleDisplayedOnHomepage"', async () => {
+    renderModule(defaultProps)
+
+    await screen.findByLabelText(`Découvrir la page artiste de ${mockArtist.name}`)
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: defaultProps.moduleId,
+      moduleType: ContentTypes.ARTIST_HIGHLIGHTING,
+      index: defaultProps.index,
+      homeEntryId: defaultProps.homeEntryId,
+    })
+  })
+
+  it('should trigger ConsultArtist log when pressing the button', async () => {
+    renderModule(defaultProps)
+
+    await user.press(
+      await screen.findByLabelText(`Découvrir la page artiste de ${mockArtist.name}`)
+    )
+
+    expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+      artistId: 'cb22d035-f081-4ccb-99d8-8f5725a8ac9c',
+      artistName: 'Avril Lavigne',
+      from: 'home',
+      homeEntryId: 'abcd',
+      moduleId: 'module-id',
+      originDetails: 'artistHighlightModule',
+    })
   })
 })
 

@@ -1,11 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ArtistAvatar } from 'features/home/components/ArtistHighlightingModule/ArtistAvatar'
 import { ArtistInformation } from 'features/home/components/ArtistHighlightingModule/ArtistInformation'
 import { Color } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { analytics } from 'libs/analytics/provider'
+import { ContentTypes } from 'libs/contentful/types'
 import { useArtistQuery } from 'queries/artist/useArtistQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -16,6 +18,7 @@ import { colorMapping } from 'ui/theme/colorMapping'
 export type ArtistHighlightingModuleProps = {
   homeEntryId: string | undefined
   moduleId: string
+  index: number
   artistId: string
   subtitle: string
   description: string
@@ -23,8 +26,9 @@ export type ArtistHighlightingModuleProps = {
 }
 
 export const ArtistHighlightingModule: FunctionComponent<ArtistHighlightingModuleProps> = ({
-  homeEntryId: _homeEntryId,
-  moduleId: _moduleId,
+  homeEntryId,
+  moduleId,
+  index,
   artistId,
   subtitle,
   description,
@@ -42,9 +46,32 @@ export const ArtistHighlightingModule: FunctionComponent<ArtistHighlightingModul
 
   const shouldModuleBeDisplayed = !isArtistLoading && !hasArtistError && artist
 
+  const triggerLogModuleDisplayedOnHomepage = useCallback(() => {
+    if (shouldModuleBeDisplayed) {
+      void analytics.logModuleDisplayedOnHomepage({
+        moduleId,
+        moduleType: ContentTypes.ARTIST_HIGHLIGHTING,
+        index,
+        homeEntryId,
+      })
+    }
+  }, [homeEntryId, index, moduleId, shouldModuleBeDisplayed])
+
+  useEffect(() => {
+    triggerLogModuleDisplayedOnHomepage()
+  }, [triggerLogModuleDisplayedOnHomepage])
+
   if (!shouldModuleBeDisplayed) return null
 
   const onPress = () => {
+    void analytics.logConsultArtist({
+      from: 'home',
+      originDetails: 'artistHighlightModule',
+      moduleId,
+      homeEntryId,
+      artistId,
+      artistName: artist.name,
+    })
     navigate('Artist', { id: artist.id })
   }
 

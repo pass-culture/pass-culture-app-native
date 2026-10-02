@@ -2,9 +2,11 @@ import React from 'react'
 
 import { Color } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { ArtistEditorialModule, ArtistEditorialModuleProps } from './ArtistEditorialModule'
 
@@ -33,7 +35,14 @@ const defaultProps: ArtistEditorialModuleProps = {
   data: mockData,
 }
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('ArtistEditorialModule', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly with title', () => {
     renderModule(defaultProps)
 
@@ -54,6 +63,21 @@ describe('ArtistEditorialModule', () => {
     renderModule(defaultProps, true)
 
     expect(screen.getByTestId('desktopArtistEditorial')).toBeOnTheScreen()
+  })
+
+  it('should trigger ConsultOffer log when pressing on offer tile', async () => {
+    renderModule(defaultProps)
+
+    await user.press(await screen.findByText('La nuit des temps'))
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'artist',
+      isHeadline: false,
+      moduleId: '5WgvNwbkdDj4BmtwYwWc9e',
+      offerId: '102280',
+      originDetails: 'artistHighlightPlaylist',
+      venueId: 1,
+    })
   })
 })
 
