@@ -6,4 +6,7 @@ export enum AdjustEvents {
   COMPLETE_BENEFICIARY_UNDERAGE = '2ddds5',
   COMPLETE_BENEFICIARY_18 = '4bn26d',
   BOOK_OFFER = 'h2vkqv',
+  NEW_BENEFICIARY = 'uwxaiq',
+  NEW_BENEFICIARY_18 = '2mnkxu',
+  NEW_BENEFICIARY_UNDERAGE = 'j5ia2x',
 }

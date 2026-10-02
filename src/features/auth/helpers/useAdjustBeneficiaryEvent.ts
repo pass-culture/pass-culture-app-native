@@ -8,28 +8,39 @@ import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 import { getAge } from 'shared/user/getAge'
 
 export const useAdjustBeneficiaryEvent = (user?: UserProfile) => {
-  useEffect(() => {
-    if (isCurrentOrFormerBeneficiary(user)) {
-      // beneficiary events will be logged only once so we prefer check that Adjust is enabled to avoid losing the event
+  useEffect(
+    function logAdjustBeneficiaryEvent() {
+      if (!isCurrentOrFormerBeneficiary(user)) return
+
+      // Beneficiary events are logged once per installation after Adjust is available.
       Adjust.isEnabled((isEnabled) => {
-        if (isEnabled) {
-          storage
-            .readObject<boolean>('adjust_beneficiary_event_sent')
-            .then((adjustBeneficiaryEventSent) => {
-              if (!adjustBeneficiaryEventSent) {
-                Adjust.logEvent(AdjustEvents.COMPLETE_BENEFICIARY)
+        if (!isEnabled) return
 
-                const userAge = getAge(user?.birthDate)
-                if (userAge && userAge < 18)
-                  Adjust.logEvent(AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
-                if (userAge && userAge >= 18) Adjust.logEvent(AdjustEvents.COMPLETE_BENEFICIARY_18)
+        void storage
+          .readObject<boolean>('adjust_beneficiary_event_sent')
+          .then((adjustBeneficiaryEventSent) => {
+            const userAge = getAge(user?.birthDate)
+            const isNewBeneficiary = adjustBeneficiaryEventSent === false
 
-                void storage.saveObject('adjust_beneficiary_event_sent', true)
-              }
-            })
-            .catch((_) => undefined)
-        }
+            if (adjustBeneficiaryEventSent === true) return
+
+            Adjust.logEvent(AdjustEvents.COMPLETE_BENEFICIARY)
+            if (isNewBeneficiary) Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY)
+
+            if (userAge && userAge < 18) {
+              Adjust.logEvent(AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
+              if (isNewBeneficiary) Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY_UNDERAGE)
+            }
+            if (userAge && userAge >= 18) {
+              Adjust.logEvent(AdjustEvents.COMPLETE_BENEFICIARY_18)
+              if (isNewBeneficiary) Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY_18)
+            }
+
+            void storage.saveObject('adjust_beneficiary_event_sent', true)
+          })
+          .catch(() => undefined)
       })
-    }
-  }, [user])
+    },
+    [user]
+  )
 }
