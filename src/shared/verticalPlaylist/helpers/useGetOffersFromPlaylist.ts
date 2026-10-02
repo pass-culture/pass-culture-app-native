@@ -1,4 +1,4 @@
-import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
+import { useGetOffersModuleDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import { ArtistPlaylistModule, OffersModule } from 'features/home/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenueHit } from 'libs/algolia/types'
@@ -18,8 +18,8 @@ export const useGetOffersFromPlaylist = (
   const { title, displayParameters } = module
 
   const { searchState } = useSearch()
-  const moduleData = useGetOffersDataQuery([module])
-  const rawItems = moduleData?.[0]?.playlistItems ?? NO_OFFERS
+  const { data: moduleData } = useGetOffersModuleDataQuery(module)
+  const rawItems = moduleData?.playlistItems ?? NO_OFFERS
   const items = isOfferModule(rawItems) ? rawItems : NO_OFFERS
 
   return {
