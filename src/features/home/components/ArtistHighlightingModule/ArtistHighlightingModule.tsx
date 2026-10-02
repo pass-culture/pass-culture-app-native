@@ -103,6 +103,7 @@ const Container = styled.View<{
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: theme.home.spaceBetweenModules,
   backgroundColor: theme.designSystem.color.illustration[colorMapping[color].fill],
+  overflow: 'hidden',
 }))
 
 const Content = styled(ViewGap)(({ theme }) => ({

@@ -125,11 +125,11 @@ const HeaderCard = styled.View<{
   borderRadius: theme.designSystem.size.borderRadius.l,
   backgroundColor: theme.designSystem.color.illustration[colorMapping[color].fill],
   minHeight,
-  overflow: theme.isDesktopViewport ? 'visible' : 'hidden',
+  overflow: 'hidden',
   position: 'relative',
 }))
 
-const TitleText = styled(Typo.Title2)(({ theme }) => ({
+const TitleText = styled(Typo.Title3)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.xl,
   marginLeft: theme.isDesktopViewport
