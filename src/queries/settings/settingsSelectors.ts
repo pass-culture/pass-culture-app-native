@@ -1,8 +1,5 @@
 import { SettingsResponse } from 'api/gen'
 
-export const selectAccountUnsuspensionLimit = (settings: SettingsResponse) =>
-  settings.accountUnsuspensionLimit
-
 export const selectIsRecaptchaEnabled = (settings: SettingsResponse) => settings.isRecaptchaEnabled
 
 export const selectIdCheckAddressAutocompletion = (settings: SettingsResponse) =>

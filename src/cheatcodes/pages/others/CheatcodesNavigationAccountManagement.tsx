@@ -50,16 +50,6 @@ const accountManagementCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'ConfirmDeleteProfile',
-      navigationTarget: getProfilePropConfig('ConfirmDeleteProfile'),
-    },
-    {
-      id: uuidv4(),
-      title: 'DeactivateProfileSuccess',
-      navigationTarget: getProfilePropConfig('DeactivateProfileSuccess'),
-    },
-    {
-      id: uuidv4(),
       title: 'DeleteProfileSuccess',
       navigationTarget: getProfilePropConfig('DeleteProfileSuccess'),
     },

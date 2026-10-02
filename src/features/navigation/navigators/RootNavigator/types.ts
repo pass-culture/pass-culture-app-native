@@ -115,7 +115,6 @@ type TrustedDeviceRootStackParamList = {
 
 export enum StepperOrigin {
   BOOKING = 'booking',
-  DEACTIVATE_PROFILE_SUCCESS = 'DeactivateProfileSuccess',
   DEEPLINK = 'deeplink',
   FAVORITE = 'favorite',
   FORGOTTEN_PASSWORD = 'forgottenPassword',
