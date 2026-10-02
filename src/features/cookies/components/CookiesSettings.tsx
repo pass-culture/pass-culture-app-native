@@ -75,7 +75,7 @@ export const CookiesSettings = ({
         À quoi servent tes cookies et tes données&nbsp;?
       </Typo.Title4>
       <ChoiceContainer>
-        <CaptionNeutralInfo>Je choisis mes cookies</CaptionNeutralInfo>
+        <CaptionNeutralInfo {...setTextSemantic('h3')}>Je choisis mes cookies</CaptionNeutralInfo>
         <AcceptAllContainer gap={2}>
           <StyledInputLabel id={labelID} htmlFor={checkboxID}>
             {inputLabel}
