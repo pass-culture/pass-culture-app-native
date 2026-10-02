@@ -52,11 +52,6 @@ const profileCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'DeactivateProfileSuccess',
-      navigationTarget: getProfilePropConfig('DeactivateProfileSuccess'),
-    },
-    {
-      id: uuidv4(),
       title: 'DeleteProfileReason',
       navigationTarget: getProfilePropConfig('DeleteProfileReason'),
     },

@@ -18,7 +18,6 @@ import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
-import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
@@ -65,19 +64,9 @@ const genericInfoPageIllustrations: GenericInfoPageIllustrationItem[] = [
     ],
   },
   {
-    name: 'ProfileDeletion',
-    Illustration: ProfileDeletion,
-    contexts: ['DeactivateProfileSuccess', 'DeleteProfileConfirmation', 'DeleteProfileSuccess'],
-  },
-  {
     name: 'ErrorIllustration',
     Illustration: ErrorIllustration,
-    contexts: [
-      'QuitSignupModal',
-      'QuitIdentityCheckModal',
-      'ConfirmDeleteProfile',
-      'DeleteProfileAccountNotDeletable',
-    ],
+    contexts: ['QuitSignupModal', 'QuitIdentityCheckModal', 'DeleteProfileAccountNotDeletable'],
   },
   {
     name: 'CalendarIllustration',

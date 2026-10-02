@@ -22,7 +22,7 @@ export const DeleteProfileConfirmation = () => {
   const signOut = useLogoutRoutine()
   const { anonymizeAccount } = useAnonymizeAccountMutation({
     onSuccess: async () => {
-      await signOut()
+      await signOut(false)
       // We use resetFromRef instead of navigation because signOut() may unmount the current screen
       // (RootNavigator rebuild). resetFromRef ensures navigation still works after logout.
       resetFromRef(...getProfileHookConfig('DeleteProfileSuccess'))

@@ -1,8 +1,7 @@
 import React from 'react'
 
-import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { navigateFromRef } from 'features/navigation/navigationRef'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -10,9 +9,6 @@ import { DeleteProfileSuccess } from './DeleteProfileSuccess'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
-
-const signOutMock = jest.fn()
-jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -40,7 +36,7 @@ describe('DeleteProfileSuccess', () => {
 
     await userEvent.setup().press(screen.getByText(`Retourner à l’accueil`))
 
-    expect(navigateFromRef).toHaveBeenCalledWith(
+    expect(resetFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
       navigateToHomeConfig.params
     )
