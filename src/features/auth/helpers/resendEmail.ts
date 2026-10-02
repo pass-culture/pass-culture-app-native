@@ -27,3 +27,29 @@ export const getResendState = (cooldownEnd: number | null, attempts: number, now
     attempts: attempts === MAX_RESEND_ATTEMPTS ? 0 : attempts,
   }
 }
+
+export const canResendEmail = (resendCountdown: number, resendAttempts: number) =>
+  resendCountdown === 0 && resendAttempts < MAX_RESEND_ATTEMPTS
+
+export const getNextResendState = (resendAttempts: number, now = Date.now()) => {
+  const attempts = resendAttempts + 1
+  const countdown = getResendCooldownDuration(attempts)
+  const cooldownEnd = now + countdown * 1000
+
+  return {
+    attempts,
+    cooldownEnd,
+    countdown,
+  }
+}
+
+export const getResendStatus = (resendCountdown: number, resendAttempts: number) => {
+  const isCooldownActive = resendCountdown > 0
+  const hasReachedMaxAttempts = resendAttempts >= MAX_RESEND_ATTEMPTS
+
+  return {
+    isCooldownActive,
+    hasReachedMaxAttempts,
+    isDisabled: isCooldownActive || hasReachedMaxAttempts,
+  }
+}

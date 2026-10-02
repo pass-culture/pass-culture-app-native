@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { MAX_RESEND_ATTEMPTS, ONE_MINUTE } from 'features/auth/helpers/resendEmail'
+import { useOneTimePassword } from 'features/auth/helpers/useOneTimePassword'
 import { useResendEmail } from 'features/auth/helpers/useResendEmail'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { plural } from 'libs/plural'
@@ -15,10 +16,14 @@ import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-export const LoginWithOneTimePassword = () => {
-  const [code, setCode] = useState<string[]>(['', '', '', '', '', ''])
+const OTP_LENGTH = 6
 
+export const LoginWithOneTimePassword = () => {
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
+
+  const { code, isCodeComplete, handleCodeChange } = useOneTimePassword({
+    numberOfInputs: OTP_LENGTH,
+  })
 
   const {
     resendCountdown,
@@ -29,10 +34,6 @@ export const LoginWithOneTimePassword = () => {
     isDisabled,
     handleResendEmail,
   } = useResendEmail()
-
-  const onChange = (nextCode: string[]) => setCode(nextCode)
-
-  const isCodeComplete = code.length === 6 && code.every((value) => /^\d$/.test(value))
 
   const handleContinue = () => {
     if (isCodeComplete) navigateToHomeWithReset()
@@ -78,7 +79,8 @@ export const LoginWithOneTimePassword = () => {
             <OneTimePasswordInput
               label="Saisis le code de vérification que tu as reçu à l’adresse adresse@mail.com"
               code={code}
-              onCodeChange={onChange}
+              onCodeChange={handleCodeChange}
+              numberOfInputs={OTP_LENGTH}
               disabled={isDisabled}
             />
           </Form.MaxWidth>

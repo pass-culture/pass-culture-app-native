@@ -2,9 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react'
 
 import {
+  canResendEmail,
+  getNextResendState,
   getRemainingSeconds,
-  getResendCooldownDuration,
   getResendState,
+  getResendStatus,
   MAX_RESEND_ATTEMPTS,
   RESEND_ATTEMPTS_KEY,
   RESEND_COOLDOWN_KEY,
@@ -76,27 +78,24 @@ export const useResendEmail = () => {
   )
 
   const handleResendEmail = async () => {
-    if (resendCountdown > 0 || resendAttempts >= MAX_RESEND_ATTEMPTS) {
-      return
-    }
+    if (!canResendEmail(resendCountdown, resendAttempts)) return
 
-    const nextAttempts = resendAttempts + 1
-    const cooldownDuration = getResendCooldownDuration(nextAttempts)
-    const cooldownEnd = Date.now() + cooldownDuration * 1000
+    const { attempts, cooldownEnd, countdown } = getNextResendState(resendAttempts)
 
     await Promise.all([
       AsyncStorage.setItem(RESEND_COOLDOWN_KEY, String(cooldownEnd)),
-      AsyncStorage.setItem(RESEND_ATTEMPTS_KEY, String(nextAttempts)),
+      AsyncStorage.setItem(RESEND_ATTEMPTS_KEY, String(attempts)),
     ])
 
-    setResendAttempts(nextAttempts)
+    setResendAttempts(attempts)
     setResendCooldownEnd(cooldownEnd)
-    setResendCountdown(cooldownDuration)
+    setResendCountdown(countdown)
   }
 
-  const isCooldownActive = resendCountdown > 0
-  const hasReachedMaxAttempts = resendAttempts >= MAX_RESEND_ATTEMPTS
-  const isDisabled = isCooldownActive || hasReachedMaxAttempts
+  const { isCooldownActive, hasReachedMaxAttempts, isDisabled } = getResendStatus(
+    resendCountdown,
+    resendAttempts
+  )
 
   return {
     resendCountdown,
