@@ -9,7 +9,7 @@ type Props = {
   TextComponent: (typeof Typo)[keyof typeof Typo]
 }
 
-export const Blocquote = ({ text, cite, TextComponent }: Props) => {
+export const Blockquote = ({ text, cite, TextComponent }: Props) => {
   const quote = <TextComponent>{text}</TextComponent>
 
   return Platform.OS === 'web' ? <blockquote cite={cite}>{quote}</blockquote> : quote

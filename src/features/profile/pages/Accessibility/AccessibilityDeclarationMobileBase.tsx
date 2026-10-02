@@ -7,7 +7,7 @@ import { AccessibilityFeatures } from 'features/profile/components/Accessibility
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { Blocquote } from 'ui/components/accessibility/Blocquote'
+import { Blockquote } from 'ui/components/accessibility/Blockquote'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -201,7 +201,7 @@ export function AccessibilityDeclarationMobileBase({
               2005&nbsp;:&nbsp;
             </Typo.Body>
 
-            <Blocquote
+            <Blockquote
               cite="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006682235"
               TextComponent={Typo.BodyItalic}
               text="«&nbsp;la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie.&nbsp;»"

@@ -10,7 +10,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
-import { Blocquote } from 'ui/components/accessibility/Blocquote'
+import { Blockquote } from 'ui/components/accessibility/Blockquote'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -334,7 +334,7 @@ export const AccessibilityDeclarationWeb = () => {
               2005&nbsp;:
             </Typo.Body>
 
-            <Blocquote
+            <Blockquote
               cite={env.ARTICLE_11_LAW_02_2005}
               TextComponent={Typo.BodyItalic}
               text="«&nbsp;la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie.&nbsp;»"
