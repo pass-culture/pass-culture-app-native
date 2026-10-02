@@ -97,7 +97,7 @@ export const ArtistEditorialModule: FunctionComponent<ArtistEditorialModuleProps
         <OffersContainer gap={4} isZoomedAt200={isZoomedAt200}>
           {items.slice(0, NUMBER_OF_ITEMS).map((item) => (
             <OfferTileWrapper
-              key={item.id}
+              key={item.objectID}
               item={item}
               moduleId={moduleId}
               originDetails="artistEditorial"
