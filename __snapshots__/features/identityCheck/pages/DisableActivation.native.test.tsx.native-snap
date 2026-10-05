@@ -127,7 +127,6 @@ exports[`<DisableActivation/> should render correctly 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",
@@ -537,7 +536,6 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

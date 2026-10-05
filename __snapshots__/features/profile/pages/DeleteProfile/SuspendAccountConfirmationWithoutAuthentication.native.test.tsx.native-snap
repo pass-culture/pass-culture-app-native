@@ -206,7 +206,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

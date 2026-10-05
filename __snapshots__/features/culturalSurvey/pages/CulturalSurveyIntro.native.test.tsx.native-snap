@@ -127,7 +127,6 @@ exports[`CulturalSurveyIntro should render the page with correct layout and cont
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",
