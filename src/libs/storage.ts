@@ -4,6 +4,7 @@ import { Alert } from 'react-native'
 export type StorageKey =
   | 'access_token'
   | 'adjust_beneficiary_event_sent'
+  | 'artist_first_favorite'
   | 'campaign_date'
   | 'cookies'
   | 'credit_review_profile_started_at'
@@ -21,6 +22,7 @@ export type StorageKey =
   | 'has_seen_tutorials'
   | 'last_login_info'
   | 'logged_in_session_count'
+  | 'offer_first_favorite'
   | 'offers_viewed_count'
   | 'PASSCULTURE_REFRESH_TOKEN'
   | 'profile-address'
@@ -42,6 +44,7 @@ export type StorageKey =
   | 'user_age'
   | 'times_user_subscribed_to_a_theme'
   | 'times_music_live_booking_survey_has_been_displayed'
+  | 'venue_first_favorite'
   | '@passculture.venue.video_seen'
 
 export const storage = {
