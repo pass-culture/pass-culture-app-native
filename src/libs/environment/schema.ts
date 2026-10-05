@@ -30,6 +30,7 @@ export const EnvironmentSchema = yup.object({
   API_BASE_URL: yup.string().ensure(), // Set to empty string in __DEV__ (see src/libs/environment/env.web.ts)
   APPLE_SERVICE_ID: yup.string().optional(),
   APPLE_STORE_URL: yup.string().required(),
+  ARTICLE_11_LAW_02_2005: yup.string().required(),
   BOOKING_FEEDBACK_LINK: yup.string().required(),
   BOOKING_LIMIT_EXCEEDED_URL: yup.string().required(),
   CGU_LINK: yup.string().required(),

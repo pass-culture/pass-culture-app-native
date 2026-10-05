@@ -26,6 +26,7 @@ export const whiteListEnv = (env, commitHash) => {
     'APPLE_SERVICE_ID',
     'APPLE_STORE_URL',
     'APPS_FLYER_WEB_PUBLIC_KEY',
+    'ARTICLE_11_LAW_02_2005',
     'BATCH_API_PUBLIC_KEY_ANDROID',
     'BATCH_API_PUBLIC_KEY_IOS',
     'BOOKING_FEEDBACK_LINK',
