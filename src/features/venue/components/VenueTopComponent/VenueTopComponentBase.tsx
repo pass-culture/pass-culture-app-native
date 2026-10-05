@@ -77,14 +77,18 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
           handleImagePress={onPressBannerImage}
         />
         <MarginContainer>
-          <ViewGap gap={4}>
-            <GroupTags tags={venueTags} />
-            <ViewGap gap={1}>
+          <ViewGap gap={1}>
+            <ReverseOrderContainer gap={4}>
               <VenueTitle
                 accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
                 adjustsFontSizeToFit>
                 {venueName}
               </VenueTitle>
+
+              <GroupTags tags={venueTags} />
+            </ReverseOrderContainer>
+
+            <ViewGap gap={1}>
               {isDynamicOpeningHoursDisplayed ? (
                 <OpeningHoursStatus
                   currentDate={currentDate}
@@ -175,3 +179,7 @@ const getVenue = (venue: VenueResponse): VenueBlockVenue => {
 const VolunteeringContainer = styled(ViewGap)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
+
+const ReverseOrderContainer = styled(ViewGap)({
+  flexDirection: 'column-reverse',
+})

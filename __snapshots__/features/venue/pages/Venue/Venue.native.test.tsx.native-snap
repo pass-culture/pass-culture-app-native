@@ -97,70 +97,19 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <View
-            gap={4}
+            gap={1}
             style={
               {
-                "gap": 16,
+                "gap": 4,
               }
             }
           >
             <View
-              accessibilityRole="list"
+              gap={4}
               style={
                 {
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 8,
-                  "overflow": "hidden",
-                  "paddingLeft": 0,
-                }
-              }
-              testID="tagsContainer"
-            >
-              <View
-                accessibilityRole="none"
-                backgroundColor="#f1f1f4"
-                isZoomed={true}
-                style={
-                  {
-                    "alignItems": "center",
-                    "alignSelf": "flex-start",
-                    "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "flexDirection": "row",
-                    "maxWidth": "100%",
-                    "paddingHorizontal": 8,
-                    "paddingVertical": 4,
-                  }
-                }
-                testID="tagWrapper"
-              >
-                <Text
-                  accessibilityLevel="p"
-                  accessibilityRole="text"
-                  isZoomed={true}
-                  style={
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Librairie
-                </Text>
-              </View>
-            </View>
-            <View
-              gap={1}
-              style={
-                {
-                  "gap": 4,
+                  "flexDirection": "column-reverse",
+                  "gap": 16,
                 }
               }
             >
@@ -180,6 +129,67 @@ exports[`<Venue /> should match snapshot 1`] = `
               >
                 Le Petit Rintintin 1
               </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                    "overflow": "hidden",
+                    "paddingLeft": 0,
+                  }
+                }
+                testID="tagsContainer"
+              >
+                <View
+                  accessibilityRole="none"
+                  backgroundColor="#f1f1f4"
+                  isZoomed={true}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "#f1f1f4",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "flexDirection": "row",
+                      "maxWidth": "100%",
+                      "paddingHorizontal": 8,
+                      "paddingVertical": 4,
+                    }
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
+                    isZoomed={true}
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Librairie
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              gap={1}
+              style={
+                {
+                  "gap": 4,
+                }
+              }
+            >
               <View
                 style={
                   {
@@ -3522,70 +3532,19 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
           }
         >
           <View
-            gap={4}
+            gap={1}
             style={
               {
-                "gap": 16,
+                "gap": 4,
               }
             }
           >
             <View
-              accessibilityRole="list"
+              gap={4}
               style={
                 {
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 8,
-                  "overflow": "hidden",
-                  "paddingLeft": 0,
-                }
-              }
-              testID="tagsContainer"
-            >
-              <View
-                accessibilityRole="none"
-                backgroundColor="#f1f1f4"
-                isZoomed={true}
-                style={
-                  {
-                    "alignItems": "center",
-                    "alignSelf": "flex-start",
-                    "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "flexDirection": "row",
-                    "maxWidth": "100%",
-                    "paddingHorizontal": 8,
-                    "paddingVertical": 4,
-                  }
-                }
-                testID="tagWrapper"
-              >
-                <Text
-                  accessibilityLevel="p"
-                  accessibilityRole="text"
-                  isZoomed={true}
-                  style={
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Librairie
-                </Text>
-              </View>
-            </View>
-            <View
-              gap={1}
-              style={
-                {
-                  "gap": 4,
+                  "flexDirection": "column-reverse",
+                  "gap": 16,
                 }
               }
             >
@@ -3605,6 +3564,67 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               >
                 Le Petit Rintintin 1
               </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                    "overflow": "hidden",
+                    "paddingLeft": 0,
+                  }
+                }
+                testID="tagsContainer"
+              >
+                <View
+                  accessibilityRole="none"
+                  backgroundColor="#f1f1f4"
+                  isZoomed={true}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "#f1f1f4",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "flexDirection": "row",
+                      "maxWidth": "100%",
+                      "paddingHorizontal": 8,
+                      "paddingVertical": 4,
+                    }
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
+                    isZoomed={true}
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Librairie
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              gap={1}
+              style={
+                {
+                  "gap": 4,
+                }
+              }
+            >
               <View
                 style={
                   {
@@ -6947,70 +6967,19 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           }
         >
           <View
-            gap={4}
+            gap={1}
             style={
               {
-                "gap": 16,
+                "gap": 4,
               }
             }
           >
             <View
-              accessibilityRole="list"
+              gap={4}
               style={
                 {
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 8,
-                  "overflow": "hidden",
-                  "paddingLeft": 0,
-                }
-              }
-              testID="tagsContainer"
-            >
-              <View
-                accessibilityRole="none"
-                backgroundColor="#f1f1f4"
-                isZoomed={true}
-                style={
-                  {
-                    "alignItems": "center",
-                    "alignSelf": "flex-start",
-                    "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "flexDirection": "row",
-                    "maxWidth": "100%",
-                    "paddingHorizontal": 8,
-                    "paddingVertical": 4,
-                  }
-                }
-                testID="tagWrapper"
-              >
-                <Text
-                  accessibilityLevel="p"
-                  accessibilityRole="text"
-                  isZoomed={true}
-                  style={
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Librairie
-                </Text>
-              </View>
-            </View>
-            <View
-              gap={1}
-              style={
-                {
-                  "gap": 4,
+                  "flexDirection": "column-reverse",
+                  "gap": 16,
                 }
               }
             >
@@ -7030,6 +6999,67 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               >
                 Le Petit Rintintin 1
               </Text>
+              <View
+                accessibilityRole="list"
+                style={
+                  {
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                    "overflow": "hidden",
+                    "paddingLeft": 0,
+                  }
+                }
+                testID="tagsContainer"
+              >
+                <View
+                  accessibilityRole="none"
+                  backgroundColor="#f1f1f4"
+                  isZoomed={true}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "#f1f1f4",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "flexDirection": "row",
+                      "maxWidth": "100%",
+                      "paddingHorizontal": 8,
+                      "paddingVertical": 4,
+                    }
+                  }
+                  testID="tagWrapper"
+                >
+                  <Text
+                    accessibilityLevel="p"
+                    accessibilityRole="text"
+                    isZoomed={true}
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Librairie
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              gap={1}
+              style={
+                {
+                  "gap": 4,
+                }
+              }
+            >
               <View
                 style={
                   {
