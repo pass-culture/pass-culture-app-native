@@ -310,8 +310,8 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityLevel="p"
-                accessibilityRole="text"
+                accessibilityLevel="h3"
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#696a6f",
