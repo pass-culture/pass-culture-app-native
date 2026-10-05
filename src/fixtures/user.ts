@@ -47,6 +47,7 @@ export const nonBeneficiaryUser: UserProfile = {
   statusType: UserStatusType.GENERAL_PUBLIC,
   creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+  needsToFillCulturalSurvey: false,
 }
 
 export const beneficiaryUser: UserProfile = {
@@ -114,6 +115,7 @@ const baseNonBeneficiaryUser = {
   isBeneficiary: false,
   isEligibleForBeneficiaryUpgrade: false,
   lastName: 'Dupond',
+  needsToFillCulturalSurvey: false,
   phoneNumber: '+33639980123',
   postalCode: '75001',
   qfBonificationStatus: QFBonificationStatus.not_eligible,

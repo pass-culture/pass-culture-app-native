@@ -78,6 +78,7 @@ describe('useStepperInfo', () => {
         city: null,
         activityId: null,
         currency: undefined,
+        needsToFillCulturalSurvey: true,
       },
     })
   })
@@ -246,6 +247,19 @@ describe('useStepperInfo', () => {
       )
 
       expect(confirmationStep?.firstScreen).toEqual('CulturalSurveyIntro')
+    })
+
+    it('should skip the cultural survey when the user has already completed it', () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: { needsToFillCulturalSurvey: false },
+      })
+
+      const { stepsDetails } = useStepperInfo()
+      const confirmationStep = stepsDetails.find(
+        (step) => step.name === IdentityCheckStep.CONFIRMATION
+      )
+
+      expect(confirmationStep?.firstScreen).toEqual('IdentityCheckHonor')
     })
   })
 
