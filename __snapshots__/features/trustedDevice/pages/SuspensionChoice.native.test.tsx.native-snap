@@ -213,7 +213,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

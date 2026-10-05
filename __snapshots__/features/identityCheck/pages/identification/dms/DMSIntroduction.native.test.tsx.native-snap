@@ -213,7 +213,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",
@@ -876,7 +875,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

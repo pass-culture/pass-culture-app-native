@@ -213,7 +213,6 @@ exports[`ConfirmDeleteProfile should render confirm delete profile 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

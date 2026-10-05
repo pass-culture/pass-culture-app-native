@@ -127,7 +127,6 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",
@@ -566,7 +565,6 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",
