@@ -2,8 +2,8 @@ import { act } from '@testing-library/react'
 // eslint-disable-next-line no-restricted-imports
 import * as zustand from 'zustand'
 
-const { create: actualCreate, createStore: actualCreateStore } =
-  jest.requireActual<typeof zustand>('zustand')
+const actualZustand = jest.requireActual<typeof zustand>('zustand')
+const { create: actualCreate, createStore: actualCreateStore } = actualZustand
 
 // a variable to hold reset functions for all stores declared in the app
 export const storeResetFns = new Set<() => void>()
@@ -39,6 +39,9 @@ export const createStore = (<T>(stateCreator: zustand.StateCreator<T>) => {
     ? createStoreUncurried(stateCreator)
     : createStoreUncurried
 }) as typeof zustand.createStore
+
+// useStore is intentionally re-exported from the real Zustand module.
+export const useStore = actualZustand.useStore
 
 // reset all stores after each test run
 afterEach(() => {
