@@ -73,14 +73,6 @@ onFlowStart:
 - scrollUntilVisible:
     element: 'Des questions sur ton crédit ?'
 
-- tapOn: 'Vérifier ma demande de bonus situation de handicap'
-
-- assertVisible: 'Ton dossier est refusé'
-
-- assertVisible: 'Prochaine demande possible demain'
-
-- tapOn: 'Fermer'
-
-- assertVisible: 'Comment ça marche ?'
+- assertVisible: 'En cours de traitement pour le bonus situation de handicap'
 
 - runFlow: ../common/lifecycle/StopApp.yml
