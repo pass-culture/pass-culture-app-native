@@ -5,6 +5,7 @@ import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, waitFor } from 'tests/utils'
@@ -61,6 +62,7 @@ describe('<BookingImpossible />', () => {
         '/v1/me/favorites',
         favoritesResponseWithOfferIn
       )
+      setFeatureFlags()
     })
 
     it('should render without CTAs', async () => {

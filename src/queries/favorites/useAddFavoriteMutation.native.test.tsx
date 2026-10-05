@@ -3,8 +3,12 @@ import { View } from 'react-native'
 
 import { FavoriteResponse } from 'api/gen'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import * as firstFavoriteModule from 'features/favorites/helpers/firstFavoriteSnackBar'
 import { simulateBackend } from 'features/favorites/tests/simulateBackend'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
 import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
@@ -15,10 +19,18 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
 const mockSnackBarOpen = jest.spyOn(SnackBarStore.snackBarActions, 'open')
+const mockTriggerFirstFavoriteSnackBar = jest.spyOn(
+  firstFavoriteModule,
+  'triggerFirstFavoriteSnackBar'
+)
 
 const offerId = 116656
 
 describe('useAddFavoriteMutation', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should add favorite', async () => {
     simulateBackend({
       id: offerId,
@@ -41,6 +53,41 @@ describe('useAddFavoriteMutation', () => {
           date: favoriteResponseSnap.offer.date,
         },
       })
+    })
+  })
+
+  it('should trigger first favorite snack bar function when wipFavoritesHub FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+    simulateBackend({
+      id: offerId,
+      hasAddFavoriteError: false,
+      hasRemoveFavoriteError: false,
+    })
+    const result = renderUseAddFavorite()
+
+    expect(result.current.isPending).toBeFalsy()
+
+    result.current.mutate({ offerId })
+
+    await waitFor(() => {
+      expect(mockTriggerFirstFavoriteSnackBar).toHaveBeenCalledWith(FavoriteType.OFFER)
+    })
+  })
+
+  it('should not trigger first favorite snack bar function when wipFavoritesHub FF deactivated', async () => {
+    simulateBackend({
+      id: offerId,
+      hasAddFavoriteError: false,
+      hasRemoveFavoriteError: false,
+    })
+    const result = renderUseAddFavorite()
+
+    expect(result.current.isPending).toBeFalsy()
+
+    result.current.mutate({ offerId })
+
+    await waitFor(() => {
+      expect(mockTriggerFirstFavoriteSnackBar).not.toHaveBeenCalled()
     })
   })
 
@@ -87,15 +134,18 @@ describe('useAddFavoriteMutation', () => {
 })
 
 const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
-  const { result } = renderHook(() => useAddFavoriteMutation({ onSuccess }), {
-    wrapper: (props) =>
-      reactQueryProviderHOC(
-        <DefaultWrapper>
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        </DefaultWrapper>
-      ),
-  })
+  const { result } = renderHook(
+    () => useAddFavoriteMutation({ type: FavoriteType.OFFER, onSuccess }),
+    {
+      wrapper: (props) =>
+        reactQueryProviderHOC(
+          <DefaultWrapper>
+            <FavoritesWrapper>
+              <View>{props.children}</View>
+            </FavoritesWrapper>
+          </DefaultWrapper>
+        ),
+    }
+  )
   return result
 }
