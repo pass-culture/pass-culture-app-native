@@ -88,7 +88,10 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" wording with navigate to SetName screen and params type', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...nonBeneficiaryUser, eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
+        user: {
+          ...nonBeneficiaryUser,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
+        },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         storedProfileInfos: undefined,
@@ -114,7 +117,10 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" wording with navigate to ProfileInformationValidationCreate screen and params type', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...nonBeneficiaryUser, eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
+        user: {
+          ...nonBeneficiaryUser,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
+        },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         storedProfileInfos: {
@@ -177,7 +183,10 @@ describe('getCtaWordingAndAction', () => {
     it('should disable CTA with bottom banner when profile is incomplete and offer is not free', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...nonBeneficiaryUser, eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
+        user: {
+          ...nonBeneficiaryUser,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
+        },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 2000 }] }),
         subcategory: buildSubcategory({}),
       })
@@ -192,7 +201,7 @@ describe('getCtaWordingAndAction', () => {
     it('should disable CTA with "Réserver l’offre" wording when profile is complete and offer is not free', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...beneficiaryUser, eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16 },
+        user: { ...beneficiaryUser, eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16 },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 2000 }] }),
         subcategory: buildSubcategory({}),
       })

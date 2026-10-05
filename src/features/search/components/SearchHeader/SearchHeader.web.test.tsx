@@ -23,12 +23,14 @@ jest.mock('react-instantsearch-core', () => ({
 
 const mockDispatch = jest.fn()
 const mockShowSuggestions = jest.fn()
+const mockHideSuggestions = jest.fn()
 const mockIsFocusOnSuggestions = false
 
 const initialMockUseSearch = {
   searchState: initialSearchState,
   dispatch: mockDispatch,
   showSuggestions: mockShowSuggestions,
+  hideSuggestions: mockHideSuggestions,
   isFocusOnSuggestions: mockIsFocusOnSuggestions,
 }
 const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearch)
@@ -96,6 +98,32 @@ describe('SearchHeader component', () => {
     })
   })
 
+  it('should not render a quick access link by default', async () => {
+    render(<SearchHeader addSearchHistory={jest.fn()} searchInHistory={jest.fn()} />)
+    await screen.findByTestId('searchInput')
+
+    expect(screen.queryByRole('link')).not.toBeInTheDocument()
+  })
+
+  it('should render a quick access link reachable before the search input', async () => {
+    render(
+      <SearchHeader
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+        quickAccess={{ targetId: 'search-categories', title: 'Aller aux catégories' }}
+      />
+    )
+
+    const quickAccessLink = await screen.findByRole('link', { name: 'Aller aux catégories' })
+    const searchInput = screen.getByTestId('searchInput')
+    const isSearchInputAfterQuickAccessLink = Boolean(
+      quickAccessLink.compareDocumentPosition(searchInput) & Node.DOCUMENT_POSITION_FOLLOWING
+    )
+
+    expect(quickAccessLink).toHaveAttribute('href', '#search-categories')
+    expect(isSearchInputAfterQuickAccessLink).toBe(true)
+  })
+
   describe('when being focus on suggestion', () => {
     beforeEach(() => {
       mockUseSearch.mockReturnValue({
@@ -118,6 +146,32 @@ describe('SearchHeader component', () => {
       await waitFor(() => {
         expect(screen.queryByText('Recherche par mots-clés')).not.toBeInTheDocument()
       })
+    })
+
+    it('should keep rendering the quick access link', async () => {
+      render(
+        <SearchHeader
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          quickAccess={{ targetId: 'search-categories', title: 'Aller aux catégories' }}
+        />
+      )
+
+      expect(await screen.findByRole('link', { name: 'Aller aux catégories' })).toBeInTheDocument()
+    })
+
+    it('should hide the suggestions when activating the quick access link, to mount its target', async () => {
+      render(
+        <SearchHeader
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          quickAccess={{ targetId: 'search-categories', title: 'Aller aux catégories' }}
+        />
+      )
+
+      await userEvent.click(await screen.findByRole('link', { name: 'Aller aux catégories' }))
+
+      expect(mockHideSuggestions).toHaveBeenCalledTimes(1)
     })
   })
 })

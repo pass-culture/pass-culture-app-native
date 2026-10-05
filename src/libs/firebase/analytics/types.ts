@@ -11,7 +11,7 @@ export interface AnalyticsProvider {
 }
 
 export enum AgentType {
-  'browser_computer' = 'browser_computer',
-  'browser_mobile' = 'browser_mobile',
-  'agent_mobile' = 'agent_mobile',
+  browser_computer = 'browser_computer',
+  browser_mobile = 'browser_mobile',
+  agent_mobile = 'agent_mobile',
 }

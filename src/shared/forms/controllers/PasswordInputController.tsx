@@ -8,8 +8,10 @@ import {
 } from 'ui/designSystem/PasswordInput/helpers'
 import { PasswordInput } from 'ui/designSystem/PasswordInput/PasswordInput'
 
-interface Props<TFieldValues extends FieldValues, TName>
-  extends Omit<React.ComponentProps<typeof PasswordInput>, 'value' | 'onChangeText'> {
+interface Props<TFieldValues extends FieldValues, TName> extends Omit<
+  React.ComponentProps<typeof PasswordInput>,
+  'value' | 'onChangeText'
+> {
   name: TName
   control: Control<TFieldValues>
   displayValidation?: boolean

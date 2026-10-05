@@ -13,13 +13,17 @@ type TabLayoutProps<TabKeyType extends string> = {
   onTabChange?: Partial<Record<TabKeyType, () => void>> | ((tab: TabKeyType) => void)
   tabs: TabType<TabKeyType>[]
   defaultTab: TabKeyType
+  accessibilityLabel?: string
 }
+
+const sanitizeId = (key: string) => key.replace(/\s+/g, '-').toLowerCase()
 
 export const TabLayout = <TabKeyType extends string>({
   tabPanels,
   onTabChange,
   tabs,
   defaultTab,
+  accessibilityLabel,
 }: TabLayoutProps<TabKeyType>) => {
   const tabListRef = useRef(null)
   const [selectedTab, setSelectedTab] = useState<TabKeyType>(defaultTab)
@@ -46,7 +50,11 @@ export const TabLayout = <TabKeyType extends string>({
 
   return (
     <Container>
-      <TabContainer accessibilityRole={AccessibilityRole.TABLIST} ref={tabListRef} gap={6}>
+      <TabContainer
+        accessibilityRole={AccessibilityRole.TABLIST}
+        accessibilityLabel={accessibilityLabel}
+        ref={tabListRef}
+        gap={6}>
         <GreyBar />
         {tabs.map((tab, index) => (
           <InfoTab
@@ -58,10 +66,14 @@ export const TabLayout = <TabKeyType extends string>({
             onPress={() => onTabPress(tab.key)}
             Icon={tab.Icon}
             pastille={tab.pastille}
+            panelId={`panel-${sanitizeId(tab.key)}`}
           />
         ))}
       </TabContainer>
-      <ContentContainer accessibilityRole={AccessibilityRole.TABPANEL}>
+      <ContentContainer
+        accessibilityRole={AccessibilityRole.TABPANEL}
+        nativeID={`panel-${sanitizeId(selectedTab)}`}
+        aria-labelledby={sanitizeId(selectedTab)}>
         {tabPanels[selectedTab]}
       </ContentContainer>
     </Container>

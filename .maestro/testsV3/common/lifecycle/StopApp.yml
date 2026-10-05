@@ -1,3 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- stopApp: ${MAESTRO_APP_ID}

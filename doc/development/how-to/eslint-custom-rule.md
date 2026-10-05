@@ -16,7 +16,7 @@ Sinon, continuer ce mode opératoire.
 
 - Dans [eslint-local-rules.js](/eslint-local-rules.js), importer sa règle du fichier créé, et l'exporter.
 
-- Dans [.eslintrc.js](/.eslintrc.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`
+- Dans [eslint.config.js](/eslint.config.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`
 
 - Créer un fichier de test dans `/eslint-custom-rules/` : `<ma-règle-ESLint>.test.js`, et utiliser le snippet `eslint-test` pour générer des tests à remplir.
 

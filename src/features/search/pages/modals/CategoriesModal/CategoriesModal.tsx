@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -76,6 +76,17 @@ export const CategoriesModal = ({
     defaultValues: getDefaultFormValues(tree, searchState),
   })
   const { category, currentView, nativeCategory, genreType } = watch()
+
+  const hydrateCategoriesFormWhenModalOpens = () => {
+    if (!isVisible) return
+    reset(getDefaultFormValues(tree, searchState))
+  }
+  useEffect(
+    hydrateCategoriesFormWhenModalOpens,
+    // Hydrate from the latest search state only when the modal is opened
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isVisible]
+  )
 
   const nativeCategories = useMemo(() => {
     return (category &&

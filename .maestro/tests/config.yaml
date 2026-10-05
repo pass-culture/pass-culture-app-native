@@ -1,2 +1,14 @@
 flows:
-  - '**'
+  - onboarding/*
+  - bonification/*
+  - cookies/*
+  - auth/*
+  - profile/*
+  - search/*
+  - booking/*
+  - artist/*
+  - favorite/*
+  - offer/*
+  - venueMap/*
+  - web/*
+  - activation/*

@@ -747,7 +747,7 @@ describe('<OfferContent />', () => {
         const sceneClubVariantInfo: AdviceVariantInfo = {
           ...adviceVariantInfoFixture,
           adviceType: 'scene_club',
-          titleSection: 'Les avis de la scène club',
+          titleSection: 'Les avis du scène club',
         }
         renderOfferContent({
           offer: {

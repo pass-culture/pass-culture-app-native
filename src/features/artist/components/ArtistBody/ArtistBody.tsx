@@ -1,4 +1,4 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -11,16 +11,18 @@ import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/Artist
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import {
-  buildFollowArtistSurveyUrl,
-  FOLLOW_ARTIST_FEATURE_NAME,
-  FOLLOW_ARTIST_SURVEY_KEY,
-} from 'features/artist/helpers/buildFollowArtistSurveyUrl'
+  ArtistModuleItem,
+  getArtistModuleDataByIndex,
+} from 'features/artist/helpers/getArtistModuleDataByIndex'
 import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
+import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
-import { ArtistPlaylistModule as ArtistPlaylistModuleType } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import {
+  ArtistPlaylistModule as ArtistPlaylistModuleType,
+  ArtistEditorialModule as ArtistEditorialModuleType,
+} from 'features/home/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
@@ -31,7 +33,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
-import { getHasSeenFakeDoorSurvey } from 'shared/FakeDoorModal/helpers/getHasSeenFakeDoorSurvey'
 import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -64,6 +65,7 @@ type Props = {
   ) => void
   onExpandBioPress: () => void
   artistPlaylistModule?: ArtistPlaylistModuleType
+  artistEditorialModule?: ArtistEditorialModuleType
 }
 
 const ShareButton = ({ onPress }: { onPress: () => void }) => {
@@ -84,6 +86,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   artistPlaylist,
   artistTopOffers,
   artistPlaylistModule,
+  artistEditorialModule,
   onViewableItemsChanged,
   onExpandBioPress,
 }) => {
@@ -99,8 +102,19 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
-  const offersArtistPlaylistModulesData = useGetOffersDataQuery(
-    artistPlaylistModule ? [artistPlaylistModule] : []
+  const modules = [artistPlaylistModule, artistEditorialModule].filter(
+    (item): item is ArtistModuleItem => item !== undefined
+  )
+  const offersModulesData = useGetOffersDataQuery(modules)
+  const offersArtistPlaylistModulesData = getArtistModuleDataByIndex(
+    modules,
+    offersModulesData,
+    artistPlaylistModule
+  )
+  const offersArtistEditorialModulesData = getArtistModuleDataByIndex(
+    modules,
+    offersModulesData,
+    artistEditorialModule
   )
 
   const { name, description, image } = artist
@@ -118,38 +132,12 @@ export const ArtistBody: FunctionComponent<Props> = ({
     utmMedium: 'header',
   })
 
-  const { navigate } = useNavigation<UseNavigationType>()
   const isFocused = useIsFocused()
 
-  const handlePressFollow = async () => {
-    const [firstArtistPlaylist] = enablePlaylistByCategory
+  const handlePressFollow = () => {
+    const [_firstArtistPlaylist] = enablePlaylistByCategory
       ? getDisplayableArtistPlaylists(artistPlaylist)
       : []
-
-    const hasSeenSurveyPromise = getHasSeenFakeDoorSurvey(FOLLOW_ARTIST_SURVEY_KEY)
-
-    navigate('FakeDoorModal', {
-      surveyKey: FOLLOW_ARTIST_SURVEY_KEY,
-      surveyUrl: buildFollowArtistSurveyUrl({
-        artistId: artist.id,
-        offerType: firstArtistPlaylist?.searchGroupName,
-      }),
-      analyticsParams: {
-        featureName: FOLLOW_ARTIST_FEATURE_NAME,
-        from: 'artist',
-        artistId: artist.id,
-      },
-    })
-
-    const hasSeenSurvey = await hasSeenSurveyPromise
-
-    void analytics.logHasClickedFakeDoorCTA({
-      featureName: FOLLOW_ARTIST_FEATURE_NAME,
-      from: 'artist',
-      artistId: artist.id,
-      hasSeenSurvey,
-      originDetails: 'artistHeader',
-    })
   }
 
   const pressShareArtist = () => {
@@ -241,6 +229,16 @@ export const ArtistBody: FunctionComponent<Props> = ({
               </Description>
             ) : null}
           </ViewGap>
+          {artistEditorialModule ? (
+            <ArtistEditorialModule
+              title={artistEditorialModule.title}
+              offersModuleParameters={artistEditorialModule.offersModuleParameters}
+              color={artistEditorialModule.color}
+              illustration={artistEditorialModule.illustration}
+              moduleId={artistEditorialModule.id}
+              data={offersArtistEditorialModulesData}
+            />
+          ) : null}
           <ArtistTopOffers
             artistName={name}
             items={artistTopOffers}
@@ -261,7 +259,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
               artistId={artist.id}
               index={0}
               moduleId={artistPlaylistModule.id}
-              data={offersArtistPlaylistModulesData[0]}
+              data={offersArtistPlaylistModulesData}
               onViewableItemsChanged={handleArtistPlaylistModuleOffersViewableItemsChanged}
               homeEntryId={undefined}
               disableArtistNavigation

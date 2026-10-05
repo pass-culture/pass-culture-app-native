@@ -687,7 +687,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -846,7 +846,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1028,7 +1028,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     {
                       "busy": undefined,
                       "checked": true,
-                      "disabled": undefined,
+                      "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
                     }

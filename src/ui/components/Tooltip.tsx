@@ -32,7 +32,8 @@ export const Tooltip: FunctionComponent<Props> = ({
   style,
 }) => {
   const containerRef = useRef<AnimatedViewRefType>(null)
-  useEffect(() => {
+
+  const focusAndAnnounceTooltip = useCallback(() => {
     if (!isVisible) return
 
     void containerRef.current?.fadeIn?.()
@@ -47,6 +48,8 @@ export const Tooltip: FunctionComponent<Props> = ({
 
     return () => clearTimeout(timeout)
   }, [isVisible, label])
+
+  useEffect(() => focusAndAnnounceTooltip(), [focusAndAnnounceTooltip])
 
   // Hide tooltip when navigating away
   useFocusEffect(
@@ -69,14 +72,13 @@ export const Tooltip: FunctionComponent<Props> = ({
       accessibilityLiveRegion="assertive"
       pointerDirection={pointerDirection}>
       <StyledPointer pointerDirection={pointerDirection} />
-      <Background>
+
+      <TooltipButton onPress={onCloseIconPress || onHide} accessibilityLabel="Fermer le tooltip">
         <StyledText>{label}</StyledText>
-        <StyledClearContainer
-          onPress={onCloseIconPress || onHide}
-          accessibilityLabel="Fermer le tooltip">
+        <IconWrapper>
           <StyledClearIcon />
-        </StyledClearContainer>
-      </Background>
+        </IconWrapper>
+      </TooltipButton>
     </StyledAnimatedView>
   )
 }
@@ -108,9 +110,9 @@ const StyledAnimatedView = styled(AnimatedView)<Pick<Props, 'pointerDirection'>>
   })
 )
 
-const Background = styled.View(({ theme }) => ({
+const TooltipButton = styledButton(Touchable)(({ theme }) => ({
   flexDirection: 'row',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   width: '100%',
   padding: theme.designSystem.size.spacing.s,
   paddingLeft: theme.designSystem.size.spacing.l,
@@ -123,9 +125,9 @@ const StyledText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.inverted,
 }))
 
-const StyledClearContainer = styledButton(Touchable)(({ theme }) => ({
+const IconWrapper = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.s,
-  flexShrink: 1,
+  flexShrink: 0,
 }))
 
 const StyledClearIcon = styled(Clear).attrs(({ theme }) => ({

@@ -6,6 +6,7 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -29,6 +30,7 @@ jest.useFakeTimers()
 describe('<ChangeEmailExpiredLink />', () => {
   beforeEach(() => {
     mockAuthContextWithUser(nonBeneficiaryUser, { persist: true })
+    setFeatureFlags()
   })
 
   it('should render correctly', () => {

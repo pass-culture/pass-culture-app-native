@@ -93,5 +93,5 @@ const HeaderContainer = styled.View(({ theme }) => ({
 const TitleRow = styled(ViewGap)({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  alignItems: 'center',
+  alignItems: 'baseline',
 })

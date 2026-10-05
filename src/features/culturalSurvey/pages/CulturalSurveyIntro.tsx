@@ -7,6 +7,9 @@ import { getSubscriptionHookConfig } from 'features/navigation/navigators/Subscr
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -15,6 +18,7 @@ import { Typo } from 'ui/theme'
 export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavigationConfig)
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const navigateToCulturalSurvey = () => {
     void analytics.logHasStartedCulturalSurvey()
@@ -34,7 +38,15 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
         wording: 'Retour',
         icon: PlainArrowPrevious,
         onPress: goBack,
-      }}>
+      }}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.phoneHourglass,
+              backgroundColor: 'pending01',
+            }
+          : undefined
+      }>
       <StyledBody>
         {
           'Parle nous de tes activités culturelles préférées. Tes réponses vont nous aider à mieux te connaître.'

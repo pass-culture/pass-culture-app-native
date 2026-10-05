@@ -13,6 +13,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type ButtonTextWithIconProps = {
   wording: string
@@ -49,7 +50,7 @@ export function BannerLink({
       <IconWrapper>
         <Icon size={designSystem.size.icon.s} />
       </IconWrapper>
-      <Typo.BodyAccentXs>{wording}</Typo.BodyAccentXs>
+      <Typo.BodyAccentXs {...setTextSemantic('span')}>{wording}</Typo.BodyAccentXs>
     </InlineTouchable>
   )
 }

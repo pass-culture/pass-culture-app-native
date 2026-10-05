@@ -122,12 +122,9 @@ export function useNotEligibleEduConnectErrorData(message: EduConnectErrorMessag
       return UserAgeNotValidErrorData
 
     case EduConnectErrorMessageEnum.UserTypeNotStudent:
-      return getUserTypeNotStudentErrorData(
-        () => {
-          goBack()
-        },
-        { ...getSubscriptionPropConfig('EduConnectForm') }
-      )
+      return getUserTypeNotStudentErrorData(() => goBack(), {
+        ...getSubscriptionPropConfig('EduConnectForm'),
+      })
 
     case EduConnectErrorMessageEnum.DuplicateUser:
       return DuplicateUserErrorData

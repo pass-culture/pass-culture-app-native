@@ -110,8 +110,10 @@ const Title = styled(Typo.Title3)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   borderRadius: theme.designSystem.size.borderRadius.s,
   maxWidth: '100%',
-  paddingHorizontal: theme.designSystem.size.spacing.xs,
-  paddingVertical: theme.designSystem.size.spacing.xxs,
+  paddingLeft: theme.designSystem.size.spacing.xs,
+  paddingRight: theme.designSystem.size.spacing.xs,
+  paddingTop: theme.designSystem.size.spacing.xxs,
+  paddingBottom: theme.designSystem.size.spacing.xxs,
 }))
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({

@@ -9,7 +9,10 @@ import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStac
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useConfirmChangeEmailV2Mutation } from 'features/profile/queries/useConfirmChangeEmailV2Mutation'
 import { isTimestampExpired } from 'libs/dates'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -54,6 +57,7 @@ export function ConfirmChangeEmail() {
       )
     },
   })
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const onConfirmEmail = useCallback(() => {
     if (!params?.token || typeof params?.token !== 'string') {
@@ -85,6 +89,14 @@ export function ConfirmChangeEmail() {
         icon: Invalidate,
         disabled: isPending,
       }}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.phoneHourglass,
+              backgroundColor: 'pending01',
+            }
+          : undefined
+      }
     />
   )
 }

@@ -112,15 +112,15 @@ const SCENE_CLUB_VARIANT_CONFIG = {
   subcategories: SCENE_CLUB_SUBCATEGORIES,
   adviceType: 'scene_club',
   labelReaction: 'scène club',
-  titleSection: 'Les avis de la scène club',
+  titleSection: 'Les avis du scène club',
   subtitleSection: 'La communauté de jeunes passionnés te partage leur avis\u00a0!',
-  subtitleItem: 'Membre de la scène club',
+  subtitleItem: 'Membre du scène club',
   Icon: <SceneClubIcon testID="sceneClubIcon" />,
   SmallIcon: <SmallSceneClubIcon />,
-  modalTitle: 'Qui écrit les avis de la scène club\u00a0?',
+  modalTitle: 'Qui écrit les avis du scène club\u00a0?',
   modalWording:
-    'La scène club, c’est une équipe de jeunes passionnés de spectacle vivant réunis par le pass Culture. \n\nChaque mois, ils vont voir des spectacles et donnent leur avis pour t’aider à trouver ta prochaine sortie\u00a0!',
-  tag: <Tag variant={TagVariant.SCENECLUB} label="membre de la scène club" />,
+    'Le scène club, c’est une équipe de jeunes passionnés de spectacle vivant réunis par le pass Culture. \n\nChaque mois, ils vont voir des spectacles et donnent leur avis pour t’aider à trouver ta prochaine sortie\u00a0!',
+  tag: <Tag variant={TagVariant.SCENECLUB} label="membre du scène club" />,
   buttonWording: 'Voir tous les avis des clubs',
 } as const
 

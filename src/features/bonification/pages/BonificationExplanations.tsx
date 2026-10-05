@@ -73,16 +73,18 @@ export const BonificationExplanations = () => {
             </StyledTitle3>
             <Typo.Body>
               Ce bonus de
-              <Typo.BodyAccent>{SPACE + formattedBonificationAmount + SPACE}</Typo.BodyAccent>
+              <Typo.BodyAccent {...setTextSemantic('span')}>
+                {SPACE + formattedBonificationAmount + SPACE}
+              </Typo.BodyAccent>
               est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
-              <Typo.BodyAccent>
-                {` quotient familial inférieur ou égal à ${familyQuotientLevel}.`}
+              <Typo.BodyAccent {...setTextSemantic('span')}>
+                {` quotient familial inférieur ou égal à ${familyQuotientLevel} au cours de l’année de leurs 17 ans.`}
               </Typo.BodyAccent>
             </Typo.Body>
             <Banner label={bannerLabel} Icon={WarningFilled} />
             <Typo.Body>
-              Remplis les informations de ton parent ou représentant légal pour savoir si tu peux en
-              bénéficier.
+              Remplis les informations de ton parent ou représentant légal au moment de tes 17 ans
+              pour savoir si tu peux en bénéficier.
             </Typo.Body>
           </ViewGap>
         </Form.MaxWidth>
@@ -113,8 +115,11 @@ export const BonificationExplanations = () => {
           />
           {enableHandicapBonification ? null : (
             <StyledBodyS>
-              Si tu es en <Typo.BodyAccentS>situation de handicap</Typo.BodyAccentS>, un peu de
-              patience, ton cas sera pris en compte prochainement.
+              Si tu es en{SPACE}
+              <Typo.BodyAccentS {...setTextSemantic('span')}>
+                situation de handicap
+              </Typo.BodyAccentS>
+              , un peu de patience, ton cas sera pris en compte prochainement.
             </StyledBodyS>
           )}
         </ViewGap>

@@ -26,7 +26,7 @@ describe('clubAdviceVariant', () => {
     SCENE_CLUB_SUBCATEGORIES.forEach((subcategoryId) => {
       const variant = clubAdviceVariant[subcategoryId]
 
-      expect(variant?.titleSection).toEqual('Les avis de la scène club')
+      expect(variant?.titleSection).toEqual('Les avis du scène club')
     })
   })
 })

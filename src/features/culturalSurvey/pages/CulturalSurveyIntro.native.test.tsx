@@ -6,6 +6,7 @@ import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/co
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const mockGoBack = jest.fn()
@@ -33,6 +34,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('CulturalSurveyIntro', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render the page with correct layout and content', () => {
     render(<CulturalSurveyIntro />)
 

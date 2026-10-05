@@ -1,18 +1,13 @@
-import type { ReadonlyDeep } from 'type-fest'
-
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { SearchState } from 'features/search/types'
 
-const screensSearch = [
-  'SearchLanding',
-  'SearchResults',
-  'ThematicSearch',
-  'ThematicSearchSubcategories',
-] as const satisfies ReadonlyDeep<ScreenNames[]>
+type ExtendsScreenNames<T extends ScreenNames> = T
 
-export type SearchStackRouteName = (typeof screensSearch)[number]
+export type SearchStackRouteName = ExtendsScreenNames<
+  'SearchLanding' | 'SearchMap' | 'SearchResults' | 'ThematicSearch' | 'ThematicSearchSubcategories'
+>
 
 export const hasAThematicSearch = [
   SearchGroupNameEnumv2.CINEMA,
@@ -27,6 +22,7 @@ export type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThemat
 
 export type SearchStackParamList = {
   SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchMap?: Partial<SearchState>
   SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   ThematicSearch?: Partial<
     SearchState & {

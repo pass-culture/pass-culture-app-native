@@ -6,6 +6,8 @@ import { ThematicSearchCategories } from 'features/navigation/navigators/SearchS
 import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderAsync, screen, userEvent } from 'tests/utils'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
@@ -25,6 +27,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SubcategoryButtonListWrapper/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display "Films à l’affiche" when offerCategory is "Cinema"', async () => {
     await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.CINEMA)
 
@@ -64,6 +70,25 @@ describe('<SubcategoryButtonListWrapper/>', () => {
       moduleName: 'Tout parcourir',
       from: 'thematicsearch',
     })
+  })
+
+  it('should use subcategory button when wipNewCategoryBlocks FF deactivated', async () => {
+    await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.LIVRES)
+
+    const button = await screen.findByLabelText('Romans et littérature')
+
+    expect(button).toBeOnTheScreen()
+    expect(button).toHaveStyle({ backgroundColor: '#ffa5c0' })
+  })
+
+  it('should use new subcategory button when wipNewCategoryBlocks FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS])
+    await renderSubcategoryButtonListWrapper(SearchGroupNameEnumv2.LIVRES)
+
+    const button = await screen.findByLabelText('Sous-catégorie Romans et littérature')
+
+    expect(button).toBeOnTheScreen()
+    expect(button).toHaveStyle({ backgroundColor: '#f2497c' })
   })
 
   it.skip('should update searchState with correct params', async () => {

@@ -1,8 +1,0 @@
-appId: app.passculture.webapp
----
-- runFlow: ./../commons/Close.yml
-- openLink:
-    link: ${output.links.production.offer}
-    autoVerify: true
-- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
-- assertVisible: 'Réserver.*'

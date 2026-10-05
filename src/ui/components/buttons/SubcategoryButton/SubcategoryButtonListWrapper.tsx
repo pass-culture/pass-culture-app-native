@@ -5,6 +5,8 @@ import { ThematicSearchCategories } from 'features/navigation/navigators/SearchS
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { getSubcategoryButtonContent } from 'ui/components/buttons/SubcategoryButton/helpers'
@@ -19,6 +21,7 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const { searchState, dispatch } = useSearch()
   const { designSystem } = useTheme()
   const nativeCategories = useNativeCategories(offerCategory)
+  const enableNewSubcategoryBlocks = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS)
 
   const subcategoryButtonContent = useMemo(
     () =>
@@ -28,15 +31,20 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
         subcategories,
         searchState,
         dispatch,
-        backgroundColors: designSystem.color.background,
+        backgroundColors: enableNewSubcategoryBlocks
+          ? designSystem.color.illustration
+          : designSystem.color.background,
         borderColors: designSystem.color.border,
+        enableNewSubcategoryBlocks,
       }),
     [
-      dispatch,
       nativeCategories,
       offerCategory,
-      searchState,
       subcategories,
+      searchState,
+      dispatch,
+      enableNewSubcategoryBlocks,
+      designSystem.color.illustration,
       designSystem.color.background,
       designSystem.color.border,
     ]
@@ -58,6 +66,7 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
         params: { offerCategories: [offerCategory] },
       }}
       onBeforeSeeAllNavigate={onBeforeNavigate}
+      enableNewSubcategoryBlocks={enableNewSubcategoryBlocks}
     />
   )
 }

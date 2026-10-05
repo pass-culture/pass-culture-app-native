@@ -13,6 +13,7 @@ import {
 import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export type CategoryButtonProps = {
   label: string
@@ -52,9 +53,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       borderColor={borderColor}
       style={style}
       height={effectiveHeight}>
-      {/* <LabelContainer> */}
-      <Label>{label.toUpperCase()}</Label>
-      {/* </LabelContainer> */}
+      <Label {...setTextSemantic('span')}>{label.toUpperCase()}</Label>
     </TouchableContainer>
   )
 }

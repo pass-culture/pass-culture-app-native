@@ -31,6 +31,16 @@ describe('<ChangeEmailSetPassword />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should display a neutral SSO provider wording', async () => {
+    await renderAsync(reactQueryProviderHOC(<ChangeEmailSetPassword />))
+
+    expect(
+      screen.getByText(
+        'Tu t’es inscrit via Google ou Apple, tu ne possèdes donc pas de mot de passe actuellement.'
+      )
+    ).toBeOnTheScreen()
+  })
+
   it('should enable the submit button when inputs are valid', async () => {
     await renderAsync(reactQueryProviderHOC(<ChangeEmailSetPassword />))
 

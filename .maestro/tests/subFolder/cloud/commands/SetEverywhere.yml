@@ -1,8 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- runFlow:
-    when:
-      visible: 'Paris - Ouvrir la modale de localisation'
-    commands:
-      - tapOn:
-          text: '.*France entière.*'

@@ -2,7 +2,6 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
@@ -48,7 +47,7 @@ export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
     hideModal: hideLoggedOutModal,
   } = useModal(false)
 
-  const onUpdateSubscriptionSuccess = async (thematic: SubscriptionTheme) => {
+  const onUpdateSubscriptionSuccess = async (subscriptionTheme: SubscriptionTheme) => {
     if (!thematic) return
     const hasSubscribedTimes =
       (await storage.readObject<number>('times_user_subscribed_to_a_theme')) ?? 0
@@ -57,7 +56,7 @@ export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
       await storage.saveObject('times_user_subscribed_to_a_theme', hasSubscribedTimes + 1)
     } else {
       showSuccessSnackBar(
-        `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`
+        `Tu suis le thème “${mapSubscriptionThemeToName[subscriptionTheme]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`
       )
     }
   }
@@ -91,7 +90,7 @@ export const SubscribeButtonWithModals = ({ homeId, size }: Props) => {
     }
   }
 
-  if (!thematic || user?.statusType === UserStatusType.GENERAL_PUBLIC) return null
+  if (!thematic) return null
 
   return (
     <View>

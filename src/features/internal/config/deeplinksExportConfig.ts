@@ -1,27 +1,25 @@
-import type { ReadonlyDeep } from 'type-fest'
-
 import { api } from 'api/api'
 import { AllNavParamList, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 
-const screensUsedByMarketing = [
-  'Offer',
-  'Venue',
-  'VenueMap',
-  'Home',
-  'SearchResults',
-  'SearchLanding',
-  'Profile',
-  'SignupForm',
-  'SignupMethods',
-  'ThematicHome',
-  'Stepper',
-  'ThematicSearch',
-  'Bookings',
-  'SearchStackNavigator',
-  'Favorites',
-] as const satisfies ReadonlyDeep<ScreenNames[]>
+type ExtendsScreenNames<T extends ScreenNames> = T
 
-export type ScreensUsedByMarketing = (typeof screensUsedByMarketing)[number]
+export type ScreensUsedByMarketing = ExtendsScreenNames<
+  | 'Offer'
+  | 'Venue'
+  | 'VenueMap'
+  | 'Home'
+  | 'SearchResults'
+  | 'SearchLanding'
+  | 'Profile'
+  | 'SignupForm'
+  | 'SignupMethods'
+  | 'ThematicHome'
+  | 'Stepper'
+  | 'ThematicSearch'
+  | 'Bookings'
+  | 'SearchStackNavigator'
+  | 'Favorites'
+>
 
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
 

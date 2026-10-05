@@ -96,7 +96,7 @@ export const NotificationsSettings = () => {
   }
 
   const togglePush = () => {
-    if (pushPermission === 'granted') {
+    if (state.allowPush || pushPermission === 'granted') {
       dispatch({ type: 'push', state: 'toggle' })
     } else {
       showPushModal()

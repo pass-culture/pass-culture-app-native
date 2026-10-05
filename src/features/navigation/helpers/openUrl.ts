@@ -51,7 +51,7 @@ const openExternalUrl = async (
     }
     if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
-  } catch (error) {
+  } catch {
     // Intentionally left empty to ignore errors
   }
 
@@ -60,7 +60,7 @@ const openExternalUrl = async (
       await Linking.openURL(fallbackUrl)
       if (shouldLogEvent) analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
       return
-    } catch (error) {
+    } catch {
       // Intentionally left empty to ignore errors
     }
   }

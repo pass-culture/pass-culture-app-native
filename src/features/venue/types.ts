@@ -47,11 +47,7 @@ export type OpeningHour = {
 }
 
 export type OpeningHoursStatusState =
-  | 'open'
-  | 'open-soon'
-  | 'close-soon'
-  | 'close'
-  | 'not-applicable'
+  'open' | 'open-soon' | 'close-soon' | 'close' | 'not-applicable'
 
 export type PastilleType = {
   label: string

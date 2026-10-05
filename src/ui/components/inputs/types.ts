@@ -1,5 +1,5 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
-import { Insets, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
+import { Insets, Platform, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
 
 import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -88,6 +88,7 @@ export type RNTextInputProps = Pick<
 > &
   RefAttributes<RNTextInput> & {
     testID?: string
+    'aria-describedby'?: string
   }
 
 type TextInputNativeProps = CustomTextInputBaseProps & RNTextInputProps
@@ -118,6 +119,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
 
 export function getRNTextInputProps(props: TextInputNativeProps): RNTextInputProps {
   return {
+    ...(Platform.OS === 'web' ? { 'aria-describedby': props['aria-describedby'] } : {}),
     accessibilityLabel: props.accessibilityLabel,
     autoCapitalize: props.autoCapitalize,
     autoComplete: props.autoComplete,

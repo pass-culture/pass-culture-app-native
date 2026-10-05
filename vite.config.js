@@ -26,8 +26,7 @@ const packageJson = require('./package.json')
 const getGitInfo = (command) => {
   try {
     return execSync(command).toString().trim()
-  } catch (e) {
-    console.error(`Failed to execute command: ${command}`, e)
+  } catch {
     return 'unknown'
   }
 }
@@ -142,6 +141,7 @@ export default ({ mode }) => {
     server: { ...proxyConfig, open: true },
     preview: proxyConfig,
     optimizeDeps: {
+      entries: ['src/index.tsx'],
       include: ['react-native', 'react-native-web'],
       rolldownOptions: {
         resolve: {

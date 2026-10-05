@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -28,13 +27,13 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
     <HeroButtonList
       Title={<Typo.Body>J’ai un smartphone à proximité</Typo.Body>}
       Icon={<Smartphone color={designSystem.color.icon.brandPrimary} />}
-      navigateTo={getSubscriptionPropConfig('SelectIDStatus')}
+      navigateTo={{ screen: 'SelectIDStatus' }}
       key={1}
     />,
     <HeroButtonList
       Title={<Typo.Body>Je n’ai pas de smartphone à proximité</Typo.Body>}
       Icon={<NoPhone color={designSystem.color.icon.brandPrimary} />}
-      navigateTo={getSubscriptionPropConfig('DMSIntroduction', { isForeignDMSInformation: false })}
+      navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } }}
       key={2}
     />,
   ]

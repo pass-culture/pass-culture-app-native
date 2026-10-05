@@ -24,10 +24,12 @@ describe('<BonificationStep />', () => {
   it('should render family quotient step only when family quotient bonification is enabled', () => {
     renderBonificationStep({ enableFamilyQuotientBonification: true })
 
-    expect(screen.getByText('Le bonus dépend des ressources de ton foyer.')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Le bonus dépend des ressources de ton foyer l’année de tes 17 ans.')
+    ).toBeOnTheScreen()
 
     expect(
-      screen.queryByText('Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH.')
+      screen.queryByText('Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH à 18 ans.')
     ).not.toBeOnTheScreen()
   })
 
@@ -35,10 +37,12 @@ describe('<BonificationStep />', () => {
     renderBonificationStep({ enableHandicapBonification: true })
 
     expect(
-      screen.getByText('Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH.')
+      screen.getByText('Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH à 18 ans.')
     ).toBeOnTheScreen()
 
-    expect(screen.queryByText('Le bonus dépend des ressources de ton foyer.')).not.toBeOnTheScreen()
+    expect(
+      screen.queryByText('Le bonus dépend des ressources de ton foyer l’année de tes 17 ans.')
+    ).not.toBeOnTheScreen()
   })
 
   it('should render combined step when both bonifications are enabled', () => {
@@ -50,10 +54,12 @@ describe('<BonificationStep />', () => {
     expect(screen.getByText('Tu ne peux pas cumuler les deux bonus')).toBeOnTheScreen()
 
     expect(
-      screen.getByText('Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH.')
+      screen.getByText('Le bonus est réservé aux jeunes touchant l’AEEH ou l’AAH à 18 ans.')
     ).toBeOnTheScreen()
 
-    expect(screen.getByText('Le bonus dépend des ressources de ton foyer.')).toBeOnTheScreen()
+    expect(
+      screen.getByText('Le bonus dépend des ressources de ton foyer l’année de tes 17 ans.')
+    ).toBeOnTheScreen()
   })
 })
 

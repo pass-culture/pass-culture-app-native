@@ -19,20 +19,14 @@ const isWeb = Platform.OS === 'web'
 type Props = {
   shouldDisplayMapButtonText: boolean
   searchId?: string
-  setHasBeenClicked: (hasBeenClicked: boolean) => void
 }
 
-export const SearchMapButton: FC<Props> = ({
-  shouldDisplayMapButtonText,
-  searchId,
-  setHasBeenClicked,
-}) => {
+export const SearchMapButton: FC<Props> = ({ shouldDisplayMapButtonText, searchId }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const handleSeeMapButtonPress = () => {
     removeSelectedVenue()
 
-    setHasBeenClicked(true)
     if (locationSelectors.selectLocationMode() === LocationMode.EVERYWHERE) {
       navigate('VenueMapLocationModal', {
         openedFrom: 'search',
@@ -40,9 +34,15 @@ export const SearchMapButton: FC<Props> = ({
       return
     }
 
-    void analytics.logConsultVenueMap({
+    void analytics.logViewMap({
       from: 'search',
+      mapType: 'SearchMap',
       searchId,
+    })
+
+    navigate('TabNavigator', {
+      screen: 'SearchStackNavigator',
+      params: { screen: 'SearchMap' },
     })
   }
 

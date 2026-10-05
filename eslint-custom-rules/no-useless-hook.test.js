@@ -6,11 +6,13 @@ const path = require('path')
 jest.mock('fs')
 
 const ruleTester = new RuleTester({
-  parserOptions: {
+  languageOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
 })

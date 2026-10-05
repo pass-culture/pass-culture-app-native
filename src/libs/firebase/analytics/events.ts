@@ -56,7 +56,6 @@ export enum AnalyticsEvent {
   CONSULT_SUBSCRIPTION_MODAL = 'ConsultSubscriptionModal',
   CONSULT_TUTORIAL = 'ConsultTutorial',
   CONSULT_VENUE = 'ConsultVenue',
-  CONSULT_VENUE_MAP = 'ConsultVenueMap',
   CONSULT_VENUE_OFFERS = 'ConsultVenueOffers',
   CONSULT_VIDEO = 'ConsultVideo',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
@@ -108,6 +107,7 @@ export enum AnalyticsEvent {
   LOGIN = 'login',
   LOGIN_CLICKED = 'LoginClicked',
   LOGOUT = 'Logout',
+  MAP_SEEN_DURATION = 'MapSeenDuration',
   MODIFY_MAIL = 'ModifyMail',
   MODULE_DISPLAYED = 'ModuleDisplayed',
   MODULE_DISPLAYED_ON_HOMEPAGE = 'ModuleDisplayedOnHomePage',
@@ -167,11 +167,10 @@ export enum AnalyticsEvent {
   USER_SET_VENUE = 'UserSetVenue',
   VALIDATE_REACTION = 'ValidateReaction',
   VENUE_CONTACT = 'VenueContact',
-  VENUE_MAP_SEEN_DURATION = 'VenueMapSeenDuration',
-  VENUE_MAP_SESSION_DURATION = 'VenueMapSessionDuration',
   VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS = 'VenuePlaylistDisplayedOnSearchResults',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
+  VIEW_MAP = 'ViewMap',
   VIEWED_BOOKING_PAGE = 'ViewedBookingPage',
 }
 

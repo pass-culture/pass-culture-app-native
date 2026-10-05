@@ -45,11 +45,7 @@ type OnPressLinkProps = {
 export type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps | OnPressLinkProps
 
 type BannerImageSize =
-  | typeof LENGTH_XXS
-  | typeof LENGTH_XS
-  | typeof LENGTH_S
-  | typeof LENGTH_M
-  | typeof LENGTH_L
+  typeof LENGTH_XXS | typeof LENGTH_XS | typeof LENGTH_S | typeof LENGTH_M | typeof LENGTH_L
 
 type BannerImage = {
   uri: string

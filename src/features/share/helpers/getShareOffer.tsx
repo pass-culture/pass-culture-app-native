@@ -10,10 +10,7 @@ import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 
 type Offer =
-  | OfferResponse
-  | BookingOfferResponseV2
-  | FavoriteOfferResponse
-  | BookingListItemOfferResponse
+  OfferResponse | BookingOfferResponseV2 | FavoriteOfferResponse | BookingListItemOfferResponse
 type Parameters = {
   offer?: Offer
   utmMedium: string

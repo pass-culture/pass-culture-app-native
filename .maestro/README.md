@@ -43,7 +43,7 @@ L'environnement de référence est **staging**. L'environnement testing est trop
 
 > Le mode **cloud est à privilégier** : les runs locales sont plus sujettes aux faux négatifs (réseau, état du simulateur, performances machine).
 
-Les tests se trouvent dans `.maestro/testsV3/`.
+Les tests se trouvent dans `.maestro/tests/`.
 
 ## Obtenir un binary ID
 
@@ -106,7 +106,7 @@ Les tests web tournent sur `https://app.staging.passculture.team`, aucun build l
 
 ## Tags
 
-Les tags identifient le domaine fonctionnel d'un test. Ils correspondent au nom du dossier parent dans `testsV3/` et sont référencés dans le `CODEOWNERS`.
+Les tags identifient le domaine fonctionnel d'un test. Ils correspondent au nom du dossier parent dans `tests/` et sont référencés dans le `CODEOWNERS`.
 
 Les tests déclarent leurs tags dans l'en-tête du fichier `.yml` :
 
@@ -132,14 +132,15 @@ tags:
 
 ## Flows communs (`common/`)
 
-Les flows réutilisables sont organisés par catégorie dans `testsV3/common/` :
+Les flows réutilisables sont organisés par catégorie dans `tests/common/` :
 
 - **`lifecycle/`** — démarrage (`LaunchApp`), arrêt (`StopApp`), reset keychain iOS (`ClearIOSKeychain`)
 - **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`
 - **`navigation/`** — interactions de navigation récurrentes (tab bar, retour)
 - **`cookies/`** — gestion du bandeau cookies
-- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateQFResponse.js`, voir sections dédiées)
+- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`, voir sections dédiées)
 - **`assertions/`** — assertions réutilisables
+- **`analytics/`** — vérification des events envoyés au serveur mock analytics
 
 ## Écrire un test
 
@@ -186,11 +187,11 @@ Le script expose les variables suivantes utilisables dans le flow :
 
 ## Mocker le quotient familial
 
-Pour les tests de bonification, `common/helpers/generateQFResponse.js` configure la réponse QF renvoyée par le mock. Il s'appelle après `generateUser.js` :
+Pour les tests de bonification, `common/helpers/generateBonusQFResponse.js` configure la réponse QF renvoyée par le mock. Il s'appelle après `generateUser.js` :
 
 ```yaml
   - runScript:
-      file: ../common/helpers/generateQFResponse.js
+      file: ../common/helpers/generateBonusQFResponse.js
       env:
         user_id: ${output.userId}
         mock_type: 'OK'
@@ -206,6 +207,20 @@ Valeurs disponibles pour `mock_type` :
 | `PERSON_NOT_FOUND` | Personne introuvable |
 | `APPLICATION_NOT_FOUND` | Dossier introuvable |
 | `QUOTIENT_FAMILIAL_TOO_HIGH` | QF trop élevé |
+
+## Mocker l'allocation adulte handicapé
+
+Même principe avec `common/helpers/generateBonusDisabilityResponse.js` :
+
+```yaml
+  - runScript:
+      file: ../common/helpers/generateBonusDisabilityResponse.js
+      env:
+        user_id: ${output.userId}
+        mock_type: 'RECIPIENT'
+```
+
+`mock_type` accepte `RECIPIENT` (bénéficiaire AAH) ou `PERSON_NOT_FOUND`.
 
 ## Tester des trackers
 

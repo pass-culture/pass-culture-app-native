@@ -7,7 +7,7 @@ import {
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
 const convertBookingsListDatesToTimezone = (bookings: BookingResponse[]): BookingResponse[] => {
-  return bookings?.map(convertBookingResponseDateToTimezone)
+  return bookings.map(convertBookingResponseDateToTimezone)
 }
 
 export const convertBookingResponseDateToTimezone = <
@@ -15,6 +15,10 @@ export const convertBookingResponseDateToTimezone = <
 >(
   booking: T
 ): T => {
+  if (!('stock' in booking)) {
+    return booking
+  }
+
   const timezone = booking.stock.offer.address?.timezone ?? booking.stock.offer.venue.timezone
   return {
     ...booking,

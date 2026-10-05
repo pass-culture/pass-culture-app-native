@@ -16,6 +16,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type CategoryButtonProps = {
   label: string
@@ -68,13 +69,15 @@ export const NewCategoryButton: FunctionComponent<CategoryButtonProps> = ({
       height={effectiveHeight}>
       {shouldUseAccessibleLayout ? (
         <AccessibleLabelContainer>
-          <Label>{label}</Label>
+          <Label {...setTextSemantic('span')}>{label}</Label>
         </AccessibleLabelContainer>
       ) : (
         <Container gap={2}>
           <LabelContainer>
             {labelPartsToDisplay.map((labelPart) => (
-              <Label key={labelPart}>{labelPart}</Label>
+              <Label key={labelPart} {...setTextSemantic('span')}>
+                {labelPart}
+              </Label>
             ))}
           </LabelContainer>
           {illustrationUrlToDisplay ? (

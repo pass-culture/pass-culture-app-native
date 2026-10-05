@@ -882,7 +882,7 @@ exports[`TrackEmailChange account with password should render correctly when cho
                       }
                     >
                       <View
-                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -931,7 +931,7 @@ exports[`TrackEmailChange account with password should render correctly when cho
                             },
                           ]
                         }
-                        testID="Validation de ta nouvelle adresse e-mail - non complété"
+                        testID="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -1687,7 +1687,7 @@ exports[`TrackEmailChange account with password should render correctly when con
                       }
                     >
                       <View
-                        accessibilityLabel="Choix de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Choix de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -1721,7 +1721,6 @@ exports[`TrackEmailChange account with password should render correctly when con
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -1737,7 +1736,7 @@ exports[`TrackEmailChange account with password should render correctly when con
                             },
                           ]
                         }
-                        testID="Choix de ta nouvelle adresse e-mail - non complété"
+                        testID="Choix de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -1918,7 +1917,7 @@ exports[`TrackEmailChange account with password should render correctly when con
                       }
                     >
                       <View
-                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -1967,7 +1966,7 @@ exports[`TrackEmailChange account with password should render correctly when con
                             },
                           ]
                         }
-                        testID="Validation de ta nouvelle adresse e-mail - non complété"
+                        testID="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -2709,7 +2708,6 @@ exports[`TrackEmailChange account with password should render correctly when val
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -3723,7 +3721,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -4181,7 +4178,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -4230,7 +4227,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             },
                           ]
                         }
-                        testID="Validation de ta nouvelle adresse e-mail - non complété"
+                        testID="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -4986,7 +4983,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        accessibilityLabel="Création de ton mot de passe - non complété"
+                        accessibilityLabel="Création de ton mot de passe - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -5020,7 +5017,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -5036,7 +5032,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             },
                           ]
                         }
-                        testID="Création de ton mot de passe - non complété"
+                        testID="Création de ton mot de passe - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -5221,7 +5217,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        accessibilityLabel="Choix de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Choix de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -5255,7 +5251,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -5271,7 +5266,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             },
                           ]
                         }
-                        testID="Choix de ta nouvelle adresse e-mail - non complété"
+                        testID="Choix de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -5452,7 +5447,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -5501,7 +5496,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             },
                           ]
                         }
-                        testID="Validation de ta nouvelle adresse e-mail - non complété"
+                        testID="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -6481,7 +6476,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        accessibilityLabel="Choix de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Choix de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -6515,7 +6510,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -6531,7 +6525,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             },
                           ]
                         }
-                        testID="Choix de ta nouvelle adresse e-mail - non complété"
+                        testID="Choix de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -6712,7 +6706,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                       }
                     >
                       <View
-                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
+                        accessibilityLabel="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -6761,7 +6755,7 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                             },
                           ]
                         }
-                        testID="Validation de ta nouvelle adresse e-mail - non complété"
+                        testID="Validation de ta nouvelle adresse e-mail - indisponible tant que l‘étape précédente n‘est pas complétée"
                       >
                         <View
                           style={
@@ -7503,7 +7497,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,
@@ -7727,7 +7720,6 @@ exports[`TrackEmailChange account without password (sso) should render correctly
                               {
                                 "userSelect": "auto",
                               },
-                              {},
                               {
                                 "borderBottomLeftRadius": 8,
                                 "borderBottomRightRadius": 8,

@@ -2,10 +2,12 @@ const { RuleTester } = require('eslint')
 const rule = require('./no-get-spacing')
 
 const ruleTester = new RuleTester({
-  parserOptions: {
+  languageOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    ecmaFeatures: { jsx: true },
+    parserOptions: {
+      ecmaFeatures: { jsx: true },
+    },
   },
 })
 

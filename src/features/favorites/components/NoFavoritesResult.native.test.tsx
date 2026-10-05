@@ -4,6 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockFavoritesState = initialFavoritesState
@@ -26,6 +28,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('NoFavoritesResult component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should show the message', () => {
     render(<NoFavoritesResult />)
     const text = screen.getByText(`Retrouve toutes tes offres en un clin d’oeil`)
@@ -44,5 +50,18 @@ describe('NoFavoritesResult component', () => {
       screen: 'SearchStackNavigator',
     })
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
+  })
+
+  it('should display empty favorites icon when wipNewVisionUi FF is deactivated', () => {
+    render(<NoFavoritesResult />)
+
+    expect(screen.getByTestId('empty-favorites-icon')).toBeOnTheScreen()
+  })
+
+  it('should display remote illustration when wipNewVisionUi FF is activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+    render(<NoFavoritesResult />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

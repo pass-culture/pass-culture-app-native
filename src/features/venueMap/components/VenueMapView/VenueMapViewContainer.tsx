@@ -1,6 +1,6 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, {
   FunctionComponent,
   useCallback,
@@ -22,8 +22,6 @@ import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottom
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
-import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
-import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackMapSessionDuration'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import {
   removeSelectedVenue,
@@ -34,12 +32,14 @@ import {
 } from 'features/venueMap/store/venueMapStore'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
+import { MapType } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { camelCase } from 'libs/formatter/camelCase'
 import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
+import { useTrackDuration } from 'shared/hook/useTrackDuration'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { LENGTH_L } from 'ui/theme'
 
@@ -69,6 +69,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const currentRegionVenues = useGetVenuesInRegion(currentRegion)
 
   const isInVenueMapScreen = routeName.toLowerCase() === 'venuemap'
+  const mapType: MapType = routeName === 'VenueMap' ? 'VenueMap' : 'SearchMap'
 
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
 
@@ -84,8 +85,10 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 
   const fontScale = PixelRatio.getFontScale()
 
-  useTrackMapSessionDuration()
-  useTrackMapSeenDuration()
+  const trackMapSeenDuration = useTrackDuration((duration: number) => {
+    void analytics.logMapSeenDuration({ duration, mapType })
+  })
+  useFocusEffect(useCallback(() => trackMapSeenDuration(), [trackMapSeenDuration]))
 
   const venue = transformGeoLocatedVenueToVenueResponse(selectedVenue)
 
@@ -166,7 +169,12 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     }
 
     setShowSearchButton(false)
-    analytics.logPinMapPressed({ venueType: foundVenue.activity, venueId: foundVenue.venueId })
+
+    void analytics.logPinMapPressed({
+      mapType,
+      venueType: foundVenue.activity,
+      venueId: foundVenue.venueId,
+    })
     if (isPreviewEnabled) {
       setSelectedVenue(foundVenue)
       centerOnLocation(
@@ -249,7 +257,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   )
 
   return initialRegion ? (
-    <Container>
+    <Container testID="venue-map-view-container">
       <VenueMapBottomSheet
         snapPoints={snapPoints}
         ref={bottomSheetRef}

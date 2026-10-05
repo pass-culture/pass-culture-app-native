@@ -14,7 +14,6 @@ import { BonificationQFRefusedType } from 'features/bonification/types/Bonificat
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -32,6 +31,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const notFoundPageConfig: PageConfigEntry = {
   Illustration: ErrorIllustration,
@@ -44,9 +44,10 @@ const notFoundPageConfig: PageConfigEntry = {
   bannerLinks: undefined,
   primaryButton: {
     wording: 'Renouveler ma demande',
-    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
-      bonificationType: BonificationType.FAMILY_QUOTIENT,
-    }),
+    navigateTo: {
+      screen: 'BonificationRequiredInformation',
+      params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
+    },
   },
   tertiaryButton: {
     button: {
@@ -74,9 +75,10 @@ const notInTaxHouseholdConfig: PageConfigEntry = {
   ],
   primaryButton: {
     wording: 'Renouveler ma demande',
-    navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation', {
-      bonificationType: BonificationType.FAMILY_QUOTIENT,
-    }),
+    navigateTo: {
+      screen: 'BonificationRequiredInformation',
+      params: { bonificationType: BonificationType.FAMILY_QUOTIENT },
+    },
   },
   tertiaryButton: {
     button: {
@@ -176,7 +178,7 @@ export const BonificationFamilyQuotientRefused = () => {
   const buttonsSurtitle = showNumberOfRemainingRetries ? (
     <StyledBodyXs>
       Attention, il te reste&nbsp;:{SPACE}
-      <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry}>
+      <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry} {...setTextSemantic('span')}>
         {remainingBonusAttempts}
         {remainingBonusAttempts
           ? plural(remainingBonusAttempts, { plural: ' demandes', singular: ' demande' })

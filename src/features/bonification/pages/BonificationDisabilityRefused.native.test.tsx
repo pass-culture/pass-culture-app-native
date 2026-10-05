@@ -29,9 +29,8 @@ describe('BonificationDisabilityRefused', () => {
       const button = screen.getByText('Renouveler ma demande')
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: { bonificationType: BonificationType.DISABILITY },
-        screen: 'BonificationRequiredInformation',
+      expect(navigate).toHaveBeenCalledWith('BonificationRequiredInformation', {
+        bonificationType: BonificationType.DISABILITY,
       })
     })
 

@@ -2,6 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -32,6 +35,7 @@ type Props = {
 }
 
 export function LayoutExpiredLink({ primaryButtonInformations, urlFAQ, customSubtitle }: Props) {
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const defaultSubtitle =
     'Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.'
 
@@ -47,7 +51,15 @@ export function LayoutExpiredLink({ primaryButtonInformations, urlFAQ, customSub
       title="Oups&nbsp;!"
       subtitle={customSubtitle ?? defaultSubtitle}
       buttonPrimary={primaryButtonInformations ?? goToHomeButtonInformations}
-      buttonTertiary={primaryButtonInformations ? goToHomeButtonInformations : undefined}>
+      buttonTertiary={primaryButtonInformations ? goToHomeButtonInformations : undefined}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.cubistGuyWarningSignLarge,
+              backgroundColor: 'pending01',
+            }
+          : undefined
+      }>
       {urlFAQ ? (
         <FAQContainer gap={2}>
           <StyledBody>Si tu as besoin d’aide n’hésite pas à&nbsp;:</StyledBody>

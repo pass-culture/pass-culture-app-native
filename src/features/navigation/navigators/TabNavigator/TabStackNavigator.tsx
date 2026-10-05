@@ -2,12 +2,7 @@ import {
   BottomTabNavigationEventMap,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
-import {
-  createComponentForStaticNavigation,
-  NavigationHelpers,
-  ParamListBase,
-  TabNavigationState,
-} from '@react-navigation/native'
+import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native'
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -70,4 +65,4 @@ const tabNavigatorDefinition = {
 
 export const BottomTabNavigator = createBottomTabNavigator(tabNavigatorDefinition)
 
-export const BottomTabScreen = createComponentForStaticNavigation(BottomTabNavigator)
+export const BottomTabScreen = BottomTabNavigator.getComponent()

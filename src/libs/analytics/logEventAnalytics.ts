@@ -38,7 +38,12 @@ import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { AdviceType, ConsultOfferLogParams, OfferImagesScrollFrom } from 'libs/analytics/types'
+import {
+  AdviceType,
+  ConsultOfferLogParams,
+  MapType,
+  OfferImagesScrollFrom,
+} from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -104,11 +109,7 @@ export type CTAexitActivationFlow =
   | 'GoToDemarcheNumerique'
 
 export type ConsultArtistOriginDetails =
-  | 'similarArtistsPlaylist'
-  | 'venue'
-  | 'offer'
-  | 'searchResults'
-  | 'artistRecommendation'
+  'similarArtistsPlaylist' | 'venue' | 'offer' | 'searchResults' | 'artistRecommendation'
 
 export type FakeDoorAnalyticsParams = {
   featureName: string
@@ -319,8 +320,6 @@ export const logEventAnalytics = {
     adviceType?: AdviceType
     offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
-  logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
   logConsultVenueOffers: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_OFFERS }, params),
   logConsultVideo: (params: {
@@ -510,9 +509,15 @@ export const logEventAnalytics = {
   logLoginClicked: (params: { from: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
+  logMapSeenDuration: (params: { duration: number; mapType: MapType }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.MAP_SEEN_DURATION }, params),
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
-  logModuleDisplayed: (params: { moduleId: string; displayedOn: Referrals; venueId?: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
+  logModuleDisplayed: (params: {
+    moduleId: string
+    displayedOn: Referrals
+    venueId?: number
+    artistId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
   logModuleDisplayedOnHomepage: (params: {
     moduleId: string
     moduleType: ContentTypes
@@ -579,8 +584,8 @@ export const logEventAnalytics = {
         searchNbResults: nbHits,
       }
     ),
-  logPinMapPressed: ({ venueType, venueId }: { venueType?: string | null; venueId: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, { venueId, venueType }),
+  logPinMapPressed: (params: { mapType: MapType; venueType?: string | null; venueId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, params),
   logPlaylistHorizontalScroll: (
     fromOfferId?: number,
     playlistType?: PlaylistType,
@@ -710,10 +715,6 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VALIDATE_REACTION }, params),
   logVenueContact: (params: { type: keyof VenueContact; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
-  logVenueMapSeenDuration: (duration: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),
-  logVenueMapSessionDuration: (duration: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SESSION_DURATION }, { duration }),
   logVenuePlaylistDisplayedOnSearchResults: ({
     searchId,
     isLocated,
@@ -733,6 +734,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
   logViewItem: (params: PageTrackingInfo & { locationType: LocationMode }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM }, params),
+  logViewMap: (params: { from: Referrals; mapType: MapType; searchId?: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_MAP }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),
 }

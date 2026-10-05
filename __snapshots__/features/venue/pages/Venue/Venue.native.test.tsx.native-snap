@@ -526,6 +526,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             >
               <View
+                accessibilityLabel="Informations du lieu"
                 accessibilityRole="tablist"
                 gap={6}
                 style={
@@ -732,6 +733,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                aria-labelledby="offres-disponibles"
+                nativeID="panel-offres-disponibles"
                 style={
                   {
                     "flexGrow": 1,
@@ -830,7 +833,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         resizeMode="cover"
                         source={
                           {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=654&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                           }
                         }
                         style={
@@ -957,7 +960,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 size="small"
                                 source={
                                   {
-                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                    "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
@@ -1109,6 +1112,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         <View
                           style={
                             {
+                              "alignItems": "baseline",
                               "flexDirection": "row",
                             }
                           }
@@ -1170,7 +1174,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
-                                "justifyContent": "center",
+                                "flexShrink": 0,
                                 "marginRight": 24,
                               }
                             }
@@ -1264,6 +1268,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     accessibilityLevel="p"
                                     accessibilityRole="text"
+                                    numberOfLines={1}
                                     style={
                                       [
                                         {
@@ -1602,7 +1607,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -1819,7 +1824,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -2036,7 +2041,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                           }
                                         }
                                         style={
@@ -3956,6 +3961,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               }
             >
               <View
+                accessibilityLabel="Informations du lieu"
                 accessibilityRole="tablist"
                 gap={6}
                 style={
@@ -4162,6 +4168,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                aria-labelledby="offres-disponibles"
+                nativeID="panel-offres-disponibles"
                 style={
                   {
                     "flexGrow": 1,
@@ -4260,7 +4268,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         resizeMode="cover"
                         source={
                           {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=654&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                           }
                         }
                         style={
@@ -4387,7 +4395,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 size="small"
                                 source={
                                   {
-                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                    "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=192&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
@@ -4539,6 +4547,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         <View
                           style={
                             {
+                              "alignItems": "baseline",
                               "flexDirection": "row",
                             }
                           }
@@ -4600,7 +4609,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
-                                "justifyContent": "center",
+                                "flexShrink": 0,
                                 "marginRight": 24,
                               }
                             }
@@ -4694,6 +4703,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   <Text
                                     accessibilityLevel="p"
                                     accessibilityRole="text"
+                                    numberOfLines={1}
                                     style={
                                       [
                                         {
@@ -5032,7 +5042,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -5249,7 +5259,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                           }
                                         }
                                         style={
@@ -5466,7 +5476,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         resizeMode="cover"
                                         source={
                                           {
-                                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                            "uri": "https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=480&filename=passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                           }
                                         }
                                         style={
@@ -7386,6 +7396,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               }
             >
               <View
+                accessibilityLabel="Informations du lieu"
                 accessibilityRole="tablist"
                 gap={6}
                 style={
@@ -7592,6 +7603,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                aria-labelledby="infos-pratiques"
+                nativeID="panel-infos-pratiques"
                 style={
                   {
                     "flexGrow": 1,
@@ -8188,6 +8201,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap auditif: Non accessible - Accordéon - Développer l’accordéon"
@@ -8471,6 +8485,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap psychique ou cognitif: Accessible - Accordéon - Développer l’accordéon"
@@ -8739,6 +8754,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap moteur: Non accessible - Accordéon - Développer l’accordéon"
@@ -9133,6 +9149,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 "flexShrink": 1,
                                 "opacity": 1,
                                 "userSelect": "auto",
+                                "width": "100%",
                               }
                             }
                             testID="Handicap visuel: Non accessible - Accordéon - Développer l’accordéon"

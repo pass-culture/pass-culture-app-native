@@ -6,6 +6,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -42,6 +43,7 @@ jest.useFakeTimers()
 describe('<SuspensionChoiceExpiredLink/>', () => {
   beforeEach(() => {
     mockAuthContextWithUser(beneficiaryUser)
+    setFeatureFlags()
   })
 
   it('should match snapshot', () => {

@@ -1,5 +1,7 @@
 import { OnLoadEvent } from '@d11/react-native-fast-image'
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
+import { Platform } from 'react-native'
+import styled from 'styled-components/native'
 
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
@@ -7,6 +9,7 @@ import { OfferImageContainerDimensions } from 'features/offer/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
 interface OfferImageCarouselItemProps {
   index: number
@@ -17,6 +20,9 @@ interface OfferImageCarouselItemProps {
   isInCarousel?: boolean
   onLoad?: (event: OnLoadEvent) => void
 }
+
+const isWeb = Platform.OS === 'web'
+
 export const OfferImageCarouselItem = ({
   index,
   imageDimensions,
@@ -27,6 +33,8 @@ export const OfferImageCarouselItem = ({
   isInCarousel = false,
   children,
 }: PropsWithChildren<OfferImageCarouselItemProps>) => {
+  const [isFocus, setIsFocus] = useState(false)
+
   const numberOfIllustration = index + 1
   const accessibilityLabelBase =
     numberOfIllustration > 1
@@ -42,6 +50,8 @@ export const OfferImageCarouselItem = ({
     <TouchableOpacity
       disabled={!onPress}
       onPress={() => onPress?.(index)}
+      onFocus={isWeb ? () => setIsFocus(true) : undefined}
+      onBlur={isWeb ? () => setIsFocus(false) : undefined}
       accessibilityLabel={computedAccessibilityLabel}
       accessibilityRole={AccessibilityRole.BUTTON}
       delayPressIn={70}>
@@ -60,6 +70,18 @@ export const OfferImageCarouselItem = ({
         ) : null}
         {children}
       </OfferImageWrapper>
+      {isWeb ? <FocusOutline isFocus={isFocus} /> : null}
     </TouchableOpacity>
   )
 }
+
+const FocusOutline = styled.View<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 3,
+  pointerEvents: 'none',
+  ...touchableFocusOutline({ theme, isFocus }),
+}))

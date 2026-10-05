@@ -79,7 +79,7 @@ describe('logAppThemeStatus', () => {
     getColorSchemeSpy.mockReturnValueOnce('light')
     ;(analytics.logAppThemeStatus as jest.Mock).mockRejectedValueOnce(error)
 
-    await expect(logAppThemeStatus()).resolves.toBeUndefined()
+    await expect(logAppThemeStatus()).resolves.toBe(false)
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
       extra: { feature: 'logAppThemeStatus' },
     })

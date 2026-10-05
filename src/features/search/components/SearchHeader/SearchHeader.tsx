@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
+import { SearchQuickAccess } from 'features/search/components/SearchQuickAccess/SearchQuickAccess'
 import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndWidget/SearchTitleAndWidget'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -16,6 +17,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Spacer } from 'ui/theme'
 
 type Props = {
+  suggestionsDescriptionId?: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   offerCategories?: SearchGroupNameEnumv2[]
@@ -24,9 +26,11 @@ type Props = {
   withArrow?: boolean
   withFilterButton?: boolean
   shouldDisplayHeader?: boolean
+  quickAccess?: { targetId: string; title: string }
 }
 
 export const SearchHeader = ({
+  suggestionsDescriptionId,
   addSearchHistory,
   searchInHistory,
   shouldDisplaySubtitle = false,
@@ -35,6 +39,7 @@ export const SearchHeader = ({
   offerCategories,
   withFilterButton = false,
   shouldDisplayHeader = true,
+  quickAccess,
   children,
 }: PropsWithChildren<Props>) => {
   const { goBack } = useNavigation()
@@ -71,9 +76,15 @@ export const SearchHeader = ({
             <SearchTitleAndWidget shouldDisplaySubtitle={shouldDisplaySubtitle} title={title} />
           </RowContainer>
         ) : null}
+        {quickAccess ? (
+          <QuickAccessContainer>
+            <SearchQuickAccess targetId={quickAccess.targetId} title={quickAccess.title} />
+          </QuickAccessContainer>
+        ) : null}
         <Container>
           <SearchBoxContainer>
             <SearchBox
+              suggestionsDescriptionId={suggestionsDescriptionId}
               addSearchHistory={addSearchHistory}
               searchInHistory={searchInHistory}
               offerCategories={offerCategories}
@@ -111,6 +122,14 @@ const RowContainer = styled(Animated.View)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   paddingBottom: theme.designSystem.size.spacing.l,
+}))
+
+const QuickAccessContainer = styled.View(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  zIndex: theme.zIndex.floatingButton,
 }))
 
 const Container = styled.View(({ theme }) => ({

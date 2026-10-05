@@ -6,6 +6,7 @@ import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { getRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -52,6 +53,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 jest.useFakeTimers()
 
 describe('<ConfirmChangeEmail />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', async () => {
     await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 

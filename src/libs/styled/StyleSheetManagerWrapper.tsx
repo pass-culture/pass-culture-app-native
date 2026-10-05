@@ -6,6 +6,9 @@ export const StylesheetManagerWrapper: FC<PropsWithChildren> = ({ children }) =>
   return <StyleSheetManager shouldForwardProp={shouldForwardProp}>{children}</StyleSheetManager>
 }
 
+// [a11y] : Valid HTML attributes that we don't want to forward to the DOM
+const BLOCKLISTED_PROPS = new Set(['color'])
+
 // This implements the default behavior from styled-components v5
 const shouldForwardProp: ShouldForwardProp<'web'> = (
   propName: string,
@@ -13,7 +16,7 @@ const shouldForwardProp: ShouldForwardProp<'web'> = (
 ) => {
   if (typeof elementToBeCreated === 'string') {
     // For HTML elements, forward the prop if it is a valid HTML attribute
-    return isPropValid(propName)
+    return isPropValid(propName) && !BLOCKLISTED_PROPS.has(propName)
   }
   // For other elements, forward all props
   return true

@@ -1,11 +1,12 @@
 import { useRoute } from '@react-navigation/native'
+import { addDays } from 'date-fns'
 import React, { FC, useCallback, useEffect } from 'react'
 import { ViewStyle } from 'react-native'
 import { InView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { MovieCalendarProviderV2 } from 'features/offer/components/MoviesScreeningCalendarV2/MovieCalendarContextV2'
 import { OfferCineContentV2 } from 'features/offer/components/OfferCine/OfferCineContentV2'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useOfferMovieCalendarQuery } from 'features/offer/queries/useMovieCalendarQuery'
@@ -39,15 +40,19 @@ export const OfferCineBlockV2: FC<Props> = ({
   offerVenueLongitude,
 }) => {
   const theme = useTheme()
+  const calendarStartDatetime = new Date()
+  const calendarEndDatetime = addDays(calendarStartDatetime, 15)
   const { data: movieCalendar, isLoading } = useOfferMovieCalendarQuery({
     offerId,
     allocineId,
     visa,
     offerVenueLatitude,
     offerVenueLongitude,
+    from: calendarStartDatetime,
+    to: calendarEndDatetime,
   })
   const { calendar } = movieCalendar ?? { calendar: [] }
-  const calendarDates = calendar?.map((dayVenueScreenings) => new Date(dayVenueScreenings.date))
+  const calendarDates = calendar?.map((dayVenueScreenings) => dayVenueScreenings.date)
   const route = useRoute<UseRouteType<'ClubAdvices'>>()
   const from = route.params?.from
   const { setButton, showButton } = useOfferCTA()
@@ -81,14 +86,16 @@ export const OfferCineBlockV2: FC<Props> = ({
           </TitleContainer>
         </InView>
       </Anchor>
-      <MovieCalendarProvider initialDates={calendarDates} containerStyle={getCalendarStyle(theme)}>
+      <MovieCalendarProviderV2
+        initialDates={calendarDates}
+        containerStyle={getCalendarStyle(theme)}>
         <OfferCineContentV2
           offerId={offerId}
           calendar={calendar}
           isLoading={isLoading || !offerId}
           onSeeVenuePress={onSeeVenuePress}
         />
-      </MovieCalendarProvider>
+      </MovieCalendarProviderV2>
     </Container>
   )
 }

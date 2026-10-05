@@ -126,7 +126,7 @@ export const VenuePlaylist: React.FC<Props> = ({
       return
     }
 
-    void analytics.logConsultVenueMap({ from: 'searchPlaylist' })
+    void analytics.logViewMap({ from: 'searchPlaylist', mapType: 'VenueMap', searchId })
     navigate('VenueMap')
   }
 

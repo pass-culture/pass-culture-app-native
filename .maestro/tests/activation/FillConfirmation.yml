@@ -1,0 +1,101 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - activation
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/generateUser.js
+      env:
+        id_provider: 'UBBLE'
+        step: 'IDENTITY_CHECK'
+        age: 18
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+- runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
+
+- assertVisible:
+    id: 'Profil - complété'
+    enabled: false
+
+- assertVisible:
+    id: 'Identification - complété'
+    enabled: false
+
+- assertVisible:
+    id: 'Confirmation - non complété'
+    enabled: true
+
+- tapOn: 'Confirmation - non complété'
+
+- tapOn: 'Retour'
+
+- assertVisible:
+    id: 'Confirmation - non complété'
+    enabled: true
+
+- tapOn: 'Confirmation - non complété'
+
+- tapOn: 'Commencer le questionnaire'
+
+- assertVisible:
+    id: 'Continuer vers l’étape suivante'
+    enabled: false
+
+- scrollUntilVisible:
+    element:
+      text: "Au cours de l'année précédente, tu as été au moins une fois ... - Aucune de ces sorties culturelles"
+
+- tapOn: "Au cours de l'année précédente, tu as été au moins une fois ... - Au cinéma"
+
+- tapOn: "Au cours de l'année précédente, tu as été au moins une fois ... - À un cours"
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '20%'
+
+- runFlow:
+    file: ../common/navigation/TapOnBack.yml
+
+- assertVisible: 'Tes sorties'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- tapOn: "Au cours de l'année précédente, tu as au moins une fois ... - Lu un livre"
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '40%'
+
+- tapOn: 'Cette année, tu aimerais ... - Aller à un festival'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '60%'
+
+- scrollUntilVisible:
+    element: 'Quels types de livres veux-tu qu’on te propose ? - Aucun'
+
+- tapOn: 'Quels types de livres veux-tu qu’on te propose ? - Aucun'
+
+- tapOn: 'Continuer vers l’étape suivante'
+
+- assertVisible: '80%'
+
+- tapOn: 'Quels types de musique veux-tu qu’on te propose ? - Pop rock ou Variétés'
+
+- tapOn: 'Valider le formulaire'
+
+- tapOn: 'Continuer'
+
+- tapOn: 'Valider et continuer'
+
+- assertVisible: '150 € viennent d’être crédités sur ton compte pass Culture'
+
+- tapOn: 'C’est parti !'
+
+- tapOn: 'Fermer la modale' # Pop up "Fais tourner le bon plan"
+
+- assertVisible: 'Tu as 150 € sur ton pass'
+
+- runFlow: ../common/lifecycle/StopApp.yml

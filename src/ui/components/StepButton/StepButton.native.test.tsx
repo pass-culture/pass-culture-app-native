@@ -27,7 +27,11 @@ describe('StepButton', () => {
   it('should disable StepButton for DISABLED state', () => {
     renderStepButton(StepButtonState.DISABLED)
 
-    expect(screen.getByTestId('Identification - non complété')).toBeDisabled()
+    expect(
+      screen.getByTestId(
+        'Identification - indisponible tant que l‘étape précédente n‘est pas complétée'
+      )
+    ).toBeDisabled()
   })
 
   it('should disable the StepButton for CURRENT state when it has no behavior on press', () => {
@@ -57,7 +61,11 @@ describe('StepButton', () => {
   it('should show the right StepButton for DISABLED state', () => {
     renderStepButton(StepButtonState.DISABLED)
 
-    expect(screen.getByTestId('Identification - non complété')).toBeOnTheScreen()
+    expect(
+      screen.getByTestId(
+        'Identification - indisponible tant que l‘étape précédente n‘est pas complétée'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should show the right StepButton for RETRY state', () => {

@@ -336,6 +336,34 @@ describe('SearchBox component', () => {
     expect(mockShowSuggestions).toHaveBeenNthCalledWith(1)
   })
 
+  it('should not keep previously selected offerCategories when submitting from landing', async () => {
+    useRoute
+      .mockReturnValueOnce({ name: SearchView.Landing })
+      .mockReturnValueOnce({ name: SearchView.Landing })
+
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.CINEMA],
+    }
+
+    renderSearchBox()
+
+    const searchInput = getSearchInput()
+    await user.type(searchInput, 'j', { submitEditing: true })
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        query: 'j',
+        offerCategories: [],
+        isAutocomplete: undefined,
+        isFromHistory: undefined,
+        searchId,
+      },
+    })
+  })
+
   it('should hide the search filter button when being on the search landing view', async () => {
     mockSearchState = {
       ...mockSearchState,
@@ -694,12 +722,10 @@ const renderSearchBox = (
 
 const DummySearchBox = ({ offerCategories }: { offerCategories?: SearchGroupNameEnumv2[] }) => {
   return (
-    <React.Fragment>
-      <SearchBox
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        offerCategories={offerCategories}
-      />
-    </React.Fragment>
+    <SearchBox
+      addSearchHistory={jest.fn()}
+      searchInHistory={jest.fn()}
+      offerCategories={offerCategories}
+    />
   )
 }

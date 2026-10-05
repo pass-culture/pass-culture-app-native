@@ -7,6 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, screen, waitFor, renderAsync } from 'tests/utils'
@@ -33,6 +34,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ResetPasswordExpiredLink/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     mockServer.postApi('/v1/request_password_reset', {})
     await renderResetPasswordExpiredLink()

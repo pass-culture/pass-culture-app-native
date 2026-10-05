@@ -10,6 +10,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
+import { Blockquote } from 'ui/components/accessibility/Blockquote'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -22,35 +23,23 @@ import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-const appVersion = '1.395.0'
-const auditDate = '22 juillet 2026'
-const conformityRGAA = '65,45%'
+const appVersion = '1.409.0'
+const auditDate = '25 septembre 2026'
+const conformityRGAA = '80,36%'
+const conformityRAWeb = '81,03%'
 const nonAccessibleContent = [
-  '[1.3 - RGAA] L’alternative textuelle d’une image porteuse d’information au moins n’est pas pertinente.',
-  '[3.1 - RGAA] Une information au moins est véhiculée uniquement par la couleur.',
   '[6.1 - RGAA] Un lien au moins a un intitulé qui n’est pas pertinent.',
   '[7.1 - RGAA] Une fonctionnalité JavaScript au moins n’est pas compatible avec les technologies d’assistance ou fait un usage inapproprié de propriétés ARIA.',
-  '[7.3 - RGAA] Une fonctionnalité JavaScript au moins n’est pas contrôlable par le clavier ou tout autre dispositif de pointage.',
-  '[7.4 - RGAA] Un changement de contexte au moins se déclenche sans que l’utilisateur en soit informé.',
   '[7.5 - RGAA] Un message de statut au moins n’est pas restitué par les technologies d’assistance.',
-  '[8.6 - RGAA] Un titre de page au moins n’est pas pertinent.',
-  '[8.9 - RGAA] Une balise au moins est utilisée à des fins de présentation (par exemple des paragraphes vides et/ou des textes non structurés dans des balises de paragraphes).',
   '[9.1 - RGAA] La hiérarchie des titres d’une page au moins n’est pas pertinente.',
   '[9.2 - RGAA] La structure du document d’une page au moins n’est pas cohérente.',
   '[9.3 - RGAA] Une liste au moins n’est pas correctement structurée.',
-  '[10.1 - RGAA] Un élément HTML de présentation au moins (balise ou attribut) est utilisé.',
+  '[9.4 - RGAA] Une citation au moins n’est pas identifiée.',
   '[10.3 - RGAA] Un contenu au moins ne se présente pas dans un ordre logique dans le code source.',
   '[10.7 - RGAA] Une indication visuelle de prise de focus au moins n’est pas visible ou suffisamment contrastée.',
-  '[10.11 - RGAA] Un contenu au moins ne peut être présenté sans défilement horizontal et/ou présente des pertes d’informations lorsque le texte est agrandi à 400%.',
-  '[11.5 - RGAA] Un ensemble de champs de même nature au moins ne sont pas regroupés.',
-  '[11.6 - RGAA] Un regroupement de champs de formulaires au moins n’a pas de légende.',
+  '[12.8 - RGAA] L’ordre de tabulation pour une page ou un composant au moins n’est pas cohérent.',
   '[13.10 - RGAA] Une fonctionnalité au moins, utilisable au moyen d’un geste complexe, n’a pas d’alternative au moyen d’un geste simple.',
-  '[14.1 - RAWeb] La documentation du site web ne décrit pas les fonctionnalités d’accessibilité disponibles et/ou les informations relatives à la compatibilité avec l’accessibilité.',
 ]
-
-// Ajouter les focus sur les liens
-// Changer le titre de la page
-// Mettre à jour le nouveau document de suivi d’accessibilité
 
 const webappUrl = { url: WEBAPP_V2_URL }
 const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
@@ -153,7 +142,8 @@ export const AccessibilityDeclarationWeb = () => {
 
             <Typo.Body>
               L’audit de conformité réalisé par la société Access42 révèle que le site est{SPACE}
-              <Typo.Button>conforme à {conformityRGAA} au RGAA version 4.1</Typo.Button>.
+              <Typo.Button>conforme à {conformityRGAA} au RGAA version 4.1</Typo.Button> et conforme
+              à <Typo.Button>{conformityRAWeb} au RAWeb version 1.1</Typo.Button>
             </Typo.Body>
 
             <Separator.Horizontal />
@@ -344,11 +334,11 @@ export const AccessibilityDeclarationWeb = () => {
               2005&nbsp;:
             </Typo.Body>
 
-            <Typo.BodyItalic>
-              «&nbsp;la personne handicapée a droit à la compensation des conséquences de son
-              handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son
-              mode de vie.&nbsp;»
-            </Typo.BodyItalic>
+            <Blockquote
+              cite={env.ARTICLE_11_LAW_02_2005}
+              TextComponent={Typo.BodyItalic}
+              text="«&nbsp;la personne handicapée a droit à la compensation des conséquences de son handicap, quels que soient l’origine et la nature de sa déficience, son âge ou son mode de vie.&nbsp;»"
+            />
 
             <Typo.Body>
               pass Culture s’engage à prendre les moyens nécessaires afin de donner accès, dans un

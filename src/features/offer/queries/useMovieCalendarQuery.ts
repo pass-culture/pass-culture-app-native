@@ -17,10 +17,12 @@ type props = {
   visa?: string | null
   offerVenueLatitude?: number | null
   offerVenueLongitude?: number | null
+  from: Date
+  to: Date
 }
 
 export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
-  { offerId, allocineId, visa, offerVenueLatitude, offerVenueLongitude }: props,
+  { offerId, allocineId, visa, offerVenueLatitude, offerVenueLongitude, from, to }: props,
   options?: {
     enabled: boolean
     select?: (data: MovieCalendarResponse) => TData
@@ -44,8 +46,24 @@ export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
       const allocineIdParam = allocineId ?? undefined
       const visaParam = allocineId ? undefined : (visa ?? undefined)
       return isLoggedIn
-        ? api.getNativeV1MovieCalendarMe(latitude, longitude, allocineIdParam, visaParam, radius)
-        : api.getNativeV1MovieCalendar(latitude, longitude, allocineIdParam, visaParam, radius)
+        ? api.getNativeV1MovieCalendarMe(
+            latitude,
+            longitude,
+            allocineIdParam,
+            visaParam,
+            radius,
+            from.toISOString(), // auto convert date to utc timezone
+            to.toISOString() // auto convert date to utc timezone
+          )
+        : api.getNativeV1MovieCalendar(
+            latitude,
+            longitude,
+            allocineIdParam,
+            visaParam,
+            radius,
+            from.toISOString(), // auto convert date to utc timezone
+            to.toISOString() // auto convert date to utc timezone
+          )
     },
     queryKey: [
       QueryKeys.OFFER_MOVIE_CALENDAR,

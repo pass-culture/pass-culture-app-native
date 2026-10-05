@@ -56,9 +56,12 @@ jobs:
       - name: Install passdirector
         uses: pass-culture/common-workflows/actions/setup-passdirector@b470d76b19d7f3ebcda367f5e17484228021d388 # setup-passdirector/v1.0.0
         with:
-          version: v0.7.2
+          version: v0.8.2
           github_app_id: ${{ secrets.github_app_id }}
           github_app_private_key: ${{ secrets.github_app_private_key }}
+
+      - name: Install firebase-tools
+        uses: pass-culture/common-workflows/actions/setup-firebase-tools@5a1dc2af9db42434fec30b2579cc7030e2624582 # setup-firebase-tools/v1.0.0
 
       - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
@@ -72,7 +75,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
         with:
           secrets: |-
-            SENTRY_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+            SENTRY_TOKEN:pc-native-production/sentry-saas-token
       - name: 'Cache the node_modules'
         id: 'yarn-modules-cache'
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5

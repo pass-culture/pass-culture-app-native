@@ -115,10 +115,37 @@ export const Accordion = ({
     return isWeb ? { accessibilityExpanded: open } : { accessibilityState: { expanded: open } }
   }, [open])
 
-  const computedAccessibilityLabel = getComputedAccessibilityLabel(
-    accessibilityLabel ?? extractTextFromReactNode(title),
-    'Accordéon',
-    open ? 'Réduire l’accordéon' : 'Développer l’accordéon'
+  const accordionStateDescription = open ? 'Réduire l’accordéon' : 'Développer l’accordéon'
+  const rawTitleText = extractTextFromReactNode(title)
+  const computedAccessibilityLabel = isWeb
+    ? (accessibilityLabel ?? rawTitleText)
+    : getComputedAccessibilityLabel(
+        accessibilityLabel ?? rawTitleText,
+        'Accordéon',
+        accordionStateDescription
+      )
+
+  const titleTextProps = isWeb ? {} : setTextSemantic('h3')
+
+  const AccordionButton = (
+    <StyledTouchableOpacity
+      accessibilityLabel={computedAccessibilityLabel}
+      accessibilityRole={AccessibilityRole.BUTTON}
+      onPress={toggleListItem}
+      accessibilityControls={accordionBodyId}
+      testID="accordionTouchable"
+      onMouseDown={(e) => e.preventDefault()}
+      {...focusProps}
+      {...accessibilityProps}>
+      <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
+        <Title {...titleTextProps}>{title}</Title>
+        <StyledArrowAnimatedView
+          style={{ transform: [{ rotateZ: arrowAngle }] }}
+          testID="accordionArrow">
+          <ArrowNext />
+        </StyledArrowAnimatedView>
+      </StyledTitleContainer>
+    </StyledTouchableOpacity>
   )
 
   return (
@@ -127,24 +154,7 @@ export const Accordion = ({
         {leftComponent ? (
           <LeftComponentView style={titleStyle}>{leftComponent}</LeftComponentView>
         ) : null}
-        <StyledTouchableOpacity
-          accessibilityLabel={computedAccessibilityLabel}
-          accessibilityRole={AccessibilityRole.BUTTON}
-          onPress={toggleListItem}
-          accessibilityControls={accordionBodyId}
-          testID="accordionTouchable"
-          onMouseDown={(e) => e.preventDefault()}
-          {...focusProps}
-          {...accessibilityProps}>
-          <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
-            <Title {...setTextSemantic('h3')}>{title}</Title>
-            <StyledArrowAnimatedView
-              style={{ transform: [{ rotateZ: arrowAngle }] }}
-              testID="accordionArrow">
-              <ArrowNext />
-            </StyledArrowAnimatedView>
-          </StyledTitleContainer>
-        </StyledTouchableOpacity>
+        {isWeb ? <WebHeadingWrapper>{AccordionButton}</WebHeadingWrapper> : AccordionButton}
       </SwitchContainer>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
         <StyledView
@@ -162,6 +172,13 @@ export const Accordion = ({
     </React.Fragment>
   )
 }
+
+const WebHeadingWrapper = styled.View.attrs({
+  as: 'h3',
+})({
+  flex: 1,
+  width: '100%',
+})
 
 const StyledTitleContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
@@ -192,6 +209,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({
   flex: 1,
+  width: '100%',
   ...customFocusOutline({ theme, isFocus }),
 }))
 

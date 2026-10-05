@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
+import { useGetArtistEditorialConfigQuery } from 'features/artist/queries/useGetArtistEditorialConfigQuery'
 import { useGetArtistPlaylistConfigQuery } from 'features/artist/queries/useGetArtistPlaylistConfigQuery'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
@@ -27,6 +28,9 @@ const ArtistContent: FunctionComponent = () => {
     artistId: params.id,
   })
   const { data: artistPlaylistModule } = useGetArtistPlaylistConfigQuery((modules) =>
+    modules.find((module) => module.artistId === params.id)
+  )
+  const { data: artistEditorialModule } = useGetArtistEditorialConfigQuery((modules) =>
     modules.find((module) => module.artistId === params.id)
   )
 
@@ -73,6 +77,7 @@ const ArtistContent: FunctionComponent = () => {
       artistPlaylist={artistPlaylist}
       artistTopOffers={artistTopOffers}
       artistPlaylistModule={artistPlaylistModule}
+      artistEditorialModule={artistEditorialModule}
       onViewableItemsChanged={handleViewableItemsChanged}
       onExpandBioPress={handleOnExpandBioPress}
     />

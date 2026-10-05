@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface IconWithCaptionProps {
   Icon: React.FC<AccessibleIcon>
@@ -31,7 +32,10 @@ export const IconWithCaption = ({
           size={icons.sizes.standard}
         />
       </IconContainer>
-      <Caption testID={testID ? `caption-${testID}` : undefined} disabled={isDisabled}>
+      <Caption
+        {...setTextSemantic('span')}
+        testID={testID ? `caption-${testID}` : undefined}
+        disabled={isDisabled}>
         {caption}
       </Caption>
     </Container>

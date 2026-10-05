@@ -6,6 +6,7 @@ import {
   // eslint-disable-next-line no-restricted-imports
   TouchableOpacity as RNTouchableOpacity,
   TouchableOpacityProps,
+  ViewProps,
 } from 'react-native'
 import { TouchableOpacity as GestureTouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -14,11 +15,15 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
-type Props = TouchableOpacityProps & { shouldUseGestureHandler?: boolean }
+type Props = TouchableOpacityProps & {
+  tabIndex?: ViewProps['tabIndex']
+  shouldUseGestureHandler?: boolean
+}
 type StyledProps = { unselectable?: boolean; isFocus?: boolean }
 
 export function TouchableOpacity({
   shouldUseGestureHandler = false,
+  disabled,
   onFocus,
   onBlur,
   children,
@@ -28,6 +33,7 @@ export function TouchableOpacity({
 }: Props) {
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
 
+  const isWeb = Platform.OS === 'web'
   const onStyledFocus = (e: NativeSyntheticEvent<TargetedEvent>) => {
     onFocusDefault()
     onFocus?.(e)
@@ -54,6 +60,8 @@ export function TouchableOpacity({
       isFocus={isFocus}
       onFocus={onStyledFocus}
       onBlur={onStyledBlur}
+      disabled={disabled}
+      {...(isWeb && !disabled ? { tabIndex: 0 } : {})}
       {...props}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}

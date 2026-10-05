@@ -5,7 +5,9 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
+import { Provider } from 'features/auth/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { resetFromRef } from 'features/navigation/navigationRef'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
@@ -15,7 +17,10 @@ import {
 } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { Separator } from 'ui/components/Separator'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -36,6 +41,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
 
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const mutate = useCallback(async () => {
     if (!params?.token || typeof params?.token !== 'string') {
@@ -50,6 +56,10 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     setIsLoading(true)
     try {
       await mutate()
+
+      if (emailUpdateStatus?.newEmail) {
+        await saveLastLoginInfo({ email: emailUpdateStatus.newEmail, provider: Provider.EMAIL })
+      }
 
       // A technical constraint requires disconnection for the moment. Possible improvement later
       if (isLoggedIn) {
@@ -76,7 +86,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     } finally {
       setIsLoading(false)
     }
-  }, [isLoggedIn, mutate, navigation, signOut])
+  }, [emailUpdateStatus?.newEmail, isLoggedIn, mutate, navigation, signOut])
 
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {
@@ -103,7 +113,15 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         navigateTo: navigateToHomeConfig,
         icon: Invalidate,
         disabled: isLoading,
-      }}>
+      }}
+      remoteIllustration={
+        enableNewVisionUi
+          ? {
+              url: remoteIllustrationUrls.phoneHourglass,
+              backgroundColor: 'pending01',
+            }
+          : undefined
+      }>
       <Wrapper>
         <Typo.Body>Nouvelle adresse e-mail&nbsp;:</Typo.Body>
         <Typo.BodyAccent>{emailUpdateStatus?.newEmail}</Typo.BodyAccent>

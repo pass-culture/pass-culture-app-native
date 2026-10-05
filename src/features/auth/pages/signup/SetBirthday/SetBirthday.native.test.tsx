@@ -7,6 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
+import { Provider } from 'features/auth/types'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
@@ -64,11 +65,44 @@ describe('<SetBirthday />', () => {
 
   it('should render correctly when account creation token and email are in route params', async () => {
     useRoute.mockReturnValueOnce({
-      params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
+      params: {
+        accountCreationToken: 'accountCreationToken',
+        email: 'user@gmail.com',
+        ssoProvider: Provider.GOOGLE,
+      },
     })
     await renderAsync(<SetBirthday {...props} isSSOSubscription />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it.each([
+    [Provider.GOOGLE, 'user@gmail.com', 'Ton compte Google “user@gmail.com” n’est pas lié'],
+    [Provider.APPLE, 'user@icloud.com', 'Ton compte Apple “user@icloud.com” n’est pas lié'],
+    [Provider.APPLE, 'abc123@privaterelay.appleid.com', 'Ton compte Apple n’est pas lié'],
+  ])(
+    'should display the provider name when SSO provider is %s and email is %s',
+    async (ssoProvider, email, expectedText) => {
+      useRoute.mockReturnValueOnce({
+        params: { accountCreationToken: 'accountCreationToken', email, ssoProvider },
+      })
+      await renderAsync(<SetBirthday {...props} isSSOSubscription />)
+
+      expect(screen.getByText(new RegExp(expectedText))).toBeOnTheScreen()
+    }
+  )
+
+  it('should not display Apple private relay email', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        accountCreationToken: 'accountCreationToken',
+        email: 'abc123@privaterelay.appleid.com',
+        ssoProvider: Provider.APPLE,
+      },
+    })
+    await renderAsync(<SetBirthday {...props} isSSOSubscription />)
+
+    expect(screen.queryByText(/privaterelay\.appleid\.com/)).not.toBeOnTheScreen()
   })
 
   it('should call goToNextStep() when the date is selected and press the button "Continuer"', async () => {

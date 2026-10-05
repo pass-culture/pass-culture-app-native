@@ -364,7 +364,6 @@ export type RootStackParamList = {
   SearchLocationModal: undefined
   VenueMapLocationModal: {
     openedFrom: Referrals
-    shouldOpenMapInTab?: boolean
   }
   GeolocationActivationModal: undefined
 } & TrustedDeviceRootStackParamList
@@ -424,7 +423,7 @@ export type NavigationResultState = ReturnType<typeof getStateFromPath>
 export function isScreen<Screen extends AllNavigateParams[0]>(
   expectedScreen: Screen,
   screen: AllNavigateParams[0],
-  params: AllNavigateParams[1]
-): params is AllNavParamList[Screen] {
+  _params: AllNavigateParams[1]
+): _params is AllNavParamList[Screen] {
   return screen === expectedScreen
 }

@@ -25,7 +25,8 @@ const mockLogAppThemeStatus = logAppThemeStatus as jest.Mock
 describe('startTrackingAcceptedCookies', () => {
   beforeEach(() => {
     resetHasLoggedAppThemeStatusForTests()
-    mockLogAppThemeStatus.mockClear()
+    mockLogAppThemeStatus.mockReset()
+    mockLogAppThemeStatus.mockResolvedValue(true)
   })
 
   it('should enable Google Analytics when Google Analytics cookies are accepted', () => {

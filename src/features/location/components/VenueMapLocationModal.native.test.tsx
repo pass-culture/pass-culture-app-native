@@ -56,6 +56,7 @@ jest.mock('libs/place/queries/usePlacesQuery', () => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     dispatch: jest.fn(),
+    searchState: { searchId: 'uuid1234' },
   }),
 }))
 
@@ -156,7 +157,7 @@ describe('VenueMapLocationModal', () => {
     expect(screen.queryByText('Géolocalisation désactivée')).toBeNull()
   })
 
-  it('should navigate to venue map on submit when we choose a location and shouldOpenMapInTab is not true', async () => {
+  it('should navigate to venue map on submit when we choose a location', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
     mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
@@ -189,7 +190,7 @@ describe('VenueMapLocationModal', () => {
     expect(replace).toHaveBeenCalledWith('VenueMap')
   })
 
-  it('should trigger ConsultVenueMap log on submit when we choose a location, shouldOpenMapInTab is not true and openedFrom defined', async () => {
+  it('should trigger ViewMap log on submit when we choose a location and openedFrom defined', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
     mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
@@ -219,7 +220,11 @@ describe('VenueMapLocationModal', () => {
     const validateButon = screen.getByText('Valider et voir sur la carte')
     await user.press(validateButon)
 
-    expect(analytics.logConsultVenueMap).toHaveBeenCalledWith({ from: 'searchPlaylist' })
+    expect(analytics.logViewMap).toHaveBeenCalledWith({
+      from: 'searchPlaylist',
+      mapType: 'VenueMap',
+      searchId: 'uuid1234',
+    })
   })
 
   it('should reset selected venue in store on submit when we choose a location', async () => {
@@ -253,39 +258,6 @@ describe('VenueMapLocationModal', () => {
     await user.press(validateButon)
 
     expect(removeSelectedVenueSpy).toHaveBeenCalledTimes(1)
-  })
-
-  it('should not navigate to venue map on submit when we choose a location and shouldOpenMapInTab is true', async () => {
-    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-
-    renderVenueMapLocationModal({ shouldOpenMapInTab: true })
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-    const openLocationModalButton = screen.getByText('Choisir une zone géographique')
-    await user.press(openLocationModalButton)
-
-    const searchInput = screen.getByTestId('styled-input-container')
-    await act(async () => {
-      fireEvent.changeText(searchInput, mockPlaces[0].label)
-    })
-
-    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-    // userEvent.press not working correctly here
-    // eslint-disable-next-line local-rules/no-fireEvent
-    fireEvent.press(suggestedPlace)
-
-    await act(async () => {
-      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([mockRadiusPlace])
-    })
-
-    const validateButon = screen.getByText('Valider et voir sur la carte')
-    await user.press(validateButon)
-
-    expect(replace).not.toHaveBeenCalled()
   })
 
   it('should set location mode when submit', async () => {
@@ -438,15 +410,7 @@ describe('VenueMapLocationModal', () => {
   })
 })
 
-function renderVenueMapLocationModal({
-  shouldOpenMapInTab,
-}: {
-  shouldOpenMapInTab?: boolean
-} = {}) {
-  useRoute.mockReturnValue({
-    params: { openedFrom: 'searchPlaylist', shouldOpenMapInTab },
-  })
-
+function renderVenueMapLocationModal() {
   render(
     <React.Fragment>
       <GeolocationActivationModal />

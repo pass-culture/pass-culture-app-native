@@ -9,7 +9,7 @@ import { storage } from 'libs/storage'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SubscribeButtonWithModals } from './SubscribeButtonWithModals'
 
@@ -137,13 +137,11 @@ describe('SubscribeButtonWithModals', () => {
     ).toBeOnTheScreen()
   })
 
-  it.skip('should not show anything when user is not eligible', async () => {
+  it('should show SubscribeButton when user has a general public account', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
-    await waitFor(() => {
-      expect(screen.queryByText('Suivre')).toBeNull()
-    })
+    expect(await screen.findByText('Suivre')).toBeOnTheScreen()
   })
 })

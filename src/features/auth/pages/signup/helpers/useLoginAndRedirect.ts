@@ -3,7 +3,9 @@ import { useCallback } from 'react'
 
 import { api } from 'api/api'
 import { AccountState, EligibilityType } from 'api/gen'
+import { saveLastLoginInfo } from 'features/auth/helpers/saveLastLoginInfo'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
+import { Provider } from 'features/auth/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { LoginRoutineMethod, LoginType } from 'libs/analytics/logEventAnalytics'
@@ -26,7 +28,11 @@ export const useLoginAndRedirect = () => {
   return useCallback(
     async (
       props: { accessToken: string; refreshToken: string },
-      options?: { method?: LoginRoutineMethod; analyticsType?: LoginType }
+      options?: {
+        method?: LoginRoutineMethod
+        analyticsType?: LoginType
+        provider?: Provider
+      }
     ) => {
       await loginRoutine(
         { ...props, accountState: AccountState.ACTIVE },
@@ -36,6 +42,13 @@ export const useLoginAndRedirect = () => {
 
       try {
         const user = await api.getNativeV1Me()
+
+        if (user.email) {
+          await saveLastLoginInfo({
+            email: user.email,
+            provider: options?.provider ?? Provider.EMAIL,
+          })
+        }
 
         if (disableActivation) {
           delayedReplace(...getSubscriptionHookConfig('DisableActivation'))

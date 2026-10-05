@@ -16,9 +16,11 @@ type DebugOptions = {
   method: SupportedMethod
 }
 
-class MswMockServer
-  implements MockServerInterface<DefaultBodyType, string, string | RegExp | Buffer>
-{
+class MswMockServer implements MockServerInterface<
+  DefaultBodyType,
+  string,
+  string | RegExp | Buffer
+> {
   baseUrl: string
   mode: MockServerMode
   delay: number

@@ -8,6 +8,7 @@ import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 interface Props {
   item: Highlighted<HistoryItem>
@@ -31,16 +32,18 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
         <ClockIconContainer>
           <ClockFilledIcon />
         </ClockIconContainer>
-        <StyledText numberOfLines={numberOfLines}>
+        <StyledText {...setTextSemantic('span')} numberOfLines={numberOfLines}>
           {queryHistory === '' ? (
-            <Typo.BodyItalic testID="withoutUsingHighlight">{item.query}</Typo.BodyItalic>
+            <Typo.BodyItalic {...setTextSemantic('span')} testID="withoutUsingHighlight">
+              {item.query}
+            </Typo.BodyItalic>
           ) : (
             <HistoryItemHighlight historyItem={item} />
           )}
           {shouldDisplaySearchGroupOrNativeCategory ? (
             <React.Fragment>
-              <Typo.BodyItalic> dans </Typo.BodyItalic>
-              <Typo.BodyItalicAccent>
+              <Typo.BodyItalic {...setTextSemantic('span')}> dans </Typo.BodyItalic>
+              <Typo.BodyItalicAccent {...setTextSemantic('span')}>
                 {item.nativeCategoryLabel ?? item.categoryLabel}
               </Typo.BodyItalicAccent>
             </React.Fragment>

@@ -2,7 +2,7 @@ const { RuleTester } = require('eslint')
 const rule = require('./no-queries-outside-query-files')
 
 const ruleTester = new RuleTester({
-  parserOptions: {
+  languageOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
   },

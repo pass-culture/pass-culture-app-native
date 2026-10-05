@@ -5,6 +5,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
+import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type IsSelectedProps = {
   isSelected?: boolean
@@ -36,7 +37,9 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
       isSelected={isSelected}
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}>
-      <Typo.BodyAccentXs testID={filterButtonLabel}>{label}</Typo.BodyAccentXs>
+      <Typo.BodyAccentXs {...setTextSemantic('span')} testID={filterButtonLabel}>
+        {label}
+      </Typo.BodyAccentXs>
       {icon}
     </TouchableContainer>
   )

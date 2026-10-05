@@ -2,6 +2,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
@@ -22,6 +24,10 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<NoBookingsView />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render online no bookings view when netInfo.isConnected is true', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     await renderAsync(reactQueryProviderHOC(<NoBookingsView />))
@@ -61,5 +67,20 @@ describe('<NoBookingsView />', () => {
 
       expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
     })
+  })
+
+  it('should display no bookings icon when wipNewVisionUi FF is deactivated', async () => {
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
+    await renderAsync(reactQueryProviderHOC(<NoBookingsView />))
+
+    expect(screen.getByTestId('no-bookings-icon')).toBeOnTheScreen()
+  })
+
+  it('should display remote illustration when wipNewVisionUi FF is activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
+    await renderAsync(reactQueryProviderHOC(<NoBookingsView />))
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

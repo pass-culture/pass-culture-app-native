@@ -2,13 +2,13 @@ import React, { FC, useCallback, useState } from 'react'
 import { View } from 'react-native'
 
 import { Screening, VenueScreenings } from 'api/gen'
-import { formatHour } from 'features/bookOffer/helpers/utils'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import {
   getEventCardIsEnabled,
   getEventCardLeftSubtitle,
   getEventCardRightSubtitle,
 } from 'features/offer/helpers/screeningBlockInfo/screeningBlockInfo'
+import { formatDateWithTimeZoneOffset } from 'libs/parsers/formatDates'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { BookOfferModal } from 'shared/offer/components/BookOfferModal/BookOfferModal'
@@ -35,7 +35,7 @@ export const OfferEventCardListV2: FC<Props> = ({ venueScreenings, offerId }) =>
           modalSettings.showModal()
         },
         isDisabled: !getEventCardIsEnabled(screening),
-        title: formatHour(screening.beginningDatetime).replace(':', 'h'),
+        title: formatDateWithTimeZoneOffset(screening.beginningDatetime, "HH'h'mm"),
         subtitleLeft: getEventCardLeftSubtitle(screening),
         subtitleRight: getEventCardRightSubtitle(screening, currency, euroToPacificFrancRate),
       }) as EventCardProps,

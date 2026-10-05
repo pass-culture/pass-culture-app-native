@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react'
 import { FlexStyle, LayoutChangeEvent, ScrollView, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { getSubcategoryLabelParts } from 'features/search/helpers/getSubcategoryLabelParts/getSubcategoryLabelParts'
+import { NewSubcategoryButton } from 'ui/components/buttons/SubcategoryButton/NewSubcategoryButton'
 import {
   SubcategoryButton,
   SubcategoryButtonItem,
@@ -18,14 +20,21 @@ type SubcategoryButtonListProps = {
   subcategoryButtonContent: SubcategoryButtonItem[]
   seeAllNavigateTo?: InternalNavigationProps['navigateTo']
   onBeforeSeeAllNavigate?: VoidFunction
+  enableNewSubcategoryBlocks?: boolean
 }
 
 export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   subcategoryButtonContent,
   seeAllNavigateTo,
   onBeforeSeeAllNavigate,
+  enableNewSubcategoryBlocks,
 }) => {
   const theme = useTheme()
+
+  const SubcategoryButtonComponent = enableNewSubcategoryBlocks
+    ? NewSubcategoryButton
+    : SubcategoryButton
+
   const shouldDisplaySeeAllButton =
     !!theme.isMobileViewport && subcategoryButtonContent.length > 4 && !!seeAllNavigateTo
   const [maxHeight, setMaxHeight] = useState(0)
@@ -34,6 +43,9 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
     const height = event.nativeEvent.layout.height
     setMaxHeight((prev) => Math.max(prev, height))
   }, [])
+
+  const getLabelParts = (label: string) =>
+    enableNewSubcategoryBlocks ? getSubcategoryLabelParts(label) : undefined
 
   if (theme.isMobileViewport) {
     if (subcategoryButtonContent.length <= 2) {
@@ -47,11 +59,12 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <SingleRowContainer>
               {subcategoryButtonContent.map((item) => (
-                <SubcategoryButton
+                <SubcategoryButtonComponent
                   key={item.label}
                   {...item}
                   onLayout={handleLayout}
                   uniformHeight={maxHeight > 0 ? maxHeight : undefined}
+                  labelParts={getLabelParts(item.label)}
                 />
               ))}
             </SingleRowContainer>
@@ -74,21 +87,23 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
           <RowsContainer>
             <Row>
               {firstRow.map((item) => (
-                <SubcategoryButton
+                <SubcategoryButtonComponent
                   key={item.label}
                   {...item}
                   onLayout={handleLayout}
                   uniformHeight={maxHeight > 0 ? maxHeight : undefined}
+                  labelParts={getLabelParts(item.label)}
                 />
               ))}
             </Row>
             <Row>
               {secondRow.map((item) => (
-                <SubcategoryButton
+                <SubcategoryButtonComponent
                   key={item.label}
                   {...item}
                   onLayout={handleLayout}
                   uniformHeight={maxHeight > 0 ? maxHeight : undefined}
+                  labelParts={getLabelParts(item.label)}
                 />
               ))}
             </Row>
@@ -108,10 +123,11 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
       <StyledUl>
         {subcategoryButtonContent.map((item) => (
           <Li key={item.label}>
-            <SubcategoryButton
+            <SubcategoryButtonComponent
               {...item}
               onLayout={handleLayout}
               uniformHeight={maxHeight > 0 ? maxHeight : undefined}
+              labelParts={getSubcategoryLabelParts(item.label)}
             />
           </Li>
         ))}

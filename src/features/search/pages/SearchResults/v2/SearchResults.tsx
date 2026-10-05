@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useId, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
@@ -8,6 +8,7 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
+import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSuggestionsStatus/SearchSuggestionsAnnouncer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -39,6 +40,7 @@ const searchIdGenerated = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchResults: FC = () => {
+  const suggestionsDescriptionId = useId()
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -91,8 +93,6 @@ export const SearchResults: FC = () => {
     }
   }, [searchState.searchId, dispatch])
 
-  const [hasBeenClicked, setHasBeenClicked] = useState(false)
-
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -100,6 +100,7 @@ export const SearchResults: FC = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
+        suggestionsDescriptionId={suggestionsDescriptionId}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         withFilterButton={!isFocusOnSuggestions}
@@ -127,6 +128,7 @@ export const SearchResults: FC = () => {
           <React.Fragment>
             {isZoomedAt200 || isLandscape ? null : searchHeader}
             <SearchSuggestions
+              suggestionsDescriptionId={suggestionsDescriptionId}
               queryHistory={queryHistory}
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
@@ -140,13 +142,7 @@ export const SearchResults: FC = () => {
             {(() => {
               switch (selectedSearchTab) {
                 case 'Offres':
-                  return (
-                    <OffersList
-                      searchFilters={searchFilters}
-                      hasBeenClicked={hasBeenClicked}
-                      setHasBeenClicked={setHasBeenClicked}
-                    />
-                  )
+                  return <OffersList searchFilters={searchFilters} />
                 case 'Lieux':
                   return <VenuesList searchFilters={searchFilters} />
                 case 'Artistes':
@@ -156,14 +152,17 @@ export const SearchResults: FC = () => {
                     <AllSearchResultsList
                       header={isZoomedAt200 || isLandscape ? searchHeader : undefined}
                       searchFilters={searchFilters}
-                      hasBeenClicked={hasBeenClicked}
-                      setHasBeenClicked={setHasBeenClicked}
                     />
                   )
               }
             })()}
           </React.Fragment>
         )}
+        <SearchSuggestionsAnnouncer
+          id={suggestionsDescriptionId}
+          query={queryHistory}
+          visible={isFocusOnSuggestions}
+        />
       </InstantSearch>
     </Page>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -11,6 +12,10 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('CulturalSurveyIntro page', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should not have basic accessibility issues', async () => {
     const { container } = render(<CulturalSurveyIntro />)
 

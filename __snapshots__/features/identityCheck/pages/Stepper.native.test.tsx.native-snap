@@ -241,7 +241,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                         {
                           "userSelect": "auto",
                         },
-                        {},
                         {
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
@@ -711,7 +710,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Profil - non complété"
+                  accessibilityLabel="Profil - indisponible tant que l‘étape précédente n‘est pas complétée"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -745,7 +744,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                         {
                           "userSelect": "auto",
                         },
-                        {},
                         {
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
@@ -761,7 +759,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Profil - non complété"
+                  testID="Profil - indisponible tant que l‘étape précédente n‘est pas complétée"
                 >
                   <View
                     style={
@@ -950,7 +948,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Confirmation - non complété"
+                  accessibilityLabel="Confirmation - indisponible tant que l‘étape précédente n‘est pas complétée"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -984,7 +982,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                         {
                           "userSelect": "auto",
                         },
-                        {},
                         {
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
@@ -1000,7 +997,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Confirmation - non complété"
+                  testID="Confirmation - indisponible tant que l‘étape précédente n‘est pas complétée"
                 >
                   <View
                     style={

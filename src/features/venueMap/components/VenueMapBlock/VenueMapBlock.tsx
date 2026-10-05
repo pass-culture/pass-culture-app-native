@@ -23,7 +23,7 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from }) => {
   const handleOnBeforeNavigate = () => {
     removeSelectedVenue()
     setVenues([])
-    analytics.logConsultVenueMap({ from })
+    void analytics.logViewMap({ from, mapType: 'VenueMap' })
   }
 
   const title = 'Explore la carte'

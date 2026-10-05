@@ -25,10 +25,22 @@ type ImagesCarouselModalProps = {
   onClose?: () => void
   defaultIndex?: number
   onSnapToItem?: (index: number) => void
+  imageDescription: string
 }
 
-const renderCarouselItem = ({ item: image, index }: { item: string; index: number }) => (
-  <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
+const renderCarouselItem = ({
+  item: image,
+  index,
+  imageDescription,
+}: {
+  item: string
+  index: number
+  imageDescription: string
+}) => (
+  <CarouselImage
+    source={{ uri: image }}
+    accessibilityLabel={`Illustration ${index + 1} de ${imageDescription}`}
+  />
 )
 
 export const ImagesCarouselModal = ({
@@ -38,10 +50,11 @@ export const ImagesCarouselModal = ({
   onClose,
   isVisible = false,
   onSnapToItem,
+  imageDescription,
 }: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
   const carouselRef = useRef<ICarouselInstance>(null)
-  const progressValue = useSharedValue<number>(0)
+  const progressValue = useSharedValue<number>(defaultIndex)
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
   const { isDesktopViewport, designSystem } = useTheme()
 
@@ -50,7 +63,15 @@ export const ImagesCarouselModal = ({
     [imagesURL]
   )
 
+  const getAccessibilityTitleLabel = useCallback(
+    (progress: number) => `Image ${Math.round(progress) + 1} sur ${imagesURL.length}`,
+    [imagesURL.length]
+  )
+
   const [title, setTitle] = useState(getTitleLabel(progressValue.value))
+  const [accessibilityTitle, setAccessibilityTitle] = useState(() =>
+    getAccessibilityTitleLabel(progressValue.value)
+  )
 
   const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : designSystem.size.spacing.xxxxl
 
@@ -69,16 +90,18 @@ export const ImagesCarouselModal = ({
       progressValue.value = newIndex
       carouselRef.current?.scrollTo({ index: newIndex, animated: true })
       setTitle(getTitleLabel(newIndex))
+      setAccessibilityTitle(getAccessibilityTitleLabel(newIndex))
     },
-    [getTitleLabel, imagesURL, progressValue]
+    [getAccessibilityTitleLabel, getTitleLabel, imagesURL.length, progressValue]
   )
 
   const handleProgressChange = useCallback(
     (_: unknown, absoluteProgress: number) => {
       progressValue.value = absoluteProgress
       setTitle(getTitleLabel(absoluteProgress))
+      setAccessibilityTitle(getAccessibilityTitleLabel(absoluteProgress))
     },
-    [getTitleLabel, progressValue]
+    [getAccessibilityTitleLabel, getTitleLabel, progressValue]
   )
 
   const displayModalBody = useCallback(() => {
@@ -109,7 +132,9 @@ export const ImagesCarouselModal = ({
               onProgressChange={handleProgressChange}
               onSnapToItem={onSnapToItem}
               data={imagesURL}
-              renderItem={renderCarouselItem}
+              renderItem={({ item, index }) =>
+                renderCarouselItem({ item, index, imageDescription })
+              }
             />
           ) : null}
           <RoundedButton
@@ -121,8 +146,21 @@ export const ImagesCarouselModal = ({
       )
     }
 
-    return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
-  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange, onSnapToItem])
+    return (
+      <CarouselImage
+        source={{ uri: String(imagesURL[0]) }}
+        accessibilityLabel={`Illustration de ${imageDescription}`}
+      />
+    )
+  }, [
+    imagesURL,
+    imageDescription,
+    carouselSize,
+    defaultIndex,
+    handleProgressChange,
+    onSnapToItem,
+    handlePressButton,
+  ])
 
   const MODAL_PADDING = {
     x: designSystem.size.spacing.xxxl,
@@ -140,7 +178,8 @@ export const ImagesCarouselModal = ({
 
   return (
     <AppModal
-      title={imagesURL.length > 1 ? title : ''}
+      title={title}
+      accessibilityLabel={accessibilityTitle}
       visible={isVisible}
       isFullscreen
       rightIcon={Close}

@@ -5,8 +5,7 @@ const mockSnapshot = {
   exists: true,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-export const onSnapshot = jest.fn().mockReturnValue(() => {})
+export const onSnapshot = jest.fn().mockReturnValue(jest.fn())
 
 export const getDoc = jest.fn().mockResolvedValue(mockSnapshot)
 

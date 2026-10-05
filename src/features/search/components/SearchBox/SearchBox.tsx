@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import { debounce } from 'lodash'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useId, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-core'
 import {
   Keyboard,
@@ -17,6 +17,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import Animated, { LinearTransition } from 'libs/react-native-reanimated'
@@ -31,24 +32,26 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
+  suggestionsDescriptionId?: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
   offerCategories?: SearchGroupNameEnumv2[]
 }
 
-const accessibilityDescribedBy = uuidv4()
-
 const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
 const CINEMA_KEYWORD_PATTERN = /\bCIN[ÉE]MA?S?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
   accessibleHiddenTitle,
+  suggestionsDescriptionId,
   addSearchHistory,
   searchInHistory,
   offerCategories,
   ...props
 }) => {
+  const accessibilityDescribedBy = useId()
+  const suggestionsAccessibility = useSearchSuggestionsAccessibility(suggestionsDescriptionId)
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
@@ -161,10 +164,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         return
       }
       if (queryText.length < 1 && Platform.OS !== 'android') return
-      // When we hit enter, we may have selected a category or a venue on the search landing page
-      // these are the two potentially 'staged' filters that we want to commit to the global search state.
-      // We also want to commit the price filter, as beneficiary users may have access to different offer
-      // price range depending on their available credit.
+      // When we hit enter from landing, keep a venue selected on this page but drop a
+      // category previously applied by a category button (that navigation is a separate flow).
       addSearchHistory({ query: queryText })
       const searchId = uuidv4()
 
@@ -180,10 +181,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         isFromHistory: undefined,
       }
 
-      if (currentView === SearchView.Thematic) {
+      if (currentView === SearchView.Thematic || currentView === SearchView.Landing) {
         partialSearchState = {
           ...partialSearchState,
-          offerCategories,
+          offerCategories: offerCategories ?? [],
           offerNativeCategories: [],
           gtls: [],
         }
@@ -234,7 +235,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     ]
   )
 
+  useEffect(() => () => debounceSetAutocompleteQuery.cancel(), [debounceSetAutocompleteQuery])
+
   const onFocus = () => {
+    suggestionsAccessibility.setInputFocused(true)
     if (isFocusOnSuggestions && appEnableAutocomplete) return
     // Avoid the redirection on suggestions view when user is on a results view
     // (not useful in this case because we don't have suggestions)
@@ -280,10 +284,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               onClear={resetQuery}
               nativeAutoFocus={Platform.OS !== 'web'}
               onFocus={onFocus}
+              onBlur={() => suggestionsAccessibility.setInputFocused(false)}
               focusable={isFocusOnSuggestions}
               testID="searchInput"
               disableClearButton={disableInputClearButton}
-              aria-describedby="search-suggestions-accessibility-message"
+              aria-describedby={[accessibilityDescribedBy, suggestionsAccessibility.descriptionId]
+                .filter(Boolean)
+                .join(' ')}
             />
           </FlexView>
         </SearchInputA11yContainer>

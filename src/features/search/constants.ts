@@ -5,6 +5,7 @@ export const MAX_HISTORY_RESULTS = 20
 export const MIN_HISTORY_RESULTS = 2
 export const DEFAULT_RADIUS = 50
 export const ALL_CATEGORIES_LABEL = 'Toutes les catégories'
+export const SEARCH_CATEGORIES_ANCHOR_ID = 'search-categories'
 
 export const ACTIVITIES_BY_SEARCH_GROUP: Partial<Record<SearchGroupNameEnumv2, Activity[]>> = {
   [SearchGroupNameEnumv2.LIVRES]: [

@@ -23,6 +23,7 @@ export const env: Environment = {
   API_BASE_URL: 'https://localhost',
   APPLE_SERVICE_ID: 'apple_service_id',
   APPLE_STORE_URL: 'https://apps.apple.com/fr/app/pass-culture/id1557887412',
+  ARTICLE_11_LAW_02_2005: 'https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006682235',
   BOOKING_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_dcmKZrtRwVABcA6',
   BOOKING_LIMIT_EXCEEDED_URL: 'https://aide.passculture.app/hc/fr/articles/4411991975825',
   CGU_LINK: 'https://passculture.cgu',

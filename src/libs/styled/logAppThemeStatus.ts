@@ -15,7 +15,9 @@ export const logAppThemeStatus = async () => {
     const systemTheme = systemColorScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
 
     await analytics.logAppThemeStatus({ themeSetting, systemTheme, platform: Platform.OS })
+    return true
   } catch (error) {
     eventMonitoring.captureException(error, { extra: { feature: 'logAppThemeStatus' } })
+    return false
   }
 }

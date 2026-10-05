@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
@@ -22,6 +23,10 @@ const renderResendEmailButton = {
 }
 
 describe('<LayoutExpiredLink/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     render(
       <LayoutExpiredLink

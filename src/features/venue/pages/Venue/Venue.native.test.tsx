@@ -2,9 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import {
   Activity,
   OffersStocksResponseV2,
@@ -38,7 +37,7 @@ import { Offer } from 'shared/offer/types'
 import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 jest.useFakeTimers()
@@ -106,14 +105,6 @@ jest.mock('libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 }))
 
 const user = userEvent.setup()
-
-const scrollEvent = {
-  nativeEvent: {
-    contentOffset: { y: 200 },
-    layoutMeasurement: { height: 1000 },
-    contentSize: { height: 1900 },
-  },
-}
 
 describe('<Venue />', () => {
   beforeAll(() => {
@@ -477,86 +468,6 @@ describe('<Venue />', () => {
       renderVenue(venueId)
 
       expect(await screen.findByLabelText('Suivre le lieu')).toBeOnTheScreen()
-    })
-
-    it('should open fake door modal when pressing follow button', async () => {
-      renderVenue(venueId)
-
-      await user.press(await screen.findByLabelText('Suivre le lieu'))
-
-      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
-        surveyKey: 'has_seen_follow_venue_fake_door_survey',
-        surveyUrl: `https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY?venue_type=${Activity.BOOKSTORE}`,
-        analyticsParams: {
-          featureName: 'follow_venue',
-          from: 'venue',
-          venueId: venueId.toString(),
-        },
-      })
-    })
-
-    it('should log HasClickedFakeDoorCTA with the banner origin when pressing the banner follow button', async () => {
-      renderVenue(venueId)
-
-      await user.press(await screen.findByLabelText('Suivre le lieu'))
-
-      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith({
-        featureName: 'follow_venue',
-        from: 'venue',
-        venueId: venueId.toString(),
-        originDetails: 'venueBanner',
-        hasSeenSurvey: false,
-      })
-    })
-
-    it('should log HasClickedFakeDoorCTA with the header origin when pressing the sticky header follow button', async () => {
-      renderVenue(venueId)
-
-      await screen.findByLabelText('Suivre le lieu')
-      fireEvent.scroll(screen.getByTestId('venue-container'), scrollEvent)
-
-      const headerFollowButton = screen.getAllByLabelText('Suivre le lieu')[1]
-
-      expect(headerFollowButton).toBeDefined()
-
-      await user.press(headerFollowButton as ReactTestInstance)
-
-      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith(
-        expect.objectContaining({ originDetails: 'venueHeader' })
-      )
-    })
-
-    it('should log HasClickedFakeDoorCTA with hasSeenSurvey when the survey has already been accessed', async () => {
-      await AsyncStorage.setItem('has_seen_follow_venue_fake_door_survey', 'true')
-      renderVenue(venueId)
-
-      await user.press(await screen.findByLabelText('Suivre le lieu'))
-
-      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenCalledWith(
-        expect.objectContaining({ hasSeenSurvey: true })
-      )
-    })
-
-    it('should not send venue_type to the survey when venue has no activity', async () => {
-      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
-        ...venueDataTest,
-        isOpenToPublic: true,
-        bannerUrl: 'url_image',
-        activity: null,
-      })
-      renderVenue(venueId)
-
-      await user.press(await screen.findByLabelText('Suivre le lieu'))
-
-      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
-        surveyKey: 'has_seen_follow_venue_fake_door_survey',
-        surveyUrl: 'https://passculture.qualtrics.com/jfe/form/SV_b3novwqFYApLUDY',
-        analyticsParams: {
-          featureName: 'follow_venue',
-          from: 'venue',
-          venueId: venueId.toString(),
-        },
-      })
     })
   })
 })

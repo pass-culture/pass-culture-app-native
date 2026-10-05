@@ -1012,9 +1012,10 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           }
         }
       >
-        Ton compte Google “
-        user@gmail.com
-        ” n’est pas lié à un compte existant. Pour continuer, tu peux créer un compte.
+        Ton compte 
+        Google
+         “user@gmail.com”
+         n’est pas lié à un compte existant. Pour continuer, tu peux créer un compte.
       </Text>
     </View>
     <View

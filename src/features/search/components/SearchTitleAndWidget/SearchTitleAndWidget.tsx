@@ -37,7 +37,11 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
-          {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
+          {isDesktopViewport ? (
+            <View>
+              <SearchLocationWidgetDesktopView />
+            </View>
+          ) : null}
         </TitleMainWrapper>
       </TitleContainer>
       {shouldDisplayMobileLocationBigWidget ? (

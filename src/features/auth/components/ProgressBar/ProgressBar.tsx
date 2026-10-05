@@ -30,6 +30,16 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
     <BarBackground
       accessibilityLabel={accessibilityText}
       accessibilityRole={AccessibilityRole.PROGRESSBAR}
+      accessibilityValue={{
+        min: 1,
+        max: totalStep,
+        now: currentStep,
+        text: accessibilityText,
+      }}
+      aria-valuenow={currentStep}
+      aria-valuemin={1}
+      aria-valuemax={totalStep}
+      aria-valuetext={accessibilityText}
       accessible>
       <BarColorContainer
         transition="width"

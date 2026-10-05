@@ -7,13 +7,16 @@ import { displayOnFocus } from 'ui/web/displayOnFocus/displayOnFocus'
 type QuickAccessProps = {
   href: string
   title: string
+  onClick?: () => void
 }
 
-export const QuickAccess = ({ href, title }: QuickAccessProps) => (
-  <StyledA href={href}>{title}</StyledA>
+export const QuickAccess = ({ href, title, onClick }: QuickAccessProps) => (
+  <StyledA href={href} onClick={onClick}>
+    {title}
+  </StyledA>
 )
 
-const StyledA: React.FC<{ href: string; children: string }> = displayOnFocus(
+const StyledA: React.FC<{ href: string; children: string; onClick?: () => void }> = displayOnFocus(
   styled.a(({ theme }) => ({
     ...theme.designSystem.typography.button,
     color: theme.designSystem.color.border.brandPrimary,

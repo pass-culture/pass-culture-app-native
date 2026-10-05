@@ -224,47 +224,5 @@ describe('<OfferArtistsSection />', () => {
 
       expect(screen.queryByLabelText('Suivre Edith Piaf')).not.toBeOnTheScreen()
     })
-
-    it('should open fake door modal with artistId and offer type when pressing follow button', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
-      renderOfferArtistsSection([mockArtist])
-
-      await user.press(screen.getByLabelText('Suivre Edith Piaf'))
-
-      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
-        surveyKey: 'has_seen_follow_artist_fake_door_survey',
-        surveyUrl:
-          'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=1&offer_type=MUSIQUE',
-        analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: '1' },
-      })
-    })
-
-    it('should open fake door modal without artistId when artist has no id', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
-      renderOfferArtistsSection([{ ...mockArtist, id: undefined }])
-
-      await user.press(screen.getByLabelText('Suivre Edith Piaf'))
-
-      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
-        surveyKey: 'has_seen_follow_artist_fake_door_survey',
-        surveyUrl:
-          'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?offer_type=MUSIQUE',
-        analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: undefined },
-      })
-    })
-
-    it('should open fake door modal with offer type from a multi artists list', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_FAKE_DOOR])
-      renderOfferArtistsSection(mockMultiArtists)
-
-      await user.press(screen.getByLabelText('Suivre Zoe Saldana'))
-
-      expect(navigate).toHaveBeenCalledWith('FakeDoorModal', {
-        surveyKey: 'has_seen_follow_artist_fake_door_survey',
-        surveyUrl:
-          'https://passculture.qualtrics.com/jfe/form/SV_0wafZvbQ06UrZnU?artist_id=2&offer_type=MUSIQUE',
-        analyticsParams: { featureName: 'follow_artist', from: 'offer', artistId: '2' },
-      })
-    })
   })
 })

@@ -686,8 +686,10 @@ exports[`ThematicHome should render correctly 1`] = `
                     "fontSize": 19,
                     "lineHeight": 30.4,
                     "maxWidth": "100%",
-                    "paddingHorizontal": 4,
-                    "paddingVertical": 2,
+                    "paddingBottom": 2,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 2,
                   }
                 }
               >

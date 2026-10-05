@@ -61,7 +61,7 @@ describe('HomeHeader', () => {
   it('should display "Toute la culture à portée de main" when user is eligible to free offer', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
-      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_16,
+      eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16,
       creditType: UserCreditType.CREDIT_V3_FREE,
     })
 

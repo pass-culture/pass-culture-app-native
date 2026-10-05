@@ -1,9 +1,11 @@
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
+import { getOffersModuleQueryKey } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModuleType,
   ModuleData,
@@ -12,6 +14,7 @@ import {
 } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
@@ -51,6 +54,8 @@ export const OffersModule = (props: OffersModuleProps) => {
     onViewableItemsChanged,
   } = props
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const queryClient = useQueryClient()
+  const isUserUnderage = useIsUserUnderage()
   const { user } = useAuthContext()
   const userLocation = useUserLocation()
   const { designSystem } = useTheme()
@@ -86,8 +91,23 @@ export const OffersModule = (props: OffersModuleProps) => {
     })
   )
 
-  const onBeforeNavigate = () =>
-    analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from: 'home' })
+  const onBeforeNavigate = () => {
+    queryClient.setQueryData(
+      getOffersModuleQueryKey(
+        moduleId,
+        offersModuleParameters.map((moduleParameters) =>
+          adaptedPlaylistParameters(moduleParameters)
+        ),
+        isUserUnderage
+      ),
+      {
+        playlistItems: offersToDisplay,
+        nbPlaylistResults: data?.nbPlaylistResults ?? offersToDisplay.length,
+        moduleId,
+      }
+    )
+    void analytics.logClickSeeAll({ type: 'offers', moduleName, moduleId, from: 'home' })
+  }
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
