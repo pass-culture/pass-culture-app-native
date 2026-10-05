@@ -453,23 +453,6 @@ describe('<Venue />', () => {
       expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(5543)
     })
   })
-
-  describe('When wipVenueFakeDoor FF activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_FAKE_DOOR])
-      mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
-        ...venueDataTest,
-        isOpenToPublic: true,
-        bannerUrl: 'url_image',
-      })
-    })
-
-    it('should display follow button', async () => {
-      renderVenue(venueId)
-
-      expect(await screen.findByLabelText('Suivre le lieu')).toBeOnTheScreen()
-    })
-  })
 })
 
 async function renderVenue(id: number, from?: Referrals) {

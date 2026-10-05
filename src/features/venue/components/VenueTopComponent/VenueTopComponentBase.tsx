@@ -25,8 +25,6 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 type Props = {
   venue: VenueResponse
   onPressBannerImage?: () => void
-  enableVenueFakeDoor?: boolean
-  onPressFollowButton?: () => void
 }
 
 const VOLUNTEER_SMALL_CARD_HEIGHT = getSpacing(56.25)
@@ -35,8 +33,6 @@ const VOLUNTEER_LARGE_CARD_HEIGHT = getSpacing(73)
 export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
-  enableVenueFakeDoor,
-  onPressFollowButton,
 }) => {
   const theme = useTheme()
   const { width } = useWindowDimensions()
@@ -79,8 +75,6 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
           bannerCredit={bannerCredit}
           bannerIsFromGoogle={bannerIsFromGoogle}
           handleImagePress={onPressBannerImage}
-          enableVenueFakeDoor={enableVenueFakeDoor}
-          onPressFollowButton={onPressFollowButton}
         />
         <MarginContainer>
           <ViewGap gap={4}>

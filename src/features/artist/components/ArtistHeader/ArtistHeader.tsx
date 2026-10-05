@@ -14,10 +14,9 @@ import { AVATAR_LARGE } from 'ui/theme/constants'
 type ArtistHeaderProps = {
   avatarImage?: string | null
   name: string
-  children?: React.ReactNode
 }
 
-export const ArtistHeader = ({ avatarImage, name, children }: ArtistHeaderProps) => {
+export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
   return (
     <ArtistHeaderWrapper gap={4}>
       <Avatar size={AVATAR_LARGE}>
@@ -29,7 +28,6 @@ export const ArtistHeader = ({ avatarImage, name, children }: ArtistHeaderProps)
       </Avatar>
       <ArtistNameContainer gap={2}>
         <ArtistName>{name}</ArtistName>
-        {children}
       </ArtistNameContainer>
     </ArtistHeaderWrapper>
   )
