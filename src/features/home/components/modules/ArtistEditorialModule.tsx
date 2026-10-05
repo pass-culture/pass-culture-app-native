@@ -100,7 +100,7 @@ export const ArtistEditorialModule: FunctionComponent<ArtistEditorialModuleProps
               key={item.objectID}
               item={item}
               moduleId={moduleId}
-              originDetails="artistEditorial"
+              originDetails="artistHighlightPlaylist"
               width={itemWidth}
               height={itemHeight}
               analyticsFrom="artist"

@@ -109,7 +109,12 @@ export type CTAexitActivationFlow =
   | 'GoToDemarcheNumerique'
 
 export type ConsultArtistOriginDetails =
-  'similarArtistsPlaylist' | 'venue' | 'offer' | 'searchResults' | 'artistRecommendation'
+  | 'similarArtistsPlaylist'
+  | 'venue'
+  | 'offer'
+  | 'searchResults'
+  | 'artistRecommendation'
+  | 'artistHighlightModule'
 
 export type FakeDoorAnalyticsParams = {
   featureName: string
@@ -282,6 +287,8 @@ export const logEventAnalytics = {
     venueId?: string
     searchId?: string
     originDetails?: ConsultArtistOriginDetails
+    moduleId?: string
+    homeEntryId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST }, params),
   logConsultAuthenticationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL }, { offerId }),
