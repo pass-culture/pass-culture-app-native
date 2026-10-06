@@ -75,21 +75,15 @@ export function ChangePassword() {
             reset()
             showSuccessSnackBar('Ton mot de passe est modifié')
             navigate(...getTabHookConfig('Profile'))
-            analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
+            void analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
             resolve()
           },
-          onError(error, { newPassword }) {
-            setError('currentPassword', {
-              message: 'Mot de passe incorrect',
-            })
+          onError(error) {
+            setError('currentPassword', { message: 'Mot de passe incorrect' })
             setFocus('currentPassword')
             if (!(error instanceof ApiError)) {
               const err = new Error('ChangePasswordUnknownError')
-              eventMonitoring.captureException(err, {
-                extra: {
-                  newPassword,
-                },
-              })
+              eventMonitoring.captureException(err)
             }
             // no need to reject on press event, and it's harder to test
             resolve()
