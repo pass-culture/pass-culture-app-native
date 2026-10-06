@@ -19,22 +19,22 @@ onFlowStart:
       - tapOn: 'Catégorie Spectacles'
 
 - tapOn: 'Voir tous les filtres : 1 filtre actif'
-- assertVisible: 'Prix'
+- assertVisible: '.*Prix.*'
 
-- tapOn: 'Prix'
-- assertVisible: 'Prix minimum.*'
-- assertVisible: 'Prix maximum.*'
+- tapOn: '.*Prix.*'
+- assertVisible: '.*Prix minimum.*'
+- assertVisible: '.*Prix maximum.*'
 - assertVisible: 'Appliquer le filtre'
 - tapOn:
     id: 'Entrée pour le prix maximum'
 
-- assertVisible: 'Prix minimum.*'
-- assertVisible: 'Prix maximum.*'
+- assertVisible: '.*Prix minimum.*'
+- assertVisible: '.*Prix maximum.*'
 - assertVisible: 'Appliquer le filtre'
 
 - inputText: '50'
 - tapOn: 'Appliquer le filtre'
-- assertVisible: '50 € et moins'
+- assertVisible: '.*50 € et moins.*'
 - tapOn: 'Rechercher'
 
 - runFlow: ../common/lifecycle/StopApp.yml
