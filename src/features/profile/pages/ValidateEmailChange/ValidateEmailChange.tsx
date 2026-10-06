@@ -39,7 +39,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, isUserLoading } = useAuthContext()
   const signOut = useLogoutRoutine()
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
@@ -88,16 +88,21 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     }
   }, [emailUpdateStatus?.newEmail, isLoggedIn, mutate, navigation, signOut])
 
-  useEffect(() => {
-    if (!isLoadingEmailUpdateStatus) {
+  useEffect(
+    function redirectFromEmailUpdateStatus() {
+      if (isUserLoading || isLoadingEmailUpdateStatus) return
+
       if (!emailUpdateStatus) {
         navigation.replace(...homeNavigationConfig)
+        return
       }
-      if (emailUpdateStatus?.expired) {
+
+      if (emailUpdateStatus.expired) {
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
       }
-    }
-  }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
+    },
+    [emailUpdateStatus, isLoadingEmailUpdateStatus, isUserLoading, navigation]
+  )
 
   return (
     <GenericInfoPage
