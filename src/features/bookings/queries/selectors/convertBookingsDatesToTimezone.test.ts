@@ -90,7 +90,7 @@ describe('convertBookingsDatesToTimezone', () => {
     ).not.toThrow()
   })
 
-  it('should not throw when BookingsResponseV2 ongoing or ended bookings are missing', () => {
+  it('should return empty array when BookingsResponseV2 is an empty object', () => {
     const result = convertBookingsResponseV2DatesToTimezone({} as BookingsResponseV2)
 
     expect(result.ongoingBookings).toEqual([])
@@ -116,7 +116,7 @@ describe('convertBookingsDatesToTimezone', () => {
     expect(result.bookings[0]?.stock.beginningDatetime).toEqual('2024-05-08T08:50:00.000Z')
   })
 
-  it('should not throw when BookingsListResponseV2.bookings are missing', () => {
+  it('should return empty array when BookingsListResponseV2 is an empty object', () => {
     const result = convertBookingsListResponseV2DatesToTimezone({} as BookingsListResponseV2)
 
     expect(result.bookings).toEqual([])

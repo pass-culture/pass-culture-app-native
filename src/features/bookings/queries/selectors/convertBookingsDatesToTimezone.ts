@@ -8,16 +8,16 @@ import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
 type Bookings = BookingResponse | BookingListItemResponse
 
-const checkBookingsList = <T extends Bookings>(bookings: T[]): T[] =>
-  Array.isArray(bookings) ? bookings : []
-
 const convertBookingsListDatesToTimezone = <T extends Bookings>(bookings: T[]): T[] => {
-  const bookingsList = checkBookingsList(bookings)
-  if (!bookingsList.length) {
-    return bookingsList
+  if (!Array.isArray(bookings)) {
+    return []
   }
 
-  return bookingsList.map((booking) => convertBookingResponseDateToTimezone(booking))
+  if (!bookings.length) {
+    return bookings
+  }
+
+  return bookings.map(convertBookingResponseDateToTimezone)
 }
 
 export const convertBookingResponseDateToTimezone = <T extends Bookings>(booking: T): T => {
