@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -11,7 +11,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { VerticalUl } from 'ui/components/Ul'
 import { RATIO_HOME_IMAGE } from 'ui/theme'
 
 type SearchOfferItemWrapper = {
@@ -41,29 +40,34 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
   const gridListLayout = useGridListLayout()
   const isGridLayout = enableGridList && !isWeb && gridListLayout === GridListLayout.GRID
 
-  return (
-    <VerticalUl>
-      {isGridLayout ? (
-        <OfferTileWrapper
-          item={item}
-          analyticsFrom="searchresults"
-          height={tileWidth / RATIO_HOME_IMAGE}
-          width={tileWidth}
-          containerWidth={width / nbrOfTilesToDisplay}
-          searchId={searchId}
-          withCenterAlign={false}
-        />
-      ) : (
-        <HorizontalOfferTile
-          offer={item}
-          analyticsParams={{
-            query,
-            index,
-            searchId,
-            from: 'searchresults',
-          }}
-        />
-      )}
-    </VerticalUl>
+  return isGridLayout ? (
+    <OfferTileWrapper
+      item={item}
+      analyticsFrom="searchresults"
+      height={tileWidth / RATIO_HOME_IMAGE}
+      width={tileWidth}
+      containerWidth={width / nbrOfTilesToDisplay}
+      searchId={searchId}
+      withCenterAlign={false}
+    />
+  ) : (
+    <React.Fragment>
+      <HorizontalOfferTile
+        offer={item}
+        analyticsParams={{
+          query,
+          index,
+          searchId,
+          from: 'searchresults',
+        }}
+      />
+      {isWeb ? <LineSeparator /> : null}
+    </React.Fragment>
   )
 }
+
+const LineSeparator = styled.View(({ theme }) => ({
+  height: 2,
+  backgroundColor: theme.designSystem.color.background.subtle,
+  marginVertical: theme.designSystem.size.spacing.l,
+}))

@@ -5,6 +5,7 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
+  ScrollView,
   useWindowDimensions,
 } from 'react-native'
 import Animated, { LinearTransition } from 'react-native-reanimated'
@@ -24,6 +25,7 @@ import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { FetchSearchResultsArgs, GridListLayout, SearchView } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -32,8 +34,10 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { Li } from 'ui/components/Li'
+import { LineSeparator } from 'ui/components/LineSeparator'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
-import { Ul } from 'ui/components/Ul'
+import { Ul, VerticalUl } from 'ui/components/Ul'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const searchIdGenerated = v4()
@@ -129,35 +133,54 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilte
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   if (showSkeleton) return <OffersListSkeleton />
 
+  const listHeaderComponent = children ? (
+    children
+  ) : (
+    <ListHeaderComponent title="Les offres" nbItems={offersResponse?.offers.length ?? 0} />
+  )
+
   return (
     <Container>
-      <FlashList
-        ref={listRef}
-        key="offers_search_results"
-        data={offersResponse?.offers}
-        keyExtractor={(item: Offer) => item.objectID}
-        ListHeaderComponent={
-          children ? (
-            <React.Fragment>{children}</React.Fragment>
-          ) : (
-            <ListHeaderComponent title="Les offres" nbItems={offersResponse?.offers.length ?? 0} />
-          )
-        }
-        renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
-        contentContainerStyle={{
-          paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
-          paddingHorizontal: designSystem.size.spacing.xl,
-        }}
-        ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
-        numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
-        refreshing={isRefetching}
-        onRefresh={refetch}
-        onEndReached={handleEndReached}
-        scrollEnabled={!!offersResponse?.nbHits}
-        onScroll={handleScroll}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-      />
+      {isWeb ? (
+        <StyledScrollView
+          contentContainerStyle={{
+            paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+            paddingHorizontal: designSystem.size.spacing.xl,
+          }}
+          onScroll={handleScroll}>
+          {listHeaderComponent}
+          <VerticalUl>
+            {offersResponse?.offers.map((item, index) => (
+              <Li key={item.objectID}>
+                <SearchOfferItemWrapper item={item} index={index} />
+              </Li>
+            ))}
+          </VerticalUl>
+        </StyledScrollView>
+      ) : (
+        <FlashList
+          ref={listRef}
+          key="offers_search_results"
+          accessibilityRole={AccessibilityRole.LIST}
+          data={offersResponse?.offers}
+          keyExtractor={(item: Offer) => item.objectID}
+          ListHeaderComponent={<React.Fragment>{listHeaderComponent}</React.Fragment>}
+          renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
+          contentContainerStyle={{
+            paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+            paddingHorizontal: designSystem.size.spacing.xl,
+          }}
+          ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
+          numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
+          refreshing={isRefetching}
+          onRefresh={refetch}
+          onEndReached={handleEndReached}
+          scrollEnabled={!!offersResponse?.nbHits}
+          onScroll={handleScroll}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+        />
+      )}
 
       <FloatingButtonsWrapper
         tabBarHeight={tabBarHeight}
@@ -177,15 +200,10 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilte
   )
 }
 
-const Container = styled(Ul)({
+const Container = styled(Ul).attrs({ accessibilityRole: AccessibilityRole.NONE })({
   flex: 1,
+  flexDirection: 'column',
 })
-
-const LineSeparator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.designSystem.color.background.subtle,
-  marginVertical: theme.designSystem.size.spacing.l,
-}))
 
 const FloatingButtonsWrapper = styled(Animated.View)<{ tabBarHeight: number }>(
   ({ theme, tabBarHeight }) => ({
@@ -199,3 +217,7 @@ const FloatingButtonsWrapper = styled(Animated.View)<{ tabBarHeight: number }>(
     zIndex: theme.zIndex.floatingButton,
   })
 )
+
+const StyledScrollView = styled(ScrollView)({
+  flex: 1,
+})

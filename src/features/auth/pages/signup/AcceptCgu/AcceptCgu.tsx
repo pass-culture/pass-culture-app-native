@@ -14,8 +14,9 @@ import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromS
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
+import { Li } from 'ui/components/Li'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { VerticalUl } from 'ui/components/Ul'
 import { Button } from 'ui/designSystem/Button/Button'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -141,46 +142,48 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         ) : null}
 
         <ReverseOrderContainer>
-          <Container gap={5}>
+          <Container>
             <CaptionNeutralInfo>
               En cochant ces 2 cases tu assures avoir lu&nbsp;:
             </CaptionNeutralInfo>
-            <LinkWrapper>
-              <ExternalTouchableLink
-                as={Button}
-                variant="tertiary"
-                color="neutral"
-                wording="Conditions Générales d’Utilisation"
-                externalNav={{ url: env.CGU_LINK }}
-                icon={ExternalSiteFilled}
-                numberOfLines={numberOfLines}
-                fullWidth={Platform.OS === 'web'}
-              />
-            </LinkWrapper>
-            <LinkWrapper>
-              <ExternalTouchableLink
-                as={Button}
-                variant="tertiary"
-                color="neutral"
-                wording="Charte des données personnelles"
-                externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-                icon={ExternalSiteFilled}
-                numberOfLines={numberOfLines}
-                fullWidth={Platform.OS === 'web'}
-              />
-            </LinkWrapper>
-            <LinkWrapper>
-              <ExternalTouchableLink
-                as={Button}
-                variant="tertiary"
-                color="neutral"
-                wording="Charte d’utilisation et de bonne conduite"
-                externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
-                icon={ExternalSiteFilled}
-                numberOfLines={numberOfLines}
-                fullWidth={Platform.OS === 'web'}
-              />
-            </LinkWrapper>
+            <StyledVerticalUl>
+              <StyledLi>
+                <ExternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  wording="Conditions Générales d’Utilisation"
+                  externalNav={{ url: env.CGU_LINK }}
+                  icon={ExternalSiteFilled}
+                  numberOfLines={numberOfLines}
+                  fullWidth={Platform.OS === 'web'}
+                />
+              </StyledLi>
+              <StyledLi>
+                <ExternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  wording="Charte des données personnelles"
+                  externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+                  icon={ExternalSiteFilled}
+                  numberOfLines={numberOfLines}
+                  fullWidth={Platform.OS === 'web'}
+                />
+              </StyledLi>
+              <StyledLi>
+                <ExternalTouchableLink
+                  as={Button}
+                  variant="tertiary"
+                  color="neutral"
+                  wording="Charte d’utilisation et de bonne conduite"
+                  externalNav={{ url: env.CODE_OF_CONDUCT_LINK }}
+                  icon={ExternalSiteFilled}
+                  numberOfLines={numberOfLines}
+                  fullWidth={Platform.OS === 'web'}
+                />
+              </StyledLi>
+            </StyledVerticalUl>
           </Container>
 
           <CheckboxGroup<string>
@@ -232,15 +235,20 @@ const ButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxxl,
 }))
 
-const Container = styled(ViewGap)(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
-  alignItems: 'flex-start',
 }))
 
 const ReverseOrderContainer = styled.View({
   flexDirection: 'column-reverse',
 })
 
-const LinkWrapper = styled.View({
+const StyledLi = styled(Li)({
   alignItems: 'flex-start',
 })
+
+const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
+  alignItems: 'flex-start',
+  gap: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
