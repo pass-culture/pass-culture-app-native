@@ -6,15 +6,21 @@ import {
 } from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
-const convertBookingsListDatesToTimezone = (bookings: BookingResponse[]): BookingResponse[] => {
+type Bookings = BookingResponse | BookingListItemResponse
+
+const convertBookingsListDatesToTimezone = <T extends Bookings>(bookings: T[]): T[] => {
+  if (!Array.isArray(bookings)) {
+    return []
+  }
+
+  if (!bookings.length) {
+    return bookings
+  }
+
   return bookings.map(convertBookingResponseDateToTimezone)
 }
 
-export const convertBookingResponseDateToTimezone = <
-  T extends BookingResponse | BookingListItemResponse,
->(
-  booking: T
-): T => {
+export const convertBookingResponseDateToTimezone = <T extends Bookings>(booking: T): T => {
   if (!('stock' in booking)) {
     return booking
   }
@@ -46,5 +52,5 @@ export const convertBookingsListResponseV2DatesToTimezone = (
   bookingsResponse: BookingsListResponseV2
 ): BookingsListResponseV2 => ({
   ...bookingsResponse,
-  bookings: bookingsResponse.bookings.map(convertBookingResponseDateToTimezone),
+  bookings: convertBookingsListDatesToTimezone(bookingsResponse.bookings),
 })
