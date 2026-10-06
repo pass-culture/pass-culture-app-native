@@ -1,6 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { ComponentProps, FunctionComponent, useCallback, useEffect, useRef } from 'react'
-import { AccessibilityInfo, findNodeHandle } from 'react-native'
+import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -23,6 +23,12 @@ type Props = {
   style?: ComponentProps<typeof AnimatedView>['style']
 }
 
+function focusWebElement(ref: React.RefObject<View | null>) {
+  // findNodeHandle is not supported on web, so focus the DOM element directly.
+  const element = ref.current as unknown as HTMLElement | null
+  element?.focus()
+}
+
 export const Tooltip: FunctionComponent<Props> = ({
   label,
   isVisible,
@@ -40,10 +46,13 @@ export const Tooltip: FunctionComponent<Props> = ({
     AccessibilityInfo.announceForAccessibility(label)
 
     const timeout = setTimeout(() => {
-      const node = findNodeHandle(containerRef.current)
-      if (node) {
-        AccessibilityInfo.setAccessibilityFocus(node)
+      if (Platform.OS === 'web') {
+        focusWebElement(containerRef)
+        return
       }
+
+      const node = findNodeHandle(containerRef.current)
+      if (node) AccessibilityInfo.setAccessibilityFocus(node)
     }, FADE_IN_DURATION)
 
     return () => clearTimeout(timeout)
@@ -68,6 +77,8 @@ export const Tooltip: FunctionComponent<Props> = ({
       duration={FADE_IN_DURATION}
       style={style}
       ref={containerRef}
+      // Make the element programmatically focusable on web without adding it to the tab order.
+      tabIndex={Platform.OS === 'web' ? -1 : undefined}
       accessibilityRole={AccessibilityRole.TOOLTIP}
       accessibilityLiveRegion="assertive"
       pointerDirection={pointerDirection}>
