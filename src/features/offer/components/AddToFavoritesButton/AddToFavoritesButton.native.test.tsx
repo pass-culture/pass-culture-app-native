@@ -5,6 +5,7 @@ import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -26,6 +27,7 @@ describe('<AddToFavoriteButton />', () => {
       '/v1/me/favorites',
       paginatedFavoritesResponseSnap
     )
+    setFeatureFlags()
   })
 
   it('should render nothing when offer already in favorite', async () => {

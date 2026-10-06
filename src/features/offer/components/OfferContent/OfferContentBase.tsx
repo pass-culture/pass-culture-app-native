@@ -25,6 +25,7 @@ import { OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/ge
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
+import { FavoriteType } from 'features/favorites/enum'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -223,8 +224,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   )
 
   const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddFavoriteMutation({
+    type: FavoriteType.OFFER,
     onSuccess: () => {
-      if (typeof offer.id === 'number' && params) {
+      if (typeof offer.id === 'number') {
         const { from, moduleName, moduleId, searchId, playlistType } = params
         void analytics.logHasAddedOfferToFavorites({
           from: getIsAComingSoonOffer(offer.bookingAllowedDatetime) ? 'comingSoonOffer' : from,

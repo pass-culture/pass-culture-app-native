@@ -13,6 +13,7 @@ import {
   LoginRequest,
   SignInResponseFailure,
 } from 'features/auth/types'
+import { FavoriteType } from 'features/favorites/enum'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   RootStackParamList,
@@ -110,6 +111,7 @@ const useHandleSigninSuccess = (
   }, [])
 
   const { mutate: addFavorite } = useAddFavoriteMutation({
+    type: FavoriteType.OFFER,
     onSuccess: onAddFavoriteSuccess,
   })
 

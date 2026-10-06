@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { FavoriteType } from 'features/favorites/enum'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -17,7 +18,7 @@ export const AddToFavoritesButton: FunctionComponent<Props> = ({
 }) => {
   const isFavorite = useFavorite({ offerId })
 
-  const { mutate: addFavorite } = useAddFavoriteMutation({})
+  const { mutate: addFavorite } = useAddFavoriteMutation({ type: FavoriteType.OFFER })
 
   const addToFavorite = () => {
     addFavorite({ offerId })

@@ -9,19 +9,26 @@ import {
   PaginatedFavoritesResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { FavoriteType } from 'features/favorites/enum'
+import { triggerFirstFavoriteSnackBar } from 'features/favorites/helpers/firstFavoriteSnackBar'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
-export const useAddFavoriteMutation = ({
-  onSuccess,
-}: {
+type UseAddFavoriteMutationProps = {
+  type: FavoriteType
   onSuccess?: (data?: FavoriteResponse) => void
-}) => {
+}
+
+export const useAddFavoriteMutation = ({ onSuccess, type }: UseAddFavoriteMutationProps) => {
+  const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
   const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: (body: FavoriteRequest) => api.postNativeV1MeFavorites(body),
-    onSuccess: (data: FavoriteResponse) => {
+    onSuccess: async (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
         QueryKeys.FAVORITES,
       ])
@@ -37,6 +44,11 @@ export const useAddFavoriteMutation = ({
           queryKey: [QueryKeys.FAVORITES],
         })
       }
+
+      if (enableFavoritesHub) {
+        await triggerFirstFavoriteSnackBar(type)
+      }
+
       if (onSuccess) {
         onSuccess(data)
       }
