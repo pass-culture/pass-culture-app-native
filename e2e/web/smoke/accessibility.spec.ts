@@ -12,6 +12,7 @@ test.describe('accessibility', () => {
   for (const { name, path } of pages) {
     test(`${name} page opened from its URL has exactly one main landmark`, async ({ page }) => {
       await page.goto(path)
+      await page.getByRole('main').first().waitFor()
 
       await expect(page.getByRole('main')).toHaveCount(1)
     })
