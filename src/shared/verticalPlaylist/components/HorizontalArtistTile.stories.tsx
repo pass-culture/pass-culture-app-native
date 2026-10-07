@@ -19,7 +19,7 @@ const variantConfig: Variants<typeof HorizontalArtistTile> = [
         id: '1',
         name: 'Artist 1',
         image:
-          'https://cdn.phototourl.com/free/2026-03-24-5f1a4c71-c6d5-45b2-94b4-2273fe731437.jpg',
+          'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
         role: 'Acteur',
       },
     },

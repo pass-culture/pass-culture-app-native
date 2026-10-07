@@ -12,7 +12,8 @@ const meta: Meta<typeof EditorialCard> = {
 export default meta
 
 const editorialCardInfo = {
-  imageURL: 'https://cdn.phototourl.com/free/2026-03-24-5f1a4c71-c6d5-45b2-94b4-2273fe731437.jpg',
+  imageURL:
+    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
   url: 'https://www.google.com/',
   date: '25 mars 2026',
   title: 'Main title',

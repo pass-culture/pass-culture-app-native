@@ -90,6 +90,14 @@ describe('parseMarkdown', () => {
     ])
   })
 
+  it('should preserve several different urls in the same text part', () => {
+    const input =
+      'First https://example.com/first, second https://example.com/second and third http://example.org/third'
+    const output = parseMarkdown(input)
+
+    expect(output).toEqual([{ text: input }])
+  })
+
   it('should return an empty array when style text is empty', () => {
     const input = '****'
     const output = parseMarkdown(input)

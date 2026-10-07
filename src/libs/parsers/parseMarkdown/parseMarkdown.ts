@@ -48,16 +48,18 @@ export function parseMarkdown(markdown: string, styles: TextStyle = {}): Markdow
   }
 
   // Restore URLs
+  const restoreUrlFromMarker = (marker: string, urlIndex: string) =>
+    urls[Number(urlIndex) - 1] ?? marker
+
   return parts.map((partObject) => {
     const regex = /{URL-(\d+)}/g
     if (!partObject.text.match(regex)) {
       return partObject
     }
 
-    const url = urls.shift() ?? ''
     return {
       ...partObject,
-      text: partObject.text.replaceAll(/{URL-(\d+)}/g, url),
+      text: partObject.text.replaceAll(regex, restoreUrlFromMarker),
     }
   })
 }
