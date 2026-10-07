@@ -1,11 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { ComponentProps, FunctionComponent, useCallback, useEffect, useRef } from 'react'
-import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native'
+import { Platform, AccessibilityInfo } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { focusElement } from 'shared/accessibility/helpers/focusElement'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
@@ -21,12 +22,6 @@ type Props = {
   onHide?: () => void
   onCloseIconPress?: () => void
   style?: ComponentProps<typeof AnimatedView>['style']
-}
-
-function focusWebElement(ref: React.RefObject<View | null>) {
-  // findNodeHandle is not supported on web, so focus the DOM element directly.
-  const element = ref.current as unknown as HTMLElement | null
-  element?.focus()
 }
 
 export const Tooltip: FunctionComponent<Props> = ({
@@ -46,13 +41,7 @@ export const Tooltip: FunctionComponent<Props> = ({
     AccessibilityInfo.announceForAccessibility(label)
 
     const timeout = setTimeout(() => {
-      if (Platform.OS === 'web') {
-        focusWebElement(containerRef)
-        return
-      }
-
-      const node = findNodeHandle(containerRef.current)
-      if (node) AccessibilityInfo.setAccessibilityFocus(node)
+      focusElement(containerRef)
     }, FADE_IN_DURATION)
 
     return () => clearTimeout(timeout)

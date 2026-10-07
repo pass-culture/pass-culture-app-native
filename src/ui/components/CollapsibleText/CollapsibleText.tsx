@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { focusElement } from 'shared/accessibility/helpers/focusElement'
 import { Markdown } from 'ui/components/Markdown/Markdown'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
@@ -27,12 +28,6 @@ function getContinuationA11yLabel(text: string, cutIndex: number) {
   return continuation
 }
 
-function focusWebElement(ref: React.RefObject<View | null>) {
-  // findNodeHandle is not supported on web, so focus the DOM element directly.
-  const element = ref.current as unknown as HTMLElement | null
-  element?.focus()
-}
-
 export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, children }: Props) {
   const [expanded, setExpanded] = useState(false)
   const continuationFocusRef = useRef<View>(null)
@@ -56,18 +51,13 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, child
   }
 
   const focusContinuation = () => {
-    if (Platform.OS === 'web') {
-      focusWebElement(continuationFocusRef)
-      return
-    }
-
-    const reactTag = findNodeHandle(continuationFocusRef.current)
-    if (reactTag) AccessibilityInfo.setAccessibilityFocus(reactTag)
+    focusElement(continuationFocusRef)
   }
 
   useEffect(
     function focusContinuationOnExpand() {
       if (!expanded || !isTruncated) return
+
       const timer = setTimeout(focusContinuation, 150)
       return () => clearTimeout(timer)
     },
