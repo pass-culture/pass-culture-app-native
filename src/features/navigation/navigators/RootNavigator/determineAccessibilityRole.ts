@@ -1,21 +1,9 @@
-import { Route } from '@react-navigation/native'
-
-import { ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
-export function determineAccessibilityRole(currentRoute: Route<string> | null) {
-  const currentRouteParams = currentRoute?.params
-  const pageWithFooter: ScreenNames[] = ['Home', 'Profile']
+// Home and Profile render their own main to keep their footer outside of it, TabNavigator delegates to its tabs
+const screensWithoutMainLandmark = ['TabNavigator', 'Home', 'Profile']
 
-  const doesCurrentRouteHaveFooter =
-    currentRouteParams &&
-    'screen' in currentRouteParams &&
-    pageWithFooter.includes(currentRouteParams?.screen as ScreenNames)
-
-  // when arriving on the app, currentRouteParams is undefined
-  // this might create issues when entering the app from other places then home
-  const mainAccessibilityRole: AccessibilityRole | undefined =
-    !currentRouteParams || doesCurrentRouteHaveFooter ? undefined : AccessibilityRole.MAIN
-
-  return mainAccessibilityRole
+// Must only depend on the screen: on web the role sets the DOM tag (div/main), changing it remounts the whole screen
+export function determineAccessibilityRole(routeName: string): AccessibilityRole | undefined {
+  return screensWithoutMainLandmark.includes(routeName) ? undefined : AccessibilityRole.MAIN
 }
