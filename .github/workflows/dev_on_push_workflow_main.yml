@@ -136,13 +136,6 @@ jobs:
     with:
       ENV: testing
       BUCKET_NAME: passculture-metier-ehp-testing-decliweb
-  deploy-web-perf:
-    needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
-    if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: perf
-      BUCKET_NAME: passculture-metier-ehp-perf-decliweb
   deploy-web-staging:
     needs: [yarn-tester]
     if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
@@ -156,12 +149,6 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: testing
-  deploy-web-proxy-perf:
-    needs: [check-server-folder-changes, yarn-tester]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
-    with:
-      ENV: perf
   deploy-web-proxy-staging:
     needs: [check-server-folder-changes-staging, deploy-web-staging, check-proxy-version-staging]
     if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
