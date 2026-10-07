@@ -11,6 +11,8 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home } from 'features/home/pages/Home'
 import { screenParamsParser } from 'features/navigation/helpers/screenParamsUtils'
+import { MainLandmark } from 'features/navigation/navigators/MainLandmark'
+import { determineAccessibilityRole } from 'features/navigation/navigators/RootNavigator/determineAccessibilityRole'
 import {
   SEARCH_STACK_LINKING_SCREENS,
   SearchStackScreen,
@@ -27,6 +29,17 @@ export const useIsSignedIn = () => {
 const tabNavigatorDefinition = {
   initialRouteName: 'Home',
   screenOptions: { headerShown: false, freezeOnBlur: true },
+  screenLayout: ({
+    children,
+    route,
+  }: {
+    children: React.ReactElement
+    route: { name: string }
+  }) => (
+    <MainLandmark accessibilityRole={determineAccessibilityRole(route.name)}>
+      {children}
+    </MainLandmark>
+  ),
   tabBar: (
     props: React.JSX.IntrinsicAttributes & {
       navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>
