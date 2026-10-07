@@ -116,7 +116,7 @@ export const WebShareModal = ({
                 )}`,
               }}
               wording="E-mail"
-              accessibilityLabel="Email - Ouvrir le gestionnaire mail"
+              accessibilityLabel="E-mail - Ouvrir le gestionnaire mail"
               icon={EmailFilled}
             />
           </NonSocialButtonsItem>

@@ -102,7 +102,10 @@ export const OfferArtistsSection: FunctionComponent<Props> = ({
       return (
         <InternalTouchableLink
           navigateTo={{ screen: 'Artist', params: { id: soloArtist.id } }}
-          accessibilityLabel={getComputedAccessibilityLabel(soloArtist.name, role)}
+          accessibilityLabel={getComputedAccessibilityLabel(
+            `${soloArtist.name}${role ? ` ${role}` : ''}`,
+            'page artiste'
+          )}
           accessibilityRole={accessibilityRoleInternalNavigation()}
           onBeforeNavigate={() => onPlaylistItemPress(soloArtist.id ?? '', soloArtist.name)}>
           {soloArtistContent(<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />)}

@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const SocialButton = ({ label, icon: Icon, externalNav }: Props) => (
-  <Container externalNav={externalNav}>
+  <Container externalNav={externalNav} accessibilityLabel={`${label} - Nouvelle fenêtre`}>
     <Icon />
     <Label>{label}</Label>
   </Container>
