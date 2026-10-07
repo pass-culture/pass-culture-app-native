@@ -15,7 +15,6 @@ import {
   RootStackParamList,
   StepperOrigin,
 } from 'features/navigation/navigators/RootNavigator/types'
-import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -34,12 +33,12 @@ type ValidateEmailChangeProps = NativeStackScreenProps<
 >
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
+  const { data: emailUpdateStatus, isFetched: isFetchedEmailUpdateStatus } =
     useEmailUpdateStatusQuery()
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { isLoggedIn, isUserLoading } = useAuthContext()
+  const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
@@ -82,7 +81,9 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.'
       )
       eventMonitoring.captureException(error)
-      navigation.replace(...homeNavigationConfig)
+      navigation.reset({
+        routes: [{ name: 'TabNavigator', params: { screen: 'Home', params: undefined } }],
+      })
     } finally {
       setIsLoading(false)
     }
@@ -90,10 +91,12 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
 
   useEffect(
     function redirectFromEmailUpdateStatus() {
-      if (isUserLoading || isLoadingEmailUpdateStatus) return
+      if (!isFetchedEmailUpdateStatus) return
 
       if (!emailUpdateStatus) {
-        navigation.replace(...homeNavigationConfig)
+        navigation.reset({
+          routes: [{ name: 'TabNavigator', params: { screen: 'Home', params: undefined } }],
+        })
         return
       }
 
@@ -101,7 +104,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
       }
     },
-    [emailUpdateStatus, isLoadingEmailUpdateStatus, isUserLoading, navigation]
+    [emailUpdateStatus, isFetchedEmailUpdateStatus, navigation]
   )
 
   return (
