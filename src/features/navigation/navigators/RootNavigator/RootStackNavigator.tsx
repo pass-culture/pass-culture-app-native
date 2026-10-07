@@ -48,6 +48,7 @@ import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { MainLandmark } from 'features/navigation/navigators/MainLandmark'
 import { AccessibleTabBar } from 'features/navigation/navigators/RootNavigator/Header/AccessibleTabBar'
 import { withAuthProtection } from 'features/navigation/navigators/RootNavigator/linking/withAuthProtection'
 import { RootScreenNames } from 'features/navigation/navigators/RootNavigator/types'
@@ -75,7 +76,6 @@ import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/Su
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
@@ -523,8 +523,16 @@ const RootStackNavigator = withWebWrapper(
         <RootStackNavigatorBase.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}
-          screenLayout={({ children }) => (
-            <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+          screenLayout={({ children, route, options }) => (
+            <MainLandmark
+              // transparent modals overlay a screen that already has its main
+              accessibilityRole={
+                options.presentation === 'transparentModal'
+                  ? undefined
+                  : determineAccessibilityRole(route.name)
+              }>
+              <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+            </MainLandmark>
           )}>
           <RootStackNavigatorBase.Screen name="TabNavigator" component={BottomTabScreen} />
           <RootStackNavigatorBase.Screen
@@ -615,10 +623,6 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
     return <LoadingPage />
   }
 
-  const mainAccessibilityRole: AccessibilityRole | undefined = determineAccessibilityRole(
-    currentRoute ?? null
-  )
-
   const shouldReserveTabBarSpace = !!(
     Platform.OS === 'web' &&
     isMobileViewport &&
@@ -628,10 +632,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
   return (
     <TabNavigationStateProvider>
       {showTabBar ? headerWithQuickAccess : <Header mainId={mainId} />}
-      <Main
-        nativeID={mainId}
-        accessibilityRole={mainAccessibilityRole}
-        shouldReserveTabBarSpace={shouldReserveTabBarSpace}>
+      <Main nativeID={mainId} shouldReserveTabBarSpace={shouldReserveTabBarSpace}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
       {showTabBar ? <AccessibleTabBar id={tabBarId} /> : null}
