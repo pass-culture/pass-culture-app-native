@@ -76,6 +76,16 @@ describe('<WebShareModal/>', () => {
     )
   })
 
+  it('should expose visible labels in share links accessibility labels', () => {
+    render(<WebShareModal {...defaultProps} />)
+
+    expect(screen.getByRole('link', { name: 'E-mail - Ouvrir le gestionnaire mail' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Facebook - Nouvelle fenêtre' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'X - Nouvelle fenêtre' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'WhatsApp - Nouvelle fenêtre' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Telegram - Nouvelle fenêtre' })).toBeTruthy()
+  })
+
   it('should open Facebook when sharing with Facebook', () => {
     render(<WebShareModal {...defaultProps} />)
     fireEvent.click(screen.getByText('Facebook'))

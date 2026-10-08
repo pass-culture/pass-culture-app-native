@@ -72,6 +72,12 @@ describe('<OfferArtistsSection />', () => {
       expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
 
+    it('should include the visible role in the artist link accessibility label', () => {
+      renderOfferArtistsSection([{ ...mockArtist, role: ArtistType.author }])
+
+      expect(screen.getByLabelText('Edith Piaf - Auteur')).toBeOnTheScreen()
+    })
+
     it('should not have redirection to artist page when artist has not id', () => {
       renderOfferArtistsSection([{ ...mockArtist, id: undefined }])
 
@@ -98,6 +104,12 @@ describe('<OfferArtistsSection />', () => {
       expect(screen.getByText('Sam Worthington')).toBeOnTheScreen()
       expect(screen.getByText('Zoe Saldana')).toBeOnTheScreen()
       expect(screen.getByText('Sigourney Weaver')).toBeOnTheScreen()
+    })
+
+    it('should include the visible role in artist links accessibility labels', () => {
+      renderOfferArtistsSection(mockMultiArtists)
+
+      expect(screen.getByLabelText('Sam Worthington - Acteur')).toBeOnTheScreen()
     })
 
     it('should display plural section title', () => {
