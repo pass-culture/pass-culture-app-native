@@ -1,0 +1,11 @@
+diff --git a/node_modules/react-native-orientation-locker/iOS/RCTOrientation/Orientation.m b/node_modules/react-native-orientation-locker/iOS/RCTOrientation/Orientation.m
+--- a/node_modules/react-native-orientation-locker/iOS/RCTOrientation/Orientation.m
++++ b/node_modules/react-native-orientation-locker/iOS/RCTOrientation/Orientation.m
+@@ -51,7 +51,6 @@
+ - (void)dealloc
+ {
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
+-    [self removeListeners:1];
+ }
+ 
+ - (UIInterfaceOrientation)getInterfaceOrientation
