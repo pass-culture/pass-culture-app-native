@@ -11,7 +11,7 @@ export function formatArtists(artists: OfferArtist[], offerCategoryId?: Category
       name: artist.name,
       image: artist.image ?? undefined,
       role,
-      accessibilityLabel: getComputedAccessibilityLabel(`${artist.name} ${role}`, 'page artiste'),
+      accessibilityLabel: getComputedAccessibilityLabel(`${artist.name} - ${role}`, 'page artiste'),
     }
   })
 }
