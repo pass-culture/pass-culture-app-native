@@ -49,6 +49,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenLastLoginInfo: undefined
   CheatcodesScreenLayoutExpiredLink: undefined
   CheatcodesScreenMandatoryUpdate: undefined
+  CheatcodesScreenModalSimple: undefined
   CheatcodesScreenNewCaledonia: undefined
   CheatcodesScreenOffline: undefined
   CheatcodesScreenPageHeaderWithoutPlaceholder: undefined

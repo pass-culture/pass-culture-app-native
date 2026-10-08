@@ -192,6 +192,12 @@ export function CheatcodesMenu(): React.JSX.Element {
       navigationTarget: { screen: 'CheatcodesScreenOffline' },
       subscreens: [],
     },
+    {
+      id: uuidv4(),
+      title: 'Modal simple',
+      navigationTarget: { screen: 'CheatcodesScreenModalSimple' },
+      subscreens: [],
+    },
   ]
 
   const filteredFeaturesButtons = filterAndSortCheatcodes(searchValue, featuresButtons)

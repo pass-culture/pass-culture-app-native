@@ -1,5 +1,9 @@
 import { createComponentForStaticNavigation } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from '@react-navigation/native-stack'
+import { Platform } from 'react-native'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
@@ -46,12 +50,20 @@ import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/Che
 import { CheatcodesScreenLastLoginInfo } from 'cheatcodes/pages/others/CheatcodesScreenLastLoginInfo'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
+import { CheatcodesScreenModalSimple } from 'cheatcodes/pages/others/CheatcodesScreenModalSimple'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenOffline } from 'cheatcodes/pages/others/CheatcodesScreenOffline'
 import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/CheatcodesScreenPageWithHeader'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { LoadingPage } from 'ui/pages/LoadingPage'
+
+const isWeb = Platform.OS === 'web'
+const modalType: NativeStackNavigationOptions = {
+  presentation: isWeb ? 'transparentModal' : 'formSheet',
+  sheetAllowedDetents: 'fitToContents',
+  sheetCornerRadius: 8,
+}
 
 const cheatcodesStackNavigatorPathDefinition = {
   screenOptions: {
@@ -281,6 +293,14 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenMandatoryUpdate,
       linking: { path: 'cheatcodes/other/campagne-mise-a-jour-données' },
       options: { title: 'Cheatcodes - Campagne de mise à jour des données' },
+    },
+    CheatcodesScreenModalSimple: {
+      screen: CheatcodesScreenModalSimple,
+      linking: { path: 'cheatcodes/other/modal-simple' },
+      options: {
+        title: 'Cheatcodes - Modal simple',
+        ...modalType,
+      },
     },
     CheatcodesScreenNewCaledonia: {
       screen: CheatcodesScreenNewCaledonia,
