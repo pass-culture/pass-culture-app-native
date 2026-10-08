@@ -14,7 +14,7 @@ import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { Nav } from './Nav'
 
-export const Header = memo(function Header({ mainId }: { mainId: string }) {
+export const Header = memo(function Header({ navId }: { navId: string }) {
   const { contentPage, breakpoints, appContentWidth, navTopHeight } = useTheme()
   const routeBadgeMap = useTabBarItemBadges()
 
@@ -26,7 +26,11 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
 
   return (
     <HeaderContainer accessibilityRole={AccessibilityRole.BANNER}>
-      <QuickAccess href={`#${mainId}`} title="Aller au contenu principal" />
+      <QuickAccess
+        href={`#${navId}`}
+        title="Aller au contenu principal"
+        onClick={() => document.getElementById(navId)?.focus()}
+      />
       {isDesktopOffset ? (
         <LeftContainer>
           <LogoContainer
@@ -41,7 +45,13 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
         </LeftContainer>
       ) : null}
       <CenterContainer>
-        <Nav maxWidth={appContentWidth} height={navTopHeight} routeBadgeMap={routeBadgeMap} />
+        <Nav
+          nativeID={navId}
+          tabIndex={-1}
+          maxWidth={appContentWidth}
+          height={navTopHeight}
+          routeBadgeMap={routeBadgeMap}
+        />
       </CenterContainer>
       {isDesktopOffset ? (
         <RightContainer>

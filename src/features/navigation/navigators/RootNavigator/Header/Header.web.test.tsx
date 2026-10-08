@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
@@ -99,6 +100,14 @@ describe('Header', () => {
       .filter((tab) => tab.getAttribute('aria-current') !== 'page')
       .forEach((tab) => expect(tab.getAttribute('aria-current')).toBeNull())
   })
+
+  it('should focus the navbar when activating the main content quick access link', async () => {
+    renderHeader({ isLoggedIn: true, user: beneficiaryUserV2 })
+
+    await userEvent.click(screen.getByRole('link', { name: 'Aller au contenu principal' }))
+
+    expect(screen.getByRole('navigation')).toHaveFocus()
+  })
 })
 
 function renderHeader({ isLoggedIn, user }: { isLoggedIn: boolean; user: UserProfile }) {
@@ -112,7 +121,7 @@ function renderHeader({ isLoggedIn, user }: { isLoggedIn: boolean; user: UserPro
       <WebThemeProvider theme={{ ...theme, showTabBar: false }}>
         <ThemeProvider theme={{ ...theme, showTabBar: false }}>
           <TabNavigationStateProvider>
-            <Header mainId="" />
+            <Header navId="navbar" />
           </TabNavigationStateProvider>
         </ThemeProvider>
       </WebThemeProvider>

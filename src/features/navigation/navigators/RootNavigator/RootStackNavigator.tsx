@@ -585,6 +585,7 @@ const RootStackNavigator = withWebWrapper(
 
 export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ currentRoute }) => {
   const mainId = uuidv4()
+  const navId = uuidv4()
   const tabBarId = uuidv4()
   const { showTabBar, isMobileViewport } = useTheme()
   const { isLoggedIn } = useAuthContext()
@@ -627,7 +628,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
 
   return (
     <TabNavigationStateProvider>
-      {showTabBar ? headerWithQuickAccess : <Header mainId={mainId} />}
+      {showTabBar ? headerWithQuickAccess : <Header navId={navId} />}
       <Main
         nativeID={mainId}
         accessibilityRole={mainAccessibilityRole}
