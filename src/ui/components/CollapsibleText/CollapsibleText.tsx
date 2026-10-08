@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AccessibilityInfo, findNodeHandle, View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { focusElement } from 'shared/accessibility/helpers/focusElement'
 import { Markdown } from 'ui/components/Markdown/Markdown'
 import { Button } from 'ui/designSystem/Button/Button'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
@@ -46,21 +47,22 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, child
 
   const onPress = () => {
     setExpanded((prev) => !prev)
-    if (onAdditionalPress) onAdditionalPress()
+    onAdditionalPress?.()
   }
 
-  useEffect(() => {
-    if (!expanded || !isTruncated) return
+  const focusContinuation = () => {
+    focusElement(continuationFocusRef)
+  }
 
-    const timer = setTimeout(() => {
-      const reactTag = findNodeHandle(continuationFocusRef.current)
-      if (reactTag) {
-        AccessibilityInfo.setAccessibilityFocus(reactTag)
-      }
-    }, 150)
+  useEffect(
+    function focusContinuationOnExpand() {
+      if (!expanded || !isTruncated) return
 
-    return () => clearTimeout(timer)
-  }, [expanded, isTruncated])
+      const timer = setTimeout(focusContinuation, 150)
+      return () => clearTimeout(timer)
+    },
+    [expanded, isTruncated]
+  )
 
   return (
     <View>
@@ -71,7 +73,9 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, child
             ref={continuationFocusRef}
             accessible
             accessibilityRole="text"
-            accessibilityLabel={continuationA11yLabel}>
+            accessibilityLabel={continuationA11yLabel}
+            // Make the element programmatically focusable on web without adding it to the tab order.
+            tabIndex={Platform.OS === 'web' ? -1 : undefined}>
             <Markdown>{secondPart}</Markdown>
           </View>
         </View>

@@ -1,11 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { ComponentProps, FunctionComponent, useCallback, useEffect, useRef } from 'react'
-import { AccessibilityInfo, findNodeHandle } from 'react-native'
+import { Platform, AccessibilityInfo } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { focusElement } from 'shared/accessibility/helpers/focusElement'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
@@ -40,10 +41,7 @@ export const Tooltip: FunctionComponent<Props> = ({
     AccessibilityInfo.announceForAccessibility(label)
 
     const timeout = setTimeout(() => {
-      const node = findNodeHandle(containerRef.current)
-      if (node) {
-        AccessibilityInfo.setAccessibilityFocus(node)
-      }
+      focusElement(containerRef)
     }, FADE_IN_DURATION)
 
     return () => clearTimeout(timeout)
@@ -68,6 +66,8 @@ export const Tooltip: FunctionComponent<Props> = ({
       duration={FADE_IN_DURATION}
       style={style}
       ref={containerRef}
+      // Make the element programmatically focusable on web without adding it to the tab order.
+      tabIndex={Platform.OS === 'web' ? -1 : undefined}
       accessibilityRole={AccessibilityRole.TOOLTIP}
       accessibilityLiveRegion="assertive"
       pointerDirection={pointerDirection}>
