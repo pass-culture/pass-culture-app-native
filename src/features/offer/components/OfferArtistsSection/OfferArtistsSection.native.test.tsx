@@ -67,7 +67,7 @@ describe('<OfferArtistsSection />', () => {
     it('should redirect to artist page when pressing button', async () => {
       renderOfferArtistsSection([mockArtist])
 
-      await user.press(screen.getByLabelText('Edith Piaf - page artiste'))
+      await user.press(screen.getByLabelText('Edith Piaf'))
 
       expect(navigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
@@ -75,7 +75,7 @@ describe('<OfferArtistsSection />', () => {
     it('should include the visible role in the artist link accessibility label', () => {
       renderOfferArtistsSection([{ ...mockArtist, role: ArtistType.author }])
 
-      expect(screen.getByLabelText('Edith Piaf Auteur - page artiste')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Edith Piaf - Auteur')).toBeOnTheScreen()
     })
 
     it('should not have redirection to artist page when artist has not id', () => {
@@ -109,7 +109,7 @@ describe('<OfferArtistsSection />', () => {
     it('should include the visible role in artist links accessibility labels', () => {
       renderOfferArtistsSection(mockMultiArtists)
 
-      expect(screen.getByLabelText('Sam Worthington Acteur - page artiste')).toBeOnTheScreen()
+      expect(screen.getByLabelText('Sam Worthington - Acteur')).toBeOnTheScreen()
     })
 
     it('should display plural section title', () => {

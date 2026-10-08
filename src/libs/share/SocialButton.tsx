@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -13,7 +14,9 @@ interface Props {
 }
 
 export const SocialButton = ({ label, icon: Icon, externalNav }: Props) => (
-  <Container externalNav={externalNav} accessibilityLabel={`${label} - Nouvelle fenêtre`}>
+  <Container
+    externalNav={externalNav}
+    accessibilityLabel={getComputedAccessibilityLabel(label, 'Nouvelle fenêtre')}>
     <Icon />
     <Label>{label}</Label>
   </Container>
