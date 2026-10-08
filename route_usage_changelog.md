@@ -1,11 +1,11 @@
-# v1.411.0
+# v1.412.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
 - /native/v1/me/reminders/{reminder_id}
-- /native/v1/account/suspend/token_validation/{token}
-Pathname not found for getNativeV1AccountSuspensionStatus
-Pathname not found for getNativeV1ArtistsartistId
+Pathname not found for getNativeV1AccountSuspendTokenValidationtoken
+- /native/v1/account/suspension_status
+- /native/v1/artists/{artist_id}
 - /native/v1/artists/{artist_id}/similar
 - /native/v1/banner
 - /native/v1/venue/{venue_id}/movie/calendar
@@ -14,7 +14,7 @@ Pathname not found for getNativeV1ArtistsartistId
 - /native/v1/email_validation_remaining_resends/{email}
 - /native/v1/me
 - /native/v1/me/favorites
-Pathname not found for getNativeV1MeReminders
+- /native/v1/me/reminders
 - /native/v1/movie/calendar
 - /native/v1/movie/calendar/me
 - /native/v1/offer/{offer_id}/chronicles
@@ -79,7 +79,7 @@ Pathname not found for getNativeV1MeReminders
 - /native/v2/signin
 - /native/v1/profile/email_update/validate
 ## Unused routes:
-- /native/v1/account/suspension_date
+Pathname not found for getNativeV1AccountSuspensionDate
 - /native/v1/bookings
 - /native/v1/categories
 - /native/v1/oauth/state
