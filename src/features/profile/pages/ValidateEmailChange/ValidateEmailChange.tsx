@@ -15,7 +15,6 @@ import {
   RootStackParamList,
   StepperOrigin,
 } from 'features/navigation/navigators/RootNavigator/types'
-import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -34,7 +33,7 @@ type ValidateEmailChangeProps = NativeStackScreenProps<
 >
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
+  const { data: emailUpdateStatus, isFetched: isFetchedEmailUpdateStatus } =
     useEmailUpdateStatusQuery()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -82,22 +81,31 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.'
       )
       eventMonitoring.captureException(error)
-      navigation.replace(...homeNavigationConfig)
+      navigation.reset({
+        routes: [{ name: 'TabNavigator', params: { screen: 'Home', params: undefined } }],
+      })
     } finally {
       setIsLoading(false)
     }
   }, [emailUpdateStatus?.newEmail, isLoggedIn, mutate, navigation, signOut])
 
-  useEffect(() => {
-    if (!isLoadingEmailUpdateStatus) {
+  useEffect(
+    function redirectFromEmailUpdateStatus() {
+      if (!isFetchedEmailUpdateStatus) return
+
       if (!emailUpdateStatus) {
-        navigation.replace(...homeNavigationConfig)
+        navigation.reset({
+          routes: [{ name: 'TabNavigator', params: { screen: 'Home', params: undefined } }],
+        })
+        return
       }
-      if (emailUpdateStatus?.expired) {
+
+      if (emailUpdateStatus.expired) {
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
       }
-    }
-  }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
+    },
+    [emailUpdateStatus, isFetchedEmailUpdateStatus, navigation]
+  )
 
   return (
     <GenericInfoPage

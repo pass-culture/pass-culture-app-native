@@ -15,7 +15,6 @@ import {
   RootStackParamList,
   StepperOrigin,
 } from 'features/navigation/navigators/RootNavigator/types'
-import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -30,6 +29,8 @@ const useEmailUpdateStatusSpy = jest
       expired: false,
       status: EmailHistoryEventTypeEnum.VALIDATION,
     },
+    isFetched: true,
+    isLoading: false,
   } as UseQueryResult<EmailUpdateStatusResponse>)
 
 jest.mock('features/navigation/helpers/navigateToHome')
@@ -171,7 +172,7 @@ describe('ValidateEmailChange', () => {
     expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
   })
 
-  it('should not display an error message if submit triggers an error  401', async () => {
+  it('should not display an error message if submit triggers an error 401', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
 
     renderValidateEmailChange()
@@ -188,6 +189,8 @@ describe('ValidateEmailChange', () => {
         newEmail: 'john@doe.com',
         status: EmailHistoryEventTypeEnum.VALIDATION,
       },
+      isFetched: true,
+      isLoading: false,
     } as UseQueryResult<EmailUpdateStatusResponse>)
 
     renderValidateEmailChange()
@@ -200,14 +203,18 @@ describe('ValidateEmailChange', () => {
   it('should redirect to home when there is no email update', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: undefined,
+      isFetched: true,
+      isLoading: false,
     } as UseQueryResult<EmailUpdateStatusResponse>)
 
     renderValidateEmailChange()
 
-    expect(navigation.replace).toHaveBeenCalledWith(...homeNavigationConfig)
+    expect(navigation.reset).toHaveBeenCalledWith({
+      routes: [{ name: 'TabNavigator', params: { screen: 'Home', params: undefined } }],
+    })
   })
 
-  it('should log to sentry, redirect to home and show error message when token is falsy', async () => {
+  it('should log to sentry, redirect to change email expired and show error message when token is falsy', async () => {
     renderValidateEmailChange(routeWithUndefinedToken)
 
     await user.press(screen.getByText('Valider l’adresse e-mail'))
@@ -215,7 +222,9 @@ describe('ValidateEmailChange', () => {
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       new Error('Expected a string, but received undefined')
     )
-    expect(navigation.replace).toHaveBeenCalledWith(...homeNavigationConfig)
+    expect(navigation.reset).toHaveBeenCalledWith({
+      routes: [{ name: 'TabNavigator', params: { screen: 'Home', params: undefined } }],
+    })
     expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
   })
 })
