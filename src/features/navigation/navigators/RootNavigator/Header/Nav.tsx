@@ -13,17 +13,21 @@ import { Ul } from 'ui/components/Ul'
 import { NavItem } from './NavItem'
 
 type Props = {
+  nativeID?: string
+  tabIndex?: 0 | -1
   maxWidth?: number
   height?: number
   routeBadgeMap?: Partial<Record<keyof TabParamList, number>>
 }
 
-export const Nav: React.FC<Props> = ({ maxWidth, height, routeBadgeMap }) => {
+export const Nav: React.FC<Props> = ({ nativeID, tabIndex, maxWidth, height, routeBadgeMap }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, hideSuggestions } = useSearch()
 
   return (
     <NavItemsContainer
+      nativeID={nativeID}
+      tabIndex={tabIndex}
       accessibilityRole={AccessibilityRole.NAVIGATION}
       maxWidth={maxWidth}
       navHeight={height}>
