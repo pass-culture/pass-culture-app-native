@@ -29,6 +29,11 @@ const profileCheatcodeCategory: CheatcodeCategory = {
       title: 'LoginWithOneTimePassword',
       navigationTarget: { screen: 'LoginWithOneTimePassword' },
     },
+    {
+      id: uuidv4(),
+      title: 'OneTimePasswordLimit',
+      navigationTarget: { screen: 'OneTimePasswordLimit' },
+    },
     { id: uuidv4(), title: 'LoginMethods', navigationTarget: { screen: 'LoginMethods' } },
     {
       id: uuidv4(),
