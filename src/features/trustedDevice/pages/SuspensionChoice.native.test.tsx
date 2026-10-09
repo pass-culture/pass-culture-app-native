@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
 import { beneficiaryUser } from 'fixtures/user'
@@ -26,6 +26,13 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),
   canGoBack: jest.fn(() => true),
 })
+
+jest.mock('features/navigation/navigationRef')
+
+const mockSignOut = jest.fn()
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
+  useLogoutRoutine: jest.fn(() => mockSignOut),
+}))
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
@@ -72,6 +79,16 @@ describe('<SuspensionChoice/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should logout on suspension success', async () => {
+    simulateSuspendForSuspiciousLoginSuccess()
+    renderSuspensionChoice()
+
+    const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
+    await user.press(acceptSuspensionButton)
+
+    expect(mockSignOut).toHaveBeenNthCalledWith(1, false)
+  })
+
   it('should navigate to suspension confirmation screen on suspension success', async () => {
     simulateSuspendForSuspiciousLoginSuccess()
     renderSuspensionChoice()
@@ -79,7 +96,7 @@ describe('<SuspensionChoice/>', () => {
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
     await user.press(acceptSuspensionButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
+    expect(resetFromRef).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
   it('should call Adjust.gdprForgetMe when pressing suspension button', async () => {

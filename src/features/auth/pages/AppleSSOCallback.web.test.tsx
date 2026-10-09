@@ -105,30 +105,6 @@ describe('AppleSSOCallback (web)', () => {
     })
   })
 
-  describe('success navigation', () => {
-    it('should reset navigation to TabNavigator when accountState is ACTIVE', async () => {
-      mockSignInAsync.mockResolvedValueOnce({ accountState: AccountState.ACTIVE })
-      mockRouteParams = { code: 'apple-code', state: VALID_STATE }
-
-      render(<AppleSSOCallback />)
-
-      await waitFor(() => {
-        expect(mockResetFromRef).toHaveBeenCalledWith('TabNavigator')
-      })
-    })
-
-    it('should reset navigation to AccountStatusScreenHandler when accountState is INACTIVE', async () => {
-      mockSignInAsync.mockResolvedValueOnce({ accountState: AccountState.INACTIVE })
-      mockRouteParams = { code: 'apple-code', state: VALID_STATE }
-
-      render(<AppleSSOCallback />)
-
-      await waitFor(() => {
-        expect(mockResetFromRef).toHaveBeenCalledWith('AccountStatusScreenHandler')
-      })
-    })
-  })
-
   describe('error navigation (navigateBack)', () => {
     it('should reset to LoginMethods when Apple returns an error', () => {
       mockRouteParams = { error: 'access_denied' }

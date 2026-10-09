@@ -1,23 +1,17 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/GenericSuspendedAccount/GenericSuspendedAccount'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { resetFromRef } from 'features/navigation/navigationRef'
 import { buildZendeskUrlForFraud } from 'features/profile/helpers/buildZendeskUrl'
-import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { userEvent, render, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-const mockSignOut = jest.fn()
-jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
-  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
-}))
-
 jest.mock('features/auth/context/AuthContext')
+jest.mock('features/navigation/navigationRef')
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockDeviceMetrics = {
@@ -41,7 +35,6 @@ jest.useFakeTimers()
 
 describe('<GenericSuspendedAccount />', () => {
   beforeEach(() => {
-    mockAuthContextWithUser(beneficiaryUser)
     setFeatureFlags()
   })
 
@@ -53,7 +46,6 @@ describe('<GenericSuspendedAccount />', () => {
 
     expect(openUrl).toHaveBeenCalledWith(
       buildZendeskUrlForFraud({
-        user: beneficiaryUser,
         metrics: mockDeviceMetrics,
         version: mockVersion,
       }),
@@ -68,11 +60,9 @@ describe('<GenericSuspendedAccount />', () => {
     const homeButton = screen.getByText('Retourner à l’accueil')
     await user.press(homeButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(
-      1,
+    expect(resetFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
       navigateToHomeConfig.params
     )
-    expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 })

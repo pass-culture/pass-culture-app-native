@@ -28,7 +28,6 @@ import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { SignupMethods } from 'features/auth/pages/signup/SignupMethods/SignupMethods'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
-import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
@@ -139,11 +138,6 @@ const rootScreens: RouteConfig[] = [
     name: 'ForgottenPassword',
     component: ForgottenPassword,
     options: { title: 'Mot de passe oublié' },
-  },
-  {
-    name: 'AccountStatusScreenHandler',
-    component: AccountStatusScreenHandler,
-    options: { title: 'Compte désactivé' },
   },
   {
     name: 'FraudulentSuspendedAccount',

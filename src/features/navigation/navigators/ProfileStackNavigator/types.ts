@@ -18,9 +18,7 @@ export type ProfileStackParamList = {
   MandatoryUpdatePersonalData: undefined
   UpdatePersonalDataConfirmation: undefined
   ProfileInformationValidationUpdate: undefined
-  ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void; offerId?: number } | undefined
-  DeactivateProfileSuccess: undefined
   DebugScreen: undefined
   SuspendProfileReason: undefined
   DeleteProfileAccountHacked: undefined

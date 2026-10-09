@@ -19,7 +19,10 @@ const handleBatchProfileReset = () => {
   editor.save()
 }
 
-export const logoutActions = async (setIsLoggedIn: (isLoggedIn: boolean) => void) => {
+export const logoutActions = async (
+  setIsLoggedIn: (isLoggedIn: boolean) => void,
+  withBackendSignout: boolean = true
+) => {
   setIsLoggedIn(false)
   try {
     handleBatchProfileReset()
@@ -29,7 +32,7 @@ export const logoutActions = async (setIsLoggedIn: (isLoggedIn: boolean) => void
 
     await Promise.all([
       analytics.logLogout(),
-      api.postNativeV1Signout(),
+      withBackendSignout && api.postNativeV1Signout(),
       storage.clear('access_token'),
       clearRefreshToken(),
       googleLogout(),
@@ -41,8 +44,11 @@ export const logoutActions = async (setIsLoggedIn: (isLoggedIn: boolean) => void
   }
 }
 
-export const useLogoutRoutine = (): (() => Promise<void>) => {
+export const useLogoutRoutine = (): ((withBackendSignout?: boolean) => Promise<void>) => {
   const { setIsLoggedIn } = useAuthContext()
 
-  return useCallback(async () => logoutActions(setIsLoggedIn), [setIsLoggedIn])
+  return useCallback(
+    async (withBackendSignout) => logoutActions(setIsLoggedIn, withBackendSignout),
+    [setIsLoggedIn]
+  )
 }

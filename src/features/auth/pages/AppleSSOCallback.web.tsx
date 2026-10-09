@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 
-import { AccountState } from 'api/gen'
 import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { Provider, SignInResponseFailure } from 'features/auth/types'
@@ -118,17 +117,11 @@ export const AppleSSOCallback = () => {
 
     const doSignIn = async () => {
       try {
-        const response = await signInAsync({
+        await signInAsync({
           authorizationCode: code,
           oauthStateToken: context.oauthStateToken,
           provider: Provider.APPLE,
         })
-
-        if (response.accountState === AccountState.ACTIVE) {
-          resetFromRef('TabNavigator')
-        } else {
-          resetFromRef('AccountStatusScreenHandler')
-        }
       } catch {
         // Errors are already handled by handleFailure (via onError → onFailure).
         // This catch handles the rethrow from mutateAsync.

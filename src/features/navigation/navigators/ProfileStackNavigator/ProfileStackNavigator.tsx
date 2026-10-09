@@ -22,8 +22,6 @@ import { Chatbot } from 'features/profile/pages/Chatbot/Chatbot'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { DebugScreen } from 'features/profile/pages/DebugScreen/DebugScreen'
-import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
-import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
 import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
@@ -130,12 +128,6 @@ const profileStackNavigatorPathDefinition = {
       linking: { path: 'profil/suspension/raison' },
       options: { title: 'Suspension du profil - Raison' },
     },
-    ConfirmDeleteProfile: {
-      screen: ConfirmDeleteProfile,
-      if: useIsSignedIn,
-      linking: { path: 'profil/suppression' },
-      options: { title: 'Suppression du profil' },
-    },
     DeleteProfileConfirmation: {
       screen: DeleteProfileConfirmation,
       linking: { path: 'profil/suppression/confirmation' },
@@ -146,11 +138,6 @@ const profileStackNavigatorPathDefinition = {
       screen: DeleteProfileSuccess,
       linking: { path: 'profil/suppression/succes' },
       options: { title: 'Suppression du profil - Succès' },
-    },
-    DeactivateProfileSuccess: {
-      screen: DeactivateProfileSuccess,
-      linking: { path: 'profil/desactivation/succes' },
-      options: { title: 'Désactivation du profil - Succès' },
     },
     SuspendAccountConfirmationWithoutAuthentication: {
       screen: SuspendAccountConfirmationWithoutAuthentication,

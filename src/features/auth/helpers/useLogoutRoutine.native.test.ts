@@ -151,11 +151,18 @@ describe('useLogoutRoutine', () => {
     expect(googleLogout).toHaveBeenCalledTimes(1)
   })
 
-  it('should logout from backend', async () => {
+  it('should logout from backend if needed', async () => {
     const { result } = renderUseLogoutRoutine()
-    await result.current()
+    await result.current(true)
 
     expect(apiSignOutSpy).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not logout from backend if not needed', async () => {
+    const { result } = renderUseLogoutRoutine()
+    await result.current(false)
+
+    expect(apiSignOutSpy).not.toHaveBeenCalled()
   })
 })
 

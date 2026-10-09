@@ -25,9 +25,6 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
     parse: screenParamsParser.AfterSignupEmailValidationBuffer,
     alias: ['creation-compte/validation-email'],
   },
-  AccountStatusScreenHandler: {
-    path: 'compte-desactive',
-  },
   FraudulentSuspendedAccount: {
     path: 'compte-suspendu-pour-fraude',
   },
