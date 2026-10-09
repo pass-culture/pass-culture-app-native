@@ -127,7 +127,6 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

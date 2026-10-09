@@ -12,11 +12,7 @@ import { QueryKeys } from 'libs/queryKeys'
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
 
 const sanitizeUser = (user: UserProfileResponse): UserProfile => {
-  const {
-    depositType: _depositType,
-    needsToFillCulturalSurvey: _needsToFillCulturalSurvey,
-    ...rest
-  } = user
+  const { depositType: _depositType, ...rest } = user
 
   const { statusType, creditType, eligibilityType } = getUserProfileState(user)
   return {

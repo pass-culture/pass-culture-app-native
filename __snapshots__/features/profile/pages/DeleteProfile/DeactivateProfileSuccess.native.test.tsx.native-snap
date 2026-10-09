@@ -127,7 +127,6 @@ exports[`DeactivateProfileSuccess should render deactivate profile success 1`] =
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

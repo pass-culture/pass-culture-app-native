@@ -26,6 +26,11 @@ describe('useUserProfileInfoQuery', () => {
   })
 
   it('should save last login info after every successful /me refetch', async () => {
+    getNativeV1MeSpy.mockResolvedValueOnce({
+      ...beneficiaryUserFromAPI,
+      needsToFillCulturalSurvey: true,
+    })
+
     const { result } = renderHook(() => useUserProfileInfoQuery(true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -40,5 +45,6 @@ describe('useUserProfileInfoQuery', () => {
       email: 'email@domain.ext',
       provider: Provider.EMAIL,
     })
+    expect(result.current.data?.needsToFillCulturalSurvey).toBe(true)
   })
 })

@@ -144,8 +144,6 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
     animationTargetShapeNames,
   })
 
-  const hasAnimation = !!animation && !remoteIllustration
-
   return (
     <Page>
       <Header
@@ -157,7 +155,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
 
         <ContainerFlex flexValue={flexWeb}>
           <ContainerWithCenteredContent marginVertical={marginVertical} flexValue={flexWeb}>
-            <IllustrationContainer animation={hasAnimation}>
+            <IllustrationContainer>
               {illustrationContent}
               {animation ? animationContent : null}
             </IllustrationContainer>
@@ -223,11 +221,17 @@ const renderAnimationContent = ({
   }
 
   if (animation) {
+    const scale = Math.min(
+      1,
+      illustrationSizes.fullPage / animation.w,
+      illustrationSizes.fullPage / animation.h
+    )
+
     return (
       <ThemedStyledLottieView
         source={animation}
-        width="100%"
-        height="100%"
+        width={animation.w * scale}
+        height={animation.h * scale}
         coloringMode={animationColoringMode}
         targetShapeNames={animationTargetShapeNames}
         targetLayerNames={animationTargetLayerNames}
@@ -288,11 +292,10 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, theme }) => ({
+const IllustrationContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   marginBottom: theme.designSystem.size.spacing.xl,
-  ...(animation && { height: '30%' }),
 }))
 
 const TextContainer = styled(ViewGap)<{ flex?: number }>(({ flex }) => ({
