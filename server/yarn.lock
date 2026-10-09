@@ -2287,7 +2287,7 @@ __metadata:
     html-entities: "npm:^2.6.0"
     http-proxy-middleware: "npm:^2.0.10"
     jest: "npm:^30.4.2"
-    msw: "npm:^2.14.6"
+    msw: "npm:^2.15.0"
     node-dev: "npm:^8.0.0"
     nodemon: "npm:^3.1.14"
     prettier: "npm:^3.8.3"
@@ -6983,9 +6983,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^2.14.6":
-  version: 2.14.6
-  resolution: "msw@npm:2.14.6"
+"msw@npm:^2.15.0":
+  version: 2.15.0
+  resolution: "msw@npm:2.15.0"
   dependencies:
     "@inquirer/confirm": "npm:^6.0.11"
     "@mswjs/interceptors": "npm:^0.41.3"
@@ -7012,7 +7012,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: 10/cf665cf17adb07561ae84556cb608dbe18695b97099e00dd8b1403b9fc5b04d5b2e168741afd1300d1391334cfcc300dd2ed0c6dced4bfd317f5b29d45c63eec
+  checksum: 10/0c9d2140608a436017a9a38c1c455bce0b880063a1df350245749f63352ee87923b26c71c71cebc4ddaeb29302a3cf148ac4d179a860469006c86a5e0af093ac
   languageName: node
   linkType: hard
 
