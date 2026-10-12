@@ -37,8 +37,8 @@ describe('getTagColors', () => {
     expect(result.iconSize).toEqual(iconSize)
   })
 
-  it('should return correct colors for TagVariant.NEW', () => {
-    const result = getColors(TagVariant.NEW)
+  it('should return correct colors for TagVariant.HIGHLIGHT', () => {
+    const result = getColors(TagVariant.HIGHLIGHT)
 
     expect(result.backgroundColor).toEqual(background.brandPrimary)
     expect(result.labelColor).toEqual('inverted')

@@ -52,7 +52,7 @@ export const VenueAdvicesSection: FunctionComponent<Props> = ({
 
       {enableNewTagProAdvices ? (
         <TagContainer shouldDisplayAllAdvicesButton={shouldDisplayAllAdvicesButton}>
-          <Tag variant={TagVariant.NEW} label="Nouveau" />
+          <Tag variant={TagVariant.HIGHLIGHT} label="Nouveau" />
         </TagContainer>
       ) : null}
 

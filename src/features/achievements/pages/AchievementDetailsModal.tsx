@@ -43,7 +43,7 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
         </IconsWrapper>
         <BodyWrapper>
           {achievement.completed ? (
-            <Tag label={completedAtLabel} variant={TagVariant.NEW} />
+            <Tag label={completedAtLabel} variant={TagVariant.HIGHLIGHT} />
           ) : (
             <Tag label="Non débloqué" />
           )}

@@ -14,7 +14,7 @@ export enum TagVariant {
   SUCCESS = 'success',
   WARNING = 'warning',
   ERROR = 'error',
-  NEW = 'new',
+  HIGHLIGHT = 'highlight',
   BOOKCLUB = 'bookclub',
   CINECLUB = 'cineclub',
   SCENECLUB = 'sceneClub',
