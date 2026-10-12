@@ -84,6 +84,7 @@ export const ModalScreenWrapper = ({
             exiting={BACKDROP_EXITING}
             onPress={closeWithTransition}
             accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
+            accessibilityRole={AccessibilityRole.BUTTON}
           />
           <ModalContainer
             ref={modalRef}

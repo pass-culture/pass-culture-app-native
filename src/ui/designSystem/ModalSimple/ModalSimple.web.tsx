@@ -26,7 +26,7 @@ export const ModalSimple: FunctionComponent<ModalSimpleProps> = ({
       {(closeWithTransition) => (
         <React.Fragment>
           <ModalSimpleHeader onClose={closeWithTransition} />
-          <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+          <ScrollView bounces={false} showsVerticalScrollIndicator={false} tabIndex={0}>
             <ModalSimpleContent
               title={title}
               description={description}
