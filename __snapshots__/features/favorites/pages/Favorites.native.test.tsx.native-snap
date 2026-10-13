@@ -203,6 +203,7 @@ exports[`<Favorites/> should render correctly 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginTop": 24,
       }
     }
     testID="FavoritesResultsPlaceHolder"
@@ -227,7 +228,7 @@ exports[`<Favorites/> should render correctly 1`] = `
       contentContainerStyle={
         {
           "flexGrow": 1,
-          "paddingBottom": 98,
+          "paddingBottom": 80,
         }
       }
       data={
@@ -279,7 +280,6 @@ exports[`<Favorites/> should render correctly 1`] = `
       scrollEnabled={false}
       scrollEventThrottle={0.0001}
       stickyHeaderIndices={[]}
-      style={{}}
       viewabilityConfigCallbackPairs={[]}
     >
       <View>
