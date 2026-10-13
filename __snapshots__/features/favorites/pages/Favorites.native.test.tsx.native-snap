@@ -227,7 +227,7 @@ exports[`<Favorites/> should render correctly 1`] = `
       contentContainerStyle={
         {
           "flexGrow": 1,
-          "paddingBottom": 80,
+          "paddingBottom": 98,
         }
       }
       data={

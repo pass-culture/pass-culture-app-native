@@ -9,7 +9,6 @@ import React, {
 } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
-import { DefaultTheme } from 'styled-components/native/dist/types'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -24,8 +23,11 @@ import {
   sortByIdDesc,
 } from 'features/favorites/helpers/sorts'
 import { useFavoritesQuery } from 'features/favorites/queries'
-import { FavoriteSortBy } from 'features/favorites/types'
+import { FavoriteSortBy, Tab } from 'features/favorites/types'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -70,13 +72,13 @@ const ANIMATION_DURATION = 700
 const StyledFlatList = styled(FlatList).attrs(({ theme }) => ({
   contentContainerStyle: {
     flexGrow: 1,
-    paddingBottom: theme.tabBar.height + theme.designSystem.size.spacing.l,
+    paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
   },
 }))``
 
-const contentContainerStyle = (theme: DefaultTheme) => ({
+const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
+  paddingBottom: TAB_BAR_COMP_HEIGHT + designSystem.size.spacing.l,
 })
 
 const UnmemoizedFavoritesResults: FunctionComponent = () => {
@@ -87,7 +89,9 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-  const theme = useTheme()
+  const { designSystem } = useTheme()
+  const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
+  const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
   const sortedFavorites = useMemo(() => {
     if (!data) {
       return
@@ -113,8 +117,13 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   )
 
   const ListHeaderComponent = useMemo(
-    () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
-    [sortedFavorites]
+    () => (
+      <NumberOfResults
+        nbFavorites={sortedFavorites ? sortedFavorites.length : 0}
+        tab={enableFavoritesHub ? selectedTab : undefined}
+      />
+    ),
+    [enableFavoritesHub, selectedTab, sortedFavorites]
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(
@@ -123,6 +132,37 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   )
 
   if (showSkeleton) return <FavoritesResultsPlaceHolder />
+
+  const favoritesList = (favorites?: FavoriteResponse[]) => (
+    <FlatList
+      accessibilityRole={AccessibilityRole.LIST}
+      listAs="ul"
+      itemAs="li"
+      ref={flatListRef}
+      testID="favoritesResultsFlatlist"
+      data={favorites}
+      extraData={favoritesState.sortBy}
+      contentContainerStyle={contentContainerStyle(designSystem)}
+      keyExtractor={keyExtractor}
+      ListHeaderComponent={ListHeaderComponent}
+      ListFooterComponent={ListFooterComponent}
+      renderItem={renderItem}
+      refreshing={isRefreshing}
+      onRefresh={refetch}
+      onEndReachedThreshold={0.9}
+      ListEmptyComponent={ListEmptyComponent}
+      initialNumToRender={10}
+    />
+  )
+
+  const tabPanels = {
+    [Tab.OFFERS]: favoritesList(sortedFavorites),
+    [Tab.VENUES]: <EmptyComponentContainer>{ListEmptyComponent}</EmptyComponentContainer>,
+    [Tab.ARTISTS]: <EmptyComponentContainer>{ListEmptyComponent}</EmptyComponentContainer>,
+  }
+
+  const tabs = [{ key: Tab.OFFERS }, { key: Tab.VENUES }, { key: Tab.ARTISTS }]
+
   return (
     <React.Fragment>
       {offerToBook ? (
@@ -132,32 +172,25 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           offerId={offerToBook.id}
         />
       ) : null}
-      {sortedFavorites && sortedFavorites.length > 0 ? (
+      {sortedFavorites && sortedFavorites.length > 0 && selectedTab === Tab.OFFERS ? (
         <SortContainer>
           <SortButton />
           <Spacer.BottomScreen />
         </SortContainer>
       ) : null}
-      <Container>
-        <FlatList
-          accessibilityRole={AccessibilityRole.LIST}
-          listAs="ul"
-          itemAs="li"
-          ref={flatListRef}
-          testID="favoritesResultsFlatlist"
-          data={sortedFavorites}
-          extraData={favoritesState.sortBy}
-          contentContainerStyle={contentContainerStyle(theme)}
-          keyExtractor={keyExtractor}
-          ListHeaderComponent={ListHeaderComponent}
-          ListFooterComponent={ListFooterComponent}
-          renderItem={renderItem}
-          refreshing={isRefreshing}
-          onRefresh={refetch}
-          onEndReachedThreshold={0.9}
-          ListEmptyComponent={ListEmptyComponent}
-          initialNumToRender={10}
-        />
+
+      <Container enableFavoritesHub={enableFavoritesHub}>
+        {enableFavoritesHub ? (
+          <TabLayout
+            accessibilityLabel="Types de favoris"
+            tabPanels={tabPanels}
+            tabs={tabs}
+            defaultTab={selectedTab}
+            onTabChange={setSelectedTab}
+          />
+        ) : (
+          favoritesList(sortedFavorites)
+        )}
       </Container>
     </React.Fragment>
   )
@@ -167,7 +200,17 @@ const Footer = styled.View(({ theme }) => ({ height: theme.designSystem.size.spa
 
 export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
-const Container = styled.View({ flex: 1 })
+const Container = styled.View<{ enableFavoritesHub?: boolean }>(
+  ({ theme, enableFavoritesHub }) => ({
+    flex: 1,
+    marginTop: enableFavoritesHub ? theme.designSystem.size.spacing.xl : undefined,
+  })
+)
+
+const EmptyComponentContainer = styled.View(({ theme }) => ({
+  flex: 1,
+  paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
+}))
 
 const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
