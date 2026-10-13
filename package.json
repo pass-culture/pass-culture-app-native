@@ -133,6 +133,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.35.0",
     "react-instantsearch-core": "^7.20.0",
+    "react-intersection-observer": "^11.0.1",
     "react-mobile-picker": "^0.2.1",
     "react-native": "0.85.3",
     "react-native-adjust": "^5.5.0",

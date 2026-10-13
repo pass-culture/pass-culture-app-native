@@ -1,5 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { Ref, useCallback, useRef } from 'react'
+import React, { RefObject, useCallback, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
@@ -10,22 +10,31 @@ type ViewableItemsChangedInfo = {
   changed: ViewToken[]
 }
 
-type ObservedPlaylistProps = {
+type PlaylistRef = {
+  recordInteraction: () => void
+}
+
+type ObservedPlaylistProps<T extends PlaylistRef> = {
+  listRef?: RefObject<T | null>
   children: (props: {
-    listRef: Ref<FlatList>
+    listRef: RefObject<T | null>
     handleViewableItemsChanged: (info: ViewableItemsChangedInfo) => void
   }) => React.ReactNode
   onIntersectionChange?: (inView: boolean) => void
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onItemViewed?: (item: { key: string; index: number; item: any }) => void
+  fill?: boolean
 }
 
-export const ObservedPlaylist = ({
+export const ObservedPlaylist = <T extends PlaylistRef = FlatList>({
+  listRef: listRefProp,
   children,
   onIntersectionChange,
   onItemViewed,
-}: ObservedPlaylistProps) => {
-  const listRef = useRef<FlatList>(null)
+  fill = false,
+}: ObservedPlaylistProps<T>) => {
+  const internalListRef = useRef<T | null>(null)
+  const listRef = listRefProp ?? internalListRef
   const lastViewableItems = useRef<ViewToken[]>([])
   const isInView = useRef(false)
   // FlatList refuses a new onViewableItemsChanged, so the handler below stays stable
@@ -80,11 +89,11 @@ export const ObservedPlaylist = ({
         listRef.current?.recordInteraction()
       }
     },
-    [handleViewableItemsChanged, onIntersectionChange]
+    [handleViewableItemsChanged, listRef, onIntersectionChange]
   )
 
   return (
-    <IntersectionObserver onChange={handleIntersectionObserverChange} threshold="80%">
+    <IntersectionObserver onChange={handleIntersectionObserverChange} threshold={0.8} fill={fill}>
       {children({ listRef, handleViewableItemsChanged })}
     </IntersectionObserver>
   )
