@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { SubscriptionStepperResponseV3 } from 'api/gen'
 import { ActivationBanner } from 'features/profile/components/Banners/ActivationBanner/ActivationBanner'
 import { EligibleMessage } from 'features/profile/components/EligibleMessage/EligibleMessage'
 import { getProfileHeaderTitle } from 'features/profile/helpers/getProfileHeaderTitle'
@@ -11,7 +11,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
   user: UserProfile
-  subscriptionInfos?: SubscriptionStepperResponseV2
+  subscriptionInfos?: SubscriptionStepperResponseV3
 } & ProfileFeatureFlagsProps
 
 export const EligibleHeader = ({ featureFlags, user, subscriptionInfos }: Props) => {

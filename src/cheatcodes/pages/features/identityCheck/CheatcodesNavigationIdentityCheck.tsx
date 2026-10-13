@@ -134,13 +134,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'SetPhoneNumber',
-      navigationTarget: getSubscriptionPropConfig('SetPhoneNumber', {
-        type: ProfileTypes.IDENTITY_CHECK,
-      }),
-    },
-    {
-      id: uuidv4(),
       title: 'SetCity',
       navigationTarget: getSubscriptionPropConfig('SetCity', { type: ProfileTypes.IDENTITY_CHECK }),
     },
@@ -148,11 +141,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
       id: uuidv4(),
       title: 'SetName',
       navigationTarget: getSubscriptionPropConfig('SetName', { type: ProfileTypes.IDENTITY_CHECK }),
-    },
-    {
-      id: uuidv4(),
-      title: 'SetPhoneNumberWithoutValidation',
-      navigationTarget: getSubscriptionPropConfig('SetPhoneNumberWithoutValidation'),
     },
     {
       id: uuidv4(),

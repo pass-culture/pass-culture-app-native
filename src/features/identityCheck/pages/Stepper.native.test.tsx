@@ -183,11 +183,10 @@ describe('Stepper navigation', () => {
   })
 
   it.each`
-    subscriptionStep                      | stepperLabel             | eventParam
-    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${IdentityCheckStep.PHONE_VALIDATION}
-    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${IdentityCheckStep.IDENTIFICATION}
-    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${IdentityCheckStep.CONFIRMATION}
-    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${IdentityCheckStep.PROFILE}
+    subscriptionStep                    | stepperLabel        | eventParam
+    ${IdentityCheckStep.IDENTIFICATION} | ${'Identification'} | ${IdentityCheckStep.IDENTIFICATION}
+    ${IdentityCheckStep.CONFIRMATION}   | ${'Confirmation'}   | ${IdentityCheckStep.CONFIRMATION}
+    ${IdentityCheckStep.PROFILE}        | ${'Profil'}         | ${IdentityCheckStep.PROFILE}
   `(
     'should trigger analytics with the $eventParam parameter',
     async ({
