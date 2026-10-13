@@ -3,7 +3,7 @@ export enum CinemaScreeningCardDisabledReason {
   INSUFFICIENT_CREDIT = 'Crédit insuffisant',
 }
 
-export type CinemaScreeningAccessibility = Partial<
+type CinemaScreeningAccessibility = Partial<
   Record<'audio' | 'visual' | 'mental' | 'motor', string[]>
 >
 
