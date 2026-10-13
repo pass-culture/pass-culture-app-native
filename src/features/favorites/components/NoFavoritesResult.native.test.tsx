@@ -39,15 +39,14 @@ describe('NoFavoritesResult component', () => {
     expect(text).toBeOnTheScreen()
   })
 
-  it('should navigate to Search when pressing button and log event', async () => {
+  it('should navigate to home when pressing button and log event', async () => {
     render(<NoFavoritesResult />)
 
-    const button = screen.getByText('Découvrir le catalogue')
+    const button = screen.getByText('Explorer')
     await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'SearchLanding' },
-      screen: 'SearchStackNavigator',
+      screen: 'Home',
     })
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
   })

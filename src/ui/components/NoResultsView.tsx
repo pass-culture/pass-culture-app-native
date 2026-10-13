@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
@@ -50,10 +49,9 @@ export const NoResultsView = ({
         {offline ? null : (
           <InternalTouchableLink
             as={Button}
-            navigateTo={getSearchPropConfig('SearchLanding')}
-            wording="Découvrir le catalogue"
+            navigateTo={navigateToHomeConfig}
+            wording="Explorer"
             onBeforeNavigate={onPressExploreOffers}
-            icon={MagnifyingGlass}
           />
         )}
       </ContentContainer>

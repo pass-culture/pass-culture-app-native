@@ -56,13 +56,12 @@ describe('<NoBookingsView />', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     await renderAsync(reactQueryProviderHOC(<NoBookingsView />))
 
-    const button = screen.getByText('Découvrir le catalogue')
+    const button = screen.getByText('Explorer')
     await user.press(button)
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'SearchLanding' },
-        screen: 'SearchStackNavigator',
+        screen: 'Home',
       })
 
       expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
