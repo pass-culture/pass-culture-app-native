@@ -30,6 +30,7 @@ export const CinemaScreeningCardBase: FunctionComponent<CinemaScreeningCardBaseP
   accessibility = {},
   disabledReason,
   minHeight = CINEMA_SCREENING_CARD_MIN_HEIGHT,
+  fillHeight = false,
   onLayout,
   hovered = false,
   onMouseEnter,
@@ -71,6 +72,7 @@ export const CinemaScreeningCardBase: FunctionComponent<CinemaScreeningCardBaseP
       minHeight={minHeight}
       backgroundColor={colors.backgroundColor}
       borderColor={colors.borderColor}
+      fillHeight={fillHeight}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onLayout={onLayout}>
@@ -114,7 +116,7 @@ export const CinemaScreeningCardBase: FunctionComponent<CinemaScreeningCardBaseP
 }
 
 const Card = styledButton(Touchable)<CinemaScreeningCardStyleProps>(
-  ({ theme, minHeight, backgroundColor, borderColor, disabled }) => ({
+  ({ theme, minHeight, backgroundColor, borderColor, disabled, fillHeight }) => ({
     width: CINEMA_SCREENING_CARD_WIDTH,
     minHeight,
     boxSizing: 'border-box',
@@ -126,6 +128,7 @@ const Card = styledButton(Touchable)<CinemaScreeningCardStyleProps>(
     borderRadius: theme.designSystem.size.borderRadius.m,
     backgroundColor,
     cursor: disabled ? 'default' : 'pointer',
+    flexGrow: Platform.OS === 'web' && fillHeight ? 1 : undefined,
     textDecorationLine: 'none',
     ...customFocusOutline({ theme }),
     ...(Platform.OS === 'web'

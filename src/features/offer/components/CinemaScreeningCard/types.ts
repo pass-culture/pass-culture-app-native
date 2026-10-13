@@ -22,6 +22,7 @@ export type CinemaScreeningCardProps = {
 
 export type CinemaScreeningCardComponentProps = CinemaScreeningCardProps & {
   onLayout?: (event: LayoutChangeEvent) => void
+  fillHeight?: boolean
 }
 
 export type CinemaScreeningCardBaseProps = CinemaScreeningCardComponentProps & {
@@ -35,6 +36,7 @@ export type CinemaScreeningCardStyleProps = {
   backgroundColor: string
   borderColor: string
   disabled: boolean
+  fillHeight: boolean
   onMouseEnter?: VoidFunction
   onMouseLeave?: VoidFunction
 }
