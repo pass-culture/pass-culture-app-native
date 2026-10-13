@@ -84,6 +84,7 @@ export const ModalScreenWrapper = ({
             exiting={BACKDROP_EXITING}
             onPress={closeWithTransition}
             accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
+            accessibilityRole={AccessibilityRole.BUTTON}
           />
           <ModalContainer
             ref={modalRef}
@@ -124,6 +125,7 @@ const Backdrop = styled(AnimatedPressable)({
 const ModalContainer = styled(Animated.View)<{ fullScreen?: boolean }>(({ theme, fullScreen }) => ({
   width: '100%',
   height: fullScreen ? '100%' : 'auto',
+  maxHeight: '100%',
   backgroundColor: theme.designSystem.color.background.default,
   borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
   borderTopRightRadius: theme.designSystem.size.borderRadius.l,
