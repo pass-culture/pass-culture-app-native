@@ -86,7 +86,7 @@ export function GtlPlaylist({
   return (
     <IntersectionObserver
       onChange={handleLogModuleDisplayedScrolling}
-      threshold="50%"
+      threshold={0.5}
       key={entryId}>
       <PassPlaylist
         data={playlist.offers.hits}

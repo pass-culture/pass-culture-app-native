@@ -1,13 +1,7 @@
 import { useIsFocused } from '@react-navigation/native'
 import { FlashList, FlashListRef } from '@shopify/flash-list'
 import React, { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
-import {
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  Platform,
-  ScrollView,
-  useWindowDimensions,
-} from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform, useWindowDimensions } from 'react-native'
 import Animated, { LinearTransition } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 } from 'uuid'
@@ -28,17 +22,18 @@ import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { FetchSearchResultsArgs, GridListLayout, SearchView } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { Li } from 'ui/components/Li'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
-import { Ul, VerticalUl } from 'ui/components/Ul'
+import { Ul } from 'ui/components/Ul'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const searchIdGenerated = v4()
@@ -46,9 +41,14 @@ const isWeb = Platform.OS === 'web'
 
 type Props = {
   searchFilters: FetchSearchResultsArgs
+  playlistIndex?: number
 }
 
-export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilters }) => {
+export const OffersList: FC<PropsWithChildren<Props>> = ({
+  children,
+  searchFilters,
+  playlistIndex = 0,
+}) => {
   const { tabBarHeight } = useCustomSafeInsets()
   const transformHits = useTransformOfferHits()
 
@@ -99,7 +99,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilte
     await fetchNextPage()
   }
 
-  const listRef = useRef<FlashListRef<Offer>>(null)
+  const listRef = useRef<FlashListRef<Offer> | null>(null)
 
   const shouldRenderScrollToTopButton = (offersResponse?.nbHits || 0) > 0 && !isWeb
 
@@ -164,46 +164,47 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilte
 
   return (
     <Container>
-      {isWeb ? (
-        <StyledScrollView
-          contentContainerStyle={{
-            paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
-            paddingHorizontal: designSystem.size.spacing.xl,
-          }}
-          onScroll={handleScroll}>
-          {listHeaderComponent}
-          <VerticalUl>
-            {offersResponse?.offers.map((item, index) => (
-              <Li key={item.objectID}>
-                <SearchOfferItemWrapper item={item} index={index} />
-              </Li>
-            ))}
-          </VerticalUl>
-        </StyledScrollView>
-      ) : (
-        <FlashList
-          ref={listRef}
-          key="offers_search_results"
-          accessibilityRole={AccessibilityRole.LIST}
-          data={offersResponse?.offers}
-          keyExtractor={(item: Offer) => item.objectID}
-          ListHeaderComponent={<React.Fragment>{listHeaderComponent}</React.Fragment>}
-          renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
-          contentContainerStyle={{
-            paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
-            paddingHorizontal: designSystem.size.spacing.xl,
-          }}
-          ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
-          numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
-          refreshing={isRefetching}
-          onRefresh={refetch}
-          onEndReached={handleEndReached}
-          scrollEnabled={!!offersResponse?.nbHits}
-          onScroll={handleScroll}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-        />
-      )}
+      <ObservedPlaylist<FlashListRef<Offer>>
+        listRef={listRef}
+        fill
+        onItemViewed={({ index, item }) => {
+          if (!isFocused || !searchState.searchId) return
+          void logViewItem({
+            origin: 'search',
+            playlistIndex,
+            index,
+            type: 'offer',
+            id: item.objectID,
+            playlistId: 'searchResults',
+            originId: searchState.searchId,
+          })
+        }}>
+        {({ handleViewableItemsChanged }) => (
+          <FlashList
+            ref={listRef}
+            key="offers_search_results"
+            accessibilityRole={AccessibilityRole.LIST}
+            data={offersResponse?.offers}
+            keyExtractor={(item: Offer) => item.objectID}
+            ListHeaderComponent={<React.Fragment>{listHeaderComponent}</React.Fragment>}
+            renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
+            onViewableItemsChanged={handleViewableItemsChanged}
+            contentContainerStyle={{
+              paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+              paddingHorizontal: designSystem.size.spacing.xl,
+            }}
+            ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
+            numColumns={isGridLayout ? nbrOfTilesToDisplay : undefined}
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            onEndReached={handleEndReached}
+            scrollEnabled={!!offersResponse?.nbHits}
+            onScroll={handleScroll}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
+          />
+        )}
+      </ObservedPlaylist>
 
       <FloatingButtonsWrapper
         tabBarHeight={tabBarHeight}
@@ -240,7 +241,3 @@ const FloatingButtonsWrapper = styled(Animated.View)<{ tabBarHeight: number }>(
     zIndex: theme.zIndex.floatingButton,
   })
 )
-
-const StyledScrollView = styled(ScrollView)({
-  flex: 1,
-})
