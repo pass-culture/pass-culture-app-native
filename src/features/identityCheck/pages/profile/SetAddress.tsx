@@ -10,12 +10,9 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { shouldProvidePhoneNumber } from 'features/identityCheck/pages/profile/utils'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
@@ -56,9 +53,7 @@ export const SetAddress = () => {
   }
 
   const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
-  const phoneNumberInProfileStepper = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER
-  )
+
   const storedAddress = useAddress()
   const defaultAddress = user?.street ?? storedAddress
   const storedCity = useCity()
@@ -84,7 +79,6 @@ export const SetAddress = () => {
     if (!isError) return
     showErrorSnackBar(snackbarMessage)
     eventMonitoring.captureException(new IdentityCheckError(exception))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])
 
   const onChangeAddress = (value: string) => {
@@ -123,20 +117,13 @@ export const SetAddress = () => {
     return freeOfferId ? { type, freeOfferId } : { type }
   }
 
-  const submitAddress = async () => {
+  const submitAddress = () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    if (phoneNumberInProfileStepper && shouldProvidePhoneNumber(user)) {
-      navigate(...getSubscriptionHookConfig('SetPhoneNumber', { type }))
-    } else {
-      navigate(...getSubscriptionHookConfig('SetStatus', getStatusNavigationParams()))
-    }
+    navigate(...getSubscriptionHookConfig('SetStatus', getStatusNavigationParams()))
   }
 
-  const accessibilityLabel =
-    phoneNumberInProfileStepper && shouldProvidePhoneNumber(user)
-      ? 'Continuer vers le numéro de téléphone'
-      : 'Continuer vers le statut'
+  const accessibilityLabel = 'Continuer vers le statut'
   const errorMessage =
     'Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces.'
 
