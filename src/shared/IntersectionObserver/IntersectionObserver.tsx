@@ -10,6 +10,7 @@ export function IntersectionObserver({
   children,
   onChange,
   threshold = 100,
+  fill = false,
 }: Readonly<IntersectionObserverProps>) {
   const [containerHeight, setContainerHeight] = useState<number>(0)
 
@@ -24,15 +25,8 @@ export function IntersectionObserver({
 
   const thresholdConfig = parseThreshold(threshold, containerHeight)
 
-  console.log(
-    'IntersectionObserver: thresholdConfig',
-    thresholdConfig,
-    'containerHeight',
-    containerHeight
-  )
-
   return (
-    <Container onLayout={handleLayout}>
+    <Container fill={fill} onLayout={handleLayout}>
       <StyledInView
         testID="intersectionObserver"
         onChange={handleChange}
@@ -44,9 +38,10 @@ export function IntersectionObserver({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ fill: boolean }>(({ fill }) => ({
   position: 'relative',
-})
+  ...(fill ? { flex: 1 } : null),
+}))
 
 const StyledInView = styled(InView).attrs<{ testID?: string }>({})<{
   threshold: number

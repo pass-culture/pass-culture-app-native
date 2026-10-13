@@ -18,8 +18,13 @@ import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 type Props = {
   withMargins: boolean
   searchFilters: FetchSearchResultsArgs
+  playlistIndex?: number
 }
-export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters }) => {
+export const VenuesPlaylistContainer: FC<Props> = ({
+  withMargins,
+  searchFilters,
+  playlistIndex = 0,
+}) => {
   const isFocused = useIsFocused()
   const {
     searchState: { searchId },
@@ -48,7 +53,7 @@ export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters 
           if (!isFocused || !searchId) return
           void logViewItem({
             origin: 'search',
-            playlistIndex: 0,
+            playlistIndex,
             index: index,
             type: 'venue',
             id: item.objectID,

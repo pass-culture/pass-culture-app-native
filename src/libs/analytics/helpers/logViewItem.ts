@@ -10,6 +10,7 @@ export type ViewItemParams = {
     | HomeEntryId
     | 'searchResults'
     | 'searchResultsVenuePlaylist'
+    | 'searchResultsArtistPlaylist'
     | 'thematicSearchVenuePlaylist'
     | 'venue_offers_list'
     | 'venue_artists_carousel'
