@@ -1946,8 +1946,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             },
                             {
                               "backgroundColor": "#f1f1f4",
@@ -2304,8 +2304,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             },
                             {
                               "backgroundColor": "#f1f1f4",
@@ -2658,8 +2658,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             },
                             {
                               "backgroundColor": "#f1f1f4",
@@ -3011,8 +3011,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             },
                             {
                               "backgroundColor": "#f1f1f4",
