@@ -16,17 +16,17 @@ describe('getDateRange', () => {
       })
     })
 
+    it('should cover the whole of tomorrow for "tomorrow"', () => {
+      expect(getDateRange({ type: 'preset', preset: 'tomorrow' }, NOW)).toEqual({
+        beginningDatetime: '2026-10-15T00:00:00.000Z',
+        endingDatetime: '2026-10-15T23:59:59.999Z',
+      })
+    })
+
     it('should range from now to the end of sunday for "thisWeek"', () => {
       expect(getDateRange({ type: 'preset', preset: 'thisWeek' }, NOW)).toEqual({
         beginningDatetime: '2026-10-14T10:30:00.000Z',
         endingDatetime: '2026-10-18T23:59:59.999Z',
-      })
-    })
-
-    it('should range from now to the end of the last day of the month for "thisMonth"', () => {
-      expect(getDateRange({ type: 'preset', preset: 'thisMonth' }, NOW)).toEqual({
-        beginningDatetime: '2026-10-14T10:30:00.000Z',
-        endingDatetime: '2026-10-31T23:59:59.999Z',
       })
     })
   })

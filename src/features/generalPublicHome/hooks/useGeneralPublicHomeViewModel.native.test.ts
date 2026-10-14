@@ -4,10 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useGeneralPublicHomeViewModel } from 'features/generalPublicHome/hooks/useGeneralPublicHomeViewModel'
 import { useFreeDigitalOffersQuery } from 'features/generalPublicHome/queries/useFreeDigitalOffersQuery'
 import { useFreeEventsQuery } from 'features/generalPublicHome/queries/useFreeEventsQuery'
-import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
-import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { HomepageModuleType } from 'features/home/types'
+import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { act, renderHook } from 'tests/utils'
 
 const mockUseFreeEventsQuery = useFreeEventsQuery as jest.Mock
@@ -18,11 +16,6 @@ jest.mock('features/generalPublicHome/queries/useFreeEventsQuery', () => ({
 const mockUseFreeDigitalOffersQuery = useFreeDigitalOffersQuery as jest.Mock
 jest.mock('features/generalPublicHome/queries/useFreeDigitalOffersQuery', () => ({
   useFreeDigitalOffersQuery: jest.fn(),
-}))
-
-const mockUseAvailableCategories = useAvailableCategories as jest.Mock
-jest.mock('features/search/helpers/useAvailableCategories/useAvailableCategories', () => ({
-  useAvailableCategories: jest.fn(),
 }))
 
 // Wednesday
@@ -42,7 +35,6 @@ const pressDatePreset = (
 describe('useGeneralPublicHomeViewModel', () => {
   beforeEach(() => {
     mockdate.set(NOW)
-    setFeatureFlags()
     mockUseFreeEventsQuery.mockReturnValue({
       module: FREE_EVENTS_MODULE,
       data: FREE_EVENTS_DATA,
@@ -52,7 +44,6 @@ describe('useGeneralPublicHomeViewModel', () => {
     mockUseFreeDigitalOffersQuery.mockImplementation((playlistId: string) =>
       playlistId === 'podcasts' ? FREE_PODCASTS : FREE_VIDEOS
     )
-    mockUseAvailableCategories.mockReturnValue(Object.values(availableCategories))
   })
 
   afterEach(() => mockdate.reset())
@@ -91,13 +82,13 @@ describe('useGeneralPublicHomeViewModel', () => {
   })
 
   describe('date presets', () => {
-    it('should list the presets, none applied', () => {
+    it('should list the presets, none selected', () => {
       const { result } = renderViewModel()
 
       expect(result.current.datePresetItems).toEqual([
-        expect.objectContaining({ label: 'Aujourd’hui', testID: 'today', isApplied: false }),
-        expect.objectContaining({ label: 'Cette semaine', testID: 'thisWeek', isApplied: false }),
-        expect.objectContaining({ label: 'Ce mois-ci', testID: 'thisMonth', isApplied: false }),
+        expect.objectContaining({ label: 'Aujourd’hui', isSelected: false }),
+        expect.objectContaining({ label: 'Demain', isSelected: false }),
+        expect.objectContaining({ label: 'Cette semaine', isSelected: false }),
       ])
     })
 
@@ -110,11 +101,11 @@ describe('useGeneralPublicHomeViewModel', () => {
     it('should filter on the pressed preset', () => {
       const { result } = renderViewModel()
 
-      pressDatePreset(result, 'Cette semaine')
+      pressDatePreset(result, 'Demain')
 
-      expect(result.current.datePresetItems[1]?.isApplied).toBe(true)
+      expect(result.current.datePresetItems[1]?.isSelected).toBe(true)
       expect(mockUseFreeEventsQuery).toHaveBeenLastCalledWith({
-        dateFilter: { type: 'preset', preset: 'thisWeek' },
+        dateFilter: { type: 'preset', preset: 'tomorrow' },
       })
     })
 
@@ -124,7 +115,7 @@ describe('useGeneralPublicHomeViewModel', () => {
       pressDatePreset(result, 'Cette semaine')
       pressDatePreset(result, 'Cette semaine')
 
-      expect(result.current.datePresetItems.some(({ isApplied }) => isApplied)).toBe(false)
+      expect(result.current.datePresetItems.some(({ isSelected }) => isSelected)).toBe(false)
       expect(mockUseFreeEventsQuery).toHaveBeenLastCalledWith({ dateFilter: null })
     })
 
@@ -132,13 +123,13 @@ describe('useGeneralPublicHomeViewModel', () => {
       const { result } = renderViewModel()
 
       pressDatePreset(result, 'Aujourd’hui')
-      pressDatePreset(result, 'Ce mois-ci')
+      pressDatePreset(result, 'Demain')
 
       expect(
         result.current.datePresetItems
-          .filter(({ isApplied }) => isApplied)
+          .filter(({ isSelected }) => isSelected)
           .map(({ label }) => label)
-      ).toEqual(['Ce mois-ci'])
+      ).toEqual(['Demain'])
     })
 
     it('should close the calendar', () => {
@@ -195,7 +186,7 @@ describe('useGeneralPublicHomeViewModel', () => {
 
       act(() => result.current.selectDate('2026-10-16'))
 
-      expect(result.current.datePresetItems.some(({ isApplied }) => isApplied)).toBe(false)
+      expect(result.current.datePresetItems.some(({ isSelected }) => isSelected)).toBe(false)
     })
   })
 
@@ -252,10 +243,10 @@ describe('useGeneralPublicHomeViewModel', () => {
   })
 
   describe('themes', () => {
-    it('should list one category button per theme', () => {
+    it('should list the themes', () => {
       const { result } = renderViewModel()
 
-      expect(result.current.themeCategoryButtons.map(({ label }) => label)).toEqual([
+      expect(result.current.themes.map(({ label }) => label)).toEqual([
         'Spectacles',
         'Sorties',
         'Visites',
@@ -263,32 +254,27 @@ describe('useGeneralPublicHomeViewModel', () => {
       ])
     })
 
-    it('should forward the new category blocks feature flag', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_CATEGORY_BLOCKS])
-
+    it('should navigate to the free events playlist of the pressed theme with the date filter', () => {
       const { result } = renderViewModel()
-
-      expect(result.current.enableNewCategoryBlocks).toBe(true)
-    })
-
-    it('should lead the themes to their free events playlist with the date filter', () => {
-      const { result } = renderViewModel()
-
       act(() => result.current.selectDate('2026-10-16'))
 
-      expect(result.current.themeCategoryButtons[0]?.navigateTo.params).toEqual(
-        expect.objectContaining({
-          module: expect.objectContaining({
-            offersModuleParameters: [
-              expect.objectContaining({
-                categories: ['Spectacles'],
-                beginningDatetime: '2026-10-16T00:00:00.000Z',
-                endingDatetime: '2026-10-16T23:59:59.999Z',
-              }),
-            ],
-          }),
-        })
-      )
+      act(() => result.current.pressTheme('visits'))
+
+      expect(navigate).toHaveBeenCalledWith('VerticalPlaylistOffers', {
+        type: VerticalPlaylist.ModuleOffers,
+        module: expect.objectContaining({
+          type: HomepageModuleType.OffersModule,
+          title: 'Visites',
+          offersModuleParameters: [
+            expect.objectContaining({
+              priceMax: 0,
+              categories: ['Musées et visites'],
+              beginningDatetime: '2026-10-16T00:00:00.000Z',
+              endingDatetime: '2026-10-16T23:59:59.999Z',
+            }),
+          ],
+        }),
+      })
     })
   })
 })

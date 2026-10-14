@@ -1,4 +1,4 @@
-import { addMonths, endOfDay, max, parse, startOfDay } from 'date-fns'
+import { addDays, addMonths, endOfDay, max, parse, startOfDay } from 'date-fns'
 
 import { DateFilter, DateRange } from 'features/generalPublicHome/types'
 import { getCalendarFormData } from 'features/search/helpers/getCalendarFormData/getCalendarFormData'
@@ -11,6 +11,14 @@ export const getDateRange = (filter: DateFilter, now: Date): DateRange => {
     return {
       beginningDatetime: max([startOfDay(day), now]).toISOString(),
       endingDatetime: endOfDay(day).toISOString(),
+    }
+  }
+
+  if (filter.preset === 'tomorrow') {
+    const tomorrow = addDays(now, 1)
+    return {
+      beginningDatetime: startOfDay(tomorrow).toISOString(),
+      endingDatetime: endOfDay(tomorrow).toISOString(),
     }
   }
 

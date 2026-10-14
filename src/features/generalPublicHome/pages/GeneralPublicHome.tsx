@@ -1,37 +1,31 @@
 import { useScrollToTop } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
-import { noop } from 'lodash'
 import React, { FunctionComponent, useRef } from 'react'
 import { Platform, ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
+import { DateFilterBar } from 'features/generalPublicHome/components/DateFilterBar'
+import { ThemeBubble } from 'features/generalPublicHome/components/ThemeBubble'
 import { GENERAL_PUBLIC_HOME_ENTRY_ID } from 'features/generalPublicHome/constants'
 import { useGeneralPublicHomeViewModel } from 'features/generalPublicHome/hooks/useGeneralPublicHomeViewModel'
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
-import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { MovieCalendarV2 } from 'features/offer/components/MovieCalendar/MovieCalendarV2'
-import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
-import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { FilterButtonList } from 'ui/components/FilterButtonList'
-import { Li } from 'ui/components/Li'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { useLayout } from 'ui/hooks/useLayout'
 import { Page } from 'ui/pages/Page'
-import { Calendar } from 'ui/svg/icons/Calendar'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Spacer } from 'ui/theme'
 
 export const GeneralPublicHome: FunctionComponent = () => {
   const {
     isConnected,
-    isLoggedIn,
     isSearchOpen,
     isCalendarOpen,
     toggleSearch,
@@ -46,10 +40,9 @@ export const GeneralPublicHome: FunctionComponent = () => {
     freeEvents,
     freePodcasts,
     freeVideos,
-    themeCategoryButtons,
-    enableNewCategoryBlocks,
+    themes,
+    pressTheme,
   } = useGeneralPublicHomeViewModel()
-  const { contentPage, designSystem } = useTheme()
   const scrollRef = useRef<ScrollView>(null)
   useScrollToTop(scrollRef)
   const calendarListRef = useRef<FlashListRef<string>>(null)
@@ -57,12 +50,6 @@ export const GeneralPublicHome: FunctionComponent = () => {
   const { width: calendarDayWidth, onLayout: onCalendarDayLayout } = useLayout()
 
   if (!isConnected) return <OfflinePage />
-
-  // FilterButtonList items carry a left margin of `spacing.xs`
-  const filterListContentStyle = {
-    paddingLeft: contentPage.marginHorizontal - designSystem.size.spacing.xs,
-    paddingRight: contentPage.marginHorizontal,
-  }
 
   return (
     <Page>
@@ -75,33 +62,15 @@ export const GeneralPublicHome: FunctionComponent = () => {
         <HeaderContainer>
           <HomeHeader />
         </HeaderContainer>
-        <BannerContainer>
-          <HomeBanner isLoggedIn={isLoggedIn} />
-        </BannerContainer>
         <Main accessibilityRole={AccessibilityRole.MAIN}>
           <Filters>
-            <FilterButtonList
-              items={datePresetItems}
-              contentContainerStyle={filterListContentStyle}>
-              <ToggleLi>
-                <SingleFilterButton
-                  label="Rechercher"
-                  icon={<SearchIcon />}
-                  isSelected={isSearchOpen}
-                  onPress={toggleSearch}
-                  testID="searchToggle"
-                />
-              </ToggleLi>
-              <ToggleLi>
-                <SingleFilterButton
-                  label="Calendrier"
-                  icon={<CalendarIcon />}
-                  isSelected={isCalendarOpen}
-                  onPress={toggleCalendar}
-                  testID="calendarToggle"
-                />
-              </ToggleLi>
-            </FilterButtonList>
+            <DateFilterBar
+              isSearchOpen={isSearchOpen}
+              isCalendarOpen={isCalendarOpen}
+              onToggleSearch={toggleSearch}
+              onToggleCalendar={toggleCalendar}
+              datePresetItems={datePresetItems}
+            />
             {isSearchOpen ? (
               <SearchContainer>
                 <SearchInput
@@ -135,13 +104,14 @@ export const GeneralPublicHome: FunctionComponent = () => {
               data={freeEvents.data}
             />
           )}
-          <CategoriesListDumb
-            sortedCategories={themeCategoryButtons}
-            shouldDisplayVenueMap={false}
-            isMapWithoutPositionAndNotLocated={false}
-            enableNewCategoryBlocks={enableNewCategoryBlocks}
-            onPressVenueMap={noop}
-          />
+          <Themes>
+            <AccessibleTitle title="Les grands thèmes" />
+            <ThemeBubbles>
+              {themes.map(({ id, label, Icon }) => (
+                <ThemeBubble key={id} label={label} Icon={Icon} onPress={() => pressTheme(id)} />
+              ))}
+            </ThemeBubbles>
+          </Themes>
           <HomeModule
             item={freePodcasts.module}
             index={2}
@@ -169,11 +139,6 @@ const HeaderContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-// Same as the production home banner container
-const BannerContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.designSystem.size.spacing.xl,
-}))
-
 const Main = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.xl,
 }))
@@ -182,23 +147,16 @@ const Filters = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.m,
 }))
 
-// Same spacing as the FilterButtonList items
-const ToggleLi = styled(Li)(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xs,
-  marginTop: theme.designSystem.size.spacing.xs,
-  marginBottom: theme.designSystem.size.spacing.xs,
+const SearchContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const SearchIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.designSystem.size.icon.s,
-  color: theme.designSystem.color.icon.default,
-}))``
+const Themes = styled.View(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.l,
+}))
 
-const CalendarIcon = styled(Calendar).attrs(({ theme }) => ({
-  size: theme.designSystem.size.icon.s,
-  color: theme.designSystem.color.icon.default,
-}))``
-
-const SearchContainer = styled.View(({ theme }) => ({
+const ThemeBubbles = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))

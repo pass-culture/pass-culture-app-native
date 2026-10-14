@@ -1,4 +1,4 @@
-import { THEMES } from 'features/generalPublicHome/constants'
+import { THEMES } from 'features/generalPublicHome/mocks/themes'
 import { Theme, ThemeId } from 'features/generalPublicHome/types'
 
 export const getTheme = (themeId?: ThemeId): Theme | undefined =>

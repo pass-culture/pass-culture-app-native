@@ -40,15 +40,16 @@ describe('buildFreeSearchState', () => {
       expect(state.calendarFilterId).toBe('thisWeek')
     })
 
-    it('should range until the end of the month for the "thisMonth" preset', () => {
+    it('should start at midnight of tomorrow for the "tomorrow" preset, search covering that day only', () => {
       const state = buildFreeSearchState({
         query: '',
-        dateFilter: { type: 'preset', preset: 'thisMonth' },
+        dateFilter: { type: 'preset', preset: 'tomorrow' },
         now: NOW,
       })
 
-      expect(state.endingDatetime).toBe('2026-10-31T23:59:59.999Z')
-      expect(state.calendarFilterId).toBe('thisMonth')
+      expect(state.beginningDatetime).toBe('2026-10-15T00:00:00.000Z')
+      expect(state.endingDatetime).toBeUndefined()
+      expect(state.calendarFilterId).toBeUndefined()
     })
 
     it('should start at midnight of a specific day, search covering that day only', () => {

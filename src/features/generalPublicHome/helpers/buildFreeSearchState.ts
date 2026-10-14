@@ -1,4 +1,4 @@
-import { addMonths, parse } from 'date-fns'
+import { addDays, addMonths, parse, startOfDay } from 'date-fns'
 
 import { getTheme } from 'features/generalPublicHome/helpers/getTheme'
 import { DateFilter, ThemeId } from 'features/generalPublicHome/types'
@@ -26,6 +26,11 @@ const getSearchDateParameters = (dateFilter: DateFilter, now: Date): SearchDateP
 
   if (dateFilter.type === 'day') {
     return { beginningDatetime: parse(dateFilter.date, 'yyyy-MM-dd', now).toISOString() }
+  }
+
+  // The search has no "tomorrow" calendar filter: tomorrow goes as a specific day
+  if (dateFilter.preset === 'tomorrow') {
+    return { beginningDatetime: startOfDay(addDays(now, 1)).toISOString() }
   }
 
   const { selectedStartDate, selectedEndDate } = getCalendarFormData(

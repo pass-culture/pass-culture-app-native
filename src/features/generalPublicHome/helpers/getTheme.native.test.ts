@@ -1,13 +1,13 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTheme } from 'features/generalPublicHome/helpers/getTheme'
+import { Cinema } from 'ui/svg/icons/venueAndCategories/Cinema'
 
 describe('getTheme', () => {
   it('should return the theme matching the id', () => {
     expect(getTheme('cinema')).toEqual({
       id: 'cinema',
       label: 'Cinéma',
+      Icon: Cinema,
       categories: ['Cinéma'],
-      searchGroup: SearchGroupNameEnumv2.CINEMA,
     })
   })
 

@@ -1,7 +1,9 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
-import { ContentfulLabelCategories } from 'libs/contentful/types'
+import { FunctionComponent } from 'react'
 
-export type DatePreset = 'today' | 'thisWeek' | 'thisMonth'
+import { ContentfulLabelCategories } from 'libs/contentful/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
+
+export type DatePreset = 'today' | 'tomorrow' | 'thisWeek'
 
 export type DateFilter =
   { type: 'preset'; preset: DatePreset } | { type: 'day'; date: string /* yyyy-MM-dd */ } | null
@@ -13,9 +15,15 @@ export type ThemeId = 'shows' | 'outings' | 'visits' | 'cinema'
 export type Theme = {
   id: ThemeId
   label: string
+  Icon: FunctionComponent<AccessibleIcon>
+  // Offer categories of the free events playlist the theme leads to
   categories: ContentfulLabelCategories[]
-  // Search category whose block colors and illustration the theme borrows
-  searchGroup: SearchGroupNameEnumv2
+}
+
+export type DatePresetItem = {
+  label: string
+  isSelected: boolean
+  onPress: () => void
 }
 
 export type FreeDigitalPlaylistId = 'podcasts' | 'videos'
