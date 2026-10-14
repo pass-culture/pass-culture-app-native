@@ -23,6 +23,7 @@ import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/feat
 import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenance/CheatcodesScreenMaintenance'
+import { CheatcodesScreenCinemaScreeningCardList } from 'cheatcodes/pages/features/offer/CheatcodesScreenCinemaScreeningCardList'
 import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
@@ -168,6 +169,11 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenCategoryThematicHomeHeader,
       linking: { path: 'cheatcodes/home/category-thematic-home-header' },
       options: { title: 'Cheatcodes - Header thématique (Catégorie)' },
+    },
+    CheatcodesScreenCinemaScreeningCardList: {
+      screen: CheatcodesScreenCinemaScreeningCardList,
+      linking: { path: 'cheatcodes/offer/cinema-screening-card-list' },
+      options: { title: 'Cheatcodes - Tuiles séances cinéma' },
     },
     CheatcodesScreenDefaultThematicHomeHeader: {
       screen: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),

@@ -72,7 +72,7 @@ export const PRO_ADVICE_VARIANT_CONFIG = {
   modalTitle: 'Qui écrit les avis des pros\u00a0?',
   modalWording:
     'Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de cœur pour t’aider à découvrir des œuvres qui pourraient te plaire.',
-  sectionTag: <Tag variant={TagVariant.NEW} label="Nouveau" />,
+  sectionTag: <Tag variant={TagVariant.HIGHLIGHT} label="Nouveau" />,
   buttonWording: 'Voir tous les avis des pros',
 } as const
 

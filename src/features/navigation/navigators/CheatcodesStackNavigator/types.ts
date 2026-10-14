@@ -23,6 +23,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationTutorial: undefined
   CheatcodesScreenBookingNotFound: undefined
   CheatcodesScreenCategoryThematicHomeHeader: undefined
+  CheatcodesScreenCinemaScreeningCardList: undefined
   CheatcodesScreenDefaultThematicHomeHeader: undefined
   CheatcodesScreenHighlightThematicHomeHeader: undefined
   CheatcodesScreenMaintenance: undefined

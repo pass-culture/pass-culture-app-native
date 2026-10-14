@@ -106,7 +106,7 @@ export const PassPlaylist = ({
           ) : null}
           {showNewTag ? (
             <TagContainer>
-              <Tag label="Nouveau" variant={TagVariant.NEW} />
+              <Tag label="Nouveau" variant={TagVariant.HIGHLIGHT} />
             </TagContainer>
           ) : undefined}
         </StyledView>
