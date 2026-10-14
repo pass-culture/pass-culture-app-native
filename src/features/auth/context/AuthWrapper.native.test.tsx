@@ -4,8 +4,14 @@ import React from 'react'
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import * as useAdjustBeneficiaryEvent from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import * as NavigationRef from 'features/navigation/navigationRef'
-import { beneficiaryUserFromAPI, beneficiaryUserV2, nonBeneficiaryUserFromAPI } from 'fixtures/user'
+import {
+  beneficiaryUserFromAPI,
+  beneficiaryUserV2,
+  nonBeneficiaryUserFromAPI,
+  nonBeneficiaryUserV2,
+} from 'fixtures/user'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
@@ -39,6 +45,11 @@ jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue(remoteConfigResponseFixture)
 
+const spyUseAdjustBeneficiaryEvent = jest.spyOn(
+  useAdjustBeneficiaryEvent,
+  'useAdjustBeneficiaryEvent'
+)
+
 describe('AuthContext', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
@@ -50,6 +61,17 @@ describe('AuthContext', () => {
       exp: tokenExpirationDate,
     })
     mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUserFromAPI)
+  })
+
+  it('should call useAdjustBeneficiaryEvent with user', async () => {
+    await storage.saveString('access_token', 'access_token')
+    await saveRefreshToken('token')
+
+    renderUseAuthContext()
+
+    await waitFor(() =>
+      expect(spyUseAdjustBeneficiaryEvent).toHaveBeenCalledWith(nonBeneficiaryUserV2)
+    )
   })
 
   it('should log out user when refresh token is no longer valid', async () => {
