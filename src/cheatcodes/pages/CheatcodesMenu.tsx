@@ -90,6 +90,12 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationOnboardingButtons,
     {
       id: uuidv4(),
+      title: 'CinemaScreeningCard 🎬',
+      navigationTarget: { screen: 'CheatcodesScreenCinemaScreeningCardList' },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'RemoteBanners 🆒',
       navigationTarget: { screen: 'CheatcodesScreenRemoteBanners' },
       subscreens: [],

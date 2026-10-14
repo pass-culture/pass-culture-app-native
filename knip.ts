@@ -37,9 +37,6 @@ const productionConfig: KnipConfig = {
     'src/**/tests/**/*',
     'src/**/storybook/**/*',
     'src/shared/useABSegment/**/*',
-    // TODO(PC-42746): remove when CinemaScreeningCard is integrated into an app screen
-    'src/features/offer/components/CinemaScreeningCard/CinemaScreeningCard.tsx',
-    'src/features/offer/components/CinemaScreeningCard/CinemaScreeningCardList.tsx',
   ],
   rules: {
     dependencies: 'off',

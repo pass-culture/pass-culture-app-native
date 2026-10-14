@@ -1,18 +1,9 @@
-import type { Meta } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import { action } from 'storybook/actions'
 
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-
 import { CinemaScreeningCardList } from './CinemaScreeningCardList'
 import { CinemaScreeningCardProps } from './types'
-
-const meta: Meta<typeof CinemaScreeningCardList> = {
-  title: 'features/offer/CinemaScreeningCardList',
-  component: CinemaScreeningCardList,
-}
-
-export default meta
 
 const createScreening = (
   time: string,
@@ -25,36 +16,39 @@ const createScreening = (
   ...props,
 })
 
-const variants: Variants<typeof CinemaScreeningCardList> = [
-  {
-    label: 'Mixed content aligned on the complete card',
-    props: {
-      screenings: [
-        createScreening('17h'),
-        createScreening('18h', { specialEvent: 'Avant-première équipe' }),
-        createScreening('19h', {
-          specialEvent: 'Avant-première équipe',
-          video: ['DolbyVision'],
-          audio: ['Auro3D'],
-          accessibility: {
-            visual: ['value'],
-            audio: ['GRETA'],
-            mental: ['value'],
-            motor: ['value'],
-          },
-        }),
-      ],
+const meta: Meta<typeof CinemaScreeningCardList> = {
+  title: 'features/offer/CinemaScreeningCardList',
+  component: CinemaScreeningCardList,
+  args: {
+    screenings: [
+      createScreening('17h'),
+      createScreening('18h', { specialEvent: 'Avant-première équipe' }),
+      createScreening('19h', {
+        specialEvent: 'Avant-première équipe',
+        video: ['DolbyVision'],
+        audio: ['Auro3D'],
+        accessibility: {
+          visual: ['value'],
+          audio: ['GRETA'],
+          mental: ['value'],
+          motor: ['value'],
+        },
+      }),
+    ],
+  },
+  argTypes: {
+    screenings: {
+      control: 'object',
+      description: 'Séances affichées dans la playlist',
     },
   },
-  {
-    label: 'Only minimal cards',
-    props: {
-      screenings: [createScreening('17h'), createScreening('18h'), createScreening('19h')],
-    },
-  },
-]
+}
 
-export const Template: VariantsStory<typeof CinemaScreeningCardList> = {
+export default meta
+
+type Story = StoryObj<typeof CinemaScreeningCardList>
+
+export const Playground: Story = {
   name: 'CinemaScreeningCardList',
-  render: () => <VariantsTemplate variants={variants} Component={CinemaScreeningCardList} />,
+  render: (args) => <CinemaScreeningCardList {...args} />,
 }

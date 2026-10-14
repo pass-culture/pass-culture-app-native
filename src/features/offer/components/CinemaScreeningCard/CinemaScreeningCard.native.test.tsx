@@ -4,7 +4,6 @@ import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
 import { CinemaScreeningCard } from './CinemaScreeningCard'
-import { CinemaScreeningCardBase } from './CinemaScreeningCardBase'
 import { CinemaScreeningCardDisabledReason } from './types'
 
 const defaultProps = {
@@ -88,13 +87,11 @@ describe('<CinemaScreeningCard />', () => {
       />
     )
 
-    expect(screen.getByLabelText(accessibilityLabel).props.accessibilityLabel).toEqual(
-      accessibilityLabel
-    )
+    expect(screen.getByLabelText(accessibilityLabel)).toBeOnTheScreen()
   })
 
   it('should apply hover colors without underlining the card content', () => {
-    render(<CinemaScreeningCardBase {...defaultProps} hovered />)
+    render(<CinemaScreeningCard {...defaultProps} hovered />)
 
     expect(screen.getByLabelText('17h - VO - 25€')).toHaveStyle({
       backgroundColor: theme.designSystem.color.background.hover,

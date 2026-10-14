@@ -1,89 +1,70 @@
-import type { Meta } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import { action } from 'storybook/actions'
 
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-
-import { CinemaScreeningCardBase } from './CinemaScreeningCardBase'
+import { CinemaScreeningCard } from './CinemaScreeningCard'
 import { CinemaScreeningCardDisabledReason } from './types'
 
-const meta: Meta<typeof CinemaScreeningCardBase> = {
+const meta: Meta<typeof CinemaScreeningCard> = {
   title: 'features/offer/CinemaScreeningCard',
-  component: CinemaScreeningCardBase,
+  component: CinemaScreeningCard,
+  args: {
+    time: '17h',
+    languages: ['VO'],
+    price: '25€',
+    video: [],
+    audio: [],
+    accessibility: {},
+    onPress: action('pressed'),
+  },
+  argTypes: {
+    time: {
+      control: 'text',
+      description: 'Heure de la séance',
+    },
+    languages: {
+      control: 'object',
+      description: 'Langues de la séance',
+    },
+    price: {
+      control: 'text',
+      description: 'Prix de la séance',
+    },
+    specialEvent: {
+      control: 'text',
+      description: 'Événement spécial affiché dans le tag Highlight',
+    },
+    video: {
+      control: 'object',
+      description: 'Formats vidéo affichés avant les formats audio',
+    },
+    audio: {
+      control: 'object',
+      description: 'Formats audio',
+    },
+    accessibility: {
+      control: 'object',
+      description: 'Informations d’accessibilité regroupées par catégorie',
+    },
+    disabledReason: {
+      control: 'select',
+      options: [
+        undefined,
+        CinemaScreeningCardDisabledReason.UNAVAILABLE,
+        CinemaScreeningCardDisabledReason.INSUFFICIENT_CREDIT,
+      ],
+      description: 'Raison pour laquelle la séance est indisponible',
+    },
+    fillHeight: { table: { disable: true } },
+    onPress: { table: { disable: true } },
+  },
 }
 
 export default meta
 
-const variants: Variants<typeof CinemaScreeningCardBase> = [
-  {
-    label: 'Default',
-  },
-  {
-    label: 'Highlight tag',
-    props: { specialEvent: 'Avant-première équipe' },
-  },
-  {
-    label: 'Video and audio tags',
-    props: { video: ['DolbyVision'], audio: ['Auro3D'] },
-  },
-  {
-    label: 'Accessibility',
-    props: {
-      accessibility: {
-        visual: ['value'],
-        audio: ['GRETA', 'CCAP'],
-        mental: ['value'],
-        motor: ['value'],
-      },
-    },
-  },
-  {
-    label: 'Complete',
-    props: {
-      specialEvent: 'Avant-première équipe',
-      video: ['DolbyVision'],
-      audio: ['Auro3D'],
-      accessibility: {
-        visual: ['value'],
-        audio: ['GRETA', 'CCAP'],
-        mental: ['value'],
-        motor: ['value'],
-      },
-    },
-  },
-  {
-    label: 'Hover',
-    props: {
-      hovered: true,
-      specialEvent: 'Avant-première équipe',
-      video: ['DolbyVision'],
-      audio: ['Auro3D'],
-      accessibility: { visual: ['value'], audio: ['GRETA'] },
-    },
-  },
-  {
-    label: 'Disabled unavailable',
-    props: { disabledReason: CinemaScreeningCardDisabledReason.UNAVAILABLE },
-  },
-  {
-    label: 'Disabled insufficient credit',
-    props: { disabledReason: CinemaScreeningCardDisabledReason.INSUFFICIENT_CREDIT },
-  },
-]
+type Story = StoryObj<typeof CinemaScreeningCard>
 
-export const Template: VariantsStory<typeof CinemaScreeningCardBase> = {
+export const Playground: Story = {
   name: 'CinemaScreeningCard',
-  render: (props) => (
-    <VariantsTemplate
-      variants={variants}
-      Component={CinemaScreeningCardBase}
-      defaultProps={{
-        ...props,
-        time: '17h',
-        languages: ['VO'],
-        price: '25€',
-        onPress: action('pressed'),
-      }}
-    />
-  ),
+  render: (args) => <CinemaScreeningCard {...args} />,
 }

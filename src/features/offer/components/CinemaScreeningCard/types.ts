@@ -1,3 +1,5 @@
+import { BackgroundColorKey, BorderColorKey, IconColorKey, TextColorKey } from 'theme/types'
+
 export enum CinemaScreeningCardDisabledReason {
   UNAVAILABLE = 'Indisponible',
   INSUFFICIENT_CREDIT = 'Crédit insuffisant',
@@ -17,22 +19,14 @@ export type CinemaScreeningCardProps = {
   audio?: string[]
   accessibility?: CinemaScreeningAccessibility
   disabledReason?: CinemaScreeningCardDisabledReason
-  minHeight?: number
 }
 
 export type CinemaScreeningCardComponentProps = CinemaScreeningCardProps & {
-  onLayout?: (event: LayoutChangeEvent) => void
   fillHeight?: boolean
-}
-
-export type CinemaScreeningCardBaseProps = CinemaScreeningCardComponentProps & {
   hovered?: boolean
-  onMouseEnter?: VoidFunction
-  onMouseLeave?: VoidFunction
 }
 
 export type CinemaScreeningCardStyleProps = {
-  minHeight: number
   backgroundColor: string
   borderColor: string
   disabled: boolean
@@ -51,6 +45,3 @@ export type CinemaScreeningCardColorKeys = {
   price: TextColorKey
   icon: IconColorKey
 }
-import { LayoutChangeEvent } from 'react-native'
-
-import { BackgroundColorKey, BorderColorKey, IconColorKey, TextColorKey } from 'theme/types'

@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import { LayoutChangeEvent, StyleSheet } from 'react-native'
+import React, { FunctionComponent } from 'react'
+import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CinemaScreeningCard } from './CinemaScreeningCard'
@@ -10,16 +10,6 @@ type Props = {
 }
 
 export const CinemaScreeningCardList: FunctionComponent<Props> = ({ screenings }) => {
-  const [largestCardHeight, setLargestCardHeight] = useState(0)
-  const dataSignature = JSON.stringify(screenings)
-
-  useEffect(() => setLargestCardHeight(0), [dataSignature])
-
-  const updateLargestCardHeight = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout
-    setLargestCardHeight((currentHeight) => Math.max(currentHeight, height))
-  }
-
   return (
     <HorizontalScrollView
       horizontal
@@ -28,12 +18,7 @@ export const CinemaScreeningCardList: FunctionComponent<Props> = ({ screenings }
       testID="cinema-screening-card-list">
       {screenings.map((screening, index) => (
         <CardContainer key={`${screening.time}-${index}`} isLast={index === screenings.length - 1}>
-          <CinemaScreeningCard
-            {...screening}
-            fillHeight
-            minHeight={largestCardHeight || undefined}
-            onLayout={updateLargestCardHeight}
-          />
+          <CinemaScreeningCard {...screening} fillHeight />
         </CardContainer>
       ))}
     </HorizontalScrollView>
