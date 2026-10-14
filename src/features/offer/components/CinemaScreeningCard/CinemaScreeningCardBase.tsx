@@ -4,12 +4,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
-import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 import {
   CINEMA_SCREENING_ACCESSIBILITY_ENTRIES,
@@ -37,7 +35,7 @@ export const CinemaScreeningCardBase: FunctionComponent<CinemaScreeningCardBaseP
   onMouseLeave,
 }) => {
   const theme = useTheme()
-  const isDisabled = Boolean(disabledReason)
+  const isDisabled = !!disabledReason
   const isHover = hovered && !isDisabled
   const colors = getCinemaScreeningCardColors({
     disabled: isDisabled,
@@ -115,7 +113,7 @@ export const CinemaScreeningCardBase: FunctionComponent<CinemaScreeningCardBaseP
   )
 }
 
-const Card = styledButton(Touchable)<CinemaScreeningCardStyleProps>(
+const Card = styled(TouchableOpacity)<CinemaScreeningCardStyleProps>(
   ({ theme, minHeight, backgroundColor, borderColor, disabled, fillHeight }) => ({
     width: CINEMA_SCREENING_CARD_WIDTH,
     minHeight,
@@ -130,7 +128,6 @@ const Card = styledButton(Touchable)<CinemaScreeningCardStyleProps>(
     cursor: disabled ? 'default' : 'pointer',
     flexGrow: Platform.OS === 'web' && fillHeight ? 1 : undefined,
     textDecorationLine: 'none',
-    ...customFocusOutline({ theme }),
     ...(Platform.OS === 'web'
       ? {
           '&:hover': { textDecoration: 'none' },
