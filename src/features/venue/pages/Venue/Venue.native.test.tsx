@@ -161,7 +161,7 @@ describe('<Venue />', () => {
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })
 
-  it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is on and there is more than one offer', async () => {
+  it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is on and there is more than one offer', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR])
     renderVenue(venueId)
 
@@ -234,7 +234,7 @@ describe('<Venue />', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is off', async () => {
+    it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is off', () => {
       renderVenue(venueId)
 
       expect(screen.queryByText('Agenda')).not.toBeOnTheScreen()
@@ -282,7 +282,7 @@ describe('<Venue />', () => {
   })
 
   describe('analytics', () => {
-    it.each([['deeplink'], ['venueMap']])(
+    it.each([['deeplink'], ['venueMap'], ['searchMap']])(
       'should log consult venue when URL from param equal to %s',
       async (from) => {
         renderVenue(venueId, from as Referrals)
@@ -455,7 +455,7 @@ describe('<Venue />', () => {
   })
 })
 
-async function renderVenue(id: number, from?: Referrals) {
+const renderVenue = (id: number, from?: Referrals) => {
   useRoute.mockImplementation(() => ({ params: { id, from } }))
   render(reactQueryProviderHOC(<Venue />))
 }

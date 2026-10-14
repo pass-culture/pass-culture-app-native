@@ -195,7 +195,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   // Execute log only on initial search fetch
   const previousIsLoading = usePrevious(isLoading)
-  useEffect(() => {
+  const logInitialSearch = () => {
     if (previousIsLoading && !isLoading) {
       void analytics.logPerformSearch(
         searchState,
@@ -207,7 +207,15 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         void analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
-  }, [isLoading, nbHits, previousIsLoading, previousRouteName, searchState, disabilities])
+  }
+  useEffect(logInitialSearch, [
+    isLoading,
+    nbHits,
+    previousIsLoading,
+    previousRouteName,
+    searchState,
+    disabilities,
+  ])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 

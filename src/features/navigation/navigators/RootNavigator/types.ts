@@ -42,6 +42,7 @@ export type Referrals =
   | 'search'
   | 'searchAutoComplete'
   | 'searchLanding'
+  | 'searchMap'
   | 'searchPlaylist'
   | 'searchVenuePlaylist'
   | 'setemail'

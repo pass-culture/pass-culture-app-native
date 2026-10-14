@@ -1,5 +1,5 @@
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
@@ -15,10 +15,12 @@ import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
+import * as usePageTrackingAPI from 'shared/tracking/usePageTracking'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -32,7 +34,15 @@ const mockUseNavigation = useNavigation as jest.Mock
 mockUseNavigation.mockReturnValue({ navigate: mockNavigate })
 
 const mockUseRoute = useRoute as jest.Mock
-mockUseRoute.mockReturnValue({ name: 'venueMap' })
+const mockUseIsFocused = useIsFocused as jest.Mock
+mockUseIsFocused.mockReturnValue(true)
+
+const mockTrackViewableItems = jest.fn()
+const usePageTrackingSpy = jest.spyOn(usePageTrackingAPI, 'usePageTracking')
+usePageTrackingSpy.mockReturnValue({
+  trackViewableItems: mockTrackViewableItems,
+  forceSend: jest.fn(),
+})
 
 jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
@@ -126,6 +136,7 @@ describe('VenueMapViewContainer', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    mockUseRoute.mockReturnValue({ name: 'venueMap' })
     initStore()
     mockUseVenueOffers()
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
@@ -352,6 +363,188 @@ describe('VenueMapViewContainer', () => {
         ).length
       )
     )
+  })
+
+  describe('analytics and navigation origin', () => {
+    describe('when on VenueMap screen', () => {
+      beforeEach(() => {
+        mockUseRoute.mockReturnValue({ name: 'VenueMap' })
+      })
+
+      it('should initialize usePageTracking with VenueMap / venue_map', async () => {
+        await renderVenueMapViewContainer()
+
+        expect(usePageTrackingSpy).toHaveBeenCalledWith({
+          pageName: 'VenueMap',
+          pageLocation: 'venue_map',
+        })
+      })
+
+      it('should navigate to Venue with from="venueMap" when pressing VenueMapPreview', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        await user.press(await screen.findByTestId('venueMapPreview'))
+
+        expect(mockNavigate).toHaveBeenCalledWith('Venue', {
+          id: venuesFixture[0].venueId,
+          from: 'venueMap',
+        })
+      })
+
+      it('should navigate to Venue with from="venueMap" when pressing "Voir les offres du lieu"', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        await user.press(await screen.findByText('Voir les offres du lieu'))
+
+        expect(mockNavigate).toHaveBeenCalledWith('Venue', {
+          id: venuesFixture[0].venueId,
+          from: 'venueMap',
+        })
+      })
+
+      it('should log ConsultOffer with from="venueMap" when pressing an offer in bottom sheet', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        await user.press(await screen.findByText('Titane - VF'))
+
+        expect(analytics.logConsultOffer).toHaveBeenCalledWith(
+          expect.objectContaining({
+            offerId: '223342',
+            from: 'venueMap',
+          })
+        )
+      })
+
+      it('should track viewable items with moduleId="venue_map"', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        const intersectionObserver = await screen.findByTestId('intersectionObserver')
+        const playlist = await screen.findByTestId('venueOfferPlaylist')
+
+        fireEvent(intersectionObserver, 'onChange', true)
+        fireEvent(playlist, 'onViewableItemsChanged', {
+          viewableItems: [{ key: '223342', index: 0 }],
+        })
+
+        expect(mockTrackViewableItems).toHaveBeenCalledWith({
+          moduleId: 'venue_map',
+          itemType: 'offer',
+          viewableItems: [{ key: '223342', index: 0 }],
+          playlistIndex: 0,
+        })
+      })
+
+      it('should log ConsultVenue with from="venueMap" when pressing pin and preview is disabled', async () => {
+        setFeatureFlags([])
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+
+        expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+          venueId: venuesFixture[0].venueId.toString(),
+          from: 'venueMap',
+        })
+      })
+    })
+
+    describe('when on SearchMap screen', () => {
+      beforeEach(() => {
+        mockUseRoute.mockReturnValue({ name: 'SearchMap' })
+      })
+
+      it('should initialize usePageTracking with SearchMap / search_map', async () => {
+        await renderVenueMapViewContainer()
+
+        expect(usePageTrackingSpy).toHaveBeenCalledWith({
+          pageName: 'SearchMap',
+          pageLocation: 'search_map',
+        })
+      })
+
+      it('should navigate to Venue with from="searchMap" when pressing VenueMapPreview', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        await user.press(await screen.findByTestId('venueMapPreview'))
+
+        expect(mockNavigate).toHaveBeenCalledWith('Venue', {
+          id: venuesFixture[0].venueId,
+          from: 'searchMap',
+        })
+      })
+
+      it('should navigate to Venue with from="searchMap" when pressing "Voir les offres du lieu"', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        await user.press(await screen.findByText('Voir les offres du lieu'))
+
+        expect(mockNavigate).toHaveBeenCalledWith('Venue', {
+          id: venuesFixture[0].venueId,
+          from: 'searchMap',
+        })
+      })
+
+      it('should log ConsultOffer with from="searchMap" when pressing an offer in bottom sheet', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        await user.press(await screen.findByText('Titane - VF'))
+
+        expect(analytics.logConsultOffer).toHaveBeenCalledWith(
+          expect.objectContaining({
+            offerId: '223342',
+            from: 'searchMap',
+          })
+        )
+      })
+
+      it('should track viewable items with moduleId="search_map"', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        const intersectionObserver = await screen.findByTestId('intersectionObserver')
+        const playlist = await screen.findByTestId('venueOfferPlaylist')
+
+        fireEvent(intersectionObserver, 'onChange', true)
+        fireEvent(playlist, 'onViewableItemsChanged', {
+          viewableItems: [{ key: '223342', index: 0 }],
+        })
+
+        expect(mockTrackViewableItems).toHaveBeenCalledWith({
+          moduleId: 'search_map',
+          itemType: 'offer',
+          viewableItems: [{ key: '223342', index: 0 }],
+          playlistIndex: 0,
+        })
+      })
+
+      it('should log ConsultVenue with from="searchMap" when pressing pin and preview is disabled', async () => {
+        setFeatureFlags([])
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+
+        expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+          venueId: venuesFixture[0].venueId.toString(),
+          from: 'searchMap',
+        })
+      })
+    })
   })
 })
 

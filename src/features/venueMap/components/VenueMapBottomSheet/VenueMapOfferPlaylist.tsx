@@ -4,6 +4,7 @@ import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import {
   getDisplayedClubAdviceType,
   renderInteractionTag,
@@ -34,6 +35,8 @@ type VenueMapOfferPlaylistProps = {
     playlistIndex?: number
   ) => void
   onPressMore?: () => void
+  analyticsFrom?: Referrals
+  moduleId?: string
 }
 
 const PLAYLIST_ITEM_HEIGHT = LENGTH_S
@@ -46,6 +49,8 @@ export const VenueMapOfferPlaylist = ({
   onPressMore,
   playlistType,
   onViewableItemsChanged,
+  analyticsFrom = 'venueMap',
+  moduleId = 'venue_map',
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
@@ -78,7 +83,7 @@ export const VenueMapOfferPlaylist = ({
           subcategoryId={item.offer.subcategoryId}
           name={item.offer.name}
           offerLocation={item._geoloc}
-          analyticsFrom="venueMap"
+          analyticsFrom={analyticsFrom}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate)}
           width={PLAYLIST_ITEM_WIDTH}
@@ -90,6 +95,7 @@ export const VenueMapOfferPlaylist = ({
       )
     },
     [
+      analyticsFrom,
       currency,
       enableProAdvicesTag,
       enableSceneClubTag,
@@ -104,9 +110,9 @@ export const VenueMapOfferPlaylist = ({
   const handleOfferPlaylistViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
       if (!isFocused) return
-      onViewableItemsChanged(items, 'venue_map', 'offer', 0)
+      onViewableItemsChanged(items, moduleId, 'offer', 0)
     },
-    [isFocused, onViewableItemsChanged]
+    [isFocused, moduleId, onViewableItemsChanged]
   )
 
   return (
