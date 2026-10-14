@@ -3,7 +3,7 @@ import { Alert } from 'react-native'
 
 export type StorageKey =
   | 'access_token'
-  | 'adjust_beneficiary_event_sent'
+  | 'adjust_events'
   | 'artist_first_favorite'
   | 'campaign_date'
   | 'cookies'

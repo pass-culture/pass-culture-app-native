@@ -5,7 +5,6 @@ import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBenefi
 import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
 import { useUserProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-// eslint-disable-next-line no-restricted-imports
 import { useAppStateChange } from 'libs/appState'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt/jwt'
@@ -35,6 +34,8 @@ export const AuthWrapper = memo(function AuthWrapper({
     isLoading: isUserLoading,
   } = useUserProfileInfoQuery(isLoggedIn)
 
+  // The day backend will return new UserProfile type instead of UserProfileResponse,
+  // It would be preferable to call logAdjustBeneficiaryEvent directly within queryfn of useUserProfileInfoQuery.
   useAdjustBeneficiaryEvent(user)
 
   const readTokenAndConnectUser = useCallback(async () => {

@@ -2,204 +2,272 @@ import { format } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { CURRENT_DATE, SIXTEEN_AGE_DATE, EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
-import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
-import { UserProfile } from 'features/share/types'
+import { UserCreditType } from 'features/auth/helpers/getCreditType'
+import { logAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents } from 'libs/adjust/adjustEvents'
+import { AdjustEvents, AdjustEventsStorage } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
-import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('libs/adjust/adjust')
 const AdjustMock = Adjust as jest.Mocked<typeof Adjust>
 
+let callbackPromise: Promise<void> | undefined
+
 mockdate.set(CURRENT_DATE)
 
 describe('useAdjustBeneficiaryEvent', () => {
   beforeEach(async () => {
-    await storage.clear('adjust_beneficiary_event_sent')
+    await storage.clear('adjust_events')
+
     AdjustMock.isEnabled.mockImplementation((callback) => {
-      callback(true)
+      callbackPromise = (callback as (enabled: boolean) => Promise<void>)(true)
     })
   })
 
-  it('should log beneficiary event and save beneficiary event sent in storage when user is beneficiary', async () => {
-    renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+  describe('no user', () => {
+    it('must do nothing when the user is undefined', async () => {
+      logAdjustBeneficiaryEvent(undefined)
 
-    await waitFor(async () => {
-      expect(Adjust.logEvent).toHaveBeenNthCalledWith(1, AdjustEvents.COMPLETE_BENEFICIARY)
+      await callbackPromise
 
-      const adjustBeneficiaryEventSent = await storage.readObject<boolean>(
-        'adjust_beneficiary_event_sent'
-      )
+      expect(Adjust.logEvent).not.toHaveBeenCalled()
 
-      expect(adjustBeneficiaryEventSent).toEqual(true)
+      const adjustEventsStorage = await storage.readObject<AdjustEventsStorage>('adjust_events')
+
+      expect(adjustEventsStorage).toBeNull()
     })
   })
 
-  it('should not log beneficiary event and not save beneficiary event sent in storage when user is not beneficiary', async () => {
-    renderUseAdjustBeneficiaryEvent(nonBeneficiaryUserV2)
+  describe('not beneficiary user', () => {
+    it('must do nothing if Adjust is not initialized when user is not beneficiary', async () => {
+      let callbackPromiseToWait
+      AdjustMock.isEnabled.mockImplementationOnce((callback) => {
+        callbackPromiseToWait = (callback as (enabled: boolean) => Promise<void>)(false)
+      })
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
+      logAdjustBeneficiaryEvent(nonBeneficiaryUserV2)
 
-    expect(Adjust.logEvent).not.toHaveBeenCalled()
+      await callbackPromiseToWait
 
-    const adjustBeneficiaryEventSent = await storage.readObject<boolean>(
-      'adjust_beneficiary_event_sent'
-    )
+      expect(Adjust.logEvent).not.toHaveBeenCalled()
 
-    expect(adjustBeneficiaryEventSent).toBeNull()
-  })
+      const adjustEventsStorage = await storage.readObject<AdjustEventsStorage>('adjust_events')
 
-  it('should log underage beneficiary event when user is beneficiary and is underage', async () => {
-    renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
-      birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+      expect(adjustEventsStorage).toBeNull()
     })
 
-    await waitFor(() => {
-      expect(Adjust.logEvent).toHaveBeenNthCalledWith(2, AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
-    })
-  })
+    it('should set alreadySeenAsNotBeneficiary to true in storage without reset other stored data when user is not beneficiary', async () => {
+      await storage.saveObject('adjust_events', {
+        adjustRegistrationEventAlreadySent: true,
+      })
 
-  it('should not log underage beneficiary event when user is beneficiary and is not underage', async () => {
-    renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
-      birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
-    })
+      logAdjustBeneficiaryEvent(nonBeneficiaryUserV2)
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
+      await callbackPromise
 
-    expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
-  })
+      const adjustEventsStorage = await storage.readObject<AdjustEventsStorage>('adjust_events')
 
-  it('should log beneficiary 18 event when user is beneficiary and is 18 or older', async () => {
-    renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
-      birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
+      expect(adjustEventsStorage?.alreadySeenAsNotBeneficiary).toBe(true)
+      expect(adjustEventsStorage?.adjustRegistrationEventAlreadySent).toBe(true)
     })
 
-    await waitFor(() => {
-      expect(Adjust.logEvent).toHaveBeenNthCalledWith(2, AdjustEvents.COMPLETE_BENEFICIARY_18)
+    it('should not log beneficiary event and not set adjustBeneficiaryEventAlreadySent in storage when user is not beneficiary', async () => {
+      logAdjustBeneficiaryEvent(nonBeneficiaryUserV2)
+
+      await callbackPromise
+
+      expect(Adjust.logEvent).not.toHaveBeenCalled()
+
+      const adjustEventsStorage = await storage.readObject<AdjustEventsStorage>('adjust_events')
+
+      expect(adjustEventsStorage?.adjustBeneficiaryEventAlreadySent).toBeUndefined()
     })
   })
 
-  it('should not log beneficiary 18 event when user is beneficiary and is not 18 or older', async () => {
-    renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
-      birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+  describe('beneficiary user', () => {
+    it('must do nothing if Adjust is not initialized when user is beneficiary', async () => {
+      let callbackPromiseToWait
+      AdjustMock.isEnabled.mockImplementationOnce((callback) => {
+        callbackPromiseToWait = (callback as (enabled: boolean) => Promise<void>)(false)
+      })
+
+      logAdjustBeneficiaryEvent(beneficiaryUserV2)
+
+      await callbackPromiseToWait
+
+      expect(Adjust.logEvent).not.toHaveBeenCalled()
+
+      const adjustEventsStorage = await storage.readObject<AdjustEventsStorage>('adjust_events')
+
+      expect(adjustEventsStorage).toBeNull()
     })
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
+    it('should set adjustBeneficiaryEventAlreadySent to true in storage without reset other stored data when user is beneficiary', async () => {
+      await storage.saveObject('adjust_events', {
+        adjustRegistrationEventAlreadySent: true,
+      })
 
-    expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY_18)
-  })
+      logAdjustBeneficiaryEvent(beneficiaryUserV2)
 
-  it('should log beneficiary event when user becomes beneficiary', async () => {
-    const { rerender } = renderUseAdjustBeneficiaryEvent({
-      ...nonBeneficiaryUserV2,
+      await callbackPromise
+
+      const adjustEventsStorage = await storage.readObject<AdjustEventsStorage>('adjust_events')
+
+      expect(adjustEventsStorage?.adjustBeneficiaryEventAlreadySent).toBe(true)
+      expect(adjustEventsStorage?.adjustRegistrationEventAlreadySent).toBe(true)
     })
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
+    it('should not try to log beneficiary events twice', async () => {
+      logAdjustBeneficiaryEvent(beneficiaryUserV2)
 
-    expect(Adjust.logEvent).not.toHaveBeenCalled()
+      await callbackPromise
 
-    rerender({
-      user: {
-        ...beneficiaryUserV2,
-      },
+      expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY)
+
+      jest.clearAllMocks()
+
+      logAdjustBeneficiaryEvent(beneficiaryUserV2)
+
+      await callbackPromise
+
+      expect(Adjust.logEvent).not.toHaveBeenCalled()
     })
 
-    await waitFor(() => {
-      expect(Adjust.logEvent).toHaveBeenNthCalledWith(1, AdjustEvents.COMPLETE_BENEFICIARY)
-    })
-  })
+    describe('COMPLETE_BENEFICIARY event', () => {
+      it('should only log COMPLETE_BENEFICIARY and COMPLETE_BENEFICIARY_UNDERAGE event when user is beneficiary and is underage', async () => {
+        logAdjustBeneficiaryEvent({
+          ...beneficiaryUserV2,
+          birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+        })
 
-  it('should not log beneficiary event twice', async () => {
-    const { rerender } = renderUseAdjustBeneficiaryEvent({
-      ...beneficiaryUserV2,
-      birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
-    })
+        await callbackPromise
 
-    await waitFor(() => {
-      expect(Adjust.logEvent).toHaveBeenNthCalledWith(1, AdjustEvents.COMPLETE_BENEFICIARY)
-    })
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY_18)
+      })
 
-    jest.clearAllMocks()
+      it('should only log COMPLETE_BENEFICIARY and COMPLETE_BENEFICIARY_18 event when user is beneficiary and is 18 or older', async () => {
+        logAdjustBeneficiaryEvent({
+          ...beneficiaryUserV2,
+          birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
+        })
 
-    // With new user birthdate to force useEffect to rerun
-    rerender({
-      user: {
-        ...beneficiaryUserV2,
-        birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
-      },
-    })
+        await callbackPromise
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
-
-    expect(Adjust.logEvent).not.toHaveBeenCalled()
-  })
-
-  it('should log beneficiary event if Adjust is initialized', async () => {
-    renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
-
-    await waitFor(() => {
-      expect(Adjust.logEvent).toHaveBeenCalledTimes(2)
-    })
-  })
-
-  it('should not log beneficiary event if Adjust is not initialized', async () => {
-    AdjustMock.isEnabled.mockImplementationOnce((callback) => {
-      callback(false)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY_18)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.COMPLETE_BENEFICIARY_UNDERAGE)
+      })
     })
 
-    renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+    describe('NEW_BENEFICIARY_WITH_REGISTRATION event', () => {
+      it('should not log NEW_BENEFICIARY_WITH_REGISTRATION event when not adjustRegistrationEventAlreadySent', async () => {
+        logAdjustBeneficiaryEvent(beneficiaryUserV2)
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
+        await callbackPromise
 
-    expect(Adjust.logEvent).not.toHaveBeenCalled()
-  })
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(
+          AdjustEvents.NEW_BENEFICIARY_WITH_REGISTRATION
+        )
+      })
 
-  it('should log beneficiary event when Adjust becomes initialized', async () => {
-    AdjustMock.isEnabled.mockImplementationOnce((callback) => {
-      callback(false)
+      it('should log NEW_BENEFICIARY_WITH_REGISTRATION event when adjustRegistrationEventAlreadySent', async () => {
+        await storage.saveObject('adjust_events', {
+          adjustRegistrationEventAlreadySent: true,
+        })
+
+        logAdjustBeneficiaryEvent(beneficiaryUserV2)
+
+        await callbackPromise
+
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_WITH_REGISTRATION)
+      })
     })
 
-    const { rerender } = renderUseAdjustBeneficiaryEvent(beneficiaryUserV2)
+    describe('NEW_BENEFICIARY event', () => {
+      it('should not log NEW_BENEFICIARY event if user is not new beneficiary', async () => {
+        logAdjustBeneficiaryEvent(beneficiaryUserV2)
 
-    // force to wait that all useEffect are called to check that event is not logged after
-    await act(async () => {})
+        await callbackPromise
 
-    expect(Adjust.logEvent).not.toHaveBeenCalled()
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+      })
 
-    AdjustMock.isEnabled.mockImplementationOnce((callback) => {
-      callback(true)
-    })
+      it('should only log NEW_BENEFICIARY and NEW_FREE_BENEFICIARY event when user is new beneficiary with free credit', async () => {
+        await storage.saveObject('adjust_events', {
+          alreadySeenAsNotBeneficiary: true,
+        })
 
-    // With new user birthdate to force useEffect to rerun
-    rerender({
-      user: {
-        ...beneficiaryUserV2,
-        birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
-      },
-    })
+        logAdjustBeneficiaryEvent({
+          ...beneficiaryUserV2,
+          creditType: UserCreditType.CREDIT_V3_FREE,
+        })
 
-    await waitFor(() => {
-      expect(Adjust.logEvent).toHaveBeenCalledTimes(2)
+        await callbackPromise
+
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
+      })
+
+      it('should only log NEW_BENEFICIARY and NEW_BENEFICIARY_17 event when user is new beneficiary with credit v3 17', async () => {
+        await storage.saveObject('adjust_events', {
+          alreadySeenAsNotBeneficiary: true,
+        })
+
+        logAdjustBeneficiaryEvent({
+          ...beneficiaryUserV2,
+          creditType: UserCreditType.CREDIT_V3_17,
+        })
+
+        await callbackPromise
+
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
+      })
+
+      it('should only log NEW_BENEFICIARY and NEW_BENEFICIARY_18 event when user is new beneficiary with credit v3 18', async () => {
+        await storage.saveObject('adjust_events', {
+          alreadySeenAsNotBeneficiary: true,
+        })
+
+        logAdjustBeneficiaryEvent({
+          ...beneficiaryUserV2,
+          creditType: UserCreditType.CREDIT_V3_18,
+        })
+
+        await callbackPromise
+
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
+      })
+
+      it('should only log NEW_BENEFICIARY and NEW_BENEFICIARY_18 event when user is new beneficiary with credit v2 18', async () => {
+        await storage.saveObject('adjust_events', {
+          alreadySeenAsNotBeneficiary: true,
+        })
+
+        logAdjustBeneficiaryEvent({
+          ...beneficiaryUserV2,
+          creditType: UserCreditType.CREDIT_V2_18,
+        })
+
+        await callbackPromise
+
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
+        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
+      })
     })
   })
 })
-
-const renderUseAdjustBeneficiaryEvent = (initialUser: UserProfile) => {
-  return renderHook(({ user }: { user: UserProfile }) => useAdjustBeneficiaryEvent(user), {
-    initialProps: { user: initialUser },
-  })
-}
