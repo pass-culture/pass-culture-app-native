@@ -6,8 +6,8 @@ import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { logAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents, AdjustEventsStorage } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
+import { AdjustEvents, AdjustEventsStorage } from 'shared/adjust/adjustEvents'
 
 jest.mock('libs/firebase/analytics/analytics')
 

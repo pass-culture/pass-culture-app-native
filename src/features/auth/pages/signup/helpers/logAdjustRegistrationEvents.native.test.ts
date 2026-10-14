@@ -1,7 +1,7 @@
 import { logAdjustRegistrationEvents } from 'features/auth/pages/signup/helpers/logAdjustRegistrationEvents'
 import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents, AdjustEventsStorage } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
+import { AdjustEvents, AdjustEventsStorage } from 'shared/adjust/adjustEvents'
 
 jest.mock('libs/adjust/adjust')
 const AdjustMock = Adjust as jest.Mocked<typeof Adjust>

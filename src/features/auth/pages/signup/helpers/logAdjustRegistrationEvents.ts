@@ -1,6 +1,6 @@
 import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents, AdjustEventsStorage } from 'libs/adjust/adjustEvents'
 import { storage } from 'libs/storage'
+import { AdjustEvents, AdjustEventsStorage } from 'shared/adjust/adjustEvents'
 
 export const logAdjustRegistrationEvents = (userAge?: number) => {
   Adjust.isEnabled(async (isEnabled) => {
