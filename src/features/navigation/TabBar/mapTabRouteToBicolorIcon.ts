@@ -4,6 +4,7 @@ import { BookingsCountV2 } from 'features/bookings/components/BookingsCountV2'
 import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
+import { Map } from 'ui/svg/icons/Map'
 import { Search } from 'ui/svg/icons/Search'
 import { TabBarProfile } from 'ui/svg/icons/TabBarProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -16,6 +17,8 @@ export function mapTabRouteToIcon({ route }: Props): React.FC<AccessibleIcon> {
   switch (route) {
     case 'Home':
       return LogoDetailed
+    case 'AroundMe':
+      return Map
     case 'SearchStackNavigator':
       return Search
     case 'Bookings':

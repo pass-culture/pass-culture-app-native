@@ -9,7 +9,9 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { Favorites } from 'features/favorites/pages/Favorites'
-import { Home } from 'features/home/pages/Home'
+import { useShouldDisplayGeneralPublicHome } from 'features/generalPublicHome/hooks/useShouldDisplayGeneralPublicHome'
+import { GeneralPublicMap } from 'features/generalPublicHome/pages/GeneralPublicMap'
+import { HomeSwitch } from 'features/generalPublicHome/pages/HomeSwitch'
 import { screenParamsParser } from 'features/navigation/helpers/screenParamsUtils'
 import {
   SEARCH_STACK_LINKING_SCREENS,
@@ -35,9 +37,15 @@ const tabNavigatorDefinition = {
   ) => <TabBar {...props} />,
   screens: {
     Home: {
-      screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(Home)),
+      screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(HomeSwitch)),
       options: { title: 'Accueil' },
       linking: { path: 'accueil', parse: screenParamsParser.Home, alias: ['home'] },
+    },
+    AroundMe: {
+      screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(GeneralPublicMap)),
+      if: useShouldDisplayGeneralPublicHome,
+      options: { title: 'Carte' },
+      linking: { path: 'carte' },
     },
     SearchStackNavigator: {
       screen: withRemountOnColorSchemeHOC(withAsyncErrorBoundary(SearchStackScreen)),

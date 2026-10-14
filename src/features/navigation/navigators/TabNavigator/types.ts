@@ -22,6 +22,7 @@ type BookingsParams =
 
 export type TabParamList = {
   Home: HomeParams
+  AroundMe: undefined
   SearchStackNavigator?: NavigatorScreenParams<SearchStackParamList>
   Bookings: BookingsParams
   Favorites: undefined

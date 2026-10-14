@@ -1,6 +1,7 @@
 import React, { createContext, useContext, memo, useState, useMemo, PropsWithChildren } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useShouldDisplayGeneralPublicHome } from 'features/generalPublicHome/hooks/useShouldDisplayGeneralPublicHome'
 import { isCurrentOrFormerBeneficiary } from 'shared/user/checkStatusType'
 
 import { TabNavigationStateType, TabStateRoute } from '../navigators/TabNavigator/types'
@@ -9,6 +10,7 @@ import { getShouldDisplayTab } from './helpers'
 
 export const DEFAULT_TAB_ROUTES: TabStateRoute[] = [
   { name: 'Home', key: 'home-initial', isSelected: true },
+  { name: 'AroundMe', key: 'around-me-initial' },
   { name: 'SearchStackNavigator', key: 'search-initial' },
   { name: 'Bookings', key: 'bookings-initial' },
   { name: 'Favorites', key: 'favorites-initial' },
@@ -50,10 +52,12 @@ function isPrivateScreen(name: string): boolean {
 export const TabNavigationStateProvider: React.FC<PropsWithChildren> = memo(
   function TabNavigationStateProviderImplementation(props) {
     const { isLoggedIn, user } = useAuthContext()
+    const shouldDisplayGeneralPublicHome = useShouldDisplayGeneralPublicHome()
 
     const shouldDisplayTab = getShouldDisplayTab({
       isLoggedIn,
       isBeneficiary: !!isCurrentOrFormerBeneficiary(user),
+      shouldDisplayGeneralPublicHome,
     })
 
     const [tabNavigationState, setTabNavigationState] = useState<TabNavigationStateType>(

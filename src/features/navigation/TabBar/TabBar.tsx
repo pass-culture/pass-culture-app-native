@@ -63,6 +63,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
                 }
               }
               break
+            case 'AroundMe':
             case 'Bookings':
             case 'Favorites':
             case 'Profile':

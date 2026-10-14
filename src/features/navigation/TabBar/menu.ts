@@ -5,6 +5,7 @@ export const menu: Record<
   { displayName: string; accessibilityLabel?: string }
 > = {
   Home: { displayName: 'Accueil', accessibilityLabel: 'Accueil' },
+  AroundMe: { displayName: 'Carte', accessibilityLabel: 'Carte des lieux' },
   SearchStackNavigator: { displayName: 'Recherche', accessibilityLabel: 'Rechercher des offres' },
   Bookings: { displayName: 'Réservations', accessibilityLabel: 'Mes réservations' },
   Favorites: { displayName: 'Favoris', accessibilityLabel: 'Mes favoris' },
