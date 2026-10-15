@@ -14,7 +14,7 @@ interface Props {
   user: UserProfile
 }
 
-type GetBookingButtonProperties = {
+export type GetBookingButtonProperties = {
   wording?: string
   disabled?: boolean
   onPress?: () => void
