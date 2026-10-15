@@ -18,12 +18,13 @@ import {
   useLocationV2,
 } from 'libs/locationV2/location.store'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import * as PrePopulateOffer from 'shared/offer/usePrePopulateOffer'
 import { Credit } from 'shared/user/getAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, waitFor } from 'tests/utils'
 
-import { Favorite } from './Favorite'
+import { FavoriteOffer } from './FavoriteOffer'
 
 const credit: Credit = { amount: 100, isExpired: false }
 
@@ -38,6 +39,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 jest.mock('libs/jwt/jwt')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+const usePrePopulateOfferSpy = jest.spyOn(PrePopulateOffer, 'usePrePopulateOffer')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -46,12 +48,17 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
 const DEFAULT_USER_LOCATION = { latitude: 48, longitude: -1 }
 
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('<Favorite /> component', () => {
+describe('<FavoriteOffer /> component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
     setFeatureFlags()
@@ -61,12 +68,34 @@ describe('<Favorite /> component', () => {
   it('should navigate to the offer when clicking on the favorite', async () => {
     renderFavorite()
 
-    const offre = screen.getByText(favorite.offer.name)
-    await user.press(offre)
+    const offer = screen.getByText(favorite.offer.name)
+    await user.press(offer)
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
       from: 'favorites',
       id: favorite.offer.id,
+    })
+  })
+
+  it('should trigger ConsultOffer log when pressing on the favorite', async () => {
+    renderFavorite()
+
+    const offer = screen.getByText(favorite.offer.name)
+    await user.press(offer)
+
+    expect(usePrePopulateOfferSpy).toHaveBeenCalledWith()
+  })
+
+  it('should prepopulate offer when pressing on the favorite', async () => {
+    renderFavorite()
+
+    const offer = screen.getByText(favorite.offer.name)
+    await user.press(offer)
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'favorites',
+      isHeadline: false,
+      offerId: favorite.offer.id.toString(),
     })
   })
 
@@ -102,7 +131,7 @@ describe('<Favorite /> component', () => {
 
     renderFavorite()
 
-    await user.press(screen.getByText('Supprimer'))
+    await user.press(screen.getByLabelText('Retirer des favoris'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
@@ -119,7 +148,7 @@ describe('<Favorite /> component', () => {
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    await user.press(screen.getByText('Supprimer'))
+    await user.press(screen.getByLabelText('Retirer des favoris'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
@@ -218,7 +247,7 @@ function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
   const { favorite } = { ...DEFAULT_PROPS, ...props }
   return render(
     reactQueryProviderHOC(
-      <Favorite favorite={favorite} user={beneficiaryUserV2} onInAppBooking={onInAppBooking} />
+      <FavoriteOffer favorite={favorite} user={beneficiaryUserV2} onInAppBooking={onInAppBooking} />
     )
   )
 }
