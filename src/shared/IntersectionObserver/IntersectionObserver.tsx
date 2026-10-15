@@ -15,20 +15,22 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
 
   useEffect(
     function loadIntersectionObserver() {
-      observerRef.current = new globalThis.IntersectionObserver(
-        (entries) => {
-          onChange(!!entries[0]?.isIntersecting)
-        },
-        {
-          threshold,
+      setTimeout(() => {
+        observerRef.current = new globalThis.IntersectionObserver(
+          (entries) => {
+            onChange(!!entries[0]?.isIntersecting)
+          },
+          {
+            threshold,
+          }
+        )
+        if (targetRef.current) {
+          observerRef.current.observe(targetRef.current as unknown as Element)
         }
-      )
-      if (targetRef.current) {
-        observerRef.current.observe(targetRef.current as unknown as Element)
-      }
-      return () => {
-        observerRef.current?.disconnect()
-      }
+        return () => {
+          observerRef.current?.disconnect()
+        }
+      }, 300)
     },
     [onChange, threshold]
   )

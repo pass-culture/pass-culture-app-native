@@ -90,7 +90,7 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
             id: item.objectID,
             playlistId: playlistType,
             originId: offer.id.toString(),
-            callId: apiRecoParams?.callId,
+            callId: apiRecoParams?.callId ?? undefined,
           })
         }
       }}

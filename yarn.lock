@@ -11372,7 +11372,6 @@ __metadata:
     react-helmet: "npm:^6.1.0"
     react-hook-form: "npm:^7.35.0"
     react-instantsearch-core: "npm:^7.20.0"
-    react-intersection-observer: "npm:^11.0.1"
     react-mobile-picker: "npm:^0.2.1"
     react-native: "npm:0.85.3"
     react-native-adjust: "npm:^5.5.0"
@@ -24190,19 +24189,6 @@ __metadata:
     algoliasearch: ">= 3.1 < 6"
     react: ">= 16.8.0 < 20"
   checksum: 10/814d16bed2b3023ea49e96ee1fb55404535711c016416637a74eb556eae51c65af0558f81ad8024540b54205553759572b12c3b7dfb5070056bd79e9464d28c6
-  languageName: node
-  linkType: hard
-
-"react-intersection-observer@npm:^11.0.1":
-  version: 11.0.1
-  resolution: "react-intersection-observer@npm:11.0.1"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0 || ^19.0.0
-    react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-  checksum: 10/5c65f52d6279ee48dad9bf4eb0762418c5b0a0775c7b6d87a3e24f2ef5cdccc5a22c1271bc90be3c968d2f107e4e285677ba753d0ac535e545a7cb5d0e26b6ab
   languageName: node
   linkType: hard
 

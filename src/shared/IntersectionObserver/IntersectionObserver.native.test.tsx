@@ -69,7 +69,7 @@ describe('<IntersectionObserver /> (native)', () => {
 
     it('should handle percentage threshold', () => {
       render(
-        <IntersectionObserver onChange={onChangeMock} threshold="60%">
+        <IntersectionObserver onChange={onChangeMock} threshold={0.6}>
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
