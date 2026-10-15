@@ -5,6 +5,8 @@ import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
+import com.facebook.react.common.ReleaseLevel
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.hotupdater.HotUpdater
 
@@ -25,6 +27,9 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
+    // ENABLE CANARY MODE FOR INTERSECTION OBSERVER (currently react-native@0.85)
+    // Can be removed when available in production mode
+    DefaultNewArchitectureEntryPoint.releaseLevel = ReleaseLevel.CANARY
     loadReactNative(this)
   }
 }
