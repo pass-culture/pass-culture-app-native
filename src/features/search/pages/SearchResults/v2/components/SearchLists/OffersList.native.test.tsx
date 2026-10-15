@@ -151,12 +151,19 @@ describe('<OffersList />', () => {
       expect(analytics.logPerformSearch).not.toHaveBeenCalled()
     })
 
-    it('should log PerformSearch only once for the same search key across re-renders', () => {
+    it('should log PerformSearch only once for the same search key when navigating to SearchMap and back or changing page', () => {
       const { rerender } = render(
         reactQueryProviderHOC(<OffersList searchFilters={defaultSearchFilters} />)
       )
 
+      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
+
+      mockUsePreviousRouteName.mockReturnValueOnce(SearchView.Results)
+
       rerender(reactQueryProviderHOC(<OffersList searchFilters={defaultSearchFilters} />))
+
+      mockUsePreviousRouteName.mockReturnValueOnce(SearchView.Landing)
+
       rerender(
         reactQueryProviderHOC(
           <OffersList
