@@ -42,7 +42,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
       removeFavorite(favorite.id)
     } else {
       animateIcon(scaleFavoriteIconAnimatedValueRef.current)
-      addFavorite({ offerId })
+      addFavorite?.({ offerId })
     }
   }, [addFavorite, favorite, isLoggedIn, offerId, removeFavorite, showSignInModal])
 

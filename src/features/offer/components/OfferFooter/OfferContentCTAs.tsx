@@ -63,7 +63,7 @@ export const OfferContentCTAs: FC<Props> = ({
 
   const onPressFavoriteCTA = () => {
     if (!isLoggedIn) return favoriteAuthModal.showModal()
-    return favorite ? removeFavorite(favorite.id) : addFavorite({ offerId: offer.id })
+    return favorite ? removeFavorite(favorite.id) : addFavorite?.({ offerId: offer.id })
   }
 
   const reminderAuthModal = useModal(false)
