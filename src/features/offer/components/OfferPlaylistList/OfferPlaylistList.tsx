@@ -164,7 +164,7 @@ export function OfferPlaylistList({
                   id: item.objectID,
                   playlistId: playlist.type,
                   originId: offer.id.toString(),
-                  callId: playlist.apiRecoParams?.callId,
+                  callId: playlist.apiRecoParams?.callId ?? undefined,
                 })
               }
             }}

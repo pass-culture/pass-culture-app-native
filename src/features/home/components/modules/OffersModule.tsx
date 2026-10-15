@@ -196,7 +196,7 @@ export const OffersModule: FC<OffersModuleProps> = ({
           id: item.objectID,
           playlistId: moduleId,
           originId: homeEntryId,
-          callId: recommendationParameters ? recommendationApiParams?.callId : undefined,
+          callId: recommendationParameters ? (recommendationApiParams?.callId ?? undefined) : undefined,
         })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (

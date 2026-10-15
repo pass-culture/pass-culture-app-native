@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver.web'
+import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { render, screen } from 'tests/utils/web'
 import { Typo } from 'ui/theme'
 
@@ -45,7 +45,7 @@ describe('IntersectionObserver (web)', () => {
 
     it('should call onChange when intersection changes', () => {
       render(
-        <IntersectionObserver onChange={onChangeMock} threshold="100%">
+        <IntersectionObserver onChange={onChangeMock} threshold={1}>
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
@@ -87,7 +87,7 @@ describe('IntersectionObserver (web)', () => {
   describe('threshold handling', () => {
     it('should handle all thresholds with simple observer options', () => {
       const { rerender } = render(
-        <IntersectionObserver onChange={onChangeMock} threshold="50%">
+        <IntersectionObserver onChange={onChangeMock} threshold={0.5}>
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
@@ -104,7 +104,7 @@ describe('IntersectionObserver (web)', () => {
       expect(onChangeMock).toHaveBeenCalledWith(true)
 
       rerender(
-        <IntersectionObserver onChange={onChangeMock} threshold="100%">
+        <IntersectionObserver onChange={onChangeMock} threshold={1}>
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
