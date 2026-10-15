@@ -2,7 +2,7 @@ import React from 'react'
 import { act } from 'react-test-renderer'
 
 import { dispatch, navigate } from '__mocks__/@react-navigation/native'
-import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
+import { SubscriptionStep, SubscriptionStepperResponseV3 } from 'api/gen'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
@@ -34,7 +34,7 @@ jest.useFakeTimers()
 
 describe('<IdentityCheckEnd/>', () => {
   beforeEach(() => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+    mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', mockStep)
   })
 
   it('should render correctly', async () => {
@@ -46,7 +46,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   //TODO(PC-36587): unskip this test
   it.skip('should navigate to stepper after timeout if nextSubscriptionStep is not null', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+    mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', {
       ...mockStep,
       nextSubscriptionStep: SubscriptionStep['honor-statement'],
     })
@@ -68,7 +68,7 @@ describe('<IdentityCheckEnd/>', () => {
 
   //TODO(PC-36587): unskip this test
   it.skip('should navigate to home after timeout if nextSubscriptionStep is null', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+    mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', {
       ...mockStep,
       nextSubscriptionStep: null,
     })

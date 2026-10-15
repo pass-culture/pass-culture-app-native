@@ -114,7 +114,6 @@ const baseNonBeneficiaryUser = {
   isBeneficiary: false,
   isEligibleForBeneficiaryUpgrade: false,
   lastName: 'Dupond',
-  phoneNumber: '+33639980123',
   postalCode: '75001',
   qfBonificationStatus: QFBonificationStatus.not_eligible,
   recreditAmountToShow: null,

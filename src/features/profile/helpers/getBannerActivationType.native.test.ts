@@ -1,4 +1,4 @@
-import { BannerName, SubscriptionStepperResponseV2 } from 'api/gen'
+import { BannerName, SubscriptionStepperResponseV3 } from 'api/gen'
 import { ActivationBanner } from 'features/home/api/useActivationBanner'
 import {
   BannerType,
@@ -22,7 +22,7 @@ describe('getBannerActivationType', () => {
     text: 'Texte retry',
   }
 
-  const subscriptionInfosWithMessage: SubscriptionStepperResponseV2 = {
+  const subscriptionInfosWithMessage: SubscriptionStepperResponseV3 = {
     allowedIdentityCheckMethods: [],
     hasIdentityCheckPending: false,
     subscriptionStepsToDisplay: [],
@@ -30,7 +30,7 @@ describe('getBannerActivationType', () => {
     title: 'Titre',
   }
 
-  const subscriptionInfosPending: SubscriptionStepperResponseV2 = {
+  const subscriptionInfosPending: SubscriptionStepperResponseV3 = {
     allowedIdentityCheckMethods: [],
     hasIdentityCheckPending: true,
     subscriptionStepsToDisplay: [],

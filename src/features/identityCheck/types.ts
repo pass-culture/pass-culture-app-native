@@ -14,7 +14,6 @@ export enum IdentityCheckStep {
   PROFILE = 'profile-completion',
   IDENTIFICATION = 'identity-check',
   CONFIRMATION = 'honor-statement',
-  PHONE_VALIDATION = 'phone-validation',
   END = 'end',
 }
 

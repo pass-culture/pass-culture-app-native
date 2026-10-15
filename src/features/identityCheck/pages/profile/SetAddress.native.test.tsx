@@ -2,12 +2,10 @@ import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { Properties } from 'libs/place/types'
@@ -151,108 +149,6 @@ describe('<SetAddress/>', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(navigate).not.toHaveBeenCalled()
-  })
-
-  describe('when ff phoneNumberInProfileStepper is enabled', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
-    })
-
-    it('should render correctly', async () => {
-      renderSetAddress()
-
-      await screen.findByTestId('Entrée pour l’adresse')
-
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('should display correct infos in identity check', async () => {
-      renderSetAddress()
-
-      expect(await screen.findByText('Profil')).toBeTruthy()
-      expect(await screen.findByText('Quelle est ton adresse\u00a0?')).toBeTruthy()
-    })
-
-    it('should display correct infos in booking free offer 15/16 years', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-      })
-      useRoute.mockReturnValueOnce({
-        params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-      }) // re-render
-      renderSetAddress()
-
-      expect(await screen.findByText('Informations personnelles')).toBeTruthy()
-      expect(await screen.findByText('Saisis ton adresse postale')).toBeTruthy()
-    })
-
-    it('should display a list of addresses when user add an address', async () => {
-      renderSetAddress()
-
-      const input = screen.getByTestId('Entrée pour l’adresse')
-      fireEvent.changeText(input, QUERY_ADDRESS)
-
-      await waitFor(() => {
-        expect(
-          screen.getByText(mockedSuggestedPlaces.features[0].properties.name)
-        ).toBeOnTheScreen()
-        expect(
-          screen.getByText(mockedSuggestedPlaces.features[1].properties.name)
-        ).toBeOnTheScreen()
-        expect(
-          screen.getByText(mockedSuggestedPlaces.features[2].properties.name)
-        ).toBeOnTheScreen()
-      })
-    })
-
-    it('should display selected suggestion in input', async () => {
-      renderSetAddress()
-
-      const input = screen.getByTestId('Entrée pour l’adresse')
-      fireEvent.changeText(input, QUERY_ADDRESS)
-
-      const selectedSuggestion = mockedSuggestedPlaces.features[1].properties.name
-      await user.press(await screen.findByText(selectedSuggestion))
-
-      expect(screen.getByTestId('Entrée pour l’adresse').props.value).toBe(selectedSuggestion)
-    })
-
-    it('should save address in local storage when clicking on "Continuer"', async () => {
-      renderSetAddress()
-
-      const input = screen.getByTestId('Entrée pour l’adresse')
-      fireEvent.changeText(input, QUERY_ADDRESS)
-
-      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
-      await user.press(screen.getByText('Continuer'))
-
-      expect(await storage.readObject('profile-address')).toMatchObject({
-        state: {
-          address: mockedSuggestedPlaces.features[1].properties.name,
-        },
-      })
-    })
-
-    it('should navigate to SetPhoneNumber when clicking on "Continuer"', async () => {
-      mockAuthContextWithUser({
-        ...nonBeneficiaryUser,
-        eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
-      })
-      renderSetAddress()
-
-      const input = screen.getByTestId('Entrée pour l’adresse')
-      fireEvent.changeText(input, QUERY_ADDRESS)
-
-      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
-      await user.press(screen.getByText('Continuer'))
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
-        params: {
-          type: 'identityCheck',
-        },
-        screen: 'SetPhoneNumber',
-      })
-    })
   })
 })
 
