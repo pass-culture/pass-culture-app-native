@@ -43,6 +43,7 @@ export const useStepperInfo = (): StepperInfo => {
 
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+  const needsToFillCulturalSurvey = user?.needsToFillCulturalSurvey ?? true
 
   const { data } = useGetStepperInfoQuery()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
@@ -136,7 +137,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={LegalNotices} testID="confirmation-step-done" />,
         retry: () => <IconStepRetry Icon={LegalNotices} testID="confirmation-retry-step" />,
       },
-      firstScreen: 'CulturalSurveyIntro',
+      firstScreen: needsToFillCulturalSurvey ? 'CulturalSurveyIntro' : 'IdentityCheckHonor',
       firstScreenType: ProfileTypes.IDENTITY_CHECK,
     },
     [IdentityCheckStep.PHONE_VALIDATION]: {
