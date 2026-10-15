@@ -26,7 +26,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ReactNativeDelegate *delegate = [[ReactNativeDelegate alloc] init];
-  RCTReactNativeFactory *factory = [[RCTReactNativeFactory alloc] initWithDelegate:delegate];
+  // Canary exposes IntersectionObserver. Remove the release level once it ships in stable.
+  RCTReactNativeFactory *factory = [[RCTReactNativeFactory alloc] initWithDelegate:delegate releaseLevel:Canary];
   delegate.dependencyProvider = [[RCTAppDependencyProvider alloc] init];
 
   self.reactNativeDelegate = delegate;
