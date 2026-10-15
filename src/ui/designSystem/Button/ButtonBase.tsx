@@ -119,7 +119,6 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
 
   const { vertical: paddingVertical, horizontal: paddingHorizontal } = getContentPadding({
     variant,
-    iconButton,
     theme,
   })
   const content = (

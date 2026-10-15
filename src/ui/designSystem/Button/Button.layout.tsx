@@ -54,18 +54,11 @@ export const getTypographyForSize = (size: ButtonSize) => (size === 'small' ? 'B
 
 export const getContentPadding = ({
   variant,
-  iconButton,
   theme,
 }: {
   variant: ButtonVariant
-  iconButton: boolean
   theme: DefaultTheme
 }) => {
-  if (iconButton) {
-    const padding = theme.designSystem.size.spacing.s
-    return { vertical: padding, horizontal: padding }
-  }
-
   return {
     vertical:
       variant === 'tertiary'

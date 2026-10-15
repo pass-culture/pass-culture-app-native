@@ -35,6 +35,7 @@ const ModalContainer = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   backgroundColor: theme.designSystem.color.background.default,
   paddingHorizontal: theme.designSystem.size.spacing.xxl,
+  paddingTop: theme.designSystem.size.spacing.s,
 }))
 
 const ContentContainer = styled(ViewGap)({
