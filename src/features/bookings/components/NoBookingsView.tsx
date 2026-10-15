@@ -36,7 +36,6 @@ export function NoBookingsView({ ...props }) {
           />
         ) : undefined
       }
-      trackingExplorerOffersFrom="bookings"
       {...props}
     />
   ) : (
@@ -53,7 +52,6 @@ export function NoBookingsView({ ...props }) {
           />
         ) : undefined
       }
-      trackingExplorerOffersFrom="bookings"
       {...props}
     />
   )

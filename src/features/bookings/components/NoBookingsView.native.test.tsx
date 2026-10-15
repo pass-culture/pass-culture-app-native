@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -56,16 +55,13 @@ describe('<NoBookingsView />', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     await renderAsync(reactQueryProviderHOC(<NoBookingsView />))
 
-    const button = screen.getByText('Découvrir le catalogue')
+    const button = screen.getByText('Explorer')
     await user.press(button)
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'SearchLanding' },
-        screen: 'SearchStackNavigator',
+        screen: 'Home',
       })
-
-      expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
     })
   })
 

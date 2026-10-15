@@ -1,19 +1,16 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
-import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 type Props = {
   explanations: string
   icon?: FunctionComponent<AccessibleIcon>
-  trackingExplorerOffersFrom: 'bookings' | 'favorites'
   title?: string
   offline?: boolean
   remoteIllustration?: React.ReactNode
@@ -24,12 +21,10 @@ export const NoResultsView = ({
   explanations,
   icon: Icon,
   offline = false,
-  trackingExplorerOffersFrom,
   remoteIllustration,
   ...props
 }: Props) => {
   const { illustrations, designSystem } = useTheme()
-  const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
   const hasRemoteIllustration = !!remoteIllustration
 
   return (
@@ -48,13 +43,7 @@ export const NoResultsView = ({
           <StyledBody hasRemoteIllustration={hasRemoteIllustration}>{explanations}</StyledBody>
         </ContainerText>
         {offline ? null : (
-          <InternalTouchableLink
-            as={Button}
-            navigateTo={getSearchPropConfig('SearchLanding')}
-            wording="Découvrir le catalogue"
-            onBeforeNavigate={onPressExploreOffers}
-            icon={MagnifyingGlass}
-          />
+          <InternalTouchableLink as={Button} navigateTo={navigateToHomeConfig} wording="Explorer" />
         )}
       </ContentContainer>
     </React.Fragment>
