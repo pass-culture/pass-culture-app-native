@@ -102,7 +102,7 @@ const baseNonBeneficiaryUser = {
     physical: { initial: 0, remaining: 0 },
     digital: { initial: 0, remaining: 0 },
   },
-  eligibility: EligibilityType.underage,
+  eligibility: null,
   eligibilityEndDatetime: null,
   eligibilityStartDatetime: null,
   email: 'email@domain.ext',
@@ -123,7 +123,7 @@ const baseNonBeneficiaryUser = {
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
-  status: { statusType: YoungStatusType.eligible },
+  status: { statusType: YoungStatusType.non_eligible },
   street: '10 rue du Bonheur',
   subscriptionMessage: null,
   subscriptions: {
@@ -139,6 +139,7 @@ export const nonBeneficiaryUserFromAPI: UserProfileResponse = {
 
 export const nonBeneficiaryUserV2: UserProfile = {
   ...baseNonBeneficiaryUser,
+  subscriptionStatus: undefined,
   statusType: UserStatusType.GENERAL_PUBLIC,
   creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,

@@ -269,7 +269,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    const errorMessage = screen.getByText('Ton compte à été supprimé', { hidden: true })
+    const errorMessage = screen.getByText('Ton compte a été supprimé', { hidden: true })
 
     expect(errorMessage).toBeTruthy()
   })
@@ -281,7 +281,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    const errorMessage = screen.getByText('Ton compte à été supprimé', { hidden: true })
+    const errorMessage = screen.getByText('Ton compte a été supprimé', { hidden: true })
 
     expect(errorMessage).toBeTruthy()
   })
@@ -293,7 +293,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    const errorMessage = screen.getByText('Ton compte à été supprimé', { hidden: true })
+    const errorMessage = screen.getByText('Ton compte a été supprimé', { hidden: true })
 
     expect(errorMessage).toBeTruthy()
   })

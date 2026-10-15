@@ -177,7 +177,7 @@ const useHandleSigninSuccess = (
           case AccountState.WAITING_FOR_ANONYMIZATION:
           case AccountState.DELETED:
           case AccountState.ANONYMIZED:
-            return setErrorMessage?.('Ton compte à été supprimé')
+            return setErrorMessage?.('Ton compte a été supprimé')
           case AccountState.ACTIVE: {
             const isOAuth = isOAuthLoginRequest(body)
             const loginAnalyticsType: LoginType = isOAuth ? 'SSO_login' : 'email_login'

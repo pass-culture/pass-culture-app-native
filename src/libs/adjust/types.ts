@@ -1,4 +1,4 @@
-import { AdjustEvents } from './adjustEvents'
+import { AdjustEvents } from 'shared/adjust/adjustEvents'
 
 export interface Adjust {
   initOrEnable: (calledBecauseOfNewConsents?: boolean) => void

@@ -5,10 +5,10 @@ import { ApiError } from 'api/ApiError'
 import { BookingsResponseV2, BookOfferRequest, BookOfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Adjust } from 'libs/adjust/adjust'
-import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { QueryKeys } from 'libs/queryKeys'
 import { prefetchBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
 import { prefetchBookingsV2Query } from 'queries/bookings/useBookingsQuery'
+import { AdjustEvents } from 'shared/adjust/adjustEvents'
 
 interface BookingMutationContext {
   previousBookings: Array<BookingsResponseV2>
