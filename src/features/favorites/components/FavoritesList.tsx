@@ -3,7 +3,7 @@ import { FlatList, ListRenderItem } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
-import { Favorite } from 'features/favorites/components/Favorite'
+import { FavoriteOffer } from 'features/favorites/components/FavoriteOffer'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
 import { FavoriteSortBy, Tab } from 'features/favorites/types'
@@ -19,8 +19,9 @@ export type FavoritesListProps = {
   isRefreshing: boolean
   onRefresh: () => void
   onBookOffer: (offer: FavoriteOfferResponse) => void
-  selectedTab?: Tab
+  selectedTab: Tab
   user?: UserProfile
+  enableFavoritesHub?: boolean
 }
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -32,6 +33,7 @@ export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
   onRefresh,
   onBookOffer,
   selectedTab,
+  enableFavoritesHub,
   user,
 }) => {
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
@@ -58,9 +60,12 @@ export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
   const renderItem = useCallback<ListRenderItem<FavoriteResponse>>(
     ({ item }) => {
       if (!user || !credit) return <FavoriteHitPlaceholder />
-      return <Favorite favorite={item} user={user} onInAppBooking={onBookOffer} />
+      if (selectedTab === Tab.OFFERS) {
+        return <FavoriteOffer favorite={item} user={user} onInAppBooking={onBookOffer} />
+      }
+      return null
     },
-    [user, credit, onBookOffer]
+    [user, credit, selectedTab, onBookOffer]
   )
 
   return (
@@ -80,7 +85,10 @@ export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
       onEndReachedThreshold={0.9}
       initialNumToRender={10}
       ListHeaderComponent={
-        <NumberOfResults nbFavorites={favorites?.length ?? 0} tab={selectedTab} />
+        <NumberOfResults
+          nbFavorites={favorites?.length ?? 0}
+          tab={enableFavoritesHub ? selectedTab : undefined}
+        />
       }
       ListEmptyComponent={<NoFavoritesResult />}
       ListFooterComponent={favorites?.length ? <Footer /> : null}

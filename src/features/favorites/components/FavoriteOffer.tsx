@@ -1,8 +1,10 @@
-import React, { useCallback, useMemo, useRef } from 'react'
-import { Animated } from 'react-native'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
+import { FavoriteActions } from 'features/favorites/components/FavoriteActions'
+import { FavoriteAnimatedWrapper } from 'features/favorites/components/FavoriteAnimatedWrapper'
+import { FavoriteBookingButton } from 'features/favorites/components/FavoriteBookingButton'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
@@ -22,21 +24,14 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
-import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
-import { useLayout } from 'ui/hooks/useLayout'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Share } from 'ui/svg/icons/Share'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
-interface Props {
+interface FavoriteProps {
   favorite: FavoriteResponse
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
   user: UserProfile
@@ -44,12 +39,9 @@ interface Props {
 
 const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4
 
-export const Favorite: React.FC<Props> = (props) => {
-  const { offer } = props.favorite
+export const FavoriteOffer: React.FC<FavoriteProps> = ({ favorite, onInAppBooking, user }) => {
+  const { offer } = favorite
   const isAComingSoonOffer = getIsAComingSoonOffer(offer.bookingAllowedDatetime)
-  const { onLayout, height } = useLayout()
-  const animatedOpacity = useRef(new Animated.Value(1)).current
-  const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()
   const userLocation = useUserLocation()
   const selectedPlace = usePlace()
@@ -73,11 +65,11 @@ export const Favorite: React.FC<Props> = (props) => {
   })
   const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
   const formattedDate = useFavoriteFormattedDate({ offer })
-  const { modalToDisplay, ...buttonProperties } =
+  const { modalToDisplay, ...bookingButtonProperties } =
     getBookingButtonProperties({
       offer,
-      user: props.user,
-      onInAppBooking: props.onInAppBooking,
+      user: user,
+      onInAppBooking: onInAppBooking,
     }) ?? {}
 
   const { OfferModal: BookOfferModal, showModal: showBookOfferModal } = useBookOfferModal({
@@ -86,7 +78,7 @@ export const Favorite: React.FC<Props> = (props) => {
     from: StepperOrigin.FAVORITE,
   })
 
-  const { mutate: removeFavorite, isPending } = useRemoveFavoriteMutation({
+  const { mutate: removeFavorite, isPending: isRemoving } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },
@@ -117,39 +109,6 @@ export const Favorite: React.FC<Props> = (props) => {
     })
   }
 
-  function onRemove() {
-    Animated.parallel([
-      Animated.timing(animatedOpacity, {
-        toValue: 0,
-        delay: 0,
-        duration: 300,
-        useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
-      }),
-      Animated.timing(animatedCollapse, {
-        toValue: 0,
-        delay: 100,
-        duration: 300,
-        // height animation not compatible with native driver use
-        useNativeDriver: false,
-      }),
-    ]).start(() => {
-      removeFavorite(props.favorite.id)
-    })
-  }
-
-  const animatedCollapseStyle = {
-    height: height
-      ? animatedCollapse.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, height],
-        })
-      : undefined,
-  }
-
-  const animatedOpacityStyle = {
-    opacity: animatedOpacity,
-  }
-
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
@@ -162,81 +121,56 @@ export const Favorite: React.FC<Props> = (props) => {
   })
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'favorites', offerId: offer.id })
-    shareOffer()
+    void analytics.logShare({ type: 'Offer', from: 'favorites', offerId: offer.id })
+    void shareOffer()
     showShareOfferModal()
   }, [offer.id, shareOffer, showShareOfferModal])
 
-  const BookingButton = useMemo(() => {
-    const { wording, externalNav, disabled, accessibilityLabel } = buttonProperties
-    if (!wording) return
-    if (externalNav)
-      return (
-        <ExternalTouchableLink
-          externalNav={externalNav}
-          wording={wording}
-          accessibilityLabel={accessibilityLabel}
-          as={Button}
-          icon={ExternalSite}
-        />
-      )
-    const onPressBookingButton = () => {
-      buttonProperties?.onPress?.()
-      showBookOfferModal()
-    }
-    return <Button wording={wording} disabled={disabled} onPress={onPressBookingButton} />
-  }, [buttonProperties, showBookOfferModal])
-
   return (
     <React.Fragment>
-      <Animated.View onLayout={onLayout} style={animatedCollapseStyle}>
-        <Animated.View style={animatedOpacityStyle}>
-          <Container>
-            <StyledTouchableLink
-              navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
-              onBeforeNavigate={handlePressOffer}
-              accessibilityLabel={accessibilityLabel}>
-              <Row gap={SPACER_BETWEEN_IMAGE_AND_CONTENT}>
-                <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-                <ContentContainer gap={2}>
-                  <LeftContent>
-                    <OfferName numberOfLines={2}>{offer.name}</OfferName>
-                    <Body>{appLabel}</Body>
-                    {formattedDate ? <Body>{formattedDate}</Body> : null}
-                    {displayPrice ? <Price>{displayPrice}</Price> : null}
-                  </LeftContent>
-                  <RightContent>
-                    {distanceToOffer ? <Distance>{distanceToOffer}</Distance> : null}
-                  </RightContent>
-                </ContentContainer>
-              </Row>
-            </StyledTouchableLink>
-            <ShareContainer>
-              <Button
-                variant="secondary"
-                color="neutral"
-                onPress={pressShareOffer}
-                icon={Share}
-                accessibilityLabel={`Partager l’offre ${offer.name}`}
-              />
-            </ShareContainer>
-          </Container>
-          <FavoriteButtonsContainer gap={5}>
-            <ButtonContainer>
-              <Button
-                wording="Supprimer"
-                variant="secondary"
-                color="neutral"
-                onPress={onRemove}
-                accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
-                disabled={isPending}
-              />
-            </ButtonContainer>
-            {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}
-          </FavoriteButtonsContainer>
-          <LineSeparator />
-        </Animated.View>
-      </Animated.View>
+      <FavoriteAnimatedWrapper onAnimationEnd={() => removeFavorite(favorite.id)}>
+        {(triggerRemoveAnimation) => (
+          <ViewGap gap={4}>
+            <Container>
+              <StyledTouchableLink
+                navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
+                onBeforeNavigate={handlePressOffer}
+                accessibilityLabel={accessibilityLabel}>
+                <Row gap={SPACER_BETWEEN_IMAGE_AND_CONTENT}>
+                  <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
+                  <ContentContainer gap={4}>
+                    <LeftContent>
+                      <OfferName numberOfLines={2}>{offer.name}</OfferName>
+                      <Body>{appLabel}</Body>
+                      {formattedDate ? <Body>{formattedDate}</Body> : null}
+                      {displayPrice ? <Price>{displayPrice}</Price> : null}
+                    </LeftContent>
+                    <RightContent>
+                      {distanceToOffer ? <Distance>{distanceToOffer}</Distance> : null}
+                    </RightContent>
+                  </ContentContainer>
+                </Row>
+              </StyledTouchableLink>
+            </Container>
+            <FavoriteActions
+              favorite={favorite}
+              isRemoving={isRemoving}
+              onRemove={triggerRemoveAnimation}
+              onSharePress={pressShareOffer}
+              shareAccessibilityLabel={`Partager l’offre ${offer.name}`}
+              primaryAction={
+                isAComingSoonOffer ? null : (
+                  <FavoriteBookingButton
+                    buttonProperties={bookingButtonProperties}
+                    onOpenModal={showBookOfferModal}
+                  />
+                )
+              }
+            />
+          </ViewGap>
+        )}
+      </FavoriteAnimatedWrapper>
+
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
@@ -254,20 +188,11 @@ const Container = styled.View({
   position: 'relative',
 })
 
-const ShareContainer = styled.View(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  marginRight: theme.contentPage.marginHorizontal,
-}))
-
 const LeftContent = styled.View({
   flex: 1,
 })
 
 const RightContent = styled.View(({ theme }) => ({
-  justifyContent: 'flex-end',
-  alignItems: 'flex-end',
   minWidth: theme.buttons.roundedButton.size,
 }))
 
@@ -283,23 +208,6 @@ const Row = styled(ViewGap)({
 const ContentContainer = styled(ViewGap)({
   flexDirection: 'row',
   flex: 1,
-})
-
-const ButtonContainer = styled.View({
-  maxWidth: getSpacing(70),
-  flex: 1,
-})
-
-export const FavoriteButtonsContainer = styled(ViewGap)(({ theme }) => {
-  const DEFAULT_MARGIN = theme.designSystem.size.spacing.xl
-  const WEB_MARGIN_LEFT =
-    DEFAULT_MARGIN + theme.tiles.sizes.small.width + getSpacing(SPACER_BETWEEN_IMAGE_AND_CONTENT)
-  return {
-    flexDirection: 'row',
-    marginTop: DEFAULT_MARGIN,
-    marginRight: DEFAULT_MARGIN,
-    marginLeft: theme.isMobileViewport ? DEFAULT_MARGIN : WEB_MARGIN_LEFT,
-  }
 })
 
 const OfferName = styled(Typo.BodyAccent)(({ theme }) => ({
