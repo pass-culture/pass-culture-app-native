@@ -22,12 +22,24 @@ describe('useResizeImageURL hook', () => {
     setSettingsMock()
   })
 
-  it('should return a smaller resized image URL on a small screen', () => {
+  it('should use the legacy URL format when imgproxy format is disabled in backend settings', () => {
+    setSettingsMock({ patchSettingsWith: { useImgProxyFormat: false } })
     const imageURL = 'https://storage.googleapis.com/localhost-storage/thumbs/mediations/BF6Q'
     const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=327&filename=localhost-storage/thumbs/mediations/BF6Q'
+
+    expect(result.current).toEqual(expectedImageURL)
+  })
+
+  it('should use the imgproxy URL format when enabled in backend settings', () => {
+    setSettingsMock({ patchSettingsWith: { useImgProxyFormat: true } })
+    const imageURL = 'https://storage.googleapis.com/localhost-storage/thumbs/mediations/BF6Q'
+    const { result } = renderHook(() => useResizeImageURL({ imageURL }))
+
+    const expectedImageURL =
+      'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/insecure/rs:fit:327:327/plain/gs://localhost-storage/thumbs/mediations/BF6Q'
 
     expect(result.current).toEqual(expectedImageURL)
   })
