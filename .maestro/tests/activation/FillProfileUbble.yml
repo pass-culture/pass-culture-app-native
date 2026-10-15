@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - activation
+  - toto
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
   - runScript:
