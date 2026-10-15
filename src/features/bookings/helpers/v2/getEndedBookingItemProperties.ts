@@ -27,7 +27,7 @@ export const getEndedBookingItemProperties = ({
   const { offer } = stock
 
   const isBookingEligibleForArchive = !!expirationDateUtilsV2.isArchivableBooking(booking)
-  const shouldRedirectToBooking = isBookingEligibleForArchive && !cancellationReason
+  const shouldRedirectToBooking = !cancellationReason
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
     name: offer.name,
@@ -42,7 +42,7 @@ export const getEndedBookingItemProperties = ({
         offerId: offer.id,
         from: 'endedbookings',
       })
-    if (isBookingEligibleForArchive) return
+    if (shouldRedirectToBooking || isBookingEligibleForArchive) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       prePopulateOffer({
