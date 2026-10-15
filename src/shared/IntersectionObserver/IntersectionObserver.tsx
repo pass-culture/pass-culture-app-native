@@ -1,54 +1,45 @@
-import React, { useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
-import { InView } from 'react-native-intersection-observer'
+import React, { FC, useEffect, useRef } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { parseThreshold } from './helpers'
 import { IntersectionObserverProps } from './types'
 
-export function IntersectionObserver({
+export const IntersectionObserver: FC<IntersectionObserverProps> = ({
   children,
   onChange,
-  threshold = 100,
+  threshold,
   fill = false,
-}: Readonly<IntersectionObserverProps>) {
-  const [containerHeight, setContainerHeight] = useState<number>(0)
+}) => {
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  const targetRef = useRef<View | null>(null)
 
-  const handleChange = (inView: boolean) => {
-    onChange(inView)
-  }
-
-  const handleLayout = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout
-    setContainerHeight(height)
-  }
-
-  const thresholdConfig = parseThreshold(threshold, containerHeight)
+  useEffect(
+    function loadIntersectionObserver() {
+      observerRef.current = new globalThis.IntersectionObserver(
+        (entries) => {
+          onChange(!!entries[0]?.isIntersecting)
+        },
+        {
+          threshold,
+        }
+      )
+      if (targetRef.current) {
+        observerRef.current.observe(targetRef.current as unknown as Element)
+      }
+      return () => {
+        observerRef.current?.disconnect()
+      }
+    },
+    [onChange, threshold]
+  )
 
   return (
-    <Container fill={fill} onLayout={handleLayout}>
-      <StyledInView
-        testID="intersectionObserver"
-        onChange={handleChange}
-        threshold={thresholdConfig.value}>
-        {null}
-      </StyledInView>
+    <Container ref={targetRef} fill={fill} testID="intersectionObserver">
       {children}
     </Container>
   )
 }
 
-const Container = styled.View<{ fill: boolean }>(({ fill }) => ({
-  position: 'relative',
+const Container = styled(View)<{ fill: boolean }>(({ fill }) => ({
   ...(fill ? { flex: 1 } : null),
-}))
-
-const StyledInView = styled(InView).attrs<{ testID?: string }>({})<{
-  threshold: number
-}>(({ threshold }) => ({
-  position: 'absolute',
-  bottom: 0,
-  top: threshold,
-  left: 0,
-  right: 0,
 }))
