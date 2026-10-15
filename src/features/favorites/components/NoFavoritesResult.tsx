@@ -28,7 +28,6 @@ export const NoFavoritesResult = () => {
       title={enableFavoritesHub ? undefined : 'Retrouve toutes tes offres en un clin d’oeil'}
       explanations={explanations}
       icon={enableNewVisionUi ? undefined : EmptyFavoritesIcon}
-      trackingExplorerOffersFrom="favorites"
       remoteIllustration={
         enableNewVisionUi ? (
           <RemoteIllustration

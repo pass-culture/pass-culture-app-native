@@ -3,7 +3,6 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
@@ -48,7 +47,6 @@ describe('NoFavoritesResult component', () => {
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'Home',
     })
-    expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
   })
 
   it('should display empty favorites icon when wipNewVisionUi FF is deactivated', () => {

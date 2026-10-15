@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -63,8 +62,6 @@ describe('<NoBookingsView />', () => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         screen: 'Home',
       })
-
-      expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
     })
   })
 
