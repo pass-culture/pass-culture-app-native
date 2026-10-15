@@ -4,8 +4,13 @@ import { Linking } from 'react-native'
 import { getNestedNavigationFromState } from 'features/navigation/navigators/RootNavigator/linking/getNestedNavigationFromState'
 import { isScreen } from 'features/navigation/navigators/RootNavigator/types'
 import { Action, initialSearchState } from 'features/search/context/reducer'
+import { LocationFilter } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
 import { locationStore } from 'libs/locationV2/location.store'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+
+export const LOCATION_CHANGED_BY_DEEPLINK_MESSAGE =
+  'Tes paramètres de localisation ont été changés pour afficher les résultats de cette recherche.'
 
 /*
   The initial search state is loaded from the URL parameters.
@@ -40,12 +45,28 @@ export const loadSearchFiltersFromUrl = async (dispatch: (action: Action) => voi
       if (locationFilter) {
         if (locationFilter.locationType === LocationMode.AROUND_ME) return
 
+        const hasLocationChanged = isLocationDifferentFromStore(locationFilter)
+
         locationStore.actions.setLocationMode(locationFilter.locationType)
         if (locationFilter.locationType === LocationMode.AROUND_PLACE) {
           locationStore.actions.setPlace(locationFilter.place)
           locationStore.actions.setAroundPlaceRadius(locationFilter.aroundRadius)
         }
+
+        if (hasLocationChanged) showSuccessSnackBar(LOCATION_CHANGED_BY_DEEPLINK_MESSAGE)
       }
     }
   }
+}
+
+const isLocationDifferentFromStore = (locationFilter: LocationFilter) => {
+  const { locationMode, configuration } = locationStore.selectors.selectState()
+  if (locationMode !== locationFilter.locationType) return true
+
+  if (locationFilter.locationType === LocationMode.AROUND_PLACE) {
+    const { label, radius } = configuration[LocationMode.AROUND_PLACE]
+    return label !== locationFilter.place.label || radius !== locationFilter.aroundRadius
+  }
+
+  return false
 }
