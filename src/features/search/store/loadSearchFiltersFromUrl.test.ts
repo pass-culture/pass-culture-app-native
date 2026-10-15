@@ -5,10 +5,15 @@ import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { LocationMode } from 'libs/location/types'
 import { locationActions, locationSelectors } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
+import * as snackBarStoreModule from 'ui/designSystem/Snackbar/snackBar.store'
 
-import { loadSearchFiltersFromUrl } from './loadSearchFiltersFromUrl'
+import {
+  loadSearchFiltersFromUrl,
+  LOCATION_CHANGED_BY_DEEPLINK_MESSAGE,
+} from './loadSearchFiltersFromUrl'
 
 const mockGetInitialURL = jest.spyOn(Linking, 'getInitialURL')
+const mockShowSuccessSnackBar = jest.spyOn(snackBarStoreModule, 'showSuccessSnackBar')
 
 // The expect should be on searchStore after SearchWrapper is deleted
 
@@ -24,7 +29,9 @@ describe('loadSearchFiltersFromUrl', () => {
 
   beforeEach(() => {
     dispatch.mockClear()
+    mockShowSuccessSnackBar.mockClear()
     locationActions.setLocationMode(LocationMode.EVERYWHERE)
+    locationActions.setPlace(null)
   })
 
   it('should do nothing when initial URL is not SearchResults', async () => {
@@ -64,9 +71,57 @@ describe('loadSearchFiltersFromUrl', () => {
     expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
     expect(locationSelectors.selectPlace()).toMatchObject(Kourou)
     expect(locationSelectors.selectLocationConfiguration(LocationMode.AROUND_PLACE).radius).toBe(50)
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(LOCATION_CHANGED_BY_DEEPLINK_MESSAGE)
   })
 
-  it('should not update location store for around me filter', async () => {
+  it('should update location store and show snackbar when switching to everywhere', async () => {
+    locationActions.setPlace(Kourou)
+    locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+    const locationFilter = { locationType: LocationMode.EVERYWHERE }
+
+    mockGetInitialURL.mockResolvedValueOnce(
+      `${WEBAPP_V2_URL}/recherche/resultats?locationFilter=${encodeURIComponent(JSON.stringify(locationFilter))}`
+    )
+
+    await loadSearchFiltersFromUrl(dispatch)
+
+    expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith(LOCATION_CHANGED_BY_DEEPLINK_MESSAGE)
+  })
+
+  it('should not show snackbar when location from URL matches the current location', async () => {
+    const locationFilter = { locationType: LocationMode.EVERYWHERE }
+
+    mockGetInitialURL.mockResolvedValueOnce(
+      `${WEBAPP_V2_URL}/recherche/resultats?locationFilter=${encodeURIComponent(JSON.stringify(locationFilter))}`
+    )
+
+    await loadSearchFiltersFromUrl(dispatch)
+
+    expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
+  })
+
+  it('should not show snackbar when place from URL matches the current place', async () => {
+    locationActions.setPlace(Kourou)
+    locationActions.setAroundPlaceRadius(50)
+    locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+    const locationFilter = {
+      locationType: LocationMode.AROUND_PLACE,
+      place: Kourou,
+      aroundRadius: 50,
+    }
+
+    mockGetInitialURL.mockResolvedValueOnce(
+      `${WEBAPP_V2_URL}/recherche/resultats?locationFilter=${encodeURIComponent(JSON.stringify(locationFilter))}`
+    )
+
+    await loadSearchFiltersFromUrl(dispatch)
+
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
+  })
+
+  it('should not update location store nor show snackbar for around me filter', async () => {
     const locationFilter = { locationType: LocationMode.AROUND_ME }
 
     mockGetInitialURL.mockResolvedValueOnce(
@@ -80,5 +135,6 @@ describe('loadSearchFiltersFromUrl', () => {
       payload: { ...initialSearchState, locationFilter },
     })
     expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
   })
 })
