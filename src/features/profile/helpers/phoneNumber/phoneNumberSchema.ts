@@ -6,7 +6,7 @@ import {
 } from 'libphonenumber-js'
 import * as yup from 'yup'
 
-import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
+import { findCountry } from 'features/profile/helpers/phoneNumber/findCountry'
 
 export const phoneNumberSchema = yup.object({
   phoneNumber: yup
