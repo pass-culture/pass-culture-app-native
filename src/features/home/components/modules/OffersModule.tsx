@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
-import React, { useCallback, useEffect, useMemo } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import React, { FC, useCallback, useEffect, useMemo } from 'react'
+import { Platform } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -16,6 +16,7 @@ import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackN
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
@@ -37,22 +38,19 @@ export type OffersModuleProps = {
   homeEntryId: string | undefined
   data: ModuleData | undefined
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export const OffersModule = (props: OffersModuleProps) => {
-  const {
-    displayParameters,
-    offersModuleParameters,
-    index,
-    moduleId,
-    homeEntryId,
-    data,
-    recommendationParameters,
-    onViewableItemsChanged,
-  } = props
+export const OffersModule: FC<OffersModuleProps> = ({
+  displayParameters,
+  offersModuleParameters,
+  index,
+  moduleId,
+  homeEntryId,
+  data,
+  recommendationParameters,
+}) => {
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const queryClient = useQueryClient()
   const isUserUnderage = useIsUserUnderage()
@@ -87,7 +85,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     analytics.logAllTilesSeen({
       moduleName,
       numberOfTiles: playlistItems.length,
-      apiRecoParams: props.recommendationParameters ? recommendationApiParams : undefined,
+      apiRecoParams: recommendationParameters ? recommendationApiParams : undefined,
     })
   )
 
@@ -135,8 +133,8 @@ export const OffersModule = (props: OffersModuleProps) => {
     [recommandationOffers, playlistItems]
   )
 
-  const hasRecommendationParameters = props.recommendationParameters
-    ? Object.values(props.recommendationParameters).some((value) => value !== undefined)
+  const hasRecommendationParameters = recommendationParameters
+    ? Object.values(recommendationParameters).some((value) => value !== undefined)
     : false
 
   const offersToDisplay = hasRecommendationParameters ? hybridPlaylistItems : playlistItems
@@ -150,13 +148,11 @@ export const OffersModule = (props: OffersModuleProps) => {
     if (shouldModuleBeDisplayed) {
       void analytics.logModuleDisplayedOnHomepage({
         moduleId,
-        moduleType: props.recommendationParameters ? ContentTypes.HYBRID : ContentTypes.ALGOLIA,
+        moduleType: recommendationParameters ? ContentTypes.HYBRID : ContentTypes.ALGOLIA,
         index,
         homeEntryId,
-        hybridModuleOffsetIndex: props.recommendationParameters
-          ? hybridModuleOffsetIndex
-          : undefined,
-        call_id: props.recommendationParameters ? recommendationApiParams?.callId : undefined,
+        hybridModuleOffsetIndex: recommendationParameters ? hybridModuleOffsetIndex : undefined,
+        call_id: recommendationParameters ? recommendationApiParams?.callId : undefined,
         offers: (offersToDisplay as Offer[]).map((item) => item.objectID),
       })
     }
@@ -168,7 +164,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     moduleId,
     offersToDisplay,
     playlistItems,
-    props.recommendationParameters,
+    recommendationParameters,
     recommendationApiParams?.callId,
     shouldModuleBeDisplayed,
   ])
@@ -188,9 +184,21 @@ export const OffersModule = (props: OffersModuleProps) => {
       },
     },
   }
-
   return (
-    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+    <ObservedPlaylist
+      onItemViewed={({ index: itemIndex, item }) => {
+        if (!homeEntryId) return
+        void logViewItem({
+          origin: 'home',
+          playlistIndex: index,
+          index: itemIndex,
+          type: 'offer',
+          id: item.objectID,
+          playlistId: moduleId,
+          originId: homeEntryId,
+          callId: recommendationParameters ? (recommendationApiParams?.callId ?? undefined) : undefined,
+        })
+      }}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           title={displayParameters.title}

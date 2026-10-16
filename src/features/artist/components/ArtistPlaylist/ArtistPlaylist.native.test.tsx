@@ -44,7 +44,6 @@ describe('ArtistPlaylist', () => {
               subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
             }),
           ]}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -82,7 +81,6 @@ describe('ArtistPlaylist', () => {
               subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
             }),
           ]}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -114,7 +112,6 @@ describe('ArtistPlaylist', () => {
               subcategoryId: SubcategoryIdEnum.JEU_SUPPORT_PHYSIQUE,
             }),
           ]}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -124,13 +121,7 @@ describe('ArtistPlaylist', () => {
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist
-          artist={{ id: '1', name: 'Céline Dion' }}
-          items={[]}
-          onViewableItemsChanged={jest.fn()}
-        />
-      )
+      reactQueryProviderHOC(<ArtistPlaylist artist={{ id: '1', name: 'Céline Dion' }} items={[]} />)
     )
 
     await waitFor(() => expect(screen.queryByLabelText('Livres')).not.toBeOnTheScreen())
@@ -142,7 +133,6 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -156,7 +146,6 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artist={{ id: '1', name: 'Céline Dion' }}
           items={[mockedAlgoliaOffersWithSameArtistResponse[0]]}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -172,7 +161,6 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -188,7 +176,6 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -204,7 +191,6 @@ describe('ArtistPlaylist', () => {
         <ArtistPlaylist
           artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -230,7 +216,6 @@ describe('ArtistPlaylist', () => {
               offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
             },
           ]}
-          onViewableItemsChanged={jest.fn()}
           enableProAdvicesTag
         />
       )
@@ -253,7 +238,6 @@ describe('ArtistPlaylist', () => {
               offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
             },
           ]}
-          onViewableItemsChanged={jest.fn()}
         />
       )
     )

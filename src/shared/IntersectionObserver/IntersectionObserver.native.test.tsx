@@ -4,10 +4,6 @@ import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionOb
 import { fireEvent, render, screen } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
-jest.mock('shared/analytics/logViewItem', () => ({
-  logPlaylistDebug: jest.fn(),
-}))
-
 const onChangeMock = jest.fn()
 
 describe('<IntersectionObserver /> (native)', () => {
@@ -73,7 +69,7 @@ describe('<IntersectionObserver /> (native)', () => {
 
     it('should handle percentage threshold', () => {
       render(
-        <IntersectionObserver onChange={onChangeMock} threshold="60%">
+        <IntersectionObserver onChange={onChangeMock} threshold={0.6}>
           <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
         </IntersectionObserver>
       )
