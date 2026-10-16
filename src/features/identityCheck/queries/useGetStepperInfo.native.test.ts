@@ -6,7 +6,7 @@ import {
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -29,7 +29,7 @@ describe('useGetStepperInfo', () => {
       SubscriptionStepperResponseFixture
     )
     const { result } = renderGetStepperInfo()
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+    await waitFor(() => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current.data).toEqual({
       ...SubscriptionStepperResponseFixture,
@@ -45,11 +45,19 @@ describe('useGetStepperInfo', () => {
     )
 
     const { result } = renderGetStepperInfo()
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+    await waitFor(() => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current.data?.subscriptionMessage?.messageSummary).toEqual(
       'Tu n’as pas fournis les bons documents'
     )
+  })
+
+  it('should only fetch data when user is logged in', async () => {
+    mockAuthContextWithoutUser()
+    const { result } = renderGetStepperInfo()
+
+    await waitFor(() => expect(result.current.isFetched).toEqual(false))
+    await waitFor(() => expect(result.current.isEnabled).toEqual(false))
   })
 })
 
