@@ -6,7 +6,12 @@
 
 ## Sélectionner l’environnement à modifier
 <br/>
-  Dans le burger menu en haut à gauche choisir soit ‘testing’ ou ‘production’ en fonction des changements que vous voulez opérer.
+  Dans le burger menu en haut à gauche choisir soit ‘testing’ soit ‘master’ en fonction des changements que vous voulez opérer :
+
+- ‘testing’ est utilisé par les apps testing, staging et integration ;
+- ‘master’ est utilisé par l’app de production.
+
+L’environnement utilisé par chaque app est défini par la variable `CONTENTFUL_ENVIRONMENT` des fichiers `.env.*`.
 
 <br/>
 
@@ -25,3 +30,9 @@
 
 <br/>
 🚨 Si vous supprimer des champs existants vous allez introduire un breaking change ! Pensez à avertir les PM.
+
+<br/>
+
+## Côté app
+
+Si l’app consomme ce content model, mettre à jour ses types dans `src/libs/contentful/types.ts` et, si besoin, ses adapters dans `src/libs/contentful/adapters/`.

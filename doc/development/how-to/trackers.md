@@ -6,23 +6,23 @@ To have access to analytics we need trackers. In order to do so, we use Firebase
 
 ## Key points
 
-1. Run the script `yarn add:tracker --provider=firebase <TrackerName>` with TrackerName in PascalCase. This will create the files needed for the tracker.
+1. Run the script `yarn add:tracker <TrackerName>` with TrackerName in PascalCase (`--provider=firebase` is the default and only provider). It does not create files: it adds the event, the `log<TrackerName>` function and its mock to the existing files listed below. Add the event parameters manually if needed.
 
    <details>
    <summary>Manually</summary>
    Add a Firebase event in your code (following alphabetical order)
 
-   a. For Firebase, add your event in [src/libs/firebase/analytics/events.ts](../../src/libs/firebase/analytics/events.ts).
-   b. Add a function called `log<YourEvent>` in [src/libs/analytics/logEventAnalytics.ts](../../src/libs/analytics/logEventAnalytics.ts), where you will call the method `logEvent` of `analytics` (from [src/libs/analytics/index.ts](../../src/libs/analytics/index.ts)), with the firebase event name(s). If an event name is not specified for one of these providers, then the event won't be triggered by that provider.
+   a. For Firebase, add your event in [src/libs/firebase/analytics/events.ts](../../../src/libs/firebase/analytics/events.ts).
+   b. Add a function called `log<YourEvent>` in [src/libs/analytics/logEventAnalytics.ts](../../../src/libs/analytics/logEventAnalytics.ts), where you will call the method `logEvent` of `analytics` (from [src/libs/analytics/provider.ts](../../../src/libs/analytics/provider.ts)), with the firebase event name(s). If an event name is not specified for one of these providers, then the event won't be triggered by that provider.
 
-   c. Add a mock of your function in [src/libs/analytics/\_\_mocks\_\_/provider.ts](../../src/libs/analytics/__mocks__/logEventAnalytics.ts)
+   c. Add a mock of your function in [src/libs/analytics/\_\_mocks\_\_/logEventAnalytics.ts](../../../src/libs/analytics/__mocks__/logEventAnalytics.ts)
    </details>
 
 2. Call your analytics function in a callback before giving it as a props to your button
 
 3. Test the behavior in Firebase:
 
-   a. Open the Firebase console and go to the [DebugView](https://console.firebase.google.com/u/4/project/passculture-native/analytics/app/android:app.passculture/debugview)
+   a. Open the Firebase console and go to the [DebugView of the testing project](https://console.firebase.google.com/project/pc-native-testing/analytics/app/android:app.passculture.testing/debugview/realtime~2Fdebugview%3Ffpn%3D557258398232) (see [Manually testing tracking](#manually-testing-tracking))
 
    b. Find your device in the list (arm64 is for M1, x86_64 for regular macOS)
    b2. If you are connected, you can check your user ID in the debugView to match the one in your cheat codes
