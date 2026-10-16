@@ -16,7 +16,7 @@ export const ModalSimpleFooter: FunctionComponent<ModalSimpleFooterProps> = ({
   secondaryButton,
   tertiaryButton,
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, isTabletViewport } = useTheme()
 
   const buttons = [
     primaryButton ? (
@@ -53,14 +53,14 @@ export const ModalSimpleFooter: FunctionComponent<ModalSimpleFooterProps> = ({
 
   if (buttons.length === 0) return null
 
-  const orderedButtons = isDesktopViewport ? [...buttons].reverse() : buttons
+  const orderedButtons = isDesktopViewport || isTabletViewport ? [...buttons].reverse() : buttons
 
-  return <FooterContainer gap={3}>{orderedButtons}</FooterContainer>
+  return <FooterContainer gap={4}>{orderedButtons}</FooterContainer>
 }
 
 const FooterContainer = styled(ViewGap)(({ theme }) => ({
   flexShrink: 0,
-  flexDirection: theme.isDesktopViewport ? 'row' : 'column',
+  flexDirection: theme.isDesktopViewport || theme.isTabletViewport ? 'row' : 'column',
   justifyContent: 'center',
   width: '100%',
   paddingHorizontal: theme.designSystem.size.spacing.xxl,
