@@ -9,9 +9,8 @@ You need to create a OAuth Client ID of type Android [here][1], with the followi
 - **Package name:** app.passculture.testing
 - **SHA-1 fingerprint:** this correspond to the fingerprint of your debug keystore. You can find it by running :
     ```
-    keytool -keystore ~/.android/debug.keystore  -list -v
+    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
     ```
-    The keystore password is `android`.
 
 The SSO will work when you run `yarn android:testing`.
 

@@ -5,9 +5,9 @@ Always run release builds during your profiling sessions:
 - In debug, the JS code is served by the metro bundler and contains extra development features. In release, it's minified.
 - When `__DEV__ === true` `react-native` runs extra checks (strict mode), validations, logs... adding overhead to debug mode.
 - The development features (dev menu, hot reloading), on top of bloating the JS, add a background overhead.
-- Bridge traffic is heavier in debug from debugging/error reporting
+- Debugging and error reporting (LogBox, dev tools connection) add extra work in debug.
 
-If you run a debug build performances that are not representative of the final's user experience.
+If you run a debug build, performances are not representative of the final user experience.
 
 ## Android Studio
 
@@ -27,7 +27,7 @@ Setup:
 - Open the project's `android` folder in Android Studio,
 - Make sure your device is selected in the top bar,
 - Select the right variant: `View > Tool Windows > Build Variants`
-- In the pane that opened, select `appTestingRelease` for the `:app` module
+- In the pane that opened, select `apptestingRelease` for the `:app` module
 - In the top bar click on the 3 dots ⠇ to the right of the `app⌄` button.
 - Click `Profiler: Run 'app' as profileable (low overhead)`
 - When the build is over, make sure to accept the app installation on you device during the time window (10 seconds).
@@ -60,25 +60,12 @@ If you go to the "Past Recordings" tab, you can select your recording, and "Expo
 
 We can use a simulator to profile with Xcode.
 
-Running a release build:
-
-- In Xcode, go to the top menu and click on `Product > Scheme > Edit Scheme`
-- A new window will pop up. Select "Run" from the left-hand pane.
-- Go to the "Info" tab.
-- Change the "Build Configuration" dropdown from "Debug" to "Release".
-- (Recommended) For the most accurate profiling, uncheck the "Debug executable" checkbox. This prevents the Xcode debugger from attaching to the process, which can add a tiny bit of overhead.
-- Click Close.
-- Build (you can close metro if it was open). It might take longer than usual (20 minutes).
-
 We are going to use Time Profiler:
 
-- Open Xcode
-- Start the active scheme (click the "play" button) to build the app
-- MAKE SURE TO RUN A RELEASE BUILD
-- In the Top bar > Xcode > Developer Tool -> Instruments.
-- Then, scroll down to find the Time Profiler tool.
-- It will open a new window. To start profiling your app, click on the drop-down menu and select your device and the app.
-- Also choose the target app.
+- Open Xcode and select the scheme (e.g. `PassCulture-Testing`) and your simulator.
+- Click `Product > Profile` (⌘I). The Profile action of the schemes already builds in `Release`: no need to edit the scheme (editing it changes the committed `.xcscheme` file). You can close metro. The build might take longer than usual (20 minutes).
+- When the build is over, Instruments opens. Select the Time Profiler tool.
+- Make sure your device and the app are selected in the top bar.
 - Click on the red record button (top left)
 - Use the app
 
@@ -86,7 +73,7 @@ Interpreting the results:
 
 - In the CPU usage, you can see spikes and drops.
 - If the CPU usage is high for several seconds, there could be an issue.
-- In the article, they then use Hermes Debugger to figure out the issue.
+- Then use the Hermes debugger to figure out the issue.
 - I also see "hangs" that could be interesting to investigate.
 
 ## Troubleshooting

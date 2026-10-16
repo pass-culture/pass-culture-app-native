@@ -40,33 +40,32 @@ it('must have at least 1 special character', async () => {
   const value = 'userAZERTY123'
   const result = passwordSchema.validate(value)
 
-  await expect(result).rejects.toEqual(new ValidationError('1 Caractère spécial (!@#$%^&*...)'))
+  await expect(result).rejects.toEqual(new ValidationError('1 caractère spécial (!@#$%^&*...)'))
 })
 ```
 
 ### Tester le formulaire dans les composants
 
-⚠️ Dans les tests avec react hook form, le comportement demande à ce qu’on wrap tous les fireEvent dans des act, afin de ne pas avoir d’act warning qui font fail les tests.
+⚠️ La validation de react-hook-form est asynchrone. Pour éviter les act warnings, utiliser `userEvent` (`user.type`, `user.press`) et attendre le résultat avec `await screen.findBy...`, plutôt que de wrapper chaque interaction dans un `act`.
 
-Exemple avec un test de ChangeEmail :
+Exemple avec un test de NewEmailSelection :
 
 ```tsx
-render(<ChangeEmail />)
-const submitButton = screen.getByLabelText('Enregistrer les modifications')
-expect(submitButton).toBeDisabled()
+const user = userEvent.setup()
 
-await act(async () => {
-  const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-  fireEvent.changeText(passwordInput, 'password>=12')
-})
-await act(async () => {
+it('should display invalid email format when email format is invalid', async () => {
+  await renderAsync(reactQueryProviderHOC(<NewEmailSelection />))
+
   const emailInput = screen.getByTestId('Entrée pour l’email')
-  fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
-})
-expect(submitButton).toBeDisabled()
+  await user.type(emailInput, 'john.doe')
 
-const errorMessage = screen.getByText('L’e-mail saisi est identique à ton e-mail actuel')
-expect(errorMessage).toBeOnTheScreen()
+  expect(
+    await screen.findByText(
+      'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+      { hidden: true }
+    )
+  ).toBeOnTheScreen()
+})
 ```
 
 ## Liens externes
@@ -77,4 +76,6 @@ Il y a une subtilité qu'il est important d'avoir en tête :
 
 - `getValues` : récupère la valeur mais sans trigger de re-render au moment ou celle-ci change
 
-- `watch` : récupère la valeur et trigger un re-render au moment à chaque fois que celle-ci change
+- `watch` : récupère la valeur et trigger un re-render du composant qui appelle `useForm` à chaque fois que celle-ci change
+
+- `useWatch` : comme `watch`, mais limite le re-render au composant qui l'appelle (à préférer dans un sous-composant)

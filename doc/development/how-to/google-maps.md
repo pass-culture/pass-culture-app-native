@@ -2,7 +2,7 @@
 
 For the venue map on Android, we use the Google Maps API. It needs an API key to work.
 
-The API key is stored in the .env files. It is used in the `AndroidManifest.xml` file (set up by the `app/build.gradle` file).
+The API key is stored in the `GOOGLE_MAPS_API_PUBLIC_KEY` variable of the .env files (testing and staging share the same key, production has its own). It is used in the `AndroidManifest.xml` file (set up by the `app/build.gradle` file).
 
 The API keys are restricted to the app's package name and SHA-1 fingerprint of the keystore, and, can only use the Maps SDK for Android.
 
@@ -18,4 +18,4 @@ When developing in local, you are using your own debug keystore. You need to all
 keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
 ```
 
-2) On [Google Cloud Platform > Google Maps Platform > Keys and credentials, edit "Key for the venue map on Android"](https://console.cloud.google.com/apis/credentials/key/52cc91af-29b1-49d9-b376-184ea50321d7?project=passculture-metier-ehp), and add on the Android restrictions the package name (from .env.testing if you're developing on testing) and the SHA-1 fingerprint just obtained.
+2) On [Google Cloud Platform > Google Maps Platform > Keys and credentials, edit "Key for the venue map on Android"](https://console.cloud.google.com/apis/credentials/key/52cc91af-29b1-49d9-b376-184ea50321d7?project=passculture-metier-ehp), and add on the Android restrictions the package name (`ANDROID_APP_ID` in .env.testing, i.e. `app.passculture.testing`, if you're developing on testing) and the SHA-1 fingerprint just obtained.
