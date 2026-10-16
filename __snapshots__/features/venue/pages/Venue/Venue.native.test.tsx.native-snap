@@ -157,8 +157,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "borderTopRightRadius": 4,
                       "flexDirection": "row",
                       "maxWidth": "100%",
-                      "paddingHorizontal": 8,
-                      "paddingVertical": 4,
+                      "paddingHorizontal": 4,
+                      "paddingVertical": 2,
                     }
                   }
                   testID="tagWrapper"
@@ -3592,8 +3592,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "borderTopRightRadius": 4,
                       "flexDirection": "row",
                       "maxWidth": "100%",
-                      "paddingHorizontal": 8,
-                      "paddingVertical": 4,
+                      "paddingHorizontal": 4,
+                      "paddingVertical": 2,
                     }
                   }
                   testID="tagWrapper"
@@ -7027,8 +7027,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "borderTopRightRadius": 4,
                       "flexDirection": "row",
                       "maxWidth": "100%",
-                      "paddingHorizontal": 8,
-                      "paddingVertical": 4,
+                      "paddingHorizontal": 4,
+                      "paddingVertical": 2,
                     }
                   }
                   testID="tagWrapper"

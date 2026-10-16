@@ -1,5 +1,9 @@
 import { createComponentForStaticNavigation } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from '@react-navigation/native-stack'
+import { Platform } from 'react-native'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
@@ -19,6 +23,7 @@ import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/feat
 import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenance/CheatcodesScreenMaintenance'
+import { CheatcodesScreenCinemaScreeningCardList } from 'cheatcodes/pages/features/offer/CheatcodesScreenCinemaScreeningCardList'
 import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
@@ -31,6 +36,7 @@ import { CheatcodesScreenABTest } from 'cheatcodes/pages/others/CheatcodesABTest
 import { CheatcodesNavigationAccountManagement } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { CheatcodesNavigationErrors } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
+import { CheatcodesNavigationModals } from 'cheatcodes/pages/others/CheatcodesNavigationModals'
 import { CheatcodesNavigationNotScreensPages } from 'cheatcodes/pages/others/CheatcodesNavigationNotScreensPages'
 import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
@@ -46,12 +52,21 @@ import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/Che
 import { CheatcodesScreenLastLoginInfo } from 'cheatcodes/pages/others/CheatcodesScreenLastLoginInfo'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
+import { CheatcodesScreenModalSimpleNotScrollable } from 'cheatcodes/pages/others/CheatcodesScreenModalSimpleNotScrollable'
+import { CheatcodesScreenModalSimpleScrollable } from 'cheatcodes/pages/others/CheatcodesScreenModalSimpleScrollable'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenOffline } from 'cheatcodes/pages/others/CheatcodesScreenOffline'
 import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/CheatcodesScreenPageWithHeader'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { LoadingPage } from 'ui/pages/LoadingPage'
+
+const isWeb = Platform.OS === 'web'
+const modalType: NativeStackNavigationOptions = {
+  presentation: isWeb ? 'transparentModal' : 'formSheet',
+  sheetAllowedDetents: 'fitToContents',
+  sheetCornerRadius: 8,
+}
 
 const cheatcodesStackNavigatorPathDefinition = {
   screenOptions: {
@@ -155,6 +170,11 @@ const cheatcodesStackNavigatorPathDefinition = {
       linking: { path: 'cheatcodes/home/category-thematic-home-header' },
       options: { title: 'Cheatcodes - Header thématique (Catégorie)' },
     },
+    CheatcodesScreenCinemaScreeningCardList: {
+      screen: CheatcodesScreenCinemaScreeningCardList,
+      linking: { path: 'cheatcodes/offer/cinema-screening-card-list' },
+      options: { title: 'Cheatcodes - Tuiles séances cinéma' },
+    },
     CheatcodesScreenDefaultThematicHomeHeader: {
       screen: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
       linking: { path: 'cheatcodes/home/default-thematic-home-header' },
@@ -204,6 +224,11 @@ const cheatcodesStackNavigatorPathDefinition = {
     CheatcodesNavigationGenericPages: {
       screen: CheatcodesNavigationGenericPages,
       linking: { path: 'cheatcodes/other/generic-pages' },
+      options: { title: 'Cheatcodes - Pages génériques' },
+    },
+    CheatcodesNavigationModals: {
+      screen: CheatcodesNavigationModals,
+      linking: { path: 'cheatcodes/other/modals' },
       options: { title: 'Cheatcodes - Pages génériques' },
     },
     CheatcodesNavigationAccountManagement: {
@@ -281,6 +306,22 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenMandatoryUpdate,
       linking: { path: 'cheatcodes/other/campagne-mise-a-jour-données' },
       options: { title: 'Cheatcodes - Campagne de mise à jour des données' },
+    },
+    CheatcodesScreenModalSimpleNotScrollable: {
+      screen: CheatcodesScreenModalSimpleNotScrollable,
+      linking: { path: 'cheatcodes/other/modal-simple-not-scrollable' },
+      options: {
+        title: 'Cheatcodes - Modal simple not scrollable',
+        ...modalType,
+      },
+    },
+    CheatcodesScreenModalSimpleScrollable: {
+      screen: CheatcodesScreenModalSimpleScrollable,
+      linking: { path: 'cheatcodes/other/modal-simple-scrollable' },
+      options: {
+        title: 'Cheatcodes - Modal simple scrollable',
+        ...modalType,
+      },
     },
     CheatcodesScreenNewCaledonia: {
       screen: CheatcodesScreenNewCaledonia,

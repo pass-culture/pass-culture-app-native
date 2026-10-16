@@ -21,6 +21,7 @@ import { ANIMATION_DURATION } from 'features/search/pages/SearchResults/v2/compo
 import { SearchOfferItemWrapper } from 'features/search/pages/SearchResults/v2/components/SearchListsItems/SearchOfferItemWrapper'
 import { SearchMapButton } from 'features/search/pages/SearchResults/v2/components/SearchMap/components/SearchMapButton'
 import { OffersListSkeleton } from 'features/search/pages/SearchResults/v2/components/SearchSkeletons/OffersListSkeleton'
+import { getSearchQueryKey } from 'features/search/queries/helpers'
 import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
@@ -105,20 +106,42 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({ children, searchFilte
   const previousRouteName = usePreviousRouteName()
   const { disabilities } = useAccessibilityFiltersContext()
 
-  useEffect(() => {
-    if (isSuccess && !isFetching) {
-      void analytics.logPerformSearch(
-        searchState,
-        disabilities,
-        offersResponse?.nbHits ?? 0,
-        previousRouteName === SearchView.Thematic ? previousRouteName : SearchView.Results
-      )
+  // Mirrors the query key of useSearchOffersQuery to identify one effective search.
+  const searchOffersQueryKey = JSON.stringify([
+    searchFilters.buildLocationParameterParams.userLocation,
+    searchFilters.disabilitiesProperties,
+    getSearchQueryKey(searchFilters.parameters),
+  ])
 
-      if (!offersResponse?.nbHits) {
-        void analytics.logNoSearchResult(searchState.query, searchState.searchId)
-      }
+  const lastLoggedSearchKey = useRef<string>(undefined)
+
+  const logPerformSearchOnce = () => {
+    if (!isSuccess || isFetching || lastLoggedSearchKey.current === searchOffersQueryKey) {
+      return
     }
-  }, [disabilities, isFetching, isSuccess, offersResponse?.nbHits, previousRouteName, searchState])
+    lastLoggedSearchKey.current = searchOffersQueryKey
+
+    void analytics.logPerformSearch(
+      searchState,
+      disabilities,
+      offersResponse.nbHits,
+      previousRouteName === SearchView.Thematic ? previousRouteName : SearchView.Results
+    )
+
+    if (!offersResponse?.nbHits) {
+      void analytics.logNoSearchResult(searchState.query, searchState.searchId)
+    }
+  }
+
+  useEffect(logPerformSearchOnce, [
+    disabilities,
+    isFetching,
+    isSuccess,
+    offersResponse?.nbHits,
+    previousRouteName,
+    searchOffersQueryKey,
+    searchState,
+  ])
 
   const [shouldDisplayMapButtonText, setShouldDisplayMapButtonText] = useState(true)
   const { headerTransition: scrollButtonTransition, onScroll: onScrollOpacity } =

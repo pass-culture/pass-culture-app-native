@@ -101,8 +101,8 @@ const variantConfig: Variants<typeof Tag> = [
     props: { label: 'Aimé', variant: TagVariant.LIKE },
   },
   {
-    label: 'New',
-    props: { label: 'Nouveau', variant: TagVariant.NEW },
+    label: 'Highlight',
+    props: { label: 'Nouveau', variant: TagVariant.HIGHLIGHT },
   },
 ]
 

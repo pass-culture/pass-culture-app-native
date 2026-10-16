@@ -15,18 +15,19 @@ const EmptyFavoritesIcon: FunctionComponent<AccessibleIcon> = (props) => (
 
 export const NoFavoritesResult = () => {
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
+  const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
 
-  const explanations =
-    'Tu n’as pas encore de favori\u00a0?' +
-    LINE_BREAK +
-    'Explore le catalogue pass Culture et ajoute les offres en favori pour les retrouver facilement\u00a0!'
+  const explanations = enableFavoritesHub
+    ? 'Retrouve toutes tes offres, tes artistes et tes lieux au même endroit grâce à tes favoris\u00a0!'
+    : 'Tu n’as pas encore de favori\u00a0?' +
+      LINE_BREAK +
+      'Explore le catalogue pass Culture et ajoute les offres en favori pour les retrouver facilement\u00a0!'
 
   return (
     <NoResultsView
-      title="Retrouve toutes tes offres en un clin d’oeil"
+      title={enableFavoritesHub ? undefined : 'Retrouve toutes tes offres en un clin d’oeil'}
       explanations={explanations}
       icon={enableNewVisionUi ? undefined : EmptyFavoritesIcon}
-      trackingExplorerOffersFrom="favorites"
       remoteIllustration={
         enableNewVisionUi ? (
           <RemoteIllustration

@@ -127,7 +127,6 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
           }
         >
           <View
-            animation={false}
             style={
               {
                 "alignItems": "center",

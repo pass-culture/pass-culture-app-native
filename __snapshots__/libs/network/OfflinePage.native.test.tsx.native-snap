@@ -118,8 +118,8 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
               "borderTopRightRadius": 4,
               "flexDirection": "row",
               "maxWidth": "100%",
-              "paddingHorizontal": 8,
-              "paddingVertical": 4,
+              "paddingHorizontal": 4,
+              "paddingVertical": 2,
             }
           }
           testID="tagWrapper"

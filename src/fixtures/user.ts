@@ -47,6 +47,7 @@ export const nonBeneficiaryUser: UserProfile = {
   statusType: UserStatusType.GENERAL_PUBLIC,
   creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+  needsToFillCulturalSurvey: false,
 }
 
 export const beneficiaryUser: UserProfile = {
@@ -102,7 +103,7 @@ const baseNonBeneficiaryUser = {
     physical: { initial: 0, remaining: 0 },
     digital: { initial: 0, remaining: 0 },
   },
-  eligibility: EligibilityType.underage,
+  eligibility: null,
   eligibilityEndDatetime: null,
   eligibilityStartDatetime: null,
   email: 'email@domain.ext',
@@ -114,6 +115,7 @@ const baseNonBeneficiaryUser = {
   isBeneficiary: false,
   isEligibleForBeneficiaryUpgrade: false,
   lastName: 'Dupond',
+  needsToFillCulturalSurvey: false,
   phoneNumber: '+33639980123',
   postalCode: '75001',
   qfBonificationStatus: QFBonificationStatus.not_eligible,
@@ -123,7 +125,7 @@ const baseNonBeneficiaryUser = {
   requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
-  status: { statusType: YoungStatusType.eligible },
+  status: { statusType: YoungStatusType.non_eligible },
   street: '10 rue du Bonheur',
   subscriptionMessage: null,
   subscriptions: {
@@ -139,6 +141,7 @@ export const nonBeneficiaryUserFromAPI: UserProfileResponse = {
 
 export const nonBeneficiaryUserV2: UserProfile = {
   ...baseNonBeneficiaryUser,
+  subscriptionStatus: undefined,
   statusType: UserStatusType.GENERAL_PUBLIC,
   creditType: UserCreditType.CREDIT_EMPTY,
   eligibilityType: UserEligibilityType.NOT_ELIGIBLE,

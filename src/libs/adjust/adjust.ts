@@ -5,10 +5,10 @@ import {
   AdjustEvent,
 } from 'react-native-adjust'
 
-import { AdjustEvents } from 'libs/adjust/adjustEvents'
 import { Adjust as AdjustType } from 'libs/adjust/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { AdjustEvents } from 'shared/adjust/adjustEvents'
 
 let hasAlreadyBeenInitialized = false
 

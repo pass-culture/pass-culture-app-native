@@ -127,11 +127,9 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
           }
         >
           <View
-            animation={true}
             style={
               {
                 "alignItems": "center",
-                "height": "30%",
                 "justifyContent": "center",
                 "marginBottom": 24,
               }

@@ -1,16 +1,12 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FC, useEffect } from 'react'
-import { Configure, InstantSearch } from 'react-instantsearch-core'
 import { useWindowDimensions } from 'react-native'
-import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
-import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { getSearchClient } from 'features/search/helpers/getSearchClient'
-import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { selectSearchOffers } from 'features/search/queries/useSearchOffersQuery/selectors/selectSearchOffers'
 import { useSearchOffersQuery } from 'features/search/queries/useSearchOffersQuery/useSearchOffersQuery'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -24,7 +20,6 @@ import {
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { LocationMode } from 'libs/location/types'
 import {
@@ -32,12 +27,17 @@ import {
   useLocationMode,
   useUserLocation,
 } from 'libs/locationV2/location.store'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Page } from 'ui/pages/Page'
 
 export const SearchMapContainer: FC = () => {
+  const { goBack } = useNavigation<UseNavigationType>()
+  const headerHeight = useGetHeaderHeight()
+
   const transformHits = useTransformOfferHits()
 
-  const { isFocusOnSuggestions, searchState } = useSearch()
+  const { searchState } = useSearch()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const {
@@ -98,47 +98,18 @@ export const SearchMapContainer: FC = () => {
 
   useEffect(updateVenuesFromOffers, [offersResponse?.offerVenues])
 
-  const { addToHistory, setQueryHistory, queryHistory, removeFromHistory, filteredHistory } =
-    useSearchHistory()
-
   return (
     <Page>
-      <InstantSearch
-        searchClient={getSearchClient}
-        indexName={env.ALGOLIA_SUGGESTIONS_INDEX_NAME}
-        insights={{ insightsClient: AlgoliaSearchInsights }}>
-        <Configure hitsPerPage={5} clickAnalytics analytics />
-
-        <Container>
-          <SearchHeaderContainer>
-            <SearchHeader
-              addSearchHistory={addToHistory}
-              searchInHistory={setQueryHistory}
-              withFilterButton={!isFocusOnSuggestions}
-              withArrow
-              shouldDisplayHeader={!isFocusOnSuggestions}
-            />
-          </SearchHeaderContainer>
-          {isFocusOnSuggestions ? (
-            <SearchSuggestions
-              queryHistory={queryHistory}
-              addToHistory={addToHistory}
-              removeFromHistory={removeFromHistory}
-              filteredHistory={filteredHistory}
-            />
-          ) : (
-            <VenueMapViewContainer />
-          )}
-        </Container>
-      </InstantSearch>
+      <PageHeaderWithoutPlaceholder title="Carte" onGoBack={goBack} shouldDisplayBackButton />
+      <Container headerHeight={headerHeight}>
+        {' '}
+        <VenueMapViewContainer />
+      </Container>
     </Page>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
   flex: 1,
-})
-
-const SearchHeaderContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
+  marginTop: headerHeight,
 }))

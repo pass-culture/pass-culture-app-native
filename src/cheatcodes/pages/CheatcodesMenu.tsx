@@ -22,6 +22,7 @@ import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/featu
 import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { cheatcodesNavigationGenericPagesButtons } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
+import { cheatcodesNavigationModals } from 'cheatcodes/pages/others/CheatcodesNavigationModals'
 import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { env } from 'libs/environment/env'
@@ -89,6 +90,12 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationOnboardingButtons,
     {
       id: uuidv4(),
+      title: 'CinemaScreeningCard 🎬',
+      navigationTarget: { screen: 'CheatcodesScreenCinemaScreeningCardList' },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'RemoteBanners 🆒',
       navigationTarget: { screen: 'CheatcodesScreenRemoteBanners' },
       subscreens: [],
@@ -111,6 +118,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationAccountManagementButtons,
     ...cheatcodesNavigationErrorsButtons,
     ...cheatcodesNavigationGenericPagesButtons,
+    ...cheatcodesNavigationModals,
     ...cheatcodesNavigationSignUpButtons,
     {
       id: uuidv4(),

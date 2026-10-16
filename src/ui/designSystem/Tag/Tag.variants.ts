@@ -16,7 +16,7 @@ export const variantBackground = {
   [TagVariant.SUCCESS]: 'success',
   [TagVariant.WARNING]: 'warning',
   [TagVariant.ERROR]: 'error',
-  [TagVariant.NEW]: 'brandPrimary',
+  [TagVariant.HIGHLIGHT]: 'brandPrimary',
   [TagVariant.BOOKCLUB]: 'bookclub',
   [TagVariant.CINECLUB]: 'cineclub',
   [TagVariant.SCENECLUB]: 'sceneClub',
@@ -39,7 +39,7 @@ export const variantIconColor = {
 }
 
 export const variantLabelColor = {
-  [TagVariant.NEW]: 'inverted',
+  [TagVariant.HIGHLIGHT]: 'inverted',
 }
 
 export const variantIcons = {

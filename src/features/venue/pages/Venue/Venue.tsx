@@ -157,7 +157,10 @@ export const Venue: FunctionComponent = () => {
   })
 
   const triggerLogConsultVenue = useCallback(() => {
-    if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
+    if (
+      (params.from === 'deeplink' || params.from === 'venueMap' || params.from === 'searchMap') &&
+      venue?.id
+    ) {
       void analytics.logConsultVenue({
         venueId: venue.id.toString(),
         from: params.from,

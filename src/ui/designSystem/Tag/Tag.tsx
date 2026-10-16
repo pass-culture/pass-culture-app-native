@@ -54,8 +54,8 @@ const Wrapper = styled.View<{ backgroundColor: string; isZoomed: boolean }>(
     maxWidth: isZoomed ? '100%' : undefined,
     borderRadius: theme.designSystem.size.borderRadius.s,
     backgroundColor,
-    paddingVertical: theme.designSystem.size.spacing.xs,
-    paddingHorizontal: theme.designSystem.size.spacing.s,
+    paddingVertical: theme.designSystem.size.spacing.xxs,
+    paddingHorizontal: theme.designSystem.size.spacing.xs,
   })
 )
 

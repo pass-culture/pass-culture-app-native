@@ -59,17 +59,20 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { bottom } = useSafeAreaInsets()
   const { name: routeName } = useRoute()
-  const pageTracking = usePageTracking({
-    pageName: 'VenueMap',
-    pageLocation: 'venue_map',
-  })
 
   const tabBarHeight = useContext(BottomTabBarHeightContext) ?? 0
 
   const currentRegionVenues = useGetVenuesInRegion(currentRegion)
 
   const isInVenueMapScreen = routeName.toLowerCase() === 'venuemap'
-  const mapType: MapType = routeName === 'VenueMap' ? 'VenueMap' : 'SearchMap'
+  const mapType: MapType = isInVenueMapScreen ? 'VenueMap' : 'SearchMap'
+  const pageLocation = isInVenueMapScreen ? 'venue_map' : 'search_map'
+  const analyticsFrom: Referrals = isInVenueMapScreen ? 'venueMap' : 'searchMap'
+
+  const pageTracking = usePageTracking({
+    pageName: mapType,
+    pageLocation,
+  })
 
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
 
@@ -198,7 +201,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   }
 
   const onNavigateToVenuePress = (venueId: number) => {
-    analytics.logConsultVenue({
+    void analytics.logConsultVenue({
       venueId: venueId.toString(),
       from: camelCase(routeName) as Referrals,
     })
@@ -268,6 +271,8 @@ export const VenueMapViewContainer: FunctionComponent = () => {
         onChange={setBottomSheetIndex}
         offersPlaylistType={offersPlaylistType}
         onViewableItemsChanged={handleViewableItemsChanged}
+        analyticsFrom={analyticsFrom}
+        moduleId={pageLocation}
       />
       <VenueMapView
         ref={mapViewRef}

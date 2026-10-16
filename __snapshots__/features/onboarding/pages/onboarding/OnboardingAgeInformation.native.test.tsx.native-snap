@@ -430,8 +430,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             }
                           }
                           testID="tagWrapper"
@@ -653,8 +653,8 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             }
                           }
                           testID="tagWrapper"
@@ -1433,8 +1433,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             }
                           }
                           testID="tagWrapper"
@@ -1654,8 +1654,8 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
                               "maxWidth": "100%",
-                              "paddingHorizontal": 8,
-                              "paddingVertical": 4,
+                              "paddingHorizontal": 4,
+                              "paddingVertical": 2,
                             }
                           }
                           testID="tagWrapper"

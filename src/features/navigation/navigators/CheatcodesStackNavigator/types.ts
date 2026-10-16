@@ -23,6 +23,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationTutorial: undefined
   CheatcodesScreenBookingNotFound: undefined
   CheatcodesScreenCategoryThematicHomeHeader: undefined
+  CheatcodesScreenCinemaScreeningCardList: undefined
   CheatcodesScreenDefaultThematicHomeHeader: undefined
   CheatcodesScreenHighlightThematicHomeHeader: undefined
   CheatcodesScreenMaintenance: undefined
@@ -34,6 +35,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationAccountManagement: undefined
   CheatcodesNavigationErrors: undefined
   CheatcodesNavigationGenericPages: undefined
+  CheatcodesNavigationModals: undefined
   CheatcodesNavigationNotScreensPages: undefined
   CheatcodesNavigationSignUp: undefined
   CheatcodesScreenABTest: undefined
@@ -49,6 +51,8 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenLastLoginInfo: undefined
   CheatcodesScreenLayoutExpiredLink: undefined
   CheatcodesScreenMandatoryUpdate: undefined
+  CheatcodesScreenModalSimpleNotScrollable: undefined
+  CheatcodesScreenModalSimpleScrollable: undefined
   CheatcodesScreenNewCaledonia: undefined
   CheatcodesScreenOffline: undefined
   CheatcodesScreenPageHeaderWithoutPlaceholder: undefined

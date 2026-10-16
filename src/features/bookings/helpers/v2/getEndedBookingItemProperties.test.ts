@@ -69,9 +69,9 @@ describe('getEndedBookingItemProperties', () => {
     })
   })
 
-  describe('When booking is archivable (redirect to BookingDetails)', () => {
+  describe('When booking is not cancelled (redirect to BookingDetails)', () => {
     beforeEach(() => {
-      jest.mocked(expirationDateUtilsV2.isArchivableBooking).mockReturnValue(true)
+      jest.mocked(expirationDateUtilsV2.isArchivableBooking).mockReturnValue(false)
     })
 
     it('should return properties', async () => {
@@ -83,7 +83,7 @@ describe('getEndedBookingItemProperties', () => {
 
       expect(properties).toEqual({
         accessibilityLabel: expect.any(String),
-        isBookingEligibleForArchive: true,
+        isBookingEligibleForArchive: false,
         handlePressOffer: expect.any(Function),
         navigateTo: {
           screen: 'BookingDetails',
@@ -108,7 +108,7 @@ describe('getEndedBookingItemProperties', () => {
     })
   })
 
-  describe('When booking is NOT archivable (redirect to Offer)', () => {
+  describe('When booking is cancelled (redirect to Offer)', () => {
     beforeEach(() => {
       jest.mocked(expirationDateUtilsV2.isArchivableBooking).mockReturnValue(false)
     })
@@ -116,6 +116,7 @@ describe('getEndedBookingItemProperties', () => {
     it('should navigate to Offer', async () => {
       const properties = getEndedBookingItemProperties({
         ...baseArgs,
+        booking: initialBooking,
         netInfo: mockNetInfo,
       })
 
@@ -128,6 +129,7 @@ describe('getEndedBookingItemProperties', () => {
     it('should log analytics and populate cache on press if connected', async () => {
       const properties = getEndedBookingItemProperties({
         ...baseArgs,
+        booking: initialBooking,
         netInfo: mockNetInfo,
       })
 
@@ -158,6 +160,7 @@ describe('getEndedBookingItemProperties', () => {
 
       const properties = getEndedBookingItemProperties({
         ...baseArgs,
+        booking: initialBooking,
         netInfo,
       })
 

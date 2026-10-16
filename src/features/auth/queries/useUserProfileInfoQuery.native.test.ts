@@ -26,6 +26,11 @@ describe('useUserProfileInfoQuery', () => {
   })
 
   it('should save last login info after every successful /me refetch', async () => {
+    getNativeV1MeSpy.mockResolvedValueOnce({
+      ...beneficiaryUserFromAPI,
+      needsToFillCulturalSurvey: true,
+    })
+
     const { result } = renderHook(() => useUserProfileInfoQuery(true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })

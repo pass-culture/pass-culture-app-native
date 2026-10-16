@@ -127,11 +127,9 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
           }
         >
           <View
-            animation={true}
             style={
               {
                 "alignItems": "center",
-                "height": "30%",
                 "justifyContent": "center",
                 "marginBottom": 24,
               }

@@ -10,7 +10,7 @@ import { ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { VenueMapOfferPlaylist } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapOfferPlaylist'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
@@ -34,6 +34,8 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  analyticsFrom?: Referrals
+  moduleId?: string
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
@@ -44,6 +46,8 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       venueOffers,
       offersPlaylistType,
       onViewableItemsChanged,
+      analyticsFrom = 'venueMap',
+      moduleId = 'venue_map',
       ...bottomSheetProps
     },
     ref
@@ -73,7 +77,9 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
 
     const offersPlaylist = useMemo(() => {
       if (venueOffers?.length) {
-        const handlePressMore = venue ? () => navigate('Venue', { id: venue.venueId }) : undefined
+        const handlePressMore = venue
+          ? () => navigate('Venue', { id: venue.venueId, from: analyticsFrom })
+          : undefined
         return (
           <Fragment>
             <StyledView>
@@ -85,13 +91,23 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
                 onPressMore={handlePressMore}
                 playlistType={offersPlaylistType}
                 onViewableItemsChanged={onViewableItemsChanged}
+                analyticsFrom={analyticsFrom}
+                moduleId={moduleId}
               />
             </IOScrollView>
           </Fragment>
         )
       }
       return null
-    }, [venueOffers, venue, offersPlaylistType, onViewableItemsChanged, navigate])
+    }, [
+      venueOffers,
+      venue,
+      offersPlaylistType,
+      onViewableItemsChanged,
+      navigate,
+      analyticsFrom,
+      moduleId,
+    ])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
@@ -108,7 +124,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             imageWidth={VENUE_THUMBNAIL_SIZE}
             imageHeight={VENUE_THUMBNAIL_SIZE}
             tags={venueTags}
-            navigateTo={{ screen: 'Venue', params: { id: venue.venueId, from: 'venueMap' } }}
+            navigateTo={{ screen: 'Venue', params: { id: venue.venueId, from: analyticsFrom } }}
             noBorder
             testID="venueMapPreview"
             enableNavigate={enableNavigate}
@@ -118,7 +134,14 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
         )
       }
       return null
-    }, [venue, onClose, VENUE_THUMBNAIL_SIZE, venueTags, designSystem.size.spacing.l])
+    }, [
+      venue,
+      onClose,
+      VENUE_THUMBNAIL_SIZE,
+      venueTags,
+      designSystem.size.spacing.l,
+      analyticsFrom,
+    ])
 
     return (
       <StyledBottomSheet

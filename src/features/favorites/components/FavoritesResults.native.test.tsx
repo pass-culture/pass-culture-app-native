@@ -9,6 +9,8 @@ import { useFavoritesQuery } from 'features/favorites/queries'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { env } from 'libs/environment/env'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -58,6 +60,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('FavoritesResults component', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
@@ -66,7 +72,7 @@ describe('FavoritesResults component', () => {
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     renderFavoritesResults()
-    const button = await screen.findByText('Découvrir le catalogue')
+    const button = await screen.findByText('Explorer')
     const sortByButton = screen.queryByText('Trier')
 
     expect(button).toBeTruthy()
@@ -109,6 +115,33 @@ describe('FavoritesResults component', () => {
     const sortByButton = screen.getByText('Trier')
 
     expect(sortByButton).toBeOnTheScreen()
+  })
+
+  it('should display tabs panel when wipFavoritesHub FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseFavorites.mockReturnValue({
+      data: paginatedFavoritesResponseSnap,
+      isFetching: false,
+    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+
+    renderFavoritesResults()
+
+    expect(await screen.findByLabelText('Types de favoris')).toBeOnTheScreen()
+  })
+
+  it('should not display tabs panel when wipFavoritesHub FF deactivated', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseFavorites.mockReturnValue({
+      data: paginatedFavoritesResponseSnap,
+      isFetching: false,
+    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+
+    renderFavoritesResults()
+
+    await screen.findByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
+
+    expect(screen.queryByLabelText('Types de favoris')).not.toBeOnTheScreen()
   })
 })
 

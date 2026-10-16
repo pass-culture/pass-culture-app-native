@@ -1,128 +1,63 @@
-import React, {
-  FunctionComponent,
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
-import { FlatList, ListRenderItem } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
-import { DefaultTheme } from 'styled-components/native/dist/types'
+import React, { FunctionComponent, memo, useMemo, useState } from 'react'
+import styled from 'styled-components/native'
 
-import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { Favorite } from 'features/favorites/components/Favorite'
+import { FavoritesList } from 'features/favorites/components/FavoritesList'
+import { FavoritesResultsPlaceholder } from 'features/favorites/components/FavoritesResultsPlaceholder'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
-import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
+import { SortButton } from 'features/favorites/components/SortButton'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
-import {
-  sortByAscendingPrice,
-  sortByDistanceAroundMe,
-  sortByIdDesc,
-} from 'features/favorites/helpers/sorts'
+import { applySortBy } from 'features/favorites/helpers/applySortBy'
 import { useFavoritesQuery } from 'features/favorites/queries'
-import { FavoriteSortBy } from 'features/favorites/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { Tab } from 'features/favorites/types'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useLocationConfiguration } from 'libs/locationV2/location.store'
-import { getAvailableCredit } from 'shared/user/getAvailableCredit'
-import { LineSeparator } from 'ui/components/LineSeparator'
-import {
-  FavoriteHitPlaceholder,
-  NumberOfResultsPlaceholder,
-} from 'ui/components/placeholders/Placeholders'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Button } from 'ui/designSystem/Button/Button'
-import { Sort as SortIcon } from 'ui/svg/icons/Sort'
-import { Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
-
-const keyExtractor = (item: FavoriteResponse) => item.id.toString()
-
-function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, position: Position) {
-  if (!list) {
-    // fix concurrency sentry/issues/288586
-    return []
-  }
-
-  const copiedList = [...list]
-
-  if (sortBy === 'ASCENDING_PRICE') {
-    return copiedList.sort(sortByAscendingPrice)
-  }
-  if (sortBy === 'AROUND_ME') {
-    return copiedList.sort(sortByDistanceAroundMe(position))
-  }
-  if (sortBy === 'RECENTLY_ADDED') {
-    return copiedList.sort(sortByIdDesc)
-  }
-
-  return copiedList
-}
 
 const ANIMATION_DURATION = 700
 
-const StyledFlatList = styled(FlatList).attrs(({ theme }) => ({
-  contentContainerStyle: {
-    flexGrow: 1,
-    paddingBottom: theme.tabBar.height + theme.designSystem.size.spacing.l,
-  },
-}))``
-
-const contentContainerStyle = (theme: DefaultTheme) => ({
-  flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
-})
-
 const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
-  const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
-  const favoritesState = useFavoritesState()
+  const { sortBy } = useFavoritesState()
   const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
   const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-  const theme = useTheme()
-  const sortedFavorites = useMemo(() => {
-    if (!data) {
-      return
-    }
-    return favoritesState.sortBy
-      ? applySortBy(data.favorites, favoritesState.sortBy, position)
-      : data.favorites
-  }, [data, favoritesState, position])
-
+  const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
+  const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
+  const sortedFavorites = useMemo(
+    () => applySortBy(data?.favorites ?? [], sortBy, position),
+    [data?.favorites, sortBy, position]
+  )
   const { user } = useAuthContext()
-  const credit = getAvailableCredit(user)
 
-  useEffect(() => {
-    flatListRef?.current?.scrollToOffset({ animated: true, offset: 0 })
-  }, [favoritesState.sortBy])
+  if (showSkeleton) return <FavoritesResultsPlaceholder />
 
-  const renderItem = useCallback<ListRenderItem<FavoriteResponse>>(
-    ({ item: favorite }) => {
-      if (!user || !credit) return <FavoriteHitPlaceholder />
-      return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
-    },
-    [credit, user, setOfferToBook]
-  )
+  const tabPanels = {
+    [Tab.OFFERS]: (
+      <FavoritesList
+        isRefreshing={isRefreshing}
+        onBookOffer={setOfferToBook}
+        onRefresh={refetch}
+        favorites={sortedFavorites}
+        selectedTab={enableFavoritesHub ? selectedTab : undefined}
+        sortBy={sortBy}
+        user={user}
+      />
+    ),
+    [Tab.VENUES]: <ListEmptyComponent />,
+    [Tab.ARTISTS]: <ListEmptyComponent />,
+  }
 
-  const ListHeaderComponent = useMemo(
-    () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
-    [sortedFavorites]
-  )
-  const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
-  const ListFooterComponent = useMemo(
-    () => (sortedFavorites?.length ? <Footer /> : null),
-    [sortedFavorites?.length]
-  )
+  const tabs = [{ key: Tab.OFFERS }, { key: Tab.VENUES }, { key: Tab.ARTISTS }]
+  const showSortButton = sortedFavorites.length > 0 && selectedTab === Tab.OFFERS
 
-  if (showSkeleton) return <FavoritesResultsPlaceHolder />
   return (
     <React.Fragment>
       {offerToBook ? (
@@ -132,84 +67,41 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           offerId={offerToBook.id}
         />
       ) : null}
-      {sortedFavorites && sortedFavorites.length > 0 ? (
-        <SortContainer>
-          <SortButton />
-          <Spacer.BottomScreen />
-        </SortContainer>
-      ) : null}
-      <Container>
-        <FlatList
-          accessibilityRole={AccessibilityRole.LIST}
-          listAs="ul"
-          itemAs="li"
-          ref={flatListRef}
-          testID="favoritesResultsFlatlist"
-          data={sortedFavorites}
-          extraData={favoritesState.sortBy}
-          contentContainerStyle={contentContainerStyle(theme)}
-          keyExtractor={keyExtractor}
-          ListHeaderComponent={ListHeaderComponent}
-          ListFooterComponent={ListFooterComponent}
-          renderItem={renderItem}
-          refreshing={isRefreshing}
-          onRefresh={refetch}
-          onEndReachedThreshold={0.9}
-          ListEmptyComponent={ListEmptyComponent}
-          initialNumToRender={10}
-        />
+      {showSortButton ? <SortButton /> : null}
+
+      <Container enableFavoritesHub={enableFavoritesHub}>
+        {enableFavoritesHub ? (
+          <TabLayout
+            accessibilityLabel="Types de favoris"
+            tabPanels={tabPanels}
+            tabs={tabs}
+            defaultTab={selectedTab}
+            onTabChange={setSelectedTab}
+          />
+        ) : (
+          tabPanels[Tab.OFFERS]
+        )}
       </Container>
     </React.Fragment>
   )
 }
-
-const Footer = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.xxxxl }))
 
 export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
-const Container = styled.View({ flex: 1 })
-
-const SortContainer = styled.View(({ theme }) => ({
-  alignSelf: 'center',
-  position: 'absolute',
-  bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
-  zIndex: theme.zIndex.floatingButton,
-}))
-
-const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
-  key: index.toString(),
-}))
-
-const FavoritesResultsPlaceHolder = () => {
-  const renderItem = useCallback(() => <FavoriteHitPlaceholder />, [])
-  const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
-
-  return (
-    <React.Fragment>
-      <SortContainer>
-        <SortButton />
-        <Spacer.BottomScreen />
-      </SortContainer>
-      <Container testID="FavoritesResultsPlaceHolder">
-        <StyledFlatList
-          data={FAVORITE_LIST_PLACEHOLDER}
-          renderItem={renderItem}
-          ListHeaderComponent={ListHeaderComponent}
-          ItemSeparatorComponent={LineSeparator}
-          scrollEnabled={false}
-        />
-      </Container>
-    </React.Fragment>
-  )
-}
-
-const SortButton = () => (
-  <InternalTouchableLink
-    navigateTo={{ screen: 'FavoritesSorts' }}
-    accessibilityLabel="Trier"
-    as={Button}
-    wording="Trier"
-    variant="secondary"
-    icon={SortIcon}
-  />
+const ListEmptyComponent = () => (
+  <EmptyComponentContainer>
+    <NoFavoritesResult />
+  </EmptyComponentContainer>
 )
+
+const Container = styled.View<{ enableFavoritesHub?: boolean }>(
+  ({ theme, enableFavoritesHub }) => ({
+    flex: 1,
+    marginTop: enableFavoritesHub ? theme.designSystem.size.spacing.xl : undefined,
+  })
+)
+
+const EmptyComponentContainer = styled.View(({ theme }) => ({
+  flex: 1,
+  paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
+}))
