@@ -6,7 +6,7 @@
 
 ## Sélectionner l’environnement à modifier
 <br/>
-  Dans le burger menu en haut à gauche choisir soit ‘testing’ soit ‘master’ en fonction des changements que vous voulez opérer :
+  Dans le burger menu en haut à droite choisir soit ‘testing’ soit ‘production’ en fonction des changements que vous voulez opérer :
 
 - ‘testing’ est utilisé par les apps testing, staging et integration ;
 - ‘master’ est utilisé par l’app de production.
