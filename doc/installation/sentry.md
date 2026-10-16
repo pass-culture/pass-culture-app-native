@@ -14,7 +14,7 @@ The build is configured to upload the source maps automatically, on every new re
 
 - Project: Read & Write
 - Team: Read
-- Release: No Access (or Admin if you plan on uploading locally built source maps)
+- Release: Admin (necessary even if you don't plan on uploading locally built source maps)
 - Issue & Event: Read
 - Organization: Read
 - Member: Read
