@@ -8,7 +8,7 @@
 <br/>
   Dans le burger menu en haut à droite choisir soit ‘testing’ soit ‘production’ en fonction des changements que vous voulez opérer :
 
-- ‘testing’ est utilisé par les apps testing, staging et integration ;
+- ‘testing’ est utilisé par les apps testing, staging et integration ( ainsi pour les blocs avec des id d'offres, bien penser à en mettre des différents environnements sinon le bloc pourrait ne pas s'afficher) ;
 - ‘master’ est utilisé par l’app de production.
 
 L’environnement utilisé par chaque app est défini par la variable `CONTENTFUL_ENVIRONMENT` des fichiers `.env.*`.
