@@ -41,7 +41,7 @@ describe('FavoritesList', () => {
   })
 
   it('should render number of results header with correct count and tab', () => {
-    renderFavoritesList({})
+    renderFavoritesList({ enableFavoritesHub: true })
 
     expect(screen.getByText('4 offres en favoris')).toBeOnTheScreen()
   })
