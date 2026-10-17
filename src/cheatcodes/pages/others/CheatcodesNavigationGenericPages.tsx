@@ -77,6 +77,14 @@ const genericPagesCheatcodeCategory: CheatcodeCategory = {
         params: { screen: 'CheatcodesScreenPageHeaderWithoutPlaceholder' },
       },
     },
+    {
+      id: uuidv4(),
+      title: 'Loader',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+        params: { screen: 'CheatcodeScreenLoadingPage' },
+      },
+    },
   ],
 }
 
