@@ -19,6 +19,7 @@ import { Login } from 'features/auth/pages/login/Login'
 import { LoginMethods } from 'features/auth/pages/login/LoginMethods'
 import { LoginMethodsWithLastLoginInfo } from 'features/auth/pages/login/LoginMethodsWithLastLoginInfo'
 import { LoginWithOneTimePassword } from 'features/auth/pages/login/LoginWithOneTimePassword'
+import { OneTimePasswordLimit } from 'features/auth/pages/login/OneTimePasswordLimit'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
@@ -278,6 +279,11 @@ const rootScreens: RouteConfig[] = [
     name: 'LoginWithOneTimePassword',
     component: LoginWithOneTimePassword,
     options: { title: 'Méthodes de connexion avec code unique' },
+  },
+  {
+    name: 'OneTimePasswordLimit',
+    component: OneTimePasswordLimit,
+    options: { title: 'Limite du code unique' },
   },
   {
     name: 'BannedCountryError',
