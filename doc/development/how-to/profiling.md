@@ -1,107 +1,106 @@
-# Profiling
+# Profilage
 
-Always run release builds during your profiling sessions:
+Effectuez toujours vos sessions de profilage sur des versions de production (« release builds ») :
 
-- In debug, the JS code is served by the metro bundler and contains extra development features. In release, it's minified.
-- When `__DEV__ === true` `react-native` runs extra checks (strict mode), validations, logs... adding overhead to debug mode.
-- The development features (dev menu, hot reloading), on top of bloating the JS, add a background overhead.
-- Debugging and error reporting (LogBox, dev tools connection) add extra work in debug.
+- En mode débogage, le code JS est servi par le « bundler » Metro et inclut des fonctionnalités spécifiques au développement. En version de production, il est minifié.
+- Lorsque `__DEV__ === true`, React Native effectue des vérifications supplémentaires (mode strict, validations, journaux, etc.), ce qui alourdit le fonctionnement en mode débogage.
+- Les fonctionnalités de développement (menu de développement, rechargement à chaud/« hot reloading »), en plus d'alourdir le code JS, génèrent une charge supplémentaire en arrière-plan.
+- Les outils de débogage et de rapport d'erreurs (LogBox, connexion aux outils de développement) ajoutent une charge de travail supplémentaire en mode débogage.
 
-If you run a debug build, performances are not representative of the final user experience.
+Si vous utilisez une version de débogage, les performances observées ne seront pas représentatives de l'expérience utilisateur finale.
 
 ## Android Studio
 
-I ran into the following problems when attempting to use a emulator:
+J'ai rencontré les problèmes suivants en essayant d'utiliser un émulateur :
 
-- To add the proxy certificate, the phone/emulator can't have the Google Play on it.
-- To run the app as profileable the phone/emulator must have Google Play on it.
+- Pour ajouter le certificat proxy, le téléphone ou l'émulateur ne doit pas comporter Google Play.
+- Pour exécuter l'application en mode « profileable », le téléphone ou l'émulateur doit comporter Google Play.
 
-Considering these constraints, the easiest work around is to use a physical Android device.
+Compte tenu de ces contraintes, la solution la plus simple consiste à utiliser un appareil Android physique.
 
-We are going to use the built-in System Tracing profiler in the Android Studio:
+Nous allons utiliser l'outil « System Tracing » (suivi système) intégré à Android Studio :
 https://developer.android.com/studio/profile
 
-Setup:
+Configuration :
 
-- Attach the phone and make sure USB debugging is activated in the phone's settings.
-- Open the project's `android` folder in Android Studio,
-- Make sure your device is selected in the top bar,
-- Select the right variant: `View > Tool Windows > Build Variants`
-- In the pane that opened, select `apptestingRelease` for the `:app` module
-- In the top bar click on the 3 dots ⠇ to the right of the `app⌄` button.
-- Click `Profiler: Run 'app' as profileable (low overhead)`
-- When the build is over, make sure to accept the app installation on you device during the time window (10 seconds).
+- Connectez le téléphone et assurez-vous que le débogage USB est activé dans les paramètres de l'appareil.
+- Ouvrez le dossier `android` du projet dans Android Studio.
+- Vérifiez que votre appareil est bien sélectionné dans la barre supérieure.
+- Sélectionnez la variante appropriée : `View > Tool Windows > Build Variants`.
+- Dans le panneau qui s'affiche, sélectionnez `apptestingRelease` pour le module `:app`.
+- Dans la barre supérieure, cliquez sur les trois points ⠇ situés à droite du bouton `app⌄`.
+- Cliquez sur `Profiler: Run 'app' as profileable (low overhead)`.
+- Une fois la compilation terminée, veillez à accepter l'installation de l'application sur votre appareil dans le délai imparti (10 secondes).
 
-Profiling:
+Profilage :
 
-- Get your app to the point right before the navigation/animation you want to profile
-- Start the "Capture System Activities" task in the Android Studio Profiler pane.
-- Then press "Stop recording".
+- Amenez votre application juste avant la navigation ou l'animation que vous souhaitez analyser.
+- Lancez la tâche « Capture System Activities » (Capture des activités système) dans le panneau « Profiler » d'Android Studio.
+- Cliquez ensuite sur « Stop recording » (Arrêter l'enregistrement).
 
-Reading the Trace:
+Lecture de la trace :
 
 - Interaction
-- Display
-- Frame Lifecycle (com.passculture.MainActivity#0)
-- CPU cores (8)
-- Process Memory (RSS)
+- Affichage (Display)
+- Cycle de vie des images/frames (Frame Lifecycle - com.passculture.MainActivity#0)
+- Cœurs CPU (8)
+- Mémoire du processus (RSS)
 - Threads (115)
-- Battery
+- Batterie
 
-To see the detail of each category:
+Pour consulter les détails de chaque catégorie :
 https://developer.android.com/studio/profile/cpu-profiler
 
-We will focus mostly on "display": Shows info related to how smooth your app UI renders.
-https://developer.android.com/studio/profile/jank-detection
+Nous nous concentrerons principalement sur la section « Display » (Affichage), qui fournit des informations sur la fluidité du rendu de l'interface utilisateur de votre application. https://developer.android.com/studio/profile/jank-detection
 
-If you go to the "Past Recordings" tab, you can select your recording, and "Export recording" and then open with https://ui.perfetto.dev/
+Si vous vous rendez dans l'onglet « Enregistrements précédents » (« Past Recordings »), vous pouvez sélectionner votre enregistrement, choisir « Exporter l'enregistrement » (« Export recording »), puis l'ouvrir via https://ui.perfetto.dev/
 
 ## Xcode
 
-We can use a simulator to profile with Xcode.
+Il est possible d'utiliser un simulateur pour effectuer un profilage avec Xcode.
 
-We are going to use Time Profiler:
+Nous allons utiliser l'outil « Time Profiler » :
 
-- Open Xcode and select the scheme (e.g. `PassCulture-Testing`) and your simulator.
-- Click `Product > Profile` (⌘I). The Profile action of the schemes already builds in `Release`: no need to edit the scheme (editing it changes the committed `.xcscheme` file). You can close metro. The build might take longer than usual (20 minutes).
-- When the build is over, Instruments opens. Select the Time Profiler tool.
-- Make sure your device and the app are selected in the top bar.
-- Click on the red record button (top left)
-- Use the app
+- Ouvrez Xcode, puis sélectionnez le schéma (par ex. `PassCulture-Testing`) ainsi que votre simulateur.
+- Cliquez sur `Product > Profile` (⌘I). L'action « Profile » des schémas effectue automatiquement une compilation en mode `Release` ; il n'est donc pas nécessaire de modifier le schéma (toute modification entraînerait une altération du fichier `.xcscheme` versionné). Vous pouvez fermer Metro. La compilation peut prendre plus de temps que d'habitude (environ 20 minutes).
+- Une fois la compilation terminée, l'application « Instruments » s'ouvre. Sélectionnez l'outil « Time Profiler ».
+- Assurez-vous que votre appareil et l'application sont bien sélectionnés dans la barre supérieure.
+- Cliquez sur le bouton d'enregistrement rouge (en haut à gauche).
+- Utilisez l'application.
 
-Interpreting the results:
+Interprétation des résultats :
 
-- In the CPU usage, you can see spikes and drops.
-- If the CPU usage is high for several seconds, there could be an issue.
-- To investigate JavaScript with React Native DevTools, reproduce the issue in a separate debug build. The debugger cannot attach to the Release build used above; keep using Release builds for performance measurements.
-- I also see "hangs" that could be interesting to investigate.
+- Au niveau de l'utilisation du processeur (CPU), vous pouvez observer des pics et des chutes.
+- Si l'utilisation du processeur reste élevée pendant plusieurs secondes, cela peut indiquer un problème.
+- Pour analyser le code JavaScript via les « React Native DevTools », reproduisez le problème dans une version de débogage (debug build) distincte. Le débogueur ne peut pas se connecter à la version « Release » utilisée précédemment ; continuez à utiliser les versions « Release » pour vos mesures de performance.
+- J'ai également remarqué des « gels » (hangs) qui mériteraient d'être étudiés.
 
-## Troubleshooting
+## Dépannage
 
 ### Android Studio
 
-#### @react-native-community/cli config exited with error code: 126
+#### @react-native-community/cli config s'est terminé avec le code d'erreur : 126
 
 ```sh
 > Task :gradle-plugin:settings-plugin:jar
 ERROR: autolinkLibrariesFromCommand: process npx @react-native-community/cli config exited with error code: 126
 ```
 
-It is a permission issue:
+Il s'agit d'un problème de permissions :
 
 ```sh
 chmod u+x node_modules/@react-native-community/cli/build/*.js
 ```
 
-Source:
+Source :
 https://github.com/react-native-community/cli/issues/2498
 
-#### Incompatible version of the Android Gradle plugin
+#### Version incompatible du plugin Android Gradle
 
-Error in Android Studio during the "Sync Phase" (at launch):
+Erreur dans Android Studio lors de la phase de synchronisation (« Sync Phase ») au démarrage :
 
 ```
 The project is using an incompatible version (AGP 8.7.2) of the Android Gradle plugin. Latest supported version is AGP 8.1.2
 ```
 
-I updated my version of Android Studio, and the error disappeared.
+J'ai mis à jour ma version d'Android Studio et l'erreur a disparu.
