@@ -138,7 +138,7 @@ Les flows réutilisables sont organisés par catégorie dans `tests/common/` :
 - **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`
 - **`navigation/`** — interactions de navigation récurrentes (tab bar, retour)
 - **`cookies/`** — gestion du bandeau cookies
-- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`, voir sections dédiées)
+- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateOffer.js`, `deactivateOffer.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`, voir sections dédiées)
 - **`assertions/`** — assertions réutilisables
 - **`analytics/`** — vérification des events envoyés au serveur mock analytics
 
@@ -184,6 +184,30 @@ Le script expose les variables suivantes utilisables dans le flow :
 | `output.userEmail` | Email de l'utilisateur |
 | `output.deeplinkIos` | Deeplink de confirmation d'email (iOS) |
 | `output.deeplinkAndroid` | Deeplink de confirmation d'email (Android) |
+
+## Générer une offre de test
+
+`common/helpers/generateOffer.js` crée une offre via l'API E2E (seul `SEANCE_CINE` est supporté côté backend). Pensez à la désactiver en fin de test avec `deactivateOffer.js` :
+
+```yaml
+onFlowStart:
+  - runScript:
+      file: ../common/helpers/generateOffer.js
+      env:
+        subcategory_id: 'SEANCE_CINE'
+        price: 10
+        is_duo: false
+onFlowComplete:
+  - runScript: ../common/helpers/deactivateOffer.js
+```
+
+| Variable | Contenu |
+|---|---|
+| `output.offerId` | ID de l'offre créée |
+| `output.offerName` | Nom de l'offre |
+| `output.offerDeeplinkIos` | Deeplink vers la fiche offre (iOS) |
+| `output.offerDeeplinkAndroid` | Deeplink vers la fiche offre (Android) |
+| `output.offerScreeningDay` | Libellé du calendrier (ex. `Mercredi 22 Octobre`) d'un jour avec séances encore annulables (J+3) |
 
 ## Mocker le quotient familial
 
