@@ -77,7 +77,6 @@ export const HorizontalOfferTile = ({
     bookingAllowedDatetime,
     likes,
     chroniclesCount,
-    proAdvicesCount,
   } = offerDetails
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
@@ -86,7 +85,6 @@ export const HorizontalOfferTile = ({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
-  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
   const userPosition =
@@ -165,7 +163,6 @@ export const HorizontalOfferTile = ({
     subcategoryId,
     likesCount: likes,
     clubAdvicesCount: chroniclesCount,
-    proAdvicesCount: enableProAdvicesTag ? proAdvicesCount : undefined,
     enableSceneClubTag,
   })
 

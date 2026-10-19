@@ -27,15 +27,6 @@ describe('getTagProps', () => {
     })
   })
 
-  it('should return "X avis des pros" tag when proAdvicesCount > 0 and no club advices', () => {
-    expect(
-      getTagProps({ theme: computedTheme, proAdvicesCount: 1, likesCount: 10, subcategoryId })
-    ).toEqual({
-      label: '1 avis des pros',
-      variant: TagVariant.PROEDITO,
-    })
-  })
-
   it('should return "j\u2019aime" tag when only likesCount > 0', () => {
     expect(getTagProps({ theme: computedTheme, likesCount: 1, subcategoryId })).toEqual({
       label: '1 j\u2019aime',
@@ -45,15 +36,6 @@ describe('getTagProps', () => {
 
   it('should return null if all counts are 0 or undefined', () => {
     expect(getTagProps({ theme: computedTheme, subcategoryId })).toBeNull()
-  })
-
-  it('should use short label when hasSmallLayout is true \u2014 "X avis" when proAdvicesCount > 0 and no club advices', () => {
-    expect(
-      getTagProps({ theme: computedTheme, proAdvicesCount: 1, hasSmallLayout: true, subcategoryId })
-    ).toEqual({
-      label: '1 avis',
-      variant: TagVariant.PROEDITO,
-    })
   })
 
   it('should use short label when hasSmallLayout is true \u2014 "X avis" when club advices > 0', () => {

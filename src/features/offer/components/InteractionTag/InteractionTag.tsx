@@ -16,7 +16,6 @@ type InteractionTagParams = {
   subcategoryId: SubcategoryIdEnum
   likesCount?: number
   clubAdvicesCount?: number
-  proAdvicesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
   enableSceneClubTag?: boolean
@@ -93,7 +92,7 @@ export const getDisplayedClubAdviceType = (
 }
 
 export const getTagProps = (params: InteractionTagParams): TagProps | null => {
-  const { likesCount = 0, proAdvicesCount = 0, hasSmallLayout, isComingSoonOffer } = params
+  const { likesCount = 0, hasSmallLayout, isComingSoonOffer } = params
 
   if (isComingSoonOffer) {
     return {
@@ -105,13 +104,6 @@ export const getTagProps = (params: InteractionTagParams): TagProps | null => {
 
   const clubTagProps = getClubTagProps(params)
   if (clubTagProps) return clubTagProps
-
-  if (proAdvicesCount > 0) {
-    return {
-      label: hasSmallLayout ? `${proAdvicesCount} avis` : `${proAdvicesCount} avis des pros`,
-      variant: TagVariant.PROEDITO,
-    }
-  }
 
   if (likesCount > 0) {
     return {

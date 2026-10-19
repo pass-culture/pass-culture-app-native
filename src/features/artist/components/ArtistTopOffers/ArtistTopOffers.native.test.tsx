@@ -134,23 +134,4 @@ describe('ArtistTopOffers', () => {
 
     expect(screen.getByText('Livre')).toBeOnTheScreen()
   })
-
-  it('should display pro advices tag when defined and wipProReviewsPlaylist FF activated', () => {
-    render(
-      reactQueryProviderHOC(
-        <ArtistTopOffers
-          artistName="Eiichiro Oda"
-          items={[
-            {
-              ...mockedAlgoliaOffersWithSameArtistResponse[1],
-              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[1].offer, proAdvicesCount: 1 },
-            },
-          ]}
-          enableProAdvicesTag
-        />
-      )
-    )
-
-    expect(screen.getByText('1 avis')).toBeOnTheScreen()
-  })
 })
