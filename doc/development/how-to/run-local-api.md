@@ -1,57 +1,58 @@
-## Develop with a local API
+## Développement avec une API locale
 
 ### Backend
 
-To launch the backend, follow the instructions in [backend](https://github.com/pass-culture/pass-culture-main/#api).
+Pour lancer le backend, suivez les instructions disponibles dans [backend](https://github.com/pass-culture/pass-culture-main/#api).
 
-In short, if you already set up the repo before:
+En résumé, si vous avez déjà configuré le dépôt :
 
-- get Docker running
-- run `pc start-backend` (or restart it if needed)
-- run `pc sandbox -n industrial` to populate the database
+- lancez Docker ;
+- exécutez `pc start-backend` (ou redémarrez-le si nécessaire) ;
+- exécutez `pc sandbox -n industrial` pour peupler la base de données.
 
-> ✅ Check: you can access your [local swagger](http://localhost/native/v1/swagger#/default/get_)
+> ✅ Vérification : vous pouvez accéder à votre [Swagger local](http://localhost/native/v1/swagger#/default/get_).
 
-Now back to the frontend.
+Passons maintenant au frontend.
 
 ### Frontend
 
-The local API is available on `http://localhost:5001` (flask) and `http://localhost` (nginx, port 80). Use `http://localhost:5001`, so that it matches the `adb reverse` command for Android (see below).
+L'API locale est disponible sur `http://localhost:5001` (Flask) et `http://localhost` (Nginx, port 80). Utilisez `http://localhost:5001` afin que cela corresponde à la commande `adb reverse` pour Android (voir ci-dessous).
 
-#### Webapp
+#### Application web
 
-To launch the web application, run `API_BASE_URL=http://localhost:5001 yarn start:web:testing` (the environment variable overrides the value of `.env.testing`, no need to edit it).
+Pour lancer l'application web, exécutez `API_BASE_URL=http://localhost:5001 yarn start:web:testing` (la variable d'environnement remplace la valeur définie dans `.env.testing` ; il n'est donc pas nécessaire de modifier ce fichier).
 
-To open the webapp from another device, see [Test the webapp on a real device with ngrok](./test-webapp-on-device-ngrok.md).
+Pour accéder à l'application web depuis un autre appareil, consultez la section [Tester l'application web sur un appareil réel avec ngrok](./test-webapp-on-device-ngrok.md).
 
-#### Mobile app
+#### Application mobile
 
-To make the mobile app request the backend, you either need to change the variable `API_BASE_URL` to `http://localhost:5001` in `.env.testing` and rebuild the application, OR you can change [this line](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/api/api.ts#L7):
+Pour que l'application mobile effectue ses requêtes vers le backend, vous devez soit modifier la variable `API_BASE_URL` en `http://localhost:5001` dans le fichier `.env.testing` et reconstruire l'application, soit modifier [cette ligne](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/api/api.ts#L7) :
 
 ```diff
 -   basePath: env.API_BASE_URL,
 +   basePath: 'http://localhost:5001',
 ```
 
-> Make sure your are logged out before changing that. Indeed, the user ids will differ between your backend and the database of testing.
-> **/!\ Do not commit these changes, they should stay locale.**
+> Assurez-vous d'être déconnecté(e) avant d'effectuer cette modification. En effet, les identifiants utilisateur (user IDs) différeront entre votre backend local et la base de données de test.
+
+> **/!\ Ne validez pas (commit) ces modifications ; elles doivent rester locales.**
 
 ### Limitations
 
-Since the backend differs between local / testing, you won't:
+Étant donné que le backend diffère entre l'environnement local et l'environnement de test, vous ne pourrez pas :
 
-- have the pictures of the offers.
-- be able to access the detail of an offer (wrong id)
-- hence book an offer, or favorite it.
+- voir les images des offres ;
+- accéder aux détails d'une offre (identifiant incorrect) ;
+- et, par conséquent, réserver une offre ou l'ajouter à vos favoris.
 
-However, you can still access the app and should be able to work around those limitations.
+Vous pouvez toutefois accéder à l'application et devriez être en mesure de contourner ces limitations.
 
-### Android - Network request failed
+### Android – « Network request failed » (Échec de la requête réseau)
 
-On an Android device or emulator, `localhost` is the device itself. If you run into the error `Network request failed` when trying to connect an Android device to your backend running locally, forward the port to your computer:
+Sur un appareil Android ou un émulateur, `localhost` désigne l'appareil lui-même. Si vous rencontrez l'erreur « Network request failed » en essayant de connecter un appareil Android à votre backend exécuté localement, effectuez une redirection de port (« port forwarding ») vers votre ordinateur :
 
 ```
 adb reverse tcp:5001 tcp:5001
 ```
 
-On an emulator, you can also use `http://10.0.2.2:5001` (the host machine) instead of `http://localhost:5001`.
+Sur un émulateur, vous pouvez également utiliser `http://10.0.2.2:5001` (l'adresse de la machine hôte) au lieu de `http://localhost:5001`.
