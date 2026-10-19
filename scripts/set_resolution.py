@@ -102,24 +102,24 @@ def run_yarn():
 
 
 def pull_master():
-    subprocess.run(["git switch master"])
-    subprocess.run(["git pull"])
+    subprocess.run(["git", "switch", "master"])
+    subprocess.run(["git", "pull"])
 
 
 def create_git_branch(branch: str):
-    subprocess.run([f"git switch -c {branch}"])
+    subprocess.run(["git", "switch", "-c", branch])
 
 
 def stage_modifications():
-    subprocess.run(["git add package.json yarn.lock"])
+    subprocess.run(["git", "add", "package.json", "yarn.lock"])
 
 
 def commit_modifications(branch: str):
-    subprocess.run([f'git commit -m "({branch}) build(yarn): update dep"'])
+    subprocess.run(["git", "commit", "-m", f"({branch}) build(yarn): update dep"])
 
 
 def push_modifications(branch: str):
-    subprocess.run([f"git push origin {branch}"])
+    subprocess.run(["git", "push", "origin", branch])
 
 
 def get_dependabot_alerts(manifest: str):
