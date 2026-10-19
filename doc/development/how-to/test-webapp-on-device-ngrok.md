@@ -1,22 +1,20 @@
-## Test the webapp on a real device with ngrok
+## Tester l'application web sur un appareil réel avec ngrok
 
-Goal: open your local webapp (connected to your local backend) from a phone or any other device, by exposing it with [ngrok](https://ngrok.com/).
+Objectif : accéder à votre application web locale (connectée à votre backend local) depuis un téléphone ou tout autre appareil, en l'exposant via [ngrok](https://ngrok.com/).
 
-Prerequisite: be able to run the webapp with a local backend, see [Develop with a local API](./run-local-api.md).
+Prérequis : être en mesure de faire fonctionner l'application web avec un backend local ; voir [Développer avec une API locale](./run-local-api.md).
 
-Only the webapp needs to be exposed: in development, the webapp calls the API on its own origin (`API_BASE_URL` is set to `''` in `src/libs/environment/env.web.ts`), and the Vite dev server proxies `/native` and `/saml` to `API_BASE_URL` from your computer (see `proxyConfig` in `vite.config.js`). No backend tunnel nor CORS change is needed.
+Seule l'application web doit être exposée : en phase de développement, l'application web appelle l'API sur sa propre origine (`API_BASE_URL` est défini sur `''` dans `src/libs/environment/env.web.ts`), et le serveur de développement Vite redirige (via un proxy) les requêtes vers `/native` et `/saml` vers `API_BASE_URL` depuis votre ordinateur (voir `proxyConfig` dans `vite.config.js`). Aucun tunnel vers le backend ni modification des règles CORS n'est nécessaire.
 
-### Steps
+### Étapes
 
-- [ ] Start the backend (repo `pass-culture-main`): `pc start-backend`
-- [ ] Start the webapp, allowing the ngrok hosts: `API_BASE_URL=http://localhost:5001 __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=.ngrok-free.app yarn start:web:testing`
-- [ ] Expose it: `ngrok http 5173` (replace `5173` by the port displayed by Vite)
-- [ ] On the device, open the **https** ngrok URL, then click "Visit Site" on the ngrok warning page
+- [ ] Lancez le backend (dépôt `pass-culture-main`) : `pc start-backend`
+- [ ] Lancez l'application web en autorisant les hôtes ngrok : `API_BASE_URL=http://localhost:5001 __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=.ngrok-free.app yarn start:web:testing`
+- [ ] Exposez l'application : `ngrok http 5173` (remplacez `5173` par le port affiché par Vite)
+- [ ] Sur l'appareil, ouvrez l'URL ngrok en **https**, puis cliquez sur « Visit Site » sur la page d'avertissement affichée par ngrok.
 
-> `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` is an internal Vite variable. If Vite answers `Blocked request. This host is not allowed` (or if ngrok displays another domain than `ngrok-free.app`), add `allowedHosts: ['.<ngrok domain>']` to `server` in `vite.config.js`, and do not commit it.
+> `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` est une variable interne de Vite. Si Vite renvoie l'erreur « Blocked request. This host is not allowed » (ou si ngrok affiche un domaine différent de `ngrok-free.app`), ajoutez `allowedHosts: ['.<domaine ngrok>']` dans la section `server` du fichier `vite.config.js` (attention : ne committez pas cette modification).
 
-Use the https URL: some features (geolocation...) require a secure context.
+Utilisez l'URL en https : certaines fonctionnalités (comme la géolocalisation) nécessitent un contexte sécurisé. ### Alternative sans ngrok
 
-### Alternative without ngrok
-
-`vite.config.js` already sets `host: true`: on the same Wi-Fi network, open on the device the `Network` URL displayed by Vite (`http://<local IP of your computer>:5173`). Features requiring a secure context (geolocation...) won't work over http.
+Le fichier `vite.config.js` inclut déjà la configuration `host: true` : sur le même réseau Wi-Fi, ouvrez sur votre appareil l'URL « Network » indiquée par Vite (`http://<adresse IP locale de votre ordinateur>:5173`). Les fonctionnalités nécessitant un contexte sécurisé (géolocalisation, etc.) ne fonctionneront pas via HTTP.
