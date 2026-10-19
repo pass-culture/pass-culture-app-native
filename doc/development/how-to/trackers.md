@@ -1,80 +1,76 @@
-# How to add a tracker
+# Comment ajouter un tracker
 
-## Why
+## Pourquoi
 
-To have access to analytics we need trackers. In order to do so, we use Firebase to log when an event occurs on user interaction. This standard explains how to implement a tracker on a button.
+Pour accéder à des analyses (analytics), nous avons besoin de trackers. À cette fin, nous utilisons Firebase pour enregistrer les événements déclenchés par les interactions des utilisateurs. Cette documentation explique comment implémenter un tracker sur un bouton.
 
-## Key points
+## Points clés
 
-1. Run the script `yarn add:tracker <TrackerName>` with TrackerName in PascalCase (`--provider=firebase` is the default and only provider). It does not create files: it adds the event, the `log<TrackerName>` function and its mock to the existing files listed below. Add the event parameters manually if needed.
+1. Exécutez le script `yarn add:tracker <NomDuTracker>` en utilisant le format PascalCase pour `<NomDuTracker>` (`--provider=firebase` est le fournisseur par défaut — et le seul disponible). Ce script ne crée pas de nouveaux fichiers ; il ajoute l'événement, la fonction `log<NomDuTracker>` ainsi que son « mock » (simulation) dans les fichiers existants listés ci-dessous. Ajoutez manuellement les paramètres de l'événement si nécessaire. 
 
-   <details>
-   <summary>Manually</summary>
-   Add a Firebase event in your code (following alphabetical order)
+<details>
+<summary>Ajout manuel</summary>
+Ajoutez un événement Firebase dans votre code (en respectant l'ordre alphabétique) :
 
-   a. For Firebase, add your event in [src/libs/firebase/analytics/events.ts](../../../src/libs/firebase/analytics/events.ts).
-   b. Add a function called `log<YourEvent>` in [src/libs/analytics/logEventAnalytics.ts](../../../src/libs/analytics/logEventAnalytics.ts), where you will call the method `logEvent` of `analytics` (from [src/libs/analytics/provider.ts](../../../src/libs/analytics/provider.ts)), with the firebase event name(s). If an event name is not specified for one of these providers, then the event won't be triggered by that provider.
+a. Pour Firebase, ajoutez votre événement dans [src/libs/firebase/analytics/events.ts](../../../src/libs/firebase/analytics/events.ts). 
+b. Ajoutez une fonction nommée `log<NomDeVotreÉvénement>` dans [src/libs/analytics/logEventAnalytics.ts](../../../src/libs/analytics/logEventAnalytics.ts). Dans cette fonction, appelez la méthode `logEvent` issue de `analytics` (provenant de [src/libs/analytics/provider.ts](../../../src/libs/analytics/provider.ts)) en lui transmettant le(s) nom(s) de l'événement Firebase. Si aucun nom d'événement n'est spécifié pour un fournisseur donné, l'événement ne sera pas déclenché par ce fournisseur. 
 
-   c. Add a mock of your function in [src/libs/analytics/\_\_mocks\_\_/logEventAnalytics.ts](../../../src/libs/analytics/__mocks__/logEventAnalytics.ts)
-   </details>
+c. Ajoutez une simulation (« mock ») de votre fonction dans [src/libs/analytics/__mocks__/logEventAnalytics.ts](../../../src/libs/analytics/__mocks__/logEventAnalytics.ts).
+</details>
 
-2. Call your analytics function in a callback before giving it as a props to your button
+2. Appelez votre fonction d'analyse au sein d'un « callback » (fonction de rappel) avant de la transmettre en tant que « prop » à votre bouton.
 
-3. Test the behavior in Firebase:
+3. Vérifiez le comportement dans Firebase :
 
-   a. Open the Firebase console and go to the [DebugView of the testing project](https://console.firebase.google.com/project/pc-native-testing/analytics/app/android:app.passculture.testing/debugview/realtime~2Fdebugview%3Ffpn%3D557258398232) (see [Manually testing tracking](#manually-testing-tracking))
+a. Ouvrez la console Firebase et accédez à la [DebugView du projet de test](https://console.firebase.google.com/project/pc-native-testing/analytics/app/android:app.passculture.testing/debugview/realtime~2Fdebugview%3Ffpn%3D557258398232) (voir [Test manuel du suivi](#manually-testing-tracking)).
 
-   b. Find your device in the list (arm64 is for M1, x86_64 for regular macOS)
-   b2. If you are connected, you can check your user ID in the debugView to match the one in your cheat codes
+b. Repérez votre appareil dans la liste (`arm64` correspond aux processeurs M1, `x86_64` aux processeurs macOS classiques).
+b2. Si vous êtes bien connecté(e), vous pouvez vérifier dans la DebugView que l'identifiant utilisateur (`user_id`) correspond à celui utilisé dans vos « codes de triche » (cheat codes). 
 
-   c. Find your event in the occurring event list (it could be a bit slow)
+c. Recherchez votre événement dans la liste des événements en temps réel (le chargement peut parfois être un peu lent).
 
-## Mistakes to avoid when following the standard
+## Erreurs à éviter lors de l'application de la norme
 
-- Forget to create the mock, you will not be able to test that your function is called
-- Not adding your event in the alphabetical order
-- Not following the naming standard (PascalCase for Firebase)
-- Look in the wrong debugging device in Firebase, to avoid that, try to check other event when navigating on the app before
-- Not accepting the app to track your informations during your first opening
+- Oublier de créer le « mock » (objet simulé) : vous ne pourrez alors pas vérifier si votre fonction est bien appelée.
+- Ne pas ajouter votre événement par ordre alphabétique.
+- Ne pas respecter la convention de nommage (PascalCase pour Firebase).
+- Consulter le mauvais appareil dans la DebugView Firebase ; pour éviter cela, effectuez quelques actions dans l'application au préalable et vérifiez si les événements correspondants apparaissent.
+- Ne pas autoriser l'application à collecter vos données lors de la première ouverture.
 
-# Manually testing tracking
+# Test manuel du suivi
 
-We use DebugView on the Firebase project to view analytics in real-time.
+Nous utilisons la DebugView du projet Firebase pour visualiser les données analytiques en temps réel.
 
-[Here is the link to the DebugView for the testing environnement](https://console.firebase.google.com/project/pc-native-testing/analytics/app/android:app.passculture.testing/debugview/realtime~2Fdebugview%3Ffpn%3D557258398232)
+[Voici le lien vers la DebugView pour l'environnement de test](https://console.firebase.google.com/project/pc-native-testing/analytics/app/android:app.passculture.testing/debugview/realtime~2Fdebugview%3Ffpn%3D557258398232)
 
-General advice for all platforms:
-- To be sure you are looking at the right device, in the events you will see the `user_id` of the user you connected with on your device.
+Conseil général pour toutes les plateformes :
+- Pour vous assurer que vous examinez bien le bon appareil, vérifiez la présence du champ `user_id` dans les événements : il doit correspondre à l'identifiant de l'utilisateur avec lequel vous vous êtes connecté(e) sur votre appareil. ## Simulateur iOS
+- Pour permettre l'envoi d'événements analytiques en temps réel (sans délai), assurez-vous que l'argument `-FIRDebugEnabled` est ajouté aux arguments de lancement du schéma actif (au moment de la rédaction de ce guide, cet argument est déjà inclus dans le dépôt).
+- Sur le simulateur, veillez à accepter les cookies et à autoriser le suivi dans les paramètres d'autorisations.
+- Dans le projet de test Firebase, accédez à `DebugView`.
+- Sélectionnez l'appareil ; il devrait apparaître sous une forme telle que : « Apple arm64 ».
 
-## iOS Simulator
-- To allow analytic events to be sent in real-time (not after a certain delay), make sure `-FIRDebugEnabled` is passed as a launch argument for the active scheme (when writing this guide, this argument is committed to the repo)
-- On the simulator, make sure you accept the cookies and allow tracking in permissions.
-- In the Firebase testing project, go to `DebugView`
-- Select the device, it should look something like this: "Apple arm64"
-
-## Android Emulator
-- To allow events to be sent in real-time:
+## Émulateur Android
+- Pour permettre l'envoi d'événements en temps réel :
 ```sh
 adb shell setprop debug.firebase.analytics.app app.passculture.testing
 ```
-- You only need to run this command once per emulator, but if you change emulator, you will have to run the command again.
-- This time the device will be called something like this: `sdk_gphone64_arm64`
+- Il suffit d'exécuter cette commande une seule fois par émulateur ; toutefois, si vous changez d'émulateur, vous devrez la saisir à nouveau. - Cette fois, l'appareil portera un nom du type : `sdk_gphone64_arm64`
 
-## Web App
-- Make sure your Ad Blocker is disabled
-- Turn on Google Analytics Debugger extension
-- In the `DebugView`, you will see your device under "Apple" if you're on a MacBook
-- You will also see logs in your Chrome console that look like this:
+## Application Web
+- Assurez-vous que votre bloqueur de publicités (Ad Blocker) est désactivé.
+- Activez l'extension « Google Analytics Debugger ».
+- Dans `DebugView`, vous verrez votre appareil apparaître sous la rubrique « Apple » si vous utilisez un MacBook.
+- Vous verrez également, dans la console Chrome, des journaux (logs) qui ressemblent à ceci :
 ```
 Processing GTAG command: ["config", "G-WMFLLWGV80", {update: true, user_id: "67"}]
 
 Processing GTAG command: ["event", "ModuleDisplayedOnHomePage", {call_id: "b9f9d257-c6c2-4e39-8901-9a086c21bd2a", homeEntryId: "6CRGedke4bdzOG21W4JMt2", hybridModuleOffsetIndex: "3", index: "3", moduleId: "2nxp1f7pw8lTkkt1Iz6yO4", moduleType: "hybrid", offers_1_10: "282,2665,2664", locationType: "undefined", agentType: "browser_computer", app_version: "1.371.0", app_revision: "66791993cdcd", send_to: "G-WMFLLWGV80"}]
 ```
-### Debugging the Web App
-Check the Network Tab:
-1. Open the Chrome Developer Tools -> **Network** tab.
-2. Filter by the text `collect`.
-3. Trigger an event in your app.
-4. If you see a request turn **Red (Blocked)**, it's an Ad Blocker.
-5. If you see the request succeed (204 OK), click it and look at the "Payload". 
-6. Look for `_dbg: 1`: if it's present, it will show up in DebugView.
+### Débogage de l'application Web
+Vérifiez l'onglet « Network » (Réseau) :
+1. Ouvrez les outils de développement Chrome (Chrome Developer Tools) et accédez à l'onglet **Network**.
+2. Filtrez les résultats en saisissant le terme `collect`.
+3. Déclenchez un événement dans votre application.
+4. Si une requête s'affiche en **rouge (bloquée)**, cela signifie qu'un bloqueur de publicités est actif.
+5. Si la requête aboutit (statut 204 OK), cliquez dessus et examinez la section « Payload » (Charge utile). 6. Recherchez `_dbg: 1` : s'il est présent, il apparaîtra dans DebugView.
