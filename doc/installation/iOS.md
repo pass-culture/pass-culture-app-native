@@ -60,7 +60,7 @@ In order to launch the app in the Simulator or on your external Apple device, yo
       bundle exec fastlane ios download_certificates --env testing
       ```
 
-   1. When required (multiple times), use the git https URL of the private certificates repository
+   1. When required (multiple times), use the git https/ssh URL of the private certificates repository
    1. Get the `match repo passphrase` on our password manager in the "Tech" vault.
 
    1. It might ask your session password twice to continue, it might also ask you to do the previous step twice.
@@ -173,4 +173,12 @@ Delete the `ios/.xcode.env.local` file when node is updated so that it is not re
 
 </details>
 
+<details>
+  <summary><strong>❌ request network error on simulator</strong></summary>
 
+see this [command](https://app.notion.com/p/passcultureapp/Proxyfication-des-outils-du-pass-d1f0da09eafb4158904e9197bbe7c1d4?source=copy_link#38e96c4cd20849d79df754d33e55cb25) to setup the proxy for the simulator 
+
+</details>
+
+
+https://app.notion.com/p/passcultureapp/Proxyfication-des-outils-du-pass-d1f0da09eafb4158904e9197bbe7c1d4?source=copy_link#38e96c4cd20849d79df754d33e55cb25

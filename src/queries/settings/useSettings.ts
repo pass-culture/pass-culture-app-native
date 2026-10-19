@@ -18,6 +18,7 @@ import {
   selectIsRecaptchaEnabled,
   selectObjectStorageUrl,
   selectPacificFrancToEuro,
+  selectUseImgProxyFormat,
 } from 'queries/settings/settingsSelectors'
 import {
   bonificationAmountFallbackValue,
@@ -92,3 +93,5 @@ export const useBonificationQfThreshold = () =>
   })
 
 export const useImageResizingUrl = () => useSettingsQuery({ select: selectImageResizingUrl })
+
+export const useImgProxyFormat = () => useSettingsQuery({ select: selectUseImgProxyFormat })

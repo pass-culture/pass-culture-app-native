@@ -60,7 +60,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   )
 
   useEffect(() => {
-    setParams({ stepIndex })
+    setParams((prevParams) => ({ ...prevParams, stepIndex }))
   }, [stepIndex, setParams])
 
   const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)

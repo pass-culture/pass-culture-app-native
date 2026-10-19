@@ -29,3 +29,5 @@ export const selectBonificationQfThreshold = (settings: SettingsResponse) =>
   settings.bonification.qfThreshold
 
 export const selectImageResizingUrl = (settings: SettingsResponse) => settings.imageResizingUrl
+
+export const selectUseImgProxyFormat = (settings: SettingsResponse) => settings.useImgProxyFormat

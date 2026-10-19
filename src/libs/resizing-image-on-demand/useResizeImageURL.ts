@@ -2,7 +2,11 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { env } from 'libs/environment/env'
-import { useEnableFrontImageResizing, useImageResizingUrl } from 'queries/settings/useSettings'
+import {
+  useEnableFrontImageResizing,
+  useImageResizingUrl,
+  useImgProxyFormat,
+} from 'queries/settings/useSettings'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432
@@ -19,6 +23,7 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
 
   const { data: enableFrontImageResizing } = useEnableFrontImageResizing()
   const { data: imageResizingUrl } = useImageResizingUrl()
+  const { data: shouldUseImgProxyFormat } = useImgProxyFormat()
 
   if (!enableFrontImageResizing) {
     return imageURL
@@ -34,8 +39,12 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
       return imageURL
     }
     const trimmedPathName = parsedImageURL.pathname.replace(/^\//, '')
-    const newPath = `?size=${sizeWithRatio}&filename=${trimmedPathName}`
-    const resizedImageURL = new URL(newPath, imageResizingHost)
+    const resizedImageURL = shouldUseImgProxyFormat
+      ? new URL(
+          `/insecure/rs:fit:${sizeWithRatio}:${sizeWithRatio}/plain/gs://${trimmedPathName}`,
+          imageResizingHost
+        )
+      : new URL(`?size=${sizeWithRatio}&filename=${trimmedPathName}`, imageResizingHost)
     return resizedImageURL.href
   } catch {
     return imageURL

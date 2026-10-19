@@ -4286,6 +4286,11 @@ export interface SettingsResponse {
    */
   objectStorageUrl: string
   /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  useImgProxyFormat?: boolean
+  /**
    * @type {Rates}
    * @memberof SettingsResponse
    */
