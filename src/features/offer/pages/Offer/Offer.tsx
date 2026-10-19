@@ -4,7 +4,6 @@ import { View } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
-import { useOfferProAdvicesQuery } from 'features/advices/queries/useOfferProAdvicesQuery'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useClubAdviceVariant } from 'features/clubAdvices/helpers/useClubAdviceVariant'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -14,16 +13,12 @@ import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePre
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
-import { offerProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/offerProAdvicesToAdviceCardData/offerProAdvicesToAdviceCardData'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { analytics } from 'libs/analytics/provider'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useUserLocation } from 'libs/locationV2/location.store'
 import { useOffersViewedReviewTrigger } from 'libs/reviewInApp/useOffersViewedReviewTrigger'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useEndedBookingFromOfferIdQueryV2 } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
@@ -41,10 +36,7 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_OFFER)
-
   const { user, isLoggedIn } = useAuthContext()
-  const userLocation = useUserLocation()
   const { data: offer, isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
@@ -125,18 +117,6 @@ export function Offer() {
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
-  const { data: proAdvicesData } = useOfferProAdvicesQuery({
-    offerId,
-    enableProAdvices,
-    latitude: userLocation?.latitude,
-    longitude: userLocation?.longitude,
-    select: ({ proAdvices, nbResults }) => ({
-      list: offerProAdvicesToAdviceCardData(proAdvices.slice(0, 5), offerId),
-      nbResults,
-    }),
-  })
-  const proAdvices = enableProAdvices ? proAdvicesData : undefined
-
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
 
   const hasClubAdviceVariant = !!adviceVariantInfo
@@ -183,7 +163,6 @@ export function Offer() {
       <OfferContent
         offer={offer}
         clubAdvices={clubAdvices}
-        proAdvices={proAdvices?.list}
         adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         searchGroupList={subcategories.searchGroups}
@@ -194,7 +173,6 @@ export function Offer() {
         onShowClubAdviceWritersModal={handleOnShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
-        proAdvicesCount={proAdvices?.nbResults}
       />
     </Page>
   )

@@ -60,7 +60,6 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
-import { ProAdvicesOffer } from 'features/proAdvices/pages/ProAdvicesOffer'
 import { ProAdvicesVenue } from 'features/proAdvices/pages/ProAdvicesVenue'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
@@ -429,11 +428,6 @@ const rootScreens: RouteConfig[] = [
     name: 'BonificationGranted',
     component: withAuthProtection(BonificationGranted),
     options: { title: 'Bonus accordé' },
-  },
-  {
-    name: 'ProAdvicesOffer',
-    component: ProAdvicesOffer,
-    options: { title: 'Avis du professionnel' },
   },
   {
     name: 'ProAdvicesVenue',

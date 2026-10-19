@@ -91,7 +91,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
   const { appBarHeight, designSystem } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
-  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
@@ -219,17 +218,12 @@ export const ArtistBody: FunctionComponent<Props> = ({
               data={offersArtistEditorialModulesData}
             />
           ) : null}
-          <ArtistTopOffers
-            artistName={name}
-            items={artistTopOffers}
-            enableProAdvicesTag={enableProAdvicesTag}
-          />
+          <ArtistTopOffers artistName={name} items={artistTopOffers} />
           {enablePlaylistByCategory ? (
             <ArtistPlaylist
               artist={artist}
               items={artistPlaylist}
               onViewableItemsChanged={onViewableItemsChanged}
-              enableProAdvicesTag={enableProAdvicesTag}
             />
           ) : null}
           {artistPlaylistModule ? (

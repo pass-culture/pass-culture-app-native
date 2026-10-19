@@ -58,7 +58,6 @@ export const VenueMapOfferPlaylist = ({
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const isFocused = useIsFocused()
-  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
@@ -70,7 +69,6 @@ export const VenueMapOfferPlaylist = ({
         hasSmallLayout: true,
         isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
         subcategoryId: item.offer.subcategoryId,
-        proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
         enableSceneClubTag,
       }
       const tag = renderInteractionTag(interactionTagParams)
@@ -97,7 +95,6 @@ export const VenueMapOfferPlaylist = ({
     [
       analyticsFrom,
       currency,
-      enableProAdvicesTag,
       enableSceneClubTag,
       euroToPacificFrancRate,
       labelMapping,

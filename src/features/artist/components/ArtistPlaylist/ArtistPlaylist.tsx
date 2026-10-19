@@ -16,14 +16,12 @@ type ArtistPlaylistProps = {
     artistId: string,
     playlistIndex?: number
   ) => void
-  enableProAdvicesTag?: boolean
 }
 
 export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   artist,
   items,
   onViewableItemsChanged,
-  enableProAdvicesTag,
 }) => {
   const artistPlaylists = getDisplayableArtistPlaylists(items)
 
@@ -40,7 +38,6 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
           playlistIndex={playlistIndex}
           title={title}
           onViewableItemsChanged={onViewableItemsChanged}
-          enableProAdvicesTag={enableProAdvicesTag}
         />
       ))}
     </React.Fragment>

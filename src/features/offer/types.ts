@@ -86,7 +86,6 @@ export type OfferContentProps = {
   subcategory: Subcategory
   onShowClubAdviceWritersModal: () => void
   clubAdvices?: AdviceCardData[]
-  proAdvices?: AdviceCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
@@ -94,7 +93,6 @@ export type OfferContentProps = {
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
   HeaderComponent?: ComponentType<OfferHeaderComponentProps>
-  proAdvicesCount?: number
 }
 
 export type OfferImageContainerDimensions = {

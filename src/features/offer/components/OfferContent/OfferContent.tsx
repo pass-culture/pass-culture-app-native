@@ -17,8 +17,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   searchGroupList,
   subcategory,
   clubAdvices,
-  proAdvices,
-  proAdvicesCount,
   adviceVariantInfo,
   defaultReaction,
   headlineOffersCount,
@@ -47,7 +45,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onOfferPreviewPress={handlePreviewPress}
         BodyWrapper={BodyWrapper}
         clubAdvices={clubAdvices}
-        proAdvices={proAdvices}
         adviceVariantInfo={adviceVariantInfo}
         headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
@@ -58,8 +55,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
-        HeaderComponent={HeaderComponent}
-        proAdvicesCount={proAdvicesCount}>
+        HeaderComponent={HeaderComponent}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

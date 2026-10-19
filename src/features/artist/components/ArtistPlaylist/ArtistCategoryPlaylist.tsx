@@ -37,7 +37,6 @@ type ArtistCategoryPlaylistProps = {
     artistId: string,
     playlistIndex?: number
   ) => void
-  enableProAdvicesTag?: boolean
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
@@ -49,7 +48,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   playlistIndex,
   title,
   onViewableItemsChanged,
-  enableProAdvicesTag,
 }) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
@@ -106,7 +104,6 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
             hasSmallLayout: true,
             priceDisplay: (item: Offer) =>
               getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
-            enableProAdvicesTag,
             enableSceneClubTag,
           })}
           itemWidth={itemWidth}

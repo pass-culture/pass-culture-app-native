@@ -18,7 +18,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   searchGroupList,
   subcategory,
   clubAdvices,
-  proAdvices,
   adviceVariantInfo,
   defaultReaction,
   onReactionButtonPress,
@@ -27,7 +26,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   HeaderComponent,
-  proAdvicesCount,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
@@ -80,8 +78,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           searchGroupList={searchGroupList}
           subcategory={subcategory}
           clubAdvices={clubAdvices}
-          proAdvices={proAdvices}
-          proAdvicesCount={proAdvicesCount}
           adviceVariantInfo={adviceVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
           BodyWrapper={BodyWrapper}

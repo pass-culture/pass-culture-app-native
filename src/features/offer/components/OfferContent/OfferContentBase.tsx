@@ -22,9 +22,7 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
-import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
-import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
 import { FavoriteType } from 'features/favorites/enum'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -46,7 +44,6 @@ import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTrack
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
-import { FeedBack } from 'features/reactions/components/FeedBack'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
@@ -64,7 +61,6 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
-import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
@@ -91,7 +87,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   searchGroupList,
   subcategory,
   clubAdvices,
-  proAdvices,
   adviceVariantInfo,
   headlineOffersCount,
   onOfferPreviewPress,
@@ -105,16 +100,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   HeaderComponent,
-  proAdvicesCount,
   children,
 }) => {
   const HeaderToRender = HeaderComponent || OfferHeader
   const theme = useTheme()
-  const {
-    visible: proAdvicesWritersModalVisible,
-    showModal: showProAdvicesWritersModal,
-    hideModal: hideProAdvicesWritersModal,
-  } = useModal(false)
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
@@ -281,49 +270,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     })
   }
 
-  const proAdvicesTotalCount = proAdvicesCount ?? proAdvices?.length ?? 0
-  const proAdvicesCtaLabel = `Lire les ${proAdvicesTotalCount} avis`
-
-  const handleOnSeeMoreProAdvicePress = (venueId: number) => {
-    void analytics.logConsultAdvice({
-      from: 'offer',
-      offerId: offer.id.toString(),
-      venueId: venueId.toString(),
-      originDetails: PRO_ADVICE_VARIANT_CONFIG.titleSection,
-      adviceType: 'pro',
-    })
-    navigate('ProAdvicesOffer', { offerId: offer.id, venueId })
-  }
-
-  const handleOnPressAllProAdvicesButton = () => {
-    void analytics.logConsultAdvice({
-      from: 'offer',
-      offerId: offer.id.toString(),
-      venueId: venue.id.toString(),
-      originDetails: proAdvicesCtaLabel,
-      adviceType: 'pro',
-    })
-  }
-
-  const handleOnPressAllProAdvicesFromModal = () => {
-    hideProAdvicesWritersModal()
-    navigate('ProAdvicesOffer', { offerId: offer.id })
-  }
-
-  const handleOnProAdvicesFeedbackLog = useCallback(
-    (type: ReactionTypeEnum) => {
-      const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
-      void analytics.logFeatureFeedbackClicked({
-        featureName: 'pro_advices',
-        feedbackResponse,
-        from: 'offer',
-        offerId: offer.id.toString(),
-        venueId: venue.id.toString(),
-      })
-    },
-    [offer.id, venue.id]
-  )
-
   const offerCtaButton = (
     <OfferCTAButton
       offer={offer}
@@ -436,9 +382,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               headlineOffersCount={headlineOffersCount}
               adviceVariantInfo={adviceVariantInfo}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
-              onVideoConsentPress={onVideoConsentPress}
-              proAdvicesCount={proAdvicesCount}
-              proAdvices={proAdvices}>
+              onVideoConsentPress={onVideoConsentPress}>
               {theme.isDesktopViewport ? OfferCTAsComponent : null}
             </OfferBody>
           </BodyWrapper>
@@ -460,35 +404,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 onBeforeNavigate={handleOnSeeAllReviewsPress}
                 onSeeMoreButtonPress={onSeeMoreButtonPress}
                 onShowClubAdviceWritersModal={onShowClubAdviceWritersModal}
-              />
-            </AdviceSectionWithAnchor>
-          ) : null}
-          {proAdvices?.length ? (
-            <AdviceSectionWithAnchor
-              anchorName={AnchorNames.PRO_ADVICE_SECTION}
-              sectionId="pro-advice-section"
-              anchorSectionId="pro-advice-section-anchor">
-              <ClubAdviceSection
-                ctaLabel={proAdvicesCtaLabel}
-                variantInfo={PRO_ADVICE_VARIANT_CONFIG}
-                data={proAdvices}
-                navigateTo={{
-                  screen: 'ProAdvicesOffer',
-                  params: { offerId: offer.id },
-                }}
-                onBeforeNavigate={handleOnPressAllProAdvicesButton}
-                onSeeMoreButtonPress={handleOnSeeMoreProAdvicePress}
-                onShowClubAdviceWritersModal={showProAdvicesWritersModal}
-                displayAllAdvicesButton={proAdvicesTotalCount > 1}
-                feedback={
-                  <FeedBack
-                    storageKey="offer_pro_advices_feedback"
-                    likeQuiz="https://passculture.qualtrics.com/jfe/form/SV_eW1XQ60mF3KAMdg"
-                    dislikeQuiz="https://passculture.qualtrics.com/jfe/form/SV_d1niW3WPCivA6wK"
-                    title={'Trouves-tu ces avis utiles\u00a0?'}
-                    onLogReaction={handleOnProAdvicesFeedbackLog}
-                  />
-                }
               />
             </AdviceSectionWithAnchor>
           ) : null}
@@ -518,15 +433,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         </IntersectionObserverScrollView>
         {theme.isMobileViewport ? <FooterContainer>{OfferCTAsComponent}</FooterContainer> : null}
       </AnchorProvider>
-      {proAdvices?.length ? (
-        <AdvicesWritersModal
-          closeModal={hideProAdvicesWritersModal}
-          isVisible={proAdvicesWritersModalVisible}
-          onButtonPress={handleOnPressAllProAdvicesFromModal}
-          modalWording={PRO_ADVICE_VARIANT_CONFIG.modalWording}
-          buttonWording={PRO_ADVICE_VARIANT_CONFIG.buttonWording}
-        />
-      ) : null}
     </Container>
   )
 }
