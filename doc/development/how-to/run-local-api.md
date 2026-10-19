@@ -33,7 +33,8 @@ To make the mobile app request the backend, you either need to change the variab
 +   basePath: 'http://localhost:5001',
 ```
 
-> Make sure your are logged out before changing that. Indeed, the user ids will differ between your backend and the database of testing. Do not commit these changes.
+> Make sure your are logged out before changing that. Indeed, the user ids will differ between your backend and the database of testing.
+> **/!\ Do not commit these changes, they should stay locale.**
 
 ### Limitations
 
