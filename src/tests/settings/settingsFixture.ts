@@ -16,6 +16,7 @@ export const SettingsFixture: SettingsResponse = {
   isRecaptchaEnabled: true,
   objectStorageUrl: 'https://localhost-storage',
   imageResizingUrl: 'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/',
+  useImgProxyFormat: false,
   rates: { pacificFrancToEuro: DEFAULT_PACIFIC_FRANC_TO_EURO_RATE },
   wipEnableCreditV3: true,
   ineligiblePostalCodes: [],
