@@ -78,17 +78,14 @@ Dès que quelqu'un d'autre que Dependabot a poussé sur la branche, `@dependabot
 
 Si tout est bon :
 
-1. Mettre le ticket Jira en tête du titre de la PR (à la place de `(BSR)` s'il y est).
-2. Approuver la PR.
-3. Merger avec **Squash and merge**.
-
-> Les commandes `@dependabot merge`, `@dependabot squash and merge`, `@dependabot cancel merge`, `@dependabot close` et `@dependabot reopen` ne fonctionnent plus depuis le 27 janvier 2026. Utiliser les boutons de GitHub.
+1. Approuver la PR.
+2. Merger avec **Squash and merge**.
 
 Si un problème apparaît et ne se corrige pas facilement :
 
 1. Estimer le travail et en discuter avec son lead pour l'embarquer dans une squad.
-2. Créer le ticket Jira.
-3. **Fermer la PR** avec la commande `@dependabot ignore …` adaptée (voir ci-dessous), et ajouter le lien du ticket en commentaire. Une PR bloquée laissée ouverte occupe l'une des 2 places de sa source et empêche les autres mises à jour.
+2. Créer le nouveau ticket Jira pour ce travail supplémentaire et lier les deux tickets.
+3. **Fermer la PR** avec la commande `@dependabot ignore …` adaptée (voir ci-dessous, ou via les menus de github), et ajouter le lien du ticket en commentaire. Une PR bloquée laissée ouverte occupe l'une des 2 places de sa source et empêche les autres mises à jour.
 
 ### Commandes Dependabot
 
