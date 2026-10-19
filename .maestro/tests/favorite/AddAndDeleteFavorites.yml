@@ -20,10 +20,10 @@ onFlowStart:
     index: 0
 - repeat:
     while:
-      notVisible: 'Découvrir le catalogue'
+      notVisible: 'Explorer'
     commands:
-      - tapOn: 'Supprimer.*'
-- tapOn: 'Découvrir le catalogue'
+      - tapOn: 'Retirer des favoris'
+- tapOn: 'Explorer'
 
 - runFlow: ../common/navigation/GoToSearchFromTabBar.yml
 
@@ -93,7 +93,7 @@ onFlowStart:
 
 - runFlow: ../common/navigation/GoToFavoritesFromTabBar.yml
 
-- assertVisible: '3 favoris'
+- assertVisible: '3 offres en favoris'
 - assertVisible:
     id: 'Trier'
 - tapOn:
@@ -104,7 +104,7 @@ onFlowStart:
 - assertVisible: '.*Proximité géographique.*'
 - tapOn: '.*Prix croissant.*'
 - tapOn: 'Valider'
-- assertVisible: '3 favoris'
+- assertVisible: '3 offres en favoris'
 - tapOn:
     id: 'Trier'
 - tapOn: '.*Proximité géographique.*'
@@ -114,41 +114,41 @@ onFlowStart:
     commands:
       - tapOn: 'Fermer la modale'
 - tapOn: 'Valider'
-- assertVisible: '3 favoris'
+- assertVisible: '3 offres en favoris'
 
-- assertVisible: '3 favoris'
+- assertVisible: '3 offres en favoris'
 - runFlow:
     when:
       platform: Android
     commands:
       - tapOn:
-          text: 'Supprimer'
+          text: 'Retirer des favoris'
           index: 0
-      - assertVisible: '2 favoris'
+      - assertVisible: '2 offres en favoris'
       - tapOn:
-          text: 'Supprimer'
+          text: 'Retirer des favoris'
           index: 0
-      - assertVisible: '1 favori'
+      - assertVisible: '1 offre en favori'
       - tapOn:
-          text: 'Supprimer'
+          text: 'Retirer des favoris'
           index: 0
-      - assertVisible: 'Retrouve toutes tes offres en un clin d’oeil'
+      - assertVisible: '.*Retrouve toutes tes offres, tes artistes.*'
 
 - runFlow:
     when:
       platform: iOS
     commands:
       - tapOn:
-          text: 'Supprimer.*'
+          text: 'Retirer des favoris'
           index: 0
-      - assertVisible: '2 favoris'
+      - assertVisible: '2 offres en favoris'
       - tapOn:
-          text: 'Supprimer.*'
+          text: 'Retirer des favoris'
           index: 0
-      - assertVisible: '1 favori'
+      - assertVisible: '1 offre en favori'
       - tapOn:
-          text: 'Supprimer.*'
+          text: 'Retirer des favoris'
           index: 0
-      - assertVisible: 'Retrouve toutes tes offres en un clin d’oeil'
+      - assertVisible: '.*Retrouve toutes tes offres, tes artistes.*'
 
 - runFlow: ../common/lifecycle/StopApp.yml
