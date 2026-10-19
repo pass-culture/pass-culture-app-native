@@ -62,20 +62,6 @@ export const SCENE_CLUB_SUBCATEGORIES = [
   SubcategoryIdEnum.ABO_SPECTACLE,
 ] as const
 
-export const PRO_ADVICE_VARIANT_CONFIG = {
-  subcategories: [],
-  adviceType: 'pro',
-  labelReaction: 'avis des pros',
-  titleSection: 'Les avis des pros',
-  subtitleSection: 'Les professionnels qui proposent cette offre te partagent leurs avis\u00a0!',
-  subtitleItem: 'Avis du pro',
-  modalTitle: 'Qui écrit les avis des pros\u00a0?',
-  modalWording:
-    'Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de cœur pour t’aider à découvrir des œuvres qui pourraient te plaire.',
-  sectionTag: <Tag variant={TagVariant.HIGHLIGHT} label="Nouveau" />,
-  buttonWording: 'Voir tous les avis des pros',
-} as const
-
 const BOOK_CLUB_VARIANT_CONFIG = {
   subcategories: BOOK_CLUB_SUBCATEGORIES,
   adviceType: 'book_club',
@@ -128,5 +114,4 @@ export const CLUB_ADVICE_VARIANT_CONFIG = [
   BOOK_CLUB_VARIANT_CONFIG,
   CINE_CLUB_VARIANT_CONFIG,
   SCENE_CLUB_VARIANT_CONFIG,
-  PRO_ADVICE_VARIANT_CONFIG,
 ] as const

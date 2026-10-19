@@ -10,7 +10,6 @@ import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
-import { proAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { analytics } from 'libs/analytics/provider'
@@ -18,7 +17,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { defaultLocationState, useLocationV2 } from 'libs/locationV2/location.store'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -56,14 +55,6 @@ jest
   .mockReturnValue(mockVenueSearchParams)
 
 jest.mock('features/search/context/SearchWrapper')
-
-const mockOnLayoutWithButton = {
-  nativeEvent: {
-    layout: {
-      height: 157,
-    },
-  },
-}
 
 jest.useFakeTimers()
 const user = userEvent.setup()
@@ -138,65 +129,6 @@ describe('<VenueBody />', () => {
       originDetails: 'advice',
     })
   })
-
-  it('should display advice in "À la une" section if available', async () => {
-    renderVenueBody({ headlineOfferData: { ...HEADLINE_OFFER_DATA, advice: proAdvicesFixture[0] } })
-
-    expect(screen.getByText('par Arthur')).toBeOnTheScreen()
-    expect(screen.getByText(/Ce livre est vraiment exceptionnel/i)).toBeOnTheScreen()
-  })
-
-  it('should display "avis du pro" as tag label when headline has an advice with undefined author', async () => {
-    renderVenueBody({
-      headlineOfferData: {
-        ...HEADLINE_OFFER_DATA,
-        advice: { ...proAdvicesFixture[0], author: undefined },
-      },
-    })
-
-    expect(screen.getByText('avis du pro')).toBeOnTheScreen()
-  })
-
-  it('should trigger ConsultAdvice log when pressing see more button on headline offer advice', async () => {
-    renderVenueBody({
-      headlineOfferData: { ...HEADLINE_OFFER_DATA, advice: proAdvicesFixture[0] },
-    })
-
-    const description = screen.getByTestId('description')
-
-    await act(async () => {
-      description.props.onLayout(mockOnLayoutWithButton)
-    })
-
-    await user.press(screen.getByText('Voir plus'))
-
-    expect(analytics.logConsultAdvice).toHaveBeenCalledWith({
-      adviceType: 'pro',
-      from: 'venue',
-      offerId: HEADLINE_OFFER_DATA.id,
-      originDetails: 'headline',
-      venueId: venueDataTest.id.toString(),
-    })
-  })
-
-  it('should redirect to venue pro advices page when pressing see more button on headline offer advice', async () => {
-    renderVenueBody({
-      headlineOfferData: { ...HEADLINE_OFFER_DATA, advice: proAdvicesFixture[0] },
-    })
-
-    const description = screen.getByTestId('description')
-
-    await act(async () => {
-      description.props.onLayout(mockOnLayoutWithButton)
-    })
-
-    await user.press(screen.getByText('Voir plus'))
-
-    expect(navigate).toHaveBeenCalledWith('ProAdvicesVenue', {
-      venueId: venueDataTest.id,
-      offerId: Number(HEADLINE_OFFER_DATA.id),
-    })
-  })
 })
 
 const renderVenueBody = ({
@@ -204,7 +136,6 @@ const renderVenueBody = ({
   headlineOfferData,
   playlists = gtlPlaylistAlgoliaSnapshot,
   arePlaylistsLoading = false,
-  nbAdvices = 0,
 }: {
   venue?: VenueResponse
   headlineOfferData?: HeadlineOfferData
@@ -220,8 +151,6 @@ const renderVenueBody = ({
         playlists={playlists}
         arePlaylistsLoading={arePlaylistsLoading}
         onViewableItemsChanged={jest.fn()}
-        nbAdvices={nbAdvices}
-        onShowWritersModal={jest.fn()}
       />
     )
   )

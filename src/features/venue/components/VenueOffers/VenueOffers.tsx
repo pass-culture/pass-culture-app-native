@@ -4,13 +4,11 @@ import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReactionTypeEnum, SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
-import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueMoviesV2 } from 'features/venue/components/VenueOffers/VenueMoviesV2'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
@@ -42,9 +40,6 @@ export interface VenueOffersProps {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
-  advicesCardData?: AdviceCardData[]
-  nbAdvices: number
-  onShowWritersModal: () => void
 }
 
 const LoadingState: React.FC = () => (
@@ -62,9 +57,6 @@ export function VenueOffers({
   euroToPacificFrancRate,
   arePlaylistsLoading,
   onViewableItemsChanged,
-  advicesCardData,
-  nbAdvices,
-  onShowWritersModal,
 }: Readonly<VenueOffersProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const userLocation = useUserLocation()
@@ -82,7 +74,6 @@ export function VenueOffers({
     transformHits,
     venue,
   })
-  const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
   const wipUseVenueMovieScreeningsEndpoint = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT
   )
@@ -137,17 +128,6 @@ export function VenueOffers({
         ) : (
           <VenueMovies venueOffers={venueOffers} />
         )}
-        {shouldDisplayAdvicesSection ? (
-          <VenueAdvicesSection
-            advicesCardData={advicesCardData}
-            nbAdvices={nbAdvices}
-            venue={venue}
-            onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
-            onShowWritersModal={onShowWritersModal}
-            onPressAllAdvicesButton={onPressAllAdvicesButton}
-            onFeedbackLog={onFeedbackLog}
-          />
-        ) : null}
       </React.Fragment>
     )
   }
@@ -164,9 +144,6 @@ export function VenueOffers({
       euroToPacificFrancRate={euroToPacificFrancRate}
       arePlaylistsLoading={arePlaylistsLoading}
       onViewableItemsChanged={onViewableItemsChanged}
-      advicesCardData={advicesCardData}
-      nbAdvices={nbAdvices}
-      onShowWritersModal={onShowWritersModal}
       onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
       onPressAllAdvicesButton={onPressAllAdvicesButton}
       onFeedbackLog={onFeedbackLog}

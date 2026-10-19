@@ -1,4 +1,3 @@
-import { VenueProAdvice } from 'api/gen'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Position } from 'libs/location/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
@@ -18,13 +17,11 @@ type OfferToHeadlineOfferData = {
 type OfferToHeadlineParams = {
   offer?: Offer
   transformParameters: OfferToHeadlineOfferData
-  advice?: VenueProAdvice
 }
 
 export function offerToHeadlineOfferData({
   offer,
   transformParameters,
-  advice,
 }: OfferToHeadlineParams): HeadlineOfferData | null {
   if (!offer) return null
 
@@ -42,6 +39,5 @@ export function offerToHeadlineOfferData({
     category: labelMapping[hitOffer.subcategoryId] ?? '',
     price: displayedPrice,
     distance: formatDistance({ lat: _geoloc?.lat, lng: _geoloc?.lng }, userLocation),
-    advice,
   }
 }

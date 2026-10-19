@@ -4,13 +4,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import {
-  Activity,
-  OffersStocksResponseV2,
-  SubcategoryIdEnum,
-  VenueProAdvices,
-  VenueResponse,
-} from 'api/gen'
+import { Activity, OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
@@ -21,9 +15,7 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
-import { venueProAdvicesFixture } from 'features/venue/fixtures/venueProAdvices.fixture'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -166,52 +158,6 @@ describe('<Venue />', () => {
     renderVenue(venueId)
 
     expect(screen.queryByText('Agenda')).not.toBeOnTheScreen()
-  })
-
-  describe('wipProReviewsVenue is on', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE])
-      mockServer.getApi<VenueProAdvices>(`/v1/venue/${venueId}/advices`, {
-        proAdvices: [...venueProAdvicesFixture.proAdvices],
-        nbResults: venueProAdvicesFixture.nbResults,
-      })
-    })
-
-    it('should open the advices writers modal when pressing "Qui écrit les avis des pros ?" button', async () => {
-      renderVenue(venueId)
-
-      await user.press(await screen.findByText('Qui écrit les avis des pros ?'))
-
-      expect(
-        await screen.findByText('Qui écrit les avis\u00a0?', { hidden: true })
-      ).toBeOnTheScreen()
-    })
-
-    it('should display advices section', async () => {
-      renderVenue(venueId)
-
-      expect(await screen.findByText(`Les avis par “${venueDataTest.name}”`)).toBeOnTheScreen()
-    })
-
-    it('should trigger ConsultOffer log when pressing pro advice card header', async () => {
-      renderVenue(venueId)
-
-      await screen.findByText(`Les avis par “${venueDataTest.name}”`)
-
-      const cardHeader = await screen.getAllByLabelText('Voir l‘offre American dream')[0]
-
-      if (cardHeader) {
-        await user.press(cardHeader)
-      }
-
-      expect(triggerConsultOfferLog).toHaveBeenCalledWith({
-        adviceType: 'pro',
-        from: 'venue',
-        offerId: 1,
-        originDetails: 'Les avis des pros',
-        venueId: 5543,
-      })
-    })
   })
 
   describe('Venue is monoOffer', () => {

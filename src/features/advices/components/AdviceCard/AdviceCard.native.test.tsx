@@ -6,7 +6,6 @@ import { AdviceCard, AdviceCardProps } from 'features/advices/components/AdviceC
 import { advicesFixture } from 'features/advices/fixtures/advices.fixture'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { Button } from 'ui/designSystem/Button/Button'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 
 const mockOnLayoutWithButton = {
   nativeEvent: {
@@ -98,12 +97,6 @@ describe('AdviceCard (Mobile)', () => {
     renderAdviceCard({ image: 'imageUrl' })
 
     expect(screen.getByTestId('AdviceCardThumbnail')).toBeOnTheScreen()
-  })
-
-  it('should display custom tag when advice has tag props', () => {
-    renderAdviceCard({ tagProps: { variant: TagVariant.PROEDITO, label: 'par Cédric' } })
-
-    expect(screen.getByText('par Cédric')).toBeOnTheScreen()
   })
 })
 

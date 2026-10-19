@@ -3,7 +3,12 @@ import type { KnipConfig } from './node_modules/knip'
 const isProduction = process.env.NODE_ENV === 'production'
 
 const defaultConfig: KnipConfig = {
-  entry: ['src/index.tsx!', 'server/src/index.ts!', 'src/tests/setupTests.js!'],
+  entry: [
+    'src/index.tsx!',
+    'server/src/index.ts!',
+    'src/tests/setupTests.js!',
+    'src/features/reactions/components/FeedBack.tsx!',
+  ],
   project: ['src/**/*.{ts,tsx}!'], // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
   ignore: [
     // setup
