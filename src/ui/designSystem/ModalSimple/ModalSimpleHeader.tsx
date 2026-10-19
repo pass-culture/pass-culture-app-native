@@ -34,5 +34,5 @@ const HeaderContainer = styled.View(({ theme }) => ({
   justifyContent: 'flex-end',
   paddingHorizontal: theme.designSystem.size.spacing.xxl,
   paddingTop: theme.designSystem.size.spacing.xxl,
-  paddingBottom: theme.designSystem.size.spacing.xl,
+  paddingBottom: theme.designSystem.size.spacing.l,
 }))
