@@ -1,8 +1,8 @@
-# Customize the splash screen
+# Personnaliser l'écran de démarrage
 
-Replace `assets/splash-screen/splashscreen.json` and `android/app/src/main/res/raw/splashscreen.json` with the new JSON lottie.
+Remplacez `assets/splash-screen/splashscreen.json` et `android/app/src/main/res/raw/splashscreen.json` par le nouveau lottie JSON.
 
-In XCode, replace the `SplashImage` image set in `PassCulture/Images.xcassets` with an image of the first frame of the splashscreen.
-This will prevent the display of a black screen while iOS loads the lottie animation. No need for this on Android.
+Dans XCode, remplacez l'image `SplashImage` définie dans `PassCulture/Images.xcassets` par une image de la première image de l'écran de démarrage.
+Cela empêchera l'affichage d'un écran noir pendant qu'iOS charge l'animation du lotie. Pas besoin de ça sur Android.
 
-To change the minimum splashscreen duration, update the value of `MIN_SPLASHSCREEN_DURATION_IN_MS` in `src/libs/splashscreen/splashscreen.tsx`, and its copy in `src/libs/splashscreen/splashscreen.native.test.tsx`.
+Pour modifier la durée minimale de l'écran de démarrage, mettez à jour la valeur de `MIN_SPLASHSCREEN_DURATION_IN_MS` dans `src/libs/splashscreen/splashscreen.tsx` et sa copie dans `src/libs/splashscreen/splashscreen.native.test.tsx`.
