@@ -1,5 +1,4 @@
 import { CategoryBlock, CategoryListModule, HomepageModuleType } from 'features/home/types'
-import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
   CategoryBlockContentModel,
   CategoryListContentModel,
@@ -26,12 +25,11 @@ const categoryBlockListHaveFields = (
 
 const adaptCategoryBlock = (CategoryBlockList: CategoryBlockContentModel[]): CategoryBlock[] =>
   CategoryBlockList.filter(categoryBlockListHaveFields).map((bloc) => {
-    const { title, displayedTitle, titleParts, image, color, illustrationCategoryBlock } =
+    const { title, displayedTitle, titleParts, color, illustrationCategoryBlock } =
       bloc.fields.thematicCategoryInfo.fields
 
     return {
       id: bloc.sys.id,
-      image: buildImageUrl(image?.fields?.file.url),
       homeEntryId: bloc.fields.homeEntryId,
       title: titleParts?.join(' ') ?? displayedTitle ?? title,
       ...(titleParts ? { titleParts } : {}),
