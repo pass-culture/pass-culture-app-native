@@ -73,7 +73,7 @@ Interpreting the results:
 
 - In the CPU usage, you can see spikes and drops.
 - If the CPU usage is high for several seconds, there could be an issue.
-- Then use the Hermes debugger to figure out the issue.
+- To investigate JavaScript with React Native DevTools, reproduce the issue in a separate debug build. The debugger cannot attach to the Release build used above; keep using Release builds for performance measurements.
 - I also see "hangs" that could be interesting to investigate.
 
 ## Troubleshooting
