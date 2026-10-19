@@ -1,22 +1,22 @@
-# How to test SSO Google authentification locally
+# Comment tester l'authentification SSO Google en local
 
-## On iOS
-Not authorized at the moment.
+## Sur iOS
+Non pris en charge pour le moment.
 
-## On Android
-You need to create a OAuth Client ID of type Android [here][1], with the following values :
-- **Name:** Google Auth Android (dev) - YOUR NAME
-- **Package name:** app.passculture.testing
-- **SHA-1 fingerprint:** this correspond to the fingerprint of your debug keystore. You can find it by running :
-    ```
-    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-    ```
+## Sur Android
+Vous devez créer un identifiant client OAuth (OAuth Client ID) de type Android [ici][1], avec les valeurs suivantes :
+- **Nom :** Google Auth Android (dev) - VOTRE NOM
+- **Nom du package :** app.passculture.testing
+- **Empreinte SHA-1 :** elle correspond à l'empreinte de votre keystore de débogage (debug keystore). Vous pouvez l'obtenir en exécutant la commande suivante :
+```
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+```
 
-The SSO will work when you run `yarn android:testing`.
+Le SSO fonctionnera lorsque vous lancerez la commande `yarn android:testing`.
 
-## On Web
-- Start the webapp with a local backend, you can refer to [this documentation](./run-local-api.md) to do so.
-- You need to add the following environment variables in the `.env.local.secret` file, in the `api` folder of the backend repo : `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, which can be both found [on Google console][2] or on our password manager under 'Google oAuth client'.
+## Sur le Web
+- Lancez l'application web avec un backend local ; vous pouvez consulter [cette documentation](./run-local-api.md) pour savoir comment procéder.
+- Vous devez ajouter les variables d'environnement suivantes dans le fichier `.env.local.secret`, situé dans le dossier `api` du dépôt du backend : `GOOGLE_CLIENT_ID` et `GOOGLE_CLIENT_SECRET`. Ces informations sont disponibles [sur la console Google][2] ou dans notre gestionnaire de mots de passe, sous l'entrée « Google oAuth client ».
 
 [1]: https://console.cloud.google.com/apis/credentials/oauthclient?project=passculture-native
 [2]: https://console.cloud.google.com/apis/credentials/oauthclient/605788939445-jbn4bv8q35gdpmg777pfcu055j4ltf4f.apps.googleusercontent.com
