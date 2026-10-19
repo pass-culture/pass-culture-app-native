@@ -12,7 +12,9 @@
 - Les clés de query sont dans `src/libs/queryKeys.ts`.
 - Le client est configuré dans `src/libs/react-query/queryClient.ts` : `retry: 0`, `throwOnError: true` (les erreurs remontent à l'`ErrorBoundary`) et `refetchOnWindowFocus` désactivé en dev et sur testing.
 
-## Lire des données (GET) ⇒ `useQuery` hook
+## Détails
+
+> **Les infos suivantes sont des exemples dans notre code mais la [documentation officielle de Tantask](https://tanstack.com/query/latest/docs/framework/react/guides/important-defaults) est à lire avant toute chose.**
 
 [Documentation des queries](https://tanstack.com/query/v5/docs/framework/react/guides/queries)
 
