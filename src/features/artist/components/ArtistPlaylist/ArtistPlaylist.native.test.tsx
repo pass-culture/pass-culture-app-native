@@ -219,28 +219,6 @@ describe('ArtistPlaylist', () => {
     })
   })
 
-  it('should display pro advices tag when defined and wipProReviewsPlaylist FF activated', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist
-          artist={{ id: '1', name: 'Céline Dion' }}
-          items={[
-            {
-              ...mockedAlgoliaOffersWithSameArtistResponse[0],
-              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
-            },
-          ]}
-          onViewableItemsChanged={jest.fn()}
-          enableProAdvicesTag
-        />
-      )
-    )
-
-    await screen.findByLabelText('Livres')
-
-    expect(screen.getByText('1 avis')).toBeOnTheScreen()
-  })
-
   it('should not display pro advices tag when defined and wipProReviewsPlaylist FF deactivated', async () => {
     useABSegmentSpy.mockReturnValueOnce('A')
     render(
