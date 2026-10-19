@@ -46,11 +46,9 @@ type Props = {
   onVideoConsentPress: () => void
   likesCount?: number
   clubAdvicesCount?: number | null
-  proAdvicesCount?: number
   distance?: string | null
   headlineOffersCount?: number
   clubAdvices?: AdviceCardData[]
-  proAdvices?: AdviceCardData[]
   hasVideoCookiesConsent?: boolean
 }
 
@@ -60,12 +58,10 @@ export const OfferBody: FunctionComponent<Props> = ({
   children,
   likesCount,
   clubAdvicesCount,
-  proAdvicesCount,
   distance,
   headlineOffersCount,
   adviceVariantInfo,
   clubAdvices,
-  proAdvices,
   hasVideoCookiesConsent,
   onVideoConsentPress,
 }) => {
@@ -167,8 +163,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           headlineOffersCount={headlineOffersCount}
           adviceVariantInfo={adviceVariantInfo}
           clubAdvices={clubAdvices}
-          proAdvicesCount={proAdvicesCount}
-          proAdvices={proAdvices}
         />
 
         <GroupWithSeparator

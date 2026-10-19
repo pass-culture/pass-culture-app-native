@@ -2,7 +2,6 @@ import React, { ComponentProps } from 'react'
 
 import { advicesFixture } from 'features/advices/fixtures/advices.fixture'
 import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
-import { offerProAdvicesCardDataFixture } from 'features/advices/fixtures/offerProAdvices.fixture'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -63,41 +62,6 @@ describe('<OfferReactionSection />', () => {
     })
   })
 
-  describe('Pro advices information', () => {
-    it('should display information when exist', async () => {
-      renderOfferReactionSection({
-        proAdvicesCount: 2,
-        proAdvices: [...offerProAdvicesCardDataFixture],
-      })
-
-      expect(await screen.findByText('2 avis des pros')).toBeOnTheScreen()
-    })
-
-    it('should scroll to advices section when clicking on published advices counter', async () => {
-      const user = userEvent.setup()
-      renderOfferReactionSection({
-        proAdvices: [...offerProAdvicesCardDataFixture],
-        proAdvicesCount: 2,
-      })
-
-      const advicesCounter = screen.getByTestId('proAdvicesCounter')
-      await user.press(advicesCounter)
-
-      expect(mockScrollToAnchor).toHaveBeenCalledWith('pro-advice-section')
-    })
-
-    it('should display pro advices without crashing when no club advice variant exists', async () => {
-      renderOfferReactionSection({
-        adviceVariantInfo: undefined,
-        proAdvices: [...offerProAdvicesCardDataFixture],
-        proAdvicesCount: 2,
-      })
-
-      expect(await screen.findByText('2 avis des pros')).toBeOnTheScreen()
-      expect(screen.queryByTestId('clubAdvicesCounter')).not.toBeOnTheScreen()
-    })
-  })
-
   describe('Headline offers information', () => {
     it('should display information when exist', async () => {
       renderOfferReactionSection({ headlineOffersCount: 3 })
@@ -131,8 +95,6 @@ function renderOfferReactionSection({
   headlineOffersCount = 0,
   clubAdvices,
   adviceVariantInfo = adviceVariantInfoFixture,
-  proAdvicesCount = 0,
-  proAdvices,
 }: RenderOfferReactionSectionType) {
   render(
     reactQueryProviderHOC(
@@ -142,8 +104,6 @@ function renderOfferReactionSection({
         headlineOffersCount={headlineOffersCount}
         clubAdvices={clubAdvices}
         adviceVariantInfo={adviceVariantInfo}
-        proAdvices={proAdvices}
-        proAdvicesCount={proAdvicesCount}
       />
     )
   )

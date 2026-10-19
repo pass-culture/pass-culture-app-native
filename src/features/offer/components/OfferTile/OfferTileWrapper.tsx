@@ -39,7 +39,6 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
   const labelMapping = useCategoryHomeLabelMapping()
   const { subcategoryId, dates, releaseDate, isDuo, likes, chroniclesCount, name, thumbUrl } =
     item.offer
-  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
 
   const formattedDate = getOfferDates({
@@ -64,7 +63,6 @@ export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Prop
     hasSmallLayout,
     isComingSoonOffer: getIsAComingSoonOffer(item.offer.bookingAllowedDatetime),
     subcategoryId: item.offer.subcategoryId,
-    proAdvicesCount: enableProAdvicesTag ? item.offer.proAdvicesCount : undefined,
     enableSceneClubTag,
   }
   const tag = renderInteractionTag(interactionTagParams)

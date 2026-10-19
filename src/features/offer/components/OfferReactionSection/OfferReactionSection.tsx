@@ -12,7 +12,6 @@ import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
-import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
 import { Star } from 'ui/svg/Star'
 
 type Props = {
@@ -21,8 +20,6 @@ type Props = {
   headlineOffersCount?: number
   adviceVariantInfo?: AdviceVariantInfo
   clubAdvices?: AdviceCardData[]
-  proAdvicesCount?: number
-  proAdvices?: AdviceCardData[]
 }
 
 export const OfferReactionSection: FunctionComponent<Props> = ({
@@ -31,16 +28,12 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   headlineOffersCount,
   adviceVariantInfo,
   clubAdvices,
-  proAdvicesCount,
-  proAdvices,
 }) => {
   const scrollToAnchor = useScrollToAnchor()
 
   const clubAdvicesStatus: AdvicesStatus = getAdvicesStatus(clubAdvicesCount, clubAdvices?.length)
-  const proAdvicesStatus: AdvicesStatus = getAdvicesStatus(proAdvicesCount, proAdvices?.length)
   const hasClubAdvices =
     !!adviceVariantInfo && (clubAdvicesStatus.hasPublished || clubAdvicesStatus.hasUnpublished)
-  const hasProAdvices = proAdvicesStatus.hasPublished || proAdvicesStatus.hasUnpublished
   const hasLikes = !!likesCount
   const hasHeadlineOffers = !!headlineOffersCount
 
@@ -60,30 +53,18 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
       />
     ) : null
 
-  const proAdvicesCounterElement = hasProAdvices ? (
-    <OfferAdvicesCounter
-      testID="proAdvicesCounter"
-      publishedText={`${proAdvicesStatus.total} avis des pros`}
-      unpublishedText="Recommandé par les pros"
-      icon={<SmallProEditoIcon />}
-      advicesStatus={proAdvicesStatus}
-      onPress={() => scrollToAnchor(AnchorNames.PRO_ADVICE_SECTION)}
-    />
-  ) : null
-
   const headlineOffersCounterElement = hasHeadlineOffers ? (
     <HeadlineOffersCount text={getRecommendationText(headlineOffersCount)} />
   ) : null
 
-  if (!(hasLikes || hasClubAdvices || hasHeadlineOffers || hasProAdvices)) return null
+  if (!(hasLikes || hasClubAdvices || hasHeadlineOffers)) return null
 
   return (
     <ViewGap gap={4}>
-      {hasLikes || hasClubAdvices || hasProAdvices ? (
+      {hasLikes || hasClubAdvices ? (
         <InfosCounterContainer gap={2}>
           {likesCounterElement}
           {clubAdvicesCounterElement}
-          {proAdvicesCounterElement}
         </InfosCounterContainer>
       ) : null}
       {headlineOffersCounterElement}
@@ -113,8 +94,3 @@ const LikesInfoCounter = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
 const HeadlineOffersCount = styled(InfoCounter).attrs<{ icon?: React.ReactNode }>({
   icon: <StarIcon testID="headlineOffersCounterIcon" />,
 })``
-
-const SmallProEditoIcon = styled(ProEditoCertification).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.proEdito,
-  size: theme.designSystem.size.icon.m,
-}))``
