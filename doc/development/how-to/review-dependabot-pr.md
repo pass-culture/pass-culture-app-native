@@ -19,6 +19,7 @@ La configuration est dans `.github/dependabot.yml`.
 
 Points d'attention :
 
+- **Ticket JIRA** : Les PR Dependabot sont créés automatiquement sans ticket associé dans Jira, ce sera la responsabilité de la première personne qui traite la PR dependabot de le créér
 - **Le check de titre `3 [on_pr] Check PR title format` échoue sur toutes les PRs Dependabot** : leur titre ne contient pas de ticket Jira (préfixe `(BSR)`, refusé depuis PC-43517, ou aucun préfixe pour certaines mises à jour de sécurité). Mettre le ticket Jira en tête du titre de la PR, à la place de `(BSR)` s'il y est (le titre devient le message du commit sur master).
 - **Les E2E ne tournent qu'à l'ajout du label `e2e`**, donc à la création de la PR. Après un `@dependabot rebase`, leurs résultats restent sur l'ancien commit. Pour les relancer, retirer puis remettre le label `e2e`.
 - **La CI des PRs ne build pas le web** (sauf avec le label `breaking change`). Pour une dépendance utilisée par le web, voir l'étape 4.
