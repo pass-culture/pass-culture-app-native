@@ -52,6 +52,7 @@ import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/Che
 import { CheatcodesScreenLastLoginInfo } from 'cheatcodes/pages/others/CheatcodesScreenLastLoginInfo'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
+import { CheatcodesScreenModalDetailed } from 'cheatcodes/pages/others/CheatcodesScreenModalDetailed'
 import { CheatcodesScreenModalSimpleNotScrollable } from 'cheatcodes/pages/others/CheatcodesScreenModalSimpleNotScrollable'
 import { CheatcodesScreenModalSimpleScrollable } from 'cheatcodes/pages/others/CheatcodesScreenModalSimpleScrollable'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
@@ -312,6 +313,14 @@ const cheatcodesStackNavigatorPathDefinition = {
       linking: { path: 'cheatcodes/other/modal-simple-not-scrollable' },
       options: {
         title: 'Cheatcodes - Modal simple not scrollable',
+        ...modalType,
+      },
+    },
+    CheatcodesScreenModalDetailed: {
+      screen: CheatcodesScreenModalDetailed,
+      linking: { path: 'cheatcodes/other/modal-detailed' },
+      options: {
+        title: 'Cheatcodes - Modal detailed',
         ...modalType,
       },
     },

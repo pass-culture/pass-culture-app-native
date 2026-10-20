@@ -1,14 +1,16 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
 import Animated, {
   Easing,
   FadeIn,
   FadeOut,
   SlideInDown,
+  SlideInRight,
   SlideOutDown,
+  SlideOutRight,
 } from 'react-native-reanimated'
 import { scheduleOnRN } from 'react-native-worklets'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -19,27 +21,36 @@ import { ModalScreenWrapperProps } from './ModalScreenWrapper'
 
 const TRANSITION_DURATION = 100
 const DESKTOP_MAX_HEIGHT_RATIO = 0.75
-const OVERLAY_COLOR = 'rgba(0, 0, 0, 0.7)'
 
 const BACKDROP_ENTERING = FadeIn.duration(TRANSITION_DURATION)
 const BACKDROP_EXITING = FadeOut.duration(TRANSITION_DURATION)
-const MODAL_ENTERING = SlideInDown.duration(TRANSITION_DURATION).easing(Easing.out(Easing.ease))
-const MODAL_EXITING = SlideOutDown.duration(TRANSITION_DURATION).easing(Easing.in(Easing.ease))
+const createModalEntering = (transition: 'bottom' | 'right') =>
+  (transition === 'right' ? SlideInRight : SlideInDown)
+    .duration(TRANSITION_DURATION)
+    .easing(Easing.out(Easing.ease))
 
-const createModalExiting = (onClose: () => void) =>
-  MODAL_EXITING.withCallback((finished) => {
-    'worklet'
-    if (finished) {
-      scheduleOnRN(onClose)
-    }
-  })
+const createModalExiting = (transition: 'bottom' | 'right', onClose: () => void) =>
+  (transition === 'right' ? SlideOutRight : SlideOutDown)
+    .duration(TRANSITION_DURATION)
+    .easing(Easing.in(Easing.ease))
+    .withCallback((finished) => {
+      'worklet'
+      if (finished) {
+        scheduleOnRN(onClose)
+      }
+    })
 
 export const ModalScreenWrapper = ({
   title,
   onClose,
   children,
   fullScreen,
+  desktopMaxWidth,
+  desktopMaxHeight,
+  desktopVariant = 'centered',
+  initialFocusSelector,
 }: ModalScreenWrapperProps) => {
+  const { isDesktopViewport } = useTheme()
   const titleId = uuidv4()
   const [isOpen, setIsOpen] = useState(true)
   const [isAnimationFinished, setIsAnimationFinished] = useState(false)
@@ -49,25 +60,19 @@ export const ModalScreenWrapper = ({
     setIsAnimationFinished(true)
   }, [])
 
+  const transition = isDesktopViewport && desktopVariant === 'bottomRight' ? 'right' : 'bottom'
   const enteringAnimation = useMemo(
     () =>
-      MODAL_ENTERING.withCallback((finished) => {
+      createModalEntering(transition).withCallback((finished) => {
         'worklet'
         if (finished) {
           scheduleOnRN(onAnimationFinished)
         }
       }),
-    [onAnimationFinished]
+    [onAnimationFinished, transition]
   )
 
-  useEffect(() => {
-    if (isAnimationFinished && modalRef.current) {
-      const node = modalRef.current
-      node?.focus?.()
-    }
-  }, [isAnimationFinished])
-
-  useModalFocusTrap(modalRef, isAnimationFinished)
+  useModalFocusTrap(modalRef, isAnimationFinished, initialFocusSelector)
 
   const closeWithTransition = () => {
     setIsOpen((open) => (open ? false : open))
@@ -76,7 +81,7 @@ export const ModalScreenWrapper = ({
   useEscapeKeyAction(closeWithTransition)
 
   return (
-    <Root>
+    <Root desktopVariant={desktopVariant}>
       {isOpen ? (
         <React.Fragment>
           <Backdrop
@@ -94,8 +99,11 @@ export const ModalScreenWrapper = ({
             aria-labelledby={titleId}
             tabIndex={-1}
             entering={enteringAnimation}
-            exiting={createModalExiting(onClose)}
-            fullScreen={fullScreen}>
+            exiting={createModalExiting(transition, onClose)}
+            fullScreen={fullScreen}
+            desktopMaxWidth={desktopMaxWidth}
+            desktopMaxHeight={desktopMaxHeight}
+            desktopVariant={desktopVariant}>
             {children(closeWithTransition, titleId)}
           </ModalContainer>
         </React.Fragment>
@@ -106,23 +114,31 @@ export const ModalScreenWrapper = ({
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-const Root = styled.View(({ theme }) => ({
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  zIndex: theme.zIndex.bottomSheet,
-  alignItems: 'center',
-  justifyContent: theme.isDesktopViewport ? 'center' : 'flex-end',
+const Root = styled.View<{ desktopVariant: 'centered' | 'bottomRight' }>(
+  ({ theme, desktopVariant }) => ({
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: theme.zIndex.bottomSheet,
+    alignItems: theme.isDesktopViewport && desktopVariant === 'bottomRight' ? 'flex-end' : 'center',
+    justifyContent:
+      theme.isDesktopViewport && desktopVariant === 'centered' ? 'center' : 'flex-end',
+  })
+)
+
+const Backdrop = styled(AnimatedPressable)(({ theme }) => ({
+  ...StyleSheet.absoluteFill,
+  backgroundColor: theme.designSystem.color.background.overlay,
 }))
 
-const Backdrop = styled(AnimatedPressable)({
-  ...StyleSheet.absoluteFill,
-  backgroundColor: OVERLAY_COLOR,
-})
-
-const ModalContainer = styled(Animated.View)<{ fullScreen?: boolean }>(({ theme, fullScreen }) => ({
+const ModalContainer = styled(Animated.View)<{
+  fullScreen?: boolean
+  desktopMaxWidth?: number
+  desktopMaxHeight?: number | string
+  desktopVariant: 'centered' | 'bottomRight'
+}>(({ theme, fullScreen, desktopMaxWidth, desktopMaxHeight, desktopVariant }) => ({
   width: '100%',
   height: fullScreen ? '100%' : 'auto',
   maxHeight: '100%',
@@ -133,10 +149,12 @@ const ModalContainer = styled(Animated.View)<{ fullScreen?: boolean }>(({ theme,
   paddingBottom: theme.isMobileViewport ? theme.tabBar.height : undefined,
   ...(theme.isDesktopViewport
     ? {
-        borderBottomLeftRadius: theme.designSystem.size.borderRadius.l,
-        borderBottomRightRadius: theme.designSystem.size.borderRadius.l,
-        maxWidth: theme.modal.desktopMaxWidth,
-        maxHeight: `${DESKTOP_MAX_HEIGHT_RATIO * 100}%`,
+        borderBottomLeftRadius:
+          desktopVariant === 'centered' ? theme.designSystem.size.borderRadius.l : undefined,
+        borderBottomRightRadius:
+          desktopVariant === 'centered' ? theme.designSystem.size.borderRadius.l : undefined,
+        maxWidth: desktopMaxWidth ?? theme.modal.desktopMaxWidth,
+        maxHeight: desktopMaxHeight ?? `${DESKTOP_MAX_HEIGHT_RATIO * 100}%`,
       }
     : {
         maxWidth: theme.appContentWidth,

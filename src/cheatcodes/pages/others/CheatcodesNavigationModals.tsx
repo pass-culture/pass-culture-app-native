@@ -16,6 +16,13 @@ const modalsCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
+      title: 'Detailed',
+      navigationTarget: {
+        screen: 'CheatcodesScreenModalDetailed',
+      },
+    },
+    {
+      id: uuidv4(),
       title: 'Simple not scrollable',
       navigationTarget: {
         screen: 'CheatcodesScreenModalSimpleNotScrollable',
