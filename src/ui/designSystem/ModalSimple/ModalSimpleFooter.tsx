@@ -27,6 +27,7 @@ export const ModalSimpleFooter: FunctionComponent<ModalSimpleFooterProps> = ({
         wording={primaryButton.wording}
         accessibilityLabel={primaryButton.accessibilityLabel}
         onPress={primaryButton.onPress}
+        fullWidth={!isDesktopViewport}
       />
     ) : null,
     secondaryButton ? (
@@ -37,6 +38,7 @@ export const ModalSimpleFooter: FunctionComponent<ModalSimpleFooterProps> = ({
         wording={secondaryButton.wording}
         accessibilityLabel={secondaryButton.accessibilityLabel}
         onPress={secondaryButton.onPress}
+        fullWidth={!isDesktopViewport}
       />
     ) : null,
     tertiaryButton ? (
@@ -47,6 +49,7 @@ export const ModalSimpleFooter: FunctionComponent<ModalSimpleFooterProps> = ({
         wording={tertiaryButton.wording}
         accessibilityLabel={tertiaryButton.accessibilityLabel}
         onPress={tertiaryButton.onPress}
+        fullWidth={!isDesktopViewport}
       />
     ) : null,
   ].filter(Boolean)
@@ -62,6 +65,7 @@ const FooterContainer = styled(ViewGap)(({ theme }) => ({
   flexShrink: 0,
   flexDirection: theme.isDesktopViewport || theme.isTabletViewport ? 'row' : 'column',
   justifyContent: 'center',
+  alignItems: 'center',
   width: '100%',
   paddingHorizontal: theme.designSystem.size.spacing.xxl,
   paddingBottom: Platform.OS === 'ios' ? undefined : theme.designSystem.size.spacing.xxl,
