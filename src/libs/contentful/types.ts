@@ -384,7 +384,6 @@ type ThematicCategoryInfoFields = {
   displayedTitle?: string
   titleParts?: string[]
   displayedSubtitle?: string
-  image?: Image
   illustrationFilename?: ContentfulIllustrationName
   color: Color | CategoryHeaderColor
   illustrationCategoryBlock?: CategoryButtonIllustrationName

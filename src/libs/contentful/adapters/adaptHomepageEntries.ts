@@ -40,7 +40,6 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     const thematicHeaderFields = thematicHeader.fields
     if (thematicHeaderFields === undefined) return
 
-    const legacyImageUrl = buildImageUrl(thematicHeaderFields.image?.fields?.file.url)
     const title =
       thematicHeaderFields.titleParts?.join(' ') ??
       thematicHeaderFields.displayedTitle ??
@@ -53,7 +52,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
       subtitle: thematicHeaderFields.displayedSubtitle,
       imageUrl: thematicHeaderFields.illustrationFilename
         ? buildContentfulIllustrationUrl(thematicHeaderFields.illustrationFilename)
-        : legacyImageUrl,
+        : undefined,
       color: thematicHeaderFields.color,
     }
     return categoryThematicHeader
