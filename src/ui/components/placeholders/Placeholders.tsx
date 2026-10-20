@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { FavoriteButtonsContainer } from 'features/favorites/components/Favorite'
+import { FavoriteActionsContainer } from 'features/favorites/components/FavoriteActions'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, LENGTH_XS, LENGTH_XXS } from 'ui/theme'
@@ -123,7 +123,7 @@ export const BookingHitPlaceholder = () => {
 export const FavoriteHitPlaceholder = () => {
   const { designSystem } = useTheme()
   return (
-    <React.Fragment>
+    <ViewGap gap={4}>
       <Row gap={4}>
         <BasePlaceholder height={imageHeight} width={imageWidth} />
         <View>
@@ -133,7 +133,7 @@ export const FavoriteHitPlaceholder = () => {
           <TextPlaceholder width={designSystem.size.spacing.xxl} />
         </View>
       </Row>
-      <FavoriteButtonsContainer gap={0}>
+      <FavoriteActionsContainer gap={4}>
         <FirstButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
@@ -150,8 +150,8 @@ export const FavoriteHitPlaceholder = () => {
             fullWidth
           />
         </ButtonContainer>
-      </FavoriteButtonsContainer>
-    </React.Fragment>
+      </FavoriteActionsContainer>
+    </ViewGap>
   )
 }
 

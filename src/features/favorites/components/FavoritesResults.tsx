@@ -46,9 +46,10 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
         onBookOffer={setOfferToBook}
         onRefresh={refetch}
         favorites={sortedFavorites}
-        selectedTab={enableFavoritesHub ? selectedTab : undefined}
+        selectedTab={selectedTab}
         sortBy={sortBy}
         user={user}
+        enableFavoritesHub={enableFavoritesHub}
       />
     ),
     [Tab.VENUES]: <ListEmptyComponent />,

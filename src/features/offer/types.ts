@@ -55,8 +55,8 @@ export interface OfferTileProps {
 }
 
 export type FavoriteProps = {
-  addFavorite: ({ offerId }: { offerId: number }) => void
-  isAddFavoriteLoading: boolean
+  addFavorite?: ({ offerId }: { offerId: number }) => void
+  isAddFavoriteLoading?: boolean
   removeFavorite: (id: number) => void
   isRemoveFavoriteLoading: boolean
   favorite?: FavoriteResponse | null

@@ -8,6 +8,7 @@ const defaultConfig: KnipConfig = {
     'server/src/index.ts!',
     'src/tests/setupTests.js!',
     'src/features/reactions/components/FeedBack.tsx!',
+    'src/features/favorites/components/FavoriteArtistVenue.tsx!', // TODO(PC-44048): waiting backend
   ],
   project: ['src/**/*.{ts,tsx}!'], // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
   ignore: [
