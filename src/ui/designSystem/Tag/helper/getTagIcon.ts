@@ -13,7 +13,6 @@ export function getTagIcon(variant: TagVariant, icon?: TagProps['Icon']): TagPro
     TagVariant.SCENECLUB,
     TagVariant.HEADLINE,
     TagVariant.LIKE,
-    TagVariant.PROEDITO,
   ]
   return forcedVariants.includes(variant) ? variantIcons[variant] : icon
 }

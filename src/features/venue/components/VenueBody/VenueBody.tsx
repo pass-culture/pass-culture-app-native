@@ -4,7 +4,6 @@ import { View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { AdviceCardData } from 'features/advices/types'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
@@ -36,9 +35,6 @@ interface Props {
     playlistIndex?: number
   ) => void
   shouldDisplayVenueCalendar?: boolean
-  advicesCardData?: AdviceCardData[]
-  nbAdvices: number
-  onShowWritersModal: () => void
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -50,9 +46,6 @@ export const VenueBody: FunctionComponent<Props> = ({
   arePlaylistsLoading,
   onViewableItemsChanged,
   shouldDisplayVenueCalendar,
-  advicesCardData,
-  nbAdvices,
-  onShowWritersModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const currency = useGetCurrencyToDisplay()
@@ -113,9 +106,6 @@ export const VenueBody: FunctionComponent<Props> = ({
           euroToPacificFrancRate={euroToPacificFrancRate}
           arePlaylistsLoading={arePlaylistsLoading}
           onViewableItemsChanged={onViewableItemsChanged}
-          advicesCardData={advicesCardData}
-          nbAdvices={nbAdvices}
-          onShowWritersModal={onShowWritersModal}
         />
       </React.Fragment>
     ),

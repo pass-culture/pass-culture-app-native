@@ -1,17 +1,14 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { View, ViewToken } from 'react-native'
+import { ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Activity, VenueResponse } from 'api/gen'
-import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/AdvicesWritersModal'
-import { useVenueProAdvicesQuery } from 'features/advices/queries/useVenueProAdvicesQuery'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { venueProAdvicesToAdviceCardData } from 'features/proAdvices/adapters/venueProAdvicesToAdviceCardData/venueProAdvicesToAdviceCardData'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchInVenueModal } from 'features/search/pages/modals/SearchInVenueModal/SearchInVenueModal'
@@ -23,7 +20,6 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
-import { getAdvicesWithoutHeadline, getHeadlineAdvice } from 'features/venue/helpers/venueAdvices'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { Venue as VenueType } from 'features/venue/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -79,16 +75,10 @@ export const Venue: FunctionComponent = () => {
   )
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
-  const enableProAdvices = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_VENUE)
   const {
     visible: searchInVenueModalVisible,
     hideModal: hideSearchInVenueModal,
     showModal: showSearchInVenueModal,
-  } = useModal(false)
-  const {
-    visible: advicesWritersModalVisible,
-    hideModal: hideAdvicesWritersModal,
-    showModal: showAdvicesWritersModal,
   } = useModal(false)
   const userLocation = useUserLocation()
   const selectedLocationMode = useLocationMode()
@@ -122,12 +112,6 @@ export const Venue: FunctionComponent = () => {
     mapping: subcategoriesMapping,
   })
 
-  const { data: advices } = useVenueProAdvicesQuery({
-    venueId: params.id,
-    enableProAdvices,
-  })
-  const nbAdvices = advices?.nbResults ?? 0
-
   const {
     data: { artistPageSubcategories },
   } = useRemoteConfigQuery()
@@ -153,7 +137,6 @@ export const Venue: FunctionComponent = () => {
       labelMapping,
       userLocation,
     },
-    advice: getHeadlineAdvice(advices?.proAdvices, venueOffers?.headlineOffer?.objectID),
   })
 
   const triggerLogConsultVenue = useCallback(() => {
@@ -190,29 +173,12 @@ export const Venue: FunctionComponent = () => {
             arePlaylistsLoading={arePlaylistsLoading}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
             onViewableItemsChanged={handleViewableItemsChanged}
-            advicesCardData={venueProAdvicesToAdviceCardData(
-              getAdvicesWithoutHeadline(advices?.proAdvices.slice(0, 5), headlineOfferData?.id),
-              venue.id
-            )}
-            nbAdvices={advices?.nbResults ?? 0}
-            onShowWritersModal={showAdvicesWritersModal}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />
           <EmptyBottomSection isVisible={!!isCTADisplayed} />
         </Animated.View>
       </ViewGap>
-      {nbAdvices ? (
-        <View>
-          <AdvicesWritersModal
-            closeModal={hideAdvicesWritersModal}
-            isVisible={advicesWritersModalVisible}
-            onButtonPress={hideAdvicesWritersModal}
-            modalWording={`Les avis des pros sont rédigés par nos partenaires culturels du pass\u00a0: libraires, disquaires, organisateurs de spectacles...\nCes experts partagent leurs coups de coeur pour t‘aider à découvrir des oeuvres qui pourraient te plaire.`}
-            buttonWording="Fermer"
-          />
-        </View>
-      ) : null}
     </React.Fragment>
   ) : null
 

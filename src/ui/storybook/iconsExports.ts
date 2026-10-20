@@ -143,7 +143,6 @@ import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { LogoMonParcoursHandicap } from 'ui/svg/LogoMonParcoursHandicap'
-import { ProEditoCertification } from 'ui/svg/ProEditoCertification'
 import { SceneClubCertification } from 'ui/svg/SceneClubCertification'
 
 export const SocialNetworkIcons = {
@@ -305,7 +304,6 @@ export const UnconventionalIcons = {
   LogoFrenchRepublic,
   LogoMonParcoursHandicap,
   LogoPassCulture,
-  ProEditoCertification,
   SceneClubCertification,
   SystemThemeIllustration,
   Ubble,

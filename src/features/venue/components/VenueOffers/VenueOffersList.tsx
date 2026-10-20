@@ -14,7 +14,6 @@ import {
 } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import { VenueAdvicesSection } from 'features/venue/components/VenueAdvicesSection/VenueAdvicesSection'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics/provider'
@@ -65,12 +64,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   currency,
   euroToPacificFrancRate,
   onViewableItemsChanged,
-  advicesCardData,
-  nbAdvices,
-  onShowWritersModal,
-  onPressAdviceCardSeeMore,
-  onPressAllAdvicesButton,
-  onFeedbackLog,
 }) => {
   const theme = useTheme()
   const { user } = useAuthContext()
@@ -82,7 +75,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const { hits = [] } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
   const shouldDisplayArtistsPlaylist = artists.length > 0
-  const shouldDisplayAdvicesSection = advicesCardData && advicesCardData.length > 0 && nbAdvices > 0
 
   const onBeforeNavigate = () => analytics.logVenueSeeMoreClicked(venue.id)
 
@@ -199,17 +191,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           />
         )}
       </ObservedPlaylist>
-      {shouldDisplayAdvicesSection ? (
-        <VenueAdvicesSection
-          advicesCardData={advicesCardData}
-          nbAdvices={nbAdvices}
-          venue={venue}
-          onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
-          onShowWritersModal={onShowWritersModal}
-          onPressAllAdvicesButton={onPressAllAdvicesButton}
-          onFeedbackLog={onFeedbackLog}
-        />
-      ) : null}
 
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>

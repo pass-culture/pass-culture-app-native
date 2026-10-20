@@ -11,8 +11,6 @@ import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { Button } from 'ui/designSystem/Button/Button'
-import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 
 import { HeadlineOfferLargeViewport } from './HeadlineOfferLargeViewport'
@@ -52,12 +50,6 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
           <AdviceCardBody
             date={getFormattedAdviceDate(advice.publicationDatetime)}
             description={advice.content}
-            tag={
-              <Tag
-                variant={TagVariant.PROEDITO}
-                label={advice.author ? `par ${advice.author}` : 'avis du pro'}
-              />
-            }
             shouldTruncate>
             <View>
               <Button
