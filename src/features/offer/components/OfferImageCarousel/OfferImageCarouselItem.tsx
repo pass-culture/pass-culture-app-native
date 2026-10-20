@@ -7,6 +7,7 @@ import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
@@ -33,7 +34,11 @@ export const OfferImageCarouselItem = ({
   isInCarousel = false,
   children,
 }: PropsWithChildren<OfferImageCarouselItemProps>) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
+  const [failedUrl, setFailedUrl] = useState<string | null>(null)
+
+  const hasError = !!imageURL && failedUrl === imageURL
+  const isPressable = !!onPress && imageURL && !hasError
 
   const numberOfIllustration = index + 1
   const accessibilityLabelBase =
@@ -48,10 +53,10 @@ export const OfferImageCarouselItem = ({
 
   return (
     <TouchableOpacity
-      disabled={!onPress}
+      disabled={!isPressable}
       onPress={() => onPress?.(index)}
-      onFocus={isWeb ? () => setIsFocus(true) : undefined}
-      onBlur={isWeb ? () => setIsFocus(false) : undefined}
+      onFocus={isWeb ? onFocus : undefined}
+      onBlur={isWeb ? onBlur : undefined}
       accessibilityLabel={computedAccessibilityLabel}
       accessibilityRole={AccessibilityRole.BUTTON}
       delayPressIn={70}>
@@ -65,12 +70,13 @@ export const OfferImageCarouselItem = ({
             imageUrl={imageURL}
             isInCarousel={isInCarousel}
             onLoad={onLoad}
+            onError={() => setFailedUrl(imageURL)}
             imageDimensions={imageDimensions}
           />
         ) : null}
         {children}
       </OfferImageWrapper>
-      {isWeb ? <FocusOutline isFocus={isFocus} /> : null}
+      {isWeb && isPressable ? <FocusOutline isFocus={isFocus} /> : null}
     </TouchableOpacity>
   )
 }

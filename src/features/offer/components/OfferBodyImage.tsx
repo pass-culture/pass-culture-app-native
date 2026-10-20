@@ -12,6 +12,7 @@ type Props = {
   imageDimensions: OfferImageContainerDimensions
   isInCarousel?: boolean
   onLoad?: (event: OnLoadEvent) => void
+  onError?: () => void
 }
 
 export const OfferBodyImage: FunctionComponent<Props> = ({
@@ -19,6 +20,7 @@ export const OfferBodyImage: FunctionComponent<Props> = ({
   imageDimensions,
   isInCarousel,
   onLoad,
+  onError,
 }) => {
   const imageStyle = useMemo(
     () =>
@@ -35,6 +37,7 @@ export const OfferBodyImage: FunctionComponent<Props> = ({
       resizeMode={FastImage.resizeMode?.cover}
       testID="offerBodyImage"
       onLoad={onLoad}
+      onError={onError}
     />
   )
 }
