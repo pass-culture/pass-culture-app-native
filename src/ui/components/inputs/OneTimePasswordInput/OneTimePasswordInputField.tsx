@@ -58,7 +58,7 @@ export const OneTimePasswordInputField = ({
       value={value}
       disabled={isDisabled}
       keyboardType="number-pad"
-      maxLength={1}
+      autoComplete="one-time-code"
       selectTextOnFocus
       onChangeText={(inputValue) => handleChangeText(inputValue, index)}
       onKeyPress={(event) => {
