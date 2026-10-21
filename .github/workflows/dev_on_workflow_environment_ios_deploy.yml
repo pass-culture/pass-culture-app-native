@@ -126,7 +126,7 @@ jobs:
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    if: ${{ always() && (contains(needs.sentry_and_deploy.result, 'success') || contains(needs.sentry_and_deploy.result, 'failure'))}}
+    if: ${{ always() && contains(fromJSON('["success", "failure", "cancelled"]'), needs.sentry_and_deploy.result) }}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager
@@ -149,11 +149,11 @@ jobs:
           token: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
           payload: |
             channel: 'C0309RP8K42'
-            text: "Le déploiement iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}"
+            text: "Le déploiement iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('{"success": "réussi :rocket:", "failure": "échoué :boom:", "cancelled": "été annulé :warning:"}')[needs.sentry_and_deploy.result] }}"
             attachments: [
               {
                 "mrkdwn_in": ["text"],
-                "color": "${{ fromJSON('["#36a64f", "#A30002"]')[(needs.sentry_and_deploy.result == 'failure') && 1 || 0] }}",
+                "color": "${{ fromJSON('{"success": "#36a64f", "failure": "#A30002", "cancelled": "#FFA500"}')[needs.sentry_and_deploy.result] }}",
                 "author_name": "${{github.actor}}",
                 "author_link": "https://github.com/${{github.actor}}",
                 "author_icon": "https://github.com/${{github.actor}}.png",
