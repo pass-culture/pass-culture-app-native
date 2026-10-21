@@ -80,7 +80,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   }
 
   const shouldDisplayGeolocationBanner =
-    offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
+    offerCategories[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 

@@ -142,70 +142,70 @@ export function OfferPlaylistList({
 
   return (
     <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
-      {similarOffersPlaylist.map((playlist, index) => {
-        if (!isArrayNotEmpty(playlist.offers)) return null
+      {similarOffersPlaylist
+        .filter((playlist) => isArrayNotEmpty(playlist.offers))
+        .map((playlist, playlistIndex) => {
+          const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
+          const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
+          const hidePlaylistSeeAll = seeAllButton.hidePlaylistSeeAll
+          const hideSearchSeeAll = seeAllButton.hideSearchSeeAll
 
-        const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
-        const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
-        const hidePlaylistSeeAll = seeAllButton.hidePlaylistSeeAll
-        const hideSearchSeeAll = seeAllButton.hideSearchSeeAll
-
-        return (
-          <ObservedPlaylist
-            key={playlist.type}
-            onItemViewed={({ index: itemIndex, item }) => {
-              if (isFocused) {
-                void logViewItem({
-                  origin: 'offer',
-                  playlistIndex: index,
-                  index: itemIndex,
-                  type: 'offer',
-                  id: item.objectID,
-                  playlistId: playlist.type,
-                  originId: offer.id.toString(),
-                  callId: playlist.apiRecoParams?.callId ?? undefined,
-                })
-              }
-            }}
-            onIntersectionChange={playlist.handleChangePlaylistDisplay}>
-            {({ listRef, handleViewableItemsChanged }) => (
-              <StyledPassPlaylist
-                data={playlist.offers ?? []}
-                itemWidth={itemWidth}
-                itemHeight={itemHeight}
-                renderItem={OfferPlaylistItem({
-                  offer,
-                  labelMapping,
-                  categoryMapping,
-                  currency,
-                  euroToPacificFrancRate,
-                  navigationMethod: 'push',
-                  apiRecoParams: playlist.apiRecoParams,
-                  priceDisplay: (item: Offer) =>
-                    getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
-                  theme,
-                  enableSceneClubTag,
-                })}
-                title={playlist.title}
-                playlistType={playlist.type}
-                onEndReached={() =>
-                  trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)
+          return (
+            <ObservedPlaylist
+              key={playlist.type}
+              onItemViewed={({ index, item }) => {
+                if (isFocused) {
+                  void logViewItem({
+                    origin: 'offer',
+                    playlistIndex,
+                    index,
+                    type: 'offer',
+                    id: item.objectID,
+                    playlistId: playlist.type,
+                    originId: offer.id.toString(),
+                    callId: playlist.apiRecoParams?.callId ?? undefined,
+                  })
                 }
-                playlistRef={listRef}
-                onViewableItemsChanged={handleViewableItemsChanged}
-                FlatListComponent={FlatList}
-                keyExtractor={keyExtractor}
-                seeAllButton={{
-                  navigateToVerticalPlaylist,
-                  onBeforeNavigate,
-                  hidePlaylistSeeAll,
-                  hideSearchSeeAll,
-                }}
-              />
-            )}
-          </ObservedPlaylist>
-        )
-      })}
+              }}
+              onIntersectionChange={playlist.handleChangePlaylistDisplay}>
+              {({ listRef, handleViewableItemsChanged }) => (
+                <StyledPassPlaylist
+                  data={playlist.offers ?? []}
+                  itemWidth={itemWidth}
+                  itemHeight={itemHeight}
+                  renderItem={OfferPlaylistItem({
+                    offer,
+                    labelMapping,
+                    categoryMapping,
+                    currency,
+                    euroToPacificFrancRate,
+                    navigationMethod: 'push',
+                    apiRecoParams: playlist.apiRecoParams,
+                    priceDisplay: (item: Offer) =>
+                      getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+                    theme,
+                    enableSceneClubTag,
+                  })}
+                  title={playlist.title}
+                  playlistType={playlist.type}
+                  onEndReached={() =>
+                    trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)
+                  }
+                  playlistRef={listRef}
+                  onViewableItemsChanged={handleViewableItemsChanged}
+                  FlatListComponent={FlatList}
+                  keyExtractor={keyExtractor}
+                  seeAllButton={{
+                    navigateToVerticalPlaylist,
+                    onBeforeNavigate,
+                    hidePlaylistSeeAll,
+                    hideSearchSeeAll,
+                  }}
+                />
+              )}
+            </ObservedPlaylist>
+          )
+        })}
       {isLandscape ? <PlaceholderBehindButton /> : null}
     </SectionWithDivider>
   )

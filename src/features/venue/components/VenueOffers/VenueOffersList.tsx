@@ -149,7 +149,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             index,
             type: 'offer',
             id: item.objectID,
-            playlistId: 'venue_offers_list',
+            playlistId: 'venueOffersList',
             originId: venue.id.toString(),
           })
         }}>
@@ -201,7 +201,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
                 index,
                 type: 'artist',
                 id: item.id,
-                playlistId: 'venue_artists_carousel',
+                playlistId: 'venueArtistsCarousel',
                 originId: venue.id.toString(),
               })
             }}>

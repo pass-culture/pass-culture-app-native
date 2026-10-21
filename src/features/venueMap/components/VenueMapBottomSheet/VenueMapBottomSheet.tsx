@@ -68,8 +68,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     const offersPlaylist = useMemo(() => {
       if (!venue || !venueOffers?.length) return null
 
-      const handlePressMore = () =>
-        navigate('Venue', { id: venue.venueId, from: analyticsFrom })
+      const handlePressMore = () => navigate('Venue', { id: venue.venueId, from: analyticsFrom })
       return (
         <Fragment>
           <StyledView>

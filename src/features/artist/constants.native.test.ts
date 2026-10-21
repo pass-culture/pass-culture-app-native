@@ -21,6 +21,12 @@ describe('artist category playlists constants', () => {
     ])
   })
 
+  it('should expose unique playlist ids', () => {
+    const playlistIds = ARTIST_CATEGORY_PLAYLISTS.map(({ playlistId }) => playlistId)
+
+    expect(new Set(playlistIds).size).toBe(playlistIds.length)
+  })
+
   it('should expose playlist labels by search group', () => {
     expect(ARTIST_CATEGORY_LABELS).toEqual({
       [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: ['Prochains concerts et festivals'],

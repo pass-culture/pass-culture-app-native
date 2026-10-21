@@ -15,7 +15,7 @@ import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackN
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
@@ -252,7 +252,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           index: itemIndex,
           type: 'offer' as const,
           id: item.objectID,
-          playlistId: moduleId,
+          playlistId: asHomeEntryId(moduleId),
         }
         if (isArtistScreen) {
           void logViewItem({ origin: 'artist', originId: artistId, ...itemParams })

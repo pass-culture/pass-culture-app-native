@@ -1,8 +1,16 @@
 import React, { FC, useEffect, useRef } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IntersectionObserverProps } from './types'
+
+const isEntryVisible = (entry: IntersectionObserverEntry, threshold?: number) => {
+  const boundsHeight = entry.boundingClientRect.height
+  if (threshold === undefined || !boundsHeight) return !!entry.isIntersecting
+
+  const visibleRatio = entry.intersectionRect.height / boundsHeight
+  return !!entry.isIntersecting && visibleRatio >= threshold
+}
 
 export const IntersectionObserver: FC<IntersectionObserverProps> = ({
   children,
@@ -15,22 +23,31 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
 
   useEffect(
     function loadIntersectionObserver() {
-      setTimeout(() => {
-        observerRef.current = new globalThis.IntersectionObserver(
-          (entries) => {
-            onChange(!!entries[0]?.isIntersecting)
-          },
-          {
-            threshold,
-          }
-        )
-        if (targetRef.current) {
-          observerRef.current.observe(targetRef.current as unknown as Element)
-        }
-        return () => {
-          observerRef.current?.disconnect()
-        }
-      }, 300)
+      const IntersectionObserverAPI = globalThis.IntersectionObserver
+      if (typeof IntersectionObserverAPI !== 'function') {
+        if (Platform.OS === 'web') onChange(true)
+        return
+      }
+
+      const target = targetRef.current
+      if (!target) return
+
+      const element = target as unknown as Element
+      observerRef.current = new IntersectionObserverAPI(
+        (entries) => {
+          const entry = entries[0]
+          if (!entry) return
+          onChange(isEntryVisible(entry, threshold))
+        },
+        { threshold }
+      )
+      observerRef.current.observe(element)
+
+      return () => {
+        observerRef.current?.unobserve(element)
+        observerRef.current?.disconnect()
+        observerRef.current = null
+      }
     },
     [onChange, threshold]
   )

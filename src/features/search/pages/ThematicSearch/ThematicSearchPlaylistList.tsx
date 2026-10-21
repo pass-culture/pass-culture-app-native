@@ -4,7 +4,7 @@ import React from 'react'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { logViewItem, ThematicSearchOriginId } from 'libs/analytics/helpers/logViewItem'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -13,6 +13,7 @@ export type ThematicSearchPlaylistListProps = {
   isLoading: boolean
   shouldDisplayVenuesPlaylist?: boolean
   searchId?: string
+  originId: ThematicSearchOriginId
 }
 
 export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProps> = ({
@@ -20,6 +21,7 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
   isLoading: arePlaylistsLoading,
   shouldDisplayVenuesPlaylist,
   searchId,
+  originId,
 }) => {
   const isFocused = useIsFocused()
 
@@ -29,7 +31,7 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
 
   return (
     <ViewGap gap={6}>
-      {playlists?.map((playlist, index) => {
+      {playlists.map((playlist, index) => {
         if (playlist.offers.hits.length > 0) {
           // Calculate playlist if venues playlist is displayed
           const playlistIndex = (shouldDisplayVenuesPlaylist ? 1 : 0) + index
@@ -44,8 +46,8 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
                   index: itemIndex,
                   type: 'offer',
                   id: item.objectID,
-                  playlistId: playlist.title,
-                  originId: searchId,
+                  playlistId: 'thematicSearchOfferPlaylist',
+                  originId,
                 })
               }}>
               {({ listRef, handleViewableItemsChanged }) => (

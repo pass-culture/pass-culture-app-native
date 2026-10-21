@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC, FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -6,13 +6,14 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ArtistResponse } from 'api/gen'
 import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
-import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
+import { ArtistPlaylists } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import {
   ArtistModuleItem,
   getArtistModuleDataByIndex,
 } from 'features/artist/helpers/getArtistModuleDataByIndex'
+import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
 import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
@@ -82,7 +83,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
   const { appBarHeight, designSystem } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
-  const enableProAdvicesTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRO_REVIEWS_PLAYLIST)
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
@@ -131,6 +131,26 @@ export const ArtistBody: FunctionComponent<Props> = ({
     showShareArtistModal()
   }
 
+  const hasArtistTopOffers = artistTopOffers.length > 0
+  const playlistBaseIndex = hasArtistTopOffers ? 1 : 0
+  const displayableArtistPlaylists = enablePlaylistByCategory
+    ? getDisplayableArtistPlaylists(artistPlaylist, playlistBaseIndex)
+    : []
+  const artistPlaylistModuleItemsCount = offersArtistPlaylistModulesData?.playlistItems.length ?? 0
+  const isArtistPlaylistModuleVisible =
+    artistPlaylistModuleItemsCount > 0 &&
+    artistPlaylistModuleItemsCount >= (artistPlaylistModule?.displayParameters.minOffers ?? 0)
+
+  const modulesVisibility = {
+    artistTopOffers: hasArtistTopOffers,
+    ...Object.fromEntries(displayableArtistPlaylists.map((playlist) => [playlist.entryId, true])),
+    artistPlaylistModule: isArtistPlaylistModuleVisible,
+  }
+
+  const visibleModules = Object.entries(modulesVisibility)
+    .filter(([, isVisible]) => isVisible)
+    .map(([key]) => key)
+
   return (
     <Page>
       <WebMetaHeader title={name} />
@@ -166,25 +186,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
                       <Credit accessibilityLabel={creditAccessibilityLabel.titleText}>
                         {artist.descriptionCredit}
                       </Credit>
-                      {isWeb ? (
-                        <ExternalTouchableLink
-                          as={ButtonQuaternaryBlack}
-                          wording="Source&nbsp;: Wikipédia"
-                          externalNav={{ url: artist.descriptionSource }}
-                          justifyContent="flex-start"
-                          inline
-                          icon={ExternalSiteFilled}
-                        />
-                      ) : (
-                        <InternalTouchableLink
-                          as={ButtonQuaternaryBlack}
-                          wording="Source&nbsp;: Wikipédia"
-                          navigateTo={{ screen: 'ArtistWebview', params: { id: artist.id } }}
-                          justifyContent="flex-start"
-                          inline
-                          icon={ExternalSiteFilled}
-                        />
-                      )}
+                      <ArtistWikipediaLink artistId={artist.id} url={artist.descriptionSource} />
                     </ViewGap>
                   ) : null}
                 </CollapsibleText>
@@ -201,27 +203,28 @@ export const ArtistBody: FunctionComponent<Props> = ({
               data={offersArtistEditorialModulesData}
             />
           ) : null}
-          <ArtistTopOffers artistName={name} items={artistTopOffers} />
-          {enablePlaylistByCategory ? (
-            <ArtistPlaylist
-              artist={artist}
-              items={artistPlaylist}
-              enableProAdvicesTag={enableProAdvicesTag}
+          {hasArtistTopOffers ? (
+            <ArtistTopOffers
+              artistId={artist.id}
+              artistName={name}
+              items={artistTopOffers}
+              index={visibleModules.indexOf('artistTopOffers')}
             />
           ) : null}
+          <ArtistPlaylists artist={artist} playlists={displayableArtistPlaylists} />
           {artistPlaylistModule ? (
             <ArtistPlaylistModule
               displayParameters={artistPlaylistModule.displayParameters}
               offersModuleParameters={artistPlaylistModule.offersModuleParameters}
               artistId={artist.id}
-              index={0}
+              index={visibleModules.indexOf('artistPlaylistModule')}
               moduleId={artistPlaylistModule.id}
               data={offersArtistPlaylistModulesData}
               homeEntryId={undefined}
               disableArtistNavigation
             />
           ) : null}
-          <ArtistSimilarArtists artistId={artist.id} />
+          <ArtistSimilarArtists artistId={artist.id} index={visibleModules.length} />
         </ViewGap>
       </ContentContainer>
 
@@ -243,6 +246,32 @@ export const ArtistBody: FunctionComponent<Props> = ({
         />
       ) : null}
     </Page>
+  )
+}
+
+const ArtistWikipediaLink: FC<{ artistId: string; url: string }> = ({ artistId, url }) => {
+  if (isWeb) {
+    return (
+      <ExternalTouchableLink
+        as={ButtonQuaternaryBlack}
+        wording="Source&nbsp;: Wikipédia"
+        externalNav={{ url }}
+        justifyContent="flex-start"
+        inline
+        icon={ExternalSiteFilled}
+      />
+    )
+  }
+
+  return (
+    <InternalTouchableLink
+      as={ButtonQuaternaryBlack}
+      wording="Source&nbsp;: Wikipédia"
+      navigateTo={{ screen: 'ArtistWebview', params: { id: artistId } }}
+      justifyContent="flex-start"
+      inline
+      icon={ExternalSiteFilled}
+    />
   )
 }
 

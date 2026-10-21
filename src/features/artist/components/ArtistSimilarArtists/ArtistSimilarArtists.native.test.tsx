@@ -42,7 +42,7 @@ describe('<ArtistSimilarArtists />', () => {
     setFeatureFlags()
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     await waitFor(() => {
       expect(screen.queryByTestId('playlistTitle')).not.toBeOnTheScreen()
@@ -52,7 +52,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should display the skeleton while loading then hide it once artists are loaded', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     expect(screen.getByTestId('ArtistSimilarArtistsSkeleton')).toBeOnTheScreen()
     expect(screen.getByLabelText(TITLE)).toBeOnTheScreen()
@@ -65,7 +65,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should display the section with similar artists when API returns at least one', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     expect(await screen.findByLabelText('Coleen Hoover')).toBeOnTheScreen()
     expect(screen.getByLabelText('Sarah J. Maas')).toBeOnTheScreen()
@@ -75,7 +75,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should not render anything when API returns an empty list', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, { artists: [] })
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     await waitFor(() => {
       expect(screen.queryByTestId('playlistTitle')).not.toBeOnTheScreen()
@@ -85,7 +85,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should log consult artist analytics with from=artist when tapping a card', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     const card = await screen.findByLabelText('Coleen Hoover')
     await user.press(card)
@@ -102,7 +102,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should push a new Artist entry (not navigate) when tapping a card so back returns to the previous artist', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     const card = await screen.findByLabelText('Coleen Hoover')
     await user.press(card)
@@ -114,7 +114,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should navigate to the vertical similar-artists playlist when tapping "Voir tout"', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     const seeAllButton = await screen.findByLabelText(`Voir tout pour la sélection ${TITLE}`)
     await user.press(seeAllButton)
@@ -130,7 +130,7 @@ describe('<ArtistSimilarArtists />', () => {
   it('should log click see all analytics with from=artist when tapping "Voir tout"', async () => {
     mockServer.getApi(`/v1/artists/${artistId}/similar`, similarArtistsResponse)
 
-    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} />))
+    render(reactQueryProviderHOC(<ArtistSimilarArtists artistId={artistId} index={0} />))
 
     const seeAllButton = await screen.findByLabelText(`Voir tout pour la sélection ${TITLE}`)
     await user.press(seeAllButton)
