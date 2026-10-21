@@ -52,6 +52,8 @@ type ButtonBaseProps = (ButtonNativeProps | ButtonWebProps) & {
   renderContainer: (props: ButtonContainerProps) => React.ReactElement
 }
 
+const LOADING_LABEL = 'Chargement en cours'
+
 export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   variant = 'primary',
   size = 'default',
@@ -95,14 +97,26 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   )
   const borderWidth = getBorderWidth(borderColor)
   const labelText = getLabelText(iconButton, wording)
-  const computedA11yLabel = getComputedAccessibilityLabel(
-    iconButton ? accessibilityLabel : (accessibilityLabel ?? wording ?? '')
-  )
+  const computedA11yLabel = isLoading
+    ? LOADING_LABEL
+    : getComputedAccessibilityLabel(
+        iconButton ? accessibilityLabel : (accessibilityLabel ?? wording ?? '')
+      )
   const gap = getSpacingGap(!!labelText, theme.designSystem.size.spacing.s)
   const isMultiline = typeof numberOfLines === 'number' && numberOfLines > 1
-  const labelStyle = getLabelStyle(textColor, fullWidth, isMultiline, !!icon)
+  const hasVisibleIcon = !!icon || (isLoading && variant === 'secondary')
+  const labelStyle = getLabelStyle(textColor, fullWidth, isMultiline, hasVisibleIcon)
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
+  const label = labelText ? (
+    <LabelTypo
+      {...setTextSemantic('span')}
+      style={labelStyle}
+      numberOfLines={numberOfLines}
+      ellipsizeMode={ellipsizeMode}>
+      {isLoading ? LOADING_LABEL : labelText}
+    </LabelTypo>
+  ) : null
 
   const iconSize =
     size === 'small' ? theme.designSystem.size.icon.buttonS : theme.designSystem.size.icon.button
@@ -122,21 +136,21 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     theme,
   })
   const content = (
-    <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline} hasIcon={!!icon}>
+    <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline} hasIcon={hasVisibleIcon}>
       {isLoading ? (
-        <ButtonLoadingIndicator color={iconColor} size={iconSize} testID="button-loading" />
+        <React.Fragment>
+          {variant === 'secondary' ? label : null}
+          <ButtonLoadingIndicator
+            color={iconColor}
+            size={iconSize}
+            testID="button-loading"
+            variant={variant}
+          />
+        </React.Fragment>
       ) : (
         <React.Fragment>
           {leftIcon ? <IconWrapper style={iconAnimatedStyle}>{leftIcon}</IconWrapper> : null}
-          {labelText ? (
-            <LabelTypo
-              {...setTextSemantic('span')}
-              style={labelStyle}
-              numberOfLines={numberOfLines}
-              ellipsizeMode={ellipsizeMode}>
-              {labelText}
-            </LabelTypo>
-          ) : null}
+          {label}
           {rightIcon ? <IconWrapper style={iconAnimatedStyle}>{rightIcon}</IconWrapper> : null}
         </React.Fragment>
       )}

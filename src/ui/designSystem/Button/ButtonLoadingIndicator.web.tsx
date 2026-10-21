@@ -5,13 +5,40 @@
 
 import React, { useEffect, useMemo } from 'react'
 import { Animated, Easing } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { DotsLoader } from 'ui/animations/DotsLoader'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { Logo } from 'ui/svg/icons/Logo'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export const ButtonLoadingIndicator = ({ size, color, testID }: AccessibleIcon) => {
+import { ButtonVariant } from './types'
+
+type Props = AccessibleIcon & {
+  variant: ButtonVariant
+}
+
+export const ButtonLoadingIndicator = ({ size, color, testID, variant }: Props) => {
+  const theme = useTheme()
+  const loaderSize = Number(size ?? theme.designSystem.size.icon.button)
+
+  if (variant === 'secondary') {
+    return (
+      <SpinnerContainer testID={testID}>
+        <DotsLoader
+          color={color ?? theme.designSystem.color.icon.brandPrimary}
+          compact
+          shadowColor={theme.designSystem.color.background.inverted}
+          size={loaderSize}
+        />
+      </SpinnerContainer>
+    )
+  }
+
+  return <RotatingLogo color={color} size={size} testID={testID} />
+}
+
+const RotatingLogo = ({ size, color, testID }: AccessibleIcon) => {
   const animatedValue = useMemo(() => new Animated.Value(0), [])
   const spin = useMemo(
     () =>
