@@ -40,6 +40,7 @@ export const MusicPlaylists: React.FC<ThematicPlaylistProps> = ({
       isLoading={areMusicPlaylistsLoading}
       shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
       searchId={searchId}
+      originId="thematicSearchMusic"
     />
   )
 }

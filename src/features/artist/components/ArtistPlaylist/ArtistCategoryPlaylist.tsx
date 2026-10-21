@@ -7,7 +7,7 @@ import { ArtistResponse } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { ArtistCategoryPlaylistId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -26,7 +26,7 @@ const analyticsFrom = 'artist'
 
 type ArtistCategoryPlaylistProps = {
   artist: ArtistResponse
-  entryId: string
+  entryId: ArtistCategoryPlaylistId
   items: AlgoliaOfferWithArtistAndEan[]
   playlistIndex: number
   title: string

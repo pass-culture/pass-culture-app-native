@@ -108,7 +108,7 @@ export const VenueMapOfferPlaylist = ({
             index,
             type: 'offer',
             id: item.objectID,
-            playlistId: 'venue_map',
+            playlistId: 'venueMap',
             originId: venueId.toString(),
           })
         }}>

@@ -807,753 +807,771 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     </View>
                   </View>
                   <View
-                    onLayout={[Function]}
-                    style={
-                      {
-                        "position": "relative",
-                        "width": "100%",
-                      }
-                    }
+                    fill={false}
+                    style={{}}
+                    testID="intersectionObserver"
                   >
-                    <RCTScrollView
-                      ItemSeparatorComponent={
-                        {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": [
-                            {
-                              "width": 16,
-                            },
-                          ],
-                          "inlineStyle": e {
-                            "rules": [
-                              [Function],
-                            ],
-                          },
-                          "render": [Function],
-                          "shouldForwardProp": undefined,
-                          "styledComponentId": true,
-                          "target": [Function],
-                        }
-                      }
-                      collapsable={false}
-                      contentContainerStyle={
-                        [
-                          {
-                            "paddingHorizontal": 24,
-                          },
-                          undefined,
-                        ]
-                      }
-                      data={
-                        [
-                          {
-                            "id": "1",
-                            "name": "Artist 1",
-                          },
-                          {
-                            "id": "2",
-                            "name": "Artist 2",
-                          },
-                          {
-                            "id": "3",
-                            "name": "Artist 3",
-                          },
-                          {
-                            "id": "4",
-                            "name": "Artist 4",
-                          },
-                        ]
-                      }
-                      drawDistance={187.5}
-                      getItem={[Function]}
-                      getItemCount={[Function]}
-                      getItemLayout={[Function]}
-                      handlerTag={1}
-                      handlerType="NativeViewGestureHandler"
-                      horizontal={true}
-                      initialNumToRender={4}
-                      keyExtractor={[Function]}
-                      maxToRenderPerBatch={6}
-                      onContentSizeChange={[Function]}
-                      onEndReachedThreshold={0.2}
-                      onGestureHandlerEvent={[Function]}
-                      onGestureHandlerStateChange={[Function]}
+                    <View
                       onLayout={[Function]}
-                      onMomentumScrollBegin={[Function]}
-                      onMomentumScrollEnd={[Function]}
-                      onScroll={[Function]}
-                      onScrollBeginDrag={[Function]}
-                      onScrollEndDrag={[Function]}
-                      removeClippedSubviews={true}
-                      renderItem={[Function]}
-                      renderScrollComponent={[Function]}
-                      scrollEnabled={true}
-                      scrollEventThrottle={16}
-                      showsHorizontalScrollIndicator={false}
-                      stickyHeaderIndices={[]}
-                      updateCellsBatchingPeriod={100}
-                      viewabilityConfig={
+                      style={
                         {
-                          "minimumViewTime": 300,
-                          "viewAreaCoveragePercentThreshold": 20,
-                          "waitForInteraction": true,
+                          "position": "relative",
+                          "width": "100%",
                         }
                       }
-                      viewabilityConfigCallbackPairs={[]}
-                      windowSize={7}
                     >
-                      <View>
-                        <View
-                          onFocusCapture={[Function]}
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                              },
-                              null,
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Artist 1"
-                            accessibilityRole="button"
-                            accessibilityState={
-                              {
-                                "busy": undefined,
-                                "checked": undefined,
-                                "disabled": undefined,
-                                "expanded": undefined,
-                                "selected": undefined,
-                              }
-                            }
-                            accessibilityValue={
-                              {
-                                "max": undefined,
-                                "min": undefined,
-                                "now": undefined,
-                                "text": undefined,
-                              }
-                            }
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              [
-                                [
-                                  {
-                                    "userSelect": "auto",
-                                  },
-                                  {},
-                                ],
-                                {
-                                  "opacity": 1,
-                                },
-                              ]
-                            }
-                            testID="Artist 1"
-                          >
-                            <View
-                              gap={2}
-                              isFullWidth={false}
-                              style={
-                                {
-                                  "flexDirection": "column",
-                                  "gap": 8,
-                                }
-                              }
-                            >
-                              <View
-                                rounded={true}
-                                size={72}
-                                style={
-                                  {
-                                    "borderBottomLeftRadius": 36,
-                                    "borderBottomRightRadius": 36,
-                                    "borderTopLeftRadius": 36,
-                                    "borderTopRightRadius": 36,
-                                    "height": 72,
-                                    "overflow": "hidden",
-                                    "width": 72,
-                                  }
-                                }
-                                testID="Avatar"
-                              >
-                                <View
-                                  backgroundColor="#ffffff"
-                                  size={72}
-                                  style={
-                                    {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
-                                      "height": 72,
-                                      "justifyContent": "center",
-                                      "position": "absolute",
-                                      "width": 72,
-                                    }
-                                  }
-                                >
-                                  <View
-                                    style={
-                                      {
-                                        "alignItems": "center",
-                                        "backgroundColor": "#f1f1f4",
-                                        "borderBottomLeftRadius": 999,
-                                        "borderBottomRightRadius": 999,
-                                        "borderColor": "#cbcdd2",
-                                        "borderTopLeftRadius": 999,
-                                        "borderTopRightRadius": 999,
-                                        "borderWidth": 1,
-                                        "height": "100%",
-                                        "justifyContent": "center",
-                                        "width": "100%",
-                                      }
-                                    }
-                                    testID="defaultArtistAvatar"
-                                  >
-                                    <View
-                                      height={32}
-                                      testID="BicolorProfile"
-                                      width={32}
-                                    >
-                                      <Text>
-                                        BicolorProfile-SVG-Mock
-                                      </Text>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                              <View>
-                                <Text
-                                  accessibilityLevel="p"
-                                  accessibilityRole="text"
-                                  isDisabled={false}
-                                  isFullWidth={false}
-                                  maxWidth={72}
-                                  numberOfLines={2}
-                                  style={
-                                    {
-                                      "alignSelf": "center",
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 14,
-                                      "lineHeight": 22.4,
-                                      "maxWidth": 72,
-                                      "textAlign": "center",
-                                    }
-                                  }
-                                >
-                                  Artist 1
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            highlighted={false}
-                            leadingItem={
-                              {
-                                "id": "1",
-                                "name": "Artist 1",
-                              }
-                            }
-                            style={
+                      <RCTScrollView
+                        ItemSeparatorComponent={
+                          {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [
                               {
                                 "width": 16,
-                              }
-                            }
-                            width={16}
-                          />
-                        </View>
-                        <View
-                          onFocusCapture={[Function]}
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
                               },
-                              null,
-                            ]
+                            ],
+                            "inlineStyle": e {
+                              "rules": [
+                                [Function],
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": true,
+                            "target": [Function],
                           }
-                        >
+                        }
+                        collapsable={false}
+                        contentContainerStyle={
+                          [
+                            {
+                              "paddingHorizontal": 24,
+                            },
+                            undefined,
+                          ]
+                        }
+                        data={
+                          [
+                            {
+                              "id": "1",
+                              "name": "Artist 1",
+                            },
+                            {
+                              "id": "2",
+                              "name": "Artist 2",
+                            },
+                            {
+                              "id": "3",
+                              "name": "Artist 3",
+                            },
+                            {
+                              "id": "4",
+                              "name": "Artist 4",
+                            },
+                          ]
+                        }
+                        drawDistance={187.5}
+                        getItem={[Function]}
+                        getItemCount={[Function]}
+                        getItemLayout={[Function]}
+                        handlerTag={1}
+                        handlerType="NativeViewGestureHandler"
+                        horizontal={true}
+                        initialNumToRender={4}
+                        keyExtractor={[Function]}
+                        maxToRenderPerBatch={6}
+                        onContentSizeChange={[Function]}
+                        onEndReachedThreshold={0.2}
+                        onGestureHandlerEvent={[Function]}
+                        onGestureHandlerStateChange={[Function]}
+                        onLayout={[Function]}
+                        onMomentumScrollBegin={[Function]}
+                        onMomentumScrollEnd={[Function]}
+                        onScroll={[Function]}
+                        onScrollBeginDrag={[Function]}
+                        onScrollEndDrag={[Function]}
+                        onViewableItemsChanged={[Function]}
+                        removeClippedSubviews={true}
+                        renderItem={[Function]}
+                        renderScrollComponent={[Function]}
+                        scrollEnabled={true}
+                        scrollEventThrottle={16}
+                        showsHorizontalScrollIndicator={false}
+                        stickyHeaderIndices={[]}
+                        updateCellsBatchingPeriod={100}
+                        viewabilityConfig={
+                          {
+                            "minimumViewTime": 300,
+                            "viewAreaCoveragePercentThreshold": 20,
+                            "waitForInteraction": true,
+                          }
+                        }
+                        viewabilityConfigCallbackPairs={
+                          [
+                            {
+                              "onViewableItemsChanged": [Function],
+                              "viewabilityConfig": {
+                                "minimumViewTime": 300,
+                                "viewAreaCoveragePercentThreshold": 20,
+                                "waitForInteraction": true,
+                              },
+                            },
+                          ]
+                        }
+                        windowSize={7}
+                      >
+                        <View>
                           <View
-                            accessibilityLabel="Artist 2"
-                            accessibilityRole="button"
-                            accessibilityState={
-                              {
-                                "busy": undefined,
-                                "checked": undefined,
-                                "disabled": undefined,
-                                "expanded": undefined,
-                                "selected": undefined,
-                              }
-                            }
-                            accessibilityValue={
-                              {
-                                "max": undefined,
-                                "min": undefined,
-                                "now": undefined,
-                                "text": undefined,
-                              }
-                            }
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
+                            onFocusCapture={[Function]}
                             style={
                               [
-                                [
-                                  {
-                                    "userSelect": "auto",
-                                  },
-                                  {},
-                                ],
                                 {
-                                  "opacity": 1,
+                                  "flexDirection": "row",
                                 },
+                                null,
                               ]
                             }
-                            testID="Artist 2"
                           >
                             <View
-                              gap={2}
-                              isFullWidth={false}
-                              style={
+                              accessibilityLabel="Artist 1"
+                              accessibilityRole="button"
+                              accessibilityState={
                                 {
-                                  "flexDirection": "column",
-                                  "gap": 8,
+                                  "busy": undefined,
+                                  "checked": undefined,
+                                  "disabled": undefined,
+                                  "expanded": undefined,
+                                  "selected": undefined,
                                 }
                               }
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                [
+                                  [
+                                    {
+                                      "userSelect": "auto",
+                                    },
+                                    {},
+                                  ],
+                                  {
+                                    "opacity": 1,
+                                  },
+                                ]
+                              }
+                              testID="Artist 1"
                             >
                               <View
-                                rounded={true}
-                                size={72}
+                                gap={2}
+                                isFullWidth={false}
                                 style={
                                   {
-                                    "borderBottomLeftRadius": 36,
-                                    "borderBottomRightRadius": 36,
-                                    "borderTopLeftRadius": 36,
-                                    "borderTopRightRadius": 36,
-                                    "height": 72,
-                                    "overflow": "hidden",
-                                    "width": 72,
+                                    "flexDirection": "column",
+                                    "gap": 8,
                                   }
                                 }
-                                testID="Avatar"
                               >
                                 <View
-                                  backgroundColor="#ffffff"
+                                  rounded={true}
                                   size={72}
                                   style={
                                     {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
+                                      "borderBottomLeftRadius": 36,
+                                      "borderBottomRightRadius": 36,
+                                      "borderTopLeftRadius": 36,
+                                      "borderTopRightRadius": 36,
                                       "height": 72,
-                                      "justifyContent": "center",
-                                      "position": "absolute",
+                                      "overflow": "hidden",
                                       "width": 72,
                                     }
                                   }
+                                  testID="Avatar"
                                 >
                                   <View
+                                    backgroundColor="#ffffff"
+                                    size={72}
                                     style={
                                       {
                                         "alignItems": "center",
-                                        "backgroundColor": "#f1f1f4",
-                                        "borderBottomLeftRadius": 999,
-                                        "borderBottomRightRadius": 999,
-                                        "borderColor": "#cbcdd2",
-                                        "borderTopLeftRadius": 999,
-                                        "borderTopRightRadius": 999,
-                                        "borderWidth": 1,
-                                        "height": "100%",
+                                        "backgroundColor": "#ffffff",
+                                        "height": 72,
                                         "justifyContent": "center",
-                                        "width": "100%",
+                                        "position": "absolute",
+                                        "width": 72,
                                       }
                                     }
-                                    testID="defaultArtistAvatar"
                                   >
                                     <View
-                                      height={32}
-                                      testID="BicolorProfile"
-                                      width={32}
+                                      style={
+                                        {
+                                          "alignItems": "center",
+                                          "backgroundColor": "#f1f1f4",
+                                          "borderBottomLeftRadius": 999,
+                                          "borderBottomRightRadius": 999,
+                                          "borderColor": "#cbcdd2",
+                                          "borderTopLeftRadius": 999,
+                                          "borderTopRightRadius": 999,
+                                          "borderWidth": 1,
+                                          "height": "100%",
+                                          "justifyContent": "center",
+                                          "width": "100%",
+                                        }
+                                      }
+                                      testID="defaultArtistAvatar"
                                     >
-                                      <Text>
-                                        BicolorProfile-SVG-Mock
-                                      </Text>
+                                      <View
+                                        height={32}
+                                        testID="BicolorProfile"
+                                        width={32}
+                                      >
+                                        <Text>
+                                          BicolorProfile-SVG-Mock
+                                        </Text>
+                                      </View>
                                     </View>
                                   </View>
                                 </View>
-                              </View>
-                              <View>
-                                <Text
-                                  accessibilityLevel="p"
-                                  accessibilityRole="text"
-                                  isDisabled={false}
-                                  isFullWidth={false}
-                                  maxWidth={72}
-                                  numberOfLines={2}
-                                  style={
-                                    {
-                                      "alignSelf": "center",
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 14,
-                                      "lineHeight": 22.4,
-                                      "maxWidth": 72,
-                                      "textAlign": "center",
+                                <View>
+                                  <Text
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
+                                    isDisabled={false}
+                                    isFullWidth={false}
+                                    maxWidth={72}
+                                    numberOfLines={2}
+                                    style={
+                                      {
+                                        "alignSelf": "center",
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 14,
+                                        "lineHeight": 22.4,
+                                        "maxWidth": 72,
+                                        "textAlign": "center",
+                                      }
                                     }
-                                  }
-                                >
-                                  Artist 2
-                                </Text>
+                                  >
+                                    Artist 1
+                                  </Text>
+                                </View>
                               </View>
                             </View>
-                          </View>
-                          <View
-                            highlighted={false}
-                            leadingItem={
-                              {
-                                "id": "2",
-                                "name": "Artist 2",
-                              }
-                            }
-                            style={
-                              {
-                                "width": 16,
-                              }
-                            }
-                            width={16}
-                          />
-                        </View>
-                        <View
-                          onFocusCapture={[Function]}
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                              },
-                              null,
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Artist 3"
-                            accessibilityRole="button"
-                            accessibilityState={
-                              {
-                                "busy": undefined,
-                                "checked": undefined,
-                                "disabled": undefined,
-                                "expanded": undefined,
-                                "selected": undefined,
-                              }
-                            }
-                            accessibilityValue={
-                              {
-                                "max": undefined,
-                                "min": undefined,
-                                "now": undefined,
-                                "text": undefined,
-                              }
-                            }
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              [
-                                [
-                                  {
-                                    "userSelect": "auto",
-                                  },
-                                  {},
-                                ],
-                                {
-                                  "opacity": 1,
-                                },
-                              ]
-                            }
-                            testID="Artist 3"
-                          >
                             <View
-                              gap={2}
-                              isFullWidth={false}
+                              highlighted={false}
+                              leadingItem={
+                                {
+                                  "id": "1",
+                                  "name": "Artist 1",
+                                }
+                              }
                               style={
                                 {
-                                  "flexDirection": "column",
-                                  "gap": 8,
+                                  "width": 16,
                                 }
                               }
+                              width={16}
+                            />
+                          </View>
+                          <View
+                            onFocusCapture={[Function]}
+                            style={
+                              [
+                                {
+                                  "flexDirection": "row",
+                                },
+                                null,
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityLabel="Artist 2"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                {
+                                  "busy": undefined,
+                                  "checked": undefined,
+                                  "disabled": undefined,
+                                  "expanded": undefined,
+                                  "selected": undefined,
+                                }
+                              }
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                [
+                                  [
+                                    {
+                                      "userSelect": "auto",
+                                    },
+                                    {},
+                                  ],
+                                  {
+                                    "opacity": 1,
+                                  },
+                                ]
+                              }
+                              testID="Artist 2"
                             >
                               <View
-                                rounded={true}
-                                size={72}
+                                gap={2}
+                                isFullWidth={false}
                                 style={
                                   {
-                                    "borderBottomLeftRadius": 36,
-                                    "borderBottomRightRadius": 36,
-                                    "borderTopLeftRadius": 36,
-                                    "borderTopRightRadius": 36,
-                                    "height": 72,
-                                    "overflow": "hidden",
-                                    "width": 72,
+                                    "flexDirection": "column",
+                                    "gap": 8,
                                   }
                                 }
-                                testID="Avatar"
                               >
                                 <View
-                                  backgroundColor="#ffffff"
+                                  rounded={true}
                                   size={72}
                                   style={
                                     {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
+                                      "borderBottomLeftRadius": 36,
+                                      "borderBottomRightRadius": 36,
+                                      "borderTopLeftRadius": 36,
+                                      "borderTopRightRadius": 36,
                                       "height": 72,
-                                      "justifyContent": "center",
-                                      "position": "absolute",
+                                      "overflow": "hidden",
                                       "width": 72,
                                     }
                                   }
+                                  testID="Avatar"
                                 >
                                   <View
+                                    backgroundColor="#ffffff"
+                                    size={72}
                                     style={
                                       {
                                         "alignItems": "center",
-                                        "backgroundColor": "#f1f1f4",
-                                        "borderBottomLeftRadius": 999,
-                                        "borderBottomRightRadius": 999,
-                                        "borderColor": "#cbcdd2",
-                                        "borderTopLeftRadius": 999,
-                                        "borderTopRightRadius": 999,
-                                        "borderWidth": 1,
-                                        "height": "100%",
+                                        "backgroundColor": "#ffffff",
+                                        "height": 72,
                                         "justifyContent": "center",
-                                        "width": "100%",
+                                        "position": "absolute",
+                                        "width": 72,
                                       }
                                     }
-                                    testID="defaultArtistAvatar"
                                   >
                                     <View
-                                      height={32}
-                                      testID="BicolorProfile"
-                                      width={32}
+                                      style={
+                                        {
+                                          "alignItems": "center",
+                                          "backgroundColor": "#f1f1f4",
+                                          "borderBottomLeftRadius": 999,
+                                          "borderBottomRightRadius": 999,
+                                          "borderColor": "#cbcdd2",
+                                          "borderTopLeftRadius": 999,
+                                          "borderTopRightRadius": 999,
+                                          "borderWidth": 1,
+                                          "height": "100%",
+                                          "justifyContent": "center",
+                                          "width": "100%",
+                                        }
+                                      }
+                                      testID="defaultArtistAvatar"
                                     >
-                                      <Text>
-                                        BicolorProfile-SVG-Mock
-                                      </Text>
+                                      <View
+                                        height={32}
+                                        testID="BicolorProfile"
+                                        width={32}
+                                      >
+                                        <Text>
+                                          BicolorProfile-SVG-Mock
+                                        </Text>
+                                      </View>
                                     </View>
                                   </View>
                                 </View>
-                              </View>
-                              <View>
-                                <Text
-                                  accessibilityLevel="p"
-                                  accessibilityRole="text"
-                                  isDisabled={false}
-                                  isFullWidth={false}
-                                  maxWidth={72}
-                                  numberOfLines={2}
-                                  style={
-                                    {
-                                      "alignSelf": "center",
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 14,
-                                      "lineHeight": 22.4,
-                                      "maxWidth": 72,
-                                      "textAlign": "center",
+                                <View>
+                                  <Text
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
+                                    isDisabled={false}
+                                    isFullWidth={false}
+                                    maxWidth={72}
+                                    numberOfLines={2}
+                                    style={
+                                      {
+                                        "alignSelf": "center",
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 14,
+                                        "lineHeight": 22.4,
+                                        "maxWidth": 72,
+                                        "textAlign": "center",
+                                      }
                                     }
-                                  }
-                                >
-                                  Artist 3
-                                </Text>
+                                  >
+                                    Artist 2
+                                  </Text>
+                                </View>
                               </View>
                             </View>
-                          </View>
-                          <View
-                            highlighted={false}
-                            leadingItem={
-                              {
-                                "id": "3",
-                                "name": "Artist 3",
-                              }
-                            }
-                            style={
-                              {
-                                "width": 16,
-                              }
-                            }
-                            width={16}
-                          />
-                        </View>
-                        <View
-                          onFocusCapture={[Function]}
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                              },
-                              null,
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Artist 4"
-                            accessibilityRole="button"
-                            accessibilityState={
-                              {
-                                "busy": undefined,
-                                "checked": undefined,
-                                "disabled": undefined,
-                                "expanded": undefined,
-                                "selected": undefined,
-                              }
-                            }
-                            accessibilityValue={
-                              {
-                                "max": undefined,
-                                "min": undefined,
-                                "now": undefined,
-                                "text": undefined,
-                              }
-                            }
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              [
-                                [
-                                  {
-                                    "userSelect": "auto",
-                                  },
-                                  {},
-                                ],
-                                {
-                                  "opacity": 1,
-                                },
-                              ]
-                            }
-                            testID="Artist 4"
-                          >
                             <View
-                              gap={2}
-                              isFullWidth={false}
+                              highlighted={false}
+                              leadingItem={
+                                {
+                                  "id": "2",
+                                  "name": "Artist 2",
+                                }
+                              }
                               style={
                                 {
-                                  "flexDirection": "column",
-                                  "gap": 8,
+                                  "width": 16,
                                 }
                               }
+                              width={16}
+                            />
+                          </View>
+                          <View
+                            onFocusCapture={[Function]}
+                            style={
+                              [
+                                {
+                                  "flexDirection": "row",
+                                },
+                                null,
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityLabel="Artist 3"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                {
+                                  "busy": undefined,
+                                  "checked": undefined,
+                                  "disabled": undefined,
+                                  "expanded": undefined,
+                                  "selected": undefined,
+                                }
+                              }
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                [
+                                  [
+                                    {
+                                      "userSelect": "auto",
+                                    },
+                                    {},
+                                  ],
+                                  {
+                                    "opacity": 1,
+                                  },
+                                ]
+                              }
+                              testID="Artist 3"
                             >
                               <View
-                                rounded={true}
-                                size={72}
+                                gap={2}
+                                isFullWidth={false}
                                 style={
                                   {
-                                    "borderBottomLeftRadius": 36,
-                                    "borderBottomRightRadius": 36,
-                                    "borderTopLeftRadius": 36,
-                                    "borderTopRightRadius": 36,
-                                    "height": 72,
-                                    "overflow": "hidden",
-                                    "width": 72,
+                                    "flexDirection": "column",
+                                    "gap": 8,
                                   }
                                 }
-                                testID="Avatar"
                               >
                                 <View
-                                  backgroundColor="#ffffff"
+                                  rounded={true}
                                   size={72}
                                   style={
                                     {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
+                                      "borderBottomLeftRadius": 36,
+                                      "borderBottomRightRadius": 36,
+                                      "borderTopLeftRadius": 36,
+                                      "borderTopRightRadius": 36,
                                       "height": 72,
-                                      "justifyContent": "center",
-                                      "position": "absolute",
+                                      "overflow": "hidden",
                                       "width": 72,
                                     }
                                   }
+                                  testID="Avatar"
                                 >
                                   <View
+                                    backgroundColor="#ffffff"
+                                    size={72}
                                     style={
                                       {
                                         "alignItems": "center",
-                                        "backgroundColor": "#f1f1f4",
-                                        "borderBottomLeftRadius": 999,
-                                        "borderBottomRightRadius": 999,
-                                        "borderColor": "#cbcdd2",
-                                        "borderTopLeftRadius": 999,
-                                        "borderTopRightRadius": 999,
-                                        "borderWidth": 1,
-                                        "height": "100%",
+                                        "backgroundColor": "#ffffff",
+                                        "height": 72,
                                         "justifyContent": "center",
-                                        "width": "100%",
+                                        "position": "absolute",
+                                        "width": 72,
                                       }
                                     }
-                                    testID="defaultArtistAvatar"
                                   >
                                     <View
-                                      height={32}
-                                      testID="BicolorProfile"
-                                      width={32}
+                                      style={
+                                        {
+                                          "alignItems": "center",
+                                          "backgroundColor": "#f1f1f4",
+                                          "borderBottomLeftRadius": 999,
+                                          "borderBottomRightRadius": 999,
+                                          "borderColor": "#cbcdd2",
+                                          "borderTopLeftRadius": 999,
+                                          "borderTopRightRadius": 999,
+                                          "borderWidth": 1,
+                                          "height": "100%",
+                                          "justifyContent": "center",
+                                          "width": "100%",
+                                        }
+                                      }
+                                      testID="defaultArtistAvatar"
                                     >
-                                      <Text>
-                                        BicolorProfile-SVG-Mock
-                                      </Text>
+                                      <View
+                                        height={32}
+                                        testID="BicolorProfile"
+                                        width={32}
+                                      >
+                                        <Text>
+                                          BicolorProfile-SVG-Mock
+                                        </Text>
+                                      </View>
                                     </View>
                                   </View>
                                 </View>
+                                <View>
+                                  <Text
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
+                                    isDisabled={false}
+                                    isFullWidth={false}
+                                    maxWidth={72}
+                                    numberOfLines={2}
+                                    style={
+                                      {
+                                        "alignSelf": "center",
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 14,
+                                        "lineHeight": 22.4,
+                                        "maxWidth": 72,
+                                        "textAlign": "center",
+                                      }
+                                    }
+                                  >
+                                    Artist 3
+                                  </Text>
+                                </View>
                               </View>
-                              <View>
-                                <Text
-                                  accessibilityLevel="p"
-                                  accessibilityRole="text"
-                                  isDisabled={false}
-                                  isFullWidth={false}
-                                  maxWidth={72}
-                                  numberOfLines={2}
+                            </View>
+                            <View
+                              highlighted={false}
+                              leadingItem={
+                                {
+                                  "id": "3",
+                                  "name": "Artist 3",
+                                }
+                              }
+                              style={
+                                {
+                                  "width": 16,
+                                }
+                              }
+                              width={16}
+                            />
+                          </View>
+                          <View
+                            onFocusCapture={[Function]}
+                            style={
+                              [
+                                {
+                                  "flexDirection": "row",
+                                },
+                                null,
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityLabel="Artist 4"
+                              accessibilityRole="button"
+                              accessibilityState={
+                                {
+                                  "busy": undefined,
+                                  "checked": undefined,
+                                  "disabled": undefined,
+                                  "expanded": undefined,
+                                  "selected": undefined,
+                                }
+                              }
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                [
+                                  [
+                                    {
+                                      "userSelect": "auto",
+                                    },
+                                    {},
+                                  ],
+                                  {
+                                    "opacity": 1,
+                                  },
+                                ]
+                              }
+                              testID="Artist 4"
+                            >
+                              <View
+                                gap={2}
+                                isFullWidth={false}
+                                style={
+                                  {
+                                    "flexDirection": "column",
+                                    "gap": 8,
+                                  }
+                                }
+                              >
+                                <View
+                                  rounded={true}
+                                  size={72}
                                   style={
                                     {
-                                      "alignSelf": "center",
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 14,
-                                      "lineHeight": 22.4,
-                                      "maxWidth": 72,
-                                      "textAlign": "center",
+                                      "borderBottomLeftRadius": 36,
+                                      "borderBottomRightRadius": 36,
+                                      "borderTopLeftRadius": 36,
+                                      "borderTopRightRadius": 36,
+                                      "height": 72,
+                                      "overflow": "hidden",
+                                      "width": 72,
                                     }
                                   }
+                                  testID="Avatar"
                                 >
-                                  Artist 4
-                                </Text>
+                                  <View
+                                    backgroundColor="#ffffff"
+                                    size={72}
+                                    style={
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "#ffffff",
+                                        "height": 72,
+                                        "justifyContent": "center",
+                                        "position": "absolute",
+                                        "width": 72,
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      style={
+                                        {
+                                          "alignItems": "center",
+                                          "backgroundColor": "#f1f1f4",
+                                          "borderBottomLeftRadius": 999,
+                                          "borderBottomRightRadius": 999,
+                                          "borderColor": "#cbcdd2",
+                                          "borderTopLeftRadius": 999,
+                                          "borderTopRightRadius": 999,
+                                          "borderWidth": 1,
+                                          "height": "100%",
+                                          "justifyContent": "center",
+                                          "width": "100%",
+                                        }
+                                      }
+                                      testID="defaultArtistAvatar"
+                                    >
+                                      <View
+                                        height={32}
+                                        testID="BicolorProfile"
+                                        width={32}
+                                      >
+                                        <Text>
+                                          BicolorProfile-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                                <View>
+                                  <Text
+                                    accessibilityLevel="p"
+                                    accessibilityRole="text"
+                                    isDisabled={false}
+                                    isFullWidth={false}
+                                    maxWidth={72}
+                                    numberOfLines={2}
+                                    style={
+                                      {
+                                        "alignSelf": "center",
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 14,
+                                        "lineHeight": 22.4,
+                                        "maxWidth": 72,
+                                        "textAlign": "center",
+                                      }
+                                    }
+                                  >
+                                    Artist 4
+                                  </Text>
+                                </View>
                               </View>
                             </View>
                           </View>
                         </View>
-                      </View>
-                    </RCTScrollView>
+                      </RCTScrollView>
+                    </View>
                   </View>
                 </View>
                 <View

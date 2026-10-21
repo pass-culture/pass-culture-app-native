@@ -80,12 +80,12 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
   return (
     <ObservedPlaylist
       key={playlist.analyticsPlaylistType}
-      onItemViewed={({ index: itemIndex, item }) => {
+      onItemViewed={({ index, item }) => {
         if (isFocused) {
           void logViewItem({
             origin: 'offer',
             playlistIndex,
-            index: itemIndex,
+            index,
             type: 'offer',
             id: item.objectID,
             playlistId: playlistType,

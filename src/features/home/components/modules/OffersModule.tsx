@@ -15,7 +15,7 @@ import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackN
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
@@ -192,9 +192,11 @@ export const OffersModule: FC<OffersModuleProps> = ({
           index: itemIndex,
           type: 'offer',
           id: item.objectID,
-          playlistId: moduleId,
+          playlistId: asHomeEntryId(moduleId),
           originId: homeEntryId,
-          callId: recommendationParameters ? (recommendationApiParams?.callId ?? undefined) : undefined,
+          callId: recommendationParameters
+            ? (recommendationApiParams?.callId ?? undefined)
+            : undefined,
         })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (

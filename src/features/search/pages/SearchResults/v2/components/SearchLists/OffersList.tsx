@@ -1,7 +1,12 @@
 import { useIsFocused } from '@react-navigation/native'
 import { FlashList, FlashListRef } from '@shopify/flash-list'
 import React, { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, Platform, useWindowDimensions } from 'react-native'
+import {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Platform,
+  useWindowDimensions,
+} from 'react-native'
 import Animated, { LinearTransition } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 } from 'uuid'
@@ -168,7 +173,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
         listRef={listRef}
         fill
         onItemViewed={({ index, item }) => {
-          if (!isFocused || !searchState.searchId) return
+          if (!isFocused) return
           void logViewItem({
             origin: 'search',
             playlistIndex,
@@ -176,7 +181,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
             type: 'offer',
             id: item.objectID,
             playlistId: 'searchResults',
-            originId: searchState.searchId,
+            originId: searchState.searchId ?? searchIdGenerated,
           })
         }}>
         {({ handleViewableItemsChanged }) => (

@@ -48,7 +48,6 @@ export const ObservedPlaylist = <T extends PlaylistRef = FlatList>({
         changed
           .filter((token) => token.isViewable)
           .forEach(({ key, index, item }) => {
-            console.log('ObservedPlaylist: item viewed', { key, index, item })
             return onItemViewedRef.current?.({ key, index: index ?? -1, item })
           })
       }

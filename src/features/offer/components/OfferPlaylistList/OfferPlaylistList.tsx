@@ -32,16 +32,18 @@ export function OfferPlaylistList({ offer, playlists, seeAllButton }: OfferPlayl
 
   return (
     <StyledSectionWithDivider visible={hasPlaylists} gap={8}>
-      {playlists?.map((playlist, index) => (
-        <OfferPlaylistSection
-          key={`${playlist.analyticsPlaylistType}-${index}`}
-          playlist={playlist}
-          playlistIndex={index}
-          offer={offer}
-          fromOfferId={fromOfferId}
-          seeAllButton={seeAllButton}
-        />
-      ))}
+      {playlists
+        ?.filter((playlist) => playlist.results.length > 0)
+        .map((playlist, index) => (
+          <OfferPlaylistSection
+            key={`${playlist.analyticsPlaylistType}-${index}`}
+            playlist={playlist}
+            playlistIndex={index}
+            offer={offer}
+            fromOfferId={fromOfferId}
+            seeAllButton={seeAllButton}
+          />
+        ))}
       {isLandscape ? <PlaceholderBehindButton /> : null}
     </StyledSectionWithDivider>
   )
