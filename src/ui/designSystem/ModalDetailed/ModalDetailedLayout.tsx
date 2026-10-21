@@ -24,13 +24,13 @@ export const ModalDetailedLayout: FunctionComponent<ModalDetailedLayoutProps> = 
   isLoading,
   loadingMessage,
   children,
-  isFooterFixed,
+  hasFixedFooter,
   buttonsDescription,
   primaryButton,
   secondaryButton,
   tertiaryButton,
 }) => {
-  const hasFixedFooter = !isLoading && !!isFooterFixed
+  const isFooterFixed = !isLoading && !!hasFixedFooter
 
   const footer = isLoading ? null : (
     <ModalDetailedFooter
@@ -42,7 +42,7 @@ export const ModalDetailedLayout: FunctionComponent<ModalDetailedLayoutProps> = 
   )
 
   return (
-    <ModalContainer isFooterFixed={hasFixedFooter}>
+    <ModalContainer isFooterFixed={isFooterFixed}>
       <ModalDetailedHeader
         title={title}
         titleId={titleId}
@@ -55,26 +55,26 @@ export const ModalDetailedLayout: FunctionComponent<ModalDetailedLayoutProps> = 
       <ContentScrollView
         testID="modalDetailedScrollView"
         tabIndex={0}
-        isFooterFixed={hasFixedFooter}
+        isFooterFixed={isFooterFixed}
         bounces={false}
         showsVerticalScrollIndicator={false}
         nestedScrollEnabled
         contentContainerStyle={[
           isLoading && loadingContentStyle,
-          hasFixedFooter && fixedFooterContentStyle,
+          isFooterFixed && fixedFooterContentStyle,
         ]}>
         {isLoading ? (
           <Loader message={loadingMessage} />
         ) : (
-          <ContentContainer fillAvailableSpace={hasFixedFooter}>
+          <ContentContainer fillAvailableSpace={isFooterFixed}>
             {description ? <Description>{description}</Description> : null}
-            <ChildrenContainer fillAvailableSpace={hasFixedFooter}>{children}</ChildrenContainer>
+            <ChildrenContainer fillAvailableSpace={isFooterFixed}>{children}</ChildrenContainer>
           </ContentContainer>
         )}
-        {hasFixedFooter || !footer ? null : <AdaptiveFooter>{footer}</AdaptiveFooter>}
+        {isFooterFixed || !footer ? null : <AdaptiveFooter>{footer}</AdaptiveFooter>}
       </ContentScrollView>
 
-      {hasFixedFooter ? footer : null}
+      {isFooterFixed ? footer : null}
     </ModalContainer>
   )
 }

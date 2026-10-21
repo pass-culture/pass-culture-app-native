@@ -46,7 +46,7 @@ type ModalDetailedWithContentProps = ModalDetailedBaseProps &
     isLoading?: false
     loadingMessage?: never
     children: ReactNode
-    isFooterFixed?: boolean
+    hasFixedFooter?: boolean
   } & (
     | { primaryButton: ModalButtonProps }
     | { secondaryButton: ModalButtonProps }
@@ -58,7 +58,7 @@ type ModalDetailedLoadingProps = Omit<ModalDetailedBaseProps, 'description'> & {
   loadingMessage: string
   description?: never
   children?: never
-  isFooterFixed?: never
+  hasFixedFooter?: never
   buttonsDescription?: never
   primaryButton?: never
   secondaryButton?: never

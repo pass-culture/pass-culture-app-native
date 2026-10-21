@@ -19,7 +19,7 @@ export const ModalDetailed: FunctionComponent<ModalDetailedProps> = (props) => (
   <ModalScreenWrapper
     title={props.title}
     onClose={props.onClose}
-    fullScreen={!props.isLoading && !!props.isFooterFixed}
+    fullScreen={!props.isLoading && !!props.hasFixedFooter}
     desktopMaxWidth={MODAL_DETAILED_DESKTOP_MAX_WIDTH}
     desktopMaxHeight={DESKTOP_MAX_HEIGHT}
     desktopVariant="bottomRight"

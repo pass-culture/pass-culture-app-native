@@ -51,7 +51,7 @@ describe('ModalDetailed', () => {
   it('should provide the available sheet height when footer is fixed', () => {
     Platform.OS = 'ios'
 
-    render(<ModalDetailed {...defaultProps} isFooterFixed />)
+    render(<ModalDetailed {...defaultProps} hasFixedFooter />)
 
     const modalWrapperStyle = screen.getByTestId('modalDetailedWrapper').props.style
 

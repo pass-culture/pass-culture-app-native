@@ -76,7 +76,7 @@ describe('ModalDetailed on web', () => {
       <ModalDetailed
         title="Detailed modal title"
         onClose={jest.fn()}
-        isFooterFixed
+        hasFixedFooter
         primaryButton={{
           wording: 'Confirm',
           accessibilityLabel: 'Confirm action',

@@ -22,7 +22,7 @@ export const ModalDetailed: FunctionComponent<ModalDetailedProps> = (props) => {
   // A fixed-footer form sheet starts below the top safe area, while its bottom
   // already reaches the visible sheet boundary. Only remove the top inset.
   const iOSHeight = height - top - bottom
-  const isFooterFixed = !props.isLoading && !!props.isFooterFixed
+  const isFooterFixed = !props.isLoading && !!props.hasFixedFooter
   const contentMaxHeight = Platform.OS === 'android' ? height : iOSHeight
   const fixedFooterHeight = Platform.OS === 'android' ? height : height - top
   const modalHeight = isFooterFixed ? fixedFooterHeight : undefined

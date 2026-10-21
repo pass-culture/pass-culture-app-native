@@ -16,7 +16,7 @@ export const CheatcodesScreenModalDetailed = () => {
       description="Ceci est une description qui peut être assez longue en fonction du contenu de la page. Il n’y a pas de limites en termes de nombre de lignes…"
       onClose={goBack}
       onGoBack={goBack}
-      isFooterFixed
+      hasFixedFooter
       buttonsDescription="Message précisant le bouton"
       primaryButton={{
         wording: 'Primary',

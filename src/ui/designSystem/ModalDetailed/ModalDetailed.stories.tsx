@@ -66,7 +66,7 @@ const meta: Meta<typeof ModalDetailed> = {
       control: 'text',
       description: 'Message associé au groupe de boutons',
     },
-    isFooterFixed: {
+    hasFixedFooter: {
       control: 'boolean',
       description: 'Fixe le footer en bas de la modale',
     },
@@ -108,7 +108,7 @@ export const Playground: Story = {
 
 export const FixedFooter: Story = {
   args: {
-    isFooterFixed: true,
+    hasFixedFooter: true,
     children: (
       <Content>
         {Array.from({ length: 12 }, (_, index) => (
@@ -128,7 +128,7 @@ export const Loading: Story = {
     isLoading: true,
     loadingMessage: 'Chargement en cours…',
     children: undefined,
-    isFooterFixed: undefined,
+    hasFixedFooter: undefined,
     buttonsDescription: undefined,
     primaryButton: undefined,
     secondaryButton: undefined,
