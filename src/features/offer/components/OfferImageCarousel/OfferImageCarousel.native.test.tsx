@@ -2,7 +2,7 @@ import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
-import { render, screen, userEvent } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
 
@@ -81,5 +81,27 @@ describe('OfferImageCarousel', () => {
     )
 
     expect(await screen.findByText('© Cédric', { hidden: true })).toBeOnTheScreen()
+  })
+
+  it('should not trigger onItemPress when image fails to load', async () => {
+    const mockOnItemPress = jest.fn()
+
+    render(
+      <OfferImageCarousel
+        progressValue={1 as unknown as SharedValue<number>}
+        offerImages={[{ url: 'https://image1.jpg' }]}
+        onItemPress={mockOnItemPress}
+        onLoad={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
+      />
+    )
+
+    const button = await screen.findByLabelText('Voir l’illustration en plein écran')
+
+    fireEvent(screen.getByTestId('offerBodyImage'), 'error')
+
+    await user.press(button)
+
+    expect(mockOnItemPress).not.toHaveBeenCalled()
   })
 })
