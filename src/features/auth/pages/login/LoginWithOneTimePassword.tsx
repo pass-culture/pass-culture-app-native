@@ -1,70 +1,82 @@
-import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import { MAX_RESEND_ATTEMPTS, ONE_MINUTE } from 'features/auth/helpers/resendEmail'
+import { OtpStatusBanner } from 'features/auth/components/OtpStatusBanner'
+import { RemainingCodeAttempts } from 'features/auth/components/RemainingCodeAttenpts'
 import { useOneTimePassword } from 'features/auth/helpers/useOneTimePassword'
+import { useOneTimePasswordAttempts } from 'features/auth/helpers/useOneTimePasswordAttempts'
 import { useResendEmail } from 'features/auth/helpers/useResendEmail'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { plural } from 'libs/plural'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { Form } from 'ui/components/Form'
 import { OneTimePasswordInput } from 'ui/components/inputs/OneTimePasswordInput/OneTimePasswordInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
-import { SPACE } from 'ui/theme/constants'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const OTP_LENGTH = 6
+const TEMPORARY_VALID_OTP_CODE = '123456'
 
 export const LoginWithOneTimePassword = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
+
+  const [isCodeExpired, setIsCodeExpired] = useState(false)
 
   const { code, isCodeComplete, handleCodeChange } = useOneTimePassword({
     numberOfInputs: OTP_LENGTH,
   })
 
   const {
+    failedAttempts,
+    codeError,
+    remainingSeconds,
+    registerFailedAttempt,
+    clearCodeError,
+    hasReachedMaxCodeAttempts,
+    isLastAttempt,
+    maxCodeAttempts,
+    loginEmail,
+  } = useOneTimePasswordAttempts()
+
+  const {
     resendCountdown,
-    resendAttempts,
-    isInitialized,
     isCooldownActive,
-    hasReachedMaxAttempts,
-    isDisabled,
+    isDisabled: isResendDisabled,
     handleResendEmail,
   } = useResendEmail()
 
-  const handleContinue = () => {
-    if (isCodeComplete) navigateToHomeWithReset()
+  const handleCodeChangeWithErrorReset = (nextCode: string[]) => {
+    if (hasReachedMaxCodeAttempts) return
+
+    handleCodeChange(nextCode)
+    clearCodeError()
+    setIsCodeExpired(false)
   }
 
-  const remainingAttempts = MAX_RESEND_ATTEMPTS - resendAttempts
+  const handleContinue = async () => {
+    if (!isCodeComplete || hasReachedMaxCodeAttempts) return
 
-  const numberOfAttempts = plural(remainingAttempts, {
-    singular: '# tentative',
-    plural: '# tentatives',
-  })
+    if (code.join('') === TEMPORARY_VALID_OTP_CODE) {
+      navigateToHomeWithReset()
+      return
+    }
 
-  const defaultReachedMaxAttemptTexte = 'Tu as effectué trop de demandes.'
-  const reachedMaxAttempt = hasReachedMaxAttempts
-    ? {
-        subBannerText: `${defaultReachedMaxAttemptTexte}${SPACE}Tu pourras effectuer une nouvelle demande dans${SPACE}`,
-        surButtonText: defaultReachedMaxAttemptTexte,
-      }
-    : {
-        subBannerText: `Tu pourras effectuer une nouvelle demande dans${SPACE}`,
-        surButtonText: `Attention, il te reste${SPACE}`,
-      }
+    const hasJustReachedLimit = await registerFailedAttempt()
+    if (hasJustReachedLimit) navigate('OneTimePasswordLimit')
+  }
 
-  const countdownMinutes = Math.ceil(resendCountdown / ONE_MINUTE)
+  const handleResendEmailWithBannerReset = async () => {
+    await handleResendEmail()
+    setIsCodeExpired(false)
+  }
 
-  const countdownText =
-    resendCountdown >= ONE_MINUTE
-      ? plural(countdownMinutes, { singular: '# minute', plural: '# minutes' })
-      : plural(resendCountdown, { singular: '# seconde', plural: '# secondes' })
-
-  if (!isInitialized) return null
+  const oneTimePasswordInputLabel = loginEmail
+    ? `Saisis le code de vérification que tu as reçu à l’adresse ${loginEmail}`
+    : 'Saisis le code de vérification que tu as reçu à ton adresse e-mail'
 
   return (
     <PageWithHeader
@@ -77,51 +89,45 @@ export const LoginWithOneTimePassword = () => {
           </TitleContainer>
           <Form.MaxWidth>
             <OneTimePasswordInput
-              label="Saisis le code de vérification que tu as reçu à l’adresse adresse@mail.com"
+              label={oneTimePasswordInputLabel}
               code={code}
-              onCodeChange={handleCodeChange}
+              onCodeChange={handleCodeChangeWithErrorReset}
               numberOfInputs={OTP_LENGTH}
-              disabled={isDisabled}
+              errorMessage={codeError}
+              disabled={hasReachedMaxCodeAttempts}
             />
+            <OtpStatusBanner
+              isAccountLocked={hasReachedMaxCodeAttempts}
+              isCodeExpired={isCodeExpired}
+              isNewCodeSent={isCooldownActive}
+              isLastAttempt={isLastAttempt}
+              email={loginEmail}
+              remainingSeconds={remainingSeconds}
+              resendCountdown={resendCountdown}
+            />
+            <ButtonContainer gap={4}>
+              <RemainingCodeAttempts
+                failedAttempts={failedAttempts}
+                maxAttempts={maxCodeAttempts}
+                isAccountLocked={hasReachedMaxCodeAttempts}
+              />
+              <Button
+                variant="primary"
+                color="brand"
+                wording="Continuer"
+                disabled={!isCodeComplete || hasReachedMaxCodeAttempts}
+                onPress={handleContinue}
+              />
+              <Button
+                variant="tertiary"
+                color="neutral"
+                wording="Renvoyer l’email"
+                disabled={isResendDisabled || hasReachedMaxCodeAttempts}
+                onPress={handleResendEmailWithBannerReset}
+              />
+            </ButtonContainer>
           </Form.MaxWidth>
-          {isCooldownActive ? (
-            <BannerContainer gap={4}>
-              <Banner label="Un nouveau code t’a été envoyé." />
-              <Typo.BodyXs>
-                {reachedMaxAttempt.subBannerText}
-                <Typo.BodyAccentXs>{countdownText}</Typo.BodyAccentXs>
-              </Typo.BodyXs>
-            </BannerContainer>
-          ) : null}
         </React.Fragment>
-      }
-      fixedBottomChildren={
-        <ViewGap gap={4}>
-          {resendAttempts > 0 ? (
-            <TextContainer>
-              <Typo.BodyXs>
-                {reachedMaxAttempt.surButtonText}
-                {hasReachedMaxAttempts ? null : (
-                  <Typo.BodyAccentXs>{numberOfAttempts}</Typo.BodyAccentXs>
-                )}
-              </Typo.BodyXs>
-            </TextContainer>
-          ) : null}
-          <Button
-            variant="primary"
-            color="brand"
-            wording="Continuer"
-            disabled={isDisabled || !isCodeComplete}
-            onPress={handleContinue}
-          />
-          <Button
-            variant="tertiary"
-            color="neutral"
-            wording="Renvoyer l’email"
-            disabled={isDisabled}
-            onPress={handleResendEmail}
-          />
-        </ViewGap>
       }
     />
   )
@@ -131,10 +137,9 @@ const TitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const TextContainer = styled.View({
-  alignItems: 'center',
-})
-
-const BannerContainer = styled(ViewGap)(({ theme }) => ({
+const ButtonContainer = styled(ViewGap)(({ theme }) => ({
+  width: '100%',
+  maxWidth: theme.buttons.maxWidth,
   marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.l,
 }))

@@ -1,14 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useOneTimePasswordAttempts } from 'features/auth/helpers/useOneTimePasswordAttempts'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { formatRemainingTime } from 'shared/times/formatRemainingTime'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Typo } from 'ui/theme'
 
 export const OneTimePasswordLimit = () => {
-  const duration = '30 minutes'
-  const subtitle = `Tu as saisi plusieurs codes incorrects d’affilée. Par mesure de sécurité, l’accès à ton compte est suspendu pendant `
+  const { remainingSeconds } = useOneTimePasswordAttempts()
+  const duration = formatRemainingTime(remainingSeconds)
+
+  const subtitle =
+    'Tu as saisi plusieurs codes incorrects d’affilée. Par mesure de sécurité, l’accès à ton compte est suspendu pendant '
 
   return (
     <GenericInfoPage
@@ -24,7 +29,7 @@ export const OneTimePasswordLimit = () => {
       }}>
       <StyledBody>
         {subtitle}
-        <Typo.Button>{duration}</Typo.Button>
+        <Typo.Button>{duration}.</Typo.Button>
       </StyledBody>
     </GenericInfoPage>
   )

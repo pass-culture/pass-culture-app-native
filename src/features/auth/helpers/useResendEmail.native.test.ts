@@ -21,6 +21,7 @@ describe('useResendEmail', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     jest.useFakeTimers()
+
     jest.mocked(AsyncStorage.getItem).mockResolvedValue(null)
     jest.mocked(AsyncStorage.setItem).mockResolvedValue(undefined)
     jest.mocked(AsyncStorage.removeItem).mockResolvedValue(undefined)
@@ -31,20 +32,17 @@ describe('useResendEmail', () => {
   it('should initialize with no resend cooldown', async () => {
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
-
-    expect(result.current).toStrictEqual({
-      resendCountdown: 0,
-      resendAttempts: 0,
-      isInitialized: true,
-      isCooldownActive: false,
-      hasReachedMaxAttempts: false,
-      isDisabled: false,
-      handleResendEmail: expect.any(Function),
+    await waitFor(() => {
+      expect(result.current.resendCountdown).toBe(0)
+      expect(result.current.resendAttempts).toBe(0)
     })
+
+    expect(result.current.isCooldownActive).toBe(false)
+    expect(result.current.hasReachedMaxAttempts).toBe(false)
+    expect(result.current.isDisabled).toBe(false)
   })
 
-  it('should restore the resend state from AsyncStorage', async () => {
+  it('should restore an active resend cooldown from AsyncStorage', async () => {
     const cooldownEnd = Date.now() + 60_000
 
     jest
@@ -54,20 +52,17 @@ describe('useResendEmail', () => {
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
-
-    expect(result.current).toStrictEqual({
-      resendCountdown: expect.any(Number),
-      resendAttempts: 2,
-      isInitialized: true,
-      isCooldownActive: true,
-      hasReachedMaxAttempts: false,
-      isDisabled: true,
-      handleResendEmail: expect.any(Function),
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(2)
+      expect(result.current.resendCountdown).toBeGreaterThan(0)
     })
+
+    expect(result.current.isCooldownActive).toBe(true)
+    expect(result.current.hasReachedMaxAttempts).toBe(false)
+    expect(result.current.isDisabled).toBe(true)
   })
 
-  it('should remove an expired cooldown from AsyncStorage', async () => {
+  it('should remove an expired cooldown and preserve remaining attempts', async () => {
     const expiredCooldown = Date.now() - 1_000
 
     jest
@@ -77,21 +72,18 @@ describe('useResendEmail', () => {
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
-
-    expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_COOLDOWN_KEY)
-    expect(result.current).toStrictEqual({
-      resendCountdown: 0,
-      resendAttempts: 2,
-      isInitialized: true,
-      isCooldownActive: false,
-      hasReachedMaxAttempts: false,
-      isDisabled: false,
-      handleResendEmail: expect.any(Function),
+    await waitFor(() => {
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_COOLDOWN_KEY)
+      expect(result.current.resendCountdown).toBe(0)
+      expect(result.current.resendAttempts).toBe(2)
     })
+
+    expect(result.current.isCooldownActive).toBe(false)
+    expect(result.current.isDisabled).toBe(false)
+    expect(AsyncStorage.removeItem).not.toHaveBeenCalledWith(RESEND_ATTEMPTS_KEY)
   })
 
-  it('should remove the attempts when the maximum attempts cooldown has expired', async () => {
+  it('should reset attempts when the maximum-attempt cooldown has expired on initialization', async () => {
     const expiredCooldown = Date.now() - 1_000
 
     jest
@@ -101,26 +93,21 @@ describe('useResendEmail', () => {
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
-
-    expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_COOLDOWN_KEY)
-    expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_ATTEMPTS_KEY)
-
-    expect(result.current).toStrictEqual({
-      resendCountdown: 0,
-      resendAttempts: 0,
-      isInitialized: true,
-      isCooldownActive: false,
-      hasReachedMaxAttempts: false,
-      isDisabled: false,
-      handleResendEmail: expect.any(Function),
+    await waitFor(() => {
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_COOLDOWN_KEY)
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_ATTEMPTS_KEY)
+      expect(result.current.resendAttempts).toBe(0)
     })
+
+    expect(result.current.resendCountdown).toBe(0)
+    expect(result.current.hasReachedMaxAttempts).toBe(false)
+    expect(result.current.isDisabled).toBe(false)
   })
 
-  it('should request a new email and persist the first attempt', async () => {
+  it('should persist the first resend request', async () => {
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => expect(result.current.resendAttempts).toBe(0))
 
     await act(async () => {
       await result.current.handleResendEmail()
@@ -129,27 +116,22 @@ describe('useResendEmail', () => {
     expect(AsyncStorage.setItem).toHaveBeenCalledWith(RESEND_COOLDOWN_KEY, expect.any(String))
     expect(AsyncStorage.setItem).toHaveBeenCalledWith(RESEND_ATTEMPTS_KEY, '1')
 
-    expect(result.current).toStrictEqual({
-      resendCountdown: RESEND_COUNTDOWN,
-      resendAttempts: 1,
-      isInitialized: true,
-      isCooldownActive: true,
-      hasReachedMaxAttempts: false,
-      isDisabled: true,
-      handleResendEmail: expect.any(Function),
-    })
+    expect(result.current.resendCountdown).toBe(RESEND_COUNTDOWN)
+    expect(result.current.resendAttempts).toBe(1)
+    expect(result.current.isCooldownActive).toBe(true)
+    expect(result.current.isDisabled).toBe(true)
   })
 
   it('should not request a new email during the cooldown', async () => {
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => expect(result.current.resendAttempts).toBe(0))
 
     await act(async () => {
       await result.current.handleResendEmail()
     })
 
-    jest.clearAllMocks()
+    jest.mocked(AsyncStorage.setItem).mockClear()
 
     await act(async () => {
       await result.current.handleResendEmail()
@@ -159,16 +141,19 @@ describe('useResendEmail', () => {
     expect(result.current.resendAttempts).toBe(1)
   })
 
-  it('should increment the number of attempts after each request', async () => {
-    jest.mocked(AsyncStorage.getItem).mockResolvedValueOnce(null).mockResolvedValueOnce('1')
+  it('should increment the number of attempts after the cooldown expires', async () => {
+    const expiredCooldown = Date.now() - 1_000
+
+    jest
+      .mocked(AsyncStorage.getItem)
+      .mockResolvedValueOnce(String(expiredCooldown))
+      .mockResolvedValueOnce('1')
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
-
-    // The cooldown must be manually expired before another request can be made.
-    await act(async () => {
-      await jest.advanceTimersByTime(RESEND_COUNTDOWN * 1000)
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(1)
+      expect(result.current.resendCountdown).toBe(0)
     })
 
     await act(async () => {
@@ -180,25 +165,29 @@ describe('useResendEmail', () => {
   })
 
   it('should use the maximum cooldown after the fifth attempt', async () => {
-    jest.mocked(AsyncStorage.getItem).mockResolvedValueOnce(null).mockResolvedValueOnce('4')
+    const expiredCooldown = Date.now() - 1_000
+
+    jest
+      .mocked(AsyncStorage.getItem)
+      .mockResolvedValueOnce(String(expiredCooldown))
+      .mockResolvedValueOnce(String(MAX_RESEND_ATTEMPTS - 1))
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(MAX_RESEND_ATTEMPTS - 1)
+      expect(result.current.resendCountdown).toBe(0)
+    })
 
     await act(async () => {
       await result.current.handleResendEmail()
     })
 
-    expect(result.current).toStrictEqual({
-      resendCountdown: MAX_ATTEMPTS_COUNTDOWN,
-      resendAttempts: MAX_RESEND_ATTEMPTS,
-      isInitialized: true,
-      isCooldownActive: true,
-      hasReachedMaxAttempts: true,
-      isDisabled: true,
-      handleResendEmail: expect.any(Function),
-    })
+    expect(result.current.resendCountdown).toBe(MAX_ATTEMPTS_COUNTDOWN)
+    expect(result.current.resendAttempts).toBe(MAX_RESEND_ATTEMPTS)
+    expect(result.current.hasReachedMaxAttempts).toBe(true)
+    expect(result.current.isCooldownActive).toBe(true)
+    expect(result.current.isDisabled).toBe(true)
 
     expect(AsyncStorage.setItem).toHaveBeenCalledWith(
       RESEND_ATTEMPTS_KEY,
@@ -206,14 +195,22 @@ describe('useResendEmail', () => {
     )
   })
 
-  it('should not request a new email after the maximum number of attempts', async () => {
-    jest.mocked(AsyncStorage.getItem).mockResolvedValueOnce(null).mockResolvedValueOnce('5')
+  it('should not request another email while the maximum-attempt cooldown is active', async () => {
+    const cooldownEnd = Date.now() + MAX_ATTEMPTS_COUNTDOWN * 1000
+
+    jest
+      .mocked(AsyncStorage.getItem)
+      .mockResolvedValueOnce(String(cooldownEnd))
+      .mockResolvedValueOnce(String(MAX_RESEND_ATTEMPTS))
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(MAX_RESEND_ATTEMPTS)
+      expect(result.current.hasReachedMaxAttempts).toBe(true)
+    })
 
-    jest.clearAllMocks()
+    jest.mocked(AsyncStorage.setItem).mockClear()
 
     await act(async () => {
       await result.current.handleResendEmail()
@@ -233,18 +230,20 @@ describe('useResendEmail', () => {
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => {
+      expect(result.current.resendCountdown).toBeGreaterThan(0)
+    })
 
     const initialCountdown = result.current.resendCountdown
 
     await act(async () => {
-      await jest.advanceTimersByTime(1_000)
+      jest.advanceTimersByTime(1_000)
     })
 
     expect(result.current.resendCountdown).toBe(initialCountdown - 1)
   })
 
-  it('should reset the cooldown when it expires', async () => {
+  it('should reset the cooldown when it expires without resetting attempts', async () => {
     const cooldownEnd = Date.now() + 1_000
 
     jest
@@ -254,24 +253,25 @@ describe('useResendEmail', () => {
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(2)
+      expect(result.current.resendCountdown).toBeGreaterThan(0)
+    })
 
     await act(async () => {
-      await jest.advanceTimersByTime(1_000)
+      jest.advanceTimersByTime(1_000)
     })
 
-    expect(result.current).toStrictEqual({
-      resendCountdown: 0,
-      resendAttempts: 2,
-      isInitialized: true,
-      isCooldownActive: false,
-      hasReachedMaxAttempts: false,
-      isDisabled: false,
-      handleResendEmail: expect.any(Function),
+    await waitFor(() => {
+      expect(result.current.resendCountdown).toBe(0)
+      expect(result.current.isCooldownActive).toBe(false)
     })
+
+    expect(result.current.resendAttempts).toBe(2)
+    expect(result.current.isDisabled).toBe(false)
   })
 
-  it('should reset the attempts when the maximum cooldown expires', async () => {
+  it('should reset attempts when the maximum cooldown expires', async () => {
     const cooldownEnd = Date.now() + 1_000
 
     jest
@@ -281,22 +281,22 @@ describe('useResendEmail', () => {
 
     const { result } = renderHook(() => useResendEmail())
 
-    await waitFor(() => expect(result.current.isInitialized).toBe(true))
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(MAX_RESEND_ATTEMPTS)
+      expect(result.current.resendCountdown).toBeGreaterThan(0)
+    })
 
     await act(async () => {
-      await jest.advanceTimersByTime(1_000)
+      jest.advanceTimersByTime(1_000)
     })
 
-    expect(result.current).toStrictEqual({
-      resendCountdown: 0,
-      resendAttempts: 0,
-      isInitialized: true,
-      isCooldownActive: false,
-      hasReachedMaxAttempts: false,
-      isDisabled: false,
-      handleResendEmail: expect.any(Function),
+    await waitFor(() => {
+      expect(result.current.resendAttempts).toBe(0)
+      expect(result.current.resendCountdown).toBe(0)
     })
 
+    expect(result.current.hasReachedMaxAttempts).toBe(false)
+    expect(result.current.isDisabled).toBe(false)
     expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_ATTEMPTS_KEY)
     expect(AsyncStorage.removeItem).toHaveBeenCalledWith(RESEND_COOLDOWN_KEY)
   })

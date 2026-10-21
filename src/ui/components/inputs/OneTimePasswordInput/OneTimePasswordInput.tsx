@@ -82,7 +82,9 @@ const WithRefOneTimePasswordInput: React.ForwardRefRenderFunction<
   })
 
   const errorMessage =
-    invalidIndexes.length > 0 ? 'Le code saisi est invalide.' : customProps.errorMessage
+    invalidIndexes.length > 0
+      ? 'Le code ne doit contenir que des chiffres'
+      : customProps.errorMessage
 
   const hasGenericError = !!customProps.errorMessage
 

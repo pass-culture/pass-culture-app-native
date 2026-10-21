@@ -107,7 +107,7 @@ describe('OneTimePasswordInput', () => {
     render(<OneTimePasswordInput {...defaultProps} code={['1', 'A', '3', '4', '5', '6']} />)
 
     expect(
-      screen.getByText('Le code saisi est invalide.', { includeHiddenElements: true })
+      screen.getByText('Le code ne doit contenir que des chiffres', { includeHiddenElements: true })
     ).toBeOnTheScreen()
   })
 
