@@ -258,7 +258,6 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           onEndReached={logHasSeenAllTilesOnce}
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
-          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           seeAllButton={{
             onBeforeNavigate,
             navigateToVerticalPlaylist,

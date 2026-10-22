@@ -149,10 +149,6 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     () => styled(ItemSeparatorComponent).attrs({ width: itemSeparatorSize })``,
     [itemSeparatorSize]
   )
-  const MemoizedHorizontalMargin = useMemo(
-    () => styled(HorizontalMargin).attrs({ width: horizontalMargin })``,
-    [horizontalMargin]
-  )
 
   const maxCaptionHeight =
     tileType === 'video-module-offer'
@@ -169,6 +165,11 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
       index,
     }),
     [itemWidth, itemSeparatorSize]
+  )
+
+  const mergedContentContainerStyle = useMemo(
+    () => [withMargins && { paddingHorizontal: horizontalMargin }, contentContainerStyle],
+    [withMargins, horizontalMargin, contentContainerStyle]
   )
 
   return (
@@ -212,13 +213,11 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         updateCellsBatchingPeriod={100}
         getItemLayout={getItemLayout}
         ItemSeparatorComponent={MemoizedItemSeparatorComponent}
-        ListHeaderComponent={withMargins ? MemoizedHorizontalMargin : undefined}
-        ListFooterComponent={MemoizedHorizontalMargin}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}
         viewabilityConfig={PLAYLIST_VIEWABILITY_CONFIG}
         onViewableItemsChanged={onViewableItemsChanged}
-        contentContainerStyle={contentContainerStyle}
+        contentContainerStyle={mergedContentContainerStyle}
         {...(isWeb ? { listAs: PlaylistUl, itemAs: PlaylistLi } : null)}
       />
     </FlatListContainer>
@@ -231,10 +230,6 @@ const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) =>
   position: 'relative',
   width: '100%',
   minHeight,
-}))
-
-const HorizontalMargin = styled.View<{ width: number }>(({ width }) => ({
-  width,
 }))
 
 const ItemSeparatorComponent = styled.View<{ width: number }>(({ width }) => ({ width }))

@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
-import { useTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
@@ -41,7 +40,6 @@ export const VenuesModule = ({
 }: VenuesModuleProps) => {
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
-  const { designSystem } = useTheme()
   const isExclusiveVolunteering = displayParameters.isExclusiveVolunteering ?? false
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
@@ -106,7 +104,6 @@ export const VenuesModule = ({
             keyExtractor={keyExtractor}
             tileType="venue"
             withMargin
-            contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
             onViewableItemsChanged={handleViewableItemsChanged}
             playlistRef={listRef}
             noMarginBottom
