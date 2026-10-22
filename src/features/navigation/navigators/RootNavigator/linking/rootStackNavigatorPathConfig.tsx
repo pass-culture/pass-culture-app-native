@@ -75,6 +75,9 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
   LoginWithOneTimePassword: {
     path: 'connexion-avec-code-unique',
   },
+  OneTimePasswordLimit: {
+    path: 'connexion-avec-code-unique/limite-essais',
+  },
   ReinitializePassword: {
     path: 'mot-de-passe-perdu',
     parse: screenParamsParser.ReinitializePassword,
