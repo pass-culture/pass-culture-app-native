@@ -42,7 +42,7 @@ export const OfferImageCarouselItem = ({
 
   const hasError = !!imageURL && failedUrl === imageURL
   const isPressable = !!onPress && imageURL && !hasError
-  const isHiddenSlide = isWeb && !isActive
+  const isHiddenSlide = !isActive
 
   // To avoid focus on carousel hidden element
   const toggleInertAttribute = useCallback(() => {
@@ -83,8 +83,13 @@ export const OfferImageCarouselItem = ({
   }
 
   return (
-    <View ref={slideRef}>
+    <View
+      ref={slideRef}
+      aria-hidden={isHiddenSlide}
+      accessibilityElementsHidden={isHiddenSlide}
+      importantForAccessibility={isHiddenSlide ? 'no-hide-descendants' : 'auto'}>
       <TouchableOpacity
+        accessible={!isHiddenSlide}
         disabled={!isPressable}
         focusable={!isHiddenSlide}
         onPress={() => onPress?.(index)}

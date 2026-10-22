@@ -40,7 +40,7 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    await screen.findByLabelText('Voir le carousel de 3 illustrations en plein écran')
+    await screen.findByLabelText('Voir l’illustration en plein écran')
 
     expect(screen.getAllByTestId('carousel-dot')).toHaveLength(3)
   })
@@ -62,9 +62,9 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    await user.press(screen.getByLabelText('Voir le carousel de 3 illustrations en plein écran'))
+    await user.press(await screen.findByLabelText('Voir l’illustration en plein écran'))
 
-    expect(mockOnItemPress).toHaveBeenCalledWith(2)
+    expect(mockOnItemPress).toHaveBeenCalledWith(0)
 
     jest.useRealTimers()
   })

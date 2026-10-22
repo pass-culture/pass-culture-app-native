@@ -44,7 +44,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
 
   const carouselRef = useRef<ICarouselInstance>(null)
 
-  // Quand la slide change, l'élément focusé devient inert et peut ne pas déclencher de blur
+  // When the slide changes, the focused element becomes inert and may not trigger a blur event
   useEffect(() => {
     setIsItemFocused(false)
   }, [currentIndex])
@@ -101,18 +101,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
         renderItem={renderItem}
         style={carouselStyle}
       />
-      {isWeb && isItemFocused ? (
-        <FocusOutline
-          pointerEvents="none"
-          style={{
-            top: -FOCUS_RING,
-            left: -FOCUS_RING,
-            right: -FOCUS_RING,
-            bottom: -FOCUS_RING,
-            borderRadius: imageBorderRadius + FOCUS_RING,
-          }}
-        />
-      ) : null}
+      {isWeb && isItemFocused ? <FocusOutline imageBorderRadius={imageBorderRadius} /> : null}
       <Container>
         {currentCredit ? (
           <CopyrightText numberOfLines={2} {...hiddenFromScreenReader()}>
@@ -148,9 +137,15 @@ const StyledCarouselPagination = styled(CarouselPagination)(({ theme }) => ({
   bottom: theme.designSystem.size.spacing.l,
 }))
 
-const FocusOutline = styled.View(({ theme }) => ({
+const FocusOutline = styled.View<{ imageBorderRadius: number }>(({ theme, imageBorderRadius }) => ({
   position: 'absolute',
   zIndex: 3,
   borderWidth: 2,
   borderColor: theme.designSystem.color.outline.default,
+  top: -FOCUS_RING,
+  left: -FOCUS_RING,
+  right: -FOCUS_RING,
+  bottom: -FOCUS_RING,
+  borderRadius: imageBorderRadius + FOCUS_RING,
+  pointerEvents: 'none',
 }))
