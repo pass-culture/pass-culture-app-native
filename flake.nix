@@ -11,7 +11,7 @@
     "github:nixos/nixpkgs?rev=01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09"; # contains gitleaks 8.28.0
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.nixpkgs_maestro.url = 
-    "github:nixos/nixpkgs?rev=389ed85304b281ca7f306cf8a1eb4378651ca44e"; # contains maestro 2.6.1
+    "github:nixos/nixpkgs?rev=55ba7f49ef2962b42cbd126522b7df5f95037679"; # contains maestro 2.11.0
 
   outputs = { self, nixpkgs, nixpkgs_nodejs, nixpkgs_ruby, nixpkgs_gitleaks, nixpkgs_maestro, flake-utils, }:
     flake-utils.lib.eachDefaultSystem (system:
