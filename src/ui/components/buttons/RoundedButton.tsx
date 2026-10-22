@@ -17,6 +17,7 @@ export interface RoundedButtonProps {
   Icon?: React.FC<AccessibleIcon>
   initialColor?: ColorsType
   finalColor?: ColorsType
+  focusOutlineColor?: ColorsType
   onPress: () => void
   scaleAnimatedValue?: React.RefObject<Animated.Value>
   animationState?: {
@@ -49,6 +50,7 @@ export const RoundedButton = (props: RoundedButtonProps) => {
       activeOpacity={0.5}
       onPress={props.onPress}
       disabled={props.disabled}
+      focusOutlineColor={props.focusOutlineColor}
       {...accessibilityProps}>
       {props.animationState ? (
         <IconContainer
@@ -87,10 +89,12 @@ export const RoundedButton = (props: RoundedButtonProps) => {
   )
 }
 
-const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-  ...customFocusOutline({ theme }),
-}))
+const StyledTouchable = styledButton(Touchable)<{ focusOutlineColor?: ColorsType }>(
+  ({ theme, focusOutlineColor }) => ({
+    borderRadius: theme.designSystem.size.borderRadius.pill,
+    ...customFocusOutline({ theme, color: focusOutlineColor }),
+  })
+)
 
 const IconContainer = styled(Animated.View)(({ theme }) => ({
   width: theme.buttons.roundedButton.size,

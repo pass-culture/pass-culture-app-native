@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { GOOGLE_LOGO } from 'features/venue/components/VenueBody/GoogleLogo'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
@@ -13,6 +14,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const GOOGLE_LOGO_HEIGHT = 15
 const GOOGLE_LOGO_WIDTH = 47
@@ -86,25 +88,36 @@ const GoogleWatermarkWrapper = ({
   withGoogleWatermark: boolean
   accessibilityLabel?: string
   handleImagePress?: VoidFunction
-}>) =>
-  withGoogleWatermark ? (
-    <TouchableOpacity
+}>) => {
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
+
+  return withGoogleWatermark ? (
+    <StyledTouchableOpacity
       onPress={handleImagePress}
+      disabled={!handleImagePress}
       accessibilityLabel={accessibilityLabel}
-      accessibilityRole={AccessibilityRole.BUTTON}>
+      accessibilityRole={AccessibilityRole.BUTTON}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      isFocus={isFocus}>
       {children}
       <StyledLinearGradient />
       <GoogleLogo source={GOOGLE_LOGO} testID="googleWatermark" />
-    </TouchableOpacity>
+    </StyledTouchableOpacity>
   ) : (
-    <TouchableOpacity
+    <StyledTouchableOpacity
       onPress={handleImagePress}
+      disabled={!handleImagePress}
       testID="venueImage"
       accessibilityLabel={accessibilityLabel}
-      accessibilityRole={AccessibilityRole.BUTTON}>
+      accessibilityRole={AccessibilityRole.BUTTON}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      isFocus={isFocus}>
       {children}
-    </TouchableOpacity>
+    </StyledTouchableOpacity>
   )
+}
 
 const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   useAngle: true,
@@ -147,3 +160,9 @@ const VenueIcon = styled(Venue).attrs(({ theme }) => ({
   size: getSpacing(30),
   color: theme.designSystem.color.icon.subtle,
 }))``
+
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => ({
+    ...customFocusOutline({ theme, isFocus }),
+  })
+)

@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useRef, useState } from 'react'
+import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
@@ -21,6 +21,9 @@ type OfferImageCarouselProps = {
   style?: StyleProp<ViewStyle>
 }
 
+const FOCUS_RING = 4
+const isWeb = Platform.OS === 'web'
+
 export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps> = ({
   progressValue,
   offerImages,
@@ -36,8 +39,15 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
   }).current
   const imagesLoadedCount = useRef(0)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isItemFocused, setIsItemFocused] = useState(false)
+  const imageBorderRadius = imageDimensions.imageStyle.borderRadius
 
   const carouselRef = useRef<ICarouselInstance>(null)
+
+  // When the slide changes, the focused element becomes inert and may not trigger a blur event
+  useEffect(() => {
+    setIsItemFocused(false)
+  }, [currentIndex])
 
   const handleImageLoad = useCallback(() => {
     imagesLoadedCount.current += 1
@@ -47,7 +57,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
     }
   }, [offerImages.length, onLoad])
 
-  const creditValue = offerImages[Math.round(currentIndex)]?.credit
+  const creditValue = offerImages[currentIndex]?.credit
   const currentCredit = creditValue ? `© ${creditValue}` : undefined
 
   const renderItem: ({ item, index }: { item: ImageWithCredit; index: number }) => ReactElement =
@@ -62,10 +72,12 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
             onLoad={handleImageLoad}
             onPress={onItemPress}
             isInCarousel
+            onFocusChange={setIsItemFocused}
+            isActive={index === currentIndex}
           />
         </Animated.View>
       ),
-      [currentCredit, handleImageLoad, imageDimensions, onItemPress]
+      [currentCredit, handleImageLoad, imageDimensions, onItemPress, currentIndex]
     )
 
   return (
@@ -82,13 +94,14 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
         scrollAnimationDuration={500}
         onProgressChange={(_, absoluteProgress) => {
           progressValue.value = absoluteProgress
-          setCurrentIndex(absoluteProgress)
+          setCurrentIndex(Math.round(absoluteProgress))
         }}
         onSnapToItem={onSnapToItem}
         data={offerImages}
         renderItem={renderItem}
         style={carouselStyle}
       />
+      {isWeb && isItemFocused ? <FocusOutline imageBorderRadius={imageBorderRadius} /> : null}
       <Container>
         {currentCredit ? (
           <CopyrightText numberOfLines={2} {...hiddenFromScreenReader()}>
@@ -122,4 +135,17 @@ const Container = styled.View({
 const StyledCarouselPagination = styled(CarouselPagination)(({ theme }) => ({
   position: 'absolute',
   bottom: theme.designSystem.size.spacing.l,
+}))
+
+const FocusOutline = styled.View<{ imageBorderRadius: number }>(({ theme, imageBorderRadius }) => ({
+  position: 'absolute',
+  zIndex: 3,
+  borderWidth: 2,
+  borderColor: theme.designSystem.color.outline.default,
+  top: -FOCUS_RING,
+  left: -FOCUS_RING,
+  right: -FOCUS_RING,
+  bottom: -FOCUS_RING,
+  borderRadius: imageBorderRadius + FOCUS_RING,
+  pointerEvents: 'none',
 }))

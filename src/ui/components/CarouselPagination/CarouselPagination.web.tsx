@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -14,6 +14,8 @@ export const CarouselPagination: FunctionComponent<CarouselPaginationProps> = ({
   carouselRef,
   style,
 }) => {
+  const { designSystem } = useTheme()
+
   const handlePressButton = (direction: 1 | -1) => {
     const newIndex = calculateCarouselIndex({
       currentIndex: progressValue.value,
@@ -30,6 +32,7 @@ export const CarouselPagination: FunctionComponent<CarouselPaginationProps> = ({
         iconName="previous"
         onPress={() => handlePressButton(-1)}
         accessibilityLabel="Image précédente"
+        focusOutlineColor={designSystem.color.border.decorative02}
       />
       <CarouselPaginationBase
         progressValue={progressValue}
@@ -41,6 +44,7 @@ export const CarouselPagination: FunctionComponent<CarouselPaginationProps> = ({
         iconName="next"
         onPress={() => handlePressButton(1)}
         accessibilityLabel="Image suivante"
+        focusOutlineColor={designSystem.color.border.decorative02}
       />
     </Container>
   )
