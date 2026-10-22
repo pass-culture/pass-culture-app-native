@@ -835,45 +835,15 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "target": [Function],
                         }
                       }
-                      ListFooterComponent={
-                        {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": [
-                            {
-                              "width": 24,
-                            },
-                          ],
-                          "inlineStyle": e {
-                            "rules": [
-                              [Function],
-                            ],
-                          },
-                          "render": [Function],
-                          "shouldForwardProp": undefined,
-                          "styledComponentId": true,
-                          "target": [Function],
-                        }
-                      }
-                      ListHeaderComponent={
-                        {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": [
-                            {
-                              "width": 24,
-                            },
-                          ],
-                          "inlineStyle": e {
-                            "rules": [
-                              [Function],
-                            ],
-                          },
-                          "render": [Function],
-                          "shouldForwardProp": undefined,
-                          "styledComponentId": true,
-                          "target": [Function],
-                        }
-                      }
                       collapsable={false}
+                      contentContainerStyle={
+                        [
+                          {
+                            "paddingHorizontal": 24,
+                          },
+                          undefined,
+                        ]
+                      }
                       data={
                         [
                           {
@@ -945,19 +915,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       windowSize={7}
                     >
                       <View>
-                        <View
-                          collapsable={false}
-                          onLayout={[Function]}
-                        >
-                          <View
-                            style={
-                              {
-                                "width": 24,
-                              }
-                            }
-                            width={24}
-                          />
-                        </View>
                         <View
                           onFocusCapture={[Function]}
                           style={
@@ -1606,18 +1563,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               </View>
                             </View>
                           </View>
-                        </View>
-                        <View
-                          onLayout={[Function]}
-                        >
-                          <View
-                            style={
-                              {
-                                "width": 24,
-                              }
-                            }
-                            width={24}
-                          />
                         </View>
                       </View>
                     </RCTScrollView>

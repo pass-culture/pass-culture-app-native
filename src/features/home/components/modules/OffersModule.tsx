@@ -1,7 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { Platform, ViewToken } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -58,7 +57,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   const isUserUnderage = useIsUserUnderage()
   const { user } = useAuthContext()
   const userLocation = useUserLocation()
-  const { designSystem } = useTheme()
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
     userLocation,
@@ -203,7 +201,6 @@ export const OffersModule = (props: OffersModuleProps) => {
           onEndReached={logHasSeenAllTilesOnce}
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
-          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           seeAllButton={{
             onBeforeNavigate,
             navigateToVerticalPlaylist,

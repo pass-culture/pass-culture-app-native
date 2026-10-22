@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
 import { ViewToken } from 'react-native'
-import { useTheme } from 'styled-components'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -43,7 +42,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   } = props
   const position = useUserLocation()
   const { user: profile } = useAuthContext()
-  const { designSystem } = useTheme()
   const { offers, recommendationApiParams } = useHomeRecommendedOffers(
     position,
     moduleId,
@@ -130,7 +128,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
           withMargin
-          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
           seeAllButton={{
             onBeforeNavigate,
             navigateToVerticalPlaylist,
