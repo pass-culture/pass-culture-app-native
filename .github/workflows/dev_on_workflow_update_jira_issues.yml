@@ -141,7 +141,7 @@ jobs:
         run: |
           echo "issue:" >> "$HOME/.jira.d/config.yml"
           jira edit \
-            --query='"Numéro de commit[Number]" > "$VALUE" AND "Repository[Short text]" ~ "pass-culture-app-native"' \
+            --query="\"Numéro de commit[Number]\" > \"$VALUE\" AND \"Repository[Short text]\" ~ \"pass-culture-app-native\"" \
             --override "$SAFE_TO_DEPLOY_FIELD=false" \
             --noedit
 
