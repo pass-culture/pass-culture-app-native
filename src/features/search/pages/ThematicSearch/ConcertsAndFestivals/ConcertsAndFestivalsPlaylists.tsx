@@ -34,7 +34,7 @@ export const ConcertsAndFestivalsPlaylists: React.FC<ThematicPlaylistProps> = ({
       isLoading={areConcertsAndFestivalsPlaylistsLoading}
       shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
       searchId={searchId}
-      originId="thematicSearchConcerts"
+      originId="thematicSearchConcertsFestivals"
     />
   )
 }
