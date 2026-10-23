@@ -4,7 +4,7 @@ import React from 'react'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { logViewItem, ThematicSearchOriginId } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, logViewItem, ThematicSearchOriginId } from 'libs/analytics/helpers/logViewItem'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -45,8 +45,8 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
                   playlistIndex,
                   index: itemIndex,
                   type: 'offer',
-                  id: item.objectID,
-                  playlistId: 'thematicSearchOfferPlaylist',
+                  id: asOfferId(item.objectID),
+                  playlistId: 'thematicSearchPlaylist',
                   originId,
                 })
               }}>

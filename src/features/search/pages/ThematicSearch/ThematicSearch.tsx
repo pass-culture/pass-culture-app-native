@@ -23,7 +23,11 @@ import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/Music
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
 import { SearchState, SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import {
+  asVenueId,
+  logViewItem,
+  THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY,
+} from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { useLocationMode } from 'libs/locationV2/location.store'
@@ -158,9 +162,9 @@ export const ThematicSearch: React.FC = () => {
               playlistIndex: 0,
               index,
               type: 'venue',
-              id: item.objectID,
-              playlistId: 'thematicSearchVenuePlaylist',
-              originId: currentSearchId,
+              id: asVenueId(item.objectID),
+              playlistId: 'thematicSearchPlaylist',
+              originId: THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY[offerCategory],
             })
           }}>
           {({ listRef, handleViewableItemsChanged }) => (

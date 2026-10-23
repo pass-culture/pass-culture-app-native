@@ -15,7 +15,7 @@ import { gridListLayoutActions, useGridListLayout } from 'features/search/store/
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asSearchId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { locationStore } from 'libs/locationV2/location.store'
@@ -128,9 +128,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
                 playlistIndex: 0,
                 index: index,
                 type: 'venue',
-                id: item.objectID,
+                id: asVenueId(item.objectID),
                 playlistId: 'searchResultsVenuePlaylist',
-                originId: searchId,
+                originId: asSearchId(searchId),
               })
             }}>
             {({ listRef, handleViewableItemsChanged }) => (

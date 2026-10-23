@@ -15,7 +15,12 @@ import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackN
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { asHomeEntryId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import {
+  asArtistId,
+  asHomeEntryId,
+  asOfferId,
+  logViewItem,
+} from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
@@ -251,15 +256,15 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           playlistIndex: index,
           index: itemIndex,
           type: 'offer' as const,
-          id: item.objectID,
+          id: asOfferId(item.objectID),
           playlistId: asHomeEntryId(moduleId),
         }
         if (isArtistScreen) {
-          void logViewItem({ origin: 'artist', originId: artistId, ...itemParams })
+          void logViewItem({ origin: 'artist', originId: asArtistId(artistId), ...itemParams })
           return
         }
         if (!homeEntryId) return
-        void logViewItem({ origin: 'home', originId: homeEntryId, ...itemParams })
+        void logViewItem({ origin: 'home', originId: asHomeEntryId(homeEntryId), ...itemParams })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist

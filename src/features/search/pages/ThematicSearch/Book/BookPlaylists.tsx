@@ -9,7 +9,7 @@ import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/The
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -71,9 +71,9 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
                 playlistIndex,
                 index: itemIndex,
                 type: 'offer',
-                id: item.objectID,
-                playlistId: playlist.title,
-                originId: searchId,
+                id: asOfferId(item.objectID),
+                playlistId: 'thematicSearchPlaylist',
+                originId: 'thematicSearchLivres',
               })
             }}>
             {({ listRef, handleViewableItemsChanged }) => (

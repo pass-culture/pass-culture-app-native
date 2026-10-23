@@ -27,7 +27,7 @@ import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { FetchSearchResultsArgs, GridListLayout, SearchView } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -179,9 +179,9 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
             playlistIndex,
             index,
             type: 'offer',
-            id: item.objectID,
+            id: asOfferId(item.objectID),
             playlistId: 'searchResults',
-            originId: searchState.searchId ?? searchIdGenerated,
+            originId: asSearchId(searchState.searchId ?? searchIdGenerated),
           })
         }}>
         {({ handleViewableItemsChanged }) => (

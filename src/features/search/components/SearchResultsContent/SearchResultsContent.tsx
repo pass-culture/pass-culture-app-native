@@ -36,7 +36,7 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -120,9 +120,9 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             playlistIndex,
             index: index ?? -1,
             type: 'offer',
-            id: key,
+            id: asOfferId(key),
             playlistId: 'searchResults',
-            originId: searchState.searchId,
+            originId: asSearchId(searchState.searchId),
           })
         })
     },

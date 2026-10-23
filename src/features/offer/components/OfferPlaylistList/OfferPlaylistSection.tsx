@@ -8,7 +8,7 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { OfferPlaylistListProps } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asOfferPagePlaylistId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -87,9 +87,9 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
             playlistIndex,
             index,
             type: 'offer',
-            id: item.objectID,
-            playlistId: playlistType,
-            originId: offer.id.toString(),
+            id: asOfferId(item.objectID),
+            playlistId: asOfferPagePlaylistId(playlistType),
+            originId: asOfferId(offer.id.toString()),
             callId: apiRecoParams?.callId ?? undefined,
           })
         }

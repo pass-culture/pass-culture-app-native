@@ -4,7 +4,7 @@ import { styled } from 'styled-components/native'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { HomepageModuleType, ModuleData, VenuesModuleParameters } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
-import { asHomeEntryId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -98,9 +98,9 @@ export const VenuesModule = ({
             playlistIndex: index,
             index: itemIndex,
             type: 'venue',
-            id: item.id.toString(),
+            id: asVenueId(item.id.toString()),
             playlistId: asHomeEntryId(moduleId),
-            originId: homeEntryId,
+            originId: asHomeEntryId(homeEntryId),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (
