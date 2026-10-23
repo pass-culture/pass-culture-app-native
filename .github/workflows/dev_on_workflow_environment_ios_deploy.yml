@@ -97,7 +97,7 @@ jobs:
         env:
           SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
       - name: Setup iOS Google services config
-        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+        run: echo "$IOS_GOOGLE_SERVICES_PLIST" > ios/GoogleService-Info.plist
         env:
           IOS_GOOGLE_SERVICES_PLIST: ${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}
       - name: Add ssh key needed
