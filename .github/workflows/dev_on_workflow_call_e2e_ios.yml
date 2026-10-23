@@ -82,9 +82,13 @@ jobs:
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
-          echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
+          echo "token=$SENTRY_AUTH_TOKEN" >> .sentryclirc
+        env:
+          SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
       - name: Setup iOS Google services config
-        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+        run: echo "$IOS_GOOGLE_SERVICES_PLIST" > ios/GoogleService-Info.plist
+        env:
+          IOS_GOOGLE_SERVICES_PLIST: ${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}
       - name: Add ssh key needed
         uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 #v0.10.0
         with:
@@ -114,10 +118,11 @@ jobs:
         id: generate_name
         env:
           UPLOAD_NAME_PREFIX: ${{ inputs.upload_name_prefix }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           DATE="$(date +"%d/%m/%Y")"
           COMMIT_HASH="$(git rev-parse --short=8 HEAD)"
-          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+          if [[ "$EVENT_NAME" == "schedule" ]]; then
             CUSTOM_NAME="[Nightly][iOS] Release du ${DATE} au soir (${COMMIT_HASH})"
           else
             CUSTOM_NAME="${UPLOAD_NAME_PREFIX}[iOS] Staging du ${DATE} (${COMMIT_HASH})"
