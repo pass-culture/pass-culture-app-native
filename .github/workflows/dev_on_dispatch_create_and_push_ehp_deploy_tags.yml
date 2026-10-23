@@ -35,13 +35,13 @@ jobs:
           permission-actions: write
       - name: Get GitHub App User ID
         id: get-user-id
-        run: echo "user-id=$(gh api "/users/$APP_SLUG[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        run: echo "user-id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
           APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
       - run: |
-          git config --global user.name "$APP_SLUG[bot]"
-          git config --global user.email "$USER_ID+$APP_SLUG[bot]@users.noreply.github.com"
+          git config --global user.name "${APP_SLUG}[bot]"
+          git config --global user.email "$USER_ID+${APP_SLUG}[bot]@users.noreply.github.com"
           git remote set-url origin "https://x-access-token:$TOKEN@github.com/$OWNER/pass-culture-app-native.git"
         env:
           APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
@@ -87,13 +87,13 @@ jobs:
           permission-actions: write
       - name: Get GitHub App User ID
         id: get-user-id
-        run: echo "user-id=$(gh api "/users/$APP_SLUG[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        run: echo "user-id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
           APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
       - run: |
-          git config --global user.name "$APP_SLUG[bot]"
-          git config --global user.email "$USER_ID+$APP_SLUG[bot]@users.noreply.github.com"
+          git config --global user.name "${APP_SLUG}[bot]"
+          git config --global user.email "$USER_ID+${APP_SLUG}[bot]@users.noreply.github.com"
           git remote set-url origin "https://x-access-token:$TOKEN@github.com/$OWNER/pass-culture-app-native.git"
         env:
           APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
