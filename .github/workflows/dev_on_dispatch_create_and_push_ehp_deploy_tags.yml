@@ -35,13 +35,19 @@ jobs:
           permission-actions: write
       - name: Get GitHub App User ID
         id: get-user-id
-        run: echo "user-id=$(gh api "/users/${{ steps.github-app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        run: echo "user-id=$(gh api "/users/$APP_SLUG[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+          APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
       - run: |
-          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
-          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+          git config --global user.name "$APP_SLUG[bot]"
+          git config --global user.email "$USER_ID+$APP_SLUG[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:$TOKEN@github.com/$OWNER/pass-culture-app-native.git"
+        env:
+          APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
+          USER_ID: ${{ steps.get-user-id.outputs.user-id }}
+          TOKEN: ${{ steps.github-app-token.outputs.token }}
+          OWNER: ${{ github.repository_owner }}
       - name: 'Checkout commit hash'
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
         with:
@@ -54,10 +60,12 @@ jobs:
       - name: 'Create and push tag from package version'
         id: create_tag
         run: |
-          STAGING_VERSION=${{ steps.package-version.outputs.current-version }}
-          TAG_NAME=v${STAGING_VERSION}
+          STAGING_VERSION=$CURRENT_VERSION
+          TAG_NAME="v${STAGING_VERSION}"
           git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
+        env:
+          CURRENT_VERSION: ${{ steps.package-version.outputs.current-version }}
   create_and_push_testing_tag:
     name: 'Create and push testing tag'
     runs-on: ubuntu-24.04
@@ -79,13 +87,19 @@ jobs:
           permission-actions: write
       - name: Get GitHub App User ID
         id: get-user-id
-        run: echo "user-id=$(gh api "/users/${{ steps.github-app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        run: echo "user-id=$(gh api "/users/$APP_SLUG[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+          APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
       - run: |
-          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
-          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+          git config --global user.name "$APP_SLUG[bot]"
+          git config --global user.email "$USER_ID+$APP_SLUG[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:$TOKEN@github.com/$OWNER/pass-culture-app-native.git"
+        env:
+          APP_SLUG: ${{ steps.github-app-token.outputs.app-slug }}
+          USER_ID: ${{ steps.get-user-id.outputs.user-id }}
+          TOKEN: ${{ steps.github-app-token.outputs.token }}
+          OWNER: ${{ github.repository_owner }}
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
         with:
           token: ${{ steps.github-app-token.outputs.token }}
@@ -136,29 +150,36 @@ jobs:
           #   1.136.27 => 10 000 000 + 136 000 + 027 => 10136027
           #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
 
-          TESTING_VERSION="${{ steps.package-version.outputs.current-version }}"
+          TESTING_VERSION="$CURRENT_VERSION"
           IFS='.' read -r MAJOR MINOR PATCH <<< "$TESTING_VERSION"
           BUILD_NUMBER="$((10000000 * MAJOR + 1000 * MINOR + PATCH))"
           echo "build_number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
+        env:
+          CURRENT_VERSION: ${{ steps.package-version.outputs.current-version }}
       - name: 'Update build number in package.json'
         uses: sergeysova/jq-action@a3f0d4ff59cc1dddf023fc0b325dd75b10deec58 #v2.3.0
         with:
           cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
       - name: 'Get routes used by app version'
         run: |
-          TESTING_VERSION="${{ steps.package-version.outputs.current-version }}"
+          TESTING_VERSION="$CURRENT_VERSION"
           ./scripts/get_used_routes.sh "v${TESTING_VERSION}"
+        env:
+          CURRENT_VERSION: ${{ steps.package-version.outputs.current-version }}
       - name: 'Commit changes'
         run: |
-          TESTING_VERSION="${{ steps.package-version.outputs.current-version }}"
+          TESTING_VERSION="$CURRENT_VERSION"
           git add package.json server/package.json route_usage_changelog.md
           git commit --message "v${TESTING_VERSION}"
           git push origin master
+        env:
+          CURRENT_VERSION: ${{ steps.package-version.outputs.current-version }}
       - name: 'Create and push testing tag'
         run: |
-          TESTING_VERSION="${{ steps.package-version.outputs.current-version }}"
+          TESTING_VERSION="$CURRENT_VERSION"
           TAG_NAME="testing/v${TESTING_VERSION}"
           git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
         env:
           GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+          CURRENT_VERSION: ${{ steps.package-version.outputs.current-version }}
