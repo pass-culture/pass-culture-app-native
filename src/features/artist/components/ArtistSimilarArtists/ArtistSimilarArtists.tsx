@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { ArtistSimilarArtistsSkeleton } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtistsSkeleton'
 import { useSimilarArtistsQuery } from 'features/artist/queries/useSimilarArtistsQuery'
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -85,9 +85,9 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId, index
             playlistIndex: index,
             index: itemIndex,
             type: 'artist',
-            id: item.id,
+            id: asArtistId(item.id),
             playlistId: 'artistSimilarArtists',
-            originId: artistId,
+            originId: asArtistId(artistId),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (

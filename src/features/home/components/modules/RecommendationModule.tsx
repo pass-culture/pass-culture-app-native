@@ -5,7 +5,7 @@ import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOf
 import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
-import { asHomeEntryId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
@@ -106,9 +106,9 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           playlistIndex: index,
           index: itemIndex,
           type: 'offer',
-          id: item.objectID,
+          id: asOfferId(item.objectID),
           playlistId: asHomeEntryId(moduleId),
-          originId: homeEntryId,
+          originId: asHomeEntryId(homeEntryId),
           callId: recommendationApiParams?.callId ?? undefined,
         })
       }}>

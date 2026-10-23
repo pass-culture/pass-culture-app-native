@@ -11,7 +11,7 @@ import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asSearchId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { useLocationMode } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 
@@ -56,9 +56,9 @@ export const VenuesPlaylistContainer: FC<Props> = ({
             playlistIndex,
             index: index,
             type: 'venue',
-            id: item.objectID,
+            id: asVenueId(item.objectID),
             playlistId: 'searchResultsVenuePlaylist',
-            originId: searchId,
+            originId: asSearchId(searchId),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (

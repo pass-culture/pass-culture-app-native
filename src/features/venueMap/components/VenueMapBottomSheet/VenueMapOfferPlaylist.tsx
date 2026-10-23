@@ -11,7 +11,7 @@ import {
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
@@ -107,9 +107,9 @@ export const VenueMapOfferPlaylist = ({
             playlistIndex: 0,
             index,
             type: 'offer',
-            id: item.objectID,
+            id: asOfferId(item.objectID),
             playlistId: 'venueMap',
-            originId: venueId.toString(),
+            originId: asVenueId(venueId.toString()),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (

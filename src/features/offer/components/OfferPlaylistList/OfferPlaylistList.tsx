@@ -11,7 +11,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -160,9 +160,9 @@ export function OfferPlaylistList({
                     playlistIndex,
                     index,
                     type: 'offer',
-                    id: item.objectID,
+                    id: asOfferId(item.objectID),
                     playlistId: playlist.type,
-                    originId: offer.id.toString(),
+                    originId: asOfferId(offer.id.toString()),
                     callId: playlist.apiRecoParams?.callId ?? undefined,
                   })
                 }

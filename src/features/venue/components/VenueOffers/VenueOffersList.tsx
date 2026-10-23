@@ -16,7 +16,7 @@ import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId, asOfferId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -148,9 +148,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             playlistIndex: 0,
             index,
             type: 'offer',
-            id: item.objectID,
+            id: asOfferId(item.objectID),
             playlistId: 'venueOffersList',
-            originId: venue.id.toString(),
+            originId: asVenueId(venue.id.toString()),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (
@@ -200,9 +200,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
                 playlistIndex: 1,
                 index,
                 type: 'artist',
-                id: item.id,
+                id: asArtistId(item.id),
                 playlistId: 'venueArtistsCarousel',
-                originId: venue.id.toString(),
+                originId: asVenueId(venue.id.toString()),
               })
             }}>
             {({ listRef, handleViewableItemsChanged }) => (
@@ -230,9 +230,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
                     playlistIndex,
                     index: itemIndex,
                     type: 'offer',
-                    id: item.objectID,
-                    playlistId: playlist.title,
-                    originId: venue.id.toString(),
+                    id: asOfferId(item.objectID),
+                    playlistId: 'venueOffersList',
+                    originId: asVenueId(venue.id.toString()),
                   })
                 }}>
                 {({ listRef, handleViewableItemsChanged }) => (

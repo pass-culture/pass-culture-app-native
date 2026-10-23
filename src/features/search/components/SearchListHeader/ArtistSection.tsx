@@ -4,7 +4,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { Artist } from 'features/venue/types'
-import { logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -73,9 +73,9 @@ export const ArtistSection = ({
             playlistIndex: 0,
             index: itemIndex,
             type: 'artist',
-            id: item.id,
+            id: asArtistId(item.id),
             playlistId: 'searchResultsArtistPlaylist',
-            originId: searchId,
+            originId: asSearchId(searchId),
           })
         }}>
         {({ listRef, handleViewableItemsChanged }) => (
