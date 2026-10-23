@@ -93,7 +93,7 @@ jobs:
           fetch-depth: 1
 
       - name: Setup gajira cli
-        uses: atlassian/gajira-cli@master
+        uses: atlassian/gajira-cli@7b8487d76cd88bf5d50ba00c6cca6edff1ddd507 # v3
         with:
           version: 1.0.20
 
@@ -112,7 +112,7 @@ jobs:
             JIRA_API_TOKEN:pc-native-production/jira-api-token
 
       - name: Login
-        uses: atlassian/gajira-login@master
+        uses: atlassian/gajira-login@ca13f8850ea309cf44a6e4e0c49d9aa48ac3ca4c # v3
         env:
           JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
