@@ -37,7 +37,7 @@ export const FilmsPlaylists: React.FC<ThematicPlaylistProps> = ({
       isLoading={areFilmsPlaylistsLoading}
       shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
       searchId={searchId}
-      originId="thematicSearchFilms"
+      originId="thematicSearchFilmsSeriesDocumentaires"
     />
   )
 }

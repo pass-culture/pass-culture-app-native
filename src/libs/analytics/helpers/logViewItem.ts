@@ -61,10 +61,10 @@ export const asOfferPagePlaylistId = (id: string): OfferPagePlaylistId => id as 
 
 export const THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY = {
   [SearchGroupNameEnumv2.CINEMA]: 'thematicSearchCinema',
-  [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: 'thematicSearchConcerts',
-  [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: 'thematicSearchFilms',
+  [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: 'thematicSearchConcertsFestivals',
+  [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: 'thematicSearchFilmsSeriesDocumentaires',
   [SearchGroupNameEnumv2.LIVRES]: 'thematicSearchLivres',
-  [SearchGroupNameEnumv2.MUSIQUE]: 'thematicSearchMusic',
+  [SearchGroupNameEnumv2.MUSIQUE]: 'thematicSearchMusique',
 } as const satisfies Record<ThematicSearchCategories, `thematicSearch${string}`>
 
 export type ThematicSearchOriginId =
