@@ -3,8 +3,6 @@
 
   # we use https://www.nixhub.io/ to find the exact version that we are looking for
   # then we pin this version in the Nix flake
-  inputs.nixpkgs_nodejs.url =
-    "github:nixos/nixpkgs?rev=6ebfbc38bdc6b22822a6f991f2d922306f33cfbc"; # contains nodejs 25.9.0
   inputs.nixpkgs_ruby.url =
     "github:nixos/nixpkgs?rev=c5dd43934613ae0f8ff37c59f61c507c2e8f980d"; # contains ruby 3.3.6
   inputs.nixpkgs_gitleaks.url =
@@ -13,18 +11,16 @@
   inputs.nixpkgs_maestro.url = 
     "github:nixos/nixpkgs?rev=55ba7f49ef2962b42cbd126522b7df5f95037679"; # contains maestro 2.11.0
 
-  outputs = { self, nixpkgs, nixpkgs_nodejs, nixpkgs_ruby, nixpkgs_gitleaks, nixpkgs_maestro, flake-utils, }:
+  outputs = { self, nixpkgs, nixpkgs_ruby, nixpkgs_gitleaks, nixpkgs_maestro, flake-utils, }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        pkgs_nodejs = nixpkgs_nodejs.legacyPackages.${system};
         pkgs_ruby = nixpkgs_ruby.legacyPackages.${system};
         pkgs_gitleaks = nixpkgs_gitleaks.legacyPackages.${system};
         pkgs_maestro = nixpkgs_maestro.legacyPackages.${system};
       in {
         devShells.default = pkgs.mkShellNoCC {
           packages = [
-            pkgs_nodejs.nodejs_25 # needed to install NodeJS dependencies, run scripts...
             pkgs_ruby.ruby # needed to run FastLane and to install iOS dependencies
             pkgs.jdk17 # needed by Android
             pkgs.jq # needed by some scripts run in the pipeline
