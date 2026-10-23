@@ -27,10 +27,14 @@ const getFocusableElements = (modalElement: HTMLElement) => {
   return visibleCandidates.length > 0 ? visibleCandidates : candidates
 }
 
-export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boolean) => {
+export const useModalFocusTrap = (
+  modalRef: RefObject<View | null>,
+  isReady: boolean,
+  initialFocusSelector?: string
+) => {
   const triggerRef = useRef<HTMLElement | null>(null)
 
-  useEffect(() => {
+  useEffect(function storeTriggerAndRestoreFocus() {
     triggerRef.current = document.activeElement as HTMLElement | null
 
     return () => {
@@ -47,59 +51,73 @@ export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boo
     }
   }, [])
 
-  useEffect(() => {
-    if (isReady) getModalElement(modalRef)?.focus()
-  }, [isReady, modalRef])
-
-  useEffect(() => {
-    if (!isReady) return
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Tab') return
+  useEffect(
+    function focusInitialElement() {
+      if (!isReady) return
 
       const modalElement = getModalElement(modalRef)
-      if (!modalElement) return
+      const initialFocusElement = initialFocusSelector
+        ? modalElement?.querySelector<HTMLElement>(initialFocusSelector)
+        : null
+      const focusTarget = initialFocusElement ?? modalElement
 
-      const focusableElements = getFocusableElements(modalElement)
-      if (focusableElements.length === 0) {
-        event.preventDefault()
+      focusTarget?.focus()
+    },
+    [initialFocusSelector, isReady, modalRef]
+  )
+
+  useEffect(
+    function trapFocusInsideModal() {
+      if (!isReady) return
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key !== 'Tab') return
+
+        const modalElement = getModalElement(modalRef)
+        if (!modalElement) return
+
+        const focusableElements = getFocusableElements(modalElement)
+        if (focusableElements.length === 0) {
+          event.preventDefault()
+          modalElement.focus()
+          return
+        }
+
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements.at(-1)
+        const { activeElement } = document
+
+        if (event.shiftKey && (activeElement === firstElement || activeElement === modalElement)) {
+          event.preventDefault()
+          lastElement?.focus()
+          return
+        }
+
+        if (!event.shiftKey && activeElement === lastElement) {
+          event.preventDefault()
+          firstElement?.focus()
+        }
+      }
+
+      const handleFocusIn = (event: FocusEvent) => {
+        const modalElement = getModalElement(modalRef)
+        const target = event.target as HTMLElement | null
+        if (!modalElement || !target || modalElement.contains(target)) return
+
+        const isTargetInAnyModal = !!target.closest('[role="dialog"], [aria-modal="true"]')
+        if (isTargetInAnyModal) return
+
         modalElement.focus()
-        return
       }
 
-      const firstElement = focusableElements[0]
-      const lastElement = focusableElements.at(-1)
-      const { activeElement } = document
+      globalThis.addEventListener('keydown', handleKeyDown)
+      document.addEventListener('focusin', handleFocusIn)
 
-      if (event.shiftKey && (activeElement === firstElement || activeElement === modalElement)) {
-        event.preventDefault()
-        lastElement?.focus()
-        return
+      return () => {
+        globalThis.removeEventListener('keydown', handleKeyDown)
+        document.removeEventListener('focusin', handleFocusIn)
       }
-
-      if (!event.shiftKey && activeElement === lastElement) {
-        event.preventDefault()
-        firstElement?.focus()
-      }
-    }
-
-    const handleFocusIn = (event: FocusEvent) => {
-      const modalElement = getModalElement(modalRef)
-      const target = event.target as HTMLElement | null
-      if (!modalElement || !target || modalElement.contains(target)) return
-
-      const isTargetInAnyModal = !!target.closest('[role="dialog"], [aria-modal="true"]')
-      if (isTargetInAnyModal) return
-
-      modalElement.focus()
-    }
-
-    globalThis.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('focusin', handleFocusIn)
-
-    return () => {
-      globalThis.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('focusin', handleFocusIn)
-    }
-  }, [modalRef, isReady])
+    },
+    [modalRef, isReady]
+  )
 }

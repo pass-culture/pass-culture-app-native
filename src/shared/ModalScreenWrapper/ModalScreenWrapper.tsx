@@ -7,6 +7,10 @@ export type ModalScreenWrapperProps = {
   onClose: () => void
   children: (closeWithTransition: () => void, titleId: string) => React.ReactNode
   fullScreen?: boolean
+  desktopMaxWidth?: number
+  desktopMaxHeight?: number | string
+  desktopVariant?: 'centered' | 'bottomRight'
+  initialFocusSelector?: string
 }
 
 export const ModalScreenWrapper = ({
@@ -14,6 +18,10 @@ export const ModalScreenWrapper = ({
   onClose,
   children,
   fullScreen: _fullScreen,
+  desktopMaxWidth: _desktopMaxWidth,
+  desktopMaxHeight: _desktopMaxHeight,
+  desktopVariant: _desktopVariant,
+  initialFocusSelector: _initialFocusSelector,
 }: ModalScreenWrapperProps) => {
   const titleId = uuidv4()
 
