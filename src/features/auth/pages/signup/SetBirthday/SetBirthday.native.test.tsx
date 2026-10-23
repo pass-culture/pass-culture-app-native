@@ -9,6 +9,7 @@ import {
 } from 'features/auth/fixtures/fixtures'
 import { Provider } from 'features/auth/types'
 import { NonEligible } from 'features/onboarding/enums'
+import { analytics } from 'libs/analytics/provider'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
 import { act, fireEvent, renderAsync, screen, userEvent } from 'tests/utils'
@@ -61,6 +62,62 @@ describe('<SetBirthday />', () => {
     await renderAsync(<SetBirthday {...props} />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  describe('underage analytics', () => {
+    it('should not log when the date picker has not been changed', async () => {
+      await renderAsync(<SetBirthday {...props} />)
+
+      expect(screen.getByTestId('date-picker-spinner-native').props.date).toBe(
+        DEFAULT_SELECTED_DATE.toISOString()
+      )
+      expect(analytics.logSignUpTooYoung).not.toHaveBeenCalled()
+    })
+
+    it.each(['2006-11-30', '2005-12-02'])(
+      'should log the selected age when the birthdate %s is under 15',
+      async (birthdate) => {
+        await renderAsync(<SetBirthday {...props} />)
+
+        await act(() =>
+          fireEvent(screen.getByTestId('date-picker-spinner-native'), 'onChange', {
+            nativeEvent: { timestamp: new Date(birthdate) },
+          })
+        )
+
+        expect(analytics.logSignUpTooYoung).toHaveBeenCalledWith(14)
+      }
+    )
+
+    it.each(['2006-11-30', '2005-12-02'])(
+      'should disable the continue button when the birthdate %s is under 15',
+      async (birthdate) => {
+        await renderAsync(<SetBirthday {...props} />)
+
+        await act(() =>
+          fireEvent(screen.getByTestId('date-picker-spinner-native'), 'onChange', {
+            nativeEvent: { timestamp: new Date(birthdate) },
+          })
+        )
+
+        expect(screen.getByRole('button', { name: /Continuer/ })).toBeDisabled()
+      }
+    )
+
+    it.each(['2005-12-01', '2004-12-01'])(
+      'should not log when the selected birthdate %s is at least 15',
+      async (birthdate) => {
+        await renderAsync(<SetBirthday {...props} />)
+
+        await act(() =>
+          fireEvent(screen.getByTestId('date-picker-spinner-native'), 'onChange', {
+            nativeEvent: { timestamp: new Date(birthdate) },
+          })
+        )
+
+        expect(analytics.logSignUpTooYoung).not.toHaveBeenCalled()
+      }
+    )
   })
 
   it('should render correctly when account creation token and email are in route params', async () => {
