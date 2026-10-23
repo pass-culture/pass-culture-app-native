@@ -93,9 +93,13 @@ jobs:
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
           sed '$d' .sentryclirc
-          echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
+          echo "token=$SENTRY_AUTH_TOKEN" >> .sentryclirc
+        env:
+          SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
       - name: Setup iOS Google services config
         run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+        env:
+          IOS_GOOGLE_SERVICES_PLIST: ${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}
       - name: Add ssh key needed
         uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 #v0.10.0
         with:

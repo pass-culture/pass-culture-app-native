@@ -53,7 +53,10 @@ jobs:
           key: v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit:web:ci --shard="$SHARD/$JOB_TOTAL"
+        env:
+          SHARD: ${{ matrix.shard }}
+          JOB_TOTAL: ${{ strategy.job-total }}
 
   yarn_test_native:
     name: 'Run native unit tests'
@@ -88,8 +91,13 @@ jobs:
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
-      - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
+      - run: yarn test:unit:ci --shard="$SHARD/$JOB_TOTAL"
+        env:
+          SHARD: ${{ matrix.shard }}
+          JOB_TOTAL: ${{ strategy.job-total }}
+      - run: mv coverage/coverage-final.json "coverage/$SHARD.json"
+        env:
+          SHARD: ${{ matrix.shard }}
 
       - name: Upload coverage report
         id: coverage-modules-cache
