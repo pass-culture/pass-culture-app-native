@@ -16,7 +16,7 @@ Sinon, continuer ce mode opératoire.
 
 - Dans [eslint-local-rules.js](/eslint-local-rules.js), importer sa règle du fichier créé, et l'exporter.
 
-- Dans [eslint.config.js](/eslint.config.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`
+- Dans [eslint.config.js](/eslint.config.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`. Pour une règle « soft » (en `warn`, non bloquante), l'ajouter plutôt dans [eslint-soft-rules.js](/eslint-soft-rules.js), dans le scope voulu (`cleancode` ou `archi`), voir [DR005](/doc/decision-records/DR005%20-%20eslint-soft-rules.md).
 
 - Créer un fichier de test dans `/eslint-custom-rules/` : `<ma-règle-ESLint>.test.js`, et utiliser le snippet `eslint-test` pour générer des tests à remplir.
 
@@ -42,7 +42,7 @@ Réitérer cette étape 3, jusqu'à avoir une règle satisfaisante.
 
 ### (Bonus) Ajouter un autofix pour un cas d'erreur
 
-Si on veut que la règle ESLint corrige automatiquement un cas d'erreur, il faut ajouter une fonction au champ `fix` à `context.report`, et lui faire retourner l'AST du code corrigé. Pour cela, il faut partir de l'AST erroné, et le modifier grâce aux utilitaires disponibles en paramètre (fixer). Par exemple, pour remplacer le texte du nœud `node`, catché par le sélecteur, par le code corrigé, il suffit de faire :
+Si on veut que la règle ESLint corrige automatiquement un cas d'erreur, il faut ajouter une fonction au champ `fix` de `context.report`. Elle ne retourne pas un AST mais une ou plusieurs modifications du texte source, construites avec les utilitaires de l'objet `fixer` reçu en paramètre (remplacer, insérer ou supprimer du texte autour d'un nœud). Par exemple, pour remplacer le texte du nœud `node`, catché par le sélecteur, par le code corrigé, il suffit de faire :
 
 ```js
 context.report({
@@ -62,7 +62,7 @@ Pour tester l'autofix, ajouter dans un cas invalide : `output: "<code-corrigé>
 
 Pour tester la règle dans le projet passCulture :
 
-- lancer dans un terminal `yarn test:lint` ;
+- lancer dans un terminal `yarn test:lint` (attention, il utilise `--quiet` et n'affiche que les erreurs : pour une règle « soft » en `warn`, lancer `yarn test:lint:cleancode` ou `yarn test:lint:archi`) ;
 
 - ou dans VSCode : Cmd+Shift+P > `ESLint: Restart ESLint Server`, attendre quelques secondes, puis la nouvelle erreur sera visible dans les fichiers concernés.
 
