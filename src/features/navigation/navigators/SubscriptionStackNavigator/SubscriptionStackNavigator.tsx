@@ -35,13 +35,11 @@ import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubbl
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
 import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/UbbleWebview'
-import { SetPhoneNumberWithoutValidation } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumberWithoutValidation'
 import { ActivationProfileRecap } from 'features/identityCheck/pages/profile/ActivationProfileRecap'
 import { ProfileInformationValidationCreate } from 'features/identityCheck/pages/profile/ProfileInformationValidationCreate'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
-import { SetPhoneNumber } from 'features/identityCheck/pages/profile/SetPhoneNumber'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
@@ -85,12 +83,6 @@ const subscriptionStackNavigatorDefinition = {
       linking: { path: 'creation-compte/desactivation' },
       options: { title: 'Création de compte - Désactivation' },
     },
-    SetPhoneNumberWithoutValidation: {
-      screen: SetPhoneNumberWithoutValidation,
-      if: useIsSignedIn,
-      linking: { path: 'creation-compte/telephone-sans-validation' },
-      options: { title: 'Création de compte - Téléphone sans validation' },
-    },
     SetName: {
       screen: SetName,
       if: useIsSignedIn,
@@ -108,12 +100,6 @@ const subscriptionStackNavigatorDefinition = {
       if: useIsSignedIn,
       linking: { path: 'creation-profil/adresse' },
       options: { title: 'Création du profil - Adresse' },
-    },
-    SetPhoneNumber: {
-      screen: SetPhoneNumber,
-      if: useIsSignedIn,
-      linking: { path: 'creation-profil/telephone' },
-      options: { title: 'Création du profil - Téléphone' },
     },
     SetStatus: {
       screen: SetStatus,

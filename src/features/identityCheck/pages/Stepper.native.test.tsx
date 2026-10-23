@@ -9,7 +9,7 @@ import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/f
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
-import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
@@ -96,10 +96,10 @@ describe('Stepper navigation', () => {
 
   it('should render correctly', async () => {
     // the stepper will have the following steps :
-    // profile = completed, identification = current, phone_validation = disabled, confirmation = disabled
+    // profile = completed, identification = current, confirmation = disabled
     mockedUseSubscriptionContext.mockReturnValueOnce({
       dispatch: mockIdentityCheckDispatch,
-      step: DeprecatedIdentityCheckStep.IDENTIFICATION,
+      step: IdentityCheckStep.IDENTIFICATION,
       identification: { method: null },
     })
     render(reactQueryProviderHOC(<Stepper />))
@@ -183,11 +183,10 @@ describe('Stepper navigation', () => {
   })
 
   it.each`
-    subscriptionStep                      | stepperLabel             | eventParam
-    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${IdentityCheckStep.PHONE_VALIDATION}
-    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${IdentityCheckStep.IDENTIFICATION}
-    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${IdentityCheckStep.CONFIRMATION}
-    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${IdentityCheckStep.PROFILE}
+    subscriptionStep                    | stepperLabel        | eventParam
+    ${IdentityCheckStep.IDENTIFICATION} | ${'Identification'} | ${IdentityCheckStep.IDENTIFICATION}
+    ${IdentityCheckStep.CONFIRMATION}   | ${'Confirmation'}   | ${IdentityCheckStep.CONFIRMATION}
+    ${IdentityCheckStep.PROFILE}        | ${'Profil'}         | ${IdentityCheckStep.PROFILE}
   `(
     'should trigger analytics with the $eventParam parameter',
     async ({

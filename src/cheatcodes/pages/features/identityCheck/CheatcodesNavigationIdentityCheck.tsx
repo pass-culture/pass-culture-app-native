@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -8,10 +7,8 @@ import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesSc
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
-import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -137,13 +134,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'SetPhoneNumber',
-      navigationTarget: getSubscriptionPropConfig('SetPhoneNumber', {
-        type: ProfileTypes.IDENTITY_CHECK,
-      }),
-    },
-    {
-      id: uuidv4(),
       title: 'SetCity',
       navigationTarget: getSubscriptionPropConfig('SetCity', { type: ProfileTypes.IDENTITY_CHECK }),
     },
@@ -151,11 +141,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
       id: uuidv4(),
       title: 'SetName',
       navigationTarget: getSubscriptionPropConfig('SetName', { type: ProfileTypes.IDENTITY_CHECK }),
-    },
-    {
-      id: uuidv4(),
-      title: 'SetPhoneNumberWithoutValidation',
-      navigationTarget: getSubscriptionPropConfig('SetPhoneNumberWithoutValidation'),
     },
     {
       id: uuidv4(),
@@ -202,7 +187,6 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     { id: uuidv4(), title: 'DuplicateUser Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Generic Error', showOnlyInSearch: true },
-    { id: uuidv4(), title: 'PhoneValidationTipsModal', showOnlyInSearch: true },
     { id: uuidv4(), title: 'UserAgeNotValid Educonnect Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'UserAgeNotValid18YearsOld Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'UserTypeNotStudent Error', showOnlyInSearch: true },
@@ -216,8 +200,6 @@ export const cheatcodesNavigationIdentityCheckButtons: CheatcodeCategory[] = [
 export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
   const { goBack } = useGoBack(...getCheatcodesHookConfig('CheatcodesMenu'))
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
-  const [phoneValidationTipsModalVisible, setPhoneValidationTipsModalVisible] = useState(false)
-  const { navigate } = useNavigation<UseNavigationType>()
   const { logType } = useLogTypeFromRemoteConfig()
 
   const trigger = (message: EduConnectErrorMessageEnum) => {
@@ -233,23 +215,6 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title={identityCheckCheatcodeCategory.title} onGoBack={goBack}>
       <CheatcodesSubscreensButtonList buttons={visibleSubscreens} />
-
-      <LinkToCheatcodesScreen
-        key="phone-tips-modal"
-        button={{
-          id: uuidv4(),
-          title: 'PhoneValidation tips Modal',
-          onPress: () => setPhoneValidationTipsModalVisible(true),
-        }}
-        variant="secondary"
-      />
-      <PhoneValidationTipsModal
-        isVisible={phoneValidationTipsModalVisible}
-        dismissModal={() => setPhoneValidationTipsModalVisible(false)}
-        onGoBack={() =>
-          navigate('CheatcodesStackNavigator', { screen: 'CheatcodesNavigationIdentityCheck' })
-        }
-      />
 
       <LinkToCheatcodesScreen
         key="age-not-valid-error"

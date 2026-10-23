@@ -1,6 +1,6 @@
 import { phoneNumberSchema } from './phoneNumberSchema'
 
-jest.mock('features/identityCheck/pages/phoneValidation/helpers/findCountry', () => ({
+jest.mock('features/profile/helpers/phoneNumber/findCountry', () => ({
   findCountry: jest.fn().mockReturnValue(true),
 }))
 

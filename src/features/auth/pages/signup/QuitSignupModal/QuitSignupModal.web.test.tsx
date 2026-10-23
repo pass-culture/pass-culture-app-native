@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SignupStep } from 'features/auth/enums'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
@@ -16,7 +16,7 @@ describe('<QuitSignupModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        <QuitSignupModal signupStep={SignupStep.Birthday} resume={jest.fn()} visible />
+        <QuitSignupModal signupStep={PreValidationSignupStep.Birthday} resume={jest.fn()} visible />
       )
 
       const results = await checkAccessibilityFor(container)
