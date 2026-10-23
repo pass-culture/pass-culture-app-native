@@ -84,7 +84,6 @@ export const SetAddress = () => {
     if (!isError) return
     showErrorSnackBar(snackbarMessage)
     eventMonitoring.captureException(new IdentityCheckError(exception))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])
 
   const onChangeAddress = (value: string) => {

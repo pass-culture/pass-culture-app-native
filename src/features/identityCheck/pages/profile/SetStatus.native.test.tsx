@@ -9,6 +9,7 @@ import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import { statusActions } from 'features/identityCheck/pages/profile/store/statusStore'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { storage } from 'libs/storage'
@@ -17,6 +18,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 let mockStatus: ActivityIdEnum | null = null
+let mockUserActivityId: ActivityIdEnum | undefined
 
 const profile = {
   name: {
@@ -82,7 +84,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const mockRefetchUser = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+  useAuthContext: jest.fn(() => ({
+    refetchUser: mockRefetchUser,
+    user: mockUserActivityId ? { activityId: mockUserActivityId } : undefined,
+  })),
 }))
 
 const user = userEvent.setup()
@@ -91,6 +96,8 @@ jest.useFakeTimers()
 
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
+    mockUserActivityId = undefined
+    statusActions.resetStatus()
     setFeatureFlags()
     mockServer.postApi('/v1/subscription/profile', {})
   })
@@ -140,6 +147,40 @@ describe('<SetStatus/>', () => {
 
     expect(await storage.readObject('profile-status')).toMatchObject({
       state: { status: ActivityTypesSnap.activities[1].id },
+    })
+  })
+
+  it('should select the user activity when no status is stored', async () => {
+    mockUserActivityId = ActivityIdEnum.STUDENT
+    renderSetStatus()
+
+    expect(
+      await screen.findByRole('radio', { name: 'Statut - Étudiant - sélectionné' })
+    ).toBeChecked()
+  })
+
+  it('should select the stored status when the user has no activity', async () => {
+    statusActions.setStatus(ActivityIdEnum.HIGH_SCHOOL_STUDENT)
+    renderSetStatus()
+
+    expect(
+      await screen.findByRole('radio', { name: 'Statut - Lycéen - sélectionné' })
+    ).toBeChecked()
+  })
+
+  it('should preserve the selected status when reopening the form with an existing user activity', async () => {
+    mockUserActivityId = ActivityIdEnum.STUDENT
+    const { unmount } = renderSetStatus()
+
+    await user.press(screen.getByText('Lycéen'))
+    unmount()
+    renderSetStatus()
+
+    expect(
+      await screen.findByRole('radio', { name: 'Statut - Lycéen - sélectionné' })
+    ).toBeChecked()
+    expect(await storage.readObject('profile-status')).toMatchObject({
+      state: { status: ActivityIdEnum.HIGH_SCHOOL_STUDENT },
     })
   })
 })
