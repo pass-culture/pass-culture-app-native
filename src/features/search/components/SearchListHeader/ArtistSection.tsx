@@ -1,10 +1,13 @@
+import { useIsFocused } from '@react-navigation/native'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { Artist } from 'features/venue/types'
+import { asArtistId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -26,6 +29,7 @@ export const ArtistSection = ({
   searchId,
   withMargins = false,
 }: ArtistSectionProps) => {
+  const isFocused = useIsFocused()
   const onBeforeNavigate = () => {
     void analytics.logClickSeeAll({ type: 'artists', moduleName: playlistTitle, from: 'search' })
   }
@@ -61,12 +65,30 @@ export const ArtistSection = ({
         </SeeAllButtonContainer>
         <NumberOfItems nbItems={artists.length} />
       </HeaderContainer>
-      <AvatarList
-        data={artists}
-        avatarConfig={{ size: AVATAR_MEDIUM }}
-        onItemPress={handleOnArtistPlaylistItemPress}
-        withMargins={withMargins}
-      />
+      <ObservedPlaylist
+        onItemViewed={({ index: itemIndex, item }) => {
+          if (!isFocused || !searchId) return
+          void logViewItem({
+            origin: 'search',
+            playlistIndex: 0,
+            index: itemIndex,
+            type: 'artist',
+            id: asArtistId(item.id),
+            playlistId: 'searchResultsArtistPlaylist',
+            originId: asSearchId(searchId),
+          })
+        }}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <AvatarList
+            data={artists}
+            avatarConfig={{ size: AVATAR_MEDIUM }}
+            onItemPress={handleOnArtistPlaylistItemPress}
+            withMargins={withMargins}
+            listRef={listRef}
+            onViewableItemsChanged={handleViewableItemsChanged}
+          />
+        )}
+      </ObservedPlaylist>
     </View>
   )
 }

@@ -1,6 +1,5 @@
 import { useIsFocused } from '@react-navigation/native'
 import React, { FC } from 'react'
-import { ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -10,22 +9,28 @@ import { VenuePlaylist } from 'features/search/pages/SearchResults/v2/components
 import { hasActiveSearchFilters } from 'features/search/queries/helpers'
 import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
-import { FetchSearchResultsArgs, SearchListProps } from 'features/search/types'
+import { FetchSearchResultsArgs } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
+import { asSearchId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { useLocationMode } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 
 type Props = {
   withMargins: boolean
   searchFilters: FetchSearchResultsArgs
+  playlistIndex?: number
 }
-export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters }) => {
+export const VenuesPlaylistContainer: FC<Props> = ({
+  withMargins,
+  searchFilters,
+  playlistIndex = 0,
+}) => {
   const isFocused = useIsFocused()
-
+  const {
+    searchState: { searchId },
+  } = useSearch()
   const selectedLocationMode = useLocationMode()
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
-  const { searchState } = useSearch()
 
   const { data: venuesResponse } = useSearchVenuesQuery(searchFilters, {
     select: (venuesResponse) => selectSearchVenues(venuesResponse),
@@ -39,37 +44,23 @@ export const VenuesPlaylistContainer: FC<Props> = ({ withMargins, searchFilters 
     ? [removeGeolocFromVenue(venueNotOpenToPublic?.[0]), ...venues]
     : venues
 
-  const pageTracking = usePageTracking({
-    pageName: 'SearchResults',
-    pageLocation: 'searchresults',
-  })
-
-  // Handler for modules with the new system
-  const handleViewableItemsChanged: SearchListProps['onViewableVenuePlaylistItemsChanged'] = (
-    items,
-    moduleId,
-    itemType,
-    playlistIndex
-  ) => {
-    pageTracking.trackViewableItems({
-      moduleId,
-      itemType,
-      viewableItems: items,
-      searchId: searchState.searchId,
-      playlistIndex,
-    })
-  }
-
-  const handleVenuePlaylistViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-    if (!isFocused) return
-    handleViewableItemsChanged(items, 'searchResultsVenuePlaylist', 'venue', 0)
-  }
-
   if (!searchResultVenues.length || hasSelectedSearchFilters) return null
 
   return (
     <IOScrollView>
-      <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+      <ObservedPlaylist
+        onItemViewed={({ index, item }) => {
+          if (!isFocused || !searchId) return
+          void logViewItem({
+            origin: 'search',
+            playlistIndex,
+            index: index,
+            type: 'venue',
+            id: asVenueId(item.objectID),
+            playlistId: 'searchResultsVenuePlaylist',
+            originId: asSearchId(searchId),
+          })
+        }}>
         {({ listRef, handleViewableItemsChanged }) => (
           <StyledVenuePlaylist
             venuePlaylistTitle="Les lieux culturels"

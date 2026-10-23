@@ -1,10 +1,10 @@
 import { useIsFocused } from '@react-navigation/native'
-import React, { useCallback } from 'react'
-import { ViewToken } from 'react-native'
+import React from 'react'
 
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
+import { asOfferId, logViewItem, ThematicSearchOriginId } from 'libs/analytics/helpers/logViewItem'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -12,32 +12,18 @@ export type ThematicSearchPlaylistListProps = {
   playlists: ThematicSearchPlaylistData[]
   isLoading: boolean
   shouldDisplayVenuesPlaylist?: boolean
-  onViewableItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   searchId?: string
+  originId: ThematicSearchOriginId
 }
 
 export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProps> = ({
   playlists,
   isLoading: arePlaylistsLoading,
   shouldDisplayVenuesPlaylist,
-  onViewableItemsChanged,
   searchId,
+  originId,
 }) => {
   const isFocused = useIsFocused()
-
-  const handleThematicSearchPlaylistViewableItemsChanged = useCallback(
-    (playlistTitle: string, playlistIndex: number) =>
-      (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-        if (!isFocused) return
-        onViewableItemsChanged?.(items, playlistTitle, 'offer', playlistIndex)
-      },
-    [isFocused, onViewableItemsChanged]
-  )
 
   if (arePlaylistsLoading) {
     return <ThematicSearchSkeleton />
@@ -45,17 +31,25 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
 
   return (
     <ViewGap gap={6}>
-      {playlists?.map((playlist, index) => {
+      {playlists.map((playlist, index) => {
         if (playlist.offers.hits.length > 0) {
           // Calculate playlist if venues playlist is displayed
           const playlistIndex = (shouldDisplayVenuesPlaylist ? 1 : 0) + index
           return (
             <ObservedPlaylist
               key={playlist.title}
-              onViewableItemsChanged={handleThematicSearchPlaylistViewableItemsChanged(
-                playlist.title,
-                playlistIndex
-              )}>
+              onItemViewed={({ index: itemIndex, item }) => {
+                if (!isFocused || !searchId) return
+                void logViewItem({
+                  origin: 'search',
+                  playlistIndex,
+                  index: itemIndex,
+                  type: 'offer',
+                  id: asOfferId(item.objectID),
+                  playlistId: 'thematicSearchPlaylist',
+                  originId,
+                })
+              }}>
               {({ listRef, handleViewableItemsChanged }) => (
                 <ThematicSearchPlaylist
                   playlist={playlist}

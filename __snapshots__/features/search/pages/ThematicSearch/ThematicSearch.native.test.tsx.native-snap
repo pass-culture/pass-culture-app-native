@@ -1719,53 +1719,15 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         }
       >
         <View
-          onLayout={[Function]}
-          style={
-            {
-              "position": "relative",
-            }
-          }
+          fill={false}
+          style={{}}
+          testID="intersectionObserver"
         >
           <View
-            onChange={[Function]}
-            onLayout={[Function]}
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
-            }
+            fill={false}
+            style={{}}
             testID="intersectionObserver"
-            threshold={0}
-            triggerOnce={false}
-          />
-          <View
-            onLayout={[Function]}
-            style={
-              {
-                "position": "relative",
-              }
-            }
           >
-            <View
-              onChange={[Function]}
-              onLayout={[Function]}
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 50,
-                }
-              }
-              testID="intersectionObserver"
-              threshold={50}
-              triggerOnce={false}
-            />
             <View
               gap={4}
               noMarginBottom={true}

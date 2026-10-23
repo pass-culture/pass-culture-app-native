@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { View, ViewToken } from 'react-native'
+import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -28,12 +28,6 @@ interface Props {
   playlists: GtlPlaylistData[]
   headlineOfferData?: HeadlineOfferData | null
   arePlaylistsLoading: boolean
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   shouldDisplayVenueCalendar?: boolean
 }
 
@@ -44,7 +38,6 @@ export const VenueBody: FunctionComponent<Props> = ({
   playlists,
   headlineOfferData,
   arePlaylistsLoading,
-  onViewableItemsChanged,
   shouldDisplayVenueCalendar,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -105,7 +98,6 @@ export const VenueBody: FunctionComponent<Props> = ({
           currency={currency}
           euroToPacificFrancRate={euroToPacificFrancRate}
           arePlaylistsLoading={arePlaylistsLoading}
-          onViewableItemsChanged={onViewableItemsChanged}
         />
       </React.Fragment>
     ),

@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useId, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
-import { ViewToken } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -22,7 +21,6 @@ import { useLocationConfiguration } from 'libs/locationV2/location.store'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
@@ -61,36 +59,12 @@ export const SearchResults: FC = () => {
     offerVenues,
   } = useSearchResults()
 
-  const pageTracking = usePageTracking({
-    pageName: 'SearchResults',
-    pageLocation: 'searchresults',
-  })
-
   useEffect(() => {
     // searchId generation when search results is the app entry point (deeplinks generator)
     if (!searchState.searchId) {
       dispatch({ type: 'SET_SEARCH_ID', payload: searchIdGenerated })
     }
   }, [searchState.searchId, searchIdGenerated, dispatch])
-
-  // Handler for modules with the new system
-  const handleViewableItemsChanged = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        searchId: searchState.searchId,
-        playlistIndex,
-      })
-    },
-    [pageTracking, searchState.searchId]
-  )
 
   const shouldRefetchResults = Boolean(
     (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
@@ -165,7 +139,6 @@ export const SearchResults: FC = () => {
               userData={userData}
               venuesUserData={venuesUserData}
               offerVenues={offerVenues}
-              onViewableItemsChanged={handleViewableItemsChanged}
             />
           )}
           <SearchSuggestionsAnnouncer

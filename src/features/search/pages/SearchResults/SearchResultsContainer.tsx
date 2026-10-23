@@ -19,9 +19,8 @@ export const SearchResultsContainer: FC = () => {
   }
   useLayoutEffect(syncParamsRef, [params])
 
-  const enableNewSearchResultsPage = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_NEW_SEARCH_RESULTS_PAGE
-  )
+  const enableNewSearchResultsPage =
+    useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_SEARCH_RESULTS_PAGE) || true
 
   useFocusEffect(
     useCallback(() => {

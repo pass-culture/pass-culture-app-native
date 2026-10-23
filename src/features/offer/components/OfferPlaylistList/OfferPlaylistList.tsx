@@ -1,6 +1,5 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
-import { ViewToken } from 'react-native'
+import React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -12,6 +11,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -35,12 +35,6 @@ export type OfferPlaylistListProps = {
   apiRecoParamsOtherCategories?: RecommendationApiParams
   booksSameCategorySimilarOffers?: Offer[]
   apiRecoParamsBooksSameCategory?: RecommendationApiParams
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   seeAllButton: {
     navigateToVerticalPlaylist: (type: PlaylistType) => InternalNavigationProps['navigateTo']
     onBeforeNavigate: (type: PlaylistType) => void
@@ -63,7 +57,6 @@ export function OfferPlaylistList({
   apiRecoParamsOtherCategories,
   booksSameCategorySimilarOffers,
   apiRecoParamsBooksSameCategory,
-  onViewableItemsChanged,
   seeAllButton,
 }: Readonly<OfferPlaylistListProps>) {
   const theme = useTheme()
@@ -147,67 +140,72 @@ export function OfferPlaylistList({
     isArrayNotEmpty(booksSameCategorySimilarOffers) ||
     isArrayNotEmpty(otherCategoriesSimilarOffers)
 
-  const handleOfferPlaylistViewableItemsChanged = useCallback(
-    (playlistType: string, playlistIndex: number) =>
-      (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-        if (!isFocused) return
-        onViewableItemsChanged(items, playlistType, 'offer', playlistIndex)
-      },
-    [isFocused, onViewableItemsChanged]
-  )
-
   return (
     <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
-      {similarOffersPlaylist.map((playlist, index) => {
-        if (!isArrayNotEmpty(playlist.offers)) return null
+      {similarOffersPlaylist
+        .filter((playlist) => isArrayNotEmpty(playlist.offers))
+        .map((playlist, playlistIndex) => {
+          const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
+          const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
+          const hidePlaylistSeeAll = seeAllButton.hidePlaylistSeeAll
+          const hideSearchSeeAll = seeAllButton.hideSearchSeeAll
 
-        const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
-        const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
-        const hidePlaylistSeeAll = seeAllButton.hidePlaylistSeeAll
-        const hideSearchSeeAll = seeAllButton.hideSearchSeeAll
-
-        return (
-          <ObservedPlaylist
-            key={playlist.type}
-            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}
-            onIntersectionChange={playlist.handleChangePlaylistDisplay}>
-            {({ listRef }) => (
-              <StyledPassPlaylist
-                data={playlist.offers ?? []}
-                itemWidth={itemWidth}
-                itemHeight={itemHeight}
-                renderItem={OfferPlaylistItem({
-                  offer,
-                  labelMapping,
-                  categoryMapping,
-                  currency,
-                  euroToPacificFrancRate,
-                  navigationMethod: 'push',
-                  apiRecoParams: playlist.apiRecoParams,
-                  priceDisplay: (item: Offer) =>
-                    getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
-                  theme,
-                  enableSceneClubTag,
-                })}
-                title={playlist.title}
-                playlistType={playlist.type}
-                onEndReached={() =>
-                  trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)
+          return (
+            <ObservedPlaylist
+              key={playlist.type}
+              onItemViewed={({ index, item }) => {
+                if (isFocused) {
+                  void logViewItem({
+                    origin: 'offer',
+                    playlistIndex,
+                    index,
+                    type: 'offer',
+                    id: asOfferId(item.objectID),
+                    playlistId: playlist.type,
+                    originId: asOfferId(offer.id.toString()),
+                    callId: playlist.apiRecoParams?.callId ?? undefined,
+                  })
                 }
-                playlistRef={listRef}
-                FlatListComponent={FlatList}
-                keyExtractor={keyExtractor}
-                seeAllButton={{
-                  navigateToVerticalPlaylist,
-                  onBeforeNavigate,
-                  hidePlaylistSeeAll,
-                  hideSearchSeeAll,
-                }}
-              />
-            )}
-          </ObservedPlaylist>
-        )
-      })}
+              }}
+              onIntersectionChange={playlist.handleChangePlaylistDisplay}>
+              {({ listRef, handleViewableItemsChanged }) => (
+                <StyledPassPlaylist
+                  data={playlist.offers ?? []}
+                  itemWidth={itemWidth}
+                  itemHeight={itemHeight}
+                  renderItem={OfferPlaylistItem({
+                    offer,
+                    labelMapping,
+                    categoryMapping,
+                    currency,
+                    euroToPacificFrancRate,
+                    navigationMethod: 'push',
+                    apiRecoParams: playlist.apiRecoParams,
+                    priceDisplay: (item: Offer) =>
+                      getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+                    theme,
+                    enableSceneClubTag,
+                  })}
+                  title={playlist.title}
+                  playlistType={playlist.type}
+                  onEndReached={() =>
+                    trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)
+                  }
+                  playlistRef={listRef}
+                  onViewableItemsChanged={handleViewableItemsChanged}
+                  FlatListComponent={FlatList}
+                  keyExtractor={keyExtractor}
+                  seeAllButton={{
+                    navigateToVerticalPlaylist,
+                    onBeforeNavigate,
+                    hidePlaylistSeeAll,
+                    hideSearchSeeAll,
+                  }}
+                />
+              )}
+            </ObservedPlaylist>
+          )
+        })}
       {isLandscape ? <PlaceholderBehindButton /> : null}
     </SectionWithDivider>
   )
