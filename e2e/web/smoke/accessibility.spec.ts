@@ -3,6 +3,8 @@ import { expect, test } from '../fixtures'
 const pages = [
   { name: 'home', path: '/accueil' },
   { name: 'search', path: '/recherche/accueil' },
+  { name: 'thematic search', path: '/recherche/thematique?offerCategories=%5B%22CINEMA%22%5D' },
+  { name: 'bookings', path: '/reservations' },
   { name: 'favorites', path: '/favoris' },
   { name: 'profile', path: '/profil' },
   { name: 'login', path: '/connexion' },
