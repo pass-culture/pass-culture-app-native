@@ -135,7 +135,7 @@ tags:
 Les flows réutilisables sont organisés par catégorie dans `tests/common/` :
 
 - **`lifecycle/`** — démarrage (`LaunchApp`), arrêt (`StopApp`), reset keychain iOS (`ClearIOSKeychain`)
-- **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`
+- **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`. Sur iOS, les deeplinks utilisent le schéma `passculture-<env>:///` : `clearState` réinstalle l'app et les universal links (`https://`) s'ouvrent alors aléatoirement dans Safari. La popup système « Ouvrir dans … ? » affichée au premier lien après installation est validée dans les flows `deeplinks/`
 - **`navigation/`** — interactions de navigation récurrentes (tab bar, retour)
 - **`cookies/`** — gestion du bandeau cookies
 - **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateOffer.js`, `deactivateOffer.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`, voir sections dédiées)

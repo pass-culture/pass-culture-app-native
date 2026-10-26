@@ -13,6 +13,8 @@ appId: ${MAESTRO_APP_ID}
     commands:
     - openLink:
         link: ${output.links.staging.ios.home}
-        autoVerify: true
+    - tapOn:
+        text: 'Ouvrir'
+        optional: true
 - runFlow: ../cookies/AcceptCookies.yml
 - assertVisible: "Bienvenue\_!"

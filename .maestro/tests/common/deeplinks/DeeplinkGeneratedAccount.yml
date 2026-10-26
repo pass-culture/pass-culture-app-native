@@ -13,7 +13,9 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - openLink:
           link: ${output.deeplinkIos}
-          autoVerify: true
+      - tapOn:
+          text: 'Ouvrir'
+          optional: true
 - evalScript: '${console.log(output.userEmail)}'
 - waitForAnimationToEnd
 - runFlow: ../cookies/AcceptCookiesOptional.yml

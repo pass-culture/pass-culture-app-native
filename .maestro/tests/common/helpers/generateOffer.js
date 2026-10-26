@@ -39,9 +39,10 @@ const offerData = json(response.body)
 output.offerId = offerData.id
 output.offerName = offerData.name
 
-const offerUrl = `https://app.staging.passculture.team/offre/${offerData.id}`
+const offerPath = `offre/${offerData.id}`
+const offerUrl = `https://app.staging.passculture.team/${offerPath}`
 
-output.offerDeeplinkIos = offerUrl
+output.offerDeeplinkIos = `passculture-staging:///${offerPath}`
 output.offerDeeplinkAndroid = `https://passcultureappstaging.page.link/?link=${encodeURIComponent(offerUrl)}&apn=app.passculture.staging&isi=1557887412&ibi=app.passculture.staging&efr=1`
 
 const screeningDay = new Date()

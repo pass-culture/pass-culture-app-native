@@ -35,7 +35,6 @@ onFlowComplete:
     commands:
       - openLink:
           link: ${output.offerDeeplinkIos}
-          autoVerify: true
 - waitForAnimationToEnd
 
 - assertVisible: '.*${output.offerName}.*'

@@ -13,7 +13,9 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - openLink:
           link: ${output.links.staging.ios.profile}
-          autoVerify: true
+      - tapOn:
+          text: 'Ouvrir'
+          optional: true
 - waitForAnimationToEnd
 - runFlow: ../cookies/AcceptCookies.yml
 - assertVisible: 'Mon profil'
