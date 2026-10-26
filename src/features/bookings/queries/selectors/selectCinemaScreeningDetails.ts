@@ -48,7 +48,7 @@ const ACCESSIBILITY_DETAILS: Partial<Record<string, CinemaScreeningDetailContent
   },
 }
 
-const ACCESSIBILITY_CATEGORY_ORDER: readonly CinemaScreeningAccessibilityCategory[] = [
+const ACCESSIBILITY_CATEGORY_ORDER: CinemaScreeningAccessibilityCategory[] = [
   'visual',
   'audio',
   'mental',

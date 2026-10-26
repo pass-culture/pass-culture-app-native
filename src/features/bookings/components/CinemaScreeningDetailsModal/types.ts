@@ -18,6 +18,6 @@ export type CinemaScreeningDetail = CinemaScreeningDetailContent &
   )
 
 export type CinemaScreeningDetailsModalProps = {
-  details: readonly CinemaScreeningDetail[]
+  details: CinemaScreeningDetail[]
   onClose: VoidFunction
 }

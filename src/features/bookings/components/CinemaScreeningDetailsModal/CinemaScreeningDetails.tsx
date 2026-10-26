@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CINEMA_SCREENING_ACCESSIBILITY_ENTRIES } from 'features/offer/components/CinemaScreeningCard/constants'
 import { Separator } from 'ui/components/Separator'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
@@ -10,19 +11,19 @@ import { Typo } from 'ui/theme'
 import { CinemaScreeningDetail } from './types'
 
 type Props = {
-  details: readonly CinemaScreeningDetail[]
+  details: CinemaScreeningDetail[]
 }
 
 export const CinemaScreeningDetails: FunctionComponent<Props> = ({ details }) => {
   const { designSystem } = useTheme()
 
   return (
-    <DetailsContainer>
+    <DetailsContainer gap={4}>
       {details.map((detail, index) => (
-        <DetailGroup key={`${detail.category}-${detail.label}-${index}`}>
+        <DetailGroup key={`${detail.category}-${detail.label}-${index}`} gap={4}>
           {index > 0 ? <Separator.Horizontal color={designSystem.color.border.subtle} /> : null}
 
-          <DetailContainer testID={`cinema-screening-detail-${detail.category}-${index}`}>
+          <DetailContainer testID={`cinema-screening-detail-${detail.category}-${index}`} gap={1}>
             {detail.type === 'tag' ? (
               <Tag
                 label={detail.label}
@@ -49,34 +50,30 @@ const AccessibilityDetailTitle = ({
   const Icon = CINEMA_SCREENING_ACCESSIBILITY_ENTRIES.find(({ key }) => key === category)?.Icon
 
   return (
-    <AccessibilityTitle>
+    <AccessibilityTitle gap={1}>
       {Icon ? <Icon size={24} color={designSystem.color.icon.brandPrimary} /> : null}
       <AccessibilityLabel>{label}</AccessibilityLabel>
     </AccessibilityTitle>
   )
 }
 
-const DetailsContainer = styled.View(({ theme }) => ({
+const DetailsContainer = styled(ViewGap)({
   width: '100%',
-  rowGap: theme.designSystem.size.spacing.l,
-}))
+})
 
-const DetailGroup = styled.View(({ theme }) => ({
+const DetailGroup = styled(ViewGap)({
   width: '100%',
-  rowGap: theme.designSystem.size.spacing.l,
-}))
+})
 
-const DetailContainer = styled.View(({ theme }) => ({
+const DetailContainer = styled(ViewGap)({
   width: '100%',
-  rowGap: theme.designSystem.size.spacing.xs,
-}))
+})
 
-const AccessibilityTitle = styled.View(({ theme }) => ({
+const AccessibilityTitle = styled(ViewGap)({
   width: '100%',
   flexDirection: 'row',
   alignItems: 'center',
-  columnGap: theme.designSystem.size.spacing.xs,
-}))
+})
 
 const AccessibilityLabel = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.default,
