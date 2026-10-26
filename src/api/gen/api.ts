@@ -3077,6 +3077,105 @@ export interface OfferOffererResponse {
 }
 /**
  * @export
+ * @interface OfferPagePlaylist
+   */
+export interface OfferPagePlaylist {
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylist
+   */
+  analyticsPlaylistType: string
+  /**
+   * @type {OfferPagePlaylistParams}
+   * @memberof OfferPagePlaylist
+   */
+  params: OfferPagePlaylistParams
+  /**
+   * @type {Array<string>}
+   * @memberof OfferPagePlaylist
+   */
+  results: Array<string>
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylist
+   */
+  title: string
+}
+/**
+ * @export
+ * @interface OfferPagePlaylistParams
+ */
+export interface OfferPagePlaylistParams {
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  abTest: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  callId: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  modelOrigin: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  recoOrigin: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  uniqueCallId: string
+}
+/**
+ * @export
+ * @interface OfferPagePlaylistQuery
+ */
+export interface OfferPagePlaylistQuery {
+  /**
+   * @type {number | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {string | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  userId?: string | null
+}
+/**
+ * @export
+ * @interface OfferPagePlaylistResponse
+ */
+export interface OfferPagePlaylistResponse {
+  /**
+   * @type {boolean}
+   * @memberof OfferPagePlaylistResponse
+   */
+  fromCache: boolean
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistResponse
+   */
+  offerId: string
+  /**
+   * @type {Array<OfferPagePlaylist>}
+   * @memberof OfferPagePlaylistResponse
+   */
+  playlists: Array<OfferPagePlaylist>
+}
+/**
+ * @export
  * @interface OfferPreviewResponse
  */
 export interface OfferPreviewResponse {
@@ -6464,6 +6563,54 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary offer_page_playlists <GET>
+     * @param {number} offer_id
+     * @param {string} [userId] 
+     * @param {number} [longitude]
+     * @param {number} [latitude] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV1RecommendationOfferPagePlaylistsofferId.'
+        )
+      }
+      let pathname = `/native/v1/recommendation/offer_page_playlists/{offer_id}`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
+      )
+      const queryParameters: any = {};
+
+        if (userId != null) {
+            queryParameters['userId'] = userId;
+        }
+
+        if (longitude != null) {
+            queryParameters['longitude'] = longitude;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_offer_pro_advices <GET>
      * @param {number} offer_id
      * @param {number} [maxContentLength]
@@ -8683,6 +8830,21 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
+     * @summary offer_page_playlists <GET>
+     * @param {number} offer_id
+     * @param {string} [userId] 
+     * @param {number} [longitude]
+     * @param {number} [latitude]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options?: any): Promise<OfferPagePlaylistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id, userId, longitude, latitude, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response,  localVarFetchArgs.options)
+    },
+    /**
+     *
      * @summary similar_offers <GET>
      * @param {number} offer_id
      * @param {number} [longitude]
@@ -9793,6 +9955,21 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1ReactionAvailable(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ReactionAvailable(options)
+  }
+    /**
+    *
+    * @summary offer_page_playlists <GET>
+    * @param {number} offer_id
+    * @param {string} [userId] 
+    * @param {number} [longitude]
+    * @param {number} [latitude]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id, userId, longitude, latitude, options)
   }
   /**
     *
