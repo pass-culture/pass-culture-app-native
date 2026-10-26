@@ -40,10 +40,9 @@ output.offerId = offerData.id
 output.offerName = offerData.name
 
 const offerPath = `offre/${offerData.id}`
-const offerUrl = `https://app.staging.passculture.team/${offerPath}`
 
 output.offerDeeplinkIos = `passculture-staging:///${offerPath}`
-output.offerDeeplinkAndroid = `https://passcultureappstaging.page.link/?link=${encodeURIComponent(offerUrl)}&apn=app.passculture.staging&isi=1557887412&ibi=app.passculture.staging&efr=1`
+output.offerDeeplinkAndroid = `passculture-staging:///${offerPath}`
 
 const screeningDay = new Date()
 screeningDay.setDate(screeningDay.getDate() + 3)

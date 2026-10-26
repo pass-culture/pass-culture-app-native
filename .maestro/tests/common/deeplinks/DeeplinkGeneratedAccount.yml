@@ -6,7 +6,6 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - openLink:
           link: ${output.deeplinkAndroid}
-          autoVerify: true
 - runFlow:
     when:
       platform: iOS

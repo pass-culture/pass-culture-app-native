@@ -28,7 +28,6 @@ onFlowComplete:
     commands:
       - openLink:
           link: ${output.offerDeeplinkAndroid}
-          autoVerify: true
 - runFlow:
     when:
       platform: iOS
