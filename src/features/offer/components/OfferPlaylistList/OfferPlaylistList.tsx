@@ -157,7 +157,7 @@ export function OfferPlaylistList({
   )
 
   return (
-    <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
+    <StyledSectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
       {similarOffersPlaylist.map((playlist, index) => {
         if (!isArrayNotEmpty(playlist.offers)) return null
 
@@ -209,7 +209,7 @@ export function OfferPlaylistList({
         )
       })}
       {isLandscape ? <PlaceholderBehindButton /> : null}
-    </SectionWithDivider>
+    </StyledSectionWithDivider>
   )
 }
 
@@ -220,3 +220,7 @@ const PlaceholderBehindButton = styled.View(({ theme }) => ({
 const StyledPassPlaylist = styled(PassPlaylist)({
   paddingBottom: 0,
 })
+
+const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
