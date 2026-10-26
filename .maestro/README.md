@@ -157,10 +157,10 @@ onFlowStart:
 - tapOn: 'Texte visible à l'écran'
 ```
 
-Pour un test qui démarre par un deeplink, pas besoin de lancer l'app : un `clearState` suffit avant le flow `deeplinks/`, qui ouvre l'app directement sur le bon écran.
+Maestro Cloud exige que chaque flow commence par un `launchApp` :
 
 ```yaml
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkToProfile.yml
 ```
 

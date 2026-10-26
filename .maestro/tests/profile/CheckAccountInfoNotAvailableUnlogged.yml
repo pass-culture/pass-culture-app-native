@@ -4,7 +4,7 @@ tags:
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkToProfile.yml
 
 - assertNotVisible:

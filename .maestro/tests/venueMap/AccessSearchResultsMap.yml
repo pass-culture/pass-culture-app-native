@@ -5,7 +5,7 @@ tags:
 onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkToHome.yml
 
 - runFlow: ../common/navigation/GoToSearchFromTabBar.yml

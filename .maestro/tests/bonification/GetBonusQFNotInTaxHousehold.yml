@@ -15,7 +15,7 @@ onFlowStart:
         user_id: ${output.userId}
         mock_type: 'NOT_IN_TAX_HOUSEHOLD'
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - assertVisible: 'Vérifier maintenant'

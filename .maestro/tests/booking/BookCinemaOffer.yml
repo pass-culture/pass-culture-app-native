@@ -18,7 +18,7 @@ onFlowStart:
 onFlowComplete:
   - runScript: ../common/helpers/deactivateOffer.js
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - openLink: ${output.offerDeeplink}

@@ -10,7 +10,7 @@ onFlowStart:
         step: 'IDENTITY_CHECK'
         age: 18
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - assertVisible:

@@ -15,7 +15,7 @@ onFlowStart:
         user_id: ${output.userId}
         mock_type: 'QUOTIENT_FAMILIAL_TOO_HIGH'
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - assertVisible: 'Vérifier maintenant'

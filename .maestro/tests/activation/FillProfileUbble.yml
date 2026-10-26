@@ -10,7 +10,7 @@ onFlowStart:
         step: 'EMAIL_VALIDATION'
         age: 18
 ---
-- clearState
+- runFlow: ../common/lifecycle/LaunchApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - runFlow:
