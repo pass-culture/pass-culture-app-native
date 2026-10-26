@@ -1,6 +1,7 @@
 import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
+import { BookingQuantity } from 'features/bookOffer/helpers/bookingQuantity'
 import { UserProfile } from 'features/share/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -8,7 +9,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 type Props = {
   offer?: OfferResponse
   selectedStock: OfferStockResponse
-  quantity: 1 | 2
+  quantity: BookingQuantity
   user?: UserProfile
   isUserUnderage: boolean
   isCguChecked: boolean
