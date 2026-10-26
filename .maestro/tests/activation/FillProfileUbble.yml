@@ -29,8 +29,4 @@ onFlowStart:
 
 - tapOn: 'J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées'
 
-- tapOn: 'Vérifier plus tard'
-
-- tapOn: 'Quitter'
-
 - runFlow: ../common/lifecycle/StopApp.yml
