@@ -11,7 +11,7 @@
   "build": 10414000,
   "private": true,
   "engines": {
-    "node": ">=25.9"
+    "node": "^24.22.1"
   },
   "homepage": ".",
   "scripts": {
