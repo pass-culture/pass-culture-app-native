@@ -89,7 +89,7 @@ export const bookingStore = createStore({
     selectSteps: () => (state) => state.steps,
     selectCurrentStep: () => (state) => state.currentStep,
     selectCanGoBack: () => (state) =>
-      state.currentStep ? state.steps.indexOf(state.currentStep) > 0 : false,
+      !!state.currentStep && state.steps.slice(1).includes(state.currentStep),
   },
 })
 
