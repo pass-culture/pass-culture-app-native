@@ -49,4 +49,11 @@ describe('<Tag />', () => {
 
     expect(screen.getByTestId('tagWrapper')).toHaveStyle({ backgroundColor: expectedColor })
   })
+
+  it('should allow label to wrap when multiline', () => {
+    render(<Tag label="A long tag label" isMultiline />)
+
+    expect(screen.getByTestId('tagWrapper')).toHaveStyle({ maxWidth: '100%' })
+    expect(screen.getByText('A long tag label')).toHaveStyle({ flexShrink: 1 })
+  })
 })

@@ -17,6 +17,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   label,
   variant = TagVariant.DEFAULT,
   Icon,
+  isMultiline = false,
   ...props
 }) => {
   const { fontScale } = useWindowDimensions()
@@ -32,26 +33,30 @@ export const Tag: FunctionComponent<TagProps> = ({
     theme,
   })
 
-  const isZoomed = fontScale > 1
+  const shouldWrap = fontScale > 1 || isMultiline
 
   return (
-    <Wrapper backgroundColor={backgroundColor} testID="tagWrapper" isZoomed={isZoomed} {...props}>
+    <Wrapper
+      backgroundColor={backgroundColor}
+      testID="tagWrapper"
+      shouldWrap={shouldWrap}
+      {...props}>
       {FinalIcon ? (
         <IconContainer>{renderTagIcon(iconColor, iconSize, FinalIcon)}</IconContainer>
       ) : null}
-      <LabelText color={labelColor} isZoomed={isZoomed}>
+      <LabelText color={labelColor} shouldWrap={shouldWrap}>
         {label}
       </LabelText>
     </Wrapper>
   )
 }
 
-const Wrapper = styled.View<{ backgroundColor: string; isZoomed: boolean }>(
-  ({ theme, backgroundColor, isZoomed }) => ({
+const Wrapper = styled.View<{ backgroundColor: string; shouldWrap: boolean }>(
+  ({ theme, backgroundColor, shouldWrap }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'flex-start',
-    maxWidth: isZoomed ? '100%' : undefined,
+    maxWidth: shouldWrap ? '100%' : undefined,
     borderRadius: theme.designSystem.size.borderRadius.s,
     backgroundColor,
     paddingVertical: theme.designSystem.size.spacing.xxs,
@@ -59,9 +64,12 @@ const Wrapper = styled.View<{ backgroundColor: string; isZoomed: boolean }>(
   })
 )
 
-const LabelText = styled(Typo.BodyAccentXs)<{ isZoomed: boolean }>(({ isZoomed }) => ({
-  flexShrink: isZoomed ? 1 : undefined,
-  ...(Platform.OS === 'web' && { textWrap: 'nowrap' }),
+const LabelText = styled(Typo.BodyAccentXs)<{ shouldWrap: boolean }>(({ shouldWrap }) => ({
+  flexShrink: shouldWrap ? 1 : undefined,
+  ...(Platform.OS === 'web' && {
+    textWrap: shouldWrap ? 'wrap' : 'nowrap',
+    overflowWrap: shouldWrap ? 'anywhere' : undefined,
+  }),
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
