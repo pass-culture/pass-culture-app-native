@@ -1,20 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - runFlow:
-    when:
-      platform: Android
-    commands:
-      - openLink:
-          link: ${output.links.staging.android.favorites}
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - openLink:
-          link: ${output.links.staging.ios.favorites}
-      - tapOn:
-          text: 'Ouvrir'
-          optional: true
+    file: OpenDeeplink.yml
+    env:
+      LINK: ${output.links.staging.favorites}
 - waitForAnimationToEnd
 - runFlow: ../cookies/AcceptCookies.yml
 - assertVisible: '.*favoris.*'

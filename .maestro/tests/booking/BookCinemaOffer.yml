@@ -18,22 +18,10 @@ onFlowStart:
 onFlowComplete:
   - runScript: ../common/helpers/deactivateOffer.js
 ---
-- runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
+- clearState
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
-- runFlow:
-    when:
-      platform: Android
-    commands:
-      - openLink:
-          link: ${output.offerDeeplinkAndroid}
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - openLink:
-          link: ${output.offerDeeplinkIos}
+- openLink: ${output.offerDeeplink}
 - waitForAnimationToEnd
 
 - assertVisible: '.*${output.offerName}.*'

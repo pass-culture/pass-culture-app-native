@@ -10,8 +10,7 @@ onFlowStart:
         step: 'BENEFICIARY'
         age: 18
 ---
-- runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
+- clearState
 - runFlow: ../common/deeplinks/DeeplinkToHome.yml
 
 - runFlow: ../common/navigation/GoToSearchFromTabBar.yml

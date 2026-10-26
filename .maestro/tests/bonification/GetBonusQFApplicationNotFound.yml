@@ -15,8 +15,7 @@ onFlowStart:
         user_id: ${output.userId}
         mock_type: 'APPLICATION_NOT_FOUND'
 ---
-- runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
+- clearState
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - assertVisible: 'Vérifier maintenant'
