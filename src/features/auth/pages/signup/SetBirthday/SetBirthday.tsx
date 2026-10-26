@@ -109,6 +109,29 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   const accessibilityLabel = accessibilityLabelForNextStep + (errorMessage ?? '')
 
+  const handleOnChange = ({
+    selectedDate,
+    currentBirthdate,
+    onChange,
+  }: {
+    selectedDate?: Date
+    currentBirthdate: Date
+    onChange: (date: Date | undefined) => void
+  }) => {
+    onChange(selectedDate)
+    if (
+      !selectedDate ||
+      formatDateToISOStringWithoutTime(selectedDate) ===
+        formatDateToISOStringWithoutTime(currentBirthdate)
+    ) {
+      return
+    }
+    const age = dateDiffInFullYears(selectedDate, new Date())
+    if (age < 15) {
+      void analytics.logSignUpTooYoung(age)
+    }
+  }
+
   return (
     <SetContainer>
       <Form.MaxWidth>
@@ -135,18 +158,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
               <DateInput
                 label={titleId}
                 onChange={(selectedDate) => {
-                  onChange(selectedDate)
-                  if (
-                    !selectedDate ||
-                    formatDateToISOStringWithoutTime(selectedDate) ===
-                      formatDateToISOStringWithoutTime(currentBirthdate)
-                  ) {
-                    return
-                  }
-                  const age = dateDiffInFullYears(selectedDate, new Date())
-                  if (age < 15) {
-                    void analytics.logSignUpTooYoung(age)
-                  }
+                  handleOnChange({ selectedDate, currentBirthdate, onChange })
                 }}
                 date={currentBirthdate}
                 errorMessage={displayErrorMessage(currentBirthdate)}

@@ -29,7 +29,7 @@ describe('<SetBirthday />', () => {
   })
 
   describe('underage analytics', () => {
-    it('should not log logSignUpTooYoung when selecting a birthdate of under 15', async () => {
+    it('should log logSignUpTooYoung when selecting a birthdate of under 15', async () => {
       render(<SetBirthday {...props} />, { theme: { isTouch: false } })
       await screen.findByText('Continuer')
 
