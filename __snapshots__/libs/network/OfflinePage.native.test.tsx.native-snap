@@ -106,7 +106,7 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
       >
         <View
           backgroundColor="#f1f1f4"
-          isZoomed={true}
+          shouldWrap={true}
           style={
             {
               "alignItems": "center",
@@ -145,7 +145,7 @@ exports[`<OfflinePage /> should match snapshot with button 1`] = `
           <Text
             accessibilityLevel="p"
             accessibilityRole="text"
-            isZoomed={true}
+            shouldWrap={true}
             style={
               {
                 "color": "#161617",

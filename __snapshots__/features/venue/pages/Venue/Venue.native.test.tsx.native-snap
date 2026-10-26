@@ -145,7 +145,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 <View
                   accessibilityRole="none"
                   backgroundColor="#f1f1f4"
-                  isZoomed={true}
+                  shouldWrap={true}
                   style={
                     {
                       "alignItems": "center",
@@ -166,7 +166,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   <Text
                     accessibilityLevel="p"
                     accessibilityRole="text"
-                    isZoomed={true}
+                    shouldWrap={true}
                     style={
                       {
                         "color": "#161617",
@@ -3525,7 +3525,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 <View
                   accessibilityRole="none"
                   backgroundColor="#f1f1f4"
-                  isZoomed={true}
+                  shouldWrap={true}
                   style={
                     {
                       "alignItems": "center",
@@ -3546,7 +3546,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   <Text
                     accessibilityLevel="p"
                     accessibilityRole="text"
-                    isZoomed={true}
+                    shouldWrap={true}
                     style={
                       {
                         "color": "#161617",
@@ -6905,7 +6905,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 <View
                   accessibilityRole="none"
                   backgroundColor="#f1f1f4"
-                  isZoomed={true}
+                  shouldWrap={true}
                   style={
                     {
                       "alignItems": "center",
@@ -6926,7 +6926,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   <Text
                     accessibilityLevel="p"
                     accessibilityRole="text"
-                    isZoomed={true}
+                    shouldWrap={true}
                     style={
                       {
                         "color": "#161617",

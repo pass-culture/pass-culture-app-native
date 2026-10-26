@@ -418,7 +418,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       >
                         <View
                           backgroundColor="#b9ecd0"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "alignItems": "center",
@@ -439,7 +439,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           <Text
                             accessibilityLevel="p"
                             accessibilityRole="text"
-                            isZoomed={true}
+                            shouldWrap={true}
                             style={
                               {
                                 "color": "#161617",
@@ -641,7 +641,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       >
                         <View
                           backgroundColor="#fbebb2"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "alignItems": "center",
@@ -662,7 +662,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           <Text
                             accessibilityLevel="p"
                             accessibilityRole="text"
-                            isZoomed={true}
+                            shouldWrap={true}
                             style={
                               {
                                 "color": "#161617",
@@ -1421,7 +1421,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       >
                         <View
                           backgroundColor="#f1f1f4"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "alignItems": "center",
@@ -1442,7 +1442,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           <Text
                             accessibilityLevel="p"
                             accessibilityRole="text"
-                            isZoomed={true}
+                            shouldWrap={true}
                             style={
                               {
                                 "color": "#161617",
@@ -1642,7 +1642,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       >
                         <View
                           backgroundColor="#b9ecd0"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "alignItems": "center",
@@ -1663,7 +1663,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           <Text
                             accessibilityLevel="p"
                             accessibilityRole="text"
-                            isZoomed={true}
+                            shouldWrap={true}
                             style={
                               {
                                 "color": "#161617",
