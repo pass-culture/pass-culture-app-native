@@ -1,7 +1,16 @@
-import { OfferResponse } from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
-export const convertOfferDatesToTimezone = (offer: OfferResponse): OfferResponse => {
+type OfferWithDatedStocks = {
+  address?: { timezone: string } | null
+  venue: { timezone: string }
+  stocks: Array<{
+    beginningDatetime?: string | null
+    bookingLimitDatetime?: string | null
+    cancellationLimitDatetime?: string | null
+  }>
+}
+
+export const convertOfferDatesToTimezone = <T extends OfferWithDatedStocks>(offer: T): T => {
   const timezone = offer.address?.timezone ?? offer.venue.timezone
 
   return {
@@ -27,5 +36,5 @@ export const convertOfferDatesToTimezone = (offer: OfferResponse): OfferResponse
           }).toISOString()
         : null,
     })),
-  }
+  } as T
 }

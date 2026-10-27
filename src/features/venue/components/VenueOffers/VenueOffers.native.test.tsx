@@ -8,6 +8,8 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { initialSearchState } from 'features/search/context/reducer'
+import { SpecialEventVenueMovies } from 'features/venue/components/VenueOffers/SpecialEventVenueMovies'
+import { VenueMoviesV2 } from 'features/venue/components/VenueOffers/VenueMoviesV2'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersArtistsResponseSnap } from 'features/venue/fixtures/venueOffersArtistsResponseSnap'
@@ -18,6 +20,7 @@ import {
 import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -65,6 +68,14 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('features/venue/components/VenueOffers/SpecialEventVenueMovies', () => ({
+  SpecialEventVenueMovies: jest.fn(() => null),
+}))
+
+jest.mock('features/venue/components/VenueOffers/VenueMoviesV2', () => ({
+  VenueMoviesV2: jest.fn(() => null),
+}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -170,6 +181,26 @@ describe('<VenueOffers />', () => {
       })
 
       expect(await screen.findByText('Les films à l’affiche')).toBeOnTheScreen()
+    })
+
+    it('should use special event venue movies when special event screenings are enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+      renderVenueOffers({ venueOffers: venueMoviesOffersMock })
+
+      expect(SpecialEventVenueMovies).toHaveBeenCalledTimes(1)
+    })
+
+    it('should keep cinema V2 when both cinema flags are enabled', () => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS,
+        RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT,
+      ])
+
+      renderVenueOffers({ venueOffers: venueMoviesOffersMock })
+
+      expect(SpecialEventVenueMovies).not.toHaveBeenCalled()
+      expect(VenueMoviesV2).toHaveBeenCalledTimes(1)
     })
   })
 
