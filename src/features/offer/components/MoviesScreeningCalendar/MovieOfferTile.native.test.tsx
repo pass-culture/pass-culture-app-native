@@ -54,16 +54,25 @@ const VENUE_OFFERS_MOCK = { hits: [VENUE_OFFERS_HIT], nbHits: 1 }
 const MOCK_MOVIE_OFFER = {
   isUpcoming: false,
   nextDate: new Date('2025-02-07T20:30:10Z'),
-  offer: mockBuilder.offerResponseV2({
-    id: 1,
+  offer: {
+    ...mockBuilder.offerResponseV2({ id: 1 }),
     stocks: [
-      mockBuilder.offerStockResponse({
-        beginningDatetime: MOCK_TIMESTAMP,
-        features: ['VO'],
-        price: 570,
-      }),
+      {
+        ...mockBuilder.offerStockResponse({
+          beginningDatetime: MOCK_TIMESTAMP,
+          features: [],
+          price: 570,
+        }),
+        screeningFeatures: {
+          accessibility: { audio: [], mental: [], motor: [], visual: [] },
+          audio: null,
+          language: 'VO',
+          specialEventType: null,
+          video: null,
+        },
+      },
     ],
-  }),
+  },
 }
 
 const mockSelectedDate = new Date(MOCK_TIMESTAMP)

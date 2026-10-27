@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { DayMovieScreenings } from 'api/gen'
+import { DayMovieScreeningsV2 } from 'api/gen'
 import {
   useDisplayCalendarV2,
   useMovieCalendarV2,
@@ -10,7 +10,7 @@ import {
 import { MovieOfferTileV2 } from 'features/offer/components/MoviesScreeningCalendarV2/MovieOfferTileV2'
 
 type Props = {
-  calendar: DayMovieScreenings[]
+  calendar: DayMovieScreeningsV2[]
   venueId: number
 }
 

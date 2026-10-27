@@ -90,7 +90,6 @@ export const OfferCineBlockV2: FC<Props> = ({
         initialDates={calendarDates}
         containerStyle={getCalendarStyle(theme)}>
         <OfferCineContentV2
-          offerId={offerId}
           calendar={calendar}
           isLoading={isLoading || !offerId}
           onSeeVenuePress={onSeeVenuePress}

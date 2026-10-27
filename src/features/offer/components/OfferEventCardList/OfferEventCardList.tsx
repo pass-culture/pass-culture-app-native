@@ -1,15 +1,16 @@
 import React, { FC, useMemo } from 'react'
 import { View } from 'react-native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferForStocksResponse } from 'api/gen'
+import { CinemaScreeningCardList } from 'features/offer/components/CinemaScreeningCard/CinemaScreeningCardList'
 import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
+import { getCinemaOfferForCTA } from 'features/offer/helpers/getCinemaOfferForCTA'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { EventCardList } from 'ui/components/eventCard/EventCardList'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferForStocksResponse
   selectedDate?: Date
 }
 
@@ -30,7 +31,7 @@ export const OfferEventCardList: FC<Props> = ({ offer, selectedDate = new Date()
     onPress: onPressOfferCTA,
     CTAOfferModal,
     movieScreeningUserData,
-  } = useOfferCTAButton(offer, subcategory, bookingData)
+  } = useOfferCTAButton(getCinemaOfferForCTA(offer), subcategory, bookingData)
 
   const eventCardData = useMemo(
     () => selectedDateScreenings(venue.id, onPressOfferCTA, movieScreeningUserData),
@@ -39,7 +40,7 @@ export const OfferEventCardList: FC<Props> = ({ offer, selectedDate = new Date()
 
   return (
     <View testID="offer-event-card-list">
-      {eventCardData ? <EventCardList data={eventCardData} /> : null}
+      {eventCardData ? <CinemaScreeningCardList screenings={eventCardData} /> : null}
       {CTAOfferModal}
     </View>
   )

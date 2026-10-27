@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Bookability, Screening } from 'api/gen'
+import { Bookability, Screening, ScreeningV2 } from 'api/gen'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
@@ -11,13 +11,13 @@ import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscript
 import { ModalSettings } from 'ui/components/modals/useModal'
 
 type BookOfferModalProps = {
-  screening?: Screening
+  screening?: Screening | ScreeningV2
   offerId: number
   modalSettings: ModalSettings
   from: StepperOrigin
 }
 
-const screeningToBookingData = (screening: Screening): MovieScreeningBookingData => {
+const screeningToBookingData = (screening: Screening | ScreeningV2): MovieScreeningBookingData => {
   const screeningDate = new Date(screening.beginningDatetime)
   return {
     stockId: screening.stockId,

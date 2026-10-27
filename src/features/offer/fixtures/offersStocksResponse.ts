@@ -1,7 +1,20 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, OffersStocksResponseV2, SubcategoryIdEnum } from 'api/gen'
+import {
+  ExpenseDomain,
+  OffersStocksResponse,
+  OffersStocksResponseV2,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
+
+const defaultScreeningFeatures = {
+  accessibility: { audio: [], mental: [], motor: [], visual: [] },
+  audio: null,
+  language: 'VO',
+  specialEventType: null,
+  video: null,
+} as const
 
 export const offersStocksResponseSnap = toMutable({
   offers: [
@@ -106,6 +119,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-08T12:50:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.652786Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -121,6 +135,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-11T08:30:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.652862Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -136,6 +151,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-12T16:45:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.652935Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -151,6 +167,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-16T19:40:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.653007Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -166,6 +183,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-18T16:10:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.653077Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -181,6 +199,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-21T11:40:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.653148Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -300,6 +319,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-05T08:45:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.653460Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -419,6 +439,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-16T12:00:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.654236Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -434,6 +455,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-17T17:00:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.654318Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -449,6 +471,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-19T19:30:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.654391Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -464,6 +487,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-09T11:45:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.654462Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -479,6 +503,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-13T14:30:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.654534Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -494,6 +519,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-14T19:00:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.654652Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -613,6 +639,7 @@ export const offersStocksResponseSnap = toMutable({
           bookingLimitDatetime: '2024-05-26T08:45:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.675429Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -631,7 +658,7 @@ export const offersStocksResponseSnap = toMutable({
       artists: [],
     },
   ],
-} as const satisfies ReadonlyDeep<OffersStocksResponseV2>)
+} as const satisfies ReadonlyDeep<OffersStocksResponse & OffersStocksResponseV2>)
 
 export const offersStocksResponseTimezonedSnap = toMutable({
   offers: [
@@ -747,6 +774,7 @@ export const offersStocksResponseTimezonedSnap = toMutable({
           bookingLimitDatetime: '2024-05-08T12:50:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.652786Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -762,6 +790,7 @@ export const offersStocksResponseTimezonedSnap = toMutable({
           bookingLimitDatetime: '2024-05-11T08:30:00Z',
           cancellationLimitDatetime: '2024-05-01T02:35:31.652862Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -880,6 +909,7 @@ export const offersStocksResponseTimezonedSnap = toMutable({
           bookingLimitDatetime: '2024-05-05T08:45:00Z',
           cancellationLimitDatetime: '2024-05-01T08:35:31.653460Z',
           features: ['VO'],
+          screeningFeatures: defaultScreeningFeatures,
           isBookable: true,
           isForbiddenToUnderage: false,
           isSoldOut: false,
@@ -898,4 +928,4 @@ export const offersStocksResponseTimezonedSnap = toMutable({
       artists: [],
     },
   ],
-} as const satisfies ReadonlyDeep<OffersStocksResponseV2>)
+} as const satisfies ReadonlyDeep<OffersStocksResponse & OffersStocksResponseV2>)

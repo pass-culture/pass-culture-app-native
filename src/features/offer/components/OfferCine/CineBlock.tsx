@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferForStocksResponse } from 'api/gen'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
@@ -9,13 +9,14 @@ import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useO
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
 import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
+import { getCinemaOfferForCTA } from 'features/offer/helpers/getCinemaOfferForCTA'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { getDistance } from 'libs/location/getDistance'
 import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 
 export type CineBlockProps = {
-  offer: OfferResponse
+  offer: OfferForStocksResponse
   onSeeVenuePress?: VoidFunction
   nextDate?: Date
   withDivider?: boolean
@@ -44,7 +45,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { onPress: onPressOfferCTA, CTAOfferModal } = useOfferCTAButton(
-    offer,
+    getCinemaOfferForCTA(offer),
     subcategoriesMapping[offer.subcategoryId]
   )
 

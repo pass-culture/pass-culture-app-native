@@ -1,10 +1,10 @@
 import { isToday } from 'date-fns'
 
-import { OfferResponse } from 'api/gen'
+import { OfferForStocksResponse } from 'api/gen'
 import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
 
-export const useGetVenuesByDay = (date: Date, offers: OfferResponse[]) => {
+export const useGetVenuesByDay = (date: Date, offers: OfferForStocksResponse[]) => {
   const location = useUserLocation()
 
   const dayOffers = moviesOfferBuilder(offers)
@@ -35,7 +35,7 @@ export const useGetVenuesByDay = (date: Date, offers: OfferResponse[]) => {
   }
 }
 
-export const getDaysWithNoScreenings = (offers: OfferResponse[], dates: Date[]) => {
+export const getDaysWithNoScreenings = (offers: OfferForStocksResponse[], dates: Date[]) => {
   return dates.filter((date) =>
     isToday(date) ? false : !moviesOfferBuilder(offers).withScreeningsOnDay(date).build().length
   )

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import type { OfferPreviewResponse } from 'api/gen'
+import { CinemaScreeningCardList } from 'features/offer/components/CinemaScreeningCard/CinemaScreeningCardList'
 import {
   getDateString,
   getMovieScreenings,
@@ -13,11 +13,10 @@ import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScree
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
-import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { getCinemaOfferForCTA } from 'features/offer/helpers/getCinemaOfferForCTA'
 import { VenueOffers } from 'features/venue/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 
 type MovieOfferTileProps = {
@@ -49,7 +48,11 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
     onPress: onPressOfferCTA,
     CTAOfferModal,
     movieScreeningUserData,
-  } = useOfferCTAButton(offer, subcategoriesMapping[offer.subcategoryId], bookingData)
+  } = useOfferCTAButton(
+    getCinemaOfferForCTA(offer),
+    subcategoriesMapping[offer.subcategoryId],
+    bookingData
+  )
 
   const eventCardData = selectedDateScreenings(
     offer.venue.id,
@@ -76,7 +79,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
             offer={offerScreeningOnSelectedDates}
             analyticsParams={{ from: 'venue' }}
             shouldDisplayPrice={false}
-            subtitles={getSubtitles(offer)}
+            subtitles={[]}
             withRightArrow
           />
         ) : null}
@@ -93,18 +96,12 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           />
         </View>
       ) : (
-        <EventCardList data={eventCardData} />
+        <CinemaScreeningCardList screenings={eventCardData} />
       )}
       <Container>{isLast ? null : <Divider />}</Container>
       {CTAOfferModal}
     </React.Fragment>
   )
-}
-
-const getSubtitles = (offer: OfferPreviewResponse): string[] => {
-  const genre = offer.extraData?.genres?.length ? offer.extraData?.genres?.join(' / ') : ''
-  const duration = formatDuration(offer.extraData?.durationMinutes).label
-  return [genre, duration]
 }
 
 const Divider = styled.View(({ theme }) => ({

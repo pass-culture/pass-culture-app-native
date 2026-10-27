@@ -7,12 +7,12 @@ import {
   startOfDay,
 } from 'date-fns'
 
-import { OfferResponse, OfferStockResponse } from 'api/gen'
+import { OfferForStocksResponse, StockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { GeoCoordinates } from 'libs/location/location'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
-export const moviesOfferBuilder = (offersWithStocks: OfferResponse[] = []) => {
+export const moviesOfferBuilder = (offersWithStocks: OfferForStocksResponse[] = []) => {
   let movieOffers: MovieOffer[] = offersWithStocks.map((offer) => ({
     offer,
     isUpcoming: false,
@@ -178,7 +178,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponse[] = []) => {
     },
 
     buildOfferResponse: () => {
-      return movieOffers.reduce<OfferResponse[]>(
+      return movieOffers.reduce<OfferForStocksResponse[]>(
         (previous, current) => [...previous, current.offer],
         []
       )
@@ -206,7 +206,7 @@ const isDateBeforeToday = (referenceDate: Date, targetDate: Date) => {
   return isBefore(targetDate, referenceDate)
 }
 
-const getNextDate = (offer: OfferResponse, date: Date) => {
+const getNextDate = (offer: OfferForStocksResponse, date: Date) => {
   const dates = offer?.stocks
     .filter((stock) => stock.beginningDatetime)
     .map((stock) => new Date(stock.beginningDatetime as string))
@@ -238,11 +238,11 @@ const findClosestFutureDate = (datesArray: Date[], referenceDate: Date) => {
   }, futureDates[0])
 }
 
-const getUpcomingDate = (offer: OfferResponse) => {
+const getUpcomingDate = (offer: OfferForStocksResponse) => {
   return getNextDate(offer, new Date())
 }
 
-const getEarliestDate = (stocks: OfferStockResponse[]) => {
+const getEarliestDate = (stocks: StockResponse[]) => {
   return stocks?.reduce((earliest, stock) => {
     if (!stock.beginningDatetime) return earliest
     const stockDate = new Date(stock.beginningDatetime).getTime()

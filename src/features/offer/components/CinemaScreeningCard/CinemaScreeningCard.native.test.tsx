@@ -58,6 +58,8 @@ describe('<CinemaScreeningCard />', () => {
   it.each([
     CinemaScreeningCardDisabledReason.UNAVAILABLE,
     CinemaScreeningCardDisabledReason.INSUFFICIENT_CREDIT,
+    CinemaScreeningCardDisabledReason.ALREADY_BOOKED,
+    CinemaScreeningCardDisabledReason.FULLY_BOOKED,
   ])('should only display time, language and reason when disabled with %s', (disabledReason) => {
     render(
       <CinemaScreeningCard

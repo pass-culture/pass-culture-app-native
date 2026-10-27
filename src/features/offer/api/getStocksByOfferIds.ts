@@ -8,7 +8,7 @@ export const getStocksByOfferIds = async (offerIds: number[], logType: LogTypeEn
     return { offers: [] }
   }
   try {
-    return await api.postNativeV2OffersStocks({
+    return await api.postNativeV3OffersStocks({
       offer_ids: offerIds,
     })
   } catch (error) {
