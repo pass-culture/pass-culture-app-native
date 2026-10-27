@@ -148,7 +148,7 @@ type OfferParams = {
   openModalOnNavigation?: boolean
   searchId?: string
   apiRecoParams?: string
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
 }
 
 type OfferPreviewParams = {

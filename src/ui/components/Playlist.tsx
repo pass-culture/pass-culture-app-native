@@ -28,7 +28,7 @@ type RenderFooterItem =
 export type CustomListRenderItem<ItemT> = (
   info: ListRenderItemInfo<ItemT> &
     ItemDimensions & {
-      playlistType?: PlaylistType
+      playlistType?: PlaylistType | string
     }
 ) => React.ReactElement | null
 
@@ -45,7 +45,7 @@ type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
   onEndReached?: () => void
   children?: never
   tileType?: 'offer' | 'venue' | 'video-module-offer'
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   itemSeparatorSize?: number
   horizontalMargin?: number
