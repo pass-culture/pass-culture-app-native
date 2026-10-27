@@ -17,22 +17,26 @@ Dans un composant React, les styled composants sont utilisées de cette manière
 
 ```tsx
 import React from 'react'
-import { CustomFooter } from './CustomFooter'
 import styled from 'styled-components/native'
 
-const ReactComponent = () => (
+import { CustomFooter } from './CustomFooter'
+
+type Props = { title: string; children: React.ReactNode }
+
+const ReactComponent = ({ title, children }: Props) => (
   <Container>
     <Header>
       <Title>{title}</Title>
     </Header>
-    <ContentScrollView>{...content}</ContentScrollView>
+    <ContentScrollView>{children}</ContentScrollView>
+    <ColoredFooter />
   </Container>
 )
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: 'pink',
-})
+  backgroundColor: theme.designSystem.color.background.default,
+}))
 
 const Header = styled.View({
   height: 20,
@@ -42,20 +46,22 @@ const Title = styled.Text({
   fontWeight: 500,
 })
 
-const ContentScrollView = styled.ScrollView.attrs({
+const ContentScrollView = styled.ScrollView.attrs(({ theme }) => ({
   // on peut ajouter d'autres props ici
   contentContainerStyle: {
-    padding: 20,
+    padding: theme.designSystem.size.spacing.l,
   },
-})({
+}))(({ theme }) => ({
   flex: 1,
-  backgroundColor: '#123445',
-})
+  backgroundColor: theme.designSystem.color.background.subtle,
+}))
 
-const ColoredFooter = styled(CustomFooter)({
-  backgroundColor: '#654321',
-})
+const ColoredFooter = styled(CustomFooter)(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
+}))
 ```
+
+Les couleurs et les espacements viennent des tokens du thème (`theme.designSystem`), pas de valeurs en dur.
 
 ## Exemples avec des props
 
@@ -63,8 +69,8 @@ const ColoredFooter = styled(CustomFooter)({
 import React from 'react'
 import styled from 'styled-components/native'
 
-const Button = () => {
-  return <PressableButton small={true} onPress={doSomething} />
+const Button = ({ onPress }: { onPress: () => void }) => {
+  return <PressableButton small onPress={onPress} />
 }
 
 const PressableButton = styled.TouchableOpacity<{ small: boolean }>((props) => ({
@@ -75,10 +81,12 @@ const PressableButton = styled.TouchableOpacity<{ small: boolean }>((props) => (
 /**
  * On aurait pu aller plus loin
  */
-const PressableButton = styled.TouchableOpacity.attrs<{ small: boolean }>((props) => ({
-  activeOpacity: small ? 1 : 0,
-  hitSlop: small ? 20 : 200,
-}))<{ small: boolean }>((props) => ({
+const PressableButtonWithAttrs = styled.TouchableOpacity.attrs<{ small: boolean }>(
+  ({ small }) => ({
+    activeOpacity: small ? 1 : 0,
+    hitSlop: small ? 20 : 200,
+  })
+)<{ small: boolean }>((props) => ({
   height: props.small ? 100 : 1000,
   width: props.small ? 200 : 2000,
 }))

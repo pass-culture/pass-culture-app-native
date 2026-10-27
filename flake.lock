@@ -66,22 +66,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_nodejs": {
-      "locked": {
-        "lastModified": 1775064974,
-        "narHash": "sha256-fp7+8MzxHrIixIIVvyORI2XpqpQnxf8NodmEHy8rczg=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "6ebfbc38bdc6b22822a6f991f2d922306f33cfbc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "6ebfbc38bdc6b22822a6f991f2d922306f33cfbc",
-        "type": "github"
-      }
-    },
     "nixpkgs_ruby": {
       "locked": {
         "lastModified": 1742943473,
@@ -104,7 +88,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs_gitleaks": "nixpkgs_gitleaks",
         "nixpkgs_maestro": "nixpkgs_maestro",
-        "nixpkgs_nodejs": "nixpkgs_nodejs",
         "nixpkgs_ruby": "nixpkgs_ruby"
       }
     },

@@ -77,13 +77,13 @@ export const CinemaScreeningCard: FunctionComponent<CinemaScreeningCardComponent
       {isDisabled ? <DisabledReason>{disabledReason}</DisabledReason> : null}
 
       {!isDisabled && specialEvent ? (
-        <Tag label={specialEvent} variant={TagVariant.HIGHLIGHT} />
+        <Tag label={specialEvent} variant={TagVariant.HIGHLIGHT} isMultiline />
       ) : null}
 
       {!isDisabled && mediaTags.length ? (
         <TagsRow>
           {mediaTags.map((label, index) => (
-            <Tag label={label} key={`${label}-${index}`} />
+            <Tag label={label} key={`${label}-${index}`} isMultiline />
           ))}
         </TagsRow>
       ) : null}
@@ -148,6 +148,7 @@ const DisabledReason = styled(Typo.BodyAccent)(({ theme }) => ({
 
 const TagsRow = styled.View(({ theme }) => ({
   flexDirection: 'row',
+  flexWrap: 'wrap',
   alignItems: 'center',
   gap: theme.designSystem.size.spacing.xs,
 }))

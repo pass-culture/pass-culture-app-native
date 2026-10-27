@@ -1878,7 +1878,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
-                        isZoomed={true}
+                        shouldWrap={true}
                         style={
                           [
                             {
@@ -1904,7 +1904,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         <Text
                           accessibilityLevel="p"
                           accessibilityRole="text"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "color": "#161617",
@@ -2236,7 +2236,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
-                        isZoomed={true}
+                        shouldWrap={true}
                         style={
                           [
                             {
@@ -2262,7 +2262,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         <Text
                           accessibilityLevel="p"
                           accessibilityRole="text"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "color": "#161617",
@@ -2590,7 +2590,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
-                        isZoomed={true}
+                        shouldWrap={true}
                         style={
                           [
                             {
@@ -2616,7 +2616,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         <Text
                           accessibilityLevel="p"
                           accessibilityRole="text"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "color": "#161617",
@@ -2943,7 +2943,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
-                        isZoomed={true}
+                        shouldWrap={true}
                         style={
                           [
                             {
@@ -2969,7 +2969,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         <Text
                           accessibilityLevel="p"
                           accessibilityRole="text"
-                          isZoomed={true}
+                          shouldWrap={true}
                           style={
                             {
                               "color": "#161617",

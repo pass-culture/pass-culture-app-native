@@ -1,21 +1,21 @@
-# Use Google Maps API
+# Utilisation de l'API Google Maps
 
-For the venue map on Android, we use the Google Maps API. It needs an API key to work.
+Pour la carte des lieux sur Android, nous utilisons l'API Google Maps. Son fonctionnement nécessite une clé API.
 
-The API key is stored in the .env files. It is used in the `AndroidManifest.xml` file (set up by the `app/build.gradle` file).
+Cette clé API est stockée dans la variable `GOOGLE_MAPS_API_PUBLIC_KEY` des fichiers `.env` (les environnements de test et de pré-production partagent la même clé, tandis que l'environnement de production possède sa propre clé). Elle est utilisée dans le fichier `AndroidManifest.xml` (configuré via le fichier `app/build.gradle`).
 
-The API keys are restricted to the app's package name and SHA-1 fingerprint of the keystore, and, can only use the Maps SDK for Android.
+Les clés API sont restreintes au nom du paquet de l'application ainsi qu'à l'empreinte SHA-1 du magasin de clés (*keystore*) ; elles sont limitées à l'utilisation du SDK Google Maps pour Android.
 
-They are configured in the Google Cloud Platform.
+La configuration s'effectue sur Google Cloud Platform.
 
-## For local development
+## Pour le développement local
 
-When developing in local, you are using your own debug keystore. You need to allow it to use the Google Maps API.
+Lors du développement en local, vous utilisez votre propre magasin de clés de débogage (*debug keystore*). Vous devez l'autoriser à utiliser l'API Google Maps.
 
-1) Get the SHA-1 fingerprint of the debug keystore:
+1) Récupérez l'empreinte SHA-1 de votre magasin de clés de débogage :
 
 ```sh
 keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
 ```
 
-2) On [Google Cloud Platform > Google Maps Platform > Keys and credentials, edit "Key for the venue map on Android"](https://console.cloud.google.com/apis/credentials/key/52cc91af-29b1-49d9-b376-184ea50321d7?project=passculture-metier-ehp), and add on the Android restrictions the package name (from .env.testing if you're developing on testing) and the SHA-1 fingerprint just obtained.
+2) Sur [Google Cloud Platform > Google Maps Platform > Clés et identifiants, modifiez la clé intitulée « Key for the venue map on Android »](https://console.cloud.google.com/apis/credentials/key/52cc91af-29b1-49d9-b376-184ea50321d7?project=passculture-metier-ehp). Dans la section des restrictions Android, ajoutez le nom du paquet de l'application (correspondant à `ANDROID_APP_ID` ​​dans le fichier `.env.testing`, par exemple `app.passculture.testing` si vous travaillez sur l'environnement de test) ainsi que l'empreinte SHA-1 que vous venez d'obtenir.

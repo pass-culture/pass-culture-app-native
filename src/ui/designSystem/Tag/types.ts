@@ -26,6 +26,7 @@ export type TagProps = ViewProps & {
   label: string
   variant?: TagVariant
   Icon?: FunctionComponent<AccessibleIcon> | ReactElement
+  isMultiline?: boolean
 }
 
 export type TagColorStyles = {
