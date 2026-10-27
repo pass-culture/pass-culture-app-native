@@ -1,0 +1,108 @@
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
+
+import { OfferForStocksResponse } from 'api/gen'
+import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
+import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
+import { SpecialEventOfferEventCardList } from 'features/offer/components/OfferEventCardList/SpecialEventOfferEventCardList'
+import { getVenueBlock } from 'features/offer/components/OfferVenueBlock/getVenueBlock'
+import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
+import { getCinemaOfferForCTA } from 'features/offer/helpers/getCinemaOfferForCTA'
+import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
+import { getDistance } from 'libs/location/getDistance'
+import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
+import { useSubcategoriesMapping } from 'libs/subcategories'
+
+export type SpecialEventCineBlockProps = {
+  offer: OfferForStocksResponse
+  onSeeVenuePress?: VoidFunction
+  nextDate?: Date
+  withDivider?: boolean
+}
+
+export const SpecialEventCineBlock: FunctionComponent<SpecialEventCineBlockProps> = ({
+  offer,
+  onSeeVenuePress,
+  nextDate,
+  withDivider,
+}) => {
+  const { selectedDate, goToDate } = useMovieCalendar()
+
+  const userLocation = useUserLocation()
+  const selectedPlace = usePlace()
+  const selectedLocationMode = useLocationMode()
+  const venue = getVenue(offer.venue)
+  const distance = venue.coordinates
+    ? getDistance(
+        { lat: venue.coordinates.latitude, lng: venue.coordinates.longitude },
+        { userLocation, selectedPlace, selectedLocationMode },
+        offer.subcategoryId
+      )
+    : null
+
+  const subcategoriesMapping = useSubcategoriesMapping()
+
+  const { onPress: onPressOfferCTA, CTAOfferModal } = useOfferCTAButton(
+    getCinemaOfferForCTA(offer),
+    subcategoriesMapping[offer.subcategoryId]
+  )
+
+  const venueBlockVenue = getVenue(offer.venue)
+  const venueBlockAddress = getAddress(offer.address)
+
+  const { venueName, venueAddress, isOfferAddressDifferent } = getVenueBlock({
+    venue: venueBlockVenue,
+    offerAddress: venueBlockAddress,
+  })
+
+  return (
+    <React.Fragment>
+      <SpecialEventCineBlockContainer>
+        <VenueBlock
+          venueId={venueBlockVenue.id}
+          title={venueName}
+          subtitle={venueAddress}
+          onSeeVenuePress={onSeeVenuePress}
+          venueImageUrl={venueBlockVenue.bannerUrl ?? undefined}
+          distance={distance}
+          hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
+          isOfferAtSameAddressAsVenue
+        />
+
+        <React.Fragment>
+          {nextDate ? (
+            <NextScreeningButton
+              date={nextDate}
+              onPress={
+                isDateNotWithinNextNbDays(new Date(), nextDate, 15)
+                  ? () => onPressOfferCTA()
+                  : () => goToDate(nextDate)
+              }
+            />
+          ) : (
+            <SpecialEventOfferEventCardList offer={offer} selectedDate={selectedDate} />
+          )}
+          {CTAOfferModal}
+        </React.Fragment>
+      </SpecialEventCineBlockContainer>
+      {withDivider ? <Divider testID="divider" /> : null}
+    </React.Fragment>
+  )
+}
+
+const SpecialEventCineBlockContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  paddingTop: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.l,
+}))
+
+const Divider = styled.View(({ theme }) => ({
+  height: 1,
+  backgroundColor: theme.designSystem.color.background.subtle,
+  marginHorizontal: theme.isDesktopViewport ? undefined : theme.contentPage.marginHorizontal,
+  marginTop: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.xl
+    : theme.designSystem.size.spacing.l,
+}))

@@ -8,6 +8,7 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
+import { SpecialEventVenueMovies } from 'features/venue/components/VenueOffers/SpecialEventVenueMovies'
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueMoviesV2 } from 'features/venue/components/VenueOffers/VenueMoviesV2'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
@@ -75,6 +76,9 @@ export function VenueOffers({
   })
   const wipUseVenueMovieScreeningsEndpoint = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT
+  )
+  const enableSpecialEventScreenings = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS
   )
   const enableVenueSurvey = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VENUE_SURVEY)
   const [hasSurveyAccess, setHasSurveyAccess] = useState(false)
@@ -151,18 +155,20 @@ export function VenueOffers({
     )
   }
 
-  const hasAMovieScreeningOffer = venueOffers?.hits.some(
+  const hasAMovieScreeningOffer = venueOffers.hits.some(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
 
   if (hasAMovieScreeningOffer) {
+    let VenueMoviesComponent = <VenueMovies venueOffers={venueOffers} />
+    if (enableSpecialEventScreenings)
+      VenueMoviesComponent = <SpecialEventVenueMovies venueOffers={venueOffers} />
+    if (wipUseVenueMovieScreeningsEndpoint)
+      VenueMoviesComponent = <VenueMoviesV2 venueOffers={venueOffers} venueId={venue.id} />
+
     return (
       <React.Fragment>
-        {wipUseVenueMovieScreeningsEndpoint ? (
-          <VenueMoviesV2 venueOffers={venueOffers} venueId={venue.id} />
-        ) : (
-          <VenueMovies venueOffers={venueOffers} />
-        )}
+        {VenueMoviesComponent}
         {VenueSurveyBannerComponent}
       </React.Fragment>
     )
