@@ -33,7 +33,7 @@ jobs:
           echo "commit-hash=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup gajira cli
-        uses: atlassian/gajira-cli@master
+        uses: atlassian/gajira-cli@7b8487d76cd88bf5d50ba00c6cca6edff1ddd507 # v3
         with:
           version: 1.0.20
 
@@ -45,14 +45,14 @@ jobs:
 
       - name: Get Secret
         id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' #v3.0.0
+        uses: 'google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262' # v3.0.0
         with:
           secrets: |-
             JIRA_USER_EMAIL:pc-native-production/jira-user-email
             JIRA_API_TOKEN:pc-native-production/jira-api-token
 
       - name: Login
-        uses: atlassian/gajira-login@master
+        uses: atlassian/gajira-login@ca13f8850ea309cf44a6e4e0c49d9aa48ac3ca4c # v3
         env:
           JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
@@ -61,7 +61,7 @@ jobs:
       # jira issue key example : PC-24026
       - name: Get jira issue key in commit
         id: get_jira_key
-        uses: atlassian/gajira-find-issue-key@master
+        uses: atlassian/gajira-find-issue-key@7d9cbdfce900a0fcf608050ce728620a928be8b6 # v3
         with:
           from: commits
 
@@ -71,10 +71,11 @@ jobs:
         if: ${{ steps.get_jira_key.outputs.issue != null }}
         env:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+          ISSUE: ${{ steps.get_jira_key.outputs.issue }}
         run: |
-          issue_type="$(jira view ${{ steps.get_jira_key.outputs.issue }} --template viewTicketType)"
+          issue_type="$(jira view "$ISSUE" --template viewTicketType)"
           if [[ "$issue_type" != "OPS Task" ]]; then
-            echo "status=${{ steps.get_jira_key.outputs.issue }}" >> "$GITHUB_OUTPUT"
+            echo "status=$ISSUE" >> "$GITHUB_OUTPUT"
           fi
 
   # run only if previous job issue-number has set his output to the issue number
@@ -92,7 +93,7 @@ jobs:
           fetch-depth: 1
 
       - name: Setup gajira cli
-        uses: atlassian/gajira-cli@master
+        uses: atlassian/gajira-cli@7b8487d76cd88bf5d50ba00c6cca6edff1ddd507 # v3
         with:
           version: 1.0.20
 
@@ -111,7 +112,7 @@ jobs:
             JIRA_API_TOKEN:pc-native-production/jira-api-token
 
       - name: Login
-        uses: atlassian/gajira-login@master
+        uses: atlassian/gajira-login@ca13f8850ea309cf44a6e4e0c49d9aa48ac3ca4c # v3
         env:
           JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
@@ -121,13 +122,15 @@ jobs:
         id: get_previous_commit_number
         env:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+          STATUS: ${{ needs.issue-number.outputs.status }}
         # The jira view command uses .jira.d/templates/view template by default
         run: |
-          echo "value=$(jira view "${{ needs.issue-number.outputs.status }}")" >> "$GITHUB_OUTPUT"
+          echo "value=$(jira view "$STATUS")" >> "$GITHUB_OUTPUT"
 
       - name: Mark issue as not deployable
         env:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+          VALUE: ${{ steps.get_previous_commit_number.outputs.value }}
         if: ${{ steps.get_previous_commit_number.outputs.value != null && steps.get_previous_commit_number.outputs.value != '<no value>' }}
         # If previous_commit_number is not null, it means this push-to-master is a fix.
         # All commits with number between previous_commit_number and this commit number are therefore not safe to deploy.
@@ -138,17 +141,20 @@ jobs:
         run: |
           echo "issue:" >> "$HOME/.jira.d/config.yml"
           jira edit \
-            --query='"Numéro de commit[Number]" > ${{ steps.get_previous_commit_number.outputs.value }} AND "Repository[Short text]" ~ "pass-culture-app-native"' \
+            --query="\"Numéro de commit[Number]\" > \"$VALUE\" AND \"Repository[Short text]\" ~ \"pass-culture-app-native\"" \
             --override "$SAFE_TO_DEPLOY_FIELD=false" \
             --noedit
 
       - name: Push commit number and commit hash to jira issue
         env:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
+          STATUS: ${{ needs.issue-number.outputs.status }}
+          COMMIT_NUMBER: ${{ needs.issue-number.outputs.commit-number }}
+          COMMIT_HASH: ${{ needs.issue-number.outputs.commit-hash }}
         run: |
-          jira edit "${{ needs.issue-number.outputs.status }}" \
+          jira edit "$STATUS" \
             --override "$SAFE_TO_DEPLOY_FIELD=true" \
-            --override "$COMMIT_NUMBER_FIELD=${{ needs.issue-number.outputs.commit-number }}" \
-            --override "$COMMIT_HASH_FIELD=${{ needs.issue-number.outputs.commit-hash }}" \
+            --override "$COMMIT_NUMBER_FIELD=$COMMIT_NUMBER" \
+            --override "$COMMIT_HASH_FIELD=$COMMIT_HASH" \
             --override "$REPOSITORY_FIELD=pass-culture-app-native" \
             --noedit
