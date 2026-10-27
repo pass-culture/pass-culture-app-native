@@ -35,6 +35,7 @@ export enum QueryKeys {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
   MUSIC_OFFERS = 'musicOffers',
   OFFER = 'offer',
+  OFFER_PAGE_PLAYLISTS = 'offerPagePlaylists',
   OFFER_PRO_ADVICES = 'offerProAdvices',
   CLUB_ADVICES = 'clubAdvices',
   PLACES = 'places',
