@@ -1,40 +1,19 @@
-import { useIsFocused, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React from 'react'
 import { ViewToken } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { OfferResponse, RecommendationApiParams } from 'api/gen'
+import { OfferPagePlaylist, OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
-import { OFFER_SIMILAR_PLAYLIST_TITLES } from 'features/offer/constant'
+import { OfferPlaylistSection } from 'features/offer/components/OfferPlaylistList/OfferPlaylistSection'
 import { PlaylistType } from 'features/offer/enums'
-import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
-import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
-import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { analytics } from 'libs/analytics/provider'
-import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
-import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
-import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
-import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 export type OfferPlaylistListProps = {
   offer: OfferResponse
-  sameCategorySimilarOffers?: Offer[]
-  apiRecoParamsSameCategory?: RecommendationApiParams
-  otherCategoriesSimilarOffers?: Offer[]
-  apiRecoParamsOtherCategories?: RecommendationApiParams
-  booksSameCategorySimilarOffers?: Offer[]
-  apiRecoParamsBooksSameCategory?: RecommendationApiParams
+  playlists?: OfferPagePlaylist[]
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
@@ -42,185 +21,49 @@ export type OfferPlaylistListProps = {
     playlistIndex?: number
   ) => void
   seeAllButton: {
-    navigateToVerticalPlaylist: (type: PlaylistType) => InternalNavigationProps['navigateTo']
-    onBeforeNavigate: (type: PlaylistType) => void
+    navigateToVerticalPlaylist: (
+      type: PlaylistType | string
+    ) => InternalNavigationProps['navigateTo']
+    onBeforeNavigate: (type: PlaylistType | string, title?: string) => void
     hidePlaylistSeeAll?: boolean
     hideSearchSeeAll?: boolean
   }
 }
 
-function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
-  return Boolean(data?.length)
-}
-
-const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
-
 export function OfferPlaylistList({
   offer,
-  sameCategorySimilarOffers,
-  apiRecoParamsSameCategory,
-  otherCategoriesSimilarOffers,
-  apiRecoParamsOtherCategories,
-  booksSameCategorySimilarOffers,
-  apiRecoParamsBooksSameCategory,
+  playlists,
   onViewableItemsChanged,
   seeAllButton,
-}: Readonly<OfferPlaylistListProps>) {
-  const theme = useTheme()
+}: OfferPlaylistListProps) {
   const isLandscape = useIsLandscape()
-
   const route = useRoute<UseRouteType<'Offer'>>()
-  const isFocused = useIsFocused()
-  const fromOfferId = route.params?.fromOfferId
-  const categoryMapping = useCategoryIdMapping()
-  const labelMapping = useCategoryHomeLabelMapping()
+  const fromOfferId = route.params.fromOfferId
 
-  const currency = useGetCurrencyToDisplay()
-  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
-  const {
-    logSameCategoryPlaylistVerticalScroll,
-    logBooksSameCategoryPlaylistVerticalScroll,
-    logOtherCategoriesPlaylistVerticalScroll,
-  } = useLogPlaylist({
-    offerId: offer.id,
-    apiRecoParamsSameCategory,
-    nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
-    apiRecoParamsBooksSameCategory,
-    nbBooksSameCategorySimilarOffers: booksSameCategorySimilarOffers?.length ?? 0,
-    apiRecoParamsOtherCategories,
-    nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
-    fromOfferId,
-  })
-
-  const handleChangeOtherCategoriesPlaylistDisplay = useLogScrollHandler(
-    logOtherCategoriesPlaylistVerticalScroll
-  )
-  const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
-    logSameCategoryPlaylistVerticalScroll
-  )
-  const handleChangeBooksSameCategoryPlaylistDisplay = useLogScrollHandler(
-    logBooksSameCategoryPlaylistVerticalScroll
-  )
-
-  const trackingOnHorizontalScroll = (
-    playlistType: PlaylistType,
-    apiRecoParams?: RecommendationApiParams
-  ) => {
-    void analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
-  }
-
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
-
-  const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
-    type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
-    offers: sameCategorySimilarOffers,
-    apiRecoParams: apiRecoParamsSameCategory,
-    handleChangePlaylistDisplay: handleChangeSameCategoryPlaylistDisplay,
-  }
-
-  const booksSameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
-    type: PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS,
-    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.BOOKS_SAME_CATEGORY_SIMILAR_OFFERS] ?? '',
-    offers: booksSameCategorySimilarOffers,
-    apiRecoParams: apiRecoParamsBooksSameCategory,
-    handleChangePlaylistDisplay: handleChangeBooksSameCategoryPlaylistDisplay,
-  }
-
-  const otherCategoriesSimilarOffersPlaylist: SimilarOfferPlaylist = {
-    type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-    title: OFFER_SIMILAR_PLAYLIST_TITLES[PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS] ?? '',
-    offers: otherCategoriesSimilarOffers,
-    apiRecoParams: apiRecoParamsOtherCategories,
-    handleChangePlaylistDisplay: handleChangeOtherCategoriesPlaylistDisplay,
-  }
-
-  const similarOffersPlaylist: SimilarOfferPlaylist[] = [
-    sameCategorySimilarOffersPlaylist,
-    booksSameCategorySimilarOffersPlaylist,
-    otherCategoriesSimilarOffersPlaylist,
-  ]
-
-  const shouldDisplayPlaylist =
-    isArrayNotEmpty(sameCategorySimilarOffers) ||
-    isArrayNotEmpty(booksSameCategorySimilarOffers) ||
-    isArrayNotEmpty(otherCategoriesSimilarOffers)
-
-  const handleOfferPlaylistViewableItemsChanged = useCallback(
-    (playlistType: string, playlistIndex: number) =>
-      (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-        if (!isFocused) return
-        onViewableItemsChanged(items, playlistType, 'offer', playlistIndex)
-      },
-    [isFocused, onViewableItemsChanged]
-  )
+  const hasPlaylists = !!(playlists && playlists.length > 0)
 
   return (
-    <StyledSectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
-      {similarOffersPlaylist.map((playlist, index) => {
-        if (!isArrayNotEmpty(playlist.offers)) return null
-
-        const navigateToVerticalPlaylist = seeAllButton.navigateToVerticalPlaylist(playlist.type)
-        const onBeforeNavigate = () => seeAllButton.onBeforeNavigate(playlist.type)
-        const hidePlaylistSeeAll = seeAllButton.hidePlaylistSeeAll
-        const hideSearchSeeAll = seeAllButton.hideSearchSeeAll
-
-        return (
-          <ObservedPlaylist
-            key={playlist.type}
-            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}
-            onIntersectionChange={playlist.handleChangePlaylistDisplay}>
-            {({ listRef }) => (
-              <StyledPassPlaylist
-                data={playlist.offers ?? []}
-                itemWidth={itemWidth}
-                itemHeight={itemHeight}
-                renderItem={OfferPlaylistItem({
-                  offer,
-                  labelMapping,
-                  categoryMapping,
-                  currency,
-                  euroToPacificFrancRate,
-                  navigationMethod: 'push',
-                  apiRecoParams: playlist.apiRecoParams,
-                  priceDisplay: (item: Offer) =>
-                    getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
-                  theme,
-                  enableSceneClubTag,
-                })}
-                title={playlist.title}
-                playlistType={playlist.type}
-                onEndReached={() =>
-                  trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)
-                }
-                playlistRef={listRef}
-                FlatListComponent={FlatList}
-                keyExtractor={keyExtractor}
-                seeAllButton={{
-                  navigateToVerticalPlaylist,
-                  onBeforeNavigate,
-                  hidePlaylistSeeAll,
-                  hideSearchSeeAll,
-                }}
-              />
-            )}
-          </ObservedPlaylist>
-        )
-      })}
+    <StyledSectionWithDivider visible={hasPlaylists} gap={8}>
+      {playlists?.map((playlist, index) => (
+        <OfferPlaylistSection
+          key={`${playlist.analyticsPlaylistType}-${index}`}
+          playlist={playlist}
+          playlistIndex={index}
+          offer={offer}
+          fromOfferId={fromOfferId}
+          seeAllButton={seeAllButton}
+          onViewableItemsChanged={onViewableItemsChanged}
+        />
+      ))}
       {isLandscape ? <PlaceholderBehindButton /> : null}
     </StyledSectionWithDivider>
   )
 }
 
-const PlaceholderBehindButton = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxxxl,
-}))
-
-const StyledPassPlaylist = styled(PassPlaylist)({
-  paddingBottom: 0,
-})
-
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const PlaceholderBehindButton = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxxxl,
 }))

@@ -9,8 +9,8 @@ import {
   FavoriteResponse,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
+  OfferPagePlaylistResponse,
   PaginatedFavoritesResponse,
-  RecommendationApiParams,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
@@ -28,14 +28,10 @@ import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePre
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
-import {
-  mockedAlgoliaOffersWithSameArtistResponse,
-  mockedAlgoliaResponse,
-} from 'libs/algolia/fixtures/algoliaFixtures'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -124,24 +120,14 @@ jest.mock('features/auth/context/AuthContext')
 const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
 fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
-const apiRecoParams: RecommendationApiParams = {
-  callId: '1',
-  filtered: true,
-  geoLocated: false,
-  modelEndpoint: 'default',
-  modelName: 'similar_offers_default_prod',
-  modelVersion: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
-  recoOrigin: 'default',
-}
-
-const useSimilarOffersSpy = jest
-  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
-  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
-
 jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery').mockReturnValue({
   artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
   artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
 })
+
+jest.mock('features/offer/helpers/useOfferPlaylist/useOfferPlaylist', () => ({
+  useOfferPlaylist: () => [],
+}))
 
 const mockInView = jest.fn()
 const InViewMock = ({
@@ -236,6 +222,10 @@ describe('<OfferContent />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
+    mockServer.getApi<OfferPagePlaylistResponse>(
+      '/v1/recommendation/offer_page_playlists/116656?longitude=90.477&latitude=90.477',
+      {}
+    )
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setupLocation()
@@ -299,40 +289,6 @@ describe('<OfferContent />', () => {
     fireEvent.scroll(await screen.findByTestId('offerv2-container'), scrollEvent)
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
-  })
-
-  describe('Playlist list section', () => {
-    describe('Same category similar offers', () => {
-      it('should display same category similar offers', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByLabelText('Les fans aiment aussi')).toBeOnTheScreen()
-      })
-    })
-
-    describe('Other categories similar offers', () => {
-      it('should display other categories similar offer', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
-      })
-    })
   })
 
   describe('Offer booking button', () => {
