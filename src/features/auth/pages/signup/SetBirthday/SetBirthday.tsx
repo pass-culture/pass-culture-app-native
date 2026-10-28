@@ -14,6 +14,8 @@ import { SetContainer } from 'features/auth/pages/signup/SetContainer'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { NonEligible } from 'features/onboarding/enums'
+import { analytics } from 'libs/analytics/provider'
+import { dateDiffInFullYears } from 'libs/dates'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
 import { Form } from 'ui/components/Form'
@@ -107,6 +109,29 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   const accessibilityLabel = accessibilityLabelForNextStep + (errorMessage ?? '')
 
+  const handleOnChange = ({
+    selectedDate,
+    currentBirthdate,
+    onChange,
+  }: {
+    selectedDate?: Date
+    currentBirthdate: Date
+    onChange: (date: Date | undefined) => void
+  }) => {
+    onChange(selectedDate)
+    if (
+      !selectedDate ||
+      formatDateToISOStringWithoutTime(selectedDate) ===
+        formatDateToISOStringWithoutTime(currentBirthdate)
+    ) {
+      return
+    }
+    const age = dateDiffInFullYears(selectedDate, new Date())
+    if (age < 15) {
+      void analytics.logSignUpTooYoung(age)
+    }
+  }
+
   return (
     <SetContainer>
       <Form.MaxWidth>
@@ -129,12 +154,14 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           <Controller
             control={control}
             name="birthdate"
-            render={({ field: { value, onChange } }) => (
+            render={({ field: { value: currentBirthdate, onChange } }) => (
               <DateInput
                 label={titleId}
-                onChange={onChange}
-                date={value}
-                errorMessage={displayErrorMessage(value)}
+                onChange={(selectedDate) => {
+                  handleOnChange({ selectedDate, currentBirthdate, onChange })
+                }}
+                date={currentBirthdate}
+                errorMessage={displayErrorMessage(currentBirthdate)}
                 maximumDate={maximumSpinnerDate}
                 minimumDate={MINIMUM_DATE}
               />
