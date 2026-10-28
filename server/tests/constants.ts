@@ -29,17 +29,17 @@ export const TEST_HTML = `<!doctype html>
     <meta name="twitter:app:country" content="FR"/>
     <meta name="twitter:app:name:iphone" content="pass Culture"/>
     <meta name="twitter:app:id:iphone" content="1557887412"/>
-    <meta name="twitter:app:url:iphone" content="passculture://https://app.testing.passculture.team"/>
+    <meta name="twitter:app:url:iphone" content="passculturetesting:///"/>
     <meta name="twitter:app:name:ipad" content="pass Culture"/>
     <meta name="twitter:app:id:ipad" content="1557887412"/>
-    <meta name="twitter:app:url:ipad" content="passculture://https://app.testing.passculture.team"/>
+    <meta name="twitter:app:url:ipad" content="passculturetesting:///"/>
     <meta name="twitter:app:name:googleplay" content="pass Culture"/>
     <meta name="twitter:app:id:googleplay" content="app.passculture.testing"/>
-    <meta name="twitter:app:url:googleplay" content="passculture://https://app.testing.passculture.team"/>
+    <meta name="twitter:app:url:googleplay" content="passculturetesting:///"/>
     <meta property="al:ios:app_name" content="pass Culture"/>
     <meta property="al:ios:app_store_id" content="1557887412"/>
-    <meta property="al:ios:url" content="passculture://https://app.testing.passculture.team"/>
-    <meta property="al:android:url" content="passculture://https://app.testing.passculture.team">
+    <meta property="al:ios:url" content="passculturetesting:///"/>
+    <meta property="al:android:url" content="passculturetesting:///">
     <meta property="al:android:app_name" content="pass Culture"/>
     <meta property="al:android:package" content="app.passculture.testing"/>
   </head>
