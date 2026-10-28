@@ -27,7 +27,7 @@ import { LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
-  playlistType: PlaylistType
+  playlistType: PlaylistType | string
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,

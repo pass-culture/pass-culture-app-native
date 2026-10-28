@@ -118,18 +118,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     ? JSON.parse(params?.apiRecoParams)
     : undefined
 
-  const {
-    sameCategorySimilarOffers,
-    apiRecoParamsSameCategory,
-    otherCategoriesSimilarOffers,
-    apiRecoParamsOtherCategories,
-    booksSameCategorySimilarOffers,
-    apiRecoParamsBooksSameCategory,
-  } = useOfferPlaylist({
+  const playlists = useOfferPlaylist({
     offer,
-    offerCategory: subcategory.categoryId,
-    offerSearchGroup: subcategory.searchGroupName,
-    searchGroupList,
+    userId,
   })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
@@ -307,7 +298,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     </OfferContentCTAs>
   )
 
-  const navigateToVerticalPlaylist = (type: PlaylistType) => ({
+  const navigateToVerticalPlaylist = (type: PlaylistType | string) => ({
     screen: 'VerticalPlaylistOffers' as const,
     params: {
       type: VerticalPlaylist.SimilarOffers,
@@ -321,7 +312,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const onBeforeNavigate = (type: PlaylistType) => {
+  const onBeforeNavigate = (type: PlaylistType | string) => {
     const moduleName = OFFER_SIMILAR_PLAYLIST_TITLES[type]
 
     if (!moduleName) return
@@ -416,12 +407,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           </StyledSectionWithDivider>
           <OfferPlaylistList
             offer={offer}
-            sameCategorySimilarOffers={sameCategorySimilarOffers}
-            apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-            otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-            apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-            booksSameCategorySimilarOffers={booksSameCategorySimilarOffers}
-            apiRecoParamsBooksSameCategory={apiRecoParamsBooksSameCategory}
+            playlists={playlists}
             onViewableItemsChanged={handleViewableItemsChanged}
             seeAllButton={{
               navigateToVerticalPlaylist,

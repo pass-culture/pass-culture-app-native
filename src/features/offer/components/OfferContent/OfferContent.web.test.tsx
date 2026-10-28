@@ -2,11 +2,10 @@ import { QueryClient } from '@tanstack/react-query'
 import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { OfferPagePlaylistResponse, OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { adviceVariantInfoFixture } from 'features/advices/fixtures/adviceVariantInfo.fixture'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { GeoCoordinates } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import {
@@ -56,10 +55,6 @@ const setupQueryClient = (client: QueryClient) => {
   jest.spyOn(queryClient, 'getQueryData').mockReturnValue(mockedGetQueryData)
 }
 
-jest
-  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
-  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
-
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -67,6 +62,10 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<OfferContent />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.getApi<OfferPagePlaylistResponse>(
+      'https://localhost/native/v1/recommendation/offer_page_playlists/116656?longitude=90.477&latitude=90.477',
+      {}
+    )
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setupLocation()
     mockAuthContextWithoutUser({ persist: true })

@@ -27,7 +27,7 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   onClose?: () => void
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
-  offersPlaylistType: PlaylistType
+  offersPlaylistType: PlaylistType | string
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,

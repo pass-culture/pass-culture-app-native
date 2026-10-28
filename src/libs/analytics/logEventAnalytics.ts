@@ -162,7 +162,7 @@ export const logEventAnalytics = {
     bookingId: string
     fromOfferId?: string
     fromMultivenueOfferId?: string
-    playlistType?: PlaylistType
+    playlistType?: PlaylistType | string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_CONFIRMATION }, params),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analytics.logEvent(
@@ -215,7 +215,7 @@ export const logEventAnalytics = {
     from?: Referrals
     searchId?: string
     apiRecoParams?: RecommendationApiParams
-    playlistType?: PlaylistType
+    playlistType?: PlaylistType | string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
   logClickCopyDebugInfo: (userId?: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_COPY_DEBUG_INFO }, { userId }),
@@ -595,7 +595,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, params),
   logPlaylistHorizontalScroll: (
     fromOfferId?: number,
-    playlistType?: PlaylistType,
+    playlistType?: string,
     apiRecoParams?: RecommendationApiParams
   ) =>
     analytics.logEvent(
@@ -604,7 +604,7 @@ export const logEventAnalytics = {
     ),
   logPlaylistVerticalScroll: (params: {
     offerId: number
-    playlistType: PlaylistType
+    playlistType: string
     nbResults: number
     fromOfferId?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),

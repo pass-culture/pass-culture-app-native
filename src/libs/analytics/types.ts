@@ -48,7 +48,7 @@ export type ConsultOfferLogParams = {
   searchId?: string
   fromOfferId?: number | string
   fromMultivenueOfferId?: number | string
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
   offer_display_index?: number
   index?: number
   artistName?: string

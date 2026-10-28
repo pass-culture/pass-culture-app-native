@@ -41,7 +41,7 @@ type RenderOfferPlaylistItemProps = {
   item: Offer
   width: number
   height: number
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
 }
 
 export const OfferPlaylistItem = ({

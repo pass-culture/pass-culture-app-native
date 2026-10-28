@@ -41,7 +41,7 @@ export interface OfferTileProps {
   height: number
   fromOfferId?: number
   fromMultivenueOfferId?: number
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
