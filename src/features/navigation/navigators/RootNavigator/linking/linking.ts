@@ -11,7 +11,7 @@ import { customGetPathFromState } from './getPathFromState'
 import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
 
-const PASS_CULTURE_PREFIX_URL = `passculture-${env.ENV}://`
+const PASS_CULTURE_PREFIX_URL = `${env.URL_PREFIX}://`
 
 export const linking: RequireField<
   LinkingOptions<RootStackParamList>,

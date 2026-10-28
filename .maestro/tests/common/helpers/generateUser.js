@@ -20,6 +20,6 @@ const exp = userData.expiration_timestamp
 
 const path = `signup-confirmation?email=${email}&expiration_timestamp=${exp}&token=${token}`
 
-output.deeplink = `passculture-staging:///${path}`
+output.deeplink = `passculturestaging:///${path}`
 
 output.userEmail = email
