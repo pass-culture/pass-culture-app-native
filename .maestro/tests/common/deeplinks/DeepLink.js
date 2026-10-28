@@ -29,3 +29,8 @@ output.links = {
     },
   },
 }
+
+// Same link on every platform and environment: the testing and staging builds both read the "testing" Contentful environment
+output.customSchemeLinks = {
+  thematicHome: 'passculture://accueil-thematique?homeId=3S4UGnN2tfPIV1ANpdUYs6&from=deeplink',
+}

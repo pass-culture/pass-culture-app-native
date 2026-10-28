@@ -1,0 +1,39 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - deeplink
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/lifecycle/StopApp.yml
+
+# openLink does not fail on an unhandled link: when the passculture scheme is not declared natively
+# (Info.plist, AndroidManifest.xml), the app does not open and the next assertion fails
+- openLink: ${output.customSchemeLinks.thematicHome}
+
+# iOS asks for confirmation when a custom scheme is opened while the app is running
+- runFlow:
+    when:
+      platform: iOS
+      visible: 'Ouvrir'
+    commands:
+      - tapOn: 'Ouvrir'
+
+# The app state was cleared: the cookie consent modal shows up on top of the opened screen
+- extendedWaitUntil:
+    visible: 'Respect de ta vie privée'
+    timeout: 60000
+- runFlow: ../common/cookies/AcceptCookies.yml
+
+- extendedWaitUntil:
+    visible: 'Revenir en arrière'
+    timeout: 30000
+- assertNotVisible: 'Page introuvable.*'
+- assertNotVisible: 'Oups.*'
+- assertNotVisible: 'Bienvenue sur.*'
+
+# from=deeplink makes the back button lead to the home tab (labelled "Accueil - actif" on iOS)
+- tapOn: 'Revenir en arrière'
+- assertVisible: 'Accueil.*'
+
+- runFlow: ../common/lifecycle/StopApp.yml
