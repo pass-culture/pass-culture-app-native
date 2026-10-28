@@ -73,7 +73,7 @@ describe('linking', () => {
 
   it('should open ThematicHome when url is an Adjust link', () => {
     const { state } = openUrl(
-      'https://passculture.go.link/accueil-thematique?homeId=fakeEntryId&from=deeplink&adj_t=fakeTracker'
+      `https://${env.ADJUST_LINK_DOMAIN}/accueil-thematique?homeId=fakeEntryId&from=deeplink&adj_t=fakeTracker`
     )
 
     expect(getNestedNavigationFromState(state)).toEqual([

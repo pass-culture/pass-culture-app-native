@@ -11,7 +11,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:$(WEBAPP_V2_DOMAIN)</string>
-		<string>applinks:passculture.go.link</string>
+		<string>applinks:$(ADJUST_LINK_DOMAIN)</string>
 	</array>
 </dict>
 </plist>

@@ -7,8 +7,7 @@ import { act, renderHook } from 'tests/utils'
 
 import { useAdjustDeeplinkAttribution } from './useAdjustDeeplinkAttribution'
 
-const ADJUST_LINK =
-  'https://passculture.go.link/accueil-thematique?homeId=fakeEntryId&from=deeplink'
+const ADJUST_LINK = `https://${env.ADJUST_LINK_DOMAIN}/accueil-thematique?homeId=fakeEntryId&from=deeplink`
 const CUSTOM_SCHEME_LINK = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEntryId&from=deeplink`
 const WEBAPP_LINK = `${WEBAPP_V2_URL}/mot-de-passe-perdu?token=fakeToken&email=jean.dupont@example.com`
 
