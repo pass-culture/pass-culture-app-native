@@ -36,7 +36,7 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
-import { asOfferId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asSearchId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -115,7 +115,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         .filter((token) => token.isViewable)
         .forEach(({ key, index }) => {
           if (!searchState.searchId) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'search',
             playlistIndex,
             index: index ?? -1,

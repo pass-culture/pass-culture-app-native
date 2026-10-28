@@ -9,7 +9,8 @@ import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/The
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId } from 'libs/analytics/helpers/logViewItem'
+import { analytics } from 'libs/analytics/provider'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -66,7 +67,7 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
             key={playlist.entryId}
             onItemViewed={({ index: itemIndex, item }) => {
               if (!isFocused || !searchId) return
-              void logViewItem({
+              void analytics.logViewItem({
                 origin: 'search',
                 playlistIndex,
                 index: itemIndex,

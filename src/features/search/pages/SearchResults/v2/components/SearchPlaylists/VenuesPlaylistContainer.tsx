@@ -11,7 +11,8 @@ import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery
 import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
-import { asSearchId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asSearchId, asVenueId } from 'libs/analytics/helpers/logViewItem'
+import { analytics } from 'libs/analytics/provider'
 import { useLocationMode } from 'libs/locationV2/location.store'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 
@@ -51,7 +52,7 @@ export const VenuesPlaylistContainer: FC<Props> = ({
       <ObservedPlaylist
         onItemViewed={({ index, item }) => {
           if (!isFocused || !searchId) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'search',
             playlistIndex,
             index: index,

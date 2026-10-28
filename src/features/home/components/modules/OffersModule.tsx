@@ -15,7 +15,7 @@ import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackN
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { asHomeEntryId, asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, asOfferId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
@@ -186,7 +186,7 @@ export const OffersModule: FC<OffersModuleProps> = ({
     <ObservedPlaylist
       onItemViewed={({ index: itemIndex, item }) => {
         if (!homeEntryId) return
-        void logViewItem({
+        void analytics.logViewItem({
           origin: 'home',
           playlistIndex: index,
           index: itemIndex,

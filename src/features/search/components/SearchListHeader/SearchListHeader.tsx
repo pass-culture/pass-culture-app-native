@@ -15,7 +15,7 @@ import { gridListLayoutActions, useGridListLayout } from 'features/search/store/
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
-import { asSearchId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asSearchId, asVenueId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { locationStore } from 'libs/locationV2/location.store'
@@ -123,7 +123,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <ObservedPlaylist
             onItemViewed={({ index, item }) => {
               if (!isFocused || !searchId) return
-              void logViewItem({
+              void analytics.logViewItem({
                 origin: 'search',
                 playlistIndex: 0,
                 index: index,

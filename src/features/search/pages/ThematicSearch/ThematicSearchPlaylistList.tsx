@@ -4,7 +4,8 @@ import React from 'react'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { asOfferId, logViewItem, ThematicSearchOriginId } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, ThematicSearchOriginId } from 'libs/analytics/helpers/logViewItem'
+import { analytics } from 'libs/analytics/provider'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -40,7 +41,7 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
               key={playlist.title}
               onItemViewed={({ index: itemIndex, item }) => {
                 if (!isFocused || !searchId) return
-                void logViewItem({
+                void analytics.logViewItem({
                   origin: 'search',
                   playlistIndex,
                   index: itemIndex,

@@ -4,7 +4,7 @@ import { styled } from 'styled-components/native'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { HomepageModuleType, ModuleData, VenuesModuleParameters } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
-import { asHomeEntryId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, asVenueId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -93,7 +93,7 @@ export const VenuesModule = ({
       <ObservedPlaylist
         onItemViewed={({ index: itemIndex, item }) => {
           if (!homeEntryId) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'home',
             playlistIndex: index,
             index: itemIndex,

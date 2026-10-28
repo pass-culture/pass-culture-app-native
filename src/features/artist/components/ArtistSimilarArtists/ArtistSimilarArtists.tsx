@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { ArtistSimilarArtistsSkeleton } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtistsSkeleton'
 import { useSimilarArtistsQuery } from 'features/artist/queries/useSimilarArtistsQuery'
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
-import { asArtistId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -80,7 +80,7 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId, index
       <ObservedPlaylist
         onItemViewed={({ index: itemIndex, item }) => {
           if (!isFocused) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'artist',
             playlistIndex: index,
             index: itemIndex,

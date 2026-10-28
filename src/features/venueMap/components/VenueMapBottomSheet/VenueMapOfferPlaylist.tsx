@@ -11,7 +11,8 @@ import {
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import { asOfferId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asVenueId } from 'libs/analytics/helpers/logViewItem'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
@@ -102,7 +103,7 @@ export const VenueMapOfferPlaylist = ({
       <ObservedPlaylist
         onItemViewed={({ index, item }) => {
           if (!isFocused) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'venueMap',
             playlistIndex: 0,
             index,

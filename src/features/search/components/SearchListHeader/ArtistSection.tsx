@@ -4,7 +4,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { Artist } from 'features/venue/types'
-import { asArtistId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId, asSearchId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -68,7 +68,7 @@ export const ArtistSection = ({
       <ObservedPlaylist
         onItemViewed={({ index: itemIndex, item }) => {
           if (!isFocused || !searchId) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'search',
             playlistIndex: 0,
             index: itemIndex,

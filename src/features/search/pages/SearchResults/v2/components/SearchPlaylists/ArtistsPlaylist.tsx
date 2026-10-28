@@ -7,7 +7,7 @@ import { hasActiveSearchFilters } from 'features/search/queries/helpers'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
-import { asArtistId, asSearchId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId, asSearchId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
@@ -76,7 +76,7 @@ export const ArtistsPlaylist = ({
       <ObservedPlaylist
         onItemViewed={({ index, item }) => {
           if (!isFocused || !searchId) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'search',
             playlistIndex: 0,
             index,

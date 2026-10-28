@@ -8,7 +8,7 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { OfferPlaylistListProps } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { asOfferId, asOfferPagePlaylistId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asOfferId, asOfferPagePlaylistId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -82,7 +82,7 @@ export const OfferPlaylistSection: FunctionComponent<OfferPlaylistSectionProps> 
       key={playlist.analyticsPlaylistType}
       onItemViewed={({ index, item }) => {
         if (isFocused) {
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'offer',
             playlistIndex,
             index,

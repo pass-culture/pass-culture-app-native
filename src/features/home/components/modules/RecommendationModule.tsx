@@ -5,7 +5,7 @@ import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOf
 import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
-import { asHomeEntryId, asOfferId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asHomeEntryId, asOfferId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
@@ -101,7 +101,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     <ObservedPlaylist
       onItemViewed={({ index: itemIndex, item }) => {
         if (!homeEntryId) return
-        void logViewItem({
+        void analytics.logViewItem({
           origin: 'home',
           playlistIndex: index,
           index: itemIndex,

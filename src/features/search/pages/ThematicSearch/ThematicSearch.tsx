@@ -25,7 +25,6 @@ import { SearchState, SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 import {
   asVenueId,
-  logViewItem,
   THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY,
 } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
@@ -157,7 +156,7 @@ export const ThematicSearch: React.FC = () => {
         <ObservedPlaylist
           onItemViewed={({ index, item }) => {
             if (!isFocused) return
-            void logViewItem({
+            void analytics.logViewItem({
               origin: 'search',
               playlistIndex: 0,
               index,

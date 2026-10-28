@@ -33,6 +33,8 @@ import { GridListLayout, SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import {
   AdviceType,
@@ -43,27 +45,7 @@ import {
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
-import { LocationMode } from 'libs/location/types'
 import { ColorSchemeType } from 'libs/styled/useColorScheme'
-
-type PlaylistTrackingInfo = {
-  moduleId: string
-  itemType: 'offer' | 'venue' | 'artist' | 'unknown'
-  callId: string
-  index: number
-  viewedAt: Date
-  items: { key: string; index: number | null }[]
-  extra?: Record<string, string | undefined>
-  searchId?: string
-  pageLocation?: string
-  entryId?: string
-}
-
-type PageTrackingInfo = {
-  pageLocation: string
-  pageId: string
-  playlists: PlaylistTrackingInfo[]
-}
 
 type ConsultHomeParams = { homeEntryId: string }
 
@@ -753,8 +735,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED }, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
-  logViewItem: (params: PageTrackingInfo & { locationType: LocationMode }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM }, params),
+  logViewItem,
   logViewMap: (params: { from: Referrals; mapType: MapType; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_MAP }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>

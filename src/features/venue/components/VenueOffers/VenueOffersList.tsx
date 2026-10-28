@@ -16,7 +16,7 @@ import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { asArtistId, asOfferId, asVenueId, logViewItem } from 'libs/analytics/helpers/logViewItem'
+import { asArtistId, asOfferId, asVenueId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -143,7 +143,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       <ObservedPlaylist
         onItemViewed={({ index, item }) => {
           if (!isFocused) return
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'venue',
             playlistIndex: 0,
             index,
@@ -195,7 +195,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           <ObservedPlaylist
             onItemViewed={({ index, item }) => {
               if (!isFocused) return
-              void logViewItem({
+              void analytics.logViewItem({
                 origin: 'venue',
                 playlistIndex: 1,
                 index,
@@ -225,7 +225,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
                 key={playlist.entryId}
                 onItemViewed={({ index: itemIndex, item }) => {
                   if (!isFocused) return
-                  void logViewItem({
+                  void analytics.logViewItem({
                     origin: 'venue',
                     playlistIndex,
                     index: itemIndex,

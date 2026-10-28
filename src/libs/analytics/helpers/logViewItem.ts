@@ -4,7 +4,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics/provider'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
-// thematic search musique, thematicsearchvenueId et origin id doit etre thematicSearchmusic et pas l'id de la recherche (uuidev4), thematicSearchBook a aussi ce problème sur les offres, cinema, concert
 export type ViewItemParams = {
   origin: 'home' | 'search' | 'offer' | 'artist' | 'venue' | 'venueMap'
   originId: HomeEntryId | SearchId | OfferId | ArtistId | VenueId | ThematicSearchOriginId

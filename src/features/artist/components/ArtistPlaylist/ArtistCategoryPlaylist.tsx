@@ -7,12 +7,7 @@ import { ArtistResponse } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import {
-  ArtistCategoryPlaylistId,
-  asArtistId,
-  asOfferId,
-  logViewItem,
-} from 'libs/analytics/helpers/logViewItem'
+import { ArtistCategoryPlaylistId, asArtistId, asOfferId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -80,7 +75,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
     <ObservedPlaylist
       onItemViewed={({ index, item }) => {
         if (isFocused) {
-          void logViewItem({
+          void analytics.logViewItem({
             origin: 'artist',
             playlistIndex,
             index,
