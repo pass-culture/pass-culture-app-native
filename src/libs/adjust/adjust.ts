@@ -59,6 +59,10 @@ const initOrEnable = (calledBecauseOfNewConsents = false) => {
     // At the end of the 60 seconds or when the status becomes available, the data are sent with or without the IDFA depending on the status
     adjustConfig.setAttConsentWaitingInterval(60)
 
+    // The SDK opens by default the link of the Adjust campaign that led to the install (deferred deep link).
+    // We do not want it: a new user goes through the usual onboarding.
+    adjustConfig.disableDeferredDeeplinkOpening()
+
     // // If we want log for debug. Level info by default
     // adjustConfig.setLogLevel(AdjustConfig.LogLevelVerbose)
 
