@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferPagePlaylist, OfferResponse, RecommendationApiParams } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
+import { OfferPlaylistListProps } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
@@ -21,28 +22,9 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-
-type OfferPlaylistListProps = {
-  offer: OfferResponse
-  playlists?: OfferPagePlaylist[]
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
-  seeAllButton: {
-    navigateToVerticalPlaylist: (type: string) => InternalNavigationProps['navigateTo']
-    onBeforeNavigate: (type: string, title?: string) => void
-    hidePlaylistSeeAll?: boolean
-    hideSearchSeeAll?: boolean
-  }
-}
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
-// --- SOUS-COMPOSANT PAR PLAYLIST ---
 type OfferPlaylistSectionProps = {
   playlist: OfferPagePlaylist
   playlistIndex: number
