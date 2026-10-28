@@ -17,12 +17,12 @@ export const NotConnectedFavorites = () => {
   const { bottom } = useSafeAreaInsets()
 
   const onBeforeSignupNavigate = () => {
-    analytics.logSignUpFromFavorite()
-    analytics.logSignUpClicked({ from: 'favorite' })
+    void analytics.logSignUpFromFavorite()
+    void analytics.logSignUpClicked({ from: 'favorite' })
   }
 
   const onBeforeLoginNavigate = () => {
-    analytics.logSignInFromFavorite()
+    void analytics.logSignInFromFavorite()
   }
 
   return (

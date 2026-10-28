@@ -18,7 +18,7 @@ export const FraudulentSuspendedAccount = () => (
 )
 
 const onBeforeNavigateContactFraudTeam = () => {
-  analytics.logContactFraudTeam({ from: 'fraudulentsuspendedaccount' })
+  void analytics.logContactFraudTeam({ from: 'fraudulentsuspendedaccount' })
 }
 
 const StyledBody = styled(Typo.Body)({

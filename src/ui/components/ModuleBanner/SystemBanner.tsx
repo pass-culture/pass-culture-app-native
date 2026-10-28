@@ -75,7 +75,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
   const focusProps = useHandleFocus()
 
   useEffect(() => {
-    analytics.logSystemBlockDisplayed({ type, from })
+    void analytics.logSystemBlockDisplayed({ type, from })
   }, [type, from])
 
   const color = withBackground ? 'inverted' : 'default'

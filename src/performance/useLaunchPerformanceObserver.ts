@@ -21,9 +21,8 @@ export const useLaunchPerformanceObserver = (): void => {
 
         if (__DEV__ || !tti.duration) {
           return
-        } else {
-          customTrace(tti.duration)
         }
+        void customTrace(tti.duration)
       }
     })
 

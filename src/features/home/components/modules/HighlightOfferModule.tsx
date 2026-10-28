@@ -42,7 +42,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const position = useUserLocation()
 
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage({
+    void analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
       moduleType: ContentTypes.HIGHLIGHT_OFFER,
       index,

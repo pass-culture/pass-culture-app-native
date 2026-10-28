@@ -10,6 +10,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { EditorialCard } from 'ui/components/EditorialCard'
 import { getSpacing } from 'ui/theme'
@@ -42,16 +43,20 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     }
   }, [isDisabled])
 
-  const logAndOpenUrl = (finalUrl: string) => {
+  const logAndOpenUrl = async (finalUrl: string) => {
     setShouldRedirect(false)
-    analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
-    openUrl(finalUrl)
+    void analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
+    try {
+      await openUrl(finalUrl)
+    } catch (error) {
+      eventMonitoring.captureException(`Failed to open URL: ${String(error)}`)
+    }
   }
 
   useEffect(() => {
     if (!url || !shouldRedirect) return
     const businessUrl = getBusinessUrl(url, user?.email)
-    if (businessUrl) logAndOpenUrl(businessUrl)
+    if (businessUrl) void logAndOpenUrl(businessUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 
@@ -61,17 +66,19 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     localizationArea
   )
 
-  useEffect(() => {
-    if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
-        moduleId,
-        moduleType: ContentTypes.BUSINESS,
-        index,
-        homeEntryId,
-      })
-    }
+  useEffect(
+    function logModuleDisplayed() {
+      if (shouldModuleBeDisplayed)
+        void analytics.logModuleDisplayedOnHomepage({
+          moduleId,
+          moduleType: ContentTypes.BUSINESS,
+          index,
+          homeEntryId,
+        })
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
+    [shouldModuleBeDisplayed]
+  )
 
   const editorialCardInfo = useMemo(
     () => ({

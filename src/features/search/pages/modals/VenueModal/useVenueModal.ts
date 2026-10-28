@@ -67,7 +67,7 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
       type: 'SET_STATE',
       payload,
     })
-    if (selectedVenue) analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
+    if (selectedVenue) void analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
 
     dismissModal()
   }, [dismissModal, dispatch, searchState, selectedVenue])

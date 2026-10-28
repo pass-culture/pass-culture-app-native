@@ -19,7 +19,7 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 type Props = NativeStackScreenProps<OnboardingStackParamList, 'OnboardingAgeInformation'>
 
 const onSignupPress = () => {
-  analytics.logSignUpClicked({ from: 'onboarding' })
+  void analytics.logSignUpClicked({ from: 'onboarding' })
 }
 
 export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | null => {

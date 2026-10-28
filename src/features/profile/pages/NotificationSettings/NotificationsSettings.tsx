@@ -22,6 +22,7 @@ import {
   TOTAL_NUMBER_OF_THEME,
 } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
@@ -90,9 +91,13 @@ export const NotificationsSettings = () => {
     hideModal: hidePushModal,
   } = useModal(false)
 
-  const onRequestNotificationPermissionFromModal = () => {
+  const onRequestNotificationPermissionFromModal = async () => {
     hidePushModal()
-    Linking.openSettings()
+    try {
+      await Linking.openSettings()
+    } catch (error) {
+      eventMonitoring.captureException(`Failed to open settings: ${String(error)}`)
+    }
   }
 
   const togglePush = () => {
@@ -112,7 +117,7 @@ export const NotificationsSettings = () => {
         stateSubscriptions: state.themePreferences,
       })
     ) {
-      analytics.logSubscriptionUpdate({ type: 'update', from: 'profile' })
+      void analytics.logSubscriptionUpdate({ type: 'update', from: 'profile' })
     }
     if (state.allowEmails !== undefined && state.allowPush !== undefined) {
       patchProfile({
@@ -279,11 +284,10 @@ const settingsReducer = (state: NotificationsSettingsState, action: ToggleAction
       }
     case 'push':
       if (action.state === 'toggle') return { ...state, allowPush: !state.allowPush }
-      else
-        return {
-          ...state,
-          allowPush: action.state,
-        }
+      return {
+        ...state,
+        allowPush: action.state,
+      }
     case 'allTheme':
       return {
         ...state,

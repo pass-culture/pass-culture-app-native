@@ -16,11 +16,11 @@ interface Props {
 }
 
 const onDMSFrenchCitizenPress = () => {
-  analytics.logOpenDMSFrenchCitizenURL()
+  void analytics.logOpenDMSFrenchCitizenURL()
 }
 
 const onDMSForeignCitizenPress = () => {
-  analytics.logOpenDMSForeignCitizenURL()
+  void analytics.logOpenDMSForeignCitizenURL()
 }
 
 export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (

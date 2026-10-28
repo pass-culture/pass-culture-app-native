@@ -23,19 +23,21 @@ export const useShareAppModalViewmodel = ({
   } = useRemoteConfigQuery()
 
   const close = useCallback(() => {
-    analytics.logDismissShareApp(type)
+    void analytics.logDismissShareApp(type)
     hideModal()
   }, [hideModal, type])
 
   const share = useCallback(async () => {
-    analytics.logShareApp({ type: type })
-    await shareApp(ShareAppModalType.BENEFICIARY ? 'beneficiary_modal' : 'uneligible_modal')
+    void analytics.logShareApp({ type })
+    await shareApp(
+      type === ShareAppModalType.BENEFICIARY ? 'beneficiary_modal' : 'uneligible_modal'
+    )
     hideModal()
   }, [hideModal, type])
 
   const show = useCallback(
     (_type: ShareAppModalType) => {
-      analytics.logShowShareAppModal({ type: _type })
+      void analytics.logShowShareAppModal({ type: _type })
       setType(_type)
       showModal()
     },

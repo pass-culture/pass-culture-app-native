@@ -59,8 +59,12 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
     }
   }, [isError, error, logType])
 
-  const onResendEmailSuccess = () => {
-    refetchRemainingResends()
+  const onResendEmailSuccess = async () => {
+    try {
+      await refetchRemainingResends()
+    } catch (e) {
+      eventMonitoring.captureException(`Failed to refetch remaining resends: ${String(e)}`)
+    }
     setTimeLeft(60)
   }
   const { mutate: resendEmail, isPending } = useResendEmailValidationMutation({
@@ -77,7 +81,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const onResendPress = () => {
     setErrorMessage(undefined)
     resendEmail({ email })
-    analytics.logResendEmailValidation()
+    void analytics.logResendEmailValidation()
   }
 
   const hasAttemptsLeft =
