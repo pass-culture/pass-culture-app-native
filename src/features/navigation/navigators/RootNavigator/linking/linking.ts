@@ -12,6 +12,8 @@ import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
 
 const PASS_CULTURE_PREFIX_URL = `${env.URL_PREFIX}://`
+// Adjust link domain, declared natively in ios/PassCulture/PassCulture.entitlements and android/app/src/main/AndroidManifest.xml
+const ADJUST_LINK_PREFIX = 'https://passculture.go.link'
 
 export const linking: RequireField<
   LinkingOptions<RootStackParamList>,
@@ -21,6 +23,8 @@ export const linking: RequireField<
     // must NOT be empty
     WEBAPP_V2_URL,
     PASS_CULTURE_PREFIX_URL,
+    // the path of an Adjust link is the screen to open: `https://passculture.go.link/<path>?adj_t=<tracker>`
+    ADJUST_LINK_PREFIX,
   ],
   getInitialURL: getInitialURL,
   subscribe: subscribe,

@@ -70,4 +70,15 @@ describe('linking', () => {
 
     expect(getNestedNavigationFromState(state)).toEqual(['Offer', { id: 123 }])
   })
+
+  it('should open ThematicHome when url is an Adjust link', () => {
+    const { state } = openUrl(
+      'https://passculture.go.link/accueil-thematique?homeId=fakeEntryId&from=deeplink&adj_t=fakeTracker'
+    )
+
+    expect(getNestedNavigationFromState(state)).toEqual([
+      'ThematicHome',
+      { homeId: 'fakeEntryId', from: 'deeplink', adj_t: 'fakeTracker' },
+    ])
+  })
 })
