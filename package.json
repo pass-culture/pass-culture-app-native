@@ -304,7 +304,7 @@
     "react-native-svg-web": "^1.0.9",
     "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "19.2.3",
-    "storybook": "^10.3.5",
+    "storybook": "^10.6.2",
     "timezone-mock": "^1.4.2",
     "ts-node": "^10.8.0",
     "type-fest": "^4.15.0",
