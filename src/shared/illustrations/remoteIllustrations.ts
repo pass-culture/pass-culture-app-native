@@ -14,6 +14,7 @@ export type RemoteIllustrationName =
   | 'emptyDigitalWindowLarge'
   | 'emptyWalletLarge'
   | 'emptyWalletSmall'
+  | 'girlHoldingHeartMosaicLarge'
   | 'heartMosaicSmall'
   | 'hourglass'
   | 'mailBoxSendingLarge'
@@ -50,6 +51,7 @@ export const remoteIllustrationUrls = {
   emptyHeartBoxLarge: buildCategoryIllustrationUrl('emptyHeartBoxLarge.png'),
   emptyWalletLarge: buildCategoryIllustrationUrl('emptyWalletLarge.png'),
   emptyWalletSmall: buildCategoryIllustrationUrl('emptyWalletSmall.png'),
+  girlHoldingHeartMosaicLarge: buildCategoryIllustrationUrl('girlHoldingHeartMosaicLarge.png'),
   heartMosaicSmall: buildCategoryIllustrationUrl('heartMosaicSmall.png'),
   hourglass: buildCategoryIllustrationUrl('hourglass.png'),
   mailBoxSendingLarge: buildCategoryIllustrationUrl('mailBoxSendingLarge.png'),
