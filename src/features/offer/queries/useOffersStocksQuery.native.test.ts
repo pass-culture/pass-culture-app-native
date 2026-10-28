@@ -1,4 +1,4 @@
-import { OffersStocksResponseV2 } from 'api/gen'
+import { OffersStocksResponse } from 'api/gen'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { convertOffererDatesToTimezone } from 'features/offer/queries/selectors/convertOffererDatesToTimezone'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
@@ -13,7 +13,7 @@ const timezonedOffersStocksResponseSnap = convertOffererDatesToTimezone(offersSt
 
 describe('useOffersStocksQuery', () => {
   beforeEach(() => {
-    mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)
+    mockServer.postApi<OffersStocksResponse>(`/v3/offers/stocks`, offersStocksResponseSnap)
   })
 
   it('should call API', async () => {

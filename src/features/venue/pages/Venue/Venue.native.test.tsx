@@ -4,7 +4,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { Activity, OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { Activity, OffersStocksResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
@@ -110,7 +110,7 @@ describe('<Venue />', () => {
     useLocationV2.setState(defaultLocationState)
     setFeatureFlags()
     await AsyncStorage.clear()
-    mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
+    mockServer.postApi<OffersStocksResponse>('/v3/offers/stocks', {})
     mockServer.patchApi<UserProfile>('/v1/profile', {})
     mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, {
       ...venueDataTest,
@@ -279,7 +279,7 @@ describe('<Venue />', () => {
       // Mock API Calls
       const mockedVenue = { ...venueDataTest, activity: Activity.CINEMA }
       mockServer.getApi<VenueResponse>(`/v2/venue/${venueId}`, mockedVenue)
-      mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, {})
+      mockServer.postApi<OffersStocksResponse>(`/v3/offers/stocks`, {})
     })
 
     it('should show button by default', async () => {

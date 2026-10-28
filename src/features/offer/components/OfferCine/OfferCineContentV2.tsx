@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { DayVenueScreenings } from 'api/gen'
+import { DayVenueScreeningsV2 } from 'api/gen'
 import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/ExpandingFlatList'
 import {
   useDisableCalendarDatesV2,
@@ -17,18 +17,12 @@ import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  offerId: number
-  calendar: DayVenueScreenings[]
+  calendar: DayVenueScreeningsV2[]
   isLoading: boolean
   onSeeVenuePress?: VoidFunction
 }
 
-export const OfferCineContentV2: FC<Props> = ({
-  offerId,
-  calendar,
-  isLoading,
-  onSeeVenuePress,
-}) => {
+export const OfferCineContentV2: FC<Props> = ({ calendar, isLoading, onSeeVenuePress }) => {
   const { selectedDate } = useMovieCalendarV2()
   const venues = calendar?.find((value) => value.date === selectedDate)?.screenings || []
   const disabledDates = calendar
@@ -59,12 +53,7 @@ export const OfferCineContentV2: FC<Props> = ({
         skeletonListLength={3}
         renderSkeleton={() => <CineBlockSkeleton />}
         renderItem={({ item }) => (
-          <CineBlockV2
-            offerId={offerId}
-            venueScreenings={item}
-            onSeeVenuePress={onSeeVenuePress}
-            withDivider
-          />
+          <CineBlockV2 venueScreenings={item} onSeeVenuePress={onSeeVenuePress} withDivider />
         )}
         keyExtractor={(_, index) => `venue-cine-offers-${index}`}
       />

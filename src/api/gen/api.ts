@@ -1804,6 +1804,22 @@ export interface DayMovieScreenings {
 }
 /**
  * @export
+ * @interface DayMovieScreeningsV2
+ */
+export interface DayMovieScreeningsV2 {
+  /**
+   * @type {string}
+   * @memberof DayMovieScreeningsV2
+   */
+  date: string
+  /**
+   * @type {Array<MovieScreeningsV2>}
+   * @memberof DayMovieScreeningsV2
+   */
+  screenings: Array<MovieScreeningsV2>
+}
+/**
+ * @export
  * @interface DayVenueScreenings
  */
 export interface DayVenueScreenings {
@@ -1817,6 +1833,22 @@ export interface DayVenueScreenings {
    * @memberof DayVenueScreenings
    */
   screenings: Array<VenueScreenings>
+}
+/**
+ * @export
+ * @interface DayVenueScreeningsV2
+ */
+export interface DayVenueScreeningsV2 {
+  /**
+   * @type {string}
+   * @memberof DayVenueScreeningsV2
+   */
+  date: string
+  /**
+   * @type {Array<VenueScreeningsV2>}
+   * @memberof DayVenueScreeningsV2
+   */
+  screenings: Array<VenueScreeningsV2>
 }
 /**
  * @export
@@ -2583,6 +2615,17 @@ export interface MovieCalendarResponse {
 }
 /**
  * @export
+ * @interface MovieCalendarResponseV2
+ */
+export interface MovieCalendarResponseV2 {
+  /**
+   * @type {Array<DayVenueScreeningsV2>}
+   * @memberof MovieCalendarResponseV2
+   */
+  calendar: Array<DayVenueScreeningsV2>
+}
+/**
+ * @export
  * @interface MovieScreenings
  */
 export interface MovieScreenings {
@@ -2624,6 +2667,52 @@ export interface MovieScreenings {
   /**
    * @type {string | ModelNull}
    * @memberof MovieScreenings
+   */
+  thumbUrl: string | null
+}
+/**
+ * @export
+ * @interface MovieScreeningsV2
+ */
+export interface MovieScreeningsV2 {
+  /**
+   * @type {Array<ScreeningV2>}
+   * @memberof MovieScreeningsV2
+   */
+  dayScreenings: Array<ScreeningV2>
+  /**
+   * @type {number | null}
+   * @memberof MovieScreeningsV2
+   */
+  duration: number | null
+  /**
+   * @type {Array<string>}
+   * @memberof MovieScreeningsV2
+   */
+  genres: Array<string>
+  /**
+   * @type {number}
+   * @memberof MovieScreeningsV2
+   */
+  last30DaysBookings: number
+  /**
+   * @type {string}
+   * @memberof MovieScreeningsV2
+   */
+  movieName: string
+  /**
+   * @type {ScreeningV2 | null}
+   * @memberof MovieScreeningsV2
+   */
+  nextScreening: ScreeningV2 | null
+  /**
+   * @type {number}
+   * @memberof MovieScreeningsV2
+   */
+  offerId: number
+  /**
+   * @type {string | null}
+   * @memberof MovieScreeningsV2
    */
   thumbUrl: string | null
 }
@@ -3372,6 +3461,29 @@ export interface OfferResponse {
 }
 /**
  * @export
+ * @interface OfferForStocksResponse
+ */
+export interface OfferForStocksResponse {
+  address?: OfferAddressResponse | null
+  bookingAllowedDatetime?: string | null
+  expenseDomains: Array<ExpenseDomain>
+  externalTicketOfficeUrl?: string | null
+  id: number
+  images?: { [key: string]: OfferImageResponse } | null
+  isDuo: boolean
+  isExpired: boolean
+  isExternalBookingsDisabled: boolean
+  isReleased: boolean
+  isSoldOut: boolean
+  last30DaysBookings?: number | null
+  name: string
+  publicationDate?: string | null
+  stocks: Array<StockResponse>
+  subcategoryId: SubcategoryIdEnum
+  venue: OfferVenueResponse
+}
+/**
+ * @export
  * @interface OfferStockActivationCodeResponse
  */
 export interface OfferStockActivationCodeResponse {
@@ -3412,6 +3524,11 @@ export interface OfferStockResponse {
    */
   features: Array<string>
   /**
+   * @type {ScreeningFeatures | null}
+   * @memberof OfferStockResponse
+   */
+  screeningFeatures?: ScreeningFeatures | null
+  /**
    * @type {number}
    * @memberof OfferStockResponse
    */
@@ -3451,6 +3568,25 @@ export interface OfferStockResponse {
    * @memberof OfferStockResponse
    */
   remainingQuantity?: number | null
+}
+/**
+ * @export
+ * @interface StockResponse
+ */
+export interface StockResponse {
+  activationCode?: OfferStockActivationCodeResponse | null
+  beginningDatetime?: string | null
+  bookingLimitDatetime?: string | null
+  cancellationLimitDatetime?: string | null
+  id: number
+  isBookable: boolean
+  isExpired: boolean
+  isForbiddenToUnderage: boolean
+  isSoldOut: boolean
+  price: number
+  priceCategoryLabel?: string | null
+  remainingQuantity?: number | null
+  screeningFeatures?: ScreeningFeatures | null
 }
 /**
  * @export
@@ -3602,6 +3738,14 @@ export interface OffersStocksResponseV2 {
    * @memberof OffersStocksResponseV2
    */
   offers: Array<OfferResponse>
+}
+/**
+ * @export
+ * @interface OffersStocksResponse
+ */
+export interface OffersStocksResponse {
+  /** @type {Array<OfferForStocksResponse>} */
+  offers: Array<OfferForStocksResponse>
 }
 /**
  * An enumeration.
@@ -4176,6 +4320,52 @@ export interface Screening {
    * @type {number}
    * @memberof Screening
    */
+  stockId: number
+}
+/**
+ * @export
+ * @interface ScreeningAccessibilityFeatures
+ */
+export interface ScreeningAccessibilityFeatures {
+  /** @type {Array<string>} */
+  audio: Array<string>
+  /** @type {Array<string>} */
+  mental: Array<string>
+  /** @type {Array<string>} */
+  motor: Array<string>
+  /** @type {Array<string>} */
+  visual: Array<string>
+}
+/**
+ * @export
+ * @interface ScreeningFeatures
+ */
+export interface ScreeningFeatures {
+  /** @type {ScreeningAccessibilityFeatures} */
+  accessibility: ScreeningAccessibilityFeatures
+  /** @type {string | null} */
+  audio: string | null
+  /** @type {string | null} */
+  language: string | null
+  /** @type {string | null} */
+  specialEventType: string | null
+  /** @type {string | null} */
+  video: string | null
+}
+/**
+ * @export
+ * @interface ScreeningV2
+ */
+export interface ScreeningV2 {
+  /** @type {string} */
+  beginningDatetime: string
+  /** @type {Bookability} */
+  bookability: Bookability
+  /** @type {ScreeningFeatures} */
+  features: ScreeningFeatures
+  /** @type {number} */
+  price: number
+  /** @type {number} */
   stockId: number
 }
 /**
@@ -5487,6 +5677,17 @@ export interface VenueMovieCalendarResponse {
 }
 /**
  * @export
+ * @interface VenueMovieCalendarResponseV2
+ */
+export interface VenueMovieCalendarResponseV2 {
+  /**
+   * @type {Array<DayMovieScreeningsV2>}
+   * @memberof VenueMovieCalendarResponseV2
+   */
+  calendar: Array<DayMovieScreeningsV2>
+}
+/**
+ * @export
  * @interface VenueProAdvice
  */
 export interface VenueProAdvice {
@@ -5732,6 +5933,28 @@ export interface VenueScreenings {
 }
 /**
  * @export
+ * @interface VenueScreeningsV2
+ */
+export interface VenueScreeningsV2 {
+  /** @type {string} */
+  address: string
+  /** @type {Array<ScreeningV2>} */
+  dayScreenings: Array<ScreeningV2>
+  /** @type {number} */
+  distance: number
+  /** @type {string} */
+  label: string
+  /** @type {ScreeningV2 | null} */
+  nextScreening: ScreeningV2 | null
+  /** @type {number} */
+  offerId: number
+  /** @type {string | null} */
+  thumbUrl: string | null
+  /** @type {number} */
+  venueId: number
+}
+/**
+ * @export
  * @interface VisualDisability
  */
 export interface VisualDisability {
@@ -5823,6 +6046,121 @@ export enum YoungStatusType {
  */
 export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
   return {
+    async postNativeV3OffersStocks(
+      body: OffersStocksRequest,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      if (body === null || body === undefined) {
+        throw new RequiredError('body', 'Required parameter body was null or undefined when calling postNativeV3OffersStocks.')
+      }
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      localVarRequestOptions.body = JSON.stringify(body || {})
+      return { url: '/native/v3/offers/stocks', options: localVarRequestOptions }
+    },
+    async getNativeV2MovieCalendar(
+      latitude: number,
+      longitude: number,
+      allocineId?: string,
+      visa?: string,
+      aroundRadius?: number,
+      from?: string,
+      to?: string,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      if (latitude === null || latitude === undefined) {
+        throw new RequiredError('latitude', 'Required parameter latitude was null or undefined when calling getNativeV2MovieCalendar.')
+      }
+      if (longitude === null || longitude === undefined) {
+        throw new RequiredError('longitude', 'Required parameter longitude was null or undefined when calling getNativeV2MovieCalendar.')
+      }
+      const queryParameters: Record<string, string | number> = { latitude, longitude }
+      if (allocineId != null) queryParameters.allocineId = allocineId
+      if (visa != null) queryParameters.visa = visa
+      if (aroundRadius != null) queryParameters.aroundRadius = aroundRadius
+      if (from != null) queryParameters.from = from
+      if (to != null) queryParameters.to = to
+      const query = Object.entries(queryParameters)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
+        .join('&')
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return { url: `/native/v2/movie/calendar?${query}`, options: localVarRequestOptions }
+    },
+    async getNativeV2MovieCalendarMe(
+      latitude: number,
+      longitude: number,
+      allocineId?: string,
+      visa?: string,
+      aroundRadius?: number,
+      from?: string,
+      to?: string,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      const fetchArgs = await this.getNativeV2MovieCalendar(
+        latitude,
+        longitude,
+        allocineId,
+        visa,
+        aroundRadius,
+        from,
+        to,
+        options
+      )
+      fetchArgs.url = fetchArgs.url.replace('/native/v2/movie/calendar', '/native/v2/movie/calendar/me')
+      fetchArgs.options.credentials = 'include'
+      fetchArgs.options.headers = Object.assign(
+        {},
+        await getAuthenticationHeaders(fetchArgs.options),
+        options.headers
+      )
+      return fetchArgs
+    },
+    async getNativeV2VenuevenueIdMovieCalendar(
+      venue_id: number,
+      from?: string,
+      to?: string,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError('venue_id', 'Required parameter venue_id was null or undefined when calling getNativeV2VenuevenueIdMovieCalendar.')
+      }
+      const queryParameters: Record<string, string> = {}
+      if (from != null) queryParameters.from = from
+      if (to != null) queryParameters.to = to
+      const query = Object.entries(queryParameters)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+        .join('&')
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: `/native/v2/venue/${encodeURIComponent(String(venue_id))}/movie/calendar?${query}`,
+        options: localVarRequestOptions,
+      }
+    },
+    async getNativeV2VenuevenueIdMovieCalendarMe(
+      venue_id: number,
+      from?: string,
+      to?: string,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      const fetchArgs = await this.getNativeV2VenuevenueIdMovieCalendar(venue_id, from, to, options)
+      fetchArgs.url = fetchArgs.url.replace('/movie/calendar', '/movie/calendar/me')
+      fetchArgs.options.credentials = 'include'
+      fetchArgs.options.headers = Object.assign(
+        {},
+        await getAuthenticationHeaders(fetchArgs.options),
+        options.headers
+      )
+      return fetchArgs
+    },
     /**
      * @summary delete_favorite <DELETE>
      * @param {number} favorite_id
@@ -8385,6 +8723,93 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
  */
 export const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
   return {
+    async postNativeV3OffersStocks(
+      body: OffersStocksRequest,
+      options?: any
+    ): Promise<OffersStocksResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV3OffersStocks(
+        body,
+        options
+      )
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    async getNativeV2MovieCalendar(
+      latitude: number,
+      longitude: number,
+      allocineId?: string,
+      visa?: string,
+      aroundRadius?: number,
+      from?: string,
+      to?: string,
+      options?: any
+    ): Promise<MovieCalendarResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MovieCalendar(
+        latitude,
+        longitude,
+        allocineId,
+        visa,
+        aroundRadius,
+        from,
+        to,
+        options
+      )
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    async getNativeV2MovieCalendarMe(
+      latitude: number,
+      longitude: number,
+      allocineId?: string,
+      visa?: string,
+      aroundRadius?: number,
+      from?: string,
+      to?: string,
+      options?: any
+    ): Promise<MovieCalendarResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MovieCalendarMe(
+        latitude,
+        longitude,
+        allocineId,
+        visa,
+        aroundRadius,
+        from,
+        to,
+        options
+      )
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    async getNativeV2VenuevenueIdMovieCalendar(
+      venueId: number,
+      from?: string,
+      to?: string,
+      options?: any
+    ): Promise<VenueMovieCalendarResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueIdMovieCalendar(
+        venueId,
+        from,
+        to,
+        options
+      )
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    async getNativeV2VenuevenueIdMovieCalendarMe(
+      venueId: number,
+      from?: string,
+      to?: string,
+      options?: any
+    ): Promise<VenueMovieCalendarResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueIdMovieCalendarMe(
+        venueId,
+        from,
+        to,
+        options
+      )
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
     /**
      *
      * @summary delete_favorite <DELETE>
@@ -9498,6 +9923,82 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
+  public async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any) {
+    return DefaultApiFp(this, this.getConfiguration()).postNativeV3OffersStocks(body, options)
+  }
+
+  public async getNativeV2MovieCalendar(
+    latitude: number,
+    longitude: number,
+    allocineId?: string,
+    visa?: string,
+    aroundRadius?: number,
+    from?: string,
+    to?: string,
+    options?: any
+  ) {
+    return DefaultApiFp(this, this.getConfiguration()).getNativeV2MovieCalendar(
+      latitude,
+      longitude,
+      allocineId,
+      visa,
+      aroundRadius,
+      from,
+      to,
+      options
+    )
+  }
+
+  public async getNativeV2MovieCalendarMe(
+    latitude: number,
+    longitude: number,
+    allocineId?: string,
+    visa?: string,
+    aroundRadius?: number,
+    from?: string,
+    to?: string,
+    options?: any
+  ) {
+    return DefaultApiFp(this, this.getConfiguration()).getNativeV2MovieCalendarMe(
+      latitude,
+      longitude,
+      allocineId,
+      visa,
+      aroundRadius,
+      from,
+      to,
+      options
+    )
+  }
+
+  public async getNativeV2VenuevenueIdMovieCalendar(
+    venueId: number,
+    from?: string,
+    to?: string,
+    options?: any
+  ) {
+    return DefaultApiFp(this, this.getConfiguration()).getNativeV2VenuevenueIdMovieCalendar(
+      venueId,
+      from,
+      to,
+      options
+    )
+  }
+
+  public async getNativeV2VenuevenueIdMovieCalendarMe(
+    venueId: number,
+    from?: string,
+    to?: string,
+    options?: any
+  ) {
+    return DefaultApiFp(this, this.getConfiguration()).getNativeV2VenuevenueIdMovieCalendarMe(
+      venueId,
+      from,
+      to,
+      options
+    )
+  }
+
   /**
     *
     * @summary delete_favorite <DELETE>

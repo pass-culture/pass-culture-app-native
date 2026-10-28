@@ -1,51 +1,41 @@
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { View } from 'react-native'
 
-import { Screening, VenueScreenings } from 'api/gen'
+import { ScreeningV2, VenueScreeningsV2 } from 'api/gen'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
-import {
-  getEventCardIsEnabled,
-  getEventCardLeftSubtitle,
-  getEventCardRightSubtitle,
-} from 'features/offer/helpers/screeningBlockInfo/screeningBlockInfo'
-import { formatDateWithTimeZoneOffset } from 'libs/parsers/formatDates'
+import { CinemaScreeningCardList } from 'features/offer/components/CinemaScreeningCard/CinemaScreeningCardList'
+import { getCinemaScreeningCardProps } from 'features/offer/components/CinemaScreeningCard/getCinemaScreeningCardProps'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { BookOfferModal } from 'shared/offer/components/BookOfferModal/BookOfferModal'
-import { EventCardProps } from 'ui/components/eventCard/EventCard'
-import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { useModal } from 'ui/components/modals/useModal'
 
 type Props = {
-  venueScreenings: VenueScreenings
+  venueScreenings: VenueScreeningsV2
   offerId: number
 }
 
 export const OfferEventCardListV2: FC<Props> = ({ venueScreenings, offerId }) => {
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const [selectedScreening, setSelectedScreening] = useState<Screening>()
+  const [selectedScreening, setSelectedScreening] = useState<ScreeningV2>()
   const modalSettings = useModal(false)
-
-  const transformScreening = useCallback(
-    (screening: Screening) =>
-      ({
-        onPress: () => {
-          setSelectedScreening(screening)
-          modalSettings.showModal()
-        },
-        isDisabled: !getEventCardIsEnabled(screening),
-        title: formatDateWithTimeZoneOffset(screening.beginningDatetime, "HH'h'mm"),
-        subtitleLeft: getEventCardLeftSubtitle(screening),
-        subtitleRight: getEventCardRightSubtitle(screening, currency, euroToPacificFrancRate),
-      }) as EventCardProps,
-    [currency, euroToPacificFrancRate, modalSettings]
+  const screeningCards = venueScreenings.dayScreenings.map((screening) =>
+    getCinemaScreeningCardProps(
+      screening,
+      () => {
+        setSelectedScreening(screening)
+        modalSettings.showModal()
+      },
+      currency,
+      euroToPacificFrancRate
+    )
   )
 
   return (
     <View testID="offer-event-card-list">
-      {venueScreenings?.dayScreenings ? (
-        <EventCardList data={venueScreenings.dayScreenings.map(transformScreening)} />
+      {venueScreenings.dayScreenings.length ? (
+        <CinemaScreeningCardList screenings={screeningCards} />
       ) : null}
       {selectedScreening ? (
         <BookOfferModal

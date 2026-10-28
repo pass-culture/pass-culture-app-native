@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native'
 import {
   Bookability,
   CategoryIdEnum,
-  MovieScreenings,
+  MovieScreeningsV2,
   NativeCategoryIdEnumv2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
@@ -56,7 +56,13 @@ const mockMovieScreenings = {
     {
       beginningDatetime: '2026-09-02T14:47:09.705+02:00',
       bookability: Bookability.BOOKABLE,
-      features: ['VO'],
+      features: {
+        accessibility: { audio: [], mental: [], motor: [], visual: [] },
+        audio: null,
+        language: 'VO',
+        specialEventType: null,
+        video: null,
+      },
       price: 10.1,
       stockId: 112,
     },
@@ -64,7 +70,13 @@ const mockMovieScreenings = {
   nextScreening: {
     beginningDatetime: '2026-09-02T14:47:09.705+02:00',
     bookability: Bookability.BOOKABLE,
-    features: ['VO'],
+    features: {
+      accessibility: { audio: [], mental: [], motor: [], visual: [] },
+      audio: null,
+      language: 'VO',
+      specialEventType: null,
+      video: null,
+    },
     price: 10.1,
     stockId: 112,
   },
@@ -178,7 +190,7 @@ const renderMovieOfferTile = ({
   venueId,
   isDesktopViewport = false,
 }: {
-  movieScreenings: MovieScreenings
+  movieScreenings: MovieScreeningsV2
   venueId: number
   isDesktopViewport?: boolean
 }) => {

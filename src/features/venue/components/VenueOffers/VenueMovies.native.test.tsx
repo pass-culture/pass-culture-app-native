@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native'
 
 import {
   BookingsResponseV2,
-  OffersStocksResponseV2,
+  OffersStocksResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -74,7 +74,7 @@ jest.useFakeTimers()
 describe('VenueMovies', () => {
   beforeEach(() => {
     setFeatureFlags()
-    mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)
+    mockServer.postApi<OffersStocksResponse>(`/v3/offers/stocks`, offersStocksResponseSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
   })

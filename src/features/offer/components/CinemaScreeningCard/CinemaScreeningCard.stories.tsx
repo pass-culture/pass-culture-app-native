@@ -52,6 +52,8 @@ const meta: Meta<typeof CinemaScreeningCard> = {
         undefined,
         CinemaScreeningCardDisabledReason.UNAVAILABLE,
         CinemaScreeningCardDisabledReason.INSUFFICIENT_CREDIT,
+        CinemaScreeningCardDisabledReason.ALREADY_BOOKED,
+        CinemaScreeningCardDisabledReason.FULLY_BOOKED,
       ],
       description: 'Raison pour laquelle la séance est indisponible',
     },

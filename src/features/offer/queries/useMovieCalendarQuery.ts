@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
-import { MovieCalendarResponse } from 'api/gen'
+import { MovieCalendarResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -21,11 +21,11 @@ type props = {
   to: Date
 }
 
-export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
+export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponseV2>(
   { offerId, allocineId, visa, offerVenueLatitude, offerVenueLongitude, from, to }: props,
   options?: {
     enabled: boolean
-    select?: (data: MovieCalendarResponse) => TData
+    select?: (data: MovieCalendarResponseV2) => TData
   }
 ) => {
   const userLocation = locationStore.hooks.useUserLocation()
@@ -35,7 +35,7 @@ export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
   const radius = DEFAULT_RADIUS_KM * 1000
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery<MovieCalendarResponse, Error, TData>({
+  return useQuery<MovieCalendarResponseV2, Error, TData>({
     queryFn: async () => {
       if (!allocineId && !visa) {
         throw new OfferNotFoundError(offerId, {
@@ -46,7 +46,7 @@ export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
       const allocineIdParam = allocineId ?? undefined
       const visaParam = allocineId ? undefined : (visa ?? undefined)
       return isLoggedIn
-        ? api.getNativeV1MovieCalendarMe(
+        ? api.getNativeV2MovieCalendarMe(
             latitude,
             longitude,
             allocineIdParam,
@@ -55,7 +55,7 @@ export const useOfferMovieCalendarQuery = <TData = MovieCalendarResponse>(
             from.toISOString(), // auto convert date to utc timezone
             to.toISOString() // auto convert date to utc timezone
           )
-        : api.getNativeV1MovieCalendar(
+        : api.getNativeV2MovieCalendar(
             latitude,
             longitude,
             allocineIdParam,

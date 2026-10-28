@@ -24,8 +24,8 @@ jest.mock('features/offer/components/OfferCTAButton/useOfferCTAButton')
 jest.mock('libs/subcategories')
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('ui/components/eventCard/EventCardList', () => ({
-  EventCardList: () => 'EventCardList',
+jest.mock('features/offer/components/CinemaScreeningCard/CinemaScreeningCardList', () => ({
+  CinemaScreeningCardList: () => 'CinemaScreeningCardList',
 }))
 
 const object = {
@@ -100,12 +100,12 @@ describe('OfferEventCardList', () => {
       CTAOfferModal: null,
       movieScreeningUserData: {},
     })
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    mockUseSubcategoriesMapping.mockReturnValue({
       [subcategoryId]: object,
     } as SubcategoriesMapping)
   })
 
-  it('should not render EventCardList when eventCardData is not available', () => {
+  it('should not render CinemaScreeningCardList when screening data is not available', () => {
     mockUseSelectedDateScreening.mockReturnValueOnce({
       bookingData,
       selectedDateScreenings: jest.fn().mockReturnValue(null),
@@ -113,7 +113,7 @@ describe('OfferEventCardList', () => {
 
     render(<OfferEventCardList offer={defaultOffer} />)
 
-    expect(screen.queryByText('EventCardList')).toBeFalsy()
+    expect(screen.queryByText('CinemaScreeningCardList')).toBeFalsy()
   })
 
   it('should use the provided selectedDate', () => {
@@ -144,6 +144,10 @@ describe('OfferEventCardList', () => {
   it('should pass correct props to useOfferCTAButton', () => {
     render(<OfferEventCardList offer={defaultOffer} />)
 
-    expect(mockUseOfferCTAButton).toHaveBeenCalledWith(defaultOffer, object, bookingData)
+    expect(mockUseOfferCTAButton).toHaveBeenCalledWith(
+      expect.objectContaining(defaultOffer),
+      object,
+      bookingData
+    )
   })
 })

@@ -1,8 +1,12 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react'
 
-import { OfferStockResponse } from 'api/gen'
+import { StockResponse } from 'api/gen'
 import { formatHour } from 'features/bookOffer/helpers/utils'
-import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
+import { getCinemaScreeningFeaturesProps } from 'features/offer/components/CinemaScreeningCard/getCinemaScreeningCardProps'
+import {
+  CinemaScreeningCardDisabledReason,
+  CinemaScreeningCardProps,
+} from 'features/offer/components/CinemaScreeningCard/types'
 import {
   MovieScreeningBookingData,
   MovieScreeningUserData,
@@ -10,10 +14,9 @@ import {
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
-const mapScreeningsToEventCardProps = (
-  screening: OfferStockResponse,
+export const mapStockToCinemaScreeningCardProps = (
+  screening: StockResponse,
   offerVenueId: number,
   setBookingData: Dispatch<SetStateAction<MovieScreeningBookingData | undefined>>,
   currency: Currency,
@@ -21,7 +24,7 @@ const mapScreeningsToEventCardProps = (
   onPressOfferCTA?: () => void,
   movieScreeningUserData?: MovieScreeningUserData,
   isExternalBookingsDisabled = false
-): EventCardProps | undefined => {
+): CinemaScreeningCardProps | undefined => {
   const { beginningDatetime, isSoldOut: isScreeningSoldOut } = screening
 
   if (!beginningDatetime) {
@@ -42,44 +45,27 @@ const mapScreeningsToEventCardProps = (
   const hasBookedScreening = userBookings?.stock?.beginningDatetime === beginningDatetime
   const isSameVenue = offerVenueId === userBookings?.stock?.offer?.venue?.id
 
-  let isDisabled: boolean
-  let subtitleLeft: EventCardSubtitleEnum | string
+  let disabledReason: CinemaScreeningCardDisabledReason | undefined
 
   switch (true) {
     case isExternalBookingsDisabled:
-      subtitleLeft = EventCardSubtitleEnum.UNAVAILABLE
-      isDisabled = true
+      disabledReason = CinemaScreeningCardDisabledReason.UNAVAILABLE
       break
     case isScreeningSoldOut && (!isUserLoggedIn || hasEnoughCredit):
-      subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
-      isDisabled = true
+      disabledReason = CinemaScreeningCardDisabledReason.FULLY_BOOKED
       break
     case hasBookedScreening:
-      subtitleLeft = EventCardSubtitleEnum.ALREADY_BOOKED
-      isDisabled = true
+      disabledReason = CinemaScreeningCardDisabledReason.ALREADY_BOOKED
       break
     case isUserCreditExpired || (isSameVenue && hasBookedOffer) || !isUserEligible:
-      subtitleLeft = screening.features.join(', ')
-      isDisabled = true
+      disabledReason = CinemaScreeningCardDisabledReason.UNAVAILABLE
       break
     case isUserLoggedIn && !hasEnoughCredit && !hasNotCompletedSubscriptionYet:
-      subtitleLeft = EventCardSubtitleEnum.NOT_ENOUGH_CREDIT
-      isDisabled = true
-      break
-    default:
-      subtitleLeft = screening.features.join(', ')
-      isDisabled = false
+      disabledReason = CinemaScreeningCardDisabledReason.INSUFFICIENT_CREDIT
   }
 
-  const shouldNotHaveSubtitleRight =
-    subtitleLeft === EventCardSubtitleEnum.UNAVAILABLE ||
-    subtitleLeft === EventCardSubtitleEnum.NOT_ENOUGH_CREDIT ||
-    subtitleLeft === EventCardSubtitleEnum.ALREADY_BOOKED ||
-    subtitleLeft === EventCardSubtitleEnum.FULLY_BOOKED
-  const subtitleRight = shouldNotHaveSubtitleRight ? undefined : price
-
   const onPress = () => {
-    if (hasBookedScreening || isDisabled) return
+    if (disabledReason) return
 
     setBookingData({
       date: new Date(beginningDatetime),
@@ -91,10 +77,12 @@ const mapScreeningsToEventCardProps = (
   }
   return {
     onPress,
-    isDisabled,
-    title: formatHour(beginningDatetime).replace(':', 'h'),
-    subtitleLeft,
-    subtitleRight,
+    time: formatHour(beginningDatetime).replace(':', 'h'),
+    price,
+    disabledReason,
+    ...(screening.screeningFeatures
+      ? getCinemaScreeningFeaturesProps(screening.screeningFeatures)
+      : { languages: [] }),
   }
 }
 
@@ -105,7 +93,7 @@ export const convertToMinutes = (time: string): number => {
 }
 
 export const useSelectedDateScreening = (
-  selectedScreeningStock: OfferStockResponse[] | undefined,
+  selectedScreeningStock: StockResponse[] | undefined,
   isExternalBookingsDisabled = false
 ) => {
   const currency = useGetCurrencyToDisplay()
@@ -123,7 +111,7 @@ export const useSelectedDateScreening = (
 
       return selectedScreeningStock
         .map((screening) =>
-          mapScreeningsToEventCardProps(
+          mapStockToCinemaScreeningCardProps(
             screening,
             offerVenueId,
             setBookingData,
@@ -136,11 +124,12 @@ export const useSelectedDateScreening = (
         )
         .filter(
           (
-            selectedDateScreening: EventCardProps | undefined
-          ): selectedDateScreening is EventCardProps => selectedDateScreening !== undefined
+            selectedDateScreening: CinemaScreeningCardProps | undefined
+          ): selectedDateScreening is CinemaScreeningCardProps =>
+            selectedDateScreening !== undefined
         )
         .sort((a, b) => {
-          return convertToMinutes(a.title) - convertToMinutes(b.title)
+          return convertToMinutes(a.time) - convertToMinutes(b.time)
         })
     },
     [selectedScreeningStock, currency, euroToPacificFrancRate, isExternalBookingsDisabled]

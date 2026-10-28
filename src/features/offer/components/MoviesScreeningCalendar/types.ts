@@ -1,7 +1,7 @@
-import { OfferResponse } from 'api/gen'
+import { OfferForStocksResponse } from 'api/gen'
 
 export type MovieOffer = {
   nextDate?: Date
-  offer: OfferResponse
+  offer: OfferForStocksResponse
   isUpcoming: boolean
 }

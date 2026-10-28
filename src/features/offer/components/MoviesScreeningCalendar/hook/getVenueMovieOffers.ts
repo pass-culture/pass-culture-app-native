@@ -1,9 +1,9 @@
-import { OffersStocksResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { OffersStocksResponse, SubcategoryIdEnum } from 'api/gen'
 import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 
 export const getVenueMovieOffers = (
   selectedDate: Date,
-  offersWithStocks: OffersStocksResponseV2 | undefined
+  offersWithStocks: OffersStocksResponse | undefined
 ) => {
   const movieOffers = offersWithStocks?.offers?.filter(
     (offer) => offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE

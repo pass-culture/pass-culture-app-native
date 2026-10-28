@@ -2,56 +2,26 @@ import React, { FC, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubcategoryIdEnum, type MovieScreenings, type Screening } from 'api/gen'
+import { SubcategoryIdEnum, type MovieScreeningsV2, type ScreeningV2 } from 'api/gen'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
+import { CinemaScreeningCardList } from 'features/offer/components/CinemaScreeningCard/CinemaScreeningCardList'
+import { getCinemaScreeningCardProps } from 'features/offer/components/CinemaScreeningCard/getCinemaScreeningCardProps'
 import { useMovieCalendarV2 } from 'features/offer/components/MoviesScreeningCalendarV2/MovieCalendarContextV2'
 import { NextScreeningButtonV2 } from 'features/offer/components/MoviesScreeningCalendarV2/NextScreeningButtonV2'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
-import {
-  getEventCardIsEnabled,
-  getEventCardLeftSubtitle,
-  getEventCardRightSubtitle,
-} from 'features/offer/helpers/screeningBlockInfo/screeningBlockInfo'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { formatDateWithTimeZoneOffset } from 'libs/parsers/formatDates'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { BookOfferModal } from 'shared/offer/components/BookOfferModal/BookOfferModal'
-import type { EventCardProps } from 'ui/components/eventCard/EventCard'
-import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { useModal } from 'ui/components/modals/useModal'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 
 type MovieOfferTileV2Props = {
-  movieScreenings: MovieScreenings
+  movieScreenings: MovieScreeningsV2
   venueId: number
   isLast: boolean
 }
-
-const transformScreening = (
-  screening: Screening,
-  setSelectedScreening,
-  offerId,
-  venueId,
-  currency,
-  euroToPacificFrancRate,
-  showModal
-) =>
-  ({
-    onPress: () => {
-      setSelectedScreening(screening)
-      triggerConsultOfferLog({
-        offerId: offerId,
-        from: 'venue',
-        venueId: venueId,
-      })
-      showModal()
-    },
-    isDisabled: !getEventCardIsEnabled(screening),
-    title: formatDateWithTimeZoneOffset(screening.beginningDatetime, "HH'h'mm"),
-    subtitleLeft: getEventCardLeftSubtitle(screening),
-    subtitleRight: getEventCardRightSubtitle(screening, currency, euroToPacificFrancRate),
-  }) as EventCardProps
 
 export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
   movieScreenings,
@@ -66,8 +36,20 @@ export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
 
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const [selectedScreening, setSelectedScreening] = useState<Screening>()
+  const [selectedScreening, setSelectedScreening] = useState<ScreeningV2>()
   const modalSettings = useModal(false)
+  const screeningCards = movieScreenings.dayScreenings.map((screening) =>
+    getCinemaScreeningCardProps(
+      screening,
+      () => {
+        setSelectedScreening(screening)
+        triggerConsultOfferLog({ offerId, from: 'venue', venueId })
+        modalSettings.showModal()
+      },
+      currency,
+      euroToPacificFrancRate
+    )
+  )
 
   return (
     <React.Fragment>
@@ -99,19 +81,7 @@ export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
           />
         </View>
       ) : (
-        <EventCardList
-          data={movieScreenings.dayScreenings?.map((screening) =>
-            transformScreening(
-              screening,
-              setSelectedScreening,
-              offerId,
-              venueId,
-              currency,
-              euroToPacificFrancRate,
-              modalSettings.showModal
-            )
-          )}
-        />
+        <CinemaScreeningCardList screenings={screeningCards} />
       )}
       <Container>{isLast ? null : <Divider />}</Container>
       {selectedScreening ? (
@@ -125,7 +95,7 @@ export const MovieOfferTileV2: FC<MovieOfferTileV2Props> = ({
   )
 }
 
-const getSubtitles = (movieScreenings: MovieScreenings): string[] => {
+const getSubtitles = (movieScreenings: MovieScreeningsV2): string[] => {
   const genre = movieScreenings.genres.join(' / ')
   const duration = formatDuration(movieScreenings.duration).label
   return [genre, duration]
