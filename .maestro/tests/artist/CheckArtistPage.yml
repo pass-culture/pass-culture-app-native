@@ -42,6 +42,10 @@ onFlowStart:
     from:
       text: Livre
     direction: UP
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      text: '.*- Auteur.*'
 - tapOn: '.*- Auteur.*'
 - assertVisible: 'Ses oeuvres populaires'
 - assertVisible: '.*Voir tout.*'
