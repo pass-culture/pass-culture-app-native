@@ -36,8 +36,8 @@ const REGEX = {
   ['twitter:app:url:ipad']: /<meta\s+(name)="(twitter:app:url:ipad)"\s+content="([^"]*)"\s*\/?>/g,
   ['twitter:app:url:googleplay']:
     /<meta\s+(name)="(twitter:app:url:googleplay)"\s+content="([^"]*)"\s*\/?>/g,
-  ['al:ios:url']: /<meta\s+(name)="(al:ios:url)"\s+content="([^"]*)"\s*\/?>/g,
-  ['al:android:url']: /<meta\s+(name)="(al:android:url)"\s+content="([^"]*)"\s*\/?>/g,
+  ['al:ios:url']: /<meta\s+(property)="(al:ios:url)"\s+content="([^"]*)"\s*\/?>/g,
+  ['al:android:url']: /<meta\s+(property)="(al:android:url)"\s+content="([^"]*)"\s*\/?>/g,
 }
 
 export function addOrganizationSuffix(title: string) {

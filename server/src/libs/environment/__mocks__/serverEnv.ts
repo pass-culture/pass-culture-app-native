@@ -6,7 +6,7 @@ export const env: Environment = {
   APP_PUBLIC_URL: 'http://localhost:8080',
   APP_BUCKET_URL: 'https://app-bucket.testing.passculture.team',
   API_BASE_URL: 'https://backend.testing.passculture.team',
-  DEEPLINK_PROTOCOL: 'passculture://',
+  DEEPLINK_PROTOCOL: 'passculturetesting://',
   PROXY_CACHE_CONTROL: 'public,max-age=3600',
   ORGANIZATION_PREFIX: 'pass Culture',
 }

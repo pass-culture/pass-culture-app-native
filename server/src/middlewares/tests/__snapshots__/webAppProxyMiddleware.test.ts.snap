@@ -48,17 +48,17 @@ Côté cinéma, la Nef offre toute l’année une programmation éclectique dest
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/lieu/9\\" />
+    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculturetesting:///lieu/9\\" />
     <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/lieu/9\\" />
+    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculturetesting:///lieu/9\\" />
     <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
-    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/lieu/9\\" />
+    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculturetesting:///lieu/9\\" />
     <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
-    <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>
-    <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
+    <meta property=\\"al:ios:url\\" content=\\"passculturetesting:///lieu/9\\" />
+    <meta property=\\"al:android:url\\" content=\\"passculturetesting:///lieu/9\\" />
     <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
   </head>
