@@ -30,7 +30,12 @@ output.links = {
   },
 }
 
-// Same link on every platform and environment: the testing and staging builds both read the "testing" Contentful environment
+// Same link on every platform, and same home in both environments: the testing and staging builds both read the "testing" Contentful environment
 output.customSchemeLinks = {
-  thematicHome: 'passculture://accueil-thematique?homeId=3S4UGnN2tfPIV1ANpdUYs6&from=deeplink',
+  staging: {
+    thematicHome: 'passculture-staging://accueil-thematique?homeId=3S4UGnN2tfPIV1ANpdUYs6&from=deeplink',
+  },
+  testing: {
+    thematicHome: 'passculture-testing://accueil-thematique?homeId=3S4UGnN2tfPIV1ANpdUYs6&from=deeplink',
+  },
 }

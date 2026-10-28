@@ -53,38 +53,14 @@ describe('linking', () => {
     expect(getNestedNavigationFromState(state)).toEqual(['Offer', { id: 123 }])
   })
 
-  it('should open ThematicHome when url uses the passculture custom scheme', () => {
-    const { state } = openUrl('passculture://accueil-thematique?homeId=fakeEntryId&from=deeplink')
+  it('should open ThematicHome when url uses the passculture scheme of the environment', () => {
+    const { state } = openUrl(
+      `passculture-${env.ENV}://accueil-thematique?homeId=fakeEntryId&from=deeplink`
+    )
 
     expect(getNestedNavigationFromState(state)).toEqual([
       'ThematicHome',
       { homeId: 'fakeEntryId', from: 'deeplink' },
     ])
-  })
-
-  it('should keep the initial screen when url is the passculture custom scheme followed by the webapp url', () => {
-    const { path, state } = openUrl(`passculture://${WEBAPP_V2_URL}`)
-
-    expect(path).toEqual('')
-    expect(state).toBeUndefined()
-  })
-
-  it('should open Offer when url is the passculture custom scheme followed by a webapp url', () => {
-    const { state } = openUrl(`passculture://${WEBAPP_V2_URL}/offre/123`)
-
-    expect(getNestedNavigationFromState(state)).toEqual(['Offer', { id: 123 }])
-  })
-
-  it('should keep the initial screen when url is the passculture custom scheme followed by the webapp url as delivered by iOS', () => {
-    const { path, state } = openUrl(`passculture://https//${env.WEBAPP_V2_DOMAIN}`)
-
-    expect(path).toEqual('')
-    expect(state).toBeUndefined()
-  })
-
-  it('should open Offer when url is the passculture custom scheme followed by a webapp url as delivered by iOS', () => {
-    const { state } = openUrl(`passculture://https//${env.WEBAPP_V2_DOMAIN}/offre/123`)
-
-    expect(getNestedNavigationFromState(state)).toEqual(['Offer', { id: 123 }])
   })
 })

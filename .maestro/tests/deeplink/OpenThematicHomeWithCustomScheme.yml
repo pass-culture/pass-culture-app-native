@@ -9,9 +9,9 @@ onFlowStart:
 # (BatchPush.getInitialURL on iOS) instead of the `url` event received by a running app
 - runFlow: ../common/lifecycle/StopApp.yml
 
-# openLink does not fail on an unhandled link: when the passculture scheme is not declared natively
+# openLink does not fail on an unhandled link: when the passculture-<env> scheme is not declared natively
 # (Info.plist, AndroidManifest.xml), the app does not open and the next assertion fails
-- openLink: ${output.customSchemeLinks.thematicHome}
+- openLink: ${output.customSchemeLinks.staging.thematicHome}
 
 # iOS asks for confirmation when a custom scheme is opened while the app is running
 - runFlow:
