@@ -37,6 +37,14 @@
         <data android:scheme="https" />
         <data android:host="@string/WEBAPP_V2_DOMAIN" />
       </intent-filter>
+      <!-- Adjust link domain: Adjust requires its own intent filter, without any path attribute -->
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="https" />
+        <data android:host="passculture.go.link" />
+      </intent-filter>
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
