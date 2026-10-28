@@ -1,3 +1,5 @@
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
 import { spectacleVivantAdjustEventsStoreActions } from 'features/home/pages/helpers/spectacleVivantAdjustEventsStore'
 import {
   logSpectacleVivantAdjustEvents,
@@ -6,7 +8,7 @@ import {
 import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/env'
 import { AdjustEvents } from 'shared/adjust/adjustEvents'
-import { renderHook } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/adjust/adjust')
 const AdjustMock = Adjust as jest.Mocked<typeof Adjust>
@@ -17,6 +19,15 @@ const OTHER_HOME_ID = 'otherHomeId'
 
 const mockAdjustEnabled = (isEnabled: boolean) =>
   AdjustMock.isEnabled.mockImplementation((callback) => callback(isEnabled))
+
+const setUnknownCookiesChoice = () =>
+  useCookiesConsentStore.getState().setCookiesConsentState({ state: ConsentState.UNKNOWN })
+
+const setAcceptedCookies = (accepted: CookieNameEnum[]) =>
+  useCookiesConsentStore.getState().setCookiesConsentState({
+    state: ConsentState.HAS_CONSENT,
+    value: { mandatory: [], accepted, refused: [] },
+  })
 
 describe('logSpectacleVivantAdjustEvents', () => {
   beforeEach(() => {
@@ -103,6 +114,7 @@ describe('useSpectacleVivantAdjustEvents', () => {
   })
 
   it('should log spectacleVivant once the spectacle vivant home is loaded', () => {
+    setAcceptedCookies([CookieNameEnum.ADJUST])
     const { rerender } = renderHook(useSpectacleVivantAdjustEvents, { initialProps: '' })
 
     expect(AdjustMock.logEvent).not.toHaveBeenCalled()
@@ -110,5 +122,48 @@ describe('useSpectacleVivantAdjustEvents', () => {
     rerender(TESTING_SPECTACLE_VIVANT_HOME_ID)
 
     expect(AdjustMock.logEvent).toHaveBeenCalledWith(AdjustEvents.SPECTACLE_VIVANT)
+  })
+
+  it('should not log any event while the cookies choice is unknown', () => {
+    setUnknownCookiesChoice()
+
+    renderHook(useSpectacleVivantAdjustEvents, { initialProps: TESTING_SPECTACLE_VIVANT_HOME_ID })
+
+    expect(AdjustMock.logEvent).not.toHaveBeenCalled()
+  })
+
+  it('should log the events when the Adjust cookies are accepted while the spectacle vivant home is displayed', () => {
+    spectacleVivantAdjustEventsStoreActions.setIsFirstSessionAfterInstall(true)
+    // the Adjust SDK is only initialized once the cookies are accepted
+    mockAdjustEnabled(false)
+    setUnknownCookiesChoice()
+    renderHook(useSpectacleVivantAdjustEvents, { initialProps: TESTING_SPECTACLE_VIVANT_HOME_ID })
+
+    act(() => {
+      mockAdjustEnabled(true)
+      setAcceptedCookies([CookieNameEnum.ADJUST])
+    })
+
+    expect(AdjustMock.logEvent).toHaveBeenNthCalledWith(1, AdjustEvents.SPECTACLE_VIVANT)
+    expect(AdjustMock.logEvent).toHaveBeenNthCalledWith(2, AdjustEvents.NEW_SPECTACLE_VIVANT)
+  })
+
+  it('should not log any event when other cookies than Adjust are accepted', () => {
+    setUnknownCookiesChoice()
+    renderHook(useSpectacleVivantAdjustEvents, { initialProps: TESTING_SPECTACLE_VIVANT_HOME_ID })
+
+    act(() => setAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS]))
+
+    expect(AdjustMock.logEvent).not.toHaveBeenCalled()
+  })
+
+  it('should log spectacleVivant only once when the Adjust cookies are refused then accepted again', () => {
+    setAcceptedCookies([CookieNameEnum.ADJUST])
+    renderHook(useSpectacleVivantAdjustEvents, { initialProps: TESTING_SPECTACLE_VIVANT_HOME_ID })
+
+    act(() => setAcceptedCookies([]))
+    act(() => setAcceptedCookies([CookieNameEnum.ADJUST]))
+
+    expect(AdjustMock.logEvent).toHaveBeenCalledTimes(1)
   })
 })

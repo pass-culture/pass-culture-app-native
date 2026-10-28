@@ -1,5 +1,8 @@
-import { useEffect } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import { useCallback } from 'react'
 
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
 import {
   spectacleVivantAdjustEventsStoreActions,
   spectacleVivantAdjustEventsStoreSelectors,
@@ -17,8 +20,9 @@ const SPECTACLE_VIVANT_HOME_ID: Record<string, string | undefined> = {
 export const logSpectacleVivantAdjustEvents = (homeId: string) => {
   if (homeId !== SPECTACLE_VIVANT_HOME_ID[env.CONTENTFUL_ENVIRONMENT]) return
 
-  // Check isEnabled to avoid skewed data because of users who refused the Adjust cookies.
-  // Nothing is marked as sent then: the events are sent if the user accepts them later in the session.
+  // isEnabled covers Adjust disabled after a consent withdrawal. Before the SDK initialization, it answers true
+  // and the SDK drops the events: the hook only calls this function once the Adjust cookies are accepted.
+  // Nothing is marked as sent when Adjust is disabled: the events are sent if it is enabled again in the session.
   Adjust.isEnabled((isEnabled) => {
     if (!isEnabled) return
 
@@ -39,7 +43,19 @@ export const logSpectacleVivantAdjustEvents = (homeId: string) => {
 }
 
 export const useSpectacleVivantAdjustEvents = (homeId: string) => {
-  useEffect(() => {
-    logSpectacleVivantAdjustEvents(homeId)
-  }, [homeId])
+  // The cookies consent modal is displayed over the page without blurring it (first launch through a campaign link):
+  // the events of the current arrival are sent once the Adjust cookies are accepted
+  const hasAcceptedAdjustCookies = useCookiesConsentStore(
+    ({ cookiesConsent }) =>
+      cookiesConsent.state === ConsentState.HAS_CONSENT &&
+      cookiesConsent.value.accepted.includes(CookieNameEnum.ADJUST)
+  )
+
+  // On focus rather than on mount: the page stays mounted while the user navigates further, then comes back to it
+  useFocusEffect(
+    useCallback(() => {
+      if (!hasAcceptedAdjustCookies) return
+      logSpectacleVivantAdjustEvents(homeId)
+    }, [homeId, hasAcceptedAdjustCookies])
+  )
 }
