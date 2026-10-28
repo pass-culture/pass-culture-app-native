@@ -28,6 +28,21 @@ describe('<SetBirthday />', () => {
     mockdate.set(CURRENT_DATE)
   })
 
+  it('should show the age error when returning to the default birthdate after a change', async () => {
+    const ageError = /Tu dois avoir au moins 15\sans pour t’inscrire au pass Culture/
+    render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+    await screen.findByText('Continuer')
+    await act(async () => {
+      fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2005' } })
+    })
+
+    await act(async () => {
+      fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2006' } })
+    })
+
+    expect(screen.getByText(ageError)).toBeInTheDocument()
+  })
+
   describe('underage analytics', () => {
     it('should log logSignUpTooYoung when selecting a birthdate of under 15', async () => {
       render(<SetBirthday {...props} />, { theme: { isTouch: false } })

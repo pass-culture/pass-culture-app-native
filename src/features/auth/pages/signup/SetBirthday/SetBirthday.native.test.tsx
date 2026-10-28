@@ -64,6 +64,24 @@ describe('<SetBirthday />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should show the age error when returning to the default birthdate after a change', async () => {
+    const ageError = /Tu dois avoir au moins 15\sans pour t’inscrire au pass Culture/
+    await renderAsync(<SetBirthday {...props} />)
+
+    await act(() =>
+      fireEvent(screen.getByTestId('date-picker-spinner-native'), 'onChange', {
+        nativeEvent: { timestamp: ELIGIBLE_AGE_DATE },
+      })
+    )
+    await act(() =>
+      fireEvent(screen.getByTestId('date-picker-spinner-native'), 'onChange', {
+        nativeEvent: { timestamp: DEFAULT_SELECTED_DATE },
+      })
+    )
+
+    expect(screen.getByText(ageError, { includeHiddenElements: true })).toBeOnTheScreen()
+  })
+
   describe('underage analytics', () => {
     it('should not log when the date picker has not been changed', async () => {
       await renderAsync(<SetBirthday {...props} />)
