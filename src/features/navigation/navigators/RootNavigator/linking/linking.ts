@@ -13,7 +13,7 @@ import { subscribe } from './subscribe'
 
 // declared natively in ios/PassCulture/Info.plist and android/app/src/main/AndroidManifest.xml: the prefix is dead code without them
 // one scheme per environment, so that a link opens the expected build when several builds are installed on the same device
-const PASS_CULTURE_SCHEME_PREFIX = `passculture-${env.ENV}://`
+const PASS_CULTURE_SCHEME_PREFIX = `${env.DEEPLINK_SCHEME}://`
 
 export const linking: RequireField<
   LinkingOptions<RootStackParamList>,

@@ -55,7 +55,7 @@ describe('linking', () => {
 
   it('should open ThematicHome when url uses the passculture scheme of the environment', () => {
     const { state } = openUrl(
-      `passculture-${env.ENV}://accueil-thematique?homeId=fakeEntryId&from=deeplink`
+      `${env.DEEPLINK_SCHEME}://accueil-thematique?homeId=fakeEntryId&from=deeplink`
     )
 
     expect(getNestedNavigationFromState(state)).toEqual([

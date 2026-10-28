@@ -40,7 +40,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>https</string>
-				<string>passculture-$(ENV)</string>
+				<string>$(DEEPLINK_SCHEME)</string>
 				<string>app.passculture</string>
 				<string>app.passculture.staging</string>
 				<string>app.passculture.test</string>

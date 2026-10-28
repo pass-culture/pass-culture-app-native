@@ -38,6 +38,7 @@ export const whiteListEnv = (env, commitHash) => {
     'CONTENTFUL_SPACE_ID',
     'COOKIES_POLICY_LINK',
     'DATA_PRIVACY_CHART_LINK',
+    'DEEPLINK_SCHEME',
     'DMS_FOREIGN_CITIZEN_URL',
     'DMS_FRENCH_CITIZEN_URL',
     'DOC_CGU_URL',
