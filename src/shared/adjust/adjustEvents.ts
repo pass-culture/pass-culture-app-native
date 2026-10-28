@@ -12,6 +12,9 @@ export enum AdjustEvents {
   COMPLETE_BENEFICIARY_UNDERAGE = '2ddds5',
   COMPLETE_BENEFICIARY_18 = '4bn26d',
   BOOK_OFFER = 'h2vkqv',
+  // TODO(PC-44340): replace with the event tokens created in the Adjust dashboard
+  SPECTACLE_VIVANT = 'spectacleVivant',
+  NEW_SPECTACLE_VIVANT = 'new_spectacleVivant',
 }
 
 export interface AdjustEventsStorage {
