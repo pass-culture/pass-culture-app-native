@@ -24,7 +24,7 @@ export const linking: RequireField<
     WEBAPP_V2_URL,
     PASS_CULTURE_PREFIX_URL,
     // the path of an Adjust link is the screen to open: `https://<ADJUST_LINK_DOMAIN>/<path>?adj_t=<tracker>`
-    // a deep link set in the Adjust dashboard (`adj_deep_link_id`) is not in the link: the app would open the home
+    // the app receives the clicked link as is: an Adjust short link (`/<code>`) or a link without path does not open the expected screen
     ADJUST_LINK_PREFIX,
   ],
   getInitialURL: getInitialURL,
