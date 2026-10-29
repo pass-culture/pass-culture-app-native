@@ -6,4 +6,5 @@ export const Adjust: AdjustType = {
   disable: jest.fn(),
   gdprForgetMe: jest.fn(),
   logEvent: jest.fn(),
+  processDeeplink: jest.fn(),
 }

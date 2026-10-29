@@ -6,4 +6,5 @@ export interface Adjust {
   disable: () => void
   gdprForgetMe: () => void
   logEvent: (event: AdjustEvents) => void
+  processDeeplink: (url: string) => void
 }

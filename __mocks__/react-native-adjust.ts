@@ -15,6 +15,7 @@ export const Adjust = {
   gdprForgetMe: jest.fn(),
   getAppTrackingAuthorizationStatus: jest.fn(),
   requestAppTrackingAuthorization: jest.fn(),
+  processDeeplink: jest.fn(),
 }
 
 export const AdjustConfig = jest
@@ -30,6 +31,10 @@ export const AdjustConfig = jest
   })
 
 export const AdjustEvent = jest.fn()
+
+export const AdjustDeeplink = jest.fn().mockImplementation((deeplink: string) => {
+  return { deeplink }
+})
 
 export const AdjustThirdPartySharing = jest.fn().mockImplementation((isEnabled: boolean | null) => {
   return {
