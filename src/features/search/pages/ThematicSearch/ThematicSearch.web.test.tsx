@@ -1,7 +1,11 @@
 import React from 'react'
 
 import { useIsFocused, useRoute } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  SearchGroupNameEnumv2,
+  SubcategoriesResponseModelv2,
+  TopArtistsPlaylistResponse,
+} from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
@@ -61,6 +65,10 @@ describe('<ThematicSearch/>', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.MUSIQUE] })
     mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
+    mockServer.getApi<TopArtistsPlaylistResponse>(
+      'v1/recommendation/top_artists_playlist/MUSIQUE?',
+      {}
+    )
   })
 
   it('should render', async () => {

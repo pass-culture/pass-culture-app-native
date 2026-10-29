@@ -4,6 +4,7 @@ import React from 'react'
 import { popTo, navigate, useIsFocused, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { mockArtist, mockArtists } from 'features/artist/fixtures/mockArtist'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
@@ -11,6 +12,7 @@ import { SearchStackParamList } from 'features/navigation/navigators/SearchStack
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { useTopArtistsPlaylistQuery } from 'features/search/queries/useTopArtistsPlaylistQuery/useTopArtistsPlaylistQuery'
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -112,6 +114,9 @@ jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
   }),
 }))
 
+jest.mock('features/search/queries/useTopArtistsPlaylistQuery/useTopArtistsPlaylistQuery')
+const mockUseTopArtistsPlaylistQuery = useTopArtistsPlaylistQuery as jest.Mock
+
 const user = userEvent.setup()
 
 describe('<ThematicSearch/>', () => {
@@ -123,6 +128,7 @@ describe('<ThematicSearch/>', () => {
     useIsFocused.mockReturnValue(true)
     mockedUseSearch.mockReturnValue(defaultUseSearch)
     mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
+    mockUseTopArtistsPlaylistQuery.mockReturnValue({ data: { artists: [] } })
   })
 
   describe('book offerCategory', () => {
@@ -447,6 +453,73 @@ describe('<ThematicSearch/>', () => {
         query: 'cinéma',
         searchId: 'thematic-search',
         locationFilter,
+      })
+    })
+  })
+
+  describe('top artists playlist', () => {
+    beforeEach(() => {
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockedUseSearch.mockReturnValue({
+        ...defaultUseSearch,
+        searchState: { ...mockSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] },
+      })
+    })
+
+    it('should render top artists playlist when query returns artists for an eligible category', async () => {
+      mockUseTopArtistsPlaylistQuery.mockReturnValueOnce({
+        data: { artists: mockArtists },
+      })
+
+      render(reactQueryProviderHOC(<ThematicSearch />))
+
+      expect(await screen.findByLabelText('Les personnalités du moment')).toBeOnTheScreen()
+      expect(screen.getByText(mockArtist.name)).toBeOnTheScreen()
+    })
+
+    it('should not render top artists playlist when query not returns artists', async () => {
+      mockUseTopArtistsPlaylistQuery.mockReturnValueOnce({
+        data: { artists: [] },
+      })
+
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Romans et littérature')
+
+      expect(screen.queryByText('Les personnalités du moment')).not.toBeOnTheScreen()
+    })
+
+    it('should trigger ConsultArtist log when an artist item is pressed', async () => {
+      mockUseTopArtistsPlaylistQuery.mockReturnValueOnce({
+        data: { artists: mockArtists },
+      })
+
+      render(reactQueryProviderHOC(<ThematicSearch />))
+
+      await user.press(await screen.findByText(mockArtist.name))
+
+      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistId: mockArtist.id,
+        artistName: mockArtist.name,
+        from: 'thematicsearch',
+        originDetails: 'topArtistsPlaylist',
+      })
+    })
+
+    it('should trigger ClickSeeAll log when see all button is pressed', async () => {
+      mockUseTopArtistsPlaylistQuery.mockReturnValueOnce({
+        data: { artists: mockArtists },
+      })
+
+      render(reactQueryProviderHOC(<ThematicSearch />))
+
+      await user.press(
+        await screen.findByLabelText('Voir tout pour la sélection Les personnalités du moment')
+      )
+
+      expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
+        type: 'artists',
+        moduleName: 'Les personnalités du moment',
+        from: 'thematicsearch',
       })
     })
   })

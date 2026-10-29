@@ -6,6 +6,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
+import { useTopArtistsPlaylistQuery } from 'features/search/queries/useTopArtistsPlaylistQuery/useTopArtistsPlaylistQuery'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
@@ -30,11 +31,13 @@ type UseGetArtistsFromPlaylistProps = {
 export const useGetArtistsFromPlaylist = ({
   params,
 }: UseGetArtistsFromPlaylistProps): VerticalPlaylistArtistsData => {
-  const { title, subtitle, venueId, similarToArtistId, offerId, offerCategoryId } = params
+  const { title, subtitle, venueId, similarToArtistId, offerId, offerCategoryId, searchGroupName } =
+    params
   const isSimilar = !!similarToArtistId
-  const isVenue = !isSimilar && !!venueId
+  const isThematicSearch = !!searchGroupName
+  const isVenue = !isSimilar && !!venueId && !isThematicSearch
   const isOffer = !!offerId
-  const isSearch = !isSimilar && !isVenue && !isOffer
+  const isSearch = !isSimilar && !isVenue && !isOffer && !isThematicSearch
 
   const { data: offer } = useOfferQuery({
     offerId: offerId ?? 0,
@@ -97,12 +100,18 @@ export const useGetArtistsFromPlaylist = ({
     enabled: isSimilar,
   })
 
+  const { data: thematicSearchList } = useTopArtistsPlaylistQuery({
+    searchGroupName,
+    enabled: isThematicSearch,
+  })
+
   const artistsFromVenue = venueArtists?.artists
   const searchArtistsList = query.data
 
   const getItems = (): Artist[] => {
     if (isOffer) return offer?.artists ? formatArtists(offer.artists, offerCategoryId) : NO_ARTISTS
     if (isSimilar) return similarArtistsList ?? NO_ARTISTS
+    if (isThematicSearch) return thematicSearchList?.artists ?? NO_ARTISTS
     if (isVenue) return artistsFromVenue ?? NO_ARTISTS
     return searchArtistsList ?? NO_ARTISTS
   }

@@ -23,3 +23,9 @@ export const ACTIVITIES_BY_SEARCH_GROUP: Partial<Record<SearchGroupNameEnumv2, A
   ],
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: [Activity.FESTIVAL, Activity.PERFORMANCE_HALL],
 }
+
+export const TOP_ARTISTS_PLAYLIST_SEARCH_GROUP = [
+  SearchGroupNameEnumv2.CINEMA,
+  SearchGroupNameEnumv2.LIVRES,
+  SearchGroupNameEnumv2.MUSIQUE,
+]
