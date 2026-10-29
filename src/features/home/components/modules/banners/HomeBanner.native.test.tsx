@@ -5,7 +5,7 @@ import {
   BannerResponse,
   QFBonificationStatus,
   SubscriptionStatus,
-  SubscriptionStepperResponseV2,
+  SubscriptionStepperResponseV3,
 } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
@@ -302,14 +302,14 @@ const mockBannerFromBackend = (banner: BannerResponse) => {
 }
 
 const mockSubscriptionStepper = () => {
-  mockServer.getApi<SubscriptionStepperResponseV2>(
-    '/v2/subscription/stepper',
+  mockServer.getApi<SubscriptionStepperResponseV3>(
+    '/v3/subscription/stepper',
     subscriptionStepperFixture
   )
 }
 
 const mockSubscriptionStepperWithoutNextStep = () => {
-  mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+  mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', {
     ...subscriptionStepperFixture,
     nextSubscriptionStep: null,
   })

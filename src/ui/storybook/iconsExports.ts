@@ -99,7 +99,6 @@ import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Search } from 'ui/svg/icons/Search'
 import { Share } from 'ui/svg/icons/Share'
 import { Show } from 'ui/svg/icons/Show'
-import { Signal } from 'ui/svg/icons/Signal'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
@@ -230,7 +229,6 @@ export const SecondaryAndBiggerIcons = {
   ScrollToTop,
   Search,
   Share,
-  Signal,
   SignOut,
   Smartphone,
   TabBarProfile,

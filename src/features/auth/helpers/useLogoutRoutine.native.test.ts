@@ -112,10 +112,7 @@ describe('useLogoutRoutine', () => {
     queryClient.setQueryDefaults([QueryKeys.HOME_BANNER, true], privateQueryOptions)
     queryClient.setQueryDefaults([QueryKeys.RECOMMENDATION_OFFER_IDS, {}], privateQueryOptions)
     queryClient.setQueryDefaults([QueryKeys.ACTIVITY_TYPES], privateQueryOptions)
-    queryClient.setQueryDefaults(
-      [QueryKeys.STEPPER_INFO, 'phoneNumberInProfileStepper'],
-      privateQueryOptions
-    )
+    queryClient.setQueryDefaults([QueryKeys.STEPPER_INFO], privateQueryOptions)
     queryClient.setQueryDefaults([QueryKeys.REMINDERS], privateQueryOptions)
     queryClient.setQueryDefaults([QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP], privateQueryOptions)
     queryClient.setQueryDefaults([QueryKeys.AVAILABLE_REACTION], privateQueryOptions)
@@ -130,7 +127,7 @@ describe('useLogoutRoutine', () => {
     queryClient.setQueryData([QueryKeys.HOME_BANNER, true], 'toto')
     queryClient.setQueryData([QueryKeys.RECOMMENDATION_OFFER_IDS, {}], 'toto')
     queryClient.setQueryData([QueryKeys.ACTIVITY_TYPES], 'toto')
-    queryClient.setQueryData([QueryKeys.STEPPER_INFO, 'phoneNumberInProfileStepper'], 'toto')
+    queryClient.setQueryData([QueryKeys.STEPPER_INFO], 'toto')
     queryClient.setQueryData([QueryKeys.REMINDERS], 'toto')
     queryClient.setQueryData([QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP], 'toto')
     queryClient.setQueryData([QueryKeys.AVAILABLE_REACTION], 'toto')
