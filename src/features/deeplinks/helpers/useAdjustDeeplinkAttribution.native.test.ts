@@ -8,8 +8,10 @@ import { act, renderHook } from 'tests/utils'
 import { useAdjustDeeplinkAttribution } from './useAdjustDeeplinkAttribution'
 
 const ADJUST_LINK = `https://${env.ADJUST_LINK_DOMAIN}/accueil-thematique?homeId=fakeEntryId&from=deeplink`
-const CUSTOM_SCHEME_LINK = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEntryId&from=deeplink`
+// Adjust adds its tracker when it opens the app with the custom scheme
+const CUSTOM_SCHEME_LINK = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEntryId&from=deeplink&adj_t=fakeTracker&adj_deep_link_id=123`
 const WEBAPP_LINK = `${WEBAPP_V2_URL}/mot-de-passe-perdu?token=fakeToken&email=jean.dupont@example.com`
+const CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER = `${env.URL_PREFIX}:///signup-confirmation?email=jean.dupont@example.com&token=fakeToken`
 
 const mockGetInitialURL = jest.spyOn(Linking, 'getInitialURL')
 const mockAddEventListener = jest.spyOn(Linking, 'addEventListener')
@@ -48,21 +50,27 @@ describe('useAdjustDeeplinkAttribution', () => {
     }
   )
 
-  it('should not send a webapp link that opened the app to Adjust', async () => {
-    mockGetInitialURL.mockResolvedValueOnce(WEBAPP_LINK)
+  it.each([WEBAPP_LINK, CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER])(
+    'should not send a link that did not come from Adjust and opened the app: %s',
+    async (url) => {
+      mockGetInitialURL.mockResolvedValueOnce(url)
 
-    renderHook(useAdjustDeeplinkAttribution)
-    await act(async () => {})
+      renderHook(useAdjustDeeplinkAttribution)
+      await act(async () => {})
 
-    expect(AdjustMock.processDeeplink).not.toHaveBeenCalled()
-  })
+      expect(AdjustMock.processDeeplink).not.toHaveBeenCalled()
+    }
+  )
 
-  it('should not send a webapp link received while the app is running to Adjust', async () => {
-    renderHook(useAdjustDeeplinkAttribution)
-    await act(async () => {})
+  it.each([WEBAPP_LINK, CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER])(
+    'should not send a link that did not come from Adjust and was received while the app is running: %s',
+    async (url) => {
+      renderHook(useAdjustDeeplinkAttribution)
+      await act(async () => {})
 
-    receiveUrl(WEBAPP_LINK)
+      receiveUrl(url)
 
-    expect(AdjustMock.processDeeplink).not.toHaveBeenCalled()
-  })
+      expect(AdjustMock.processDeeplink).not.toHaveBeenCalled()
+    }
+  )
 })
