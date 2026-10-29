@@ -64,9 +64,9 @@ describe('linking', () => {
     ])
   })
 
-  // the web proxy (server/) advertises `<DEEPLINK_PROTOCOL>/<path>` in the offer and venue meta tags
+  // the web proxy (server/) advertises `<DEEPLINK_PROTOCOL><path>` in the offer and venue meta tags
   it('should open Offer when url is the link advertised by the web meta tags', () => {
-    const { state } = openUrl(`${env.URL_PREFIX}:///offre/123`)
+    const { state } = openUrl(`${env.URL_PREFIX}://offre/123`)
 
     expect(getNestedNavigationFromState(state)).toEqual(['Offer', { id: 123 }])
   })
