@@ -306,6 +306,27 @@ export interface ActivityTypesResponse {
 }
 /**
  * @export
+ * @interface ArtistItem
+ */
+export interface ArtistItem {
+  /**
+   * @type {string}
+   * @memberof ArtistItem
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof ArtistItem
+   */
+  image?: string
+  /**
+   * @type {string}
+   * @memberof ArtistItem
+   */
+  name: string
+}
+/**
+ * @export
  * @interface ArtistResponse
  */
 export interface ArtistResponse {
@@ -5202,7 +5223,17 @@ export interface TokenResponse {
    */
   data?: string | null
 }
-
+/**
+ * @export
+ * @interface TopArtistsPlaylistResponse
+ */
+export interface TopArtistsPlaylistResponse {
+  /**
+   * @type {Array<ArtistItem>}
+   * @memberof TopArtistsPlaylistResponse
+   */
+  artists: Array<ArtistItem>
+}
 /**
  * @export
  * @interface UpdateEmailTokenExpiration
@@ -6769,6 +6800,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary top_artists_playlist <GET>
+     * @param {string} search_group_name 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'search_group_name' is not null or undefined
+      if (search_group_name === null || search_group_name === undefined) {
+        throw new RequiredError(
+          'search_group_name',
+          'Required parameter search_group_name was null or undefined when calling getNativeV1RecommendationTopArtistsPlaylistsearchGroupName.'
+        )
+      }
+      let pathname = `/native/v1/recommendation/top_artists_playlist/{search_group_name}`.replace(
+        `{${'search_group_name'}}`,
+        encodeURIComponent(String(search_group_name))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+        /**
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8863,6 +8921,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
+     * @summary top_artists_playlist <GET>
+     * @param {string} search_group_name 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options?: any): Promise<TopArtistsPlaylistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     *
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -9988,6 +10058,18 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, retrievalModel, options)
+  }
+  /**
+    *
+    * @summary top_artists_playlist <GET>
+    * @param {string} search_group_name 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name, options)
   }
   /**
     *
