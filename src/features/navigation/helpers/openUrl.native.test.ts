@@ -152,20 +152,24 @@ describe('openUrl', () => {
   })
 
   describe('Alert prompt', () => {
-    it('should display alert when Linking.openURL throws', async () => {
-      openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+    it('should display alert, log once and rethrow when Linking.openURL throws', async () => {
+      const error = new Error('Did not open correctly')
+      openURLSpy.mockRejectedValueOnce(error)
       const alertMock = jest.spyOn(Alert, 'alert')
 
       const link = 'https://www.google.com'
-      await openUrl(link)
+
+      await expect(openUrl(link)).rejects.toBe(error)
 
       expect(alertMock).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     })
 
     it('should not display alert when Linking.openURL throws but fallbackUrl is valid', async () => {
-      // Last in first out, it will fail then succeed.
-      openURLSpy.mockResolvedValueOnce(undefined)
-      openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+      openURLSpy
+        .mockRejectedValueOnce(new Error('Did not open correctly'))
+        .mockResolvedValueOnce(undefined)
       const alertMock = jest.spyOn(Alert, 'alert')
 
       const link = 'https://www.google.com'
@@ -173,6 +177,24 @@ describe('openUrl', () => {
       await openUrl(link, { fallbackUrl: fallbackLink })
 
       expect(alertMock).not.toHaveBeenCalled()
+      expect(openURLSpy).toHaveBeenNthCalledWith(2, fallbackLink)
+      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+    })
+
+    it('should display alert, log once and rethrow when the fallback also fails', async () => {
+      const error = new Error('Fallback did not open correctly')
+      openURLSpy
+        .mockRejectedValueOnce(new Error('Did not open correctly'))
+        .mockRejectedValueOnce(error)
+      const alertMock = jest.spyOn(Alert, 'alert')
+
+      await expect(
+        openUrl('https://www.google.com', { fallbackUrl: 'https://www.googlefallback.com' })
+      ).rejects.toBe(error)
+
+      expect(alertMock).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     })
   })
 })

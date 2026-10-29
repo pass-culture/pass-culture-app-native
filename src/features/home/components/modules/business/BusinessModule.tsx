@@ -10,7 +10,6 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
 import { EditorialCard } from 'ui/components/EditorialCard'
 import { getSpacing } from 'ui/theme'
@@ -43,20 +42,18 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     }
   }, [isDisabled])
 
-  const logAndOpenUrl = async (finalUrl: string) => {
+  const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
     void analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
-    try {
-      await openUrl(finalUrl)
-    } catch (error) {
-      eventMonitoring.captureException(`Failed to open URL: ${String(error)}`)
-    }
+    void openUrl(finalUrl).catch(() => {
+      // openUrl already reports the error and displays an alert.
+    })
   }
 
   useEffect(() => {
     if (!url || !shouldRedirect) return
     const businessUrl = getBusinessUrl(url, user?.email)
-    if (businessUrl) void logAndOpenUrl(businessUrl)
+    if (businessUrl) logAndOpenUrl(businessUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 

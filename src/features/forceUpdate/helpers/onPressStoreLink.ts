@@ -20,7 +20,9 @@ const clearStorageAndReload = (): void => {
 
 async function openStore() {
   await analytics.logClickForceUpdate(getAppBuildVersion())
-  await openUrl(STORE_LINK)
+  await openUrl(STORE_LINK).catch(() => {
+    // openUrl already reports the error and displays an alert.
+  })
 }
 
 export const onPressStoreLink = Platform.select({

@@ -18,7 +18,12 @@ export function ExternalTouchableLink({
     if (address) {
       await openItinerary(address)
     } else {
-      await openUrl(url, params, openInNewWindow).then(onSuccess).catch(onError)
+      await openUrl(url, params, openInNewWindow)
+        .then(onSuccess)
+        .catch(() => {
+          // openUrl already reports opening errors.
+          onError?.()
+        })
     }
   }, [externalNav, openInNewWindow])
   return (

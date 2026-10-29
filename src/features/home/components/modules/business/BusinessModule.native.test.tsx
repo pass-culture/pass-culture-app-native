@@ -5,6 +5,7 @@ import { BusinessModule } from 'features/home/components/modules/business/Busine
 import { BusinessModuleProps } from 'features/home/components/modules/business/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -70,6 +71,17 @@ describe('BusinessModule component', () => {
     await waitFor(() => {
       expect(openURLSpy).toHaveBeenCalledWith('url')
     })
+  })
+
+  it('should report opening errors only once through openUrl', async () => {
+    const error = new Error('Could not open URL')
+    openURLSpy.mockRejectedValueOnce(error)
+    renderModule(props)
+
+    await user.press(screen.getByTestId('imageBusiness'))
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
   })
 })
 

@@ -68,7 +68,10 @@ const notInTaxHouseholdConfig: PageConfigEntry = {
     'Essaie avec ton autre parent ou responsable légal, ou contacte-nous si tu as un doute.',
   bannerLinks: [
     {
-      onPress: () => openUrl(env.SUPPORT_ACCOUNT_ISSUES_FORM),
+      onPress: () =>
+        openUrl(env.SUPPORT_ACCOUNT_ISSUES_FORM).catch(() => {
+          // openUrl already reports the error and displays an alert.
+        }),
       wording: 'Contacter notre support',
       icon: PlainArrowNext,
     },
