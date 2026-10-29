@@ -14,7 +14,7 @@ const CUSTOM_SCHEME_LINK = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEn
 const WEBAPP_LINK = `${WEBAPP_V2_URL}/mot-de-passe-perdu?token=fakeToken&email=jean.dupont@example.com`
 const CUSTOM_SCHEME_LINK_WITH_LEGACY_ADJUST_TRACKER = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEntryId&from=deeplink&adjust_t=fakeTracker`
 const ADJUST_LINK_WITHOUT_ADJUST_TRACKER = `https://${env.ADJUST_LINK_DOMAIN}/mot-de-passe-perdu?token=fakeToken&email=jean.dupont@example.com`
-const CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER = `${env.URL_PREFIX}:///signup-confirmation?email=jean.dupont@example.com&token=fakeToken`
+const CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER = `${env.URL_PREFIX}://signup-confirmation?email=jean.dupont@example.com&token=fakeToken`
 
 const mockGetInitialURL = jest.spyOn(Linking, 'getInitialURL')
 const mockAddEventListener = jest.spyOn(Linking, 'addEventListener')
