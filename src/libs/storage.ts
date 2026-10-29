@@ -10,6 +10,7 @@ export type StorageKey =
   | 'credit_review_profile_started_at'
   | 'device_id'
   | 'first_time_review_has_been_requested'
+  | 'has_launched_app_once'
   | 'has_seen_birthday_notification_card'
   | 'has_seen_booking_page'
   | 'has_seen_share_app_modal'
