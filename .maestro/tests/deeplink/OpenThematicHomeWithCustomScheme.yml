@@ -22,12 +22,27 @@ onFlowStart:
     timeout: 60000
 - runFlow: ../common/cookies/AcceptCookies.yml
 
-# Wait for the title of the requested home, loaded from Contentful: the back button is displayed before the home is loaded.
-# "Spectacles" is the title of the home 3S4UGnN2tfPIV1ANpdUYs6 in the Contentful testing environment, read by the staging build:
-# this flow fails if that home is renamed or its ID changes
-- extendedWaitUntil:
-    visible: 'Spectacles'
-    timeout: 30000
+# Wait for the requested home, loaded from Contentful: the back button is displayed before the home is loaded.
+# Android: "Spectacles" is the title of the home 3S4UGnN2tfPIV1ANpdUYs6 in the Contentful testing environment, read by the staging
+# build. This flow fails if that home is renamed or its ID changes
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - extendedWaitUntil:
+          visible: 'Spectacles'
+          timeout: 30000
+# iOS: the header of a category home is an animated overlay that Maestro does not see (neither its title nor its "Suivre" button),
+# so wait for its first offers playlist, displayed once the home is loaded (the home must keep one). It does not prove which home is
+# displayed: the link → home resolution is shared JS code, checked on Android
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - extendedWaitUntil:
+          visible:
+            id: 'playlistTitle'
+          timeout: 30000
 - assertNotVisible: 'Page introuvable.*'
 - assertNotVisible: 'Oups.*'
 - assertNotVisible: 'Bienvenue sur.*'
