@@ -12,13 +12,15 @@ import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
 
 export const PASS_CULTURE_PREFIX_URL = `${env.URL_PREFIX}://`
-// Adjust link domain of the environment (one per Adjust app), declared natively in ios/PassCulture/PassCulture.entitlements and android/app/src/main/AndroidManifest.xml
+// Adjust link domain of the environment (one per Adjust app)
 export const ADJUST_LINK_PREFIX = `https://${env.ADJUST_LINK_DOMAIN}`
 
 export const linking: RequireField<
   LinkingOptions<RootStackParamList>,
   'getStateFromPath' | 'getPathFromState'
 > = {
+  // each prefix is also declared natively: the domains in ios/PassCulture/PassCulture.entitlements and
+  // android/app/src/main/AndroidManifest.xml, the scheme in ios/PassCulture/Info.plist and AndroidManifest.xml
   prefixes: [
     // must NOT be empty
     WEBAPP_V2_URL,
