@@ -93,6 +93,6 @@ export const env: Environment = {
   SUPPORT_ACCOUNT_ISSUES_FORM:
     'https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
-  URL_PREFIX: 'passculture',
+  URL_PREFIX: 'passculturetesting',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
 }
