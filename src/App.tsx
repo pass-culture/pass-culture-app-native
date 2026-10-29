@@ -64,6 +64,9 @@ const App: FunctionComponent = function () {
   useEffect(() => {
     // before the cookies consent modal can save a choice
     void detectFirstSessionAfterInstall()
+  }, [])
+
+  useEffect(() => {
     initAlgoliaAnalytics()
     initLocation()
     BatchPush.refreshToken() //  Synchronizes the user's iOS token with Batch. Should be called at each app launch. No effect on Android.
