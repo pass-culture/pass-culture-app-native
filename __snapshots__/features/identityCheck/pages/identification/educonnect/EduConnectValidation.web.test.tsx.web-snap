@@ -233,7 +233,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                     <p
                       class="c3"
                     >
-                      Ville de résidence
+                      Ta date de naissance
                     </p>
                     <p
                       class="c4"

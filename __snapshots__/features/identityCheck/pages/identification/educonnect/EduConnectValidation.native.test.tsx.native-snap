@@ -391,7 +391,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                       }
                     }
                   >
-                    Ville de résidence
+                    Ta date de naissance
                   </Text>
                   <Text
                     accessibilityLevel="p"

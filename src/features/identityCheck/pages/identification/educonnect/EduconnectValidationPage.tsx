@@ -8,8 +8,6 @@ type Props = {
   birthDate?: string | null
   firstName?: string | null
   lastName?: string | null
-  address?: string | null
-  status?: string | null
   onValidate: VoidFunction
 }
 
@@ -19,8 +17,6 @@ export const EduconnectValidationPage: FC<Props> = ({
   birthDate,
   firstName,
   lastName,
-  address,
-  status,
   onValidate,
 }) => {
   return (
@@ -33,9 +29,7 @@ export const EduconnectValidationPage: FC<Props> = ({
           data={[
             { title: 'Ton prénom', testID: 'validation-first-name', value: firstName },
             { title: 'Ton nom de famille', testID: 'validation-name', value: lastName },
-            { title: 'Adresse', value: address },
-            { title: 'Ville de résidence', testID: 'validation-birth-date', value: birthDate },
-            { title: 'Statut', value: status },
+            { title: 'Ta date de naissance', testID: 'validation-birth-date', value: birthDate },
           ]}
         />
       }
