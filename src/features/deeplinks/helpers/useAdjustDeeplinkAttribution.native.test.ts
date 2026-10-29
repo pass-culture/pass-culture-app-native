@@ -7,10 +7,13 @@ import { act, renderHook } from 'tests/utils'
 
 import { useAdjustDeeplinkAttribution } from './useAdjustDeeplinkAttribution'
 
-const ADJUST_LINK = `https://${env.ADJUST_LINK_DOMAIN}/accueil-thematique?homeId=fakeEntryId&from=deeplink`
+// Adjust links carry the Adjust tracker (adj_t), like the full click URL of an Adjust deep link
+const ADJUST_LINK = `https://${env.ADJUST_LINK_DOMAIN}/accueil-thematique?homeId=fakeEntryId&from=deeplink&adj_t=fakeTracker&adj_deep_link_id=123`
 // Adjust adds its tracker when it opens the app with the custom scheme
 const CUSTOM_SCHEME_LINK = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEntryId&from=deeplink&adj_t=fakeTracker&adj_deep_link_id=123`
 const WEBAPP_LINK = `${WEBAPP_V2_URL}/mot-de-passe-perdu?token=fakeToken&email=jean.dupont@example.com`
+const CUSTOM_SCHEME_LINK_WITH_LEGACY_ADJUST_TRACKER = `${env.URL_PREFIX}://accueil-thematique?homeId=fakeEntryId&from=deeplink&adjust_t=fakeTracker`
+const ADJUST_LINK_WITHOUT_ADJUST_TRACKER = `https://${env.ADJUST_LINK_DOMAIN}/mot-de-passe-perdu?token=fakeToken&email=jean.dupont@example.com`
 const CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER = `${env.URL_PREFIX}:///signup-confirmation?email=jean.dupont@example.com&token=fakeToken`
 
 const mockGetInitialURL = jest.spyOn(Linking, 'getInitialURL')
@@ -26,7 +29,7 @@ describe('useAdjustDeeplinkAttribution', () => {
     mockGetInitialURL.mockResolvedValue(null)
   })
 
-  it.each([ADJUST_LINK, CUSTOM_SCHEME_LINK])(
+  it.each([ADJUST_LINK, CUSTOM_SCHEME_LINK, CUSTOM_SCHEME_LINK_WITH_LEGACY_ADJUST_TRACKER])(
     'should send the link that opened the app to Adjust: %s',
     async (url) => {
       mockGetInitialURL.mockResolvedValueOnce(url)
@@ -38,7 +41,7 @@ describe('useAdjustDeeplinkAttribution', () => {
     }
   )
 
-  it.each([ADJUST_LINK, CUSTOM_SCHEME_LINK])(
+  it.each([ADJUST_LINK, CUSTOM_SCHEME_LINK, CUSTOM_SCHEME_LINK_WITH_LEGACY_ADJUST_TRACKER])(
     'should send the link received while the app is running to Adjust: %s',
     async (url) => {
       renderHook(useAdjustDeeplinkAttribution)
@@ -50,19 +53,24 @@ describe('useAdjustDeeplinkAttribution', () => {
     }
   )
 
-  it.each([WEBAPP_LINK, CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER])(
-    'should not send a link that did not come from Adjust and opened the app: %s',
-    async (url) => {
-      mockGetInitialURL.mockResolvedValueOnce(url)
+  it.each([
+    WEBAPP_LINK,
+    ADJUST_LINK_WITHOUT_ADJUST_TRACKER,
+    CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER,
+  ])('should not send a link that did not come from Adjust and opened the app: %s', async (url) => {
+    mockGetInitialURL.mockResolvedValueOnce(url)
 
-      renderHook(useAdjustDeeplinkAttribution)
-      await act(async () => {})
+    renderHook(useAdjustDeeplinkAttribution)
+    await act(async () => {})
 
-      expect(AdjustMock.processDeeplink).not.toHaveBeenCalled()
-    }
-  )
+    expect(AdjustMock.processDeeplink).not.toHaveBeenCalled()
+  })
 
-  it.each([WEBAPP_LINK, CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER])(
+  it.each([
+    WEBAPP_LINK,
+    ADJUST_LINK_WITHOUT_ADJUST_TRACKER,
+    CUSTOM_SCHEME_LINK_WITHOUT_ADJUST_TRACKER,
+  ])(
     'should not send a link that did not come from Adjust and was received while the app is running: %s',
     async (url) => {
       renderHook(useAdjustDeeplinkAttribution)
