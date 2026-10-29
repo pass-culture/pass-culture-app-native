@@ -4,9 +4,9 @@ appId: ${MAESTRO_APP_ID}
     id: 'Profil - non complété'
     enabled: true
 
-- assertVisible: "Identification - indisponible tant que l‘étape précédente n‘est pas complétée"
+- assertVisible: 'Identification - indisponible tant que l‘étape précédente n‘est pas complétée'
 
-- assertVisible: "Confirmation - indisponible tant que l‘étape précédente n‘est pas complétée"
+- assertVisible: 'Confirmation - indisponible tant que l‘étape précédente n‘est pas complétée'
 
 - tapOn: 'Profil - non complété'
 
@@ -71,39 +71,6 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     when:
-      visible: 'Continuer vers le numéro de téléphone'
-    commands:
-      - tapOn: 'Continuer vers le numéro de téléphone'
-      - tapOn: 'Champs de texte - Numéro de téléphone - Exemple : +33639980123'
-      - inputText:
-          text: '1234567891'
-      - assertVisible: '.*Le numéro de téléphone est trop long.*'
-      - tapOn: '1234567891'
-      - repeat:
-          times: 9
-          commands:
-            - pressKey: backspace
-      - inputText:
-          text: '06'
-      - inputRandomNumber:
-          length: 6
-      - runFlow:
-          when:
-            platform: Android
-          commands:
-            - hideKeyboard
-      - runFlow:
-          when:
-            platform: iOS
-          commands:
-            - tapOn: 'Next'
-      - assertVisible:
-          id: 'Continuer vers l’étape suivante'
-          enabled: true
-      - tapOn: 'Continuer vers l’étape suivante'
-
-- runFlow:
-    when:
       visible: 'Continuer vers le statut'
     commands:
       - tapOn: 'Continuer vers le statut'
@@ -119,8 +86,7 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Modifier mes informations'
       - tapOn: 'Continuer vers la ville de résidence'
       - tapOn: 'Continuer vers l’adresse'
-      - tapOn: 'Continuer vers le numéro de téléphone'
-      - tapOn: 'Continuer vers l’étape suivante'
+      - tapOn: 'Continuer vers le statut'
       - tapOn: 'Continuer vers l’étape suivante'
 
 - tapOn: 'Confirmer et envoyer les informations'

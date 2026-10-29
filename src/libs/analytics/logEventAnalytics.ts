@@ -14,11 +14,7 @@ import { Provider } from 'features/auth/types'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
-import {
-  DeprecatedIdentityCheckStep,
-  IdentityCheckStep,
-  StepConfig,
-} from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import {
   Referrals,
   StepperOrigin,
@@ -504,7 +500,7 @@ export const logEventAnalytics = {
     reason: string | null
     errorType: string | null
   }) => analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_ABORT }, params),
-  logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepName) =>
+  logIdentityCheckStep: (nextStep: IdentityCheckStepName) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.IDENTITY_CHECK_STEP },
       { nextStep, step: nextStep }
@@ -615,7 +611,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_MODAL }, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN }, { offerId }),
-  logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepName) =>
+  logQuitIdentityCheck: (nextStep: IdentityCheckStepName) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
