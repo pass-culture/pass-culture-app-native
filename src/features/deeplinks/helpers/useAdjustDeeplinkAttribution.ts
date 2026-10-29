@@ -23,7 +23,7 @@ const processAdjustCampaignLink = (url: string | null) => {
 
 // Lets Adjust attribute the opening of the app by a campaign link to that campaign, including for users who already have the app
 export const useAdjustDeeplinkAttribution = () => {
-  useEffect(() => {
+  useEffect(function sendAdjustCampaignLinks() {
     void Linking.getInitialURL().then(processAdjustCampaignLink)
     const subscription = Linking.addEventListener('url', ({ url }) =>
       processAdjustCampaignLink(url)
