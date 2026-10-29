@@ -27,11 +27,9 @@ export const useShareAppModalViewmodel = ({
     hideModal()
   }, [hideModal, type])
 
-  const share = useCallback(async () => {
+  const share = useCallback(() => {
     void analytics.logShareApp({ type })
-    await shareApp(
-      type === ShareAppModalType.BENEFICIARY ? 'beneficiary_modal' : 'uneligible_modal'
-    )
+    void shareApp(type === ShareAppModalType.BENEFICIARY ? 'beneficiary_modal' : 'uneligible_modal')
     hideModal()
   }, [hideModal, type])
 

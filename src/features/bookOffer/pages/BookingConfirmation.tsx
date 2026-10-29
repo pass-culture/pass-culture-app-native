@@ -11,7 +11,6 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useReviewInApp } from 'libs/reviewInApp/useReviewInApp'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
@@ -72,13 +71,9 @@ export const BookingConfirmation: FC = () => {
     void checkHasAlreadySeenSurvey(showQualtricsSurveyModal, !!offer?.isEvent, 'confirm')
   }, [offer?.isEvent, showQualtricsSurveyModal])
 
-  const pressShareOffer = useCallback(async () => {
+  const pressShareOffer = useCallback(() => {
     void analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', offerId: params.offerId })
-    try {
-      await shareOffer()
-    } catch (error) {
-      eventMonitoring.captureException(`Failed to share offer: ${String(error)}`)
-    }
+    void shareOffer()
     showShareOfferModal()
   }, [params.offerId, shareOffer, showShareOfferModal])
 

@@ -30,9 +30,9 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
     hideModal: hideShareVenueModal,
   } = useModal(false)
 
-  const onSharePress = async () => {
+  const onSharePress = () => {
     void analytics.logShare({ type: 'Venue', from: 'venue', venueId: venue.id })
-    await shareVenue()
+    void shareVenue()
     showShareVenueModal()
   }
 

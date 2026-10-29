@@ -38,7 +38,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
         refused: [],
       })
       void analytics.logHasAcceptedAllCookies()
-      await setMarketingParams(params, ALL_OPTIONAL_COOKIES)
+      void setMarketingParams(params, ALL_OPTIONAL_COOKIES)
     } catch (error) {
       eventMonitoring.captureException(`Failed to set cookies consent: ${String(error)}`)
     }
@@ -60,16 +60,20 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   const customChoice = useCallback(async () => {
     hideModal()
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
-    await setCookiesConsent({
-      mandatory: COOKIES_BY_CATEGORY.essential,
-      accepted,
-      refused,
-    })
-    void analytics.logHasMadeAChoiceForCookies({
-      from: 'Modal',
-      type: settingsCookiesChoice,
-    })
-    await setMarketingParams(params, accepted)
+    try {
+      await setCookiesConsent({
+        mandatory: COOKIES_BY_CATEGORY.essential,
+        accepted,
+        refused,
+      })
+      void analytics.logHasMadeAChoiceForCookies({
+        from: 'Modal',
+        type: settingsCookiesChoice,
+      })
+      void setMarketingParams(params, accepted)
+    } catch (error) {
+      eventMonitoring.captureException(`Failed to set cookies consent: ${String(error)}`)
+    }
   }, [params, settingsCookiesChoice, hideModal, setCookiesConsent])
 
   const { childrenProps } = getCookiesModalContent({
