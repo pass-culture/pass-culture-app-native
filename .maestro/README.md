@@ -135,7 +135,7 @@ tags:
 Les flows réutilisables sont organisés par catégorie dans `tests/common/` :
 
 - **`lifecycle/`** — démarrage (`LaunchApp`), arrêt (`StopApp`), reset keychain iOS (`ClearIOSKeychain`)
-- **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`
+- **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`. Les deeplinks utilisent le schéma `URL_PREFIX` du `.env` (`passculturestaging://`, `passculturetesting://`), identique sur iOS et Android : sur iOS, `clearState` réinstalle l'app et les universal links (`https://`) s'ouvrent alors aléatoirement dans Safari. `OpenDeeplink.yml` ouvre le lien passé en `LINK` et valide la popup iOS « Ouvrir dans … ? » affichée au premier lien après installation
 - **`navigation/`** — interactions de navigation récurrentes (tab bar, retour)
 - **`cookies/`** — gestion du bandeau cookies
 - **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateOffer.js`, `deactivateOffer.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`, voir sections dédiées)
@@ -155,6 +155,22 @@ onFlowStart:
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
 - tapOn: 'Texte visible à l'écran'
+```
+
+Maestro Cloud exige que chaque flow commence par un `launchApp` :
+
+```yaml
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToProfile.yml
+```
+
+Pour ouvrir un autre lien :
+
+```yaml
+- runFlow:
+    file: ../common/deeplinks/OpenDeeplink.yml
+    env:
+      LINK: ${output.offerDeeplink}
 ```
 
 [Liste des commandes disponibles](https://maestro.mobile.dev/api-reference/commands)
@@ -182,8 +198,7 @@ Le script expose les variables suivantes utilisables dans le flow :
 |---|---|
 | `output.userId` | ID de l'utilisateur créé |
 | `output.userEmail` | Email de l'utilisateur |
-| `output.deeplinkIos` | Deeplink de confirmation d'email (iOS) |
-| `output.deeplinkAndroid` | Deeplink de confirmation d'email (Android) |
+| `output.deeplink` | Deeplink de confirmation d'email |
 
 ## Générer une offre de test
 
@@ -205,8 +220,7 @@ onFlowComplete:
 |---|---|
 | `output.offerId` | ID de l'offre créée |
 | `output.offerName` | Nom de l'offre |
-| `output.offerDeeplinkIos` | Deeplink vers la fiche offre (iOS) |
-| `output.offerDeeplinkAndroid` | Deeplink vers la fiche offre (Android) |
+| `output.offerDeeplink` | Deeplink vers la fiche offre |
 | `output.offerScreeningDay` | Libellé du calendrier (ex. `Mercredi 22 Octobre`) d'un jour avec séances encore annulables (J+3) |
 
 ## Mocker le quotient familial

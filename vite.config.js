@@ -89,6 +89,7 @@ export default ({ mode }) => {
             PUBLIC_URL: isProdMode ? env.APP_PUBLIC_URL : undefined,
             IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
             ANDROID_APP_ID: env.ANDROID_APP_ID,
+            URL_PREFIX: env.URL_PREFIX,
             APPS_FLYER_WEB_PUBLIC_KEY: env.APPS_FLYER_WEB_PUBLIC_KEY,
             COMMIT_HASH: commitHash,
           },

@@ -18,12 +18,8 @@ const email = userData.email
 const token = userData.access_token
 const exp = userData.expiration_timestamp
 
-const baseUrl = `https://app.staging.passculture.team/signup-confirmation?email=${email}&expiration_timestamp=${exp}&token=${token}`
+const path = `signup-confirmation?email=${email}&expiration_timestamp=${exp}&token=${token}`
 
-output.deeplinkIos = baseUrl
-
-const encodedBaseUrl = encodeURIComponent(baseUrl)
-
-output.deeplinkAndroid = `https://passcultureappstaging.page.link/?link=${encodedBaseUrl}&apn=app.passculture.staging&isi=1557887412&ibi=app.passculture.staging&efr=1`
+output.deeplink = `passculturestaging://${path}`
 
 output.userEmail = email

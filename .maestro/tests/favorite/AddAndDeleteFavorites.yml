@@ -11,7 +11,6 @@ onFlowStart:
         age: 18
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 - runFlow: ../common/navigation/GoToFavoritesFromTabBar.yml
 

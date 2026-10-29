@@ -62,19 +62,19 @@ export const OFFER: EntityType<OfferData> = {
       return entity.name
     },
     ['twitter:app:url:iphone'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}${href}${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['twitter:app:url:ipad'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}${href}${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['twitter:app:url:googleplay'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}${href}${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['al:ios:url'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}${href}${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['al:android:url'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}${href}${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
   },
   PATH: 'native/v3/offer',

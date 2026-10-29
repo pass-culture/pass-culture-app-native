@@ -11,7 +11,6 @@ onFlowStart:
         age: 17
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - runFlow:

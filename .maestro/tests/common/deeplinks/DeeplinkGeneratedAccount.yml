@@ -1,19 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - runFlow:
-    when:
-      platform: Android
-    commands:
-      - openLink:
-          link: ${output.deeplinkAndroid}
-          autoVerify: true
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - openLink:
-          link: ${output.deeplinkIos}
-          autoVerify: true
+    file: OpenDeeplink.yml
+    env:
+      LINK: ${output.deeplink}
 - evalScript: '${console.log(output.userEmail)}'
 - waitForAnimationToEnd
 - runFlow: ../cookies/AcceptCookiesOptional.yml
