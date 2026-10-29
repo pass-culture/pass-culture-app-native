@@ -126,6 +126,7 @@ tags:
 | `search` | Recherche |
 | `offer` | Fiche offre |
 | `artist` | Page artiste |
+| `deeplink` | Ouverture de l'app par un lien (custom scheme, universal link) |
 | `web` | Tests web |
 | `fix` | Test en cours de correction (éphémère) |
 | `refacto` | Test en cours de refactoring (éphémère) |

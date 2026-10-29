@@ -1,5 +1,6 @@
 export const setLogLevelMock = jest.fn()
 export const setAttConsentWaitingIntervalMock = jest.fn()
+export const disableDeferredDeeplinkOpeningMock = jest.fn()
 
 export const addGranularOptionMock = jest.fn()
 
@@ -24,6 +25,7 @@ export const AdjustConfig = jest
       environment,
       setLogLevel: setLogLevelMock,
       setAttConsentWaitingInterval: setAttConsentWaitingIntervalMock,
+      disableDeferredDeeplinkOpening: disableDeferredDeeplinkOpeningMock,
     }
   })
 
