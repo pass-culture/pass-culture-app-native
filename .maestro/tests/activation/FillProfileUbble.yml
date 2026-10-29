@@ -27,6 +27,6 @@ onFlowStart:
 
 - tapOn: 'J’ai une carte d’identité ou un passeport français'
 
-- tapOn: 'J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées'
+- assertVisible: 'As-tu ta pièce d’identité avec toi.*'
 
 - runFlow: ../common/lifecycle/StopApp.yml

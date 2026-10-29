@@ -31,17 +31,17 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
     <meta name="twitter:app:country" content="FR"/>
     <meta name="twitter:app:name:iphone" content="pass Culture"/>
     <meta name="twitter:app:id:iphone" content="1557887412"/>
-    <meta name="twitter:app:url:iphone" content="passculturetesting:///offre/116656" />
+    <meta name="twitter:app:url:iphone" content="passculturetesting://offre/116656" />
     <meta name="twitter:app:name:ipad" content="pass Culture"/>
     <meta name="twitter:app:id:ipad" content="1557887412"/>
-    <meta name="twitter:app:url:ipad" content="passculturetesting:///offre/116656" />
+    <meta name="twitter:app:url:ipad" content="passculturetesting://offre/116656" />
     <meta name="twitter:app:name:googleplay" content="pass Culture"/>
     <meta name="twitter:app:id:googleplay" content="app.passculture.testing"/>
-    <meta name="twitter:app:url:googleplay" content="passculturetesting:///offre/116656" />
+    <meta name="twitter:app:url:googleplay" content="passculturetesting://offre/116656" />
     <meta property="al:ios:app_name" content="pass Culture"/>
     <meta property="al:ios:app_store_id" content="1557887412"/>
-    <meta property="al:ios:url" content="passculturetesting:///offre/116656" />
-    <meta property="al:android:url" content="passculturetesting:///offre/116656" />
+    <meta property="al:ios:url" content="passculturetesting://offre/116656" />
+    <meta property="al:android:url" content="passculturetesting://offre/116656" />
     <meta property="al:android:app_name" content="pass Culture"/>
     <meta property="al:android:package" content="app.passculture.testing"/>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","name":"Sous les étoiles de Paris - VF","location":{"@type":"Place","name":"PATHE BEAUGRENELLE","address":{"@type":"PostalAddress","streetAddress":"2 RUE LAMENNAIS","postalCode":"75008","addressLocality":"PARIS 8"},"geo":{"@type":"GeoCoordinates","latitude":"20","longitude":"2"}}}</script>
@@ -80,17 +80,17 @@ exports[`metas utils should replace meta for venue 1`] = `
     <meta name="twitter:app:country" content="FR"/>
     <meta name="twitter:app:name:iphone" content="pass Culture"/>
     <meta name="twitter:app:id:iphone" content="1557887412"/>
-    <meta name="twitter:app:url:iphone" content="passculturetesting:///lieu/5543" />
+    <meta name="twitter:app:url:iphone" content="passculturetesting://lieu/5543" />
     <meta name="twitter:app:name:ipad" content="pass Culture"/>
     <meta name="twitter:app:id:ipad" content="1557887412"/>
-    <meta name="twitter:app:url:ipad" content="passculturetesting:///lieu/5543" />
+    <meta name="twitter:app:url:ipad" content="passculturetesting://lieu/5543" />
     <meta name="twitter:app:name:googleplay" content="pass Culture"/>
     <meta name="twitter:app:id:googleplay" content="app.passculture.testing"/>
-    <meta name="twitter:app:url:googleplay" content="passculturetesting:///lieu/5543" />
+    <meta name="twitter:app:url:googleplay" content="passculturetesting://lieu/5543" />
     <meta property="al:ios:app_name" content="pass Culture"/>
     <meta property="al:ios:app_store_id" content="1557887412"/>
-    <meta property="al:ios:url" content="passculturetesting:///lieu/5543" />
-    <meta property="al:android:url" content="passculturetesting:///lieu/5543" />
+    <meta property="al:ios:url" content="passculturetesting://lieu/5543" />
+    <meta property="al:android:url" content="passculturetesting://lieu/5543" />
     <meta property="al:android:app_name" content="pass Culture"/>
     <meta property="al:android:package" content="app.passculture.testing"/>
   </head>

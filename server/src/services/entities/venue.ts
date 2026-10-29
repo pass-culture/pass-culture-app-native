@@ -53,19 +53,19 @@ export const VENUE: EntityType<VenueData> = {
       return (entity.bannerMeta?.image_credit || entity.description) as string
     },
     ['twitter:app:url:iphone'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}/${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['twitter:app:url:ipad'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}/${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['twitter:app:url:googleplay'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}/${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['al:ios:url'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}/${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
     ['al:android:url'](entity, href, subPath) {
-      return `${DEEPLINK_PROTOCOL}/${subPath}`
+      return `${DEEPLINK_PROTOCOL}${subPath}`
     },
   },
   PATH: 'native/v2/venue',

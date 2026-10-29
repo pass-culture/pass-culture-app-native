@@ -41,7 +41,7 @@ output.offerName = offerData.name
 
 const offerPath = `offre/${offerData.id}`
 
-output.offerDeeplink = `passculturestaging:///${offerPath}`
+output.offerDeeplink = `passculturestaging://${offerPath}`
 
 const screeningDay = new Date()
 screeningDay.setDate(screeningDay.getDate() + 3)
