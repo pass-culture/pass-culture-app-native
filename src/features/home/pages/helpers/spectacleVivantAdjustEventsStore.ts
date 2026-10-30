@@ -12,7 +12,7 @@ const defaultState: SpectacleVivantAdjustEventsStore = {
   wasNewSpectacleVivantEventSentThisSession: false,
 }
 
-// not persisted: a session lasts as long as the app is not killed
+// not persisted: a session ends when the app is killed or, like an Adjust session, after 30 minutes in background
 const spectacleVivantAdjustEventsStore = createStore({
   name: 'spectacleVivantAdjustEvents',
   defaultState,
@@ -25,6 +25,8 @@ const spectacleVivantAdjustEventsStore = createStore({
     setWasNewSpectacleVivantEventSentThisSession: (
       wasNewSpectacleVivantEventSentThisSession: boolean
     ) => set({ wasNewSpectacleVivantEventSentThisSession }),
+    // the first session after install is over too
+    startNewSession: () => set(defaultState),
     resetForTests: () => set(defaultState),
   }),
   selectors: {

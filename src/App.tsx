@@ -18,6 +18,7 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { detectFirstSessionAfterInstall } from 'features/home/pages/helpers/detectFirstSessionAfterInstall'
+import { useSpectacleVivantAdjustSession } from 'features/home/pages/helpers/useSpectacleVivantAdjustSession'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
@@ -65,6 +66,8 @@ const App: FunctionComponent = function () {
     // before the cookies consent modal can save a choice
     void detectFirstSessionAfterInstall()
   }, [])
+
+  useSpectacleVivantAdjustSession()
 
   useEffect(() => {
     initAlgoliaAnalytics()
