@@ -185,6 +185,18 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
         dateOfBirth: '2021-12-01',
       }),
     },
+    {
+      id: uuidv4(),
+      title: 'CheckAddress',
+      navigationTarget: getSubscriptionPropConfig('CheckAddress'),
+    },
+    {
+      id: uuidv4(),
+      title: 'NotEligibleForeignCountryExplanation',
+      navigationTarget: {
+        screen: 'CheatcodesStackNavigator',
+      },
+    },
     { id: uuidv4(), title: 'DuplicateUser Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'Generic Error', showOnlyInSearch: true },
     { id: uuidv4(), title: 'UserAgeNotValid Educonnect Error', showOnlyInSearch: true },

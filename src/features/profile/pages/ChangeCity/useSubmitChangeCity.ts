@@ -5,8 +5,11 @@ import { useForm } from 'react-hook-form'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { Clear } from 'ui/svg/icons/Clear'
 
 export const useSubmitChangeCity = () => {
   const { user } = useAuthContext()
@@ -30,6 +33,19 @@ export const useSubmitChangeCity = () => {
     defaultValues: { city: storedCity ?? userCity },
   })
 
+  const tertiaryButton =
+    type === PersonalDataTypes.CHECK_ADDRESS
+      ? {
+          wording: 'Je ne réside pas en France',
+          icon: Clear,
+          onPress: () =>
+            navigate(...getSubscriptionHookConfig('NotEligibleForeignCountryExplanation')),
+        }
+      : null
+
+  const title =
+    type === PersonalDataTypes.CHECK_ADDRESS ? 'Profil' : 'Modifier ma ville de résidence'
+
   const onSubmit = ({ city }: CityForm) => {
     if (type) return navigate(...getProfileHookConfig('ChangeAddress', { type, city }))
   }
@@ -39,5 +55,7 @@ export const useSubmitChangeCity = () => {
     isValid,
     handleSubmit,
     onSubmit,
+    tertiaryButton,
+    title,
   }
 }

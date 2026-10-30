@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form'
 import styled from 'styled-components/native'
 
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
@@ -11,12 +12,20 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 import { useSubmitChangeCity } from './useSubmitChangeCity'
 
 export const ChangeCity = () => {
-  const { control, handleSubmit, onSubmit, isValid } = useSubmitChangeCity()
+  const { control, handleSubmit, onSubmit, isValid, title, tertiaryButton } = useSubmitChangeCity()
 
+  const submitButton = (
+    <Button
+      type="submit"
+      onPress={handleSubmit(onSubmit)}
+      wording="Continuer"
+      disabled={!isValid}
+    />
+  )
   return (
     <PageWithHeader
       shouldLimitWidth
-      title="Modifier ma ville de résidence"
+      title={title}
       scrollChildren={
         <React.Fragment>
           <Container>
@@ -32,12 +41,14 @@ export const ChangeCity = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <Button
-          type="submit"
-          onPress={handleSubmit(onSubmit)}
-          wording="Continuer"
-          disabled={!isValid}
-        />
+        tertiaryButton ? (
+          <ViewGap gap={4}>
+            <Button {...tertiaryButton} variant="tertiary" color="neutral" />
+            {submitButton}
+          </ViewGap>
+        ) : (
+          submitButton
+        )
       }
     />
   )

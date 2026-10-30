@@ -36,6 +36,8 @@ import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubbl
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
 import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/UbbleWebview'
 import { ActivationProfileRecap } from 'features/identityCheck/pages/profile/ActivationProfileRecap'
+import { CheckAddress } from 'features/identityCheck/pages/profile/CheckAddress'
+import { NotEligibleForeignCountryExplanation } from 'features/identityCheck/pages/profile/NotEligibleForeignCountryExplanation'
 import { ProfileInformationValidationCreate } from 'features/identityCheck/pages/profile/ProfileInformationValidationCreate'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
@@ -140,6 +142,18 @@ const subscriptionStackNavigatorDefinition = {
       screen: EduConnectValidation,
       linking: { path: 'educonnect/validation' },
       options: { title: 'EduConnect - Validation' },
+    },
+    CheckAddress: {
+      screen: CheckAddress,
+      if: useIsSignedIn,
+      linking: { path: 'verification-identite/adresse' },
+      options: { title: 'Vérification d’identité - Adresse' },
+    },
+    NotEligibleForeignCountryExplanation: {
+      screen: NotEligibleForeignCountryExplanation,
+      if: useIsSignedIn,
+      linking: { path: 'verification-identite/pays-etranger-non-eligible' },
+      options: { title: 'Vérification d’identité - Pays étranger non éligible' },
     },
     IdentityCheckEnd: {
       screen: IdentityCheckEnd,

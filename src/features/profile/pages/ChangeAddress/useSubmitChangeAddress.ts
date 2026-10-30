@@ -11,6 +11,7 @@ import { cityActions, useCity } from 'features/identityCheck/pages/profile/store
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
@@ -33,6 +34,7 @@ export const useSubmitChangeAddress = () => {
   const type = params?.type
 
   const isMandatoryUpdatePersonalData = type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+  const isCheckAddress = type === PersonalDataTypes.CHECK_ADDRESS
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
   const { user } = useAuthContext()
@@ -125,6 +127,11 @@ export const useSubmitChangeAddress = () => {
     onSuccess: async (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
+      } else if (isCheckAddress) {
+        const subscriptionConfig = getSubscriptionPropConfig('CheckAddress', {
+          fromChangeAddress: true,
+        })
+        navigate(subscriptionConfig.screen, subscriptionConfig.params)
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
         removePrecedentScreen()

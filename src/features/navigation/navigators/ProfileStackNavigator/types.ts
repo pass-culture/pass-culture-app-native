@@ -3,7 +3,10 @@ import { AccessibilityRootStackParamList } from 'features/navigation/navigators/
 import { SuggestedCity } from 'libs/place/types'
 
 interface PersonalDataType {
-  type: PersonalDataTypes.PROFIL_PERSONAL_DATA | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+  type:
+    | PersonalDataTypes.PROFIL_PERSONAL_DATA
+    | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+    | PersonalDataTypes.CHECK_ADDRESS
 }
 
 export type ProfileStackParamList = {
