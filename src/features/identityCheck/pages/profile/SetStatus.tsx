@@ -33,10 +33,9 @@ export const SetStatus = () => {
     [ProfileTypes.BOOKING_FREE_OFFER_15_16]: 'Informations personnelles',
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
-
   const storedStatus = useStatus()
   const { setStatus: setStoreStatus } = statusActions
-  const defaultStatus = user?.activityId ?? storedStatus
+  const defaultStatus = storedStatus ?? user?.activityId
   // isLoading from react-query is not support with mutateAsync
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const titleID = uuidv4()
