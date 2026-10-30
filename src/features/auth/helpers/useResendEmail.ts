@@ -16,7 +16,6 @@ export const useResendEmail = () => {
   const [resendCountdown, setResendCountdown] = useState(0)
   const [resendAttempts, setResendAttempts] = useState(0)
   const [resendCooldownEnd, setResendCooldownEnd] = useState<number | null>(null)
-  const [isInitialized, setIsInitialized] = useState(false)
 
   useEffect(function initializeResendState() {
     const loadResendState = async () => {
@@ -41,8 +40,6 @@ export const useResendEmail = () => {
           await AsyncStorage.removeItem(RESEND_ATTEMPTS_KEY)
         }
       }
-
-      setIsInitialized(true)
     }
 
     void loadResendState()
@@ -100,7 +97,6 @@ export const useResendEmail = () => {
   return {
     resendCountdown,
     resendAttempts,
-    isInitialized,
     isCooldownActive,
     hasReachedMaxAttempts,
     isDisabled,

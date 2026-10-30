@@ -52,6 +52,7 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_MANDATORY_UPDATE_PERSONAL_DATA = 'enableMandatoryUpdatePersonalData',
   ENABLE_SAVE_LAST_LOGIN_INFO = 'enableSaveLastLoginInfo',
   ENABLE_PRO_REVIEWS_VENUE_AB_TESTING = 'enableProReviewsVenueABTesting',
+  ENABLE_OTP = 'enableOTP',
   ENABLE_QUALTRICS_SURVEY = 'enableQualtricsSurvey',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   ENABLE_SEE_ALL_PLAYLIST = 'enableSeeAllPlaylist',
