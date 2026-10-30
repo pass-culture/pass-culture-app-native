@@ -17,6 +17,12 @@ const SPECTACLE_VIVANT_HOME_ID: Record<string, string | undefined> = {
   testing: '3S4UGnN2tfPIV1ANpdUYs6', // "Home catégorielle spectacle vivant"
 }
 
+export const selectHasAcceptedAdjustCookies = ({
+  cookiesConsent,
+}: ReturnType<typeof useCookiesConsentStore.getState>) =>
+  cookiesConsent.state === ConsentState.HAS_CONSENT &&
+  cookiesConsent.value.accepted.includes(CookieNameEnum.ADJUST)
+
 export const logSpectacleVivantAdjustEvents = (homeId: string) => {
   if (homeId !== SPECTACLE_VIVANT_HOME_ID[env.CONTENTFUL_ENVIRONMENT]) return
 
@@ -45,11 +51,7 @@ export const logSpectacleVivantAdjustEvents = (homeId: string) => {
 export const useSpectacleVivantAdjustEvents = (homeId: string) => {
   // The cookies consent modal is displayed over the page without blurring it (first launch through a campaign link):
   // the events of the current arrival are sent once the Adjust cookies are accepted
-  const hasAcceptedAdjustCookies = useCookiesConsentStore(
-    ({ cookiesConsent }) =>
-      cookiesConsent.state === ConsentState.HAS_CONSENT &&
-      cookiesConsent.value.accepted.includes(CookieNameEnum.ADJUST)
-  )
+  const hasAcceptedAdjustCookies = useCookiesConsentStore(selectHasAcceptedAdjustCookies)
 
   // On focus rather than on mount: the page stays mounted while the user navigates further, then comes back to it
   useFocusEffect(

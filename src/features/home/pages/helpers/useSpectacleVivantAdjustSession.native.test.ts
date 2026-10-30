@@ -1,5 +1,7 @@
 import { AppState } from 'react-native'
 
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
 import { spectacleVivantAdjustEventsStoreActions } from 'features/home/pages/helpers/spectacleVivantAdjustEventsStore'
 import { logSpectacleVivantAdjustEvents } from 'features/home/pages/helpers/useSpectacleVivantAdjustEvents'
 import { useSpectacleVivantAdjustSession } from 'features/home/pages/helpers/useSpectacleVivantAdjustSession'
@@ -16,6 +18,12 @@ const ONE_MINUTE_IN_MS = 60 * 1000
 
 jest.useFakeTimers().setSystemTime(new Date('2026-11-06T10:00:00Z'))
 
+const setAcceptedCookies = (accepted: CookieNameEnum[]) =>
+  useCookiesConsentStore.getState().setCookiesConsentState({
+    state: ConsentState.HAS_CONSENT,
+    value: { mandatory: [], accepted, refused: [] },
+  })
+
 const spendTimeInBackground = (minutes: number) =>
   act(() => {
     AppState.__triggerChange('background')
@@ -29,6 +37,7 @@ describe('useSpectacleVivantAdjustSession', () => {
     spectacleVivantAdjustEventsStoreActions.resetForTests()
     AdjustMock.isEnabled.mockImplementation((callback) => callback(true))
     AppState.__triggerChange('active')
+    setAcceptedCookies([CookieNameEnum.ADJUST])
     // first arrival on the spectacle vivant home, during the first session after install
     spectacleVivantAdjustEventsStoreActions.setIsFirstSessionAfterInstall(true)
     logSpectacleVivantAdjustEvents(TESTING_SPECTACLE_VIVANT_HOME_ID)
@@ -76,5 +85,19 @@ describe('useSpectacleVivantAdjustSession', () => {
     logSpectacleVivantAdjustEvents(TESTING_SPECTACLE_VIVANT_HOME_ID)
 
     expect(AdjustMock.logEvent).toHaveBeenCalledWith(AdjustEvents.SPECTACLE_VIVANT)
+  })
+
+  it('should log new_spectacleVivant when the Adjust cookies are accepted after more than 30 minutes in background, the Adjust session starting with the consent', () => {
+    spectacleVivantAdjustEventsStoreActions.resetForTests()
+    spectacleVivantAdjustEventsStoreActions.setIsFirstSessionAfterInstall(true)
+    // first launch through a campaign link: the cookies consent modal is displayed over the home
+    useCookiesConsentStore.getState().setCookiesConsentState({ state: ConsentState.UNKNOWN })
+    renderHook(useSpectacleVivantAdjustSession)
+
+    spendTimeInBackground(31)
+    setAcceptedCookies([CookieNameEnum.ADJUST])
+    logSpectacleVivantAdjustEvents(TESTING_SPECTACLE_VIVANT_HOME_ID)
+
+    expect(AdjustMock.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_SPECTACLE_VIVANT)
   })
 })
