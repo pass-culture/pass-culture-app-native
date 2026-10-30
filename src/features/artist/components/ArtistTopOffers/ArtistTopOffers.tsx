@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components/native'
@@ -5,6 +6,7 @@ import { useTheme } from 'styled-components/native'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { asArtistId, asOfferId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -14,6 +16,7 @@ import { useCategoryIdMapping } from 'libs/subcategories'
 import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -22,21 +25,31 @@ const MAX_TOP_OFFERS = 4
 const playlistTitle = 'Ses oeuvres populaires'
 
 type Props = {
+  artistId: string
   artistName: string
   items: AlgoliaOfferWithArtistAndEan[]
+  index: number
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
-export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items }) => {
+export const ArtistTopOffers: FunctionComponent<Props> = ({
+  artistId,
+  artistName,
+  items,
+  index,
+}) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useSubcategoryOfferLabelMapping()
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
+  const isFocused = useIsFocused()
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const topOffers = items.slice(0, MAX_TOP_OFFERS)
+
+  if (topOffers.length === 0) return null
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistOffers' as const,
@@ -58,31 +71,50 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
     })
   }
 
-  return topOffers.length > 0 ? (
-    <PassPlaylist
-      playlistType={PlaylistType.ARTIST_TOP_OFFERS}
-      title={playlistTitle}
-      data={topOffers}
-      FlatListComponent={FlatList}
-      renderItem={OfferPlaylistItem({
-        categoryMapping,
-        labelMapping,
-        currency,
-        euroToPacificFrancRate,
-        analyticsFrom: 'artist',
-        artistName,
-        originDetails: 'artistRecommendation',
-        theme,
-        hasSmallLayout: true,
-        priceDisplay: (item: Offer) =>
-          getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
-        enableSceneClubTag,
-      })}
-      itemWidth={itemWidth}
-      itemHeight={itemHeight}
-      keyExtractor={keyExtractor}
-      seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
-      noMarginBottom
-    />
-  ) : null
+  return (
+    <ObservedPlaylist
+      onItemViewed={({ index: itemIndex, item }) => {
+        if (isFocused) {
+          void analytics.logViewItem({
+            origin: 'artist',
+            playlistIndex: index,
+            index: itemIndex,
+            type: 'offer',
+            id: asOfferId(item.objectID),
+            playlistId: 'artistTopOffers',
+            originId: asArtistId(artistId),
+          })
+        }
+      }}>
+      {({ listRef, handleViewableItemsChanged }) => (
+        <PassPlaylist
+          playlistType={PlaylistType.ARTIST_TOP_OFFERS}
+          title={playlistTitle}
+          data={topOffers}
+          FlatListComponent={FlatList}
+          renderItem={OfferPlaylistItem({
+            categoryMapping,
+            labelMapping,
+            currency,
+            euroToPacificFrancRate,
+            analyticsFrom: 'artist',
+            artistName,
+            originDetails: 'artistRecommendation',
+            theme,
+            hasSmallLayout: true,
+            priceDisplay: (item: Offer) =>
+              getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+            enableSceneClubTag,
+          })}
+          itemWidth={itemWidth}
+          itemHeight={itemHeight}
+          keyExtractor={keyExtractor}
+          playlistRef={listRef}
+          onViewableItemsChanged={handleViewableItemsChanged}
+          seeAllButton={{ onBeforeNavigate, navigateToVerticalPlaylist }}
+          noMarginBottom
+        />
+      )}
+    </ObservedPlaylist>
+  )
 }

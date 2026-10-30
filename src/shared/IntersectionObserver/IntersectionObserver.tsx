@@ -1,58 +1,64 @@
-import React, { useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
-import { InView } from 'react-native-intersection-observer'
+import React, { FC, useEffect, useRef } from 'react'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { logPlaylistDebug } from 'shared/analytics/logViewItem'
-
-import { parseThreshold } from './helpers'
 import { IntersectionObserverProps } from './types'
 
-export function IntersectionObserver({
+const isEntryVisible = (entry: IntersectionObserverEntry, threshold?: number) => {
+  const boundsHeight = entry.boundingClientRect.height
+  if (threshold === undefined || !boundsHeight) return !!entry.isIntersecting
+
+  const visibleRatio = entry.intersectionRect.height / boundsHeight
+  return !!entry.isIntersecting && visibleRatio >= threshold
+}
+
+export const IntersectionObserver: FC<IntersectionObserverProps> = ({
   children,
   onChange,
-  threshold = 0,
-}: Readonly<IntersectionObserverProps>) {
-  const [containerHeight, setContainerHeight] = useState<number>(0)
+  threshold,
+  fill = false,
+}) => {
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  const targetRef = useRef<View | null>(null)
 
-  const handleChange = (inView: boolean) => {
-    logPlaylistDebug('INTERSECTION_OBSERVER_NATIVE', 'IntersectionObserver state changed', {
-      inView,
-      threshold,
-    })
-    onChange(inView)
-  }
+  useEffect(
+    function loadIntersectionObserver() {
+      const IntersectionObserverAPI = globalThis.IntersectionObserver
+      if (typeof IntersectionObserverAPI !== 'function') {
+        if (Platform.OS === 'web') onChange(true)
+        return
+      }
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout
-    setContainerHeight(height)
-  }
+      const target = targetRef.current
+      if (!target) return
 
-  const thresholdConfig = parseThreshold(threshold, containerHeight)
+      const element = target as unknown as Element
+      observerRef.current = new IntersectionObserverAPI(
+        (entries) => {
+          const entry = entries[0]
+          if (!entry) return
+          onChange(isEntryVisible(entry, threshold))
+        },
+        { threshold }
+      )
+      observerRef.current.observe(element)
+
+      return () => {
+        observerRef.current?.unobserve(element)
+        observerRef.current?.disconnect()
+        observerRef.current = null
+      }
+    },
+    [onChange, threshold]
+  )
 
   return (
-    <Container onLayout={handleLayout}>
-      <StyledInView
-        testID="intersectionObserver"
-        onChange={handleChange}
-        threshold={thresholdConfig.value}>
-        {null}
-      </StyledInView>
+    <Container ref={targetRef} fill={fill} testID="intersectionObserver">
       {children}
     </Container>
   )
 }
 
-const Container = styled.View({
-  position: 'relative',
-})
-
-const StyledInView = styled(InView).attrs<{ testID?: string }>({})<{
-  threshold: number
-}>(({ threshold }) => ({
-  position: 'absolute',
-  bottom: 0,
-  top: threshold,
-  left: 0,
-  right: 0,
+const Container = styled(View)<{ fill: boolean }>(({ fill }) => ({
+  ...(fill ? { flex: 1 } : null),
 }))

@@ -11386,7 +11386,7 @@ __metadata:
     react-native-gesture-handler: "npm:^2.29.1"
     react-native-get-random-values: "npm:^1.5.1"
     react-native-in-app-review: "npm:^4.3.1"
-    react-native-intersection-observer: "npm:^0.2.1"
+    react-native-intersection-observer: "npm:^0.3.1"
     react-native-keychain: "npm:^10.0.0"
     react-native-linear-gradient: "npm:^2.8.3"
     react-native-lottie-splash-screen: "npm:^1.1.2"
@@ -24348,12 +24348,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-intersection-observer@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "react-native-intersection-observer@npm:0.2.1"
+"react-native-intersection-observer@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "react-native-intersection-observer@npm:0.3.1"
   dependencies:
     lodash: "npm:^4.0.0"
-  checksum: 10/d8bd25252289b5a8ebd5472ea0d87d324ffcae9705807912faa1387d478f02fb8b37000d81032eb5d979032917e91d18486598c33eb2333e8a2c09331b405752
+  checksum: 10/ec468dc223f8f5acb53a546df7e3a9f23621422d8f3ba44bea382f52b4323d5c07b9e1d28b355d472946070eb8368c30cb13ba5226a88c1984e2093be9880103
   languageName: node
   linkType: hard
 

@@ -74,6 +74,7 @@ export const artistSectionTitleMapping: Partial<Record<SubcategoryIdEnum, Artist
 
 export const ARTIST_CATEGORY_PLAYLISTS = [
   {
+    playlistId: 'artistOffersConcertsFestivals',
     searchGroupName: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     label: 'Prochains concerts et festivals',
     includedSubcategoryIds: [
@@ -83,6 +84,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersSpectacles',
     searchGroupName: SearchGroupNameEnumv2.SPECTACLES,
     label: 'Prochains spectacles',
     includedSubcategoryIds: [
@@ -91,6 +93,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersLivres',
     searchGroupName: SearchGroupNameEnumv2.LIVRES,
     label: 'Livres',
     includedSubcategoryIds: [
@@ -101,11 +104,13 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersFestivalsSalonsLivre',
     searchGroupName: SearchGroupNameEnumv2.LIVRES,
     label: 'Prochains festivals et salons du livre',
     includedSubcategoryIds: [SubcategoryIdEnumv2.FESTIVAL_LIVRE],
   },
   {
+    playlistId: 'artistOffersMusique',
     searchGroupName: SearchGroupNameEnumv2.MUSIQUE,
     label: 'Musique',
     includedSubcategoryIds: [
@@ -117,21 +122,25 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersFilmsAffiche',
     searchGroupName: SearchGroupNameEnumv2.CINEMA,
     label: 'Films à l’affiche',
     includedSubcategoryIds: [SubcategoryIdEnumv2.SEANCE_CINE, SubcategoryIdEnumv2.CINE_PLEIN_AIR],
   },
   {
+    playlistId: 'artistOffersEvenementsCinema',
     searchGroupName: SearchGroupNameEnumv2.CINEMA,
     label: 'Prochains évènements de cinéma',
     includedSubcategoryIds: [SubcategoryIdEnumv2.EVENEMENT_CINE, SubcategoryIdEnumv2.FESTIVAL_CINE],
   },
   {
+    playlistId: 'artistOffersFilmsSeriesDocumentaires',
     searchGroupName: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
     label: 'Films, séries et documentaires',
     includedSubcategoryIds: [SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_FILM, SubcategoryIdEnumv2.VOD],
   },
   {
+    playlistId: 'artistOffersArtsLoisirsCreatifs',
     searchGroupName: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     label: 'Arts et loisirs créatifs',
     includedSubcategoryIds: [
@@ -143,6 +152,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersMuseesVisites',
     searchGroupName: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     label: 'Musées et visites',
     includedSubcategoryIds: [
@@ -153,6 +163,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersEvenementsCulturels',
     searchGroupName: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     label: 'Prochains évènements culturels',
     includedSubcategoryIds: [
@@ -161,6 +172,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersConferencesRencontres',
     searchGroupName: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     label: 'Prochaines conférences et rencontres',
     includedSubcategoryIds: [
@@ -173,6 +185,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersEvenementsEnLigne',
     searchGroupName: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     label: 'Prochains évènements en ligne',
     includedSubcategoryIds: [
@@ -183,6 +196,7 @@ export const ARTIST_CATEGORY_PLAYLISTS = [
     ],
   },
   {
+    playlistId: 'artistOffersMediasPresse',
     searchGroupName: SearchGroupNameEnumv2.MEDIA_PRESSE,
     label: 'Médias et presse',
     includedSubcategoryIds: [

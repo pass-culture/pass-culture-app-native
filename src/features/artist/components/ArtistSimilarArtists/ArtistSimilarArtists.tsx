@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -5,9 +6,11 @@ import styled from 'styled-components/native'
 import { ArtistSimilarArtistsSkeleton } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtistsSkeleton'
 import { useSimilarArtistsQuery } from 'features/artist/queries/useSimilarArtistsQuery'
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
+import { asArtistId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -17,11 +20,13 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   artistId: string
+  index: number
 }
 
 const TITLE = 'Tu peux aussi aimer'
 
-export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => {
+export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId, index }) => {
+  const isFocused = useIsFocused()
   const isSimilarArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_SIMILAR_ARTISTS)
   const { data: artists = [], isLoading } = useSimilarArtistsQuery(artistId, {
     enabled: isSimilarArtistsEnabled,
@@ -72,13 +77,31 @@ export const ArtistSimilarArtists: FunctionComponent<Props> = ({ artistId }) => 
           ) : null}
         </TitleRow>
       </HeaderContainer>
-      <AvatarList
-        data={artists}
-        avatarConfig={{ size: AVATAR_MEDIUM, rounded: true }}
-        onItemPress={handleItemPress}
-        withMargins
-        withPush
-      />
+      <ObservedPlaylist
+        onItemViewed={({ index: itemIndex, item }) => {
+          if (!isFocused) return
+          void analytics.logViewItem({
+            origin: 'artist',
+            playlistIndex: index,
+            index: itemIndex,
+            type: 'artist',
+            id: asArtistId(item.id),
+            playlistId: 'artistSimilarArtists',
+            originId: asArtistId(artistId),
+          })
+        }}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <AvatarList
+            data={artists}
+            avatarConfig={{ size: AVATAR_MEDIUM, rounded: true }}
+            onItemPress={handleItemPress}
+            withMargins
+            withPush
+            listRef={listRef}
+            onViewableItemsChanged={handleViewableItemsChanged}
+          />
+        )}
+      </ObservedPlaylist>
     </View>
   )
 }

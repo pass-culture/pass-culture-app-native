@@ -1,6 +1,5 @@
 import { useIsFocused } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -12,6 +11,8 @@ import {
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { asOfferId, asVenueId } from 'libs/analytics/helpers/logViewItem'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
@@ -28,15 +29,9 @@ import { LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
   playlistType: PlaylistType | string
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
+  venueId: number
   onPressMore?: () => void
   analyticsFrom?: Referrals
-  moduleId?: string
 }
 
 const PLAYLIST_ITEM_HEIGHT = LENGTH_S
@@ -48,9 +43,8 @@ export const VenueMapOfferPlaylist = ({
   offers,
   onPressMore,
   playlistType,
-  onViewableItemsChanged,
+  venueId,
   analyticsFrom = 'venueMap',
-  moduleId = 'venue_map',
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
@@ -104,17 +98,21 @@ export const VenueMapOfferPlaylist = ({
     ]
   )
 
-  const handleOfferPlaylistViewableItemsChanged = useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      onViewableItemsChanged(items, moduleId, 'offer', 0)
-    },
-    [isFocused, moduleId, onViewableItemsChanged]
-  )
-
   return (
     <React.Fragment>
-      <ObservedPlaylist onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}>
+      <ObservedPlaylist
+        onItemViewed={({ index, item }) => {
+          if (!isFocused) return
+          void analytics.logViewItem({
+            origin: 'venueMap',
+            playlistIndex: 0,
+            index,
+            type: 'offer',
+            id: asOfferId(item.objectID),
+            playlistId: 'venueMap',
+            originId: asVenueId(venueId.toString()),
+          })
+        }}>
         {({ listRef, handleViewableItemsChanged }) => (
           <Playlist
             data={offers}
