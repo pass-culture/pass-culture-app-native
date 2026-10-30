@@ -8,9 +8,7 @@ export const getStocksByOfferIds = async (offerIds: number[], logType: LogTypeEn
     return { offers: [] }
   }
   try {
-    return await api.postNativeV2OffersStocks({
-      offer_ids: offerIds,
-    })
+    return await api.postNativeV2OffersStocks({ offerIds })
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
       // This happens when the offer has been rejected but it is still indexed on Algolia

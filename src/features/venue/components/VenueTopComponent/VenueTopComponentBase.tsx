@@ -92,7 +92,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
               {isDynamicOpeningHoursDisplayed ? (
                 <OpeningHoursStatus
                   currentDate={currentDate}
-                  openingHours={venue.openingHours}
+                  openingHours={venue.openingHours ?? {}}
                   timezone={venue.timezone}
                 />
               ) : null}
