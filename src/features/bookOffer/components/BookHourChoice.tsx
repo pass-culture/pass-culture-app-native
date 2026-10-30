@@ -5,14 +5,11 @@ import { OfferStockResponse } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
-  getSortedHoursFromDate,
   getStockSortedByPriceFromHour,
   getStockWithCategoryFromDate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { getFormattedHour } from 'features/bookOffer/helpers/getFormattedHour'
 import { getHourChoiceForMultiplePrices } from 'features/bookOffer/helpers/getHourChoiceForMultiplePrices'
 import { getHourChoiceForSingleStock } from 'features/bookOffer/helpers/getHourChoiceForSingleStock'
-import { getSelectedValue } from 'features/bookOffer/helpers/getSelectedValue'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
@@ -22,7 +19,6 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
-import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
@@ -60,58 +56,43 @@ export const BookHourChoice = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
-  const options: Array<RadioButtonGroupOption> = useMemo(() => {
-    if (hasPotentialPricesStep) {
-      return getHourChoiceForMultiplePrices(
-        stocks,
-        selectedDate,
-        offerCredit,
-        currency,
-        euroToPacificFrancRate
-      )
-    } else {
-      return getHourChoiceForSingleStock(
-        stocks,
-        selectedDate,
-        offerCredit,
-        currency,
-        euroToPacificFrancRate
-      )
-    }
-  }, [stocks, selectedDate, offerCredit, hasPotentialPricesStep, currency, euroToPacificFrancRate])
+  const options = useMemo(
+    () =>
+      hasPotentialPricesStep
+        ? getHourChoiceForMultiplePrices(
+            stocks,
+            selectedDate,
+            offerCredit,
+            currency,
+            euroToPacificFrancRate
+          )
+        : getHourChoiceForSingleStock(
+            stocks,
+            selectedDate,
+            offerCredit,
+            currency,
+            euroToPacificFrancRate
+          ),
+    [stocks, selectedDate, offerCredit, hasPotentialPricesStep, currency, euroToPacificFrancRate]
+  )
 
   const buttonTitle = bookingStock?.beginningDatetime
     ? formatHour(bookingStock.beginningDatetime)
     : ''
-  const selectedStock = stocks.find((stock) => stock.id === bookingState.stockId)
-  const selectedValue = getSelectedValue({
-    hasPotentialPricesStep,
-    selectedHour: bookingState.hour,
-    selectedStockBeginningDatetime: selectedStock?.beginningDatetime,
-  })
+  const selectedOptionKey = hasPotentialPricesStep
+    ? (bookingState.hour ?? '')
+    : (bookingState.stockId?.toString() ?? '')
 
-  const handleChange = (selectedLabel: string) => {
+  const handleChange = (selectedKey: string) => {
     if (hasPotentialPricesStep) {
-      const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
-      const hour = [...new Set(sortedHoursFromDate)].find(
-        (hour) => getFormattedHour(hour) === selectedLabel
-      )
-      if (!hour) return
-      selectHour(hour, getStockSortedByPriceFromHour(stocks, hour))
+      selectHour(selectedKey, getStockSortedByPriceFromHour(stocks, selectedKey))
       return
     }
 
-    const stock = stocks
-      .filter(({ beginningDatetime }) => {
-        if (!beginningDatetime) return false
-        return selectedDate ? formatToKeyDate(beginningDatetime) === selectedDate : false
-      })
-      .find(
-        (stock) =>
-          stock.beginningDatetime && getFormattedHour(stock.beginningDatetime) === selectedLabel
-      )
-    if (!stock) return
-    dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime ?? '' })
+    const stock = stocks.find(({ id }) => id.toString() === selectedKey)
+    if (!stock?.beginningDatetime) return
+
+    dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime })
     selectStock(stock.id)
   }
 
@@ -121,7 +102,7 @@ export const BookHourChoice = () => {
         label={radioGroupLabel}
         labelVariant="title3"
         options={options}
-        value={selectedValue}
+        value={selectedOptionKey}
         onChange={handleChange}
         variant="detailed"
         display="vertical"

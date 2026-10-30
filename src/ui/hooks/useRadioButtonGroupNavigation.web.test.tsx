@@ -21,7 +21,7 @@ const onChange = jest.fn()
 // asynchronous rendering of a virtualized window without JSDOM layout metrics.
 const VirtualizedGroup = ({
   visibleKeys = [],
-  value = 'First',
+  value = 'first',
   failScroll = false,
   advanceOnScroll = false,
   options: groupOptions = options,
@@ -68,7 +68,7 @@ const VirtualizedGroup = ({
               key={option.key}
               {...getRadioProps(option.key)}
               role="radio"
-              aria-checked={option.label === value}
+              aria-checked={option.key === value}
               accessibilityLabel={option.label}
             />
           ))}
@@ -89,8 +89,8 @@ describe('virtualized radio navigation', () => {
   })
 
   it.each([
-    { value: 'Option 0', action: 'arrow navigation', changes: 1 },
-    { value: 'Option 7', action: 'entry on an offscreen selection', changes: 0 },
+    { value: '0', action: 'arrow navigation', changes: 1 },
+    { value: '7', action: 'entry on an offscreen selection', changes: 0 },
   ])('continues across advancing windows for $action', async ({ value, changes }) => {
     jest.useFakeTimers()
     const user = await userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
@@ -104,7 +104,7 @@ describe('virtualized radio navigation', () => {
 
     expect(screen.getByRole('radio', { name: 'Option 7' })).toHaveFocus()
     expect(scrollToOffset.mock.calls.length).toBeGreaterThan(3)
-    expect(onChange.mock.calls).toEqual(changes ? [['Option 7']] : [])
+    expect(onChange.mock.calls).toEqual(changes ? [['7']] : [])
 
     await user.tab()
 
@@ -114,9 +114,7 @@ describe('virtualized radio navigation', () => {
   it.each(['blur', 'unmount'])('cancels advancing retries on %s', async (action) => {
     jest.useFakeTimers()
     const user = await userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
-    const { unmount } = render(
-      <VirtualizedGroup options={longOptions} value="Option 0" advanceOnScroll />
-    )
+    const { unmount } = render(<VirtualizedGroup options={longOptions} value="0" advanceOnScroll />)
     await user.tab()
     await user.keyboard('[ArrowUp]')
     await act(async () => jest.advanceTimersByTime(100))
@@ -142,17 +140,17 @@ describe('virtualized radio navigation', () => {
     rerender(<VirtualizedGroup visibleKeys={['third']} />)
     await waitFor(() => expect(screen.getByRole('radio', { name: 'Third' })).toHaveFocus())
 
-    expect(onChange).toHaveBeenCalledWith('Third')
+    expect(onChange).toHaveBeenCalledWith('third')
   })
 
   it('forwards group entry to a selected option outside the rendered window', async () => {
     const user = await userEvent.setup()
-    const { rerender } = render(<VirtualizedGroup visibleKeys={['first']} value="Third" />)
+    const { rerender } = render(<VirtualizedGroup visibleKeys={['first']} value="third" />)
     await user.tab()
 
     expect(scrollToIndex).toHaveBeenCalledWith({ index: 2, animated: false })
 
-    rerender(<VirtualizedGroup visibleKeys={['third']} value="Third" />)
+    rerender(<VirtualizedGroup visibleKeys={['third']} value="third" />)
     await waitFor(() => expect(screen.getByRole('radio', { name: 'Third' })).toHaveFocus())
 
     expect(onChange).not.toHaveBeenCalled()

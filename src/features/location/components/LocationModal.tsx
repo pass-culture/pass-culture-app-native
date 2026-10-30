@@ -34,18 +34,6 @@ const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
 const AROUND_PLACE_TITLE = 'Choisir une zone géographique'
 const AROUND_PLACE_SUBTITLE = 'Ville, code postal, adresse'
 
-const LABEL_TO_MODE_MAP: Record<string, LocationMode> = {
-  [AROUND_ME_TITLE]: LocationMode.AROUND_ME,
-  [AROUND_PLACE_TITLE]: LocationMode.AROUND_PLACE,
-  [LocationLabel.everywhereLabel]: LocationMode.EVERYWHERE,
-}
-
-const MODE_TO_LABEL_MAP: Record<LocationMode, string> = {
-  [LocationMode.AROUND_ME]: AROUND_ME_TITLE,
-  [LocationMode.AROUND_PLACE]: AROUND_PLACE_TITLE,
-  [LocationMode.EVERYWHERE]: LocationLabel.everywhereLabel,
-}
-
 export const LocationModal = ({
   onSubmit,
   onClose,
@@ -160,7 +148,7 @@ export const LocationModal = ({
         ]),
   ]
 
-  const currentValue = locationMode ? MODE_TO_LABEL_MAP[locationMode] : ''
+  const currentValue = locationMode ?? ''
 
   return (
     <ModalScreenWrapper onClose={handleClose} fullScreen title="Localisation">
@@ -200,16 +188,15 @@ export const LocationModal = ({
   )
 }
 
-const handleChange = async (label: string) => {
-  const mode = LABEL_TO_MODE_MAP[label]
-  if (mode) {
-    if (mode === LocationMode.AROUND_ME) {
-      await requestGeolocPermission({
-        onSuccess: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
-      })
-    } else {
-      locationModalActions.setLocationMode(mode)
-    }
+const handleChange = async (mode: string) => {
+  if (mode === LocationMode.AROUND_ME) {
+    await requestGeolocPermission({
+      onSuccess: () => locationModalActions.setLocationMode(LocationMode.AROUND_ME),
+    })
+    return
+  }
+  if (mode === LocationMode.AROUND_PLACE || mode === LocationMode.EVERYWHERE) {
+    locationModalActions.setLocationMode(mode)
   }
 }
 

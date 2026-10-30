@@ -11,15 +11,11 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { LabelVariant, RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
-const LABEL_TO_QUANTITY = { Solo: 1, Duo: 2 } as const
+const QUANTITY_BY_KEY = { solo: 1, duo: 2 } as const
 
-type Quantity = (typeof LABEL_TO_QUANTITY)[keyof typeof LABEL_TO_QUANTITY]
+type Quantity = (typeof QUANTITY_BY_KEY)[keyof typeof QUANTITY_BY_KEY]
 
-const QUANTITY_BY_LABEL: Readonly<Record<string, Quantity>> = LABEL_TO_QUANTITY
-
-const LABEL_BY_QUANTITY: Readonly<Record<number, string>> = Object.fromEntries(
-  Object.entries(LABEL_TO_QUANTITY).map(([label, qty]) => [qty, label])
-)
+const KEY_BY_QUANTITY: Readonly<Record<number, string>> = { 1: 'solo', 2: 'duo' }
 
 type DuoChoiceSelectorProps = {
   label?: string
@@ -45,23 +41,22 @@ export const DuoChoiceSelector: React.FC<DuoChoiceSelectorProps> = ({
     return formatCurrencyFromCents(quantity * stock.price, currency, euroToPacificFrancRate)
   }
 
-  const allEntries = Object.entries(LABEL_TO_QUANTITY)
-  const visibleEntries = isDuo ? allEntries : allEntries.slice(0, 1)
-
-  const options: ReadonlyArray<RadioButtonGroupOption> = visibleEntries.map(
-    ([optionLabel, quantity]) => ({
-      key: optionLabel.toLowerCase(),
-      label: optionLabel,
+  const optionKeys: ReadonlyArray<keyof typeof QUANTITY_BY_KEY> = isDuo ? ['solo', 'duo'] : ['solo']
+  const options: ReadonlyArray<RadioButtonGroupOption> = optionKeys.map((key) => {
+    const quantity = QUANTITY_BY_KEY[key]
+    return {
+      key,
+      label: key === 'solo' ? 'Solo' : 'Duo',
       description: getDescriptionForQuantity(quantity),
       disabled: !hasEnoughCreditForQuantity(quantity),
-    })
-  )
+    }
+  })
 
-  const currentValue = (bookingState.quantity && LABEL_BY_QUANTITY[bookingState.quantity]) ?? ''
+  const currentValue = (bookingState.quantity && KEY_BY_QUANTITY[bookingState.quantity]) ?? ''
 
   const handleChange = useCallback(
-    (selectedLabel: string) => {
-      const quantity = QUANTITY_BY_LABEL[selectedLabel]
+    (selectedKey: string) => {
+      const quantity = QUANTITY_BY_KEY[selectedKey as keyof typeof QUANTITY_BY_KEY]
       if (!quantity) return
       dispatch({ type: 'SELECT_QUANTITY', payload: quantity })
     },

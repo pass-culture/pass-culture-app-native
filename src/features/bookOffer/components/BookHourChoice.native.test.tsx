@@ -299,4 +299,22 @@ describe('BookHourChoice when there is only one stock', () => {
 
     expect(screen.getByText('épuisé')).toBeOnTheScreen()
   })
+
+  it('should select the screening matching the chosen features when hours are identical', async () => {
+    mockOffer = {
+      ...mockOffer,
+      stocks: [
+        { ...stock1, id: 2, priceCategoryLabel: null, features: ['VO'] },
+        { ...stock1, id: 3, priceCategoryLabel: null, features: ['VF'] },
+      ],
+    }
+    render(<BookHourChoice />)
+
+    const secondHour = screen.getAllByText('20h00').at(1)
+    if (secondHour) {
+      await user.press(secondHour)
+    }
+
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 3 })
+  })
 })
