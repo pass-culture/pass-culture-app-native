@@ -848,6 +848,17 @@ export interface BookingOfferExtraDataV3 {
 }
 /**
  * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+/**
+ * @export
  * @interface BookingOfferResponse
  */
 export interface BookingOfferResponse {
@@ -1001,6 +1012,47 @@ export interface BookingOfferResponseAddressV2 {
 }
 /**
  * @export
+ * @interface BookingOfferResponseAddressV3
+ */
+export interface BookingOfferResponseAddressV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  city: string
+  /**
+   * @type {CoordinatesV3}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  coordinates: CoordinatesV3
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  timezone: string
+}
+/**
+ * @export
  * @interface BookingOfferResponseV2
  */
 export interface BookingOfferResponseV2 {
@@ -1059,6 +1111,67 @@ export interface BookingOfferResponseV2 {
    * @memberof BookingOfferResponseV2
    */
   venue: BookingVenueResponseV2
+}
+/**
+ * @export
+ * @interface BookingOfferResponseV3
+ */
+export interface BookingOfferResponseV3 {
+  /**
+   * @type {BookingOfferResponseAddressV3}
+   * @memberof BookingOfferResponseV3
+   */
+  address?: BookingOfferResponseAddressV3 | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  bookingContact?: string | null
+  /**
+   * @type {BookingOfferExtraDataV3}
+   * @memberof BookingOfferResponseV3
+   */
+  extraData?: BookingOfferExtraDataV3 | null
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseV3
+   */
+  id: number
+  /**
+   * @type {OfferImageV3}
+   * @memberof BookingOfferResponseV3
+   */
+  image?: OfferImageV3 | null
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV3
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV3
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponseV3
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  url?: string | null
+  /**
+   * @type {BookingVenueResponseV3}
+   * @memberof BookingOfferResponseV3
+   */
+  venue: BookingVenueResponseV3
 }
 /**
  * @export
@@ -1148,6 +1261,92 @@ export interface BookingResponse {
 }
 /**
  * @export
+ * @interface BookingResponseV3
+ */
+export interface BookingResponseV3 {
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingResponseV3
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  completedUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  confirmationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  dateUsed?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  displayAsEnded?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  enablePopUpReaction: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  id: number
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  quantity: number
+  /**
+   * @type {BookingStockResponseV3}
+   * @memberof BookingResponseV3
+   */
+  stock: BookingStockResponseV3
+  /**
+   * @type {TicketResponse}
+   * @memberof BookingResponseV3
+   */
+  ticket: TicketResponse
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingResponseV3
+   */
+  userReaction?: ReactionTypeEnum | null
+}
+/**
+ * @export
  * @interface BookingStockResponseV2
  */
 export interface BookingStockResponseV2 {
@@ -1189,12 +1388,64 @@ export interface BookingStockResponseV2 {
 }
 /**
  * @export
+ * @interface BookingStockResponseV3
+ */
+export interface BookingStockResponseV3 {
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV3
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV3
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingStockResponseV3
+   */
+  isAutomaticallyUsed: boolean
+  /**
+   * @type {BookingOfferResponseV3}
+   * @memberof BookingStockResponseV3
+   */
+  offer: BookingOfferResponseV3
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV3
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV3
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {ScreeningFeatures}
+   * @memberof BookingStockResponseV3
+   */
+  screeningFeatures: ScreeningFeatures
+}
+/**
+ * @export
  * @interface BookingVenueAddressResponseV2
  */
 export interface BookingVenueAddressResponseV2 {
   /**
    * @type {number}
    * @memberof BookingVenueAddressResponseV2
+   */
+  id?: number | null
+}
+/**
+ * @export
+ * @interface BookingVenueAddressResponseV3
+ */
+export interface BookingVenueAddressResponseV3 {
+  /**
+   * @type {number}
+   * @memberof BookingVenueAddressResponseV3
    */
   id?: number | null
 }
@@ -1292,6 +1543,47 @@ export interface BookingVenueResponseV2 {
   /**
    * @type {string}
    * @memberof BookingVenueResponseV2
+   */
+  timezone: string
+}
+/**
+ * @export
+ * @interface BookingVenueResponseV3
+ */
+export interface BookingVenueResponseV3 {
+  /**
+   * @type {BookingVenueAddressResponseV3}
+   * @memberof BookingVenueResponseV3
+   */
+  address: BookingVenueAddressResponseV3
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingVenueResponseV3
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponseV3
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  publicName: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
    */
   timezone: string
 }
@@ -1572,6 +1864,22 @@ export interface Coordinates {
   /**
    * @type {number}
    * @memberof Coordinates
+   */
+  longitude?: number | null
+}
+/**
+ * @export
+ * @interface CoordinatesV3
+ */
+export interface CoordinatesV3 {
+  /**
+   * @type {number}
+   * @memberof CoordinatesV3
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof CoordinatesV3
    */
   longitude?: number | null
 }
@@ -3102,6 +3410,22 @@ export interface OfferImageResponse {
   /**
    * @type {string}
    * @memberof OfferImageResponse
+   */
+  url: string
+}
+/**
+ * @export
+ * @interface OfferImageV3
+ */
+export interface OfferImageV3 {
+  /**
+   * @type {string}
+   * @memberof OfferImageV3
+   */
+  credit?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferImageV3
    */
   url: string
 }
@@ -6834,6 +7158,36 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_booking <GET>
+     * @deprecated
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3BookingsbookingId(booking_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'booking_id' is not null or undefined
+      if (booking_id === null || booking_id === undefined) {
+        throw new RequiredError(
+          'booking_id',
+          'Required parameter booking_id was null or undefined when calling getNativeV3BookingsbookingId.'
+        )
+      }
+      let pathname = `/native/v3/bookings/{booking_id}`.replace(
+        `{${'booking_id'}}`,
+        encodeURIComponent(String(booking_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_offer_v3 <GET>
      * @param {number} offer_id
      * @param {*} [options] Override http request option.
@@ -8465,6 +8819,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary get_booking <GET>
+     * @deprecated
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3BookingsbookingId(booking_id: number, options?: any): Promise<BookingResponseV3> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3BookingsbookingId(booking_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary get_offer_v3 <GET>
      * @param {number} offer_id
@@ -9401,6 +9768,19 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_booking <GET>
+    * @deprecated
+    * @param {number} booking_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV3BookingsbookingId(booking_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV3BookingsbookingId(booking_id, options)
   }
   /**
     *
