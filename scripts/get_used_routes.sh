@@ -12,6 +12,7 @@ START_FLAG="const DefaultApiFetchParamCreator"
 END_FLAG="^}$"
 
 REGEX_FUNC_PREFIX='async ([^ ]*)\(.*'
+REGEX_HTTP_VERB='(delete|get|patch|post|put)'
 REGEX_PATHNAME='let pathname = `([^`]*)`'
 
 
@@ -24,19 +25,20 @@ function_names=$(awk "/${START_FLAG}/,/${END_FLAG}/{print}" $FILE_PATH |
     sed -E "s/${REGEX_FUNC_PREFIX}/\1/")
 
 write_path_to_file () {
-    function_body=$(awk "/async ${function_name}\(/,/^    },$/" $FILE_PATH)
-    pathname=$(echo "$function_body" | grep -o -E "$REGEX_PATHNAME" | sed -E "s/$REGEX_PATHNAME/\1/")
     filename=$1
-    echo "$pathname"
+    function_body=$(awk "/async ${function_name}\(/,/^    },$/" $FILE_PATH)
+    http_verb=$(echo "$function_name" | grep -o -E "$REGEX_HTTP_VERB" | tr '[:lower:]' '[:upper:]')
+    pathname=$(echo "$function_body" | grep -o -E "$REGEX_PATHNAME" | sed -E "s/$REGEX_PATHNAME/\1/")
+    echo "$http_verb $pathname"
     if echo "$function_body" | grep -q -E "$REGEX_PATHNAME"; then
-        echo "- $pathname" >> $filename
+        echo "- $http_verb $pathname" >> $filename
     else
-        echo "Pathname not found for $function_name">> $filename
+        echo "Pathname not found for $function_name" >> $filename
     fi
 }
 
 # Loop through each function name
-echo "$function_names" | while read -r function_name; do
+echo "$function_names" | sort | while read -r function_name; do
     # Search for the function name within the project directory, excluding the api.ts file, test files, and story files
     if grep --quiet --word-regexp --recursive --exclude="api.ts" --exclude="*.test.*" --exclude="*.stories.*" "$function_name" "$PROJECT_DIR"; then
         write_path_to_file "used_routes.txt"
@@ -49,9 +51,9 @@ done
     echo "# $1" 
     echo "To find the diff, use \`git diff tag_min_required_version tag_current_version -- route_usage_changelog.md\`"
     echo "## Used routes:" 
-    cat used_routes.txt  
+    cat used_routes.txt
     echo "## Unused routes:" 
-    cat unused_routes.txt 
+    cat unused_routes.txt 2>/dev/null || echo "No unused routes" 1>&2
     echo "" 
 } > route_usage_changelog.md
 
