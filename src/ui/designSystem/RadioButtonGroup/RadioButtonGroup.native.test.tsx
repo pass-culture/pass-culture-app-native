@@ -210,6 +210,28 @@ describe('<RadioButtonGroup />', () => {
     ).toBeChecked()
   })
 
+  it('should select the pressed option by its key when labels are identical', async () => {
+    const onChange = jest.fn()
+
+    render(
+      <RadioButtonGroup
+        {...baseProps}
+        onChange={onChange}
+        options={[
+          { label: 'Même libellé', key: 'a' },
+          { label: 'Même libellé', key: 'b' },
+        ]}
+      />
+    )
+
+    const secondOption = screen.getAllByText('Même libellé').at(1)
+    if (secondOption) {
+      await user.press(secondOption)
+    }
+
+    expect(onChange).toHaveBeenCalledWith('b')
+  })
+
   it('should render Error text when RadioButtonGroup is in error', () => {
     render(<ControlledRadioGroup error />)
 

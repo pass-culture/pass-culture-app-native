@@ -2,11 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
-import {
-  buildSortRadioOptions,
-  getLabelFromSortBy,
-  getSortByFromLabel,
-} from 'features/favorites/helpers/sortOptions'
+import { buildSortRadioOptions } from 'features/favorites/helpers/sortOptions'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -25,7 +21,6 @@ export const FavoritesSorts: React.FC = () => {
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
 
-  const currentLabel = getLabelFromSortBy(stagedSelectedSortBy)
   const hasGeolocError = !!geolocPositionError
 
   const onSortBySelection = async (sortBy: FavoriteSortBy) => {
@@ -35,11 +30,8 @@ export const FavoritesSorts: React.FC = () => {
     return setStagedSelectedSortBy(sortBy)
   }
 
-  const handleSortChange = (label: string) => {
-    const sortBy = getSortByFromLabel(label)
-    if (sortBy) {
-      void onSortBySelection(sortBy)
-    }
+  const handleSortChange = (sortBy: string) => {
+    void onSortBySelection(sortBy as FavoriteSortBy)
   }
 
   const onValidation = () => {
@@ -58,7 +50,7 @@ export const FavoritesSorts: React.FC = () => {
             label="Trier par"
             labelVariant="title2"
             options={sortOptions}
-            value={currentLabel}
+            value={stagedSelectedSortBy}
             onChange={handleSortChange}
             error={hasGeolocError}
             errorText={geolocPositionError?.message ?? ''}
