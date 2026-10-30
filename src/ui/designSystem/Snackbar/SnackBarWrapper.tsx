@@ -4,14 +4,18 @@
  */
 
 import React, { FC, PropsWithChildren } from 'react'
+import { Platform } from 'react-native'
 import Animated, { LinearTransition } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styled, useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
 import { useSnackbarProps } from 'ui/designSystem/Snackbar/snackBar.store'
+import { SnackBarAnnouncement } from 'ui/designSystem/Snackbar/SnackBarAnnouncement'
 
 const DESKTOP_BOTTOM_OFFSET = 72
+const isWeb = Platform.OS === 'web'
 
 export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { isDesktopViewport } = useTheme()
@@ -21,8 +25,9 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <React.Fragment>
+      <SnackBarAnnouncement snackbars={snackbarsProps} />
       {hasSnackbar ? (
-        <Container top={top} pointerEvents="box-none" accessibilityViewIsModal>
+        <Container top={top} pointerEvents="box-none" accessibilityViewIsModal={!isWeb}>
           {snackbarsProps.map(
             (
               {
@@ -38,31 +43,38 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
                 onAccessibilityAction,
               },
               index
-            ) => (
-              <Animated.View
-                pointerEvents="box-none"
-                accessible
-                accessibilityRole="alert"
-                accessibilityLiveRegion="assertive"
-                accessibilityLabel={accessibilityLabel}
-                accessibilityHint={accessibilityHint}
-                accessibilityActions={accessibilityActions}
-                onAccessibilityTap={onAccessibilityTap}
-                onAccessibilityAction={onAccessibilityAction}
-                importantForAccessibility="yes"
-                style={{ zIndex: 1000 + index }}
-                key={id}
-                layout={LinearTransition.duration(500).springify()}>
-                <SnackBar
-                  variant={isDesktopViewport ? 'large' : 'default'}
-                  id={id}
-                  onClose={onClose}
-                  label={label}
-                  animationDuration={animationDuration}
-                  type={type}
-                />
-              </Animated.View>
-            )
+            ) => {
+              const isErrorSnackbar = type === 'error'
+              const accessibilityLiveRegion = isErrorSnackbar ? 'assertive' : 'polite'
+              const accessibilityRole = isErrorSnackbar
+                ? AccessibilityRole.ALERT
+                : AccessibilityRole.STATUS
+              return (
+                <Animated.View
+                  pointerEvents="box-none"
+                  accessible={!isWeb}
+                  accessibilityRole={accessibilityRole}
+                  accessibilityLiveRegion={accessibilityLiveRegion}
+                  accessibilityLabel={accessibilityLabel}
+                  accessibilityHint={accessibilityHint}
+                  accessibilityActions={accessibilityActions}
+                  onAccessibilityTap={onAccessibilityTap}
+                  onAccessibilityAction={onAccessibilityAction}
+                  importantForAccessibility="yes"
+                  style={{ zIndex: 1000 + index }}
+                  key={id}
+                  layout={LinearTransition.duration(500).springify()}>
+                  <SnackBar
+                    variant={isDesktopViewport ? 'large' : 'default'}
+                    id={id}
+                    onClose={onClose}
+                    label={label}
+                    animationDuration={animationDuration}
+                    type={type}
+                  />
+                </Animated.View>
+              )
+            }
           )}
         </Container>
       ) : null}
