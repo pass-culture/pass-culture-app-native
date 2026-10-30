@@ -12,6 +12,7 @@ export enum AdjustEvents {
   COMPLETE_BENEFICIARY_UNDERAGE = '2ddds5',
   COMPLETE_BENEFICIARY_18 = '4bn26d',
   BOOK_OFFER = 'h2vkqv',
+  SPECTACLE_VIVANT = 'dybo4s',
 }
 
 export interface AdjustEventsStorage {

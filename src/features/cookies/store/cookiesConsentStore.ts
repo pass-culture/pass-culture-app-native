@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { create } from 'zustand'
 
-import { ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { ConsentStatus } from 'features/cookies/types'
 
 type CookiesConsentStoreState = {
@@ -27,3 +27,9 @@ export const useCookiesConsentStore = create<CookiesConsentStore>()((set) => ({
     set({ cookiesConsent, isInitialized: true }),
   resetCookiesConsentState: () => set(DEFAULT_STATE),
 }))
+
+export const selectHasAcceptedCookie =
+  (cookie: CookieNameEnum) =>
+  ({ cookiesConsent }: CookiesConsentStoreState) =>
+    cookiesConsent.state === ConsentState.HAS_CONSENT &&
+    cookiesConsent.value.accepted.includes(cookie)
