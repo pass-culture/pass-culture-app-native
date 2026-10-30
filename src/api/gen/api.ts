@@ -2998,19 +2998,96 @@ export interface OfferExtraDataResponse {
 }
 /**
  * @export
- * @interface OfferImage
+/**
+ * @export
+ * @interface OfferForStocksResponse
  */
-export interface OfferImage {
+export interface OfferForStocksResponse {
+  /**
+   * @type {OfferAddressResponse}
+   * @memberof OfferForStocksResponse
+   */
+  address?: OfferAddressResponse | null
   /**
    * @type {string}
-   * @memberof OfferImage
+   * @memberof OfferForStocksResponse
    */
-  credit?: string
+  bookingAllowedDatetime: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferForStocksResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
   /**
    * @type {string}
-   * @memberof OfferImage
+   * @memberof OfferForStocksResponse
    */
-  url: string
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  id: number
+  /**
+   * @type {{ [key: string]: OfferImageResponse; }}
+   * @memberof OfferForStocksResponse
+   */
+  images?: { [key: string]: OfferImageResponse; } | null
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isDuo: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  last30DaysBookings?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  publicationDate: string | null
+  /**
+   * @type {Array<StockResponse>}
+   * @memberof OfferForStocksResponse
+   */
+  stocks: Array<StockResponse>
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  subcategoryId: string
+  /**
+   * @type {OfferVenueResponse}
+   * @memberof OfferForStocksResponse
+   */
+  venue: OfferVenueResponse
 }
 /**
  * @export
@@ -3616,7 +3693,18 @@ export interface OffersStocksRequest {
    * @type {Array<number>}
    * @memberof OffersStocksRequest
    */
-  offer_ids: Array<number>
+  offerIds: Array<number>
+}
+/**
+ * @export
+ * @interface OffersStocksResponse
+ */
+export interface OffersStocksResponse {
+  /**
+   * @type {Array<OfferForStocksResponse>}
+   * @memberof OffersStocksResponse
+   */
+  offers: Array<OfferForStocksResponse>
 }
 /**
  * @export
@@ -4572,6 +4660,77 @@ export interface SimilarOffersResponse {
    * @memberof SimilarOffersResponse
    */
   results?: Array<string>
+}
+/**
+ * @export
+ * @interface StockResponse
+ */
+export interface StockResponse {
+  /**
+   * @type {OfferStockActivationCodeResponse}
+   * @memberof StockResponse
+   */
+  activationCode?: OfferStockActivationCodeResponse | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  bookingLimitDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  cancellationLimitDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isBookable: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  price: number
+  /**
+   * @type {strins}
+   * @memberof StockResponse
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {numbes}
+   * @memberof StockResponse
+   */
+  remainingQuantity?: number | null
+  /**
+   * @type {ScreeningFeatures}
+   * @memberof StockResponse
+   */
+  screeningFeatures?: ScreeningFeatures | null
 }
 /**
  * @export
@@ -7853,6 +8012,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
+/**
+     * @summary get_offers_and_stocks <POST>
+     * @param {OffersStocksRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV3OffersStocks(body: OffersStocksRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV3OffersStocks.'
+        )
+      }
+      let pathname = `/native/v3/offers/stocks`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"OffersStocksRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
     /**
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} body
@@ -8793,6 +8979,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary get_offers_and_stocks <POST>
+     * @param {OffersStocksRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV3OffersStocks(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} body
@@ -9717,6 +9915,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2Signin(body: SigninRequestV2, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2Signin(body, options)
+  }
+/**
+    * 
+    * @summary get_offers_and_stocks <POST>
+    * @param {OffersStocksRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV3OffersStocks(body, options)
   }
   /**
     *
