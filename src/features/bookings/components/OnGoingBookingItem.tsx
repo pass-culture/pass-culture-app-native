@@ -54,7 +54,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
 
   const pressShareOffer = async () => {
     await analytics.logShare({ type: 'Offer', from: 'bookings', offerId: offer.id })
-    await shareOffer()
+    void shareOffer()
     showShareOfferModal()
   }
 

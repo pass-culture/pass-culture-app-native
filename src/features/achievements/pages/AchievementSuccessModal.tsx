@@ -32,14 +32,17 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
   )
   const achievementIds: number[] = achievementsToShow.map((achievement) => achievement.id)
 
-  useEffect(() => {
-    if (visible) {
-      analytics.logConsultAchievementsSuccessModal(achievementNames)
-      logoRef.current?.play(0, ANIMATION_END_FRAME)
-    }
+  useEffect(
+    function logAchievementSuccessModal() {
+      if (visible) {
+        void analytics.logConsultAchievementsSuccessModal(achievementNames)
+        logoRef.current?.play(0, ANIMATION_END_FRAME)
+      }
+    },
     // The effect should only run when `visible` changes because`names` is intentionally excluded from the dependencies to avoid unnecessary re-renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible])
+    [visible]
+  )
 
   if (!visible || achievementsToShow.length <= 0) return null
 

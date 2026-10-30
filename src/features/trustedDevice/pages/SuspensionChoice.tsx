@@ -63,7 +63,7 @@ export const SuspensionChoice = () => {
   }, [params.token, suspendAccountForSuspiciousLogin])
 
   const onPressContactFraudTeam = () => {
-    analytics.logContactFraudTeam({ from: 'suspensionchoice' })
+    void analytics.logContactFraudTeam({ from: 'suspensionchoice' })
   }
 
   const groupLabel = 'Les conséquences'

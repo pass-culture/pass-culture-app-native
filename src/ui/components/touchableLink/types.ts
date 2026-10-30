@@ -3,7 +3,6 @@ import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 
 import { UrlParamsProps } from 'features/navigation/helpers/openUrl'
 import { AllNavigateParams } from 'features/navigation/navigators/RootNavigator/types'
-// eslint-disable-next-line no-restricted-imports
 import { ColorsType } from 'theme/types'
 import type { LinkBaseProps } from 'ui/designSystem/Link/types'
 

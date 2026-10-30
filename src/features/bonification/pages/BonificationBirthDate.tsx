@@ -105,9 +105,11 @@ export const BonificationBirthDate = () => {
                 variant="tertiary"
                 icon={InfoPlain}
                 wording="Je ne connais pas sa date de naissance"
-                onPress={async () => {
-                  await openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS)
-                }}
+                onPress={() =>
+                  openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS).catch(() => {
+                    // openUrl already reports the error and displays an alert.
+                  })
+                }
               />
             </ButtonContainerFlexStart>
           </ViewGap>

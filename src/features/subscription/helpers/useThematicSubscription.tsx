@@ -53,18 +53,18 @@ export const useThematicSubscription = ({
 
   const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: async () => {
-      analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
+      void analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       const analyticsParams = homeId
         ? { from: 'thematicHome', entryId: homeId }
         : { from: 'venue', venueId }
       if (!isSubscribeButtonActive && thematic) {
-        analytics.logSubscriptionUpdate({
+        void analytics.logSubscriptionUpdate({
           ...analyticsParams,
           type: 'in',
         } as SubscriptionAnalyticsParams)
         await onUpdateSubscriptionSuccess?.(thematic)
       } else {
-        analytics.logSubscriptionUpdate({
+        void analytics.logSubscriptionUpdate({
           ...analyticsParams,
           type: 'out',
         } as SubscriptionAnalyticsParams)

@@ -7,7 +7,7 @@ import { Typo } from 'ui/theme'
 
 export const SuspiciousLoginSuspendedAccount = () => {
   const onBeforeNavigateContactFraudTeam = () => {
-    analytics.logContactFraudTeam({ from: 'suspiciousloginsuspendedaccount' })
+    void analytics.logContactFraudTeam({ from: 'suspiciousloginsuspendedaccount' })
   }
   const { designSystem } = useTheme()
   return (

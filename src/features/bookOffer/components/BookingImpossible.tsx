@@ -28,17 +28,23 @@ export const BookingImpossible: React.FC<Props> = ({ venueId }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSentMutation()
 
-  useEffect(() => {
-    if (offerId === undefined) return
-    analytics.logBookingImpossibleiOS(offerId)
-  }, [offerId])
+  useEffect(
+    function logBookingImpossible() {
+      if (offerId === undefined) return
+      void analytics.logBookingImpossibleiOS(offerId)
+    },
+    [offerId]
+  )
 
   // Change step to confirmation
-  useEffect(() => {
-    if (bookingState.step === Step.DATE) {
-      dispatch({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
-    }
-  }, [bookingState.step, dispatch])
+  useEffect(
+    function changeStepToConfirmation() {
+      if (bookingState.step === Step.DATE) {
+        dispatch({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
+      }
+    },
+    [bookingState.step, dispatch]
+  )
 
   const { mutate: addFavorite } = useAddFavoriteMutation({
     type: FavoriteType.OFFER,

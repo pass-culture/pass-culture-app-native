@@ -6,6 +6,12 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockOpenUrl = jest.mocked(openUrl)
 
 describe('openGoogleMapsItinerary()', () => {
+  it('should handle opening errors already reported by openUrl', async () => {
+    mockOpenUrl.mockRejectedValueOnce(new Error('Could not open URL'))
+
+    await expect(openGoogleMapsItinerary('Paris')).resolves.toBeUndefined()
+  })
+
   it('should open the correct encoded url with address', () => {
     const address = '12 rue duhesme 75018 Paris'
     openGoogleMapsItinerary(address)

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
+import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { ExternalLink } from './ExternalLink'
@@ -13,6 +14,17 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ExternalLink', () => {
+  it('should handle opening errors and report them only once through openUrl', async () => {
+    const error = new Error('Could not open URL')
+    openURLSpy.mockRejectedValueOnce(error)
+    render(<ExternalLink url={someUrl} />)
+
+    await user.press(screen.getByLabelText('Nouvelle fenêtre\u00a0: ' + someUrl))
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
+  })
+
   it('should open given url when text clicked', async () => {
     render(<ExternalLink url={someUrl} />)
 

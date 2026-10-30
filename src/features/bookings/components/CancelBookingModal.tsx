@@ -69,7 +69,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 
   const confirmCancelBooking = () => {
     if (netInfo.isConnected) {
-      analytics.logConfirmBookingCancellation(booking.stock.offer.id)
+      void analytics.logConfirmBookingCancellation(booking.stock.offer.id)
       cancelBooking(booking.id)
       dismissModal()
     } else {

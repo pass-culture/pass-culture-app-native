@@ -5,6 +5,8 @@ export function getGoogleMapsItineraryUrl(address: string) {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`
 }
 
-export async function openGoogleMapsItinerary(address: string) {
-  await openUrl(getGoogleMapsItineraryUrl(address))
+export function openGoogleMapsItinerary(address: string) {
+  return openUrl(getGoogleMapsItineraryUrl(address)).catch(() => {
+    // openUrl already reports the error and displays an alert.
+  })
 }

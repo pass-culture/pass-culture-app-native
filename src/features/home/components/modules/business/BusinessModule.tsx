@@ -44,8 +44,10 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
-    analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
-    openUrl(finalUrl)
+    void analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
+    void openUrl(finalUrl).catch(() => {
+      // openUrl already reports the error and displays an alert.
+    })
   }
 
   useEffect(() => {
@@ -61,17 +63,19 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     localizationArea
   )
 
-  useEffect(() => {
-    if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
-        moduleId,
-        moduleType: ContentTypes.BUSINESS,
-        index,
-        homeEntryId,
-      })
-    }
+  useEffect(
+    function logModuleDisplayed() {
+      if (shouldModuleBeDisplayed)
+        void analytics.logModuleDisplayedOnHomepage({
+          moduleId,
+          moduleType: ContentTypes.BUSINESS,
+          index,
+          homeEntryId,
+        })
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
+    [shouldModuleBeDisplayed]
+  )
 
   const editorialCardInfo = useMemo(
     () => ({

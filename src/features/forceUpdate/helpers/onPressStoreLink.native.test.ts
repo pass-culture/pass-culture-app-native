@@ -28,4 +28,10 @@ describe('onPressStoreLink', () => {
 
     expect(analytics.logClickForceUpdate).toHaveBeenCalledWith(buildVersion)
   })
+
+  it('should handle opening errors already reported by openUrl', async () => {
+    jest.mocked(openUrl).mockRejectedValueOnce(new Error('Could not open URL'))
+
+    await expect(onPressStoreLink()).resolves.toBeUndefined()
+  })
 })

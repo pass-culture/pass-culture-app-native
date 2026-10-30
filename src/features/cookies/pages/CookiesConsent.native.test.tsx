@@ -12,6 +12,7 @@ import { RootStackParamList } from 'features/navigation/navigators/RootNavigator
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -95,6 +96,29 @@ describe('<CookiesConsent/>', () => {
 
     expect(screen).toMatchSnapshot()
   })
+
+  it.each(['Tout accepter', 'Tout refuser', 'Enregistrer mes choix'])(
+    'should report consent persistence errors when pressing %s',
+    async (button) => {
+      const error = new Error('Could not persist consent')
+      setCookiesConsentMock.mockRejectedValueOnce(error)
+      renderCookiesConsent()
+
+      if (button === 'Enregistrer mes choix') {
+        await user.press(screen.getByText('Choisir les cookies'))
+      }
+
+      await user.press(screen.getByText(button))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        `Failed to set cookies consent: ${String(error)}`
+      )
+      expect(analytics.logHasAcceptedAllCookies).not.toHaveBeenCalled()
+      expect(analytics.logHasMadeAChoiceForCookies).not.toHaveBeenCalled()
+      expect(setMarketingParamsSpy).not.toHaveBeenCalled()
+    }
+  )
 
   describe('accept all cookies', () => {
     it('should persist cookies consent information', async () => {

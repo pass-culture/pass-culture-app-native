@@ -16,7 +16,7 @@ export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
   const { share, shareContent } = getShareVenue({ venue, utmMedium: 'social_media' })
   const messagingAppAnalytics = useCallback(
     (social: Social | 'Other') => {
-      analytics.logShare({ type: 'Venue', venueId: venue.id, from: 'venue', social })
+      void analytics.logShare({ type: 'Venue', venueId: venue.id, from: 'venue', social })
     },
     [venue.id]
   )
