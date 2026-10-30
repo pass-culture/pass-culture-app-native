@@ -3,6 +3,7 @@ import {
   AdjustConfig,
   AdjustThirdPartySharing,
   AdjustEvent,
+  AdjustDeeplink,
 } from 'react-native-adjust'
 
 import { Adjust as AdjustType } from 'libs/adjust/types'
@@ -107,10 +108,18 @@ const logEvent = (event: AdjustEvents) => {
   RNAdjust.trackEvent(adjustEvent)
 }
 
+// Before Adjust is initialized, the SDK keeps the link and sends it once initialized, i.e. when the user accepts the Adjust cookies
+const processDeeplink = (url: string) => {
+  if (!process.env.JEST && __DEV__) return
+
+  RNAdjust.processDeeplink(new AdjustDeeplink(url))
+}
+
 export const Adjust: AdjustType = {
   initOrEnable,
   isEnabled: RNAdjust.isEnabled,
   disable,
   gdprForgetMe: RNAdjust.gdprForgetMe,
   logEvent,
+  processDeeplink,
 }

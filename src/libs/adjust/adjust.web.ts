@@ -7,4 +7,5 @@ export const Adjust: AdjustType = {
   disable: () => undefined,
   gdprForgetMe: () => undefined,
   logEvent: (_event: AdjustEvents) => undefined,
+  processDeeplink: (_url: string) => undefined,
 }
