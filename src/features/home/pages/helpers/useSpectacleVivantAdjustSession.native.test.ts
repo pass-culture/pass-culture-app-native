@@ -100,4 +100,17 @@ describe('useSpectacleVivantAdjustSession', () => {
 
     expect(AdjustMock.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_SPECTACLE_VIVANT)
   })
+
+  it('should keep the first session when only other cookies than Adjust are accepted before going to background', () => {
+    spectacleVivantAdjustEventsStoreActions.resetForTests()
+    spectacleVivantAdjustEventsStoreActions.setIsFirstSessionAfterInstall(true)
+    setAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS])
+    renderHook(useSpectacleVivantAdjustSession)
+
+    spendTimeInBackground(31)
+    setAcceptedCookies([CookieNameEnum.GOOGLE_ANALYTICS, CookieNameEnum.ADJUST])
+    logSpectacleVivantAdjustEvents(TESTING_SPECTACLE_VIVANT_HOME_ID)
+
+    expect(AdjustMock.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_SPECTACLE_VIVANT)
+  })
 })

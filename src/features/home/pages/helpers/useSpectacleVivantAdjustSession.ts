@@ -1,8 +1,11 @@
 import { useRef } from 'react'
 
-import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
+import { CookieNameEnum } from 'features/cookies/enums'
+import {
+  selectHasAcceptedCookie,
+  useCookiesConsentStore,
+} from 'features/cookies/store/cookiesConsentStore'
 import { spectacleVivantAdjustEventsStoreActions } from 'features/home/pages/helpers/spectacleVivantAdjustEventsStore'
-import { selectHasAcceptedAdjustCookies } from 'features/home/pages/helpers/useSpectacleVivantAdjustEvents'
 import { useAppStateChange } from 'libs/appState'
 
 // Adjust starts a new session when the app comes back after more than 30 minutes in background
@@ -25,7 +28,7 @@ export const useSpectacleVivantAdjustSession = () => {
     () => {
       // Adjust sessions start with the SDK, once the Adjust cookies are accepted: before that, the first launch
       // through a campaign link must keep its first session whatever the time spent on the cookies consent modal
-      if (!selectHasAcceptedAdjustCookies(useCookiesConsentStore.getState())) return
+      if (!selectHasAcceptedCookie(CookieNameEnum.ADJUST)(useCookiesConsentStore.getState())) return
       inBackgroundSince.current = Date.now()
     }
   )
