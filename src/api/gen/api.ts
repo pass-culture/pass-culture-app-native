@@ -2953,19 +2953,96 @@ export interface OfferExtraDataResponse {
 }
 /**
  * @export
- * @interface OfferImage
+/**
+ * @export
+ * @interface OfferForStocksResponse
  */
-export interface OfferImage {
+export interface OfferForStocksResponse {
+  /**
+   * @type {OfferAddressResponse | ModelNull}
+   * @memberof OfferForStocksResponse
+   */
+  address?: OfferAddressResponse | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof OfferForStocksResponse
+   */
+  bookingAllowedDatetime: string | ModelNull
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferForStocksResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string | ModelNull}
+   * @memberof OfferForStocksResponse
+   */
+  externalTicketOfficeUrl?: string | ModelNull
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  id: number
+  /**
+   * @type {Map | ModelNull}
+   * @memberof OfferForStocksResponse
+   */
+  images?: Map | ModelNull
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isDuo: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number | ModelNull}
+   * @memberof OfferForStocksResponse
+   */
+  last30DaysBookings?: number | ModelNull
   /**
    * @type {string}
-   * @memberof OfferImage
+   * @memberof OfferForStocksResponse
    */
-  credit?: string
+  name: string
+  /**
+   * @type {string | ModelNull}
+   * @memberof OfferForStocksResponse
+   */
+  publicationDate: string | ModelNull
+  /**
+   * @type {Array<StockResponse>}
+   * @memberof OfferForStocksResponse
+   */
+  stocks: Array<StockResponse>
   /**
    * @type {string}
-   * @memberof OfferImage
+   * @memberof OfferForStocksResponse
    */
-  url: string
+  subcategoryId: string
+  /**
+   * @type {OfferVenueResponse}
+   * @memberof OfferForStocksResponse
+   */
+  venue: OfferVenueResponse
 }
 /**
  * @export
@@ -3592,7 +3669,18 @@ export interface OffersStocksRequest {
    * @type {Array<number>}
    * @memberof OffersStocksRequest
    */
-  offer_ids: Array<number>
+  offerIds: Array<number>
+}
+/**
+ * @export
+ * @interface OffersStocksResponse
+ */
+export interface OffersStocksResponse {
+  /**
+   * @type {Array<OfferForStocksResponse>}
+   * @memberof OffersStocksResponse
+   */
+  offers: Array<OfferForStocksResponse>
 }
 /**
  * @export
@@ -4181,25 +4269,62 @@ export interface Screening {
   stockId: number
 }
 /**
- * An enumeration.
  * @export
- * @enum {string}
+ * @interface ScreeningAccessibilityFeatures
  */
-export enum SearchGroupNameEnumv2 {
-  'ARTS_LOISIRS_CREATIFS' = 'ARTS_LOISIRS_CREATIFS',
-  'CARTES_JEUNES' = 'CARTES_JEUNES',
-  'CONCERTS_FESTIVALS' = 'CONCERTS_FESTIVALS',
-  'EVENEMENTS_EN_LIGNE' = 'EVENEMENTS_EN_LIGNE',
-  'CINEMA' = 'CINEMA',
-  'FILMS_DOCUMENTAIRES_SERIES' = 'FILMS_DOCUMENTAIRES_SERIES',
-  'JEUX_JEUX_VIDEOS' = 'JEUX_JEUX_VIDEOS',
-  'LIVRES' = 'LIVRES',
-  'MEDIA_PRESSE' = 'MEDIA_PRESSE',
-  'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
-  'MUSIQUE' = 'MUSIQUE',
-  'NONE' = 'NONE',
-  'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
-  'SPECTACLES' = 'SPECTACLES',
+export interface ScreeningAccessibilityFeatures {
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  audio: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  mental: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  motor: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  visual: Array<string>
+}
+/**
+ * @export
+ * @interface ScreeningFeatures
+ */
+export interface ScreeningFeatures {
+  /**
+   * @type {ScreeningAccessibilityFeatures}
+   * @memberof ScreeningFeatures
+   */
+  accessibility: ScreeningAccessibilityFeatures
+  /**
+   * @type {string | ModelNull}
+   * @memberof ScreeningFeatures
+   */
+  audio: string | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof ScreeningFeatures
+   */
+  language: string | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof ScreeningFeatures
+   */
+  specialEventType: string | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof ScreeningFeatures
+   */
+  video: string | ModelNull
+}
 }
 /**
  * @export
@@ -4465,6 +4590,77 @@ export interface SimilarOffersResponse {
    * @memberof SimilarOffersResponse
    */
   results?: Array<string>
+}
+/**
+ * @export
+ * @interface StockResponse
+ */
+export interface StockResponse {
+  /**
+   * @type {OfferStockActivationCodeResponse | ModelNull}
+   * @memberof StockResponse
+   */
+  activationCode?: OfferStockActivationCodeResponse | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof StockResponse
+   */
+  beginningDatetime?: string | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof StockResponse
+   */
+  bookingLimitDatetime?: string | ModelNull
+  /**
+   * @type {string | ModelNull}
+   * @memberof StockResponse
+   */
+  cancellationLimitDatetime?: string | ModelNull
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isBookable: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  price: number
+  /**
+   * @type {string | ModelNull}
+   * @memberof StockResponse
+   */
+  priceCategoryLabel?: string | ModelNull
+  /**
+   * @type {number | ModelNull}
+   * @memberof StockResponse
+   */
+  remainingQuantity?: number | ModelNull
+  /**
+   * @type {ScreeningFeatures | ModelNull}
+   * @memberof StockResponse
+   */
+  screeningFeatures?: ScreeningFeatures | ModelNull
 }
 /**
  * @export
@@ -7565,6 +7761,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
+/**
+     * @summary get_offers_and_stocks <POST>
+     * @param {OffersStocksRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV3OffersStocks(body: OffersStocksRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV3OffersStocks.'
+        )
+      }
+      let pathname = `/native/v3/offers/stocks`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"OffersStocksRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
     /**
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} body
@@ -8505,7 +8728,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     async postNativeV2Signin(body: SigninRequestV2, options?: any): Promise<SigninResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2Signin(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_offers_and_stocks <POST>
+     * @param {OffersStocksRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV3OffersStocks(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
     },
     /**
      *
@@ -9443,6 +9678,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2Signin(body: SigninRequestV2, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2Signin(body, options)
+  }
+/**
+    * 
+    * @summary get_offers_and_stocks <POST>
+    * @param {OffersStocksRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV3OffersStocks(body, options)
   }
   /**
     *
