@@ -1,4 +1,14 @@
-import { CategoryIdEnum, VenueProAdvice } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
+
+export interface VenueProAdvice {
+  author?: string | null
+  content: string
+  offerCategoryLabel: string
+  offerId: number
+  offerName: string
+  offerThumbUrl?: string | null
+  publicationDatetime: string
+}
 
 export type HeadlineOfferData = {
   id: string
