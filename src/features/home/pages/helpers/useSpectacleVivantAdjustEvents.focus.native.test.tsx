@@ -4,7 +4,6 @@ import React from 'react'
 
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
-import { spectacleVivantAdjustEventsStoreActions } from 'features/home/pages/helpers/spectacleVivantAdjustEventsStore'
 import { useSpectacleVivantAdjustEvents } from 'features/home/pages/helpers/useSpectacleVivantAdjustEvents'
 import { Adjust } from 'libs/adjust/adjust'
 import { env } from 'libs/environment/env'
@@ -64,8 +63,6 @@ const acceptAdjustCookies = () =>
 describe('useSpectacleVivantAdjustEvents with the navigation', () => {
   beforeEach(() => {
     env.CONTENTFUL_ENVIRONMENT = 'testing'
-    spectacleVivantAdjustEventsStoreActions.resetForTests()
-    AdjustMock.isEnabled.mockImplementation((callback) => callback(true))
     useCookiesConsentStore.getState().setCookiesConsentState({ state: ConsentState.UNKNOWN })
   })
 
@@ -83,13 +80,13 @@ describe('useSpectacleVivantAdjustEvents with the navigation', () => {
     expect(AdjustMock.logEvent).toHaveBeenCalledWith(AdjustEvents.SPECTACLE_VIVANT)
   })
 
-  it('should not log spectacleVivant again when the home is focused again in the same session', () => {
+  it('should log spectacleVivant at each arrival on the home, Adjust counting the unique users', () => {
     acceptAdjustCookies()
     renderNavigation()
     act(() => navigationRef.navigate('OtherScreen'))
 
     act(() => navigationRef.goBack())
 
-    expect(AdjustMock.logEvent).toHaveBeenCalledTimes(1)
+    expect(AdjustMock.logEvent).toHaveBeenCalledTimes(2)
   })
 })

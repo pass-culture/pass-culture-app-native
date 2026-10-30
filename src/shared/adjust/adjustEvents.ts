@@ -13,7 +13,6 @@ export enum AdjustEvents {
   COMPLETE_BENEFICIARY_18 = '4bn26d',
   BOOK_OFFER = 'h2vkqv',
   SPECTACLE_VIVANT = 'dybo4s',
-  NEW_SPECTACLE_VIVANT = '3cbz11',
 }
 
 export interface AdjustEventsStorage {
