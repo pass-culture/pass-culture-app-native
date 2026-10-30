@@ -75,7 +75,10 @@ export const Stepper = () => {
         .then(({ data: userProfile }) => {
           const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
           if (hasUserOngoingCredit) {
-            navigate(...getSubscriptionHookConfig('BeneficiaryAccountCreated'))
+            navigate('SubscriptionStackNavigator', {
+              screen: 'BeneficiaryAccountCreated',
+              params: { from: 'Stepper' },
+            })
           }
         })
         .catch((error) => {

@@ -2,7 +2,8 @@ import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
@@ -17,13 +18,12 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-export function BeneficiaryAccountCreated() {
+export function BeneficiaryAccountCreated({ from }: { from: string }) {
   const { designSystem } = useTheme()
   const { user, refetchUser } = useAuthContext()
 
@@ -69,7 +69,7 @@ export function BeneficiaryAccountCreated() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEnterKeyAction(navigateToHome)
+  const [profileNavigator, profileScreenConfig] = getTabHookConfig('Profile')
 
   return (
     <GenericInfoPage
@@ -79,9 +79,17 @@ export function BeneficiaryAccountCreated() {
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{
-        wording: 'C’est parti\u00a0!',
+        wording: from === 'IdentityCheckHonor' ? 'C’est parti\u00a0!' : "J'en profite",
         onBeforeNavigate: onBeforeNavigate,
-        navigateTo: navigateToHomeConfig,
+        navigateTo:
+          from === 'IdentityCheckHonor'
+            ? navigateToHomeConfig
+            : {
+                screen: profileNavigator,
+                params: profileScreenConfig,
+                withReset: true,
+                fromRef: true,
+              },
       }}>
       <ProgressBarContainer>
         <AnimatedProgressBar

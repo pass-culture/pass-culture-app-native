@@ -29,7 +29,13 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'BeneficiaryAccountCreated',
-      navigationTarget: getSubscriptionPropConfig('BeneficiaryAccountCreated'),
+      navigationTarget: {
+        screen: 'SubscriptionStackNavigator',
+        params: {
+          screen: 'BeneficiaryAccountCreated',
+          params: { from: 'IdentityCheckHonor' },
+        },
+      },
     },
     {
       id: uuidv4(),
