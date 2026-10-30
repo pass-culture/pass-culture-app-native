@@ -11,12 +11,13 @@ import { CguWithCheckbox } from 'features/bookOffer/components/CguWithCheckbox'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { BOOKING_CONFIRMATION_LOADING_MESSAGES } from 'features/bookOffer/helpers/bookingConfirmationLoadingMessages'
 import {
   getBookingDetails,
   getVenueBookingDetails,
 } from 'features/bookOffer/helpers/getBookingDetails'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
+import { useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
@@ -49,20 +50,6 @@ export interface BookingDetailsProps {
 
 const ANIMATION_DURATION = 500 //ms
 
-const LOADING_MESSAGES: RotatingTextOptions[] = [
-  {
-    message: 'En cours de confirmation...',
-    keepDuration: 5000,
-  },
-  {
-    message: 'Patiente quelques instants...',
-    keepDuration: 5000,
-  },
-  {
-    message: 'On y est presque...',
-  },
-]
-
 export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) => {
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
@@ -75,7 +62,7 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
   const { quantity } = bookingState
 
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
-  const loadingMessage = useRotatingText(LOADING_MESSAGES, isLoading)
+  const loadingMessage = useRotatingText(BOOKING_CONFIRMATION_LOADING_MESSAGES, isLoading)
 
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
@@ -237,7 +224,7 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
         <React.Fragment>
           <Separator />
           <Container>
-            <CancellationDetails />
+            {offer ? <CancellationDetails stock={selectedStock} offer={offer} /> : null}
           </Container>
         </React.Fragment>
       )}

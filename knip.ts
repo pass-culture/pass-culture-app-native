@@ -20,6 +20,7 @@ const defaultConfig: KnipConfig = {
     // temporary ignore
     'src/**/*.stories.old.tsx', // TODO(PC-35376): should delete this line
     'src/ui/designSystem/RadioButton/**', // TODO(PC-37009): remove
+    'src/features/bookCinemaOffer/**', // TODO(PC-43960): remove once the cinema booking funnel uses these steps
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
