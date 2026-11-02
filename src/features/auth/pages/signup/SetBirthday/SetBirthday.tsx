@@ -53,6 +53,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   const initialDate = previousBirthdateProvided ? new Date(previousBirthdateProvided) : defaultDate
 
   const [userAge, setUserAge] = useState<number | string | null>(null)
+  const [hasBirthdateChanged, setHasBirthdateChanged] = useState(false)
 
   const {
     control,
@@ -67,11 +68,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   })
 
   const birthdate = watch('birthdate')
-
-  const displayErrorMessage = (date: Date) =>
-    formatDateToISOStringWithoutTime(date) === formatDateToISOStringWithoutTime(defaultDate)
-      ? undefined
-      : errors.birthdate?.message
 
   useEffect(() => {
     const fetchUserAge = async () => {
@@ -105,7 +101,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       ? 'Ta date de naissance nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
       : 'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
-  const errorMessage = displayErrorMessage(birthdate)
+  const errorMessage =
+    !hasBirthdateChanged &&
+    formatDateToISOStringWithoutTime(birthdate) === formatDateToISOStringWithoutTime(defaultDate)
+      ? undefined
+      : errors.birthdate?.message
 
   const accessibilityLabel = accessibilityLabelForNextStep + (errorMessage ?? '')
 
@@ -126,6 +126,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
     ) {
       return
     }
+    setHasBirthdateChanged(true)
     const age = dateDiffInFullYears(selectedDate, new Date())
     if (age < 15) {
       void analytics.logSignUpTooYoung(age)
@@ -161,7 +162,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
                   handleOnChange({ selectedDate, currentBirthdate, onChange })
                 }}
                 date={currentBirthdate}
-                errorMessage={displayErrorMessage(currentBirthdate)}
+                errorMessage={errorMessage}
                 maximumDate={maximumSpinnerDate}
                 minimumDate={MINIMUM_DATE}
               />
