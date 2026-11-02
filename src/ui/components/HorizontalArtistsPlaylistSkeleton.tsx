@@ -18,11 +18,11 @@ type Props = {
   title: string
 }
 
-export const ArtistSimilarArtistsSkeleton: FunctionComponent<Props> = ({ title }) => {
+export const HorizontalArtistsPlaylistSkeleton: FunctionComponent<Props> = ({ title }) => {
   const { designSystem } = useTheme()
 
   return (
-    <View testID="ArtistSimilarArtistsSkeleton">
+    <View testID="HorizontalArtistsPlaylistSkeleton">
       <HeaderContainer>
         <AccessibleTitle title={title} TitleComponent={TitleLevel2} withMargin={false} />
       </HeaderContainer>

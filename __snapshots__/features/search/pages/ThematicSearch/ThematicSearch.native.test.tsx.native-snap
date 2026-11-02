@@ -1717,6 +1717,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             "gap": 24,
           }
         }
+      />
+      <View
+        gap={6}
+        style={
+          {
+            "gap": 24,
+          }
+        }
       >
         <View
           onLayout={[Function]}

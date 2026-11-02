@@ -52,6 +52,7 @@ export enum QueryKeys {
   SIMILAR_ARTISTS = 'similarArtists',
   STEPPER_INFO = 'stepperInfo',
   SUBCATEGORIES = 'subcategories',
+  TOP_ARTISTS_PLAYLIST = 'topArtistsPlaylist',
   USER_PROFILE = 'userProfile',
   VENUE = 'venue',
   VENUE_MOVIES_CALENDAR = 'venueMoviesCalendar',

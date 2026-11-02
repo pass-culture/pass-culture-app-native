@@ -111,6 +111,7 @@ export type ConsultArtistOriginDetails =
   | 'searchResults'
   | 'artistRecommendation'
   | 'artistHighlightModule'
+  | 'topArtistsPlaylist'
 
 export type FakeDoorAnalyticsParams = {
   featureName: string

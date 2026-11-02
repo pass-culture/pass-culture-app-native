@@ -14,7 +14,10 @@ import { Color, OffersModuleParameters, VenuesModule } from 'features/home/types
 import { CheatcodesStackParamList } from 'features/navigation/navigators/CheatcodesStackNavigator/types'
 import { OnboardingStackParamList } from 'features/navigation/navigators/OnboardingStackNavigator/types'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
-import { SearchStackParamList } from 'features/navigation/navigators/SearchStackNavigator/types'
+import {
+  SearchStackParamList,
+  ThematicSearchCategories,
+} from 'features/navigation/navigators/SearchStackNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 import { TabParamList } from 'features/navigation/navigators/TabNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -356,6 +359,7 @@ export type RootStackParamList = {
     offerId?: number
     offerCategoryId?: CategoryIdEnum
     originDetails?: ConsultArtistOriginDetails
+    searchGroupName?: ThematicSearchCategories
   }
   VerticalPlaylistOffers: VerticalPlaylistOffersSource
   VerticalPlaylistVenues: { module: VenuesModule }
