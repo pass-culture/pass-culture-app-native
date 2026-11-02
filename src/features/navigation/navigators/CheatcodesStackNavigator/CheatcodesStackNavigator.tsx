@@ -42,6 +42,7 @@ import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNa
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
 import { CheatcodesScreenAnalyticsDebugger } from 'cheatcodes/pages/others/CheatcodesScreenAnalyticsDebugger'
 import { CheatcodesScreenPageHeaderWithoutPlaceholder } from 'cheatcodes/pages/others/CheatcodesScreenCheatcodesScreenPageHeaderWithoutPlaceholder'
+import { CheatcodesScreenCinemaScreeningDetailsModal } from 'cheatcodes/pages/others/CheatcodesScreenCinemaScreeningDetailsModal'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenDirectIdAccess } from 'cheatcodes/pages/others/CheatcodesScreenDirectIdAccess'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
@@ -321,6 +322,14 @@ const cheatcodesStackNavigatorPathDefinition = {
       linking: { path: 'cheatcodes/other/modal-detailed' },
       options: {
         title: 'Cheatcodes - Modal detailed',
+        ...modalType,
+      },
+    },
+    CheatcodesScreenCinemaScreeningDetailsModal: {
+      screen: CheatcodesScreenCinemaScreeningDetailsModal,
+      linking: { path: 'cheatcodes/other/cinema-screening-details-modal' },
+      options: {
+        title: 'Cheatcodes - Informations sur la séance',
         ...modalType,
       },
     },

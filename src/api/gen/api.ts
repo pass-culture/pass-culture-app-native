@@ -4278,6 +4278,63 @@ export interface Screening {
   stockId: number
 }
 /**
+ * @export
+ * @interface ScreeningAccessibilityFeatures
+ */
+export interface ScreeningAccessibilityFeatures {
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  audio: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  mental: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  motor: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  visual: Array<string>
+}
+/**
+ * @export
+ * @interface ScreeningFeatures
+ */
+export interface ScreeningFeatures {
+  /**
+   * @type {ScreeningAccessibilityFeatures}
+   * @memberof ScreeningFeatures
+   */
+  accessibility: ScreeningAccessibilityFeatures
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  audio: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  language: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  specialEventType: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  video: string | null
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}

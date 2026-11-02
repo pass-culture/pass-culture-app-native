@@ -16,6 +16,13 @@ const modalsCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
+      title: 'Informations sur la séance',
+      navigationTarget: {
+        screen: 'CheatcodesScreenCinemaScreeningDetailsModal',
+      },
+    },
+    {
+      id: uuidv4(),
       title: 'Detailed',
       navigationTarget: {
         screen: 'CheatcodesScreenModalDetailed',
