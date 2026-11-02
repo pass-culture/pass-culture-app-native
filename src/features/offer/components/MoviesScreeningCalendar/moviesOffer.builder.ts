@@ -1,14 +1,8 @@
-import {
-  addDays,
-  differenceInMilliseconds,
-  isAfter,
-  isBefore,
-  isSameDay,
-  startOfDay,
-} from 'date-fns'
+import { differenceInMilliseconds, isAfter, isBefore, isSameDay } from 'date-fns'
 
 import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
+import { isDateNotWithinNextNbDays } from 'features/offer/helpers/isDateNotWithinNextNbDays'
 import { GeoCoordinates } from 'libs/location/location'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
@@ -190,16 +184,6 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponse[] = []) => {
   }
 
   return builderObject
-}
-
-export const isDateNotWithinNextNbDays = (
-  referenceDate: Date,
-  targetDate: Date,
-  nbDays: number
-) => {
-  const datePlusNbDays = addDays(startOfDay(referenceDate), nbDays)
-
-  return isAfter(targetDate, datePlusNbDays)
 }
 
 const isDateBeforeToday = (referenceDate: Date, targetDate: Date) => {

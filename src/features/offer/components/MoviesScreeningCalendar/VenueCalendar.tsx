@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getVenueMovieOffers } from 'features/offer/components/MoviesScreeningCalendar/hook/getVenueMovieOffers'
+import { getVenueMovieOffers } from 'features/offer/components/MoviesScreeningCalendar/helpers/getVenueMovieOffers'
 import {
   useDisplayCalendar,
   useMovieCalendar,

@@ -3,7 +3,7 @@ import { MovieScreeningUserData } from 'features/offer/components/MovieScreening
 
 import { CinemaScreeningCardDisabledReason } from './types'
 
-type Params = {
+type Props = {
   screening: StockResponse
   offerVenueId: number
   movieScreeningUserData?: MovieScreeningUserData
@@ -15,7 +15,7 @@ export const getCinemaScreeningCardDisabledReason = ({
   offerVenueId,
   movieScreeningUserData = {},
   isExternalBookingsDisabled = false,
-}: Params): CinemaScreeningCardDisabledReason | undefined => {
+}: Props): CinemaScreeningCardDisabledReason | undefined => {
   const {
     hasNotCompletedSubscriptionYet,
     isUserEligible = true,
