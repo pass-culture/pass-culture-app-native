@@ -4,14 +4,18 @@
  */
 
 import React, { FC, PropsWithChildren } from 'react'
+import { Platform } from 'react-native'
 import Animated, { LinearTransition } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styled, useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { SnackBar } from 'ui/designSystem/Snackbar/SnackBar'
 import { useSnackbarProps } from 'ui/designSystem/Snackbar/snackBar.store'
 
 const DESKTOP_BOTTOM_OFFSET = 72
+
+const isWeb = Platform.OS === 'web'
 
 export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { isDesktopViewport } = useTheme()
@@ -38,31 +42,44 @@ export const SnackBarWrapper: FC<PropsWithChildren> = ({ children }) => {
                 onAccessibilityAction,
               },
               index
-            ) => (
-              <Animated.View
-                pointerEvents="box-none"
-                accessible
-                accessibilityRole="alert"
-                accessibilityLiveRegion="assertive"
-                accessibilityLabel={accessibilityLabel}
-                accessibilityHint={accessibilityHint}
-                accessibilityActions={accessibilityActions}
-                onAccessibilityTap={onAccessibilityTap}
-                onAccessibilityAction={onAccessibilityAction}
-                importantForAccessibility="yes"
-                style={{ zIndex: 1000 + index }}
-                key={id}
-                layout={LinearTransition.duration(500).springify()}>
-                <SnackBar
-                  variant={isDesktopViewport ? 'large' : 'default'}
-                  id={id}
-                  onClose={onClose}
-                  label={label}
-                  animationDuration={animationDuration}
-                  type={type}
-                />
-              </Animated.View>
-            )
+            ) => {
+              const isSnackBarError = type === 'error'
+              // ALERT and STATUS communicate different levels of urgency to screen readers:
+              // ALERT has an implicit assertive live region and interrupts current announcements.
+              // STATUS has an implicit polite live region and waits for the current announcement to finish.
+              const accessibilityRole = isSnackBarError
+                ? AccessibilityRole.ALERT
+                : AccessibilityRole.STATUS
+              const accessibilityLiveRegion = isSnackBarError ? 'assertive' : 'polite'
+
+              return (
+                <Animated.View
+                  pointerEvents="box-none"
+                  accessible
+                  accessibilityRole={accessibilityRole}
+                  accessibilityHint={accessibilityHint}
+                  accessibilityActions={accessibilityActions}
+                  onAccessibilityTap={onAccessibilityTap}
+                  onAccessibilityAction={onAccessibilityAction}
+                  importantForAccessibility="yes"
+                  accessibilityLiveRegion={accessibilityLiveRegion}
+                  // React Native Web already announces the snackbar content through its accessibility role.
+                  // Providing an explicit accessibilityLabel causes VoiceOver to announce the message multiple times.
+                  {...(!isWeb && { accessibilityLabel })}
+                  style={{ zIndex: 1000 + index }}
+                  key={id}
+                  layout={LinearTransition.duration(500).springify()}>
+                  <SnackBar
+                    variant={isDesktopViewport ? 'large' : 'default'}
+                    id={id}
+                    onClose={onClose}
+                    label={label}
+                    animationDuration={animationDuration}
+                    type={type}
+                  />
+                </Animated.View>
+              )
+            }
           )}
         </Container>
       ) : null}
