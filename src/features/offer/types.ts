@@ -54,13 +54,16 @@ export interface OfferTileProps {
   withCenterAlign?: boolean
 }
 
-export type FavoriteProps = {
-  addFavorite?: ({ offerId }: { offerId: number }) => void
+export type BaseFavoriteProps = {
   isAddFavoriteLoading?: boolean
   removeFavorite: (id: number) => void
   isRemoveFavoriteLoading: boolean
-  favorite?: FavoriteResponse | null
 }
+
+export type OfferFavoriteProps = {
+  addFavorite?: ({ offerId }: { offerId: number }) => void
+  favorite?: FavoriteResponse | null
+} & BaseFavoriteProps
 
 export interface SimilarOffersResponse {
   results: string[]

@@ -1,1 +1,1 @@
-export { useFavoritesQuery } from './useFavoritesQuery'
+export { useOfferFavoritesQuery } from './useOfferFavoritesQuery'

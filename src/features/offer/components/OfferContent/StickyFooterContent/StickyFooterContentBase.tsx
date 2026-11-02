@@ -3,7 +3,7 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoritesCTA } from 'features/offer/components/OfferContent/ComingSoonCTAs/FavoritesCTA'
-import { FavoriteProps } from 'features/offer/types'
+import { OfferFavoriteProps } from 'features/offer/types'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { getShadow } from 'ui/theme'
@@ -14,7 +14,7 @@ export type StickyFooterContentProps = {
   onLayout?: (params: LayoutChangeEvent) => void
   favoriteAuthModal: ModalSettings
   displayGradient?: boolean
-} & Partial<FavoriteProps>
+} & Partial<OfferFavoriteProps>
 
 type StickyFooterContentBaseProps = StickyFooterContentProps & PropsWithChildren
 

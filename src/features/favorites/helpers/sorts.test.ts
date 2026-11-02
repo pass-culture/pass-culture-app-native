@@ -1,10 +1,10 @@
 import { FavoriteResponse } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { GeoCoordinates } from 'libs/location/location'
 
 import { sortByIdDesc, sortByAscendingPrice, sortByDistanceAroundMe } from './sorts'
 
-const baseOffer = paginatedFavoritesResponseSnap.favorites[0]
+const baseOffer = paginatedOfferFavoritesResponseSnap.favorites[0]
 
 const position = { latitude: 48.8584, longitude: 2.2945 } as GeoCoordinates
 const position2 = { latitude: 49.8584, longitude: 3.2945 } as GeoCoordinates

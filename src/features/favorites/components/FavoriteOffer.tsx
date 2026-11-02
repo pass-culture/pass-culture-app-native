@@ -19,7 +19,7 @@ import { getDistance } from 'libs/location/getDistance'
 import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
-import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveOfferFavoriteMutation'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
@@ -78,7 +78,7 @@ export const FavoriteOffer: React.FC<FavoriteProps> = ({ favorite, onInAppBookin
     from: StepperOrigin.FAVORITE,
   })
 
-  const { mutate: removeFavorite, isPending: isRemoving } = useRemoveFavoriteMutation({
+  const { mutate: removeFavorite, isPending: isRemoving } = useRemoveOfferFavoriteMutation({
     onError: () => {
       showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },

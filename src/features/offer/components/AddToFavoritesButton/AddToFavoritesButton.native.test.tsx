@@ -3,7 +3,7 @@ import React from 'react'
 import { api } from 'api/api'
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -25,7 +25,7 @@ describe('<AddToFavoriteButton />', () => {
   beforeEach(() => {
     mockServer.getApi<PaginatedFavoritesResponse>(
       '/v1/me/favorites',
-      paginatedFavoritesResponseSnap
+      paginatedOfferFavoritesResponseSnap
     )
     setFeatureFlags()
   })

@@ -2,25 +2,25 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { PaginatedFavoritesResponse } from 'api/gen'
-import { FavoriteMutationContext } from 'features/favorites/queries/types'
+import { FavoriteOfferMutationContext } from 'features/favorites/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-interface RemoveFavorite {
-  onError?: (error?: Error, favoriteId?: number, context?: FavoriteMutationContext) => void
+interface RemoveOfferFavorite {
+  onError?: (error?: Error, favoriteId?: number, context?: FavoriteOfferMutationContext) => void
 }
 
-export const useRemoveFavoriteMutation = ({ onError }: RemoveFavorite) => {
+export const useRemoveOfferFavoriteMutation = ({ onError }: RemoveOfferFavorite) => {
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: (favoriteId: number) => api.deleteNativeV1MeFavoritesfavoriteId(favoriteId),
     onMutate: async (favoriteId) => {
       await queryClient.cancelQueries({
-        queryKey: [QueryKeys.FAVORITES],
+        queryKey: [QueryKeys.FAVORITES_OFFER],
       })
       // Snapshot the previous value
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
-        QueryKeys.FAVORITES,
+        QueryKeys.FAVORITES_OFFER,
       ])
 
       // Optimistically update to the new value
@@ -28,18 +28,18 @@ export const useRemoveFavoriteMutation = ({ onError }: RemoveFavorite) => {
         const favorites = previousFavorites.favorites.filter(
           (favorite) => favorite.id !== favoriteId
         )
-        queryClient.setQueryData<PaginatedFavoritesResponse>([QueryKeys.FAVORITES], {
+        queryClient.setQueryData<PaginatedFavoritesResponse>([QueryKeys.FAVORITES_OFFER], {
           ...previousFavorites,
           nbFavorites: favorites.length,
           favorites,
         })
       }
 
-      return { previousFavorites: previousFavorites ?? [] } as FavoriteMutationContext
+      return { previousFavorites: previousFavorites ?? [] } as FavoriteOfferMutationContext
     },
-    onError: (error: Error, favoriteId, context: FavoriteMutationContext | undefined) => {
+    onError: (error: Error, favoriteId, context: FavoriteOfferMutationContext | undefined) => {
       if (context?.previousFavorites) {
-        queryClient.setQueryData([QueryKeys.FAVORITES], context.previousFavorites)
+        queryClient.setQueryData([QueryKeys.FAVORITES_OFFER], context.previousFavorites)
       }
       if (onError) {
         onError(error, favoriteId, context)

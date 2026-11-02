@@ -2,21 +2,20 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { simulateBackend } from 'features/favorites/tests/simulateBackend'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
+import { useOfferFavoritesQuery } from 'features/favorites/queries/useOfferFavoritesQuery'
+import { simulateBackendForOffer } from 'features/favorites/tests/simulateBackendForOffer'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useFavoritesQuery } from './useFavoritesQuery'
-
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
-describe('useFavoritesQuery hook', () => {
+describe('useOfferFavoritesQuery hook', () => {
   it('should retrieve favorite data when logged in', async () => {
-    simulateBackend()
-    const { result } = renderHook(useFavoritesQuery, {
+    simulateBackendForOffer()
+    const { result } = renderHook(useOfferFavoritesQuery, {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>
@@ -28,13 +27,13 @@ describe('useFavoritesQuery hook', () => {
     await waitFor(() => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.favorites.length).toEqual(
-      paginatedFavoritesResponseSnap.favorites.length
+      paginatedOfferFavoritesResponseSnap.favorites.length
     )
   })
 
   it('should fail to fetch when not logged in', async () => {
     mockAuthContextWithoutUser()
-    const { result } = renderHook(useFavoritesQuery, {
+    const { result } = renderHook(useOfferFavoritesQuery, {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>

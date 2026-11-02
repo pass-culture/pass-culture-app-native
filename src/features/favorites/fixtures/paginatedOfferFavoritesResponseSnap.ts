@@ -4,7 +4,7 @@ import { ExpenseDomain, PaginatedFavoritesResponse, SubcategoryIdEnum } from 'ap
 import { toMutable } from 'shared/types/toMutable'
 
 // humanizedId AHD3A
-export const paginatedFavoritesResponseSnap = toMutable({
+export const paginatedOfferFavoritesResponseSnap = toMutable({
   page: 1,
   nbFavorites: 4,
   favorites: [

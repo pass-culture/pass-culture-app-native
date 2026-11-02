@@ -31,7 +31,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
-import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
 import { useBonificationBonusAmount } from 'queries/settings/useSettings'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 
@@ -114,7 +114,7 @@ const useHandleSigninSuccess = (
     }
   }, [])
 
-  const { mutate: addFavorite } = useAddFavoriteMutation({
+  const { mutate: addFavorite } = useAddOfferFavoriteMutation({
     type: FavoriteType.OFFER,
     onSuccess: onAddFavoriteSuccess,
   })

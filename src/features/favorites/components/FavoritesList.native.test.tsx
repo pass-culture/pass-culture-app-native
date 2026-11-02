@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FavoriteResponse } from 'api/gen'
 import { FavoritesList, FavoritesListProps } from 'features/favorites/components/FavoritesList'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { FavoriteSortBy, Tab } from 'features/favorites/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -16,7 +16,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const mockFavorites: FavoriteResponse[] = paginatedFavoritesResponseSnap.favorites
+const mockFavorites: FavoriteResponse[] = paginatedOfferFavoritesResponseSnap.favorites
 
 const defaultProps = {
   favorites: mockFavorites,

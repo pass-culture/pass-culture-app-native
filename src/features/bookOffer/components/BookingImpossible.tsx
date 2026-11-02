@@ -6,11 +6,11 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useNotifyWebappLinkSentMutation } from 'features/bookOffer/queries/useNotifyWebappLinkSentMutation'
 import { FavoriteType } from 'features/favorites/enum'
-import { useFavorite } from 'features/favorites/hooks/useFavorite'
+import { useOfferFavorite } from 'features/favorites/hooks/useOfferFavorite'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -24,7 +24,7 @@ type Props = {
 export const BookingImpossible: React.FC<Props> = ({ venueId }) => {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
   const { offerId } = bookingState
-  const favorite = useFavorite({ offerId })
+  const favorite = useOfferFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()
   const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSentMutation()
 
@@ -40,7 +40,7 @@ export const BookingImpossible: React.FC<Props> = ({ venueId }) => {
     }
   }, [bookingState.step, dispatch])
 
-  const { mutate: addFavorite } = useAddFavoriteMutation({
+  const { mutate: addFavorite } = useAddOfferFavoriteMutation({
     type: FavoriteType.OFFER,
     onSuccess: () => {
       if (offerId === undefined) return

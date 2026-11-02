@@ -24,7 +24,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { FavoriteType } from 'features/favorites/enum'
-import { useFavorite } from 'features/favorites/hooks/useFavorite'
+import { useOfferFavorite } from 'features/favorites/hooks/useOfferFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { AdviceSectionWithAnchor } from 'features/offer/components/OfferContent/AdviceSection/AdviceSectionWithAnchor'
@@ -50,8 +50,8 @@ import { useFunctionOnce } from 'libs/hooks'
 import { getDistance } from 'libs/location/getDistance'
 import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
-import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
-import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
+import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveOfferFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
@@ -203,7 +203,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
-  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddFavoriteMutation({
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddOfferFavoriteMutation({
     type: FavoriteType.OFFER,
     onSuccess: () => {
       if (typeof offer.id === 'number') {
@@ -221,13 +221,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
-    onError: () => {
-      showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
-    },
-  })
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
+    useRemoveOfferFavoriteMutation({
+      onError: () => {
+        showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
+      },
+    })
 
-  const favorite = useFavorite({ offerId: offer.id })
+  const favorite = useOfferFavorite({ offerId: offer.id })
 
   const favoriteButtonProps = {
     addFavorite,
