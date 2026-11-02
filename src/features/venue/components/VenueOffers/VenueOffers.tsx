@@ -1,11 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ReactionTypeEnum, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
@@ -15,7 +13,6 @@ import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffe
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useUserLocation, useLocationMode } from 'libs/locationV2/location.store'
@@ -58,7 +55,6 @@ export function VenueOffers({
   arePlaylistsLoading,
   onViewableItemsChanged,
 }: Readonly<VenueOffersProps>) {
-  const { navigate } = useNavigation<UseNavigationType>()
   const userLocation = useUserLocation()
   const selectedLocationMode = useLocationMode()
   const transformHits = useTransformOfferHits()
@@ -77,36 +73,6 @@ export function VenueOffers({
   const wipUseVenueMovieScreeningsEndpoint = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT
   )
-
-  const onPressAdviceCardSeeMore = (offerId: number) => {
-    void analytics.logConsultAdvice({
-      from: 'venue',
-      offerId: offerId.toString(),
-      venueId: venue.id.toString(),
-      originDetails: 'Les avis des pros',
-      adviceType: 'pro',
-    })
-    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
-  }
-
-  const onPressAllAdvicesButton = () => {
-    void analytics.logConsultAdvice({
-      from: 'venue',
-      venueId: venue.id.toString(),
-      originDetails: 'Lire les x avis',
-      adviceType: 'pro',
-    })
-  }
-
-  const onFeedbackLog = (type: ReactionTypeEnum) => {
-    const feedbackResponse = type === ReactionTypeEnum.LIKE ? 'Oui' : 'Non'
-    void analytics.logFeatureFeedbackClicked({
-      featureName: 'pro_advices',
-      feedbackResponse,
-      from: 'venue',
-      venueId: venue.id.toString(),
-    })
-  }
 
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />
@@ -144,9 +110,6 @@ export function VenueOffers({
       euroToPacificFrancRate={euroToPacificFrancRate}
       arePlaylistsLoading={arePlaylistsLoading}
       onViewableItemsChanged={onViewableItemsChanged}
-      onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
-      onPressAllAdvicesButton={onPressAllAdvicesButton}
-      onFeedbackLog={onFeedbackLog}
     />
   )
 }

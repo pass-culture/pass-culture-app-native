@@ -4,7 +4,6 @@ import { Platform, View, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -47,9 +46,6 @@ type VenueOffersListProps = VenueOffersProps & {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
-  onPressAdviceCardSeeMore: (offerId: number) => void
-  onPressAllAdvicesButton: () => void
-  onFeedbackLog: (type: ReactionTypeEnum) => void
 }
 
 const playlistTitle = 'Les artistes disponibles dans ce lieu'
