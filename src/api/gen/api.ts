@@ -3614,78 +3614,6 @@ export interface OfferPreviewResponse {
 }
 /**
  * @export
- * @interface OfferProAdvice
- */
-export interface OfferProAdvice {
-  /**
-   * @type {string | ModelNull}
-   * @memberof OfferProAdvice
-   */
-  author?: string | null
-  /**
-   * @type {string}
-   * @memberof OfferProAdvice
-   */
-  content: string
-  /**
-   * @type {number | null}
-   * @memberof OfferProAdvice
-   */
-  distance?: number | null
-  /**
-   * @type {string}
-   * @memberof OfferProAdvice
-   */
-  publicationDatetime: string
-  /**
-   * @type {number}
-   * @memberof OfferProAdvice
-   */
-  venueId: number
-  /**
-   * @type {string}
-   * @memberof OfferProAdvice
-   */
-  venueName: string
-  /**
-   * @type {string | null}
-   * @memberof OfferProAdvice
-   */
-  venueThumbUrl?: string | null
-}
-  /**
- * @export
- * @interface OfferProAdviceQuery
- */
-export interface OfferProAdviceQuery {
-  /**
-   * @type {number | null}
-   * @memberof OfferProAdviceQuery
-   */
-  latitude?: number | null
-  /**
-   * @type {number | ModelNull}
-   * @memberof OfferProAdviceQuery
-   */
-  longitude?: number | null
-  /**
-   * @type {number | ModelNull}
-   * @memberof OfferProAdviceQuery
-   */
-  maxContentLength?: number | null
-  /**
-   * @type {number}
-   * @memberof OfferProAdviceQuery
-   */
-  page?: number
-  /**
-   * @type {number}
-   * @memberof OfferProAdviceQuery
-   */
-  resultsPerPage?: number
-}
-/**
- * @export
  * @interface OfferResponse
  */
 export interface OfferResponse {
@@ -6043,27 +5971,6 @@ export interface VenueMovieCalendarResponse {
 }
 /**
  * @export
- * @interface VenueProAdviceQuery
- */
-export interface VenueProAdviceQuery {
-  /**
-   * @type {number | null}
-   * @memberof VenueProAdviceQuery
-   */
-  maxContentLength?: number | null
-  /**
-   * @type {number}
-   * @memberof VenueProAdviceQuery
-   */
-  page?: number
-  /**
-   * @type {number}
-   * @memberof VenueProAdviceQuery
-   */
-  resultsPerPage?: number
-}
-/**
- * @export
  * @interface VenueResponse
  */
 export interface VenueResponse {
@@ -6815,34 +6722,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_offer <GET>
-     * @deprecated
-     * @param {number} offer_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'offer_id' is not null or undefined
-      if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError(
-          'offer_id',
-          'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferId.'
-        )
-      }
-      let pathname = `/native/v1/offer/{offer_id}`.replace(
-        `{${'offer_id'}}`,
-        encodeURIComponent(String(offer_id))
-      )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -8746,19 +8625,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
-     * @summary get_offer <GET>
-     * @deprecated
-     * @param {number} offer_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferId(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
      * @summary offer_chronicles <GET>
      * @param {number} offer_id
      * @param {*} [options] Override http request option.
@@ -9729,19 +9595,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1MovieCalendarMe(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MovieCalendarMe(latitude, longitude, allocineId, visa, aroundRadius, from, to, options)
-  }
-  /**
-    *
-    * @summary get_offer <GET>
-    * @deprecated
-    * @param {number} offer_id
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OfferofferId(offer_id: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OfferofferId(offer_id, options)
   }
   /**
     *

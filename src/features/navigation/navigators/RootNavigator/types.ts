@@ -217,16 +217,6 @@ type ClubAdvicesParams = {
   from?: Referrals
 }
 
-type ProAdvicesOfferParams = {
-  offerId: number
-  venueId?: number
-}
-
-type ProAdvicesVenueParams = {
-  venueId: number
-  offerId?: number
-}
-
 type VideoModulePageParams = {
   moduleId: string
   moduleName: string
@@ -320,8 +310,6 @@ export type RootStackParamList = {
   AppleSSOCallback: { code?: string; state?: string; error?: string } | undefined
   OnboardingSubscription: undefined
   PageNotFound: undefined
-  ProAdvicesOffer: ProAdvicesOfferParams
-  ProAdvicesVenue: ProAdvicesVenueParams
   Profile: undefined
   ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>
   RecreditBirthdayNotification: undefined

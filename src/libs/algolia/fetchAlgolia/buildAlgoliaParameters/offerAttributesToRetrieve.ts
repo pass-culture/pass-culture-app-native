@@ -21,5 +21,4 @@ export const offerAttributesToRetrieve = [
   'offer.chroniclesCount',
   'offer.headlineCount',
   '_tags',
-  'offer.proAdvicesCount',
 ]
