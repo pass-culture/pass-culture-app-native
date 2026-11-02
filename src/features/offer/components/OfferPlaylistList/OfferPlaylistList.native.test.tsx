@@ -47,7 +47,6 @@ const mockBooksPlaylist: OfferPagePlaylist = {
   params: mockApiParams,
 }
 
-const mockPlaylistViewableItemsChanged = jest.fn()
 const mockOnBeforeNavigate = jest.fn()
 
 let mockOnIntersectionChange: ((inView: boolean) => void) | undefined
@@ -175,7 +174,6 @@ const renderOfferPlaylistList = (props: Partial<OfferPlaylistListProps> = {}) =>
       <OfferPlaylistList
         offer={mockOffer}
         playlists={[]}
-        onViewableItemsChanged={mockPlaylistViewableItemsChanged}
         seeAllButton={{
           navigateToVerticalPlaylist: jest.fn(),
           onBeforeNavigate: mockOnBeforeNavigate,

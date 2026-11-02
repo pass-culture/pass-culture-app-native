@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useGetArtistEditorialConfigQuery } from 'features/artist/queries/useGetArtistEditorialConfigQuery'
@@ -12,17 +11,10 @@ import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistSuspenseQuery } from 'queries/artist/useArtistQuery'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 const ArtistContent: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
-
-  const pageTracking = usePageTracking({
-    pageName: 'Artist',
-    pageLocation: 'artist',
-    pageId: params.id,
-  })
 
   const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
     artistId: params.id,
@@ -39,27 +31,6 @@ const ArtistContent: FunctionComponent = () => {
   useEffect(() => {
     if (isError) eventMonitoring.captureException(error)
   }, [error, isError])
-
-  // Handler for modules with the new system
-  const handleViewableItemsChanged = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      artistId: string,
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        artistId,
-        playlistIndex,
-        entryId: params.id,
-      })
-    },
-    [pageTracking, params.id]
-  )
 
   if (!artist) return <PageNotFound />
 
@@ -78,7 +49,6 @@ const ArtistContent: FunctionComponent = () => {
       artistTopOffers={artistTopOffers}
       artistPlaylistModule={artistPlaylistModule}
       artistEditorialModule={artistEditorialModule}
-      onViewableItemsChanged={handleViewableItemsChanged}
       onExpandBioPress={handleOnExpandBioPress}
     />
   )

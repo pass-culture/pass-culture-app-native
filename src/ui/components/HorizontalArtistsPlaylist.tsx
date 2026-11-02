@@ -11,7 +11,8 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-type AvatarItem = ComponentProps<typeof AvatarList>['data'][number]
+type AvatarListProps = ComponentProps<typeof AvatarList>
+type AvatarItem = AvatarListProps['data'][number]
 type SeeAllData = ComponentProps<typeof SeeAllButton>['data']
 
 export type HorizontalArtistsPlaylistProps = {
@@ -22,6 +23,8 @@ export type HorizontalArtistsPlaylistProps = {
   seeAllData?: SeeAllData
   itemConfig?: AvatarProps
   style?: StyleProp<ViewStyle>
+  listRef?: AvatarListProps['listRef']
+  onViewableItemsChanged?: AvatarListProps['onViewableItemsChanged']
 }
 
 export const HorizontalArtistsPlaylist: FunctionComponent<HorizontalArtistsPlaylistProps> = ({
@@ -32,6 +35,8 @@ export const HorizontalArtistsPlaylist: FunctionComponent<HorizontalArtistsPlayl
   seeAllData,
   itemConfig,
   style,
+  listRef,
+  onViewableItemsChanged,
 }) => {
   if (isLoading) return <HorizontalArtistsPlaylistSkeleton title={title} />
   if (artists.length === 0) return null
@@ -58,6 +63,8 @@ export const HorizontalArtistsPlaylist: FunctionComponent<HorizontalArtistsPlayl
         onItemPress={onItemPress}
         withMargins
         withPush
+        listRef={listRef}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     </View>
   )

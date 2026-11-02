@@ -13,7 +13,7 @@ type AvatarListProps = {
   data: Artist[]
   avatarConfig?: AvatarProps
   onItemPress: (id: string, name: string) => void
-  onViewableItemsChanged?: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
+  onViewableItemsChanged?: (info: { viewableItems: ViewToken[]; changed: ViewToken[] }) => void
   listRef?: Ref<FlatList>
   withMargins?: boolean
   withPush?: boolean
@@ -61,13 +61,6 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 
   const size = mergedAvatarConfig.size
 
-  const handleViewableItemsChanged = useCallback(
-    (info: { viewableItems: ViewToken[] }) => {
-      onViewableItemsChanged?.({ viewableItems: info.viewableItems })
-    },
-    [onViewableItemsChanged]
-  )
-
   return (
     <Playlist
       data={data}
@@ -77,7 +70,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
       itemWidth={size}
       FlatListComponent={FlatList}
       ref={listRef}
-      onViewableItemsChanged={handleViewableItemsChanged}
+      onViewableItemsChanged={onViewableItemsChanged}
       withMargins={withMargins}
     />
   )

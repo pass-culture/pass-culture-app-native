@@ -6,7 +6,6 @@ import BottomSheet, {
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { Fragment, FunctionComponent, forwardRef, useMemo } from 'react'
-import { ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -28,14 +27,7 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
   offersPlaylistType: PlaylistType | string
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   analyticsFrom?: Referrals
-  moduleId?: string
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
@@ -45,9 +37,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       venue,
       venueOffers,
       offersPlaylistType,
-      onViewableItemsChanged,
       analyticsFrom = 'venueMap',
-      moduleId = 'venue_map',
       ...bottomSheetProps
     },
     ref
@@ -76,38 +66,26 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     }, [venue, distanceToVenue])
 
     const offersPlaylist = useMemo(() => {
-      if (venueOffers?.length) {
-        const handlePressMore = venue
-          ? () => navigate('Venue', { id: venue.venueId, from: analyticsFrom })
-          : undefined
-        return (
-          <Fragment>
-            <StyledView>
-              <StyledSeparator />
-            </StyledView>
-            <IOScrollView>
-              <VenueMapOfferPlaylist
-                offers={venueOffers}
-                onPressMore={handlePressMore}
-                playlistType={offersPlaylistType}
-                onViewableItemsChanged={onViewableItemsChanged}
-                analyticsFrom={analyticsFrom}
-                moduleId={moduleId}
-              />
-            </IOScrollView>
-          </Fragment>
-        )
-      }
-      return null
-    }, [
-      venueOffers,
-      venue,
-      offersPlaylistType,
-      onViewableItemsChanged,
-      navigate,
-      analyticsFrom,
-      moduleId,
-    ])
+      if (!venue || !venueOffers?.length) return null
+
+      const handlePressMore = () => navigate('Venue', { id: venue.venueId, from: analyticsFrom })
+      return (
+        <Fragment>
+          <StyledView>
+            <StyledSeparator />
+          </StyledView>
+          <IOScrollView>
+            <VenueMapOfferPlaylist
+              offers={venueOffers}
+              onPressMore={handlePressMore}
+              playlistType={offersPlaylistType}
+              venueId={venue.venueId}
+              analyticsFrom={analyticsFrom}
+            />
+          </IOScrollView>
+        </Fragment>
+      )
+    }, [venueOffers, venue, offersPlaylistType, navigate, analyticsFrom])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
