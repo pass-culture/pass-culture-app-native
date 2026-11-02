@@ -27,6 +27,7 @@ import {
   isArtistPlaylistModule,
   isOffersModule,
   isVenuesModule,
+  ModuleViewableItemsChangedHandler,
   ThematicHeader,
 } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -40,6 +41,7 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { createViewableItemsHandler, usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
@@ -67,6 +69,7 @@ const keyExtractor = (item: HomepageModule, index: number) => item.id + index
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,
+  handleViewableItemsChanged: ModuleViewableItemsChangedHandler,
   videoModuleId?: string
 ) => {
   return (
@@ -80,6 +83,7 @@ const renderModule = (
           : undefined
       }
       videoModuleId={videoModuleId}
+      onModuleViewableItemsChanged={handleViewableItemsChanged}
     />
   )
 }
@@ -261,10 +265,22 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }
   }, [modules.length, isLoading, maxIndex])
 
+  const pageTracking = usePageTracking({
+    pageName: 'Home',
+    pageLocation: 'home',
+    pageId: homeId || 'home_unknown',
+  })
+
+  // Create handler for modules with the new tracking system
+  const handleViewableItemsChanged = useMemo(
+    () => createViewableItemsHandler(pageTracking.trackViewableItems),
+    [pageTracking.trackViewableItems]
+  )
+
   const renderItem = useCallback(
     ({ item, index }: { item: HomepageModule; index: number }) =>
-      renderModule({ item, index }, homeId, videoModuleId),
-    [homeId, videoModuleId]
+      renderModule({ item, index }, homeId, handleViewableItemsChanged, videoModuleId),
+    [homeId, handleViewableItemsChanged, videoModuleId]
   )
 
   const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =

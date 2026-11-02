@@ -1,74 +1,50 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { RefObject, useCallback, useRef } from 'react'
+import React, { Ref, useCallback, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 
-type ViewableItemsChangedInfo = {
-  viewableItems: ViewToken[]
-  changed: ViewToken[]
-}
-
-type PlaylistRef = {
-  recordInteraction: () => void
-}
-
-type ObservedPlaylistProps<T extends PlaylistRef> = {
-  listRef?: RefObject<T | null>
+type ObservedPlaylistProps = {
   children: (props: {
-    listRef: RefObject<T | null>
-    handleViewableItemsChanged: (info: ViewableItemsChangedInfo) => void
+    listRef: Ref<FlatList>
+    handleViewableItemsChanged: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
   }) => React.ReactNode
+  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
   onIntersectionChange?: (inView: boolean) => void
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onItemViewed?: (item: { key: string; index: number; item: any }) => void
-  fill?: boolean
 }
 
-export const ObservedPlaylist = <T extends PlaylistRef = FlatList>({
-  listRef: listRefProp,
+export const ObservedPlaylist = ({
   children,
+  onViewableItemsChanged,
   onIntersectionChange,
-  onItemViewed,
-  fill = false,
-}: ObservedPlaylistProps<T>) => {
-  const internalListRef = useRef<T | null>(null)
-  const listRef = listRefProp ?? internalListRef
+}: ObservedPlaylistProps) => {
+  const listRef = useRef<FlatList>(null)
   const lastViewableItems = useRef<ViewToken[]>([])
   const isInView = useRef(false)
-  // FlatList refuses a new onViewableItemsChanged, so the handler below stays stable
-  // and always calls the latest parent callback through this ref.
-  const onItemViewedRef = useRef(onItemViewed)
-  onItemViewedRef.current = onItemViewed
 
   const handleViewableItemsChanged = useCallback(
-    ({ viewableItems, changed }: ViewableItemsChangedInfo) => {
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
       if (isInView.current) {
-        changed
-          .filter((token) => token.isViewable)
-          .forEach(({ key, index, item }) => {
-            return onItemViewedRef.current?.({ key, index: index ?? -1, item })
-          })
-      }
-
-      // Ignore the empty reset FlatList emits between two layouts, so the last
-      // visible items stay available when the module comes back into view.
-      if (viewableItems.length > 0) {
+        onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
+        lastViewableItems.current = viewableItems
+      } else {
+        // Store items even when not in view, so they can be sent when module becomes visible
         lastViewableItems.current = viewableItems
       }
     },
+    // We cannot change onViewableItemsChanged on the fly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
 
   useFocusEffect(
     useCallback(() => {
-      if (lastViewableItems.current.length === 0) return
-
-      handleViewableItemsChanged({
-        viewableItems: lastViewableItems.current,
-        changed: lastViewableItems.current,
-      })
+      if (lastViewableItems.current?.length) {
+        handleViewableItemsChanged({
+          viewableItems: lastViewableItems.current,
+        })
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   )
@@ -79,20 +55,17 @@ export const ObservedPlaylist = <T extends PlaylistRef = FlatList>({
       onIntersectionChange?.(value)
       if (!value) return
 
-      if (lastViewableItems.current.length > 0) {
-        handleViewableItemsChanged({
-          viewableItems: lastViewableItems.current,
-          changed: lastViewableItems.current,
-        })
+      if (lastViewableItems.current?.length) {
+        handleViewableItemsChanged({ viewableItems: lastViewableItems.current })
       } else {
         listRef.current?.recordInteraction()
       }
     },
-    [handleViewableItemsChanged, listRef, onIntersectionChange]
+    [handleViewableItemsChanged, onIntersectionChange]
   )
 
   return (
-    <IntersectionObserver onChange={handleIntersectionObserverChange} threshold={0.8} fill={fill}>
+    <IntersectionObserver onChange={handleIntersectionObserverChange}>
       {children({ listRef, handleViewableItemsChanged })}
     </IntersectionObserver>
   )

@@ -1,5 +1,6 @@
 import { useIsFocused } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components/native'
 
@@ -7,7 +8,6 @@ import { ArtistResponse } from 'api/gen'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { ArtistCategoryPlaylistId, asArtistId, asOfferId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -26,10 +26,17 @@ const analyticsFrom = 'artist'
 
 type ArtistCategoryPlaylistProps = {
   artist: ArtistResponse
-  entryId: ArtistCategoryPlaylistId
+  entryId: string
   items: AlgoliaOfferWithArtistAndEan[]
   playlistIndex: number
   title: string
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    artistId: string,
+    playlistIndex?: number
+  ) => void
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
@@ -40,6 +47,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   items,
   playlistIndex,
   title,
+  onViewableItemsChanged,
 }) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
@@ -49,6 +57,11 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   const enableSceneClubTag = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SCENE_CLUB)
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
   const isFocused = useIsFocused()
+
+  const handleArtistOffersViewableItemsChanged = (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+    if (!isFocused) return
+    onViewableItemsChanged(items, entryId, 'offer', artist.id, playlistIndex)
+  }
 
   const navigateToVerticalPlaylist = {
     screen: 'VerticalPlaylistOffers' as const,
@@ -72,20 +85,7 @@ export const ArtistCategoryPlaylist: FunctionComponent<ArtistCategoryPlaylistPro
   }
 
   return (
-    <ObservedPlaylist
-      onItemViewed={({ index, item }) => {
-        if (isFocused) {
-          void analytics.logViewItem({
-            origin: 'artist',
-            playlistIndex,
-            index,
-            type: 'offer',
-            id: asOfferId(item.objectID),
-            playlistId: entryId,
-            originId: asArtistId(artist.id),
-          })
-        }
-      }}>
+    <ObservedPlaylist onViewableItemsChanged={handleArtistOffersViewableItemsChanged}>
       {({ listRef, handleViewableItemsChanged }) => (
         <PassPlaylist
           playlistType={PlaylistType.ARTIST_CATEGORY_PLAYLIST}

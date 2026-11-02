@@ -51,4 +51,11 @@ describe('ConcertsAndFestivalsPlaylists', () => {
 })
 
 const renderConcertsAndFestivals = () =>
-  render(reactQueryProviderHOC(<ConcertsAndFestivalsPlaylists shouldDisplayVenuesPlaylist />))
+  render(
+    reactQueryProviderHOC(
+      <ConcertsAndFestivalsPlaylists
+        shouldDisplayVenuesPlaylist
+        onViewableItemsChanged={jest.fn()}
+      />
+    )
+  )

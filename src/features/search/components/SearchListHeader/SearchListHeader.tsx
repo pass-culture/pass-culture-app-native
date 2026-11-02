@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/native'
 import { SearchResponse } from 'algoliasearch/lite'
 import React from 'react'
-import { ScrollViewProps, View } from 'react-native'
+import { ScrollViewProps, View, ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -15,7 +15,6 @@ import { gridListLayoutActions, useGridListLayout } from 'features/search/store/
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
-import { asSearchId, asVenueId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { locationStore } from 'libs/locationV2/location.store'
@@ -37,6 +36,12 @@ interface SearchListHeaderProps extends ScrollViewProps {
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
   shouldDisplayGridList?: boolean
+  onViewableVenuePlaylistItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -47,10 +52,11 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venuesUserData,
   artistSection,
   shouldDisplayGridList,
+  onViewableVenuePlaylistItemsChanged,
 }) => {
   const { disabilities } = useAccessibilityFiltersContext()
   const {
-    searchState: { venue, offerCategories, searchId },
+    searchState: { venue, offerCategories },
   } = useSearch()
   const isFocused = useIsFocused()
   const { designSystem, contentPage } = useTheme()
@@ -80,7 +86,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   }
 
   const shouldDisplayGeolocationBanner =
-    offerCategories[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
+    offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
@@ -94,6 +100,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     isSelected: selectedGridListLayout === layout,
     onPress: () => onGridListButtonPress(layout),
   })
+
+  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
+      onViewableVenuePlaylistItemsChanged?.(items, 'searchResultsVenuePlaylist', 'venue', 0)
+    },
+    [isFocused, onViewableVenuePlaylistItemsChanged]
+  )
 
   return (
     <View testID="searchListHeader">
@@ -120,19 +134,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       {artistSection}
       {shouldDisplayVenuesPlaylist ? (
         <IOScrollView>
-          <ObservedPlaylist
-            onItemViewed={({ index, item }) => {
-              if (!isFocused || !searchId) return
-              void analytics.logViewItem({
-                origin: 'search',
-                playlistIndex: 0,
-                index: index,
-                type: 'venue',
-                id: asVenueId(item.objectID),
-                playlistId: 'searchResultsVenuePlaylist',
-                originId: asSearchId(searchId),
-              })
-            }}>
+          <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
             {({ listRef, handleViewableItemsChanged }) => (
               <StyledVenuePlaylist
                 venuePlaylistTitle={venuePlaylistTitle}

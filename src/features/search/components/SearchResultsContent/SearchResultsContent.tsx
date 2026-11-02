@@ -21,7 +21,13 @@ import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
-import { GridListLayout, SearchOfferHits, SearchView, VenuesUserData } from 'features/search/types'
+import {
+  GridListLayout,
+  SearchListProps,
+  SearchOfferHits,
+  SearchView,
+  VenuesUserData,
+} from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -36,7 +42,6 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
-import { asOfferId, asSearchId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -50,6 +55,7 @@ import {
 } from 'libs/locationV2/location.store'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
+import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import {
@@ -82,11 +88,13 @@ export type SearchResultsContentProps = {
   userData: SearchResponse<Offer[]>['userData']
   venuesUserData: VenuesUserData
   offerVenues: Venue[]
+  onViewableItemsChanged?: SearchListProps['onViewableVenuePlaylistItemsChanged']
 }
 
 export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   onEndReached,
   onSearchResultsRefresh,
+  onViewableItemsChanged,
   hits,
   nbHits,
   isLoading,
@@ -97,7 +105,17 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 }) => {
   const previousRouteName = usePreviousRouteName()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const searchListRef = useRef<FlashListRef<Offer>>(null)
+  const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
+    FlashListRef<Offer>
+  >({
+    onViewableItemsChanged: (items: Pick<ViewToken, 'key' | 'index'>[]) =>
+      onViewableItemsChanged?.(
+        items,
+        'searchResults',
+        'offer',
+        venuesUserData === undefined ? 0 : 1
+      ),
+  })
   const { designSystem, breakpoints } = useTheme()
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -106,28 +124,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isRefetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
-  const handleViewableItemsChanged = useCallback(
-    ({ changed }: { viewableItems: ViewToken[]; changed: ViewToken[] }) => {
-      if (!isFocused) return
-
-      const playlistIndex = venuesUserData === undefined ? 0 : 1
-      changed
-        .filter((token) => token.isViewable)
-        .forEach(({ key, index }) => {
-          if (!searchState.searchId) return
-          void analytics.logViewItem({
-            origin: 'search',
-            playlistIndex,
-            index: index ?? -1,
-            type: 'offer',
-            id: asOfferId(key),
-            playlistId: 'searchResults',
-            originId: asSearchId(searchState.searchId),
-          })
-        })
-    },
-    [isFocused, searchState.searchId, venuesUserData]
-  )
   const { geolocation: geolocPosition } = useLocationConfiguration(LocationMode.AROUND_ME)
   const selectedLocationMode = useLocationMode()
   const { setLocationMode: setSelectedLocationMode, setPlace } = locationActions
@@ -357,6 +353,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         isGridLayout={isGridLayout}
         shouldDisplayGridList={shouldDisplayGridList}
         onViewableItemsChanged={handleViewableItemsChanged}
+        onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,

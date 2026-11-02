@@ -20,6 +20,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
+import * as usePageTrackingAPI from 'shared/tracking/usePageTracking'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -35,6 +36,13 @@ mockUseNavigation.mockReturnValue({ navigate: mockNavigate })
 const mockUseRoute = useRoute as jest.Mock
 const mockUseIsFocused = useIsFocused as jest.Mock
 mockUseIsFocused.mockReturnValue(true)
+
+const mockTrackViewableItems = jest.fn()
+const usePageTrackingSpy = jest.spyOn(usePageTrackingAPI, 'usePageTracking')
+usePageTrackingSpy.mockReturnValue({
+  trackViewableItems: mockTrackViewableItems,
+  forceSend: jest.fn(),
+})
 
 jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
@@ -363,6 +371,15 @@ describe('VenueMapViewContainer', () => {
         mockUseRoute.mockReturnValue({ name: 'VenueMap' })
       })
 
+      it('should initialize usePageTracking with VenueMap / venue_map', async () => {
+        await renderVenueMapViewContainer()
+
+        expect(usePageTrackingSpy).toHaveBeenCalledWith({
+          pageName: 'VenueMap',
+          pageLocation: 'venue_map',
+        })
+      })
+
       it('should navigate to Venue with from="venueMap" when pressing VenueMapPreview', async () => {
         await renderVenueMapViewContainer()
         await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
@@ -404,6 +421,27 @@ describe('VenueMapViewContainer', () => {
         )
       })
 
+      it('should track viewable items with moduleId="venue_map"', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        const intersectionObserver = await screen.findByTestId('intersectionObserver')
+        const playlist = await screen.findByTestId('venueOfferPlaylist')
+
+        fireEvent(intersectionObserver, 'onChange', true)
+        fireEvent(playlist, 'onViewableItemsChanged', {
+          viewableItems: [{ key: '223342', index: 0 }],
+        })
+
+        expect(mockTrackViewableItems).toHaveBeenCalledWith({
+          moduleId: 'venue_map',
+          itemType: 'offer',
+          viewableItems: [{ key: '223342', index: 0 }],
+          playlistIndex: 0,
+        })
+      })
+
       it('should log ConsultVenue with from="venueMap" when pressing pin and preview is disabled', async () => {
         setFeatureFlags([])
         await renderVenueMapViewContainer()
@@ -421,6 +459,15 @@ describe('VenueMapViewContainer', () => {
     describe('when on SearchMap screen', () => {
       beforeEach(() => {
         mockUseRoute.mockReturnValue({ name: 'SearchMap' })
+      })
+
+      it('should initialize usePageTracking with SearchMap / search_map', async () => {
+        await renderVenueMapViewContainer()
+
+        expect(usePageTrackingSpy).toHaveBeenCalledWith({
+          pageName: 'SearchMap',
+          pageLocation: 'search_map',
+        })
       })
 
       it('should navigate to Venue with from="searchMap" when pressing VenueMapPreview', async () => {
@@ -462,6 +509,27 @@ describe('VenueMapViewContainer', () => {
             from: 'searchMap',
           })
         )
+      })
+
+      it('should track viewable items with moduleId="search_map"', async () => {
+        await renderVenueMapViewContainer()
+        await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+        await pressVenueMarker(venuesFixture[0])
+        const intersectionObserver = await screen.findByTestId('intersectionObserver')
+        const playlist = await screen.findByTestId('venueOfferPlaylist')
+
+        fireEvent(intersectionObserver, 'onChange', true)
+        fireEvent(playlist, 'onViewableItemsChanged', {
+          viewableItems: [{ key: '223342', index: 0 }],
+        })
+
+        expect(mockTrackViewableItems).toHaveBeenCalledWith({
+          moduleId: 'search_map',
+          itemType: 'offer',
+          viewableItems: [{ key: '223342', index: 0 }],
+          playlistIndex: 0,
+        })
       })
 
       it('should log ConsultVenue with from="searchMap" when pressing pin and preview is disabled', async () => {

@@ -258,6 +258,7 @@ const renderVenueOffers = ({
             labelMapping={labelMapping}
             currency={currency}
             euroToPacificFrancRate={euroToPacificFrancRate}
+            onViewableItemsChanged={jest.fn()}
           />
         </OfferCTAProvider>
       </AnchorProvider>

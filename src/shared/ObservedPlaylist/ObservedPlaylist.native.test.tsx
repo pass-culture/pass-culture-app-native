@@ -2,104 +2,113 @@ import React from 'react'
 import { FlatList, Text, View } from 'react-native'
 
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
-import { act, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
+
+jest.mock('shared/analytics/logViewItem', () => ({
+  logPlaylistDebug: jest.fn(),
+}))
 
 const onIntersectionChangeMock = jest.fn()
-const onItemViewedMock = jest.fn()
-
-let observerCallback: IntersectionObserverCallback | undefined
-
-const installIntersectionObserver = () => {
-  observerCallback = undefined
-  globalThis.IntersectionObserver = class {
-    constructor(callback: IntersectionObserverCallback) {
-      observerCallback = callback
-    }
-    observe() {
-      return undefined
-    }
-    unobserve() {
-      return undefined
-    }
-    disconnect() {
-      return undefined
-    }
-    takeRecords() {
-      return []
-    }
-  } as unknown as typeof IntersectionObserver
-}
-
-const emitIntersection = (isIntersecting: boolean) => {
-  act(() => {
-    jest.advanceTimersByTime(300)
-  })
-  act(() => {
-    observerCallback?.(
-      [
-        {
-          isIntersecting,
-          boundingClientRect: { height: 100 },
-          intersectionRect: { height: 100 },
-        } as IntersectionObserverEntry,
-      ],
-      {} as IntersectionObserver
-    )
-  })
-}
-
-const renderPlaylist = (onIntersectionChange?: (inView: boolean) => void) =>
-  render(
-    <ObservedPlaylist onIntersectionChange={onIntersectionChange} onItemViewed={onItemViewedMock}>
-      {({ listRef, handleViewableItemsChanged }) => (
-        <View>
-          <FlatList
-            ref={listRef}
-            data={[]}
-            renderItem={() => null}
-            onViewableItemsChanged={handleViewableItemsChanged}
-          />
-          <Text>Playlist content</Text>
-        </View>
-      )}
-    </ObservedPlaylist>
-  )
+const onViewableItemsChangedMock = jest.fn()
 
 describe('<ObservedPlaylist />', () => {
   beforeEach(() => {
-    jest.useFakeTimers()
     jest.clearAllMocks()
-    installIntersectionObserver()
-  })
-
-  afterEach(() => {
-    jest.useRealTimers()
   })
 
   it('should call onIntersectionChange with true when element becomes visible', () => {
-    renderPlaylist(onIntersectionChangeMock)
+    render(
+      <ObservedPlaylist
+        onIntersectionChange={onIntersectionChangeMock}
+        onViewableItemsChanged={onViewableItemsChangedMock}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <View>
+            <FlatList
+              ref={listRef}
+              data={[]}
+              renderItem={() => null}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+            <Text>Playlist content</Text>
+          </View>
+        )}
+      </ObservedPlaylist>
+    )
 
-    emitIntersection(true)
+    const intersectionObserver = screen.getByTestId('intersectionObserver')
+
+    fireEvent(intersectionObserver, 'onChange', true)
 
     expect(onIntersectionChangeMock).toHaveBeenCalledWith(true)
   })
 
   it('should call onIntersectionChange with false when element is no longer visible', () => {
-    renderPlaylist(onIntersectionChangeMock)
+    render(
+      <ObservedPlaylist
+        onIntersectionChange={onIntersectionChangeMock}
+        onViewableItemsChanged={onViewableItemsChangedMock}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <View>
+            <FlatList
+              ref={listRef}
+              data={[]}
+              renderItem={() => null}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+            <Text>Playlist content</Text>
+          </View>
+        )}
+      </ObservedPlaylist>
+    )
 
-    emitIntersection(false)
+    const intersectionObserver = screen.getByTestId('intersectionObserver')
+
+    fireEvent(intersectionObserver, 'onChange', false)
 
     expect(onIntersectionChangeMock).toHaveBeenCalledWith(false)
   })
 
   it('should work without onIntersectionChange prop', () => {
-    renderPlaylist()
+    render(
+      <ObservedPlaylist onViewableItemsChanged={onViewableItemsChangedMock}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <View>
+            <FlatList
+              ref={listRef}
+              data={[]}
+              renderItem={() => null}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+            <Text>Playlist content</Text>
+          </View>
+        )}
+      </ObservedPlaylist>
+    )
 
-    expect(() => emitIntersection(true)).not.toThrow()
+    const intersectionObserver = screen.getByTestId('intersectionObserver')
+
+    // Should not throw when onChange is called without onIntersectionChange prop
+    expect(() => fireEvent(intersectionObserver, 'onChange', true)).not.toThrow()
   })
 
   it('should render children correctly', () => {
-    renderPlaylist(onIntersectionChangeMock)
+    render(
+      <ObservedPlaylist
+        onIntersectionChange={onIntersectionChangeMock}
+        onViewableItemsChanged={onViewableItemsChangedMock}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <View>
+            <FlatList
+              ref={listRef}
+              data={[]}
+              renderItem={() => null}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+            <Text>Playlist content</Text>
+          </View>
+        )}
+      </ObservedPlaylist>
+    )
 
     expect(screen.getByText('Playlist content')).toBeOnTheScreen()
   })
