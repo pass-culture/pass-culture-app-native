@@ -11,7 +11,7 @@ import { getCinemaScreeningCardDisabledReason } from './getCinemaScreeningCardDi
 import { getCinemaScreeningFeaturesProps } from './getCinemaScreeningFeaturesProps'
 import { CinemaScreeningCardProps } from './types'
 
-type Params = {
+type Props = {
   screening: StockResponse
   offerVenueId: number
   onSelectScreening: (bookingData: MovieScreeningBookingData) => void
@@ -31,7 +31,7 @@ export const mapStockToCinemaScreeningCardProps = ({
   onPressOfferCTA,
   movieScreeningUserData,
   isExternalBookingsDisabled,
-}: Params): CinemaScreeningCardProps | undefined => {
+}: Props): CinemaScreeningCardProps | undefined => {
   if (!screening.beginningDatetime) {
     return undefined
   }

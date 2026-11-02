@@ -17,10 +17,8 @@ import {
   getListToDisplay,
   hasReachedEnd,
 } from 'features/offer/helpers/expandableList'
-import {
-  getDaysWithNoScreenings,
-  useGetSpecialEventVenuesByDay,
-} from 'features/offer/helpers/useGetVenueByDay/useGetSpecialEventVenuesByDay'
+import { getSpecialEventDaysWithNoScreenings } from 'features/offer/helpers/getDaysWithNoScreenings'
+import { useGetSpecialEventVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetSpecialEventVenuesByDay'
 import { useOffersStocksFromOfferSpecialEventQuery } from 'features/offer/queries/useOffersStocksFromOfferSpecialEventQuery'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
@@ -47,7 +45,7 @@ export const SpecialEventOfferCineContent: FC<Props> = ({ offer, onSeeVenuePress
   const displayedLen =
     displayState.selectedDateKey === selectedDateKey ? displayState.displayedLen : INITIAL_LIST_SIZE
 
-  const disabledDates = getDaysWithNoScreenings(offers.offers, dates)
+  const disabledDates = getSpecialEventDaysWithNoScreenings(offers.offers, dates)
 
   useDisplayCalendar(!hasStocksOnlyAfter15Days)
   useDisableCalendarDates(disabledDates)
@@ -59,7 +57,7 @@ export const SpecialEventOfferCineContent: FC<Props> = ({ offer, onSeeVenuePress
         isLoading={isLoading}
         skeletonListLength={3}
         renderSkeleton={() => <CineBlockSkeleton />}
-        keyExtractor={(item, index) => `${item.offer.id}-${index}`}
+        keyExtractor={(item, index) => `${item?.offer?.id}-${index}`}
         renderItem={({ item }) => (
           <SpecialEventCineBlock
             offer={item.offer}

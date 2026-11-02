@@ -1,6 +1,6 @@
 import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 
-type GetEventCardStatusParams = {
+type Props = {
   features: string[]
   isExternalBookingsDisabled: boolean
   isScreeningSoldOut: boolean
@@ -26,7 +26,7 @@ export const getEventCardStatus = ({
   hasBookedOffer,
   isUserEligible,
   hasNotCompletedSubscriptionYet,
-}: GetEventCardStatusParams) => {
+}: Props) => {
   if (isExternalBookingsDisabled) {
     return { isDisabled: true, subtitleLeft: EventCardSubtitleEnum.UNAVAILABLE }
   }

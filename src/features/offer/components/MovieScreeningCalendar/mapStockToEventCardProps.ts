@@ -10,7 +10,7 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
-type MapStockToEventCardPropsParams = {
+type Props = {
   screening: OfferStockResponse
   offerVenueId: number
   onSelectScreening: (bookingData: MovieScreeningBookingData) => void
@@ -30,7 +30,7 @@ export const mapStockToEventCardProps = ({
   onPressOfferCTA,
   movieScreeningUserData,
   isExternalBookingsDisabled = false,
-}: MapStockToEventCardPropsParams): EventCardProps | undefined => {
+}: Props): EventCardProps | undefined => {
   const { beginningDatetime, isSoldOut: isScreeningSoldOut } = screening
 
   if (!beginningDatetime) return undefined
