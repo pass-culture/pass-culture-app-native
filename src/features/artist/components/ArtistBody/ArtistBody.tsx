@@ -14,6 +14,8 @@ import {
   ArtistModuleItem,
   getArtistModuleDataByIndex,
 } from 'features/artist/helpers/getArtistModuleDataByIndex'
+import { FavoriteType } from 'features/favorites/enum'
+import { useArtistFavorite } from 'features/favorites/hooks/useArtistFavorite'
 import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
@@ -32,10 +34,13 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
+import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
+import { useRemoveArtistFavoriteMutation } from 'queries/favorites/useRemoveArtistFavoriteMutation'
 import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -43,6 +48,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Share } from 'ui/svg/icons/Share'
@@ -94,6 +100,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
+  const enableFavoriteButton = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
 
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -130,6 +137,19 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const isFocused = useIsFocused()
 
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddArtistFavoriteMutation({
+    type: FavoriteType.ARTIST,
+  })
+
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
+    useRemoveArtistFavoriteMutation({
+      onError: () => {
+        showErrorSnackBar('L’artiste n’a pas été retiré de tes favoris')
+      },
+    })
+
+  const favorite = useArtistFavorite({ artistId: artist.id })
+
   const pressShareArtist = () => {
     void analytics.logShare({
       type: 'Artist',
@@ -148,6 +168,22 @@ export const ArtistBody: FunctionComponent<Props> = ({
     onViewableItemsChanged(items, `artistPage${artistPlaylistModule.id}`, 'offer', artist.id)
   }
 
+  const RightElementHeader = (
+    <RightElementContainer gap={4}>
+      {enableFavoriteButton ? (
+        <FavoriteButton
+          favorite={favorite}
+          isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+          removeFavorite={removeFavorite}
+          addFavorite={addFavorite}
+          artistId={artist.id}
+          isAddFavoriteLoading={isAddFavoriteLoading}
+        />
+      ) : null}
+      {ShareButton({ onPress: pressShareArtist })}
+    </RightElementContainer>
+  )
+
   return (
     <Page>
       <WebMetaHeader title={name} />
@@ -157,7 +193,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
-          RightElement={ShareButton({ onPress: pressShareArtist })}
+          RightElement={RightElementHeader}
         />
       ) : null}
 
@@ -249,7 +285,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
-          RightElement={ShareButton({ onPress: pressShareArtist })}
+          RightElement={RightElementHeader}
         />
       )}
       {shareContent ? (
@@ -278,3 +314,7 @@ const Credit = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.m,
   color: theme.designSystem.color.text.subtle,
 }))
+
+const RightElementContainer = styled(ViewGap)({
+  flexDirection: 'row',
+})

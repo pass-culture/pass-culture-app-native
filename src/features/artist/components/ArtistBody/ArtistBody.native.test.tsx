@@ -3,13 +3,23 @@ import React from 'react'
 import { Share } from 'react-native'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum } from 'api/gen'
+import { api } from 'api/api'
+import {
+  FavoriteArtistResponse,
+  PaginatedResponseFavoriteArtistResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
+import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
+import * as useArtistFavorite from 'features/favorites/hooks/useArtistFavorite'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import { Color, HomepageModuleType } from 'features/home/types'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { UserProfile } from 'features/share/types'
+import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -19,9 +29,10 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { cleanup, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
@@ -54,6 +65,14 @@ jest.mock('features/home/queries/useGetOffersDataQuery', () => ({
   useGetOffersDataQuery: jest.fn(),
 }))
 
+const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesArtistsfavoriteId')
+const spyApiPostFavorite = jest.spyOn(api, 'postNativeV2MeFavoritesArtists')
+
+jest.mock('libs/jwt/jwt')
+jest.mock('features/auth/context/AuthContext')
+
+const useFavoriteSpy = jest.spyOn(useArtistFavorite, 'useArtistFavorite')
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -63,7 +82,17 @@ describe('<ArtistBody />', () => {
     setFeatureFlags()
     await AsyncStorage.clear()
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.postApi<FavoriteArtistResponse>(`/v2/me/favorites/artists`, {
+      responseOptions: { statusCode: 200, data: favoriteArtistResponseSnap },
+    })
+    useFavoriteSpy.mockReturnValue(favoriteArtistResponseSnap)
+    mockServer.getApi<UserProfile>(`/v1/me`, beneficiaryUser)
+    spyApiDeleteFavorite.mockResolvedValue({})
+    spyApiPostFavorite.mockResolvedValue(favoriteArtistResponseSnap)
+    mockAuthContextWithoutUser()
   })
+
+  afterEach(cleanup)
 
   it('should display only the main artist when there are several artists on header title', async () => {
     render(
@@ -466,6 +495,122 @@ describe('<ArtistBody />', () => {
     )
 
     expect(await screen.findByText('Son incroyable discographie')).toBeOnTheScreen()
+  })
+
+  describe('Favorite button', () => {
+    describe('When wipFavoritesHub FF activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+      })
+
+      describe('When artist is in favorites', () => {
+        const expectedFavoriteId = paginatedArtistFavoritesResponseSnap.favorites[0].id
+
+        beforeEach(() => {
+          mockServer.getApi<PaginatedResponseFavoriteArtistResponse>(
+            `/v2/me/favorites/artists`,
+            paginatedArtistFavoritesResponseSnap
+          )
+          mockAuthContextWithUser(beneficiaryUser)
+        })
+
+        it('should remove favorite when press on favorite', async () => {
+          render(
+            reactQueryProviderHOC(
+              <ArtistBody
+                artist={mockArtist}
+                artistPlaylist={[]}
+                artistTopOffers={[]}
+                onViewableItemsChanged={jest.fn()}
+                onExpandBioPress={jest.fn()}
+              />
+            )
+          )
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          await waitFor(() => {
+            expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
+          })
+        })
+
+        it('should display snackbar when remove favorite fails', async () => {
+          spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
+
+          render(
+            reactQueryProviderHOC(
+              <ArtistBody
+                artist={mockArtist}
+                artistPlaylist={[]}
+                artistTopOffers={[]}
+                onViewableItemsChanged={jest.fn()}
+                onExpandBioPress={jest.fn()}
+              />
+            )
+          )
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          expect(
+            await screen.findByText('L’artiste n’a pas été retiré de tes favoris')
+          ).toBeOnTheScreen()
+          expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+          expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
+        })
+      })
+
+      describe('When artist is not in favorites', () => {
+        beforeEach(() => {
+          useFavoriteSpy.mockReturnValue(null)
+          mockAuthContextWithUser(beneficiaryUser)
+        })
+
+        it('should add favorite when press on favorite', async () => {
+          render(
+            reactQueryProviderHOC(
+              <ArtistBody
+                artist={mockArtist}
+                artistPlaylist={[]}
+                artistTopOffers={[]}
+                onViewableItemsChanged={jest.fn()}
+                onExpandBioPress={jest.fn()}
+              />
+            )
+          )
+
+          const button = await screen.findByLabelText('Mettre en favori')
+          await user.press(button)
+
+          await waitFor(() => {
+            expect(spyApiPostFavorite).toHaveBeenCalledWith({ artistId: mockArtist.id })
+          })
+        })
+      })
+    })
+
+    describe('When wipFavoritesHub FF deactivated', () => {
+      it('should not display favorite button', async () => {
+        mockAuthContextWithUser(beneficiaryUser)
+        render(
+          reactQueryProviderHOC(
+            <ArtistBody
+              artist={mockArtist}
+              artistPlaylist={[]}
+              artistTopOffers={[]}
+              onViewableItemsChanged={jest.fn()}
+              onExpandBioPress={jest.fn()}
+            />
+          )
+        )
+
+        await screen.findAllByText('Avril Lavigne')
+
+        expect(screen.queryByLabelText('Mettre en favori')).not.toBeOnTheScreen()
+        expect(screen.queryByLabelText('Retirer des favoris')).not.toBeOnTheScreen()
+      })
+    })
   })
 })
 

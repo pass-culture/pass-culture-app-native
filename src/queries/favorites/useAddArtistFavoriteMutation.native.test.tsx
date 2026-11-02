@@ -1,19 +1,19 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteArtistResponse } from 'api/gen'
+import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteType } from 'features/favorites/enum'
-import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import * as firstFavoriteModule from 'features/favorites/helpers/firstFavoriteSnackBar'
-import { simulateBackend } from 'features/favorites/tests/simulateBackend'
+import { simulateBackendForArtist } from 'features/favorites/tests/simulateBackendForArtist'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
 import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
-
-import { useAddFavoriteMutation } from './useAddFavoriteMutation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
@@ -24,16 +24,16 @@ const mockTriggerFirstFavoriteSnackBar = jest.spyOn(
   'triggerFirstFavoriteSnackBar'
 )
 
-const offerId = 116656
+const artistId = mockArtist.id
 
-describe('useAddFavoriteMutation', () => {
+describe('useAddArtistMutation', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
   it('should add favorite', async () => {
-    simulateBackend({
-      id: offerId,
+    simulateBackendForArtist({
+      id: artistId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
@@ -43,23 +43,17 @@ describe('useAddFavoriteMutation', () => {
 
     expect(result.current.isPending).toBeFalsy()
 
-    result.current.mutate({ offerId })
+    result.current.mutate({ artistId })
 
     await waitFor(() => {
-      expect(onSuccess).toHaveBeenCalledWith({
-        ...favoriteResponseSnap,
-        offer: {
-          ...favoriteResponseSnap.offer,
-          date: favoriteResponseSnap.offer.date,
-        },
-      })
+      expect(onSuccess).toHaveBeenCalledWith(favoriteArtistResponseSnap)
     })
   })
 
   it('should trigger first favorite snack bar function when wipFavoritesHub FF activated', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
-    simulateBackend({
-      id: offerId,
+    simulateBackendForArtist({
+      id: artistId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
@@ -67,16 +61,16 @@ describe('useAddFavoriteMutation', () => {
 
     expect(result.current.isPending).toBeFalsy()
 
-    result.current.mutate({ offerId })
+    result.current.mutate({ artistId })
 
     await waitFor(() => {
-      expect(mockTriggerFirstFavoriteSnackBar).toHaveBeenCalledWith(FavoriteType.OFFER)
+      expect(mockTriggerFirstFavoriteSnackBar).toHaveBeenCalledWith(FavoriteType.ARTIST)
     })
   })
 
   it('should not trigger first favorite snack bar function when wipFavoritesHub FF deactivated', async () => {
-    simulateBackend({
-      id: offerId,
+    simulateBackendForArtist({
+      id: artistId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
@@ -84,7 +78,7 @@ describe('useAddFavoriteMutation', () => {
 
     expect(result.current.isPending).toBeFalsy()
 
-    result.current.mutate({ offerId })
+    result.current.mutate({ artistId })
 
     await waitFor(() => {
       expect(mockTriggerFirstFavoriteSnackBar).not.toHaveBeenCalled()
@@ -92,8 +86,8 @@ describe('useAddFavoriteMutation', () => {
   })
 
   it('should show snack bar when fail to add favorite', async () => {
-    simulateBackend({
-      id: offerId,
+    simulateBackendForArtist({
+      id: artistId,
       hasAddFavoriteError: true,
       hasRemoveFavoriteError: false,
     })
@@ -101,19 +95,19 @@ describe('useAddFavoriteMutation', () => {
 
     expect(result.current.isPending).toBeFalsy()
 
-    result.current.mutate({ offerId })
+    result.current.mutate({ artistId })
 
     await waitFor(() => {
       expect(mockSnackBarOpen).toHaveBeenCalledWith(
-        'L’offre n’a pas été ajoutée à tes favoris',
+        'L’artiste n’a pas été ajouté à tes favoris',
         'error'
       )
     })
   })
 
   it('should show snack bar when too many favorites when trying to add favorite', async () => {
-    simulateBackend({
-      id: offerId,
+    simulateBackendForArtist({
+      id: artistId,
       hasAddFavoriteError: false,
       hasTooManyFavorites: true,
       hasRemoveFavoriteError: false,
@@ -122,7 +116,7 @@ describe('useAddFavoriteMutation', () => {
 
     expect(result.current.isPending).toBeFalsy()
 
-    result.current.mutate({ offerId })
+    result.current.mutate({ artistId })
 
     await waitFor(() => {
       expect(mockSnackBarOpen).toHaveBeenCalledWith(
@@ -133,9 +127,9 @@ describe('useAddFavoriteMutation', () => {
   })
 })
 
-const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
+const renderUseAddFavorite = (onSuccess?: (data?: FavoriteArtistResponse | undefined) => void) => {
   const { result } = renderHook(
-    () => useAddFavoriteMutation({ type: FavoriteType.OFFER, onSuccess }),
+    () => useAddArtistFavoriteMutation({ type: FavoriteType.ARTIST, onSuccess }),
     {
       wrapper: (props) =>
         reactQueryProviderHOC(

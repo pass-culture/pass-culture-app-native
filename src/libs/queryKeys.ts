@@ -20,6 +20,7 @@ export enum QueryKeys {
   EMAIL_VALIDATION_REMAINING_ATTEMPTS = 'emailValidationRemainingAttempts',
   EMAIL_UPDATE_STATUS_V2 = 'emailUpdateStatusV2',
   ERROR_ASYNC = 'errorAsync',
+  FAVORITES_ARTIST = 'favoritesArtist',
   FAVORITES_OFFER = 'favoritesOffer',
   FEATURE_FLAGS = 'featureFlags',
   FILMS_OFFERS = 'filmsOffers',
