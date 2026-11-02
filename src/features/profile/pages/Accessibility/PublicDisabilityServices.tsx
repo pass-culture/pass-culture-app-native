@@ -8,6 +8,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { LogoAccesLibre } from 'ui/svg/LogoAccesLibre'
 import { LogoAidantConnect } from 'ui/svg/LogoAidantConnect'
 import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
+import { LogoCultureRelax } from 'ui/svg/LogoCultureRelax'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { LogoMonParcoursHandicap } from 'ui/svg/LogoMonParcoursHandicap'
 import { Typo } from 'ui/theme'
@@ -30,7 +31,7 @@ const PUBLIC_SERVICES: PublicService[] = [
   {
     name: 'Aidant connect',
     url: 'https://aidantsconnect.beta.gouv.fr/',
-    description: 'Accompagnez vos usagers en toute sécurité',
+    description: 'Accompagnez vos usagers en toute sécurité.',
     illustration: <LogoAidantConnect />,
   },
   {
@@ -52,6 +53,12 @@ const PUBLIC_SERVICES: PublicService[] = [
     description: 'Catalogue de films disponibles en version audiodécrite.',
     illustration: <LogoAudioDescription />,
   },
+  {
+    name: 'Culture Relax',
+    url: 'https://culture-relax.org/',
+    description: 'Trouver des sorties culturelles inclusives et accessibles à tous.',
+    illustration: <LogoCultureRelax />,
+  },
 ]
 
 export const PublicDisabilityServices = () => {
@@ -59,13 +66,13 @@ export const PublicDisabilityServices = () => {
 
   return (
     <PageWithHeader
-      title="Outils et services publics"
+      title="Services et partenaires"
       scrollChildren={
         <ViewGap gap={5}>
           <Typo.Title3 {...setTextSemantic('h2')}>Des services pensés pour toi</Typo.Title3>
           <Typo.Body>
-            Retrouve ici les outils et services publics pensés pour t’accompagner et rendre la
-            société plus accessible à tous.
+            Retrouve ici les plateformes publiques et services pensées pour t’accompagner et rendre
+            la société plus accessible à tous.
           </Typo.Body>
           <VerticalUl gap={4}>
             {sortedServices.map((service) => (

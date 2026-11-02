@@ -22,6 +22,7 @@ describe('<PublicDisabilityServices />', () => {
     ${'https://accessibilite.numerique.gouv.fr/'}  | ${'AccesLibre'}
     ${'https://aidantsconnect.beta.gouv.fr/'}      | ${'Aidant connect'}
     ${'https://aides.beta.numerique.gouv.fr/'}     | ${'Aides simplifiées'}
+    ${'https://culture-relax.org/'}                | ${'Culture Relax'}
     ${'https://www.monparcourshandicap.gouv.fr/'}  | ${'Mon parcours handicap'}
     ${'https://audiodescription.culture.gouv.fr/'} | ${'Portail de l’audiodescription'}
   `('should open $url when $name is clicked', async ({ url, name }) => {
