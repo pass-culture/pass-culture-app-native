@@ -35,7 +35,7 @@ export const SearchLanding = () => {
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, dispatch, searchState } = useSearch()
 
-  const resetSearchFiltersOnLanding = () => {
+  const resetSearchFiltersOnLanding = useCallback(() => {
     dispatch({
       type: 'SET_STATE',
       payload: {
@@ -43,7 +43,7 @@ export const SearchLanding = () => {
         locationFilter: searchState.locationFilter,
       },
     })
-  }
+  }, [dispatch, searchState.locationFilter])
 
   useFocusEffect(resetSearchFiltersOnLanding)
 
