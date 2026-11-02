@@ -92,4 +92,14 @@ describe('Adjust', () => {
       expect(AdjustMock.trackMeasurementConsent).toHaveBeenCalledTimes(0)
     })
   })
+
+  describe('processDeeplink', () => {
+    it('Send the link to Adjust sdk', () => {
+      Adjust.processDeeplink('https://passculture.go.link/accueil-thematique?homeId=fakeEntryId')
+
+      expect(AdjustMock.processDeeplink).toHaveBeenCalledWith({
+        deeplink: 'https://passculture.go.link/accueil-thematique?homeId=fakeEntryId',
+      })
+    })
+  })
 })

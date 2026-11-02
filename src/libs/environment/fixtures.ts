@@ -5,6 +5,7 @@ export const env: Environment = {
   ACCESSIBILITY_PLAN: 'https://passculture.accessibility_plan',
   ACCESSIBILITY: 'https://passculture.accessibility',
   ADJUST_APP_TOKEN: 'adjustAppToken',
+  ADJUST_LINK_DOMAIN: 'passculturestaging.go.link',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_ARTISTS_INDEX_NAME: 'algoliaArtistsIndexName',
   ALGOLIA_CINE_CLUB_OFFERS_INDEX_NAME: 'algoliaCineClubOffersIndexName',

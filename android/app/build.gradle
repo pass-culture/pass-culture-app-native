@@ -128,6 +128,7 @@ android {
         manifestPlaceholders = [
             GOOGLE_MAPS_API_PUBLIC_KEY: project.env.get("GOOGLE_MAPS_API_PUBLIC_KEY"), // env variable in the Manifest.xml
             DEEPLINK_SCHEME: project.env.get("URL_PREFIX"),
+            ADJUST_LINK_DOMAIN: project.env.get("ADJUST_LINK_DOMAIN"),
         ]
     }
 
