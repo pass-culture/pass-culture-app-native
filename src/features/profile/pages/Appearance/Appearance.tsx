@@ -67,11 +67,8 @@ export const Appearance = () => {
     },
   ]
 
-  const currentSelectionLabel =
-    themeOptions.find((option) => option.value === selectedTheme)?.label ?? ''
-
-  const handleSelectTheme = (label: string) => {
-    const next = themeOptions.find((option) => option.label === label)
+  const handleSelectTheme = (themeKey: string) => {
+    const next = themeOptions.find((option) => option.key === themeKey)
     if (!next) return
     if (next.value === selectedTheme) return
 
@@ -83,7 +80,7 @@ export const Appearance = () => {
     void analytics.logUpdateAppTheme({ themeSetting, systemTheme, platform: Platform.OS })
   }
 
-  const handleGroupChange = (label: string) => handleSelectTheme(label)
+  const handleGroupChange = (themeKey: string) => handleSelectTheme(themeKey)
 
   return (
     <PageWithHeader
@@ -107,7 +104,7 @@ export const Appearance = () => {
             <RadioButtonGroup
               label={radioGroupLabel}
               options={themeOptions}
-              value={currentSelectionLabel}
+              value={selectedTheme}
               onChange={handleGroupChange}
               variant="detailed"
               display="vertical"

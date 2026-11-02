@@ -64,18 +64,12 @@ export const VenueSelectionList = ({
     [items, isSharingLocation]
   )
 
-  const handleValueChange = (label: string) => {
-    const item = items.find((i) => i.title === label)
+  const handleValueChange = (offerId: string) => {
+    const item = items.find((i) => i.offerId.toString() === offerId)
     if (item) {
       onItemSelect(item.offerId, item.venueId)
     }
   }
-
-  const selectedLabel = useMemo(() => {
-    if (selectedItem === undefined) return ''
-    const item = items.find((i) => i.offerId === selectedItem)
-    return item?.title ?? ''
-  }, [selectedItem, items])
 
   return (
     <Container style={{ paddingHorizontal: modal.spacing.MD }} {...props}>
@@ -94,7 +88,7 @@ export const VenueSelectionList = ({
         description={headerMessage}
         options={options}
         variant="detailed"
-        value={selectedLabel}
+        value={selectedItem === undefined ? '' : selectedItem.toString()}
         onChange={handleValueChange}
         flatListProps={{
           onEndReached: autoScrollEnabled ? onEndReached : undefined,

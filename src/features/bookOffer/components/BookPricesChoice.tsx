@@ -13,7 +13,6 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
-import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
 type Props = {
   stocks: OfferStockResponse[]
@@ -36,8 +35,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
 
   const filteredStocks = getStockSortedByPriceFromHour(stocks, selectedHour)
   const radioGroupLabel = 'Prix'
-  const selectedStock = filteredStocks.find((stock) => stock.id === bookingState.stockId)
-  const options: Array<RadioButtonGroupOption> = filteredStocks.map((stock) => {
+  const options = filteredStocks.map((stock) => {
     const priceWording = formatCurrencyFromCents(stock.price, currency, euroToPacificFrancRate)
     const statusWording = getPriceWording(stock, offerCredit)
     return {
@@ -48,8 +46,8 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
     }
   })
 
-  const handleChange = (selectedLabel: string) => {
-    const stock = filteredStocks.find((stock) => stock.priceCategoryLabel === selectedLabel)
+  const handleChange = (selectedKey: string) => {
+    const stock = filteredStocks.find(({ id }) => id.toString() === selectedKey)
     if (!stock) return
     selectStock(stock.id)
   }
@@ -60,7 +58,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
         label={radioGroupLabel}
         labelVariant="title3"
         options={options}
-        value={selectedStock?.priceCategoryLabel ?? ''}
+        value={bookingState.stockId?.toString() ?? ''}
         onChange={handleChange}
         variant="detailed"
         display="vertical"

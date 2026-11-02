@@ -30,7 +30,7 @@ export const useRadioButtonGroupNavigation = ({
   const highestMeasuredIndex = useRef(-1)
   const retryTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const enabledOptions = disabled ? [] : options.filter((option) => !option.disabled)
-  const entryOption = enabledOptions.find((option) => option.label === value) ?? enabledOptions[0]
+  const entryOption = enabledOptions.find((option) => option.key === value) ?? enabledOptions[0]
   const entryKey = entryOption?.key
   const getRadioId = useCallback((key: string) => `${id}-${encodeURIComponent(key)}`, [id])
 
@@ -108,7 +108,7 @@ export const useRadioButtonGroupNavigation = ({
         pendingFocus.current = null
         clearTimeout(retryTimer.current)
         radio.focus()
-        if (pending.select && option.label !== value) onChange(option.label)
+        if (pending.select && option.key !== value) onChange(option.key)
         return true
       }
 

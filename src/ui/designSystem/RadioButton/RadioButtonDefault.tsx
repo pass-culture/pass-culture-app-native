@@ -25,6 +25,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 export const RadioButtonDefault = ({
   label,
+  selectionValue,
   disabled,
   error,
   value,
@@ -34,11 +35,12 @@ export const RadioButtonDefault = ({
   id,
   tabIndex,
 }: DefaultRadioProps & { accessibilityLabel?: string }) => {
-  const selected = value === label
+  const optionValue = selectionValue ?? label
+  const selected = value === optionValue
   const hoverProps = useHandleHover()
   const onToggle = useCallback(() => {
-    setValue(selected ? '' : label)
-  }, [selected, label, setValue])
+    setValue(selected ? '' : optionValue)
+  }, [selected, optionValue, setValue])
   const radioState = {
     selected: error ? false : selected,
     error: error ?? false,

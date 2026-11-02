@@ -47,7 +47,7 @@ const ControlledGroup = ({ value = '', ...props }: Partial<Props>) => {
 
 describe.each(['default', 'detailed'] as const)('RadioButtonGroup %s on web', (variant) => {
   it('exposes a named group and radio states without repeating their state in the name', async () => {
-    const { container } = render(<ControlledGroup variant={variant} value="Second" />)
+    const { container } = render(<ControlledGroup variant={variant} value="second" />)
 
     const group = screen.getByRole('radiogroup', { name: 'Choices' })
 
@@ -58,7 +58,7 @@ describe.each(['default', 'detailed'] as const)('RadioButtonGroup %s on web', (v
 
   it('enters on the selection and leaves with a single Tab in either direction', async () => {
     const user = await userEvent.setup()
-    render(<ControlledGroup variant={variant} value="Second" />)
+    render(<ControlledGroup variant={variant} value="second" />)
 
     await user.tab()
 
@@ -88,7 +88,7 @@ describe.each(['default', 'detailed'] as const)('RadioButtonGroup %s on web', (v
     ['ArrowUp', 'Third'],
   ])('moves and selects with %s, including wrapping', async (key, name) => {
     const user = await userEvent.setup()
-    render(<ControlledGroup variant={variant} value="First" />)
+    render(<ControlledGroup variant={variant} value="first" />)
     await user.tab()
     await user.tab()
 
@@ -122,7 +122,7 @@ describe.each(['default', 'detailed'] as const)('RadioButtonGroup %s on web', (v
     render(
       <ControlledGroup
         variant={variant}
-        value="Second"
+        value="second"
         options={options.map((option) => ({ ...option, disabled: option.key === 'second' }))}
       />
     )
@@ -192,7 +192,7 @@ describe('RadioButtonGroup integration', () => {
   it('keeps focus independent from a selection awaiting acceptance', async () => {
     const user = await userEvent.setup()
     const { rerender } = render(
-      <RadioButtonGroup label="Choices" options={options} value="First" onChange={onChange} />
+      <RadioButtonGroup label="Choices" options={options} value="first" onChange={onChange} />
     )
     await user.tab()
     await user.keyboard('[ArrowRight]')
@@ -202,11 +202,11 @@ describe('RadioButtonGroup integration', () => {
 
     await user.keyboard('[ArrowRight]')
 
-    expect(onChange).toHaveBeenLastCalledWith('Third')
+    expect(onChange).toHaveBeenLastCalledWith('third')
     expect(screen.getByRole('radio', { name: 'Third' })).toHaveFocus()
 
     rerender(
-      <RadioButtonGroup label="Choices" options={options} value="Third" onChange={onChange} />
+      <RadioButtonGroup label="Choices" options={options} value="third" onChange={onChange} />
     )
 
     expect(screen.getByRole('radio', { name: 'Third' })).toBeChecked()
@@ -217,7 +217,7 @@ describe('RadioButtonGroup integration', () => {
     const user = await userEvent.setup()
     render(
       <React.Fragment>
-        <RadioButtonGroup label="Choices" options={options} value="First" onChange={onChange} />
+        <RadioButtonGroup label="Choices" options={options} value="first" onChange={onChange} />
         <button aria-label="After" />
       </React.Fragment>
     )
@@ -235,13 +235,13 @@ describe('RadioButtonGroup integration', () => {
   it('updates the entry when options and the controlled value change', async () => {
     const user = await userEvent.setup()
     const { rerender } = render(
-      <RadioButtonGroup label="Choices" options={options} value="Second" onChange={onChange} />
+      <RadioButtonGroup label="Choices" options={options} value="second" onChange={onChange} />
     )
     rerender(
       <RadioButtonGroup
         label="Choices"
         options={[{ key: 'new', label: 'New' }, ...options.slice(0, 1)]}
-        value="Second"
+        value="second"
         onChange={onChange}
       />
     )
@@ -281,7 +281,7 @@ describe('RadioButtonGroup integration', () => {
     render(
       <ControlledGroup
         variant="detailed"
-        value="First"
+        value="first"
         options={[
           {
             key: 'first',
@@ -311,7 +311,7 @@ describe('RadioButtonGroup integration', () => {
     await user.keyboard('[ArrowRight]')
 
     expect(onChange).toHaveBeenCalledTimes(1)
-    expect(onChange).toHaveBeenCalledWith('Second')
+    expect(onChange).toHaveBeenCalledWith('second')
     expect(
       within(screen.getByRole('radiogroup', { name: 'Nested' })).getByRole('radio', {
         name: 'Second - Description',
@@ -339,10 +339,10 @@ describe('RadioButtonGroup integration', () => {
   it('uses the new external selection when entering from outside', async () => {
     const user = await userEvent.setup()
     const { rerender } = render(
-      <RadioButtonGroup label="Choices" options={options} value="First" onChange={onChange} />
+      <RadioButtonGroup label="Choices" options={options} value="first" onChange={onChange} />
     )
     rerender(
-      <RadioButtonGroup label="Choices" options={options} value="Third" onChange={onChange} />
+      <RadioButtonGroup label="Choices" options={options} value="third" onChange={onChange} />
     )
     await user.tab()
 

@@ -8,9 +8,7 @@ import {
   buildRadioOptions,
   CategoriesMapping,
   checkHasChildrenCategories,
-  getLabelForValue,
   getSortedCategoriesEntries,
-  getValueForLabel,
   toRadioButtonGroupOptions,
 } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
@@ -56,15 +54,16 @@ export function CategoriesSection<
 
   if (!hasChildren) {
     const radioOptions = buildRadioOptions<N>(entries, allLabel, allValue)
+    const selectedKey = radioOptions.find((option) => option.value === value)?.key ?? ''
 
     return (
       <RadioButtonGroup
         label="Sélectionne une option"
-        value={getLabelForValue(radioOptions, value)}
-        onChange={(newLabel) => {
-          const selectedValue = getValueForLabel(radioOptions, newLabel)
-          if (selectedValue === undefined) return
-          onSelect(selectedValue)
+        value={selectedKey}
+        onChange={(nextKey) => {
+          const selectedOption = radioOptions.find((option) => option.key === nextKey)
+          if (!selectedOption) return
+          onSelect(selectedOption.value)
         }}
         variant="default"
         display="vertical"

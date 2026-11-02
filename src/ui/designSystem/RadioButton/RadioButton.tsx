@@ -11,6 +11,7 @@ import { BaseRadioProps } from 'ui/designSystem/RadioButton/types'
 
 export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   label,
+  selectionValue,
   disabled = false,
   error = false,
   value,
@@ -27,6 +28,7 @@ export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   variant === 'detailed' ? (
     <RadioButtonDetailed
       label={label}
+      selectionValue={selectionValue}
       disabled={disabled}
       error={error}
       value={value}
@@ -43,6 +45,7 @@ export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   ) : (
     <RadioButtonDefault
       label={label}
+      selectionValue={selectionValue}
       disabled={disabled}
       error={error}
       value={value}
