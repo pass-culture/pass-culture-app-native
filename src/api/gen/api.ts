@@ -2093,6 +2093,38 @@ export interface ExternalBookingResponseV2 {
 }
 /**
  * @export
+ * @interface FavoriteArtistRequest
+ */
+export interface FavoriteArtistRequest {
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistRequest
+   */
+  artistId: string
+}
+/**
+ * @export
+ * @interface FavoriteArtistResponse
+ */
+export interface FavoriteArtistResponse {
+  /**
+   * @type {ArtistResponse}
+   * @memberof FavoriteArtistResponse
+   */
+  artist: ArtistResponse
+  /**
+   * @type {number}
+   * @memberof FavoriteArtistResponse
+   */
+  id: number
+  /**
+   * @type {string | null}
+   * @memberof FavoriteArtistResponse
+   */
+  image?: string | null
+}
+/**
+ * @export
  * @interface FavoriteMediationResponse
  */
 export interface FavoriteMediationResponse {
@@ -3751,6 +3783,27 @@ export interface PaginatedFavoritesResponse {
   /**
    * @type {number}
    * @memberof PaginatedFavoritesResponse
+   */
+  page: number
+}
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteArtistResponse
+ */
+export interface PaginatedResponseFavoriteArtistResponse {
+  /**
+   * @type {Array<FavoriteArtistResponse>}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  favorites: Array<FavoriteArtistResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteArtistResponse
    */
   page: number
 }
@@ -6069,6 +6122,35 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary delete_favorite_artist <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'favorite_id' is not null or undefined
+      if (favorite_id === null || favorite_id === undefined) {
+        throw new RequiredError(
+          'favorite_id',
+          'Required parameter favorite_id was null or undefined when calling deleteNativeV2MeFavoritesArtistsfavoriteId.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/artists/{favorite_id}`.replace(
+        `{${'favorite_id'}}`,
+        encodeURIComponent(String(favorite_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
      * @param {*} [options] Override http request option.
@@ -7149,6 +7231,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_favorite_artists <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesArtists(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/me/favorites/artists`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+        /**
      * @summary sso_oauth_state <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8364,6 +8464,35 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary create_favorite_artist <POST>
+     * @param {FavoriteArtistRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2MeFavoritesArtists.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/artists`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FavoriteArtistRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary sso_authorize <POST>
      * @param {OAuthSigninRequestV2} body
      * @param {string} sso_provider
@@ -8668,6 +8797,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async deleteNativeV1MeRemindersreminderId(reminder_id: number, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV1MeRemindersreminderId(reminder_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary delete_favorite_artist <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9120,6 +9261,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2Bookingsstatus(status: string, options?: any): Promise<BookingsListResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2Bookingsstatus(status, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary get_favorite_artists <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesArtists(options?: any): Promise<PaginatedResponseFavoriteArtistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesArtists(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9645,7 +9797,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
-    /**
+  /**
      *
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} body
@@ -9654,6 +9806,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ValidateEmail(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary create_favorite_artist <POST>
+     * @param {FavoriteArtistRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any): Promise<FavoriteArtistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2MeFavoritesArtists(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9810,6 +9974,18 @@ export class DefaultApi extends BaseAPI {
   public async deleteNativeV1MeRemindersreminderId(reminder_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).deleteNativeV1MeRemindersreminderId(reminder_id, options)
+  }
+  /**
+    * 
+    * @summary delete_favorite_artist <DELETE>
+    * @param {number} favorite_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id, options)
   }
   /**
     *
@@ -10262,6 +10438,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2Bookingsstatus(status: string, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2Bookingsstatus(status, options)
+  }
+  /**
+    * 
+    * @summary get_favorite_artists <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2MeFavoritesArtists(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2MeFavoritesArtists(options)
   }
   /**
     *
@@ -10796,6 +10983,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidateEmail(body, options)
+  }
+  /**
+    * 
+    * @summary create_favorite_artist <POST>
+    * @param {FavoriteArtistRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2MeFavoritesArtists(body, options)
   }
   /**
     * 
