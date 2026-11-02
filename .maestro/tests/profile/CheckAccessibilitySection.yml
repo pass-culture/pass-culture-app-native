@@ -24,28 +24,10 @@ onFlowStart:
 - runFlow:
     file: ../common/navigation/TapOnBack.yml
 
-- tapOn:
-    text: 'Nouvelle fenêtre : Les engagements du pass Culture'
-    index: 0
+- tapOn: 'Services et partenaires accessibles'
+- assertVisible: 'Services et partenaires'
 - runFlow:
-    when:
-      platform: iOS
-      visible: 'Fermer'
-    commands:
-      - tapOn: 'Fermer'
-
-- runFlow:
-    when:
-      visible: 'Afficher les signets, le menu Partager et les onglets ouverts'
-    commands:
-      - tapOn: 'fermer le pop-up'
-- assertVisible: 'Accessibilité'
-- assertVisible: "L'accessibilité au pass Culture"
-- runFlow:
-    when:
-      platform: iOS
-    commands:
-      - tapOn: 'Revenir à pass Culture S'
+    file: ../common/navigation/TapOnBack.yml
 
 - runFlow:
     when:
@@ -83,10 +65,28 @@ onFlowStart:
 - runFlow:
     file: ../common/navigation/TapOnBack.yml
 
-- tapOn: 'Outils et services publics pour les personnes en situation de handicap'
-- assertVisible: 'Outils et services publics'
+- tapOn:
+    text: 'Nouvelle fenêtre : Les engagements du pass Culture'
+    index: 0
 - runFlow:
-    file: ../common/navigation/TapOnBack.yml
+    when:
+      platform: iOS
+      visible: 'Fermer'
+    commands:
+      - tapOn: 'Fermer'
+
+- runFlow:
+    when:
+      visible: 'Afficher les signets, le menu Partager et les onglets ouverts'
+    commands:
+      - tapOn: 'fermer le pop-up'
+- assertVisible: 'Accessibilité'
+- assertVisible: "L'accessibilité au pass Culture"
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: 'Revenir à pass Culture S'
 
 - runFlow:
     file: ../common/navigation/TapOnBack.yml

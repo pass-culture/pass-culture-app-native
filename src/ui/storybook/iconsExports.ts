@@ -139,6 +139,7 @@ import { Wrong } from 'ui/svg/icons/Wrong'
 import { LogoAccesLibre } from 'ui/svg/LogoAccesLibre'
 import { LogoAidantConnect } from 'ui/svg/LogoAidantConnect'
 import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
+import { LogoCultureRelax } from 'ui/svg/LogoCultureRelax'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { LogoMonParcoursHandicap } from 'ui/svg/LogoMonParcoursHandicap'
@@ -298,6 +299,7 @@ export const UnconventionalIcons = {
   LogoAccesLibre,
   LogoAidantConnect,
   LogoAudioDescription,
+  LogoCultureRelax,
   LogoDMS,
   LogoFrenchRepublic,
   LogoMonParcoursHandicap,
