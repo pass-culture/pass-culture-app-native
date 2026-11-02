@@ -1,4 +1,4 @@
-import { getCinemaScreeningFeaturesProps } from './getCinemaScreeningCardProps'
+import { getCinemaScreeningFeaturesProps } from './getCinemaScreeningFeaturesProps'
 
 describe('getCinemaScreeningFeaturesProps', () => {
   it('adapts structured screening features to the cinema card', () => {
