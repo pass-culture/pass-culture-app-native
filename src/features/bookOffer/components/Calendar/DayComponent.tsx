@@ -16,21 +16,25 @@ interface Props {
 
 type VoidFn = () => void
 
-export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
+export const useSelectDay = (
+  onSelectDate?: (date: Date) => void
+): ((props: Props) => VoidFn | undefined) => {
   const { dispatch } = useBookingContext()
-
-  const selectDate = (date: DateData) => () => {
-    dispatch({ type: 'SELECT_DATE', payload: new Date(date.year, date.month - 1, date.day) })
-  }
 
   return useCallback<({ date, selected, status }: Props) => (() => void) | undefined>(
     ({ date, selected, status }) => {
-      if (selected) return selectDate(date)
-      if (status === OfferStatus.BOOKABLE) return selectDate(date)
-      return undefined
+      if (!(selected || status === OfferStatus.BOOKABLE)) return undefined
+
+      return () => {
+        const selectedDay = new Date(date.year, date.month - 1, date.day)
+        if (onSelectDate) {
+          onSelectDate(selectedDay)
+          return
+        }
+        dispatch({ type: 'SELECT_DATE', payload: selectedDay })
+      }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [dispatch, onSelectDate]
   )
 }
 

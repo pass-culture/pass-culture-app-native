@@ -40,6 +40,22 @@ describe('useMarkedDates()', () => {
     expect(hook.result.current['2021-01-01']?.selected).toBe(false)
   })
 
+  it('should mark the date passed as argument instead of the booking context date', () => {
+    mockBookingState.date = new Date(2021, 4, 4)
+    const { result } = renderHook(() =>
+      useMarkedDates([offerStockResponseSnap], credit, new Date(2021, 0, 1))
+    )
+
+    expect(result.current['2021-01-01']?.selected).toBe(true)
+  })
+
+  it('should not mark the context date when selection is explicitly empty', () => {
+    mockBookingState.date = new Date(2021, 0, 1)
+    const { result } = renderHook(() => useMarkedDates([offerStockResponseSnap], credit, null))
+
+    expect(result.current['2021-01-01']?.selected).toBe(false)
+  })
+
   it('should skip stocks without date', () => {
     const stock = { ...offerStockResponseSnap, beginningDatetime: undefined }
     const { result } = renderHook(() => useMarkedDates([stock], credit))

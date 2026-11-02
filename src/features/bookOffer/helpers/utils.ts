@@ -14,6 +14,11 @@ export const formatToKeyDate = (dateString: Date | string) => {
   return `${year}-${month}-${day}`
 }
 
+export const parseBookingKeyDate = (keyDate: string): Date => {
+  const [year = Number.NaN, month = Number.NaN, day = Number.NaN] = keyDate.split('-').map(Number)
+  return new Date(year, month - 1, day)
+}
+
 export const formatHour = (dateString: string | null | undefined): string => {
   if (!dateString) return ''
   const date = new Date(dateString)

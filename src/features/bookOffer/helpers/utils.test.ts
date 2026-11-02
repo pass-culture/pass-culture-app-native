@@ -5,6 +5,7 @@ import {
   formatToKeyDate,
   getStatusFromStocks,
   OfferStatus,
+  parseBookingKeyDate,
 } from 'features/bookOffer/helpers/utils'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 
@@ -23,6 +24,16 @@ describe('formatToKeyDate()', () => {
       expect(formatToKeyDate(date)).toEqual(expected)
     }
   )
+})
+
+describe('parseBookingKeyDate()', () => {
+  it('should build a local date from a booking key', () => {
+    const date = parseBookingKeyDate('2026-10-20')
+
+    expect(date.getFullYear()).toBe(2026)
+    expect(date.getMonth()).toBe(9)
+    expect(date.getDate()).toBe(20)
+  })
 })
 
 describe('formatHour()', () => {

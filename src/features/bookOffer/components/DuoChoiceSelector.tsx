@@ -2,6 +2,12 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import {
+  BookingQuantity,
+  getQuantityByLabel,
+  LABEL_BY_QUANTITY,
+  LABEL_TO_QUANTITY,
+} from 'features/bookOffer/helpers/bookingQuantity'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
@@ -10,16 +16,6 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { LabelVariant, RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
-
-const LABEL_TO_QUANTITY = { Solo: 1, Duo: 2 } as const
-
-type Quantity = (typeof LABEL_TO_QUANTITY)[keyof typeof LABEL_TO_QUANTITY]
-
-const QUANTITY_BY_LABEL: Readonly<Record<string, Quantity>> = LABEL_TO_QUANTITY
-
-const LABEL_BY_QUANTITY: Readonly<Record<number, string>> = Object.fromEntries(
-  Object.entries(LABEL_TO_QUANTITY).map(([label, qty]) => [qty, label])
-)
 
 type DuoChoiceSelectorProps = {
   label?: string
@@ -37,10 +33,10 @@ export const DuoChoiceSelector: React.FC<DuoChoiceSelectorProps> = ({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
-  const hasEnoughCreditForQuantity = (quantity: Quantity): boolean =>
+  const hasEnoughCreditForQuantity = (quantity: BookingQuantity): boolean =>
     stock ? quantity * stock.price <= offerCredit : false
 
-  const getDescriptionForQuantity = (quantity: Quantity): string => {
+  const getDescriptionForQuantity = (quantity: BookingQuantity): string => {
     if (!hasEnoughCreditForQuantity(quantity) || !stock) return 'crédit insuffisant'
     return formatCurrencyFromCents(quantity * stock.price, currency, euroToPacificFrancRate)
   }
@@ -61,7 +57,7 @@ export const DuoChoiceSelector: React.FC<DuoChoiceSelectorProps> = ({
 
   const handleChange = useCallback(
     (selectedLabel: string) => {
-      const quantity = QUANTITY_BY_LABEL[selectedLabel]
+      const quantity = getQuantityByLabel(selectedLabel)
       if (!quantity) return
       dispatch({ type: 'SELECT_QUANTITY', payload: quantity })
     },

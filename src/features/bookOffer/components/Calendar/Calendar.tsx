@@ -87,6 +87,8 @@ interface Props {
   userRemainingCredit: number | null
   offerId: number | undefined
   hasSeveralPrices?: boolean
+  selectedDate?: Date | null
+  onSelectDate?: (date: Date) => void
 }
 
 export const getMinAvailableDate = (markedDates: MarkedDates): string | undefined => {
@@ -196,13 +198,15 @@ export const Calendar: React.FC<Props> = ({
   userRemainingCredit,
   offerId,
   hasSeveralPrices,
+  selectedDate,
+  onSelectDate,
 }) => {
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
-  const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
+  const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0, selectedDate)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const [currentMonth, setCurrentMonth] = useState<string>(minDate)
-  const selectDay = useSelectDay()
+  const selectDay = useSelectDay(onSelectDate)
   const theme = useTheme()
 
   const renderDay = useCallback<

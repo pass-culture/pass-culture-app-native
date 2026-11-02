@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
+import { EventBookingInformations } from 'features/bookOffer/components/EventBookingInformations'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
-import { formatToCompleteFrenchDateTime, formatToFrenchDate } from 'libs/parsers/formatDates'
+import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -46,24 +46,7 @@ export const BookingInformations = () => {
     )
 
   if (mapping[offer.subcategoryId].isEvent) {
-    let message = stock.beginningDatetime
-      ? formatToCompleteFrenchDateTime({
-          date: new Date(stock.beginningDatetime),
-          shouldDisplayWeekDay: true,
-        })
-      : ''
-
-    if (offer.extraData?.durationMinutes) {
-      message += ` - Durée\u00a0: ${formatDuration(offer.extraData.durationMinutes).label}`
-    }
-
-    return (
-      <React.Fragment>
-        <Item Icon={Booking} message={name} />
-        {stock.beginningDatetime ? <Item Icon={Calendar} message={message} /> : null}
-        <Item Icon={OrderPrice} message={price} />
-      </React.Fragment>
-    )
+    return <EventBookingInformations offer={offer} stock={stock} quantity={quantity} />
   }
 
   if (!isDigital) {

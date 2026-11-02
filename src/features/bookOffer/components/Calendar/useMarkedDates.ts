@@ -23,9 +23,11 @@ export interface MarkedDates {
 
 export const useMarkedDates = (
   stocks: OfferStockResponse[],
-  userRemainingCredit: number
+  userRemainingCredit: number,
+  selectedDate?: Date | null
 ): MarkedDates => {
   const { bookingState } = useBookingContext()
+  const date = selectedDate === undefined ? bookingState.date : selectedDate
   const markedDates: MarkedDates = {}
 
   const groupedByDates = groupBy(
@@ -34,7 +36,7 @@ export const useMarkedDates = (
   )
 
   Object.entries(groupedByDates).forEach(([key, groupedStocks]) => {
-    const selected = bookingState.date ? formatToKeyDate(bookingState.date) === key : false
+    const selected = date ? formatToKeyDate(date) === key : false
 
     markedDates[key] = {
       selected,

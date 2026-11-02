@@ -1,3 +1,5 @@
+import { BookingQuantity } from 'features/bookOffer/helpers/bookingQuantity'
+
 export enum Step {
   DATE = 1,
   HOUR = 2,
@@ -18,7 +20,7 @@ export type BookingState = {
   offerId: number | undefined
   stockId: number | undefined
   step: Step
-  quantity: 1 | 2 | undefined
+  quantity: BookingQuantity | undefined
   date: Date | undefined
   hour: string | undefined
 }
@@ -40,7 +42,7 @@ export type Action =
   | { type: 'SELECT_DATE'; payload: Date }
   | { type: 'SELECT_HOUR'; payload: string }
   | { type: 'SELECT_STOCK'; payload: number }
-  | { type: 'SELECT_QUANTITY'; payload: 1 | 2 }
+  | { type: 'SELECT_QUANTITY'; payload: BookingQuantity }
   | { type: 'RESET' }
   | { type: 'RESET_HOUR' }
   | { type: 'RESET_STOCK' }
