@@ -14,6 +14,7 @@ import { AccessibilityFiltersWrapper } from 'features/accessibility/context/Acce
 import { AnalyticsDebugger } from 'features/analyticsDebugger/AnalyticsDebugger'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
+import { useAdjustDeeplinkAttribution } from 'features/deeplinks/helpers/useAdjustDeeplinkAttribution'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
@@ -55,6 +56,8 @@ const App: FunctionComponent = function () {
   useLaunchPerformanceObserver()
 
   useOrientationLocked()
+
+  useAdjustDeeplinkAttribution()
 
   useEffect(() => {
     void eventMonitoring.init({ enabled: !__DEV__ })
