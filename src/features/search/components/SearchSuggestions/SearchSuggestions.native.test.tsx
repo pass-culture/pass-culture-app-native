@@ -78,13 +78,13 @@ function Search({
   focused?: boolean
   history?: boolean
 }) {
-  const suggestionsDescriptionId = useId()
+  const suggestionsId = useId()
   return (
     <React.Fragment>
-      <FocusInput id={suggestionsDescriptionId} focused={focused} />
+      <FocusInput id={suggestionsId} focused={focused} />
       {visible ? (
         <SearchSuggestions
-          suggestionsDescriptionId={suggestionsDescriptionId}
+          suggestionsId={suggestionsId}
           queryHistory={query}
           addToHistory={jest.fn()}
           removeFromHistory={jest.fn()}
@@ -95,7 +95,7 @@ function Search({
           }
         />
       ) : null}
-      <SearchSuggestionsAnnouncer id={suggestionsDescriptionId} query={query} visible={visible} />
+      <SearchSuggestionsAnnouncer id={suggestionsId} query={query} visible={visible} />
     </React.Fragment>
   )
 }
