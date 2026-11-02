@@ -57,11 +57,7 @@ function renderThematicSearchPlaylistList(
 ) {
   return render(
     reactQueryProviderHOC(
-      <ThematicSearchPlaylistList
-        playlists={playlists}
-        isLoading={isLoading}
-        originId="thematicSearchCinema"
-      />
+      <ThematicSearchPlaylistList playlists={playlists} isLoading={isLoading} />
     )
   )
 }

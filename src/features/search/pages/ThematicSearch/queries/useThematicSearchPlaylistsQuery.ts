@@ -20,16 +20,11 @@ type ThematicSearchPlaylists = {
   queryKey: string
 }
 
-type ThematicSearchPlaylistsQueryResult = Pick<
-  ThematicSearchPlaylistListProps,
-  'playlists' | 'isLoading'
->
-
 export function useThematicSearchPlaylistsQuery({
   playlistTitles,
   fetchMethod,
   queryKey,
-}: ThematicSearchPlaylists): ThematicSearchPlaylistsQueryResult {
+}: ThematicSearchPlaylists): ThematicSearchPlaylistListProps {
   const transformHits = useTransformOfferHits()
 
   const userLocation = useUserLocation()

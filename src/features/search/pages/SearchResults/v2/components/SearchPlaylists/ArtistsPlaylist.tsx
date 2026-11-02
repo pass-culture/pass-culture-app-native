@@ -1,4 +1,3 @@
-import { useIsFocused } from '@react-navigation/native'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { styled } from 'styled-components/native'
@@ -7,10 +6,8 @@ import { hasActiveSearchFilters } from 'features/search/queries/helpers'
 import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
 import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
-import { asArtistId, asSearchId } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { NumberOfItems } from 'shared/NumberOfItems/NumberOfItems'
-import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { SeeAllButton } from 'ui/components/SeeAllButton/SeeAllButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -32,7 +29,6 @@ export const ArtistsPlaylist = ({
   withMargins = false,
   searchFilters,
 }: ArtistSectionProps) => {
-  const isFocused = useIsFocused()
   const { data: artistsResponse = [] } = useSearchArtistsQuery(searchFilters, {
     select: (data) => selectSearchArtists(data),
   })
@@ -73,30 +69,12 @@ export const ArtistsPlaylist = ({
         </SeeAllButtonContainer>
         <NumberOfItems nbItems={artistsResponse.length} />
       </HeaderContainer>
-      <ObservedPlaylist
-        onItemViewed={({ index, item }) => {
-          if (!isFocused || !searchId) return
-          void analytics.logViewItem({
-            origin: 'search',
-            playlistIndex: 0,
-            index,
-            type: 'artist',
-            id: asArtistId(item.id),
-            playlistId: 'searchResultsArtistPlaylist',
-            originId: asSearchId(searchId),
-          })
-        }}>
-        {({ listRef, handleViewableItemsChanged }) => (
-          <AvatarList
-            listRef={listRef}
-            onViewableItemsChanged={handleViewableItemsChanged}
-            data={artistsResponse}
-            avatarConfig={{ size: AVATAR_MEDIUM }}
-            onItemPress={handleOnArtistPlaylistItemPress}
-            withMargins={withMargins}
-          />
-        )}
-      </ObservedPlaylist>
+      <AvatarList
+        data={artistsResponse}
+        avatarConfig={{ size: AVATAR_MEDIUM }}
+        onItemPress={handleOnArtistPlaylistItemPress}
+        withMargins={withMargins}
+      />
     </View>
   )
 }

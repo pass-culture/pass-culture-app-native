@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
+import { ViewToken } from 'react-native'
 
 import { ArtistHighlightingModule } from 'features/home/components/ArtistHighlightingModule/ArtistHighlightingModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
@@ -12,7 +13,12 @@ import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
-import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/types'
+import {
+  HomepageModule,
+  HomepageModuleType,
+  ModuleData,
+  ModuleViewableItemsChangedHandler,
+} from 'features/home/types'
 
 const modules = {
   [HomepageModuleType.ArtistHighlightingModule]: ArtistHighlightingModule,
@@ -35,13 +41,31 @@ const UnmemoizedModule = ({
   homeEntryId,
   data,
   videoModuleId,
+  onModuleViewableItemsChanged,
 }: {
   item: HomepageModule
   index: number
   homeEntryId: string
   data?: ModuleData
   videoModuleId?: string
+  onModuleViewableItemsChanged?: ModuleViewableItemsChangedHandler
 }) => {
+  const handleOnViewableItemsChanged = useCallback(
+    (viewableItems: Pick<ViewToken, 'key' | 'index'>[], callId?: string) => {
+      onModuleViewableItemsChanged?.({
+        index,
+        moduleId: item.id,
+        moduleType: item.type,
+        viewableItems,
+        homeEntryId,
+        callId,
+      })
+    },
+    // Changing onViewableItemsChanged on the fly is not supported
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const ComponentModule: any = modules[item.type]
   if (!ComponentModule) return null
@@ -54,6 +78,7 @@ const UnmemoizedModule = ({
       moduleId={item.id}
       data={data}
       shouldShowModal={item.id === videoModuleId}
+      onViewableItemsChanged={handleOnViewableItemsChanged}
     />
   )
 }

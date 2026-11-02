@@ -1,27 +1,20 @@
 import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { ArtistPlaylists } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
-import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
+import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 const user = userEvent.setup()
-const artist = { id: '1', name: 'Céline Dion' }
-
-const renderArtistPlaylists = (items: AlgoliaOfferWithArtistAndEan[]) =>
-  render(
-    reactQueryProviderHOC(
-      <ArtistPlaylists artist={artist} playlists={getDisplayableArtistPlaylists(items)} />
-    )
-  )
 
 describe('ArtistPlaylist', () => {
   beforeEach(() => {
@@ -30,23 +23,31 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should display one artist playlist per non-empty category', async () => {
-    renderArtistPlaylists([
-      buildArtistOffer({
-        objectID: '1',
-        name: 'Concert',
-        subcategoryId: SubcategoryIdEnum.CONCERT,
-      }),
-      buildArtistOffer({
-        objectID: '2',
-        name: 'Livre papier',
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      }),
-      buildArtistOffer({
-        objectID: '3',
-        name: 'Festival livre',
-        subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
-      }),
-    ])
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Concert',
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+            }),
+            buildArtistOffer({
+              objectID: '2',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+            buildArtistOffer({
+              objectID: '3',
+              name: 'Festival livre',
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
+            }),
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await screen.findByLabelText('Prochains concerts et festivals')
 
@@ -60,23 +61,31 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should trigger ConsultOffer log with good parameters when pressing a playlist item', async () => {
-    renderArtistPlaylists([
-      buildArtistOffer({
-        objectID: '1',
-        name: 'Concert',
-        subcategoryId: SubcategoryIdEnum.CONCERT,
-      }),
-      buildArtistOffer({
-        objectID: '2',
-        name: 'Livre papier',
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      }),
-      buildArtistOffer({
-        objectID: '3',
-        name: 'Festival livre',
-        subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
-      }),
-    ])
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Concert',
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+            }),
+            buildArtistOffer({
+              objectID: '2',
+              name: 'Livre papier',
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            }),
+            buildArtistOffer({
+              objectID: '3',
+              name: 'Festival livre',
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
+            }),
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await user.press(screen.getByText('Livre papier'))
 
@@ -94,31 +103,63 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should not display playlists for offers excluded from artist category mapping', async () => {
-    renderArtistPlaylists([
-      buildArtistOffer({
-        objectID: '1',
-        name: 'Jeu vidéo',
-        subcategoryId: SubcategoryIdEnum.JEU_SUPPORT_PHYSIQUE,
-      }),
-    ])
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            buildArtistOffer({
+              objectID: '1',
+              name: 'Jeu vidéo',
+              subcategoryId: SubcategoryIdEnum.JEU_SUPPORT_PHYSIQUE,
+            }),
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await waitFor(() => expect(screen.queryByText('Jeu vidéo')).not.toBeOnTheScreen())
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
-    renderArtistPlaylists([])
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await waitFor(() => expect(screen.queryByLabelText('Livres')).not.toBeOnTheScreen())
   })
 
   it('should display see all button when there are several offers from this artist', async () => {
-    renderArtistPlaylists(mockedAlgoliaOffersWithSameArtistResponse)
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     expect(await screen.findByLabelText('Voir tout pour la sélection Livres')).toBeOnTheScreen()
   })
 
   it('should not display see all button when there is only one offer from this artist', async () => {
-    renderArtistPlaylists([mockedAlgoliaOffersWithSameArtistResponse[0]])
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[mockedAlgoliaOffersWithSameArtistResponse[0]]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await screen.findByLabelText('Livres')
 
@@ -126,7 +167,15 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should use bookFormat if available in playlist item', async () => {
-    renderArtistPlaylists(mockedAlgoliaOffersWithSameArtistResponse)
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await screen.findByLabelText('Livres')
 
@@ -134,7 +183,15 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should not use bookFormat if is not in playlist item', async () => {
-    renderArtistPlaylists(mockedAlgoliaOffersWithSameArtistResponse)
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await screen.findByLabelText('Livres')
 
@@ -142,16 +199,46 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should trigger analytics with category playlist title when we click on "Voir tout" button', async () => {
-    renderArtistPlaylists(mockedAlgoliaOffersWithSameArtistResponse)
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await user.press(screen.getByLabelText('Voir tout pour la sélection Livres'))
 
     expect(analytics.logClickSeeAll).toHaveBeenCalledWith({
       type: 'artists',
       moduleName: 'Livres',
-      moduleId: 'artistOffersLivres',
+      moduleId: 'artist_offers_0_livres',
       from: 'artist',
     })
+  })
+
+  it('should not display pro advices tag when defined and wipProReviewsPlaylist FF deactivated', async () => {
+    useABSegmentSpy.mockReturnValueOnce('A')
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[
+            {
+              ...mockedAlgoliaOffersWithSameArtistResponse[0],
+              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
+            },
+          ]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
+
+    await screen.findByLabelText('Livres')
+
+    expect(screen.queryByText('1 avis')).not.toBeOnTheScreen()
   })
 })
 

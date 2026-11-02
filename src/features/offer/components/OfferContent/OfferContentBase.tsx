@@ -16,6 +16,7 @@ import {
   ScrollView,
   StyleProp,
   ViewStyle,
+  ViewToken,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
@@ -52,6 +53,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
@@ -105,6 +107,12 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
+
+  const pageTracking = usePageTracking({
+    pageName: 'Offer',
+    pageLocation: 'offer',
+    pageId: params.id.toString(),
+  })
 
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
     ? JSON.parse(params?.apiRecoParams)
@@ -262,6 +270,24 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     />
   )
 
+  const handleViewableItemsChanged = useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+        playlistIndex,
+        entryId: offer.id.toString(),
+      })
+    },
+    [offer.id, pageTracking]
+  )
+
   const OfferCTAsComponent = (
     <OfferContentCTAs
       offer={offer}
@@ -382,6 +408,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           <OfferPlaylistList
             offer={offer}
             playlists={playlists}
+            onViewableItemsChanged={handleViewableItemsChanged}
             seeAllButton={{
               navigateToVerticalPlaylist,
               onBeforeNavigate,

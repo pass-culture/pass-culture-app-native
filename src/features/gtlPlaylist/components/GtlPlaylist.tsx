@@ -23,10 +23,7 @@ export interface GtlPlaylistProps {
   venue?: VenueResponse
   noMarginBottom?: boolean
   playlistRef?: Ref<FlatList>
-  onViewableItemsChanged?: (info: {
-    viewableItems: ViewToken<unknown>[]
-    changed: ViewToken<unknown>[]
-  }) => void
+  onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void
   searchId?: string
 }
 
@@ -86,7 +83,7 @@ export function GtlPlaylist({
   return (
     <IntersectionObserver
       onChange={handleLogModuleDisplayedScrolling}
-      threshold={0.5}
+      threshold="50%"
       key={entryId}>
       <PassPlaylist
         data={playlist.offers.hits}

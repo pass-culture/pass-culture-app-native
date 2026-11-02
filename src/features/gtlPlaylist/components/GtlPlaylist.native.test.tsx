@@ -1,5 +1,6 @@
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { InViewProps } from 'react-native-intersection-observer'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
@@ -24,47 +25,30 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
-let observerCallback: IntersectionObserverCallback | undefined
-
-const emitInView = (isIntersecting: boolean) => {
-  act(() => {
-    jest.advanceTimersByTime(300)
-  })
-  act(() => {
-    observerCallback?.(
-      [
-        {
-          isIntersecting,
-          boundingClientRect: { height: 100 },
-          intersectionRect: { height: 100 },
-        } as IntersectionObserverEntry,
-      ],
-      {} as IntersectionObserver
-    )
-  })
-}
+/**
+ * This mock permit to simulate the visibility of the playlist
+ * it is an alternative solution which allows you to replace the scroll simulation
+ * it's not optimal, if you have better idea don't hesitate to update
+ */
+const mockInView = jest.fn()
+jest.mock('react-native-intersection-observer', () => {
+  const InView = (props: InViewProps) => {
+    mockInView.mockImplementation(props.onChange)
+    return null
+  }
+  return {
+    ...jest.requireActual('react-native-intersection-observer'),
+    InView,
+  }
+})
 
 jest.useFakeTimers()
-
-afterAll(() => {
-  jest.useRealTimers()
-})
 
 const user = userEvent.setup()
 
 describe('GtlPlaylist', () => {
   beforeEach(() => {
     setFeatureFlags()
-    observerCallback = undefined
-    globalThis.IntersectionObserver = jest.fn((callback: IntersectionObserverCallback) => {
-      observerCallback = callback
-      return {
-        observe: jest.fn(),
-        unobserve: jest.fn(),
-        disconnect: jest.fn(),
-        takeRecords: () => [],
-      }
-    }) as unknown as typeof globalThis.IntersectionObserver
   })
 
   describe('on venue page', () => {
@@ -118,7 +102,7 @@ describe('GtlPlaylist', () => {
 
       await screen.findByText('Mon abonnement bibliothèque')
 
-      emitInView(true)
+      mockInView(true)
 
       expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
         displayedOn: 'venue',
@@ -132,7 +116,7 @@ describe('GtlPlaylist', () => {
 
       await screen.findByText('Mon abonnement bibliothèque')
 
-      emitInView(false)
+      mockInView(false)
 
       expect(analytics.logModuleDisplayed).not.toHaveBeenCalled()
     })
@@ -188,7 +172,7 @@ describe('GtlPlaylist', () => {
 
       await screen.findByText('Mon abonnement bibliothèque')
 
-      emitInView(true)
+      mockInView(true)
 
       expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
         displayedOn: 'thematicsearch',
@@ -201,7 +185,7 @@ describe('GtlPlaylist', () => {
 
       await screen.findByText('Mon abonnement bibliothèque')
 
-      emitInView(false)
+      mockInView(false)
 
       expect(analytics.logModuleDisplayed).not.toHaveBeenCalled()
     })

@@ -66,19 +66,12 @@ const mockVenuesResponse = {
   userData: null,
 }
 jest.mock('features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery', () => ({
-  useSearchVenuesQuery: (_params: unknown, options?: { select?: (data: unknown) => unknown }) => {
-    const data = {
-      venuesResponse: mockVenuesResponse,
-      venueNotOpenToPublic: { hits: [] },
-    }
-
-    return {
-      data: options?.select ? options.select(data) : data,
-      isLoading: false,
-      isFetching: false,
-      isSuccess: true,
-    }
-  },
+  useSearchVenuesQuery: () => ({
+    data: { algoliaVenues: mockVenuesResponse.hits },
+    isLoading: false,
+    isFetching: false,
+    isSuccess: true,
+  }),
 }))
 
 describe('Search Results V2', () => {

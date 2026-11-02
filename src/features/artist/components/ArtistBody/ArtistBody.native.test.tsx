@@ -72,6 +72,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -89,6 +90,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -109,6 +111,7 @@ describe('<ArtistBody />', () => {
           }}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -129,6 +132,7 @@ describe('<ArtistBody />', () => {
           artist={artist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -144,6 +148,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -160,6 +165,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -176,6 +182,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -194,6 +201,7 @@ describe('<ArtistBody />', () => {
           artist={{ ...mockArtist, descriptionSource: 'https://attacker.com/fr.wikipedia.org' }}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -212,6 +220,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -231,6 +240,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -255,6 +265,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -297,6 +308,7 @@ describe('<ArtistBody />', () => {
             }),
           ]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -330,6 +342,7 @@ describe('<ArtistBody />', () => {
             }),
           ]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -349,6 +362,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -391,6 +405,7 @@ describe('<ArtistBody />', () => {
               },
             ],
           }}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -406,6 +421,7 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -443,6 +459,7 @@ describe('<ArtistBody />', () => {
               },
             ],
           }}
+          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
