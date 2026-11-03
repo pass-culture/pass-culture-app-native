@@ -1,5 +1,5 @@
 import React, { ComponentProps, FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
@@ -21,6 +21,7 @@ export type HorizontalArtistsPlaylistProps = {
   onItemPress: (id: string, name: string) => void
   seeAllData?: SeeAllData
   itemConfig?: AvatarProps
+  style?: StyleProp<ViewStyle>
 }
 
 export const HorizontalArtistsPlaylist: FunctionComponent<HorizontalArtistsPlaylistProps> = ({
@@ -30,6 +31,7 @@ export const HorizontalArtistsPlaylist: FunctionComponent<HorizontalArtistsPlayl
   onItemPress,
   seeAllData,
   itemConfig,
+  style,
 }) => {
   if (isLoading) return <HorizontalArtistsPlaylistSkeleton title={title} />
   if (artists.length === 0) return null
@@ -37,7 +39,7 @@ export const HorizontalArtistsPlaylist: FunctionComponent<HorizontalArtistsPlayl
   const showSeeAll = !!(seeAllData && artists.length > 1)
 
   return (
-    <View>
+    <View style={style}>
       <HeaderContainer>
         <TitleRow gap={3}>
           <AccessibleTitle title={title} TitleComponent={TitleLevel2} withMargin={false} />

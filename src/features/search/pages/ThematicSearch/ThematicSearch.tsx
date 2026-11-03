@@ -2,6 +2,7 @@ import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo, useState } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -35,7 +36,6 @@ import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { HorizontalArtistsPlaylist } from 'ui/components/HorizontalArtistsPlaylist'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 import { AVATAR_MEDIUM } from 'ui/theme/constants'
@@ -232,47 +232,48 @@ export const ThematicSearch: React.FC = () => {
   const content = offerCategory ? (
     <React.Fragment>
       <SubcategoryButtonListWrapper offerCategory={offerCategory} />
-      <ViewGap gap={6}>
-        {shouldDisplayArtistsPlaylist ? (
-          <HorizontalArtistsPlaylist
-            artists={data.artists}
-            onItemPress={handleArtistPlaylistItemPress}
-            title="Les personnalités du moment"
-            isLoading={isLoading}
-            seeAllData={{
-              onBeforeNavigate: onBeforeNavigateArtistPlaylistItem,
-              navigateToVerticalPlaylist: {
-                screen: 'VerticalPlaylistArtists',
-                params: {
-                  title: ARTIST_PLAYLIST_TITLE,
-                  subtitle: undefined,
-                  originDetails: 'topArtistsPlaylist',
-                  searchGroupName: offerCategory,
-                },
+
+      {shouldDisplayArtistsPlaylist ? (
+        <StyledHorizontalArtistsPlaylist
+          artists={data.artists}
+          onItemPress={handleArtistPlaylistItemPress}
+          title="Les personnalités du moment"
+          isLoading={isLoading}
+          seeAllData={{
+            onBeforeNavigate: onBeforeNavigateArtistPlaylistItem,
+            navigateToVerticalPlaylist: {
+              screen: 'VerticalPlaylistArtists',
+              params: {
+                title: ARTIST_PLAYLIST_TITLE,
+                subtitle: undefined,
+                originDetails: 'topArtistsPlaylist',
+                searchGroupName: offerCategory,
               },
-              hideSearchSeeAll: true,
-            }}
-            itemConfig={{ size: AVATAR_MEDIUM, rounded: true }}
-          />
-        ) : null}
-        {shouldDisplayVenuesPlaylist ? (
-          <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
-            {({ listRef, handleViewableItemsChanged }) => (
-              <VenuePlaylist
-                venuePlaylistTitle={venuePlaylistTitle}
-                venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-                isLocated={isLocated}
-                currentView={currentView}
-                offerCategory={offerCategory}
-                shouldDisplaySeparator={false}
-                searchGroup={searchGroupWithGtlPlaylist}
-                playlistRef={listRef}
-                onViewableItemsChanged={handleViewableItemsChanged}
-              />
-            )}
-          </ObservedPlaylist>
-        ) : null}
-      </ViewGap>
+            },
+            hideSearchSeeAll: true,
+          }}
+          itemConfig={{ size: AVATAR_MEDIUM, rounded: true }}
+        />
+      ) : null}
+
+      {shouldDisplayVenuesPlaylist ? (
+        <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+          {({ listRef, handleViewableItemsChanged }) => (
+            <VenuePlaylist
+              venuePlaylistTitle={venuePlaylistTitle}
+              venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+              isLocated={isLocated}
+              currentView={currentView}
+              offerCategory={offerCategory}
+              shouldDisplaySeparator={false}
+              searchGroup={searchGroupWithGtlPlaylist}
+              playlistRef={listRef}
+              onViewableItemsChanged={handleViewableItemsChanged}
+            />
+          )}
+        </ObservedPlaylist>
+      ) : null}
+
       {playlistsComponent[offerCategory]}
       <Spacer.TabBar />
     </React.Fragment>
@@ -299,3 +300,7 @@ export const ThematicSearch: React.FC = () => {
 
   return thematicSearch
 }
+
+const StyledHorizontalArtistsPlaylist = styled(HorizontalArtistsPlaylist)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
