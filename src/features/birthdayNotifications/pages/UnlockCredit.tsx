@@ -11,14 +11,23 @@ import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 
-export function EighteenBirthday() {
+export function UnlockCredit() {
   const { user } = useAuthContext()
-  const pageWording = useGetPageWording(user?.requiresIdCheck)
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
+  const enableSimplifiedActivation18 = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18
+  )
+  const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
 
   useEffect(() => {
-    storage.saveObject('has_seen_eligible_card', true)
+    void storage.saveObject('has_seen_eligible_card', true)
   }, [])
+
+  const pageWording = getPageWording({
+    eighteenYearsOldDeposit,
+    userRequiresIdCheck: user?.requiresIdCheck,
+    enableSimplifiedActivation18,
+  })
 
   return (
     <GenericInfoPage
@@ -33,7 +42,7 @@ export function EighteenBirthday() {
             }
           : undefined
       }
-      title="Tu as 18 ans&nbsp;!"
+      title={pageWording.title}
       subtitle={pageWording.text}
       buttonPrimary={{
         wording: pageWording.buttonText,
@@ -48,15 +57,30 @@ export function EighteenBirthday() {
   )
 }
 
-const useGetPageWording = (userRequiresIdCheck?: boolean) => {
-  const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
-  if (userRequiresIdCheck) {
+const getPageWording = ({
+  userRequiresIdCheck,
+  enableSimplifiedActivation18,
+  eighteenYearsOldDeposit,
+}: {
+  userRequiresIdCheck?: boolean
+  enableSimplifiedActivation18: boolean
+  eighteenYearsOldDeposit: string
+}) => {
+  if (enableSimplifiedActivation18) {
     return {
+      title: 'Obtiens ton crédit\u00a0',
+      text: `Vérifie tes informations pour débloquer tes ${eighteenYearsOldDeposit}.`,
+      buttonText: 'Débloquer mon crédit',
+    }
+  } else if (userRequiresIdCheck) {
+    return {
+      title: 'Tu as 18 ans\u00a0!',
       text: `Vérifie ton identité pour débloquer tes ${eighteenYearsOldDeposit}.`,
       buttonText: 'Vérifier mon identité',
     }
   }
   return {
+    title: 'Tu as 18 ans\u00a0!',
     text: `Confirme tes informations personnelles pour débloquer tes ${eighteenYearsOldDeposit}.`,
     buttonText: 'Confirmer mes informations',
   }

@@ -29,8 +29,8 @@ import { SignupMethods } from 'features/auth/pages/signup/SignupMethods/SignupMe
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
+import { UnlockCredit } from 'features/birthdayNotifications/pages/UnlockCredit'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -229,12 +229,12 @@ const rootScreens: RouteConfig[] = [
   },
   {
     name: 'EighteenBirthday',
-    component: EighteenBirthday,
+    component: UnlockCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
     name: '_DeeplinkOnlyEighteenBirthday1',
-    component: EighteenBirthday,
+    component: UnlockCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
