@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -7,7 +6,6 @@ import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -47,7 +45,6 @@ export const VenueBody: FunctionComponent<Props> = ({
   onViewableItemsChanged,
   shouldDisplayVenueCalendar,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const currency = useGetCurrencyToDisplay()
 
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
@@ -70,17 +67,6 @@ export const VenueBody: FunctionComponent<Props> = ({
     })
   }
 
-  const handleOnSeeMoreHeadlineOfferPress = (offerId: number) => {
-    void analytics.logConsultAdvice({
-      from: 'venue',
-      offerId: offerId.toString(),
-      venueId: venue.id.toString(),
-      originDetails: 'headline',
-      adviceType: 'pro',
-    })
-    navigate('ProAdvicesVenue', { venueId: venue.id, offerId })
-  }
-
   const tabPanels = {
     [Tab.OFFERS]: (
       <React.Fragment>
@@ -91,7 +77,6 @@ export const VenueBody: FunctionComponent<Props> = ({
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}
               onBeforeNavigate={() => handleOnBeforeNavigate(headlineOfferData)}
-              onSeeMoreButtonPress={handleOnSeeMoreHeadlineOfferPress}
             />
           </MarginContainer>
         ) : null}

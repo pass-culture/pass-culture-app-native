@@ -31,8 +31,6 @@ type ScreensRequiringParsing = Extract<
   | 'SearchResults'
   | 'ThematicSearch'
   | 'ThematicSearchSubcategories'
-  | 'ProAdvicesOffer'
-  | 'ProAdvicesVenue'
   | 'VideoModulePage'
 >
 
@@ -188,14 +186,6 @@ export const screenParamsParser: ParamsParsers = {
     moduleItemId: identityFn,
     latitude: identityFn,
     longitude: identityFn,
-  },
-  ProAdvicesOffer: {
-    offerId: Number,
-    venueId: Number,
-  },
-  ProAdvicesVenue: {
-    venueId: Number,
-    offerId: Number,
   },
   VideoModulePage: {
     moduleId: identityFn,

@@ -7,13 +7,11 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import * as ABSegmentModule from 'shared/useABSegment/useABSegment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useABSegmentSpy = jest.spyOn(ABSegmentModule, 'useABSegment')
 const user = userEvent.setup()
 
 describe('ArtistPlaylist', () => {
@@ -217,28 +215,6 @@ describe('ArtistPlaylist', () => {
       moduleId: 'artist_offers_0_livres',
       from: 'artist',
     })
-  })
-
-  it('should not display pro advices tag when defined and wipProReviewsPlaylist FF deactivated', async () => {
-    useABSegmentSpy.mockReturnValueOnce('A')
-    render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist
-          artist={{ id: '1', name: 'Céline Dion' }}
-          items={[
-            {
-              ...mockedAlgoliaOffersWithSameArtistResponse[0],
-              offer: { ...mockedAlgoliaOffersWithSameArtistResponse[0].offer, proAdvicesCount: 1 },
-            },
-          ]}
-          onViewableItemsChanged={jest.fn()}
-        />
-      )
-    )
-
-    await screen.findByLabelText('Livres')
-
-    expect(screen.queryByText('1 avis')).not.toBeOnTheScreen()
   })
 })
 
