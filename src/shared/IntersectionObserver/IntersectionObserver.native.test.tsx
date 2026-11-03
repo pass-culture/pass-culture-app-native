@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { act, render, screen } from 'tests/utils'
 import { Typo } from 'ui/theme'
@@ -41,6 +43,7 @@ describe('<IntersectionObserver /> (native)', () => {
     jest.useFakeTimers()
     jest.clearAllMocks()
     installIntersectionObserver()
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_INTERSECTION_OBSERVER])
   })
 
   afterEach(() => {
@@ -102,6 +105,21 @@ describe('<IntersectionObserver /> (native)', () => {
     unmount()
 
     expect(disconnectMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not create an observer when the feature flag is disabled', () => {
+    setFeatureFlags([])
+
+    render(
+      <IntersectionObserver onChange={onChangeMock}>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
+      </IntersectionObserver>
+    )
+
+    flushObserverSetup()
+
+    expect(globalThis.IntersectionObserver).not.toHaveBeenCalled()
+    expect(onChangeMock).not.toHaveBeenCalled()
   })
 
   it('should not create an observer when IntersectionObserver is missing', () => {

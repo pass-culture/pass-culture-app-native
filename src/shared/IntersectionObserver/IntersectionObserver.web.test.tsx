@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { render, screen } from 'tests/utils/web'
 import { Typo } from 'ui/theme'
@@ -30,6 +32,22 @@ const onChangeMock = jest.fn()
 describe('IntersectionObserver (web)', () => {
   beforeEach(() => {
     jest.clearAllMocks()
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_INTERSECTION_OBSERVER])
+  })
+
+  describe('feature flag', () => {
+    it('should not create an observer nor call onChange when the feature flag is disabled', () => {
+      setFeatureFlags([])
+
+      render(
+        <IntersectionObserver onChange={onChangeMock}>
+          <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
+        </IntersectionObserver>
+      )
+
+      expect(mockIntersectionObserverConstructor).not.toHaveBeenCalled()
+      expect(onChangeMock).not.toHaveBeenCalled()
+    })
   })
 
   describe('basic functionality', () => {

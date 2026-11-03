@@ -1,6 +1,8 @@
 import React from 'react'
 import { FlatList, Text, View } from 'react-native'
 
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { act, render, screen } from 'tests/utils'
 
@@ -70,6 +72,7 @@ describe('<ObservedPlaylist />', () => {
     jest.useFakeTimers()
     jest.clearAllMocks()
     installIntersectionObserver()
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_INTERSECTION_OBSERVER])
   })
 
   afterEach(() => {

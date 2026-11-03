@@ -2,6 +2,9 @@ import React, { FC, useEffect, useRef } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+
 import { IntersectionObserverProps } from './types'
 
 const isEntryVisible = (entry: IntersectionObserverEntry, threshold?: number) => {
@@ -20,9 +23,14 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
 }) => {
   const observerRef = useRef<IntersectionObserver | null>(null)
   const targetRef = useRef<View | null>(null)
+  const isIntersectionObserverEnabled = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_INTERSECTION_OBSERVER
+  )
 
   useEffect(
     function loadIntersectionObserver() {
+      if (!isIntersectionObserverEnabled) return
+
       const IntersectionObserverAPI = globalThis.IntersectionObserver
       if (typeof IntersectionObserverAPI !== 'function') {
         if (Platform.OS === 'web') onChange(true)
@@ -49,7 +57,7 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
         observerRef.current = null
       }
     },
-    [onChange, threshold]
+    [isIntersectionObserverEnabled, onChange, threshold]
   )
 
   return (

@@ -9,6 +9,7 @@ import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavig
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
@@ -54,7 +55,7 @@ const user = userEvent.setup()
 
 describe('GtlPlaylist', () => {
   beforeEach(() => {
-    setFeatureFlags()
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_INTERSECTION_OBSERVER])
     observerCallback = undefined
     globalThis.IntersectionObserver = jest.fn((callback: IntersectionObserverCallback) => {
       observerCallback = callback
