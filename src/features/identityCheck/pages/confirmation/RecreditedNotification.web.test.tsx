@@ -3,7 +3,7 @@ import React from 'react'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
+import { RecreditBirthdayNotification } from './RecreditedNotification'
 
 jest.mock('libs/firebase/analytics/analytics')
 
