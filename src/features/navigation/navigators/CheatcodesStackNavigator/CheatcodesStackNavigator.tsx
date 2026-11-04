@@ -52,6 +52,7 @@ import { CheatcodesScreenGenericInfoPageIllustrations } from 'cheatcodes/pages/o
 import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericOfficialPage'
 import { CheatcodesScreenLastLoginInfo } from 'cheatcodes/pages/others/CheatcodesScreenLastLoginInfo'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
+import { CheatcodesScreenLoader } from 'cheatcodes/pages/others/CheatcodesScreenLoader'
 import { CheatcodesScreenMandatoryUpdate } from 'cheatcodes/pages/others/CheatcodesScreenMandatoryUpdate'
 import { CheatcodesScreenModalDetailed } from 'cheatcodes/pages/others/CheatcodesScreenModalDetailed'
 import { CheatcodesScreenModalSimpleNotScrollable } from 'cheatcodes/pages/others/CheatcodesScreenModalSimpleNotScrollable'
@@ -61,7 +62,6 @@ import { CheatcodesScreenOffline } from 'cheatcodes/pages/others/CheatcodesScree
 import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/CheatcodesScreenPageWithHeader'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { LoadingPage } from 'ui/pages/LoadingPage'
 
 const isWeb = Platform.OS === 'web'
 const modalType: NativeStackNavigationOptions = {
@@ -244,7 +244,7 @@ const cheatcodesStackNavigatorPathDefinition = {
       options: { title: 'Cheatcodes - Pages non-écran' },
     },
     CheatcodeScreenLoadingPage: {
-      screen: LoadingPage,
+      screen: CheatcodesScreenLoader,
       linking: { path: 'cheatcodes/other/loading-page' },
       options: { title: 'Cheatcodes - Chargement' },
     },
