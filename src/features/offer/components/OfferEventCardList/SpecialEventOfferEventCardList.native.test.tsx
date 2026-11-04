@@ -63,7 +63,7 @@ describe('SpecialEventOfferEventCardList', () => {
     beginningDatetime: dateBuilder().withDay(1).withMonth(0).withYear(2024).toString(),
   })
   const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
-  const defaultOffer = mockBuilder.offerResponseV2({
+  const defaultOffer = mockBuilder.offerForStocksResponse({
     subcategoryId,
     stocks: [stock],
   })

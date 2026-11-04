@@ -21,7 +21,7 @@ describe('getStocksByOfferIdsSpecialEvent', () => {
     await getStocksByOfferIdsSpecialEvent([1, 2], LogTypeEnum.INFO)
 
     expect(apiPostNativeV3OffersStocksSpy).toHaveBeenCalledWith({
-      offer_ids: [1, 2],
+      offerIds: [1, 2],
     })
   })
 
