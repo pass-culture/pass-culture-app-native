@@ -17,15 +17,19 @@ export const SpecialEventCineBlock: FunctionComponent<SpecialEventCineBlockProps
   onSeeVenuePress,
   nextDate,
   withDivider,
-}) => (
-  <CineBlockBase
-    offer={offer}
-    ctaOffer={getCinemaOfferForCTA(offer)}
-    onSeeVenuePress={onSeeVenuePress}
-    nextDate={nextDate}
-    withDivider={withDivider}
-    renderScreenings={(selectedDate) => (
-      <SpecialEventOfferEventCardList offer={offer} selectedDate={selectedDate} />
-    )}
-  />
-)
+}) => {
+  const ctaOffer = getCinemaOfferForCTA(offer)
+
+  return (
+    <CineBlockBase
+      offer={ctaOffer}
+      ctaOffer={ctaOffer}
+      onSeeVenuePress={onSeeVenuePress}
+      nextDate={nextDate}
+      withDivider={withDivider}
+      renderScreenings={(selectedDate) => (
+        <SpecialEventOfferEventCardList offer={offer} selectedDate={selectedDate} />
+      )}
+    />
+  )
+}

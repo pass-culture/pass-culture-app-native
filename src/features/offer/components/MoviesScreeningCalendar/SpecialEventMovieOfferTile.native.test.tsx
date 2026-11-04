@@ -55,7 +55,7 @@ const MOCK_MOVIE_OFFER = {
   isUpcoming: false,
   nextDate: new Date('2025-02-07T20:30:10Z'),
   offer: {
-    ...mockBuilder.offerResponseV2({ id: 1 }),
+    ...mockBuilder.offerForStocksResponse({ id: 1 }),
     stocks: [
       {
         ...mockBuilder.offerStockResponse({

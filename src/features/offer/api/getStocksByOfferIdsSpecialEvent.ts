@@ -9,7 +9,7 @@ export const getStocksByOfferIdsSpecialEvent = async (offerIds: number[], logTyp
   }
   try {
     return await api.postNativeV3OffersStocks({
-      offer_ids: offerIds,
+      offerIds,
     })
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {

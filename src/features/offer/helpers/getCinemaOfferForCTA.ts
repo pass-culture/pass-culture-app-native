@@ -1,4 +1,4 @@
-import { OfferForStocksResponse, OfferResponse } from 'api/gen'
+import { OfferForStocksResponse, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 
 export const getCinemaOfferForCTA = (offer: OfferForStocksResponse): OfferResponse => ({
   ...offer,
@@ -13,4 +13,5 @@ export const getCinemaOfferForCTA = (offer: OfferForStocksResponse): OfferRespon
   metadata: null,
   reactionsCount: { likes: 0 },
   stocks: offer.stocks.map((stock) => ({ ...stock, features: [] })),
+  subcategoryId: offer.subcategoryId as SubcategoryIdEnum,
 })

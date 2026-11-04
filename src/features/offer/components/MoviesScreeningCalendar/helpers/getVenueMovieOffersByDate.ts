@@ -2,7 +2,7 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { CreateMovieOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/helpers/movieOfferBuilderTypes'
 
 type CinemaOffer = {
-  subcategoryId: SubcategoryIdEnum
+  subcategoryId: string
 }
 
 export const getVenueMovieOffersByDate = <Offer extends CinemaOffer, MovieOffer>(
