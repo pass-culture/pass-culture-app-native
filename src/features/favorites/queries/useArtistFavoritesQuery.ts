@@ -1,14 +1,23 @@
+// features/favorites/queries/useArtistFavoritesQuery.ts
 import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
+import { PaginatedResponseFavoriteArtistResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
-// arbitrary. We have to make sure we invalidate the cache when adding/removing favorites. See above
 const STALE_TIME_FAVORITES = 5 * 60 * 1000
 
-export const useArtistFavoritesQuery = () => {
+type UseArtistFavoritesQueryOptions<TData = PaginatedResponseFavoriteArtistResponse> = {
+  enabled?: boolean
+  select?: (data: PaginatedResponseFavoriteArtistResponse) => TData
+}
+
+export const useArtistFavoritesQuery = <TData = PaginatedResponseFavoriteArtistResponse>({
+  enabled = true,
+  select,
+}: UseArtistFavoritesQueryOptions<TData> = {}) => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery({
@@ -19,14 +28,19 @@ export const useArtistFavoritesQuery = () => {
       } catch (error) {
         // To remove when backend merged
         if (isApiError(error) && error.statusCode === 404) {
-          return { favorites: [] }
+          return {
+            favorites: [],
+            nbFavorites: 0,
+            page: 0,
+          }
         }
         throw error
       }
     },
-    enabled: isLoggedIn,
+    enabled: isLoggedIn && enabled,
     staleTime: STALE_TIME_FAVORITES,
     meta: { private: true },
     retry: false,
+    select,
   })
 }

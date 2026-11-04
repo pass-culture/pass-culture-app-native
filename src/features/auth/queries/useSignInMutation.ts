@@ -31,6 +31,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
+import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
 import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
 import { useBonificationBonusAmount } from 'queries/settings/useSettings'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
@@ -108,18 +109,23 @@ const useHandleSigninSuccess = (
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
 
-  const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
+  const onAddOfferFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer.id) {
       void analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
     }
   }, [])
 
-  const { mutate: addFavorite } = useAddOfferFavoriteMutation({
+  const { mutate: addOfferFavorite } = useAddOfferFavoriteMutation({
     type: FavoriteType.OFFER,
-    onSuccess: onAddFavoriteSuccess,
+    onSuccess: onAddOfferFavoriteSuccess,
+  })
+
+  const { mutate: addArtistFavorite } = useAddArtistFavoriteMutation({
+    type: FavoriteType.ARTIST,
   })
 
   const offerId = params?.offerId
+  const artistId = params?.artistId
   const comeFrom = params?.from
 
   const navigateForActiveState = useCallback(
@@ -143,7 +149,7 @@ const useHandleSigninSuccess = (
             navigate('Offer', { id: offerId, openModalOnNavigation: true })
             return
           case StepperOrigin.FAVORITE:
-            addFavorite({ offerId })
+            addOfferFavorite({ offerId })
             navigate('Offer', { id: offerId })
             return
           case StepperOrigin.OFFER:
@@ -154,11 +160,25 @@ const useHandleSigninSuccess = (
             navigateToHome()
             return
         }
+      } else if (artistId) {
+        if (comeFrom === StepperOrigin.FAVORITE) {
+          addArtistFavorite({ artistId })
+          navigate('Artist', { id: artistId })
+          return
+        }
       } else {
         navigateToHome()
       }
     },
-    [offerId, bonificationBonusAmount, navigate, comeFrom, addFavorite]
+    [
+      offerId,
+      artistId,
+      bonificationBonusAmount,
+      navigate,
+      comeFrom,
+      addOfferFavorite,
+      addArtistFavorite,
+    ]
   )
 
   return useCallback(

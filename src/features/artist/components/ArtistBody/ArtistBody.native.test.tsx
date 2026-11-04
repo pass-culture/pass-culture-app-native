@@ -4,17 +4,13 @@ import { Share } from 'react-native'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import {
-  FavoriteArtistResponse,
-  PaginatedResponseFavoriteArtistResponse,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { PaginatedResponseFavoriteArtistResponse, SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
-import * as useArtistFavorite from 'features/favorites/hooks/useArtistFavorite'
+import { useArtistFavoritesQuery } from 'features/favorites/queries'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import { Color, HomepageModuleType } from 'features/home/types'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -65,13 +61,16 @@ jest.mock('features/home/queries/useGetOffersDataQuery', () => ({
   useGetOffersDataQuery: jest.fn(),
 }))
 
+const mockUseArtistFavoritesQuery = useArtistFavoritesQuery as jest.Mock
+jest.mock('features/favorites/queries/useArtistFavoritesQuery', () => ({
+  useArtistFavoritesQuery: jest.fn(),
+}))
+
 const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesArtistsfavoriteId')
 const spyApiPostFavorite = jest.spyOn(api, 'postNativeV2MeFavoritesArtists')
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-
-const useFavoriteSpy = jest.spyOn(useArtistFavorite, 'useArtistFavorite')
 
 const user = userEvent.setup()
 
@@ -82,10 +81,7 @@ describe('<ArtistBody />', () => {
     setFeatureFlags()
     await AsyncStorage.clear()
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
-    mockServer.postApi<FavoriteArtistResponse>(`/v2/me/favorites/artists`, {
-      responseOptions: { statusCode: 200, data: favoriteArtistResponseSnap },
-    })
-    useFavoriteSpy.mockReturnValue(favoriteArtistResponseSnap)
+    mockUseArtistFavoritesQuery.mockReturnValue({ data: favoriteArtistResponseSnap })
     mockServer.getApi<UserProfile>(`/v1/me`, beneficiaryUser)
     spyApiDeleteFavorite.mockResolvedValue({})
     spyApiPostFavorite.mockResolvedValue(favoriteArtistResponseSnap)
@@ -563,7 +559,7 @@ describe('<ArtistBody />', () => {
 
       describe('When artist is not in favorites', () => {
         beforeEach(() => {
-          useFavoriteSpy.mockReturnValue(null)
+          mockUseArtistFavoritesQuery.mockReturnValue({ data: null })
           mockAuthContextWithUser(beneficiaryUser)
         })
 
@@ -591,7 +587,7 @@ describe('<ArtistBody />', () => {
     })
 
     describe('When wipFavoritesHub FF deactivated', () => {
-      it('should not display favorite button', async () => {
+      it('should not display favorite button and disable query', async () => {
         mockAuthContextWithUser(beneficiaryUser)
         render(
           reactQueryProviderHOC(
@@ -609,6 +605,9 @@ describe('<ArtistBody />', () => {
 
         expect(screen.queryByLabelText('Mettre en favori')).not.toBeOnTheScreen()
         expect(screen.queryByLabelText('Retirer des favoris')).not.toBeOnTheScreen()
+        expect(mockUseArtistFavoritesQuery).toHaveBeenCalledWith(
+          expect.objectContaining({ enabled: false })
+        )
       })
     })
   })

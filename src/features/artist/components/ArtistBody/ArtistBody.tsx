@@ -15,7 +15,8 @@ import {
   getArtistModuleDataByIndex,
 } from 'features/artist/helpers/getArtistModuleDataByIndex'
 import { FavoriteType } from 'features/favorites/enum'
-import { useArtistFavorite } from 'features/favorites/hooks/useArtistFavorite'
+import { selectArtistFavorite } from 'features/favorites/helpers/selectArtistFavorite'
+import { useArtistFavoritesQuery } from 'features/favorites/queries'
 import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
@@ -148,7 +149,10 @@ export const ArtistBody: FunctionComponent<Props> = ({
       },
     })
 
-  const favorite = useArtistFavorite({ artistId: artist.id })
+  const { data: favorite } = useArtistFavoritesQuery({
+    enabled: enableFavoriteButton,
+    select: (data) => selectArtistFavorite(data, artist.id),
+  })
 
   const pressShareArtist = () => {
     void analytics.logShare({

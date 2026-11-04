@@ -20,7 +20,7 @@ export const useRemoveArtistFavoriteMutation = ({ onError }: RemoveArtistFavorit
       })
       // Snapshot the previous value
       const previousFavorites = queryClient.getQueryData<PaginatedResponseFavoriteArtistResponse>([
-        QueryKeys.FAVORITES_OFFER,
+        QueryKeys.FAVORITES_ARTIST,
       ])
 
       // Optimistically update to the new value
