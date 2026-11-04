@@ -82,7 +82,6 @@ export const useSubmitChangeAddress = () => {
       showErrorSnackBar(snackbarMessage)
       eventMonitoring.captureException(new IdentityCheckError(exception))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])
 
   const onChangeAddress = (value: string) => {
@@ -129,6 +128,12 @@ export const useSubmitChangeAddress = () => {
         newAddress: variables.address ?? '',
         oldAddress: user?.street ?? '',
       })
+      await analytics.logUpdatePostalCode({
+        newCity: variables.city ?? '',
+        oldCity: user?.city ?? '',
+        newPostalCode: variables.postalCode ?? '',
+        oldPostalCode: user?.postalCode ?? '',
+      })
     },
     onError: () => {
       showErrorSnackBar('Une erreur est survenue')
@@ -138,7 +143,11 @@ export const useSubmitChangeAddress = () => {
   const onSubmit = ({ address }: AddressForm) => {
     const finalAddress = selectedAddress ?? address
     setStoreAddress(finalAddress)
-    patchProfile({ address: finalAddress })
+    patchProfile({
+      address: finalAddress,
+      city: storedCity?.name,
+      postalCode: storedCity?.postalCode,
+    })
   }
 
   useEnterKeyAction(isValid ? handleSubmit(onSubmit) : undefined)

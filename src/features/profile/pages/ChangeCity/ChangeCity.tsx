@@ -11,8 +11,7 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 import { useSubmitChangeCity } from './useSubmitChangeCity'
 
 export const ChangeCity = () => {
-  const { control, handleSubmit, onSubmit, isValid, buttonWording, isPending } =
-    useSubmitChangeCity()
+  const { control, handleSubmit, onSubmit, isValid, buttonWording } = useSubmitChangeCity()
 
   return (
     <PageWithHeader
@@ -38,7 +37,6 @@ export const ChangeCity = () => {
           onPress={handleSubmit(onSubmit)}
           wording={buttonWording}
           disabled={!isValid}
-          isLoading={isPending}
         />
       }
     />

@@ -9,9 +9,7 @@ import { cityActions, useCity } from 'features/identityCheck/pages/profile/store
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
-import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 export const useSubmitChangeCity = () => {
   const { user } = useAuthContext()
@@ -43,33 +41,18 @@ export const useSubmitChangeCity = () => {
     defaultValues: { city: storedCity ?? userCity },
   })
 
-  const { mutate: patchProfile, isPending } = usePatchProfileMutation({
-    onSuccess: async (_, variables) => {
-      if (isFromProfileUpdateFlow) {
-        navigate(...getProfileHookConfig('ChangeAddress', { type }))
-      } else {
-        navigate(...getProfileHookConfig('PersonalData'))
-        showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
-      }
-
-      await analytics.logUpdatePostalCode({
-        newCity: variables.city ?? '',
-        oldCity: user?.city ?? '',
-        newPostalCode: variables.postalCode ?? '',
-        oldPostalCode: user?.postalCode ?? '',
-      })
-    },
-    onError: () => {
-      showErrorSnackBar('Une erreur est survenue')
-    },
-  })
-
   const onSubmit = ({ city }: CityForm) => {
     const hasCityChanged = !!storedCity && storedCity.postalCode !== city.postalCode
     if (isFromProfileUpdateFlow && hasCityChanged) resetAddress()
 
     setCity(city)
-    patchProfile({ city: city.name, postalCode: city.postalCode })
+    if (isFromProfileUpdateFlow) {
+      navigate(...getProfileHookConfig('ChangeAddress', { type }))
+    } else {
+      //cheatcodes
+      navigate(...getProfileHookConfig('PersonalData'))
+      showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
+    }
   }
 
   const buttonWording = isFromProfileUpdateFlow ? 'Continuer' : 'Valider ma ville de résidence'
@@ -80,6 +63,5 @@ export const useSubmitChangeCity = () => {
     handleSubmit,
     onSubmit,
     buttonWording,
-    isPending,
   }
 }

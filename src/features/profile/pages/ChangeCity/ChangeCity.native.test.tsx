@@ -1,12 +1,10 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import * as API from 'api/api'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CITIES_API_URL } from 'libs/place/queries/constants'
 import { CitiesResponse } from 'libs/place/types'
@@ -17,8 +15,6 @@ import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
-
-const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -50,21 +46,6 @@ describe('ChangeCity', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should update profile when clicking on "Valider ma ville de résidence"', async () => {
-      const city = mockedSuggestedCities[0]
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Valider ma ville de résidence'))
-
-      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
-        city: city.nom,
-        postalCode: POSTAL_CODE,
-      })
-    })
-
     it('should navigate to PersonalData when clicking on "Valider ma ville de résidence"', async () => {
       const city = mockedSuggestedCities[0]
       render(reactQueryProviderHOC(<ChangeCity />))
@@ -92,39 +73,6 @@ describe('ChangeCity', () => {
       expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
       expect(screen.getByText('Ta ville de résidence a bien été modifiée\u00a0!')).toBeOnTheScreen()
     })
-
-    it('should send analytics when success', async () => {
-      const city = mockedSuggestedCities[0]
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Valider ma ville de résidence'))
-
-      expect(analytics.logUpdatePostalCode).toHaveBeenCalledWith({
-        oldPostalCode: beneficiaryUser.postalCode,
-        oldCity: beneficiaryUser.city,
-        newPostalCode: POSTAL_CODE,
-        newCity: city.nom,
-      })
-    })
-
-    it('should show snackbar on error', async () => {
-      const city = mockedSuggestedCities[0]
-      mockServer.patchApi<UserProfile>('/v1/profile', {
-        responseOptions: { statusCode: 400 },
-      })
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Valider ma ville de résidence'))
-
-      expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
-      expect(screen.getByText('Une erreur est survenue')).toBeOnTheScreen()
-    })
   })
 
   describe('from profil personal data screen', () => {
@@ -138,21 +86,6 @@ describe('ChangeCity', () => {
       render(reactQueryProviderHOC(<ChangeCity />))
 
       expect(screen).toMatchSnapshot()
-    })
-
-    it('should update profile when clicking on "Continuer"', async () => {
-      const city = mockedSuggestedCities[0]
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Continuer'))
-
-      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
-        city: city.nom,
-        postalCode: POSTAL_CODE,
-      })
     })
 
     it('should navigate to ChangeAddress when clicking on "Continuer"', async () => {
@@ -196,21 +129,6 @@ describe('ChangeCity', () => {
       render(reactQueryProviderHOC(<ChangeCity />))
 
       expect(screen).toMatchSnapshot()
-    })
-
-    it('should update profile when clicking on "Continuer"', async () => {
-      const city = mockedSuggestedCities[0]
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Continuer'))
-
-      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
-        city: city.nom,
-        postalCode: POSTAL_CODE,
-      })
     })
 
     it('should navigate to ChangeAddress when clicking on "Continuer"', async () => {
