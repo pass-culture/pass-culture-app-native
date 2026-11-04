@@ -8,7 +8,7 @@ import { VenueOffers } from 'features/venue/types'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 
 type MovieOfferTileLayoutProps = {
-  offerScreening: VenueOffers['hits'][number] | undefined
+  offerScreening?: VenueOffers['hits'][number]
   subtitles: string[]
   nextScreeningDate?: Date
   onPressOfferCTA: VoidFunction

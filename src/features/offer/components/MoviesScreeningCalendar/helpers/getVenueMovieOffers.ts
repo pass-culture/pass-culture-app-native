@@ -4,5 +4,5 @@ import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCal
 
 export const getVenueMovieOffers = (
   selectedDate: Date,
-  offersWithStocks: OffersStocksResponseV2 | undefined
-) => getVenueMovieOffersByDate(selectedDate, offersWithStocks?.offers, moviesOfferBuilder)
+  offersWithStocks?: OffersStocksResponseV2
+) => getVenueMovieOffersByDate(selectedDate, moviesOfferBuilder, offersWithStocks?.offers)

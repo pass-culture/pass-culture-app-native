@@ -7,8 +7,8 @@ type CinemaOffer = {
 
 export const getVenueMovieOffersByDate = <Offer extends CinemaOffer, MovieOffer>(
   selectedDate: Date,
-  offers: Offer[] | undefined,
-  createMovieOfferBuilder: CreateMovieOfferBuilder<Offer, MovieOffer>
+  createMovieOfferBuilder: CreateMovieOfferBuilder<Offer, MovieOffer>,
+  offers?: Offer[]
 ) => {
   const cinemaOffers = offers?.filter(
     ({ subcategoryId }) => subcategoryId === SubcategoryIdEnum.SEANCE_CINE
