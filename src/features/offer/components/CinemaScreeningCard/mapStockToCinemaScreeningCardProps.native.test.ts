@@ -13,10 +13,10 @@ const screening: StockResponse = {
   isSoldOut: false,
   price: 570,
   screeningFeatures: {
-    accessibility: { audio: ['CCAP'], mental: [], motor: [], visual: [] },
-    audio: 'DOLBY_ATMOS',
+    accessibility: { audio: ['SUBTITLE_CCAP'], mental: [], motor: [], visual: [] },
+    audio: 'ATMOS',
     language: 'VO',
-    specialEventType: 'PREVIEW_SCREENING_WITH_CREW',
+    specialEventType: 'AVANT_PREMIERE_EQUIPE',
     video: 'IMAX',
   },
 }
@@ -34,10 +34,10 @@ describe('mapStockToCinemaScreeningCardProps', () => {
     expect(result).toEqual(
       expect.objectContaining({
         accessibility: screening.screeningFeatures?.accessibility,
-        audio: ['DolbyAtmos'],
+        audio: ['Dolby Atmos'],
         languages: ['VO'],
         price: '5,70 €',
-        specialEvent: 'Avant première',
+        specialEvent: 'Avant-première avec équipe',
         time: '12h00',
         video: ['IMAX'],
       })

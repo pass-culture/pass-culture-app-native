@@ -4,6 +4,6 @@ import { specialEventMoviesOfferBuilder } from 'features/offer/components/Movies
 
 export const getSpecialEventVenueMovieOffers = (
   selectedDate: Date,
-  offersWithStocks: OffersStocksResponse | undefined
+  offersWithStocks?: OffersStocksResponse
 ) =>
-  getVenueMovieOffersByDate(selectedDate, offersWithStocks?.offers, specialEventMoviesOfferBuilder)
+  getVenueMovieOffersByDate(selectedDate, specialEventMoviesOfferBuilder, offersWithStocks?.offers)
