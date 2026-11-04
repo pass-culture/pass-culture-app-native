@@ -21,7 +21,10 @@ export const NotEligibleForeignCountryExplanation = () => {
       scrollChildren={
         <Container>
           <IconContainer>
-            <SadFace size={200} color={designSystem.color.icon.brandPrimary} />
+            <SadFace
+              size={designSystem.size.illustration.xl}
+              color={designSystem.color.icon.brandPrimary}
+            />
           </IconContainer>
           <TextContainer gap={4}>
             <StyledTitle

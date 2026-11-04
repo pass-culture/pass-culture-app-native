@@ -34,7 +34,7 @@ export const useSubmitChangeAddress = () => {
   const type = params?.type
 
   const isMandatoryUpdatePersonalData = type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
-  const isCheckAddress = type === PersonalDataTypes.CHECK_ADDRESS
+  const isCheckAddress = type === PersonalDataTypes.CHECK_ADDRESS_DATA
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
   const { user } = useAuthContext()

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
@@ -18,6 +18,7 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
@@ -68,6 +69,8 @@ export function BeneficiaryAccountCreated({ from }: { from: string }) {
     void run()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEnterKeyAction(navigateToHome)
 
   const [profileNavigator, profileScreenConfig] = getTabHookConfig('Profile')
 

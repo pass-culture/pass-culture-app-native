@@ -30,7 +30,7 @@ export function CheckAddress() {
       onPressModify={() =>
         navigate(
           ...getProfileHookConfig('ChangeCity', {
-            type: PersonalDataTypes.CHECK_ADDRESS,
+            type: PersonalDataTypes.CHECK_ADDRESS_DATA,
           })
         )
       }

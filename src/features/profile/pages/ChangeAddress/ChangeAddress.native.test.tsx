@@ -278,7 +278,7 @@ describe('<ChangeAddress/>', () => {
   describe('from check address screen', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({
-        params: { type: PersonalDataTypes.CHECK_ADDRESS },
+        params: { type: PersonalDataTypes.CHECK_ADDRESS_DATA },
       })
     })
 
