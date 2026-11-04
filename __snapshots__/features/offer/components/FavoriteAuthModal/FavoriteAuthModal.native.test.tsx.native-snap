@@ -358,7 +358,7 @@ retrouver tes favoris
                     }
                   }
                 >
-                  Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
+                  Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !
                 </Text>
                 <View
                   style={

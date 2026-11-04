@@ -13,7 +13,7 @@ import { selectReminderByOfferId } from 'features/offer/queries/selectors/select
 import { useAddReminderMutation } from 'features/offer/queries/useAddReminderMutation'
 import { useDeleteReminderMutation } from 'features/offer/queries/useDeleteReminderMutation'
 import { useGetRemindersQuery } from 'features/offer/queries/useGetRemindersQuery'
-import { FavoriteProps } from 'features/offer/types'
+import { OfferFavoriteProps } from 'features/offer/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
@@ -23,7 +23,7 @@ export type Props = PropsWithChildren<{
   onLayout?: (params: LayoutChangeEvent) => void
   displayStickyGradient?: boolean
 }> &
-  FavoriteProps
+  OfferFavoriteProps
 
 export const OfferContentCTAs: FC<Props> = ({
   offer,

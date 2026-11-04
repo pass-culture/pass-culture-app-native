@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { isApiError } from 'api/apiHelpers'
 import {
   FavoriteRequest,
   FavoriteResponse,
@@ -11,18 +10,21 @@ import {
 } from 'api/gen'
 import { FavoriteType } from 'features/favorites/enum'
 import { triggerFirstFavoriteSnackBar } from 'features/favorites/helpers/firstFavoriteSnackBar'
-import { FavoriteMutationContext } from 'features/favorites/queries/types'
+import { handleFavoriteError } from 'features/favorites/helpers/handleFavoriteError'
+import { FavoriteOfferMutationContext } from 'features/favorites/queries/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
-type UseAddFavoriteMutationProps = {
+type UseAddOfferFavoriteMutationProps = {
   type: FavoriteType
   onSuccess?: (data?: FavoriteResponse) => void
 }
 
-export const useAddFavoriteMutation = ({ onSuccess, type }: UseAddFavoriteMutationProps) => {
+export const useAddOfferFavoriteMutation = ({
+  onSuccess,
+  type,
+}: UseAddOfferFavoriteMutationProps) => {
   const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
   const queryClient = useQueryClient()
 
@@ -30,7 +32,7 @@ export const useAddFavoriteMutation = ({ onSuccess, type }: UseAddFavoriteMutati
     mutationFn: (body: FavoriteRequest) => api.postNativeV1MeFavorites(body),
     onSuccess: async (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
-        QueryKeys.FAVORITES,
+        QueryKeys.FAVORITES_OFFER,
       ])
 
       if (previousFavorites) {
@@ -38,10 +40,13 @@ export const useAddFavoriteMutation = ({ onSuccess, type }: UseAddFavoriteMutati
           ...previousFavorites.favorites.filter((favoris) => favoris.offer.id !== data.offer.id),
           data,
         ]
-        queryClient.setQueryData([QueryKeys.FAVORITES], { ...previousFavorites, favorites })
+        queryClient.setQueryData([QueryKeys.FAVORITES_OFFER], {
+          ...previousFavorites,
+          favorites,
+        })
       } else {
         void queryClient.invalidateQueries({
-          queryKey: [QueryKeys.FAVORITES],
+          queryKey: [QueryKeys.FAVORITES_OFFER],
         })
       }
 
@@ -55,7 +60,7 @@ export const useAddFavoriteMutation = ({ onSuccess, type }: UseAddFavoriteMutati
     },
     onMutate: ({ offerId }) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
-        QueryKeys.FAVORITES,
+        QueryKeys.FAVORITES_OFFER,
       ])
       if (previousFavorites) {
         const favorites = [
@@ -67,27 +72,24 @@ export const useAddFavoriteMutation = ({ onSuccess, type }: UseAddFavoriteMutati
           },
         ]
 
-        queryClient.setQueryData([QueryKeys.FAVORITES], {
+        queryClient.setQueryData([QueryKeys.FAVORITES_OFFER], {
           ...previousFavorites,
           nbFavorites: favorites.length,
           favorites,
         })
       }
 
-      return { previousFavorites: previousFavorites ?? [] } as FavoriteMutationContext
+      return { previousFavorites: previousFavorites ?? [] } as FavoriteOfferMutationContext
     },
     onError: (
       error: Error | ApiError,
       _variables: FavoriteRequest,
-      context: FavoriteMutationContext | undefined
+      context?: FavoriteOfferMutationContext
     ) => {
-      showErrorSnackBar(
-        isApiError(error) && error.content?.code === 'MAX_FAVORITES_REACHED'
-          ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
-          : 'L’offre n’a pas été ajoutée à tes favoris'
-      )
+      handleFavoriteError(error, 'L’offre n’a pas été ajoutée à tes favoris')
+
       if (context?.previousFavorites) {
-        queryClient.setQueryData([QueryKeys.FAVORITES], context.previousFavorites)
+        queryClient.setQueryData([QueryKeys.FAVORITES_OFFER], context.previousFavorites)
       }
     },
   })

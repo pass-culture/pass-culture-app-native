@@ -1,5 +1,9 @@
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteArtistResponse, FavoriteResponse } from 'api/gen'
 
-export interface FavoriteMutationContext {
+export interface FavoriteOfferMutationContext {
   previousFavorites: Array<FavoriteResponse>
+}
+
+export interface FavoriteArtistMutationContext {
+  previousFavorites: Array<FavoriteArtistResponse>
 }

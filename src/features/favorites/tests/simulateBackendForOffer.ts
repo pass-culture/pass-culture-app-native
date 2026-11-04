@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-
 import {
   FavoriteResponse,
   OfferResponse,
@@ -7,7 +5,7 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -31,7 +29,7 @@ const defaultOptions = {
   hasRemoveFavoriteError: false,
 }
 
-export function simulateBackend(options: Options = defaultOptions) {
+export function simulateBackendForOffer(options: Options = defaultOptions) {
   const { id, hasAddFavoriteError, hasRemoveFavoriteError, hasTooManyFavorites } = {
     ...defaultOptions,
     ...options,
@@ -39,7 +37,10 @@ export function simulateBackend(options: Options = defaultOptions) {
 
   mockServer.getApi<OfferResponse>(`/v3/offer/${id}`, offerResponseSnap)
   mockServer.getApi<UserProfile>(`/v1/me`, beneficiaryUser)
-  mockServer.getApi<PaginatedFavoritesResponse>(`/v1/me/favorites`, paginatedFavoritesResponseSnap)
+  mockServer.getApi<PaginatedFavoritesResponse>(
+    `/v1/me/favorites`,
+    paginatedOfferFavoritesResponseSnap
+  )
   mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   if (hasAddFavoriteError) {
     mockServer.postApi<EmptyResponse>(`/v1/me/favorites`, {
@@ -55,7 +56,9 @@ export function simulateBackend(options: Options = defaultOptions) {
     })
   }
 
-  const favoriteId = paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
+  const favoriteId = paginatedOfferFavoritesResponseSnap.favorites.find(
+    (f) => f.offer.id === id
+  )?.id
 
   if (favoriteId) {
     const responseOptions = hasRemoveFavoriteError

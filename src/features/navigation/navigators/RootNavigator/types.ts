@@ -187,6 +187,7 @@ type SignupParams =
       from: StepperOrigin
       ssoProvider?: Provider.GOOGLE | Provider.APPLE
       stepIndex?: number
+      artistId?: string
     }
   | undefined
 
@@ -246,6 +247,7 @@ type LoginParams = {
   displayForcedLoginHelpMessage?: boolean
   offerId?: number
   from?: StepperOrigin
+  artistId?: string
 }
 
 type FakeDoorModalParams = {

@@ -112,16 +112,19 @@ export const screenParamsParser: ParamsParsers = {
   Login: {
     displayForcedLoginHelpMessage: parseObject,
     offerId: identityFn,
+    artistId: identityFn,
     from: identityFn,
   },
   LoginMethods: {
     displayForcedLoginHelpMessage: parseObject,
     offerId: identityFn,
+    artistId: identityFn,
     from: identityFn,
   },
   LoginMethodsWithLastLoginInfo: {
     displayForcedLoginHelpMessage: parseObject,
     offerId: identityFn,
+    artistId: identityFn,
     from: identityFn,
   },
   Offer: {

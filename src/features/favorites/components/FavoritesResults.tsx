@@ -10,7 +10,7 @@ import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResu
 import { SortButton } from 'features/favorites/components/SortButton'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { applySortBy } from 'features/favorites/helpers/applySortBy'
-import { useFavoritesQuery } from 'features/favorites/queries'
+import { useOfferFavoritesQuery } from 'features/favorites/queries'
 import { Tab } from 'features/favorites/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -26,7 +26,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const { sortBy } = useFavoritesState()
   const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
-  const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
+  const { data, isLoading, isFetching, refetch } = useOfferFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)

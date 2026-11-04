@@ -6,14 +6,13 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as firstFavoriteModule from 'features/favorites/helpers/firstFavoriteSnackBar'
-import { simulateBackend } from 'features/favorites/tests/simulateBackend'
+import { simulateBackendForOffer } from 'features/favorites/tests/simulateBackendForOffer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
 import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
-
-import { useAddFavoriteMutation } from './useAddFavoriteMutation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
@@ -32,7 +31,7 @@ describe('useAddFavoriteMutation', () => {
   })
 
   it('should add favorite', async () => {
-    simulateBackend({
+    simulateBackendForOffer({
       id: offerId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
@@ -58,7 +57,7 @@ describe('useAddFavoriteMutation', () => {
 
   it('should trigger first favorite snack bar function when wipFavoritesHub FF activated', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
-    simulateBackend({
+    simulateBackendForOffer({
       id: offerId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
@@ -75,7 +74,7 @@ describe('useAddFavoriteMutation', () => {
   })
 
   it('should not trigger first favorite snack bar function when wipFavoritesHub FF deactivated', async () => {
-    simulateBackend({
+    simulateBackendForOffer({
       id: offerId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
@@ -92,7 +91,7 @@ describe('useAddFavoriteMutation', () => {
   })
 
   it('should show snack bar when fail to add favorite', async () => {
-    simulateBackend({
+    simulateBackendForOffer({
       id: offerId,
       hasAddFavoriteError: true,
       hasRemoveFavoriteError: false,
@@ -112,7 +111,7 @@ describe('useAddFavoriteMutation', () => {
   })
 
   it('should show snack bar when too many favorites when trying to add favorite', async () => {
-    simulateBackend({
+    simulateBackendForOffer({
       id: offerId,
       hasAddFavoriteError: false,
       hasTooManyFavorites: true,
@@ -135,7 +134,7 @@ describe('useAddFavoriteMutation', () => {
 
 const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
   const { result } = renderHook(
-    () => useAddFavoriteMutation({ type: FavoriteType.OFFER, onSuccess }),
+    () => useAddOfferFavoriteMutation({ type: FavoriteType.OFFER, onSuccess }),
     {
       wrapper: (props) =>
         reactQueryProviderHOC(

@@ -3,6 +3,7 @@ import { Animated } from 'react-native'
 
 import {
   CategoryIdEnum,
+  FavoriteArtistResponse,
   FavoriteResponse,
   OfferResponse,
   ReactionTypeEnum,
@@ -54,13 +55,21 @@ export interface OfferTileProps {
   withCenterAlign?: boolean
 }
 
-export type FavoriteProps = {
-  addFavorite?: ({ offerId }: { offerId: number }) => void
+type BaseFavoriteProps = {
   isAddFavoriteLoading?: boolean
   removeFavorite: (id: number) => void
   isRemoveFavoriteLoading: boolean
-  favorite?: FavoriteResponse | null
 }
+
+export type OfferFavoriteProps = {
+  addFavorite?: ({ offerId }: { offerId: number }) => void
+  favorite?: FavoriteResponse | null
+} & BaseFavoriteProps
+
+export type ArtistFavoriteProps = {
+  addFavorite?: ({ artistId }: { artistId: string }) => void
+  favorite?: FavoriteArtistResponse | null
+} & BaseFavoriteProps
 
 export interface SimilarOffersResponse {
   results: string[]

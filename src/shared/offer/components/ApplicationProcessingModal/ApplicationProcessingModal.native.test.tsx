@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { PaginatedFavoritesResponse } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -73,7 +73,7 @@ describe('<ApplicationProcessingModal />', () => {
   it('should close modal when clicking on button "Mettre en favori"', async () => {
     mockServer.postApi<PaginatedFavoritesResponse>(
       '/v1/me/favorites',
-      paginatedFavoritesResponseSnap
+      paginatedOfferFavoritesResponseSnap
     )
     render(
       reactQueryProviderHOC(
@@ -89,7 +89,7 @@ describe('<ApplicationProcessingModal />', () => {
   it('should log analytics when clicking on button "Mettre en favori"', async () => {
     mockServer.postApi<PaginatedFavoritesResponse>(
       '/v1/me/favorites',
-      paginatedFavoritesResponseSnap
+      paginatedOfferFavoritesResponseSnap
     )
     render(
       reactQueryProviderHOC(

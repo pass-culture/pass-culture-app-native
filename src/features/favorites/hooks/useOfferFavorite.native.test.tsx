@@ -2,27 +2,26 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { simulateBackend } from 'features/favorites/tests/simulateBackend'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
+import { useOfferFavorite } from 'features/favorites/hooks/useOfferFavorite'
+import { simulateBackendForOffer } from 'features/favorites/tests/simulateBackendForOffer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
-
-import { useFavorite } from './useFavorite'
 
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
-describe('useFavorite hook', () => {
+describe('useOfferFavorite hook', () => {
   it('should get favorite from offer id', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    simulateBackend({
+    const favorite = paginatedOfferFavoritesResponseSnap.favorites[0]
+    simulateBackendForOffer({
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
+    const { result } = renderHook(() => useOfferFavorite({ offerId: favorite.offer.id }), {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>
@@ -43,14 +42,14 @@ describe('useFavorite hook', () => {
   })
 
   it('should not get favorite from offer id', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    simulateBackend({
+    const favorite = paginatedOfferFavoritesResponseSnap.favorites[0]
+    simulateBackendForOffer({
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
 
-    const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {
+    const { result } = renderHook(() => useOfferFavorite({ offerId: 99999 }), {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>

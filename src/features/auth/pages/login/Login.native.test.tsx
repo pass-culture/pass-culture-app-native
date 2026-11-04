@@ -5,12 +5,14 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import {
   AccountState,
+  FavoriteArtistResponse,
   FavoriteResponse,
   OauthStateResponseV2,
   RecreditType,
   SigninResponseV2,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
+import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
@@ -51,7 +53,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
+const apiPostOfferFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
+const apiPostArtistFavoriteSpy = jest.spyOn(API.api, 'postNativeV2MeFavoritesArtists')
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV2Signin')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -69,6 +72,10 @@ describe('<Login/>', () => {
   beforeEach(() => {
     setFeatureFlags([])
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteArtistResponse>(
+      '/v2/me/favorites/artists',
+      favoriteArtistResponseSnap
+    )
     mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
@@ -435,17 +442,17 @@ describe('<Login/>', () => {
     })
 
     it('should add the previous offer to favorites when signin is successful', async () => {
-      simulateAddToFavorites()
+      simulateAddOfferToFavorites()
 
       renderLogin()
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
-      expect(apiPostFavoriteSpy).toHaveBeenCalledTimes(1)
+      expect(apiPostOfferFavoriteSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should log analytics when adding the previous offer to favorites', async () => {
-      simulateAddToFavorites()
+      simulateAddOfferToFavorites()
       renderLogin()
 
       await fillInputs()
@@ -455,6 +462,34 @@ describe('<Login/>', () => {
         from: 'login',
         offerId: OFFER_ID,
       })
+    })
+  })
+
+  describe('Login comes from adding an artist to favorite', () => {
+    const ARTIST_ID = favoriteArtistResponseSnap.artist.id
+
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { artistId: ARTIST_ID, from: StepperOrigin.FAVORITE } }) // first render
+    })
+
+    it('should redirect to Artist page when signin is successful', async () => {
+      renderLogin()
+      await fillInputs()
+      await user.press(screen.getByText('Se connecter'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Artist', {
+        id: ARTIST_ID,
+      })
+    })
+
+    it('should add the previous artist to favorites when signin is successful', async () => {
+      simulateAddArtistToFavorites()
+
+      renderLogin()
+      await fillInputs()
+      await user.press(screen.getByText('Se connecter'))
+
+      expect(apiPostArtistFavoriteSpy).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -726,6 +761,10 @@ function simulateSigninNetworkFailure() {
   })
 }
 
-function simulateAddToFavorites() {
+function simulateAddOfferToFavorites() {
   mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+}
+
+function simulateAddArtistToFavorites() {
+  mockServer.postApi<FavoriteArtistResponse>('/v2/me/favorites/artists', favoriteArtistResponseSnap)
 }

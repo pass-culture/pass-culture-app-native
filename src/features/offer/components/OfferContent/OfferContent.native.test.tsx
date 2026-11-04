@@ -22,7 +22,7 @@ import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import * as useFavorite from 'features/favorites/hooks/useFavorite'
+import * as useOfferFavorite from 'features/favorites/hooks/useOfferFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
@@ -60,7 +60,7 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/jwt/jwt')
 
-const useFavoriteSpy = jest.spyOn(useFavorite, 'useFavorite')
+const useFavoriteSpy = jest.spyOn(useOfferFavorite, 'useOfferFavorite')
 const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
 
 const consentState: ConsentStatus = { state: ConsentState.LOADING }
