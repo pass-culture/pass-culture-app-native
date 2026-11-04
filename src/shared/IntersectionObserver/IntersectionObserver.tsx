@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useEffectEvent, useRef } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -23,6 +23,7 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
 }) => {
   const observerRef = useRef<IntersectionObserver | null>(null)
   const targetRef = useRef<View | null>(null)
+  const notifyChange = useEffectEvent(onChange)
   const isIntersectionObserverEnabled = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_INTERSECTION_OBSERVER
   )
@@ -33,7 +34,7 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
 
       const IntersectionObserverAPI = globalThis.IntersectionObserver
       if (typeof IntersectionObserverAPI !== 'function') {
-        if (Platform.OS === 'web') onChange(true)
+        if (Platform.OS === 'web') notifyChange(true)
         return
       }
 
@@ -45,7 +46,7 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
         (entries) => {
           const entry = entries[0]
           if (!entry) return
-          onChange(isEntryVisible(entry, threshold))
+          notifyChange(isEntryVisible(entry, threshold))
         },
         { threshold }
       )
@@ -57,7 +58,7 @@ export const IntersectionObserver: FC<IntersectionObserverProps> = ({
         observerRef.current = null
       }
     },
-    [isIntersectionObserverEnabled, onChange, threshold]
+    [isIntersectionObserverEnabled, threshold]
   )
 
   return (

@@ -94,6 +94,45 @@ describe('<IntersectionObserver /> (native)', () => {
     expect(onChangeMock).toHaveBeenCalledWith(false)
   })
 
+  it('should keep the same observer when onChange changes', () => {
+    const { rerender } = render(
+      <IntersectionObserver onChange={jest.fn()}>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
+      </IntersectionObserver>
+    )
+
+    rerender(
+      <IntersectionObserver onChange={jest.fn()}>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
+      </IntersectionObserver>
+    )
+
+    expect(globalThis.IntersectionObserver).toHaveBeenCalledTimes(1)
+    expect(disconnectMock).not.toHaveBeenCalled()
+  })
+
+  it('should call the latest onChange when onChange changes', () => {
+    const firstOnChange = jest.fn()
+    const latestOnChange = jest.fn()
+    const { rerender } = render(
+      <IntersectionObserver onChange={firstOnChange}>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
+      </IntersectionObserver>
+    )
+
+    rerender(
+      <IntersectionObserver onChange={latestOnChange}>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
+      </IntersectionObserver>
+    )
+    act(() => {
+      observerCallback?.([visibleEntry(true)], {} as IntersectionObserver)
+    })
+
+    expect(firstOnChange).not.toHaveBeenCalled()
+    expect(latestOnChange).toHaveBeenCalledWith(true)
+  })
+
   it('should disconnect the observer on unmount', () => {
     const { unmount } = render(
       <IntersectionObserver onChange={onChangeMock}>

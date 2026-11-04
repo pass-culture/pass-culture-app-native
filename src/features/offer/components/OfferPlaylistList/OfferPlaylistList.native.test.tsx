@@ -50,10 +50,12 @@ const mockBooksPlaylist: OfferPagePlaylist = {
 const mockOnBeforeNavigate = jest.fn()
 
 let mockOnIntersectionChange: ((inView: boolean) => void) | undefined
+let mockOnItemViewed: ((item: { key: string; index: number; item: unknown }) => void) | undefined
 
 jest.mock('shared/ObservedPlaylist/ObservedPlaylist', () => ({
-  ObservedPlaylist: ({ children, onIntersectionChange }) => {
+  ObservedPlaylist: ({ children, onIntersectionChange, onItemViewed }) => {
     mockOnIntersectionChange = onIntersectionChange
+    mockOnItemViewed = onItemViewed
     return children({ listRef: { current: null } })
   },
 }))
@@ -127,6 +129,26 @@ describe('<OfferPlaylistList />', () => {
       PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
       mockApiParams
     )
+  })
+
+  it('should log ViewItem with the offer page context when an offer is viewed', async () => {
+    renderOfferPlaylistList({
+      playlists: [mockSameCategoryPlaylist],
+    })
+    await screen.findByLabelText('Les fans aiment aussi')
+
+    mockOnItemViewed?.({ key: '102280', index: 0, item: mockSearchHits[0] })
+
+    expect(analytics.logViewItem).toHaveBeenCalledWith({
+      origin: 'offer',
+      playlistIndex: 0,
+      index: 0,
+      type: 'offer',
+      id: '102280',
+      playlistId: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      originId: mockOffer.id.toString(),
+      callId: mockApiParams.callId,
+    })
   })
 
   describe('Vertical scroll', () => {

@@ -12,6 +12,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
+import * as ObservedPlaylistModule from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { computedTheme } from 'tests/computedTheme'
@@ -174,6 +175,31 @@ describe('OffersModule', () => {
       })
 
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+    })
+
+    it('should log ViewItem with the home module context when an offer is viewed', async () => {
+      const observedPlaylistSpy = jest.spyOn(ObservedPlaylistModule, 'ObservedPlaylist')
+      renderOffersModule()
+      await screen.findByLabelText('Module title')
+
+      observedPlaylistSpy.mock.lastCall?.[0].onItemViewed?.({
+        key: '102280',
+        index: 0,
+        item: mockHitsItems[0],
+      })
+
+      expect(analytics.logViewItem).toHaveBeenCalledWith({
+        origin: 'home',
+        playlistIndex: props.index,
+        index: 0,
+        type: 'offer',
+        id: '102280',
+        playlistId: props.moduleId,
+        originId: props.homeEntryId,
+        callId: undefined,
+      })
+
+      observedPlaylistSpy.mockRestore()
     })
 
     it('should trigger analytics when we click on "Voir tout" button', async () => {
