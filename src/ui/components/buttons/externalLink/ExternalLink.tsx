@@ -22,11 +22,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID, with
   return (
     <ButtonText
       primary={primary}
-      onPress={() =>
-        openUrl(url).catch(() => {
-          // openUrl already reports the error and displays an alert.
-        })
-      }
+      onPress={() => openUrl(url)}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       <StyledBody>
         {withIcon ? <ExternalSite primary={primary} testID="externalSiteIcon" /> : null}

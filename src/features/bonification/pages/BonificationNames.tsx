@@ -130,11 +130,7 @@ export const BonificationNames = () => {
               numberOfLines={2}
               icon={InfoPlain}
               wording="Je ne connais pas son nom de naissance"
-              onPress={() =>
-                openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS).catch(() => {
-                  // openUrl already reports the error and displays an alert.
-                })
-              }
+              onPress={() => openUrl(env.FAQ_BONIFICATION_LEGAL_GUARDIAN_BIRTH_INFORMATIONS)}
             />
           </ViewGap>
         </Form.MaxWidth>

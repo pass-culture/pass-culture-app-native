@@ -5,13 +5,12 @@ import { BusinessModule } from 'features/home/components/modules/business/Busine
 import { BusinessModuleProps } from 'features/home/components/modules/business/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 
-const props: BusinessModuleProps = {
+const businessModuleProps: BusinessModuleProps = {
   analyticsTitle: 'Title of module',
   title: 'firstLine',
   subtitle: 'secondLine',
@@ -37,51 +36,40 @@ describe('BusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 
   it('should log "BusinessBlockClicked" when clicking on the image', async () => {
-    renderModule(props)
+    renderModule(businessModuleProps)
     await user.press(screen.getByTestId('imageBusiness'))
 
     expect(analytics.logBusinessBlockClicked).toHaveBeenCalledWith({
-      moduleName: props.analyticsTitle,
-      moduleId: props.moduleId,
-      homeEntryId: props.homeEntryId,
+      moduleName: businessModuleProps.analyticsTitle,
+      moduleId: businessModuleProps.moduleId,
+      homeEntryId: businessModuleProps.homeEntryId,
     })
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
-    renderModule(props)
+    renderModule(businessModuleProps)
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
-      moduleId: props.moduleId,
+      moduleId: businessModuleProps.moduleId,
       moduleType: ContentTypes.BUSINESS,
-      index: props.index,
-      homeEntryId: props.homeEntryId,
+      index: businessModuleProps.index,
+      homeEntryId: businessModuleProps.homeEntryId,
     })
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    renderModule({ ...props, shouldTargetNotConnectedUsers: true })
+    renderModule({ ...businessModuleProps, shouldTargetNotConnectedUsers: true })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 
   it('should open url when clicking on the image', async () => {
-    renderModule(props)
+    renderModule(businessModuleProps)
     await user.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(openURLSpy).toHaveBeenCalledWith('url')
     })
-  })
-
-  it('should report opening errors only once through openUrl', async () => {
-    const error = new Error('Could not open URL')
-    openURLSpy.mockRejectedValueOnce(error)
-    renderModule(props)
-
-    await user.press(screen.getByTestId('imageBusiness'))
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
   })
 })
 

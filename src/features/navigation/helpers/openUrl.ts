@@ -51,11 +51,8 @@ const openExternalUrl = async (
     }
     if (shouldLogEvent) void analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
-  } catch (error) {
-    if (!fallbackUrl) {
-      showAlert(url)
-      throw error
-    }
+  } catch {
+    // Intentionally left empty to ignore errors that aren't critical
   }
 
   if (fallbackUrl) {
@@ -63,11 +60,11 @@ const openExternalUrl = async (
       await Linking.openURL(fallbackUrl)
       if (shouldLogEvent) void analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
       return
-    } catch (error) {
-      showAlert(url)
-      throw error
+    } catch {
+      // Intentionally left empty to ignore errors that aren't critical
     }
   }
+  showAlert(url)
 }
 
 const showAlert = (url: string) => {
@@ -78,19 +75,14 @@ const showAlert = (url: string) => {
   Alert.alert(alertTitle, alertMessage, alertButtons, alertAndroidOptions)
 }
 
-export async function openUrl(
+export function openUrl(
   url: string,
   { shouldLogEvent = true, fallbackUrl, analyticsData }: UrlParamsProps = {},
   isExternal?: boolean
 ) {
-  try {
-    if (isAppUrl(url) && !isExternal) {
-      return openAppUrl(url)
-    }
-
-    return await openExternalUrl(url, { shouldLogEvent, fallbackUrl, analyticsData })
-  } catch (error) {
-    eventMonitoring.captureException(error)
-    throw error
+  if (isAppUrl(url) && !isExternal) {
+    return openAppUrl(url)
   }
+
+  return openExternalUrl(url, { shouldLogEvent, fallbackUrl, analyticsData })
 }

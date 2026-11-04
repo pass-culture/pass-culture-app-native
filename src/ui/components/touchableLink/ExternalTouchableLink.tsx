@@ -15,15 +15,15 @@ export function ExternalTouchableLink({
 }: ExternalTouchableLinkProps) {
   const handleNavigation = useCallback(async () => {
     const { url, params, address, onSuccess, onError } = externalNav
-    if (address) {
-      await openItinerary(address)
-    } else {
-      await openUrl(url, params, openInNewWindow)
-        .then(onSuccess)
-        .catch(() => {
-          // openUrl already reports opening errors.
-          onError?.()
-        })
+    try {
+      if (address) {
+        await openItinerary(address)
+      } else {
+        await openUrl(url, params, openInNewWindow)
+        void onSuccess?.()
+      }
+    } catch {
+      onError?.()
     }
   }, [externalNav, openInNewWindow])
   return (

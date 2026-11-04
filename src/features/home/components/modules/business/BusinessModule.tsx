@@ -42,12 +42,10 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     }
   }, [isDisabled])
 
-  const logAndOpenUrl = (finalUrl: string) => {
+  const logAndOpenUrl = async (finalUrl: string) => {
     setShouldRedirect(false)
     void analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
-    void openUrl(finalUrl).catch(() => {
-      // openUrl already reports the error and displays an alert.
-    })
+    await openUrl(finalUrl)
   }
 
   useEffect(() => {
