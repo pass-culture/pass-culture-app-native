@@ -34,10 +34,10 @@ export const useSubmitChangeCity = () => {
   const isFromProfileUpdateFlow =
     type === PersonalDataTypes.PROFIL_PERSONAL_DATA ||
     type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA ||
-    type === PersonalDataTypes.CHECK_ADDRESS
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA
 
   const tertiaryButton =
-    type === PersonalDataTypes.CHECK_ADDRESS
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA
       ? {
           wording: 'Je ne réside pas en France',
           icon: Clear,
@@ -47,7 +47,7 @@ export const useSubmitChangeCity = () => {
       : null
 
   const title =
-    type === PersonalDataTypes.CHECK_ADDRESS ? 'Profil' : 'Modifier ma ville de résidence'
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA ? 'Profil' : 'Modifier ma ville de résidence'
 
   const {
     control,

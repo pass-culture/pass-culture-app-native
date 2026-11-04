@@ -5,7 +5,7 @@ interface PersonalDataType {
   type:
     | PersonalDataTypes.PROFIL_PERSONAL_DATA
     | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
-    | PersonalDataTypes.CHECK_ADDRESS
+    | PersonalDataTypes.CHECK_ADDRESS_DATA
 }
 
 export type ProfileStackParamList = {
