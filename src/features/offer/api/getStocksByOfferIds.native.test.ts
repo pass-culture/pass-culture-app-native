@@ -20,9 +20,7 @@ describe('getStocksByOfferIds', () => {
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     await getStocksByOfferIds([1, 2], LogTypeEnum.INFO)
 
-    expect(apiPostNativeV2OffersStocksSpy).toHaveBeenCalledWith({
-      offer_ids: [1, 2],
-    })
+    expect(apiPostNativeV2OffersStocksSpy).toHaveBeenCalledWith({ offerIds: [1, 2] })
   })
 
   it('should throw OfferNotFoundError when API returns 404', async () => {
