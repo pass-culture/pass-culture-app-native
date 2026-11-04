@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
-import { addressActions } from 'features/identityCheck/pages/profile/store/addressStore'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
@@ -21,7 +20,6 @@ export const useSubmitChangeCity = () => {
 
   const storedCity = useCity()
   const { setCity } = cityActions
-  const { resetAddress } = addressActions
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ChangeCity'>>()
@@ -42,14 +40,11 @@ export const useSubmitChangeCity = () => {
   })
 
   const onSubmit = ({ city }: CityForm) => {
-    const hasCityChanged = !!storedCity && storedCity.postalCode !== city.postalCode
-    if (isFromProfileUpdateFlow && hasCityChanged) resetAddress()
-
-    setCity(city)
     if (isFromProfileUpdateFlow) {
-      navigate(...getProfileHookConfig('ChangeAddress', { type }))
+      navigate(...getProfileHookConfig('ChangeAddress', { type, city }))
     } else {
       //cheatcodes
+      setCity(city)
       navigate(...getProfileHookConfig('PersonalData'))
       showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
     }

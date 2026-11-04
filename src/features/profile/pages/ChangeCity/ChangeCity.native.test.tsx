@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { cityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { UserProfile } from 'features/share/types'
@@ -98,9 +99,30 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText('Continuer'))
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
-        params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA },
+        params: {
+          type: PersonalDataTypes.PROFIL_PERSONAL_DATA,
+          city: {
+            name: city.nom,
+            code: city.code,
+            postalCode: POSTAL_CODE,
+            departementCode: city.codeDepartement,
+          },
+        },
         screen: 'ChangeAddress',
       })
+    })
+
+    it('should not store the city in the city store', async () => {
+      const setCitySpy = jest.spyOn(cityActions, 'setCity')
+      const city = mockedSuggestedCities[0]
+      render(reactQueryProviderHOC(<ChangeCity />))
+
+      const input = await screen.findByTestId('Entrée pour la ville')
+      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
+      await user.press(await screen.findByText(city.nom))
+      await user.press(await screen.findByText('Continuer'))
+
+      expect(setCitySpy).not.toHaveBeenCalled()
     })
 
     it('should not show snackbar on success', async () => {
@@ -141,7 +163,15 @@ describe('ChangeCity', () => {
       await user.press(await screen.findByText('Continuer'))
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
-        params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
+        params: {
+          type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA,
+          city: {
+            name: city.nom,
+            code: city.code,
+            postalCode: POSTAL_CODE,
+            departementCode: city.codeDepartement,
+          },
+        },
         screen: 'ChangeAddress',
       })
     })

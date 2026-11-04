@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
+import { cityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { UserProfile } from 'features/share/types'
@@ -172,6 +173,49 @@ describe('<SetAddress/>', () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
         params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
         screen: 'ChangeStatus',
+      })
+    })
+  })
+
+  describe('with change city as previous screen', () => {
+    const city = {
+      name: 'New city',
+      code: '00001',
+      postalCode: '00001',
+      departementCode: '01',
+    }
+
+    beforeEach(() => {
+      useRoute.mockReturnValue({
+        params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA, city },
+      })
+    })
+
+    it('should update store with the new city when submitting the address', async () => {
+      const setCitySpy = jest.spyOn(cityActions, 'setCity')
+
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText('Valider mon adresse'))
+
+      expect(setCitySpy).toHaveBeenCalledWith(city)
+    })
+
+    it('should call patchProfile with address and city informations', async () => {
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText('Valider mon adresse'))
+
+      expect(patchProfileSpy).toHaveBeenCalledWith({
+        address: mockedSuggestedPlaces.features[1].properties.name,
+        city: city.name,
+        postalCode: city.postalCode,
       })
     })
   })

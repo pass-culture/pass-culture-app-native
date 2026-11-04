@@ -1,5 +1,6 @@
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { AccessibilityRootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
+import { SuggestedCity } from 'libs/place/types'
 
 interface PersonalDataType {
   type: PersonalDataTypes.PROFIL_PERSONAL_DATA | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
@@ -7,7 +8,7 @@ interface PersonalDataType {
 
 export type ProfileStackParamList = {
   Achievements: { from: 'profile' | 'success' } | undefined
-  ChangeAddress: PersonalDataType | undefined
+  ChangeAddress: (PersonalDataType & { city?: SuggestedCity }) | undefined
   ChangeCity: PersonalDataType | undefined
   ChangeEmail: { showModal: boolean } | undefined
   ChangePassword: undefined

@@ -7,7 +7,7 @@ import { Keyboard } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -39,8 +39,14 @@ export const useSubmitChangeAddress = () => {
   const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
+
+  const city = params?.city ?? storedCity
+  const hasCityChanged =
+    !!params?.city && !!storedCity && storedCity.postalCode !== params.city.postalCode
+  const { setCity } = cityActions
   const storedAddress = useAddress()
-  const initialCity = storedAddress === null ? '' : (storedAddress ?? user?.street ?? '')
+  const initialAddress =
+    storedAddress === null || hasCityChanged ? '' : (storedAddress ?? user?.street ?? '')
 
   const { navigate, dispatch } = useNavigation<UseNavigationType>()
 
@@ -52,7 +58,7 @@ export const useSubmitChangeAddress = () => {
     formState: { isValid },
   } = useForm<AddressForm>({
     mode: 'onChange',
-    defaultValues: { address: initialCity },
+    defaultValues: { address: initialAddress },
   })
 
   const query = watch('address')
@@ -71,8 +77,8 @@ export const useSubmitChangeAddress = () => {
     isError,
   } = useAddressesQuery({
     query: debouncedQuery,
-    cityCode: storedCity?.code ?? '',
-    postalCode: storedCity?.postalCode ?? '',
+    cityCode: city?.code ?? '',
+    postalCode: city?.postalCode ?? '',
     enabled: shouldShowAddressResults,
     limit: 10,
   })
@@ -142,11 +148,12 @@ export const useSubmitChangeAddress = () => {
 
   const onSubmit = ({ address }: AddressForm) => {
     const finalAddress = selectedAddress ?? address
+    if (params?.city) setCity(params.city)
     setStoreAddress(finalAddress)
     patchProfile({
       address: finalAddress,
-      city: storedCity?.name,
-      postalCode: storedCity?.postalCode,
+      city: city?.name,
+      postalCode: city?.postalCode,
     })
   }
 
