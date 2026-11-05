@@ -2,7 +2,6 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
-import { isApiError } from 'api/apiHelpers'
 import { PaginatedResponseFavoriteArtistResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
@@ -25,16 +24,12 @@ export const useArtistFavoritesQuery = <TData = PaginatedResponseFavoriteArtistR
     queryFn: async () => {
       try {
         return await api.getNativeV2MeFavoritesArtists()
-      } catch (error) {
-        // To remove when backend merged
-        if (isApiError(error) && error.statusCode === 404) {
-          return {
-            favorites: [],
-            nbFavorites: 0,
-            page: 0,
-          }
+      } catch {
+        return {
+          favorites: [],
+          nbFavorites: 0,
+          page: 0,
         }
-        throw error
       }
     },
     enabled: isLoggedIn && enabled,
