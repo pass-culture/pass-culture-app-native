@@ -3,9 +3,11 @@ import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { OtpStatusBanner } from 'features/auth/components/OtpStatusBanner'
 import { SSOButtonAppleBase } from 'features/auth/components/SSOButton/SSOButtonAppleBase'
 import { SSOButtonGoogleBase } from 'features/auth/components/SSOButton/SSOButtonGoogleBase'
 import { getSnackbarSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
+import { useOneTimePasswordAttempts } from 'features/auth/helpers/useOneTimePasswordAttempts'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import {
@@ -34,6 +36,9 @@ export const LoginMethods = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'LoginMethods'>>()
   const enableAppleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APPLE_SSO)
+  const enableOTP = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_OTP)
+
+  const { remainingSeconds, hasReachedMaxCodeAttempts, loginEmail } = useOneTimePasswordAttempts()
 
   const onLogSignUpAnalytics = useCallback(() => {
     void analytics.logSignUpClicked({ from: 'loginMethods' })
@@ -113,6 +118,13 @@ export const LoginMethods = () => {
                   }}
                 />
               </ButtonContainer>
+              {enableOTP ? (
+                <OtpStatusBanner
+                  isAccountLocked={hasReachedMaxCodeAttempts}
+                  remainingSeconds={remainingSeconds}
+                  email={loginEmail}
+                />
+              ) : null}
               <SeparatorWithText label="ou" />
               <InternalTouchableLink
                 as={Button}
