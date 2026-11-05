@@ -90,3 +90,14 @@ export type PracticalInformationSection = {
   body: ReactNode
   shouldBeDisplayed: boolean
 }
+
+export type VenueSurveyKey = 'BOOKSHOP_AND_LIBRARY' | 'DISTRIBUTION' | 'OUTINGS_AND_OTHERS'
+
+export type VenueSurveyConfig = {
+  url: string
+  activities: Activity[]
+}
+
+export interface VenueSurveyConfigWithKey extends VenueSurveyConfig {
+  key: VenueSurveyKey
+}
