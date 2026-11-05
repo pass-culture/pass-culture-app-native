@@ -103,12 +103,6 @@ export interface SearchListProps {
     viewableItems: ViewToken<unknown>[]
     changed: ViewToken<unknown>[]
   }) => void
-  onViewableVenuePlaylistItemsChanged?: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
 }
 
 export type CreateHistoryItem = {
@@ -165,12 +159,6 @@ export type LayoutButtonProps = {
 
 export type ThematicPlaylistProps = {
   shouldDisplayVenuesPlaylist: boolean
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    playlistIndex?: number
-  ) => void
   searchId?: string
 }
 

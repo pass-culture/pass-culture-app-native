@@ -1,6 +1,6 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo, useState } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -26,13 +26,16 @@ import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/Thematic
 import { useTopArtistsPlaylistQuery } from 'features/search/queries/useTopArtistsPlaylistQuery/useTopArtistsPlaylistQuery'
 import { SearchState, SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
+import {
+  asVenueId,
+  THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY,
+} from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { useLocationMode } from 'libs/locationV2/location.store'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { HorizontalArtistsPlaylist } from 'ui/components/HorizontalArtistsPlaylist'
@@ -73,31 +76,6 @@ export const ThematicSearch: React.FC = () => {
   } = useSearchInfiniteQuery(thematicSearchState)
 
   const isFocused = useIsFocused()
-
-  const pageTracking = usePageTracking({
-    pageName: 'ThematicSearch',
-    pageLocation: 'thematicsearch',
-  })
-
-  // Handler for modules with the new system
-  const handleTrackViewableItems = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      searchId: string,
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        playlistIndex,
-        searchId,
-      })
-    },
-    [pageTracking]
-  )
 
   // Execute log only on search fetch completion (same pattern as SearchResultsContent)
   const previousIsLoading = usePrevious(isLoading)
@@ -148,27 +126,6 @@ export const ThematicSearch: React.FC = () => {
   const { data } = useTopArtistsPlaylistQuery({ searchGroupName })
   const shouldDisplayArtistsPlaylist = !!data?.artists?.length
 
-  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      handleTrackViewableItems(items, venuePlaylistTitle, 'venue', currentSearchId, 0)
-    },
-    [currentSearchId, handleTrackViewableItems, isFocused, venuePlaylistTitle]
-  )
-
-  const handleOfferPlaylistViewableItemsChanged = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      if (!isFocused) return
-      handleTrackViewableItems(items, moduleId, itemType, currentSearchId, playlistIndex)
-    },
-    [currentSearchId, handleTrackViewableItems, isFocused]
-  )
-
   const handleArtistPlaylistItemPress = (id: string, name: string) => {
     void analytics.logConsultArtist({
       artistId: id,
@@ -190,35 +147,30 @@ export const ThematicSearch: React.FC = () => {
     [SearchGroupNameEnumv2.LIVRES]: (
       <BookPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.CINEMA]: (
       <CinemaPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: (
       <FilmsPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.MUSIQUE]: (
       <MusicPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: (
       <ConcertsAndFestivalsPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
@@ -257,7 +209,19 @@ export const ThematicSearch: React.FC = () => {
       ) : null}
 
       {shouldDisplayVenuesPlaylist ? (
-        <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+        <ObservedPlaylist
+          onItemViewed={({ index, item }) => {
+            if (!isFocused) return
+            void analytics.logViewItem({
+              origin: 'search',
+              playlistIndex: 0,
+              index,
+              type: 'venue',
+              id: asVenueId(item.objectID),
+              playlistId: 'thematicSearchPlaylist',
+              originId: THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY[offerCategory],
+            })
+          }}>
           {({ listRef, handleViewableItemsChanged }) => (
             <VenuePlaylist
               venuePlaylistTitle={venuePlaylistTitle}

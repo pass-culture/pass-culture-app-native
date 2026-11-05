@@ -25,7 +25,11 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import {
+  mockAuthContextWithoutUser,
+  mockAuthContextWithUser,
+  mockUseAuthContext,
+} from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -74,6 +78,11 @@ jest.mock('features/auth/context/AuthContext')
 
 const user = userEvent.setup()
 
+const mockLoggedInUser = () => {
+  mockUseAuthContext.mockReset()
+  mockAuthContextWithUser(beneficiaryUser, { persist: true })
+}
+
 jest.useFakeTimers()
 
 describe('<ArtistBody />', () => {
@@ -97,7 +106,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -115,7 +123,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -136,7 +143,6 @@ describe('<ArtistBody />', () => {
           }}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -157,7 +163,6 @@ describe('<ArtistBody />', () => {
           artist={artist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -173,7 +178,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -190,7 +194,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -207,7 +210,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -226,7 +228,6 @@ describe('<ArtistBody />', () => {
           artist={{ ...mockArtist, descriptionSource: 'https://attacker.com/fr.wikipedia.org' }}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -245,7 +246,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -265,7 +265,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -290,7 +289,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -333,7 +331,6 @@ describe('<ArtistBody />', () => {
             }),
           ]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -367,7 +364,6 @@ describe('<ArtistBody />', () => {
             }),
           ]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -387,7 +383,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -430,7 +425,6 @@ describe('<ArtistBody />', () => {
               },
             ],
           }}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -446,7 +440,6 @@ describe('<ArtistBody />', () => {
           artist={mockArtist}
           artistPlaylist={[]}
           artistTopOffers={[]}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -484,7 +477,6 @@ describe('<ArtistBody />', () => {
               },
             ],
           }}
-          onViewableItemsChanged={jest.fn()}
           onExpandBioPress={jest.fn()}
         />
       )
@@ -507,7 +499,7 @@ describe('<ArtistBody />', () => {
             `/v2/me/favorites/artists`,
             paginatedArtistFavoritesResponseSnap
           )
-          mockAuthContextWithUser(beneficiaryUser)
+          mockLoggedInUser()
         })
 
         it('should remove favorite when press on favorite', async () => {
@@ -517,7 +509,6 @@ describe('<ArtistBody />', () => {
                 artist={mockArtist}
                 artistPlaylist={[]}
                 artistTopOffers={[]}
-                onViewableItemsChanged={jest.fn()}
                 onExpandBioPress={jest.fn()}
               />
             )
@@ -540,7 +531,6 @@ describe('<ArtistBody />', () => {
                 artist={mockArtist}
                 artistPlaylist={[]}
                 artistTopOffers={[]}
-                onViewableItemsChanged={jest.fn()}
                 onExpandBioPress={jest.fn()}
               />
             )
@@ -560,7 +550,7 @@ describe('<ArtistBody />', () => {
       describe('When artist is not in favorites', () => {
         beforeEach(() => {
           mockUseArtistFavoritesQuery.mockReturnValue({ data: null })
-          mockAuthContextWithUser(beneficiaryUser)
+          mockLoggedInUser()
         })
 
         it('should add favorite when press on favorite', async () => {
@@ -570,7 +560,6 @@ describe('<ArtistBody />', () => {
                 artist={mockArtist}
                 artistPlaylist={[]}
                 artistTopOffers={[]}
-                onViewableItemsChanged={jest.fn()}
                 onExpandBioPress={jest.fn()}
               />
             )
@@ -595,7 +584,6 @@ describe('<ArtistBody />', () => {
               artist={mockArtist}
               artistPlaylist={[]}
               artistTopOffers={[]}
-              onViewableItemsChanged={jest.fn()}
               onExpandBioPress={jest.fn()}
             />
           )

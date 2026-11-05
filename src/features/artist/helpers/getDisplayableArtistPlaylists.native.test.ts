@@ -60,12 +60,38 @@ describe('getDisplayableArtistPlaylists', () => {
         name: 'Livre papier',
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       }),
+      buildArtistOffer({
+        objectID: '3',
+        name: 'Festival livre',
+        subcategoryId: SubcategoryIdEnum.FESTIVAL_LIVRE,
+      }),
     ])
 
     expect(playlists.map(({ entryId, playlistIndex }) => ({ entryId, playlistIndex }))).toEqual([
-      { entryId: 'artist_offers_0_concerts_festivals', playlistIndex: 0 },
-      { entryId: 'artist_offers_1_livres', playlistIndex: 1 },
+      { entryId: 'artistOffersConcertsFestivals', playlistIndex: 0 },
+      { entryId: 'artistOffersLivres', playlistIndex: 1 },
+      { entryId: 'artistOffersFestivalsSalonsLivre', playlistIndex: 2 },
     ])
+  })
+
+  it('should offset playlist indexes from the base index', () => {
+    const playlists = getDisplayableArtistPlaylists(
+      [
+        buildArtistOffer({
+          objectID: '1',
+          name: 'Concert',
+          subcategoryId: SubcategoryIdEnum.CONCERT,
+        }),
+        buildArtistOffer({
+          objectID: '2',
+          name: 'Livre papier',
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        }),
+      ],
+      1
+    )
+
+    expect(playlists.map(({ playlistIndex }) => playlistIndex)).toEqual([1, 2])
   })
 })
 
