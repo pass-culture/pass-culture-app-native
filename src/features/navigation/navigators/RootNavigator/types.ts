@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import { CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { Activity, CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { Provider } from 'features/auth/types'
 import { BookingsTab } from 'features/bookings/enum'
@@ -203,6 +203,10 @@ type VenuePreviewCarouselParams = {
   defaultIndex?: number
 }
 
+type VenueSurveyModalParams = {
+  activity: Activity | null
+}
+
 type ArtistParams = {
   id: string
 }
@@ -352,6 +356,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel1: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
+  VenueSurveyModal: VenueSurveyModalParams
   VerifyEligibility: undefined
   VerticalPlaylistArtists: {
     title: string
