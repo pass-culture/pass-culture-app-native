@@ -1,8 +1,8 @@
-const { getStateFromPath, getPathFromState, CommonActions } = jest.requireActual(
+const { getStateFromPath, getPathFromState, CommonActions, StackActions } = jest.requireActual(
   '@react-navigation/native'
 )
 
-export { getStateFromPath, getPathFromState, CommonActions }
+export { getStateFromPath, getPathFromState, CommonActions, StackActions }
 import { useEffect } from 'react'
 
 export const createComponentForStaticNavigation = jest.fn(() => () => null)
