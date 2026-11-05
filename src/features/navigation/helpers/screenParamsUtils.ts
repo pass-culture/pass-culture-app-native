@@ -23,6 +23,7 @@ type ScreensRequiringParsing = Extract<
   | 'ResetPasswordExpiredLink'
   | 'Venue'
   | 'VenuePreviewCarousel'
+  | 'VenueSurveyModal'
   | 'SearchFilter'
   | 'SuspensionChoice'
   | 'LocationFilter'
@@ -169,6 +170,9 @@ export const screenParamsParser: ParamsParsers = {
   VenuePreviewCarousel: {
     id: Number,
     defaultIndex: Number,
+  },
+  VenueSurveyModal: {
+    activity: identityFn,
   },
   SearchResults: searchParamsParser,
   SearchLanding: searchParamsParser,
