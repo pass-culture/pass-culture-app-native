@@ -21,34 +21,28 @@ export const ModalSimpleFooter: FunctionComponent<ModalSimpleFooterProps> = ({
   const buttons = [
     primaryButton ? (
       <Button
+        {...primaryButton}
         key="primary"
         variant="primary"
         color="brand"
-        wording={primaryButton.wording}
-        accessibilityLabel={primaryButton.accessibilityLabel}
-        onPress={primaryButton.onPress}
         fullWidth={!isDesktopViewport}
       />
     ) : null,
     secondaryButton ? (
       <Button
+        {...secondaryButton}
         key="secondary"
         variant="secondary"
         color="neutral"
-        wording={secondaryButton.wording}
-        accessibilityLabel={secondaryButton.accessibilityLabel}
-        onPress={secondaryButton.onPress}
         fullWidth={!isDesktopViewport}
       />
     ) : null,
     tertiaryButton ? (
       <Button
+        {...tertiaryButton}
         key="tertiary"
         variant="tertiary"
         color="neutral"
-        wording={tertiaryButton.wording}
-        accessibilityLabel={tertiaryButton.accessibilityLabel}
-        onPress={tertiaryButton.onPress}
         fullWidth={!isDesktopViewport}
       />
     ) : null,
