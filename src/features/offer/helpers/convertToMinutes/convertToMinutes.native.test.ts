@@ -1,4 +1,4 @@
-import { convertToMinutes } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
+import { convertToMinutes } from './convertToMinutes'
 
 describe('convertToMinutes', () => {
   it.each`
@@ -9,7 +9,7 @@ describe('convertToMinutes', () => {
     ${'2h30'} | ${150}
     ${'0h45'} | ${45}
     ${'1h00'} | ${60}
-  `('should convert "${time}" to ${expected}', ({ time, expected }) => {
+  `('should convert "$time" to $expected', ({ time, expected }) => {
     expect(convertToMinutes(time)).toBe(expected)
   })
 })
