@@ -61,6 +61,7 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
   // @ts-expect-error : ignore type of emit to facilitate testing
   emit: jest.fn(() => ({ defaultPrevented: false })),
   navigate: jest.fn(),
+  dispatch: jest.fn(),
   setParams: jest.fn(),
 }
 
@@ -221,6 +222,39 @@ describe('TabBar', () => {
     await user.press(searchTab)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_STATE', payload: initialSearchState })
+  })
+
+  it('should pop Search stack to top when clicked on selected Search tab with several screens stacked', async () => {
+    mockedUseTabNavigationContext.mockReturnValueOnce({
+      setTabNavigationState: jest.fn(),
+      tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
+        ...route,
+        isSelected: route.name === 'SearchStackNavigator',
+        ...(route.name === 'SearchStackNavigator'
+          ? {
+              state: {
+                key: 'search-stack-key',
+                index: 1,
+                routeNames: ['SearchLanding', 'ThematicSearch'],
+                routes: [
+                  { name: 'SearchLanding', key: 'landing-key' },
+                  { name: 'ThematicSearch', key: 'thematic-key' },
+                ],
+                stale: false as const,
+                type: 'stack',
+              },
+            }
+          : {}),
+      })),
+    })
+    renderTabBar(mockTabNavigationState)
+
+    await user.press(screen.getByText('Recherche'))
+
+    expect(navigation.dispatch).toHaveBeenCalledWith({
+      type: 'POP_TO_TOP',
+      target: 'search-stack-key',
+    })
   })
 
   it('should reset Search accessibility navigation params when clicked on selected Search tab', async () => {
