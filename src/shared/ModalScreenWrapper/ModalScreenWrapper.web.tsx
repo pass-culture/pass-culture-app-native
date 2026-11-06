@@ -47,8 +47,8 @@ export const ModalScreenWrapper = ({
   fullScreen,
   desktopMaxWidth,
   desktopMaxHeight,
+  tabletMaxHeight,
   desktopVariant = 'centered',
-  initialFocusSelector,
 }: ModalScreenWrapperProps) => {
   const { isDesktopViewport } = useTheme()
   const titleId = uuidv4()
@@ -72,7 +72,7 @@ export const ModalScreenWrapper = ({
     [onAnimationFinished, transition]
   )
 
-  useModalFocusTrap(modalRef, isAnimationFinished, initialFocusSelector)
+  useModalFocusTrap(modalRef, isAnimationFinished)
 
   const closeWithTransition = () => {
     setIsOpen((open) => (open ? false : open))
@@ -88,8 +88,8 @@ export const ModalScreenWrapper = ({
             entering={BACKDROP_ENTERING}
             exiting={BACKDROP_EXITING}
             onPress={closeWithTransition}
-            accessibilityLabel="Fermer la modale en touchant l’arrière-plan"
-            accessibilityRole={AccessibilityRole.BUTTON}
+            aria-hidden
+            tabIndex={-1}
           />
           <ModalContainer
             ref={modalRef}
@@ -103,6 +103,7 @@ export const ModalScreenWrapper = ({
             fullScreen={fullScreen}
             desktopMaxWidth={desktopMaxWidth}
             desktopMaxHeight={desktopMaxHeight}
+            tabletMaxHeight={tabletMaxHeight}
             desktopVariant={desktopVariant}>
             {children(closeWithTransition, titleId)}
           </ModalContainer>
@@ -137,11 +138,11 @@ const ModalContainer = styled(Animated.View)<{
   fullScreen?: boolean
   desktopMaxWidth?: number
   desktopMaxHeight?: number | string
+  tabletMaxHeight?: number | string
   desktopVariant: 'centered' | 'bottomRight'
-}>(({ theme, fullScreen, desktopMaxWidth, desktopMaxHeight, desktopVariant }) => ({
+}>(({ theme, fullScreen, desktopMaxWidth, desktopMaxHeight, tabletMaxHeight, desktopVariant }) => ({
   width: '100%',
   height: fullScreen ? '100%' : 'auto',
-  maxHeight: '100%',
   backgroundColor: theme.designSystem.color.background.default,
   borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
   borderTopRightRadius: theme.designSystem.size.borderRadius.l,
@@ -158,5 +159,6 @@ const ModalContainer = styled(Animated.View)<{
       }
     : {
         maxWidth: theme.appContentWidth,
+        maxHeight: theme.isTabletViewport ? (tabletMaxHeight ?? '100%') : '100%',
       }),
 }))
