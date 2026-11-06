@@ -104,7 +104,6 @@ export async function metasResponseInterceptor(
   } catch (error) {
     // when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
-    // eslint-disable-next-line no-console
     logger.info(`Replacing HTML metas failed: ${(error as Error).message}`)
     /* istanbul ignore next */
     return html

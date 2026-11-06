@@ -175,9 +175,7 @@ const encodeWhateverType = (value: NestedMetadata): NestedMetadata => {
 }
 
 const recursiveEncode = (entityMetadata: Metadata): Metadata => {
-  return entityMetadata
-    ? Object.entries(entityMetadata)
-        .map<[string, NestedMetadata]>(([key, value]) => [key, encodeWhateverType(value)])
-        .reduce((newMetadata, [key, value]) => ({ ...newMetadata, [key]: value }), {})
-    : {}
+  return Object.entries(entityMetadata)
+    .map<[string, NestedMetadata]>(([key, value]) => [key, encodeWhateverType(value)])
+    .reduce((newMetadata, [key, value]) => ({ ...newMetadata, [key]: value }), {})
 }
