@@ -72,7 +72,12 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
 
   const playVideo = () => {
     onPlay()
-    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId, offerId: offer?.objectID })
+    void analytics.logConsultVideo({
+      from: 'home',
+      moduleId,
+      homeEntryId,
+      offerId: offer?.objectID,
+    })
   }
 
   const replayVideo = () => {
@@ -101,7 +106,7 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
             playerRef.current.getDuration(),
             playerRef.current.getCurrentTime(),
           ])
-          analytics.logHasSeenAllVideo({
+          void analytics.logHasSeenAllVideo({
             moduleId,
             videoDuration: Math.round(videoDuration),
             seenDuration: Math.round(seenDuration),

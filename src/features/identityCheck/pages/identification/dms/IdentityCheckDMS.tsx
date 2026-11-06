@@ -15,11 +15,11 @@ import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
   const onDMSFrenchCitizenPress = () => {
-    analytics.logOpenDMSFrenchCitizenURL()
+    void analytics.logOpenDMSFrenchCitizenURL()
   }
 
   const onDMSForeignCitizenPress = () => {
-    analytics.logOpenDMSForeignCitizenURL()
+    void analytics.logOpenDMSForeignCitizenURL()
   }
 
   return (

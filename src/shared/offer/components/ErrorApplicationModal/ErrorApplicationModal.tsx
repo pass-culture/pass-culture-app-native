@@ -26,7 +26,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   offerId,
 }) => {
   const addToFavorites = useCallback(() => {
-    analytics.logHasAddedOfferToFavorites({
+    void analytics.logHasAddedOfferToFavorites({
       from: 'ErrorApplicationModal' as Referrals,
       offerId,
     })
@@ -35,7 +35,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
 
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => {
-    analytics.logGoToProfil({ from: 'ErrorApplicationModal', offerId })
+    void analytics.logGoToProfil({ from: 'ErrorApplicationModal', offerId })
     hideModal()
     navigate(...getTabHookConfig('Profile'))
   }

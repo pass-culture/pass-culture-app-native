@@ -65,7 +65,7 @@ export const Home: FunctionComponent = () => {
 
   useEffect(() => {
     if (homepageId) {
-      analytics.logConsultHome({ homeEntryId: homepageId })
+      void analytics.logConsultHome({ homeEntryId: homepageId })
     }
   }, [homepageId])
 
@@ -89,7 +89,7 @@ export const Home: FunctionComponent = () => {
     <React.Fragment>
       <GenericHome
         modules={modules}
-        homeId={homepageId ?? ''}
+        homeId={homepageId}
         Header={<Header />}
         HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}

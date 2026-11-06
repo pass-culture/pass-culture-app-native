@@ -53,7 +53,7 @@ export const EndedBookingItem = ({
 
   const pressShareOffer = async () => {
     await analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: offer.id })
-    await shareOffer()
+    void shareOffer()
     handleShowShareOfferModal?.(shareContent)
   }
 
