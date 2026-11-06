@@ -4,4 +4,3 @@
  */
 
 export const MODAL_DETAILED_DESKTOP_MAX_WIDTH = 684
-export const MODAL_DETAILED_CLOSE_BUTTON_CONTAINER_ID = 'modal-detailed-close-button-container'

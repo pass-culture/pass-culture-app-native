@@ -53,4 +53,29 @@ describe('ModalDetailedHeader', () => {
 
     expect(screen.queryByLabelText('Retourner à l’étape précédente')).not.toBeOnTheScreen()
   })
+
+  it.each([
+    { isDesktopViewport: false, expectedTop: 2 },
+    { isDesktopViewport: true, expectedTop: 4 },
+  ])(
+    'should align header actions with the first title line when isDesktopViewport is $isDesktopViewport',
+    ({ isDesktopViewport, expectedTop }) => {
+      render(
+        <ModalDetailedHeader
+          title="Modal title"
+          titleId="modal-title"
+          onClose={jest.fn()}
+          onGoBack={jest.fn()}
+        />,
+        { theme: { isDesktopViewport } }
+      )
+
+      expect(screen.getByTestId('modalDetailedCloseButtonContainer')).toHaveStyle({
+        top: expectedTop,
+      })
+      expect(screen.getByTestId('modalDetailedBackButtonContainer')).toHaveStyle({
+        top: expectedTop,
+      })
+    }
+  )
 })

@@ -62,6 +62,18 @@ describe('ModalDetailedFooter', () => {
     expect(actions[2]).toHaveTextContent('Primary action')
   })
 
+  it('should wrap actions when they exceed the available width on large viewports', () => {
+    render(<ModalDetailedFooter primaryButton={primaryButton} />, {
+      theme: { isDesktopViewport: true },
+    })
+
+    expect(screen.getByTestId('modalDetailedButtonsContainer').props.style).toMatchObject({
+      flexWrap: 'wrap',
+      flexShrink: 1,
+      maxWidth: '100%',
+    })
+  })
+
   it('should render actions in tertiary to primary order on tablet', () => {
     render(
       <ModalDetailedFooter
