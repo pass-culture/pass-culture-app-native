@@ -59,16 +59,16 @@ function Search({
   visible?: boolean
   query?: string
 }) {
-  const suggestionsDescriptionId = useId()
+  const suggestionsId = useId()
   return (
     <React.Fragment>
       <SearchBox
-        suggestionsDescriptionId={suggestionsDescriptionId}
+        suggestionsId={suggestionsId}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
       />
-      {visible ? <Publisher id={suggestionsDescriptionId} status={status} /> : null}
-      <SearchSuggestionsAnnouncer id={suggestionsDescriptionId} query={query} visible={visible} />
+      {visible ? <Publisher id={suggestionsId} status={status} /> : null}
+      <SearchSuggestionsAnnouncer id={suggestionsId} query={query} visible={visible} />
     </React.Fragment>
   )
 }
@@ -81,7 +81,7 @@ describe('SearchBox accessibility on the web', () => {
   it('associates both descriptions with the actual input and preserves its name, role and focus', () => {
     const announce = jest.spyOn(AccessibilityInfo, 'announceForAccessibility')
     const { rerender } = render(<Search />)
-    const input = screen.getByRole('searchbox')
+    const input = screen.getByRole('combobox')
     const name = input.getAttribute('aria-label')
     const ids = input.getAttribute('aria-describedby')?.split(' ') ?? []
 
@@ -107,7 +107,7 @@ describe('SearchBox accessibility on the web', () => {
 
   it('keeps the status node mounted when the list disappears', () => {
     const { rerender } = render(<Search />)
-    const input = screen.getByRole('searchbox')
+    const input = screen.getByRole('combobox')
     const status = screen.getByRole('status')
     act(() => input.focus())
     act(() => jest.advanceTimersByTime(200))
@@ -122,7 +122,7 @@ describe('SearchBox accessibility on the web', () => {
 
   it('removes stale descriptions before the next response and after blur', () => {
     const { rerender } = render(<Search />)
-    const input = screen.getByRole('searchbox')
+    const input = screen.getByRole('combobox')
     act(() => input.focus())
     act(() => jest.advanceTimersByTime(200))
 
@@ -145,7 +145,7 @@ describe('SearchBox accessibility on the web', () => {
     )
 
     const ids = screen
-      .getAllByRole('searchbox')
+      .getAllByRole('combobox')
       .flatMap((input) => input.getAttribute('aria-describedby')?.split(' ') ?? [])
 
     expect(new Set(ids).size).toBe(4)
@@ -160,7 +160,7 @@ describe('SearchBox accessibility on the web', () => {
         <Search key="second" status={secondStatus} />
       </React.Fragment>
     )
-    const inputs = screen.getAllByRole('searchbox')
+    const inputs = screen.getAllByRole('combobox')
     const statuses = screen.getAllByRole('status')
     act(() => inputs[0]?.focus())
     act(() => jest.advanceTimersByTime(200))

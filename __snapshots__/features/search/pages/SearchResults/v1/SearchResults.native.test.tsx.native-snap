@@ -413,7 +413,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   }
                 }
               >
-                Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+                Indique le nom d’une offre, d’un artiste ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
               </Text>
             </View>
           </View>

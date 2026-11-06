@@ -12,7 +12,9 @@ import { AutocompleteArtist } from 'features/search/components/AutocompleteArtis
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
+import { SearchSuggestionsListbox } from 'features/search/components/SearchSuggestionsListbox/SearchSuggestionsListbox'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { dismissKeyboardOnUserScrollProps } from 'features/search/helpers/dismissKeyboardOnUserScrollProps'
 import { getSearchSuggestionsStatus } from 'features/search/helpers/getSearchSuggestionsStatus'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
@@ -32,7 +34,7 @@ import {
 } from 'libs/locationV2/location.store'
 
 type SearchSuggestionsParams = {
-  suggestionsDescriptionId?: string
+  suggestionsId?: string
   queryHistory: string
   addToHistory: (item: CreateHistoryItem) => Promise<void>
   removeFromHistory: (item: HistoryItem) => Promise<void>
@@ -43,7 +45,7 @@ type SearchSuggestionsParams = {
   embedded?: boolean
 }
 export const SearchSuggestions = ({
-  suggestionsDescriptionId,
+  suggestionsId,
   queryHistory,
   addToHistory,
   removeFromHistory,
@@ -67,7 +69,7 @@ export const SearchSuggestions = ({
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
   const { status: searchStatus } = useInstantSearch()
-  const accessibility = useSearchSuggestionsAccessibility(suggestionsDescriptionId)
+  const accessibility = useSearchSuggestionsAccessibility(suggestionsId)
   const publish = accessibility.publish
   const [suggestions, setSuggestions] = useState<{
     offers?: SuggestionsSnapshot
@@ -180,36 +182,38 @@ export const SearchSuggestions = ({
     <SuggestionsContent>
       {header}
 
-      <SearchHistory
-        history={filteredHistory}
-        queryHistory={queryHistory}
-        removeItem={removeFromHistory}
-        onPress={onPressHistoryItem}
-      />
-      <AutocompleteOffer
-        addSearchHistory={addToHistory}
-        offerCategories={offerCategories}
-        onSuggestionsChange={handleOffersChange}
-      />
-      {shouldDisplayArtistsSuggestions ? (
-        <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
-          <Configure hitsPerPage={5} clickAnalytics analytics />
-          <AutocompleteArtist
-            onItemPress={onArtistPress}
-            onSuggestionsChange={handleArtistsChange}
-          />
-        </Index>
-      ) : null}
-      <Index indexName={currentVenuesIndex}>
-        <Configure
-          hitsPerPage={5}
-          clickAnalytics
-          analytics
-          aroundRadius="all"
-          aroundLatLng={searchVenuePosition.aroundLatLng}
+      <SearchSuggestionsListbox suggestionsId={suggestionsId} disabled={queryHistory === ''}>
+        <SearchHistory
+          history={filteredHistory}
+          queryHistory={queryHistory}
+          removeItem={removeFromHistory}
+          onPress={onPressHistoryItem}
         />
-        <AutocompleteVenue onItemPress={onVenuePress} onSuggestionsChange={handleVenuesChange} />
-      </Index>
+        <AutocompleteOffer
+          addSearchHistory={addToHistory}
+          offerCategories={offerCategories}
+          onSuggestionsChange={handleOffersChange}
+        />
+        {shouldDisplayArtistsSuggestions ? (
+          <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
+            <Configure hitsPerPage={5} clickAnalytics analytics />
+            <AutocompleteArtist
+              onItemPress={onArtistPress}
+              onSuggestionsChange={handleArtistsChange}
+            />
+          </Index>
+        ) : null}
+        <Index indexName={currentVenuesIndex}>
+          <Configure
+            hitsPerPage={5}
+            clickAnalytics
+            analytics
+            aroundRadius="all"
+            aroundLatLng={searchVenuePosition.aroundLatLng}
+          />
+          <AutocompleteVenue onItemPress={onVenuePress} onSuggestionsChange={handleVenuesChange} />
+        </Index>
+      </SearchSuggestionsListbox>
     </SuggestionsContent>
   )
 
@@ -219,7 +223,7 @@ export const SearchSuggestions = ({
     <StyledScrollView
       testID="autocompleteScrollView"
       keyboardShouldPersistTaps="handled"
-      onScroll={Keyboard.dismiss}
+      {...dismissKeyboardOnUserScrollProps}
       scrollEventThrottle={16}>
       {content}
     </StyledScrollView>

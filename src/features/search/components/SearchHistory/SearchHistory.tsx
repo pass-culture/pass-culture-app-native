@@ -2,15 +2,15 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
+import {
+  SearchSuggestionsGroup,
+  SearchSuggestionsGroupItem,
+} from 'features/search/components/SearchSuggestionsListbox/SearchSuggestionsGroup'
 import { addHighlightedAttribute } from 'features/search/helpers/addHighlightedAttribute/addHighlightedAttribute'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { VerticalUl } from 'ui/components/Ul'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
-import { Typo } from 'ui/theme'
-import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props = {
   history: HistoryItem[]
@@ -23,52 +23,37 @@ export function SearchHistory({ history, queryHistory, removeItem, onPress }: Pr
   const isEmptyQuery = queryHistory === ''
 
   return history.length > 0 ? (
-    <React.Fragment>
-      <SearchHistoryTitleText>Historique de recherche</SearchHistoryTitleText>
-      <StyledVerticalUl accessibilityLabel="Historique de recherche">
-        {history.map((item) => (
-          <Container
-            key={item.createdAt}
-            testID="searchHistoryItem"
-            isEmptyQuery={isEmptyQuery}
-            accessibilityRole={AccessibilityRole.LISTITEM}>
-            <SearchHistoryItem
-              item={addHighlightedAttribute({ item, query: queryHistory })}
-              queryHistory={queryHistory}
-              onPress={onPress}
-            />
-            {isEmptyQuery ? (
-              <RemoveButton
-                accessibilityLabel={`Supprimer ${item.label} de l’historique`}
-                onPress={() => removeItem(item)}>
-                <Close />
-              </RemoveButton>
-            ) : null}
-          </Container>
-        ))}
-      </StyledVerticalUl>
-    </React.Fragment>
+    <SearchSuggestionsGroup title="Historique de recherche">
+      {history.map((item) => (
+        <Container key={item.createdAt} testID="searchHistoryItem" isEmptyQuery={isEmptyQuery}>
+          <SearchHistoryItem
+            item={addHighlightedAttribute({ item, query: queryHistory })}
+            queryHistory={queryHistory}
+            onPress={onPress}
+          />
+          {isEmptyQuery ? (
+            <RemoveButton
+              accessibilityLabel={`Supprimer ${item.label} de l’historique`}
+              onPress={() => removeItem(item)}>
+              <Close />
+            </RemoveButton>
+          ) : null}
+        </Container>
+      ))}
+    </SearchSuggestionsGroup>
   ) : null
 }
 
-const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(setTextSemantic('h2'))(
-  ({ theme }) => ({
-    color: theme.designSystem.color.text.subtle,
+const Container = styled(SearchSuggestionsGroupItem)<{ isEmptyQuery: boolean }>(
+  ({ isEmptyQuery, theme }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: isEmptyQuery
+      ? theme.designSystem.size.spacing.xl
+      : theme.designSystem.size.spacing.l,
   })
 )
-
-const Container = styled.View<{ isEmptyQuery: boolean }>(({ isEmptyQuery, theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  marginBottom: isEmptyQuery
-    ? theme.designSystem.size.spacing.xl
-    : theme.designSystem.size.spacing.l,
-}))
 
 const RemoveButton = styledButton(Touchable)(({ theme }) => ({
   maxWidth: theme.designSystem.size.spacing.xxxl,
