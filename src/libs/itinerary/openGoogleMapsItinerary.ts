@@ -6,5 +6,5 @@ export function getGoogleMapsItineraryUrl(address: string) {
 }
 
 export function openGoogleMapsItinerary(address: string) {
-  return openUrl(getGoogleMapsItineraryUrl(address)) // openUrl already reports the error and displays an alert.
+  return openUrl(getGoogleMapsItineraryUrl(address))
 }

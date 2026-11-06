@@ -202,9 +202,9 @@ export const getCtaWordingAndAction = ({
     return {
       wording: getDigitalOfferBookingWording(subcategoryId),
       isDisabled: isBookingLoading,
-      async onPress() {
+      onPress() {
         if (isAlreadyBookedOffer) {
-          await openUrl(booking?.completedUrl ?? '')
+          void openUrl(booking?.completedUrl ?? '')
           return
         }
         if (offer.stocks[0]?.id) {
@@ -457,7 +457,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     )
 
     if (booking) {
-      await openUrl(booking.completedUrl ?? '')
+      void openUrl(booking.completedUrl ?? '')
     }
   }
 

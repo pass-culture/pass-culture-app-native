@@ -63,9 +63,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
       void analytics.logClickVolunteerCTA({ from: 'venue', venueId: venue.id.toString() })
       void openUrl(
         `${venue.volunteeringUrl}?utm_source=pass-culture&utm_medium=app&utm_campaign=orga_non_inscrite`
-      ).catch(() => {
-        // openUrl already reports the error and displays an alert.
-      })
+      )
     }
   }
 

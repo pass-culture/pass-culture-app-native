@@ -12,11 +12,13 @@ import { navigateToHome } from './navigateToHome'
 const openAppUrl = (url: string) => {
   try {
     const { screen, params } = getScreenFromDeeplink(url)
-    return navigateFromRef(screen, params)
+    navigateFromRef(screen, params)
+    return true
   } catch (error) {
     eventMonitoring.captureException(error)
     // If an error is thrown, that means that no routes were matched
-    return navigateToHome()
+    navigateToHome()
+    return false
   }
 }
 
@@ -50,7 +52,7 @@ const openExternalUrl = async (
       await Linking.openURL(url)
     }
     if (shouldLogEvent) void analytics.logOpenExternalUrl(url, { ...analyticsData })
-    return
+    return true
   } catch {
     // Intentionally left empty to ignore errors that aren't critical
   }
@@ -59,12 +61,13 @@ const openExternalUrl = async (
     try {
       await Linking.openURL(fallbackUrl)
       if (shouldLogEvent) void analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
-      return
+      return true
     } catch {
       // Intentionally left empty to ignore errors that aren't critical
     }
   }
   showAlert(url)
+  return false
 }
 
 const showAlert = (url: string) => {
@@ -75,11 +78,11 @@ const showAlert = (url: string) => {
   Alert.alert(alertTitle, alertMessage, alertButtons, alertAndroidOptions)
 }
 
-export function openUrl(
+export async function openUrl(
   url: string,
   { shouldLogEvent = true, fallbackUrl, analyticsData }: UrlParamsProps = {},
   isExternal?: boolean
-) {
+): Promise<boolean> {
   if (isAppUrl(url) && !isExternal) {
     return openAppUrl(url)
   }
