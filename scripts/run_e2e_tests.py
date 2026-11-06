@@ -344,7 +344,7 @@ def build_maestro_args(config: dict) -> list[str]:
         if config["target"] == "cloud"
         else "false",
         "MAESTRO_E2E_API_KEY": secrets["e2e_api_key"],
-        "MAESTRO_E2E_ENDPOINT": secrets["e2e_endpoint"],
+        "MAESTRO_E2E_BASE_URL": secrets["e2e_base_url"],
         "MAESTRO_DRIVER_STARTUP_TIMEOUT": "60000",
     }
     if config["target"] == "cloud":
@@ -420,7 +420,7 @@ def resolve_secrets(config: dict) -> dict:
         "password": parse_env_variable("MAESTRO_PASSWORD", SECRET_FILE),
         "cloud_api_key": parse_env_variable("MAESTRO_CLOUD_API_KEY", SECRET_FILE),
         "e2e_api_key": parse_env_variable("MAESTRO_E2E_API_KEY", SECRET_FILE),
-        "e2e_endpoint": parse_env_variable("MAESTRO_E2E_ENDPOINT", SECRET_FILE),
+        "e2e_base_url": parse_env_variable("MAESTRO_E2E_BASE_URL", SECRET_FILE),
         "robin_api_key": "",
         "robin_project_id": "",
     }

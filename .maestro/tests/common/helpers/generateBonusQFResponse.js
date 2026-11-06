@@ -1,4 +1,4 @@
-const response = http.post(`${MAESTRO_E2E_ENDPOINT}/${user_id}/quotient_familial`, {
+const response = http.post(`${MAESTRO_E2E_BASE_URL}/account/${user_id}/quotient_familial`, {
   headers: {
     'Content-Type': 'application/json',
     'x-api-key': `${MAESTRO_E2E_API_KEY}`,

@@ -14,9 +14,7 @@ const MONTHS = [
     'Décembre',
 ]
 
-const e2eBaseUrl = `${MAESTRO_E2E_ENDPOINT}`.replace(/\/account$/, '')
-
-const response = http.post(`${e2eBaseUrl}/offer`, {
+const response = http.post(`${MAESTRO_E2E_BASE_URL}/offer`, {
     headers: {
         'Content-Type': 'application/json',
         'x-api-key': `${MAESTRO_E2E_API_KEY}`,
