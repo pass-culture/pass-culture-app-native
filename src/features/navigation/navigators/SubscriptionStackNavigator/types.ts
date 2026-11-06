@@ -24,6 +24,8 @@ export type SubscriptionStackParamList = {
   SetStatus?: ProfileScreenType
   SetProfileBookingError?: { offerId?: number }
   ActivationProfileRecap?: ProfileScreenType
+  CheckAddress?: { fromChangeAddress?: boolean }
+  NotEligibleForeignCountryExplanation: undefined
   // Identification
   ComeBackLater: undefined
   DMSIntroduction?: { isForeignDMSInformation: boolean }
@@ -54,7 +56,7 @@ export type SubscriptionStackParamList = {
   // Confirmation
   IdentityCheckHonor: undefined
   BeneficiaryRequestSent: undefined
-  BeneficiaryAccountCreated: undefined
+  BeneficiaryAccountCreated: { from: string }
   FreeBeneficiaryAccountCreated: undefined
   // Errors
   EduConnectErrors: { code?: string; logoutUrl?: string }

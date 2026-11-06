@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { UnlockCredit } from 'features/identityCheck/pages/UnlockCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -8,8 +9,6 @@ import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-
-import { EighteenBirthday } from './EighteenBirthday'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
@@ -26,27 +25,27 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 jest.useFakeTimers()
 
-describe('<EighteenBirthday />', () => {
+describe('<UnlockCredit />', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
   it('should render eighteen birthday', () => {
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(reactQueryProviderHOC(<UnlockCredit />))
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should set `has_seen_eligible_card` to true in storage', async () => {
-    expect(await storage.readObject('has_seen_eligible_card')).toBe(null)
+    expect(await storage.readObject('has_seen_eligible_card')).toBeNull()
 
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(reactQueryProviderHOC(<UnlockCredit />))
 
     expect(await storage.readObject('has_seen_eligible_card')).toBe(true)
   })
 
   it('should navigate to Stepper on button press', async () => {
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(reactQueryProviderHOC(<UnlockCredit />))
 
     await userEvent.setup().press(screen.getByText('Confirmer mes informations'))
 
@@ -59,7 +58,7 @@ describe('<EighteenBirthday />', () => {
   it('should render right wording when user require IdCheck', () => {
     mockAuthContextWithUser({ ...nonBeneficiaryUser, requiresIdCheck: true })
 
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(reactQueryProviderHOC(<UnlockCredit />))
 
     expect(screen.getByText('Vérifie ton identité pour débloquer tes 150 €.')).toBeOnTheScreen()
     expect(screen.getByText('Vérifier mon identité')).toBeOnTheScreen()
@@ -68,7 +67,7 @@ describe('<EighteenBirthday />', () => {
   it('should render illustration rather than animation when wipNewVisionUi FF activated', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
 
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(reactQueryProviderHOC(<UnlockCredit />))
 
     expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })

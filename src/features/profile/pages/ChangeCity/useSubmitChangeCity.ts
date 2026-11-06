@@ -9,9 +9,11 @@ import { cityActions, useCity } from 'features/identityCheck/pages/profile/store
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { Clear } from 'ui/svg/icons/Clear'
 
 export const useSubmitChangeCity = () => {
   const { user } = useAuthContext()
@@ -31,7 +33,21 @@ export const useSubmitChangeCity = () => {
 
   const isFromProfileUpdateFlow =
     type === PersonalDataTypes.PROFIL_PERSONAL_DATA ||
-    type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+    type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA ||
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA
+
+  const tertiaryButton =
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA
+      ? {
+          wording: 'Je ne réside pas en France',
+          icon: Clear,
+          onPress: () =>
+            navigate(...getSubscriptionHookConfig('NotEligibleForeignCountryExplanation')),
+        }
+      : null
+
+  const title =
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA ? 'Profil' : 'Modifier ma ville de résidence'
 
   const {
     control,
@@ -81,5 +97,7 @@ export const useSubmitChangeCity = () => {
     onSubmit,
     buttonWording,
     isPending,
+    tertiaryButton,
+    title,
   }
 }

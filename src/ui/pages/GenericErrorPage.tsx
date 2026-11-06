@@ -30,6 +30,7 @@ type Props = PropsWithChildren<{
   subtitle?: string
   noIndex?: boolean
   buttonPrimary?: ButtonProps
+  buttonSecondary?: ButtonProps
   buttonTertiary?: ButtonProps
   buttonTertiaryExternalNav?: ReactNode
   remoteIllustration?: RemoteIllustrationProps
@@ -47,6 +48,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   helmetTitle,
   noIndex = true,
   buttonPrimary,
+  buttonSecondary,
   buttonTertiary,
   buttonTertiaryExternalNav,
   remoteIllustration,
@@ -103,7 +105,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
               ) : null}
             </TextContainer>
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
-            {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
+            {buttonPrimary || buttonSecondary || buttonTertiary || buttonTertiaryExternalNav ? (
               <ButtonContainer gap={4}>
                 {buttonPrimary?.onPress ? (
                   <Button
@@ -118,9 +120,23 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   />
                 ) : null}
 
-                {buttonTertiary?.onPress ? (
+                {buttonSecondary?.onPress ? (
                   <Button
                     key={2}
+                    wording={buttonSecondary.wording}
+                    onPress={buttonSecondary.onPress}
+                    isLoading={buttonSecondary.isLoading}
+                    disabled={buttonSecondary.disabled}
+                    icon={buttonSecondary.icon}
+                    variant="secondary"
+                    color="brand"
+                    fullWidth
+                  />
+                ) : null}
+
+                {buttonTertiary?.onPress ? (
+                  <Button
+                    key={3}
                     wording={buttonTertiary.wording}
                     onPress={buttonTertiary.onPress}
                     isLoading={buttonTertiary.isLoading}

@@ -58,7 +58,7 @@ export const RecreditBirthdayNotification = () => {
     })
 
   useEffect(() => {
-    storage.saveObject('has_seen_birthday_notification_card', true)
+    void storage.readObject('has_seen_birthday_notification_card')
   }, [])
 
   return (

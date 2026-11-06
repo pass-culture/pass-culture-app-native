@@ -2,7 +2,10 @@ import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNa
 import { AccessibilityRootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 
 interface PersonalDataType {
-  type: PersonalDataTypes.PROFIL_PERSONAL_DATA | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+  type:
+    | PersonalDataTypes.PROFIL_PERSONAL_DATA
+    | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
+    | PersonalDataTypes.CHECK_ADDRESS_DATA
 }
 
 export type ProfileStackParamList = {

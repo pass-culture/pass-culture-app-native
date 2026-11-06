@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
@@ -23,7 +24,7 @@ import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
-export function BeneficiaryAccountCreated() {
+export function BeneficiaryAccountCreated({ from }: { from: string }) {
   const { designSystem } = useTheme()
   const { user, refetchUser } = useAuthContext()
 
@@ -71,6 +72,8 @@ export function BeneficiaryAccountCreated() {
 
   useEnterKeyAction(navigateToHome)
 
+  const [profileNavigator, profileScreenConfig] = getTabHookConfig('Profile')
+
   return (
     <GenericInfoPage
       animation={BirthdayCake}
@@ -79,9 +82,17 @@ export function BeneficiaryAccountCreated() {
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{
-        wording: 'C’est parti\u00a0!',
+        wording: from === 'IdentityCheckHonor' ? 'C’est parti\u00a0!' : "J'en profite",
         onBeforeNavigate: onBeforeNavigate,
-        navigateTo: navigateToHomeConfig,
+        navigateTo:
+          from === 'IdentityCheckHonor'
+            ? navigateToHomeConfig
+            : {
+                screen: profileNavigator,
+                params: profileScreenConfig,
+                withReset: true,
+                fromRef: true,
+              },
       }}>
       <ProgressBarContainer>
         <AnimatedProgressBar

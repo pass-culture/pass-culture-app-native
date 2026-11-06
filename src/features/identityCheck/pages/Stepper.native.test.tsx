@@ -176,7 +176,7 @@ describe('Stepper navigation', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-        params: undefined,
+        params: { from: 'Stepper' },
         screen: 'BeneficiaryAccountCreated',
       })
     })

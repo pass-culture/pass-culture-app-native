@@ -29,8 +29,6 @@ import { SignupMethods } from 'features/auth/pages/signup/SignupMethods/SignupMe
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
-import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -42,6 +40,8 @@ import { IncorrectLink } from 'features/errors/pages/IncorrectLink'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
+import { RecreditBirthdayNotification } from 'features/identityCheck/pages/confirmation/RecreditedNotification'
+import { UnlockCredit } from 'features/identityCheck/pages/UnlockCredit'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
@@ -229,12 +229,12 @@ const rootScreens: RouteConfig[] = [
   },
   {
     name: 'EighteenBirthday',
-    component: EighteenBirthday,
+    component: UnlockCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
     name: '_DeeplinkOnlyEighteenBirthday1',
-    component: EighteenBirthday,
+    component: UnlockCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
