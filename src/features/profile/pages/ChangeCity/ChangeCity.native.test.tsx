@@ -34,48 +34,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('ChangeCity', () => {
-  describe('without previous screen', () => {
-    beforeEach(() => {
-      useRoute.mockReturnValue({ params: { type: undefined } })
-      mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-      mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
-    })
-
-    it('should render correctly', async () => {
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('should navigate to PersonalData when clicking on "Valider ma ville de résidence"', async () => {
-      const city = mockedSuggestedCities[0]
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Valider ma ville de résidence'))
-
-      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
-        params: undefined,
-        screen: 'PersonalData',
-      })
-    })
-
-    it('should show snackbar on success', async () => {
-      const city = mockedSuggestedCities[0]
-      render(reactQueryProviderHOC(<ChangeCity />))
-
-      const input = await screen.findByTestId('Entrée pour la ville')
-      await act(async () => fireEvent.changeText(input, POSTAL_CODE))
-      await user.press(await screen.findByText(city.nom))
-      await user.press(await screen.findByText('Valider ma ville de résidence'))
-
-      expect(screen.getByTestId('snackbar-success')).toBeOnTheScreen()
-      expect(screen.getByText('Ta ville de résidence a bien été modifiée\u00a0!')).toBeOnTheScreen()
-    })
-  })
-
   describe('from profil personal data screen', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA } })

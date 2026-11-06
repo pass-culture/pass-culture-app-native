@@ -21,6 +21,12 @@ jest.mock('libs/network/NetInfoWrapper')
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
+const city = {
+  name: 'New city',
+  code: '00001',
+  postalCode: '00001',
+  departementCode: '01',
+}
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -31,7 +37,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('<SetAddress/>', () => {
+describe('<ChangeAddress/>', () => {
   beforeEach(() => {
     mockServer.patchApi<UserProfile>('/v1/profile', beneficiaryUser)
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
@@ -40,9 +46,99 @@ describe('<SetAddress/>', () => {
     )
   })
 
-  describe('without previous screen', () => {
+  describe.each([
+    {
+      type: PersonalDataTypes.PROFIL_PERSONAL_DATA,
+      buttonWording: 'Valider mon adresse',
+    },
+    {
+      type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA,
+      buttonWording: 'Continuer',
+    },
+  ])('with change city as previous screen for $type', ({ type, buttonWording }) => {
     beforeEach(() => {
-      useRoute.mockReturnValue({ params: { type: undefined } })
+      useRoute.mockReturnValue({
+        params: { type, city },
+      })
+    })
+
+    it('should not update the city store before submitting the address', async () => {
+      const setCitySpy = jest.spyOn(cityActions, 'setCity')
+
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+
+      expect(setCitySpy).not.toHaveBeenCalled()
+    })
+
+    it('should update store with the new city when submitting the address', async () => {
+      const setCitySpy = jest.spyOn(cityActions, 'setCity')
+
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText(buttonWording))
+
+      expect(setCitySpy).toHaveBeenCalledWith(city)
+    })
+
+    it('should call patchProfile with address and city informations', async () => {
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText(buttonWording))
+
+      expect(patchProfileSpy).toHaveBeenCalledWith({
+        address: mockedSuggestedPlaces.features[1].properties.name,
+        city: city.name,
+        postalCode: city.postalCode,
+      })
+    })
+
+    it('should send city analytics on success when submitting the address', async () => {
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText(buttonWording))
+
+      expect(analytics.logUpdatePostalCode).toHaveBeenCalledWith({
+        oldPostalCode: '',
+        oldCity: '',
+        newPostalCode: city.postalCode,
+        newCity: city.name,
+      })
+    })
+
+    it('should show snackbar on error when submitting the address', async () => {
+      mockServer.patchApi<UserProfile>('/v1/profile', {
+        responseOptions: { statusCode: 400 },
+      })
+      renderSetAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText(buttonWording))
+
+      expect(await screen.findByTestId('snackbar-error')).toBeOnTheScreen()
+      expect(screen.getByText('Une erreur est survenue')).toBeOnTheScreen()
+      expect(screen.queryByTestId('snackbar-success')).toBeNull()
+      expect(analytics.logUpdatePostalCode).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('from profile personal data via change city', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA, city } })
     })
 
     it('should render correctly', async () => {
@@ -84,6 +180,8 @@ describe('<SetAddress/>', () => {
 
       expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
         address: mockedSuggestedPlaces.features[1].properties.name,
+        city: city.name,
+        postalCode: city.postalCode,
       })
     })
 
@@ -133,10 +231,10 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  describe('from mandatory udpate personal data screen', () => {
+  describe('from mandatory update personal data via change city', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({
-        params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
+        params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA, city },
       })
     })
 
@@ -173,49 +271,6 @@ describe('<SetAddress/>', () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
         params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
         screen: 'ChangeStatus',
-      })
-    })
-  })
-
-  describe('with change city as previous screen', () => {
-    const city = {
-      name: 'New city',
-      code: '00001',
-      postalCode: '00001',
-      departementCode: '01',
-    }
-
-    beforeEach(() => {
-      useRoute.mockReturnValue({
-        params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA, city },
-      })
-    })
-
-    it('should update store with the new city when submitting the address', async () => {
-      const setCitySpy = jest.spyOn(cityActions, 'setCity')
-
-      renderSetAddress()
-
-      const input = screen.getByTestId('Entrée pour l’adresse')
-      fireEvent.changeText(input, QUERY_ADDRESS)
-      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
-      await user.press(screen.getByText('Valider mon adresse'))
-
-      expect(setCitySpy).toHaveBeenCalledWith(city)
-    })
-
-    it('should call patchProfile with address and city informations', async () => {
-      renderSetAddress()
-
-      const input = screen.getByTestId('Entrée pour l’adresse')
-      fireEvent.changeText(input, QUERY_ADDRESS)
-      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
-      await user.press(screen.getByText('Valider mon adresse'))
-
-      expect(patchProfileSpy).toHaveBeenCalledWith({
-        address: mockedSuggestedPlaces.features[1].properties.name,
-        city: city.name,
-        postalCode: city.postalCode,
       })
     })
   })
