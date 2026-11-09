@@ -19,7 +19,11 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/auth/context/AuthContext')
 
 const mockStateDispatch = jest.fn()
-const initialMockUseSearchResults = { searchState: initialSearchState, dispatch: mockStateDispatch }
+const initialMockUseSearchResults = {
+  searchState: initialSearchState,
+  dispatch: mockStateDispatch,
+  isFocusOnSuggestions: false,
+}
 const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearchResults)
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),

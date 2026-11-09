@@ -40,7 +40,7 @@ const searchIdGenerated = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchResults: FC = () => {
-  const suggestionsDescriptionId = useId()
+  const suggestionsId = useId()
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -100,7 +100,7 @@ export const SearchResults: FC = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
-        suggestionsDescriptionId={suggestionsDescriptionId}
+        suggestionsId={suggestionsId}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         withFilterButton={!isFocusOnSuggestions}
@@ -128,7 +128,7 @@ export const SearchResults: FC = () => {
           <React.Fragment>
             {isZoomedAt200 || isLandscape ? null : searchHeader}
             <SearchSuggestions
-              suggestionsDescriptionId={suggestionsDescriptionId}
+              suggestionsId={suggestionsId}
               queryHistory={queryHistory}
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
@@ -159,7 +159,7 @@ export const SearchResults: FC = () => {
           </React.Fragment>
         )}
         <SearchSuggestionsAnnouncer
-          id={suggestionsDescriptionId}
+          id={suggestionsId}
           query={queryHistory}
           visible={isFocusOnSuggestions}
         />

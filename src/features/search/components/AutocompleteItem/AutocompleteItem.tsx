@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { SearchSuggestionOption } from 'features/search/components/SearchSuggestionsListbox/SearchSuggestionOption'
 
 type Props = {
   icon: React.ReactNode
@@ -13,7 +12,7 @@ type Props = {
 
 export function AutocompleteItem({ icon, onPress, children, testID }: Props) {
   return (
-    <ItemTouchable testID={testID} onPress={onPress} accessibilityRole={AccessibilityRole.BUTTON}>
+    <ItemTouchable testID={testID} onPress={onPress}>
       <IconWrapper>{icon}</IconWrapper>
       <Content numberOfLines={2} ellipsizeMode="tail">
         {children}
@@ -24,7 +23,7 @@ export function AutocompleteItem({ icon, onPress, children, testID }: Props) {
 
 const IconWrapper = styled.View({ flexShrink: 0 })
 
-const ItemTouchable = styled(TouchableOpacity)(({ theme }) => ({
+const ItemTouchable = styled(SearchSuggestionOption)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.l,

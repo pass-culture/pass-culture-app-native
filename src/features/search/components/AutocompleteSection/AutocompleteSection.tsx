@@ -2,13 +2,12 @@ import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import { isEqual } from 'lodash'
 import React, { useEffect, useRef } from 'react'
 import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
-import { styled } from 'styled-components/native'
 
+import {
+  SearchSuggestionsGroup,
+  SearchSuggestionsGroupItem,
+} from 'features/search/components/SearchSuggestionsListbox/SearchSuggestionsGroup'
 import { SuggestionsSnapshot } from 'features/search/store/searchSuggestionsAccessibility.store'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
-import { Typo } from 'ui/theme'
-import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 type Props<T> = {
   title: string
@@ -47,21 +46,12 @@ export function AutocompleteSection<T>({
   if (!hits.length) return null
 
   return (
-    <React.Fragment>
-      <Title>{title}</Title>
-      <StyledVerticalUl accessibilityLabel={title}>
-        {hits.map((item) => (
-          <Li key={item.objectID}>{renderItem(item as T, sendEvent)}</Li>
-        ))}
-      </StyledVerticalUl>
-    </React.Fragment>
+    <SearchSuggestionsGroup title={title}>
+      {hits.map((item) => (
+        <SearchSuggestionsGroupItem key={item.objectID}>
+          {renderItem(item as T, sendEvent)}
+        </SearchSuggestionsGroupItem>
+      ))}
+    </SearchSuggestionsGroup>
   )
 }
-
-const Title = styled(Typo.BodyAccentXs).attrs(setTextSemantic('h2'))(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))
-
-const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))

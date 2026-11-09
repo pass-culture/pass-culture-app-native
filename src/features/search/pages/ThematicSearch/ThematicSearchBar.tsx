@@ -24,7 +24,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   offerCategories,
   title,
 }) => {
-  const suggestionsDescriptionId = useId()
+  const suggestionsId = useId()
   const { isFocusOnSuggestions } = useSearch()
 
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -50,7 +50,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       <Configure facetFilters={[facetFilters]} clickAnalytics analytics hitsPerPage={5} />
       <SearchHeaderContainer>
         <SearchHeader
-          suggestionsDescriptionId={suggestionsDescriptionId}
+          suggestionsId={suggestionsId}
           title={title}
           withArrow
           shouldDisplayHeader={!isFocusOnSuggestions}
@@ -61,7 +61,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       </SearchHeaderContainer>
       {isFocusOnSuggestions ? (
         <SearchSuggestions
-          suggestionsDescriptionId={suggestionsDescriptionId}
+          suggestionsId={suggestionsId}
           queryHistory={queryHistory}
           addToHistory={addToHistory}
           removeFromHistory={removeFromHistory}
@@ -73,7 +73,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
         <React.Fragment>{children}</React.Fragment>
       )}
       <SearchSuggestionsAnnouncer
-        id={suggestionsDescriptionId}
+        id={suggestionsId}
         query={queryHistory}
         visible={isFocusOnSuggestions}
       />

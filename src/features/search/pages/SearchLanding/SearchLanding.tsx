@@ -1,7 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useId } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
-import { Keyboard } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 
@@ -12,6 +11,7 @@ import { SearchSuggestionsAnnouncer } from 'features/search/components/SearchSug
 import { SEARCH_CATEGORIES_ANCHOR_ID } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { dismissKeyboardOnUserScrollProps } from 'features/search/helpers/dismissKeyboardOnUserScrollProps'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { env } from 'libs/environment/env'
@@ -29,7 +29,7 @@ import { Page } from 'ui/pages/Page'
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchLanding = () => {
-  const suggestionsDescriptionId = useId()
+  const suggestionsId = useId()
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.SEARCH)
 
   const netInfo = useNetInfoContext()
@@ -65,7 +65,7 @@ export const SearchLanding = () => {
   const searchHeader = (
     <Container>
       <SearchHeader
-        suggestionsDescriptionId={suggestionsDescriptionId}
+        suggestionsId={suggestionsId}
         shouldDisplaySubtitle
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
@@ -77,9 +77,10 @@ export const SearchLanding = () => {
     </Container>
   )
   const scrollHeader = isZoomedAt200 || isLandscape
+  const landingScrollProps = isFocusOnSuggestions ? dismissKeyboardOnUserScrollProps : undefined
   const body = isFocusOnSuggestions ? (
     <SearchSuggestions
-      suggestionsDescriptionId={suggestionsDescriptionId}
+      suggestionsId={suggestionsId}
       queryHistory={queryHistory}
       addToHistory={addToHistory}
       removeFromHistory={removeFromHistory}
@@ -106,7 +107,7 @@ export const SearchLanding = () => {
           {scrollHeader ? (
             <LandingScrollView
               keyboardShouldPersistTaps="handled"
-              onScroll={isFocusOnSuggestions ? Keyboard.dismiss : undefined}
+              {...landingScrollProps}
               scrollEventThrottle={16}>
               {searchHeader}
               {body}
@@ -118,7 +119,7 @@ export const SearchLanding = () => {
             </React.Fragment>
           )}
           <SearchSuggestionsAnnouncer
-            id={suggestionsDescriptionId}
+            id={suggestionsId}
             query={queryHistory}
             visible={isFocusOnSuggestions}
           />
