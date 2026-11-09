@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform, Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { focusElement } from 'shared/accessibility/helpers/focusElement'
@@ -22,24 +22,13 @@ function getCutIndex(text: string, maxChars: number) {
   return lastSpace > 0 ? lastSpace : maxChars
 }
 
-function getContinuationA11yLabel(text: string, cutIndex: number) {
-  const continuation = text.slice(cutIndex).trim()
-  if (!continuation) return text
-  return continuation
-}
-
 export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, children }: Props) {
   const [expanded, setExpanded] = useState(false)
-  const continuationFocusRef = useRef<View>(null)
+  const expandedTextRef = useRef<Text>(null)
 
   const isTruncated = text.length > maxChars
   const cutIndex = getCutIndex(text, maxChars)
-
-  const firstPart = text.slice(0, cutIndex)
-  const secondPart = text.slice(cutIndex)
-  const collapsedText = `${firstPart}…`
-
-  const continuationA11yLabel = getContinuationA11yLabel(text, cutIndex)
+  const collapsedText = `${text.slice(0, cutIndex)}…`
 
   const buttonIcon = expanded ? ArrowUp : ArrowDown
   const buttonText = expanded ? 'Voir moins' : 'Voir plus'
@@ -50,15 +39,15 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, child
     onAdditionalPress?.()
   }
 
-  const focusContinuation = () => {
-    focusElement(continuationFocusRef)
+  const focusExpandedText = () => {
+    focusElement(expandedTextRef)
   }
 
   useEffect(
-    function focusContinuationOnExpand() {
+    function focusExpandedTextOnExpand() {
       if (!expanded || !isTruncated) return
 
-      const timer = setTimeout(focusContinuation, 150)
+      const timer = setTimeout(focusExpandedText, 150)
       return () => clearTimeout(timer)
     },
     [expanded, isTruncated]
@@ -67,18 +56,10 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, child
   return (
     <View>
       {expanded ? (
-        <View>
-          <Markdown>{firstPart}</Markdown>
-          <View
-            ref={continuationFocusRef}
-            accessible
-            accessibilityRole="text"
-            accessibilityLabel={continuationA11yLabel}
-            // Make the element programmatically focusable on web without adding it to the tab order.
-            tabIndex={Platform.OS === 'web' ? -1 : undefined}>
-            <Markdown>{secondPart}</Markdown>
-          </View>
-        </View>
+        // Make the text programmatically focusable on web without adding it to the tab order.
+        <Markdown ref={expandedTextRef} tabIndex={Platform.OS === 'web' ? -1 : undefined}>
+          {text}
+        </Markdown>
       ) : (
         <Markdown>{isTruncated ? collapsedText : text}</Markdown>
       )}

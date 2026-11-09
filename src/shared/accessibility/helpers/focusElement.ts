@@ -1,6 +1,6 @@
-import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native'
+import { AccessibilityInfo, findNodeHandle, Platform, Text, View } from 'react-native'
 
-export const focusElement = (ref: React.RefObject<View | null>) => {
+export const focusElement = (ref: React.RefObject<View | Text | null>) => {
   if (Platform.OS === 'web') {
     const element = ref.current as unknown as HTMLElement | null
     element?.focus()

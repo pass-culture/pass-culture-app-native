@@ -51,4 +51,8 @@ declare module 'react-native' {
      */
     accessibilityRequired?: boolean
   }
+
+  export interface TextProps {
+    tabIndex?: 0 | -1
+  }
 }
