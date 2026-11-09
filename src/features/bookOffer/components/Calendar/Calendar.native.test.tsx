@@ -2,7 +2,7 @@ import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
-import { getDayDescription, getMinAvailableDate } from './Calendar'
+import { getCalendarMinDate, getDayDescription, getMinAvailableDate } from './Calendar'
 import { Marking } from './useMarkedDates'
 
 const marking = { price: 2700, selected: false, status: OfferStatus.BOOKABLE }
@@ -34,6 +34,12 @@ describe('getMinAvailableDate', () => {
     })
 
     expect(minDate).toEqual('2021-03-28')
+  })
+})
+
+describe('getCalendarMinDate', () => {
+  it('should return today in calendar format when there is no available date', () => {
+    expect(getCalendarMinDate({}, new Date('2026-10-28T12:00:00Z'))).toBe('2026-10-28')
   })
 })
 
