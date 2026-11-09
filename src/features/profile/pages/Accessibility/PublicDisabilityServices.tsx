@@ -6,7 +6,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { LogoAccesLibre } from 'ui/svg/LogoAccesLibre'
-import { LogoAidantConnect } from 'ui/svg/LogoAidantConnect'
+import { LogoAidantsConnect } from 'ui/svg/LogoAidantsConnect'
 import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
 import { LogoCultureRelax } from 'ui/svg/LogoCultureRelax'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
@@ -29,10 +29,10 @@ const PUBLIC_SERVICES: PublicService[] = [
     illustration: <LogoAccesLibre />,
   },
   {
-    name: 'Aidant connect',
+    name: 'Aidants connect',
     url: 'https://aidantsconnect.beta.gouv.fr/',
     description: 'Accompagnez vos usagers en toute sécurité.',
-    illustration: <LogoAidantConnect />,
+    illustration: <LogoAidantsConnect />,
   },
   {
     name: 'Aides simplifiées',
@@ -71,7 +71,7 @@ export const PublicDisabilityServices = () => {
         <ViewGap gap={5}>
           <Typo.Title3 {...setTextSemantic('h2')}>Des services pensés pour toi</Typo.Title3>
           <Typo.Body>
-            Retrouve ici les plateformes publiques et services pensées pour t’accompagner et rendre
+            Retrouve ici les plateformes publiques et services pensés pour t’accompagner et rendre
             la société plus accessible à tous.
           </Typo.Body>
           <VerticalUl gap={4}>
