@@ -14,6 +14,7 @@ import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identif
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { eduConnectClient } from 'libs/eduConnectClient'
+import { isValidEduConnectUrl } from 'shared/isValidUrl/isValidUrl'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const EduConnectForm = () => {
@@ -32,7 +33,6 @@ export const EduConnectForm = () => {
           setWebViewSource({
             uri: eduConnectClient.getLoginUrl(),
             // TODO(PC-31394): Essayer de retirer la ligne en faisant une refacto
-            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             headers: { Authorization: `Bearer ${value}` },
           })
         })
@@ -66,8 +66,12 @@ export const EduConnectForm = () => {
     const isUserAuthenticated = event.url.includes('validation')
     if (isUserAuthenticated) {
       const url = new URL(event.url)
-      const eduConnectLogoutUrl = url.searchParams.get('logoutUrl') ?? ''
-      fetch(eduConnectLogoutUrl)
+      const eduConnectLogoutUrl = url.searchParams.get('logoutUrl')
+
+      if (eduConnectLogoutUrl && isValidEduConnectUrl(eduConnectLogoutUrl)) {
+        void fetch(eduConnectLogoutUrl)
+      }
+
       dispatch({
         type: 'SET_IDENTIFICATION',
         payload: {
