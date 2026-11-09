@@ -5,14 +5,12 @@ import { CinemaScreeningCardDisabledReason } from './types'
 
 type Props = {
   screening: StockResponse
-  offerVenueId: number
   movieScreeningUserData?: MovieScreeningUserData
   isExternalBookingsDisabled?: boolean
 }
 
 export const getCinemaScreeningCardDisabledReason = ({
   screening,
-  offerVenueId,
   movieScreeningUserData = {},
   isExternalBookingsDisabled = false,
 }: Props): CinemaScreeningCardDisabledReason | undefined => {
@@ -22,7 +20,6 @@ export const getCinemaScreeningCardDisabledReason = ({
     hasEnoughCredit,
     bookings: userBooking,
     isUserCreditExpired,
-    hasBookedOffer,
     isUserLoggedIn,
   } = movieScreeningUserData
 
@@ -30,8 +27,6 @@ export const getCinemaScreeningCardDisabledReason = ({
     screening.beginningDatetime &&
     userBooking?.stock.beginningDatetime === screening.beginningDatetime
   )
-  const hasBookedRelatedOffer = offerVenueId === userBooking?.stock.offer.venue.id && hasBookedOffer
-
   if (isExternalBookingsDisabled) {
     return CinemaScreeningCardDisabledReason.UNAVAILABLE
   }
@@ -44,7 +39,7 @@ export const getCinemaScreeningCardDisabledReason = ({
     return CinemaScreeningCardDisabledReason.ALREADY_BOOKED
   }
 
-  if (!screening.isBookable || isUserCreditExpired || hasBookedRelatedOffer || !isUserEligible) {
+  if (!screening.isBookable || isUserCreditExpired || !isUserEligible) {
     return CinemaScreeningCardDisabledReason.UNAVAILABLE
   }
 

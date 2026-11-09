@@ -16,7 +16,7 @@ const screening: StockResponse = {
 
 describe('getCinemaScreeningCardDisabledReason', () => {
   it('returns undefined when the screening is bookable', () => {
-    expect(getCinemaScreeningCardDisabledReason({ screening, offerVenueId: 1 })).toBeUndefined()
+    expect(getCinemaScreeningCardDisabledReason({ screening })).toBeUndefined()
   })
 
   it.each([
@@ -48,20 +48,11 @@ describe('getCinemaScreeningCardDisabledReason', () => {
     },
     {
       params: {
-        offerVenueId: mockedBookingV2Api.stock.offer.venue.id,
-        movieScreeningUserData: { bookings: mockedBookingV2Api, hasBookedOffer: true },
-      },
-      expected: CinemaScreeningCardDisabledReason.UNAVAILABLE,
-    },
-    {
-      params: {
         movieScreeningUserData: { isUserLoggedIn: true, hasEnoughCredit: false },
       },
       expected: CinemaScreeningCardDisabledReason.INSUFFICIENT_CREDIT,
     },
   ])('returns $expected for $params', ({ params, expected }) => {
-    expect(getCinemaScreeningCardDisabledReason({ screening, offerVenueId: 1, ...params })).toBe(
-      expected
-    )
+    expect(getCinemaScreeningCardDisabledReason({ screening, ...params })).toBe(expected)
   })
 })

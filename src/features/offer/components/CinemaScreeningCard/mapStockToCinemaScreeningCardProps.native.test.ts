@@ -1,4 +1,5 @@
 import { StockResponse } from 'api/gen'
+import { mockedBookingV2Api } from 'fixtures/booking'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
 import { mapStockToCinemaScreeningCardProps } from './mapStockToCinemaScreeningCardProps'
@@ -57,6 +58,37 @@ describe('mapStockToCinemaScreeningCardProps', () => {
     })
 
     expect(result?.disabledReason).toBe(CinemaScreeningCardDisabledReason.UNAVAILABLE)
+
+    result?.onPress()
+
+    expect(onSelectScreening).not.toHaveBeenCalled()
+    expect(onPressOfferCTA).not.toHaveBeenCalled()
+  })
+
+  it('disables a related screening without hiding its information when the offer is already booked', () => {
+    const onSelectScreening = jest.fn()
+    const onPressOfferCTA = jest.fn()
+    const result = mapStockToCinemaScreeningCardProps({
+      screening,
+      offerVenueId: mockedBookingV2Api.stock.offer.venue.id,
+      onSelectScreening,
+      currency: Currency.EURO,
+      euroToPacificFrancRate: 119.33,
+      onPressOfferCTA,
+      movieScreeningUserData: { bookings: mockedBookingV2Api, hasBookedOffer: true },
+    })
+
+    expect(result).toEqual(
+      expect.objectContaining({
+        isDisabled: true,
+        disabledReason: undefined,
+        accessibility: screening.screeningFeatures?.accessibility,
+        audio: ['Dolby Atmos'],
+        price: '5,70\u00a0€',
+        specialEvent: 'Avant-première avec équipe',
+        video: ['IMAX'],
+      })
+    )
 
     result?.onPress()
 

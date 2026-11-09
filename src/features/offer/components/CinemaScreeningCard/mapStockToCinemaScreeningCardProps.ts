@@ -38,14 +38,18 @@ export const mapStockToCinemaScreeningCardProps = ({
 
   const disabledReason = getCinemaScreeningCardDisabledReason({
     screening,
-    offerVenueId,
     movieScreeningUserData,
     isExternalBookingsDisabled,
   })
+  const hasBookedRelatedOffer = Boolean(
+    movieScreeningUserData?.hasBookedOffer &&
+    offerVenueId === movieScreeningUserData.bookings?.stock.offer.venue.id
+  )
+  const isDisabled = !!disabledReason || hasBookedRelatedOffer
   const beginningDate = new Date(screening.beginningDatetime)
 
   const onPress = () => {
-    if (disabledReason) return
+    if (isDisabled) return
 
     onSelectScreening({
       date: beginningDate,
@@ -59,6 +63,7 @@ export const mapStockToCinemaScreeningCardProps = ({
     onPress,
     time: formatHour(screening.beginningDatetime).replace(':', 'h'),
     price: formatCurrencyFromCents(screening.price, currency, euroToPacificFrancRate),
+    isDisabled,
     disabledReason,
     ...(screening.screeningFeatures
       ? getCinemaScreeningFeaturesProps(screening.screeningFeatures)

@@ -78,6 +78,32 @@ describe('<CinemaScreeningCard />', () => {
     expect(screen.queryByTestId('cinema-screening-audio-accessibility')).not.toBeOnTheScreen()
   })
 
+  it('should display all information without triggering onPress when disabled without a reason', async () => {
+    const user = userEvent.setup()
+    const onPress = jest.fn()
+    const accessibilityLabel = '17h - VO - Avant-première - IMAX - Handicap auditif - 25€'
+
+    render(
+      <CinemaScreeningCard
+        {...defaultProps}
+        onPress={onPress}
+        isDisabled
+        specialEvent="Avant-première"
+        video={['IMAX']}
+        accessibility={{ audio: ['GRETA'] }}
+      />
+    )
+
+    expect(screen.getByText('25€')).toBeOnTheScreen()
+    expect(screen.getByText('Avant-première')).toBeOnTheScreen()
+    expect(screen.getByText('IMAX')).toBeOnTheScreen()
+    expect(screen.getByTestId('cinema-screening-audio-accessibility')).toBeOnTheScreen()
+
+    await user.press(screen.getByLabelText(accessibilityLabel))
+
+    expect(onPress).not.toHaveBeenCalled()
+  })
+
   it('should expose all content in its accessibility label', () => {
     const accessibilityLabel = '17h - VO - Avant-première - IMAX - Handicap auditif - 25€'
     render(

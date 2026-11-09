@@ -20,6 +20,7 @@ export type CinemaScreeningCardProps = {
   video?: string[]
   audio?: string[]
   accessibility?: CinemaScreeningAccessibility
+  isDisabled?: boolean
   disabledReason?: CinemaScreeningCardDisabledReason
 }
 
