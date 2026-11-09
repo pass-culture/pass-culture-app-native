@@ -39,6 +39,8 @@ export const VenueSurveyModal: FC = () => {
     await handleOnClose()
   }, [activity, handleOnClose])
 
+  if (!surveyConfig) return null
+
   return (
     <ModalSimple
       onClose={handleOnClose}

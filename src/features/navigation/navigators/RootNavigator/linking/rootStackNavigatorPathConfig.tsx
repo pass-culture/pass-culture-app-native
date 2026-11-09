@@ -196,10 +196,6 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
     parse: screenParamsParser.VenuePreviewCarousel,
     alias: ['venue/:id/apercu', 'lieu/apercu', 'venue/apercu'],
   },
-  VenueSurveyModal: {
-    path: 'lieu/enquete',
-    alias: ['venue/enquete'],
-  },
   HomeLocationModal: {
     path: 'modale-de-localisation-accueil',
   },

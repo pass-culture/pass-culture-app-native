@@ -33,6 +33,18 @@ describe('VenueSurveyModal', () => {
     })
   })
 
+  it('should not render modal when no activity param', () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        activity: null,
+      },
+    })
+
+    render(<VenueSurveyModal />)
+
+    expect(screen.toJSON()).toBeNull()
+  })
+
   it('should render modal correctly', () => {
     render(<VenueSurveyModal />)
 
