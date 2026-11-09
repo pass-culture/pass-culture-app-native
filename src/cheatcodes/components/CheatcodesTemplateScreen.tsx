@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, ScrollViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
@@ -11,6 +11,7 @@ type Props = PropsWithChildren<{
   title: string
   flexDirection?: 'row' | 'column'
   onGoBack?: () => void
+  keyboardShouldPersistTaps?: ScrollViewProps['keyboardShouldPersistTaps']
 }>
 
 export const CheatcodesTemplateScreen: React.FC<Props> = ({
@@ -18,6 +19,7 @@ export const CheatcodesTemplateScreen: React.FC<Props> = ({
   flexDirection = 'row',
   children,
   onGoBack,
+  keyboardShouldPersistTaps,
 }) => {
   const headerHeight = useGetHeaderHeight()
 
@@ -25,7 +27,7 @@ export const CheatcodesTemplateScreen: React.FC<Props> = ({
     <Page>
       <PageHeaderWithoutPlaceholder title={title} onGoBack={onGoBack} />
       <Placeholder height={headerHeight} />
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
         <StyledContainer flexDirection={flexDirection}>{children}</StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>

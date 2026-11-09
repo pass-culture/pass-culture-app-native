@@ -6,6 +6,7 @@ export type StorageKey =
   | 'adjust_events'
   | 'artist_first_favorite'
   | 'campaign_date'
+  | 'conversational_search_agent_id'
   | 'cookies'
   | 'credit_review_profile_started_at'
   | 'device_id'
