@@ -55,6 +55,7 @@ export function GtlPlaylist({
       moduleId: entryId,
       displayedOn: analyticsFrom,
       venueId: venue?.id,
+      searchId,
     })
   })
 

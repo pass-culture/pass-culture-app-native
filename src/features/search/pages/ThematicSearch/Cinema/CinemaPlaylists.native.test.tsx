@@ -24,7 +24,13 @@ const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
 const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylistsQuery')
   .mockReturnValue({
-    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
+    playlists: [
+      {
+        id: 'cinema_films_a_l_affiche',
+        title: DEFAULT_PLAYLIST_TITLE,
+        offers: DEFAULT_PLAYLIST_OFFERS,
+      },
+    ],
     isLoading: false,
   })
 

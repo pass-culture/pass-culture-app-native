@@ -24,7 +24,9 @@ const DEFAULT_PLAYLIST_TITLE = 'Concerts'
 const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylistsQuery')
   .mockReturnValue({
-    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
+    playlists: [
+      { id: 'musique_concerts', title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS },
+    ],
     isLoading: false,
   })
 

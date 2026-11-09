@@ -19,8 +19,17 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
-const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }
-const DEFAULT_PLAYLIST_WITHOUT_HITS = { title: DEFAULT_PLAYLIST_TITLE, offers: { hits: [] } }
+const DEFAULT_PLAYLIST_ID = 'playlist_id'
+const DEFAULT_PLAYLIST = {
+  id: DEFAULT_PLAYLIST_ID,
+  title: DEFAULT_PLAYLIST_TITLE,
+  offers: DEFAULT_PLAYLIST_OFFERS,
+}
+const DEFAULT_PLAYLIST_WITHOUT_HITS = {
+  id: DEFAULT_PLAYLIST_ID,
+  title: DEFAULT_PLAYLIST_TITLE,
+  offers: { hits: [] },
+}
 
 describe('ThematicSearchPlaylistList', () => {
   beforeEach(() => {

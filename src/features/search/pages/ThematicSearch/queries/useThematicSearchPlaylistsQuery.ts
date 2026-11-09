@@ -3,6 +3,7 @@ import { SearchResponse } from 'instantsearch.js'
 import { useEffect } from 'react'
 
 import { ThematicSearchPlaylistListProps } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
+import { ThematicSearchPlaylistConfig } from 'features/search/pages/ThematicSearch/types'
 import {
   filterOfferHitWithImage,
   useTransformOfferHits,
@@ -12,7 +13,7 @@ import { useUserLocation } from 'libs/locationV2/location.store'
 import { Offer } from 'shared/offer/types'
 
 type ThematicSearchPlaylists = {
-  playlistTitles: string[]
+  playlistsConfig: ThematicSearchPlaylistConfig[]
   fetchMethod: (
     userLocation: Position,
     isReplicaAlgoliaIndexActive?: boolean
@@ -26,7 +27,7 @@ type ThematicSearchPlaylistsQueryResult = Pick<
 >
 
 export function useThematicSearchPlaylistsQuery({
-  playlistTitles,
+  playlistsConfig,
   fetchMethod,
   queryKey,
 }: ThematicSearchPlaylists): ThematicSearchPlaylistsQueryResult {
@@ -51,18 +52,19 @@ export function useThematicSearchPlaylistsQuery({
   }, [userLocation?.latitude, userLocation?.longitude])
 
   if (!data || data.length === 0)
-    return { playlists: [{ title: '', offers: { hits: [] } }], isLoading }
+    return { playlists: [{ id: '', title: '', offers: { hits: [] } }], isLoading }
 
   return {
     playlists:
       data.length > 0
         ? data
             .map((item, index) => ({
-              title: playlistTitles[index] || '',
+              id: playlistsConfig[index]?.id ?? '',
+              title: playlistsConfig[index]?.title ?? '',
               offers: { hits: item.hits.filter(filterOfferHitWithImage).map(transformHits) },
             }))
             .filter((playlist) => playlist.offers.hits.length > 0)
-        : [{ title: '', offers: { hits: [] } }],
+        : [{ id: '', title: '', offers: { hits: [] } }],
     isLoading,
   }
 }

@@ -24,7 +24,13 @@ const DEFAULT_PLAYLIST_TITLE = 'Vidéos et documentaires'
 const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylistsQuery')
   .mockReturnValue({
-    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_OFFERS }],
+    playlists: [
+      {
+        id: 'films_videos_et_documentaires',
+        title: DEFAULT_PLAYLIST_TITLE,
+        offers: DEFAULT_OFFERS,
+      },
+    ],
     isLoading: false,
   })
 
