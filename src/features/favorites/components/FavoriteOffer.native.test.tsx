@@ -4,7 +4,7 @@ import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { FavoriteResponse, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
+import { FavoriteOfferResponseV2, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { beneficiaryUserV2 } from 'fixtures/user'
@@ -126,7 +126,7 @@ describe('<FavoriteOffer /> component', () => {
   })
 
   it('should delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
+    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
     simulateBackend()
 
     renderFavorite()
@@ -140,7 +140,7 @@ describe('<FavoriteOffer /> component', () => {
   })
 
   it('should fail to delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
+    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
 
@@ -225,7 +225,7 @@ const DEFAULT_GET_FAVORITE_OPTIONS = {
 
 function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
   const { id, hasRemoveFavoriteError } = { ...DEFAULT_GET_FAVORITE_OPTIONS, ...options }
-  mockServer.deleteApi<EmptyResponse>(`/v1/me/favorites/${id}`, {
+  mockServer.deleteApi<EmptyResponse>(`/v2/me/favorites/offers/${id}`, {
     responseOptions: {
       statusCode: hasRemoveFavoriteError ? 422 : 204,
       data: {},
@@ -240,7 +240,7 @@ const DEFAULT_PROPS = {
 }
 
 type RenderFavoriteParams = {
-  favorite?: FavoriteResponse
+  favorite?: FavoriteOfferResponseV2
 }
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {

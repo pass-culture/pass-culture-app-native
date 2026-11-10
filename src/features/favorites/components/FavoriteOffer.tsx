@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponse, FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoriteActions } from 'features/favorites/components/FavoriteActions'
 import { FavoriteAnimatedWrapper } from 'features/favorites/components/FavoriteAnimatedWrapper'
 import { FavoriteBookingButton } from 'features/favorites/components/FavoriteBookingButton'
@@ -32,7 +32,7 @@ import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Typo } from 'ui/theme'
 
 interface FavoriteProps {
-  favorite: FavoriteResponse
+  favorite: FavoriteOfferResponseV2
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
   user: UserProfile
 }

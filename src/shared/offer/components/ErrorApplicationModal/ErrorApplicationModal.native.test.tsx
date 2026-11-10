@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -58,7 +58,7 @@ describe('<ErrorApplicationModal />', () => {
   })
 
   it('should close modal when clicking on button "Mettre en favori', async () => {
-    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
     renderErrorApplicationModal()
 
     await user.press(screen.getByText('Mettre en favori'))
@@ -67,7 +67,7 @@ describe('<ErrorApplicationModal />', () => {
   })
 
   it('should log analytics when clicking on button "Mettre en favori', async () => {
-    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
     renderErrorApplicationModal()
 
     await user.press(screen.getByText('Mettre en favori'))

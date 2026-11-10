@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, PaginatedFavoritesResponse, SubcategoryIdEnum } from 'api/gen'
+import { ExpenseDomain, PaginatedResponseFavoriteOfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 // humanizedId AHD3A
@@ -102,4 +102,4 @@ export const paginatedOfferFavoritesResponseSnap = toMutable({
       },
     },
   ],
-} as const satisfies ReadonlyDeep<PaginatedFavoritesResponse>)
+} as const satisfies ReadonlyDeep<PaginatedResponseFavoriteOfferResponseV2>)

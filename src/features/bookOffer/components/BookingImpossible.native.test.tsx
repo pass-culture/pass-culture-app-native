@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { api } from 'api/api'
-import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
@@ -53,13 +53,13 @@ const user = userEvent.setup()
 describe('<BookingImpossible />', () => {
   describe('When offer is already favorite', () => {
     beforeEach(() => {
-      const favoritesResponseWithOfferIn: PaginatedFavoritesResponse = {
+      const favoritesResponseWithOfferIn: PaginatedResponseFavoriteOfferResponseV2 = {
         page: 1,
         nbFavorites: 1,
         favorites: [favoriteResponseSnap],
       }
-      mockServer.getApi<PaginatedFavoritesResponse>(
-        '/v1/me/favorites',
+      mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+        '/v2/me/favorites/offers',
         favoritesResponseWithOfferIn
       )
       setFeatureFlags()
@@ -95,17 +95,17 @@ describe('<BookingImpossible />', () => {
 
   describe('When offer is not yet favorite', () => {
     beforeEach(() => {
-      const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
+      const favoritesResponseWithoutOfferIn: PaginatedResponseFavoriteOfferResponseV2 = {
         page: 1,
         nbFavorites: 0,
         favorites: [],
       }
-      const favoriteResponse: FavoriteResponse = favoriteResponseSnap
-      mockServer.getApi<PaginatedFavoritesResponse>(
-        '/v1/me/favorites',
+      const favoriteResponse: FavoriteOfferResponseV2 = favoriteResponseSnap
+      mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+        '/v2/me/favorites/offers',
         favoritesResponseWithoutOfferIn
       )
-      mockServer.postApi('/v1/me/favorites', favoriteResponse)
+      mockServer.postApi('/v2/me/favorites/offers', favoriteResponse)
       mockServer.postApi(`/v1/send_offer_link_by_push/${mockOfferId}`, {})
       mockServer.postApi(`/v1/send_offer_webapp_link_by_email/${mockOfferId}`, {
         favoriteResponse,

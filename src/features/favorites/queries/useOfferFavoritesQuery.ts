@@ -12,7 +12,7 @@ export const useOfferFavoritesQuery = () => {
 
   return useQuery({
     queryKey: [QueryKeys.FAVORITES_OFFER],
-    queryFn: () => api.getNativeV1MeFavorites(),
+    queryFn: () => api.getNativeV2MeFavoritesOffers(),
     enabled: isLoggedIn,
     staleTime: STALE_TIME_FAVORITES,
     meta: { private: true },

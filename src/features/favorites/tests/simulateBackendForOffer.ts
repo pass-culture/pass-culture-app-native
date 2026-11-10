@@ -1,7 +1,7 @@
 import {
-  FavoriteResponse,
+  FavoriteOfferResponseV2,
   OfferResponse,
-  PaginatedFavoritesResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -37,21 +37,21 @@ export function simulateBackendForOffer(options: Options = defaultOptions) {
 
   mockServer.getApi<OfferResponse>(`/v3/offer/${id}`, offerResponseSnap)
   mockServer.getApi<UserProfile>(`/v1/me`, beneficiaryUser)
-  mockServer.getApi<PaginatedFavoritesResponse>(
-    `/v1/me/favorites`,
+  mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+    `/v2/me/favorites/offers`,
     paginatedOfferFavoritesResponseSnap
   )
   mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   if (hasAddFavoriteError) {
-    mockServer.postApi<EmptyResponse>(`/v1/me/favorites`, {
+    mockServer.postApi<EmptyResponse>(`/v2/me/favorites/offers`, {
       responseOptions: { statusCode: 422, data: {} },
     })
   } else if (hasTooManyFavorites) {
-    mockServer.postApi(`/v1/me/favorites`, {
+    mockServer.postApi(`/v2/me/favorites/offers`, {
       responseOptions: { statusCode: 400, data: { code: 'MAX_FAVORITES_REACHED' } },
     })
   } else {
-    mockServer.postApi<FavoriteResponse>(`/v1/me/favorites`, {
+    mockServer.postApi<FavoriteOfferResponseV2>(`/v2/me/favorites/offers`, {
       responseOptions: { statusCode: 200, data: favoriteResponseSnap },
     })
   }
@@ -65,6 +65,8 @@ export function simulateBackendForOffer(options: Options = defaultOptions) {
       ? { statusCode: 422, data: {} }
       : { statusCode: 204 }
 
-    mockServer.deleteApi<EmptyResponse>(`/v1/me/favorites/${favoriteId}`, { responseOptions })
+    mockServer.deleteApi<EmptyResponse>(`/v2/me/favorites/offers/${favoriteId}`, {
+      responseOptions,
+    })
   }
 }

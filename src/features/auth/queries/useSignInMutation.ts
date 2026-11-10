@@ -6,7 +6,7 @@ import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import {
   AccountState,
-  FavoriteResponse,
+  FavoriteOfferResponseV2,
   RecreditType,
   SigninResponseV2,
   UserProfileResponse,
@@ -109,7 +109,7 @@ const useHandleSigninSuccess = (
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: bonificationBonusAmount } = useBonificationBonusAmount()
 
-  const onAddOfferFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
+  const onAddOfferFavoriteSuccess = useCallback((data?: FavoriteOfferResponseV2) => {
     if (data?.offer.id) {
       void analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
     }

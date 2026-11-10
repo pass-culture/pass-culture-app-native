@@ -1,6 +1,6 @@
-import { ExpenseDomain, FavoriteResponse, SubcategoryIdEnum } from 'api/gen'
+import { ExpenseDomain, FavoriteOfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 
-export const favoriteResponseSnap: FavoriteResponse = {
+export const favoriteResponseSnap: FavoriteOfferResponseV2 = {
   id: 1000,
   offer: {
     coordinates: { latitude: 48.12108, longitude: -1.17896 },
