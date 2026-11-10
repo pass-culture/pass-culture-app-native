@@ -18,7 +18,7 @@
 
 **E01** : Cookies 🟢  
 **E02** : Accueil (et localisation) 🟠  
-**E03** : Mention légales 🟢  
+**E03** : Mentions légales 🟢  
 **E04** : Accessibilité 🟢  
 **E05** : préférences d'affichages 🟢  
 **E06** : Plan du site 🟢  
