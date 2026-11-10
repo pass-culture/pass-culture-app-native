@@ -197,6 +197,20 @@ describe('GtlPlaylist', () => {
       })
     })
 
+    it('should log ModuleDisplayed with searchId when scrolling to the playlist', async () => {
+      renderGtlPlaylist(playlist, 'thematicsearch', 'ThematicSearch', undefined, 'searchId')
+
+      await screen.findByText('Mon abonnement bibliothèque')
+
+      emitInView(true)
+
+      expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
+        displayedOn: 'thematicsearch',
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+        searchId: 'searchId',
+      })
+    })
+
     it('should not log ModuleDisplayed when not scrolling to the playlist', async () => {
       renderGtlPlaylistOnVenuePage()
 
@@ -213,7 +227,8 @@ function renderGtlPlaylist(
   gtlPlaylist: GtlPlaylistData,
   analyticsFrom: Referrals,
   route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>,
-  venue?: VenueResponse
+  venue?: VenueResponse,
+  searchId?: string
 ) {
   return render(
     reactQueryProviderHOC(
@@ -222,6 +237,7 @@ function renderGtlPlaylist(
         venue={venue}
         analyticsFrom={analyticsFrom}
         route={route}
+        searchId={searchId}
       />
     )
   )

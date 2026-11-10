@@ -18,13 +18,18 @@ export type OffersVenue = {
   playlistTitle: string
 }
 
+export type VerticalPlaylistSearchOffersModule = Pick<
+  ThematicSearchPlaylistData,
+  'title' | 'offers'
+>
+
 export type VerticalPlaylistOffersSource =
-  | { type: VerticalPlaylist.ArtistOffers; module: ThematicSearchPlaylistData }
-  | { type: VerticalPlaylist.GtlPlaylistOffers; module: ThematicSearchPlaylistData }
+  | { type: VerticalPlaylist.ArtistOffers; module: VerticalPlaylistSearchOffersModule }
+  | { type: VerticalPlaylist.GtlPlaylistOffers; module: VerticalPlaylistSearchOffersModule }
   | { type: VerticalPlaylist.ModuleArtistPlaylist; module: ArtistPlaylistModule }
   | { type: VerticalPlaylist.ModuleOffers; module: OffersModule }
   | { type: VerticalPlaylist.SimilarOffers; module: OffersSimilars }
-  | { type: VerticalPlaylist.ThematicSearchOffers; module: ThematicSearchPlaylistData }
+  | { type: VerticalPlaylist.ThematicSearchOffers; module: VerticalPlaylistSearchOffersModule }
   | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
   | { type: VerticalPlaylist.RecommendationOffers; module: RecommendedOffersModule }
 

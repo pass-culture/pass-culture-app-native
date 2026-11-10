@@ -521,6 +521,7 @@ export const logEventAnalytics = {
     displayedOn: Referrals
     venueId?: number
     artistId?: string
+    searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
   logModuleDisplayedOnHomepage: (params: {
     moduleId: string
