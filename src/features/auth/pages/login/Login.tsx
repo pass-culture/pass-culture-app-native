@@ -5,7 +5,9 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
+import { OtpStatusBanner } from 'features/auth/components/OtpStatusBanner'
 import { getSSOErrorMessage } from 'features/auth/helpers/getSSOErrorMessage'
+import { useOneTimePasswordAttempts } from 'features/auth/helpers/useOneTimePasswordAttempts'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -15,6 +17,8 @@ import {
   UseRouteType,
 } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
@@ -40,11 +44,15 @@ type LoginFormData = { email: string; password: string }
 type Props = { doNotNavigateOnSigninSuccess?: boolean }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
+  const enableOTP = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_OTP)
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
   const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
+
+  const { remainingSeconds, hasReachedMaxCodeAttempts, saveLoginEmail, loginEmail } =
+    useOneTimePasswordAttempts()
 
   const {
     handleSubmit,
@@ -156,20 +164,25 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   const onSubmit = useCallback(
     async (data: LoginFormData) => {
-      if (!shouldDisableLoginButton) {
-        setErrorMessage('')
-        Keyboard.dismiss()
-        isRecaptchaEnabled
-          ? openReCaptchaChallenge()
-          : signIn({ identifier: data.email, password: data.password })
-      }
+      if (shouldDisableLoginButton) return
+      setErrorMessage('')
+      Keyboard.dismiss()
+      if (enableOTP) await saveLoginEmail(data.email)
+      if (isRecaptchaEnabled) openReCaptchaChallenge()
+      else signIn({ identifier: data.email, password: data.password })
     },
-    [shouldDisableLoginButton, isRecaptchaEnabled, setErrorMessage, openReCaptchaChallenge, signIn]
+    [
+      shouldDisableLoginButton,
+      setErrorMessage,
+      enableOTP,
+      saveLoginEmail,
+      isRecaptchaEnabled,
+      openReCaptchaChallenge,
+      signIn,
+    ]
   )
 
-  const onForgottenPasswordClick = useCallback(() => {
-    navigate('ForgottenPassword')
-  }, [navigate])
+  const onForgottenPasswordClick = useCallback(() => navigate('ForgottenPassword'), [navigate])
 
   return (
     <React.Fragment>
@@ -234,6 +247,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
                   icon={Key}
                 />
               </ButtonContainer>
+              {enableOTP ? (
+                <OtpStatusBanner
+                  isAccountLocked={hasReachedMaxCodeAttempts}
+                  remainingSeconds={remainingSeconds}
+                  email={loginEmail}
+                />
+              ) : null}
               <Button
                 fullWidth
                 wording="Se connecter"
