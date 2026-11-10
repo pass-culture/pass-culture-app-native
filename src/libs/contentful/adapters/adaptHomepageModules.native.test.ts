@@ -62,10 +62,12 @@ describe('adaptHomepageModules', () => {
       'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
       expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
     )
-    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-      1,
-      'Error while computing home modules',
-      { extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' } }
-    )
+    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(1, expect.any(TypeError), {
+      extra: {
+        moduleId: '20SId61p6EFTG7kgBTFrOa',
+        contentType: businessNatifModuleFixture.sys.contentType?.sys.id,
+        message: 'Error while computing home modules',
+      },
+    })
   })
 })

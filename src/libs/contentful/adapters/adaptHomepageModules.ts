@@ -85,8 +85,12 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
       }
     } catch (error) {
       console.warn(`Error while computing home modules, with module of ID: ${module.sys.id}`, error)
-      eventMonitoring.captureException('Error while computing home modules', {
-        extra: { moduleId: module.sys.id },
+      eventMonitoring.captureException(error, {
+        extra: {
+          moduleId: module.sys.id,
+          contentType: module.sys.contentType?.sys.id,
+          message: 'Error while computing home modules',
+        },
       })
     }
 
