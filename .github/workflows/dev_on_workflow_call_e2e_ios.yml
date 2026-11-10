@@ -78,7 +78,7 @@ jobs:
             MAESTRO_PASSWORD:pc-native-production/e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:pc-native-production/e2e-maestro-cloud-api-key
             MAESTRO_E2E_API_KEY:pc-native-production/pcapi-staging-e2e-api-key
-            MAESTRO_E2E_ENDPOINT:pc-native-production/pcapi-staging-e2e-endpoint
+            MAESTRO_E2E_BASE_URL:pc-native-production/pcapi-staging-e2e-base-url
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -153,4 +153,4 @@ jobs:
             MAESTRO_RUN_CLOUD_COMMANDS=true
             MAESTRO_CLOUD_API_KEY=${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
             MAESTRO_E2E_API_KEY=${{ steps.secrets.outputs.MAESTRO_E2E_API_KEY }}
-            MAESTRO_E2E_ENDPOINT=${{ steps.secrets.outputs.MAESTRO_E2E_ENDPOINT }}
+            MAESTRO_E2E_BASE_URL=${{ steps.secrets.outputs.MAESTRO_E2E_BASE_URL }}

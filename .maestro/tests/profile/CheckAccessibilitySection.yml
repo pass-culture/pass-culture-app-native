@@ -29,12 +29,6 @@ onFlowStart:
 - runFlow:
     file: ../common/navigation/TapOnBack.yml
 
-- runFlow:
-    when:
-      platform: Android
-    commands:
-      - pressKey: back
-
 - tapOn: 'Nouvelle fenêtre : Schéma pluriannuel'
 - assertVisible: 'Schéma pluriannuel.*'
 - assertVisible: 'Introduction'
