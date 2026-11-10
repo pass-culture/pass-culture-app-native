@@ -102,8 +102,8 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
-export const getCalendarMinDate = (markedDates: MarkedDates, today = new Date()): string =>
-  getMinAvailableDate(markedDates) ?? format(today, 'yyyy-MM-dd')
+export const getCalendarMinDate = (markedDates: MarkedDates): string =>
+  getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-MM-dd')
 
 export const getDayDescription = (
   price: number,

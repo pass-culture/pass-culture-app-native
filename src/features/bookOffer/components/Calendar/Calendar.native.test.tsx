@@ -1,3 +1,5 @@
+import mockdate from 'mockdate'
+
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
@@ -38,8 +40,12 @@ describe('getMinAvailableDate', () => {
 })
 
 describe('getCalendarMinDate', () => {
+  beforeEach(() => mockdate.set(new Date('2026-10-28T12:00:00')))
+
+  afterEach(() => mockdate.reset())
+
   it('should return today in calendar format when there is no available date', () => {
-    expect(getCalendarMinDate({}, new Date('2026-10-28T12:00:00Z'))).toBe('2026-10-28')
+    expect(getCalendarMinDate({})).toBe('2026-10-28')
   })
 })
 
