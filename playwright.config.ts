@@ -1,4 +1,7 @@
 import { defineConfig } from '@playwright/test'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: 'e2e/web/.env.secret' })
 
 const runUrl =
   process.env.GITHUB_SERVER_URL &&
@@ -27,12 +30,14 @@ export default defineConfig({
     : 'list',
   use: {
     baseURL: 'http://127.0.0.1:5173',
+    trace: 'retain-on-failure',
   },
   webServer: {
-    command: 'yarn start:web:staging --host 127.0.0.1',
-    // Vite only serves the app at '/src/index.html', not '/' or '/index.html'.
-    url: 'http://127.0.0.1:5173/src/index.html',
+    // Empty API_BASE_URL keeps API calls relative so the preview proxy avoids CORS on 127.0.0.1.
+    command:
+      'API_BASE_URL= yarn build:staging && yarn preview:web:staging --host 127.0.0.1 --port 5173 --strictPort',
+    url: 'http://127.0.0.1:5173',
     reuseExistingServer: !process.env.CI,
-    timeout: 60000,
+    timeout: 300000,
   },
 })
