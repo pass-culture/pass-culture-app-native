@@ -1,3 +1,5 @@
+import { env } from 'libs/environment/env'
+
 import * as isValidUrl from './isValidUrl'
 
 export const isValidHttpsUrl = (identificationUrl: string, hostname?: string): boolean => {
@@ -15,3 +17,12 @@ export const isValidUbbleUrl = (identificationUrl: string): boolean =>
 
 export const isValidWikipediaUrl = (urlString?: string | null): boolean =>
   !!(urlString && isValidUrl.isValidHttpsUrl(urlString, 'fr.wikipedia.org'))
+
+export const isValidEduConnectUrl = (url: string): boolean => {
+  try {
+    const hostname = new URL(env.EDUCONNECT_ALLOWED_DOMAIN).hostname
+    return isValidUrl.isValidHttpsUrl(url, hostname)
+  } catch {
+    return false
+  }
+}
