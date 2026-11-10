@@ -4,12 +4,7 @@
  */
 
 import { RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
-
-type ActionButtonProps = {
-  wording: string
-  accessibilityLabel: string
-  onPress: () => void
-}
+import { ButtonNativeProps } from 'ui/designSystem/Button/types'
 
 export type BaseModalSimpleProps = {
   title: string
@@ -18,16 +13,16 @@ export type BaseModalSimpleProps = {
 }
 
 export type ModalSimpleFooterProps = {
-  primaryButton?: ActionButtonProps
-  secondaryButton?: ActionButtonProps
-  tertiaryButton?: ActionButtonProps
+  primaryButton?: ButtonNativeProps
+  secondaryButton?: ButtonNativeProps
+  tertiaryButton?: ButtonNativeProps
 }
 
 export type ModalSimpleProps = BaseModalSimpleProps &
   ModalSimpleFooterProps & {
     onClose: () => void
   } & (
-    | { primaryButton: ActionButtonProps }
-    | { secondaryButton: ActionButtonProps }
-    | { tertiaryButton: ActionButtonProps }
+    | { primaryButton: ButtonNativeProps }
+    | { secondaryButton: ButtonNativeProps }
+    | { tertiaryButton: ButtonNativeProps }
   )

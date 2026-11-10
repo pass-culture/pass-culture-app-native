@@ -4,6 +4,7 @@ import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { Activity, VenueResponse } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -15,9 +16,11 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
+import * as venueSurveyAccessStorageModule from 'features/venue/helpers/venueSurveyAccessStorage'
 import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -71,6 +74,20 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const mockCheckVenueSurveyAccess = jest.spyOn(
+  venueSurveyAccessStorageModule,
+  'checkVenueSurveyAccess'
+)
+const mockMarkVenueSurveyAccess = jest.spyOn(
+  venueSurveyAccessStorageModule,
+  'markVenueSurveyAccess'
+)
+
+const venueWithSurveyActivity: VenueResponse = {
+  ...venueDataTest,
+  activity: Activity.BOOKSTORE,
+}
 
 const user = userEvent.setup()
 
@@ -227,6 +244,80 @@ describe('<VenueOffers />', () => {
       expect(
         screen.queryByLabelText('Voir tout pour la sélection Les artistes disponibles dans ce lieu')
       ).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('Venue survey banner', () => {
+    it('should not display the survey banner when enableVenueSurvey FF is deactivated', () => {
+      setFeatureFlags()
+
+      renderVenueOffers({ venue: venueWithSurveyActivity })
+
+      expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+    })
+
+    describe('when enableVenueSurvey FF is activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_VENUE_SURVEY])
+      })
+
+      it('should display the survey banner when survey has not been accessed yet', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({ venue: venueWithSurveyActivity })
+
+        expect(await screen.findByText(/Un avis sur cette page/)).toBeOnTheScreen()
+        expect(screen.getByText('Donner mon avis (2 min)')).toBeOnTheScreen()
+      })
+
+      it('should not display the survey banner when survey has already been accessed', () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(true)
+
+        renderVenueOffers({ venue: venueWithSurveyActivity })
+
+        expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+      })
+
+      it('should not display the survey banner when venue activity has no survey mapped', () => {
+        renderVenueOffers({
+          venue: { ...venueDataTest, activity: null },
+        })
+
+        expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+      })
+
+      it('should mark survey access and hide the banner when pressing "Donner mon avis"', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({ venue: venueWithSurveyActivity })
+
+        await user.press(await screen.findByText('Donner mon avis (2 min)'))
+
+        expect(mockMarkVenueSurveyAccess).toHaveBeenNthCalledWith(1, 'BOOKSHOP_AND_LIBRARY')
+        expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+      })
+
+      it('should display the survey banner when there are no offers', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({
+          venue: venueWithSurveyActivity,
+          venueOffers: { hits: [], nbHits: 0 },
+        })
+
+        expect(await screen.findByText(/Un avis sur cette page/)).toBeOnTheScreen()
+      })
+
+      it('should display the survey banner when there are movie screening offers', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({
+          venue: { ...venueWithSurveyActivity, activity: Activity.CINEMA },
+          venueOffers: venueMoviesOffersMock,
+        })
+
+        expect(await screen.findByText(/Un avis sur cette page/)).toBeOnTheScreen()
+      })
     })
   })
 })

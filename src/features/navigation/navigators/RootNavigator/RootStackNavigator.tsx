@@ -72,6 +72,7 @@ import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/Suspen
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
+import { VenueSurveyModal } from 'features/venue/pages/VenueSurveyModal/VenueSurveyModal'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
@@ -104,6 +105,12 @@ const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
   title: 'Choix de la localisation',
   presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal',
   animation: 'slide_from_bottom',
+}
+
+const MODAL_SIMPLE_OPTIONS: NativeStackNavigationOptions = {
+  presentation: isWeb ? 'transparentModal' : 'formSheet',
+  sheetAllowedDetents: 'fitToContents',
+  sheetCornerRadius: 8,
 }
 
 const rootScreens: RouteConfig[] = [
@@ -346,6 +353,11 @@ const rootScreens: RouteConfig[] = [
     name: '_DeeplinkOnlyVenuePreviewCarousel3',
     component: VenuePreviewCarousel,
     options: { title: 'Aperçu du lieu' },
+  },
+  {
+    name: 'VenueSurveyModal',
+    component: VenueSurveyModal,
+    options: { title: 'Fenêtre pour accéder à l‘enquête de la page lieu', ...MODAL_SIMPLE_OPTIONS },
   },
   {
     name: 'Artist',

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ReactionTypeEnum, SubcategoryIdEnum, VenueResponse } from 'api/gen'
@@ -11,7 +11,13 @@ import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOff
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueMoviesV2 } from 'features/venue/components/VenueOffers/VenueMoviesV2'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
+import { VenueSurveyBanner } from 'features/venue/components/VenueOffers/VenueSurveyBanner'
+import { getSurveyConfigFromActivity } from 'features/venue/helpers/getSurveyConfigFromActivity'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import {
+  checkVenueSurveyAccess,
+  markVenueSurveyAccess,
+} from 'features/venue/helpers/venueSurveyAccessStorage'
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
@@ -22,6 +28,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export interface VenueOffersProps {
   venue: VenueResponse
@@ -69,6 +76,22 @@ export function VenueOffers({
   const wipUseVenueMovieScreeningsEndpoint = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT
   )
+  const enableVenueSurvey = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VENUE_SURVEY)
+  const [hasSurveyAccess, setHasSurveyAccess] = useState(false)
+  const surveyConfig = getSurveyConfigFromActivity(venue.activity)
+
+  useEffect(
+    function checkVenueSurveyAccessEffect() {
+      if (!enableVenueSurvey || !surveyConfig?.key) {
+        return
+      }
+
+      void checkVenueSurveyAccess(surveyConfig.key).then((isAccessed) => {
+        setHasSurveyAccess(!isAccessed)
+      })
+    },
+    [enableVenueSurvey, surveyConfig?.key]
+  )
 
   const onPressAdviceCardSeeMore = (offerId: number) => {
     void analytics.logConsultAdvice({
@@ -100,12 +123,32 @@ export function VenueOffers({
     })
   }
 
+  const handleOnSurveyBeforeNavigate = async () => {
+    if (surveyConfig) {
+      await markVenueSurveyAccess(surveyConfig.key)
+      setHasSurveyAccess(false)
+    }
+  }
+
+  const VenueSurveyBannerComponent =
+    enableVenueSurvey && hasSurveyAccess ? (
+      <VenueSurveyBanner
+        activity={venue.activity}
+        onBeforeNavigate={handleOnSurveyBeforeNavigate}
+      />
+    ) : null
+
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />
   }
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
-    return <NoOfferPlaceholder isOpenToPublic={venue.isOpenToPublic} />
+    return (
+      <ViewGap gap={6}>
+        <NoOfferPlaceholder isOpenToPublic={venue.isOpenToPublic} />
+        {VenueSurveyBannerComponent}
+      </ViewGap>
+    )
   }
 
   const hasAMovieScreeningOffer = venueOffers?.hits.some(
@@ -120,25 +163,29 @@ export function VenueOffers({
         ) : (
           <VenueMovies venueOffers={venueOffers} />
         )}
+        {VenueSurveyBannerComponent}
       </React.Fragment>
     )
   }
 
   return (
-    <VenueOffersList
-      venue={venue}
-      venueArtists={venueArtists}
-      venueOffers={venueOffers}
-      playlists={playlists}
-      mapping={mapping}
-      labelMapping={labelMapping}
-      currency={currency}
-      euroToPacificFrancRate={euroToPacificFrancRate}
-      arePlaylistsLoading={arePlaylistsLoading}
-      onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
-      onPressAllAdvicesButton={onPressAllAdvicesButton}
-      onFeedbackLog={onFeedbackLog}
-    />
+    <React.Fragment>
+      <VenueOffersList
+        venue={venue}
+        venueArtists={venueArtists}
+        venueOffers={venueOffers}
+        playlists={playlists}
+        mapping={mapping}
+        labelMapping={labelMapping}
+        currency={currency}
+        euroToPacificFrancRate={euroToPacificFrancRate}
+        arePlaylistsLoading={arePlaylistsLoading}
+        onPressAdviceCardSeeMore={onPressAdviceCardSeeMore}
+        onPressAllAdvicesButton={onPressAllAdvicesButton}
+        onFeedbackLog={onFeedbackLog}
+      />
+      {VenueSurveyBannerComponent}
+    </React.Fragment>
   )
 }
 
