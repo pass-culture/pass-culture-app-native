@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef } fro
 import { FlatList, ListRenderItem } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponse, FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoriteOffer } from 'features/favorites/components/FavoriteOffer'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
@@ -14,7 +14,7 @@ import { FavoriteHitPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 export type FavoritesListProps = {
-  favorites?: FavoriteResponse[]
+  favorites?: FavoriteOfferResponseV2[]
   sortBy?: FavoriteSortBy
   isRefreshing: boolean
   onRefresh: () => void
@@ -24,7 +24,7 @@ export type FavoritesListProps = {
   enableFavoritesHub?: boolean
 }
 
-const keyExtractor = (item: FavoriteResponse) => item.id.toString()
+const keyExtractor = (item: FavoriteOfferResponseV2) => item.id.toString()
 
 export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
   favorites,
@@ -36,7 +36,7 @@ export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
   enableFavoritesHub,
   user,
 }) => {
-  const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
+  const flatListRef = useRef<FlatList<FavoriteOfferResponseV2> | null>(null)
   const credit = getAvailableCredit(user)
   const { designSystem } = useTheme()
 
@@ -57,7 +57,7 @@ export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
     [designSystem]
   )
 
-  const renderItem = useCallback<ListRenderItem<FavoriteResponse>>(
+  const renderItem = useCallback<ListRenderItem<FavoriteOfferResponseV2>>(
     ({ item }) => {
       if (!user || !credit) return <FavoriteHitPlaceholder />
       if (selectedTab === Tab.OFFERS) {

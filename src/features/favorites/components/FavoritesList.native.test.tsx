@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoritesList, FavoritesListProps } from 'features/favorites/components/FavoritesList'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { FavoriteSortBy, Tab } from 'features/favorites/types'
@@ -16,7 +16,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const mockFavorites: FavoriteResponse[] = paginatedOfferFavoritesResponseSnap.favorites
+const mockFavorites: FavoriteOfferResponseV2[] = paginatedOfferFavoritesResponseSnap.favorites
 
 const defaultProps = {
   favorites: mockFavorites,

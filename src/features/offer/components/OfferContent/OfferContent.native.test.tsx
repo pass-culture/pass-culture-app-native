@@ -6,11 +6,11 @@ import React, { ComponentProps } from 'react'
 import { api } from 'api/api'
 import {
   BookingsResponseV2,
-  FavoriteResponse,
+  FavoriteOfferResponseV2,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
   OfferPagePlaylistResponse,
-  PaginatedFavoritesResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
@@ -61,7 +61,7 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/jwt/jwt')
 
 const useFavoriteSpy = jest.spyOn(useOfferFavorite, 'useOfferFavorite')
-const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
+const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
 
 const consentState: ConsentStatus = { state: ConsentState.LOADING }
 
@@ -362,17 +362,17 @@ describe('<OfferContent />', () => {
         beforeEach(() => {
           useFavoriteSpy.mockReturnValueOnce(undefined)
           mockAuthContextWithUser(beneficiaryUser, { persist: true })
-          const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
+          const favoritesResponseWithoutOfferIn: PaginatedResponseFavoriteOfferResponseV2 = {
             page: 1,
             nbFavorites: 0,
             favorites: [],
           }
-          const favoriteResponse: FavoriteResponse = favoriteResponseSnap
-          mockServer.getApi<PaginatedFavoritesResponse>(
-            '/v1/me/favorites',
+          const favoriteResponse: FavoriteOfferResponseV2 = favoriteResponseSnap
+          mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+            '/v2/me/favorites/offers',
             favoritesResponseWithoutOfferIn
           )
-          mockServer.postApi('/v1/me/favorites', favoriteResponse)
+          mockServer.postApi('/v2/me/favorites/offers', favoriteResponse)
         })
 
         it('should send logHasAddedOfferToFavorites event with correct params', async () => {
