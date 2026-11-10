@@ -44,13 +44,17 @@ describe('NotificationAuthModal', () => {
       })
     })
 
-    it('should send `logSignInFromOffer` event', async () => {
+    it('should send `logLoginClicked` event', async () => {
       renderNotificationAuthModal()
 
       const button = screen.getByText('Se connecter')
       await user.press(button)
 
-      expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
+      expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, {
+        from: 'offer_notification',
+        offerId: OFFER_ID,
+        itemType: 'offer',
+      })
     })
   })
 
@@ -67,15 +71,16 @@ describe('NotificationAuthModal', () => {
       })
     })
 
-    it('should send `logSignUpFromOffer` and `logSignUpClicked` events', async () => {
+    it('should send `logSignUpClicked` events', async () => {
       renderNotificationAuthModal()
 
       const button = screen.getByText('Créer un compte')
       await user.press(button)
 
-      expect(analytics.logSignUpFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
       expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
         from: 'offer_notification',
+        offerId: OFFER_ID,
+        itemType: 'offer',
       })
     })
   })
