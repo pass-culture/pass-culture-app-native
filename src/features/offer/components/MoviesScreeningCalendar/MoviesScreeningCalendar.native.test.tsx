@@ -120,6 +120,31 @@ describe('MoviesScreeningCalendar', () => {
     expect(screen.getByText('8')).toBeOnTheScreen()
     expect(screen.getAllByText('Mai')[0]).toBeOnTheScreen()
   })
+
+  it('should display special event banner when offer has special event screenings', async () => {
+    const stocksResponse = {
+      offers: [
+        {
+          ...offersStocksResponseSnap.offers[0],
+          stocks: [
+            {
+              ...offersStocksResponseSnap.offers[0].stocks[0],
+              features: ['PLEIN_AIR'],
+            },
+          ],
+        },
+      ],
+    }
+    mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, stocksResponse)
+
+    renderMoviesScreeningCalendar({ isDesktopViewport: false, venueOffers: venueOffersMock })
+
+    await act(async () => {})
+
+    expect(
+      await screen.findByText('Des séances spéciales sont disponibles pour ce film')
+    ).toBeOnTheScreen()
+  })
 })
 
 const renderMoviesScreeningCalendar = ({

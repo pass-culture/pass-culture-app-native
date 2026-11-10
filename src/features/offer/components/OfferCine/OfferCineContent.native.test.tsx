@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { OffersStocksResponseV2 } from 'api/gen/api'
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
@@ -10,6 +11,7 @@ import {
   locationActions,
   useLocationV2,
 } from 'libs/locationV2/location.store'
+import { getDates } from 'shared/date/getDates'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -27,7 +29,7 @@ jest.mock('ui/components/anchor/AnchorContext', () => ({
 
 const defaultOffersStocksFromOfferQuery = {
   isLoading: false,
-  data: mockBuilder.offerResponseV2({}),
+  data: mockBuilder.offersStocksResponseV2({}),
 }
 const mockuseOffersStocksFromOfferQuery = jest.fn(() => defaultOffersStocksFromOfferQuery)
 jest.mock('features/offer/queries/useOffersStocksFromOfferQuery', () => ({
@@ -153,12 +155,108 @@ describe('OfferCineContent', () => {
 
     expect(screen.queryByText('Afficher plus de cinémas')).not.toBeOnTheScreen()
   })
+
+  it('should display special event banner when offer has special event screenings', async () => {
+    const hookContent = {
+      data: {
+        offers: [
+          {
+            ...defaultOffersStocksFromOfferQuery.data.offers[0],
+            stocks: [
+              {
+                ...defaultOffersStocksFromOfferQuery.data.offers[0]?.stocks[0],
+                features: ['PLEIN_AIR'],
+              },
+            ],
+          },
+        ],
+      } as OffersStocksResponseV2,
+      isLoading: false,
+    }
+    mockuseOffersStocksFromOfferQuery
+      .mockReturnValueOnce(hookContent)
+      .mockReturnValueOnce(hookContent)
+    const calendarStartDate = new Date(
+      defaultOffersStocksFromOfferQuery.data.offers[0]?.stocks[0]?.beginningDatetime ?? '2024-05-08'
+    )
+    calendarStartDate.setHours(calendarStartDate.getHours() - 1)
+    renderOfferCineContent({ initialDates: getDates(calendarStartDate, 15) })
+
+    await act(async () => {})
+
+    expect(
+      await screen.findByText('Des séances spéciales sont disponibles pour ce film')
+    ).toBeOnTheScreen()
+  })
+
+  it('should not display special event banner if offer has had special event screenings in the past', async () => {
+    const hookContent = {
+      data: {
+        offers: [
+          {
+            ...defaultOffersStocksFromOfferQuery.data.offers[0],
+            stocks: [
+              {
+                ...defaultOffersStocksFromOfferQuery.data.offers[0]?.stocks[0],
+                features: ['PLEIN_AIR'],
+              },
+            ],
+          },
+        ],
+      } as OffersStocksResponseV2,
+      isLoading: false,
+    }
+    mockuseOffersStocksFromOfferQuery
+      .mockReturnValueOnce(hookContent)
+      .mockReturnValueOnce(hookContent)
+
+    renderOfferCineContent({ initialDates: getDates(new Date(), 15) })
+
+    await act(async () => {})
+
+    expect(
+      screen.queryByText('Des séances spéciales sont disponibles pour ce film')
+    ).not.toBeOnTheScreen()
+  })
 })
 
-const renderOfferCineContent = () => {
+it('should not display special event banner if offer have special event screenings beyond calendar range', async () => {
+  const hookContent = {
+    data: {
+      offers: [
+        {
+          ...defaultOffersStocksFromOfferQuery.data.offers[0],
+          stocks: [
+            {
+              ...defaultOffersStocksFromOfferQuery.data.offers[0]?.stocks[0],
+              features: ['PLEIN_AIR'],
+            },
+          ],
+        },
+      ],
+    } as OffersStocksResponseV2,
+    isLoading: false,
+  }
+  mockuseOffersStocksFromOfferQuery
+    .mockReturnValueOnce(hookContent)
+    .mockReturnValueOnce(hookContent)
+  const calendarStartDate = new Date(
+    defaultOffersStocksFromOfferQuery.data.offers[0]?.stocks[0]?.beginningDatetime ?? '2023-05-08'
+  )
+  calendarStartDate.setFullYear(calendarStartDate.getFullYear() - 1)
+  renderOfferCineContent({ initialDates: getDates(calendarStartDate, 15) })
+
+  await act(async () => {})
+
+  expect(
+    screen.queryByText('Des séances spéciales sont disponibles pour ce film')
+  ).not.toBeOnTheScreen()
+})
+
+const renderOfferCineContent = ({ initialDates = undefined }: { initialDates?: Date[] } = {}) => {
   return render(
     reactQueryProviderHOC(
-      <MovieCalendarProvider>
+      <MovieCalendarProvider initialDates={initialDates}>
         <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
       </MovieCalendarProvider>
     )
