@@ -2376,6 +2376,27 @@ export interface ExternalBookingResponseV2 {
 }
 /**
  * @export
+ * @interface FavoriteArtistDataResponse
+ */
+export interface FavoriteArtistDataResponse {
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistDataResponse
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof FavoriteArtistDataResponse
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistDataResponse
+   */
+  name: string
+}
+/**
+ * @export
  * @interface FavoriteArtistRequest
  */
 export interface FavoriteArtistRequest {
@@ -2391,20 +2412,31 @@ export interface FavoriteArtistRequest {
  */
 export interface FavoriteArtistResponse {
   /**
-   * @type {ArtistResponse}
+   * @type {FavoriteArtistDataResponse}
    * @memberof FavoriteArtistResponse
    */
-  artist: ArtistResponse
+  artist: FavoriteArtistDataResponse
   /**
    * @type {number}
    * @memberof FavoriteArtistResponse
    */
   id: number
+}
+/**
+ * @export
+ * @interface FavoriteCoordinates
+ */
+export interface FavoriteCoordinates {
   /**
-   * @type {string | null}
-   * @memberof FavoriteArtistResponse
+   * @type {number | null}
+   * @memberof FavoriteCoordinates
    */
-  image?: string | null
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinates
+   */
+  longitude?: number | null
 }
 /**
  * @export
@@ -2412,7 +2444,7 @@ export interface FavoriteArtistResponse {
  */
 export interface FavoriteMediationResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteMediationResponse
    */
   credit?: string | null
@@ -2424,21 +2456,107 @@ export interface FavoriteMediationResponse {
 }
 /**
  * @export
+ * @interface FavoriteOfferDataResponse
+ */
+export interface FavoriteOfferDataResponse {
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  bookingAllowedDatetime?: string | null
+  /**
+   * @type {FavoriteCoordinates}
+   * @memberof FavoriteOfferDataResponse
+   */
+  coordinates: FavoriteCoordinates
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  date?: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof FavoriteOfferDataResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferDataResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteMediationResponse | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  image?: FavoriteMediationResponse | null
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isExpired?: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isSoldOut?: boolean
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferDataResponse
+   */
+  name: string
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  price?: number | null
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  startDate?: string | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  startPrice?: number | null
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof FavoriteOfferDataResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferDataResponse
+   */
+  venueName: string
+}
+/**
+ * @export
  * @interface FavoriteOfferResponse
  */
 export interface FavoriteOfferResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   bookingAllowedDatetime?: string | null
   /**
-   * @type {Coordinates}
+   * @type {FavoriteCoordinates}
    * @memberof FavoriteOfferResponse
    */
-  coordinates: Coordinates
+  coordinates: FavoriteCoordinates
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   date?: string | null
@@ -2448,7 +2566,7 @@ export interface FavoriteOfferResponse {
    */
   expenseDomains: Array<ExpenseDomain>
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   externalTicketOfficeUrl?: string | null
@@ -2458,7 +2576,7 @@ export interface FavoriteOfferResponse {
    */
   id: number
   /**
-   * @type {FavoriteMediationResponse}
+   * @type {FavoriteMediationResponse | null}
    * @memberof FavoriteOfferResponse
    */
   image?: FavoriteMediationResponse | null
@@ -2483,17 +2601,17 @@ export interface FavoriteOfferResponse {
    */
   name: string
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof FavoriteOfferResponse
    */
   price?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   startDate?: string | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof FavoriteOfferResponse
    */
   startPrice?: number | null
@@ -2507,6 +2625,22 @@ export interface FavoriteOfferResponse {
    * @memberof FavoriteOfferResponse
    */
   venueName: string
+}
+/**
+ * @export
+ * @interface FavoriteOfferResponseV2
+ */
+export interface FavoriteOfferResponseV2 {
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferResponseV2
+   */
+  id: number
+  /**
+   * @type {FavoriteOfferDataResponse}
+   * @memberof FavoriteOfferResponseV2
+   */
+  offer: FavoriteOfferDataResponse
 }
 /**
  * @export
@@ -4122,6 +4256,27 @@ export interface PaginatedResponseFavoriteArtistResponse {
   /**
    * @type {number}
    * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  page: number
+}
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteOfferResponseV2
+ */
+export interface PaginatedResponseFavoriteOfferResponseV2 {
+  /**
+   * @type {Array<FavoriteOfferResponseV2>}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  favorites: Array<FavoriteOfferResponseV2>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
    */
   page: number
 }
@@ -6410,6 +6565,35 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary delete_favorite_offer <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'favorite_id' is not null or undefined
+      if (favorite_id === null || favorite_id === undefined) {
+        throw new RequiredError(
+          'favorite_id',
+          'Required parameter favorite_id was null or undefined when calling deleteNativeV2MeFavoritesOffersfavoriteId.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/offers/{favorite_id}`.replace(
+        `{${'favorite_id'}}`,
+        encodeURIComponent(String(favorite_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
      * @param {*} [options] Override http request option.
@@ -7149,6 +7333,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV2MeFavoritesArtists(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v2/me/favorites/artists`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_favorite_offers <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesOffers(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/me/favorites/offers`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -8247,6 +8449,35 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary create_favorite_offer <POST>
+     * @param {FavoriteRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2MeFavoritesOffers.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/offers`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary sso_authorize <POST>
      * @param {OAuthSigninRequestV2} body
      * @param {string} sso_provider
@@ -8594,6 +8825,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary delete_favorite_offer <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
@@ -8911,6 +9154,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2MeFavoritesArtists(options?: any): Promise<PaginatedResponseFavoriteArtistResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesArtists(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary get_favorite_offers <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesOffers(options?: any): Promise<PaginatedResponseFavoriteOfferResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesOffers(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9402,6 +9656,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary create_favorite_offer <POST>
+     * @param {FavoriteRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any): Promise<FavoriteOfferResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2MeFavoritesOffers(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary sso_authorize <POST>
      * @param {OAuthSigninRequestV2} body
@@ -9578,6 +9844,18 @@ export class DefaultApi extends BaseAPI {
   public async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id, options)
+  }
+  /**
+    * 
+    * @summary delete_favorite_offer <DELETE>
+    * @param {number} favorite_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id, options)
   }
   /**
     *
@@ -9899,6 +10177,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2MeFavoritesArtists(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2MeFavoritesArtists(options)
+  }
+  /**
+    * 
+    * @summary get_favorite_offers <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2MeFavoritesOffers(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2MeFavoritesOffers(options)
   }
   /**
     *
@@ -10386,6 +10675,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2MeFavoritesArtists(body, options)
+  }
+  /**
+    * 
+    * @summary create_favorite_offer <POST>
+    * @param {FavoriteRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2MeFavoritesOffers(body, options)
   }
   /**
     * 
