@@ -284,7 +284,7 @@ exports[`<PublicDisabilityServices /> should render correctly 1`] = `
                   }
                 }
               >
-                Retrouve ici les plateformes publiques et services pensées pour t’accompagner et rendre la société plus accessible à tous.
+                Retrouve ici les plateformes publiques et services pensés pour t’accompagner et rendre la société plus accessible à tous.
               </Text>
               <View
                 accessibilityRole="list"
@@ -511,7 +511,7 @@ exports[`<PublicDisabilityServices /> should render correctly 1`] = `
                         }
                       >
                         <View
-                          accessibilityLabel="Aidant Connect"
+                          accessibilityLabel="Aidants Connect"
                           fill="none"
                           height={80}
                           width={80}
@@ -551,7 +551,7 @@ exports[`<PublicDisabilityServices /> should render correctly 1`] = `
                               }
                             }
                           >
-                            Aidant connect
+                            Aidants connect
                           </Text>
                           <Text
                             accessibilityLevel="p"

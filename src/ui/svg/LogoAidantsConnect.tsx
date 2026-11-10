@@ -7,7 +7,7 @@ import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 import { getSpacing } from 'ui/theme'
 
-const LogoAidantConnectSvg = ({ width, height }: AccessibleRectangleIcon) => {
+const LogoAidantsConnectSvg = ({ width, height }: AccessibleRectangleIcon) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   return (
     <AccessibleSvg
@@ -15,7 +15,7 @@ const LogoAidantConnectSvg = ({ width, height }: AccessibleRectangleIcon) => {
       height={height}
       viewBox="0 0 679 272"
       fill="none"
-      accessibilityLabel="Aidant Connect">
+      accessibilityLabel="Aidants Connect">
       <Path
         d="M234.451 129.539C227.677 137.903 218.73 141.32 208.08 141.606C192.091 142.038 177.642 133.428 170.736 118.856C163.83 104.285 164.361 88.6369 170.863 74.8425C178.115 60.1303 192.718 51.7518 209.016 52.447C218.012 52.8332 226.159 55.7411 232.661 62.2657L232.675 10.4822L256.029 10.4595V139.58L234.524 139.643L234.451 129.534V129.539ZM213.332 120.292C222.202 119.643 229.199 114.254 231.702 106.034C233.588 99.8505 233.574 93.4122 231.448 87.292C228.822 79.7359 222.452 74.7198 214.518 73.6929C205.049 72.4662 195.894 77.0507 191.937 85.8153C188.865 92.608 188.765 100.259 191.578 107.12C195.176 115.899 203.618 121.006 213.332 120.297V120.292Z"
         fill="#003189"
@@ -96,7 +96,7 @@ const LogoAidantConnectSvg = ({ width, height }: AccessibleRectangleIcon) => {
   )
 }
 
-export const LogoAidantConnect = styled(LogoAidantConnectSvg).attrs(({ width, height }) => ({
+export const LogoAidantsConnect = styled(LogoAidantsConnectSvg).attrs(({ width, height }) => ({
   width: width ?? getSpacing(20),
   height: height ?? getSpacing(20),
 }))``

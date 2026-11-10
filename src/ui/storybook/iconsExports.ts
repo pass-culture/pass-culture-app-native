@@ -137,7 +137,7 @@ import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { LogoAccesLibre } from 'ui/svg/LogoAccesLibre'
-import { LogoAidantConnect } from 'ui/svg/LogoAidantConnect'
+import { LogoAidantsConnect } from 'ui/svg/LogoAidantsConnect'
 import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
 import { LogoCultureRelax } from 'ui/svg/LogoCultureRelax'
 import { LogoDMS } from 'ui/svg/LogoDMS'
@@ -297,7 +297,7 @@ export const UnconventionalIcons = {
   DarkThemeIllustration,
   DefaultThemeIllustration,
   LogoAccesLibre,
-  LogoAidantConnect,
+  LogoAidantsConnect,
   LogoAudioDescription,
   LogoCultureRelax,
   LogoDMS,
