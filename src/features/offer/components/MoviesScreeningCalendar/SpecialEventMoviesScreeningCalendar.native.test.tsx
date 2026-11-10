@@ -7,6 +7,7 @@ import {
   OfferResponse,
   OffersStocksResponse,
   RefreshResponseV2,
+  StockResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -125,6 +126,40 @@ describe('SpecialEventMoviesScreeningCalendar', () => {
     expect((await screen.findAllByText('Mercredi'))[0]).toBeOnTheScreen()
     expect(screen.getByText('8')).toBeOnTheScreen()
     expect(screen.getAllByText('Mai')[0]).toBeOnTheScreen()
+  })
+
+  it('should display special event banner when offer has special event screenings', async () => {
+    const stocksResponse = {
+      offers: [
+        {
+          ...offersStocksResponseSnap.offers[0],
+          stocks: [
+            {
+              id: 118928,
+              beginningDatetime: MOCK_TIMESTAMP,
+              price: PRICE,
+              isBookable: true,
+              isExpired: false,
+              isForbiddenToUnderage: false,
+              isSoldOut: false,
+              screeningFeatures: { specialEventType: 'PLEIN_AIR' },
+            } as StockResponse,
+          ],
+        },
+      ],
+    }
+    mockServer.postApi<OffersStocksResponse>(`/v3/offers/stocks`, stocksResponse)
+
+    renderSpecialEventMoviesScreeningCalendar({
+      isDesktopViewport: false,
+      venueOffers: venueOffersMock,
+    })
+
+    await act(async () => {})
+
+    expect(
+      await screen.findByText('Des séances spéciales sont disponibles dans ce lieu.')
+    ).toBeOnTheScreen()
   })
 })
 
