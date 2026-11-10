@@ -24,3 +24,30 @@ jobs:
     secrets:
       github_app_id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
       github_app_private_key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+
+  deploy_android:
+    # An Android build takes up to an hour: skip PR description edits and unrelated labels
+    if: >-
+      contains(github.event.pull_request.labels.*.name, 'preview android')
+      && github.event.action != 'edited'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview android')
+    name: Deploy PR Android version to Firebase App Distribution
+    concurrency:
+      group: android-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
+    with:
+      ENV: preview
+
+  deploy_ios:
+    if: >-
+      contains(github.event.pull_request.labels.*.name, 'preview ios')
+      && github.event.action != 'edited'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview ios')
+    name: Deploy PR iOS version to Firebase App Distribution
+    concurrency:
+      group: ios-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+    with:
+      ENV: preview
