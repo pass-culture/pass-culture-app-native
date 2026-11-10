@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -132,7 +132,7 @@ describe('useAddFavoriteMutation', () => {
   })
 })
 
-const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
+const renderUseAddFavorite = (onSuccess?: (data?: FavoriteOfferResponseV2 | undefined) => void) => {
   const { result } = renderHook(
     () => useAddOfferFavoriteMutation({ type: FavoriteType.OFFER, onSuccess }),
     {

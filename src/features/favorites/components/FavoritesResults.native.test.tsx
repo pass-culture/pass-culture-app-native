@@ -2,7 +2,7 @@ import { QueryObserverSuccessResult, UseMutationResult } from '@tanstack/react-q
 import React from 'react'
 import { Text as MockText } from 'react-native'
 
-import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { useOfferFavoritesQuery } from 'features/favorites/queries'
@@ -43,9 +43,9 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
 
 const mockData = {
   nbFavorites: 0,
-  favorites: [] as Array<FavoriteResponse>,
+  favorites: [] as Array<FavoriteOfferResponseV2>,
   page: 0,
-} as PaginatedFavoritesResponse
+} as PaginatedResponseFavoriteOfferResponseV2
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -71,7 +71,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: mockData,
       isFetching: false,
-    } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
     const button = await screen.findByText('Explorer')
@@ -86,7 +86,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: undefined,
       isLoading: true,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
     const container = await screen.findByTestId('FavoritesResultsPlaceHolder')
@@ -101,7 +101,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: paginatedOfferFavoritesResponseSnap,
       isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseRemoveFavorites.mockReturnValue({
@@ -125,7 +125,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: paginatedOfferFavoritesResponseSnap,
       isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
 
@@ -137,7 +137,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: paginatedOfferFavoritesResponseSnap,
       isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { api } from 'api/api'
-import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
@@ -15,7 +15,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-const postFavoritesSpy = jest.spyOn(api, 'postNativeV1MeFavorites')
+const postFavoritesSpy = jest.spyOn(api, 'postNativeV2MeFavoritesOffers')
 
 const user = userEvent.setup()
 
@@ -23,8 +23,8 @@ jest.useFakeTimers()
 
 describe('<AddToFavoriteButton />', () => {
   beforeEach(() => {
-    mockServer.getApi<PaginatedFavoritesResponse>(
-      '/v1/me/favorites',
+    mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+      '/v2/me/favorites/offers',
       paginatedOfferFavoritesResponseSnap
     )
     setFeatureFlags()
@@ -40,7 +40,7 @@ describe('<AddToFavoriteButton />', () => {
   })
 
   it('should add favorite', async () => {
-    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
 
     renderButton({
       offerId: favoriteResponseSnap.offer.id,

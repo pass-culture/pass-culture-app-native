@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -11,7 +11,7 @@ export type FavoriteActionsProps = {
   primaryAction?: React.ReactNode
   onSharePress: () => void
   shareAccessibilityLabel: string
-  favorite: FavoriteResponse
+  favorite: FavoriteOfferResponseV2
   onRemove: () => void
   isRemoving: boolean
 }

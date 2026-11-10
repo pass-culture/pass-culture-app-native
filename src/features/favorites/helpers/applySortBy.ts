@@ -1,4 +1,4 @@
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import {
   sortByAscendingPrice,
   sortByDistanceAroundMe,
@@ -7,7 +7,11 @@ import {
 import { FavoriteSortBy } from 'features/favorites/types'
 import { Position } from 'libs/location/types'
 
-export function applySortBy(list: FavoriteResponse[], sortBy: FavoriteSortBy, position: Position) {
+export function applySortBy(
+  list: FavoriteOfferResponseV2[],
+  sortBy: FavoriteSortBy,
+  position: Position
+) {
   if (list.length === 0) return []
 
   const copiedList = [...list]

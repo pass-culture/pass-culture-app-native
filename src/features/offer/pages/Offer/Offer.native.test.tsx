@@ -6,7 +6,7 @@ import {
   ChronicleClubType,
   GetRemindersResponse,
   OfferPagePlaylistResponse,
-  PaginatedFavoritesResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -104,8 +104,7 @@ describe('<Offer />', () => {
 
   beforeEach(() => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
-    mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
-    mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
+    mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>('/v2/me/favorites/offers', {})
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     mockServer.getApi<OfferPagePlaylistResponse>(
       '/v1/recommendation/offer_page_playlists/116656',

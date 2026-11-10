@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -72,7 +72,7 @@ const renderStickyFooterContent = ({
   hasReminder = false,
   reminderAuthModal = defaultModalSettings,
 }: {
-  favorite?: FavoriteResponse | null
+  favorite?: FavoriteOfferResponseV2 | null
   favoriteAuthModal?: ModalSettings
   hasReminder?: boolean
   reminderAuthModal?: ModalSettings
