@@ -32,16 +32,6 @@ const profileCheatcodeCategory: CheatcodeCategory = {
     { id: uuidv4(), title: 'LoginMethods', navigationTarget: { screen: 'LoginMethods' } },
     {
       id: uuidv4(),
-      title: 'ChangeCity',
-      navigationTarget: getProfilePropConfig('ChangeCity'),
-    },
-    {
-      id: uuidv4(),
-      title: 'ChangeAddress',
-      navigationTarget: getProfilePropConfig('ChangeAddress'),
-    },
-    {
-      id: uuidv4(),
       title: 'ChangeEmail',
       navigationTarget: getProfilePropConfig('ChangeEmail'),
     },

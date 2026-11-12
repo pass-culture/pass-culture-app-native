@@ -7,7 +7,7 @@ import { Keyboard } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
@@ -39,8 +39,14 @@ export const useSubmitChangeAddress = () => {
   const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
+
+  const city = params?.city ?? storedCity
+  const hasCityChanged =
+    !!params?.city && !!storedCity && storedCity.postalCode !== params.city.postalCode
+  const { setCity } = cityActions
   const storedAddress = useAddress()
-  const initialCity = storedAddress === null ? '' : (storedAddress ?? user?.street ?? '')
+  const initialAddress =
+    storedAddress === null || hasCityChanged ? '' : (storedAddress ?? user?.street ?? '')
 
   const { navigate, dispatch } = useNavigation<UseNavigationType>()
 
@@ -52,7 +58,7 @@ export const useSubmitChangeAddress = () => {
     formState: { isValid },
   } = useForm<AddressForm>({
     mode: 'onChange',
-    defaultValues: { address: initialCity },
+    defaultValues: { address: initialAddress },
   })
 
   const query = watch('address')
@@ -71,8 +77,8 @@ export const useSubmitChangeAddress = () => {
     isError,
   } = useAddressesQuery({
     query: debouncedQuery,
-    cityCode: storedCity?.code ?? '',
-    postalCode: storedCity?.postalCode ?? '',
+    cityCode: city?.code ?? '',
+    postalCode: city?.postalCode ?? '',
     enabled: shouldShowAddressResults,
     limit: 10,
   })
@@ -82,7 +88,6 @@ export const useSubmitChangeAddress = () => {
       showErrorSnackBar(snackbarMessage)
       eventMonitoring.captureException(new IdentityCheckError(exception))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])
 
   const onChangeAddress = (value: string) => {
@@ -129,6 +134,12 @@ export const useSubmitChangeAddress = () => {
         newAddress: variables.address ?? '',
         oldAddress: user?.street ?? '',
       })
+      await analytics.logUpdatePostalCode({
+        newCity: variables.city ?? '',
+        oldCity: user?.city ?? '',
+        newPostalCode: variables.postalCode ?? '',
+        oldPostalCode: user?.postalCode ?? '',
+      })
     },
     onError: () => {
       showErrorSnackBar('Une erreur est survenue')
@@ -137,8 +148,13 @@ export const useSubmitChangeAddress = () => {
 
   const onSubmit = ({ address }: AddressForm) => {
     const finalAddress = selectedAddress ?? address
+    if (params?.city) setCity(params.city)
     setStoreAddress(finalAddress)
-    patchProfile({ address: finalAddress })
+    patchProfile({
+      address: finalAddress,
+      city: city?.name,
+      postalCode: city?.postalCode,
+    })
   }
 
   useEnterKeyAction(isValid ? handleSubmit(onSubmit) : undefined)
