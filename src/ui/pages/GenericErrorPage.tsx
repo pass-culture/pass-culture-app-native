@@ -108,26 +108,13 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
             {buttonPrimary || buttonSecondary || buttonTertiary || buttonTertiaryExternalNav ? (
               <ButtonContainer gap={4}>
                 {buttonPrimary?.onPress ? (
-                  <Button
-                    key={1}
-                    wording={buttonPrimary.wording}
-                    onPress={buttonPrimary.onPress}
-                    isLoading={buttonPrimary.isLoading}
-                    disabled={buttonPrimary.disabled}
-                    icon={buttonPrimary.icon}
-                    color="brand"
-                    fullWidth
-                  />
+                  <Button {...buttonPrimary} key={1} color="brand" fullWidth />
                 ) : null}
 
                 {buttonSecondary?.onPress ? (
                   <Button
+                    {...buttonSecondary}
                     key={2}
-                    wording={buttonSecondary.wording}
-                    onPress={buttonSecondary.onPress}
-                    isLoading={buttonSecondary.isLoading}
-                    disabled={buttonSecondary.disabled}
-                    icon={buttonSecondary.icon}
                     variant="secondary"
                     color="brand"
                     fullWidth
@@ -137,11 +124,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                 {buttonTertiary?.onPress ? (
                   <Button
                     key={3}
-                    wording={buttonTertiary.wording}
-                    onPress={buttonTertiary.onPress}
-                    isLoading={buttonTertiary.isLoading}
-                    disabled={buttonTertiary.disabled}
-                    icon={buttonTertiary.icon}
+                    {...buttonTertiary}
                     variant="tertiary"
                     color="neutral"
                     fullWidth

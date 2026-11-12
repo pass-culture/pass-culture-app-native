@@ -12,7 +12,7 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const NotEligibleForeignCountryExplanation = () => {
   const mainText = `Le crédit est réservé aux résidents français, et ce n’est pas ton cas pour l’instant. Tu peux continuer à profiter de tout le reste de l’application.${LINE_BREAK}${LINE_BREAK} Si tu reviens vivre en France, mets à jour tes informations depuis ta page profil pour demander ton crédit.`
-
+  const title = 'Tu n’es pas éligible pour le moment'
   const { designSystem } = useTheme()
   return (
     <PageWithHeader
@@ -27,8 +27,7 @@ export const NotEligibleForeignCountryExplanation = () => {
             />
           </IconContainer>
           <TextContainer gap={4}>
-            <StyledTitle
-              {...setTextSemantic('h1')}>{`Tu n’es pas éligible pour le moment`}</StyledTitle>
+            <StyledTitle {...setTextSemantic('h1')}>{title}</StyledTitle>
             <MainText {...setTextSemantic('h2')}>{mainText}</MainText>
           </TextContainer>
         </Container>
