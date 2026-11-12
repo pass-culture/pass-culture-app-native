@@ -5,9 +5,11 @@ import styled from 'styled-components/native'
 import { getVenueMovieOffers } from 'features/offer/components/MoviesScreeningCalendar/helpers/getVenueMovieOffers'
 import {
   useDisplayCalendar,
+  useDisplaySpecialEventBanner,
   useMovieCalendar,
 } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
+import { getHasSpecialEventScreenings } from 'features/offer/components/OfferCine/getHasSpecialEventScreening'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { VenueOffers } from 'features/venue/types'
 
@@ -19,7 +21,11 @@ type Props = {
 export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds }) => {
   const { data: offersWithStocks } = useOffersStocksQuery({ offerIds })
 
-  const { selectedDate } = useMovieCalendar()
+  const { dates, selectedDate } = useMovieCalendar()
+  const shouldDisplaySpecialEventBanner = getHasSpecialEventScreenings(
+    offersWithStocks?.offers,
+    dates
+  )
 
   const { venueMovieOffers, hasStocksOnlyAfter15Days } = getVenueMovieOffers(
     selectedDate,
@@ -27,6 +33,7 @@ export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds 
   )
 
   useDisplayCalendar(!hasStocksOnlyAfter15Days)
+  useDisplaySpecialEventBanner(shouldDisplaySpecialEventBanner)
 
   const getIsLast = useCallback(
     (index: number) => {

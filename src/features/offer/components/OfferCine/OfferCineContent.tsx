@@ -7,10 +7,12 @@ import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/E
 import {
   useDisableCalendarDates,
   useDisplayCalendar,
+  useDisplaySpecialEventBanner,
   useMovieCalendar,
 } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { CineBlock } from 'features/offer/components/OfferCine/CineBlock'
 import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
+import { getHasSpecialEventScreenings } from 'features/offer/components/OfferCine/getHasSpecialEventScreening'
 import {
   INITIAL_LIST_SIZE,
   expandList,
@@ -33,6 +35,7 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
   const { data: offers, isLoading } = useOffersStocksFromOfferQuery(offer)
   const { selectedDate, dates } = useMovieCalendar()
   const { movieOffers, hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offers.offers)
+  const shouldDisplaySpecialEventBanner = getHasSpecialEventScreenings(offers.offers, dates)
 
   const [displayedLen, setDisplayedLen] = useState(INITIAL_LIST_SIZE)
 
@@ -40,6 +43,7 @@ export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
 
   useDisplayCalendar(!hasStocksOnlyAfter15Days)
   useDisableCalendarDates(disabledDates)
+  useDisplaySpecialEventBanner(shouldDisplaySpecialEventBanner)
 
   useEffect(() => {
     setDisplayedLen(INITIAL_LIST_SIZE)

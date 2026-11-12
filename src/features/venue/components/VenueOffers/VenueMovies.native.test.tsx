@@ -33,6 +33,7 @@ jest.spyOn(MovieCalendarContext, 'useMovieCalendar').mockReturnValue({
   dates: [],
   disableDates: jest.fn(),
   displayDates: jest.fn(),
+  displaySpecialEventBanner: jest.fn(),
 })
 
 const VENUE_MOVIE_OFFERS_HIT = {

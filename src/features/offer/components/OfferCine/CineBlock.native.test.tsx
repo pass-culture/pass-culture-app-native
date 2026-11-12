@@ -54,6 +54,7 @@ describe('CineBlock', () => {
       dates: [],
       disableDates: jest.fn(),
       displayDates: jest.fn(),
+      displaySpecialEventBanner: jest.fn(),
     })
 
     mockUseSubcategoriesMapping.mockReturnValue({

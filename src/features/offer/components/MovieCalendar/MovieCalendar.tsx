@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { SpecialEventBanner } from 'features/offer/components/OfferCine/SpecialEventBanner'
 import { AbsoluteRoundedButton } from 'ui/components/buttons/AbsoluteRoundedButton'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { getSpacing } from 'ui/theme'
@@ -23,6 +24,7 @@ type Props = {
   onFlatListLayout?: (event: LayoutChangeEvent) => void
   itemWidth?: number
   onItemLayout?: (event: LayoutChangeEvent) => void
+  shouldDisplaySpecialEventBanner?: boolean
 }
 
 export const MovieCalendar: React.FC<Props> = ({
@@ -35,6 +37,7 @@ export const MovieCalendar: React.FC<Props> = ({
   itemWidth,
   onItemLayout,
   disabledDates,
+  shouldDisplaySpecialEventBanner,
 }) => {
   const isWeb = Platform.OS === 'web'
   const { designSystem } = useTheme()
@@ -83,6 +86,11 @@ export const MovieCalendar: React.FC<Props> = ({
 
   return (
     <View onLayout={onContainerLayout}>
+      {shouldDisplaySpecialEventBanner ? (
+        <SpecialEventBannerContainer>
+          <SpecialEventBanner />
+        </SpecialEventBannerContainer>
+      ) : null}
       <MovieCalendarBottomBar />
       {isWeb && !isStart ? (
         <AbsoluteRoundedButton
@@ -163,3 +171,8 @@ const FadeRight = styled(FadeComponent).attrs<{ colors?: string[] }>(({ theme })
 }))`
   right: -1px;
 `
+
+const SpecialEventBannerContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
