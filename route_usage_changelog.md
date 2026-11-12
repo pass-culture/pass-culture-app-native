@@ -1,4 +1,4 @@
-# v1.416.0
+# v1.417.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -9,11 +9,11 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/artists/{artist_id}/similar
 - /native/v1/banner
 - /native/v1/venue/{venue_id}/movie/calendar
-- /native/v1/countries
+Pathname not found for getNativeV1Countries
 - /native/v1/cultural_survey/questions
 - /native/v1/email_validation_remaining_resends/{email}
-- /native/v1/me
-- /native/v1/me/favorites
+Pathname not found for getNativeV1Me
+Pathname not found for getNativeV1MeFavorites
 - /native/v1/me/reminders
 - /native/v1/movie/calendar
 - /native/v1/movie/calendar/me
@@ -76,11 +76,11 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/reaction
 - /native/v2/refresh_access_token
 - /native/v2/signin
+- /native/v3/offers/stocks
 - /native/v1/profile/email_update/validate
 ## Unused routes:
 - /native/v1/offer/{offer_id}
 - /native/v2/subscription/stepper
 - /native/v3/bookings/{booking_id}
 - /native/v1/refresh_access_token
-- /native/v3/offers/stocks
 
