@@ -13,6 +13,7 @@ import { v4 } from 'uuid'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
+import { SEARCH_LIST_VIEWABILITY_CONFIG } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { ListHeaderComponent } from 'features/search/pages/SearchResults/v2/components/SearchLists/components/ListHeaderComponent'
@@ -194,6 +195,7 @@ export const OffersList: FC<PropsWithChildren<Props>> = ({
             ListHeaderComponent={<React.Fragment>{listHeaderComponent}</React.Fragment>}
             renderItem={({ item, index }) => <SearchOfferItemWrapper item={item} index={index} />}
             onViewableItemsChanged={handleViewableItemsChanged}
+            viewabilityConfig={SEARCH_LIST_VIEWABILITY_CONFIG}
             contentContainerStyle={{
               paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
               paddingHorizontal: designSystem.size.spacing.xl,

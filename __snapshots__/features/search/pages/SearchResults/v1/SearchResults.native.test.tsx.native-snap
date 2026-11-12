@@ -606,6 +606,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           scrollEnabled={true}
           scrollEventThrottle={0.0001}
           testID="searchResultsFlashlist"
+          viewabilityConfig={
+            {
+              "itemVisiblePercentThreshold": 100,
+              "minimumViewTime": 300,
+            }
+          }
         >
           <RCTRefreshControl />
           <View>
