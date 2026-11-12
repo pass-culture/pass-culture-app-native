@@ -5,6 +5,7 @@ import { Platform } from 'react-native'
 import { styled, useTheme } from 'styled-components/native'
 
 import { getOffersModuleQueryKey } from 'features/home/queries/useGetOffersDataQuery'
+import { homePlaylistsActions, useHomePlaylistRank } from 'features/home/store/homePlaylists.store'
 import {
   HomepageModuleType,
   ModuleData,
@@ -147,6 +148,17 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
     !isArtistLoading &&
     !hasArtistError
 
+  const homePlaylistIndex = useHomePlaylistRank(homeEntryId, index)
+
+  useEffect(
+    function registerDisplayedPlaylist() {
+      if (homeEntryId) {
+        homePlaylistsActions.setIsDisplayed(homeEntryId, index, shouldModuleBeDisplayed)
+      }
+    },
+    [homeEntryId, index, shouldModuleBeDisplayed]
+  )
+
   const triggerLogModuleDisplayedOnHomepage = useCallback(() => {
     if (shouldModuleBeDisplayed && isHomeScreen) {
       void analytics.logModuleDisplayedOnHomepage({
@@ -267,6 +279,7 @@ export const ArtistPlaylistModule = (props: ArtistPlaylistModuleProps) => {
           origin: 'home',
           originId: asHomeEntryId(homeEntryId),
           ...itemParams,
+          playlistIndex: homePlaylistIndex,
         })
       }}>
       {({ listRef, handleViewableItemsChanged }) => (

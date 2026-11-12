@@ -5,6 +5,7 @@ import { Platform } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { getOffersModuleQueryKey } from 'features/home/queries/useGetOffersDataQuery'
+import { homePlaylistsActions, useHomePlaylistRank } from 'features/home/store/homePlaylists.store'
 import {
   HomepageModuleType,
   ModuleData,
@@ -140,6 +141,17 @@ export const OffersModule: FC<OffersModuleProps> = ({
   const shouldModuleBeDisplayed =
     offersToDisplay.length > 0 && offersToDisplay.length >= displayParameters.minOffers
 
+  const playlistIndex = useHomePlaylistRank(homeEntryId, index)
+
+  useEffect(
+    function registerDisplayedPlaylist() {
+      if (homeEntryId) {
+        homePlaylistsActions.setIsDisplayed(homeEntryId, index, shouldModuleBeDisplayed)
+      }
+    },
+    [homeEntryId, index, shouldModuleBeDisplayed]
+  )
+
   const hybridModuleOffsetIndex = playlistItems.length === 0 ? 1 : playlistItems.length
 
   useEffect(() => {
@@ -188,7 +200,7 @@ export const OffersModule: FC<OffersModuleProps> = ({
         if (!homeEntryId) return
         void analytics.logViewItem({
           origin: 'home',
-          playlistIndex: index,
+          playlistIndex,
           index: itemIndex,
           type: 'offer',
           id: asOfferId(item.objectID),
