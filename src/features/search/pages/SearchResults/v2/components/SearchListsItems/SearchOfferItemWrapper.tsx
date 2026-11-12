@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -51,23 +51,14 @@ export const SearchOfferItemWrapper: FC<SearchOfferItemWrapper> = ({ item, index
       withCenterAlign={false}
     />
   ) : (
-    <React.Fragment>
-      <HorizontalOfferTile
-        offer={item}
-        analyticsParams={{
-          query,
-          index,
-          searchId,
-          from: 'searchresults',
-        }}
-      />
-      {isWeb ? <LineSeparator /> : null}
-    </React.Fragment>
+    <HorizontalOfferTile
+      offer={item}
+      analyticsParams={{
+        query,
+        index,
+        searchId,
+        from: 'searchresults',
+      }}
+    />
   )
 }
-
-const LineSeparator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.designSystem.color.background.subtle,
-  marginVertical: theme.designSystem.size.spacing.l,
-}))
