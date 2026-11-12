@@ -80,6 +80,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_REVIEW_TRIGGER_OFFERS = 'wipReviewTriggerOffers',
   WIP_SCENE_CLUB = 'wipSceneClub',
   WIP_SEARCH_IN_VENUE_PAGE = 'wipSearchInVenuePage',
+  WIP_SIMPLIFIED_ACTIVATION_18 = 'wipSimplifiedActivation18',
   WIP_SUSPEND_PROFILE = 'wipSuspendProfile',
   WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS = 'wipThematicSearchConcertsAndFestivals',
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',

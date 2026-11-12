@@ -65,7 +65,7 @@ describe('<ChangeAddress/>', () => {
     it('should not update the city store before submitting the address', async () => {
       const setCitySpy = jest.spyOn(cityActions, 'setCity')
 
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -77,7 +77,7 @@ describe('<ChangeAddress/>', () => {
     it('should update store with the new city when submitting the address', async () => {
       const setCitySpy = jest.spyOn(cityActions, 'setCity')
 
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -88,7 +88,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should call patchProfile with address and city informations', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -103,7 +103,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should send city analytics on success when submitting the address', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -122,7 +122,7 @@ describe('<ChangeAddress/>', () => {
       mockServer.patchApi<UserProfile>('/v1/profile', {
         responseOptions: { statusCode: 400 },
       })
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -142,7 +142,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should render correctly', async () => {
-      renderSetAddress()
+      renderChangeAddress()
       await screen.findByText('Modifier mon adresse')
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -151,7 +151,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should display a list of addresses when user add an address', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -170,7 +170,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should update profile when clicking on "Valider mon adresse"', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -186,7 +186,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should navigate to PersonalData when clicking on "Valider mon adresse"', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -201,7 +201,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -216,7 +216,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should send analytics when success', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -239,7 +239,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should render correctly', async () => {
-      renderSetAddress()
+      renderChangeAddress()
       await screen.findByText('Modifier mon adresse')
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -248,7 +248,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should not show snackbar on success when clicking on "Continuer"', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -260,7 +260,7 @@ describe('<ChangeAddress/>', () => {
     })
 
     it('should navigate to ChangeStatus when clicking on "Continuer"', async () => {
-      renderSetAddress()
+      renderChangeAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
       fireEvent.changeText(input, QUERY_ADDRESS)
@@ -274,8 +274,31 @@ describe('<ChangeAddress/>', () => {
       })
     })
   })
+
+  describe('from check address screen', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({
+        params: { type: PersonalDataTypes.CHECK_ADDRESS_DATA },
+      })
+    })
+
+    it('should navigate back to CheckAddress with the change address origin', async () => {
+      renderChangeAddress()
+
+      const input = screen.getByTestId('Entrée pour l’adresse')
+      fireEvent.changeText(input, QUERY_ADDRESS)
+
+      await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
+      await user.press(screen.getByText('Valider mon adresse'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+        params: { fromChangeAddress: true },
+        screen: 'CheckAddress',
+      })
+    })
+  })
 })
 
-const renderSetAddress = () => {
+const renderChangeAddress = () => {
   return render(reactQueryProviderHOC(<ChangeAddress />))
 }

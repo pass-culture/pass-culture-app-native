@@ -11,7 +11,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
+import { RecreditBirthdayNotification } from './RecreditedNotification'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')

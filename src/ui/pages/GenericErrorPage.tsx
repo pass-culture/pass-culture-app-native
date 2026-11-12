@@ -30,6 +30,7 @@ type Props = PropsWithChildren<{
   subtitle?: string
   noIndex?: boolean
   buttonPrimary?: ButtonProps
+  buttonSecondary?: ButtonProps
   buttonTertiary?: ButtonProps
   buttonTertiaryExternalNav?: ReactNode
   remoteIllustration?: RemoteIllustrationProps
@@ -47,6 +48,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   helmetTitle,
   noIndex = true,
   buttonPrimary,
+  buttonSecondary,
   buttonTertiary,
   buttonTertiaryExternalNav,
   remoteIllustration,
@@ -103,16 +105,17 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
               ) : null}
             </TextContainer>
             {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
-            {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
+            {buttonPrimary || buttonSecondary || buttonTertiary || buttonTertiaryExternalNav ? (
               <ButtonContainer gap={4}>
                 {buttonPrimary?.onPress ? (
+                  <Button {...buttonPrimary} key={1} color="brand" fullWidth />
+                ) : null}
+
+                {buttonSecondary?.onPress ? (
                   <Button
-                    key={1}
-                    wording={buttonPrimary.wording}
-                    onPress={buttonPrimary.onPress}
-                    isLoading={buttonPrimary.isLoading}
-                    disabled={buttonPrimary.disabled}
-                    icon={buttonPrimary.icon}
+                    {...buttonSecondary}
+                    key={2}
+                    variant="secondary"
                     color="brand"
                     fullWidth
                   />
@@ -120,12 +123,8 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
 
                 {buttonTertiary?.onPress ? (
                   <Button
-                    key={2}
-                    wording={buttonTertiary.wording}
-                    onPress={buttonTertiary.onPress}
-                    isLoading={buttonTertiary.isLoading}
-                    disabled={buttonTertiary.disabled}
-                    icon={buttonTertiary.icon}
+                    key={3}
+                    {...buttonTertiary}
                     variant="tertiary"
                     color="neutral"
                     fullWidth
