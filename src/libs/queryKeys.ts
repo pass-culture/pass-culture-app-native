@@ -38,6 +38,7 @@ export enum QueryKeys {
   OFFER = 'offer',
   OFFER_PAGE_PLAYLISTS = 'offerPagePlaylists',
   OFFER_PRO_ADVICES = 'offerProAdvices',
+  OFFER_STOCKS_SPECIAL_EVENT = 'offerStocksSpecialEvent',
   CLUB_ADVICES = 'clubAdvices',
   PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',

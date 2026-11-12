@@ -1,24 +1,20 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
-import styled from 'styled-components/native'
 
 import type { OfferPreviewResponse } from 'api/gen'
-import {
-  getDateString,
-  getMovieScreenings,
-} from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
-import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
-import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { MovieOfferTileLayout } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTileLayout'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import {
+  getDateString,
+  getMovieScreenings,
+} from 'features/offer/helpers/getMovieScreenings/getMovieScreenings'
 import { VenueOffers } from 'features/venue/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
-import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 
 type MovieOfferTileProps = {
   movieOffer: MovieOffer
@@ -69,35 +65,16 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   )
 
   return (
-    <React.Fragment>
-      <StyledView>
-        {offerScreeningOnSelectedDates ? (
-          <HorizontalOfferTile
-            offer={offerScreeningOnSelectedDates}
-            analyticsParams={{ from: 'venue' }}
-            shouldDisplayPrice={false}
-            subtitles={getSubtitles(offer)}
-            withRightArrow
-          />
-        ) : null}
-      </StyledView>
-      {nextScreeningDate ? (
-        <View>
-          <NextScreeningButton
-            date={nextScreeningDate}
-            onPress={
-              isDateNotWithinNextNbDays(new Date(), nextScreeningDate, 15)
-                ? () => onPressOfferCTA()
-                : () => goToDate(nextScreeningDate)
-            }
-          />
-        </View>
-      ) : (
-        <EventCardList data={eventCardData} />
-      )}
-      <Container>{isLast ? null : <Divider />}</Container>
-      {CTAOfferModal}
-    </React.Fragment>
+    <MovieOfferTileLayout
+      offerScreening={offerScreeningOnSelectedDates}
+      subtitles={getSubtitles(offer)}
+      nextScreeningDate={nextScreeningDate}
+      onPressOfferCTA={onPressOfferCTA}
+      goToDate={goToDate}
+      screeningList={<EventCardList data={eventCardData} />}
+      CTAOfferModal={CTAOfferModal}
+      isLast={isLast}
+    />
   )
 }
 
@@ -106,16 +83,3 @@ const getSubtitles = (offer: OfferPreviewResponse): string[] => {
   const duration = formatDuration(offer.extraData?.durationMinutes).label
   return [genre, duration]
 }
-
-const Divider = styled.View(({ theme }) => ({
-  height: 1,
-  backgroundColor: theme.designSystem.color.background.subtle,
-}))
-
-const StyledView = styled(View)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
-}))
-
-const Container = styled(View)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.l,
-}))

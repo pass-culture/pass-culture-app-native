@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-
-export const getDateString = (date: string) => new Date(date).toDateString()
+import {
+  getDateString,
+  getMovieScreenings,
+} from 'features/offer/helpers/getMovieScreenings/getMovieScreenings'
 
 export const useMovieScreeningCalendar = (stocks: OfferStockResponse[], date?: Date) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(date)
@@ -43,19 +45,3 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[], date?: D
     selectedScreeningStock,
   }
 }
-
-export const getMovieScreenings = (stocks: OfferStockResponse[]) =>
-  stocks.reduce<Record<string, OfferStockResponse[]>>((movieScreening, movieStock) => {
-    const { beginningDatetime, isExpired, isForbiddenToUnderage } = movieStock
-    if (beginningDatetime != null && !isExpired && !isForbiddenToUnderage) {
-      const movieScreeningDay = getDateString(beginningDatetime)
-      const movieStocks = movieScreening[movieScreeningDay]
-      if (movieStocks) {
-        movieStocks.push(movieStock)
-      } else {
-        movieScreening[movieScreeningDay] = [movieStock]
-      }
-    }
-
-    return movieScreening
-  }, {})

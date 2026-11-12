@@ -3,6 +3,8 @@ import { BackgroundColorKey, BorderColorKey, IconColorKey, TextColorKey } from '
 export enum CinemaScreeningCardDisabledReason {
   UNAVAILABLE = 'Indisponible',
   INSUFFICIENT_CREDIT = 'Crédit insuffisant',
+  ALREADY_BOOKED = 'Déjà réservé',
+  FULLY_BOOKED = 'Complet',
 }
 
 type CinemaScreeningAccessibility = Partial<
@@ -18,6 +20,7 @@ export type CinemaScreeningCardProps = {
   video?: string[]
   audio?: string[]
   accessibility?: CinemaScreeningAccessibility
+  isDisabled?: boolean
   disabledReason?: CinemaScreeningCardDisabledReason
 }
 

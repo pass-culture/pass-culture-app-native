@@ -10,6 +10,7 @@ import {
   BookingResponse,
   BookingStockResponseV2,
   BookingVenueResponse,
+  OfferForStocksResponse,
   OfferResponse,
   OfferStockResponse,
   OfferVenueResponse,
@@ -114,6 +115,7 @@ export const mockBuilder = {
     endedBookingsV2ListSnap.bookings[0]
   ),
   offerResponseV2: createMockBuilder<OfferResponse>(defaultOfferResponse),
+  offerForStocksResponse: createMockBuilder<OfferForStocksResponse>(defaultOfferResponse),
   offerStockResponse: createMockBuilder<OfferStockResponse>(defaultStock),
   offerVenueResponse: createMockBuilder<OfferVenueResponse>(defaultOfferResponse.venue),
   ongoingBookingListItemResponse: createMockBuilder<BookingListItemResponse>(
