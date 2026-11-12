@@ -6,14 +6,11 @@
 import React, { FunctionComponent } from 'react'
 
 import { ModalScreenWrapper } from 'shared/ModalScreenWrapper/ModalScreenWrapper'
-import {
-  MODAL_DETAILED_CLOSE_BUTTON_CONTAINER_ID,
-  MODAL_DETAILED_DESKTOP_MAX_WIDTH,
-} from 'ui/designSystem/ModalDetailed/constants'
+import { MODAL_DETAILED_DESKTOP_MAX_WIDTH } from 'ui/designSystem/ModalDetailed/constants'
 import { ModalDetailedLayout } from 'ui/designSystem/ModalDetailed/ModalDetailedLayout'
 import { ModalDetailedProps } from 'ui/designSystem/ModalDetailed/types'
 
-const DESKTOP_MAX_HEIGHT = 'calc(100% - 64px)'
+const LARGE_VIEWPORT_MAX_HEIGHT = 'calc(100% - 64px)'
 
 export const ModalDetailed: FunctionComponent<ModalDetailedProps> = (props) => (
   <ModalScreenWrapper
@@ -21,9 +18,9 @@ export const ModalDetailed: FunctionComponent<ModalDetailedProps> = (props) => (
     onClose={props.onClose}
     fullScreen={!props.isLoading && !!props.hasFixedFooter}
     desktopMaxWidth={MODAL_DETAILED_DESKTOP_MAX_WIDTH}
-    desktopMaxHeight={DESKTOP_MAX_HEIGHT}
-    desktopVariant="bottomRight"
-    initialFocusSelector={`#${MODAL_DETAILED_CLOSE_BUTTON_CONTAINER_ID} button`}>
+    desktopMaxHeight={LARGE_VIEWPORT_MAX_HEIGHT}
+    tabletMaxHeight={LARGE_VIEWPORT_MAX_HEIGHT}
+    desktopVariant="bottomRight">
     {(closeWithTransition, titleId) => (
       <ModalDetailedLayout {...props} onClose={closeWithTransition} titleId={titleId} />
     )}

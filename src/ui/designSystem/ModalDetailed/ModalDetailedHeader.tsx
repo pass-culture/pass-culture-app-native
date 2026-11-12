@@ -8,7 +8,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Button } from 'ui/designSystem/Button/Button'
-import { MODAL_DETAILED_CLOSE_BUTTON_CONTAINER_ID } from 'ui/designSystem/ModalDetailed/constants'
 import { ModalDetailedHeaderProps } from 'ui/designSystem/ModalDetailed/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { CloseFilled } from 'ui/svg/icons/CloseFilled'
@@ -27,7 +26,7 @@ export const ModalDetailedHeader: FunctionComponent<ModalDetailedHeaderProps> = 
 
   return (
     <HeaderContainer accessibilityRole={AccessibilityRole.HEADER}>
-      <CloseButtonContainer nativeID={MODAL_DETAILED_CLOSE_BUTTON_CONTAINER_ID}>
+      <CloseButtonContainer testID="modalDetailedCloseButtonContainer">
         <Button
           icon={CloseFilled}
           iconButton
@@ -39,7 +38,7 @@ export const ModalDetailedHeader: FunctionComponent<ModalDetailedHeaderProps> = 
       </CloseButtonContainer>
 
       {onGoBack ? (
-        <BackButtonContainer>
+        <BackButtonContainer testID="modalDetailedBackButtonContainer">
           <Button
             icon={ArrowPrevious}
             iconButton
@@ -53,11 +52,11 @@ export const ModalDetailedHeader: FunctionComponent<ModalDetailedHeaderProps> = 
 
       <TitleContainer hasBackButton={!!onGoBack}>
         {isDesktopViewport ? (
-          <DesktopTitle nativeID={titleId} {...setTextSemantic('h1')}>
+          <DesktopTitle id={titleId} nativeID={titleId} {...setTextSemantic('h1')}>
             {title}
           </DesktopTitle>
         ) : (
-          <MobileTitle nativeID={titleId} {...setTextSemantic('h1')}>
+          <MobileTitle id={titleId} nativeID={titleId} {...setTextSemantic('h1')}>
             {title}
           </MobileTitle>
         )}
@@ -77,7 +76,9 @@ const HeaderContainer = styled.View(({ theme }) => ({
 
 const HeaderButtonContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: -theme.designSystem.size.spacing.s,
+  top: theme.isDesktopViewport
+    ? theme.designSystem.size.spacing.xs
+    : theme.designSystem.size.spacing.xxs,
   zIndex: theme.zIndex.header,
 }))
 
