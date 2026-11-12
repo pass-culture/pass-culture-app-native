@@ -88,9 +88,16 @@ def set_resolutions(dependencies_data: str, manifest: str, package_json: str):
         else:
             v_max = vulnerable_version_range
             v_min = None
-        v_target = "^" + dependency["first_patched_version"]["identifier"].lstrip(
-            "^"
-        ).lstrip("~")
+        first_patched_version = dependency["first_patched_version"]
+        if first_patched_version:
+            v_target = "^" + dependency["first_patched_version"]["identifier"].lstrip(
+                "^"
+            ).lstrip("~")
+        else:
+            print("------ !!! Warning : patched version not found !!!  -------")
+            print(f"           name    {name}        ")
+            print("----------------------------------------\n")
+            continue
 
         remove_resolution_from_lock(name, manifest)
         set_resolution(name, v_min, v_max, v_target, package_json)
@@ -122,10 +129,13 @@ def push_modifications(branch: str):
     subprocess.run(["git", "push", "origin", branch])
 
 
-def get_dependabot_alerts(manifest: str):
+def get_dependabot_alerts(severity: str | None, manifest: str):
     """
     Needs gh cli to be able to run
     """
+    url = f"/repos/pass-culture/pass-culture-app-native/dependabot/alerts?state=open&manifest={manifest}"
+    if severity:
+        url += f"&severity={severity}"
     return subprocess.run(
         [
             "gh",
@@ -134,7 +144,7 @@ def get_dependabot_alerts(manifest: str):
             "Accept: application/vnd.github+json",
             "-H",
             "X-GitHub-Api-Version: 2026-03-10",
-            f"/repos/pass-culture/pass-culture-app-native/dependabot/alerts?state=open&manifest={manifest}",
+            url,
         ],
         stdout=subprocess.PIPE,
     )
@@ -156,6 +166,13 @@ if __name__ == "__main__":
         nargs="?",
     )
     parser.add_argument(
+        "-d-bot-sev",
+        type=str,
+        choices=["critical", "high", "medium", "low"],
+        help="Severity level of dependabot alerts to treat",
+        nargs="?",
+    )
+    parser.add_argument(
         "-man",
         type=str,
         help="The manifest to filter from (ex. yarn.lock, server/yarn.lock etc ...)",
@@ -172,7 +189,8 @@ if __name__ == "__main__":
     manifest = args.man or "yarn.lock"
     package_json = os.path.join(os.path.dirname(manifest), "package.json")
     if from_dependabot:
-        dependabot_alerts = get_dependabot_alerts(manifest)
+        dependabot_severity = args.d_bot_sev
+        dependabot_alerts = get_dependabot_alerts(dependabot_severity, manifest)
         dependabot_alerts_json = json.loads(dependabot_alerts.stdout)
         set_resolutions(dependabot_alerts_json, manifest, package_json)
     else:
