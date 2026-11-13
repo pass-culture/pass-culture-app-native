@@ -36,6 +36,51 @@ jest.useFakeTimers()
 
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {
+    it('should call the matching callback when openUrl returns true', async () => {
+      openUrl.mockResolvedValueOnce(true)
+      const onSuccess = jest.fn()
+      const onError = jest.fn()
+      render(
+        <ExternalTouchableLink externalNav={{ ...externalNav, onSuccess, onError }}>
+          <ExternalTouchableLinkContent />
+        </ExternalTouchableLink>
+      )
+
+      await user.press(screen.getByText(linkText))
+
+      expect(onSuccess).toHaveBeenCalledTimes(1)
+    })
+
+    it('should call the matching callback when openUrl returns false', async () => {
+      openUrl.mockResolvedValueOnce(false)
+      const onSuccess = jest.fn()
+      const onError = jest.fn()
+      render(
+        <ExternalTouchableLink externalNav={{ ...externalNav, onSuccess, onError }}>
+          <ExternalTouchableLinkContent />
+        </ExternalTouchableLink>
+      )
+
+      await user.press(screen.getByText(linkText))
+
+      expect(onError).toHaveBeenCalledTimes(1)
+    })
+
+    it('should handle a rejected success callback', async () => {
+      openUrl.mockResolvedValueOnce(true)
+      const onSuccess = jest.fn().mockRejectedValueOnce(new Error('Callback failed'))
+      const onError = jest.fn()
+      render(
+        <ExternalTouchableLink externalNav={{ ...externalNav, onSuccess, onError }}>
+          <ExternalTouchableLinkContent />
+        </ExternalTouchableLink>
+      )
+
+      await user.press(screen.getByText(linkText))
+
+      expect(onError).toHaveBeenCalledTimes(1)
+    })
+
     it('should open url with expected parameters (nominal case)', async () => {
       render(
         <ExternalTouchableLink externalNav={externalNav}>

@@ -13,9 +13,7 @@ jest.useFakeTimers()
 
 describe('SocialNetworkCard', () => {
   it('should openUrl onClick and track analytics', async () => {
-    const openUrl = jest
-      .spyOn(NavigationHelpers, 'openUrl')
-      .mockImplementation(jest.fn(() => Promise.resolve()))
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockResolvedValueOnce(true)
     render(<SocialNetworkCard network="facebook" />)
 
     const button = screen.getByText('Facebook')
@@ -28,9 +26,7 @@ describe('SocialNetworkCard', () => {
   })
 
   it('should use Twitter in analytics when click on X', async () => {
-    const openUrl = jest
-      .spyOn(NavigationHelpers, 'openUrl')
-      .mockImplementation(jest.fn(() => Promise.resolve()))
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockResolvedValueOnce(true)
     render(<SocialNetworkCard network="x" />)
 
     const button = screen.getByText('X')

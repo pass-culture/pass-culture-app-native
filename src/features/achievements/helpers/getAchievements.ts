@@ -35,7 +35,7 @@ export const getAchievements = ({
   )
 
   const track = (from: 'profile' | 'success') => {
-    analytics.logDisplayAchievements({ from, numberUnlocked: completedAchievements.length })
+    void analytics.logDisplayAchievements({ from, numberUnlocked: completedAchievements.length })
   }
 
   return {

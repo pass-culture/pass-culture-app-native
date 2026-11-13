@@ -157,8 +157,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     ...modules.filter(isArtistPlaylistModule),
   ])
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
-  const logHasSeenAllModules = useFunctionOnce(async () =>
-    analytics.logAllModulesSeen(modules.length)
+  const logHasSeenAllModules = useFunctionOnce(
+    () => void analytics.logAllModulesSeen(modules.length)
   )
 
   const trackEventHasSeenAllModules = useFunctionOnce(() => {
@@ -168,7 +168,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
       'home_type',
       thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
     )
-    BatchProfile.trackEvent(BatchEvent.hasSeenAllTheHomepage, attributes)
+    void BatchProfile.trackEvent(BatchEvent.hasSeenAllTheHomepage, attributes)
   })
 
   const showSkeleton = useShowSkeleton()
@@ -220,7 +220,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
       'home_type',
       thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
     )
-    BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
+    void BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
   const { checkTrigger } = getScreenSeenCount({
@@ -233,8 +233,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const scrollListener = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (givenOnScroll) givenOnScroll(event)
-
-      checkTrigger(event.nativeEvent.contentOffset.y)
+      void checkTrigger(event.nativeEvent.contentOffset.y)
     },
     [givenOnScroll, checkTrigger]
   )

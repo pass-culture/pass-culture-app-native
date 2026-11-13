@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics/provider'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Unlock } from 'ui/svg/icons/Unlock'
 
-const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
+const onBeforeNavigate = () => void analytics.logSignUpClicked({ from: 'home' })
 
 export const SignupBanner: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
