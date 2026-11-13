@@ -1,15 +1,5 @@
 import { CategoryIdEnum } from 'api/gen'
 
-interface VenueProAdvice {
-  author?: string | null
-  content: string
-  offerCategoryLabel: string
-  offerId: number
-  offerName: string
-  offerThumbUrl?: string | null
-  publicationDatetime: string
-}
-
 export type HeadlineOfferData = {
   id: string
   imageUrl: string
@@ -18,5 +8,4 @@ export type HeadlineOfferData = {
   price: string
   offerTitle?: string
   distance?: string
-  advice?: VenueProAdvice
 }

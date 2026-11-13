@@ -1,17 +1,12 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
-import { AdviceCardBody } from 'features/advices/components/AdviceCardBody/AdviceCardBody'
-import { getFormattedAdviceDate } from 'features/advices/helpers/getFormattedAdviceDate'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
-import { Button } from 'ui/designSystem/Button/Button'
-import { PlainMore } from 'ui/svg/icons/PlainMore'
 
 import { HeadlineOfferLargeViewport } from './HeadlineOfferLargeViewport'
 import { HeadlineOfferSmallViewport } from './HeadlineOfferSmallViewport'
@@ -20,16 +15,12 @@ const HEADLINE_OFFER_LARGE_VIEWPORT = 327
 const HEADLINE_OFFER_SMALL_VIEWPORT = 245
 
 type HeadlineOfferProps = HeadlineOfferData &
-  Pick<InternalTouchableLinkProps, 'navigateTo' | 'onBeforeNavigate'> & {
-    onSeeMoreButtonPress?: (offerId: number) => void
-  }
+  Pick<InternalTouchableLinkProps, 'navigateTo' | 'onBeforeNavigate'>
 
 export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
   navigateTo,
   onBeforeNavigate,
   imageUrl,
-  advice,
-  onSeeMoreButtonPress,
   ...otherProps
 }) => {
   const { isDesktopViewport } = useTheme()
@@ -37,59 +28,27 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
     ? HeadlineOfferLargeViewport
     : HeadlineOfferSmallViewport
   return (
-    <React.Fragment>
-      <Container navigateTo={navigateTo} onBeforeNavigate={onBeforeNavigate} hasAdvice={!!advice}>
-        <BackgroundImage url={imageUrl} />
-        <Gradient />
-        <StyledView>
-          <HeadlineOfferContent imageUrl={imageUrl} {...otherProps} />
-        </StyledView>
-      </Container>
-      {advice ? (
-        <AdviceContainer>
-          <AdviceCardBody
-            date={getFormattedAdviceDate(advice.publicationDatetime)}
-            description={advice.content}
-            shouldTruncate>
-            <View>
-              <Button
-                wording="Voir plus"
-                accessibilityLabel={`Voir plus à propos de ${advice.offerName}`}
-                onPress={() => onSeeMoreButtonPress?.(advice.offerId)}
-                variant="tertiary"
-                color="neutral"
-                size="small"
-                icon={PlainMore}
-                iconPosition="left"
-              />
-            </View>
-          </AdviceCardBody>
-        </AdviceContainer>
-      ) : null}
-    </React.Fragment>
+    <Container navigateTo={navigateTo} onBeforeNavigate={onBeforeNavigate}>
+      <BackgroundImage url={imageUrl} />
+      <Gradient />
+      <StyledView>
+        <HeadlineOfferContent imageUrl={imageUrl} {...otherProps} />
+      </StyledView>
+    </Container>
   )
 }
 
-const Container = styled(InternalTouchableLink)<{ hasAdvice: boolean }>(({ theme, hasAdvice }) => ({
+const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
   borderTopRightRadius: theme.designSystem.size.borderRadius.l,
-  borderBottomLeftRadius: hasAdvice ? undefined : theme.designSystem.size.borderRadius.l,
-  borderBottomRightRadius: hasAdvice ? undefined : theme.designSystem.size.borderRadius.l,
+  borderBottomLeftRadius: theme.designSystem.size.borderRadius.l,
+  borderBottomRightRadius: theme.designSystem.size.borderRadius.l,
   overflow: 'hidden',
   height: theme.isDesktopViewport ? HEADLINE_OFFER_LARGE_VIEWPORT : HEADLINE_OFFER_SMALL_VIEWPORT,
   width: '100%',
   justifyContent: 'end',
   borderColor: theme.designSystem.color.border.subtle,
   borderWidth: 1,
-}))
-
-const AdviceContainer = styled.View(({ theme }) => ({
-  padding: theme.designSystem.size.spacing.l,
-  border: 1,
-  borderColor: theme.designSystem.color.border.subtle,
-  backgroundColor: theme.designSystem.color.background.default,
-  borderBottomLeftRadius: theme.designSystem.size.borderRadius.l,
-  borderBottomRightRadius: theme.designSystem.size.borderRadius.l,
 }))
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
