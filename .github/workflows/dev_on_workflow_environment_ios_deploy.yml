@@ -123,6 +123,7 @@ jobs:
           fi
 
       - name: Create Sentry sourcemaps
+        if: inputs.ENV != 'preview'
         env:
           ENV: ${{ inputs.ENV }}
         run: source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios" "$ENV"
@@ -130,7 +131,7 @@ jobs:
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    if: ${{ always() && contains(fromJSON('["success", "failure", "cancelled"]'), needs.sentry_and_deploy.result) }}
+    if: ${{ always() && inputs.ENV != 'preview' && contains(fromJSON('["success", "failure", "cancelled"]'), needs.sentry_and_deploy.result) }}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager

@@ -36,7 +36,13 @@ function compareEnvFiles(envFiles: string[]) {
 }
 
 describe('.env files', () => {
-  const envFiles = ['.env.testing', '.env.staging', '.env.integration', '.env.production']
+  const envFiles = [
+    '.env.testing',
+    '.env.preview',
+    '.env.staging',
+    '.env.integration',
+    '.env.production',
+  ]
 
   test('all variables should be present in all .env files', () => {
     const checkEnv = () => {
