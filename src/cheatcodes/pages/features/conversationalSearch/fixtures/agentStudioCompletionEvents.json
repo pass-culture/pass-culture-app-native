@@ -1,0 +1,589 @@
+[
+  {
+    "type": "start",
+    "messageId": "alg_msg_IQtq1u2RJONvlYge",
+    "messageMetadata": {}
+  },
+  {
+    "type": "start-step"
+  },
+  {
+    "type": "tool-input-start",
+    "toolCallId": "cb613552-59c7-4c94-a8ae-c3ba08893825",
+    "toolName": "algolia_search_index_production"
+  },
+  {
+    "type": "tool-input-delta",
+    "toolCallId": "cb613552-59c7-4c94-a8ae-c3ba08893825",
+    "inputTextDelta": "{\"originalQuery\": \"plut\\u00f4t du rap \\u00e0 Lyon\", \"queries\": [{\"query\": \"rap\", \"facet_offer.searchGroups\": [\"CONCERTS_FESTIVALS\"]}, {\"facet_offer.musicType\": [\"RAP-HIP HOP\", \"Hip-Hop/Rap\"], \"query\": \"\"}, {\"facet_offer.subcategoryId\": [\"CONCERT\", \"FESTIVAL_MUSIQUE\", \"EVENEMENT_MUSIQUE\"], \"query\": \"rap\"}, {\"query\": \"rap lyon\"}], \"sessionId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\", \"userIntent\": \"User wants rap concerts in Lyon - searching for rap concerts/festivals in Algolia index\"}"
+  },
+  {
+    "type": "tool-input-available",
+    "toolCallId": "cb613552-59c7-4c94-a8ae-c3ba08893825",
+    "toolName": "algolia_search_index_production",
+    "input": {
+      "originalQuery": "plutôt du rap à Lyon",
+      "queries": [
+        {
+          "query": "rap",
+          "facet_offer.searchGroups": ["CONCERTS_FESTIVALS"]
+        },
+        {
+          "facet_offer.musicType": ["RAP-HIP HOP", "Hip-Hop/Rap"],
+          "query": ""
+        },
+        {
+          "facet_offer.subcategoryId": ["CONCERT", "FESTIVAL_MUSIQUE", "EVENEMENT_MUSIQUE"],
+          "query": "rap"
+        },
+        {
+          "query": "rap lyon"
+        }
+      ],
+      "sessionId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "userIntent": "User wants rap concerts in Lyon - searching for rap concerts/festivals in Algolia index"
+    }
+  },
+  {
+    "type": "tool-output-available",
+    "toolCallId": "cb613552-59c7-4c94-a8ae-c3ba08893825",
+    "output": {
+      "hits": [
+        {
+          "distinct": "440168507",
+          "offer": {
+            "artist": "LE BAZAR",
+            "dateCreated": 1791470745.92777,
+            "dates": [1805310000],
+            "gtlCodeLevel1": "11000000",
+            "gtlCodeLevel2": "11000000",
+            "gtlCodeLevel3": "11000000",
+            "gtlCodeLevel4": "11000000",
+            "hasImage": true,
+            "indexedAt": "2026-10-09T10:32:15.441041",
+            "hasUrl": false,
+            "isDuo": true,
+            "isEducational": false,
+            "isEvent": true,
+            "isForbiddenToUnderage": false,
+            "isPermanent": false,
+            "isThing": false,
+            "last30DaysBookingsRange": "very-low",
+            "musicType": ["RAP-HIP HOP", "Hip-Hop/Rap"],
+            "name": "PICHE",
+            "nativeCategoryId": ["CONCERTS_EVENEMENTS"],
+            "prices": [34.9],
+            "searchGroupNamev2": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "searchGroups": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "students": [],
+            "subcategoryId": "CONCERT",
+            "tags": [],
+            "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/458NK",
+            "times": [68400],
+            "gtl_level1": "Rap / Hip Hop"
+          },
+          "offerer": {
+            "name": "TR"
+          },
+          "venue": {
+            "activity": "OTHER",
+            "address": "3 Boulevard de Stalingrad",
+            "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png",
+            "city": "Villeurbanne",
+            "departmentCode": "69",
+            "id": 112847,
+            "isPermanent": true,
+            "name": "TR",
+            "postalCode": "69100",
+            "publicName": "TR",
+            "venue_type": "PERFORMING_ARTS"
+          },
+          "_geoloc": {
+            "lat": 45.7839,
+            "lng": 4.86045
+          },
+          "objectID": "440168507"
+        },
+        {
+          "distinct": "433325627",
+          "offer": {
+            "completionScore": 1,
+            "dateCreated": 1787759804.535612,
+            "dates": [1795289400],
+            "gtlCodeLevel1": "11000000",
+            "gtlCodeLevel2": "11000000",
+            "gtlCodeLevel3": "11000000",
+            "gtlCodeLevel4": "11000000",
+            "hasImage": true,
+            "indexedAt": "2026-09-02T08:13:27.519885",
+            "hasUrl": false,
+            "isDuo": true,
+            "isEducational": false,
+            "isEvent": true,
+            "isForbiddenToUnderage": false,
+            "isPermanent": false,
+            "isThing": false,
+            "last30DaysBookingsRange": "very-low",
+            "musicType": [],
+            "name": "Rap Open Mic #11 – Urban Tracks",
+            "nativeCategoryId": ["CONCERTS_EVENEMENTS"],
+            "prices": [0],
+            "searchGroupNamev2": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "searchGroups": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "students": [],
+            "subcategoryId": "CONCERT",
+            "tags": [
+              "26localS35",
+              "26localS35ado",
+              "26localS37",
+              "26localS37ado",
+              "26localS39",
+              "26localS39ado"
+            ],
+            "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/44B7E",
+            "times": [70200],
+            "gtl_level1": "Rap / Hip Hop"
+          },
+          "offerer": {
+            "name": "MAISON DES JEUNES"
+          },
+          "venue": {
+            "activity": "COMMUNITY_CENTRE",
+            "address": "88 Rue Albert Poulain",
+            "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/C8YA_1746536127",
+            "city": "Charleville-Mézières",
+            "departmentCode": "08",
+            "id": 5040,
+            "isAudioDisabilityCompliant": false,
+            "isMentalDisabilityCompliant": false,
+            "isMotorDisabilityCompliant": true,
+            "isPermanent": true,
+            "isVisualDisabilityCompliant": false,
+            "name": "MJC CALONNE",
+            "postalCode": "08000",
+            "publicName": "MJC CALONNE",
+            "venue_type": "CULTURAL_CENTRE"
+          },
+          "_geoloc": {
+            "lat": 49.78556,
+            "lng": 4.70979
+          },
+          "objectID": "433325627"
+        }
+      ],
+      "nbHits": 16,
+      "facets": {}
+    }
+  },
+  {
+    "type": "data-tool-output-metadata",
+    "data": {
+      "toolCallId": "cb613552-59c7-4c94-a8ae-c3ba08893825",
+      "metadata": {
+        "com.algolia/resolved-search-params": [
+          {
+            "query": "rap",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [["offer.searchGroups:CONCERTS_FESTIVALS"]],
+            "numericFilters": []
+          },
+          {
+            "query": "",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [["offer.musicType:RAP-HIP HOP", "offer.musicType:Hip-Hop/Rap"]],
+            "numericFilters": []
+          },
+          {
+            "query": "rap",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [
+              [
+                "offer.subcategoryId:CONCERT",
+                "offer.subcategoryId:FESTIVAL_MUSIQUE",
+                "offer.subcategoryId:EVENEMENT_MUSIQUE"
+              ]
+            ],
+            "numericFilters": []
+          },
+          {
+            "query": "rap lyon",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [],
+            "numericFilters": []
+          }
+        ]
+      }
+    },
+    "transient": true
+  },
+  {
+    "type": "finish-step"
+  },
+  {
+    "type": "start-step"
+  },
+  {
+    "type": "tool-input-start",
+    "toolCallId": "a6685277-ebc4-4ffc-aa82-8d391cc85039",
+    "toolName": "algolia_search_index_production"
+  },
+  {
+    "type": "tool-input-delta",
+    "toolCallId": "a6685277-ebc4-4ffc-aa82-8d391cc85039",
+    "inputTextDelta": "{\"originalQuery\": \"rap lyon concert\", \"queries\": [{\"facet_offer.searchGroups\": [\"CONCERTS_FESTIVALS\"], \"query\": \"transbordeur\"}, {\"query\": \"march\\u00e9 gare\", \"facet_offer.searchGroups\": [\"CONCERTS_FESTIVALS\"]}, {\"query\": \"feyzin\", \"facet_offer.searchGroups\": [\"CONCERTS_FESTIVALS\"]}, {\"facet_offer.searchGroups\": [\"CONCERTS_FESTIVALS\"], \"query\": \"villeurbanne\"}], \"sessionId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\", \"userIntent\": \"Find all concerts at iconic venues around Lyon (Transbordeur, March\\u00e9 Gare, Feyzin, Villeurbanne) to identify cheap rap options.\"}"
+  },
+  {
+    "type": "tool-input-available",
+    "toolCallId": "a6685277-ebc4-4ffc-aa82-8d391cc85039",
+    "toolName": "algolia_search_index_production",
+    "input": {
+      "originalQuery": "rap lyon concert",
+      "queries": [
+        {
+          "facet_offer.searchGroups": ["CONCERTS_FESTIVALS"],
+          "query": "transbordeur"
+        },
+        {
+          "query": "marché gare",
+          "facet_offer.searchGroups": ["CONCERTS_FESTIVALS"]
+        },
+        {
+          "query": "feyzin",
+          "facet_offer.searchGroups": ["CONCERTS_FESTIVALS"]
+        },
+        {
+          "facet_offer.searchGroups": ["CONCERTS_FESTIVALS"],
+          "query": "villeurbanne"
+        }
+      ],
+      "sessionId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "userIntent": "Find all concerts at iconic venues around Lyon (Transbordeur, Marché Gare, Feyzin, Villeurbanne) to identify cheap rap options."
+    }
+  },
+  {
+    "type": "tool-output-available",
+    "toolCallId": "a6685277-ebc4-4ffc-aa82-8d391cc85039",
+    "output": {
+      "hits": [
+        {
+          "distinct": "410730081",
+          "offer": {
+            "artist": "Mediatone",
+            "completionScore": 0.9,
+            "dateCreated": 1778495738.879579,
+            "dates": [1796497200],
+            "gtlCodeLevel1": "11000000",
+            "gtlCodeLevel2": "11000000",
+            "gtlCodeLevel3": "11000000",
+            "gtlCodeLevel4": "11000000",
+            "hasImage": true,
+            "indexedAt": "2026-10-09T10:18:53.241963",
+            "hasUrl": false,
+            "isDuo": true,
+            "isEducational": false,
+            "isEvent": true,
+            "isForbiddenToUnderage": false,
+            "isPermanent": false,
+            "isThing": false,
+            "last30DaysBookingsRange": "high",
+            "musicType": ["RAP-HIP HOP", "Hip-Hop/Rap"],
+            "name": "ROUNHAA - Lyon - Transbordeur",
+            "nativeCategoryId": ["CONCERTS_EVENEMENTS"],
+            "prices": [31.5],
+            "searchGroupNamev2": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "searchGroups": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "students": [],
+            "subcategoryId": "CONCERT",
+            "tags": [],
+            "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/43LEY",
+            "times": [68400],
+            "gtl_level1": "Rap / Hip Hop"
+          },
+          "offerer": {
+            "name": "MEDIATONE"
+          },
+          "venue": {
+            "activity": "PRODUCTION_OR_PROMOTION_COMPANY",
+            "address": "3 Boulevard de Stalingrad",
+            "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/assets/venue_default_images/nick-moore-5zWN8DTNeVA-unsplash.png",
+            "city": "Villeurbanne",
+            "departmentCode": "69",
+            "id": 27405,
+            "isAudioDisabilityCompliant": false,
+            "isMentalDisabilityCompliant": false,
+            "isMotorDisabilityCompliant": false,
+            "isPermanent": true,
+            "isVisualDisabilityCompliant": false,
+            "name": "MEDIATONE",
+            "postalCode": "69100",
+            "publicName": "MEDIATONE",
+            "venue_type": "CONCERT_HALL"
+          },
+          "_geoloc": {
+            "lat": 45.7839,
+            "lng": 4.86045
+          },
+          "objectID": "410730081"
+        },
+        {
+          "distinct": "436947318",
+          "offer": {
+            "artist": "Transbordeur",
+            "completionScore": 0.9,
+            "dateCreated": 1790067944.432218,
+            "dates": [1794348000],
+            "gtlCodeLevel1": "11000000",
+            "gtlCodeLevel2": "11000000",
+            "gtlCodeLevel3": "11000000",
+            "gtlCodeLevel4": "11000000",
+            "hasImage": true,
+            "indexedAt": "2026-10-07T07:27:56.184622",
+            "hasUrl": false,
+            "isDuo": true,
+            "isEducational": false,
+            "isEvent": true,
+            "isForbiddenToUnderage": false,
+            "isPermanent": false,
+            "isThing": false,
+            "last30DaysBookingsRange": "very-low",
+            "musicType": ["RAP-HIP HOP", "Hip-Hop/Rap"],
+            "name": "Afterparty Plavace 5 ans w. AL-WALID",
+            "nativeCategoryId": ["CONCERTS_EVENEMENTS"],
+            "prices": [15],
+            "searchGroupNamev2": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "searchGroups": ["CONCERTS_FESTIVALS", "MUSIQUE"],
+            "students": [],
+            "subcategoryId": "CONCERT",
+            "tags": [],
+            "thumbUrl": "/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/459EA",
+            "times": [79200],
+            "gtl_level1": "Rap / Hip Hop"
+          },
+          "offerer": {
+            "name": "TRANSMISSION"
+          },
+          "venue": {
+            "activity": "PERFORMANCE_HALL",
+            "address": "3 Boulevard de Stalingrad",
+            "banner_url": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/JCHA_1721465994",
+            "city": "Villeurbanne",
+            "departmentCode": "69",
+            "id": 18574,
+            "isAudioDisabilityCompliant": false,
+            "isMentalDisabilityCompliant": false,
+            "isMotorDisabilityCompliant": true,
+            "isPermanent": true,
+            "isVisualDisabilityCompliant": false,
+            "name": "LE TRANSBORDEUR",
+            "postalCode": "69100",
+            "publicName": "LE TRANSBORDEUR",
+            "venue_type": "CONCERT_HALL"
+          },
+          "_geoloc": {
+            "lat": 45.7839,
+            "lng": 4.86045
+          },
+          "objectID": "436947318"
+        }
+      ],
+      "nbHits": 7,
+      "facets": {}
+    }
+  },
+  {
+    "type": "data-tool-output-metadata",
+    "data": {
+      "toolCallId": "a6685277-ebc4-4ffc-aa82-8d391cc85039",
+      "metadata": {
+        "com.algolia/resolved-search-params": [
+          {
+            "query": "transbordeur",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [["offer.searchGroups:CONCERTS_FESTIVALS"]],
+            "numericFilters": []
+          },
+          {
+            "query": "marché gare",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [["offer.searchGroups:CONCERTS_FESTIVALS"]],
+            "numericFilters": []
+          },
+          {
+            "query": "feyzin",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [["offer.searchGroups:CONCERTS_FESTIVALS"]],
+            "numericFilters": []
+          },
+          {
+            "query": "villeurbanne",
+            "attributesToHighlight": [],
+            "responseFields": ["hits", "nbHits", "page", "nbPages", "hitsPerPage", "facets"],
+            "facets": ["*"],
+            "clickAnalytics": false,
+            "page": 0,
+            "hitsPerPage": 7,
+            "attributesToRetrieve": ["*"],
+            "analytics": false,
+            "facetFilters": [["offer.searchGroups:CONCERTS_FESTIVALS"]],
+            "numericFilters": []
+          }
+        ]
+      }
+    },
+    "transient": true
+  },
+  {
+    "type": "finish-step"
+  },
+  {
+    "type": "start-step"
+  },
+  {
+    "type": "text-start",
+    "id": "alg_msg_IQtq1u2RJONvlYge"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "Si tu as envie de rap et de gros bangers"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " à Lyon et ses alentours, voici ce qui se prépare du côté du **Transbordeur** (Villeurbanne) :\n\n*"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " **Afterparty Plavace 5 ans w. AL-WALID** – **15 €**\n  "
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "* **Lieu :** Le Transbordeur (Villeurbanne)\n  * **Style :** Rap /"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " Hip-Hop\n  * Pour faire la fête à petit prix ! Une grosse soirée clubbing rap pour célébrer les 5 ans du"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " collectif Plavace avec AL-WALID, K3YNA, SLMVX et VVS237"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " sur scène.\n  * [Découvrir l'offre](https://passculture.app/offre/436"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "947318)\n\n* **ROUNHAA - Lyon** – **31,50 €**\n  *"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " **Lieu :** Le Transbordeur (Villeurbanne)\n  * **Style :** Rap Français\n"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "  * Une des figures les plus captivantes de la nouvelle scène rap. Ses lives sont réputés pour leur énergie brute"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " et leur intensité.\n  * [Découvrir l'offre](https://passculture.app/offre/41"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "0730081)\n\n* **PICHE** – **34,90 €**\n"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "  * **Lieu :** Le Transbordeur (Villeurbanne)\n  * **Style :** Rap"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " / Pop / Performance\n  * Rappeur, danseur et performer hors pair, Piche propose un univers unique et"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": " incisif, parfait pour en prendre plein les yeux et les oreilles.\n  * [Découvrir l'offre](https"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "://passculture.app/offre/440168507)\n\nLaquelle de ces amb"
+  },
+  {
+    "type": "text-delta",
+    "id": "alg_msg_IQtq1u2RJONvlYge",
+    "delta": "iances te tente le plus ?"
+  },
+  {
+    "type": "text-end",
+    "id": "alg_msg_IQtq1u2RJONvlYge"
+  },
+  {
+    "type": "finish-step"
+  },
+  {
+    "type": "finish"
+  }
+]

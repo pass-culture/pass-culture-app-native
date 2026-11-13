@@ -7,6 +7,7 @@ export type StorageKey =
   | 'artist_first_favorite'
   | 'BOOKSHOP_AND_LIBRARY_venue_survey'
   | 'campaign_date'
+  | 'conversational_search_agent_id'
   | 'cookies'
   | 'credit_review_profile_started_at'
   | 'device_id'

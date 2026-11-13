@@ -96,6 +96,12 @@ export function CheatcodesMenu(): React.JSX.Element {
     },
     {
       id: uuidv4(),
+      title: 'Recherche conversationnelle 💬',
+      navigationTarget: { screen: 'CheatcodesScreenConversationalSearch' },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
       title: 'RemoteBanners 🆒',
       navigationTarget: { screen: 'CheatcodesScreenRemoteBanners' },
       subscreens: [],
