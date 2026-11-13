@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { styled } from 'styled-components/native'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
+import { homePlaylistsActions, useHomePlaylistRank } from 'features/home/store/homePlaylists.store'
 import { HomepageModuleType, ModuleData, VenuesModuleParameters } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
 import { asHomeEntryId, asVenueId } from 'libs/analytics/helpers/logViewItem'
@@ -56,6 +57,17 @@ export const VenuesModule = ({
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
 
+  const playlistIndex = useHomePlaylistRank(homeEntryId, index)
+
+  useEffect(
+    function registerDisplayedPlaylist() {
+      if (homeEntryId) {
+        homePlaylistsActions.setIsDisplayed(homeEntryId, index, shouldModuleBeDisplayed)
+      }
+    },
+    [homeEntryId, index, shouldModuleBeDisplayed]
+  )
+
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       void analytics.logModuleDisplayedOnHomepage({
@@ -95,7 +107,7 @@ export const VenuesModule = ({
           if (!homeEntryId) return
           void analytics.logViewItem({
             origin: 'home',
-            playlistIndex: index,
+            playlistIndex,
             index: itemIndex,
             type: 'venue',
             id: asVenueId(item.id.toString()),

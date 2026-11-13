@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
+import { homePlaylistsActions, useHomePlaylistRank } from 'features/home/store/homePlaylists.store'
 import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
@@ -39,6 +40,17 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   )
   const nbOffers = offers.length
   const shouldModuleBeDisplayed = nbOffers > displayParameters.minOffers
+
+  const playlistIndex = useHomePlaylistRank(homeEntryId, index)
+
+  useEffect(
+    function registerDisplayedPlaylist() {
+      if (homeEntryId) {
+        homePlaylistsActions.setIsDisplayed(homeEntryId, index, shouldModuleBeDisplayed)
+      }
+    },
+    [homeEntryId, index, shouldModuleBeDisplayed]
+  )
 
   const moduleName = displayParameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
@@ -103,7 +115,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         if (!homeEntryId) return
         void analytics.logViewItem({
           origin: 'home',
-          playlistIndex: index,
+          playlistIndex,
           index: itemIndex,
           type: 'offer',
           id: asOfferId(item.objectID),

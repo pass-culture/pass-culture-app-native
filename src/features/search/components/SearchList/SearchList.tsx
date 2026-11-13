@@ -3,6 +3,7 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
+import { SEARCH_LIST_VIEWABILITY_CONFIG } from 'features/search/constants'
 import {
   convertAlgoliaVenue2AlgoliaVenueOfferListItem,
   getReconciledVenues,
@@ -82,6 +83,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={SEARCH_LIST_VIEWABILITY_CONFIG}
       />
     )
   }
