@@ -1,11 +1,13 @@
 import { defineConfig } from '@playwright/test'
 import dotenv from 'dotenv'
 
+import { generateBuildSummary } from './e2e/web/slackLayout'
+
 dotenv.config({ path: 'e2e/web/.env.secret' })
 
 const runUrl =
   process.env.GITHUB_SERVER_URL &&
-  `<${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}|Voir le run>`
+  `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
 
 export default defineConfig({
   testDir: './e2e/web',
@@ -19,10 +21,11 @@ export default defineConfig({
           channels: ['C05MH81G9LY'],
           sendResults: 'always',
           slackLogLevel: 'error',
+          layout: generateBuildSummary,
           meta: [
-            { key: '🌿 Branche', value: process.env.GITHUB_REF_NAME ?? 'inconnue' },
-            { key: '📁 Suite', value: process.env.E2E_SUITE_LABEL ?? 'inconnue' },
-            ...(runUrl ? [{ key: '🔗 Détails', value: runUrl }] : []),
+            { key: 'Branche', value: process.env.GITHUB_REF_NAME ?? 'inconnue' },
+            { key: 'Suite', value: process.env.E2E_SUITE_LABEL ?? 'inconnue' },
+            ...(runUrl ? [{ key: 'Run', value: runUrl }] : []),
           ],
         },
       ],
