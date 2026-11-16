@@ -102,12 +102,12 @@ describe('<VenueHeader />', () => {
         setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_VENUE_SURVEY])
       })
 
-      it('should navigate to VenueSurveyModal when user stayed under 5s and survey was not already seen', async () => {
+      it('should navigate to VenueSurveyModal when user stayed more 5s and survey was not already seen', async () => {
         mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
 
         renderVenueHeader({ venue: venueWithSurveyActivity })
 
-        jest.advanceTimersByTime(2000)
+        jest.advanceTimersByTime(6000)
 
         await user.press(screen.getByLabelText('Revenir en arrière'))
 
@@ -117,12 +117,12 @@ describe('<VenueHeader />', () => {
         expect(mockGoBack).not.toHaveBeenCalled()
       })
 
-      it('should call goBack when user stayed 5s or more', async () => {
+      it('should call goBack when user stayed 5s or less', async () => {
         mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
 
         renderVenueHeader({ venue: venueWithSurveyActivity })
 
-        jest.advanceTimersByTime(5000)
+        jest.advanceTimersByTime(4000)
 
         await user.press(screen.getByLabelText('Revenir en arrière'))
 

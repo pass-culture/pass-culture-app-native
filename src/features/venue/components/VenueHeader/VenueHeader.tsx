@@ -44,7 +44,7 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
         return
       }
 
-      void checkVenueSurveyAccess(surveyConfig.key).then((isAccessed) => {
+      void checkVenueSurveyAccess(surveyConfig.key, 'modal').then((isAccessed) => {
         isSurveyAlreadySeenRef.current = isAccessed
       })
     },
@@ -53,9 +53,9 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
 
   const onBackPress = () => {
     const timeSpent = Date.now() - mountTimeRef.current
-    const stayedUnder5s = timeSpent < FIVE_SECONDS_IN_MS
+    const stayedMore5s = timeSpent > FIVE_SECONDS_IN_MS
     const shouldDisplaySurvey =
-      enableVenueSurvey && surveyConfig?.key && stayedUnder5s && !isSurveyAlreadySeenRef.current
+      enableVenueSurvey && surveyConfig?.key && stayedMore5s && !isSurveyAlreadySeenRef.current
 
     if (shouldDisplaySurvey) {
       navigate('VenueSurveyModal', {
