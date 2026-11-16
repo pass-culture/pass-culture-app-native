@@ -9,8 +9,8 @@ export type ModalScreenWrapperProps = {
   fullScreen?: boolean
   desktopMaxWidth?: number
   desktopMaxHeight?: number | string
+  tabletMaxHeight?: number | string
   desktopVariant?: 'centered' | 'bottomRight'
-  initialFocusSelector?: string
 }
 
 export const ModalScreenWrapper = ({
@@ -20,8 +20,8 @@ export const ModalScreenWrapper = ({
   fullScreen: _fullScreen,
   desktopMaxWidth: _desktopMaxWidth,
   desktopMaxHeight: _desktopMaxHeight,
+  tabletMaxHeight: _tabletMaxHeight,
   desktopVariant: _desktopVariant,
-  initialFocusSelector: _initialFocusSelector,
 }: ModalScreenWrapperProps) => {
   const titleId = uuidv4()
 

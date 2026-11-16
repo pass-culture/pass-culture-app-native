@@ -19,12 +19,12 @@ export const ModalDetailed: FunctionComponent<ModalDetailedProps> = (props) => {
   const titleId = uuidv4()
 
   // Keep the same maximum height as ModalSimple for content-sized modals.
-  // A fixed-footer form sheet starts below the top safe area, while its bottom
-  // already reaches the visible sheet boundary. Only remove the top inset.
+  // For a fixed footer, iOS already stops the sheet above the bottom safe area,
+  // while Android needs its bottom inset reserved for the system navigation bar.
   const iOSHeight = height - top - bottom
   const isFooterFixed = !props.isLoading && !!props.hasFixedFooter
   const contentMaxHeight = Platform.OS === 'android' ? height : iOSHeight
-  const fixedFooterHeight = Platform.OS === 'android' ? height : height - top
+  const fixedFooterHeight = Platform.OS === 'android' ? height - bottom : height - top
   const modalHeight = isFooterFixed ? fixedFooterHeight : undefined
   const maxHeight = isFooterFixed ? fixedFooterHeight : contentMaxHeight
 
