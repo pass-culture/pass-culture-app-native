@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -70,6 +71,10 @@ export function CheatcodesMenu(): React.JSX.Element {
   }
   const onPressSnackbar = () => {
     showErrorSnackBar('Ceci est un test snackbar d’erreur')
+  }
+
+  const onPressResetStorage = async () => {
+    await AsyncStorage.clear()
   }
 
   const featuresButtons: CheatcodeCategory[] = [
@@ -198,6 +203,12 @@ export function CheatcodesMenu(): React.JSX.Element {
       id: uuidv4(),
       title: 'Offline 📵',
       navigationTarget: { screen: 'CheatcodesScreenOffline' },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
+      title: 'Reset stockage local',
+      onPress: onPressResetStorage,
       subscreens: [],
     },
   ]
