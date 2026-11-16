@@ -323,7 +323,16 @@ describe('<VenueOffers />', () => {
 
         await user.press(await screen.findByText('Donner mon avis (2 min)'))
 
-        expect(mockMarkVenueSurveyAccess).toHaveBeenNthCalledWith(1, 'BOOKSHOP_AND_LIBRARY')
+        expect(mockMarkVenueSurveyAccess).toHaveBeenNthCalledWith(
+          1,
+          'BOOKSHOP_AND_LIBRARY',
+          'modal'
+        )
+        expect(mockMarkVenueSurveyAccess).toHaveBeenNthCalledWith(
+          2,
+          'BOOKSHOP_AND_LIBRARY',
+          'banner'
+        )
         expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
       })
 
