@@ -13,7 +13,6 @@ const outcome = (summary: SummaryResults) => {
   return '✅ E2E web passés'
 }
 
-// Adapted from generateBuildSummary in the playwright-slack-report layout gallery.
 export const generateBuildSummary = (summary: SummaryResults) => {
   const runUrl = metaValue(summary, 'Run')
   const context = [

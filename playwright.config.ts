@@ -36,7 +36,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   webServer: {
-    // Empty API_BASE_URL keeps API calls relative so the preview proxy avoids CORS on 127.0.0.1.
+    // Staging CORS rejects 127.0.0.1: relative API calls go through the vite preview proxy instead.
     command:
       'API_BASE_URL= yarn build:staging && yarn preview:web:staging --host 127.0.0.1 --port 5173 --strictPort',
     url: 'http://127.0.0.1:5173',
