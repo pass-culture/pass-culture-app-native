@@ -18,7 +18,7 @@ export const VenueSurveyModal: FC = () => {
 
   const handleOnClose = useCallback(async () => {
     if (surveyConfig) {
-      await markVenueSurveyAccess(surveyConfig.key)
+      await markVenueSurveyAccess(surveyConfig.key, 'modal')
     }
 
     const state = getState()
@@ -30,14 +30,16 @@ export const VenueSurveyModal: FC = () => {
   }, [dispatch, getState, goBack, surveyConfig])
 
   const handleOpenSurvey = useCallback(async () => {
-    const surveyUrl = getSurveyConfigFromActivity(activity)?.url
+    if (!surveyConfig) return
+    const surveyUrl = surveyConfig.url
 
     if (surveyUrl) {
       await Linking.openURL(surveyUrl)
+      await markVenueSurveyAccess(surveyConfig.key, 'banner')
     }
 
     await handleOnClose()
-  }, [activity, handleOnClose])
+  }, [handleOnClose, surveyConfig])
 
   if (!surveyConfig) return null
 

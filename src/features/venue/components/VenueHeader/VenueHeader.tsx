@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Animated } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
@@ -36,32 +36,19 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
   const surveyConfig = getSurveyConfigFromActivity(venue.activity)
 
   const mountTimeRef = useRef<number>(Date.now())
-  const isSurveyAlreadySeenRef = useRef(true)
 
-  useEffect(
-    function initSurveyCheckEffect() {
-      if (!enableVenueSurvey || !surveyConfig?.key) {
+  const onBackPress = async () => {
+    const timeSpent = Date.now() - mountTimeRef.current
+    const stayedMore5s = timeSpent > FIVE_SECONDS_IN_MS
+
+    if (enableVenueSurvey && surveyConfig?.key && stayedMore5s) {
+      const isSurveyAlreadySeen = await checkVenueSurveyAccess(surveyConfig.key, 'modal')
+      if (!isSurveyAlreadySeen) {
+        navigate('VenueSurveyModal', {
+          activity: venue.activity,
+        })
         return
       }
-
-      void checkVenueSurveyAccess(surveyConfig.key).then((isAccessed) => {
-        isSurveyAlreadySeenRef.current = isAccessed
-      })
-    },
-    [enableVenueSurvey, surveyConfig?.key]
-  )
-
-  const onBackPress = () => {
-    const timeSpent = Date.now() - mountTimeRef.current
-    const stayedUnder5s = timeSpent < FIVE_SECONDS_IN_MS
-    const shouldDisplaySurvey =
-      enableVenueSurvey && surveyConfig?.key && stayedUnder5s && !isSurveyAlreadySeenRef.current
-
-    if (shouldDisplaySurvey) {
-      navigate('VenueSurveyModal', {
-        activity: venue.activity,
-      })
-      return
     }
 
     goBack()

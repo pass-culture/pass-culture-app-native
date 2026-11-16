@@ -86,7 +86,7 @@ export function VenueOffers({
         return
       }
 
-      void checkVenueSurveyAccess(surveyConfig.key).then((isAccessed) => {
+      void checkVenueSurveyAccess(surveyConfig.key, 'banner').then((isAccessed) => {
         setHasSurveyAccess(!isAccessed)
       })
     },
@@ -95,7 +95,8 @@ export function VenueOffers({
 
   const handleOnSurveyBeforeNavigate = async () => {
     if (surveyConfig) {
-      await markVenueSurveyAccess(surveyConfig.key)
+      await markVenueSurveyAccess(surveyConfig.key, 'modal')
+      await markVenueSurveyAccess(surveyConfig.key, 'banner')
       setHasSurveyAccess(false)
     }
   }
