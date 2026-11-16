@@ -510,8 +510,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLogin: (params: { method: LoginRoutineMethod; type?: LoginType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN }, params),
-  logLoginClicked: (params: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
+  logLoginClicked: (params: {
+    from: string
+    itemType?: 'offer' | 'venue' | 'artist'
+    offerId?: number
+    venueId?: number
+    artistId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
   logMapSeenDuration: (params: { duration: number; mapType: MapType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.MAP_SEEN_DURATION }, params),
@@ -647,16 +652,17 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL }, { offerId }),
   logSignInFromFavorite: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_FAVORITE }),
-  logSignInFromOffer: (offerId: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_OFFER }, { offerId }),
-  logSignUpClicked: ({ from }: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, { from }),
+  logSignUpClicked: (params: {
+    from: string
+    itemType?: 'offer' | 'venue' | 'artist'
+    offerId?: number
+    venueId?: number
+    artistId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, params),
   logSignUpFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL }, { offerId }),
   logSignUpFromFavorite: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_FAVORITE }),
-  logSignUpFromOffer: (offerId: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_OFFER }, { offerId }),
   logSignUpTooYoung: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>

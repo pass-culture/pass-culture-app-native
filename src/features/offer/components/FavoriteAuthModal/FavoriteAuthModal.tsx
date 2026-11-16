@@ -19,15 +19,17 @@ type BaseProps = {
 
 type Props = BaseProps &
   (
-    | { offerId: number; artistId?: never }
-    | { artistId: string; offerId?: never }
-    | { offerId?: number; artistId?: string }
+    | { offerId: number; artistId?: never; venueId?: never }
+    | { artistId: string; offerId?: never; venueId?: never }
+    | { venueId: number; offerId?: never; artistId?: never }
+    | { offerId?: number; artistId?: string; venueId?: number }
   )
 
 export const FavoriteAuthModal: FunctionComponent<Props> = ({
   visible,
   offerId,
   artistId,
+  venueId,
   dismissModal,
 }) => {
   const authParams = useMemo(
@@ -35,9 +37,23 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({
       from: StepperOrigin.FAVORITE,
       ...(offerId ? { offerId } : {}),
       ...(artistId ? { artistId } : {}),
+      ...(venueId ? { venueId } : {}),
     }),
-    [offerId, artistId]
+    [offerId, artistId, venueId]
   )
+
+  const favoriteAnalyticsParams = useMemo(() => {
+    if (offerId) {
+      return { from: 'offer_favorite' as const, itemType: 'offer' as const, offerId }
+    }
+    if (artistId) {
+      return { from: 'artist_favorite' as const, itemType: 'artist' as const, artistId }
+    }
+    if (venueId) {
+      return { from: 'venue_favorite' as const, itemType: 'venue' as const, venueId }
+    }
+    return null
+  }, [offerId, artistId, venueId])
 
   const closeModal = useCallback(() => {
     if (offerId) {
@@ -47,19 +63,18 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({
   }, [dismissModal, offerId])
 
   const signUp = useCallback(() => {
-    if (offerId) {
-      void analytics.logSignUpFromOffer(offerId)
-      void analytics.logSignUpClicked({ from: 'offer_favorite' })
+    if (favoriteAnalyticsParams) {
+      void analytics.logSignUpClicked(favoriteAnalyticsParams)
     }
     dismissModal()
-  }, [dismissModal, offerId])
+  }, [dismissModal, favoriteAnalyticsParams])
 
   const signIn = useCallback(() => {
-    if (offerId) {
-      void analytics.logSignInFromOffer(offerId)
+    if (favoriteAnalyticsParams) {
+      void analytics.logLoginClicked(favoriteAnalyticsParams)
     }
     dismissModal()
-  }, [dismissModal, offerId])
+  }, [dismissModal, favoriteAnalyticsParams])
 
   return (
     <AppModalWithIllustration
