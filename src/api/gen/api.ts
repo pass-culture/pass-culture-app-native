@@ -4082,6 +4082,11 @@ export interface PlaylistRequestBody {
    * @type {boolean | null}
    * @memberof PlaylistRequestBody
    */
+  isQpi?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof PlaylistRequestBody
+   */
   isRecoShuffled?: boolean | null
   /**
    * @type {Array<Map> | null}
