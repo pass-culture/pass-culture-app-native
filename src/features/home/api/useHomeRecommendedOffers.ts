@@ -35,14 +35,15 @@ export function getRecommendationParameters(
 
   return {
     endDate: endingDatetime,
-    isEvent: parameters?.isEvent,
-    priceMin: parameters?.priceMin,
-    priceMax: parameters?.priceMax,
+    isEvent: parameters.isEvent,
+    priceMin: parameters.priceMin,
+    priceMax: parameters.priceMax,
     startDate: beginningDatetime,
     subcategories,
     isDuo: parameters.isDuo,
     isRecoShuffled: parameters.isRecoShuffled,
     offerTypeList: offertTypeValue,
+    isQpi: parameters.isQPI,
   }
 }
 

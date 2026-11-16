@@ -217,6 +217,7 @@ export type RecommendedOffersParameters = {
   movieGenres?: string[]
   musicTypes?: string[]
   showTypes?: string[]
+  isQPI?: boolean
 }
 
 export type ThematicHighlightModule = {

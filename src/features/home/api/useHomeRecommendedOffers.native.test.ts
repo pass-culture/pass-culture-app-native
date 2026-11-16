@@ -144,4 +144,34 @@ describe('getRecommendationParameters', () => {
       ],
     })
   })
+
+  it('should return parameters with isQPI when provided', () => {
+    const parameters: RecommendedOffersParameters = {
+      categories: ['Cinéma'],
+      isQPI: true,
+    }
+    const categories = (parameters?.categories ?? []).map(getCategoriesFacetFilters)
+    const subcategories = (parameters?.subcategories ?? [])
+      .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
+      .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
+    const subcategoryIds = useSubcategoryIdsFromSearchGroups(categories)
+    const recommendationParameters = getRecommendationParameters(parameters, [
+      ...subcategories,
+      ...subcategoryIds,
+    ])
+
+    expect(recommendationParameters).toEqual({
+      isQpi: true,
+      offerTypeList: [],
+      subcategories: [
+        'CARTE_CINE_ILLIMITE',
+        'CARTE_CINE_MULTISEANCES',
+        'CINE_PLEIN_AIR',
+        'CINE_VENTE_DISTANCE',
+        'EVENEMENT_CINE',
+        'FESTIVAL_CINE',
+        'SEANCE_CINE',
+      ],
+    })
+  })
 })
