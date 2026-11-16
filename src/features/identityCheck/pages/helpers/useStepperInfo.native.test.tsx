@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
-import { ActivityIdEnum, SubscriptionStepperResponseV3 } from 'api/gen'
+import { ActivityIdEnum, IdentityCheckMethod, SubscriptionStepperResponseV3 } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
@@ -8,7 +8,9 @@ import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useS
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 
 const mockIdentityCheckState = mockState
@@ -127,6 +129,55 @@ describe('useStepperInfo', () => {
   })
 
   describe('profile step', () => {
+    describe('when FF simplified18Activation is on', () => {
+      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18]))
+
+      it.each([IdentityCheckMethod.dms, IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect])(
+        'should display CheckAddress when user is eligible, underageBeneficiary and underageOkIdentityCheckMethod is %s',
+        (method) => {
+          mockUseAuthContext.mockReturnValueOnce({
+            user: {
+              ...underageBeneficiaryUser,
+              domainsCredit: { all: { initial: 5000, remaining: 0 } },
+            },
+          })
+          mockUseGetStepperInfo.mockReturnValueOnce({
+            data: {
+              ...SubscriptionStepperResponseFixture,
+              underageOkIdentityCheckMethod: method,
+            },
+          })
+
+          const { stepsDetails } = useStepperInfo()
+          const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
+
+          expect(profileStep?.firstScreen).toEqual('CheckAddress')
+        }
+      )
+    })
+
+    describe('when FF simplified18Activation is off', () => {
+      it('should display ProfileInformationValidationCreate when user is eligible and underageOkIdentityCheckMethod is dms', () => {
+        mockUseAuthContext.mockReturnValueOnce({
+          user: {
+            ...underageBeneficiaryUser,
+            domainsCredit: { all: { initial: 5000, remaining: 0 } },
+          },
+        })
+        mockUseGetStepperInfo.mockReturnValueOnce({
+          data: {
+            ...SubscriptionStepperResponseFixture,
+            underageOkIdentityCheckMethod: IdentityCheckMethod.dms,
+          },
+        })
+
+        const { stepsDetails } = useStepperInfo()
+        const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
+
+        expect(profileStep?.firstScreen).toEqual('ProfileInformationValidationCreate')
+      })
+    })
+
     it('should show subtitle when given', () => {
       mockUseAuthContext.mockReturnValueOnce({ user: null })
       const { stepsDetails } = useStepperInfo()

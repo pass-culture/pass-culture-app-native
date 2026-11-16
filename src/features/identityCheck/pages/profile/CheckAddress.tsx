@@ -1,38 +1,58 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
-import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { Summary } from 'features/identityCheck/components/Summary'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
-import { CheckAddressPage } from './CheckAddressPage'
+import { useCheckAddress } from './useCheckAddress'
 
-export function CheckAddress() {
-  const { params } = useRoute<UseRouteType<'CheckAddress'>>()
-  const { user } = useAuthContext()
-  const [navigator, screenConfig] = getSubscriptionHookConfig('BeneficiaryAccountCreated', {
-    from: 'IdentityCheckHonor',
-  })
-  const { navigate } = useNavigation<UseNavigationType>()
+export const CheckAddress = () => {
+  const { address, city, summaryTitle, onValidate, isLoading, onPressModify, honorStatement } =
+    useCheckAddress()
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
-    <CheckAddressPage
-      address={user?.street}
-      city={`${user?.postalCode}, ${user?.city}`}
-      summaryTitle={
-        params?.fromChangeAddress
-          ? 'Vérifie que ces informations sont correctes avant de continuer'
-          : 'Habites-tu toujours à cette adresse\u00a0?'
+    <PageWithHeader
+      shouldLimitWidth
+      title="Informations"
+      scrollChildren={
+        <ViewGap gap={6}>
+          <Summary
+            title={summaryTitle}
+            data={[
+              { title: 'Adresse', value: address },
+              { title: 'Ville de résidence', value: city },
+            ]}
+          />
+          {honorStatement ? (
+            <Checkbox
+              label="Je déclare que l’ensemble des informations ci-dessus sont correctes."
+              isChecked={isChecked}
+              onPress={() => setIsChecked(!isChecked)}
+              required
+            />
+          ) : null}
+        </ViewGap>
       }
-      onValidate={() => navigate(navigator, { ...screenConfig, params: { from: 'CheckAddress' } })}
-      onPressModify={() =>
-        navigate(
-          ...getProfileHookConfig('ChangeCity', {
-            type: PersonalDataTypes.CHECK_ADDRESS_DATA,
-          })
-        )
+      fixedBottomChildren={
+        <ViewGap gap={4}>
+          <Button
+            type="submit"
+            wording="Valider mon adresse"
+            onPress={onValidate}
+            disabled={honorStatement && !isChecked}
+            isLoading={isLoading}
+          />
+          <Button
+            type="button"
+            variant="secondary"
+            wording="Modifier mon adresse"
+            onPress={onPressModify}
+            disabled={isLoading}
+          />
+        </ViewGap>
       }
     />
   )

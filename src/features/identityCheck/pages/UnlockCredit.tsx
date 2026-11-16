@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { shouldUseSimplifiedActivation18 } from 'features/identityCheck/helpers/shouldUseSimplifiedActivation18'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -18,16 +20,29 @@ export function UnlockCredit() {
     RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18
   )
   const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
+  const { data } = useGetStepperInfoQuery()
+  const shouldUseSimplifiedActivation = shouldUseSimplifiedActivation18({
+    enableSimplifiedActivation18,
+    user,
+    underageOkIdentityCheckMethod: data?.underageOkIdentityCheckMethod,
+  })
 
-  useEffect(() => {
+  useEffect(function markEligibleCardAsSeen() {
     void storage.saveObject('has_seen_eligible_card', true)
   }, [])
 
   const pageWording = getPageWording({
     eighteenYearsOldDeposit,
     userRequiresIdCheck: user?.requiresIdCheck,
-    enableSimplifiedActivation18,
+    shouldUseSimplifiedActivation,
   })
+
+  const primaryButtonNavigation =
+    shouldUseSimplifiedActivation &&
+    (data?.underageOkIdentityCheckMethod === 'ubble' ||
+      data?.underageOkIdentityCheckMethod === 'dms')
+      ? getSubscriptionPropConfig('CheckAddress')
+      : getSubscriptionPropConfig('Stepper')
 
   return (
     <GenericInfoPage
@@ -46,7 +61,7 @@ export function UnlockCredit() {
       subtitle={pageWording.text}
       buttonPrimary={{
         wording: pageWording.buttonText,
-        navigateTo: getSubscriptionPropConfig('Stepper'),
+        navigateTo: primaryButtonNavigation,
       }}
       buttonTertiary={{
         wording: 'Plus tard',
@@ -59,14 +74,14 @@ export function UnlockCredit() {
 
 const getPageWording = ({
   userRequiresIdCheck,
-  enableSimplifiedActivation18,
+  shouldUseSimplifiedActivation,
   eighteenYearsOldDeposit,
 }: {
   userRequiresIdCheck?: boolean
-  enableSimplifiedActivation18: boolean
+  shouldUseSimplifiedActivation: boolean
   eighteenYearsOldDeposit: string
 }) => {
-  if (enableSimplifiedActivation18) {
+  if (shouldUseSimplifiedActivation) {
     return {
       title: 'Obtiens ton crédit\u00a0',
       text: `Vérifie tes informations pour débloquer tes ${eighteenYearsOldDeposit}.`,

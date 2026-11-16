@@ -76,9 +76,17 @@ export const beneficiaryUser: UserProfile = {
 export const underageBeneficiaryUser: UserProfile = {
   ...beneficiaryUser,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
-  statusType: UserStatusType.GENERAL_PUBLIC,
-  creditType: UserCreditType.CREDIT_EMPTY,
-  eligibilityType: UserEligibilityType.NOT_ELIGIBLE,
+  statusType: UserStatusType.ELIGIBLE_AND_BENEFICIARY,
+  creditType: UserCreditType.CREDIT_V3_17,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+}
+
+export const eligibleUser: UserProfile = {
+  ...nonBeneficiaryUser,
+  roles: [UserRole.FREE_BENEFICIARY],
+  statusType: UserStatusType.ELIGIBLE,
+  creditType: UserCreditType.NO_CREDIT,
+  eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
 }
 
 export const exBeneficiaryUser: UserProfile = {

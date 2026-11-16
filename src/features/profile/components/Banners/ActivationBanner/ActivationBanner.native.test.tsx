@@ -1,15 +1,23 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
+import { navigate } from '__mocks__/@react-navigation/native'
+import { IdentityCheckMethod } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { ActivationBanner } from 'features/profile/components/Banners/ActivationBanner/ActivationBanner'
 import { BannerType } from 'features/profile/helpers/getBannerActivationType'
 import * as bannerHelper from 'features/profile/helpers/getBannerActivationType'
+import { beneficiaryUser } from 'fixtures/user'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
-import { render, screen } from 'tests/utils'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/auth/context/AuthContext')
+jest.useFakeTimers()
 
 jest.mock('features/home/api/useActivationBanner', () => ({
   useActivationBanner: jest.fn(),
@@ -32,6 +40,81 @@ const featureFlags = {
 }
 
 describe('ActivationBanner', () => {
+  beforeEach(() => {
+    mockUseActivationBanner.mockReturnValue({
+      banner: { title: 'Titre', text: 'Texte', name: 'activation_banner' },
+    })
+    mockUseGetStepperInfoQuery.mockReturnValue({ data: {} })
+    mockUseFeatureFlagOptionsQuery.mockReturnValue({ options: { message: 'désactivé' } })
+  })
+
+  it('should navigate to the identity check stepper when WIP_SIMPLIFIED_ACTIVATION_18 flag is disabled', async () => {
+    setFeatureFlags([])
+    mockAuthContextWithUser(
+      { ...beneficiaryUser, domainsCredit: { all: { initial: 5000, remaining: 0 } } },
+      { persist: true }
+    )
+    mockUseGetStepperInfoQuery.mockReturnValueOnce({
+      data: { underageOkIdentityCheckMethod: IdentityCheckMethod.educonnect },
+    })
+    jest
+      .spyOn(bannerHelper, 'getBannerActivationType')
+      .mockReturnValueOnce(BannerType.ACTIVATION_DEFAULT)
+
+    render(<ActivationBanner featureFlags={featureFlags} />)
+    await userEvent.setup().press(screen.getByLabelText('Titre - Texte'))
+
+    expect(navigate.mock.calls.at(-1)).toEqual([
+      'SubscriptionStackNavigator',
+      { screen: 'Stepper', params: { from: 'home' } },
+    ])
+  })
+
+  describe('when WIP_SIMPLIFIED_ACTIVATION_18 flag enabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18])
+    })
+
+    it('should navigate to UnlockEighteenCredit when user has initial credit', async () => {
+      mockAuthContextWithUser(
+        { ...beneficiaryUser, domainsCredit: { all: { initial: 5000, remaining: 0 } } },
+        { persist: true }
+      )
+      mockUseGetStepperInfoQuery.mockReturnValueOnce({
+        data: { underageOkIdentityCheckMethod: IdentityCheckMethod.educonnect },
+      })
+      jest
+        .spyOn(bannerHelper, 'getBannerActivationType')
+        .mockReturnValueOnce(BannerType.ACTIVATION_DEFAULT)
+
+      render(<ActivationBanner featureFlags={featureFlags} />)
+      await userEvent.setup().press(screen.getByLabelText('Titre - Texte'))
+
+      expect(navigate.mock.calls.at(-1)).toEqual(['EighteenBirthday'])
+    })
+
+    it('should navigate to the identity check stepper when user has no initial credit', async () => {
+      mockAuthContextWithUser(
+        { ...beneficiaryUser, domainsCredit: { all: { initial: 0, remaining: 0 } } },
+        { persist: true }
+      )
+      mockUseGetStepperInfoQuery.mockReturnValueOnce({
+        data: { underageOkIdentityCheckMethod: IdentityCheckMethod.educonnect },
+      })
+      jest
+        .spyOn(bannerHelper, 'getBannerActivationType')
+        .mockReturnValueOnce(BannerType.ACTIVATION_DEFAULT)
+
+      render(<ActivationBanner featureFlags={featureFlags} />)
+      await userEvent.setup().press(screen.getByLabelText('Titre - Texte'))
+
+      expect(navigate.mock.calls.at(-1)).toEqual([
+        'SubscriptionStackNavigator',
+        { screen: 'Stepper', params: { from: 'home' } },
+      ])
+    })
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })

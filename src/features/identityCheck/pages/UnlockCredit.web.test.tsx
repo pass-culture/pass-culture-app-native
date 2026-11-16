@@ -2,6 +2,7 @@ import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { UnlockCredit } from './UnlockCredit'
@@ -19,7 +20,7 @@ describe('<UnlockCredit/>', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<UnlockCredit />)
+      const { container } = render(reactQueryProviderHOC(<UnlockCredit />))
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
