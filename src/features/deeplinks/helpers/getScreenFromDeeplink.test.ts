@@ -88,6 +88,39 @@ describe('getScreenFromDeeplink()', () => {
     expect(screen).toEqual('Offer')
     expect(params).toEqual({ id: 666, from: 'offer' })
   })
+
+  it('should return PreviewInstallModal with platform and downloadUrl', () => {
+    const downloadUrl =
+      'https://appdistribution.firebase.google.com/testerapps/1:120827407785:android:fake/releases/abc'
+    const path = getScreenPath('PreviewInstallModal', {
+      platform: 'android',
+      downloadUrl,
+    })
+    const { screen, params } = getScreenFromDeeplink(getFullUrl(path))
+
+    expect(screen).toEqual('PreviewInstallModal')
+    expect(params).toEqual({
+      platform: 'android',
+      downloadUrl,
+    })
+  })
+
+  it('should return PreviewInstallModal from custom scheme path', () => {
+    const downloadUrl = 'https://appdistribution.firebase.google.com/testerapps/fake'
+    const path = getScreenPath('PreviewInstallModal', {
+      platform: 'ios',
+      downloadUrl,
+    })
+    const { screen, params } = getScreenFromDeeplink(
+      `passculturetesting://${path.replace(/^\//, '')}`
+    )
+
+    expect(screen).toEqual('PreviewInstallModal')
+    expect(params).toEqual({
+      platform: 'ios',
+      downloadUrl,
+    })
+  })
 })
 
 function getFullUrl(path: string, webappUrl = WEBAPP_V2_URL) {

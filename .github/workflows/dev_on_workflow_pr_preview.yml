@@ -19,6 +19,10 @@ on:
         description: 'Time to live for the preview deployment (e.g., "3d" for 3 days)'
         type: string
         default: '3d'
+    outputs:
+      preview_url:
+        description: Firebase Hosting preview URL
+        value: ${{ jobs.deploy_on_firebase.outputs.preview_url }}
     secrets:
       github_app_id:
         description: 'The GitHub App ID for the PassCulture GitHub App'
@@ -41,6 +45,8 @@ jobs:
       id-token: write
     environment:
       name: app-native-${{ inputs.environment }}
+    outputs:
+      preview_url: ${{ steps.deploy.outputs.preview_url }}
     steps:
       - name: Enable Corepack
         run: corepack enable

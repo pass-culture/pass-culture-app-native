@@ -1,11 +1,29 @@
 fastlane_require 'dotenv'
 fastlane_require 'spaceship'
+require 'json'
 release_notes_command = "git log HEAD --pretty=format:\"%s\" -1"
 
 import("FastfileConfig")
 import("FastfileCheck")
 import("FastfileEnvironment")
 import("FastfileIOSSigning")
+
+def write_firebase_app_distribution_release(release)
+  payload =
+    if release.respond_to?(:to_h)
+      release.to_h
+    elsif release.is_a?(Hash)
+      release
+    else
+      { "raw" => release.to_s }
+    end
+  # Normalize keys so CI can always read testingUri
+  normalized = payload.transform_keys(&:to_s)
+  path = File.expand_path('../firebase_app_distribution_release.json', __dir__)
+  File.write(path, JSON.pretty_generate(normalized))
+  UI.important("Wrote App Distribution release to #{path}")
+  UI.important("testingUri: #{normalized['testingUri'] || normalized['testing_uri']}")
+end
 
 # iOS
 
@@ -42,13 +60,14 @@ platform :ios do
   end
   
   lane :deploy_appDistribution do |options|
-    firebase_app_distribution(
+    release = firebase_app_distribution(
         app: ENV['FIREBASE_PUBLIC_IOS_APP_ID'],
         release_notes: escaped_release_notes,
         ipa_path: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
         service_credentials_file: options[:firebase_token],
         groups: "devs, pms, designers, qa"
     )
+    write_firebase_app_distribution_release(release)
   end
 
   lane :deploy do |options|
@@ -115,13 +134,14 @@ platform :android do
   end
   
   lane :deploy_appDistribution do |options|
-    firebase_app_distribution(
+    release = firebase_app_distribution(
         app: ENV['FIREBASE_PUBLIC_ANDROID_APP_ID'],
         android_artifact_type: 'APK' ,
         android_artifact_path: ENV["ANDROID_FILE_PATH"],
         service_credentials_file: options[:firebase_token],
         groups: "devs, pms, designers, qa"
     )
+    write_firebase_app_distribution_release(release)
   end
 
   lane :deploy do |options|

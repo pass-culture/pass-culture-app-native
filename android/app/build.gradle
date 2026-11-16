@@ -194,6 +194,9 @@ android {
         }
         preview {
             dimension "environment"
+            // Identical on every preview binary so testers can install any fingerprint
+            // over another without uninstalling. Android rejects a lower versionCode.
+            versionCode 1
         }
         development {
             dimension "environment"

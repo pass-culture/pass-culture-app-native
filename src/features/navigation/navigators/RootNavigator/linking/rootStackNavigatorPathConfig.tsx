@@ -205,6 +205,10 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
   VenueMapLocationModal: {
     path: 'modale-de-localisation-carte',
   },
+  PreviewInstallModal: {
+    path: 'preview-install',
+    parse: screenParamsParser.PreviewInstallModal,
+  },
 }
 
 export const rootStackNavigatorPathConfig = {

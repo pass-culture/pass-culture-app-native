@@ -121,6 +121,7 @@ tsconfig.tsbuildinfo
 
 # firebase
 firebase-debug.log
+firebase_app_distribution_release.json
 
 # server
 /server/.env

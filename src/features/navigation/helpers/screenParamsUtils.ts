@@ -19,6 +19,7 @@ type ScreensRequiringParsing = Extract<
   | 'Offer'
   | 'OfferPreview'
   | 'OfferVideoPreview'
+  | 'PreviewInstallModal'
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
   | 'Venue'
@@ -145,6 +146,10 @@ export const screenParamsParser: ParamsParsers = {
   },
   OfferVideoPreview: {
     id: Number,
+  },
+  PreviewInstallModal: {
+    platform: identityFn,
+    downloadUrl: identityFn,
   },
   Home: {
     latitude: Number,

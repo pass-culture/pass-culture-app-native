@@ -372,6 +372,10 @@ export type RootStackParamList = {
     openedFrom: Referrals
   }
   GeolocationActivationModal: undefined
+  PreviewInstallModal: {
+    platform?: string
+    downloadUrl?: string
+  }
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

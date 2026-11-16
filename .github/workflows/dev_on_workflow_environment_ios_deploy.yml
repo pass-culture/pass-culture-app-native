@@ -6,6 +6,10 @@ on:
       ENV:
         type: string
         required: true
+    outputs:
+      testing_uri:
+        description: Firebase App Distribution tester link (preview builds)
+        value: ${{ jobs.sentry_and_deploy.outputs.testing_uri }}
 
 jobs:
   sentry_and_deploy:
@@ -14,6 +18,8 @@ jobs:
     timeout-minutes: 90
     environment:
       name: app-native-${{ inputs.ENV }}
+    outputs:
+      testing_uri: ${{ steps.preview_release.outputs.testing_uri }}
     steps:
       - name: Is deployment targeting ehp or production
         id: cloudenv
@@ -121,6 +127,17 @@ jobs:
           else
             bundle exec fastlane ios deploy --env "${ENV}" --verbose
           fi
+
+      - name: Expose App Distribution testing URI
+        if: inputs.ENV == 'preview'
+        id: preview_release
+        run: |
+          TESTING_URI=$(jq -r '.testingUri // .testing_uri // empty' firebase_app_distribution_release.json)
+          if [ -z "$TESTING_URI" ]; then
+            echo "testingUri missing from firebase_app_distribution_release.json" >&2
+            exit 1
+          fi
+          echo "testing_uri=$TESTING_URI" >> "$GITHUB_OUTPUT"
 
       - name: Create Sentry sourcemaps
         if: inputs.ENV != 'preview'
