@@ -82,7 +82,8 @@ describe('VenueSurveyModal', () => {
       1,
       'https://passculture.qualtrics.com/jfe/form/SV_eVFob8fL2Qpd5ga'
     )
-    expect(markVenueSurveyAccessSpy).toHaveBeenCalledWith('BOOKSHOP_AND_LIBRARY')
+    expect(markVenueSurveyAccessSpy).toHaveBeenCalledWith('BOOKSHOP_AND_LIBRARY', 'modal')
+    expect(markVenueSurveyAccessSpy).toHaveBeenCalledWith('BOOKSHOP_AND_LIBRARY', 'banner')
     expect(dispatch).toHaveBeenCalledWith(StackActions.pop(2))
   })
 })
