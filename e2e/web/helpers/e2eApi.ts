@@ -1,6 +1,6 @@
 import { APIRequestContext } from '@playwright/test'
 
-function getE2eCredentials() {
+const getE2eCredentials = () => {
   const baseUrl = process.env.E2E_API_BASE_URL ?? ''
   const apiKey = process.env.E2E_API_KEY ?? ''
   if (!baseUrl || !apiKey) {
@@ -17,7 +17,9 @@ type GeneratedUser = {
   confirmationPath: string
 }
 
-export async function generateBeneficiaryUser(request: APIRequestContext): Promise<GeneratedUser> {
+export const generateBeneficiaryUser = async (
+  request: APIRequestContext
+): Promise<GeneratedUser> => {
   const { baseUrl, apiKey } = getE2eCredentials()
   const response = await request.post(`${baseUrl}/account`, {
     headers: { 'x-api-key': apiKey },
@@ -38,10 +40,10 @@ type GeneratedOffer = {
   name: string
 }
 
-async function generateOffer(
+const generateOffer = async (
   request: APIRequestContext,
   overrides: { name: string; subcategoryId: string }
-): Promise<GeneratedOffer> {
+): Promise<GeneratedOffer> => {
   const { baseUrl, apiKey } = getE2eCredentials()
   const response = await request.post(`${baseUrl}/offer`, {
     headers: { 'x-api-key': apiKey },
@@ -60,14 +62,16 @@ async function generateOffer(
   return { id: body.id, name: body.name }
 }
 
-export function generateCinemaOffer(request: APIRequestContext): Promise<GeneratedOffer> {
-  return generateOffer(request, {
+export const generateCinemaOffer = (request: APIRequestContext): Promise<GeneratedOffer> =>
+  generateOffer(request, {
     name: `E2E web - séance cinéma ${Date.now()}`,
     subcategoryId: 'SEANCE_CINE',
   })
-}
 
-export async function deactivateOffer(request: APIRequestContext, offerId: number): Promise<void> {
+export const deactivateOffer = async (
+  request: APIRequestContext,
+  offerId: number
+): Promise<void> => {
   const { baseUrl, apiKey } = getE2eCredentials()
   await request.post(`${baseUrl}/offer/${offerId}/deactivate`, {
     headers: { 'x-api-key': apiKey },
