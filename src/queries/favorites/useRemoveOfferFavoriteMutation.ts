@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
-import { PaginatedFavoritesResponse } from 'api/gen'
+import { PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { FavoriteOfferMutationContext } from 'features/favorites/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -13,13 +13,13 @@ export const useRemoveOfferFavoriteMutation = ({ onError }: RemoveOfferFavorite)
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (favoriteId: number) => api.deleteNativeV1MeFavoritesfavoriteId(favoriteId),
+    mutationFn: (favoriteId: number) => api.deleteNativeV2MeFavoritesOffersfavoriteId(favoriteId),
     onMutate: async (favoriteId) => {
       await queryClient.cancelQueries({
         queryKey: [QueryKeys.FAVORITES_OFFER],
       })
       // Snapshot the previous value
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
+      const previousFavorites = queryClient.getQueryData<PaginatedResponseFavoriteOfferResponseV2>([
         QueryKeys.FAVORITES_OFFER,
       ])
 
@@ -28,11 +28,14 @@ export const useRemoveOfferFavoriteMutation = ({ onError }: RemoveOfferFavorite)
         const favorites = previousFavorites.favorites.filter(
           (favorite) => favorite.id !== favoriteId
         )
-        queryClient.setQueryData<PaginatedFavoritesResponse>([QueryKeys.FAVORITES_OFFER], {
-          ...previousFavorites,
-          nbFavorites: favorites.length,
-          favorites,
-        })
+        queryClient.setQueryData<PaginatedResponseFavoriteOfferResponseV2>(
+          [QueryKeys.FAVORITES_OFFER],
+          {
+            ...previousFavorites,
+            nbFavorites: favorites.length,
+            favorites,
+          }
+        )
       }
 
       return { previousFavorites: previousFavorites ?? [] } as FavoriteOfferMutationContext

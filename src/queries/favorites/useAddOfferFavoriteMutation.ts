@@ -3,9 +3,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import {
+  FavoriteOfferResponseV2,
   FavoriteRequest,
-  FavoriteResponse,
-  PaginatedFavoritesResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
   SubcategoryIdEnum,
 } from 'api/gen'
 import { FavoriteType } from 'features/favorites/enum'
@@ -18,7 +18,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 type UseAddOfferFavoriteMutationProps = {
   type: FavoriteType
-  onSuccess?: (data?: FavoriteResponse) => void
+  onSuccess?: (data?: FavoriteOfferResponseV2) => void
 }
 
 export const useAddOfferFavoriteMutation = ({
@@ -29,9 +29,9 @@ export const useAddOfferFavoriteMutation = ({
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (body: FavoriteRequest) => api.postNativeV1MeFavorites(body),
-    onSuccess: async (data: FavoriteResponse) => {
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
+    mutationFn: (body: FavoriteRequest) => api.postNativeV2MeFavoritesOffers(body),
+    onSuccess: async (data: FavoriteOfferResponseV2) => {
+      const previousFavorites = queryClient.getQueryData<PaginatedResponseFavoriteOfferResponseV2>([
         QueryKeys.FAVORITES_OFFER,
       ])
 
@@ -59,7 +59,7 @@ export const useAddOfferFavoriteMutation = ({
       }
     },
     onMutate: ({ offerId }) => {
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
+      const previousFavorites = queryClient.getQueryData<PaginatedResponseFavoriteOfferResponseV2>([
         QueryKeys.FAVORITES_OFFER,
       ])
       if (previousFavorites) {

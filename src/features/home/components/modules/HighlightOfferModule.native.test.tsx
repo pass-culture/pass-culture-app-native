@@ -2,7 +2,11 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { FavoriteResponse, PaginatedFavoritesResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  FavoriteOfferResponseV2,
+  PaginatedResponseFavoriteOfferResponseV2,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
@@ -37,17 +41,17 @@ jest.useFakeTimers()
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
     mockdate.set(new Date(today * 1000))
-    const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
+    const favoritesResponseWithoutOfferIn: PaginatedResponseFavoriteOfferResponseV2 = {
       page: 1,
       nbFavorites: 0,
       favorites: [],
     }
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
-    mockServer.getApi<PaginatedFavoritesResponse>(
-      '/v1/me/favorites',
+    mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+      '/v2/me/favorites/offers',
       favoritesResponseWithoutOfferIn
     )
-    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
   })
 
   it('should navigate to offer page on press', async () => {

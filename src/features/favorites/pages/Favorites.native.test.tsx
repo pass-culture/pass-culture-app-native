@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PaginatedFavoritesResponse } from 'api/gen'
+import { PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -42,8 +42,8 @@ describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
-    mockServer.getApi<PaginatedFavoritesResponse>(
-      '/v1/me/favorites',
+    mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+      '/v2/me/favorites/offers',
       paginatedOfferFavoritesResponseSnap
     )
     render(reactQueryProviderHOC(<Favorites />))

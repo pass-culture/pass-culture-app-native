@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 import {
   CategoryIdEnum,
   FavoriteArtistResponse,
-  FavoriteResponse,
+  FavoriteOfferResponseV2,
   OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
@@ -63,7 +63,7 @@ type BaseFavoriteProps = {
 
 export type OfferFavoriteProps = {
   addFavorite?: ({ offerId }: { offerId: number }) => void
-  favorite?: FavoriteResponse | null
+  favorite?: FavoriteOfferResponseV2 | null
 } & BaseFavoriteProps
 
 export type ArtistFavoriteProps = {

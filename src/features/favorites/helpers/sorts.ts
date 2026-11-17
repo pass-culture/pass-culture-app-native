@@ -1,12 +1,12 @@
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponseV2 } from 'api/gen'
 import { Position } from 'libs/location/location'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
-function getOfferPrice({ offer }: FavoriteResponse): number | null {
+function getOfferPrice({ offer }: FavoriteOfferResponseV2): number | null {
   return offer.startPrice ?? offer.price ?? null
 }
 
-export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {
+export function sortByAscendingPrice(a: FavoriteOfferResponseV2, b: FavoriteOfferResponseV2) {
   // If only offer is expired, we rank it last.
   if (a.offer.isExpired && !b.offer.isExpired) return 1
   if (!a.offer.isExpired && b.offer.isExpired) return -1
@@ -21,12 +21,12 @@ export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {
   return aPrice - bPrice
 }
 
-export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
+export function sortByIdDesc(a: FavoriteOfferResponseV2, b: FavoriteOfferResponseV2) {
   return b.id - a.id
 }
 
 export function sortByDistanceAroundMe(position: Position) {
-  return (a: FavoriteResponse, b: FavoriteResponse) => {
+  return (a: FavoriteOfferResponseV2, b: FavoriteOfferResponseV2) => {
     if (!position) return 0
 
     let aCoordinate, bCoordinate

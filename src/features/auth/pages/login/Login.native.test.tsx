@@ -6,7 +6,7 @@ import * as API from 'api/api'
 import {
   AccountState,
   FavoriteArtistResponse,
-  FavoriteResponse,
+  FavoriteOfferResponseV2,
   OauthStateResponseV2,
   RecreditType,
   SigninResponseV2,
@@ -53,7 +53,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
-const apiPostOfferFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
+const apiPostOfferFavoriteSpy = jest.spyOn(API.api, 'postNativeV2MeFavoritesOffers')
 const apiPostArtistFavoriteSpy = jest.spyOn(API.api, 'postNativeV2MeFavoritesArtists')
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV2Signin')
 
@@ -71,7 +71,7 @@ setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
 describe('<Login/>', () => {
   beforeEach(() => {
     setFeatureFlags([])
-    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
     mockServer.postApi<FavoriteArtistResponse>(
       '/v2/me/favorites/artists',
       favoriteArtistResponseSnap
@@ -762,7 +762,7 @@ function simulateSigninNetworkFailure() {
 }
 
 function simulateAddOfferToFavorites() {
-  mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+  mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
 }
 
 function simulateAddArtistToFavorites() {
