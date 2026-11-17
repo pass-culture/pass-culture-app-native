@@ -8,6 +8,7 @@ export type StorageKey =
   | 'BOOKSHOP_AND_LIBRARY_banner_venue_survey'
   | 'BOOKSHOP_AND_LIBRARY_modal_venue_survey'
   | 'campaign_date'
+  | 'conversational_search_agent_id'
   | 'cookies'
   | 'credit_review_profile_started_at'
   | 'device_id'

@@ -12,6 +12,7 @@ import { CheatcodesNavigationBonification } from 'cheatcodes/pages/features/boni
 import { CheatcodesNavigationBookings } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
 import { CheatcodesScreenBookingNotFound } from 'cheatcodes/pages/features/bookings/CheatcodesScreenBookingNotFound'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
+import { CheatcodesScreenConversationalSearch } from 'cheatcodes/pages/features/conversationalSearch/CheatcodesScreenConversationalSearch'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/CheatcodesNavigationForceUpdate'
 import { CheatcodesNavigationHome } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
@@ -176,6 +177,11 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenCinemaScreeningCardList,
       linking: { path: 'cheatcodes/offer/cinema-screening-card-list' },
       options: { title: 'Cheatcodes - Tuiles séances cinéma' },
+    },
+    CheatcodesScreenConversationalSearch: {
+      screen: CheatcodesScreenConversationalSearch,
+      linking: { path: 'cheatcodes/conversational-search' },
+      options: { title: 'Cheatcodes - Recherche conversationnelle' },
     },
     CheatcodesScreenDefaultThematicHomeHeader: {
       screen: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
