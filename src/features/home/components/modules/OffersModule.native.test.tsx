@@ -190,7 +190,7 @@ describe('OffersModule', () => {
 
       expect(analytics.logViewItem).toHaveBeenCalledWith({
         origin: 'home',
-        playlistIndex: props.index,
+        playlistIndex: 0,
         index: 0,
         type: 'offer',
         id: '102280',
