@@ -3,6 +3,10 @@ import React from 'react'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import {
+  favoriteVenueResponseSnap,
+  venueFavoriteResponseSnap,
+} from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -26,6 +30,15 @@ const defaultOfferProps: FavoriteButtonProps = {
 
 const defaultArtistProps: FavoriteButtonProps = {
   artistId: mockArtist.id,
+  addFavorite: jest.fn(),
+  isAddFavoriteLoading: false,
+  removeFavorite: jest.fn(),
+  isRemoveFavoriteLoading: false,
+  favorite: null,
+}
+
+const defaultVenueProps: FavoriteButtonProps = {
+  venueId: venueFavoriteResponseSnap.id,
   addFavorite: jest.fn(),
   isAddFavoriteLoading: false,
   removeFavorite: jest.fn(),
@@ -227,6 +240,68 @@ describe('<FavoriteButton />', () => {
       })
 
       it('should display SignIn modal when pressing Favorite with artistId', async () => {
+        renderFavoriteButton(defaultArtistProps)
+
+        await user.press(await screen.findByLabelText('Mettre en favori'))
+
+        expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+      })
+    })
+  })
+
+  describe('with venueId', () => {
+    describe('user is logged in', () => {
+      it('should show "Retirer des favoris" when venue is in favorite', async () => {
+        renderFavoriteButton({
+          ...defaultVenueProps,
+          favorite: {
+            id: favoriteVenueResponseSnap.id,
+            venue: venueFavoriteResponseSnap,
+          },
+        })
+
+        expect(await screen.findByLabelText('Retirer des favoris')).toBeOnTheScreen()
+      })
+
+      it('should call addFavorite with venueId when pressing button and venue is not in favorite', async () => {
+        const mockAddFavorite = jest.fn()
+        renderFavoriteButton({
+          ...defaultVenueProps,
+          addFavorite: mockAddFavorite,
+        })
+
+        const button = await screen.findByLabelText('Mettre en favori')
+        await user.press(button)
+
+        expect(mockAddFavorite).toHaveBeenCalledTimes(1)
+        expect(mockAddFavorite).toHaveBeenCalledWith({ venueId: venueFavoriteResponseSnap.id })
+      })
+
+      it('should call removeFavorite with favorite.id when pressing button and venue is in favorite', async () => {
+        const mockRemoveFavorite = jest.fn()
+        renderFavoriteButton({
+          ...defaultVenueProps,
+          favorite: {
+            id: favoriteVenueResponseSnap.id,
+            venue: venueFavoriteResponseSnap,
+          },
+          removeFavorite: mockRemoveFavorite,
+        })
+
+        const button = await screen.findByLabelText('Retirer des favoris')
+        await user.press(button)
+
+        expect(mockRemoveFavorite).toHaveBeenCalledTimes(1)
+        expect(mockRemoveFavorite).toHaveBeenCalledWith(favoriteArtistResponseSnap.id)
+      })
+    })
+
+    describe('user is not logged in', () => {
+      beforeEach(() => {
+        mockAuthContextWithoutUser()
+      })
+
+      it('should display SignIn modal when pressing Favorite with venueId', async () => {
         renderFavoriteButton(defaultArtistProps)
 
         await user.press(await screen.findByLabelText('Mettre en favori'))
