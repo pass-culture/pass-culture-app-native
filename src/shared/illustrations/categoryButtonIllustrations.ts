@@ -2,6 +2,7 @@ import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategory
 
 export const categoryButtonIllustrationNames = [
   'Book',
+  'BusinessSuitcase',
   'Camera',
   'Computer',
   'Gift',
@@ -22,6 +23,7 @@ export type CategoryButtonIllustrationName = (typeof categoryButtonIllustrationN
 
 export const categoryButtonIllustrationUrls = {
   Book: buildCategoryIllustrationUrl('book%403x.png'),
+  BusinessSuitcase: buildCategoryIllustrationUrl('businessSuitcase.png'),
   Camera: buildCategoryIllustrationUrl('camera%403x.png'),
   Computer: buildCategoryIllustrationUrl('computer%403x.png'),
   Gift: buildCategoryIllustrationUrl('gift.png'),
