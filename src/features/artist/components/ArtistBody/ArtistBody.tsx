@@ -176,7 +176,8 @@ export const ArtistBody: FunctionComponent<Props> = ({
     .map(([key]) => key)
 
   const RightElementHeader = (
-    <RightElementContainer gap={4}>
+    <RightElementContainer gap={3}>
+      {ShareButton({ onPress: pressShareArtist })}
       {enableFavoriteButton ? (
         <FavoriteButton
           favorite={favorite}
@@ -187,7 +188,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
           isAddFavoriteLoading={isAddFavoriteLoading}
         />
       ) : null}
-      {ShareButton({ onPress: pressShareArtist })}
     </RightElementContainer>
   )
 
