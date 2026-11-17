@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useMemo, forwardRef, useImperativeHandle, useRef } from 'react'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
@@ -28,6 +27,8 @@ type ThemedStyledLottieViewProps = {
    * Set to false to let Lottie handle full playback without forced restarts.
    */
   usePartialPlayback?: boolean
+  onAnimationFinish?: (isCancelled: boolean) => void
+  speed?: number
 } & LottieColoringOptions
 
 export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyledLottieViewProps>(
@@ -44,6 +45,8 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
       targetShapeNames,
       targetLayerNames,
       usePartialPlayback = true,
+      onAnimationFinish,
+      speed,
     },
     ref
   ) => {
@@ -82,6 +85,8 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
         loop={loop}
         resizeMode={resizeMode}
         renderMode="SOFTWARE" // without this, animation breaks on iOS
+        onAnimationFinish={onAnimationFinish}
+        speed={speed}
       />
     )
   }
