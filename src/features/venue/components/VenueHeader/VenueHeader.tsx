@@ -1,8 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import { Animated } from 'react-native'
+import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { FavoriteType } from 'features/favorites/enum'
+import { selectVenueFavorite } from 'features/favorites/helpers/selectVenueFavorite'
+import { useVenueFavoritesQuery } from 'features/favorites/queries/useVenueFavoritesQuery'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -13,9 +17,14 @@ import { checkVenueSurveyAccess } from 'features/venue/helpers/venueSurveyAccess
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useAddVenueFavoriteMutation } from 'queries/favorites/useAddVenueFavoriteMutation'
+import { useRemoveVenueFavoriteMutation } from 'queries/favorites/useRemoveVenueFavoriteMutation'
+import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Share } from 'ui/svg/icons/Share'
 
 const FIVE_SECONDS_IN_MS = 5000
@@ -33,9 +42,26 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
 
   const enableVenueSurvey = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VENUE_SURVEY)
+  const enableFavoriteButton = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
   const surveyConfig = getSurveyConfigFromActivity(venue.activity)
 
   const mountTimeRef = useRef<number>(Date.now())
+
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddVenueFavoriteMutation({
+    type: FavoriteType.VENUE,
+  })
+
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
+    useRemoveVenueFavoriteMutation({
+      onError: () => {
+        showErrorSnackBar('Le lieu n’a pas été retiré de tes favoris')
+      },
+    })
+
+  const { data: favorite } = useVenueFavoritesQuery({
+    enabled: enableFavoriteButton,
+    select: (data) => selectVenueFavorite(data, venue.id),
+  })
 
   const onBackPress = async () => {
     const timeSpent = Date.now() - mountTimeRef.current
@@ -75,14 +101,26 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
         onBackPress={onBackPress}
         titleTestID="venueHeaderName"
         RightElement={
-          <Button
-            iconButton
-            icon={Share}
-            onPress={onSharePress}
-            accessibilityLabel="Partager"
-            variant="secondary"
-            color="neutral"
-          />
+          <RightElementContainer gap={3}>
+            <Button
+              iconButton
+              icon={Share}
+              onPress={onSharePress}
+              accessibilityLabel="Partager"
+              variant="secondary"
+              color="neutral"
+            />
+            {enableFavoriteButton ? (
+              <FavoriteButton
+                favorite={favorite}
+                isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+                removeFavorite={removeFavorite}
+                addFavorite={addFavorite}
+                venueId={venue.id}
+                isAddFavoriteLoading={isAddFavoriteLoading}
+              />
+            ) : null}
+          </RightElementContainer>
         }
       />
       {shareContent ? (
@@ -96,3 +134,7 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
     </React.Fragment>
   )
 }
+
+const RightElementContainer = styled(ViewGap)({
+  flexDirection: 'row',
+})
