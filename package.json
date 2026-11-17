@@ -202,6 +202,7 @@
     "@bam.tech/eslint-plugin": "9.2.0",
     "@chanzuckerberg/axe-storybook-testing": "^10.0.0",
     "@chromatic-com/storybook": "^5.1.2",
+    "@expo/fingerprint": "0.15.4",
     "@hot-updater/bare": "^0.35.3",
     "@hot-updater/firebase": "^0.35.3",
     "@hot-updater/sentry-plugin": "^0.35.3",

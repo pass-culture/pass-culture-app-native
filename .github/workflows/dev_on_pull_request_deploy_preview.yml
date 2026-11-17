@@ -202,6 +202,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOWNLOAD_URL: ${{ needs.deploy_android.outputs.testing_uri }}
+          PREVIEW_CHANNEL: ${{ needs.deploy_android.outputs.preview_channel }}
+          FINGERPRINT: ${{ needs.deploy_android.outputs.fingerprint_hash }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           COMMIT_SHA: ${{ github.sha }}
         run: |
@@ -209,6 +211,8 @@ jobs:
             --platform android \
             --status ready \
             --download-url "${DOWNLOAD_URL}" \
+            --channel "${PREVIEW_CHANNEL}" \
+            --fingerprint "${FINGERPRINT}" \
             --pr "${PR_NUMBER}" \
             --commit-sha "${COMMIT_SHA}"
 
@@ -313,6 +317,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOWNLOAD_URL: ${{ needs.deploy_ios.outputs.testing_uri }}
+          PREVIEW_CHANNEL: ${{ needs.deploy_ios.outputs.preview_channel }}
+          FINGERPRINT: ${{ needs.deploy_ios.outputs.fingerprint_hash }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           COMMIT_SHA: ${{ github.sha }}
         run: |
@@ -320,6 +326,8 @@ jobs:
             --platform ios \
             --status ready \
             --download-url "${DOWNLOAD_URL}" \
+            --channel "${PREVIEW_CHANNEL}" \
+            --fingerprint "${FINGERPRINT}" \
             --pr "${PR_NUMBER}" \
             --commit-sha "${COMMIT_SHA}"
 

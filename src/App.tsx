@@ -131,13 +131,15 @@ const App: FunctionComponent = function () {
   )
 }
 
+const hotUpdaterStrategy = env.ENV === 'preview' ? 'fingerprint' : 'appVersion'
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppWithHotUpdater: any =
-  __DEV__ || env.ENV !== 'testing'
+  __DEV__ || (env.ENV !== 'testing' && env.ENV !== 'preview')
     ? App
     : HotUpdater.wrap({
         baseURL: `${env.HOT_UPDATER_FUNCTION_URL}/api/check-update`,
-        updateStrategy: 'appVersion',
+        updateStrategy: hotUpdaterStrategy,
       })(App)
 
 export { AppWithHotUpdater as App }

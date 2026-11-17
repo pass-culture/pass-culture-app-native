@@ -52,6 +52,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--platform", choices=VALID_PLATFORMS)
     parser.add_argument("--status", choices=VALID_STATUSES)
     parser.add_argument("--download-url", default="")
+    parser.add_argument("--channel", default="")
+    parser.add_argument("--fingerprint", default="")
     parser.add_argument(
         "--job-url",
         default="",
@@ -76,6 +78,14 @@ def parse_args() -> argparse.Namespace:
         )
     if args.status == "ready" and not args.download_url:
         parser.error("--download-url is required when --status=ready")
+    if (
+        args.status == "ready"
+        and args.platform in ("ios", "android")
+        and (not args.channel or not args.fingerprint)
+    ):
+        parser.error(
+            "--channel and --fingerprint are required when --status=ready for ios and android"
+        )
     if args.status == "building" and not args.job_url:
         parser.error("--job-url is required when --status=building")
     if not args.repo or "/" not in args.repo:
@@ -115,11 +125,27 @@ def github_request(
         ) from error
 
 
+def make_platform_state(
+    status: str = "idle",
+    download_url: str = "",
+    job_url: str = "",
+    channel: str = "",
+    fingerprint: str = "",
+) -> dict[str, str]:
+    return {
+        "status": status,
+        "downloadUrl": download_url,
+        "jobUrl": job_url,
+        "channel": channel,
+        "fingerprint": fingerprint,
+    }
+
+
 def default_state() -> dict[str, dict[str, str]]:
     return {
-        "web": {"status": "idle", "downloadUrl": "", "jobUrl": ""},
-        "ios": {"status": "idle", "downloadUrl": "", "jobUrl": ""},
-        "android": {"status": "idle", "downloadUrl": "", "jobUrl": ""},
+        "web": make_platform_state(),
+        "ios": make_platform_state(),
+        "android": make_platform_state(),
     }
 
 
@@ -141,17 +167,28 @@ def parse_state(body: str) -> dict[str, dict[str, str]]:
         status = platform_state.get("status", "idle")
         if status not in VALID_STATUSES:
             status = "idle"
-        state[platform] = {
-            "status": status,
-            "downloadUrl": platform_state.get("downloadUrl", "") or "",
-            "jobUrl": platform_state.get("jobUrl", "") or "",
-        }
+        state[platform] = make_platform_state(
+            status=status,
+            download_url=platform_state.get("downloadUrl", "") or "",
+            job_url=platform_state.get("jobUrl", "") or "",
+            channel=platform_state.get("channel", "") or "",
+            fingerprint=platform_state.get("fingerprint", "") or "",
+        )
     return state
 
 
-def build_deeplink(platform: str, download_url: str) -> str:
-    query = urllib.parse.urlencode({"platform": platform, "downloadUrl": download_url})
-    return f"{PREVIEW_INSTALL_BASE_URL}?{query}"
+def build_deeplink(
+    platform: str,
+    download_url: str,
+    channel: str = "",
+    fingerprint: str = "",
+) -> str:
+    query = {"platform": platform, "downloadUrl": download_url}
+    if channel:
+        query["channel"] = channel
+    if fingerprint:
+        query["fingerprint"] = fingerprint
+    return f"{PREVIEW_INSTALL_BASE_URL}?{urllib.parse.urlencode(query)}"
 
 
 def qr_image_url(payload: str) -> str:
@@ -186,7 +223,12 @@ def render_platform_visual(platform: str, platform_state: dict[str, str]) -> str
         if platform == "web":
             qr_payload = download_url
         else:
-            qr_payload = build_deeplink(platform, download_url)
+            qr_payload = build_deeplink(
+                platform,
+                download_url,
+                platform_state.get("channel", ""),
+                platform_state.get("fingerprint", ""),
+            )
         qr_url = qr_image_url(qr_payload)
         return f'<img src="{qr_url}" alt="QR {label}" width="180" height="180" />'
     return "&nbsp;"
@@ -278,7 +320,7 @@ def clear_building_without_label(
     state: dict[str, dict[str, str]], label_names: set[str]
 ) -> None:
     """A removed label must not leave the platform looking like a build is running."""
-    idle = {"status": "idle", "downloadUrl": "", "jobUrl": ""}
+    idle = make_platform_state()
     for platform, required_label in PLATFORM_REQUIRED_LABEL.items():
         if required_label in label_names:
             continue
@@ -324,25 +366,34 @@ def main() -> None:
     state = parse_state(existing["body"]) if existing else default_state()
 
     if not args.reconcile_labels:
-        previous_url = state[args.platform].get("downloadUrl", "")
+        previous = state[args.platform]
+        previous_url = previous.get("downloadUrl", "")
+        channel = args.channel or previous.get("channel", "")
+        fingerprint = args.fingerprint or previous.get("fingerprint", "")
         if args.status == "ready":
             download_url = args.download_url
             job_url = ""
+            channel = args.channel
+            fingerprint = args.fingerprint
         elif args.status == "building":
             download_url = previous_url
             job_url = args.job_url
         elif args.status == "idle":
             download_url = ""
             job_url = ""
+            channel = ""
+            fingerprint = ""
         else:
             # failed: keep previous download URL, drop the in-progress job link
             download_url = previous_url
             job_url = ""
-        state[args.platform] = {
-            "status": args.status,
-            "downloadUrl": download_url,
-            "jobUrl": job_url,
-        }
+        state[args.platform] = make_platform_state(
+            status=args.status,
+            download_url=download_url,
+            job_url=job_url,
+            channel=channel,
+            fingerprint=fingerprint,
+        )
 
     label_names = list_pr_label_names(owner, repo, args.pr, args.token)
     clear_building_without_label(state, label_names)
