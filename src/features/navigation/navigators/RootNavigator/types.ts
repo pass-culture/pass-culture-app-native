@@ -292,6 +292,7 @@ export type RootStackParamList = {
   LoginMethods?: LoginParams
   LoginMethodsWithLastLoginInfo?: LoginParams
   LoginWithOneTimePassword?: undefined
+  OneTimePasswordLimit?: undefined
   Maintenance: undefined
   MandatoryUpdatePersonalData: undefined
   MovieCalendar: undefined
