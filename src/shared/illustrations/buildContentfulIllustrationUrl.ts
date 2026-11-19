@@ -2,6 +2,7 @@ import { buildCategoryIllustrationUrl } from 'shared/illustrations/buildCategory
 
 export const contentfulIllustrationNames = [
   'art',
+  'business',
   'cinema',
   'classicalMusic',
   'concert',
