@@ -7,8 +7,8 @@ import {
 type CinemaScreeningDetailContent = Pick<CinemaScreeningDetail, 'label' | 'description'>
 
 const SPECIAL_EVENT_DETAILS: Partial<Record<string, CinemaScreeningDetailContent>> = {
-  PREVIEW_SCREENING_WITH_CREW: {
-    label: 'Avant première',
+  AVANT_PREMIERE_EQUIPE: {
+    label: 'Avant-première avec équipe',
     description:
       'Séance exceptionnelle permettant de découvrir un film en exclusivité, avant sa sortie officielle.',
   },
@@ -23,20 +23,20 @@ const VIDEO_DETAILS: Partial<Record<string, CinemaScreeningDetailContent>> = {
 }
 
 const AUDIO_DETAILS: Partial<Record<string, CinemaScreeningDetailContent>> = {
-  DOLBY_ATMOS: {
-    label: 'DolbyAtmos',
+  ATMOS: {
+    label: 'Dolby Atmos',
     description:
       'Expérience cinéma immersive, avec une image plus grande, un son puissant et des détails exceptionnels.',
   },
 }
 
 const ACCESSIBILITY_DETAILS: Partial<Record<string, CinemaScreeningDetailContent>> = {
-  GRETA: {
+  AD_GRETA: {
     label: 'Audio-description GRETA',
     description:
       'Audio-description est un service qui décrit à voix haute les images et actions à l’écran pour les personnes malvoyantes.',
   },
-  CCAP: {
+  SUBTITLE_CCAP: {
     label: 'Sous-titrage CCAP',
     description:
       'Dispositifs pour malentendants permet de mieux entendre les dialogues et les sons du film grâce à un système adapté.',
@@ -55,12 +55,12 @@ const ACCESSIBILITY_CATEGORY_ORDER: CinemaScreeningAccessibilityCategory[] = [
   'motor',
 ]
 
-export const selectCinemaScreeningDetails = ({
-  specialEventType,
-  video,
-  audio,
-  accessibility,
-}: ScreeningFeatures): CinemaScreeningDetail[] => {
+export const selectCinemaScreeningDetails = (
+  features: ScreeningFeatures | undefined
+): CinemaScreeningDetail[] => {
+  if (!features) return []
+
+  const { specialEventType, video, audio, accessibility } = features
   const details: CinemaScreeningDetail[] = []
 
   const specialEventDetail = specialEventType ? SPECIAL_EVENT_DETAILS[specialEventType] : undefined

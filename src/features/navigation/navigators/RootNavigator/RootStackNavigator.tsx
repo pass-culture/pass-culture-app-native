@@ -31,6 +31,7 @@ import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
+import { CinemaScreeningDetailsModal } from 'features/bookings/pages/CinemaScreeningDetailsModal/CinemaScreeningDetailsModal'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
@@ -218,6 +219,11 @@ const rootScreens: RouteConfig[] = [
     name: 'BookingDetails',
     component: withAuthProtection(BookingDetails),
     options: { title: 'Détails de réservation' },
+  },
+  {
+    name: 'CinemaScreeningDetailsModal',
+    component: withAuthProtection(CinemaScreeningDetailsModal),
+    options: { title: 'Informations sur la séance', ...MODAL_SIMPLE_OPTIONS },
   },
   {
     name: '_DeeplinkOnlyBookingDetails1',

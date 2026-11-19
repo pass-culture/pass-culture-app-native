@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { BookingResponse } from 'api/gen'
+import { BookingResponse, BookingResponseV3 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getRefundRule } from 'features/bookings/helpers/getRefundRule'
 import { useCancelBookingMutation } from 'features/bookings/queries'
@@ -28,7 +28,7 @@ import { Typo } from 'ui/theme'
 interface Props {
   visible: boolean
   dismissModal: () => void
-  booking: BookingResponse | Booking
+  booking: BookingResponse | BookingResponseV3 | Booking
 }
 
 export const CancelBookingModal: FunctionComponent<Props> = ({

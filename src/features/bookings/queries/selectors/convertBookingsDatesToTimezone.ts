@@ -1,12 +1,13 @@
 import {
   BookingsResponseV2,
   BookingResponse,
+  BookingResponseV3,
   BookingListItemResponse,
   BookingsListResponseV2,
 } from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
-type Bookings = BookingResponse | BookingListItemResponse
+type Bookings = BookingResponse | BookingResponseV3 | BookingListItemResponse
 
 const convertBookingsListDatesToTimezone = <T extends Bookings>(bookings: T[]): T[] => {
   if (!Array.isArray(bookings)) {

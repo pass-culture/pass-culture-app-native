@@ -15,6 +15,7 @@ import {
   MARGIN_TOP_TICKET,
   computeHeaderImageHeight,
 } from 'features/bookings/helpers/computeHeaderImageHeight'
+import { BookingDetailsResponse } from 'features/bookings/queries/selectors/selectBookingDetails'
 import { BookingProperties } from 'features/bookings/types'
 import { UserProfile } from 'features/share/types'
 import { isCloseToBottom } from 'libs/analytics'
@@ -37,7 +38,7 @@ export const BookingDetailsContent = ({
   user,
 }: {
   properties: BookingProperties
-  booking: BookingResponse
+  booking: BookingResponse | BookingDetailsResponse
   mapping: SubcategoriesMapping
   user: UserProfile
 }) => {
