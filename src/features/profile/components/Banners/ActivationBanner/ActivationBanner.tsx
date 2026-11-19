@@ -41,15 +41,15 @@ export const ActivationBanner = ({ featureFlags }: ProfileFeatureFlagsProps) => 
   })
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const shouldNavigateToUnlockEighteenBirthday = shouldUseSimplifiedActivation18({
+  const shouldNavigateToUnlockUnlockEighteenCredit = shouldUseSimplifiedActivation18({
     enableSimplifiedActivation18,
     user,
     underageOkIdentityCheckMethod: subscriptionInfos?.underageOkIdentityCheckMethod,
   })
 
   const onPressSystemBanner = () => {
-    if (shouldNavigateToUnlockEighteenBirthday) {
-      navigate('EighteenBirthday')
+    if (shouldNavigateToUnlockUnlockEighteenCredit) {
+      navigate('UnlockEighteenCredit')
     } else {
       navigate(...getSubscriptionHookConfig('Stepper', { from: StepperOrigin.HOME }))
     }

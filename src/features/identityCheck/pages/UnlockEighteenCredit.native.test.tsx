@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckMethod, SubscriptionStepperResponseV3 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
-import { UnlockCredit } from 'features/identityCheck/pages/UnlockCredit'
+import { UnlockEighteenCredit } from 'features/identityCheck/pages/UnlockEighteenCredit'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -31,7 +31,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 jest.useFakeTimers()
 
-describe('<UnlockCredit />', () => {
+describe('<UnlockEighteenCredit />', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockStepperData = undefined
@@ -53,7 +53,7 @@ describe('<UnlockCredit />', () => {
       )
       mockStepperData = { ...subscriptionStepperFixture, underageOkIdentityCheckMethod: method }
 
-      render(reactQueryProviderHOC(<UnlockCredit />))
+      render(reactQueryProviderHOC(<UnlockEighteenCredit />))
       await userEvent
         .setup()
         .press(
@@ -70,7 +70,7 @@ describe('<UnlockCredit />', () => {
   )
 
   it('should render eighteen birthday', () => {
-    render(reactQueryProviderHOC(<UnlockCredit />))
+    render(reactQueryProviderHOC(<UnlockEighteenCredit />))
 
     expect(screen).toMatchSnapshot()
   })
@@ -78,13 +78,13 @@ describe('<UnlockCredit />', () => {
   it('should set `has_seen_eligible_card` to true in storage', async () => {
     expect(await storage.readObject('has_seen_eligible_card')).toBeNull()
 
-    render(reactQueryProviderHOC(<UnlockCredit />))
+    render(reactQueryProviderHOC(<UnlockEighteenCredit />))
 
     expect(await storage.readObject('has_seen_eligible_card')).toBe(true)
   })
 
   it('should navigate to Stepper on button press', async () => {
-    render(reactQueryProviderHOC(<UnlockCredit />))
+    render(reactQueryProviderHOC(<UnlockEighteenCredit />))
 
     await userEvent.setup().press(screen.getByText('Confirmer mes informations'))
 
@@ -97,7 +97,7 @@ describe('<UnlockCredit />', () => {
   it('should render right wording when user require IdCheck', () => {
     mockAuthContextWithUser({ ...nonBeneficiaryUser, requiresIdCheck: true })
 
-    render(reactQueryProviderHOC(<UnlockCredit />))
+    render(reactQueryProviderHOC(<UnlockEighteenCredit />))
 
     expect(screen.getByText('Vérifie ton identité pour débloquer tes 150 €.')).toBeOnTheScreen()
     expect(screen.getByText('Vérifier mon identité')).toBeOnTheScreen()
@@ -106,7 +106,7 @@ describe('<UnlockCredit />', () => {
   it('should render illustration rather than animation when wipNewVisionUi FF activated', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
 
-    render(reactQueryProviderHOC(<UnlockCredit />))
+    render(reactQueryProviderHOC(<UnlockEighteenCredit />))
 
     expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })

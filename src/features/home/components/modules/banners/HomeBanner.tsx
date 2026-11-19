@@ -83,15 +83,15 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const { data } = useGetStepperInfoQuery()
 
   const SystemBanner = useMemo(() => {
-    const shouldNavigateToUnlockEighteenBirthday = shouldUseSimplifiedActivation18({
+    const shouldNavigateToUnlockUnlockEighteenCredit = shouldUseSimplifiedActivation18({
       enableSimplifiedActivation18,
       user,
       underageOkIdentityCheckMethod: data?.underageOkIdentityCheckMethod,
     })
 
     const onPressSystemBanner = () => {
-      if (shouldNavigateToUnlockEighteenBirthday) {
-        navigate('EighteenBirthday')
+      if (shouldNavigateToUnlockUnlockEighteenCredit) {
+        navigate('UnlockEighteenCredit')
       } else {
         navigate(...getSubscriptionHookConfig('Stepper', { from: StepperOrigin.HOME }))
       }

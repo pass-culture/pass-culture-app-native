@@ -13,7 +13,7 @@ import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 
-export function UnlockCredit() {
+export function UnlockEighteenCredit() {
   const { user } = useAuthContext()
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const enableSimplifiedActivation18 = useFeatureFlag(

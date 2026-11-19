@@ -90,7 +90,7 @@ describe('ActivationBanner', () => {
       render(<ActivationBanner featureFlags={featureFlags} />)
       await userEvent.setup().press(screen.getByLabelText('Titre - Texte'))
 
-      expect(navigate.mock.calls.at(-1)).toEqual(['EighteenBirthday'])
+      expect(navigate.mock.calls.at(-1)).toEqual(['UnlockEighteenCredit'])
     })
 
     it('should navigate to the identity check stepper when user has no initial credit', async () => {

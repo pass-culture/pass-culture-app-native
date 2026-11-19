@@ -14,8 +14,8 @@ const birthdayNotificationsCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'EighteenBirthday',
-      navigationTarget: { screen: 'EighteenBirthday' },
+      title: 'UnlockEighteenCredit',
+      navigationTarget: { screen: 'UnlockEighteenCredit' },
     },
     {
       id: uuidv4(),
