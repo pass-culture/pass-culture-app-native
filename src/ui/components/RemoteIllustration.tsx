@@ -61,8 +61,8 @@ const Container = styled.View<{
     backgroundColor: showBackground
       ? theme.designSystem.color.illustration[backgroundColor]
       : 'transparent',
-    borderTopLeftRadius: isXl ? getSpacing(14) : theme.designSystem.size.borderRadius.xxl,
-    borderBottomRightRadius: isXl ? getSpacing(14) : theme.designSystem.size.borderRadius.xxl,
+    borderTopLeftRadius: isXl ? getSpacing(14) : theme.designSystem.size.borderRadius['2xl'],
+    borderBottomRightRadius: isXl ? getSpacing(14) : theme.designSystem.size.borderRadius['2xl'],
     marginTop: isXl ? theme.designSystem.size.spacing.l : undefined,
   }
 })

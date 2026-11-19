@@ -21,7 +21,7 @@ const StyledSearchFilterTab = styled(TouchableOpacity)<{ isSelected: boolean }>(
   ({ theme, isSelected }) => ({
     borderWidth: 1,
     borderColor: theme.designSystem.color.border.subtle,
-    borderRadius: theme.designSystem.size.borderRadius.xxl,
+    borderRadius: theme.designSystem.size.borderRadius['2xl'],
     paddingVertical: theme.designSystem.size.spacing.xs,
     paddingHorizontal: theme.designSystem.size.spacing.l,
     alignItems: 'center',

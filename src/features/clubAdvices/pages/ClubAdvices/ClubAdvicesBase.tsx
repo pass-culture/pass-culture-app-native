@@ -108,7 +108,7 @@ export const ClubAdvicesBase: FunctionComponent<Props> = ({
             ...(isDesktopViewport
               ? { paddingBottom: headerHeight }
               : {
-                  paddingBottom: designSystem.size.spacing.xxxl,
+                  paddingBottom: designSystem.size.spacing['3xl'],
                   marginTop: designSystem.size.spacing.l,
                   marginHorizontal: contentPage.marginHorizontal,
                 }),

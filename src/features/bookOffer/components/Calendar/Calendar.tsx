@@ -285,8 +285,8 @@ const Container = styledButton(Touchable).attrs({ hitSlop })(({ theme }) => ({
   alignItems: 'center',
   width:
     theme.appContentWidth < theme.breakpoints.xs
-      ? theme.designSystem.size.spacing.xxxl
-      : theme.designSystem.size.spacing.xxxxl,
+      ? theme.designSystem.size.spacing['3xl']
+      : theme.designSystem.size.spacing['4xl'],
   '&:hover': {
     textDecorationLine: 'none',
   },

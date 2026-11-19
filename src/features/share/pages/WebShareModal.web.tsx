@@ -180,5 +180,5 @@ const SocialButtonsContainer = styled(Ul)(({ theme }) => ({
   gridTemplateColumns: 'repeat(auto-fill, minmax(100px,1fr))',
   gap: `${getSpacingString(6)} 0px`,
   width: '100%',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))

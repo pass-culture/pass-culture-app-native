@@ -7694,10 +7694,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pass-culture/design-system@npm:0.12.0":
-  version: 0.12.0
-  resolution: "@pass-culture/design-system@npm:0.12.0"
-  checksum: 10/288ec71c16d917e7085131a90fe56dbdbba39a12deaec3a370e6beb30b992547d3f3136faf5befc803053cf0a1724b0769ecd3ce4272eb0e099323249f065103
+"@pass-culture/design-system@npm:0.13.0":
+  version: 0.13.0
+  resolution: "@pass-culture/design-system@npm:0.13.0"
+  checksum: 10/c5eaa55b7580238734e0d74bf0f016a647cb2acf0d0ba5883104a8672af2bfb584c7f0d084c4ac17ef1451f566a37c78535e9be3a7385c5b7f84c34678e37f7f
   languageName: node
   linkType: hard
 
@@ -11252,7 +11252,7 @@ __metadata:
     "@hot-updater/sentry-plugin": "npm:^0.35.3"
     "@invertase/react-native-apple-authentication": "npm:^2.5.1"
     "@openspacelabs/react-native-zoomable-view": "npm:^2.1.5"
-    "@pass-culture/design-system": "npm:0.12.0"
+    "@pass-culture/design-system": "npm:0.13.0"
     "@playwright/test": "npm:^1.62.1"
     "@ptomasroos/react-native-multi-slider": "npm:^2.2.2"
     "@react-native-async-storage/async-storage": "npm:^1.17.11"

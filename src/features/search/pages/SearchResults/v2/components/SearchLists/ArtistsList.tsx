@@ -61,7 +61,7 @@ export const ArtistsList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ sea
             onViewableItemsChanged={handleViewableItemsChanged}
             viewabilityConfig={SEARCH_LIST_VIEWABILITY_CONFIG}
             contentContainerStyle={{
-              paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+              paddingBottom: tabBar.height + designSystem.size.spacing['3xl'],
               paddingHorizontal: designSystem.size.spacing.xl,
             }}
             keyboardShouldPersistTaps="handled"

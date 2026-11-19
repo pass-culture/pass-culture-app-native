@@ -36,7 +36,7 @@ export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => {
   return {
-    paddingBottom: theme.designSystem.size.spacing.xxl,
-    marginBottom: theme.designSystem.size.spacing.xxxxl,
+    paddingBottom: theme.designSystem.size.spacing['2xl'],
+    marginBottom: theme.designSystem.size.spacing['4xl'],
   }
 })

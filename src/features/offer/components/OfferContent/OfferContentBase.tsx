@@ -404,9 +404,9 @@ const Container = styled.View({
 })
 
 const FooterContainer = styled.View(({ theme }) => ({
-  marginTop: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xxs,
+  marginTop: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing['2xs'],
 }))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
-  paddingBottom: theme.designSystem.size.spacing.xxl,
+  paddingBottom: theme.designSystem.size.spacing['2xl'],
 }))

@@ -37,7 +37,7 @@ const SummaryItem: FC<InfoListItemProps> = ({ testID, title, value }) => {
 
 const BodyContainer = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
-  paddingVertical: theme.designSystem.size.spacing.xxl,
+  paddingVertical: theme.designSystem.size.spacing['2xl'],
   paddingHorizontal: theme.designSystem.size.spacing.xl,
   borderRadius: theme.designSystem.size.borderRadius.m,
 }))

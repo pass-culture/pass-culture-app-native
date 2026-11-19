@@ -85,8 +85,8 @@ export const ProfileTutorialAgeInformationCredit = () => {
 }
 
 const Container = styled(ViewGap)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['2xl'],
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const CreditTimelineContainer = styled.View({

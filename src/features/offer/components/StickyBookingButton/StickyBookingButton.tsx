@@ -57,7 +57,7 @@ const StyledStickyBottomWrapper = styled(StickyBottomWrapper)({
 const CallToActionContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.l,
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
   flexDirection: 'row',
   width: '100%',
 }))

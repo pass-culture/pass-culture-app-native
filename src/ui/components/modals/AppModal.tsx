@@ -335,7 +335,7 @@ const SpacerBetweenHeaderAndContent = styled.View(({ theme }) => ({
 
 const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,
-  marginBottom: theme.designSystem.size.spacing.xxxxl,
+  marginBottom: theme.designSystem.size.spacing['4xl'],
 }))<{ paddingBottom: number; modalSpacing?: ModalSpacing }>(({ paddingBottom, modalSpacing }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),

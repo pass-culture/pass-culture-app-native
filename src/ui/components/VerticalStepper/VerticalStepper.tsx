@@ -109,7 +109,7 @@ const BORDER_WIDTH = getSpacing(0.5)
 const Wrapper = styled.View(({ theme }) => ({
   alignItems: 'center',
   flex: 1,
-  minWidth: theme.designSystem.size.spacing.xxl, // we add a width for when no icon is present
+  minWidth: theme.designSystem.size.spacing['2xl'], // we add a width for when no icon is present
   overflow: 'hidden',
 }))
 
@@ -158,7 +158,7 @@ const getVerticalSpacing = (
   if (shouldHaveNoSpacing) {
     return 0
   }
-  return theme.designSystem.size.spacing.xxs
+  return theme.designSystem.size.spacing['2xs']
 }
 
 const IconWrapper = styled.View<IconWrapperProps>(({ theme, ...props }) => ({
@@ -168,5 +168,5 @@ const IconWrapper = styled.View<IconWrapperProps>(({ theme, ...props }) => ({
 const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
   color2: theme.designSystem.color.icon.inverted,
-  size: theme.designSystem.size.spacing.xxl,
+  size: theme.designSystem.size.spacing['2xl'],
 }))``

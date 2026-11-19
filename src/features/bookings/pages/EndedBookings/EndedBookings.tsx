@@ -176,7 +176,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
 
 const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing.xxl,
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing['2xl'],
 })
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({

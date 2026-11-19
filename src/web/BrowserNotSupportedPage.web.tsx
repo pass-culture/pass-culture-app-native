@@ -124,7 +124,7 @@ const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
 }))``
 
 const TextContainer = styled(ViewGap)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
   maxWidth: theme.contentPage.maxWidth,
 }))
 

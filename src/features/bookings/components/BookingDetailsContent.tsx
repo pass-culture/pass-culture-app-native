@@ -46,16 +46,16 @@ export const BookingDetailsContent = ({
   const { bottom: contentBottomPadding } = useCustomSafeInsets()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
   const display = properties.isEvent === true ? 'punched' : 'full'
-  const EXTRA_ANDROID_MARGIN = designSystem.size.spacing.xxl
+  const EXTRA_ANDROID_MARGIN = designSystem.size.spacing['2xl']
 
   const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
     topBlockHeight,
     windowHeight,
     display,
     isAndroid: Platform.OS === 'android',
-    ticketFullMiddleHeight: designSystem.size.spacing.xxl,
+    ticketFullMiddleHeight: designSystem.size.spacing['2xl'],
     extraAndroidMargin: EXTRA_ANDROID_MARGIN,
-    ticket_punched_middle_height: designSystem.size.spacing.xxxxl,
+    ticket_punched_middle_height: designSystem.size.spacing['4xl'],
   })
 
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)

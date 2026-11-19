@@ -102,7 +102,7 @@ export const FakeDoorModal = () => {
 
 const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
   paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
@@ -125,7 +125,7 @@ const StyledBody = styled(Typo.Body)({
 const CloseButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const HeaderContainer = styled.View(({ theme }) => ({
@@ -134,5 +134,5 @@ const HeaderContainer = styled.View(({ theme }) => ({
 }))
 
 const BottomSpacer = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing['2xl'],
 }))

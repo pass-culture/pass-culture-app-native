@@ -120,5 +120,5 @@ const OfferTitleContainer = styled.View(({ theme }) => ({
 }))
 
 const VideoMonoOfferTileContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))

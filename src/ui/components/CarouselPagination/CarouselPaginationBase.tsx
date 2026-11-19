@@ -32,5 +32,5 @@ const Container = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.locked,
   paddingVertical: theme.designSystem.size.spacing.xs,
   paddingHorizontal: theme.designSystem.size.spacing.s,
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
+  borderRadius: theme.designSystem.size.borderRadius['2xl'],
 }))

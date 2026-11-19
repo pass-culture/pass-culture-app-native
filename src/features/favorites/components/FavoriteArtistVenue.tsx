@@ -41,7 +41,7 @@ export const FavoriteArtistVenue: FunctionComponent<FavoriteArtistVenueProps> = 
           subtitle={subtitle}
           rightComponent={<RightFilled size={designSystem.size.icon.s} testID="RightFilled" />}
           thumbnailComponent={thumbnailComponent}
-          defaultThumbnailSize={designSystem.size.image.xxs}
+          defaultThumbnailSize={designSystem.size.image['2xs']}
         />
       </StyledTouchableLink>
       {/* Ajouter FavoriteActions une fois le back prêt */}

@@ -100,7 +100,7 @@ const TitleContainer = styled.View(({ theme }) => ({
 }))
 
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxxxl,
+  marginTop: theme.designSystem.size.spacing['4xl'],
 }))
 
 const IdCard = styled(InitialIdCard).attrs(({ theme }) => ({
@@ -142,7 +142,7 @@ const buttonListSeparator = <Separator />
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xs,
-  marginVertical: theme.designSystem.size.spacing.xxl,
+  marginVertical: theme.designSystem.size.spacing['2xl'],
 }))
 
 const StyledTitle4 = styled(Typo.Title4).attrs(setTextSemantic('h2'))({

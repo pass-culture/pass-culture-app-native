@@ -120,7 +120,7 @@ export const CheatcodesScreenDebugInformations: FunctionComponent = function () 
   )
 }
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 async function getBatchInstallationID() {

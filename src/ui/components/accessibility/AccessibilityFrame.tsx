@@ -27,8 +27,8 @@ export const AccessibilityFrame: React.FC<Props> = ({ Icon, isAccessible }) => {
 }
 
 const Frame = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxxxl,
-  width: theme.designSystem.size.spacing.xxxxl,
+  height: theme.designSystem.size.spacing['4xl'],
+  width: theme.designSystem.size.spacing['4xl'],
   alignItems: 'center',
   justifyContent: 'center',
   borderColor: theme.designSystem.color.border.default,

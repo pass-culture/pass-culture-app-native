@@ -194,7 +194,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 }
 
 const BannerContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const RemoteGenericBannerContainer = styled.View(({ theme }) => ({

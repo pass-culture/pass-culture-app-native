@@ -117,7 +117,7 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 
 const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxxxl,
+  marginBottom: theme.designSystem.size.spacing['4xl'],
 }))
 
 const StyledTitle2 = styled(Typo.Title2)({

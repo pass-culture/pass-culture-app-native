@@ -110,10 +110,10 @@ export const VenueMoviesV2: React.FC<{
 
 const Container = styled.View(({ theme }) => ({
   paddingTop: theme.isDesktopViewport
-    ? theme.designSystem.size.spacing.xxxl
+    ? theme.designSystem.size.spacing['3xl']
     : theme.designSystem.size.spacing.xl,
   gap: theme.isDesktopViewport
-    ? theme.designSystem.size.spacing.xxxl
+    ? theme.designSystem.size.spacing['3xl']
     : theme.designSystem.size.spacing.xl,
 }))
 

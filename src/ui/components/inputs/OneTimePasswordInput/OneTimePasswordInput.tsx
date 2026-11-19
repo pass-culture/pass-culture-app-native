@@ -158,7 +158,7 @@ const FlexViewColumn = styled.View({
 })
 
 const Description = styled(StyledBodyAccentXs)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxs,
+  marginTop: theme.designSystem.size.spacing['2xs'],
 }))
 
 const LabelTextContainer = styled.View({

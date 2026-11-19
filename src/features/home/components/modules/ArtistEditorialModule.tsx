@@ -141,8 +141,8 @@ const TitleText = styled(Typo.Title3)(({ theme }) => ({
 const Sticker = styled(FastImage)(({ theme }) => ({
   position: 'absolute',
   top: theme.isDesktopViewport
-    ? -theme.designSystem.size.spacing.xxl
-    : -theme.designSystem.size.spacing.xxxxl,
+    ? -theme.designSystem.size.spacing['2xl']
+    : -theme.designSystem.size.spacing['4xl'],
   right: theme.isDesktopViewport ? -theme.designSystem.size.spacing.xl : RIGHT_MOBILE_STICKER,
   width: theme.designSystem.size.illustration.xl,
   height: theme.designSystem.size.illustration.xl,

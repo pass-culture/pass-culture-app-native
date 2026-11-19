@@ -68,7 +68,7 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-}))(({ theme }) => ({ height: theme.designSystem.size.spacing.xxs, width: '100%' }))
+}))(({ theme }) => ({ height: theme.designSystem.size.spacing['2xs'], width: '100%' }))
 
 const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean; iconSize: number }>(
   ({ theme, selected, iconSize }) => ({
@@ -81,7 +81,7 @@ const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean; iconSize: nu
 )``
 
 const BicolorSelectorPlaceholder = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxs,
+  height: theme.designSystem.size.spacing['2xs'],
 }))
 
 const IconWrapper = styled.View(({ theme }) => ({

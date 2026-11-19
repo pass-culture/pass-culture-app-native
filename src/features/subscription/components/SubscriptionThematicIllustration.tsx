@@ -26,9 +26,13 @@ export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: 
 
 const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme, size }) => ({
   height:
-    size === 'medium' ? theme.designSystem.size.spacing.xxxxl : theme.designSystem.size.spacing.xxl,
+    size === 'medium'
+      ? theme.designSystem.size.spacing['4xl']
+      : theme.designSystem.size.spacing['2xl'],
   width:
-    size === 'medium' ? theme.designSystem.size.spacing.xxxxl : theme.designSystem.size.spacing.xxl,
+    size === 'medium'
+      ? theme.designSystem.size.spacing['4xl']
+      : theme.designSystem.size.spacing['2xl'],
   borderRadius:
     size === 'medium'
       ? theme.designSystem.size.borderRadius.m
@@ -39,7 +43,9 @@ const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme
 const IllustrationWrapper = styled.View<{ size: 'medium' | 'small' }>(({ size, theme }) => ({
   position: 'absolute',
   top:
-    size === 'medium' ? -theme.designSystem.size.spacing.xl : -theme.designSystem.size.spacing.xxl,
+    size === 'medium'
+      ? -theme.designSystem.size.spacing.xl
+      : -theme.designSystem.size.spacing['2xl'],
 }))
 
 const StyledView = styled.View<{ fillColor: BackgroundColorKey }>(({ fillColor, theme }) => ({

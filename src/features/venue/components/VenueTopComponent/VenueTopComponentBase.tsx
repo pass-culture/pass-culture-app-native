@@ -149,11 +149,11 @@ const TopContainer = styled.View<{ hasVolunteer?: boolean }>(({ theme, hasVolunt
   const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
   return {
     flexDirection: isLargeScreen ? 'row' : 'column',
-    marginTop: isLargeScreen ? theme.designSystem.size.spacing.xxl : 0,
+    marginTop: isLargeScreen ? theme.designSystem.size.spacing['2xl'] : 0,
     marginHorizontal: isLargeScreen ? theme.designSystem.size.spacing.xl : 0,
     marginBottom:
       isLargeScreen && !hasVolunteer
-        ? theme.designSystem.size.spacing.xxxl
+        ? theme.designSystem.size.spacing['3xl']
         : theme.designSystem.size.spacing.xl,
   }
 })

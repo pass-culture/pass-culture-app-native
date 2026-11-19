@@ -119,12 +119,12 @@ const FooterComponent = ({
 
 const StyledFooter = styled.View(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.s,
-  paddingBottom: theme.designSystem.size.spacing.xxxl,
+  paddingBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 const SpacerTabBarContainer = styled.View<{ isLandscape: boolean }>(({ isLandscape, theme }) => ({
   marginBottom: isLandscape
-    ? theme.designSystem.size.spacing.xxxl
+    ? theme.designSystem.size.spacing['3xl']
     : theme.designSystem.size.spacing.xl,
 }))
 
@@ -397,7 +397,7 @@ const Container = styled(Page)({
 
 const FooterContainer = styled.View(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.s,
-  paddingBottom: theme.designSystem.size.spacing.xxxl,
+  paddingBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({

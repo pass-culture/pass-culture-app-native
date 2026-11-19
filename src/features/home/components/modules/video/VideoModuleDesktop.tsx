@@ -128,7 +128,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
 
 const VideoMonoOfferTileWrapper = styled(View)(({ theme }) => ({
   flexGrow: 1,
-  marginHorizontal: theme.designSystem.size.spacing.xxl,
+  marginHorizontal: theme.designSystem.size.spacing['2xl'],
   justifyContent: 'center',
 }))
 
@@ -221,7 +221,7 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
 const StyledMultiOfferList = styled(View)<{
   hasOnlyTwoOffers: boolean
 }>(({ hasOnlyTwoOffers, theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xxxl,
+  marginLeft: theme.designSystem.size.spacing['3xl'],
   justifyContent: hasOnlyTwoOffers ? 'flex-start' : 'space-between',
   height: '100%',
 }))

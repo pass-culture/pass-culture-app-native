@@ -131,7 +131,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
 const LabelContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   gap: theme.designSystem.size.spacing.xs,
-  marginLeft: theme.designSystem.size.spacing.xxs,
+  marginLeft: theme.designSystem.size.spacing['2xs'],
   marginBottom: theme.designSystem.size.spacing.xs,
   transform: 'rotate(-3deg)',
   flex: 1,
@@ -150,8 +150,8 @@ const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) =
   color: theme.designSystem.color.text.default,
   backgroundColor: theme.designSystem.color.text.inverted,
   borderRadius: theme.designSystem.size.borderRadius.s,
-  paddingTop: theme.designSystem.size.spacing.xxs,
-  paddingBottom: theme.designSystem.size.spacing.xxs,
+  paddingTop: theme.designSystem.size.spacing['2xs'],
+  paddingBottom: theme.designSystem.size.spacing['2xs'],
   paddingLeft: theme.designSystem.size.spacing.xs,
   paddingRight: theme.designSystem.size.spacing.xs,
 }))

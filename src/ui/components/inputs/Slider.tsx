@@ -200,9 +200,9 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
   const markerStyle = {
     height: theme.slider.markerSize,
     width: theme.slider.markerSize,
-    borderRadius: theme.designSystem.size.borderRadius.xxl,
+    borderRadius: theme.designSystem.size.borderRadius['2xl'],
     borderColor: theme.designSystem.color.border.default,
-    borderWidth: theme.designSystem.size.spacing.xxs,
+    borderWidth: theme.designSystem.size.spacing['2xs'],
     backgroundColor: theme.designSystem.color.background.default,
     shadowOpacity: 0,
   }
@@ -219,9 +219,9 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     unselectedStyle: {
       backgroundColor: theme.designSystem.color.background.default,
       borderColor: theme.designSystem.color.border.default,
-      borderWidth: theme.designSystem.size.spacing.xxs,
+      borderWidth: theme.designSystem.size.spacing['2xs'],
     },
-    containerStyle: { height: theme.designSystem.size.spacing.xxl },
+    containerStyle: { height: theme.designSystem.size.spacing['2xl'] },
     sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
 })``

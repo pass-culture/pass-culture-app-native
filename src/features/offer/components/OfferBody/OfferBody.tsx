@@ -244,8 +244,8 @@ export const OfferBody: FunctionComponent<Props> = ({
 const Container = styled.View(({ theme }) => ({
   flexShrink: 1,
   width: '100%',
-  gap: theme.designSystem.size.spacing.xxl,
-  marginBottom: theme.isDesktopViewport ? 0 : theme.designSystem.size.spacing.xxl,
+  gap: theme.designSystem.size.spacing['2xl'],
+  marginBottom: theme.isDesktopViewport ? 0 : theme.designSystem.size.spacing['2xl'],
 }))
 
 const MarginContainer = styled(ViewGap)(({ theme }) =>

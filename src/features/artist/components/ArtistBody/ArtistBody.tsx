@@ -210,7 +210,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
         onScroll={onScroll}
         contentContainerStyle={{
           paddingTop: headerHeight,
-          paddingBottom: designSystem.size.spacing.xxl + bottom,
+          paddingBottom: designSystem.size.spacing['2xl'] + bottom,
         }}>
         <ViewGap gap={6}>
           <ViewGap gap={6}>

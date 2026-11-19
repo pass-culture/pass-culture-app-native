@@ -317,5 +317,5 @@ const Container = styled.View(({ theme }) => ({ marginBottom: theme.designSystem
 
 const FormContainer = styled.View<{ isKeyboardOpen: boolean }>(({ isKeyboardOpen, theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
-  marginBottom: isKeyboardOpen ? theme.designSystem.size.spacing.xxl : 0,
+  marginBottom: isKeyboardOpen ? theme.designSystem.size.spacing['2xl'] : 0,
 }))

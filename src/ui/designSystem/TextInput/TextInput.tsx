@@ -177,7 +177,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const Description = styled(StyledBodyAccentXs)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxs,
+  marginTop: theme.designSystem.size.spacing['2xs'],
 }))
 
 const IconContainer = styled.View(({ theme }) => ({

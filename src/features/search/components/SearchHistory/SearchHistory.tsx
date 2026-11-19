@@ -56,7 +56,7 @@ const Container = styled(SearchSuggestionsGroupItem)<{ isEmptyQuery: boolean }>(
 )
 
 const RemoveButton = styledButton(Touchable)(({ theme }) => ({
-  maxWidth: theme.designSystem.size.spacing.xxxl,
+  maxWidth: theme.designSystem.size.spacing['3xl'],
   justifyContent: 'center',
   alignItems: 'center',
 }))

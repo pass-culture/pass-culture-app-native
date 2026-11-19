@@ -20,7 +20,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
           <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
         </Row>
         <StyledTextPlaceholder
-          marginBottom={designSystem.size.spacing.xxs}
+          marginBottom={designSystem.size.spacing['2xs']}
           height={designSystem.size.spacing.l}
           width={getSpacing(74)}
         />
@@ -61,7 +61,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
           width={getSpacing(63)}
         />
         <StyledTextPlaceholder
-          marginBottom={designSystem.size.spacing.xxs}
+          marginBottom={designSystem.size.spacing['2xs']}
           height={designSystem.size.spacing.l}
           width={getSpacing(33)}
         />
@@ -81,7 +81,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <SkeletonTile
           borderRadius={designSystem.size.borderRadius.xl}
           width={getSpacing(82)}
-          height={designSystem.size.spacing.xxxl}
+          height={designSystem.size.spacing['3xl']}
           fullWidth
         />
       </BodyContainer>
@@ -90,7 +90,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
 }
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'column',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const Wrapper = styled.View(({ theme }) => ({
@@ -104,20 +104,20 @@ const StyledTextPlaceholder = styled(TextPlaceholder)<{ marginBottom: number }>(
 const StyledTextPlaceholderWithMarginTop = styled(StyledTextPlaceholder)<{ marginBottom: number }>(
   ({ marginBottom, theme }) => ({
     marginBottom,
-    marginTop: theme.designSystem.size.spacing.xxl,
-    paddingTop: theme.designSystem.size.spacing.xxl,
+    marginTop: theme.designSystem.size.spacing['2xl'],
+    paddingTop: theme.designSystem.size.spacing['2xl'],
   })
 )
 
 const ImageContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  marginTop: theme.designSystem.size.spacing.xxxxl,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['4xl'],
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const BodyContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const Row = styled.View(({ theme }) => ({
@@ -130,5 +130,5 @@ const Row = styled.View(({ theme }) => ({
 const Divider = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.s,
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
