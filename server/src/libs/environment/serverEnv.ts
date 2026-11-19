@@ -2,9 +2,10 @@ import { existsSync } from 'fs'
 import { resolve, join } from 'path'
 
 import { config as dotEnvConfig } from 'dotenv'
+
 import { Environment } from './types'
 
-const envVariable = process.env.ENV ?? 'this should never happen'
+const envVariable = process.env.ENV
 
 const pathDevSource = join(__dirname, '../../..', `.env.${envVariable}`)
 const pathBuildSource = join(__dirname, '../../../..', '.env')

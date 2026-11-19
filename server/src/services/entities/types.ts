@@ -12,11 +12,7 @@ export const ENTITY_METAS_CONFIG_MAP = {
 }
 
 export type NestedMetadata =
-  | string
-  | number
-  | boolean
-  | string[]
-  | { [key: string]: NestedMetadata }
+  string | number | boolean | string[] | { [key: string]: NestedMetadata }
 export type Metadata = Record<string, NestedMetadata>
 
 export type OfferData = {
