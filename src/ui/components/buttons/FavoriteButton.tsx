@@ -115,6 +115,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
           visible={signInModalVisible}
           offerId={offerId}
           artistId={artistId}
+          venueId={venueId}
           dismissModal={hideSignInModal}
         />
       </ModalWrapper>

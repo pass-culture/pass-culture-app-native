@@ -7,6 +7,7 @@ import {
   AccountState,
   FavoriteArtistResponse,
   FavoriteOfferResponseV2,
+  FavoriteVenueResponse,
   OauthStateResponseV2,
   RecreditType,
   SigninResponseV2,
@@ -15,6 +16,7 @@ import { AuthContext } from 'features/auth/context/AuthContext'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfile } from 'features/share/types'
@@ -55,6 +57,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
 const apiPostOfferFavoriteSpy = jest.spyOn(API.api, 'postNativeV2MeFavoritesOffers')
 const apiPostArtistFavoriteSpy = jest.spyOn(API.api, 'postNativeV2MeFavoritesArtists')
+const apiPostVenueFavoriteSpy = jest.spyOn(API.api, 'postNativeV2MeFavoritesVenues')
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV2Signin')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -76,6 +79,7 @@ describe('<Login/>', () => {
       '/v2/me/favorites/artists',
       favoriteArtistResponseSnap
     )
+    mockServer.postApi<FavoriteVenueResponse>('/v2/me/favorites/venues', favoriteVenueResponseSnap)
     mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
@@ -469,7 +473,7 @@ describe('<Login/>', () => {
     const ARTIST_ID = favoriteArtistResponseSnap.artist.id
 
     beforeEach(() => {
-      useRoute.mockReturnValue({ params: { artistId: ARTIST_ID, from: StepperOrigin.FAVORITE } }) // first render
+      useRoute.mockReturnValue({ params: { artistId: ARTIST_ID, from: StepperOrigin.FAVORITE } })
     })
 
     it('should redirect to Artist page when signin is successful', async () => {
@@ -490,6 +494,34 @@ describe('<Login/>', () => {
       await user.press(screen.getByText('Se connecter'))
 
       expect(apiPostArtistFavoriteSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('Login comes from adding a venue to favorite', () => {
+    const VENUE_ID = favoriteVenueResponseSnap.venue.id
+
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { venueId: VENUE_ID, from: StepperOrigin.FAVORITE } })
+    })
+
+    it('should redirect to venue page when signin is successful', async () => {
+      renderLogin()
+      await fillInputs()
+      await user.press(screen.getByText('Se connecter'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Venue', {
+        id: VENUE_ID,
+      })
+    })
+
+    it('should add the previous venue to favorites when signin is successful', async () => {
+      simulateAddArtistToFavorites()
+
+      renderLogin()
+      await fillInputs()
+      await user.press(screen.getByText('Se connecter'))
+
+      expect(apiPostVenueFavoriteSpy).toHaveBeenCalledTimes(1)
     })
   })
 
