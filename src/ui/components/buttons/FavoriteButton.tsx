@@ -1,72 +1,107 @@
-import React, { useCallback, useRef } from 'react'
-import { Animated } from 'react-native'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
 import { ArtistFavoriteProps, OfferFavoriteProps } from 'features/offer/types'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
+import { AnimatedFavoriteIcon, FavoriteAnimationAction } from 'ui/components/AnimatedFavoriteIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { Button } from 'ui/designSystem/Button/Button'
-import { Favorite } from 'ui/svg/icons/Favorite'
-import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type FavoriteButtonProps =
   | ({ offerId: number; artistId?: never; venueId?: never } & OfferFavoriteProps)
   | ({ artistId: string; offerId?: never; venueId?: never } & ArtistFavoriteProps)
 
-export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
-  const {
-    offerId,
-    artistId,
-    favorite,
-    addFavorite,
-    removeFavorite,
-    isAddFavoriteLoading,
-    isRemoveFavoriteLoading,
-  } = props
-
+export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
+  offerId,
+  artistId,
+  favorite,
+  addFavorite,
+  removeFavorite,
+  isAddFavoriteLoading,
+  isRemoveFavoriteLoading,
+}) => {
+  const { isLoggedIn } = useAuthContext()
   const {
     visible: signInModalVisible,
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
 
-  const { isLoggedIn } = useAuthContext()
+  const [prevFavoriteProp, setPrevFavoriteProp] = useState(favorite)
+  const [optimisticFavorite, setOptimisticFavorite] = useState<boolean | null>(null)
+  const [animatingAction, setAnimatingAction] = useState<FavoriteAnimationAction>(null)
 
-  const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
+  if (favorite !== prevFavoriteProp) {
+    setPrevFavoriteProp(favorite)
+    setOptimisticFavorite(null)
+  }
 
-  const pressFavorite = useCallback(async () => {
+  const isFavorited = optimisticFavorite ?? !!favorite
+  const isAnimating = animatingAction !== null
+  const isPurple = isFavorited || isAnimating
+  const isRemoveSource = animatingAction ? animatingAction === 'remove' : isFavorited
+
+  const handleAnimationFinish = useCallback(() => {
+    setAnimatingAction(null)
+  }, [])
+
+  const pressFavorite = useCallback(() => {
     if (!isLoggedIn) {
       showSignInModal()
       return
     }
+    if (isAnimating) return
 
-    if (favorite) {
-      removeFavorite(favorite.id)
-      return
+    if (isFavorited) {
+      setOptimisticFavorite(false)
+      setAnimatingAction('remove')
+      if (favorite) removeFavorite(favorite.id)
+    } else {
+      setOptimisticFavorite(true)
+      setAnimatingAction('add')
+      if (artistId) addFavorite?.({ artistId })
+      else if (offerId) addFavorite?.({ offerId })
     }
+  }, [
+    addFavorite,
+    artistId,
+    favorite,
+    isAnimating,
+    isFavorited,
+    isLoggedIn,
+    offerId,
+    removeFavorite,
+    showSignInModal,
+  ])
 
-    animateIcon(scaleFavoriteIconAnimatedValueRef.current)
+  const renderFavoriteIcon: React.FC<AccessibleIcon> = useCallback(
+    () => (
+      <AnimatedFavoriteIcon
+        isFavorited={isFavorited}
+        isPurple={isPurple}
+        isRemoveSource={isRemoveSource}
+        animatingAction={animatingAction}
+        onAnimationFinish={handleAnimationFinish}
+      />
+    ),
+    [animatingAction, handleAnimationFinish, isFavorited, isPurple, isRemoveSource]
+  )
 
-    if (artistId) {
-      addFavorite?.({ artistId })
-    } else if (offerId) {
-      addFavorite?.({ offerId })
-    }
-  }, [addFavorite, artistId, favorite, isLoggedIn, offerId, removeFavorite, showSignInModal])
+  const accessibilityLabel = isFavorited ? 'Retirer des favoris' : 'Mettre en favori'
+  const checkboxProps = accessibleCheckboxProps({ checked: isFavorited, label: accessibilityLabel })
 
-  const accessibilityLabel = favorite ? 'Retirer des favoris' : 'Mettre en favori'
-  const checkboxProps = accessibleCheckboxProps({ checked: !!favorite, label: accessibilityLabel })
   return (
     <React.Fragment>
       <Button
         iconButton
         variant="secondary"
-        color={favorite ? 'brand' : 'neutral'}
-        icon={favorite ? FavoriteFilled : Favorite}
+        color={isPurple ? 'brand' : 'neutral'}
+        icon={renderFavoriteIcon}
         onPress={pressFavorite}
-        disabled={isRemoveFavoriteLoading || isAddFavoriteLoading}
+        disabled={isRemoveFavoriteLoading || isAddFavoriteLoading || isAnimating}
         {...checkboxProps}
         accessibilityLabel={checkboxProps.accessibilityLabel ?? accessibilityLabel}
       />
@@ -86,18 +121,3 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 const ModalWrapper = styled.View({
   position: 'absolute',
 })
-
-function animateIcon(animatedValue: Animated.Value): void {
-  Animated.sequence([
-    Animated.timing(animatedValue, {
-      toValue: 1.3,
-      duration: 200,
-      useNativeDriver: false,
-    }),
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 200,
-      useNativeDriver: false,
-    }),
-  ]).start()
-}

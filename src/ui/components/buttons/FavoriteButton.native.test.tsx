@@ -103,6 +103,60 @@ describe('<FavoriteButton />', () => {
         expect(mockRemoveFavorite).toHaveBeenCalledTimes(1)
         expect(mockRemoveFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)
       })
+
+      it('should optimistically update accessibility label to "Retirer des favoris" on press', async () => {
+        renderFavoriteButton(defaultOfferProps)
+
+        await user.press(await screen.findByLabelText('Mettre en favori'))
+
+        expect(screen.getByLabelText('Retirer des favoris')).toBeOnTheScreen()
+      })
+
+      it('should optimistically update accessibility label to "Mettre en favori" when removing favorite', async () => {
+        renderFavoriteButton({
+          ...defaultOfferProps,
+          favorite: { id: favoriteResponseSnap.id, offer: favoriteResponseSnap.offer },
+        })
+
+        await user.press(await screen.findByLabelText('Retirer des favoris'))
+
+        expect(screen.getByLabelText('Mettre en favori')).toBeOnTheScreen()
+      })
+
+      it('should disable the button while animation is playing and prevent double press', async () => {
+        const mockAddFavorite = jest.fn()
+        renderFavoriteButton({
+          ...defaultOfferProps,
+          addFavorite: mockAddFavorite,
+        })
+
+        await user.press(await screen.findByLabelText('Mettre en favori'))
+
+        const button = screen.getByLabelText('Retirer des favoris')
+
+        expect(button).toBeDisabled()
+
+        await user.press(button)
+
+        expect(mockAddFavorite).toHaveBeenCalledTimes(1)
+      })
+
+      it('should sync state when favorite prop updates externally', async () => {
+        const { rerender } = renderFavoriteButton(defaultOfferProps)
+
+        expect(await screen.findByLabelText('Mettre en favori')).toBeOnTheScreen()
+
+        rerender(
+          reactQueryProviderHOC(
+            <FavoriteButton
+              {...defaultOfferProps}
+              favorite={{ id: favoriteResponseSnap.id, offer: favoriteResponseSnap.offer }}
+            />
+          )
+        )
+
+        expect(await screen.findByLabelText('Retirer des favoris')).toBeOnTheScreen()
+      })
     })
 
     describe('user is not logged in', () => {
