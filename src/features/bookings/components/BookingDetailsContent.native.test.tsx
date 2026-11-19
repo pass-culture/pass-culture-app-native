@@ -2,13 +2,15 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingResponse, TicketDisplayEnum } from 'api/gen'
+import { BookingResponse, BookingResponseV3, TicketDisplayEnum } from 'api/gen'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
+import { selectBookingDetails } from 'features/bookings/queries/selectors/selectBookingDetails'
 import { BookingProperties } from 'features/bookings/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -67,6 +69,37 @@ const bookingVenueNotOpenToPublic: BookingResponse = {
     },
   },
 }
+const bookingWithScreeningFeatures = selectBookingDetails({
+  ...booking,
+  stock: {
+    ...booking.stock,
+    screeningFeatures: {
+      language: 'VF',
+      video: 'IMAX',
+      audio: 'ATMOS',
+      accessibility: {
+        motor: ['PMR'],
+        audio: ['SUBTITLE_CCAP'],
+        visual: ['AD_GRETA'],
+        mental: [],
+      },
+      specialEventType: 'AVANT_PREMIERE_EQUIPE',
+    },
+  },
+} as unknown as BookingResponseV3)
+const bookingWithFeaturesWithoutDetails = selectBookingDetails({
+  ...booking,
+  stock: {
+    ...booking.stock,
+    screeningFeatures: {
+      language: 'VF',
+      video: '4DX',
+      audio: null,
+      accessibility: { motor: [], audio: [], visual: [], mental: [] },
+      specialEventType: 'CINE_DEBAT',
+    },
+  },
+} as unknown as BookingResponseV3)
 
 jest.mock('react-native-map-link')
 
@@ -347,6 +380,68 @@ describe('<BookingDetailsContent />', () => {
 
     expect(screen.getByText(`emailDeLorganisateur@emailSchema.com`)).toBeOnTheScreen()
   })
+
+  it('should display the cinema screening features', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+    await renderBookingDetailsContent({
+      booking: bookingWithScreeningFeatures,
+      properties: mockProperties,
+    })
+
+    expect(screen.getByText('Avant-première avec équipe')).toBeOnTheScreen()
+    expect(screen.getByText('IMAX')).toBeOnTheScreen()
+    expect(screen.getByText('Dolby Atmos')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap auditif')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap moteur')).toBeOnTheScreen()
+  })
+
+  it('should open the cinema screening details modal', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+    await renderBookingDetailsContent({
+      booking: bookingWithScreeningFeatures,
+      properties: mockProperties,
+    })
+
+    await user.press(screen.getByText('Informations sur la séance'))
+
+    expect(navigate).toHaveBeenCalledWith('CinemaScreeningDetailsModal', {
+      id: bookingWithScreeningFeatures.id,
+    })
+  })
+
+  it('should display the cinema screening tags without details button when no feature has a description', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+    await renderBookingDetailsContent({
+      booking: bookingWithFeaturesWithoutDetails,
+      properties: mockProperties,
+    })
+
+    expect(screen.getByText('Ciné-débat')).toBeOnTheScreen()
+    expect(screen.getByText('4DX')).toBeOnTheScreen()
+    expect(screen.queryByText('Informations sur la séance')).not.toBeOnTheScreen()
+  })
+
+  it('should not display cinema screening information without enriched features', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+    await renderBookingDetailsContent({ booking, properties: mockProperties })
+
+    expect(screen.queryByText('Informations sur la séance')).not.toBeOnTheScreen()
+  })
+
+  it('should keep the previous display when special event screenings are disabled', async () => {
+    await renderBookingDetailsContent({
+      booking: bookingWithScreeningFeatures,
+      properties: mockProperties,
+    })
+
+    expect(screen.queryByText('Informations sur la séance')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Avant-première avec équipe')).not.toBeOnTheScreen()
+  })
 })
 
 const renderBookingDetailsContent = ({
@@ -354,7 +449,7 @@ const renderBookingDetailsContent = ({
   booking,
 }: {
   properties: BookingProperties
-  booking: BookingResponse
+  booking: BookingResponse | ReturnType<typeof selectBookingDetails>
 }) => {
   return renderAsync(
     reactQueryProviderHOC(

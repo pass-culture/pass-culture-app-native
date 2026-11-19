@@ -43,6 +43,10 @@ describe('useCancelBookingMutation', () => {
       queryKey: [QueryKeys.BOOKINGSV2, BOOKING_OFFER_ID],
     })
 
+    expect(removeQueriesMock).toHaveBeenCalledWith({
+      queryKey: [QueryKeys.BOOKINGV3, BOOKING_OFFER_ID],
+    })
+
     expect(invalidateQueriesMock).toHaveBeenCalledWith({
       queryKey: [QueryKeys.USER_PROFILE],
     })

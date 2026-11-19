@@ -41,7 +41,6 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenABTest: undefined
   CheatcodesScreenAccesLibre: undefined
   CheatcodesScreenAnalyticsDebugger: undefined
-  CheatcodesScreenCinemaScreeningDetailsModal: undefined
   CheatcodesScreenDebugInformations: undefined
   CheatcodesScreenDirectIdAccess: undefined
   CheatcodesScreenFeatureFlags: undefined

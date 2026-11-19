@@ -272,6 +272,7 @@ export type RootStackParamList = {
   BookingConfirmation: BookingConfirmationParams
   _DeeplinkOnlyBookingConfirmation1: BookingConfirmationParams
   BookingDetails: BookingDetailsParams
+  CinemaScreeningDetailsModal: BookingDetailsParams
   _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
