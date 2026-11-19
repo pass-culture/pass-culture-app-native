@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
+import { CinemaScreeningDetails } from 'features/bookings/components/CinemaScreeningDetailsModal/CinemaScreeningDetails'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { CguDetails } from 'features/bookOffer/components/CguDetails'
@@ -17,6 +18,7 @@ import {
 } from 'features/bookOffer/helpers/getBookingDetails'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
+import { getScreeningDetails } from 'features/offer/components/OfferCine/getScreeningDetails'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
@@ -31,6 +33,7 @@ import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { Accordion } from 'ui/components/Accordion'
 import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -174,6 +177,8 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
 
   if (!selectedStock || typeof quantity !== 'number') return null
 
+  const screeningDetails = getScreeningDetails(selectedStock.features)
+
   const {
     formattedPriceWithEuro,
     isNotUserFreeStatus,
@@ -205,6 +210,13 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
       <BookingInformationsContainer>
         <BookingInformations />
       </BookingInformationsContainer>
+      {screeningDetails.length > 0 ? (
+        <StyledAccordion
+          title="Voir le détail des informations de la séance"
+          titleComponent={Typo.BodyAccentXs}>
+          <CinemaScreeningDetails details={screeningDetails} withSeparator={false} />
+        </StyledAccordion>
+      ) : null}
       {offer?.isDigital ? null : (
         <React.Fragment>
           <Separator />
@@ -309,6 +321,15 @@ const Container = styled.View(({ theme }) => ({
 const BookingInformationsContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
+
+const StyledAccordion = styled(Accordion).attrs(({ theme }) => ({
+  titleStyle: {
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    paddingBottom: theme.designSystem.size.spacing.l,
+  },
+  bodyStyle: { paddingHorizontal: 0 },
+}))``
 
 const VenueAddressContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
