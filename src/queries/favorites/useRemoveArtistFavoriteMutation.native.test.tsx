@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
 import { simulateBackendForArtist } from 'features/favorites/tests/simulateBackendForArtist'
-import { useRemoveArtistFavoriteMutation } from 'queries/favorites/useRemoveArtistFavoriteMutation'
+import { useRemoveArtistFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 

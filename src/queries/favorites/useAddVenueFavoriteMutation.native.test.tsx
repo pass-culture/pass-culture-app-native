@@ -10,7 +10,7 @@ import { simulateBackendForVenue } from 'features/favorites/tests/simulateBacken
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useAddVenueFavoriteMutation } from 'queries/favorites/useAddVenueFavoriteMutation'
+import { useAddVenueFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
 import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
