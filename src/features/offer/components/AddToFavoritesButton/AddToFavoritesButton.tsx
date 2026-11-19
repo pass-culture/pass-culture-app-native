@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { FavoriteType } from 'features/favorites/enum'
 import { useOfferFavorite } from 'features/favorites/hooks/useOfferFavorite'
-import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { Button } from 'ui/designSystem/Button/Button'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 

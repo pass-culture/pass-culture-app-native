@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
 import { simulateBackendForVenue } from 'features/favorites/tests/simulateBackendForVenue'
-import { useRemoveVenueFavoriteMutation } from 'queries/favorites/useRemoveVenueFavoriteMutation'
+import { useRemoveVenueFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
