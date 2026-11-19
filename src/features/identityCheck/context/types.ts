@@ -1,6 +1,5 @@
 import { ActivityIdEnum, IdentityCheckMethod, SchoolTypesIdEnum } from 'api/gen'
-import { Country } from 'features/identityCheck/components/countryPicker/types'
-import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { SuggestedCity } from 'libs/place/types'
 
 interface Name {
@@ -8,22 +7,12 @@ interface Name {
   lastName: string
 }
 
-interface PhoneNumber {
-  phoneNumber: string
-  country: {
-    callingCode: Country['callingCode']
-    countryCode: Country['id']
-  }
-}
-
 export interface SubscriptionState {
-  step: DeprecatedIdentityCheckStep | IdentityCheckStep | null
-  phoneValidation: PhoneNumber | null
+  step: IdentityCheckStep | null
   profile: {
     address: string | null
     city: SuggestedCity | null
     name: Name | null
-    phoneNumber?: string | null
     status: ActivityIdEnum | null
     hasSchoolTypes: boolean
     schoolType: SchoolTypesIdEnum | null
@@ -42,8 +31,7 @@ export interface SubscriptionState {
 
 export type Action =
   | { type: 'INIT' }
-  | { type: 'SET_STEP'; payload: DeprecatedIdentityCheckStep | IdentityCheckStep }
-  | { type: 'SET_PHONE_NUMBER'; payload: PhoneNumber }
+  | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_STATUS'; payload: ActivityIdEnum | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }

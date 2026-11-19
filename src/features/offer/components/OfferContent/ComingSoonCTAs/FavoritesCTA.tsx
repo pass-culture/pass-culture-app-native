@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
-import { FavoriteProps } from 'features/offer/types'
+import { OfferFavoriteProps } from 'features/offer/types'
 import { ModalSettings } from 'ui/components/modals/useModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Favorite } from 'ui/svg/icons/Favorite'
@@ -15,7 +15,7 @@ type Props = {
   onPressFavoriteCTA: () => void
   favoriteAuthModal: ModalSettings
   caption?: string
-} & Partial<FavoriteProps>
+} & Partial<OfferFavoriteProps>
 
 export const FavoritesCTA: FC<Props> = ({
   offerId,

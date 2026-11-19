@@ -102,6 +102,9 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
+export const getCalendarMinDate = (markedDates: MarkedDates): string =>
+  getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-MM-dd')
+
 export const getDayDescription = (
   price: number,
   currency: Currency,
@@ -200,7 +203,7 @@ export const Calendar: React.FC<Props> = ({
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
-  const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
+  const minDate = getCalendarMinDate(markedDates)
   const [currentMonth, setCurrentMonth] = useState<string>(minDate)
   const selectDay = useSelectDay()
   const theme = useTheme()

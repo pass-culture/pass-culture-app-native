@@ -1,4 +1,4 @@
-import { BannerName, SubscriptionStepperResponseV2 } from 'api/gen'
+import { BannerName, SubscriptionStepperResponseV3 } from 'api/gen'
 import { ActivationBanner } from 'features/home/api/useActivationBanner'
 import { ProfileFeatureFlagsProps } from 'features/profile/types'
 
@@ -13,7 +13,7 @@ export enum BannerType {
 type GetBannerTypeParams = {
   featureFlags: ProfileFeatureFlagsProps['featureFlags']
   activationBanner?: ActivationBanner
-  activationBannerSubscriptionInfos?: SubscriptionStepperResponseV2
+  activationBannerSubscriptionInfos?: SubscriptionStepperResponseV3
   activationDisabledBannerInfos?: unknown
 }
 

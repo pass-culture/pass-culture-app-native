@@ -14,6 +14,7 @@ export const hasAThematicSearch = [
   SearchGroupNameEnumv2.LIVRES,
   SearchGroupNameEnumv2.MUSIQUE,
   SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+  SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
 ] as const
 
 type HasAThematicSearch = typeof hasAThematicSearch

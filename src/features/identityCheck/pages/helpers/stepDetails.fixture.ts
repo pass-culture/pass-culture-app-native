@@ -3,22 +3,8 @@ import { StepExtendedDetails, IdentityCheckStep } from 'features/identityCheck/t
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
-import { Smartphone } from 'ui/svg/icons/Smartphone'
 
 export const stepsDetailsFixture: StepExtendedDetails[] = [
-  {
-    name: IdentityCheckStep.PHONE_VALIDATION,
-    icon: {
-      disabled: Smartphone,
-      current: Smartphone,
-      completed: Smartphone,
-      retry: Smartphone,
-    },
-    firstScreen: 'SetPhoneNumberWithoutValidation',
-    title: 'Numéro de téléphone',
-    stepState: StepButtonState.COMPLETED,
-    firstScreenType: ProfileTypes.IDENTITY_CHECK,
-  },
   {
     name: IdentityCheckStep.IDENTIFICATION,
     icon: {

@@ -6,9 +6,5 @@ export enum PreValidationSignupStep {
   ConfirmationEmailSent = 'ConfirmationEmailSent',
 }
 
-enum PostValidationSignupStep {
-  PhoneNumber = 'PhoneNumber',
-}
-
-export const SignupStep = { ...PreValidationSignupStep, ...PostValidationSignupStep }
+const SignupStep = PreValidationSignupStep
 export type SignupStep = (typeof SignupStep)[keyof typeof SignupStep]

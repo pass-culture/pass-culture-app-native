@@ -1,10 +1,10 @@
-import { FavoriteResponse } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { FavoriteOfferResponseV2 } from 'api/gen'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { GeoCoordinates } from 'libs/location/location'
 
 import { sortByIdDesc, sortByAscendingPrice, sortByDistanceAroundMe } from './sorts'
 
-const baseOffer = paginatedFavoritesResponseSnap.favorites[0]
+const baseOffer = paginatedOfferFavoritesResponseSnap.favorites[0]
 
 const position = { latitude: 48.8584, longitude: 2.2945 } as GeoCoordinates
 const position2 = { latitude: 49.8584, longitude: 3.2945 } as GeoCoordinates
@@ -12,7 +12,7 @@ const position3 = { latitude: 50.8584, longitude: 4.2945 } as GeoCoordinates
 
 describe('Favorites sorts', () => {
   it('should sort by RECENTLY_ADDED (API default sort)', () => {
-    const data: Array<FavoriteResponse> = [
+    const data: Array<FavoriteOfferResponseV2> = [
       { ...baseOffer, id: 1 },
       { ...baseOffer, id: 3 },
       { ...baseOffer, id: 2 },
@@ -23,7 +23,7 @@ describe('Favorites sorts', () => {
   })
 
   it('should sort by ASCENDING_PRICE', () => {
-    const data: Array<FavoriteResponse> = [
+    const data: Array<FavoriteOfferResponseV2> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, price: 10 } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, price: 30 } },
       { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
@@ -35,7 +35,7 @@ describe('Favorites sorts', () => {
   })
 
   it('should sort by ASCENDING_PRICE and place expired offer last', () => {
-    const data: Array<FavoriteResponse> = [
+    const data: Array<FavoriteOfferResponseV2> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, price: 10 } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, price: 30 } },
       { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
@@ -47,7 +47,7 @@ describe('Favorites sorts', () => {
   })
 
   it('should sort by ASCENDING_PRICE and place offer with no price last', () => {
-    const data: Array<FavoriteResponse> = [
+    const data: Array<FavoriteOfferResponseV2> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, price: 10 } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, price: 30 } },
       { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
@@ -59,7 +59,7 @@ describe('Favorites sorts', () => {
   })
 
   it('should sort by AROUND_ME', () => {
-    const data: Array<FavoriteResponse> = [
+    const data: Array<FavoriteOfferResponseV2> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, coordinates: position } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, coordinates: position3 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, coordinates: position2 } },
@@ -70,7 +70,7 @@ describe('Favorites sorts', () => {
   })
 
   it('should sort by AROUND_ME and place offer with no coordinates last', () => {
-    const data: Array<FavoriteResponse> = [
+    const data: Array<FavoriteOfferResponseV2> = [
       { ...baseOffer, id: 1, offer: { ...baseOffer.offer, coordinates: position } },
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, coordinates: position3 } },
       { ...baseOffer, id: 2 },

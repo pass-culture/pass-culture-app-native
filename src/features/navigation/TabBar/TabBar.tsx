@@ -1,4 +1,5 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { StackActions } from '@react-navigation/native'
 import React from 'react'
 
 import {
@@ -46,6 +47,9 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
                 dispatch({ type: 'SET_STATE', payload: { ...initialSearchState, locationFilter } })
                 setDisabilities(defaultDisabilitiesProperties)
                 hideSuggestions()
+                if (route.state?.key && (route.state.routes?.length ?? 0) > 1) {
+                  navigation.dispatch({ ...StackActions.popToTop(), target: route.state.key })
+                }
                 navigateParams.params = {
                   screen: 'SearchLanding',
                   params: {

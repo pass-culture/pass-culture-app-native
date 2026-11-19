@@ -2,7 +2,6 @@ import { SubscriptionState, Action } from 'features/identityCheck/context/types'
 
 export const initialSubscriptionState: SubscriptionState = {
   step: null,
-  phoneValidation: null,
   profile: {
     name: null,
     city: null,
@@ -32,8 +31,6 @@ export const SubscriptionReducer = (
       return initialSubscriptionState
     case 'SET_STEP':
       return { ...state, step: action.payload }
-    case 'SET_PHONE_NUMBER':
-      return { ...state, phoneValidation: action.payload }
     case 'SET_NAME':
       return { ...state, profile: { ...state.profile, name: action.payload } }
     case 'SET_STATUS':

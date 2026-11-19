@@ -4,12 +4,15 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import * as OfferCineBlockV2API from 'features/offer/components/OfferCine/OfferCineBlockV2'
+import { SpecialEventOfferCineBlock } from 'features/offer/components/OfferCine/SpecialEventOfferCineBlock'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import {
   defaultLocationState,
@@ -101,6 +104,12 @@ const setupAroundMeLocation = () => {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('features/offer/components/OfferCine/SpecialEventOfferCineBlock', () => ({
+  SpecialEventOfferCineBlock: jest.fn(() => null),
+}))
+
+const offerCineBlockV2Spy = jest.spyOn(OfferCineBlockV2API, 'OfferCineBlockV2')
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -146,6 +155,43 @@ describe('<OfferPlace />', () => {
     await screen.findByText('Trouve ta séance')
 
     expect(screen.getByTestId('offer-new-xp-cine-block')).toBeOnTheScreen()
+  })
+
+  it('should use special event cinema block when special event screenings are enabled', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        extraData: { allocineId: 2765410054 },
+      },
+    })
+
+    expect(SpecialEventOfferCineBlock).toHaveBeenCalledTimes(1)
+  })
+
+  it('should keep cinema V2 when both cinema flags are enabled', () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS,
+      RemoteStoreFeatureFlags.WIP_USE_MOVIE_SCREENINGS_ENDPOINT,
+    ])
+
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        extraData: { allocineId: 2765410054 },
+      },
+    })
+
+    expect(SpecialEventOfferCineBlock).not.toHaveBeenCalled()
+    expect(offerCineBlockV2Spy).toHaveBeenCalledWith(
+      expect.objectContaining({ offerId: mockOffer.id, allocineId: '2765410054' }),
+      undefined
+    )
   })
 
   it('should display "Trouve ta séance" above Venue when offer subcategory is "Seance cine"', () => {
@@ -376,7 +422,7 @@ describe('<OfferPlace />', () => {
 
     it('should not display "Voir la page du lieu" button when venue is not permanent', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponse = {
+      const nonPermanentOffer: OfferResponse = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -384,7 +430,7 @@ describe('<OfferPlace />', () => {
         },
         address: undefined,
       }
-      renderOfferPlace({ offer })
+      renderOfferPlace({ offer: nonPermanentOffer })
 
       expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
     })

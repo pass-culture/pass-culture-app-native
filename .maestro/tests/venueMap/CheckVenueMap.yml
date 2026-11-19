@@ -5,7 +5,6 @@ onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
 - runFlow: ../common/deeplinks/DeeplinkToHome.yml
 
 - scrollUntilVisible:

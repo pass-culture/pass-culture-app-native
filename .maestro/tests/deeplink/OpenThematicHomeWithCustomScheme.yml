@@ -1,0 +1,54 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - deeplink
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+# Keep the app stopped so that the link starts it cold, like a campaign link: the URL then goes through getInitialURL
+# (BatchPush.getInitialURL on iOS) instead of the `url` event received by a running app
+- runFlow: ../common/lifecycle/StopApp.yml
+
+# openLink does not fail on an unhandled link: when the URL_PREFIX scheme is not declared natively
+# (Info.plist, AndroidManifest.xml), the app does not open and the next assertion fails
+- runFlow:
+    file: ../common/deeplinks/OpenDeeplink.yml
+    env:
+      LINK: ${output.links.staging.thematicHome}
+
+# The app state was cleared: the cookie consent modal shows up on top of the opened screen
+- extendedWaitUntil:
+    visible: 'Respect de ta vie privée'
+    timeout: 60000
+- runFlow: ../common/cookies/AcceptCookies.yml
+
+# Wait for the requested home, loaded from Contentful: the back button is displayed before the home is loaded.
+# Android: "Spectacles" is the title of the home 3S4UGnN2tfPIV1ANpdUYs6 in the Contentful testing environment, read by the staging
+# build. This flow fails if that home is renamed or its ID changes
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - extendedWaitUntil:
+          visible: 'Spectacles'
+          timeout: 30000
+# iOS: the header of a category home is an animated overlay that Maestro does not see (neither its title nor its "Suivre" button),
+# so wait for its first offers playlist, displayed once the home is loaded (the home must keep one). It does not prove which home is
+# displayed: the link → home resolution is shared JS code, checked on Android
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - extendedWaitUntil:
+          visible:
+            id: 'playlistTitle'
+          timeout: 30000
+- assertNotVisible: 'Page introuvable.*'
+- assertNotVisible: 'Oups.*'
+- assertNotVisible: 'Bienvenue sur.*'
+
+# from=deeplink makes the back button lead to the home tab (labelled "Accueil - actif" on iOS)
+- tapOn: 'Revenir en arrière'
+- assertVisible: 'Accueil.*'
+
+- runFlow: ../common/lifecycle/StopApp.yml

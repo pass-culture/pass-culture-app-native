@@ -1,8 +1,8 @@
 import { useQueryClient } from '@tanstack/react-query'
-import { Hit } from 'algoliasearch/lite'
 
 import { OfferResponse } from 'api/gen'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
+import { extractOfferIdsFromHits } from 'features/offer/queries/selectors/extractOfferIdsFromHits'
 import { useFetchOffersQuery } from 'features/offer/queries/useFetchOffersQuery'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -10,7 +10,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { Offer } from 'shared/offer/types'
 
 const DEFAULT_RADIUS_KM = 50
 
@@ -65,6 +64,3 @@ export const useOffersStocksFromOfferQuery = (
 
   return { ...offersStocks, data: offersStocks.data ?? { offers: [] } }
 }
-
-const extractOfferIdsFromHits = (hits: Hit<Offer>[] = []) =>
-  hits.reduce<number[]>((previous, current) => [...previous, +current.objectID], [])

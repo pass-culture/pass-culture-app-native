@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { IdentificationSessionResponse, SubscriptionStepperResponseV2 } from 'api/gen'
+import { IdentificationSessionResponse, SubscriptionStepperResponseV3 } from 'api/gen'
 import { SubscriptionStepperErrorResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -16,8 +16,8 @@ describe('<UbbleWebview/>', () => {
         identificationUrl: 'http://ubble.webview.com',
       })
 
-      mockServer.getApi<SubscriptionStepperResponseV2>(
-        '/v2/subscription/stepper',
+      mockServer.getApi<SubscriptionStepperResponseV3>(
+        '/v3/subscription/stepper',
         SubscriptionStepperErrorResponseFixture
       )
 
@@ -36,7 +36,7 @@ describe('<UbbleWebview/>', () => {
           identificationUrl: "javascript:alert('hello')",
         })
 
-        mockServer.getApi<SubscriptionStepperResponseV2>(
+        mockServer.getApi<SubscriptionStepperResponseV3>(
           '/v2/subscription/stepper',
           SubscriptionStepperErrorResponseFixture
         )

@@ -29,8 +29,6 @@ import { SignupMethods } from 'features/auth/pages/signup/SignupMethods/SignupMe
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
-import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -42,11 +40,14 @@ import { IncorrectLink } from 'features/errors/pages/IncorrectLink'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
+import { RecreditBirthdayNotification } from 'features/identityCheck/pages/confirmation/RecreditedNotification'
+import { UnlockCredit } from 'features/identityCheck/pages/UnlockCredit'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { MainLandmark } from 'features/navigation/navigators/MainLandmark'
 import { AccessibleTabBar } from 'features/navigation/navigators/RootNavigator/Header/AccessibleTabBar'
 import { withAuthProtection } from 'features/navigation/navigators/RootNavigator/linking/withAuthProtection'
 import { RootScreenNames } from 'features/navigation/navigators/RootNavigator/types'
@@ -71,8 +72,8 @@ import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/Suspen
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
+import { VenueSurveyModal } from 'features/venue/pages/VenueSurveyModal/VenueSurveyModal'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
@@ -104,6 +105,12 @@ const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
   title: 'Choix de la localisation',
   presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal',
   animation: 'slide_from_bottom',
+}
+
+const MODAL_SIMPLE_OPTIONS: NativeStackNavigationOptions = {
+  presentation: isWeb ? 'transparentModal' : 'formSheet',
+  sheetAllowedDetents: 'fitToContents',
+  sheetCornerRadius: 8,
 }
 
 const rootScreens: RouteConfig[] = [
@@ -229,12 +236,12 @@ const rootScreens: RouteConfig[] = [
   },
   {
     name: 'EighteenBirthday',
-    component: EighteenBirthday,
+    component: UnlockCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
     name: '_DeeplinkOnlyEighteenBirthday1',
-    component: EighteenBirthday,
+    component: UnlockCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
@@ -346,6 +353,11 @@ const rootScreens: RouteConfig[] = [
     name: '_DeeplinkOnlyVenuePreviewCarousel3',
     component: VenuePreviewCarousel,
     options: { title: 'Aperçu du lieu' },
+  },
+  {
+    name: 'VenueSurveyModal',
+    component: VenueSurveyModal,
+    options: { title: 'Fenêtre pour accéder à l‘enquête de la page lieu', ...MODAL_SIMPLE_OPTIONS },
   },
   {
     name: 'Artist',
@@ -505,8 +517,16 @@ const RootStackNavigator = withWebWrapper(
         <RootStackNavigatorBase.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}
-          screenLayout={({ children }) => (
-            <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+          screenLayout={({ children, route, options }) => (
+            <MainLandmark
+              // transparent modals overlay a screen that already has its main
+              accessibilityRole={
+                options.presentation === 'transparentModal'
+                  ? undefined
+                  : determineAccessibilityRole(route.name)
+              }>
+              <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+            </MainLandmark>
           )}>
           <RootStackNavigatorBase.Screen name="TabNavigator" component={BottomTabScreen} />
           <RootStackNavigatorBase.Screen
@@ -598,10 +618,6 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
     return <LoadingPage />
   }
 
-  const mainAccessibilityRole: AccessibilityRole | undefined = determineAccessibilityRole(
-    currentRoute ?? null
-  )
-
   const shouldReserveTabBarSpace = !!(
     Platform.OS === 'web' &&
     isMobileViewport &&
@@ -611,10 +627,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
   return (
     <TabNavigationStateProvider>
       {showTabBar ? headerWithQuickAccess : <Header navId={navId} />}
-      <Main
-        nativeID={mainId}
-        accessibilityRole={mainAccessibilityRole}
-        shouldReserveTabBarSpace={shouldReserveTabBarSpace}>
+      <Main nativeID={mainId} shouldReserveTabBarSpace={shouldReserveTabBarSpace}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
       {showTabBar ? <AccessibleTabBar id={tabBarId} /> : null}

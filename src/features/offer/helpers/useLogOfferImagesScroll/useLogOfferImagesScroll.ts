@@ -29,7 +29,7 @@ export const useLogOfferImagesScroll = ({
       if (imageIndex === lastLoggedImageIndex.current) return
 
       lastLoggedImageIndex.current = imageIndex
-      analytics.logOfferImagesScroll({ offerId, nbImages, imageIndex, from })
+      void analytics.logOfferImagesScroll({ offerId, nbImages, imageIndex, from })
     },
     [offerId, nbImages, from]
   )

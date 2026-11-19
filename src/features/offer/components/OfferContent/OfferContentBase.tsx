@@ -16,7 +16,6 @@ import {
   ScrollView,
   StyleProp,
   ViewStyle,
-  ViewToken,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
@@ -24,7 +23,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponse, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { FavoriteType } from 'features/favorites/enum'
-import { useFavorite } from 'features/favorites/hooks/useFavorite'
+import { useOfferFavorite } from 'features/favorites/hooks/useOfferFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { AdviceSectionWithAnchor } from 'features/offer/components/OfferContent/AdviceSection/AdviceSectionWithAnchor'
@@ -50,10 +49,9 @@ import { useFunctionOnce } from 'libs/hooks'
 import { getDistance } from 'libs/location/getDistance'
 import { useUserLocation, usePlace, useLocationMode } from 'libs/locationV2/location.store'
 import { QueryKeys } from 'libs/queryKeys'
-import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
-import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
+import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveOfferFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
@@ -108,28 +106,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
 
-  const pageTracking = usePageTracking({
-    pageName: 'Offer',
-    pageLocation: 'offer',
-    pageId: params.id.toString(),
-  })
-
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
     ? JSON.parse(params?.apiRecoParams)
     : undefined
 
-  const {
-    sameCategorySimilarOffers,
-    apiRecoParamsSameCategory,
-    otherCategoriesSimilarOffers,
-    apiRecoParamsOtherCategories,
-    booksSameCategorySimilarOffers,
-    apiRecoParamsBooksSameCategory,
-  } = useOfferPlaylist({
+  const playlists = useOfferPlaylist({
     offer,
-    offerCategory: subcategory.categoryId,
-    offerSearchGroup: subcategory.searchGroupName,
-    searchGroupList,
+    userId,
   })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
@@ -212,7 +195,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
-  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddFavoriteMutation({
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddOfferFavoriteMutation({
     type: FavoriteType.OFFER,
     onSuccess: () => {
       if (typeof offer.id === 'number') {
@@ -230,13 +213,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
-    onError: () => {
-      showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
-    },
-  })
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
+    useRemoveOfferFavoriteMutation({
+      onError: () => {
+        showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
+      },
+    })
 
-  const favorite = useFavorite({ offerId: offer.id })
+  const favorite = useOfferFavorite({ offerId: offer.id })
 
   const favoriteButtonProps = {
     addFavorite,
@@ -279,24 +263,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     />
   )
 
-  const handleViewableItemsChanged = useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        playlistIndex,
-        entryId: offer.id.toString(),
-      })
-    },
-    [offer.id, pageTracking]
-  )
-
   const OfferCTAsComponent = (
     <OfferContentCTAs
       offer={offer}
@@ -307,7 +273,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     </OfferContentCTAs>
   )
 
-  const navigateToVerticalPlaylist = (type: PlaylistType) => ({
+  const navigateToVerticalPlaylist = (type: PlaylistType | string) => ({
     screen: 'VerticalPlaylistOffers' as const,
     params: {
       type: VerticalPlaylist.SimilarOffers,
@@ -321,7 +287,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const onBeforeNavigate = (type: PlaylistType) => {
+  const onBeforeNavigate = (type: PlaylistType | string) => {
     const moduleName = OFFER_SIMILAR_PLAYLIST_TITLES[type]
 
     if (!moduleName) return
@@ -416,13 +382,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           </StyledSectionWithDivider>
           <OfferPlaylistList
             offer={offer}
-            sameCategorySimilarOffers={sameCategorySimilarOffers}
-            apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-            otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-            apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-            booksSameCategorySimilarOffers={booksSameCategorySimilarOffers}
-            apiRecoParamsBooksSameCategory={apiRecoParamsBooksSameCategory}
-            onViewableItemsChanged={handleViewableItemsChanged}
+            playlists={playlists}
             seeAllButton={{
               navigateToVerticalPlaylist,
               onBeforeNavigate,

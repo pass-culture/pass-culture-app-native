@@ -16,7 +16,6 @@ onFlowStart:
         mock_type: 'HOUSEHOLDER_OK'
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
 - runFlow: ../common/deeplinks/DeeplinkGeneratedAccount.yml
 
 - assertVisible: 'Vérifier maintenant'

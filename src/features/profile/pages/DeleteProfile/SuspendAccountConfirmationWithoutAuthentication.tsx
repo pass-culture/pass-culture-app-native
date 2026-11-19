@@ -30,7 +30,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
   const metrics = useDeviceMetrics()
 
   const onPressContactFraudTeam = () => {
-    analytics.logContactFraudTeam({ from: 'suspendaccountconfirmation' })
+    void analytics.logContactFraudTeam({ from: 'suspendaccountconfirmation' })
   }
 
   const { accountSuspendForHackSuspicion, isLoading } = useAccountSuspendForHackSuspicionMutation({

@@ -2,7 +2,6 @@ import { ValidationError } from 'yup'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
-import { analytics } from 'libs/analytics/provider'
 
 const today = new Date()
 const lessThanFifteenYearsOldBirthdate = new Date()
@@ -45,13 +44,5 @@ describe('setBirthdaySchema', () => {
     await expect(result).rejects.toEqual(
       new ValidationError('Tu dois avoir au moins 15\u00a0ans pour t’inscrire au pass Culture')
     )
-  })
-
-  it('should log analytics if user is under 15 years old', async () => {
-    const input = { birthdate: lessThanFifteenYearsOldBirthdate }
-    const result = setBirthdaySchema.validate(input)
-
-    await expect(result).rejects.toBeTruthy()
-    expect(analytics.logSignUpTooYoung).toHaveBeenCalledTimes(1)
   })
 })

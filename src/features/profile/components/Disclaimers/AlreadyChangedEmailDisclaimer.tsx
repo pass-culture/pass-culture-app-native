@@ -7,8 +7,11 @@ import { Clock } from 'ui/svg/icons/Clock'
 import { getSpacingString, Typo } from 'ui/theme'
 
 export const AlreadyChangedEmailDisclaimer = () => {
+  const logConsultDisclaimerValidationMail = () => {
+    void analytics.logConsultDisclaimerValidationMail()
+  }
   useEffect(() => {
-    analytics.logConsultDisclaimerValidationMail()
+    logConsultDisclaimerValidationMail()
   }, [])
 
   return (

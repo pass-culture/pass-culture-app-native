@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SignupStep } from 'features/auth/enums'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -95,7 +95,7 @@ function renderQuitSignupModal(visible: boolean) {
   const props = {
     visible: visible,
     resume: resumeMock,
-    signupStep: SignupStep.Birthday,
+    signupStep: PreValidationSignupStep.Birthday,
   }
   return render(<QuitSignupModal {...props} />)
 }

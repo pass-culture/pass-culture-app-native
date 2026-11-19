@@ -42,16 +42,16 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     }
   }, [isDisabled])
 
-  const logAndOpenUrl = (finalUrl: string) => {
+  const logAndOpenUrl = async (finalUrl: string) => {
     setShouldRedirect(false)
-    analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
-    openUrl(finalUrl)
+    void analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
+    await openUrl(finalUrl)
   }
 
   useEffect(() => {
     if (!url || !shouldRedirect) return
     const businessUrl = getBusinessUrl(url, user?.email)
-    if (businessUrl) logAndOpenUrl(businessUrl)
+    if (businessUrl) void logAndOpenUrl(businessUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 
@@ -61,17 +61,19 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     localizationArea
   )
 
-  useEffect(() => {
-    if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
-        moduleId,
-        moduleType: ContentTypes.BUSINESS,
-        index,
-        homeEntryId,
-      })
-    }
+  useEffect(
+    function logModuleDisplayed() {
+      if (shouldModuleBeDisplayed)
+        void analytics.logModuleDisplayedOnHomepage({
+          moduleId,
+          moduleType: ContentTypes.BUSINESS,
+          index,
+          homeEntryId,
+        })
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
+    [shouldModuleBeDisplayed]
+  )
 
   const editorialCardInfo = useMemo(
     () => ({

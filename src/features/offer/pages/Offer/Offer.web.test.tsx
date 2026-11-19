@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponse, SimilarOffersResponse } from 'api/gen'
+import { OfferPagePlaylistResponse, OfferResponse } from 'api/gen'
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
@@ -79,14 +79,10 @@ describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { id: mockedOffer.id } })
-      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
-        params: {},
-        results: [],
-      })
-      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
-        params: {},
-        results: [],
-      })
+      mockServer.getApi<OfferPagePlaylistResponse>(
+        'https://localhost/native/v1/recommendation/offer_page_playlists/116656?longitude=90.477&latitude=90.477',
+        {}
+      )
     })
 
     it('should not have basic accessibility issues', async () => {

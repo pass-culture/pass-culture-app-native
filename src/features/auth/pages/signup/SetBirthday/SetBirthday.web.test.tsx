@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import { analytics } from 'libs/analytics/provider'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
@@ -25,6 +26,45 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
+  })
+
+  it('should show the age error when returning to the default birthdate after a change', async () => {
+    const ageError = /Tu dois avoir au moins 15\sans pour t’inscrire au pass Culture/
+    render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+    await screen.findByText('Continuer')
+    await act(async () => {
+      fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2005' } })
+    })
+
+    await act(async () => {
+      fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2006' } })
+    })
+
+    expect(screen.getByText(ageError)).toBeInTheDocument()
+  })
+
+  describe('underage analytics', () => {
+    it('should log logSignUpTooYoung when selecting a birthdate of under 15', async () => {
+      render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+      await screen.findByText('Continuer')
+
+      await act(async () => {
+        fireEvent.change(screen.getByTestId('select-Jour'), { target: { value: '2' } })
+      })
+
+      expect(analytics.logSignUpTooYoung).toHaveBeenCalledWith(13)
+    })
+
+    it('should not log when selecting a birthdate of at least 15 years old', async () => {
+      render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+      await screen.findByText('Continuer')
+
+      await act(async () => {
+        fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2005' } })
+      })
+
+      expect(analytics.logSignUpTooYoung).not.toHaveBeenCalled()
+    })
   })
 
   describe('submit button behavior', () => {

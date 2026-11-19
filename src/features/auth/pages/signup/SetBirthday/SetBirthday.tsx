@@ -14,6 +14,8 @@ import { SetContainer } from 'features/auth/pages/signup/SetContainer'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { NonEligible } from 'features/onboarding/enums'
+import { analytics } from 'libs/analytics/provider'
+import { dateDiffInFullYears } from 'libs/dates'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
 import { Form } from 'ui/components/Form'
@@ -51,6 +53,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   const initialDate = previousBirthdateProvided ? new Date(previousBirthdateProvided) : defaultDate
 
   const [userAge, setUserAge] = useState<number | string | null>(null)
+  const [hasBirthdateChanged, setHasBirthdateChanged] = useState(false)
 
   const {
     control,
@@ -65,11 +68,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   })
 
   const birthdate = watch('birthdate')
-
-  const displayErrorMessage = (date: Date) =>
-    formatDateToISOStringWithoutTime(date) === formatDateToISOStringWithoutTime(defaultDate)
-      ? undefined
-      : errors.birthdate?.message
 
   useEffect(() => {
     const fetchUserAge = async () => {
@@ -103,9 +101,37 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       ? 'Ta date de naissance nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
       : 'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
-  const errorMessage = displayErrorMessage(birthdate)
+  const errorMessage =
+    !hasBirthdateChanged &&
+    formatDateToISOStringWithoutTime(birthdate) === formatDateToISOStringWithoutTime(defaultDate)
+      ? undefined
+      : errors.birthdate?.message
 
   const accessibilityLabel = accessibilityLabelForNextStep + (errorMessage ?? '')
+
+  const handleOnChange = ({
+    selectedDate,
+    currentBirthdate,
+    onChange,
+  }: {
+    selectedDate?: Date
+    currentBirthdate: Date
+    onChange: (date: Date | undefined) => void
+  }) => {
+    onChange(selectedDate)
+    if (
+      !selectedDate ||
+      formatDateToISOStringWithoutTime(selectedDate) ===
+        formatDateToISOStringWithoutTime(currentBirthdate)
+    ) {
+      return
+    }
+    setHasBirthdateChanged(true)
+    const age = dateDiffInFullYears(selectedDate, new Date())
+    if (age < 15) {
+      void analytics.logSignUpTooYoung(age)
+    }
+  }
 
   return (
     <SetContainer>
@@ -129,12 +155,14 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           <Controller
             control={control}
             name="birthdate"
-            render={({ field: { value, onChange } }) => (
+            render={({ field: { value: currentBirthdate, onChange } }) => (
               <DateInput
                 label={titleId}
-                onChange={onChange}
-                date={value}
-                errorMessage={displayErrorMessage(value)}
+                onChange={(selectedDate) => {
+                  handleOnChange({ selectedDate, currentBirthdate, onChange })
+                }}
+                date={currentBirthdate}
+                errorMessage={errorMessage}
                 maximumDate={maximumSpinnerDate}
                 minimumDate={MINIMUM_DATE}
               />

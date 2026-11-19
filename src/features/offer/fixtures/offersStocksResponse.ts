@@ -7,6 +7,8 @@ export const offersStocksResponseSnap = toMutable({
   offers: [
     {
       id: 2051,
+      bookingAllowedDatetime: null,
+      publicationDate: null,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,
@@ -200,6 +202,8 @@ export const offersStocksResponseSnap = toMutable({
     },
     {
       id: 2054,
+      bookingAllowedDatetime: null,
+      publicationDate: null,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,
@@ -319,6 +323,8 @@ export const offersStocksResponseSnap = toMutable({
     },
     {
       id: 2055,
+      bookingAllowedDatetime: null,
+      publicationDate: null,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,
@@ -513,6 +519,8 @@ export const offersStocksResponseSnap = toMutable({
     },
     {
       id: 2243,
+      bookingAllowedDatetime: null,
+      publicationDate: null,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,
@@ -637,6 +645,8 @@ export const offersStocksResponseTimezonedSnap = toMutable({
   offers: [
     {
       id: 2051,
+      bookingAllowedDatetime: null,
+      publicationDate: null,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,
@@ -781,6 +791,8 @@ export const offersStocksResponseTimezonedSnap = toMutable({
     },
     {
       id: 2054,
+      bookingAllowedDatetime: null,
+      publicationDate: null,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,

@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { SuggestionHitHighlight } from 'features/search/components/Highlight/Highlight'
+import { SearchSuggestionOption } from 'features/search/components/SearchSuggestionsListbox/SearchSuggestionOption'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import {
   getNativeCategoryFromEnum,
@@ -18,14 +19,12 @@ import {
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Typo } from 'ui/theme'
 
@@ -225,10 +224,7 @@ const SuggestionContainer: FunctionComponent<{
   children: ReactNode
   numberOfLines?: number
 }> = ({ hit, onPress, testID, children, numberOfLines }) => (
-  <AutocompleteItemTouchable
-    testID={testID}
-    onPress={onPress}
-    accessibilityRole={AccessibilityRole.BUTTON}>
+  <AutocompleteItemTouchable testID={testID} onPress={onPress}>
     <MagnifyingGlassIconContainer>
       <MagnifyingGlassFilledIcon />
     </MagnifyingGlassIconContainer>
@@ -248,7 +244,7 @@ const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ category
 
 const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
 
-const AutocompleteItemTouchable = styled(TouchableOpacity)(({ theme }) => ({
+const AutocompleteItemTouchable = styled(SearchSuggestionOption)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: theme.designSystem.size.spacing.l,

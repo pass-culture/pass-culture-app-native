@@ -23,6 +23,12 @@ const defaultProps = {
 }
 
 describe('ModalDetailed', () => {
+  const originalPlatform = Platform.OS
+
+  afterEach(() => {
+    Platform.OS = originalPlatform
+  })
+
   it('should display its title, description, content and action', () => {
     render(<ModalDetailed {...defaultProps} />)
 
@@ -30,6 +36,19 @@ describe('ModalDetailed', () => {
     expect(screen.getByText('Detailed modal description')).toBeOnTheScreen()
     expect(screen.getByText('Interactive content')).toBeOnTheScreen()
     expect(screen.getByText('Confirm')).toBeOnTheScreen()
+  })
+
+  it('should expose its content to screen readers', () => {
+    render(<ModalDetailed {...defaultProps} />)
+
+    expect(screen.getByTestId('modalDetailedWrapper').props.accessibilityViewIsModal).toBe(true)
+    expect(screen.getByText('Detailed modal title').props).toMatchObject({
+      accessibilityRole: 'header',
+      accessibilityLevel: 'h1',
+    })
+    expect(screen.getByText('Detailed modal description').props.accessibilityRole).toBe('text')
+    expect(screen.getByLabelText('Quitter')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Confirm action')).toBeOnTheScreen()
   })
 
   it('should only display the loader content in loading mode', () => {
@@ -59,13 +78,18 @@ describe('ModalDetailed', () => {
     expect(modalWrapperStyle.maxHeight).toEqual(1318)
   })
 
+  it('should keep a fixed footer above the Android navigation bar', () => {
+    Platform.OS = 'android'
+
+    render(<ModalDetailed {...defaultProps} hasFixedFooter />)
+
+    const modalWrapperStyle = screen.getByTestId('modalDetailedWrapper').props.style
+
+    expect(modalWrapperStyle.height).toEqual(1318)
+    expect(modalWrapperStyle.maxHeight).toEqual(1318)
+  })
+
   describe('maxHeight calculation based on platform', () => {
-    const originalPlatform = Platform.OS
-
-    afterEach(() => {
-      Platform.OS = originalPlatform
-    })
-
     it('should subtract safe area insets on iOS', () => {
       Platform.OS = 'ios'
 

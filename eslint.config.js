@@ -300,6 +300,11 @@ module.exports = [
               message: 'react-native-maps is not supported on the web. Use libs/maps/maps instead',
             },
             {
+              name: 'libs/analytics/helpers/logViewItem',
+              importNames: ['logViewItem'],
+              message: 'use analytics.logViewItem from libs/analytics/provider instead',
+            },
+            {
               name: 'ui/theme',
               importNames: ['theme'],
               message:

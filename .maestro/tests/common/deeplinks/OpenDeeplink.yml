@@ -1,0 +1,10 @@
+appId: ${MAESTRO_APP_ID}
+---
+- openLink: ${LINK}
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          text: 'Ouvrir'
+          optional: true

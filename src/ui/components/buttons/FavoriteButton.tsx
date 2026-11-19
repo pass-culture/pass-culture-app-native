@@ -4,25 +4,26 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
-import { FavoriteProps } from 'features/offer/types'
+import { ArtistFavoriteProps, OfferFavoriteProps } from 'features/offer/types'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { useModal } from 'ui/components/modals/useModal'
 import { Button } from 'ui/designSystem/Button/Button'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 
-export type FavoriteButtonProps = {
-  offerId: number
-} & FavoriteProps
+export type FavoriteButtonProps =
+  | ({ offerId: number; artistId?: never; venueId?: never } & OfferFavoriteProps)
+  | ({ artistId: string; offerId?: never; venueId?: never } & ArtistFavoriteProps)
 
 export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
   const {
     offerId,
-    addFavorite,
-    isAddFavoriteLoading,
-    removeFavorite,
-    isRemoveFavoriteLoading,
+    artistId,
     favorite,
+    addFavorite,
+    removeFavorite,
+    isAddFavoriteLoading,
+    isRemoveFavoriteLoading,
   } = props
 
   const {
@@ -38,13 +39,22 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
   const pressFavorite = useCallback(async () => {
     if (!isLoggedIn) {
       showSignInModal()
-    } else if (favorite) {
+      return
+    }
+
+    if (favorite) {
       removeFavorite(favorite.id)
-    } else {
-      animateIcon(scaleFavoriteIconAnimatedValueRef.current)
+      return
+    }
+
+    animateIcon(scaleFavoriteIconAnimatedValueRef.current)
+
+    if (artistId) {
+      addFavorite?.({ artistId })
+    } else if (offerId) {
       addFavorite?.({ offerId })
     }
-  }, [addFavorite, favorite, isLoggedIn, offerId, removeFavorite, showSignInModal])
+  }, [addFavorite, artistId, favorite, isLoggedIn, offerId, removeFavorite, showSignInModal])
 
   const accessibilityLabel = favorite ? 'Retirer des favoris' : 'Mettre en favori'
   const checkboxProps = accessibleCheckboxProps({ checked: !!favorite, label: accessibilityLabel })
@@ -65,6 +75,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
         <FavoriteAuthModal
           visible={signInModalVisible}
           offerId={offerId}
+          artistId={artistId}
           dismissModal={hideSignInModal}
         />
       </ModalWrapper>

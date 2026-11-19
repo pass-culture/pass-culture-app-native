@@ -10,6 +10,11 @@ import { SearchResultsListHeader } from 'features/search/pages/SearchResults/v2/
 import { OffersList } from 'features/search/pages/SearchResults/v2/components/SearchLists/OffersList'
 import { ArtistsPlaylist } from 'features/search/pages/SearchResults/v2/components/SearchPlaylists/ArtistsPlaylist'
 import { VenuesPlaylistContainer } from 'features/search/pages/SearchResults/v2/components/SearchPlaylists/VenuesPlaylistContainer'
+import { hasActiveSearchFilters } from 'features/search/queries/helpers'
+import { selectSearchArtists } from 'features/search/queries/useSearchArtists/selectors/selectSearchArtists'
+import { useSearchArtistsQuery } from 'features/search/queries/useSearchArtists/useSearchArtistsQuery'
+import { selectSearchVenues } from 'features/search/queries/useSearchVenuesQuery/selectors/selectSearchVenues'
+import { useSearchVenuesQuery } from 'features/search/queries/useSearchVenuesQuery/useSearchVenuesQuery'
 import { FetchSearchResultsArgs } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -31,6 +36,17 @@ export const AllSearchResultsList: FC<Props> = ({ header, searchFilters }) => {
 
   const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
   const shouldDisplayGridList = enableGridList && !isWeb
+  const hasFilters = hasActiveSearchFilters(searchFilters)
+  const { data: artists = [] } = useSearchArtistsQuery(searchFilters, {
+    select: (data) => selectSearchArtists(data),
+  })
+  const { data: venues } = useSearchVenuesQuery(searchFilters, {
+    select: (data) => selectSearchVenues(data),
+  })
+  const hasArtistsPlaylist = !hasFilters && artists.length > 0
+  const hasVenuesPlaylist =
+    !hasFilters && Boolean(venues?.venues.length || venues?.venueNotOpenToPublic?.[0])
+  const offersPlaylistIndex = Number(hasArtistsPlaylist) + Number(hasVenuesPlaylist)
 
   return (
     <React.Fragment>
@@ -42,7 +58,7 @@ export const AllSearchResultsList: FC<Props> = ({ header, searchFilters }) => {
       />
       <NoSearchResultContainer searchFilters={searchFilters}>
         <Container testID="searchResults">
-          <OffersList searchFilters={searchFilters}>
+          <OffersList searchFilters={searchFilters} playlistIndex={offersPlaylistIndex}>
             <React.Fragment>
               {header}
               <SearchResultsListHeader
@@ -55,7 +71,11 @@ export const AllSearchResultsList: FC<Props> = ({ header, searchFilters }) => {
                   />
                 }
                 venuesSection={
-                  <VenuesPlaylistContainer withMargins={false} searchFilters={searchFilters} />
+                  <VenuesPlaylistContainer
+                    withMargins={false}
+                    searchFilters={searchFilters}
+                    playlistIndex={hasArtistsPlaylist ? 1 : 0}
+                  />
                 }
                 shouldDisplayGridList={shouldDisplayGridList}
                 searchFilters={searchFilters}

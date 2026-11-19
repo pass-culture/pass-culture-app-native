@@ -35,7 +35,7 @@ export const ThematicHighlightModule: FunctionComponent<ThematicHighlightModuleP
 
   useEffect(() => {
     !shouldHideModule &&
-      analytics.logModuleDisplayedOnHomepage({
+      void analytics.logModuleDisplayedOnHomepage({
         moduleId: id,
         moduleType: ContentTypes.THEMATIC_HIGHLIGHT,
         index,

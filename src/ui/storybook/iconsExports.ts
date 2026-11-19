@@ -99,7 +99,6 @@ import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Search } from 'ui/svg/icons/Search'
 import { Share } from 'ui/svg/icons/Share'
 import { Show } from 'ui/svg/icons/Show'
-import { Signal } from 'ui/svg/icons/Signal'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
@@ -138,8 +137,9 @@ import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { LogoAccesLibre } from 'ui/svg/LogoAccesLibre'
-import { LogoAidantConnect } from 'ui/svg/LogoAidantConnect'
+import { LogoAidantsConnect } from 'ui/svg/LogoAidantsConnect'
 import { LogoAudioDescription } from 'ui/svg/LogoAudioDescription'
+import { LogoCultureRelax } from 'ui/svg/LogoCultureRelax'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { LogoMonParcoursHandicap } from 'ui/svg/LogoMonParcoursHandicap'
@@ -230,7 +230,6 @@ export const SecondaryAndBiggerIcons = {
   ScrollToTop,
   Search,
   Share,
-  Signal,
   SignOut,
   Smartphone,
   TabBarProfile,
@@ -298,8 +297,9 @@ export const UnconventionalIcons = {
   DarkThemeIllustration,
   DefaultThemeIllustration,
   LogoAccesLibre,
-  LogoAidantConnect,
+  LogoAidantsConnect,
   LogoAudioDescription,
+  LogoCultureRelax,
   LogoDMS,
   LogoFrenchRepublic,
   LogoMonParcoursHandicap,

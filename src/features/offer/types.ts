@@ -3,7 +3,8 @@ import { Animated } from 'react-native'
 
 import {
   CategoryIdEnum,
-  FavoriteResponse,
+  FavoriteArtistResponse,
+  FavoriteOfferResponseV2,
   OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
@@ -41,7 +42,7 @@ export interface OfferTileProps {
   height: number
   fromOfferId?: number
   fromMultivenueOfferId?: number
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
@@ -54,13 +55,21 @@ export interface OfferTileProps {
   withCenterAlign?: boolean
 }
 
-export type FavoriteProps = {
-  addFavorite?: ({ offerId }: { offerId: number }) => void
+type BaseFavoriteProps = {
   isAddFavoriteLoading?: boolean
   removeFavorite: (id: number) => void
   isRemoveFavoriteLoading: boolean
-  favorite?: FavoriteResponse | null
 }
+
+export type OfferFavoriteProps = {
+  addFavorite?: ({ offerId }: { offerId: number }) => void
+  favorite?: FavoriteOfferResponseV2 | null
+} & BaseFavoriteProps
+
+export type ArtistFavoriteProps = {
+  addFavorite?: ({ artistId }: { artistId: string }) => void
+  favorite?: FavoriteArtistResponse | null
+} & BaseFavoriteProps
 
 export interface SimilarOffersResponse {
   results: string[]

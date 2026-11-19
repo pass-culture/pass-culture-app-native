@@ -12,3 +12,4 @@ flows:
   - venueMap/*
   - web/*
   - activation/*
+  - deeplink/*

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
+import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -14,6 +16,10 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('ChangeCity', () => {
+  beforeEach(() => {
+    useRoute.mockReturnValue({ params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA } })
+  })
+
   it('should render correctly', () => {
     const { container } = render(reactQueryProviderHOC(<ChangeCity />))
 

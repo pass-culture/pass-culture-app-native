@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { SubscriptionStepperResponseV3 } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { EligibleFreeHeader } from 'features/profile/containers/ProfileLoggedIn/LoggedInHeader/LoggedInEligibleHeader/EligibleFreeHeader'
@@ -13,7 +13,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 
 type Props = {
   user: UserProfile
-  subscriptionInfos?: SubscriptionStepperResponseV2
+  subscriptionInfos?: SubscriptionStepperResponseV3
 } & ProfileFeatureFlagsProps
 
 export const LoggedInEligibleHeader = ({ user, featureFlags, subscriptionInfos }: Props) => {

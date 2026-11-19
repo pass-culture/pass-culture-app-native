@@ -27,7 +27,6 @@ import {
   isArtistPlaylistModule,
   isOffersModule,
   isVenuesModule,
-  ModuleViewableItemsChangedHandler,
   ThematicHeader,
 } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -41,7 +40,6 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { createViewableItemsHandler, usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
@@ -69,7 +67,6 @@ const keyExtractor = (item: HomepageModule, index: number) => item.id + index
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,
-  handleViewableItemsChanged: ModuleViewableItemsChangedHandler,
   videoModuleId?: string
 ) => {
   return (
@@ -83,7 +80,6 @@ const renderModule = (
           : undefined
       }
       videoModuleId={videoModuleId}
-      onModuleViewableItemsChanged={handleViewableItemsChanged}
     />
   )
 }
@@ -161,8 +157,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     ...modules.filter(isArtistPlaylistModule),
   ])
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
-  const logHasSeenAllModules = useFunctionOnce(async () =>
-    analytics.logAllModulesSeen(modules.length)
+  const logHasSeenAllModules = useFunctionOnce(
+    () => void analytics.logAllModulesSeen(modules.length)
   )
 
   const trackEventHasSeenAllModules = useFunctionOnce(() => {
@@ -172,7 +168,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
       'home_type',
       thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
     )
-    BatchProfile.trackEvent(BatchEvent.hasSeenAllTheHomepage, attributes)
+    void BatchProfile.trackEvent(BatchEvent.hasSeenAllTheHomepage, attributes)
   })
 
   const showSkeleton = useShowSkeleton()
@@ -224,7 +220,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
       'home_type',
       thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
     )
-    BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
+    void BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
   const { checkTrigger } = getScreenSeenCount({
@@ -237,8 +233,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const scrollListener = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (givenOnScroll) givenOnScroll(event)
-
-      checkTrigger(event.nativeEvent.contentOffset.y)
+      void checkTrigger(event.nativeEvent.contentOffset.y)
     },
     [givenOnScroll, checkTrigger]
   )
@@ -265,22 +260,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }
   }, [modules.length, isLoading, maxIndex])
 
-  const pageTracking = usePageTracking({
-    pageName: 'Home',
-    pageLocation: 'home',
-    pageId: homeId || 'home_unknown',
-  })
-
-  // Create handler for modules with the new tracking system
-  const handleViewableItemsChanged = useMemo(
-    () => createViewableItemsHandler(pageTracking.trackViewableItems),
-    [pageTracking.trackViewableItems]
-  )
-
   const renderItem = useCallback(
     ({ item, index }: { item: HomepageModule; index: number }) =>
-      renderModule({ item, index }, homeId, handleViewableItemsChanged, videoModuleId),
-    [homeId, handleViewableItemsChanged, videoModuleId]
+      renderModule({ item, index }, homeId, videoModuleId),
+    [homeId, videoModuleId]
   )
 
   const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =

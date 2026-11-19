@@ -6,6 +6,8 @@ import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
+import com.facebook.react.internal.featureflags.ReactNativeFeatureFlags
+import com.facebook.react.internal.featureflags.ReactNativeNewArchitectureFeatureFlagsDefaults
 import com.hotupdater.HotUpdater
 
 class MainApplication : Application(), ReactApplication {
@@ -26,5 +28,12 @@ class MainApplication : Application(), ReactApplication {
   override fun onCreate() {
     super.onCreate()
     loadReactNative(this)
+    // loadReactNative() already set the Stable flags, and override() can only be called once.
+    // Remove once IntersectionObserver ships in Stable.
+    ReactNativeFeatureFlags.dangerouslyForceOverride(
+        object : ReactNativeNewArchitectureFeatureFlagsDefaults() {
+          override fun enableIntersectionObserverByDefault(): Boolean = true
+        }
+    )
   }
 }

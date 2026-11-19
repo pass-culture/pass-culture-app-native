@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -65,5 +66,13 @@ describe('NotConnectedFavorites component', () => {
     await user.press(screen.getByText(`Se connecter`))
 
     expect(analytics.logSignInFromFavorite).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display new UI vision illustration when wipNewVisionUi FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(reactQueryProviderHOC(<NotConnectedFavorites />))
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
   })
 })

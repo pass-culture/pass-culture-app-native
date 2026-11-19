@@ -18,6 +18,7 @@ import { Introduction } from 'features/home/components/headers/highlightThematic
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
+import { useSpectacleVivantAdjustEvents } from 'features/home/pages/helpers/useSpectacleVivantAdjustEvents'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
@@ -144,6 +145,7 @@ export const ThematicHome: FunctionComponent = () => {
 
   // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
   const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
+  useSpectacleVivantAdjustEvents(homeId)
   const userLocation = useUserLocation()
   const { setLocationMode: setSelectedLocationMode, setPlace } = locationActions
   const isLocated = !!userLocation

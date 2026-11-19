@@ -44,6 +44,18 @@ describe('Accessibility', () => {
     expect(openUrl).toHaveBeenNthCalledWith(1, env.ACCESSIBILITY, undefined, true)
   })
 
+  it('should navigate to PublicDisabilityServices when clicked', async () => {
+    render(<Accessibility />)
+
+    const row = screen.getByText('Services et partenaires accessibles')
+    await user.press(row)
+
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'PublicDisabilityServices',
+    })
+  })
+
   it('should navigate to AccessibilityDeclarationMobileAndroid when clicked', async () => {
     render(<Accessibility />)
 

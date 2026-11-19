@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { VerticalPlaylistOffersView } from 'shared/verticalPlaylist/components/VerticalPlaylistOffersView'
+import { VerticalPlaylistSearchOffersModule } from 'shared/verticalPlaylist/types'
 
-type Props = { module: ThematicSearchPlaylistData }
+type Props = { module: VerticalPlaylistSearchOffersModule }
 
 export const VerticalPlaylistSearchOffers = ({ module }: Props) => (
   <VerticalPlaylistOffersView

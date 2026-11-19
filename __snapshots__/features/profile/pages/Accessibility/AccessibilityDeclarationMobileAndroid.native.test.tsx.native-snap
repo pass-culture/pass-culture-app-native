@@ -1639,6 +1639,953 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
                 }
               />
               <Text
+                accessibilityLevel="h3"
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Pages du site ayant fait l’objet de la vérification de conformité
+              </Text>
+              <View
+                accessibilityRole="list"
+                gap={6}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "gap": 24,
+                    "paddingLeft": 0,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 1 sur 16 - Cookies"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Cookies
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 2 sur 16 - Accueil (et localisation)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Accueil (et localisation)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 3 sur 16 - Mentions légales"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Mentions légales
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 4 sur 16 - Accessibilité"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Accessibilité
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 5 sur 16 - Préférences d’affichages"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Préférences d’affichages
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 6 sur 16 - Plan du site"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Plan du site
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 7 sur 16 - Authentification"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Authentification
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 8 sur 16 - Profil connecté et déconnecté"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Profil connecté et déconnecté
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 9 sur 16 - Lieu (2 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Lieu (2 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 10 sur 16 - Parcours 1 : Onboarding (4 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 1 : Onboarding (4 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 11 sur 16 - Parcours 2 : Processus d’inscription (4 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 2 : Processus d’inscription (4 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 12 sur 16 - Parcours 3 : Processus de déblocage du crédit - Profil (5 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 3 : Processus de déblocage du crédit - Profil (5 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 13 sur 16 - Parcours 3 : Processus de déblocage du crédit - Identification (2 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 3 : Processus de déblocage du crédit - Identification (2 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 14 sur 16 - Parcours 4 : Recherche d’une offre (4 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 4 : Recherche d’une offre (4 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 15 sur 16 - Parcours 5 : Réservation d’une offre (5 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 5 : Réservation d’une offre (5 écrans)
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Pages auditées – Liste - Élément 16 sur 16 - Parcours 5 : Réservation d’une offre - Détails et confirmation (2 écrans)"
+                  accessible={true}
+                  style={
+                    {
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "marginLeft": 12,
+                        "marginTop": 0,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "height": 25.6,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <View
+                        borderColor="#161617"
+                        fillColor="#161617"
+                        height={3}
+                        width={3}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <Text
+                      accessibilityLevel="p"
+                      accessibilityRole="text"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                          "marginLeft": 12,
+                        }
+                      }
+                    >
+                      Parcours 5 : Réservation d’une offre - Détails et confirmation (2 écrans)
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#f1f1f4",
+                    "height": 1,
+                    "width": "100%",
+                  }
+                }
+              />
+              <Text
                 accessibilityLevel="h2"
                 accessibilityRole="header"
                 style={

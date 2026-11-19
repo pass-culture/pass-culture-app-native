@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { FavoriteType } from 'features/favorites/enum'
-import { useFavorite } from 'features/favorites/hooks/useFavorite'
-import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { useOfferFavorite } from 'features/favorites/hooks/useOfferFavorite'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
 import { Button } from 'ui/designSystem/Button/Button'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 
@@ -16,9 +16,9 @@ export const AddToFavoritesButton: FunctionComponent<Props> = ({
   offerId,
   onFavoriteAdditionnalPress,
 }) => {
-  const isFavorite = useFavorite({ offerId })
+  const isFavorite = useOfferFavorite({ offerId })
 
-  const { mutate: addFavorite } = useAddFavoriteMutation({ type: FavoriteType.OFFER })
+  const { mutate: addFavorite } = useAddOfferFavoriteMutation({ type: FavoriteType.OFFER })
 
   const addToFavorite = () => {
     addFavorite({ offerId })

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PopOverIcon, SubscriptionMessageV2, SubscriptionStepperResponseV2 } from 'api/gen'
+import { PopOverIcon, SubscriptionMessageV2, SubscriptionStepperResponseV3 } from 'api/gen'
 import { getCallToActionLinkForSubscriptionMessage } from 'features/profile/helpers/getCallToActionLinkForSubscriptionMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -12,7 +12,7 @@ const defaultSubscriptionMessage: SubscriptionMessageV2 = {
 }
 
 type Props = {
-  subscriptionInfos?: SubscriptionStepperResponseV2
+  subscriptionInfos?: SubscriptionStepperResponseV3
   isMailAppAvailable: boolean
 }
 

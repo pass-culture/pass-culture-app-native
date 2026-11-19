@@ -24,6 +24,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenBookingNotFound: undefined
   CheatcodesScreenCategoryThematicHomeHeader: undefined
   CheatcodesScreenCinemaScreeningCardList: undefined
+  CheatcodesScreenConversationalSearch: { agentId?: string } | undefined
   CheatcodesScreenDefaultThematicHomeHeader: undefined
   CheatcodesScreenHighlightThematicHomeHeader: undefined
   CheatcodesScreenMaintenance: undefined
@@ -41,6 +42,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenABTest: undefined
   CheatcodesScreenAccesLibre: undefined
   CheatcodesScreenAnalyticsDebugger: undefined
+  CheatcodesScreenCinemaScreeningDetailsModal: undefined
   CheatcodesScreenDebugInformations: undefined
   CheatcodesScreenDirectIdAccess: undefined
   CheatcodesScreenFeatureFlags: undefined

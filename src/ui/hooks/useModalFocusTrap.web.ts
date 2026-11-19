@@ -27,11 +27,7 @@ const getFocusableElements = (modalElement: HTMLElement) => {
   return visibleCandidates.length > 0 ? visibleCandidates : candidates
 }
 
-export const useModalFocusTrap = (
-  modalRef: RefObject<View | null>,
-  isReady: boolean,
-  initialFocusSelector?: string
-) => {
+export const useModalFocusTrap = (modalRef: RefObject<View | null>, isReady: boolean) => {
   const triggerRef = useRef<HTMLElement | null>(null)
 
   useEffect(function storeTriggerAndRestoreFocus() {
@@ -56,14 +52,9 @@ export const useModalFocusTrap = (
       if (!isReady) return
 
       const modalElement = getModalElement(modalRef)
-      const initialFocusElement = initialFocusSelector
-        ? modalElement?.querySelector<HTMLElement>(initialFocusSelector)
-        : null
-      const focusTarget = initialFocusElement ?? modalElement
-
-      focusTarget?.focus()
+      modalElement?.focus()
     },
-    [initialFocusSelector, isReady, modalRef]
+    [isReady, modalRef]
   )
 
   useEffect(

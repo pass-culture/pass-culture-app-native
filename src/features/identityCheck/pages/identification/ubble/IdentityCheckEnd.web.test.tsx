@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { SubscriptionStepperResponseV3 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,7 +24,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 describe('<IdentityCheckEnd/>', () => {
   describe('Accessibility', () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>(
+    mockServer.getApi<SubscriptionStepperResponseV3>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture
     )

@@ -31,7 +31,9 @@ describe('<BeneficiaryAccountCreated/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       setFeatureFlags([])
-      const { container } = render(reactQueryProviderHOC(<BeneficiaryAccountCreated />))
+      const { container } = render(
+        reactQueryProviderHOC(<BeneficiaryAccountCreated from="IdentityCheckHonor" />)
+      )
 
       await screen.findByLabelText('C’est parti !')
 

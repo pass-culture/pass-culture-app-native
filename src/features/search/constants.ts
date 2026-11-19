@@ -1,4 +1,12 @@
+import { ViewabilityConfig } from 'react-native'
+
 import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
+
+// An item of a search list is considered as viewed only when it is fully visible
+export const SEARCH_LIST_VIEWABILITY_CONFIG = {
+  itemVisiblePercentThreshold: 100,
+  minimumViewTime: 300,
+} satisfies ViewabilityConfig
 
 export const HISTORY_KEY = 'search_history'
 export const MAX_HISTORY_RESULTS = 20
@@ -23,3 +31,9 @@ export const ACTIVITIES_BY_SEARCH_GROUP: Partial<Record<SearchGroupNameEnumv2, A
   ],
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: [Activity.FESTIVAL, Activity.PERFORMANCE_HALL],
 }
+
+export const TOP_ARTISTS_PLAYLIST_SEARCH_GROUP = [
+  SearchGroupNameEnumv2.CINEMA,
+  SearchGroupNameEnumv2.LIVRES,
+  SearchGroupNameEnumv2.MUSIQUE,
+]

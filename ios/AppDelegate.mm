@@ -2,6 +2,15 @@
 
 #import "AppDelegate.h"
 
+#import <react/featureflags/ReactNativeFeatureFlags.h>
+#import <react/featureflags/ReactNativeFeatureFlagsOverridesOSSStable.h>
+
+// Stable plus IntersectionObserver. Remove once it ships in Stable.
+class StableFeatureFlagsWithIntersectionObserver : public facebook::react::ReactNativeFeatureFlagsOverridesOSSStable {
+ public:
+  bool enableIntersectionObserverByDefault() override { return true; }
+};
+
 #import <React/RCTBundleURLProvider.h>
 #import <ReactAppDependencyProvider/RCTAppDependencyProvider.h>
 #import <React_RCTAppDelegate/RCTDefaultReactNativeFactoryDelegate.h>
@@ -27,6 +36,8 @@
 {
   ReactNativeDelegate *delegate = [[ReactNativeDelegate alloc] init];
   RCTReactNativeFactory *factory = [[RCTReactNativeFactory alloc] initWithDelegate:delegate];
+  // The factory already set the Stable flags, and override() can only be called once.
+  facebook::react::ReactNativeFeatureFlags::dangerouslyForceOverride(std::make_unique<StableFeatureFlagsWithIntersectionObserver>());
   delegate.dependencyProvider = [[RCTAppDependencyProvider alloc] init];
 
   self.reactNativeDelegate = delegate;

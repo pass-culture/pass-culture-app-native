@@ -1,7 +1,8 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo, useState } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -10,6 +11,7 @@ import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types
 import { ThematicSearchCategories } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
+import { TOP_ARTISTS_PLAYLIST_SEARCH_GROUP } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
@@ -21,23 +23,31 @@ import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSea
 import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
+import { useTopArtistsPlaylistQuery } from 'features/search/queries/useTopArtistsPlaylistQuery/useTopArtistsPlaylistQuery'
 import { SearchState, SearchView } from 'features/search/types'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
+import {
+  asVenueId,
+  THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY,
+} from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { useLocationMode } from 'libs/locationV2/location.store'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
-import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
+import { HorizontalArtistsPlaylist } from 'ui/components/HorizontalArtistsPlaylist'
 import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
+import { AVATAR_MEDIUM } from 'ui/theme/constants'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
 }, {}) as Record<SearchGroupNameEnumv2, string>
+
+const ARTIST_PLAYLIST_TITLE = 'Les personnalités du moment'
 
 export const ThematicSearch: React.FC = () => {
   const { params, name: currentView } = useRoute<UseRouteType<'ThematicSearch'>>()
@@ -66,31 +76,6 @@ export const ThematicSearch: React.FC = () => {
   } = useSearchInfiniteQuery(thematicSearchState)
 
   const isFocused = useIsFocused()
-
-  const pageTracking = usePageTracking({
-    pageName: 'ThematicSearch',
-    pageLocation: 'thematicsearch',
-  })
-
-  // Handler for modules with the new system
-  const handleTrackViewableItems = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      searchId: string,
-      playlistIndex?: number
-    ) => {
-      pageTracking.trackViewableItems({
-        moduleId,
-        itemType,
-        viewableItems: items,
-        playlistIndex,
-        searchId,
-      })
-    },
-    [pageTracking]
-  )
 
   // Execute log only on search fetch completion (same pattern as SearchResultsContent)
   const previousIsLoading = usePrevious(isLoading)
@@ -133,60 +118,59 @@ export const ThematicSearch: React.FC = () => {
     isLocated
   )
 
-  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
-    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      handleTrackViewableItems(items, venuePlaylistTitle, 'venue', currentSearchId, 0)
-    },
-    [currentSearchId, handleTrackViewableItems, isFocused, venuePlaylistTitle]
+  const searchGroupName = TOP_ARTISTS_PLAYLIST_SEARCH_GROUP.includes(
+    offerCategory as SearchGroupNameEnumv2
   )
+    ? offerCategory
+    : undefined
+  const { data } = useTopArtistsPlaylistQuery({ searchGroupName })
+  const shouldDisplayArtistsPlaylist = !!data?.artists?.length
 
-  const handleOfferPlaylistViewableItemsChanged = React.useCallback(
-    (
-      items: Pick<ViewToken, 'key' | 'index'>[],
-      moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-      playlistIndex?: number
-    ) => {
-      if (!isFocused) return
-      handleTrackViewableItems(items, moduleId, itemType, currentSearchId, playlistIndex)
-    },
-    [currentSearchId, handleTrackViewableItems, isFocused]
-  )
+  const handleArtistPlaylistItemPress = (id: string, name: string) => {
+    void analytics.logConsultArtist({
+      artistId: id,
+      artistName: name,
+      from: 'thematicsearch',
+      originDetails: 'topArtistsPlaylist',
+    })
+  }
+
+  const onBeforeNavigateArtistPlaylistItem = () => {
+    void analytics.logClickSeeAll({
+      type: 'artists',
+      moduleName: ARTIST_PLAYLIST_TITLE,
+      from: 'thematicsearch',
+    })
+  }
 
   const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
     [SearchGroupNameEnumv2.LIVRES]: (
       <BookPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.CINEMA]: (
       <CinemaPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: (
       <FilmsPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.MUSIQUE]: (
       <MusicPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: (
       <ConcertsAndFestivalsPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
-        onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
         searchId={currentSearchId}
       />
     ),
@@ -200,8 +184,44 @@ export const ThematicSearch: React.FC = () => {
   const content = offerCategory ? (
     <React.Fragment>
       <SubcategoryButtonListWrapper offerCategory={offerCategory} />
+
+      {shouldDisplayArtistsPlaylist ? (
+        <StyledHorizontalArtistsPlaylist
+          artists={data.artists}
+          onItemPress={handleArtistPlaylistItemPress}
+          title="Les personnalités du moment"
+          isLoading={isLoading}
+          seeAllData={{
+            onBeforeNavigate: onBeforeNavigateArtistPlaylistItem,
+            navigateToVerticalPlaylist: {
+              screen: 'VerticalPlaylistArtists',
+              params: {
+                title: ARTIST_PLAYLIST_TITLE,
+                subtitle: undefined,
+                originDetails: 'topArtistsPlaylist',
+                searchGroupName: offerCategory,
+              },
+            },
+            hideSearchSeeAll: true,
+          }}
+          itemConfig={{ size: AVATAR_MEDIUM, rounded: true }}
+        />
+      ) : null}
+
       {shouldDisplayVenuesPlaylist ? (
-        <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+        <ObservedPlaylist
+          onItemViewed={({ index, item }) => {
+            if (!isFocused) return
+            void analytics.logViewItem({
+              origin: 'search',
+              playlistIndex: 0,
+              index,
+              type: 'venue',
+              id: asVenueId(item.objectID),
+              playlistId: 'thematicSearchPlaylist',
+              originId: THEMATIC_SEARCH_ORIGIN_ID_BY_CATEGORY[offerCategory],
+            })
+          }}>
           {({ listRef, handleViewableItemsChanged }) => (
             <VenuePlaylist
               venuePlaylistTitle={venuePlaylistTitle}
@@ -217,6 +237,7 @@ export const ThematicSearch: React.FC = () => {
           )}
         </ObservedPlaylist>
       ) : null}
+
       {playlistsComponent[offerCategory]}
       <Spacer.TabBar />
     </React.Fragment>
@@ -243,3 +264,7 @@ export const ThematicSearch: React.FC = () => {
 
   return thematicSearch
 }
+
+const StyledHorizontalArtistsPlaylist = styled(HorizontalArtistsPlaylist)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

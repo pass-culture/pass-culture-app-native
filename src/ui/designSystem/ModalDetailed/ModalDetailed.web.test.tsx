@@ -5,11 +5,29 @@
 
 import React from 'react'
 
-import { render, screen, within } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen, userEvent, within } from 'tests/utils/web'
 import { ModalDetailed } from 'ui/designSystem/ModalDetailed/ModalDetailed'
 import { Typo } from 'ui/theme'
 
 describe('ModalDetailed on web', () => {
+  it('should not have basic accessibility issues', async () => {
+    const { container } = render(
+      <ModalDetailed
+        title="Detailed modal title"
+        description="Detailed modal description"
+        onClose={jest.fn()}
+        primaryButton={{
+          wording: 'Confirm',
+          accessibilityLabel: 'Confirm action',
+          onPress: jest.fn(),
+        }}>
+        <Typo.Body>Interactive content</Typo.Body>
+      </ModalDetailed>
+    )
+
+    expect(await checkAccessibilityFor(container)).toHaveNoViolations()
+  })
+
   it('should expose its title through the dialog accessible name', () => {
     render(
       <ModalDetailed
@@ -24,7 +42,13 @@ describe('ModalDetailed on web', () => {
       </ModalDetailed>
     )
 
-    expect(screen.getByRole('dialog', { name: 'Detailed modal title' })).toBeInTheDocument()
+    const dialog = screen.getByRole('dialog', { name: 'Detailed modal title' })
+    const title = within(dialog).getByRole('heading', {
+      level: 1,
+      name: 'Detailed modal title',
+    })
+
+    expect(dialog).toHaveAttribute('aria-labelledby', title.id)
   })
 
   it('should render an action as a link when it has an href', () => {
@@ -71,6 +95,44 @@ describe('ModalDetailed on web', () => {
     expect(dialogButtons[1]).toHaveAccessibleName('Retourner à l’étape précédente')
   })
 
+  it('should navigate through interactive content in DOM order with Tab', async () => {
+    const user = await userEvent.setup()
+
+    render(
+      <ModalDetailed
+        title="Detailed modal title"
+        onClose={jest.fn()}
+        onGoBack={jest.fn()}
+        primaryButton={{
+          wording: 'Confirm',
+          accessibilityLabel: 'Confirm action',
+          onPress: jest.fn(),
+        }}>
+        <button type="button" aria-label="Child action" />
+      </ModalDetailed>
+    )
+
+    await user.tab()
+
+    expect(screen.getByRole('button', { name: 'Quitter' })).toHaveFocus()
+
+    await user.tab()
+
+    expect(screen.getByRole('button', { name: 'Retourner à l’étape précédente' })).toHaveFocus()
+
+    await user.tab()
+
+    expect(screen.getByTestId('modalDetailedScrollView')).toHaveFocus()
+
+    await user.tab()
+
+    expect(screen.getByRole('button', { name: 'Child action' })).toHaveFocus()
+
+    await user.tab()
+
+    expect(screen.getByRole('button', { name: 'Confirm action' })).toHaveFocus()
+  })
+
   it('should make the scrollable content keyboard accessible', () => {
     render(
       <ModalDetailed
@@ -87,5 +149,32 @@ describe('ModalDetailed on web', () => {
     )
 
     expect(screen.getByTestId('modalDetailedScrollView')).toHaveAttribute('tabindex', '0')
+  })
+
+  it('should keep the header below the top navigation on tablet', () => {
+    render(
+      <ModalDetailed
+        title="Detailed modal title"
+        onClose={jest.fn()}
+        hasFixedFooter
+        primaryButton={{
+          wording: 'Confirm',
+          accessibilityLabel: 'Confirm action',
+          onPress: jest.fn(),
+        }}>
+        <Typo.Body>Interactive content</Typo.Body>
+      </ModalDetailed>,
+      {
+        theme: {
+          isDesktopViewport: false,
+          isTabletViewport: true,
+          isMobileViewport: false,
+        },
+      }
+    )
+
+    expect(screen.getByRole('dialog', { name: 'Detailed modal title' })).toHaveStyle({
+      maxHeight: 'calc(100% - 64px)',
+    })
   })
 })

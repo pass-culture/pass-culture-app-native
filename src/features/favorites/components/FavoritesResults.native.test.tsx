@@ -2,16 +2,16 @@ import { QueryObserverSuccessResult, UseMutationResult } from '@tanstack/react-q
 import React from 'react'
 import { Text as MockText } from 'react-native'
 
-import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { useFavoritesQuery } from 'features/favorites/queries'
-import { FavoriteMutationContext } from 'features/favorites/queries/types'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
+import { useOfferFavoritesQuery } from 'features/favorites/queries'
+import { FavoriteOfferMutationContext } from 'features/favorites/queries/types'
 import { env } from 'libs/environment/env'
 import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveOfferFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -25,11 +25,13 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
-jest.mock('features/favorites/queries/useFavoritesQuery')
-const mockUseFavorites = useFavoritesQuery as jest.MockedFunction<typeof useFavoritesQuery>
-jest.mock('queries/favorites/useRemoveFavoriteMutation')
-const mockUseRemoveFavorites = useRemoveFavoriteMutation as jest.MockedFunction<
-  typeof useRemoveFavoriteMutation
+jest.mock('features/favorites/queries/useOfferFavoritesQuery')
+const mockUseFavorites = useOfferFavoritesQuery as jest.MockedFunction<
+  typeof useOfferFavoritesQuery
+>
+jest.mock('queries/favorites/useRemoveOfferFavoriteMutation')
+const mockUseRemoveFavorites = useRemoveOfferFavoriteMutation as jest.MockedFunction<
+  typeof useRemoveOfferFavoriteMutation
 >
 
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
@@ -41,9 +43,9 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
 
 const mockData = {
   nbFavorites: 0,
-  favorites: [] as Array<FavoriteResponse>,
+  favorites: [] as Array<FavoriteOfferResponseV2>,
   page: 0,
-} as PaginatedFavoritesResponse
+} as PaginatedResponseFavoriteOfferResponseV2
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -69,7 +71,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: mockData,
       isFetching: false,
-    } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
     const button = await screen.findByText('Explorer')
@@ -84,7 +86,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: undefined,
       isLoading: true,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
     const container = await screen.findByTestId('FavoritesResultsPlaceHolder')
@@ -97,17 +99,17 @@ describe('FavoritesResults component', () => {
     const mutate = jest.fn()
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
-      data: paginatedFavoritesResponseSnap,
+      data: paginatedOfferFavoritesResponseSnap,
       isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseRemoveFavorites.mockReturnValue({
       mutate,
-    } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
+    } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteOfferMutationContext>)
     renderFavoritesResults()
     const container = await screen.findByText(
-      `${paginatedFavoritesResponseSnap.nbFavorites} favoris`
+      `${paginatedOfferFavoritesResponseSnap.nbFavorites} favoris`
     )
 
     expect(container).toBeOnTheScreen()
@@ -121,9 +123,9 @@ describe('FavoritesResults component', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
-      data: paginatedFavoritesResponseSnap,
+      data: paginatedOfferFavoritesResponseSnap,
       isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
 
@@ -133,13 +135,13 @@ describe('FavoritesResults component', () => {
   it('should not display tabs panel when wipFavoritesHub FF deactivated', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
-      data: paginatedFavoritesResponseSnap,
+      data: paginatedOfferFavoritesResponseSnap,
       isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
 
-    await screen.findByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
+    await screen.findByText(`${paginatedOfferFavoritesResponseSnap.nbFavorites} favoris`)
 
     expect(screen.queryByLabelText('Types de favoris')).not.toBeOnTheScreen()
   })

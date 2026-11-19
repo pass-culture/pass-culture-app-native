@@ -5,7 +5,8 @@ import {
   BookingsResponseV2,
   ChronicleClubType,
   GetRemindersResponse,
-  PaginatedFavoritesResponse,
+  OfferPagePlaylistResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -15,7 +16,6 @@ import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { renderOfferPage } from 'features/offer/tests/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
@@ -41,11 +41,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 jest.mock('libs/jwt/jwt')
-
-jest
-  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
-  .mockImplementation()
-  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 jest
   .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
@@ -109,9 +104,12 @@ describe('<Offer />', () => {
 
   beforeEach(() => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
-    mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
-    mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
+    mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>('/v2/me/favorites/offers', {})
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+    mockServer.getApi<OfferPagePlaylistResponse>(
+      '/v1/recommendation/offer_page_playlists/116656',
+      {}
+    )
     setFeatureFlags()
     mockAuthContext()
   })

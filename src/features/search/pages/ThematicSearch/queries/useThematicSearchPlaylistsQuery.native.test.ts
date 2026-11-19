@@ -23,7 +23,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 setSettingsMock({ patchSettingsWith: { objectStorageUrl: undefined } }) // Avoid thumbUrl change
 
-const PLAYLISTS_TITLES = ['Titre de la playlist - 1', 'Titre de la playlist - 2']
+const PLAYLISTS_CONFIG = [
+  { id: 'playlist_1', title: 'Titre de la playlist - 1' },
+  { id: 'playlist_2', title: 'Titre de la playlist - 2' },
+]
 
 describe('useThematicSearchPlaylists', () => {
   beforeEach(() => {
@@ -36,7 +39,7 @@ describe('useThematicSearchPlaylists', () => {
     renderHook(
       () =>
         useThematicSearchPlaylistsQuery({
-          playlistTitles: PLAYLISTS_TITLES,
+          playlistsConfig: PLAYLISTS_CONFIG,
           fetchMethod: fetchThematicSearchPlaylistsOffers,
           queryKey: '',
         }),
@@ -53,7 +56,7 @@ describe('useThematicSearchPlaylists', () => {
     const { result } = renderHook(
       () =>
         useThematicSearchPlaylistsQuery({
-          playlistTitles: PLAYLISTS_TITLES,
+          playlistsConfig: PLAYLISTS_CONFIG,
           fetchMethod: fetchThematicSearchPlaylistsOffers,
           queryKey: '',
         }),
@@ -67,7 +70,8 @@ describe('useThematicSearchPlaylists', () => {
         current: {
           playlists: [
             {
-              title: PLAYLISTS_TITLES[0],
+              id: 'playlist_1',
+              title: 'Titre de la playlist - 1',
               offers: {
                 hits: [OFFER_WITH_IMAGE],
               },

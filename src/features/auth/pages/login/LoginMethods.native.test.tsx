@@ -2,7 +2,12 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { AccountState, FavoriteResponse, OauthStateResponseV2, SigninResponseV2 } from 'api/gen'
+import {
+  AccountState,
+  FavoriteOfferResponseV2,
+  OauthStateResponseV2,
+  SigninResponseV2,
+} from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { Provider, SignInResponseFailure } from 'features/auth/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -43,7 +48,7 @@ const user = userEvent.setup()
 describe('<LoginMethods/>', () => {
   beforeEach(() => {
     setFeatureFlags([])
-    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteOfferResponseV2>('/v2/me/favorites/offers', favoriteResponseSnap)
     mockServer.getApi<OauthStateResponseV2>('/v2/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })

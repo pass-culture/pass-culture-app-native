@@ -7,6 +7,7 @@ import { Activity, OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/g
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferCineBlockV2 } from 'features/offer/components/OfferCine/OfferCineBlockV2'
+import { SpecialEventOfferCineBlock } from 'features/offer/components/OfferCine/SpecialEventOfferCineBlock'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { analytics } from 'libs/analytics/provider'
@@ -55,6 +56,9 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   const wipUseMovieScreeningEndpoint = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_USE_MOVIE_SCREENINGS_ENDPOINT
   )
+  const enableSpecialEventScreenings = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS
+  )
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -74,8 +78,12 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   const { allocineId, visa } = offerExtraData || { allocineId: null, visa: null }
   const { coordinates } = offerVenue
   const { latitude: offerVenueLatitude, longitude: offerVenueLongitude } = coordinates
-  const offerCineBlock =
-    wipUseMovieScreeningEndpoint && (!!allocineId || !!visa) ? (
+  const hasMovieIdentifier = !!allocineId || !!visa
+  const shouldUseMovieScreeningEndpoint = wipUseMovieScreeningEndpoint && hasMovieIdentifier
+  let offerCineBlock: ReactNode
+
+  if (shouldUseMovieScreeningEndpoint) {
+    offerCineBlock = (
       <OfferCineBlockV2
         title={venueSectionTitle}
         offerId={offerId}
@@ -85,13 +93,24 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
         offerVenueLongitude={offerVenueLongitude}
         onSeeVenuePress={handleOnSeeVenuePress}
       />
-    ) : (
+    )
+  } else if (enableSpecialEventScreenings) {
+    offerCineBlock = (
+      <SpecialEventOfferCineBlock
+        title={venueSectionTitle}
+        offer={offer}
+        onSeeVenuePress={handleOnSeeVenuePress}
+      />
+    )
+  } else {
+    offerCineBlock = (
       <OfferCineBlock
         title={venueSectionTitle}
         offer={offer}
         onSeeVenuePress={handleOnSeeVenuePress}
       />
     )
+  }
 
   return (
     <OfferPlaceWrapper isDigital={offer.isDigital}>

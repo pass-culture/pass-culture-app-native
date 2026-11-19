@@ -14,9 +14,7 @@ const MONTHS = [
     'Décembre',
 ]
 
-const e2eBaseUrl = `${MAESTRO_E2E_ENDPOINT}`.replace(/\/account$/, '')
-
-const response = http.post(`${e2eBaseUrl}/offer`, {
+const response = http.post(`${MAESTRO_E2E_BASE_URL}/offer`, {
     headers: {
         'Content-Type': 'application/json',
         'x-api-key': `${MAESTRO_E2E_API_KEY}`,
@@ -39,10 +37,9 @@ const offerData = json(response.body)
 output.offerId = offerData.id
 output.offerName = offerData.name
 
-const offerUrl = `https://app.staging.passculture.team/offre/${offerData.id}`
+const offerPath = `offre/${offerData.id}`
 
-output.offerDeeplinkIos = offerUrl
-output.offerDeeplinkAndroid = `https://passcultureappstaging.page.link/?link=${encodeURIComponent(offerUrl)}&apn=app.passculture.staging&isi=1557887412&ibi=app.passculture.staging&efr=1`
+output.offerDeeplink = `passculturestaging://${offerPath}`
 
 const screeningDay = new Date()
 screeningDay.setDate(screeningDay.getDate() + 3)

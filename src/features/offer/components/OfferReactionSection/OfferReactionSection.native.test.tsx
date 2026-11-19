@@ -83,7 +83,6 @@ describe('<OfferReactionSection />', () => {
     expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('headlineOffersCounter')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('clubAdvicesCounter')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('proAdvicesCounter')).not.toBeOnTheScreen()
   })
 })
 

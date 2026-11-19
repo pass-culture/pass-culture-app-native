@@ -41,9 +41,9 @@ export const BookingConfirmation: FC = () => {
   const trackBooking = useCallback(() => BatchProfile.trackEvent(BatchEvent.hasBooked), [])
 
   const displayBookingDetails = useCallback(() => {
-    analytics.logSeeMyBooking(params.offerId)
-    analytics.logViewedBookingPage({ offerId: params.offerId, from: 'bookingconfirmation' })
-    trackBooking()
+    void analytics.logSeeMyBooking(params.offerId)
+    void analytics.logViewedBookingPage({ offerId: params.offerId, from: 'bookingconfirmation' })
+    void trackBooking()
     reset({
       index: 1,
       routes: [
@@ -72,8 +72,8 @@ export const BookingConfirmation: FC = () => {
   }, [offer?.isEvent, showQualtricsSurveyModal])
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', offerId: params.offerId })
-    shareOffer()
+    void analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', offerId: params.offerId })
+    void shareOffer()
     showShareOfferModal()
   }, [params.offerId, shareOffer, showShareOfferModal])
 

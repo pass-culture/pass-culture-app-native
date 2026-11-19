@@ -195,6 +195,106 @@ export function AccessibilityDeclarationMobileBase({
 
             <Separator.Horizontal />
 
+            <SubtitleText>
+              Pages du site ayant fait l’objet de la vérification de conformité
+            </SubtitleText>
+
+            <VerticalUl gap={6}>
+              <BulletListItem groupLabel="Pages auditées" text="Cookies" index={0} total={16} />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Accueil (et localisation)"
+                index={1}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Mentions légales"
+                index={2}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Accessibilité"
+                index={3}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Préférences d’affichages"
+                index={4}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Plan du site"
+                index={5}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Authentification"
+                index={6}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Profil connecté et déconnecté"
+                index={7}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Lieu (2 écrans)"
+                index={8}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 1&nbsp;: Onboarding (4 écrans)"
+                index={9}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 2&nbsp;: Processus d’inscription (4 écrans)"
+                index={10}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 3&nbsp;: Processus de déblocage du crédit - Profil (5 écrans)"
+                index={11}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 3&nbsp;: Processus de déblocage du crédit - Identification (2 écrans)"
+                index={12}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 4&nbsp;: Recherche d’une offre (4 écrans)"
+                index={13}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 5&nbsp;: Réservation d’une offre (5 écrans)"
+                index={14}
+                total={16}
+              />
+              <BulletListItem
+                groupLabel="Pages auditées"
+                text="Parcours 5&nbsp;: Réservation d’une offre - Détails et confirmation (2 écrans)"
+                index={15}
+                total={16}
+              />
+            </VerticalUl>
+
+            <Separator.Horizontal />
+
             <TitleText>Retour d’information et contact</TitleText>
             <Typo.Body>
               Il est important de rappeler qu’en vertu de l’article 11 de la loi de février

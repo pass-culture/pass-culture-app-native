@@ -5,6 +5,7 @@ export const env: Environment = {
   ACCESSIBILITY_PLAN: 'https://passculture.accessibility_plan',
   ACCESSIBILITY: 'https://passculture.accessibility',
   ADJUST_APP_TOKEN: 'adjustAppToken',
+  ADJUST_LINK_DOMAIN: 'passculturestaging.go.link',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_ARTISTS_INDEX_NAME: 'algoliaArtistsIndexName',
   ALGOLIA_CINE_CLUB_OFFERS_INDEX_NAME: 'algoliaCineClubOffersIndexName',
@@ -93,6 +94,6 @@ export const env: Environment = {
   SUPPORT_ACCOUNT_ISSUES_FORM:
     'https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
-  URL_PREFIX: 'passculture',
+  URL_PREFIX: 'passculturetesting',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
 }

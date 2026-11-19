@@ -1,9 +1,9 @@
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { applySortBy } from 'features/favorites/helpers/applySortBy'
 import { Position } from 'libs/location/types'
 
 describe('applySortBy', () => {
-  const favorites = paginatedFavoritesResponseSnap.favorites
+  const favorites = paginatedOfferFavoritesResponseSnap.favorites
   const position: Position = {
     latitude: 48.8566,
     longitude: 2.3522,

@@ -18,6 +18,7 @@ export type RadioStateObject = {
 
 export type BaseRadioProps = {
   label: string
+  selectionValue?: string
   disabled: boolean
   error: boolean
   value: string | null

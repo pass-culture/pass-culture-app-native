@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
-import { BannerName, CurrencyEnum, SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
+import { BannerName, CurrencyEnum, SubscriptionStep, SubscriptionStepperResponseV3 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
@@ -52,7 +52,7 @@ mockUseAuthContext.mockReturnValue({
 jest.mock('features/identityCheck/queries/useGetStepperInfoQuery')
 const mockUseGetStepperInfo = (
   useGetStepperInfoQuery as jest.Mock<
-    Partial<UseQueryResult<Partial<SubscriptionStepperResponseV2>, unknown>>
+    Partial<UseQueryResult<Partial<SubscriptionStepperResponseV3>, unknown>>
   >
 ).mockReturnValue({
   data: { nextSubscriptionStep: null },

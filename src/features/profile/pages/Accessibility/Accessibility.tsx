@@ -21,12 +21,8 @@ const sectionConfig: AccessibilityRowConfig[] = [
     screen: 'SiteMapScreen',
   },
   {
-    title: 'Les engagements du pass Culture',
-    externalNav: { url: env.ACCESSIBILITY },
-  },
-  {
-    title: 'Schéma pluriannuel',
-    externalNav: { url: env.ACCESSIBILITY_PLAN },
+    title: 'Services et partenaires accessibles',
+    screen: 'PublicDisabilityServices',
   },
   {
     title: 'Déclaration d’accessibilité - Android',
@@ -41,8 +37,12 @@ const sectionConfig: AccessibilityRowConfig[] = [
     screen: 'AccessibilityDeclarationWeb',
   },
   {
-    title: 'Outils et services publics pour les personnes en situation de handicap',
-    screen: 'PublicDisabilityServices',
+    title: 'Les engagements du pass Culture',
+    externalNav: { url: env.ACCESSIBILITY },
+  },
+  {
+    title: 'Schéma pluriannuel',
+    externalNav: { url: env.ACCESSIBILITY_PLAN },
   },
 ]
 

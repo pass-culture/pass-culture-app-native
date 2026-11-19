@@ -2,7 +2,7 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
-import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
+import { findCountry } from 'features/profile/helpers/phoneNumber/findCountry'
 import { useSubmitChangePhoneNumber } from 'features/profile/pages/ChangePhoneNumber/useSubmitChangePhoneNumber'
 import { METROPOLITAN_FRANCE } from 'shared/countries/constants'
 import { Form } from 'ui/components/Form'

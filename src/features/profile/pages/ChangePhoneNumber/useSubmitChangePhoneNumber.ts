@@ -3,14 +3,14 @@ import { useNavigation } from '@react-navigation/native'
 import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
-import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
+import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { findCountry } from 'features/profile/helpers/phoneNumber/findCountry'
+import { formatPhoneNumberWithPrefix } from 'features/profile/helpers/phoneNumber/formatPhoneNumberWithPrefix'
 import {
   PhoneNumberFormValues,
   phoneNumberSchema,
-} from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
-import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+} from 'features/profile/helpers/phoneNumber/phoneNumberSchema'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { METROPOLITAN_FRANCE } from 'shared/countries/constants'

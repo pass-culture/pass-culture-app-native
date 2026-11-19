@@ -6,11 +6,11 @@ import React, { ComponentProps } from 'react'
 import { api } from 'api/api'
 import {
   BookingsResponseV2,
-  FavoriteResponse,
+  FavoriteOfferResponseV2,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
-  PaginatedFavoritesResponse,
-  RecommendationApiParams,
+  OfferPagePlaylistResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
@@ -22,20 +22,16 @@ import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import * as useFavorite from 'features/favorites/hooks/useFavorite'
+import * as useOfferFavorite from 'features/favorites/hooks/useOfferFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { advicePreviewToAdviceCardData } from 'features/offer/adapters/advicePreviewToAdviceCardData'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
-import {
-  mockedAlgoliaOffersWithSameArtistResponse,
-  mockedAlgoliaResponse,
-} from 'libs/algolia/fixtures/algoliaFixtures'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -64,8 +60,8 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/jwt/jwt')
 
-const useFavoriteSpy = jest.spyOn(useFavorite, 'useFavorite')
-const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
+const useFavoriteSpy = jest.spyOn(useOfferFavorite, 'useOfferFavorite')
+const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
 
 const consentState: ConsentStatus = { state: ConsentState.LOADING }
 
@@ -124,24 +120,14 @@ jest.mock('features/auth/context/AuthContext')
 const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
 fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
-const apiRecoParams: RecommendationApiParams = {
-  callId: '1',
-  filtered: true,
-  geoLocated: false,
-  modelEndpoint: 'default',
-  modelName: 'similar_offers_default_prod',
-  modelVersion: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
-  recoOrigin: 'default',
-}
-
-const useSimilarOffersSpy = jest
-  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
-  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
-
 jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery').mockReturnValue({
   artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
   artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
 })
+
+jest.mock('features/offer/helpers/useOfferPlaylist/useOfferPlaylist', () => ({
+  useOfferPlaylist: () => [],
+}))
 
 const mockInView = jest.fn()
 const InViewMock = ({
@@ -236,6 +222,10 @@ describe('<OfferContent />', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
+    mockServer.getApi<OfferPagePlaylistResponse>(
+      '/v1/recommendation/offer_page_playlists/116656?longitude=90.477&latitude=90.477',
+      {}
+    )
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setupLocation()
@@ -299,40 +289,6 @@ describe('<OfferContent />', () => {
     fireEvent.scroll(await screen.findByTestId('offerv2-container'), scrollEvent)
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
-  })
-
-  describe('Playlist list section', () => {
-    describe('Same category similar offers', () => {
-      it('should display same category similar offers', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByLabelText('Les fans aiment aussi')).toBeOnTheScreen()
-      })
-    })
-
-    describe('Other categories similar offers', () => {
-      it('should display other categories similar offer', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
-      })
-    })
   })
 
   describe('Offer booking button', () => {
@@ -406,17 +362,17 @@ describe('<OfferContent />', () => {
         beforeEach(() => {
           useFavoriteSpy.mockReturnValueOnce(undefined)
           mockAuthContextWithUser(beneficiaryUser, { persist: true })
-          const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
+          const favoritesResponseWithoutOfferIn: PaginatedResponseFavoriteOfferResponseV2 = {
             page: 1,
             nbFavorites: 0,
             favorites: [],
           }
-          const favoriteResponse: FavoriteResponse = favoriteResponseSnap
-          mockServer.getApi<PaginatedFavoritesResponse>(
-            '/v1/me/favorites',
+          const favoriteResponse: FavoriteOfferResponseV2 = favoriteResponseSnap
+          mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+            '/v2/me/favorites/offers',
             favoritesResponseWithoutOfferIn
           )
-          mockServer.postApi('/v1/me/favorites', favoriteResponse)
+          mockServer.postApi('/v2/me/favorites/offers', favoriteResponse)
         })
 
         it('should send logHasAddedOfferToFavorites event with correct params', async () => {

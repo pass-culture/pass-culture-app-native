@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
+import { subscribeToSearchDeeplinkLocation } from 'features/search/helpers/subscribeToSearchDeeplinkLocation'
 import { loadSearchFiltersFromUrl } from 'features/search/store/loadSearchFiltersFromUrl'
 import { searchStore } from 'features/search/store/search.store'
 import { SearchState } from 'features/search/types'
@@ -50,6 +51,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   // TODO(PC-42708): move in App.tsx and App.web.tsx
   useEffect(() => {
     void loadSearchFiltersFromUrl(dispatch)
+    subscribeToSearchDeeplinkLocation() // Subscribe to search deeplink location to update the search state when a deeplink is received.
   }, [])
 
   // TODO(PC-42708): subscribe to location store to observe the changes

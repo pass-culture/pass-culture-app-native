@@ -2,10 +2,9 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { HistoryItemHighlight } from 'features/search/components/Highlight/Highlight'
+import { SearchSuggestionOption } from 'features/search/components/SearchSuggestionsListbox/SearchSuggestionOption'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useNumberOfLine } from 'shared/accessibility/helpers/zoomHelpers'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
@@ -28,7 +27,7 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
 
   return (
     <Container>
-      <HistoryItemTouchable onPress={handlePress} accessibilityRole={AccessibilityRole.BUTTON}>
+      <HistoryItemTouchable onPress={handlePress}>
         <ClockIconContainer>
           <ClockFilledIcon />
         </ClockIconContainer>
@@ -58,7 +57,7 @@ const Container = styled.View({
   flex: 1,
 })
 
-const HistoryItemTouchable = styled(TouchableOpacity)({
+const HistoryItemTouchable = styled(SearchSuggestionOption)({
   flexDirection: 'row',
   alignItems: 'center',
 })

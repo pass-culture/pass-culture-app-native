@@ -23,7 +23,7 @@ export const AccountSecurity = () => {
   const isLoggedOutOrHasPassword = !isLoggedIn || user?.hasPassword
 
   const onPressDismissAccountSecurity = () => {
-    analytics.logDismissAccountSecurity()
+    void analytics.logDismissAccountSecurity()
     navigateToHome()
   }
 

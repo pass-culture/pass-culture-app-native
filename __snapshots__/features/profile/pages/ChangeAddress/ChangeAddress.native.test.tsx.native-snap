@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<SetAddress/> from mandatory udpate personal data screen should render correctly 1`] = `
+exports[`<ChangeAddress/> from mandatory update personal data via change city should render correctly 1`] = `
 <View
   isLandscape={false}
   style={
@@ -669,7 +669,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
 </View>
 `;
 
-exports[`<SetAddress/> without previous screen should render correctly 1`] = `
+exports[`<ChangeAddress/> from profile personal data via change city should render correctly 1`] = `
 <View
   isLandscape={false}
   style={

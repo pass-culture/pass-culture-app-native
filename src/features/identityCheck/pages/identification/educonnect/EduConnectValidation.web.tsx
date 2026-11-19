@@ -7,7 +7,7 @@ import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/helpers/lo
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
 import { EduconnectValidationPage } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
-import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
@@ -24,7 +24,7 @@ export function EduConnectValidation() {
   const navigateToNextEduConnectStep = () => {
     const logoutUrl = params?.logoutUrl
     logoutFromEduConnectIfAllowed(logoutUrl)
-    dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
+    dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
     // in web context, we are redirected to this page after educonnect login in a new tab.
     // Therefore, the identity check context loses the state before educonnect login and we
     // cannot use navigateToNextScreen here. We need to navigated explicitly to next page.

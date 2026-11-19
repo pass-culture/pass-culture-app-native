@@ -23,7 +23,7 @@ export const useRenderPassPlaylist = ({
   CinemaPlaylistPropsContainingVenue | Omit<GtlPlaylistProps, 'onViewableItemsChanged'>
 >): CustomListRenderItem<Offer> => {
   const currentRoute = useRoute<UseRouteType<typeof _route>>()
-  const entryId = 'entryId' in playlist ? playlist.entryId : undefined
+  const moduleId = 'entryId' in playlist ? playlist.entryId : playlist.id
 
   return useCallback(
     ({ item, width, height, index }) => {
@@ -32,7 +32,7 @@ export const useRenderPassPlaylist = ({
           height={height}
           width={width}
           item={item}
-          moduleId={entryId}
+          moduleId={moduleId}
           analyticsFrom={analyticsFrom}
           searchId={currentRoute.params?.searchId ?? searchId}
           index={index}
@@ -40,6 +40,6 @@ export const useRenderPassPlaylist = ({
         />
       )
     },
-    [entryId, analyticsFrom, currentRoute.params?.searchId, searchId, venue?.id]
+    [moduleId, analyticsFrom, currentRoute.params?.searchId, searchId, venue?.id]
   )
 }

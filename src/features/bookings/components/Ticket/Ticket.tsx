@@ -117,8 +117,8 @@ export const Ticket = ({
       topContent={
         <TicketTopPart
           user={user}
-          day={dayLabel == '' ? undefined : dayLabel}
-          hour={hourLabel == '' ? undefined : hourLabel}
+          day={dayLabel === '' ? undefined : dayLabel}
+          hour={hourLabel === '' ? undefined : hourLabel}
           isDuo={properties.isDuo}
           ean={booking.stock.offer.extraData?.ean ?? undefined}
           expirationDate={expirationDateFormated({ prefix: 'À récupérer avant le ' })}

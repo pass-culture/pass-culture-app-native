@@ -83,7 +83,7 @@ type Props = {
   searchId?: string
   isDepositExpired?: boolean
   apiRecoParams?: RecommendationApiParams
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
   storedProfileInfos?: ValidStoredProfileInfos
 }
 

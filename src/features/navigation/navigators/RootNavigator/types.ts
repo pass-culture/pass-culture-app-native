@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import { CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { Activity, CategoryIdEnum, CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { Provider } from 'features/auth/types'
 import { BookingsTab } from 'features/bookings/enum'
@@ -14,7 +14,10 @@ import { Color, OffersModuleParameters, VenuesModule } from 'features/home/types
 import { CheatcodesStackParamList } from 'features/navigation/navigators/CheatcodesStackNavigator/types'
 import { OnboardingStackParamList } from 'features/navigation/navigators/OnboardingStackNavigator/types'
 import { ProfileStackParamList } from 'features/navigation/navigators/ProfileStackNavigator/types'
-import { SearchStackParamList } from 'features/navigation/navigators/SearchStackNavigator/types'
+import {
+  SearchStackParamList,
+  ThematicSearchCategories,
+} from 'features/navigation/navigators/SearchStackNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/navigators/SubscriptionStackNavigator/types'
 import { TabParamList } from 'features/navigation/navigators/TabNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -148,7 +151,7 @@ type OfferParams = {
   openModalOnNavigation?: boolean
   searchId?: string
   apiRecoParams?: string
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
 }
 
 type OfferPreviewParams = {
@@ -184,6 +187,7 @@ type SignupParams =
       from: StepperOrigin
       ssoProvider?: Provider.GOOGLE | Provider.APPLE
       stepIndex?: number
+      artistId?: string
     }
   | undefined
 
@@ -199,6 +203,10 @@ type VenuePreviewCarouselParams = {
   defaultIndex?: number
 }
 
+type VenueSurveyModalParams = {
+  activity: Activity | null
+}
+
 type ArtistParams = {
   id: string
 }
@@ -207,16 +215,6 @@ type ClubAdvicesParams = {
   offerId: number
   adviceId?: number
   from?: Referrals
-}
-
-type ProAdvicesOfferParams = {
-  offerId: number
-  venueId?: number
-}
-
-type ProAdvicesVenueParams = {
-  venueId: number
-  offerId?: number
 }
 
 type VideoModulePageParams = {
@@ -243,6 +241,7 @@ type LoginParams = {
   displayForcedLoginHelpMessage?: boolean
   offerId?: number
   from?: StepperOrigin
+  artistId?: string
 }
 
 type FakeDoorModalParams = {
@@ -311,8 +310,6 @@ export type RootStackParamList = {
   AppleSSOCallback: { code?: string; state?: string; error?: string } | undefined
   OnboardingSubscription: undefined
   PageNotFound: undefined
-  ProAdvicesOffer: ProAdvicesOfferParams
-  ProAdvicesVenue: ProAdvicesVenueParams
   Profile: undefined
   ProfileStackNavigator?: NavigatorScreenParams<ProfileStackParamList>
   RecreditBirthdayNotification: undefined
@@ -347,6 +344,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel1: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
+  VenueSurveyModal: VenueSurveyModalParams
   VerifyEligibility: undefined
   VerticalPlaylistArtists: {
     title: string
@@ -356,6 +354,7 @@ export type RootStackParamList = {
     offerId?: number
     offerCategoryId?: CategoryIdEnum
     originDetails?: ConsultArtistOriginDetails
+    searchGroupName?: ThematicSearchCategories
   }
   VerticalPlaylistOffers: VerticalPlaylistOffersSource
   VerticalPlaylistVenues: { module: VenuesModule }

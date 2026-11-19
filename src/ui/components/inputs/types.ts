@@ -85,10 +85,15 @@ export type RNTextInputProps = Pick<
   | 'multiline'
   | 'enablesReturnKeyAutomatically'
   | 'nativeAutoFocus'
+  | 'role'
+  | 'aria-expanded'
 > &
   RefAttributes<RNTextInput> & {
     testID?: string
     'aria-describedby'?: string
+    'aria-activedescendant'?: string
+    'aria-autocomplete'?: 'none' | 'inline' | 'list' | 'both'
+    'aria-controls'?: string
   }
 
 type TextInputNativeProps = CustomTextInputBaseProps & RNTextInputProps
@@ -119,7 +124,16 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
 
 export function getRNTextInputProps(props: TextInputNativeProps): RNTextInputProps {
   return {
-    ...(Platform.OS === 'web' ? { 'aria-describedby': props['aria-describedby'] } : {}),
+    ...(Platform.OS === 'web'
+      ? {
+          role: props.role,
+          'aria-describedby': props['aria-describedby'],
+          'aria-activedescendant': props['aria-activedescendant'],
+          'aria-autocomplete': props['aria-autocomplete'],
+          'aria-controls': props['aria-controls'],
+          'aria-expanded': props['aria-expanded'],
+        }
+      : {}),
     accessibilityLabel: props.accessibilityLabel,
     autoCapitalize: props.autoCapitalize,
     autoComplete: props.autoComplete,

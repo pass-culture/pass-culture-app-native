@@ -60,6 +60,9 @@ const mockUseGetVenuesByDay = jest.fn(() => ({
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay', () => ({
   useGetVenuesByDay: () => mockUseGetVenuesByDay(),
+}))
+
+jest.mock('features/offer/helpers/getDaysWithNoScreenings', () => ({
   getDaysWithNoScreenings: jest.fn(),
 }))
 

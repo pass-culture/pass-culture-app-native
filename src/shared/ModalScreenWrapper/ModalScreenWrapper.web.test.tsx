@@ -35,4 +35,12 @@ describe('<ModalScreenWrapper /> on web', () => {
 
     expect(dialog).toHaveAttribute('aria-modal', 'true')
   })
+
+  it('should hide the backdrop from assistive technologies', () => {
+    render(<ScreenWithModal isModalOpen />)
+
+    expect(
+      screen.queryByRole('button', { name: 'Fermer la modale en touchant l’arrière-plan' })
+    ).not.toBeInTheDocument()
+  })
 })

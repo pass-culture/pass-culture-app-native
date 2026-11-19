@@ -12,6 +12,7 @@ export const EnvironmentSchema = yup.object({
   ACCESSIBILITY_PLAN: yup.string().required(),
   ACCESSIBILITY: yup.string().required(),
   ADJUST_APP_TOKEN: yup.string().required(),
+  ADJUST_LINK_DOMAIN: yup.string().required(),
   ALGOLIA_APPLICATION_ID: yup.string().required(),
   ALGOLIA_ARTISTS_INDEX_NAME: yup.string().required(),
   ALGOLIA_CINE_CLUB_OFFERS_INDEX_NAME: yup.string().required(),

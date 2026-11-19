@@ -27,13 +27,15 @@ export const CinemaScreeningCard: FunctionComponent<CinemaScreeningCardComponent
   video = [],
   audio = [],
   accessibility = {},
+  isDisabled: isDisabledProp,
   disabledReason,
   fillHeight = false,
   hovered,
 }) => {
   const theme = useTheme()
   const hoverProps = useHandleHover()
-  const isDisabled = !!disabledReason
+  const isDisabled = !!isDisabledProp || !!disabledReason
+  const shouldDisplayDetails = !disabledReason
   const colors = getCinemaScreeningCardColors({
     disabled: isDisabled,
     hovered: hovered ?? hoverProps.isHover,
@@ -49,10 +51,10 @@ export const CinemaScreeningCard: FunctionComponent<CinemaScreeningCardComponent
     time,
     languageLabel,
     disabledReason,
-    isDisabled ? undefined : specialEvent,
-    isDisabled ? undefined : mediaTags.join(', '),
-    isDisabled ? undefined : displayedAccessibility.map(({ label }) => label).join(', '),
-    isDisabled ? undefined : price
+    shouldDisplayDetails ? specialEvent : undefined,
+    shouldDisplayDetails ? mediaTags.join(', ') : undefined,
+    shouldDisplayDetails ? displayedAccessibility.map(({ label }) => label).join(', ') : undefined,
+    shouldDisplayDetails ? price : undefined
   )
 
   return (
@@ -74,13 +76,13 @@ export const CinemaScreeningCard: FunctionComponent<CinemaScreeningCardComponent
         <Language color={colors.subtitleColor}>{languageLabel}</Language>
       </Header>
 
-      {isDisabled ? <DisabledReason>{disabledReason}</DisabledReason> : null}
+      {disabledReason ? <DisabledReason>{disabledReason}</DisabledReason> : null}
 
-      {!isDisabled && specialEvent ? (
+      {shouldDisplayDetails && specialEvent ? (
         <Tag label={specialEvent} variant={TagVariant.HIGHLIGHT} isMultiline />
       ) : null}
 
-      {!isDisabled && mediaTags.length ? (
+      {shouldDisplayDetails && mediaTags.length ? (
         <TagsRow>
           {mediaTags.map((label, index) => (
             <Tag label={label} key={`${label}-${index}`} isMultiline />
@@ -88,7 +90,7 @@ export const CinemaScreeningCard: FunctionComponent<CinemaScreeningCardComponent
         </TagsRow>
       ) : null}
 
-      {isDisabled ? null : (
+      {shouldDisplayDetails ? (
         <Footer>
           <AccessibilityRow>
             {displayedAccessibility.map(({ key, Icon, label }) => (
@@ -103,7 +105,7 @@ export const CinemaScreeningCard: FunctionComponent<CinemaScreeningCardComponent
           </AccessibilityRow>
           <Price color={colors.priceColor}>{price}</Price>
         </Footer>
-      )}
+      ) : null}
     </Card>
   )
 }

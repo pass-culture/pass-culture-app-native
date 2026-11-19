@@ -1,14 +1,11 @@
-import { SubscriptionStepperResponseV2, SubscriptionStepperResponseV3 } from 'api/gen'
+import { SubscriptionStepperResponseV3 } from 'api/gen'
 import {
   SubscriptionStepperErrorResponseFixture,
   SubscriptionStepperResponseFixture,
-  SubscriptionStepperErrorResponseV3Fixture,
-  SubscriptionStepperResponseV3Fixture,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -27,12 +24,12 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should get stepsToDisplay from the back', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>(
-      '/v2/subscription/stepper',
+    mockServer.getApi<SubscriptionStepperResponseV3>(
+      '/v3/subscription/stepper',
       SubscriptionStepperResponseFixture
     )
     const { result } = renderGetStepperInfo()
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+    await waitFor(() => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current.data).toEqual({
       ...SubscriptionStepperResponseFixture,
@@ -42,86 +39,25 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should return an errorMessage', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>(
-      '/v2/subscription/stepper',
+    mockServer.getApi<SubscriptionStepperResponseV3>(
+      '/v3/subscription/stepper',
       SubscriptionStepperErrorResponseFixture
     )
 
     const { result } = renderGetStepperInfo()
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
+    await waitFor(() => expect(result.current.isSuccess).toEqual(true))
 
     expect(result.current.data?.subscriptionMessage?.messageSummary).toEqual(
       'Tu n’as pas fournis les bons documents'
     )
   })
 
-  it('should call V2 API endpoint when feature flag is disabled', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>(
-      '/v2/subscription/stepper',
-      SubscriptionStepperResponseFixture
-    )
-
-    const { result } = renderGetStepperInfo()
-    await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
-
-    expect(result.current.data).toBeDefined()
-    expect(result.current.data?.title).toEqual('Titre Stepper')
-  })
-
   it('should only fetch data when user is logged in', async () => {
     mockAuthContextWithoutUser()
     const { result } = renderGetStepperInfo()
 
-    await waitFor(async () => expect(result.current.isFetched).toEqual(false))
-    await waitFor(async () => expect(result.current.isEnabled).toEqual(false))
-  })
-
-  describe('when feature flag WIP_PHONE_NUMBER_IN_PROFILE_STEPPER enabled', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PHONE_NUMBER_IN_PROFILE_STEPPER])
-    })
-
-    it('should get stepsToDisplay from the back', async () => {
-      mockServer.getApi<SubscriptionStepperResponseV3>(
-        '/v3/subscription/stepper',
-        SubscriptionStepperResponseV3Fixture
-      )
-      const { result } = renderGetStepperInfo()
-      await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
-
-      expect(result.current.data).toEqual({
-        ...SubscriptionStepperResponseFixture,
-        title: 'Titre Stepper',
-        subtitle: 'Sous titre Stepper',
-      })
-    })
-
-    it('should return an errorMessage', async () => {
-      mockServer.getApi<SubscriptionStepperResponseV3>(
-        '/v3/subscription/stepper',
-        SubscriptionStepperErrorResponseV3Fixture
-      )
-
-      const { result } = renderGetStepperInfo()
-      await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
-
-      expect(result.current.data?.subscriptionMessage?.messageSummary).toEqual(
-        'Tu n’as pas fournis les bons documents'
-      )
-    })
-
-    it('should call V3 API endpoint', async () => {
-      mockServer.getApi<SubscriptionStepperResponseV3>(
-        '/v3/subscription/stepper',
-        SubscriptionStepperResponseV3Fixture
-      )
-
-      const { result } = renderGetStepperInfo()
-      await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
-
-      expect(result.current.data).toBeDefined()
-      expect(result.current.data?.title).toEqual('Titre Stepper')
-    })
+    await waitFor(() => expect(result.current.isFetched).toEqual(false))
+    await waitFor(() => expect(result.current.isEnabled).toEqual(false))
   })
 })
 

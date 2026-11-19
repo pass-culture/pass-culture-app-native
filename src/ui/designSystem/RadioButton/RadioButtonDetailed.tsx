@@ -24,6 +24,7 @@ const layoutTransition = isWeb ? undefined : LinearTransition.duration(250)
 
 export const RadioButtonDetailed = ({
   label,
+  selectionValue,
   disabled,
   error,
   value,
@@ -36,12 +37,13 @@ export const RadioButtonDetailed = ({
   id,
   tabIndex,
 }: DetailedRadioProps) => {
-  const selected = value === label
+  const optionValue = selectionValue ?? label
+  const selected = value === optionValue
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
   const onToggle = useCallback(() => {
-    setValue(selected ? '' : label)
-  }, [selected, label, setValue])
+    setValue(selected ? '' : optionValue)
+  }, [selected, optionValue, setValue])
   const radioState = {
     selected: error ? false : selected,
     error: error ?? false,

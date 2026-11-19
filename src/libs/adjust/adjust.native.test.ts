@@ -1,4 +1,8 @@
-import { Adjust as AdjustMock, addGranularOptionMock } from '__mocks__/react-native-adjust'
+import {
+  Adjust as AdjustMock,
+  addGranularOptionMock,
+  disableDeferredDeeplinkOpeningMock,
+} from '__mocks__/react-native-adjust'
 import { Adjust, resetHasAlreadyBeenInitializedForTests } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 
@@ -52,6 +56,15 @@ describe('Adjust', () => {
       expect(AdjustMock.getAppTrackingAuthorizationStatus).toHaveBeenCalledTimes(1)
     })
 
+    it('Deferred deep link opening is disabled before Adjust sdk is init', async () => {
+      Adjust.initOrEnable()
+
+      expect(disableDeferredDeeplinkOpeningMock).toHaveBeenCalledTimes(1)
+      expect(disableDeferredDeeplinkOpeningMock.mock.invocationCallOrder[0]).toBeLessThan(
+        AdjustMock.initSdk.mock.invocationCallOrder[0] ?? 0
+      )
+    })
+
     it('log a campaign tracker enabled event when Adjust sdk is init', async () => {
       Adjust.initOrEnable()
 
@@ -77,6 +90,16 @@ describe('Adjust', () => {
       Adjust.initOrEnable(false)
 
       expect(AdjustMock.trackMeasurementConsent).toHaveBeenCalledTimes(0)
+    })
+  })
+
+  describe('processDeeplink', () => {
+    it('Send the link to Adjust sdk', () => {
+      Adjust.processDeeplink('https://passculture.go.link/accueil-thematique?homeId=fakeEntryId')
+
+      expect(AdjustMock.processDeeplink).toHaveBeenCalledWith({
+        deeplink: 'https://passculture.go.link/accueil-thematique?homeId=fakeEntryId',
+      })
     })
   })
 })

@@ -4,10 +4,13 @@ import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { Activity, VenueResponse } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { initialSearchState } from 'features/search/context/reducer'
+import { SpecialEventVenueMovies } from 'features/venue/components/VenueOffers/SpecialEventVenueMovies'
+import { VenueMoviesV2 } from 'features/venue/components/VenueOffers/VenueMoviesV2'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersArtistsResponseSnap } from 'features/venue/fixtures/venueOffersArtistsResponseSnap'
@@ -15,9 +18,11 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
+import * as venueSurveyAccessStorageModule from 'features/venue/helpers/venueSurveyAccessStorage'
 import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -66,11 +71,33 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('features/venue/components/VenueOffers/SpecialEventVenueMovies', () => ({
+  SpecialEventVenueMovies: jest.fn(() => null),
+}))
+
+jest.mock('features/venue/components/VenueOffers/VenueMoviesV2', () => ({
+  VenueMoviesV2: jest.fn(() => null),
+}))
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
   }
 })
+
+const mockCheckVenueSurveyAccess = jest.spyOn(
+  venueSurveyAccessStorageModule,
+  'checkVenueSurveyAccess'
+)
+const mockMarkVenueSurveyAccess = jest.spyOn(
+  venueSurveyAccessStorageModule,
+  'markVenueSurveyAccess'
+)
+
+const venueWithSurveyActivity: VenueResponse = {
+  ...venueDataTest,
+  activity: Activity.BOOKSTORE,
+}
 
 const user = userEvent.setup()
 
@@ -171,6 +198,26 @@ describe('<VenueOffers />', () => {
 
       expect(await screen.findByText('Les films à l’affiche')).toBeOnTheScreen()
     })
+
+    it('should use special event venue movies when special event screenings are enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+
+      renderVenueOffers({ venueOffers: venueMoviesOffersMock })
+
+      expect(SpecialEventVenueMovies).toHaveBeenCalledTimes(1)
+    })
+
+    it('should keep cinema V2 when both cinema flags are enabled', () => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS,
+        RemoteStoreFeatureFlags.WIP_USE_VENUE_MOVIE_SCREENINGS_ENDPOINT,
+      ])
+
+      renderVenueOffers({ venueOffers: venueMoviesOffersMock })
+
+      expect(SpecialEventVenueMovies).not.toHaveBeenCalled()
+      expect(VenueMoviesV2).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('Artist playlist', () => {
@@ -229,6 +276,89 @@ describe('<VenueOffers />', () => {
       ).not.toBeOnTheScreen()
     })
   })
+
+  describe('Venue survey banner', () => {
+    it('should not display the survey banner when enableVenueSurvey FF is deactivated', () => {
+      setFeatureFlags()
+
+      renderVenueOffers({ venue: venueWithSurveyActivity })
+
+      expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+    })
+
+    describe('when enableVenueSurvey FF is activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_VENUE_SURVEY])
+      })
+
+      it('should display the survey banner when survey has not been accessed yet', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({ venue: venueWithSurveyActivity })
+
+        expect(await screen.findByText(/Un avis sur cette page/)).toBeOnTheScreen()
+        expect(screen.getByText('Donner mon avis (2 min)')).toBeOnTheScreen()
+      })
+
+      it('should not display the survey banner when survey has already been accessed', () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(true)
+
+        renderVenueOffers({ venue: venueWithSurveyActivity })
+
+        expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+      })
+
+      it('should not display the survey banner when venue activity has no survey mapped', () => {
+        renderVenueOffers({
+          venue: { ...venueDataTest, activity: null },
+        })
+
+        expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+      })
+
+      it('should mark survey access and hide the banner when pressing "Donner mon avis"', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({ venue: venueWithSurveyActivity })
+
+        await user.press(await screen.findByText('Donner mon avis (2 min)'))
+
+        expect(mockMarkVenueSurveyAccess).toHaveBeenNthCalledWith(
+          1,
+          'BOOKSHOP_AND_LIBRARY',
+          'modal'
+        )
+        expect(mockMarkVenueSurveyAccess).toHaveBeenNthCalledWith(
+          2,
+          'BOOKSHOP_AND_LIBRARY',
+          'banner'
+        )
+        expect(screen.queryByText(/Un avis sur cette page/)).not.toBeOnTheScreen()
+      })
+
+      it('should display the survey banner when there are no offers', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({
+          venue: venueWithSurveyActivity,
+          venueOffers: { hits: [], nbHits: 0 },
+        })
+
+        expect(await screen.findByText(/Un avis sur cette page/)).toBeOnTheScreen()
+      })
+
+      it('should display the survey banner when there are movie screening offers', async () => {
+        mockCheckVenueSurveyAccess.mockResolvedValueOnce(false)
+
+        renderVenueOffers({
+          venue: { ...venueWithSurveyActivity, activity: Activity.CINEMA },
+          venueOffers: venueMoviesOffersMock,
+        })
+
+        expect(await screen.findByText(/Un avis sur cette page/)).toBeOnTheScreen()
+      })
+    })
+  })
 })
 
 type RenderVenueOffersType = Partial<ComponentProps<typeof VenueOffers>>
@@ -258,7 +388,6 @@ const renderVenueOffers = ({
             labelMapping={labelMapping}
             currency={currency}
             euroToPacificFrancRate={euroToPacificFrancRate}
-            onViewableItemsChanged={jest.fn()}
           />
         </OfferCTAProvider>
       </AnchorProvider>

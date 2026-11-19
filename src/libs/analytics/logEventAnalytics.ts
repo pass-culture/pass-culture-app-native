@@ -14,11 +14,7 @@ import { Provider } from 'features/auth/types'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
-import {
-  DeprecatedIdentityCheckStep,
-  IdentityCheckStep,
-  StepConfig,
-} from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import {
   Referrals,
   StepperOrigin,
@@ -37,6 +33,8 @@ import { GridListLayout, SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { logViewItem } from 'libs/analytics/helpers/logViewItem'
 import { analytics } from 'libs/analytics/provider'
 import {
   AdviceType,
@@ -47,9 +45,7 @@ import {
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
-import { LocationMode } from 'libs/location/types'
 import { ColorSchemeType } from 'libs/styled/useColorScheme'
-import { PageTrackingInfo } from 'shared/tracking/TrackingManager'
 
 type ConsultHomeParams = { homeEntryId: string }
 
@@ -115,6 +111,7 @@ export type ConsultArtistOriginDetails =
   | 'searchResults'
   | 'artistRecommendation'
   | 'artistHighlightModule'
+  | 'topArtistsPlaylist'
 
 export type FakeDoorAnalyticsParams = {
   featureName: string
@@ -162,7 +159,7 @@ export const logEventAnalytics = {
     bookingId: string
     fromOfferId?: string
     fromMultivenueOfferId?: string
-    playlistType?: PlaylistType
+    playlistType?: PlaylistType | string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_CONFIRMATION }, params),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analytics.logEvent(
@@ -215,7 +212,7 @@ export const logEventAnalytics = {
     from?: Referrals
     searchId?: string
     apiRecoParams?: RecommendationApiParams
-    playlistType?: PlaylistType
+    playlistType?: PlaylistType | string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
   logClickCopyDebugInfo: (userId?: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_COPY_DEBUG_INFO }, { userId }),
@@ -504,7 +501,7 @@ export const logEventAnalytics = {
     reason: string | null
     errorType: string | null
   }) => analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_ABORT }, params),
-  logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepName) =>
+  logIdentityCheckStep: (nextStep: IdentityCheckStepName) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.IDENTITY_CHECK_STEP },
       { nextStep, step: nextStep }
@@ -513,8 +510,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLogin: (params: { method: LoginRoutineMethod; type?: LoginType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN }, params),
-  logLoginClicked: (params: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
+  logLoginClicked: (params: {
+    from: string
+    itemType?: 'offer' | 'venue' | 'artist'
+    offerId?: number
+    venueId?: number
+    artistId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
   logMapSeenDuration: (params: { duration: number; mapType: MapType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.MAP_SEEN_DURATION }, params),
@@ -524,6 +526,7 @@ export const logEventAnalytics = {
     displayedOn: Referrals
     venueId?: number
     artistId?: string
+    searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
   logModuleDisplayedOnHomepage: (params: {
     moduleId: string
@@ -595,7 +598,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, params),
   logPlaylistHorizontalScroll: (
     fromOfferId?: number,
-    playlistType?: PlaylistType,
+    playlistType?: string,
     apiRecoParams?: RecommendationApiParams
   ) =>
     analytics.logEvent(
@@ -604,7 +607,7 @@ export const logEventAnalytics = {
     ),
   logPlaylistVerticalScroll: (params: {
     offerId: number
-    playlistType: PlaylistType
+    playlistType: string
     nbResults: number
     fromOfferId?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),
@@ -615,7 +618,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_MODAL }, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN }, { offerId }),
-  logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepName) =>
+  logQuitIdentityCheck: (nextStep: IdentityCheckStepName) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
@@ -649,16 +652,17 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL }, { offerId }),
   logSignInFromFavorite: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_FAVORITE }),
-  logSignInFromOffer: (offerId: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_OFFER }, { offerId }),
-  logSignUpClicked: ({ from }: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, { from }),
+  logSignUpClicked: (params: {
+    from: string
+    itemType?: 'offer' | 'venue' | 'artist'
+    offerId?: number
+    venueId?: number
+    artistId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, params),
   logSignUpFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL }, { offerId }),
   logSignUpFromFavorite: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_FAVORITE }),
-  logSignUpFromOffer: (offerId: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_OFFER }, { offerId }),
   logSignUpTooYoung: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>
@@ -739,8 +743,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED }, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
-  logViewItem: (params: PageTrackingInfo & { locationType: LocationMode }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_ITEM }, params),
+  logViewItem,
   logViewMap: (params: { from: Referrals; mapType: MapType; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEW_MAP }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>

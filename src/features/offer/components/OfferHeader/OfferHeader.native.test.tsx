@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import { Animated, Share } from 'react-native'
 
-import { OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
@@ -109,8 +109,10 @@ describe('<OfferHeader />', () => {
 })
 
 function renderOfferHeader(children?: ReactElement | null) {
-  mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', paginatedFavoritesResponseSnap)
-  mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+  mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+    '/v2/me/favorites/offers',
+    paginatedOfferFavoritesResponseSnap
+  )
 
   const animatedValue = new Animated.Value(0)
   render(

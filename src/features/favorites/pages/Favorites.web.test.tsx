@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { PaginatedFavoritesResponse } from 'api/gen'
+import { PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
@@ -33,9 +33,9 @@ describe('<Favorites/>', () => {
     })
 
     it('should not have basic accessibility issues when user is logged in', async () => {
-      mockServer.getApi<PaginatedFavoritesResponse>(
-        '/v1/me/favorites',
-        paginatedFavoritesResponseSnap
+      mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
+        '/v2/me/favorites/offers',
+        paginatedOfferFavoritesResponseSnap
       )
 
       const { container } = renderFavorites()

@@ -56,7 +56,6 @@ describe('<IdentityCheckHonor/>', () => {
     await user.press(screen.getByText('Valider et continuer'))
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
       screen: 'BeneficiaryRequestSent',
     })
   })
@@ -76,7 +75,7 @@ describe('<IdentityCheckHonor/>', () => {
     await user.press(screen.getByText('Valider et continuer'))
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
+      params: { from: 'IdentityCheckHonor' },
       screen: 'BeneficiaryAccountCreated',
     })
   })
@@ -93,7 +92,6 @@ describe('<IdentityCheckHonor/>', () => {
     await user.press(screen.getByText('Valider et continuer'))
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
-      params: undefined,
       screen: 'BeneficiaryRequestSent',
     })
   })

@@ -2,7 +2,6 @@ import { format } from 'date-fns'
 import { date, object } from 'yup'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
-import { analytics } from 'libs/analytics/provider'
 import { dateDiffInFullYears } from 'libs/dates'
 
 export const setBirthdaySchema = object().shape({
@@ -12,14 +11,9 @@ export const setBirthdaySchema = object().shape({
     .test(
       'is-old-enough',
       'Tu dois avoir au moins 15\u00a0ans pour t’inscrire au pass Culture',
-      (date) => {
-        if (!date) return false
-        const age = dateDiffInFullYears(date, new Date())
-        if (age < 15) {
-          void analytics.logSignUpTooYoung(age)
-          return false
-        }
-        return true
+      (birthdate) => {
+        if (!birthdate) return false
+        return dateDiffInFullYears(birthdate, new Date()) >= 15
       }
     ),
 })

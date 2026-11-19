@@ -1,7 +1,7 @@
-import { env } from 'libs/environment/env'
+import { isValidEduConnectUrl } from 'shared/isValidUrl/isValidUrl'
 
 export const logoutFromEduConnectIfAllowed = (logoutUrl: string | undefined) => {
-  if (logoutUrl && new RegExp(`^${env.EDUCONNECT_ALLOWED_DOMAIN}`, 'i').test(logoutUrl)) {
+  if (logoutUrl && isValidEduConnectUrl(logoutUrl)) {
     globalThis.window.open(logoutUrl)
   }
 }

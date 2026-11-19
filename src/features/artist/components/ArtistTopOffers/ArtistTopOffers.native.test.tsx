@@ -10,6 +10,23 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+beforeAll(() => {
+  globalThis.IntersectionObserver = class {
+    observe() {
+      return undefined
+    }
+    unobserve() {
+      return undefined
+    }
+    disconnect() {
+      return undefined
+    }
+    takeRecords() {
+      return []
+    }
+  } as unknown as typeof IntersectionObserver
+})
+
 const user = userEvent.setup()
 
 describe('ArtistTopOffers', () => {
@@ -22,6 +39,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -36,6 +55,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -61,6 +82,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -74,6 +97,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -93,6 +118,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -103,8 +130,12 @@ describe('ArtistTopOffers', () => {
     expect(screen.queryByText('Manga Série "One piece" - Tome 4')).not.toBeOnTheScreen()
   })
 
-  it('should not display top offers when there is not some offer from this artist', async () => {
-    render(reactQueryProviderHOC(<ArtistTopOffers artistName="Céline Dion" items={[]} />))
+  it('should not display top offers when there is not some offer from this artist', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistTopOffers artistId="1" index={0} artistName="Céline Dion" items={[]} />
+      )
+    )
 
     expect(screen.queryByLabelText('Ses oeuvres populaires')).not.toBeOnTheScreen()
   })
@@ -113,6 +144,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Eiichiro Oda"
           items={[mockedAlgoliaOffersWithSameArtistResponse[0]]}
         />
@@ -126,6 +159,8 @@ describe('ArtistTopOffers', () => {
     render(
       reactQueryProviderHOC(
         <ArtistTopOffers
+          artistId="1"
+          index={0}
           artistName="Eiichiro Oda"
           items={[mockedAlgoliaOffersWithSameArtistResponse[1]]}
         />

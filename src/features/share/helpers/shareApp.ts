@@ -26,9 +26,9 @@ const logShareAppAnalytics = (shareAction: ShareAction) => {
   if (Platform.OS === 'ios') {
     if (shareAction.action === Share.sharedAction) {
       const activityType = shareAction.activityType?.replace('com.apple.', '') || ''
-      analytics.logHasSharedApp(activityType)
+      void analytics.logHasSharedApp(activityType)
     } else {
-      analytics.logHasDismissedAppSharingModal()
+      void analytics.logHasDismissedAppSharingModal()
     }
   }
 }

@@ -306,6 +306,27 @@ export interface ActivityTypesResponse {
 }
 /**
  * @export
+ * @interface ArtistItem
+ */
+export interface ArtistItem {
+  /**
+   * @type {string}
+   * @memberof ArtistItem
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof ArtistItem
+   */
+  image?: string
+  /**
+   * @type {string}
+   * @memberof ArtistItem
+   */
+  name: string
+}
+/**
+ * @export
  * @interface ArtistResponse
  */
 export interface ArtistResponse {
@@ -465,24 +486,6 @@ export interface Bonification {
   qfThreshold: number
 }
 /**
- *
- * @export
- * @enum {string}
- */
-export enum Bookability {
-  'BOOKABLE' = 'BOOKABLE',
-  'STOCK_BOOKING_IS_DISABLED' = 'STOCK_BOOKING_IS_DISABLED',
-  'STOCK_IS_SOLD_OUT' = 'STOCK_IS_SOLD_OUT',
-  'USER_CANNOT_BOOK' = 'USER_CANNOT_BOOK',
-  'USER_HAS_ALREADY_BOOKED_OFFER' = 'USER_HAS_ALREADY_BOOKED_OFFER',
-  'USER_HAS_ALREADY_BOOKED_RELATED_OFFER' = 'USER_HAS_ALREADY_BOOKED_RELATED_OFFER',
-  'USER_HAS_INSUFFICIENT_CREDIT' = 'USER_HAS_INSUFFICIENT_CREDIT',
-  'AUTHENTICATION_REQUIRED' = 'AUTHENTICATION_REQUIRED',
-  'FINISH_SUBSCRIPTION_REQUIRED' = 'FINISH_SUBSCRIPTION_REQUIRED',
-  'USER_APPLICATION_STILL_PROCESSING' = 'USER_APPLICATION_STILL_PROCESSING',
-  'USER_HAS_APPLICATION_ERROR' = 'USER_HAS_APPLICATION_ERROR',
-}
-/**
  * @export
  * @interface BookOfferRequest
  */
@@ -555,6 +558,24 @@ export interface BookType {
    * @memberof BookType
    */
   position: number
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum Bookability {
+ 'BOOKABLE' = 'BOOKABLE',
+ 'STOCK_BOOKING_IS_DISABLED' = 'STOCK_BOOKING_IS_DISABLED',
+ 'STOCK_IS_SOLD_OUT' = 'STOCK_IS_SOLD_OUT',
+ 'USER_CANNOT_BOOK' = 'USER_CANNOT_BOOK',
+ 'USER_HAS_ALREADY_BOOKED_OFFER' = 'USER_HAS_ALREADY_BOOKED_OFFER',
+ 'USER_HAS_ALREADY_BOOKED_RELATED_OFFER' = 'USER_HAS_ALREADY_BOOKED_RELATED_OFFER',
+ 'USER_HAS_INSUFFICIENT_CREDIT' = 'USER_HAS_INSUFFICIENT_CREDIT',
+ 'AUTHENTICATION_REQUIRED' = 'AUTHENTICATION_REQUIRED',
+ 'FINISH_SUBSCRIPTION_REQUIRED' = 'FINISH_SUBSCRIPTION_REQUIRED',
+ 'USER_APPLICATION_STILL_PROCESSING' = 'USER_APPLICATION_STILL_PROCESSING',
+ 'USER_HAS_APPLICATION_ERROR' = 'USER_HAS_APPLICATION_ERROR',
 }
 /**
  * An enumeration.
@@ -805,6 +826,39 @@ export interface BookingOfferExtraDataV2 {
 }
 /**
  * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+/**
+ * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+/**
+ * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+/**
+ * @export
  * @interface BookingOfferResponse
  */
 export interface BookingOfferResponse {
@@ -958,6 +1012,47 @@ export interface BookingOfferResponseAddressV2 {
 }
 /**
  * @export
+ * @interface BookingOfferResponseAddressV3
+ */
+export interface BookingOfferResponseAddressV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  city: string
+  /**
+   * @type {CoordinatesV3}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  coordinates: CoordinatesV3
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  timezone: string
+}
+/**
+ * @export
  * @interface BookingOfferResponseV2
  */
 export interface BookingOfferResponseV2 {
@@ -1016,6 +1111,67 @@ export interface BookingOfferResponseV2 {
    * @memberof BookingOfferResponseV2
    */
   venue: BookingVenueResponseV2
+}
+/**
+ * @export
+ * @interface BookingOfferResponseV3
+ */
+export interface BookingOfferResponseV3 {
+  /**
+   * @type {BookingOfferResponseAddressV3}
+   * @memberof BookingOfferResponseV3
+   */
+  address?: BookingOfferResponseAddressV3 | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  bookingContact?: string | null
+  /**
+   * @type {BookingOfferExtraDataV3}
+   * @memberof BookingOfferResponseV3
+   */
+  extraData?: BookingOfferExtraDataV3 | null
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseV3
+   */
+  id: number
+  /**
+   * @type {OfferImageV3}
+   * @memberof BookingOfferResponseV3
+   */
+  image?: OfferImageV3 | null
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV3
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV3
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponseV3
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  url?: string | null
+  /**
+   * @type {BookingVenueResponseV3}
+   * @memberof BookingOfferResponseV3
+   */
+  venue: BookingVenueResponseV3
 }
 /**
  * @export
@@ -1105,6 +1261,92 @@ export interface BookingResponse {
 }
 /**
  * @export
+ * @interface BookingResponseV3
+ */
+export interface BookingResponseV3 {
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingResponseV3
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  completedUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  confirmationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  dateUsed?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  displayAsEnded?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  enablePopUpReaction: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  id: number
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  quantity: number
+  /**
+   * @type {BookingStockResponseV3}
+   * @memberof BookingResponseV3
+   */
+  stock: BookingStockResponseV3
+  /**
+   * @type {TicketResponse}
+   * @memberof BookingResponseV3
+   */
+  ticket: TicketResponse
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingResponseV3
+   */
+  userReaction?: ReactionTypeEnum | null
+}
+/**
+ * @export
  * @interface BookingStockResponseV2
  */
 export interface BookingStockResponseV2 {
@@ -1146,12 +1388,64 @@ export interface BookingStockResponseV2 {
 }
 /**
  * @export
+ * @interface BookingStockResponseV3
+ */
+export interface BookingStockResponseV3 {
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV3
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV3
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingStockResponseV3
+   */
+  isAutomaticallyUsed: boolean
+  /**
+   * @type {BookingOfferResponseV3}
+   * @memberof BookingStockResponseV3
+   */
+  offer: BookingOfferResponseV3
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV3
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV3
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {ScreeningFeatures}
+   * @memberof BookingStockResponseV3
+   */
+  screeningFeatures: ScreeningFeatures
+}
+/**
+ * @export
  * @interface BookingVenueAddressResponseV2
  */
 export interface BookingVenueAddressResponseV2 {
   /**
    * @type {number}
    * @memberof BookingVenueAddressResponseV2
+   */
+  id?: number | null
+}
+/**
+ * @export
+ * @interface BookingVenueAddressResponseV3
+ */
+export interface BookingVenueAddressResponseV3 {
+  /**
+   * @type {number}
+   * @memberof BookingVenueAddressResponseV3
    */
   id?: number | null
 }
@@ -1254,6 +1548,47 @@ export interface BookingVenueResponseV2 {
 }
 /**
  * @export
+ * @interface BookingVenueResponseV3
+ */
+export interface BookingVenueResponseV3 {
+  /**
+   * @type {BookingVenueAddressResponseV3}
+   * @memberof BookingVenueResponseV3
+   */
+  address: BookingVenueAddressResponseV3
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingVenueResponseV3
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponseV3
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  publicName: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  timezone: string
+}
+/**
+ * @export
  * @interface BookingsListResponseV2
  */
 export interface BookingsListResponseV2 {
@@ -1337,17 +1672,6 @@ export interface CallToActionMessageV3 {
   callToActionTitle?: string | null
 }
 /**
- * @export
- * @interface CategoriesResponseModel
- */
-export interface CategoriesResponseModel {
-  /**
-   * @type {Array<CategoryResponseModel>}
-   * @memberof CategoriesResponseModel
-   */
-  categories: Array<CategoryResponseModel>
-}
-/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1368,42 +1692,6 @@ export enum CategoryIdEnum {
   'PRATIQUE_ART' = 'PRATIQUE_ART',
   'SPECTACLE' = 'SPECTACLE',
   'TECHNIQUE' = 'TECHNIQUE',
-}
-/**
- * @export
- * @interface CategoryResponseModel
- */
-export interface CategoryResponseModel {
-  /**
-   * @type {Array<string>}
-   * @memberof CategoryResponseModel
-   */
-  gtls?: Array<string> | null
-  /**
-   * @type {string}
-   * @memberof CategoryResponseModel
-   */
-  label: string
-  /**
-   * @type {Array<string>}
-   * @memberof CategoryResponseModel
-   */
-  parents: Array<string>
-  /**
-   * @type {{ [key: string]: number; }}
-   * @memberof CategoryResponseModel
-   */
-  positions?: { [key: string]: number; } | null
-  /**
-   * @type {string}
-   * @memberof CategoryResponseModel
-   */
-  searchFilter?: string | null
-  /**
-   * @type {string}
-   * @memberof CategoryResponseModel
-   */
-  searchValue?: string | null
 }
 /**
  * @export
@@ -1576,6 +1864,22 @@ export interface Coordinates {
   /**
    * @type {number}
    * @memberof Coordinates
+   */
+  longitude?: number | null
+}
+/**
+ * @export
+ * @interface CoordinatesV3
+ */
+export interface CoordinatesV3 {
+  /**
+   * @type {number}
+   * @memberof CoordinatesV3
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof CoordinatesV3
    */
   longitude?: number | null
 }
@@ -2072,11 +2376,75 @@ export interface ExternalBookingResponseV2 {
 }
 /**
  * @export
+ * @interface FavoriteArtistDataResponse
+ */
+export interface FavoriteArtistDataResponse {
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistDataResponse
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof FavoriteArtistDataResponse
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistDataResponse
+   */
+  name: string
+}
+/**
+ * @export
+ * @interface FavoriteArtistRequest
+ */
+export interface FavoriteArtistRequest {
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistRequest
+   */
+  artistId: string
+}
+/**
+ * @export
+ * @interface FavoriteArtistResponse
+ */
+export interface FavoriteArtistResponse {
+  /**
+   * @type {FavoriteArtistDataResponse}
+   * @memberof FavoriteArtistResponse
+   */
+  artist: FavoriteArtistDataResponse
+  /**
+   * @type {number}
+   * @memberof FavoriteArtistResponse
+   */
+  id: number
+}
+/**
+ * @export
+ * @interface FavoriteCoordinates
+ */
+export interface FavoriteCoordinates {
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinates
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinates
+   */
+  longitude?: number | null
+}
+/**
+ * @export
  * @interface FavoriteMediationResponse
  */
 export interface FavoriteMediationResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteMediationResponse
    */
   credit?: string | null
@@ -2088,21 +2456,107 @@ export interface FavoriteMediationResponse {
 }
 /**
  * @export
+ * @interface FavoriteOfferDataResponse
+ */
+export interface FavoriteOfferDataResponse {
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  bookingAllowedDatetime?: string | null
+  /**
+   * @type {FavoriteCoordinates}
+   * @memberof FavoriteOfferDataResponse
+   */
+  coordinates: FavoriteCoordinates
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  date?: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof FavoriteOfferDataResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferDataResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteMediationResponse | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  image?: FavoriteMediationResponse | null
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isExpired?: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isSoldOut?: boolean
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferDataResponse
+   */
+  name: string
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  price?: number | null
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  startDate?: string | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  startPrice?: number | null
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof FavoriteOfferDataResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferDataResponse
+   */
+  venueName: string
+}
+/**
+ * @export
  * @interface FavoriteOfferResponse
  */
 export interface FavoriteOfferResponse {
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   bookingAllowedDatetime?: string | null
   /**
-   * @type {Coordinates}
+   * @type {FavoriteCoordinates}
    * @memberof FavoriteOfferResponse
    */
-  coordinates: Coordinates
+  coordinates: FavoriteCoordinates
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   date?: string | null
@@ -2112,7 +2566,7 @@ export interface FavoriteOfferResponse {
    */
   expenseDomains: Array<ExpenseDomain>
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   externalTicketOfficeUrl?: string | null
@@ -2122,7 +2576,7 @@ export interface FavoriteOfferResponse {
    */
   id: number
   /**
-   * @type {FavoriteMediationResponse}
+   * @type {FavoriteMediationResponse | null}
    * @memberof FavoriteOfferResponse
    */
   image?: FavoriteMediationResponse | null
@@ -2147,17 +2601,17 @@ export interface FavoriteOfferResponse {
    */
   name: string
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof FavoriteOfferResponse
    */
   price?: number | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof FavoriteOfferResponse
    */
   startDate?: string | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof FavoriteOfferResponse
    */
   startPrice?: number | null
@@ -2171,6 +2625,22 @@ export interface FavoriteOfferResponse {
    * @memberof FavoriteOfferResponse
    */
   venueName: string
+}
+/**
+ * @export
+ * @interface FavoriteOfferResponseV2
+ */
+export interface FavoriteOfferResponseV2 {
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferResponseV2
+   */
+  id: number
+  /**
+   * @type {FavoriteOfferDataResponse}
+   * @memberof FavoriteOfferResponseV2
+   */
+  offer: FavoriteOfferDataResponse
 }
 /**
  * @export
@@ -2303,27 +2773,6 @@ export interface GetRemindersResponse {
    * @memberof GetRemindersResponse
    */
   reminders: Array<ReminderResponse>
-}
-/**
- * @export
- * @interface OAuthSigninRequest
- */
-export interface OAuthSigninRequest {
-  /**
-   * @type {string}
-   * @memberof OAuthSigninRequest
-   */
-  authorizationCode: string
-  /**
-   * @type {DeviceInfoV2}
-   * @memberof OAuthSigninRequest
-   */
-  deviceInfo?: DeviceInfoV2 | null
-  /**
-   * @type {string}
-   * @memberof OAuthSigninRequest
-   */
-  oauthStateToken: string
 }
 /**
  * @export
@@ -2781,17 +3230,6 @@ export interface NotificationSubscriptions {
 }
 /**
  * @export
- * @interface OauthStateResponse
- */
-export interface OauthStateResponse {
-  /**
-   * @type {string}
-   * @memberof OauthStateResponse
-   */
-  oauthStateToken: string
-}
-/**
- * @export
  * @interface OauthStateResponseV2
  */
 export interface OauthStateResponseV2 {
@@ -3034,19 +3472,96 @@ export interface OfferExtraDataResponse {
 }
 /**
  * @export
- * @interface OfferImage
+/**
+ * @export
+ * @interface OfferForStocksResponse
  */
-export interface OfferImage {
+export interface OfferForStocksResponse {
+  /**
+   * @type {OfferAddressResponse}
+   * @memberof OfferForStocksResponse
+   */
+  address?: OfferAddressResponse | null
   /**
    * @type {string}
-   * @memberof OfferImage
+   * @memberof OfferForStocksResponse
    */
-  credit?: string
+  bookingAllowedDatetime: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferForStocksResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
   /**
    * @type {string}
-   * @memberof OfferImage
+   * @memberof OfferForStocksResponse
    */
-  url: string
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  id: number
+  /**
+   * @type {{ [key: string]: OfferImageResponse; }}
+   * @memberof OfferForStocksResponse
+   */
+  images?: { [key: string]: OfferImageResponse; } | null
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isDuo: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  last30DaysBookings?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  publicationDate: string | null
+  /**
+   * @type {Array<StockResponse>}
+   * @memberof OfferForStocksResponse
+   */
+  stocks: Array<StockResponse>
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  subcategoryId: string
+  /**
+   * @type {OfferVenueResponse}
+   * @memberof OfferForStocksResponse
+   */
+  venue: OfferVenueResponse
 }
 /**
  * @export
@@ -3066,6 +3581,22 @@ export interface OfferImageResponse {
 }
 /**
  * @export
+ * @interface OfferImageV3
+ */
+export interface OfferImageV3 {
+  /**
+   * @type {string}
+   * @memberof OfferImageV3
+   */
+  credit?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferImageV3
+   */
+  url: string
+}
+/**
+ * @export
  * @interface OfferOffererResponse
  */
 export interface OfferOffererResponse {
@@ -3074,6 +3605,105 @@ export interface OfferOffererResponse {
    * @memberof OfferOffererResponse
    */
   name: string
+}
+/**
+ * @export
+ * @interface OfferPagePlaylist
+   */
+export interface OfferPagePlaylist {
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylist
+   */
+  analyticsPlaylistType: string
+  /**
+   * @type {OfferPagePlaylistParams}
+   * @memberof OfferPagePlaylist
+   */
+  params: OfferPagePlaylistParams
+  /**
+   * @type {Array<string>}
+   * @memberof OfferPagePlaylist
+   */
+  results: Array<string>
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylist
+   */
+  title: string
+}
+/**
+ * @export
+ * @interface OfferPagePlaylistParams
+ */
+export interface OfferPagePlaylistParams {
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  abTest: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  callId: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  modelOrigin: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  recoOrigin: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  uniqueCallId: string
+}
+/**
+ * @export
+ * @interface OfferPagePlaylistQuery
+ */
+export interface OfferPagePlaylistQuery {
+  /**
+   * @type {number | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {string | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  userId?: string | null
+}
+/**
+ * @export
+ * @interface OfferPagePlaylistResponse
+ */
+export interface OfferPagePlaylistResponse {
+  /**
+   * @type {boolean}
+   * @memberof OfferPagePlaylistResponse
+   */
+  fromCache: boolean
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistResponse
+   */
+  offerId: string
+  /**
+   * @type {Array<OfferPagePlaylist>}
+   * @memberof OfferPagePlaylistResponse
+   */
+  playlists: Array<OfferPagePlaylist>
 }
 /**
  * @export
@@ -3115,94 +3745,6 @@ export interface OfferPreviewResponse {
    * @memberof OfferPreviewResponse
    */
   stocks: Array<OfferStockResponse>
-}
-/**
- * @export
- * @interface OfferProAdvice
- */
-export interface OfferProAdvice {
-  /**
-   * @type {string | ModelNull}
-   * @memberof OfferProAdvice
-   */
-  author?: string | null
-  /**
-   * @type {string}
-   * @memberof OfferProAdvice
-   */
-  content: string
-  /**
-   * @type {number | null}
-   * @memberof OfferProAdvice
-   */
-  distance?: number | null
-  /**
-   * @type {string}
-   * @memberof OfferProAdvice
-   */
-  publicationDatetime: string
-  /**
-   * @type {number}
-   * @memberof OfferProAdvice
-   */
-  venueId: number
-  /**
-   * @type {string}
-   * @memberof OfferProAdvice
-   */
-  venueName: string
-  /**
-   * @type {string | null}
-   * @memberof OfferProAdvice
-   */
-  venueThumbUrl?: string | null
-}
-  /**
- * @export
- * @interface OfferProAdviceQuery
- */
-export interface OfferProAdviceQuery {
-  /**
-   * @type {number | null}
-   * @memberof OfferProAdviceQuery
-   */
-  latitude?: number | null
-  /**
-   * @type {number | ModelNull}
-   * @memberof OfferProAdviceQuery
-   */
-  longitude?: number | null
-  /**
-   * @type {number | ModelNull}
-   * @memberof OfferProAdviceQuery
-   */
-  maxContentLength?: number | null
-  /**
-   * @type {number}
-   * @memberof OfferProAdviceQuery
-   */
-  page?: number
-  /**
-   * @type {number}
-   * @memberof OfferProAdviceQuery
-   */
-  resultsPerPage?: number
-}
-/**
- * @export
- * @interface OfferProAdvices
- */
-export interface OfferProAdvices {
-  /**
-   * @type {number}
-   * @memberof OfferProAdvices
-   */
-  nbResults: number
-  /**
-   * @type {Array<OfferProAdvice>}
-   * @memberof OfferProAdvices
-   */
-  proAdvices: Array<OfferProAdvice>
 }
 /**
  * @export
@@ -3562,27 +4104,6 @@ export interface OfferVideo {
 }
 /**
  * @export
- * @interface OffererHeadLineOfferResponseModel
- */
-export interface OffererHeadLineOfferResponseModel {
-  /**
-   * @type {number}
-   * @memberof OffererHeadLineOfferResponseModel
-   */
-  id: number
-  /**
-   * @type {OfferImage}
-   * @memberof OffererHeadLineOfferResponseModel
-   */
-  image?: OfferImage | null
-  /**
-   * @type {string}
-   * @memberof OffererHeadLineOfferResponseModel
-   */
-  name: string
-}
-/**
- * @export
  * @interface OffersStocksRequest
  */
 export interface OffersStocksRequest {
@@ -3590,7 +4111,18 @@ export interface OffersStocksRequest {
    * @type {Array<number>}
    * @memberof OffersStocksRequest
    */
-  offer_ids: Array<number>
+  offerIds: Array<number>
+}
+/**
+ * @export
+ * @interface OffersStocksResponse
+ */
+export interface OffersStocksResponse {
+  /**
+   * @type {Array<OfferForStocksResponse>}
+   * @memberof OffersStocksResponse
+   */
+  offers: Array<OfferForStocksResponse>
 }
 /**
  * @export
@@ -3631,6 +4163,48 @@ export interface PaginatedFavoritesResponse {
   /**
    * @type {number}
    * @memberof PaginatedFavoritesResponse
+   */
+  page: number
+}
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteArtistResponse
+ */
+export interface PaginatedResponseFavoriteArtistResponse {
+  /**
+   * @type {Array<FavoriteArtistResponse>}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  favorites: Array<FavoriteArtistResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  page: number
+}
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteOfferResponseV2
+ */
+export interface PaginatedResponseFavoriteOfferResponseV2 {
+  /**
+   * @type {Array<FavoriteOfferResponseV2>}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  favorites: Array<FavoriteOfferResponseV2>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
    */
   page: number
 }
@@ -4179,6 +4753,63 @@ export interface Screening {
   stockId: number
 }
 /**
+ * @export
+ * @interface ScreeningAccessibilityFeatures
+ */
+export interface ScreeningAccessibilityFeatures {
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  audio: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  mental: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  motor: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  visual: Array<string>
+}
+/**
+ * @export
+ * @interface ScreeningFeatures
+ */
+export interface ScreeningFeatures {
+  /**
+   * @type {ScreeningAccessibilityFeatures}
+   * @memberof ScreeningFeatures
+   */
+  accessibility: ScreeningAccessibilityFeatures
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  audio: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  language: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  specialEventType: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  video: string | null
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -4476,57 +5107,6 @@ export interface SimilarArtistsResponse {
 }
 /**
  * @export
- * @interface SimilarOffersRequestQuery
- */
-export interface SimilarOffersRequestQuery {
-  /**
-   * @type {Array<string> | null}
-   * @memberof SimilarOffersRequestQuery
-   */
-  categories?: Array<string> | null
-  /**
-   * @type {number | null}
-   * @memberof SimilarOffersRequestQuery
-   */
-  latitude?: number | null
-  /**
-   * @type {number | null}
-   * @memberof SimilarOffersRequestQuery
-   */
-  longitude?: number | null
-  /**
-   * @type {string}
-   * @memberof SimilarOffersRequestQuery
-   */
-  retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum
-  /**
-   * @type {Array<string> | null}
-   * @memberof SimilarOffersRequestQuery
-   */
-  search_group_names?: Array<string> | null
-  /**
-   * @type {Array<string> | null}
-   * @memberof SimilarOffersRequestQuery
-   */
-  subcategories?: Array<string> | null
-}
-/**
- *
- * @export
- * @namespace SimilarOffersRequestQuery
- */
-export namespace SimilarOffersRequestQuery {
-  /**
-   * @export
-   * @enum {string}
-   */
-  export enum RetrievalModelEnum {
-    Coreservation = <any> 'coreservation',
-    Graph = <any> 'graph',
-  }
-}
-/**
- * @export
  * @interface SimilarOffersResponse
  */
 export interface SimilarOffersResponse {
@@ -4540,6 +5120,77 @@ export interface SimilarOffersResponse {
    * @memberof SimilarOffersResponse
    */
   results?: Array<string>
+}
+/**
+ * @export
+ * @interface StockResponse
+ */
+export interface StockResponse {
+  /**
+   * @type {OfferStockActivationCodeResponse}
+   * @memberof StockResponse
+   */
+  activationCode?: OfferStockActivationCodeResponse | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  bookingLimitDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  cancellationLimitDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isBookable: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  price: number
+  /**
+   * @type {strins}
+   * @memberof StockResponse
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {numbes}
+   * @memberof StockResponse
+   */
+  remainingQuantity?: number | null
+  /**
+   * @type {ScreeningFeatures}
+   * @memberof StockResponse
+   */
+  screeningFeatures?: ScreeningFeatures | null
 }
 /**
  * @export
@@ -5103,7 +5754,17 @@ export interface TokenResponse {
    */
   data?: string | null
 }
-
+/**
+ * @export
+ * @interface TopArtistsPlaylistResponse
+ */
+export interface TopArtistsPlaylistResponse {
+  /**
+   * @type {Array<ArtistItem>}
+   * @memberof TopArtistsPlaylistResponse
+   */
+  artists: Array<ArtistItem>
+}
 /**
  * @export
  * @interface UpdateEmailTokenExpiration
@@ -5364,28 +6025,6 @@ export enum UserRole {
 }
 /**
  * @export
- * @interface UserSuspensionDateResponse
- */
-export interface UserSuspensionDateResponse {
-  /**
-   * @type {string}
-   * @memberof UserSuspensionDateResponse
-   */
-  date?: string | null
-}
-/**
- * @export
- * @interface UserSuspensionStatusResponse
- */
-export interface UserSuspensionStatusResponse {
-  /**
-   * @type {AccountState}
-   * @memberof UserSuspensionStatusResponse
-   */
-  status: AccountState
-}
-/**
- * @export
  * @interface ValidateEmailRequest
  */
 export interface ValidateEmailRequest {
@@ -5487,84 +6126,6 @@ export interface VenueMovieCalendarResponse {
 }
 /**
  * @export
- * @interface VenueProAdvice
- */
-export interface VenueProAdvice {
-  /**
-   * @type {string | null}
-   * @memberof VenueProAdvice
-   */
-  author?: string | null
-  /**
-   * @type {string}
-   * @memberof VenueProAdvice
-   */
-  content: string
-  /**
-   * @type {string}
-   * @memberof VenueProAdvice
-   */
-  offerCategoryLabel: string
-  /**
-   * @type {number}
-   * @memberof VenueProAdvice
-   */
-  offerId: number
-  /**
-   * @type {string}
-   * @memberof VenueProAdvice
-   */
-  offerName: string
-  /**
-   * @type {string | null}
-   * @memberof VenueProAdvice
-   */
-  offerThumbUrl?: string | null
-  /**
-   * @type {string}
-   * @memberof VenueProAdvice
-   */
-  publicationDatetime: string
-}
-/**
- * @export
- * @interface VenueProAdviceQuery
- */
-export interface VenueProAdviceQuery {
-  /**
-   * @type {number | null}
-   * @memberof VenueProAdviceQuery
-   */
-  maxContentLength?: number | null
-  /**
-   * @type {number}
-   * @memberof VenueProAdviceQuery
-   */
-  page?: number
-  /**
-   * @type {number}
-   * @memberof VenueProAdviceQuery
-   */
-  resultsPerPage?: number
-}
-/**
- * @export
- * @interface VenueProAdvices
- */
-export interface VenueProAdvices {
-  /**
-   * @type {number}
-   * @memberof VenueProAdvices
-   */
-  nbResults: number
-  /**
-   * @type {Array<VenueProAdvice>}
-   * @memberof VenueProAdvices
-   */
-  proAdvices: Array<VenueProAdvice>
-}
-/**
- * @export
  * @interface VenueResponse
  */
 export interface VenueResponse {
@@ -5574,12 +6135,12 @@ export interface VenueResponse {
    */
   accessibilityData: AccessibilityData
   /**
-   * @type {Activity | null}
+   * @type {Activity}
    * @memberof VenueResponse
    */
   activity: Activity | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   bannerCredit?: string | null
@@ -5589,42 +6150,42 @@ export interface VenueResponse {
    */
   bannerIsFromGoogle?: boolean
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   bannerUrl?: string | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   city?: string | null
   /**
-   * @type {VenueContact | null}
+   * @type {VenueContact}
    * @memberof VenueResponse
    */
   contact?: VenueContact | null
   /**
-   * @type {Array<CulturalDomainItem> | null}
+   * @type {Array<CulturalDomainItem>}
    * @memberof VenueResponse
    */
   culturalDomains?: Array<CulturalDomainItem> | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   description?: string | null
   /**
-   * @type {AccessibilityData | null}
+   * @type {AccessibilityData}
    * @memberof VenueResponse
    */
   externalAccessibilityData?: AccessibilityData | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   externalAccessibilityId?: string | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   externalAccessibilityUrl?: string | null
@@ -5644,12 +6205,12 @@ export interface VenueResponse {
    */
   isPermanent: boolean
   /**
-   * @type {number | null}
+   * @type {number}
    * @memberof VenueResponse
    */
   latitude?: number | null
   /**
-   * @type {number | null}
+   * @type {number}
    * @memberof VenueResponse
    */
   longitude?: number | null
@@ -5664,12 +6225,12 @@ export interface VenueResponse {
    */
   openingHours?: any | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   postalCode?: string | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   street?: string | null
@@ -5679,12 +6240,12 @@ export interface VenueResponse {
    */
   timezone: string
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   volunteeringUrl?: string | null
   /**
-   * @type {string | null}
+   * @type {string}
    * @memberof VenueResponse
    */
   withdrawalDetails?: string | null
@@ -5882,6 +6443,64 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary delete_favorite_artist <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'favorite_id' is not null or undefined
+      if (favorite_id === null || favorite_id === undefined) {
+        throw new RequiredError(
+          'favorite_id',
+          'Required parameter favorite_id was null or undefined when calling deleteNativeV2MeFavoritesArtistsfavoriteId.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/artists/{favorite_id}`.replace(
+        `{${'favorite_id'}}`,
+        encodeURIComponent(String(favorite_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary delete_favorite_offer <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'favorite_id' is not null or undefined
+      if (favorite_id === null || favorite_id === undefined) {
+        throw new RequiredError(
+          'favorite_id',
+          'Required parameter favorite_id was null or undefined when calling deleteNativeV2MeFavoritesOffersfavoriteId.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/offers/{favorite_id}`.replace(
+        `{${'favorite_id'}}`,
+        encodeURIComponent(String(favorite_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
      * @param {*} [options] Override http request option.
@@ -5900,42 +6519,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(token))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_account_suspension_date <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1AccountSuspensionDate(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspension_date`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_account_suspension_status <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1AccountSuspensionStatus(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspension_status`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6061,40 +6644,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         return `${encodeURIComponent(key as string)}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_bookings <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1Bookings(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/bookings`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_categories <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1Categories(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/categories`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -6365,77 +6914,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
-    /**
-     * @summary google_oauth_state <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OauthState(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/oauth/state`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_offerer_headline_offer <GET>
-     * @param {number} offerer_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OffereroffererIdHeadlineOffer(offerer_id: number, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'offerer_id' is not null or undefined
-      if (offerer_id === null || offerer_id === undefined) {
-        throw new RequiredError(
-          'offerer_id',
-          'Required parameter offerer_id was null or undefined when calling getNativeV1OffereroffererIdHeadlineOffer.'
-        )
-      }
-      let pathname = `/native/v1/offerer/{offerer_id}/headline-offer`.replace(
-        `{${'offerer_id'}}`,
-        encodeURIComponent(String(offerer_id))
-      )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_offer <GET>
-     * @deprecated
-     * @param {number} offer_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'offer_id' is not null or undefined
-      if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError(
-          'offer_id',
-          'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferId.'
-        )
-      }
-      let pathname = `/native/v1/offer/{offer_id}`.replace(
-        `{${'offer_id'}}`,
-        encodeURIComponent(String(offer_id))
-      )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
         /**
      * @summary offer_chronicles <GET>
      * @param {number} offer_id
@@ -6464,48 +6942,38 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_offer_pro_advices <GET>
+     * @summary offer_page_playlists <GET>
      * @param {number} offer_id
-     * @param {number} [maxContentLength]
-     * @param {number} [page]
-     * @param {number} [resultsPerPage]
-     * @param {number} [latitude]
+     * @param {string} [userId] 
      * @param {number} [longitude]
+     * @param {number} [latitude] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options: any = {}): Promise<FetchArgs> {
+    async getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
       if (offer_id === null || offer_id === undefined) {
         throw new RequiredError(
           'offer_id',
-          'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferIdAdvices.'
+          'Required parameter offer_id was null or undefined when calling getNativeV1RecommendationOfferPagePlaylistsofferId.'
         )
       }
-      let pathname = `/native/v1/offer/{offer_id}/advices`.replace(
+      let pathname = `/native/v1/recommendation/offer_page_playlists/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
       const queryParameters: any = {};
 
-        if (maxContentLength != null) {
-            queryParameters['maxContentLength'] = maxContentLength;
-        }
-
-        if (page != null) {
-            queryParameters['page'] = page;
-        }
-
-        if (resultsPerPage != null) {
-            queryParameters['resultsPerPage'] = resultsPerPage;
-        }
-
-        if (latitude != null) {
-            queryParameters['latitude'] = latitude;
+        if (userId != null) {
+            queryParameters['userId'] = userId;
         }
 
         if (longitude != null) {
             queryParameters['longitude'] = longitude;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
         }
 
       const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
@@ -6540,78 +7008,23 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_available_reactions <GET>
-     * @deprecated
+     * @summary top_artists_playlist <GET>
+     * @param {string} search_group_name 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1ReactionAvailable(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/reaction/available`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary similar_offers <GET>
-     * @param {number} offer_id
-     * @param {number} [longitude]
-     * @param {number} [latitude]
-     * @param {Array<string>} [categories]
-     * @param {Array<string>} [subcategories]
-     * @param {Array<string>} [search_group_names]
-     * @param {string} [retrievalModel]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'offer_id' is not null or undefined
-      if (offer_id === null || offer_id === undefined) {
+    async getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'search_group_name' is not null or undefined
+      if (search_group_name === null || search_group_name === undefined) {
         throw new RequiredError(
-          'offer_id',
-          'Required parameter offer_id was null or undefined when calling getNativeV1RecommendationSimilarOffersofferId.'
+          'search_group_name',
+          'Required parameter search_group_name was null or undefined when calling getNativeV1RecommendationTopArtistsPlaylistsearchGroupName.'
         )
       }
-      let pathname = `/native/v1/recommendation/similar_offers/{offer_id}`.replace(
-        `{${'offer_id'}}`,
-        encodeURIComponent(String(offer_id))
+      let pathname = `/native/v1/recommendation/top_artists_playlist/{search_group_name}`.replace(
+        `{${'search_group_name'}}`,
+        encodeURIComponent(String(search_group_name))
       )
-      const queryParameters: any = {};
-
-        if (longitude != null) {
-            queryParameters['longitude'] = longitude;
-        }
-
-        if (latitude != null) {
-            queryParameters['latitude'] = latitude;
-        }
-
-        if (categories != null) {
-            queryParameters['categories'] = categories;
-        }
-
-        if (subcategories != null) {
-            queryParameters['subcategories'] = subcategories;
-        }
-
-        if (search_group_names != null) {
-            queryParameters['search_group_names'] = search_group_names;
-        }
-
-        if (retrievalModel != null) {
-            queryParameters['retrievalModel'] = retrievalModel;
-        }
-
-      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
-      }).join('&')
-      pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -6663,100 +7076,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_profile <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionProfile(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subscription/profile`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_venue <GET>
-     * @deprecated
-     * @param {number} venue_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1VenuevenueId(venue_id: number, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'venue_id' is not null or undefined
-      if (venue_id === null || venue_id === undefined) {
-        throw new RequiredError(
-          'venue_id',
-          'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueId.'
-        )
-      }
-      let pathname = `/native/v1/venue/{venue_id}`.replace(
-        `{${'venue_id'}}`,
-        encodeURIComponent(String(venue_id))
-      )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_venue_advices <GET>
-     * @param {number} venue_id
-     * @param {number} [maxContentLength]
-     * @param {number} [page]
-     * @param {number} [resultsPerPage]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'venue_id' is not null or undefined
-      if (venue_id === null || venue_id === undefined) {
-        throw new RequiredError(
-          'venue_id',
-          'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueIdAdvices.'
-        )
-      }
-      let pathname = `/native/v1/venue/{venue_id}/advices`.replace(
-        `{${'venue_id'}}`,
-        encodeURIComponent(String(venue_id))
-      )
-      const queryParameters: any = {};
-
-        if (maxContentLength != null) {
-            queryParameters['maxContentLength'] = maxContentLength;
-        }
-
-        if (page != null) {
-            queryParameters['page'] = page;
-        }
-
-        if (resultsPerPage != null) {
-            queryParameters['resultsPerPage'] = resultsPerPage;
-        }
-
-      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
-        return `${encodeURIComponent(String(key))}=${encodeURIComponent(queryParameters[key])}`
-      }).join('&')
-      pathname += encodedQueryParams
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6887,13 +7206,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary sso_oauth_state <GET>
+     * @summary get_favorite_artists <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV2OauthState(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v2/oauth/state`
+    async getNativeV2MeFavoritesArtists(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/me/favorites/artists`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6903,24 +7224,30 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_offer_v2 <GET>
-     * @deprecated
-     * @param {number} offer_id
+     * @summary get_favorite_offers <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV2OfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'offer_id' is not null or undefined
-      if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError(
-          'offer_id',
-          'Required parameter offer_id was null or undefined when calling getNativeV2OfferofferId.'
-        )
+    async getNativeV2MeFavoritesOffers(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/me/favorites/offers`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
       }
-      let pathname = `/native/v2/offer/{offer_id}`.replace(
-        `{${'offer_id'}}`,
-        encodeURIComponent(String(offer_id))
-      )
+    },
+        /**
+     * @summary sso_oauth_state <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2OauthState(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/oauth/state`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -7003,6 +7330,36 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(venue_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_booking <GET>
+     * @deprecated
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3BookingsbookingId(booking_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'booking_id' is not null or undefined
+      if (booking_id === null || booking_id === undefined) {
+        throw new RequiredError(
+          'booking_id',
+          'Required parameter booking_id was null or undefined when calling getNativeV3BookingsbookingId.'
+        )
+      }
+      let pathname = `/native/v3/bookings/{booking_id}`.replace(
+        `{${'booking_id'}}`,
+        encodeURIComponent(String(booking_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -7131,24 +7488,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary suspend_account <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1AccountSuspend(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspend`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary suspend_account_for_hack_suspicion <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7188,24 +7527,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"SuspendAccountForSuspiciousLoginRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary unsuspend_account <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1AccountUnsuspend(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/unsuspend`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -7549,73 +7870,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary sso_authorize <POST>
-     * @param {OAuthSigninRequest} body
-     * @param {string} sso_provider
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'body' is not null or undefined
-      if (body === null || body === undefined) {
-        throw new RequiredError(
-          'body',
-          'Required parameter body was null or undefined when calling postNativeV1OauthssoProviderAuthorize.'
-        )
-      }
-      // verify required parameter 'sso_provider' is not null or undefined
-      if (sso_provider === null || sso_provider === undefined) {
-        throw new RequiredError(
-          'sso_provider',
-          'Required parameter sso_provider was null or undefined when calling postNativeV1OauthssoProviderAuthorize.'
-        )
-      }
-      let pathname = `/native/v1/oauth/{sso_provider}/authorize`.replace(
-        `{${'sso_provider'}}`,
-        encodeURIComponent(String(sso_provider))
-      )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"OAuthSigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary patch_user_profile <POST>
-     * @param {UserProfilePatchRequest} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1Profile(body: UserProfilePatchRequest, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'body' is not null or undefined
-      if (body === null || body === undefined) {
-        throw new RequiredError(
-          'body',
-          'Required parameter body was null or undefined when calling postNativeV1Profile.'
-        )
-      }
-      let pathname = `/native/v1/profile`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"UserProfilePatchRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary cancel_email_update <POST>
      * @param {ChangeBeneficiaryEmailBody} body
      * @param {*} [options] Override http request option.
@@ -7636,36 +7890,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary post_reaction <POST>
-     * @deprecated
-     * @param {PostReactionRequest} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1Reaction(body: PostReactionRequest, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'body' is not null or undefined
-      if (body === null || body === undefined) {
-        throw new RequiredError(
-          'body',
-          'Required parameter body was null or undefined when calling postNativeV1Reaction.'
-        )
-      }
-      let pathname = `/native/v1/reaction`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"PostReactionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -7896,33 +8120,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary signin <POST>
-     * @param {SigninRequest} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1Signin(body: SigninRequest, options: any = {}): Promise<FetchArgs> {
-      // verify required parameter 'body' is not null or undefined
-      if (body === null || body === undefined) {
-        throw new RequiredError(
-          'body',
-          'Required parameter body was null or undefined when calling postNativeV1Signin.'
-        )
-      }
-      let pathname = `/native/v1/signin`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"SigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary signout <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8095,6 +8292,64 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary create_favorite_artist <POST>
+     * @param {FavoriteArtistRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2MeFavoritesArtists.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/artists`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FavoriteArtistRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary create_favorite_offer <POST>
+     * @param {FavoriteRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2MeFavoritesOffers.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/offers`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -8350,6 +8605,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
+/**
+     * @summary get_offers_and_stocks <POST>
+     * @param {OffersStocksRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV3OffersStocks(body: OffersStocksRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV3OffersStocks.'
+        )
+      }
+      let pathname = `/native/v3/offers/stocks`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"OffersStocksRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
     /**
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} body
@@ -8410,6 +8692,30 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary delete_favorite_artist <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary delete_favorite_offer <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
@@ -8418,28 +8724,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspendTokenValidationtoken(token, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_account_suspension_date <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1AccountSuspensionDate(options?: any): Promise<UserSuspensionDateResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionDate(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_account_suspension_status <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1AccountSuspensionStatus(options?: any): Promise<UserSuspensionStatusResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1AccountSuspensionStatus(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -8476,17 +8760,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1Banner(isGeolocated?: boolean, options?: any): Promise<BannerResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Banner(isGeolocated, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_categories <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1Categories(options?: any): Promise<CategoriesResponseModel> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Categories(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -8595,42 +8868,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
-     * @summary google_oauth_state <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OauthState(options?: any): Promise<OauthStateResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OauthState(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_offerer_headline_offer <GET>
-     * @param {number} offerer_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OffereroffererIdHeadlineOffer(offerer_id: number, options?: any): Promise<OffererHeadLineOfferResponseModel> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OffereroffererIdHeadlineOffer(offerer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_offer <GET>
-     * @deprecated
-     * @param {number} offer_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferofferId(offer_id: number, options?: any): Promise<OfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferId(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
      * @summary offer_chronicles <GET>
      * @param {number} offer_id
      * @param {*} [options] Override http request option.
@@ -8638,23 +8875,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1OfferofferIdChronicles(offer_id: number, options?: any): Promise<OfferChronicles> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdChronicles(offer_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_offer_pro_advices <GET>
-     * @param {number} offer_id
-     * @param {number} [maxContentLength]
-     * @param {number} [page]
-     * @param {number} [resultsPerPage]
-     * @param {number} [latitude]
-     * @param {number} [longitude]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any): Promise<OfferProAdvices> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -8671,31 +8891,28 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
-     * @summary get_available_reactions <GET>
-     * @deprecated
+     * @summary offer_page_playlists <GET>
+     * @param {number} offer_id
+     * @param {string} [userId] 
+     * @param {number} [longitude]
+     * @param {number} [latitude]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1ReactionAvailable(options?: any): Promise<GetAvailableReactionsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1ReactionAvailable(options)
+    async getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options?: any): Promise<OfferPagePlaylistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id, userId, longitude, latitude, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+      return handleGeneratedApiResponse(response,  localVarFetchArgs.options)
     },
     /**
      *
-     * @summary similar_offers <GET>
-     * @param {number} offer_id
-     * @param {number} [longitude]
-     * @param {number} [latitude]
-     * @param {Array<string>} [categories]
-     * @param {Array<string>} [subcategories]
-     * @param {Array<string>} [search_group_names]
-     * @param {string} [retrievalModel]
+     * @summary top_artists_playlist <GET>
+     * @param {string} search_group_name 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options?: any): Promise<SimilarOffersResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, retrievalModel, options)
+    async getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options?: any): Promise<TopArtistsPlaylistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -8729,45 +8946,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1SubscriptionActivityTypes(options?: any): Promise<ActivityTypesResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_profile <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionProfile(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfile(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_venue <GET>
-     * @deprecated
-     * @param {number} venue_id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueId(venue_id, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary get_venue_advices <GET>
-     * @param {number} venue_id
-     * @param {number} [maxContentLength]
-     * @param {number} [page]
-     * @param {number} [resultsPerPage]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any): Promise<VenueProAdvices> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -8835,6 +9013,28 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary get_favorite_artists <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesArtists(options?: any): Promise<PaginatedResponseFavoriteArtistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesArtists(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary get_favorite_offers <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesOffers(options?: any): Promise<PaginatedResponseFavoriteOfferResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesOffers(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary sso_oauth_state <GET>
      * @param {*} [options] Override http request option.
@@ -8887,6 +9087,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueId(venue_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary get_booking <GET>
+     * @deprecated
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV3BookingsbookingId(booking_id: number, options?: any): Promise<BookingResponseV3> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV3BookingsbookingId(booking_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -8950,17 +9163,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
-     * @summary suspend_account <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1AccountSuspend(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspend(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
      * @summary suspend_account_for_hack_suspicion <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8979,17 +9181,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1AccountSuspendForSuspiciousLogin(body: SuspendAccountForSuspiciousLoginRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary unsuspend_account <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1AccountUnsuspend(options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1AccountUnsuspend(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9129,31 +9320,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      *
-     * @summary sso_authorize <POST>
-     * @param {OAuthSigninRequest} body
-     * @param {string} sso_provider
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options?: any): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthssoProviderAuthorize(body, sso_provider, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary patch_user_profile <POST>
-     * @param {UserProfilePatchRequest} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1Profile(body: UserProfilePatchRequest, options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Profile(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
      * @summary cancel_email_update <POST>
      * @param {ChangeBeneficiaryEmailBody} body
      * @param {*} [options] Override http request option.
@@ -9161,19 +9327,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1ProfileEmailUpdateCancel(body: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ProfileEmailUpdateCancel(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
-     *
-     * @summary post_reaction <POST>
-     * @deprecated
-     * @param {PostReactionRequest} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1Reaction(body: PostReactionRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Reaction(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9275,18 +9428,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
-     *
-     * @summary signin <POST>
-     * @param {SigninRequest} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1Signin(body: SigninRequest, options?: any): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Signin(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
-    },
-    /**
      * 
      * @summary signout <POST>
      * @param {*} [options] Override http request option.
@@ -9356,7 +9497,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
-    /**
+  /**
      *
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} body
@@ -9365,6 +9506,30 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ValidateEmail(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary create_favorite_artist <POST>
+     * @param {FavoriteArtistRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any): Promise<FavoriteArtistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2MeFavoritesArtists(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary create_favorite_offer <POST>
+     * @param {FavoriteRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any): Promise<FavoriteOfferResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2MeFavoritesOffers(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9477,6 +9642,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary get_offers_and_stocks <POST>
+     * @param {OffersStocksRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV3OffersStocks(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} body
@@ -9523,6 +9700,30 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).deleteNativeV1MeRemindersreminderId(reminder_id, options)
   }
   /**
+    * 
+    * @summary delete_favorite_artist <DELETE>
+    * @param {number} favorite_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id, options)
+  }
+  /**
+    * 
+    * @summary delete_favorite_offer <DELETE>
+    * @param {number} favorite_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id, options)
+  }
+  /**
     *
     * @summary account_suspension_token_validation <GET>
     * @param {string} token
@@ -9533,28 +9734,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1AccountSuspendTokenValidationtoken(token, options)
-  }
-  /**
-    *
-    * @summary get_account_suspension_date <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1AccountSuspensionDate(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1AccountSuspensionDate(options)
-  }
-  /**
-    *
-    * @summary get_account_suspension_status <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1AccountSuspensionStatus(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1AccountSuspensionStatus(options)
   }
   /**
     *
@@ -9591,17 +9770,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1Banner(isGeolocated?: boolean, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Banner(isGeolocated, options)
-  }
-  /**
-    *
-    * @summary get_categories <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1Categories(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1Categories(options)
   }
   /**
     *
@@ -9708,42 +9876,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     *
-    * @summary google_oauth_state <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OauthState(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OauthState(options)
-  }
-  /**
-    *
-    * @summary get_offerer_headline_offer <GET>
-    * @param {number} offerer_id
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OffereroffererIdHeadlineOffer(offerer_id: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OffereroffererIdHeadlineOffer(offerer_id, options)
-  }
-  /**
-    *
-    * @summary get_offer <GET>
-    * @deprecated
-    * @param {number} offer_id
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OfferofferId(offer_id: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OfferofferId(offer_id, options)
-  }
-  /**
-    *
     * @summary offer_chronicles <GET>
     * @param {number} offer_id
     * @param {*} [options] Override http request option.
@@ -9756,23 +9888,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     *
-    * @summary get_offer_pro_advices <GET>
-    * @param {number} offer_id
-    * @param {number} [maxContentLength]
-    * @param {number} [page]
-    * @param {number} [resultsPerPage]
-    * @param {number} [latitude]
-    * @param {number} [longitude]
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1OfferofferIdAdvices(offer_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, latitude?: number, longitude?: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1OfferofferIdAdvices(offer_id, maxContentLength, page, resultsPerPage, latitude, longitude, options)
-  }
-  /**
-    *
     * @summary get_email_update_token_expiration_date <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -9782,35 +9897,32 @@ export class DefaultApi extends BaseAPI {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ProfileTokenExpiration(options)
   }
-  /**
+    /**
     *
-    * @summary get_available_reactions <GET>
-    * @deprecated
+    * @summary offer_page_playlists <GET>
+    * @param {number} offer_id
+    * @param {string} [userId] 
+    * @param {number} [longitude]
+    * @param {number} [latitude]
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async getNativeV1ReactionAvailable(options?: any) {
+  public async getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1ReactionAvailable(options)
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id, userId, longitude, latitude, options)
   }
   /**
     *
-    * @summary similar_offers <GET>
-    * @param {number} offer_id
-    * @param {number} [longitude]
-    * @param {number} [latitude]
-    * @param {Array<string>} [categories]
-    * @param {Array<string>} [subcategories]
-    * @param {Array<string>} [search_group_names]
-    * @param {string} [retrievalModel]
+    * @summary top_artists_playlist <GET>
+    * @param {string} search_group_name 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, search_group_names?: Array<string>, retrievalModel?: SimilarOffersRequestQuery.RetrievalModelEnum, options?: any) {
+  public async getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options?: any) {
     const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, search_group_names, retrievalModel, options)
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name, options)
   }
   /**
     *
@@ -9844,45 +9956,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1SubscriptionActivityTypes(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionActivityTypes(options)
-  }
-  /**
-    *
-    * @summary get_profile <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1SubscriptionProfile(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1SubscriptionProfile(options)
-  }
-  /**
-    *
-    * @summary get_venue <GET>
-    * @deprecated
-    * @param {number} venue_id
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
-  }
-  /**
-    *
-    * @summary get_venue_advices <GET>
-    * @param {number} venue_id
-    * @param {number} [maxContentLength]
-    * @param {number} [page]
-    * @param {number} [resultsPerPage]
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1VenuevenueIdAdvices(venue_id: number, maxContentLength?: number, page?: number, resultsPerPage?: number, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1VenuevenueIdAdvices(venue_id, maxContentLength, page, resultsPerPage, options)
   }
   /**
     * 
@@ -9948,6 +10021,28 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).getNativeV2Bookingsstatus(status, options)
   }
   /**
+    * 
+    * @summary get_favorite_artists <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2MeFavoritesArtists(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2MeFavoritesArtists(options)
+  }
+  /**
+    * 
+    * @summary get_favorite_offers <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2MeFavoritesOffers(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2MeFavoritesOffers(options)
+  }
+  /**
     *
     * @summary sso_oauth_state <GET>
     * @param {*} [options] Override http request option.
@@ -10002,6 +10097,19 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_booking <GET>
+    * @deprecated
+    * @param {number} booking_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV3BookingsbookingId(booking_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV3BookingsbookingId(booking_id, options)
   }
   /**
     *
@@ -10063,17 +10171,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     *
-    * @summary suspend_account <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1AccountSuspend(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1AccountSuspend(options)
-  }
-  /**
-    *
     * @summary suspend_account_for_hack_suspicion <POST>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -10094,17 +10191,6 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1AccountSuspendForSuspiciousLogin(body: SuspendAccountForSuspiciousLoginRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
-  }
-  /**
-    *
-    * @summary unsuspend_account <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1AccountUnsuspend(options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1AccountUnsuspend(options)
   }
   /**
     *
@@ -10242,31 +10328,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     *
-    * @summary sso_authorize <POST>
-    * @param {OAuthSigninRequest} body
-    * @param {string} sso_provider
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1OauthssoProviderAuthorize(body: OAuthSigninRequest, sso_provider: string, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1OauthssoProviderAuthorize(body, sso_provider, options)
-  }
-  /**
-    *
-    * @summary patch_user_profile <POST>
-    * @param {UserProfilePatchRequest} body
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1Profile(body: UserProfilePatchRequest, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1Profile(body, options)
-  }
-  /**
-    *
     * @summary cancel_email_update <POST>
     * @param {ChangeBeneficiaryEmailBody} body
     * @param {*} [options] Override http request option.
@@ -10276,19 +10337,6 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ProfileEmailUpdateCancel(body: ChangeBeneficiaryEmailBody, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileEmailUpdateCancel(body, options)
-  }
-  /**
-    *
-    * @summary post_reaction <POST>
-    * @deprecated
-    * @param {PostReactionRequest} body
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1Reaction(body: PostReactionRequest, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1Reaction(body, options)
   }
   /**
     *
@@ -10388,18 +10436,6 @@ export class DefaultApi extends BaseAPI {
     return DefaultApiFp(this, configuration).postNativeV1SendOfferWebappLinkByEmailofferId(offer_id, options)
   }
   /**
-    *
-    * @summary signin <POST>
-    * @param {SigninRequest} body
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postNativeV1Signin(body: SigninRequest, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1Signin(body, options)
-  }
-  /**
     * 
     * @summary signout <POST>
     * @param {*} [options] Override http request option.
@@ -10480,6 +10516,30 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidateEmail(body, options)
+  }
+  /**
+    * 
+    * @summary create_favorite_artist <POST>
+    * @param {FavoriteArtistRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2MeFavoritesArtists(body, options)
+  }
+  /**
+    * 
+    * @summary create_favorite_offer <POST>
+    * @param {FavoriteRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2MeFavoritesOffers(body, options)
   }
   /**
     * 
@@ -10588,6 +10648,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2Signin(body: SigninRequestV2, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2Signin(body, options)
+  }
+/**
+    * 
+    * @summary get_offers_and_stocks <POST>
+    * @param {OffersStocksRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV3OffersStocks(body: OffersStocksRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV3OffersStocks(body, options)
   }
   /**
     *

@@ -1,19 +1,22 @@
-import { useIsFocused } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
-import { Platform, ViewToken } from 'react-native'
+import React, { FC, FunctionComponent } from 'react'
+import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ArtistResponse } from 'api/gen'
 import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
-import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
+import { ArtistPlaylists } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistSimilarArtists } from 'features/artist/components/ArtistSimilarArtists/ArtistSimilarArtists'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import {
   ArtistModuleItem,
   getArtistModuleDataByIndex,
 } from 'features/artist/helpers/getArtistModuleDataByIndex'
+import { getDisplayableArtistPlaylists } from 'features/artist/helpers/getDisplayableArtistPlaylists'
+import { FavoriteType } from 'features/favorites/enum'
+import { selectArtistFavorite } from 'features/favorites/helpers/selectArtistFavorite'
+import { useArtistFavoritesQuery } from 'features/favorites/queries'
 import { ArtistEditorialModule } from 'features/home/components/modules/ArtistEditorialModule'
 import { ArtistPlaylistModule } from 'features/home/components/modules/ArtistPlaylistModule'
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
@@ -32,10 +35,13 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
+import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
+import { useRemoveArtistFavoriteMutation } from 'queries/favorites/useRemoveArtistFavoriteMutation'
 import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -43,6 +49,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
+import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Share } from 'ui/svg/icons/Share'
@@ -54,13 +61,6 @@ type Props = {
   artist: ArtistResponse
   artistPlaylist: AlgoliaOfferWithArtistAndEan[]
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
-  onViewableItemsChanged: (
-    items: Pick<ViewToken, 'key' | 'index'>[],
-    moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    artistId: string,
-    playlistIndex?: number
-  ) => void
   onExpandBioPress: () => void
   artistPlaylistModule?: ArtistPlaylistModuleType
   artistEditorialModule?: ArtistEditorialModuleType
@@ -85,7 +85,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
   artistTopOffers,
   artistPlaylistModule,
   artistEditorialModule,
-  onViewableItemsChanged,
   onExpandBioPress,
 }) => {
   const { goBack } = useGoBack(...getSearchHookConfig('SearchLanding'))
@@ -94,6 +93,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   const enablePlaylistByCategory = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTIST_CATEGORY_PLAYLISTS
   )
+  const enableFavoriteButton = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
 
   const { top, bottom } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
@@ -128,7 +128,21 @@ export const ArtistBody: FunctionComponent<Props> = ({
     utmMedium: 'header',
   })
 
-  const isFocused = useIsFocused()
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddArtistFavoriteMutation({
+    type: FavoriteType.ARTIST,
+  })
+
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
+    useRemoveArtistFavoriteMutation({
+      onError: () => {
+        showErrorSnackBar('L’artiste n’a pas été retiré de tes favoris')
+      },
+    })
+
+  const { data: favorite } = useArtistFavoritesQuery({
+    enabled: enableFavoriteButton,
+    select: (data) => selectArtistFavorite(data, artist.id),
+  })
 
   const pressShareArtist = () => {
     void analytics.logShare({
@@ -141,12 +155,41 @@ export const ArtistBody: FunctionComponent<Props> = ({
     showShareArtistModal()
   }
 
-  const handleArtistPlaylistModuleOffersViewableItemsChanged = (
-    items: Pick<ViewToken, 'key' | 'index'>[]
-  ) => {
-    if (!isFocused || !artistPlaylistModule) return
-    onViewableItemsChanged(items, `artistPage${artistPlaylistModule.id}`, 'offer', artist.id)
+  const hasArtistTopOffers = artistTopOffers.length > 0
+  const playlistBaseIndex = hasArtistTopOffers ? 1 : 0
+  const displayableArtistPlaylists = enablePlaylistByCategory
+    ? getDisplayableArtistPlaylists(artistPlaylist, playlistBaseIndex)
+    : []
+  const artistPlaylistModuleItemsCount = offersArtistPlaylistModulesData?.playlistItems.length ?? 0
+  const isArtistPlaylistModuleVisible =
+    artistPlaylistModuleItemsCount > 0 &&
+    artistPlaylistModuleItemsCount >= (artistPlaylistModule?.displayParameters.minOffers ?? 0)
+
+  const modulesVisibility = {
+    artistTopOffers: hasArtistTopOffers,
+    ...Object.fromEntries(displayableArtistPlaylists.map((playlist) => [playlist.entryId, true])),
+    artistPlaylistModule: isArtistPlaylistModuleVisible,
   }
+
+  const visibleModules = Object.entries(modulesVisibility)
+    .filter(([, isVisible]) => isVisible)
+    .map(([key]) => key)
+
+  const RightElementHeader = (
+    <RightElementContainer gap={4}>
+      {enableFavoriteButton ? (
+        <FavoriteButton
+          favorite={favorite}
+          isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+          removeFavorite={removeFavorite}
+          addFavorite={addFavorite}
+          artistId={artist.id}
+          isAddFavoriteLoading={isAddFavoriteLoading}
+        />
+      ) : null}
+      {ShareButton({ onPress: pressShareArtist })}
+    </RightElementContainer>
+  )
 
   return (
     <Page>
@@ -157,7 +200,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
-          RightElement={ShareButton({ onPress: pressShareArtist })}
+          RightElement={RightElementHeader}
         />
       ) : null}
 
@@ -183,25 +226,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
                       <Credit accessibilityLabel={creditAccessibilityLabel.titleText}>
                         {artist.descriptionCredit}
                       </Credit>
-                      {isWeb ? (
-                        <ExternalTouchableLink
-                          as={ButtonQuaternaryBlack}
-                          wording="Source&nbsp;: Wikipédia"
-                          externalNav={{ url: artist.descriptionSource }}
-                          justifyContent="flex-start"
-                          inline
-                          icon={ExternalSiteFilled}
-                        />
-                      ) : (
-                        <InternalTouchableLink
-                          as={ButtonQuaternaryBlack}
-                          wording="Source&nbsp;: Wikipédia"
-                          navigateTo={{ screen: 'ArtistWebview', params: { id: artist.id } }}
-                          justifyContent="flex-start"
-                          inline
-                          icon={ExternalSiteFilled}
-                        />
-                      )}
+                      <ArtistWikipediaLink artistId={artist.id} url={artist.descriptionSource} />
                     </ViewGap>
                   ) : null}
                 </CollapsibleText>
@@ -218,28 +243,28 @@ export const ArtistBody: FunctionComponent<Props> = ({
               data={offersArtistEditorialModulesData}
             />
           ) : null}
-          <ArtistTopOffers artistName={name} items={artistTopOffers} />
-          {enablePlaylistByCategory ? (
-            <ArtistPlaylist
-              artist={artist}
-              items={artistPlaylist}
-              onViewableItemsChanged={onViewableItemsChanged}
+          {hasArtistTopOffers ? (
+            <ArtistTopOffers
+              artistId={artist.id}
+              artistName={name}
+              items={artistTopOffers}
+              index={visibleModules.indexOf('artistTopOffers')}
             />
           ) : null}
+          <ArtistPlaylists artist={artist} playlists={displayableArtistPlaylists} />
           {artistPlaylistModule ? (
             <ArtistPlaylistModule
               displayParameters={artistPlaylistModule.displayParameters}
               offersModuleParameters={artistPlaylistModule.offersModuleParameters}
               artistId={artist.id}
-              index={0}
+              index={visibleModules.indexOf('artistPlaylistModule')}
               moduleId={artistPlaylistModule.id}
               data={offersArtistPlaylistModulesData}
-              onViewableItemsChanged={handleArtistPlaylistModuleOffersViewableItemsChanged}
               homeEntryId={undefined}
               disableArtistNavigation
             />
           ) : null}
-          <ArtistSimilarArtists artistId={artist.id} />
+          <ArtistSimilarArtists artistId={artist.id} index={visibleModules.length} />
         </ViewGap>
       </ContentContainer>
 
@@ -249,7 +274,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
           headerTitle={name}
           onBackPress={goBack}
           headerTransition={headerTransition}
-          RightElement={ShareButton({ onPress: pressShareArtist })}
+          RightElement={RightElementHeader}
         />
       )}
       {shareContent ? (
@@ -261,6 +286,32 @@ export const ArtistBody: FunctionComponent<Props> = ({
         />
       ) : null}
     </Page>
+  )
+}
+
+const ArtistWikipediaLink: FC<{ artistId: string; url: string }> = ({ artistId, url }) => {
+  if (isWeb) {
+    return (
+      <ExternalTouchableLink
+        as={ButtonQuaternaryBlack}
+        wording="Source&nbsp;: Wikipédia"
+        externalNav={{ url }}
+        justifyContent="flex-start"
+        inline
+        icon={ExternalSiteFilled}
+      />
+    )
+  }
+
+  return (
+    <InternalTouchableLink
+      as={ButtonQuaternaryBlack}
+      wording="Source&nbsp;: Wikipédia"
+      navigateTo={{ screen: 'ArtistWebview', params: { id: artistId } }}
+      justifyContent="flex-start"
+      inline
+      icon={ExternalSiteFilled}
+    />
   )
 }
 
@@ -278,3 +329,7 @@ const Credit = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.m,
   color: theme.designSystem.color.text.subtle,
 }))
+
+const RightElementContainer = styled(ViewGap)({
+  flexDirection: 'row',
+})

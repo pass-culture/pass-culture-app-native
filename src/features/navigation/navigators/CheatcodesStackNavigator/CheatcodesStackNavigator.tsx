@@ -12,6 +12,7 @@ import { CheatcodesNavigationBonification } from 'cheatcodes/pages/features/boni
 import { CheatcodesNavigationBookings } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
 import { CheatcodesScreenBookingNotFound } from 'cheatcodes/pages/features/bookings/CheatcodesScreenBookingNotFound'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
+import { CheatcodesScreenConversationalSearch } from 'cheatcodes/pages/features/conversationalSearch/CheatcodesScreenConversationalSearch'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/CheatcodesNavigationForceUpdate'
 import { CheatcodesNavigationHome } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
@@ -42,6 +43,7 @@ import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNa
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
 import { CheatcodesScreenAnalyticsDebugger } from 'cheatcodes/pages/others/CheatcodesScreenAnalyticsDebugger'
 import { CheatcodesScreenPageHeaderWithoutPlaceholder } from 'cheatcodes/pages/others/CheatcodesScreenCheatcodesScreenPageHeaderWithoutPlaceholder'
+import { CheatcodesScreenCinemaScreeningDetailsModal } from 'cheatcodes/pages/others/CheatcodesScreenCinemaScreeningDetailsModal'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenDirectIdAccess } from 'cheatcodes/pages/others/CheatcodesScreenDirectIdAccess'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
@@ -175,6 +177,11 @@ const cheatcodesStackNavigatorPathDefinition = {
       screen: CheatcodesScreenCinemaScreeningCardList,
       linking: { path: 'cheatcodes/offer/cinema-screening-card-list' },
       options: { title: 'Cheatcodes - Tuiles séances cinéma' },
+    },
+    CheatcodesScreenConversationalSearch: {
+      screen: CheatcodesScreenConversationalSearch,
+      linking: { path: 'cheatcodes/conversational-search' },
+      options: { title: 'Cheatcodes - Recherche conversationnelle' },
     },
     CheatcodesScreenDefaultThematicHomeHeader: {
       screen: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
@@ -321,6 +328,14 @@ const cheatcodesStackNavigatorPathDefinition = {
       linking: { path: 'cheatcodes/other/modal-detailed' },
       options: {
         title: 'Cheatcodes - Modal detailed',
+        ...modalType,
+      },
+    },
+    CheatcodesScreenCinemaScreeningDetailsModal: {
+      screen: CheatcodesScreenCinemaScreeningDetailsModal,
+      linking: { path: 'cheatcodes/other/cinema-screening-details-modal' },
+      options: {
+        title: 'Cheatcodes - Informations sur la séance',
         ...modalType,
       },
     },

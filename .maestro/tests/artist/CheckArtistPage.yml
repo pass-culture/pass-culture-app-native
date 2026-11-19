@@ -5,7 +5,6 @@ onFlowStart:
   - runScript: ../common/deeplinks/DeepLink.js
 ---
 - runFlow: ../common/lifecycle/LaunchApp.yml
-- runFlow: ../common/lifecycle/StopApp.yml
 - runFlow: ../common/deeplinks/DeeplinkToHome.yml
 
 - runFlow: ../common/navigation/GoToSearchFromTabBar.yml
@@ -43,6 +42,10 @@ onFlowStart:
     from:
       text: Livre
     direction: UP
+- scrollUntilVisible:
+    centerElement: true
+    element:
+      text: '.*- Auteur.*'
 - tapOn: '.*- Auteur.*'
 - assertVisible: 'Ses oeuvres populaires'
 - assertVisible: '.*Voir tout.*'

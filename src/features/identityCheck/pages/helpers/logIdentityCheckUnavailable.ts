@@ -1,4 +1,4 @@
-import { SubscriptionStepperResponseV2, SubscriptionStepperResponseV3 } from 'api/gen'
+import { SubscriptionStepperResponseV3 } from 'api/gen'
 import { UserProfile } from 'features/share/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 
@@ -6,7 +6,7 @@ type Props = {
   source: 'SelectIDStatus' | 'Stepper' | string
   error?: unknown
   user?: UserProfile | null
-  subscription?: SubscriptionStepperResponseV2 | SubscriptionStepperResponseV3 | null
+  subscription?: SubscriptionStepperResponseV3 | null
   params?: Record<string, unknown>
 }
 

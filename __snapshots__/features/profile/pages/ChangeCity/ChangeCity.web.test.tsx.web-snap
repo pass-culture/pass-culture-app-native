@@ -312,9 +312,9 @@ exports[`ChangeCity should render correctly 1`] = `
             class="css-view-g5y9jx r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-qn3fzs r-paddingInline-cxgwc0 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button
-              aria-label="Valider ma ville de résidence"
+              aria-label="Continuer"
               class="c8"
-              data-testid="Valider ma ville de résidence"
+              data-testid="Continuer"
               disabled=""
               type="submit"
             >
@@ -325,7 +325,7 @@ exports[`ChangeCity should render correctly 1`] = `
                   class="c9"
                   style="color: rgb(105, 106, 111); max-width: 100%; min-width: 0; flex-shrink: 1;"
                 >
-                  Valider ma ville de résidence
+                  Continuer
                 </span>
               </div>
             </button>

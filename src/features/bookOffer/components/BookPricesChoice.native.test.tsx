@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice'
 import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
-import { mockStocks } from 'features/bookOffer/fixtures/stocks'
+import { mockStocks, stock2, stock3 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
@@ -66,6 +66,25 @@ describe('BookPricesChoice', () => {
     await user.press(screen.getByText('Pelouse or'))
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SELECT_STOCK', payload: 18757 })
+    expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SELECT_QUANTITY', payload: 1 })
+  })
+
+  it('should select the stock matching the chosen features when price labels are identical', async () => {
+    render(
+      <BookPricesChoice
+        stocks={[
+          { ...stock2, id: 1, priceCategoryLabel: 'Plein tarif', features: ['VO'] },
+          { ...stock3, id: 2, priceCategoryLabel: 'Plein tarif', features: ['VF'] },
+        ]}
+      />
+    )
+
+    const secondPrice = screen.getAllByText('Plein tarif').at(1)
+    if (secondPrice) {
+      await user.press(secondPrice)
+    }
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SELECT_STOCK', payload: 2 })
     expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SELECT_QUANTITY', payload: 1 })
   })
 })

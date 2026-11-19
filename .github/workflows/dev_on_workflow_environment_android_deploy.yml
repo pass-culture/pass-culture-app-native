@@ -18,7 +18,7 @@ jobs:
       - name: Disk usage (for debugging purposes)
         run: df -h
       - name: Free disk space
-        uses: jlumbroso/free-disk-space@main
+        uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v3.0.0
         with:
           android: false
           tool-cache: true
@@ -110,8 +110,9 @@ jobs:
       - name: Setup android keystore for ${{ inputs.ENV }} environment
         env:
           ENV: ${{ inputs.ENV }}
+          ANDROID_KEYSTORE: ${{ steps.secrets.outputs.ANDROID_KEYSTORE }}
         run: |
-          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > "android/keystores/$ENV.keystore"
+          echo "$ANDROID_KEYSTORE" |  base64 --decode > "android/keystores/$ENV.keystore"
       - name: Setup android keystore properties for ${{ inputs.ENV }} environment
         uses: chuhlomin/render-template@a7c644e341797d050d1cb24332d83791b9a46dae #v1.10
         with:
@@ -122,9 +123,13 @@ jobs:
             ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
           result_path: android/keystores/${{ inputs.ENV }}.keystore.properties
       - name: Setup android Google services config
-        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+        run: echo "$ANDROID_GOOGLE_SERVICES_JSON" > android/app/google-services.json
+        env:
+          ANDROID_GOOGLE_SERVICES_JSON: ${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}
       - name: Setup android Google services config
-        run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
+        run: echo "$ANDROID_PLAYSTORE_SERVICE_ACCOUNT" > fastlane/playStoreServiceAccount.json
+        env:
+          ANDROID_PLAYSTORE_SERVICE_ACCOUNT: ${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}
 
       - name: Deploy hard android for ${{ inputs.ENV }}
         env:

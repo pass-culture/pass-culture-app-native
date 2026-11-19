@@ -1,5 +1,6 @@
 export const setLogLevelMock = jest.fn()
 export const setAttConsentWaitingIntervalMock = jest.fn()
+export const disableDeferredDeeplinkOpeningMock = jest.fn()
 
 export const addGranularOptionMock = jest.fn()
 
@@ -14,6 +15,7 @@ export const Adjust = {
   gdprForgetMe: jest.fn(),
   getAppTrackingAuthorizationStatus: jest.fn(),
   requestAppTrackingAuthorization: jest.fn(),
+  processDeeplink: jest.fn(),
 }
 
 export const AdjustConfig = jest
@@ -24,10 +26,15 @@ export const AdjustConfig = jest
       environment,
       setLogLevel: setLogLevelMock,
       setAttConsentWaitingInterval: setAttConsentWaitingIntervalMock,
+      disableDeferredDeeplinkOpening: disableDeferredDeeplinkOpeningMock,
     }
   })
 
 export const AdjustEvent = jest.fn()
+
+export const AdjustDeeplink = jest.fn().mockImplementation((deeplink: string) => {
+  return { deeplink }
+})
 
 export const AdjustThirdPartySharing = jest.fn().mockImplementation((isEnabled: boolean | null) => {
   return {

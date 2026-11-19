@@ -18,6 +18,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useSearchSuggestionsAccessibility } from 'features/search/helpers/useSearchSuggestionsAccessibility'
+import { useSearchSuggestionsCombobox } from 'features/search/helpers/useSearchSuggestionsCombobox'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import Animated, { LinearTransition } from 'libs/react-native-reanimated'
@@ -30,9 +31,13 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const SEARCH_DEBOUNCE_MS = 500
+const SEARCH_INPUT_HINT =
+  'Indique le nom d’une offre, d’un artiste ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”'
+const SUGGESTIONS_KEYBOARD_HINT =
+  'Lorsque des suggestions sont proposées, utilise les flèches haut et bas pour les parcourir et la touche ”Entrée” pour en sélectionner une.'
 
 type Props = UseSearchBoxProps & {
-  suggestionsDescriptionId?: string
+  suggestionsId?: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
@@ -44,14 +49,14 @@ const CINEMA_KEYWORD_PATTERN = /\bCIN[ÉE]MA?S?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
   accessibleHiddenTitle,
-  suggestionsDescriptionId,
+  suggestionsId,
   addSearchHistory,
   searchInHistory,
   offerCategories,
   ...props
 }) => {
   const accessibilityDescribedBy = useId()
-  const suggestionsAccessibility = useSearchSuggestionsAccessibility(suggestionsDescriptionId)
+  const suggestionsAccessibility = useSearchSuggestionsAccessibility(suggestionsId)
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
@@ -69,6 +74,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
   const { data: appEnableAutocomplete } = useAppEnableAutocomplete()
+  const {
+    inputProps: comboboxInputProps,
+    onQueryChange,
+    resetActiveOption,
+  } = useSearchSuggestionsCombobox({
+    suggestionsId,
+    isOpen: isFocusOnSuggestions,
+    onOpen: appEnableAutocomplete ? showSuggestions : undefined,
+    onClose: hideSuggestions,
+  })
 
   const setQuery = useCallback(
     (value: string) => {
@@ -80,6 +95,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     },
     [setDisplayedQuery, appEnableAutocomplete, debounceSetAutocompleteQuery, searchInHistory]
   )
+  const onChangeText = useCallback(
+    (value: string) => {
+      setQuery(value)
+      onQueryChange()
+    },
+    [setQuery, onQueryChange]
+  )
+
   const pushWithSearch = useCallback(
     (
       partialSearchState: Partial<SearchState>,
@@ -237,6 +260,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   useEffect(() => () => debounceSetAutocompleteQuery.cancel(), [debounceSetAutocompleteQuery])
 
+  const onBlur = () => {
+    suggestionsAccessibility.setInputFocused(false)
+    resetActiveOption()
+  }
+
   const onFocus = () => {
     suggestionsAccessibility.setInputFocused(true)
     if (isFocusOnSuggestions && appEnableAutocomplete) return
@@ -279,25 +307,27 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               label="Rechercher dans le catalogue"
               ref={inputRef}
               value={displayedQuery}
-              onChangeText={setQuery}
+              onChangeText={onChangeText}
               onSubmitEditing={onSubmitQuery}
               onClear={resetQuery}
               nativeAutoFocus={Platform.OS !== 'web'}
               onFocus={onFocus}
-              onBlur={() => suggestionsAccessibility.setInputFocused(false)}
+              onBlur={onBlur}
               focusable={isFocusOnSuggestions}
               testID="searchInput"
               disableClearButton={disableInputClearButton}
               aria-describedby={[accessibilityDescribedBy, suggestionsAccessibility.descriptionId]
                 .filter(Boolean)
                 .join(' ')}
+              {...comboboxInputProps}
             />
           </FlexView>
         </SearchInputA11yContainer>
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
-        Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
-        ”Entrée”
+        {Platform.OS === 'web'
+          ? `${SEARCH_INPUT_HINT}. ${SUGGESTIONS_KEYBOARD_HINT}`
+          : SEARCH_INPUT_HINT}
       </HiddenAccessibleText>
     </RowContainer>
   )

@@ -17,10 +17,8 @@ import {
   getListToDisplay,
   hasReachedEnd,
 } from 'features/offer/helpers/expandableList'
-import {
-  getDaysWithNoScreenings,
-  useGetVenuesByDay,
-} from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
+import { getDaysWithNoScreenings } from 'features/offer/helpers/getDaysWithNoScreenings'
+import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
 import { Button } from 'ui/designSystem/Button/Button'
 import { PlainMore } from 'ui/svg/icons/PlainMore'

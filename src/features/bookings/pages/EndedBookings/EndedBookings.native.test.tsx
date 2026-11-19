@@ -3,7 +3,6 @@ import React from 'react'
 import InAppReview from 'react-native-in-app-review'
 
 import { BookingsListResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
-import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { endedBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfile } from 'features/share/types'
@@ -63,7 +62,6 @@ describe('EndedBookings', () => {
     setFeatureFlags()
     mockServer.getApi<UserProfile>('/v1/me', beneficiaryUser)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
-    mockServer.getApi('/v1/reaction/available', availableReactionsSnap)
   })
 
   it('should render correctly', async () => {

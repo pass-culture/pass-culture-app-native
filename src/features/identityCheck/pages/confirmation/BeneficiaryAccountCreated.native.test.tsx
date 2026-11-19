@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { AccountState, RefreshRequestV2, SigninResponseV2 } from 'api/gen'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
@@ -99,6 +99,28 @@ describe('BeneficiaryAccountCreated', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', { screen: 'Home' })
   })
 
+  it('should reset navigation to profile when coming from CheckAddress', async () => {
+    renderBeneficiaryAccountCreated('CheckAddress')
+
+    await user.press(await screen.findByLabelText("J'en profite"))
+
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'RESET',
+      payload: {
+        index: 0,
+        routes: [
+          {
+            name: 'TabNavigator',
+            params: { screen: 'Profile', params: undefined },
+          },
+        ],
+      },
+    })
+    expect(navigate).not.toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
+    expect(mockShowAppModal).toHaveBeenCalledWith(ShareAppModalType.BENEFICIARY)
+  })
+
   it('should have correct amount for underage users', async () => {
     renderBeneficiaryAccountCreated()
 
@@ -121,8 +143,8 @@ describe('BeneficiaryAccountCreated', () => {
   })
 })
 
-function renderBeneficiaryAccountCreated() {
-  return render(<BeneficiaryAccountCreated />, {
+function renderBeneficiaryAccountCreated(from = 'IdentityCheckHonor') {
+  return render(<BeneficiaryAccountCreated from={from} />, {
     wrapper: (props) =>
       reactQueryProviderHOC(
         <ShareAppWrapper>

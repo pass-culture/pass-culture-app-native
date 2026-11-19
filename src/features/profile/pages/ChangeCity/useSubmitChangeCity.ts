@@ -4,34 +4,24 @@ import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
-import { addressActions } from 'features/identityCheck/pages/profile/store/addressStore'
-import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
-import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { showErrorSnackBar, showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { Clear } from 'ui/svg/icons/Clear'
 
 export const useSubmitChangeCity = () => {
   const { user } = useAuthContext()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'ChangeCity'>>()
+  const type = params?.type
+  const storedCity = useCity()
   const userCity = {
     name: user?.city ?? undefined,
     postalCode: user?.postalCode ?? undefined,
     code: undefined,
   }
-
-  const storedCity = useCity()
-  const { setCity } = cityActions
-  const { resetAddress } = addressActions
-
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'ChangeCity'>>()
-  const type = params?.type
-
-  const isFromProfileUpdateFlow =
-    type === PersonalDataTypes.PROFIL_PERSONAL_DATA ||
-    type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
 
   const {
     control,
@@ -43,43 +33,29 @@ export const useSubmitChangeCity = () => {
     defaultValues: { city: storedCity ?? userCity },
   })
 
-  const { mutate: patchProfile, isPending } = usePatchProfileMutation({
-    onSuccess: async (_, variables) => {
-      if (isFromProfileUpdateFlow) {
-        navigate(...getProfileHookConfig('ChangeAddress', { type }))
-      } else {
-        navigate(...getProfileHookConfig('PersonalData'))
-        showSuccessSnackBar('Ta ville de résidence a bien été modifiée\u00a0!')
-      }
+  const tertiaryButton =
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA
+      ? {
+          wording: 'Je ne réside pas en France',
+          icon: Clear,
+          onPress: () =>
+            navigate(...getSubscriptionHookConfig('NotEligibleForeignCountryExplanation')),
+        }
+      : null
 
-      await analytics.logUpdatePostalCode({
-        newCity: variables.city ?? '',
-        oldCity: user?.city ?? '',
-        newPostalCode: variables.postalCode ?? '',
-        oldPostalCode: user?.postalCode ?? '',
-      })
-    },
-    onError: () => {
-      showErrorSnackBar('Une erreur est survenue')
-    },
-  })
+  const title =
+    type === PersonalDataTypes.CHECK_ADDRESS_DATA ? 'Profil' : 'Modifier ma ville de résidence'
 
   const onSubmit = ({ city }: CityForm) => {
-    const hasCityChanged = !!storedCity && storedCity.postalCode !== city.postalCode
-    if (isFromProfileUpdateFlow && hasCityChanged) resetAddress()
-
-    setCity(city)
-    patchProfile({ city: city.name, postalCode: city.postalCode })
+    if (type) return navigate(...getProfileHookConfig('ChangeAddress', { type, city }))
   }
-
-  const buttonWording = isFromProfileUpdateFlow ? 'Continuer' : 'Valider ma ville de résidence'
 
   return {
     control,
     isValid,
     handleSubmit,
     onSubmit,
-    buttonWording,
-    isPending,
+    tertiaryButton,
+    title,
   }
 }

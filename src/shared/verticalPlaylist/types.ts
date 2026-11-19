@@ -1,9 +1,4 @@
-import {
-  CategoryIdEnum,
-  OfferResponse,
-  SearchGroupNameEnumv2,
-  SearchGroupResponseModelv2,
-} from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { ArtistPlaylistModule, OffersModule, RecommendedOffersModule } from 'features/home/types'
 import { PlaylistType } from 'features/offer/enums'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
@@ -14,10 +9,8 @@ import { VerticalPlaylist } from 'shared/verticalPlaylist/enums'
 
 export type OffersSimilars = {
   offer: OfferResponse
-  offerCategory: CategoryIdEnum
-  offerSearchGroup: SearchGroupNameEnumv2
-  searchGroupList: SearchGroupResponseModelv2[]
-  type: PlaylistType
+  type: PlaylistType | string
+  userId?: number
 }
 
 export type OffersVenue = {
@@ -25,13 +18,18 @@ export type OffersVenue = {
   playlistTitle: string
 }
 
+export type VerticalPlaylistSearchOffersModule = Pick<
+  ThematicSearchPlaylistData,
+  'title' | 'offers'
+>
+
 export type VerticalPlaylistOffersSource =
-  | { type: VerticalPlaylist.ArtistOffers; module: ThematicSearchPlaylistData }
-  | { type: VerticalPlaylist.GtlPlaylistOffers; module: ThematicSearchPlaylistData }
+  | { type: VerticalPlaylist.ArtistOffers; module: VerticalPlaylistSearchOffersModule }
+  | { type: VerticalPlaylist.GtlPlaylistOffers; module: VerticalPlaylistSearchOffersModule }
   | { type: VerticalPlaylist.ModuleArtistPlaylist; module: ArtistPlaylistModule }
   | { type: VerticalPlaylist.ModuleOffers; module: OffersModule }
   | { type: VerticalPlaylist.SimilarOffers; module: OffersSimilars }
-  | { type: VerticalPlaylist.ThematicSearchOffers; module: ThematicSearchPlaylistData }
+  | { type: VerticalPlaylist.ThematicSearchOffers; module: VerticalPlaylistSearchOffersModule }
   | { type: VerticalPlaylist.VenueOffers; module: OffersVenue }
   | { type: VerticalPlaylist.RecommendationOffers; module: RecommendedOffersModule }
 

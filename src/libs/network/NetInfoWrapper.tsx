@@ -18,7 +18,6 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({ children }: PropsWi
     if (isConnected === false) {
       showErrorSnackBar('Aucune connexion internet. Réessaie plus tard.')
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkInfo.isConnected, networkInfo.isInternetReachable])
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({ children }: PropsWi
     if (connectionType === NetInfoStateType.unknown) {
       return
     }
-    analytics.logConnectionInfo({
+    void analytics.logConnectionInfo({
       type: connectionType,
       generation:
         connectionType === NetInfoStateType.cellular

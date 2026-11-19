@@ -12,7 +12,7 @@ export type LabelVariant = 'title2' | 'title3' | 'body'
 
 export type RadioButtonGroupOption = Omit<
   BaseRadioProps,
-  'value' | 'setValue' | 'error' | 'variant' | 'disabled' | 'id' | 'tabIndex'
+  'value' | 'setValue' | 'error' | 'variant' | 'disabled' | 'id' | 'tabIndex' | 'selectionValue'
 > & {
   key: string
   disabled?: boolean

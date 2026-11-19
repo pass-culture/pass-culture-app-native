@@ -52,7 +52,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
         <Button
           wording="Autoriser les notifications"
           onPress={() => {
-            analytics.logOpenNotificationSettings()
+            void analytics.logOpenNotificationSettings()
             onRequestPermission()
           }}
         />

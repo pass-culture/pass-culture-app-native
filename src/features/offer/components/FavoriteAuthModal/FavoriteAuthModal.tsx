@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -12,28 +12,69 @@ import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
-interface Props {
+type BaseProps = {
   visible: boolean
-  offerId: number
   dismissModal: () => void
 }
 
-export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, dismissModal }) => {
+type Props = BaseProps &
+  (
+    | { offerId: number; artistId?: never; venueId?: never }
+    | { artistId: string; offerId?: never; venueId?: never }
+    | { venueId: number; offerId?: never; artistId?: never }
+    | { offerId?: number; artistId?: string; venueId?: number }
+  )
+
+export const FavoriteAuthModal: FunctionComponent<Props> = ({
+  visible,
+  offerId,
+  artistId,
+  venueId,
+  dismissModal,
+}) => {
+  const authParams = useMemo(
+    () => ({
+      from: StepperOrigin.FAVORITE,
+      ...(offerId ? { offerId } : {}),
+      ...(artistId ? { artistId } : {}),
+      ...(venueId ? { venueId } : {}),
+    }),
+    [offerId, artistId, venueId]
+  )
+
+  const favoriteAnalyticsParams = useMemo(() => {
+    if (offerId) {
+      return { from: 'offer_favorite' as const, itemType: 'offer' as const, offerId }
+    }
+    if (artistId) {
+      return { from: 'artist_favorite' as const, itemType: 'artist' as const, artistId }
+    }
+    if (venueId) {
+      return { from: 'venue_favorite' as const, itemType: 'venue' as const, venueId }
+    }
+    return null
+  }, [offerId, artistId, venueId])
+
   const closeModal = useCallback(() => {
-    void analytics.logQuitFavoriteModalForSignIn(offerId)
+    if (offerId) {
+      void analytics.logQuitFavoriteModalForSignIn(offerId)
+    }
     dismissModal()
   }, [dismissModal, offerId])
 
   const signUp = useCallback(() => {
-    void analytics.logSignUpFromOffer(offerId)
-    void analytics.logSignUpClicked({ from: 'offer_favorite' })
+    if (favoriteAnalyticsParams) {
+      void analytics.logSignUpClicked(favoriteAnalyticsParams)
+    }
     dismissModal()
-  }, [dismissModal, offerId])
+  }, [dismissModal, favoriteAnalyticsParams])
 
   const signIn = useCallback(() => {
-    void analytics.logSignInFromOffer(offerId)
+    if (favoriteAnalyticsParams) {
+      void analytics.logLoginClicked(favoriteAnalyticsParams)
+    }
     dismissModal()
-  }, [dismissModal, offerId])
+  }, [dismissModal, favoriteAnalyticsParams])
 
   return (
     <AppModalWithIllustration
@@ -46,7 +87,7 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
       Illustration={Illustration}
       hideModal={closeModal}>
       <StyledBody>
-        Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
+        Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil&nbsp;!
       </StyledBody>
       <StyledButtonContainer>
         <InternalTouchableLink
@@ -54,16 +95,12 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupMethods',
-            params: { from: StepperOrigin.FAVORITE, offerId },
+            params: authParams,
           }}
           onBeforeNavigate={signUp}
         />
       </StyledButtonContainer>
-      <StyledAuthenticationButton
-        type="login"
-        params={{ from: StepperOrigin.FAVORITE, offerId }}
-        onAdditionalPress={signIn}
-      />
+      <StyledAuthenticationButton type="login" params={authParams} onAdditionalPress={signIn} />
     </AppModalWithIllustration>
   )
 }

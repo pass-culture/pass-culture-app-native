@@ -10,7 +10,7 @@ describe('<PublicDisabilityServices />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<PublicDisabilityServices />))
 
-      await screen.findByText('Outils et services publics')
+      await screen.findByText('Services et partenaires')
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { SubscriptionStepperResponseV3 } from 'api/gen'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -15,7 +15,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
-const subscriptionStep: Partial<SubscriptionStepperResponseV2> = {
+const subscriptionStep: Partial<SubscriptionStepperResponseV3> = {
   allowedIdentityCheckMethods: [],
   hasIdentityCheckPending: false,
 }

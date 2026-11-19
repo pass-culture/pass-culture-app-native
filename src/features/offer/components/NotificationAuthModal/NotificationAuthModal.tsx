@@ -25,13 +25,12 @@ export const NotificationAuthModal: FunctionComponent<Props> = ({
   const closeModal = () => dismissModal()
 
   const signUp = useCallback(() => {
-    void analytics.logSignUpFromOffer(offerId)
-    void analytics.logSignUpClicked({ from: 'offer_notification' })
+    void analytics.logSignUpClicked({ from: 'offer_notification', itemType: 'offer', offerId })
     dismissModal()
   }, [dismissModal, offerId])
 
   const signIn = useCallback(() => {
-    void analytics.logSignInFromOffer(offerId)
+    void analytics.logLoginClicked({ from: 'offer_notification', itemType: 'offer', offerId })
     dismissModal()
   }, [dismissModal, offerId])
 

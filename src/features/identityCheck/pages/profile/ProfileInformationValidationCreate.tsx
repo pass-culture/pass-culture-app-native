@@ -116,7 +116,6 @@ export const ProfileInformationValidationCreate = () => {
       city: cityForPost,
       address: address,
       status: activityId,
-      phoneNumber: null,
       hasSchoolTypes: false,
       schoolType: null,
     }

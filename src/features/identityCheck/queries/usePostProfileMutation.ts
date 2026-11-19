@@ -15,11 +15,10 @@ export const usePostProfileMutation = ({ onSuccess, onError }: PostProfileMutati
       const body = getCompleteProfile(profile)
       if (body) {
         return api.postNativeV1SubscriptionProfile(body)
-      } else {
-        const profileWithMissingFileds = JSON.stringify(profile, (_, value) => value ?? null, 2)
-        const errorMessage = `No body was provided for subscription profile. "getCompleteProfile()" return null because: ${profileWithMissingFileds}`
-        return Promise.reject(new Error(errorMessage))
       }
+      const profileWithMissingFileds = JSON.stringify(profile, (_, value) => value ?? null, 2)
+      const errorMessage = `No body was provided for subscription profile. "getCompleteProfile()" return null because: ${profileWithMissingFileds}`
+      return Promise.reject(new Error(errorMessage))
     },
 
     onSuccess,
@@ -41,7 +40,6 @@ const getCompleteProfile = (profile: SubscriptionState['profile']): ProfileUpdat
       city: profile.city.name,
       firstName: profile.name.firstName,
       lastName: profile.name.lastName,
-      phoneNumber: profile.phoneNumber,
       postalCode: profile.city.postalCode,
       schoolTypeId: profile.schoolType,
     }

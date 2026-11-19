@@ -116,7 +116,7 @@ jobs:
           DURATION: ${{ inputs.duration }}
         id: deploy
         run: |
-          URL=$(passdirector firebase deploy-preview --project-id "${PROJECT_ID}" --target "${TARGET}" --channel "${CHANNEL}" --duration "${DURATION}")
+          URL="$(passdirector firebase deploy-preview --project-id "${PROJECT_ID}" --target "${TARGET}" --channel "${CHANNEL}" --duration "${DURATION}")"
           echo "preview_url=$URL" | tee -a "$GITHUB_OUTPUT"
 
       - name: Publish Summary
@@ -127,5 +127,5 @@ jobs:
             echo "### :rocket: Deploy app native preview summary"
             echo "| Results                              | Value |"
             echo "| ------------------------------------ | ----- |"
-            echo "| [preview] url                        |  ${{ env.PREVIEW_URL }} |"
+            echo "| [preview] url                        |  $PREVIEW_URL |"
           } >> "$GITHUB_STEP_SUMMARY"

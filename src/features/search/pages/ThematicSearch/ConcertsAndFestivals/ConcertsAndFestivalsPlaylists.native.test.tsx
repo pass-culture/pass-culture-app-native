@@ -24,7 +24,13 @@ const DEFAULT_PLAYLIST_TITLE = 'Festivals'
 const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylistsQuery')
   .mockReturnValue({
-    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
+    playlists: [
+      {
+        id: 'concerts_festivals_festivals',
+        title: DEFAULT_PLAYLIST_TITLE,
+        offers: DEFAULT_PLAYLIST_OFFERS,
+      },
+    ],
     isLoading: false,
   })
 
@@ -51,11 +57,4 @@ describe('ConcertsAndFestivalsPlaylists', () => {
 })
 
 const renderConcertsAndFestivals = () =>
-  render(
-    reactQueryProviderHOC(
-      <ConcertsAndFestivalsPlaylists
-        shouldDisplayVenuesPlaylist
-        onViewableItemsChanged={jest.fn()}
-      />
-    )
-  )
+  render(reactQueryProviderHOC(<ConcertsAndFestivalsPlaylists shouldDisplayVenuesPlaylist />))

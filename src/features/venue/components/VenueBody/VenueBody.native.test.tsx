@@ -141,7 +141,6 @@ const renderVenueBody = ({
   headlineOfferData?: HeadlineOfferData
   playlists?: GtlPlaylistData[]
   arePlaylistsLoading?: boolean
-  nbAdvices?: number
 }) => {
   return render(
     reactQueryProviderHOC(
@@ -150,7 +149,6 @@ const renderVenueBody = ({
         headlineOfferData={headlineOfferData}
         playlists={playlists}
         arePlaylistsLoading={arePlaylistsLoading}
-        onViewableItemsChanged={jest.fn()}
       />
     )
   )

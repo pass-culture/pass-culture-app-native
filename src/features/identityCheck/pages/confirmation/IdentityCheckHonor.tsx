@@ -46,7 +46,10 @@ export const IdentityCheckHonor = () => {
       }
       const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
       if (hasUserOngoingCredit) {
-        navigate(...getSubscriptionHookConfig('BeneficiaryAccountCreated'))
+        const [navigator, screenConfig] = getSubscriptionHookConfig('BeneficiaryAccountCreated', {
+          from: 'IdentityCheckHonor',
+        })
+        navigate(navigator, { ...screenConfig, params: { from: 'IdentityCheckHonor' } })
       } else {
         void saveStep(IdentityCheckStep.CONFIRMATION)
         navigate(...getSubscriptionHookConfig('BeneficiaryRequestSent'))

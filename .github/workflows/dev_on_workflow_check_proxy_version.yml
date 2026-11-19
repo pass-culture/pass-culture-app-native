@@ -55,11 +55,14 @@ jobs:
         run: |
           npm install -g semver-compare-cli
           current_version="$(jq -r .version server/package.json)"
-          is_greater_or_equal_version="$(npx semver-compare "${current_version}" ge ${{ steps.proxy-version.outputs.proxy_version }} && echo true || echo false)"
+          is_greater_or_equal_version="$(npx semver-compare "${current_version}" ge "$PROXY_VERSION" && echo true || echo false)"
           echo "is_greater_or_equal_version=$is_greater_or_equal_version" >> "$GITHUB_OUTPUT"
-          echo "proxy version is ${{ steps.proxy-version.outputs.proxy_version }}"
+          echo "proxy version is $PROXY_VERSION"
           echo "current version is ${current_version}"
           echo "is greater or equal version: ${is_greater_or_equal_version}"
+        env:
+          PROXY_VERSION: ${{ steps.proxy-version.outputs.proxy_version }}
+
 
       # Since the running proxy server is exposing the version from it's package.json and does not expose the hotfix tag (which is a tag from an existing version)
       # we filter tags by tagger date descending and pick the latest one for a given version, this can be an hotfix, ie: hotfix-staging-1.0.0-1
@@ -68,6 +71,8 @@ jobs:
         if: ${{ inputs.WEBAPP_URL && steps.proxy-rollback-protection.outputs.is_greater_or_equal_version != 'false' }}
         name: Get last git tag that match server proxy version
         run: |
-          base_tag="$(git tag --sort=-taggerdate | grep ${{ steps.proxy-version.outputs.proxy_version }} | head -n1)"
+          base_tag="$(git tag --sort=-taggerdate | grep "$PROXY_VERSION" | head -n1)"
           echo "base_tag=${base_tag}" >> "$GITHUB_OUTPUT"
           echo "base_tag=${base_tag}"
+        env:
+          PROXY_VERSION: ${{ steps.proxy-version.outputs.proxy_version }}

@@ -40,8 +40,8 @@ export const CheatcodesScreenDirectIdAccess = (): React.JSX.Element => {
     []
   )
 
-  const onSelectEntity = (label: string) => {
-    const next = DIRECT_ID_ENTITY_KEYS.find((key) => DIRECT_ID_ENTITIES[key].label === label)
+  const onSelectEntity = (entityKey: string) => {
+    const next = DIRECT_ID_ENTITY_KEYS.find((key) => key === entityKey)
     if (!next || next === selectedKey) return
     setSelectedKey(next)
     setIdValue('')
@@ -74,7 +74,7 @@ export const CheatcodesScreenDirectIdAccess = (): React.JSX.Element => {
       <RadioButtonGroup
         label="Type d’entité"
         options={options}
-        value={selectedEntity.label}
+        value={selectedKey}
         onChange={onSelectEntity}
       />
       <Spacer />

@@ -28,7 +28,7 @@ type RenderFooterItem =
 export type CustomListRenderItem<ItemT> = (
   info: ListRenderItemInfo<ItemT> &
     ItemDimensions & {
-      playlistType?: PlaylistType
+      playlistType?: PlaylistType | string
     }
 ) => React.ReactElement | null
 
@@ -45,7 +45,7 @@ type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
   onEndReached?: () => void
   children?: never
   tileType?: 'offer' | 'venue' | 'video-module-offer'
-  playlistType?: PlaylistType
+  playlistType?: PlaylistType | string
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   itemSeparatorSize?: number
   horizontalMargin?: number
@@ -207,7 +207,7 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
         scrollEventThrottle={16}
         horizontal
         windowSize={7}
-        initialNumToRender={4}
+        initialNumToRender={isWeb ? 6 : 4}
         maxToRenderPerBatch={6}
         removeClippedSubviews
         updateCellsBatchingPeriod={100}

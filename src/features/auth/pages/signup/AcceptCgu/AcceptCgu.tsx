@@ -99,7 +99,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   })
 
   const onSubmit = useCallback(() => {
-    analytics.logContinueCGU()
+    void analytics.logContinueCGU()
     if (!isChecked.acceptCgu || !isChecked.acceptDataCharter) {
       setErrorMessage('Tu dois accepter les CGU et les chartes des données.')
       return
@@ -107,7 +107,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     if (isRecaptchaEnabled) {
       openReCaptchaChallenge()
     } else {
-      handleSignup('dummyToken', isChecked.marketingEmailSubscription)
+      void handleSignup('dummyToken', isChecked.marketingEmailSubscription)
     }
   }, [
     isChecked.acceptCgu,

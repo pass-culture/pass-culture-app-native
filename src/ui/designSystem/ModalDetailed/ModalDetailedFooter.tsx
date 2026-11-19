@@ -60,7 +60,9 @@ export const ModalDetailedFooter: FunctionComponent<ModalDetailedFooterProps> = 
       {isDesktopViewport ? <Separator.Horizontal color={designSystem.color.border.subtle} /> : null}
       <ActionsContainer isLargeViewport={isLargeViewport}>
         {isLargeViewport ? null : description}
-        <ButtonsContainer isLargeViewport={isLargeViewport}>{orderedButtons}</ButtonsContainer>
+        <ButtonsContainer testID="modalDetailedButtonsContainer" isLargeViewport={isLargeViewport}>
+          {orderedButtons}
+        </ButtonsContainer>
         {isLargeViewport ? description : null}
       </ActionsContainer>
     </FooterContainer>
@@ -86,8 +88,9 @@ const ButtonsContainer = styled.View<{ isLargeViewport: boolean }>(
   ({ theme, isLargeViewport }) => ({
     flexDirection: isLargeViewport ? 'row' : 'column',
     alignItems: isLargeViewport ? 'center' : 'stretch',
-    flexWrap: 'nowrap',
-    flexShrink: isLargeViewport ? 0 : 1,
+    flexWrap: isLargeViewport ? 'wrap' : 'nowrap',
+    flexShrink: 1,
+    maxWidth: '100%',
     rowGap: theme.designSystem.size.spacing.l,
     columnGap: theme.designSystem.size.spacing.l,
   })

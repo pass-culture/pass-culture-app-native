@@ -5,6 +5,10 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -14,15 +18,16 @@ import { Spacer, Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const NotConnectedFavorites = () => {
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const { bottom } = useSafeAreaInsets()
 
   const onBeforeSignupNavigate = () => {
-    analytics.logSignUpFromFavorite()
-    analytics.logSignUpClicked({ from: 'favorite' })
+    void analytics.logSignUpFromFavorite()
+    void analytics.logSignUpClicked({ from: 'favorite' })
   }
 
   const onBeforeLoginNavigate = () => {
-    analytics.logSignInFromFavorite()
+    void analytics.logSignInFromFavorite()
   }
 
   return (
@@ -30,7 +35,15 @@ export const NotConnectedFavorites = () => {
       <ScrollContainer bottom={bottom} showsVerticalScrollIndicator={false}>
         <MainContent>
           <IllustrationContainer>
-            <Illustration />
+            {enableNewVisionUi ? (
+              <RemoteIllustration
+                url={remoteIllustrationUrls.girlHoldingHeartMosaicLarge}
+                backgroundColor="positive01"
+                testID="remote-illustration"
+              />
+            ) : (
+              <Illustration />
+            )}
           </IllustrationContainer>
           <TextContainer gap={4}>
             <StyledTitle2 {...setTextSemantic('h1')}>
