@@ -35,8 +35,8 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
-import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
-import { useRemoveArtistFavoriteMutation } from 'queries/favorites/useRemoveArtistFavoriteMutation'
+import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { useRemoveArtistFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { isValidWikipediaUrl } from 'shared/isValidUrl/isValidUrl'
 import { WebMetaHeader } from 'shared/WebMetaHeader/WebMetaHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -176,7 +176,8 @@ export const ArtistBody: FunctionComponent<Props> = ({
     .map(([key]) => key)
 
   const RightElementHeader = (
-    <RightElementContainer gap={4}>
+    <RightElementContainer gap={3}>
+      {ShareButton({ onPress: pressShareArtist })}
       {enableFavoriteButton ? (
         <FavoriteButton
           favorite={favorite}
@@ -187,7 +188,6 @@ export const ArtistBody: FunctionComponent<Props> = ({
           isAddFavoriteLoading={isAddFavoriteLoading}
         />
       ) : null}
-      {ShareButton({ onPress: pressShareArtist })}
     </RightElementContainer>
   )
 

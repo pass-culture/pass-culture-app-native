@@ -36,6 +36,8 @@ import { cleanup, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/jwt/jwt')
+jest.mock('features/auth/context/AuthContext')
 
 const mockGoBack = jest.fn()
 jest
@@ -72,9 +74,6 @@ jest.mock('features/favorites/queries/useArtistFavoritesQuery', () => ({
 
 const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesArtistsfavoriteId')
 const spyApiPostFavorite = jest.spyOn(api, 'postNativeV2MeFavoritesArtists')
-
-jest.mock('libs/jwt/jwt')
-jest.mock('features/auth/context/AuthContext')
 
 const user = userEvent.setup()
 

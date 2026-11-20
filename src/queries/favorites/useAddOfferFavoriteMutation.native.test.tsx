@@ -9,7 +9,7 @@ import * as firstFavoriteModule from 'features/favorites/helpers/firstFavoriteSn
 import { simulateBackendForOffer } from 'features/favorites/tests/simulateBackendForOffer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
+import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
 import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'

@@ -2440,6 +2440,22 @@ export interface FavoriteCoordinates {
 }
 /**
  * @export
+ * @interface FavoriteCoordinatesV2
+ */
+export interface FavoriteCoordinatesV2 {
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinatesV2
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinatesV2
+   */
+  longitude?: number | null
+}
+/**
+ * @export
  * @interface FavoriteMediationResponse
  */
 export interface FavoriteMediationResponse {
@@ -2465,10 +2481,10 @@ export interface FavoriteOfferDataResponse {
    */
   bookingAllowedDatetime?: string | null
   /**
-   * @type {FavoriteCoordinates}
+   * @type {FavoriteCoordinatesV2}
    * @memberof FavoriteOfferDataResponse
    */
-  coordinates: FavoriteCoordinates
+  coordinates: FavoriteCoordinatesV2
   /**
    * @type {string | null}
    * @memberof FavoriteOfferDataResponse
@@ -2668,6 +2684,54 @@ export interface FavoriteResponse {
    * @memberof FavoriteResponse
    */
   offer: FavoriteOfferResponse
+}
+/**
+ * @export
+ * @interface FavoriteVenueDataResponse
+ */
+export interface FavoriteVenueDataResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueDataResponse
+   */
+  id: number
+  /**
+   * @type {string | null}
+   * @memberof FavoriteVenueDataResponse
+   */
+  image: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteVenueDataResponse
+   */
+  name: string
+}
+/**
+ * @export
+ * @interface FavoriteVenueRequest
+ */
+export interface FavoriteVenueRequest {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueRequest
+   */
+  venueId: number
+}
+/**
+ * @export
+ * @interface FavoriteVenueResponse
+ */
+export interface FavoriteVenueResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteVenueDataResponse}
+   * @memberof FavoriteVenueResponse
+   */
+  venue: FavoriteVenueDataResponse
 }
 /**
  * @export
@@ -4205,6 +4269,27 @@ export interface PaginatedResponseFavoriteOfferResponseV2 {
   /**
    * @type {number}
    * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  page: number
+}
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteVenueResponse
+ */
+export interface PaginatedResponseFavoriteVenueResponse {
+  /**
+   * @type {Array<FavoriteVenueResponse>}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  favorites: Array<FavoriteVenueResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteVenueResponse
    */
   page: number
 }
@@ -6501,6 +6586,35 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary delete_favorite_venue <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'favorite_id' is not null or undefined
+      if (favorite_id === null || favorite_id === undefined) {
+        throw new RequiredError(
+          'favorite_id',
+          'Required parameter favorite_id was null or undefined when calling deleteNativeV2MeFavoritesVenuesfavoriteId.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/venues/{favorite_id}`.replace(
+        `{${'favorite_id'}}`,
+        encodeURIComponent(String(favorite_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
      * @param {*} [options] Override http request option.
@@ -7230,6 +7344,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV2MeFavoritesOffers(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v2/me/favorites/offers`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_favorite_venues <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesVenues(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v2/me/favorites/venues`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -8357,6 +8489,35 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary create_favorite_venue <POST>
+     * @param {FavoriteVenueRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesVenues(body: FavoriteVenueRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'body' is not null or undefined
+      if (body === null || body === undefined) {
+        throw new RequiredError(
+          'body',
+          'Required parameter body was null or undefined when calling postNativeV2MeFavoritesVenues.'
+        )
+      }
+      let pathname = `/native/v2/me/favorites/venues`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FavoriteVenueRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary sso_authorize <POST>
      * @param {OAuthSigninRequestV2} body
      * @param {string} sso_provider
@@ -8716,6 +8877,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary delete_favorite_venue <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
@@ -9031,6 +9204,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2MeFavoritesOffers(options?: any): Promise<PaginatedResponseFavoriteOfferResponseV2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesOffers(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
+     * 
+     * @summary get_favorite_venues <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2MeFavoritesVenues(options?: any): Promise<PaginatedResponseFavoriteVenueResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2MeFavoritesVenues(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
@@ -9534,6 +9718,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       return handleGeneratedApiResponse(response, localVarFetchArgs.options)
     },
     /**
+     * 
+     * @summary create_favorite_venue <POST>
+     * @param {FavoriteVenueRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2MeFavoritesVenues(body: FavoriteVenueRequest, options?: any): Promise<FavoriteVenueResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2MeFavoritesVenues(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response, localVarFetchArgs.options)
+    },
+    /**
      *
      * @summary sso_authorize <POST>
      * @param {OAuthSigninRequestV2} body
@@ -9722,6 +9918,18 @@ export class DefaultApi extends BaseAPI {
   public async deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id, options)
+  }
+  /**
+    * 
+    * @summary delete_favorite_venue <DELETE>
+    * @param {number} favorite_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id, options)
   }
   /**
     *
@@ -10041,6 +10249,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2MeFavoritesOffers(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2MeFavoritesOffers(options)
+  }
+  /**
+    * 
+    * @summary get_favorite_venues <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2MeFavoritesVenues(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2MeFavoritesVenues(options)
   }
   /**
     *
@@ -10540,6 +10759,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2MeFavoritesOffers(body, options)
+  }
+  /**
+    * 
+    * @summary create_favorite_venue <POST>
+    * @param {FavoriteVenueRequest} body 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2MeFavoritesVenues(body: FavoriteVenueRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2MeFavoritesVenues(body, options)
   }
   /**
     * 

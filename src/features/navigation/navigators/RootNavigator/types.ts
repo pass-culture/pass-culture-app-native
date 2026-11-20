@@ -188,6 +188,7 @@ type SignupParams =
       ssoProvider?: Provider.GOOGLE | Provider.APPLE
       stepIndex?: number
       artistId?: string
+      venueId?: number
     }
   | undefined
 
@@ -242,6 +243,7 @@ type LoginParams = {
   offerId?: number
   from?: StepperOrigin
   artistId?: string
+  venueId?: number
 }
 
 type FakeDoorModalParams = {
