@@ -61,6 +61,7 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
+import { PreviewInstallModal } from 'features/preview/pages/PreviewInstallModal'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
@@ -490,6 +491,16 @@ const rootScreens: RouteConfig[] = [
       title: 'Questionnaire',
       presentation: 'transparentModal',
       animation: 'fade',
+      headerShown: false,
+    },
+  },
+  {
+    name: 'PreviewInstallModal',
+    component: PreviewInstallModal,
+    options: {
+      title: 'Installation preview',
+      presentation: Platform.OS === 'web' ? 'transparentModal' : 'modal',
+      animation: 'slide_from_bottom',
       headerShown: false,
     },
   },

@@ -365,6 +365,12 @@ export type RootStackParamList = {
     openedFrom: Referrals
   }
   GeolocationActivationModal: undefined
+  PreviewInstallModal: {
+    platform?: string
+    downloadUrl?: string
+    channel?: string
+    fingerprint?: string
+  }
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
