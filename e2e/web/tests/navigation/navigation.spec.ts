@@ -1,6 +1,6 @@
-import { expect, test } from '../fixtures'
+import { expect, test } from '../../fixtures'
 
-test.describe('navigation', () => {
+test.describe('navigation', { tag: '@smoke' }, () => {
   test('the tab bar reaches every main section', async ({ homePage, navigationBar, page }) => {
     await navigationBar.goToSearch()
     await expect(page).toHaveURL(/\/recherche\/accueil/)

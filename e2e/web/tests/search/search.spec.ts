@@ -1,6 +1,6 @@
-import { expect, test } from '../fixtures'
+import { expect, test } from '../../fixtures'
 
-test.describe('search', () => {
+test.describe('search', { tag: '@smoke' }, () => {
   test('browsing a category from the search tab shows its offers', async ({
     homePage,
     navigationBar,

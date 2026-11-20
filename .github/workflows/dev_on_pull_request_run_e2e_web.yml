@@ -52,18 +52,30 @@ jobs:
           secrets: |-
             SLACK_BOT_TOKEN:pc-native-production/slack-bot-token
 
+      - name: Get secrets for E2E fixtures (user/offer generation, login)
+        id: e2e_secrets
+        uses: google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262 #v3.0.0
+        with:
+          secrets: |-
+            E2E_USER_PASSWORD:pc-native-production/e2e-maestro-password
+            E2E_API_KEY:pc-native-production/pcapi-staging-e2e-api-key
+            E2E_API_BASE_URL:pc-native-production/pcapi-staging-e2e-base-url
+
       - name: Run Playwright E2E Web Tests
         env:
           SLACK_BOT_USER_OAUTH_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
           E2E_SUITE_LABEL: ${{ github.workflow }}
+          E2E_USER_PASSWORD: ${{ steps.e2e_secrets.outputs.E2E_USER_PASSWORD }}
+          E2E_API_KEY: ${{ steps.e2e_secrets.outputs.E2E_API_KEY }}
+          E2E_API_BASE_URL: ${{ steps.e2e_secrets.outputs.E2E_API_BASE_URL }}
         run: |
           echo "Running Playwright smoke tests from your branch on web Staging build"
           yarn test:e2e:web
 
-      - name: Upload Playwright report
+      - name: Upload Playwright traces
         if: failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: playwright-traces
+          path: test-results/
           retention-days: 7
