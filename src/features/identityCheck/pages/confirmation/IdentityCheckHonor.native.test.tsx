@@ -9,6 +9,7 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
+import * as snackBarStore from 'ui/designSystem/Snackbar/snackBar.store'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
@@ -40,6 +41,10 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   beforeEach(() => {
+    mockAuthContextWithUser(nonBeneficiaryUser, {
+      persist: true,
+      refetchUser: jest.fn().mockResolvedValue({ data: nonBeneficiaryUser, isError: false }),
+    })
     mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
     mockServer.postApi('/v1/subscription/honor_statement', {})
   })
@@ -94,6 +99,24 @@ describe('<IdentityCheckHonor/>', () => {
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
       screen: 'BeneficiaryRequestSent',
     })
+  })
+
+  it('should report backend errors without navigating using stale profile data', async () => {
+    const showErrorSnackBarSpy = jest.spyOn(snackBarStore, 'showErrorSnackBar')
+    mockAuthContextWithUser(beneficiaryUser, {
+      persist: true,
+      refetchUser: jest.fn().mockResolvedValue({
+        data: beneficiaryUser,
+        isError: true,
+        error: new Error('Profile refresh failed'),
+      }),
+    })
+    renderIdentityCheckHonor()
+
+    await user.press(screen.getByText('Valider et continuer'))
+
+    expect(showErrorSnackBarSpy).toHaveBeenCalledTimes(1)
+    expect(navigate).not.toHaveBeenCalled()
   })
 })
 

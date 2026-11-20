@@ -2934,6 +2934,7 @@ export interface IdentificationSessionResponse {
 export enum IdentityCheckMethod {
   'educonnect' = 'educonnect',
   'ubble' = 'ubble',
+'dms' = 'dms',
 }
 /**
  * @export
@@ -5679,6 +5680,11 @@ export interface SubscriptionStepperResponseV3 {
    * @memberof SubscriptionStepperResponseV3
    */
   title: string
+  /**
+   * @type {IdentityCheckMethod | null}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  underageOkIdentityCheckMethod?: IdentityCheckMethod | null
 }
 /**
  * @export

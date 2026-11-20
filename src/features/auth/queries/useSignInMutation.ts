@@ -142,7 +142,7 @@ const useHandleSigninSuccess = (
           navigate('RecreditBirthdayNotification')
         }
       } else if (!hasSeenEligibleCard && user.showEligibleCard) {
-        navigate('EighteenBirthday')
+        navigate('UnlockEighteenCredit')
       } else if (offerId) {
         switch (comeFrom) {
           case StepperOrigin.BOOKING:

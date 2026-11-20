@@ -22,7 +22,7 @@ type RecommendationModuleProps = {
   moduleId: string
   displayParameters: DisplayParametersFields
   index: number
-  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
+  recommendationParameters: RecommendedOffersModule['recommendationParameters']
   homeEntryId: string | undefined
 }
 

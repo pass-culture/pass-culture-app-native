@@ -41,7 +41,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { VideoModulePage } from 'features/home/pages/VideoModulePage'
 import { RecreditBirthdayNotification } from 'features/identityCheck/pages/confirmation/RecreditedNotification'
-import { UnlockCredit } from 'features/identityCheck/pages/UnlockCredit'
+import { UnlockEighteenCredit } from 'features/identityCheck/pages/UnlockEighteenCredit'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
@@ -235,13 +235,13 @@ const rootScreens: RouteConfig[] = [
     options: { title: 'Confirmation de réservation' },
   },
   {
-    name: 'EighteenBirthday',
-    component: UnlockCredit,
+    name: 'UnlockEighteenCredit',
+    component: UnlockEighteenCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {
-    name: '_DeeplinkOnlyEighteenBirthday1',
-    component: UnlockCredit,
+    name: '_DeeplinkOnlyUnlockEighteenCredit1',
+    component: UnlockEighteenCredit,
     options: { title: 'Anniversaire 18 ans' },
   },
   {

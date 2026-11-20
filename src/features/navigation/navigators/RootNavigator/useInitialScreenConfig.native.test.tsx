@@ -67,7 +67,7 @@ describe('useInitialScreen()', () => {
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'BonificationGranted')
   })
 
-  it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {
+  it('should return UnlockEighteenCredit when user hasn’t seen eligible card', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', null)
     mockAuthContextWithUser(
@@ -82,10 +82,10 @@ describe('useInitialScreen()', () => {
     const result = renderUseInitialScreen()
 
     await waitFor(() => {
-      expect(result.current).toEqual('EighteenBirthday')
+      expect(result.current).toEqual('UnlockEighteenCredit')
     })
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'UnlockEighteenCredit')
   })
 
   it('should return RecreditBirthdayNotification when user has credit to show', async () => {

@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import {
   BannerName,
   BannerResponse,
+  IdentityCheckMethod,
   QFBonificationStatus,
   SubscriptionStatus,
   SubscriptionStepperResponseV3,
@@ -11,7 +13,7 @@ import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { UserStatusType } from 'features/auth/helpers/getStatusType'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, eligibleUser, underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location/location'
@@ -25,7 +27,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
@@ -47,6 +49,109 @@ describe('<HomeBanner/>', () => {
     useLocationV2.setState(defaultLocationState)
     locationActions.setPermissionState(GeolocPermissionState.GRANTED)
     mockDepositAmounts.mockReturnValue(undefined)
+  })
+
+  describe('when simplified activation is disabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([])
+    })
+
+    it('should navigate to Stepper when user is eligible and underageBeneficiary', async () => {
+      mockAuthContextWithUser(underageBeneficiaryUser, { persist: true })
+      mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', {
+        ...subscriptionStepperFixture,
+        underageOkIdentityCheckMethod: IdentityCheckMethod.ubble,
+      })
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          title: 'Active ton crédit',
+          text: 'Continuer',
+        },
+      })
+
+      renderHomeBanner({})
+      await userEvent
+        .setup()
+        .press(
+          await screen.findByLabelText(
+            'Débloque ton crédit pour bénéficier du pass Culture Continuer'
+          )
+        )
+
+      expect(navigate.mock.calls.at(-1)).toEqual([
+        'SubscriptionStackNavigator',
+        { screen: 'Stepper', params: { from: 'home' } },
+      ])
+    })
+  })
+
+  describe('when simplified activation is enabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18])
+    })
+
+    it('should navigate to UnlockEighteenCredit when user has an underageOkIdentityCheckMethod, is eligible and underageBeneficiary', async () => {
+      mockAuthContextWithUser(
+        {
+          ...underageBeneficiaryUser,
+          eligibilityType: UserEligibilityType.ELIGIBLE_CREDIT_V3_18,
+          domainsCredit: { all: { initial: 5000, remaining: 0 } },
+        },
+        { persist: true }
+      )
+      mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', {
+        ...subscriptionStepperFixture,
+        underageOkIdentityCheckMethod: IdentityCheckMethod.dms,
+      })
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          title: 'Active ton crédit',
+          text: 'Continuer',
+        },
+      })
+
+      renderHomeBanner({})
+      await userEvent
+        .setup()
+        .press(
+          await screen.findByLabelText(
+            'Débloque ton crédit pour bénéficier du pass Culture Continuer'
+          )
+        )
+
+      expect(navigate.mock.calls.at(-1)).toEqual(['UnlockEighteenCredit'])
+    })
+
+    it('should navigate to Stepper when user is not underageBeneficiary', async () => {
+      mockAuthContextWithUser(eligibleUser, { persist: true })
+      mockServer.getApi<SubscriptionStepperResponseV3>('/v3/subscription/stepper', {
+        ...subscriptionStepperFixture,
+        underageOkIdentityCheckMethod: null,
+      })
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          title: 'Active ton crédit',
+          text: 'Continuer',
+        },
+      })
+
+      renderHomeBanner({})
+      await userEvent
+        .setup()
+        .press(
+          await screen.findByLabelText(
+            'Débloque ton crédit pour bénéficier du pass Culture Continuer'
+          )
+        )
+
+      expect(navigate.mock.calls.at(-1)).toEqual([
+        'SubscriptionStackNavigator',
+        { screen: 'Stepper', params: { from: 'home' } },
+      ])
+    })
   })
 
   describe('when feature flag showRemoteGenericBanner is enabled', () => {

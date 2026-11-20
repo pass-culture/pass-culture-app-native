@@ -280,8 +280,6 @@ export type RootStackParamList = {
   _DeeplinkOnlyClubAdvices1: ClubAdvicesParams
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
-  EighteenBirthday: undefined
-  _DeeplinkOnlyEighteenBirthday1: undefined
   FakeDoorModal: FakeDoorModalParams
   FavoritesSorts: undefined
   ForgottenPassword: undefined
@@ -334,6 +332,8 @@ export type RootStackParamList = {
   ThematicHome: ThematicHomeParams
   _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
+  UnlockEighteenCredit: undefined
+  _DeeplinkOnlyUnlockEighteenCredit1: undefined
   UTMParameters: { utm_campaign: string; utm_medium: string; utm_source: string } | undefined
   ValidateEmailChange: { token: string }
   Venue: VenueParams

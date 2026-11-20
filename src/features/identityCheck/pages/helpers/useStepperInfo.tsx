@@ -6,12 +6,15 @@ import { IconStepCurrent } from 'features/identityCheck/components/IconStepCurre
 import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisabled'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
+import { shouldUseSimplifiedActivation18 } from 'features/identityCheck/helpers/shouldUseSimplifiedActivation18'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -33,7 +36,9 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
   const storedProfileInfos = useStoredProfileInfos()
-
+  const enableSimplifiedActivation18 = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18
+  )
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
   const needsToFillCulturalSurvey = user?.needsToFillCulturalSurvey ?? true
@@ -82,6 +87,27 @@ export const useStepperInfo = (): StepperInfo => {
   const shouldDisplayValidateYourInformation =
     userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
 
+  const getProfileScreen = (): Pick<StepConfig, 'firstScreen' | 'firstScreenType'> => {
+    if (
+      shouldUseSimplifiedActivation18({
+        enableSimplifiedActivation18,
+        user,
+        underageOkIdentityCheckMethod: data.underageOkIdentityCheckMethod,
+      })
+    ) {
+      return {
+        firstScreen: 'CheckAddress',
+        firstScreenType: ProfileTypes.CHECK_ADDRESS_DATA,
+      }
+    }
+    return userAlreadyGaveInfos
+      ? {
+          firstScreen: 'ProfileInformationValidationCreate',
+          firstScreenType: ProfileTypes.RECAP_EXISTING_DATA,
+        }
+      : { firstScreen: 'SetName', firstScreenType: ProfileTypes.IDENTITY_CHECK }
+  }
+
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
@@ -91,10 +117,8 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={Profile} testID="profile-step-done" />,
         retry: () => <IconStepRetry Icon={Profile} testID="profile-retry-step" />,
       },
-      firstScreen: userAlreadyGaveInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-      firstScreenType: userAlreadyGaveInfos
-        ? ProfileTypes.RECAP_EXISTING_DATA
-        : ProfileTypes.IDENTITY_CHECK,
+      firstScreen: getProfileScreen().firstScreen,
+      firstScreenType: getProfileScreen().firstScreenType,
       subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {

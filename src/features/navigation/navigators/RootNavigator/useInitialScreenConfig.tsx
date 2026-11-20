@@ -59,7 +59,7 @@ async function getInitialScreen({
 
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
       if (!hasSeenEligibleCard && user.showEligibleCard) {
-        return 'EighteenBirthday'
+        return 'UnlockEighteenCredit'
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage

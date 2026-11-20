@@ -10,6 +10,8 @@ import { useBonificationBannerVisibility } from 'features/bonification/hooks/use
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { EligibleFreeBanner } from 'features/home/components/EligibleFreeBanner'
+import { shouldUseSimplifiedActivation18 } from 'features/identityCheck/helpers/shouldUseSimplifiedActivation18'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import {
   StepperOrigin,
   UseNavigationType,
@@ -62,7 +64,9 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
   const { user } = useAuthContext()
-
+  const enableSimplifiedActivation18 = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_SIMPLIFIED_ACTIVATION_18
+  )
   const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
 
@@ -76,10 +80,21 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data } = useGetStepperInfoQuery()
 
   const SystemBanner = useMemo(() => {
-    const onPressSystemBanner = (from: StepperOrigin) => {
-      navigate(...getSubscriptionHookConfig('Stepper', { from }))
+    const shouldNavigateToUnlockUnlockEighteenCredit = shouldUseSimplifiedActivation18({
+      enableSimplifiedActivation18,
+      user,
+      underageOkIdentityCheckMethod: data?.underageOkIdentityCheckMethod,
+    })
+
+    const onPressSystemBanner = () => {
+      if (shouldNavigateToUnlockUnlockEighteenCredit) {
+        navigate('UnlockEighteenCredit')
+      } else {
+        navigate(...getSubscriptionHookConfig('Stepper', { from: StepperOrigin.HOME }))
+      }
     }
 
     const showBonificationBanner = getShouldShowBonificationBanner({
@@ -107,7 +122,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
           leftIcon={Icon}
           title={title}
           subtitle={subtitle}
-          onPress={() => onPressSystemBanner(StepperOrigin.HOME)}
+          onPress={onPressSystemBanner}
           analyticsParams={{ type: systemBannerAnalyticsType, from: 'home' }}
         />
       </BannerContainer>
@@ -163,15 +178,15 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   }, [
     enableBonification,
     hasClosedBonificationBanner,
-    user?.qfBonificationStatus,
-    user?.eligibilityType,
-    user?.subscriptionStatus,
+    user,
     banner.name,
     banner.title,
     banner.text,
     disableActivation,
     remoteActivationBannerOptions,
     isLoggedIn,
+    enableSimplifiedActivation18,
+    data?.underageOkIdentityCheckMethod,
     navigate,
     onCloseBanner,
   ])

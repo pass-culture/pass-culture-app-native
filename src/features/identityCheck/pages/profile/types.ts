@@ -4,6 +4,7 @@ export type ProfileType =
   | ProfileTypes.BOOKING_FREE_OFFER_15_16
   | ProfileTypes.IDENTITY_CHECK
   | ProfileTypes.RECAP_EXISTING_DATA
+  | ProfileTypes.CHECK_ADDRESS_DATA
 
 export enum ProfileOrigin {
   HOME_BANNER = 'homeBanner',

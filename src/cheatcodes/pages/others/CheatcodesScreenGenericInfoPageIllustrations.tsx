@@ -153,7 +153,7 @@ const genericInfoPageIllustrations: GenericInfoPageIllustrationItem[] = [
 
 const genericInfoPageAnimations = [
   'FrenchRepublicAnimation - BonificationGranted, BeneficiaryAccountCreated, FreeBeneficiaryAccountCreated',
-  'BirthdayCake - RecreditBirthdayNotification, EighteenBirthday, OnboardingNotEligible',
+  'BirthdayCake - RecreditBirthdayNotification, UnlockEighteenCredit, OnboardingNotEligible',
   'QpiThanks - AccountReactivationSuccess, AccountCreated, CulturalSurveyThanks, OnboardingGeneralPublicWelcome',
   'Geolocation - OnboardingGeolocation',
 ]

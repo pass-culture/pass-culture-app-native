@@ -37,7 +37,7 @@ export type OffersModuleProps = {
   index: number
   homeEntryId: string | undefined
   data: ModuleData | undefined
-  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
+  recommendationParameters: RecommendedOffersModule['recommendationParameters']
 }
 
 const keyExtractor = (item: Offer) => item.objectID

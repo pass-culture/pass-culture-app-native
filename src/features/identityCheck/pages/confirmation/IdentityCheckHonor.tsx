@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { hasCompletedCreditActivation } from 'features/identityCheck/helpers/hasCompletedCreditActivation'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { usePostHonorStatementMutation } from 'features/identityCheck/queries/usePostHonorStatementMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
@@ -13,7 +14,6 @@ import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { QueryKeys } from 'libs/queryKeys'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { hasOngoingCredit } from 'shared/user/getAvailableCredit'
 import { Button } from 'ui/designSystem/Button/Button'
 import { showErrorSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -37,15 +37,23 @@ export const IdentityCheckHonor = () => {
       void queryClient.invalidateQueries({
         queryKey: [QueryKeys.HOME_BANNER],
       })
-      let userProfile
+      let result
       try {
-        const { data: user } = await refetchUser()
-        userProfile = user
+        result = await refetchUser()
       } catch (error) {
         showErrorSnackBar(extractApiErrorMessage(error))
+        return
       }
-      const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
-      if (hasUserOngoingCredit) {
+      if (result.isError || !result.data) {
+        showErrorSnackBar(
+          result.isError
+            ? extractApiErrorMessage(result.error)
+            : 'Une erreur est survenue lors de la mise à jour de ton profil'
+        )
+        return
+      }
+
+      if (hasCompletedCreditActivation(result.data)) {
         const [navigator, screenConfig] = getSubscriptionHookConfig('BeneficiaryAccountCreated', {
           from: 'IdentityCheckHonor',
         })

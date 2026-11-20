@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
+exports[`<UnlockEighteenCredit /> should render eighteen birthday 1`] = `
 <View
   isLandscape={false}
   style={
