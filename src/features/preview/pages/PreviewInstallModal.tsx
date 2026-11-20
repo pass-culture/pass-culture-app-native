@@ -1,8 +1,10 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { resolvePreviewInstallForModal } from 'features/preview/resolvePreviewInstallForModal'
 import { ModalScreenWrapper } from 'shared/ModalScreenWrapper/ModalScreenWrapper'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -19,7 +21,7 @@ const PLATFORM_LABELS = {
 } as const
 
 export const PreviewInstallModal: FunctionComponent = () => {
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...homeNavigationConfig)
   const { params } = useRoute<UseRouteType<'PreviewInstallModal'>>()
   const { downloadUrl, platform, channel, fingerprint } = params
   const [showDownload, setShowDownload] = useState(false)
@@ -44,6 +46,7 @@ export const PreviewInstallModal: FunctionComponent = () => {
     <ModalScreenWrapper onClose={goBack} title="Installation preview">
       {(closeWithTransition, titleId) => (
         <React.Fragment>
+          <Spacer.TopScreen />
           <HeaderContainer>
             <ModalHeader
               title="Installation preview"

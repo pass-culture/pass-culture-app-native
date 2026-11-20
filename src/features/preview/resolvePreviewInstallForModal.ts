@@ -1,4 +1,5 @@
 import { handlePreviewInstallFromDeeplink } from 'features/preview/handlePreviewInstallFromDeeplink'
+import { showSuccessSnackBar } from 'ui/designSystem/Snackbar/snackBar.store'
 
 type ResolvePreviewInstallForModalParams = {
   channel?: string
@@ -7,6 +8,9 @@ type ResolvePreviewInstallForModalParams = {
   onMatched: () => void
   onMismatch: () => void
 }
+
+export const getPreviewChannelLoadedMessage = (channel: string) =>
+  `Channel preview «\u00a0${channel}\u00a0» chargé`
 
 export const resolvePreviewInstallForModal = async ({
   channel,
@@ -22,6 +26,7 @@ export const resolvePreviewInstallForModal = async ({
   })
 
   if (result === 'matched') {
+    if (channel) showSuccessSnackBar(getPreviewChannelLoadedMessage(channel))
     onMatched()
     return
   }

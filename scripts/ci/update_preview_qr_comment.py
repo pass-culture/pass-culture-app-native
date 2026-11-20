@@ -15,7 +15,10 @@ MARKER = "<!-- sticky-preview-builds -->"
 STATE_PREFIX = "<!-- preview-builds-state "
 STATE_SUFFIX = " -->"
 
-PREVIEW_INSTALL_BASE_URL = "https://app.testing.passculture.team/preview-install"
+# Custom scheme of the preview binary (.env.preview URL_PREFIX). Testing does not
+# register it, so a scan opens the preview app when it is installed.
+PREVIEW_APP_SCHEME = "passculturepreview"
+PREVIEW_INSTALL_PATH = "preview-install"
 SPINNER_URL = (
     "https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.16.2/processing.gif"
 )
@@ -188,7 +191,9 @@ def build_deeplink(
         query["channel"] = channel
     if fingerprint:
         query["fingerprint"] = fingerprint
-    return f"{PREVIEW_INSTALL_BASE_URL}?{urllib.parse.urlencode(query)}"
+    return (
+        f"{PREVIEW_APP_SCHEME}://{PREVIEW_INSTALL_PATH}?{urllib.parse.urlencode(query)}"
+    )
 
 
 def qr_image_url(payload: str) -> str:
@@ -256,6 +261,51 @@ def render_platform_description(platform: str, platform_state: dict[str, str]) -
     return PLATFORM_IDLE_HINTS[platform]
 
 
+def render_install_fallback(state: dict[str, dict[str, str]]) -> str:
+    """Direct App Distribution QRs, hidden until the preview app is missing."""
+    ready_platforms = [
+        platform
+        for platform in ("ios", "android")
+        if state[platform]["status"] == "ready" and state[platform].get("downloadUrl")
+    ]
+    if not ready_platforms:
+        return ""
+
+    label_cells = [
+        render_table_cell(f"<strong>{PLATFORM_LABELS[platform]}</strong>", "middle")
+        for platform in ready_platforms
+    ]
+    visual_cells = [
+        render_table_cell(
+            (
+                f'<img src="{qr_image_url(state[platform]["downloadUrl"])}" '
+                f'alt="QR App Distribution {PLATFORM_LABELS[platform]}" '
+                f'width="180" height="180" />'
+            ),
+            "middle",
+            VISUAL_ROW_HEIGHT,
+        )
+        for platform in ready_platforms
+    ]
+    return "\n".join(
+        [
+            "<details>",
+            "<summary>App de preview pas encore installée ?</summary>",
+            "",
+            "<table>",
+            "<tr>",
+            *label_cells,
+            "</tr>",
+            "<tr>",
+            *visual_cells,
+            "</tr>",
+            "</table>",
+            "",
+            "</details>",
+        ]
+    )
+
+
 def render_comment_body(state: dict[str, dict[str, str]], commit_sha: str) -> str:
     state_json = json.dumps(state, separators=(",", ":"), sort_keys=True)
     short_sha = commit_sha[:7] if commit_sha else "unknown"
@@ -299,6 +349,8 @@ def render_comment_body(state: dict[str, dict[str, str]], commit_sha: str) -> st
             "<table>",
             *rows,
             "</table>",
+            "",
+            render_install_fallback(state),
             "",
             f"_Commit: `{short_sha}`_",
             "",
