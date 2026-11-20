@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { SpecialEventBanner } from 'features/offer/components/OfferCine/SpecialEventBanner'
 import { AbsoluteRoundedButton } from 'ui/components/buttons/AbsoluteRoundedButton'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { getSpacing } from 'ui/theme'
@@ -23,6 +24,8 @@ type Props = {
   onFlatListLayout?: (event: LayoutChangeEvent) => void
   itemWidth?: number
   onItemLayout?: (event: LayoutChangeEvent) => void
+  shouldDisplaySpecialEventBanner?: boolean
+  specialEventBannerTitle?: string
 }
 
 export const MovieCalendar: React.FC<Props> = ({
@@ -35,6 +38,8 @@ export const MovieCalendar: React.FC<Props> = ({
   itemWidth,
   onItemLayout,
   disabledDates,
+  shouldDisplaySpecialEventBanner,
+  specialEventBannerTitle,
 }) => {
   const isWeb = Platform.OS === 'web'
   const { designSystem } = useTheme()
@@ -82,54 +87,61 @@ export const MovieCalendar: React.FC<Props> = ({
   )
 
   return (
-    <View onLayout={onContainerLayout}>
-      <MovieCalendarBottomBar />
-      {isWeb && !isStart ? (
-        <AbsoluteRoundedButton
-          direction="left"
-          iconName="previous"
-          onPress={handleScrollPrevious}
-          accessibilityLabel="Faire défiler le calendrier vers la gauche"
-          testID="movie-calendar-left-arrow"
-        />
+    <React.Fragment>
+      {shouldDisplaySpecialEventBanner && !!specialEventBannerTitle ? (
+        <SpecialEventBannerContainer>
+          <SpecialEventBanner title={specialEventBannerTitle} />
+        </SpecialEventBannerContainer>
       ) : null}
-      <View>
-        <FlashList
-          onLayout={onFlatListLayout}
-          ref={listRef}
-          data={dates}
-          horizontal
-          contentContainerStyle={{ paddingHorizontal: MOVIE_CALENDAR_PADDING }}
-          showsHorizontalScrollIndicator={false}
-          onScroll={onScroll}
-          onContentSizeChange={onContentSizeChange}
-          testID="movie-calendar-flat-list"
-          renderItem={({ item: date }) => (
-            <MovieCalendarDay
-              onLayout={onItemLayout}
-              date={date}
-              selectedDate={selectedDate}
-              onTabChange={onInternalTabChange}
-              disabled={disabledDates?.map((d) => d.getTime()).includes(date.getTime())}
-            />
-          )}
-        />
-        {isWeb ? (
-          <React.Fragment>
-            <FadeLeft /> <FadeRight />
-          </React.Fragment>
+      <View onLayout={onContainerLayout}>
+        <MovieCalendarBottomBar />
+        {isWeb && !isStart ? (
+          <AbsoluteRoundedButton
+            direction="left"
+            iconName="previous"
+            onPress={handleScrollPrevious}
+            accessibilityLabel="Faire défiler le calendrier vers la gauche"
+            testID="movie-calendar-left-arrow"
+          />
+        ) : null}
+        <View>
+          <FlashList
+            onLayout={onFlatListLayout}
+            ref={listRef}
+            data={dates}
+            horizontal
+            contentContainerStyle={{ paddingHorizontal: MOVIE_CALENDAR_PADDING }}
+            showsHorizontalScrollIndicator={false}
+            onScroll={onScroll}
+            onContentSizeChange={onContentSizeChange}
+            testID="movie-calendar-flat-list"
+            renderItem={({ item: date }) => (
+              <MovieCalendarDay
+                onLayout={onItemLayout}
+                date={date}
+                selectedDate={selectedDate}
+                onTabChange={onInternalTabChange}
+                disabled={disabledDates?.map((d) => d.getTime()).includes(date.getTime())}
+              />
+            )}
+          />
+          {isWeb ? (
+            <React.Fragment>
+              <FadeLeft /> <FadeRight />
+            </React.Fragment>
+          ) : null}
+        </View>
+        {isWeb && !isEnd ? (
+          <AbsoluteRoundedButton
+            direction="right"
+            iconName="next"
+            onPress={handleScrollNext}
+            accessibilityLabel="Faire défiler le calendrier vers la droite"
+            testID="movie-calendar-right-arrow"
+          />
         ) : null}
       </View>
-      {isWeb && !isEnd ? (
-        <AbsoluteRoundedButton
-          direction="right"
-          iconName="next"
-          onPress={handleScrollNext}
-          accessibilityLabel="Faire défiler le calendrier vers la droite"
-          testID="movie-calendar-right-arrow"
-        />
-      ) : null}
-    </View>
+    </React.Fragment>
   )
 }
 
@@ -163,3 +175,8 @@ const FadeRight = styled(FadeComponent).attrs<{ colors?: string[] }>(({ theme })
 }))`
   right: -1px;
 `
+
+const SpecialEventBannerContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))

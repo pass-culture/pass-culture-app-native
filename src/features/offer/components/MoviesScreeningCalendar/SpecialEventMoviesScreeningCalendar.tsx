@@ -15,7 +15,9 @@ export const SpecialEventMoviesScreeningCalendar: FunctionComponent<Props> = ({ 
   const next15Dates = getDates(new Date(), 15)
 
   return (
-    <MovieCalendarProvider initialDates={next15Dates}>
+    <MovieCalendarProvider
+      initialDates={next15Dates}
+      specialEventBannerTitle="Des séances spéciales sont disponibles dans ce lieu.">
       <SpecialEventVenueCalendar venueOffers={venueOffers} offerIds={offerIds} />
     </MovieCalendarProvider>
   )
