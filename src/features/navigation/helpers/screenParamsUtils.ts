@@ -150,6 +150,8 @@ export const screenParamsParser: ParamsParsers = {
   PreviewInstallModal: {
     platform: identityFn,
     downloadUrl: identityFn,
+    channel: identityFn,
+    fingerprint: identityFn,
   },
   Home: {
     latitude: Number,

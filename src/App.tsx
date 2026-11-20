@@ -20,6 +20,7 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
+import { initPreviewChannel } from 'features/preview/initPreviewChannel'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { getDeviceInfo } from 'features/trustedDevice/helpers/getDeviceInfo'
@@ -66,6 +67,9 @@ const App: FunctionComponent = function () {
   useEffect(() => {
     initAlgoliaAnalytics()
     initLocation()
+    if (env.ENV === 'preview') {
+      void initPreviewChannel()
+    }
     BatchPush.refreshToken() //  Synchronizes the user's iOS token with Batch. Should be called at each app launch. No effect on Android.
     void BatchMessaging.setFontOverride(
       'Montserrat-Regular',

@@ -1,8 +1,9 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
+import { resolvePreviewInstallForModal } from 'features/preview/resolvePreviewInstallForModal'
 import { ModalScreenWrapper } from 'shared/ModalScreenWrapper/ModalScreenWrapper'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -12,18 +13,32 @@ import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 
-const PLATFORM_LABELS: Record<string, string> = {
+const PLATFORM_LABELS = {
   ios: 'iOS',
   android: 'Android',
-}
+} as const
 
 export const PreviewInstallModal: FunctionComponent = () => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'PreviewInstallModal'>>()
-  const downloadUrl = params?.downloadUrl
-  const platform = params?.platform
+  const { downloadUrl, platform, channel, fingerprint } = params
+  const [showDownload, setShowDownload] = useState(false)
 
   const platformLabel = platform ? PLATFORM_LABELS[platform] : undefined
+
+  useEffect(
+    () =>
+      void resolvePreviewInstallForModal({
+        channel,
+        fingerprint,
+        downloadUrl,
+        onMatched: goBack,
+        onMismatch: () => setShowDownload(true),
+      }),
+    [channel, downloadUrl, fingerprint, goBack]
+  )
+
+  if (!showDownload) return null
 
   return (
     <ModalScreenWrapper onClose={goBack} title="Installation preview">

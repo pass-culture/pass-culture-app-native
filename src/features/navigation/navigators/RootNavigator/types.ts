@@ -375,6 +375,8 @@ export type RootStackParamList = {
   PreviewInstallModal: {
     platform?: string
     downloadUrl?: string
+    channel?: string
+    fingerprint?: string
   }
 } & TrustedDeviceRootStackParamList
 

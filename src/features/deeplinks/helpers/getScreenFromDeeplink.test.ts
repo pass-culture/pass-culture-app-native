@@ -105,6 +105,26 @@ describe('getScreenFromDeeplink()', () => {
     })
   })
 
+  it('should return PreviewInstallModal with channel and fingerprint', () => {
+    const downloadUrl =
+      'https://appdistribution.firebase.google.com/testerapps/1:120827407785:android:fake/releases/abc'
+    const path = getScreenPath('PreviewInstallModal', {
+      platform: 'android',
+      downloadUrl,
+      channel: 'PC-1234',
+      fingerprint: 'abcFingerprintHash',
+    })
+    const { screen, params } = getScreenFromDeeplink(getFullUrl(path))
+
+    expect(screen).toEqual('PreviewInstallModal')
+    expect(params).toEqual({
+      platform: 'android',
+      downloadUrl,
+      channel: 'PC-1234',
+      fingerprint: 'abcFingerprintHash',
+    })
+  })
+
   it('should return PreviewInstallModal from custom scheme path', () => {
     const downloadUrl = 'https://appdistribution.firebase.google.com/testerapps/fake'
     const path = getScreenPath('PreviewInstallModal', {
