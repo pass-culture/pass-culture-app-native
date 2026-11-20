@@ -51,6 +51,11 @@ export const logAdjustBeneficiaryEvent = (user?: UserProfile) => {
 
       if (user.creditType === UserCreditType.CREDIT_V3_FREE) {
         Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY)
+        if (userAge && userAge === 15) {
+          Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY_15)
+        } else if (userAge && userAge === 16) {
+          Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY_16)
+        }
       }
 
       if (user.creditType === UserCreditType.CREDIT_V3_17) {

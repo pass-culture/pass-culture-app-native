@@ -16,6 +16,8 @@ export enum AdjustEvents {
   REGISTRATION_15 = '5shs10',
   REGISTRATION_16 = 'g4yc47',
   REGISTRATION_17 = 'nh95ua',
+  NEW_FREE_BENEFICIARY_15 = 'ooax19',
+  NEW_FREE_BENEFICIARY_16 = 'fhfl72',
 }
 
 export interface AdjustEventsStorage {
