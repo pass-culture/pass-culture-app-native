@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -64,7 +65,9 @@ class FingerprintLookupTest(unittest.TestCase):
 
     def test_existing_document_exposes_the_uri(self) -> None:
         self.assertEqual(
-            publish_preview_fingerprint.lookup_values("abc", "https://example.test/app"),
+            publish_preview_fingerprint.lookup_values(
+                "abc", "https://example.test/app"
+            ),
             {
                 "exists": "true",
                 "fingerprint_hash": "abc",
@@ -81,10 +84,12 @@ class PreviewQrTest(unittest.TestCase):
             "PC-39912",
             "hash_1",
         )
+        self.assertTrue(payload.startswith("passculturepreview://preview-install?"))
         self.assertIn("platform=android", payload)
         self.assertIn("channel=PC-39912", payload)
         self.assertIn("fingerprint=hash_1", payload)
         self.assertIn("downloadUrl=", payload)
+        self.assertNotIn("app.testing.passculture.team", payload)
 
     def test_ready_qr_encodes_the_same_payload(self) -> None:
         visual = update_preview_qr_comment.render_platform_visual(
@@ -96,8 +101,48 @@ class PreviewQrTest(unittest.TestCase):
                 fingerprint="ioshash",
             ),
         )
+        self.assertIn("passculturepreview", visual)
         self.assertIn("channel%3DPC-7", visual)
         self.assertIn("fingerprint%3Dioshash", visual)
+        self.assertNotIn("app.testing.passculture.team", visual)
+
+    def test_direct_install_qr_is_collapsed_until_the_app_is_missing(self) -> None:
+        ios_url = "https://example.test/ios"
+        android_url = "https://example.test/android"
+        body = update_preview_qr_comment.render_comment_body(
+            {
+                "web": update_preview_qr_comment.make_platform_state(
+                    status="ready",
+                    download_url="https://example.test/web",
+                ),
+                "ios": update_preview_qr_comment.make_platform_state(
+                    status="ready",
+                    download_url=ios_url,
+                    channel="PC-7",
+                    fingerprint="ioshash",
+                ),
+                "android": update_preview_qr_comment.make_platform_state(
+                    status="ready",
+                    download_url=android_url,
+                    channel="PC-7",
+                    fingerprint="androidhash",
+                ),
+            },
+            "abcdef1234567",
+        )
+        fallback = body.split("<details>", 1)[1].split("</details>", 1)[0]
+        self.assertIn("App de preview pas encore installée ?", fallback)
+        self.assertIn(f"text={urllib.parse.quote_plus(ios_url)}", fallback)
+        self.assertIn(f"text={urllib.parse.quote_plus(android_url)}", fallback)
+        self.assertNotIn("passculturepreview", fallback)
+        self.assertNotIn("example.test/web", fallback)
+
+    def test_install_fallback_is_omitted_without_a_native_build(self) -> None:
+        body = update_preview_qr_comment.render_comment_body(
+            update_preview_qr_comment.default_state(),
+            "abcdef1234567",
+        )
+        self.assertNotIn("<details>", body)
 
     def test_parse_state_keeps_channel_and_fingerprint(self) -> None:
         state = {
@@ -136,7 +181,10 @@ class PreviewQrTest(unittest.TestCase):
             check=False,
             capture_output=True,
             text=True,
-            env={"GITHUB_REPOSITORY": "pass-culture/pass-culture-app-native", "GITHUB_TOKEN": "token"},
+            env={
+                "GITHUB_REPOSITORY": "pass-culture/pass-culture-app-native",
+                "GITHUB_TOKEN": "token",
+            },
         )
         self.assertNotEqual(completed.returncode, 0)
         self.assertIn("--channel and --fingerprint", completed.stderr)
