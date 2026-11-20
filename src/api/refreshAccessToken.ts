@@ -9,7 +9,7 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 
 import { ApiError } from './ApiError'
-import { DefaultApi } from './gen'
+import type { NativeApi } from './nativeApi.gen'
 import {
   FAILED_TO_GET_REFRESH_TOKEN_ERROR,
   LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN,
@@ -29,10 +29,7 @@ export const scheduleAccessTokenRemoval = (accessToken: string): void => {
   setTimeout(removeRefreshedAccessToken, lifetimeInMs)
 }
 
-export const refreshAccessToken = async (
-  api: DefaultApi,
-  remainingRetries = 1
-): Promise<Result> => {
+export const refreshAccessToken = async (api: NativeApi, remainingRetries = 1): Promise<Result> => {
   if (!refreshedAccessToken) {
     refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
       (result) => {
@@ -53,7 +50,7 @@ export const refreshAccessToken = async (
  * - on error : clear storage propagates error
  */
 export const refreshAccessTokenWithRetriesOnError = async (
-  api: DefaultApi,
+  api: NativeApi,
   remainingRetries: number
 ): Promise<Result> => {
   const refreshToken = await getRefreshToken()
@@ -65,6 +62,7 @@ export const refreshAccessTokenWithRetriesOnError = async (
     const response = await api.postNativeV2RefreshAccessToken(
       { deviceInfo: deviceInfoStoreSelectors.selectDeviceInfo() },
       {
+        credentials: 'omit',
         headers: {
           Authorization: `Bearer ${refreshToken}`,
         },
