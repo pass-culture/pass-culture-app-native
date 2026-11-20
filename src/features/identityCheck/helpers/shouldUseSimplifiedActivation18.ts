@@ -5,7 +5,7 @@ import { UserProfile } from 'features/share/types'
 type Params = {
   enableSimplifiedActivation18: boolean
   user?: Pick<UserProfile, 'eligibilityType' | 'domainsCredit'> | null
-  underageOkIdentityCheckMethod?: SubscriptionStepperResponseV3['underageOkIdentityCheckMethod']
+  underageOkIdentityCheckMethod: SubscriptionStepperResponseV3['underageOkIdentityCheckMethod']
 }
 
 export const shouldUseSimplifiedActivation18 = ({
