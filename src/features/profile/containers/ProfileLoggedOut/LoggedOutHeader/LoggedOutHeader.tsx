@@ -49,7 +49,7 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const VerticalSeparator = styled.View(({ theme }) => ({
-  borderRightWidth: theme.designSystem.size.spacing.xxs,
+  borderRightWidth: theme.designSystem.size.spacing['2xs'],
   marginHorizontal: theme.designSystem.size.spacing.xl,
   borderRightColor: theme.designSystem.color.border.default,
 }))

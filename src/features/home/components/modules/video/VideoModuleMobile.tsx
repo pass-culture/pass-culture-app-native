@@ -36,7 +36,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleMobileProps> = (pro
 
   const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
-  const MONO_OFFER_CARD_VERTICAL_SPACING = designSystem.size.spacing.xxl
+  const MONO_OFFER_CARD_VERTICAL_SPACING = designSystem.size.spacing['2xl']
   const COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER =
     MONO_OFFER_CARD_VERTICAL_SPACING + monoOfferCardHeight
 
@@ -217,7 +217,7 @@ const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
 
 const PlayerContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: theme.designSystem.size.spacing.xxxxl,
+  top: theme.designSystem.size.spacing['4xl'],
   left: 0,
   right: 0,
   alignItems: 'center',
@@ -254,7 +254,7 @@ const ColorCategoryBackground = styled.View<{
 
 const VideoOfferContainer = styled.View(({ theme }) => ({
   overflow: 'visible',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const VideoMonoOfferTileWrapper = styled.View(({ theme }) => ({

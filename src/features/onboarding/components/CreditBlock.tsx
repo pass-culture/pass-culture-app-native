@@ -60,7 +60,7 @@ const Container = styled.View<{
     status === CreditStatus.ONGOING
       ? theme.designSystem.color.border.selected
       : theme.designSystem.color.border.disabled,
-  borderWidth: theme.designSystem.size.spacing.xxs,
+  borderWidth: theme.designSystem.size.spacing['2xs'],
   borderRadius: theme.designSystem.size.borderRadius.s,
   padding: theme.designSystem.size.spacing.l,
   overflow: 'hidden',

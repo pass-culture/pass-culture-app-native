@@ -59,7 +59,7 @@ const Wrapper = styled.View<{ backgroundColor: string; shouldWrap: boolean }>(
     maxWidth: shouldWrap ? '100%' : undefined,
     borderRadius: theme.designSystem.size.borderRadius.s,
     backgroundColor,
-    paddingVertical: theme.designSystem.size.spacing.xxs,
+    paddingVertical: theme.designSystem.size.spacing['2xs'],
     paddingHorizontal: theme.designSystem.size.spacing.xs,
   })
 )

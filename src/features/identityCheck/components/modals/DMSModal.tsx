@@ -66,7 +66,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
 )
 
 const ExternalLinkContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['2xl'],
 }))
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

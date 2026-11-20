@@ -59,7 +59,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(({
   theme,
   disabled,
 }) => {
-  const BORDER_WIDTH = theme.designSystem.size.spacing.xxs
+  const BORDER_WIDTH = theme.designSystem.size.spacing['2xs']
   return {
     minWidth: EVENT_CARD_WIDTH,
     minHeight: EVENT_CARD_HEIGHT,

@@ -78,7 +78,7 @@ const HeaderButtonContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   top: theme.isDesktopViewport
     ? theme.designSystem.size.spacing.xs
-    : theme.designSystem.size.spacing.xxs,
+    : theme.designSystem.size.spacing['2xs'],
   zIndex: theme.zIndex.header,
 }))
 

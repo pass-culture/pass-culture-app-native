@@ -104,21 +104,17 @@ export const CheatcodesScreenFeatureFlags = () => {
           sections={sections}
           keyExtractor={(item) => item.featureFlag}
           renderSectionHeader={({ section: { title, data } }) => (
-            <React.Fragment>
-              <StyledTitle2>
-                {title} ({data.length})
-              </StyledTitle2>
-            </React.Fragment>
+            <StyledTitle2>
+              {title} ({data.length})
+            </StyledTitle2>
           )}
           renderItem={({ item, index, section }) => (
-            <React.Fragment>
-              <StyledFeatureFlag isLastItem={index === section.data.length - 1}>
-                <Value numberOfLines={1}>{item.featureFlag}</Value>
-                <StyledTitle4 active={!!item.isFeatureFlagActive}>
-                  {item.isFeatureFlagActive ? 'Actif' : 'Inactif'}
-                </StyledTitle4>
-              </StyledFeatureFlag>
-            </React.Fragment>
+            <StyledFeatureFlag isLastItem={index === section.data.length - 1}>
+              <Value numberOfLines={1}>{item.featureFlag}</Value>
+              <StyledTitle4 active={!!item.isFeatureFlagActive}>
+                {item.isFeatureFlagActive ? 'Actif' : 'Inactif'}
+              </StyledTitle4>
+            </StyledFeatureFlag>
           )}
           ItemSeparatorComponent={ItemSeparator}
         />
@@ -139,7 +135,7 @@ const StyledFeatureFlag = styled.View<{ isLastItem: boolean }>(({ theme, isLastI
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginBottom: isLastItem ? theme.designSystem.size.spacing.xxxl : undefined,
+  marginBottom: isLastItem ? theme.designSystem.size.spacing['3xl'] : undefined,
 }))
 
 const StyledTitle4 = styled(Typo.Title4)<{ active: boolean }>(({ theme, active }) => ({

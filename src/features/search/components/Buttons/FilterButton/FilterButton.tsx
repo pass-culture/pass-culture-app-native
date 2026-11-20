@@ -41,14 +41,14 @@ const StyledTouchableLink = styled(InternalTouchableLink)<{
   navigateTo?: InternalTouchableLinkProps['navigateTo']
 }>(({ theme }) => ({
   display: 'flex',
-  width: theme.designSystem.size.spacing.xxxl,
-  height: theme.designSystem.size.spacing.xxxl,
+  width: theme.designSystem.size.spacing['3xl'],
+  height: theme.designSystem.size.spacing['3xl'],
 }))
 
 const RoundContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  width: theme.designSystem.size.spacing.xxxl,
+  width: theme.designSystem.size.spacing['3xl'],
   height: theme.inputs.height.small,
   borderRadius: theme.designSystem.size.borderRadius.xl,
   borderWidth: 1,

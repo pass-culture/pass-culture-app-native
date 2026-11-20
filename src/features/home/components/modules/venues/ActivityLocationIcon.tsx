@@ -23,7 +23,7 @@ export const ActivityLocationIcon = ({
   const StyledLocationPointerWithBorder = styled(LocationPointerWithBorder).attrs(({ theme }) => ({
     color: iconColor ?? theme.designSystem.color.icon.default,
     color2: backgroundColor ?? theme.designSystem.color.icon.inverted,
-    size: theme.designSystem.size.spacing.xxxl,
+    size: theme.designSystem.size.spacing['3xl'],
   }))``
 
   return (

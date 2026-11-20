@@ -87,7 +87,7 @@ const DateUsedText = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledReactionChoiceValidation = styled(ReactionChoiceValidation)(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxxxl,
+  marginBottom: theme.designSystem.size.spacing['4xl'],
 }))
 
 const Flex = styled.View<FlexStyle>(({ flex, justifyContent, alignItems, gap, flexDirection }) => ({

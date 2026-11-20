@@ -37,5 +37,5 @@ export const AdviceSectionWithAnchor: FunctionComponent<Props> = ({
 }
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
-  paddingBottom: theme.designSystem.size.spacing.xxl,
+  paddingBottom: theme.designSystem.size.spacing['2xl'],
 }))

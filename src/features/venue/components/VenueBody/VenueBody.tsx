@@ -124,7 +124,7 @@ export const VenueBody: FunctionComponent<Props> = ({
 
 const MarginContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
-  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginTop: theme.designSystem.size.spacing['3xl'],
 }))
 
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({

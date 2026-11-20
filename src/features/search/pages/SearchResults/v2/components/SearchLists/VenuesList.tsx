@@ -82,7 +82,7 @@ export const VenuesList: FC<{ searchFilters: FetchSearchResultsArgs }> = ({ sear
             onViewableItemsChanged={handleViewableItemsChanged}
             viewabilityConfig={SEARCH_LIST_VIEWABILITY_CONFIG}
             contentContainerStyle={{
-              paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+              paddingBottom: tabBar.height + designSystem.size.spacing['3xl'],
               paddingHorizontal: designSystem.size.spacing.xl,
             }}
             numColumns={nbrOfTilesToDisplay}

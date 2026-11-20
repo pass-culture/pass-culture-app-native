@@ -20,7 +20,7 @@ export const NoInformationPlaceholder = ({ isOpenToPublic }: Props) => (
 
 const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginHorizontal: theme.designSystem.size.spacing.xxl,
+  marginHorizontal: theme.designSystem.size.spacing['2xl'],
 }))
 
 const NoInfoIllustration = styled(CircledClock).attrs(({ theme }) => ({

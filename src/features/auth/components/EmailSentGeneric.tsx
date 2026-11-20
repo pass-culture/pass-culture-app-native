@@ -58,7 +58,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       </ButtonContainerFlexStart>
       <StyledView
         marginBottom={
-          additionalCTA ? designSystem.size.spacing.xxxl : designSystem.size.spacing.xl
+          additionalCTA ? designSystem.size.spacing['3xl'] : designSystem.size.spacing.xl
         }>
         {additionalCTA}
       </StyledView>

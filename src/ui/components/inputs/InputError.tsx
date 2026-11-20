@@ -26,7 +26,7 @@ export const InputError: FC<Props> = ({
     <ErrorMessage>
       {visible && messageId ? (
         <Container
-          numberOfSpacesTop={numberOfSpacesTop ?? theme.designSystem.size.spacing.xxs}
+          numberOfSpacesTop={numberOfSpacesTop ?? theme.designSystem.size.spacing['2xs']}
           accessibilityElementsHidden={accessibilityElementsHidden}
           importantForAccessibility={accessibilityElementsHidden ? 'no' : 'auto'}>
           <InputRule

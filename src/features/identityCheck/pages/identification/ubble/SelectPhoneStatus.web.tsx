@@ -59,14 +59,14 @@ const Separator = styled.View(({ theme }) => ({
 
 const StyledView = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
   gap: theme.designSystem.size.spacing.l,
 }))
 const Container = styled.View(({ theme }) => ({
   height: '100%',
   alignItems: 'center',
   marginHorizontal: theme.designSystem.size.spacing.xs,
-  marginVertical: theme.designSystem.size.spacing.xxl,
+  marginVertical: theme.designSystem.size.spacing['2xl'],
 }))
 
 const PhonePending = styled(InitialPhonePending).attrs(({ theme }) => ({

@@ -58,5 +58,5 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({
 }
 
 const SmallSubscribeButtonPlaceholder = styled.View(({ theme }) => ({
-  width: theme.designSystem.size.spacing.xxxl,
+  width: theme.designSystem.size.spacing['3xl'],
 }))

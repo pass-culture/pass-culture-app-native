@@ -94,7 +94,7 @@ export const IdentityCheckHonor = () => {
   )
 }
 const TextContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginTop: theme.designSystem.size.spacing['3xl'],
   marginBottom: theme.designSystem.size.spacing.l,
 }))
 

@@ -27,7 +27,7 @@ export function GenericOfficialPage({
 
   const getButtonSpaces = () => {
     if (buttons) {
-      return buttons.length === 1 ? designSystem.size.spacing.l : designSystem.size.spacing.xxl
+      return buttons.length === 1 ? designSystem.size.spacing.l : designSystem.size.spacing['2xl']
     }
     return designSystem.size.spacing.m
   }
@@ -84,7 +84,7 @@ const ButtonContainer = styled.View<{ index: number }>(({ theme, index }) => ({
   marginTop: index === 0 ? 0 : theme.designSystem.size.spacing.l,
 }))
 const TopTouch = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 const TitleContainer = styled.View(({ theme }) => ({
@@ -145,7 +145,7 @@ const LogoPassCultureContainer = styled.View({
 const EmptyContainer = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.m,
   borderBottomColor: theme.designSystem.color.border.default,
-  borderBottomWidth: theme.designSystem.size.spacing.xxs,
+  borderBottomWidth: theme.designSystem.size.spacing['2xs'],
 }))
 
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({

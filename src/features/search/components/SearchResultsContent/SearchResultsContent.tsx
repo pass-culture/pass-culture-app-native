@@ -431,7 +431,7 @@ const SkeletonContainer = styled.View(({ theme }) => ({
 }))
 
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBar.height + theme.designSystem.size.spacing.xxxl,
+  height: theme.tabBar.height + theme.designSystem.size.spacing['3xl'],
   alignItems: 'center',
 }))
 

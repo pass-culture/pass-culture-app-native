@@ -99,7 +99,7 @@ export const HitPlaceholder = () => {
         <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
         <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
         <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-        <TextPlaceholder width={designSystem.size.spacing.xxl} />
+        <TextPlaceholder width={designSystem.size.spacing['2xl']} />
       </View>
     </Row>
   )
@@ -114,7 +114,7 @@ export const BookingHitPlaceholder = () => {
         <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
         <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
         <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
-        <TextPlaceholder width={designSystem.size.spacing.xxl} marginBottom={2} />
+        <TextPlaceholder width={designSystem.size.spacing['2xl']} marginBottom={2} />
       </View>
     </Row>
   )
@@ -130,14 +130,14 @@ export const FavoriteHitPlaceholder = () => {
           <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
           <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
           <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-          <TextPlaceholder width={designSystem.size.spacing.xxl} />
+          <TextPlaceholder width={designSystem.size.spacing['2xl']} />
         </View>
       </Row>
       <FavoriteActionsContainer gap={4}>
         <FirstButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
-            height={designSystem.size.spacing.xxxxl}
+            height={designSystem.size.spacing['4xl']}
             width={getSpacing(40)}
             fullWidth
           />
@@ -145,7 +145,7 @@ export const FavoriteHitPlaceholder = () => {
         <ButtonContainer>
           <BasePlaceholder
             radius={designSystem.size.borderRadius.xl}
-            height={designSystem.size.spacing.xxxxl}
+            height={designSystem.size.spacing['4xl']}
             width={getSpacing(40)}
             fullWidth
           />

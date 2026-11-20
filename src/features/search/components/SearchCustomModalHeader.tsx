@@ -102,6 +102,6 @@ const StyledTitle4 = styled(Typo.Title4)({
 })
 
 const StyledCloseButton = styledButton(CloseButton)(({ theme }) => ({
-  width: theme.designSystem.size.spacing.xxxl,
-  height: theme.designSystem.size.spacing.xxxl,
+  width: theme.designSystem.size.spacing['3xl'],
+  height: theme.designSystem.size.spacing['3xl'],
 }))

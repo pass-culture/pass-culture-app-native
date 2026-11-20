@@ -95,7 +95,7 @@ const FlexContainer = styled.View(({ theme }) => ({
 
 const FlexContainerWithMargin = styled(FlexContainer)(({ theme }) => ({
   ...(theme.isDesktopViewport && {
-    marginLeft: theme.designSystem.size.spacing.xxxxl,
+    marginLeft: theme.designSystem.size.spacing['4xl'],
   }),
   paddingTop: theme.designSystem.size.spacing.s,
   marginBottom: theme.designSystem.size.spacing.s,

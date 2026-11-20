@@ -86,7 +86,7 @@ const ModalContainer = styled.View<{ isFooterFixed: boolean }>(({ theme, isFoote
   height: isFooterFixed ? '100%' : undefined,
   width: '100%',
   overflow: 'hidden',
-  padding: theme.designSystem.size.spacing.xxl,
+  padding: theme.designSystem.size.spacing['2xl'],
   paddingBottom: theme.designSystem.size.spacing.xl,
   backgroundColor: theme.designSystem.color.background.default,
 }))
@@ -113,7 +113,7 @@ const ChildrenContainer = styled.View<{ fillAvailableSpace: boolean }>(
 )
 
 const AdaptiveFooter = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['2xl'],
 }))
 
 const Description = styled(Typo.Body)(({ theme }) => ({

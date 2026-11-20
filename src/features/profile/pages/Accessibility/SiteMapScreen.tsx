@@ -124,7 +124,7 @@ const ItemContainer = styled.View<{ spacing?: number }>(({ theme }) => ({
 
 const NestedItemContainer = styled.View<{ spacing?: number }>(({ theme }) => ({
   flexDirection: 'row',
-  marginLeft: theme.designSystem.size.spacing.xxl,
+  marginLeft: theme.designSystem.size.spacing['2xl'],
 }))
 
 const Bullet = styled(Dot).attrs({

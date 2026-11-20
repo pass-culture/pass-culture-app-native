@@ -63,10 +63,10 @@ function buildShadow(
 function buildThemeShadowInput(theme: DefaultTheme): InputShadow {
   return {
     shadowOffset: {
-      width: theme.designSystem.size.spacing.xxs,
+      width: theme.designSystem.size.spacing['2xs'],
       height: theme.designSystem.size.spacing.m,
     },
-    shadowRadius: theme.designSystem.size.spacing.xxl,
+    shadowRadius: theme.designSystem.size.spacing['2xl'],
     shadowColor: theme.designSystem.color.background.shadowOverlay,
   }
 }

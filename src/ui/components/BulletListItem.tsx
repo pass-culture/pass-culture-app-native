@@ -94,7 +94,7 @@ const ItemContainer = styled.View<{ spacing?: number }>(({ theme, spacing }) => 
 
 const NestedItemContainer = styled.View<{ spacing?: number }>(({ theme, spacing }) => ({
   flexDirection: 'row',
-  marginLeft: theme.designSystem.size.spacing.xxl,
+  marginLeft: theme.designSystem.size.spacing['2xl'],
   marginTop: spacing ? getSpacing(spacing) : 0,
 }))
 

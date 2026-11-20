@@ -7,7 +7,7 @@ import { Show } from 'ui/svg/icons/Show'
 import { Sort } from 'ui/svg/icons/Sort'
 import { Store } from 'ui/svg/icons/venueAndCategories/Store'
 
-export const FILTER_BANNER_HEIGHT = theme.designSystem.size.spacing.xxxxl
+export const FILTER_BANNER_HEIGHT = theme.designSystem.size.spacing['4xl']
 export const MARKER_LABEL_MARGIN_TOP = theme.designSystem.size.spacing.xs
 export const MARKER_SIZE = { width: 44, height: 50 }
 export const MARKER_LABEL_VISIBILITY_LIMIT = {

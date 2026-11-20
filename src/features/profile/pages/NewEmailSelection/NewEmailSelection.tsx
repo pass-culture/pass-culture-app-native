@@ -84,5 +84,5 @@ export const NewEmailSelection = () => {
 
 const Container = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))

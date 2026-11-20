@@ -210,7 +210,7 @@ export const VenuePlaylist: React.FC<Props> = ({
 }
 
 const Container = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const HeaderPlaylistContainer = styled.View<{ withMargins: boolean }>(({ theme, withMargins }) => ({

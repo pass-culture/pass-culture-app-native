@@ -114,7 +114,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const ProgressBarContainer = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.designSystem.size.spacing.xxxl,
+  paddingHorizontal: theme.designSystem.size.spacing['3xl'],
 }))
 
 const Amount = styled(Typo.Title2).attrs(setTextSemantic('p'))(({ theme }) => ({

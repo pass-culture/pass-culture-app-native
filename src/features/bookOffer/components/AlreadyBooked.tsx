@@ -54,7 +54,7 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
 }))
 
 const TouchableContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxxxl,
+  marginTop: theme.designSystem.size.spacing['4xl'],
   width: '100%',
 }))
 const Container = styled.View({

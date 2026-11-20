@@ -318,7 +318,7 @@ const ChildrenContainer = styled.View(({ theme }) => ({
 const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean; marginButton: number }>(
   ({ isLandscape, theme, marginButton }) => ({
     alignItems: 'center',
-    marginBottom: isLandscape ? getSpacing(40) : theme.designSystem.size.spacing.xxxl,
+    marginBottom: isLandscape ? getSpacing(40) : theme.designSystem.size.spacing['3xl'],
     marginTop: marginButton,
   })
 )

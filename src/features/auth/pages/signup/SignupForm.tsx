@@ -273,5 +273,5 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
 
 const Placeholder = styled.View<{ height: number }>(({ height, theme }) => ({
   height,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))

@@ -74,9 +74,9 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const CookiesSettingsContainer = styled.View(({ theme }) => ({
-  paddingVertical: theme.designSystem.size.spacing.xxl,
+  paddingVertical: theme.designSystem.size.spacing['2xl'],
 }))
 
 const StyledView = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))

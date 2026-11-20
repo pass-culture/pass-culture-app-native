@@ -96,4 +96,4 @@ export const FavoritesList: FunctionComponent<FavoritesListProps> = ({
   )
 }
 
-const Footer = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.xxxxl }))
+const Footer = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing['4xl'] }))

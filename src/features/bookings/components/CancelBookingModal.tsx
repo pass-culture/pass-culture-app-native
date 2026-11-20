@@ -130,7 +130,7 @@ const Refund = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const CancelButtonContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['2xl'],
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 

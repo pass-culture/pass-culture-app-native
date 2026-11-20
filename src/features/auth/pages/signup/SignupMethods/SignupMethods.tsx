@@ -85,7 +85,7 @@ export const SignupMethods: FunctionComponent = () => {
 
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 const TitleContainer = styled.View(({ theme }) => ({

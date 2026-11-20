@@ -238,7 +238,7 @@ export const NotificationsSettings = () => {
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 const BannerContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
@@ -266,7 +266,7 @@ const StyledView = styled.View(({ theme }) => ({
 const Container = styled.View(({ theme }) => ({
   width: '100%',
   alignSelf: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 type ToggleActions =

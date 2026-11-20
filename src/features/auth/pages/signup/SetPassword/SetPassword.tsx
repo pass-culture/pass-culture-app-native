@@ -68,5 +68,5 @@ const ButtonPrimaryContainer = styled.View(({ theme }) => ({
 }))
 
 const PasswordInputContainer = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xxxl,
+  marginVertical: theme.designSystem.size.spacing['3xl'],
 }))

@@ -71,6 +71,6 @@ const BicolorLocationPointer = styled(RingingBell).attrs(({ theme }) => ({
 }))``
 
 const InformationTextContainer = styled(ViewGap)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginTop: theme.designSystem.size.spacing['3xl'],
   marginBottom: theme.designSystem.size.spacing.xl,
 }))

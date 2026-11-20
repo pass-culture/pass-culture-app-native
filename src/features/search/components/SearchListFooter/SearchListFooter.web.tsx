@@ -50,7 +50,7 @@ export const SearchListFooter = ({
 SearchListFooter.displayName = 'SearchListFooter'
 
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBar.height + theme.designSystem.size.spacing.xxxl,
+  height: theme.tabBar.height + theme.designSystem.size.spacing['3xl'],
   alignItems: 'center',
   justifyContent: 'center',
 }))

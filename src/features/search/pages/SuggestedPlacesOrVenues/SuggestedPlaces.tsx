@@ -93,7 +93,7 @@ const StyledLi = styled(Li)<{ marginBottom?: boolean }>(({ theme, marginBottom }
   marginBottom: marginBottom ? theme.designSystem.size.spacing.l : 0,
 }))
 const ListIconWrapper = styled.View(({ theme }) => ({
-  marginRight: theme.designSystem.size.spacing.xxs,
+  marginRight: theme.designSystem.size.spacing['2xs'],
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

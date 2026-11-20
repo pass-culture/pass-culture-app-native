@@ -52,8 +52,8 @@ export const AdviceCard: FunctionComponent<AdviceCardProps> = ({
           icon
         )
       }
-      defaultThumbnailSize={theme.designSystem.size.spacing.xxxxl}
-      defaultThumbnailHeight={thumbnailHeight ?? theme.designSystem.size.spacing.xxxxl}
+      defaultThumbnailSize={theme.designSystem.size.spacing['4xl']}
+      defaultThumbnailHeight={thumbnailHeight ?? theme.designSystem.size.spacing['4xl']}
       rightComponent={
         headerNavigateTo ? (
           <RightFilled size={theme.designSystem.size.icon.s} testID="RightFilled" />
@@ -98,8 +98,8 @@ const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
 
 const Thumbnail = styled(Image)<{ height?: number }>(({ theme, height }) => ({
   borderRadius: theme.designSystem.size.borderRadius.s,
-  height: height ?? theme.designSystem.size.spacing.xxxxl,
-  width: theme.designSystem.size.spacing.xxxxl,
+  height: height ?? theme.designSystem.size.spacing['4xl'],
+  width: theme.designSystem.size.spacing['4xl'],
   borderColor: theme.designSystem.color.border.subtle,
   borderWidth: 1,
 }))

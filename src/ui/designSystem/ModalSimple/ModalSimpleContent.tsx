@@ -34,7 +34,7 @@ export const ModalSimpleContent: FunctionComponent<BaseModalSimpleProps> = ({
 const ModalContainer = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   backgroundColor: theme.designSystem.color.background.default,
-  paddingHorizontal: theme.designSystem.size.spacing.xxl,
+  paddingHorizontal: theme.designSystem.size.spacing['2xl'],
   paddingTop: theme.designSystem.size.spacing.s,
 }))
 

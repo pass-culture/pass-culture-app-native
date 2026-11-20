@@ -17,7 +17,7 @@ export const TabBarBadge: React.FC<Props> = ({ testID, children }) => (
 
 const BadgeDot = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: -theme.designSystem.size.spacing.xxs,
+  top: -theme.designSystem.size.spacing['2xs'],
   right: -theme.designSystem.size.spacing.xs,
   minWidth: theme.designSystem.size.spacing.m,
   minHeight: theme.designSystem.size.spacing.m,
