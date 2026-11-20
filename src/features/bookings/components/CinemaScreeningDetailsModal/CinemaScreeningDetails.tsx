@@ -12,16 +12,22 @@ import { CinemaScreeningDetail } from './types'
 
 type Props = {
   details: CinemaScreeningDetail[]
+  withSeparator?: boolean
 }
 
-export const CinemaScreeningDetails: FunctionComponent<Props> = ({ details }) => {
+export const CinemaScreeningDetails: FunctionComponent<Props> = ({
+  details,
+  withSeparator = true,
+}) => {
   const { designSystem } = useTheme()
 
   return (
     <DetailsContainer gap={4}>
       {details.map((detail, index) => (
         <DetailGroup key={`${detail.category}-${detail.label}-${index}`} gap={4}>
-          {index > 0 ? <Separator.Horizontal color={designSystem.color.border.subtle} /> : null}
+          {withSeparator && index > 0 ? (
+            <Separator.Horizontal color={designSystem.color.border.subtle} />
+          ) : null}
 
           <DetailContainer testID={`cinema-screening-detail-${detail.category}-${index}`} gap={1}>
             {detail.type === 'tag' ? (
