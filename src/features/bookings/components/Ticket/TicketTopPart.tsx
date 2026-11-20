@@ -26,6 +26,7 @@ type TicketTopPartProps = {
   ean?: string
   expirationDate?: string
   withdrawLabel?: string
+  cinemaScreeningFeatures?: React.JSX.Element
 }
 
 export const TicketTopPart = ({
@@ -40,56 +41,59 @@ export const TicketTopPart = ({
   ean,
   expirationDate,
   withdrawLabel,
+  cinemaScreeningFeatures,
 }: TicketTopPartProps) => {
   return (
     <ViewGap gap={6}>
       <Typo.Title2 {...setTextSemantic('h1')}>{title}</Typo.Title2>
-      <ViewGap gap={2}>
-        {user.firstName && user.lastName ? (
-          <Row>
-            <StyledProfileFilled />
-            <Typo.Body>
-              {user.firstName} {user.lastName}
-            </Typo.Body>
-          </Row>
-        ) : null}
-        {withdrawLabel ? (
-          <Row>
-            <StyledStock />
-            <Typo.Body>{withdrawLabel}</Typo.Body>
-          </Row>
-        ) : null}
-        {day ? (
-          <Row>
-            <StyledCalendarS />
-            <Typo.Body>{day}</Typo.Body>
-          </Row>
-        ) : null}
-        {hour ? (
-          <Row>
-            <StyledClockFilled />
-            <Typo.Body>{hour}</Typo.Body>
-          </Row>
-        ) : null}
-        {expirationDate ? (
-          <Row>
-            <StyledCalendarS />
-            <Typo.Body>{expirationDate}</Typo.Body>
-          </Row>
-        ) : null}
-        {ean ? (
-          <Row>
-            <StyledBook />
-            <Typo.Body>EAN&nbsp;: {ean}</Typo.Body>
-          </Row>
-        ) : null}
-        {isDuo ? (
-          <Row>
-            <StyledStock />
-            <Typo.Body>Pour deux personnes</Typo.Body>
-          </Row>
-        ) : null}
-
+      <ViewGap gap={cinemaScreeningFeatures ? 4 : 2}>
+        {cinemaScreeningFeatures}
+        <ViewGap gap={2}>
+          {user.firstName && user.lastName ? (
+            <Row>
+              <StyledProfileFilled />
+              <Typo.Body>
+                {user.firstName} {user.lastName}
+              </Typo.Body>
+            </Row>
+          ) : null}
+          {withdrawLabel ? (
+            <Row>
+              <StyledStock />
+              <Typo.Body>{withdrawLabel}</Typo.Body>
+            </Row>
+          ) : null}
+          {day ? (
+            <Row>
+              <StyledCalendarS />
+              <Typo.Body>{day}</Typo.Body>
+            </Row>
+          ) : null}
+          {hour ? (
+            <Row>
+              <StyledClockFilled />
+              <Typo.Body>{hour}</Typo.Body>
+            </Row>
+          ) : null}
+          {expirationDate ? (
+            <Row>
+              <StyledCalendarS />
+              <Typo.Body>{expirationDate}</Typo.Body>
+            </Row>
+          ) : null}
+          {ean ? (
+            <Row>
+              <StyledBook />
+              <Typo.Body>EAN&nbsp;: {ean}</Typo.Body>
+            </Row>
+          ) : null}
+          {isDuo ? (
+            <Row>
+              <StyledStock />
+              <Typo.Body>Pour deux personnes</Typo.Body>
+            </Row>
+          ) : null}
+        </ViewGap>
         <LinkToOffer offer={offer} mapping={mapping} />
       </ViewGap>
       {venueInfo}

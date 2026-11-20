@@ -3,7 +3,10 @@ import { QueryClient } from '@tanstack/react-query'
 import { BookingsResponseV2, BookOfferResponse } from 'api/gen'
 import { beneficiaryUser } from 'fixtures/user'
 import { Adjust } from 'libs/adjust/adjust'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { prefetchBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
+import { prefetchBookingByIdV3Query } from 'queries/bookings/useBookingByIdV3Query'
 import { prefetchBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { AdjustEvents } from 'shared/adjust/adjustEvents'
@@ -33,10 +36,16 @@ jest.mock('queries/bookings/useBookingsQuery', () => ({
   prefetchBookingsV2Query: jest.fn(),
 }))
 
+jest.mock('queries/bookings/useBookingByIdV3Query', () => ({
+  ...jest.requireActual('queries/bookings/useBookingByIdV3Query'),
+  prefetchBookingByIdV3Query: jest.fn(),
+}))
+
 jest.mock('libs/jwt/jwt')
 
 describe('useBookOfferMutation', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockAuthContextWithUser({
       ...beneficiaryUser,
     })
@@ -91,6 +100,23 @@ describe('useBookOfferMutation', () => {
 
     expect(prefetchBookingByIdQuery).toHaveBeenCalledWith(bookingId, true)
     expect(prefetchBookingsV2Query).toHaveBeenCalledTimes(1)
+  })
+
+  it('prefetches V3 booking details when special event screenings are enabled', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
+    const bookingId = 123
+
+    mockServer.postApi<BookOfferResponse>('/v1/bookings', { bookingId })
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {})
+
+    const { result } = renderUseBookOfferMutation()
+
+    result.current.mutate({ quantity: 1, stockId: 10 })
+
+    await waitFor(() => expect(props.onSuccess).toHaveBeenCalledTimes(1))
+
+    expect(prefetchBookingByIdV3Query).toHaveBeenCalledWith(bookingId, true)
+    expect(prefetchBookingByIdQuery).not.toHaveBeenCalled()
   })
 
   describe('Adjust event', () => {

@@ -4,18 +4,23 @@ import { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { BookingResponse, SubcategoryIdEnum, TicketResponse, WithdrawalTypeEnum } from 'api/gen'
+import { CinemaScreeningFeatures } from 'features/bookings/components/CinemaScreeningFeatures'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
 import { getBookingLabelsV2, getEventOnSiteWithdrawLabelV2 } from 'features/bookings/helpers'
 import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels'
+import { getTicketCinemaScreening } from 'features/bookings/helpers/getTicketCinemaScreening'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
+import { BookingDetailsResponse } from 'features/bookings/queries/selectors/selectBookingDetails'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -24,7 +29,7 @@ import { IdCard } from 'ui/svg/icons/IdCard'
 
 type TicketProps = {
   properties: BookingProperties
-  booking: BookingResponse
+  booking: BookingResponse | BookingDetailsResponse
   mapping: SubcategoriesMapping
   user: UserProfile
   display: 'punched' | 'full'
@@ -43,6 +48,9 @@ export const Ticket = ({
 }: TicketProps) => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
   const { designSystem } = useTheme()
+  const enableSpecialEventScreenings = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS
+  )
 
   const { mutate: archiveBooking } = useArchiveBookingMutation({
     bookingId: booking.id,
@@ -58,6 +66,10 @@ export const Ticket = ({
   })
 
   const { offer } = booking.stock
+  const cinemaScreening = getTicketCinemaScreening(booking, enableSpecialEventScreenings)
+  const onPressCinemaScreeningDetails = cinemaScreening?.hasDetails
+    ? () => navigate('CinemaScreeningDetailsModal', { id: booking.id })
+    : undefined
   const { address, subcategoryId } = offer
 
   const offerFullAddress = address
@@ -126,6 +138,14 @@ export const Ticket = ({
           offer={offer}
           mapping={mapping}
           withdrawLabel={onSiteWithdrawLabel}
+          cinemaScreeningFeatures={
+            cinemaScreening ? (
+              <CinemaScreeningFeatures
+                features={cinemaScreening.features}
+                onPressDetails={onPressCinemaScreeningDetails}
+              />
+            ) : undefined
+          }
           venueInfo={
             <VenueBlockWithItinerary
               properties={properties}

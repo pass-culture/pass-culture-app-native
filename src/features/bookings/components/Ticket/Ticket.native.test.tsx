@@ -6,6 +6,7 @@ import { SubcategoryIdEnum, TicketDisplayEnum } from 'api/gen'
 import { Ticket } from 'features/bookings/components/Ticket/Ticket'
 import { BookingProperties } from 'features/bookings/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -32,6 +33,8 @@ const properties: BookingProperties = {
 }
 
 describe('<Ticket />', () => {
+  beforeEach(() => setFeatureFlags())
+
   it('should archive booking when pressing the partner button', async () => {
     renderTicket({ subcategoryId: SubcategoryIdEnum.LIVRE_NUMERIQUE })
 
