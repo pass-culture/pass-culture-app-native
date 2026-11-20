@@ -381,6 +381,7 @@ module.exports = [
         'error',
         {
           devDependencies: [
+            'scripts/**',
             '**/tests/**',
             '**/__tests__/**',
             '**/__mocks__/**',
