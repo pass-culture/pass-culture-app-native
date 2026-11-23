@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test'
+import { Page, test as base } from '@playwright/test'
 
 import { deactivateOffer, generateBeneficiaryUser, generateCinemaOffer } from './helpers/e2eApi'
 import { BookingPage } from './pages/BookingPage'
@@ -31,7 +31,7 @@ type Fixtures = {
   offerPage: OfferPage
   bookingPage: BookingPage
   beneficiaryUser: BeneficiaryUser
-  authenticatedPage: import('@playwright/test').Page
+  authenticatedPage: Page
   cinemaOffer: CinemaOffer
 }
 
