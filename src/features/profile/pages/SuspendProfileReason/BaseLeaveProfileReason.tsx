@@ -5,7 +5,11 @@ import styled from 'styled-components/native'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -37,6 +41,7 @@ export const BaseLeaveProfileReason = ({
   onAnalyticsLog,
 }: BaseLeaveProfileReasonProps) => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   return (
     <PageWithHeader
@@ -46,7 +51,15 @@ export const BaseLeaveProfileReason = ({
       scrollChildren={
         <ContentContainer gap={4}>
           <HeaderContainer>
-            <StyledIcon />
+            {enableNewVisionUi ? (
+              <RemoteIllustration
+                url={remoteIllustrationUrls.cryingManPaintingLarge}
+                backgroundColor="negative01"
+                size="s"
+              />
+            ) : (
+              <StyledIcon />
+            )}
             <TitlesContainer>
               <Typo.Title3 {...setTextSemantic('h1')}>{title}</Typo.Title3>
               <Typo.Body>{subtitle}</Typo.Body>

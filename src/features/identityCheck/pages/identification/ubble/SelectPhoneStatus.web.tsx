@@ -1,8 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { PhonePending as InitialPhonePending } from 'ui/svg/icons/PhonePending'
@@ -22,6 +26,7 @@ export const SelectPhoneStatus: FunctionComponent = () => {
 
 const SelectPhoneStatusContent: FunctionComponent = () => {
   const { designSystem } = useTheme()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
 
   const buttonList = [
     <HeroButtonList
@@ -40,7 +45,15 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
 
   return (
     <Container>
-      <PhonePending />
+      {enableNewVisionUi ? (
+        <RemoteIllustration
+          url={remoteIllustrationUrls.phoneHourglass}
+          backgroundColor="pending01"
+          size="s"
+        />
+      ) : (
+        <PhonePending />
+      )}
       <StyledView>
         <StyledTitle4>Vérifie ton identité avec un smartphone</StyledTitle4>
         <StyledBody>

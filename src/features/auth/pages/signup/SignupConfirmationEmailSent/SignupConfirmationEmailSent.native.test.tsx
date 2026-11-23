@@ -4,6 +4,8 @@ import { openInbox } from 'react-native-email-link'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -36,6 +38,15 @@ describe('<SignupConfirmationEmailSent />', () => {
       }
     )
     mockIsMailAppAvailable = true
+    setFeatureFlags()
+  })
+
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    renderSignupConfirmationEmailSent()
+
+    expect(await screen.findByTestId('remote-illustration')).toBeOnTheScreen()
   })
 
   it('should open faq webpage when clicking on consult help support', async () => {

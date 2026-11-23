@@ -5,15 +5,29 @@ import { BonificationType } from 'features/bonification/enums'
 import { BonificationRequiredInformation } from 'features/bonification/pages/BonificationRequiredInformation'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/env'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('BonificationRequiredInformation', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   describe('Family quotient bonification', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { bonificationType: BonificationType.FAMILY_QUOTIENT } })
+    })
+
+    it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+      render(<BonificationRequiredInformation />)
+
+      expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
     })
 
     it('should navigate to BonificationNames when pressing "Commencer"', async () => {

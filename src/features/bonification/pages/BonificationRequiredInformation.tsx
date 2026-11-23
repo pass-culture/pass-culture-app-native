@@ -8,8 +8,12 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/
 import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { Form } from 'ui/components/Form'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -24,6 +28,7 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 export const BonificationRequiredInformation = () => {
   const { params } = useRoute<UseRouteType<'BonificationRequiredInformation'>>()
   const { navigate } = useNavigation<UseNavigationType>()
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const isDisabilityBonification = params?.bonificationType === BonificationType.DISABILITY
 
   const title = isDisabilityBonification
@@ -53,7 +58,15 @@ export const BonificationRequiredInformation = () => {
         <Form.MaxWidth>
           <ViewGap gap={4}>
             <Container>
-              <IdCardWithMagnifyingGlass />
+              {enableNewVisionUi ? (
+                <RemoteIllustration
+                  url={remoteIllustrationUrls.sculptureMagnifyingGlassPaperSmall}
+                  backgroundColor="information02"
+                  size="s"
+                />
+              ) : (
+                <IdCardWithMagnifyingGlass />
+              )}
             </Container>
             <StyledTitle3 {...setTextSemantic('h2')}>{title}</StyledTitle3>
             <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>

@@ -7,6 +7,7 @@ import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { render, screen, userEvent } from 'tests/utils'
@@ -49,6 +50,14 @@ describe('<AccountCreated />', () => {
     await screen.findByText('Ton compte a été activé !')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    renderAccountCreated()
+
+    expect(await screen.findByTestId('remote-illustration')).toBeOnTheScreen()
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked', async () => {

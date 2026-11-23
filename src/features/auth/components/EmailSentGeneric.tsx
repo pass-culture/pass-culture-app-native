@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
+import { RemoteIllustration, RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -22,6 +23,7 @@ type Props = {
   additionalCTA?: React.ReactNode
   consultFaqAnalytics?: () => Promise<void>
   openInBoxAnalytics?: () => Promise<void>
+  remoteIllustration?: Pick<RemoteIllustrationProps, 'url' | 'backgroundColor'>
 }
 
 export const EmailSentGeneric: FunctionComponent<Props> = ({
@@ -31,13 +33,18 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
   additionalCTA,
   consultFaqAnalytics,
   openInBoxAnalytics,
+  remoteIllustration,
 }) => {
   const isMailAppAvailable = useIsMailAppAvailable()
   const { designSystem } = useTheme()
   return (
     <ViewGap gap={4}>
       <IllustrationContainer>
-        <StyledEmailSent />
+        {remoteIllustration ? (
+          <RemoteIllustration {...remoteIllustration} size="s" />
+        ) : (
+          <StyledEmailSent />
+        )}
       </IllustrationContainer>
       <Typo.Title3 {...setTextSemantic('h2')}>{title}</Typo.Title3>
       <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
