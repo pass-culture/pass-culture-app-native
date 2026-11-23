@@ -5,13 +5,13 @@ import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { CinemaScreeningDetail } from 'features/bookings/components/CinemaScreeningDetailsModal/types'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { getScreeningDetails } from 'features/bookOffer/helpers/getScreeningDetails'
 import { CINEMA_SCREENING_ACCESSIBILITY_ENTRIES } from 'features/offer/components/CinemaScreeningCard/constants'
-import { getScreeningDetails } from 'features/offer/components/OfferCine/getScreeningDetails'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { formatToCompleteFrenchDateTime, formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
+import { useOfferStockScreeningFeaturesQuery } from 'queries/offer/useOfferStockScreeningFeaturesQuery'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -32,13 +32,17 @@ const ExpirationDate: React.FC<{
 export const BookingInformations = () => {
   const { bookingState } = useBookingContext()
   const offer = useBookingOfferQuery()
-  const stock = useBookingStock()
+  const { data: stock } = useOfferStockScreeningFeaturesQuery(
+    bookingState.offerId,
+    bookingState.stockId
+  )
   const mapping = useSubcategoriesMapping()
   const { quantity } = bookingState
 
   if (!stock || typeof quantity !== 'number' || !offer) return null
 
-  const screeningDetails = getScreeningDetails(stock.features)
+  const screeningDetails = getScreeningDetails(stock.screeningFeatures)
+  const language = stock.screeningFeatures?.language
   const { isDigital, name } = offer
 
   const price =
@@ -47,7 +51,7 @@ export const BookingInformations = () => {
         unitPrice={stock.price}
         label={stock.priceCategoryLabel}
         quantity={quantity}
-        attributes={stock.features}
+        attributes={language ? [language] : []}
       />
     ) : (
       'Gratuit'
@@ -86,7 +90,7 @@ export const BookingInformations = () => {
     )
   }
 
-  const expirationDate = stock?.activationCode?.expirationDate
+  const expirationDate = stock.activationCode?.expirationDate
 
   return (
     <React.Fragment>

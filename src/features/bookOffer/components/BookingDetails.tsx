@@ -16,9 +16,8 @@ import {
   getBookingDetails,
   getVenueBookingDetails,
 } from 'features/bookOffer/helpers/getBookingDetails'
-import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { getScreeningDetails } from 'features/bookOffer/helpers/getScreeningDetails'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
-import { getScreeningDetails } from 'features/offer/components/OfferCine/getScreeningDetails'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
@@ -28,6 +27,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { usePlace, useLocationMode, useUserLocation } from 'libs/locationV2/location.store'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
+import { useOfferStockScreeningFeaturesQuery } from 'queries/offer/useOfferStockScreeningFeaturesQuery'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/helpers/hiddenFromScreenReader'
@@ -69,7 +69,10 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
 export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) => {
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
-  const selectedStock = useBookingStock()
+  const { data: selectedStock } = useOfferStockScreeningFeaturesQuery(
+    bookingState.offerId,
+    bookingState.stockId
+  )
   const offer = useBookingOfferQuery()
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
@@ -135,17 +138,19 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { visible, hideModal, showModal } = useModal(false)
 
-  useEffect(() => {
-    // For offers of type Thing, we don't manually select a date (thus a stock).
-    // So we select it programmatically given the bookable stocks.
-    const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
+  useEffect(
+    function selectFirstBookableStock() {
+      // For offers of type Thing, we don't manually select a date (thus a stock).
+      // So we select it programmatically given the bookable stocks.
+      const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
 
-    if (!selectedStock && firstBookableStock) {
-      dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
-      dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stocks, selectedStock])
+      if (bookingState.stockId === undefined && firstBookableStock) {
+        dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
+        dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+      }
+    },
+    [bookingState.stockId, dispatch, stocks]
+  )
 
   // Change step to confirmation if no event offer
   useEffect(() => {
@@ -177,7 +182,7 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
 
   if (!selectedStock || typeof quantity !== 'number') return null
 
-  const screeningDetails = getScreeningDetails(selectedStock.features)
+  const screeningDetails = getScreeningDetails(selectedStock.screeningFeatures)
 
   const {
     formattedPriceWithEuro,

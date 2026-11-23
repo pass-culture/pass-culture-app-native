@@ -1,18 +1,31 @@
-import { getScreeningDetails } from 'features/offer/components/OfferCine/getScreeningDetails'
+import { ScreeningFeatures } from 'api/gen'
+import { getScreeningDetails } from 'features/bookOffer/helpers/getScreeningDetails'
+
+const screeningFeatures = (features: Partial<ScreeningFeatures> = {}): ScreeningFeatures => ({
+  accessibility: { audio: [], mental: [], motor: [], visual: [] },
+  audio: null,
+  language: null,
+  specialEventType: null,
+  video: null,
+  ...features,
+})
 
 describe('getScreeningDetails', () => {
-  it('should map stock features to details in display order', () => {
+  it('should map stock screening features to details in display order', () => {
     expect(
-      getScreeningDetails([
-        'VF',
-        'DOLBY_ATMOS',
-        'SCREEN_X',
-        'CCAP',
-        'RELAX',
-        'PMR',
-        'GRETA',
-        'PREVIEW_SCREENING',
-      ])
+      getScreeningDetails(
+        screeningFeatures({
+          accessibility: {
+            audio: [],
+            mental: ['RELAX'],
+            motor: ['PMR'],
+            visual: [],
+          },
+          language: 'VF',
+          specialEventType: 'AVANT_PREMIERE',
+          video: 'SCREEN_X',
+        })
+      )
     ).toEqual([
       {
         type: 'tag',
@@ -26,25 +39,6 @@ describe('getScreeningDetails', () => {
         label: 'ScreenX',
         description:
           'Le film est projeté sur l’écran et sur les murs de gauche et de droite. Seules certaines scènes s’étendent sur les murs.',
-      },
-      {
-        type: 'tag',
-        category: 'audio',
-        label: 'Dolby Atmos',
-        description: 'Le son vient de tous les côtés de la salle, y compris du plafond.',
-      },
-      {
-        type: 'accessibility',
-        category: 'visual',
-        label: 'Audio description Greta',
-        description: 'Audio Description, disponible avec l’application Greta.',
-      },
-      {
-        type: 'accessibility',
-        category: 'audio',
-        label: 'Sous-titré CCAP',
-        description:
-          'Sous-titres pour personnes sourdes ou malentendantes, affichés sur un petit écran individuel ou des lunettes fournis par le cinéma.',
       },
       {
         type: 'accessibility',
@@ -64,10 +58,19 @@ describe('getScreeningDetails', () => {
 
   it('should keep several accessibility values for the same handicap', () => {
     expect(
-      getScreeningDetails(['AUDIO_HI', 'SUBTITLE_CCAP', 'AD_GRETA', 'AUDIO_DESCRIPTION']).map(
-        ({ category, label }) => ({ category, label })
-      )
+      getScreeningDetails(
+        screeningFeatures({
+          audio: 'ATMOS',
+          accessibility: {
+            audio: ['AUDIO_HI', 'SUBTITLE_CCAP'],
+            mental: [],
+            motor: [],
+            visual: ['AD_GRETA', 'AUDIO_DESCRIPTION'],
+          },
+        })
+      ).map(({ category, label }) => ({ category, label }))
     ).toEqual([
+      { category: 'audio', label: 'Dolby Atmos' },
       { category: 'visual', label: 'Audio description Greta' },
       { category: 'visual', label: 'Audio Description' },
       { category: 'audio', label: 'Ecoute Assistée' },
@@ -76,6 +79,16 @@ describe('getScreeningDetails', () => {
   })
 
   it('should ignore unknown features and language', () => {
-    expect(getScreeningDetails(['VF', 'VO', 'UNKNOWN'])).toEqual([])
+    expect(
+      getScreeningDetails(
+        screeningFeatures({
+          language: 'VF',
+          audio: 'UNKNOWN',
+          specialEventType: 'UNKNOWN',
+          video: 'UNKNOWN',
+        })
+      )
+    ).toEqual([])
+    expect(getScreeningDetails()).toEqual([])
   })
 })

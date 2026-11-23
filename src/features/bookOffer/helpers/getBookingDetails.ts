@@ -1,4 +1,4 @@
-import { OfferResponse, OfferStockResponse } from 'api/gen'
+import { OfferResponse, StockResponse } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { UserProfile } from 'features/share/types'
@@ -7,7 +7,7 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 type Props = {
   offer?: OfferResponse
-  selectedStock: OfferStockResponse
+  selectedStock: StockResponse
   quantity: 1 | 2
   user?: UserProfile
   isUserUnderage: boolean
@@ -26,7 +26,7 @@ export function getBookingDetails({
   currency,
   euroToPacificFrancRate,
 }: Props) {
-  const priceInCents = quantity * (selectedStock?.price ?? 0)
+  const priceInCents = quantity * selectedStock.price
 
   const formattedPriceWithEuro = formatCurrencyFromCents(
     priceInCents,
@@ -37,7 +37,7 @@ export function getBookingDetails({
   const isNotUserFreeStatus =
     !!user && user.eligibilityType !== UserEligibilityType.ELIGIBLE_CREDIT_V3_15_16
 
-  const isStockBookable = !(isUserUnderage && selectedStock?.isForbiddenToUnderage)
+  const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
   const isBookingConfirmationButtonDisabled = !isStockBookable || !isCguChecked
 

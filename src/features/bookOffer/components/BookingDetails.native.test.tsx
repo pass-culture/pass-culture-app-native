@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, OffersStocksResponse, StockResponse, SubcategoryIdEnum } from 'api/gen'
 import { UserEligibilityType } from 'features/auth/helpers/getEligibilityType'
 import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
-import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -33,29 +32,47 @@ const mockDispatch = jest.fn()
 
 const mockInitialBookingState = initialBookingState
 
-let mockBookingStock = {
-  price: 2000,
-  id: 148409,
-  beginningDatetime: '2021-03-02T20:00:00',
-} as ReturnType<typeof useBookingStock>
+const selectedStockId = 148409
 
 const mockOfferId = 1337
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn()
-mockUseBookingContext.mockReturnValue({
-  bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-  dismissModal: mockDismissModal,
-  dispatch: mockDispatch,
-})
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
 }))
 
-jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
-  useBookingStock: jest.fn(() => mockBookingStock),
-}))
-
 const mockUseBookingOffer = jest.spyOn(BookingOfferAPI, 'useBookingOfferQuery')
-mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
+
+const setBookingOffer = (offer: OfferResponse | undefined) => {
+  mockUseBookingOffer.mockReturnValue(offer)
+}
+
+const setBookingContext = (bookingState: BookingState) => {
+  mockUseBookingContext.mockReturnValue({
+    bookingState,
+    dismissModal: mockDismissModal,
+    dispatch: mockDispatch,
+  })
+}
+
+const setSubcategoriesMapping = (mapping: Record<string, { isEvent: boolean }>) => {
+  mockUseSubcategoriesMapping.mockReturnValue(mapping)
+}
+
+const setIsUserUnderage = (isUnderage: boolean) => {
+  mockedUseIsUserUnderage.mockReturnValue(isUnderage)
+}
+
+const setModalState = (state: ReturnType<typeof useModalAPI.useModal>) => {
+  jest.spyOn(useModalAPI, 'useModal').mockReturnValue(state)
+}
+
+setBookingOffer({ ...mockOffer, isDuo: false })
+setBookingContext({
+  ...initialBookingState,
+  quantity: 1,
+  offerId: mockOfferId,
+  stockId: selectedStockId,
+})
 
 const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
@@ -67,7 +84,7 @@ const mockUseSubcategoriesMapping = jest.fn()
 jest.mock('libs/subcategories', () => ({
   useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
 }))
-mockUseSubcategoriesMapping.mockReturnValue({
+setSubcategoriesMapping({
   EVENEMENT_PATRIMOINE: { isEvent: true },
   LIVRE_PAPIER: { isEvent: false },
 })
@@ -143,36 +160,52 @@ describe('<BookingDetails />', () => {
   beforeEach(() => {
     useLocationV2.setState(defaultLocationState)
     mockServer.getApi<OfferResponse>(`/v3/offer/${mockOfferId}`, offerResponseSnap)
+    mockOffersStocks()
   })
 
   afterEach(() => {
     mockVenueList = []
     mockNbVenueItems = 0
+    setBookingOffer({ ...mockOffer, isDuo: false })
+    setSubcategoriesMapping({
+      EVENEMENT_PATRIMOINE: { isEvent: true },
+      LIVRE_PAPIER: { isEvent: false },
+    })
+    setBookingContext({
+      quantity: 1,
+      offerId: mockOfferId,
+      stockId: selectedStockId,
+    } as BookingState)
+    mockedUseIsUserUnderage.mockReset()
+    if (jest.isMockFunction(useModalAPI.useModal)) {
+      jest.mocked(useModalAPI.useModal).mockRestore()
+    }
   })
 
   describe('with initial state', () => {
     beforeEach(() => {
-      mockUseBookingContext.mockReturnValueOnce({
-        bookingState: mockInitialBookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
+      setBookingContext(mockInitialBookingState)
       setFeatureFlags()
     })
 
-    it('should initialize correctly state when offer isDigital', async () => {
-      mockBookingStock = undefined
+    afterEach(() => {
+      setBookingContext({
+        quantity: 1,
+        offerId: mockOfferId,
+        stockId: selectedStockId,
+      } as BookingState)
+    })
 
+    it('should initialize correctly state when offer isDigital', () => {
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
     })
 
-    it('should initialize the state when offer isDigital only with first bookable stocks', async () => {
-      mockBookingStock = undefined
-      const mockStocks = [{ ...offerStockResponseSnap, isBookable: false, id: 123456 }]
-      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+    it('should initialize the state when offer isDigital only with first bookable stocks', () => {
+      const mockedStocks = [{ ...offerStockResponseSnap, isBookable: false, id: 123456 }]
+      renderBookingDetails({ stocks: mockedStocks, onPressBookOffer: mockOnPressBookOffer })
 
       expect(mockDispatch).not.toHaveBeenCalled()
 
@@ -188,8 +221,15 @@ describe('<BookingDetails />', () => {
       expect(mockDispatch).not.toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 12345678 })
     })
 
-    it('should not display the Duo selector when the offer is not duo', () => {
+    it('should not display the Duo selector when the offer is not duo', async () => {
+      setBookingContext({
+        quantity: 1,
+        offerId: mockOfferId,
+        stockId: selectedStockId,
+      } as BookingState)
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await screen.findByText('Informations')
 
       expect(screen.queryByTestId('DuoChoiceSelector')).not.toBeOnTheScreen()
     })
@@ -197,24 +237,19 @@ describe('<BookingDetails />', () => {
 
   describe('when user has selected options', () => {
     beforeEach(() => {
-      mockUseBookingContext.mockReturnValueOnce({
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
+      setBookingContext({
+        quantity: 1,
+        offerId: mockOfferId,
+        stockId: selectedStockId,
+      } as BookingState)
     })
 
-    it('should render disable CTA when user is underage and stock is forbidden to underage', () => {
-      mockBookingStock = {
-        price: 2000,
-        id: 148409,
-        beginningDatetime: '2021-03-02T20:00:00',
-        isForbiddenToUnderage: true,
-      } as ReturnType<typeof useBookingStock>
-      mockedUseIsUserUnderage.mockReturnValueOnce(true)
+    it('should render disable CTA when user is underage and stock is forbidden to underage', async () => {
+      mockOffersStocks({ isForbiddenToUnderage: true })
+      setIsUserUnderage(true)
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-      const bookingButton = screen.getByText('Confirmer la réservation')
+      const bookingButton = await screen.findByText('Confirmer la réservation')
 
       expect(bookingButton).toBeDisabled()
     })
@@ -237,45 +272,39 @@ describe('<BookingDetails />', () => {
       expect(mockOnPressBookOffer).toHaveBeenCalledTimes(1)
     })
 
-    it('should not display the loading screen when booking validation is not in progress', () => {
+    it('should not display the loading screen when booking validation is not in progress', async () => {
       renderBookingDetails({
         stocks: mockStocks,
         onPressBookOffer: mockOnPressBookOffer,
       })
 
+      await screen.findByText('Confirmer la réservation')
+
       expect(screen.queryByTestId('loadingScreen')).not.toBeOnTheScreen()
     })
 
-    it('should display the loading screen when booking validation is in progress', () => {
+    it('should display the loading screen when booking validation is in progress', async () => {
       renderBookingDetails({
         stocks: mockStocks,
         isLoading: true,
         onPressBookOffer: mockOnPressBookOffer,
       })
 
-      expect(screen.getByTestId('loadingScreen')).toBeOnTheScreen()
+      expect(await screen.findByTestId('loadingScreen')).toBeOnTheScreen()
     })
   })
 
   it('should change step to confirmation when step is date and offer is not an event', () => {
-    mockUseBookingContext.mockReturnValueOnce({
-      bookingState: mockInitialBookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    })
-    mockUseBookingOffer.mockReturnValueOnce(mockDigitalOffer)
+    setBookingContext(mockInitialBookingState)
+    setBookingOffer(mockDigitalOffer)
     renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
   })
 
-  it('should not change step to confirmation when step is date and offer is an event', async () => {
-    mockUseBookingContext.mockReturnValueOnce({
-      bookingState: mockInitialBookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    })
-    mockUseBookingOffer.mockReturnValueOnce(mockOffer)
+  it('should not change step to confirmation when step is date and offer is an event', () => {
+    setBookingContext(mockInitialBookingState)
+    setBookingOffer(mockOffer)
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
     expect(mockDispatch).not.toHaveBeenCalledWith({
@@ -288,19 +317,17 @@ describe('<BookingDetails />', () => {
     beforeEach(() => {
       const duoBookingState: BookingState = {
         ...mockInitialBookingState,
+        offerId: mockOfferId,
+        stockId: selectedStockId,
         quantity: 2,
       }
-      mockUseBookingContext.mockReturnValueOnce({
-        bookingState: duoBookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
+      setBookingContext(duoBookingState)
     })
 
     it('should not display the Duo selector when the offer is duo but is an event', () => {
-      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+      setBookingOffer({ ...mockOffer, isDuo: true })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         EVENEMENT_PATRIMOINE: { isEvent: true },
       })
 
@@ -310,9 +337,9 @@ describe('<BookingDetails />', () => {
     })
 
     it('should display the Duo selector when the offer is duo and not an event', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+      setBookingOffer({ ...mockOffer, isDuo: true })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         EVENEMENT_PATRIMOINE: { isEvent: false },
       })
 
@@ -324,9 +351,9 @@ describe('<BookingDetails />', () => {
   })
 
   it('should not display venue address in information section', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+    setBookingOffer({ ...mockOffer, isDuo: true })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       EVENEMENT_PATRIMOINE: { isEvent: false },
     })
 
@@ -337,13 +364,13 @@ describe('<BookingDetails />', () => {
   })
 
   it('should display venue section', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_PAPIER: { isEvent: false },
     })
 
@@ -355,13 +382,13 @@ describe('<BookingDetails />', () => {
 
   describe('venue name', () => {
     it('should display venue name in venue section', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
+      setBookingOffer({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         LIVRE_PAPIER: { isEvent: false },
       })
 
@@ -372,13 +399,13 @@ describe('<BookingDetails />', () => {
     })
 
     it('should display name from offer address when present', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
+      setBookingOffer({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         LIVRE_PAPIER: { isEvent: false },
       })
 
@@ -388,14 +415,14 @@ describe('<BookingDetails />', () => {
     })
 
     it('should display venue name when offer address is not present', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
+      setBookingOffer({
         ...mockOffer,
         address: undefined,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         LIVRE_PAPIER: { isEvent: false },
       })
 
@@ -407,13 +434,13 @@ describe('<BookingDetails />', () => {
 
   describe('venue address', () => {
     it('should display venue address in venue section', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
+      setBookingOffer({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         LIVRE_PAPIER: { isEvent: false },
       })
 
@@ -424,13 +451,13 @@ describe('<BookingDetails />', () => {
     })
 
     it('should display offer address when present', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
+      setBookingOffer({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         LIVRE_PAPIER: { isEvent: false },
       })
 
@@ -440,14 +467,14 @@ describe('<BookingDetails />', () => {
     })
 
     it('should display venue address when offer.address is not present', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
+      setBookingOffer({
         ...mockOffer,
         address: undefined,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       })
 
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
+      setSubcategoriesMapping({
         LIVRE_PAPIER: { isEvent: false },
       })
 
@@ -458,14 +485,14 @@ describe('<BookingDetails />', () => {
   })
 
   it('should display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are other venues offering the same offer', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { ean: '12345678' },
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_PAPIER: { isEvent: false },
     })
     mockNbVenueItems = 2
@@ -478,14 +505,14 @@ describe('<BookingDetails />', () => {
   })
 
   it('should not display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are not other venues offering the same offer', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { ean: '12345678' },
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_PAPIER: { isEvent: false },
     })
     mockNbVenueItems = 0
@@ -498,14 +525,14 @@ describe('<BookingDetails />', () => {
   })
 
   it('should display "Modifier" button when offer subcategory is "Livre audio physique", EAN defined and that there are other venues offering the same offer', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
       extraData: { ean: '12345678' },
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
     })
     mockNbVenueItems = 2
@@ -518,14 +545,14 @@ describe('<BookingDetails />', () => {
   })
 
   it('should not display "Modifier" button when offer subcategory is "Livre audio physique", EAN defined and that there are not other venues offering the same offer', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
       extraData: { ean: '12345678' },
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
     })
     mockNbVenueItems = 0
@@ -538,13 +565,13 @@ describe('<BookingDetails />', () => {
   })
 
   it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN not defined', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_PAPIER: { isEvent: false },
     })
 
@@ -555,13 +582,13 @@ describe('<BookingDetails />', () => {
   })
 
   it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN not defined', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
     })
 
@@ -573,20 +600,20 @@ describe('<BookingDetails />', () => {
 
   it('should open venue selection modal when pressing "Modifier" button', async () => {
     const mockShowModal = jest.fn()
-    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+    setModalState({
       visible: false,
       showModal: mockShowModal,
       hideModal: jest.fn(),
       toggleModal: jest.fn(),
     })
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { ean: '12345678' },
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_PAPIER: { isEvent: false },
     })
     mockNbVenueItems = 2
@@ -601,20 +628,20 @@ describe('<BookingDetails />', () => {
 
   it('should update the booking offer when the user choose an other venue', async () => {
     const mockShowModal = jest.fn()
-    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+    setModalState({
       visible: true,
       showModal: mockShowModal,
       hideModal: jest.fn(),
       toggleModal: jest.fn(),
     })
-    mockUseBookingOffer.mockReturnValueOnce({
+    setBookingOffer({
       ...mockOffer,
       isDuo: true,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { ean: '12345678' },
     })
 
-    mockUseSubcategoriesMapping.mockReturnValueOnce({
+    setSubcategoriesMapping({
       LIVRE_PAPIER: { isEvent: false },
     })
     mockNbVenueItems = 2
@@ -622,7 +649,7 @@ describe('<BookingDetails />', () => {
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-    await user.press(screen.getByText('Le Livre Éclaire'))
+    await user.press(await screen.findByText('Le Livre Éclaire'))
 
     await user.press(screen.getByText('Choisir ce lieu'))
 
@@ -646,7 +673,7 @@ describe('<BookingDetails />', () => {
         place: SuggestedPlace | null
         headerMessage: string
       }) => {
-        mockUseBookingOffer.mockReturnValue({
+        setBookingOffer({
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           extraData: {
@@ -661,7 +688,7 @@ describe('<BookingDetails />', () => {
 
         renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-        await user.press(screen.getByText('Modifier'))
+        await user.press(await screen.findByText('Modifier'))
 
         expect(screen.getByText(headerMessage)).toBeOnTheScreen()
       }
@@ -749,4 +776,27 @@ function renderBookingDetails({
       <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
     )
   )
+}
+
+const mockOffersStocks = (stock: Partial<StockResponse> = {}) => {
+  mockServer.postApi<OffersStocksResponse>('/v3/offers/stocks', {
+    offers: [
+      {
+        venue: { timezone: 'UTC' },
+        stocks: [
+          {
+            id: selectedStockId,
+            price: 2000,
+            beginningDatetime: '2021-03-02T20:00:00Z',
+            isBookable: true,
+            isExpired: false,
+            isForbiddenToUnderage: false,
+            isSoldOut: false,
+            screeningFeatures: null,
+            ...stock,
+          },
+        ],
+      },
+    ],
+  } as OffersStocksResponse)
 }
