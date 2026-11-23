@@ -108,7 +108,7 @@ const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
   animation: 'slide_from_bottom',
 }
 
-const MODAL_SIMPLE_OPTIONS: NativeStackNavigationOptions = {
+const FORM_SHEET_MODAL_OPTIONS: NativeStackNavigationOptions = {
   presentation: isWeb ? 'transparentModal' : 'formSheet',
   sheetAllowedDetents: 'fitToContents',
   sheetCornerRadius: 8,
@@ -223,7 +223,7 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'CinemaScreeningDetailsModal',
     component: withAuthProtection(CinemaScreeningDetailsModal),
-    options: { title: 'Informations sur la séance', ...MODAL_SIMPLE_OPTIONS },
+    options: { title: 'Informations sur la séance', ...FORM_SHEET_MODAL_OPTIONS },
   },
   {
     name: '_DeeplinkOnlyBookingDetails1',
@@ -363,7 +363,10 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'VenueSurveyModal',
     component: VenueSurveyModal,
-    options: { title: 'Fenêtre pour accéder à l‘enquête de la page lieu', ...MODAL_SIMPLE_OPTIONS },
+    options: {
+      title: 'Fenêtre pour accéder à l‘enquête de la page lieu',
+      ...FORM_SHEET_MODAL_OPTIONS,
+    },
   },
   {
     name: 'Artist',
