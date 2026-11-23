@@ -1,0 +1,39 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - artist
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/findOfferWithArtists.js
+      env:
+        subcategory_id: 'SEANCE_CINE'
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+- runFlow:
+    file: ../common/deeplinks/OpenDeeplink.yml
+    env:
+      LINK: ${output.offerDeeplink}
+- extendedWaitUntil:
+    visible: '.*${output.offerName}.*'
+    timeout: 30000
+
+- scrollUntilVisible:
+    element: 'Distribution'
+    centerElement: true
+- tapOn: 'Voir tout pour la sélection Distribution'
+
+- assertVisible:
+    text: 'Distribution'
+    index: 0
+- assertVisible: '${output.offerArtistsCount} artistes'
+- scrollUntilVisible:
+    element: '${output.offerArtistName}.*'
+- tapOn: '${output.offerArtistName}.*'
+
+- extendedWaitUntil:
+    notVisible: '${output.offerArtistsCount} artistes'
+    timeout: 10000
+- assertVisible: '${output.offerArtistName}'
+
+- runFlow: ../common/lifecycle/StopApp.yml

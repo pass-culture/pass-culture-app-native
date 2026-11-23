@@ -125,7 +125,7 @@ tags:
 | `profile` | Profil utilisateur |
 | `search` | Recherche |
 | `offer` | Fiche offre |
-| `artist` | Page artiste |
+| `artist` | Page artiste et listes d'artistes |
 | `deeplink` | Ouverture de l'app par un lien (custom scheme, universal link) |
 | `web` | Tests web |
 | `fix` | Test en cours de correction (éphémère) |
@@ -139,7 +139,7 @@ Les flows réutilisables sont organisés par catégorie dans `tests/common/` :
 - **`deeplinks/`** — navigation par deeplink vers les écrans principaux. `DeepLink.js` doit toujours être appelé en `onFlowStart`. Les deeplinks utilisent le schéma `URL_PREFIX` du `.env` (`passculturestaging://`, `passculturetesting://`), identique sur iOS et Android : sur iOS, `clearState` réinstalle l'app et les universal links (`https://`) s'ouvrent alors aléatoirement dans Safari. `OpenDeeplink.yml` ouvre le lien passé en `LINK` et valide la popup iOS « Ouvrir dans … ? » affichée au premier lien après installation
 - **`navigation/`** — interactions de navigation récurrentes (tab bar, retour)
 - **`cookies/`** — gestion du bandeau cookies
-- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateOffer.js`, `deactivateOffer.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`, voir sections dédiées)
+- **`helpers/`** — génération de données de test via l'API E2E (`generateUser.js`, `generateOffer.js`, `deactivateOffer.js`, `generateBonusQFResponse.js`, `generateBonusDisabilityResponse.js`) et recherche de données existantes (`findArtist.js`, `findOfferWithArtists.js`, `findVenueWithArtists.js`), voir sections dédiées
 - **`assertions/`** — assertions réutilisables
 - **`analytics/`** — vérification des events envoyés au serveur mock analytics
 
@@ -223,6 +223,29 @@ onFlowComplete:
 | `output.offerName` | Nom de l'offre |
 | `output.offerDeeplink` | Deeplink vers la fiche offre |
 | `output.offerScreeningDay` | Libellé du calendrier (ex. `Mercredi 22 Octobre`) d'un jour avec séances encore annulables (J+3) |
+
+## Retrouver des données existantes
+
+Les IDs des artistes, offres et lieux de staging peuvent changer d'un jour à l'autre : ne les figez pas dans un test. Les scripts `common/helpers/find*.js` les retrouvent au lancement via Algolia et l'API publique du backend, à partir des variables `MAESTRO_API_BASE_URL` et `MAESTRO_ALGOLIA_*` (lues dans `.env.staging` par `yarn test:e2e`, déclarées en dur dans les workflows CI). Les noms renvoyés ne contiennent pas de caractère spécial de regex et peuvent donc servir directement de sélecteurs.
+
+```yaml
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/findArtist.js
+      env:
+        artist_name: 'Stromae'
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+- runFlow: ../common/deeplinks/DeeplinkToArtist.yml
+```
+
+| Script | Paramètres | Variables |
+|---|---|---|
+| `findArtist.js` | `artist_name` (nom exact) | `output.artistId`, `output.artistName`, `output.artistDeeplink`, `output.similarArtistName`, `output.similarArtistsCount` |
+| `findOfferWithArtists.js` | `subcategory_id` (ex. `SEANCE_CINE`) | `output.offerId`, `output.offerName`, `output.offerDeeplink`, `output.offerArtistsCount`, `output.offerArtistName` |
+| `findVenueWithArtists.js` | — | `output.venueId`, `output.venueName`, `output.venueDeeplink` |
 
 ## Mocker le quotient familial
 

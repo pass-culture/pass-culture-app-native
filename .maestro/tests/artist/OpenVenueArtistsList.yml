@@ -1,0 +1,28 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - artist
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript: ../common/helpers/findVenueWithArtists.js
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+- runFlow:
+    file: ../common/deeplinks/OpenDeeplink.yml
+    env:
+      LINK: ${output.venueDeeplink}
+- extendedWaitUntil:
+    visible: '.*${output.venueName}'
+    timeout: 30000
+
+- scrollUntilVisible:
+    element: 'Les artistes disponibles dans ce lieu'
+    centerElement: true
+- tapOn: 'Voir tout pour la sélection Les artistes disponibles dans ce lieu'
+
+- assertVisible:
+    text: 'Les artistes disponibles dans ce lieu'
+    index: 0
+- assertVisible: '[0-9]+ artistes'
+
+- runFlow: ../common/lifecycle/StopApp.yml

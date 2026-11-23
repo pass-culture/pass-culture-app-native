@@ -1,0 +1,33 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - artist
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/findArtist.js
+      env:
+        artist_name: 'Stromae'
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+- runFlow: ../common/deeplinks/DeeplinkToArtist.yml
+
+- scrollUntilVisible:
+    element: 'Tu peux aussi aimer'
+    centerElement: true
+- tapOn: 'Voir tout pour la sélection Tu peux aussi aimer'
+
+- assertVisible:
+    text: 'Tu peux aussi aimer'
+    index: 0
+- assertVisible: '${output.similarArtistsCount} artistes'
+- scrollUntilVisible:
+    element: '${output.similarArtistName}'
+- tapOn: '${output.similarArtistName}'
+
+- extendedWaitUntil:
+    notVisible: '${output.similarArtistsCount} artistes'
+    timeout: 10000
+- assertVisible: '${output.similarArtistName}'
+
+- runFlow: ../common/lifecycle/StopApp.yml
