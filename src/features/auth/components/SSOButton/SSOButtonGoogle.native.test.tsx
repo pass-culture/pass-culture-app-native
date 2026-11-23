@@ -97,7 +97,8 @@ describe('<SSOButtonGoogle />', () => {
 
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
-      content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
+      content: '',
+      statusCode: 500,
       provider: Provider.GOOGLE,
     })
   })
