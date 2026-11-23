@@ -78,7 +78,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         scrollEnabled={nbHits > 0}
         onScroll={onScroll}
         contentContainerStyle={{
-          paddingBottom: tabBar.height + designSystem.size.spacing.xxxl,
+          paddingBottom: tabBar.height + designSystem.size.spacing['3xl'],
         }}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"

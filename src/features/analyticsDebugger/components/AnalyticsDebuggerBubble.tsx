@@ -12,7 +12,7 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 export const AnalyticsDebuggerBubble = () => {
   const { width, height } = useWindowDimensions()
-  const bubbleSize = useTheme().designSystem.size.spacing.xxxxl
+  const bubbleSize = useTheme().designSystem.size.spacing['4xl']
   const [position, setPosition] = useState(INITIAL_POSITION)
 
   const gesture = useMemo(() => {
@@ -51,8 +51,8 @@ export const AnalyticsDebuggerBubble = () => {
 
 const Bubble = styled.View(({ theme }) => ({
   position: 'absolute',
-  width: theme.designSystem.size.spacing.xxxxl,
-  height: theme.designSystem.size.spacing.xxxxl,
+  width: theme.designSystem.size.spacing['4xl'],
+  height: theme.designSystem.size.spacing['4xl'],
   borderRadius: theme.designSystem.size.borderRadius.pill,
   backgroundColor: theme.designSystem.color.background.brandPrimary,
   opacity: 0.85,

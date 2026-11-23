@@ -85,7 +85,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  paddingVertical: theme.designSystem.size.spacing.xxxl,
+  paddingVertical: theme.designSystem.size.spacing['3xl'],
 }))
 
 const StyledSeparatorWithText = styled.View(({ theme }) => ({

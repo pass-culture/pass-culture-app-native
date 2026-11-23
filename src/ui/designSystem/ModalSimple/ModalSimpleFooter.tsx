@@ -61,7 +61,7 @@ const FooterContainer = styled(ViewGap)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
-  paddingHorizontal: theme.designSystem.size.spacing.xxl,
-  paddingBottom: Platform.OS === 'ios' ? undefined : theme.designSystem.size.spacing.xxl,
+  paddingHorizontal: theme.designSystem.size.spacing['2xl'],
+  paddingBottom: Platform.OS === 'ios' ? undefined : theme.designSystem.size.spacing['2xl'],
   paddingTop: theme.designSystem.size.spacing.xl,
 }))

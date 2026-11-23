@@ -82,7 +82,7 @@ export const ThematicSearchSkeleton = () => {
       <FlatlistSkeleton
         numberOfTiles={5}
         renderPlaceholder={() => renderSubcategoryButtonSkeleton(theme)}
-        paddingBottom={theme.designSystem.size.spacing.xxl}
+        paddingBottom={theme.designSystem.size.spacing['2xl']}
       />
       <TitleVenuePlaylistSkeleton />
       <FlatlistSkeleton

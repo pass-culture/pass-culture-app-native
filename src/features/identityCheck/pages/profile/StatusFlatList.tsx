@@ -143,7 +143,7 @@ export function StatusFlatList({
 
 const Container = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const FlatListContainer = styled(View)({

@@ -62,11 +62,11 @@ export const getContentPadding = ({
   return {
     vertical:
       variant === 'tertiary'
-        ? theme.designSystem.size.spacing.xxs
+        ? theme.designSystem.size.spacing['2xs']
         : theme.designSystem.size.spacing.s,
     horizontal:
       variant === 'tertiary'
-        ? theme.designSystem.size.spacing.xxs
+        ? theme.designSystem.size.spacing['2xs']
         : theme.designSystem.size.spacing.m,
   }
 }

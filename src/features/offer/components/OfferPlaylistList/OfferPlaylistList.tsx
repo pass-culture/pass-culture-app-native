@@ -54,5 +54,5 @@ const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
 }))
 
 const PlaceholderBehindButton = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxxxl,
+  height: theme.designSystem.size.spacing['4xl'],
 }))

@@ -143,8 +143,8 @@ const ThumbnailOverlay = styled(View)({
 })
 
 const IconContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
-  padding: theme.designSystem.size.spacing.xxs,
+  borderRadius: theme.designSystem.size.borderRadius['2xl'],
+  padding: theme.designSystem.size.spacing['2xs'],
   backgroundColor: theme.designSystem.color.background.default,
 }))
 

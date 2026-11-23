@@ -66,5 +66,5 @@ const InlineTouchable = styledButton(Touchable)({
 
 const IconWrapper = styled.View(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.s,
-  marginTop: theme.designSystem.size.spacing.xxs,
+  marginTop: theme.designSystem.size.spacing['2xs'],
 }))

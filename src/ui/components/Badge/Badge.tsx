@@ -23,7 +23,7 @@ export const Badge: FunctionComponent<Props> = ({ value, ...props }) => {
 
 const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  borderWidth: theme.designSystem.size.spacing.xxs,
+  borderWidth: theme.designSystem.size.spacing['2xs'],
   borderStyle: 'solid',
   borderColor: theme.designSystem.color.border.inverted,
   borderRadius: theme.designSystem.size.borderRadius.l,
@@ -33,7 +33,7 @@ const Container = styled.View(({ theme }) => ({
 const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({
   minWidth: BADGE_SIZE,
   minHeight: BADGE_SIZE,
-  paddingHorizontal: theme.designSystem.size.spacing.xxs,
+  paddingHorizontal: theme.designSystem.size.spacing['2xs'],
 }))
 
 const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({

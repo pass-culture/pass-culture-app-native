@@ -32,8 +32,8 @@ const IconContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  width: theme.designSystem.size.spacing.xxxl,
-  height: theme.designSystem.size.spacing.xxl,
+  width: theme.designSystem.size.spacing['3xl'],
+  height: theme.designSystem.size.spacing['2xl'],
 }))
 
 const StyledTryAgain = styled(TryAgain).attrs(({ theme }) => ({

@@ -13,7 +13,7 @@ export const JustifiedLeftTitle = ({ title, titleID }: { title: string; titleID?
 const TitleContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const Title = styled(Typo.Title3).attrs(() => setTextSemantic('h2'))({})

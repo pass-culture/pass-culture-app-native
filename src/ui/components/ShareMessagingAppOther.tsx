@@ -25,7 +25,7 @@ const Icon = () => (
 )
 
 const StyledShare = styled(Share).attrs(({ theme }) => ({
-  size: theme.designSystem.size.spacing.xxl,
+  size: theme.designSystem.size.spacing['2xl'],
 }))``
 
 const IconWrapper = styled.View(({ theme }) => ({

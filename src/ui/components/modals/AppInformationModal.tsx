@@ -82,9 +82,9 @@ const Container = styled(ViewGap)<{ maxHeight: number }>(({ theme }) => ({
   maxHeight: '100%',
   borderRadius: theme.designSystem.size.borderRadius.s,
   padding: theme.designSystem.size.spacing.xl,
-  paddingBottom: theme.designSystem.size.spacing.xxl,
+  paddingBottom: theme.designSystem.size.spacing['2xl'],
   width: theme.isMobileViewport
-    ? theme.appContentWidth - theme.designSystem.size.spacing.xxl
+    ? theme.appContentWidth - theme.designSystem.size.spacing['2xl']
     : theme.breakpoints.sm - theme.designSystem.size.spacing.m,
 }))
 

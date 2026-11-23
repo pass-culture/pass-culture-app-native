@@ -169,11 +169,11 @@ const StyledSubtitle = styled(Typo.Body)({
 
 const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const ChildrenContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const ButtonContainer = styled(ViewGap)({

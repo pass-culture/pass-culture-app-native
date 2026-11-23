@@ -36,7 +36,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
 
 const BarAndTitle = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginLeft: theme.designSystem.size.spacing.xxxxl,
+  marginLeft: theme.designSystem.size.spacing['4xl'],
   justifyContent: 'space-between',
   flex: 1,
 }))

@@ -107,7 +107,7 @@ const keyExtractor = (item: BookingListItemResponse) => item.id.toString()
 
 const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing.xxl,
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing['2xl'],
 })
 
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(52) })

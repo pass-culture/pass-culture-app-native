@@ -88,7 +88,7 @@ describe('<SubcategoryButtonListWrapper/>', () => {
     const button = await screen.findByLabelText('Sous-catégorie Romans et littérature')
 
     expect(button).toBeOnTheScreen()
-    expect(button).toHaveStyle({ backgroundColor: '#f2497c' })
+    expect(button).toHaveStyle({ backgroundColor: '#eb0055' })
   })
 
   it.skip('should update searchState with correct params', async () => {

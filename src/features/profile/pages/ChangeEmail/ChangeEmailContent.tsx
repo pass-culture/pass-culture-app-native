@@ -82,5 +82,5 @@ const DisclaimerContainer = styled.View(({ theme }) => ({
 
 const InfoBannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxxxl,
+  marginBottom: theme.designSystem.size.spacing['4xl'],
 }))

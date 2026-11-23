@@ -32,7 +32,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
   flexShrink: 0,
   flexDirection: 'row',
   justifyContent: 'flex-end',
-  paddingHorizontal: theme.designSystem.size.spacing.xxl,
-  paddingTop: theme.designSystem.size.spacing.xxl,
+  paddingHorizontal: theme.designSystem.size.spacing['2xl'],
+  paddingTop: theme.designSystem.size.spacing['2xl'],
   paddingBottom: theme.designSystem.size.spacing.l,
 }))

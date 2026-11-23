@@ -254,7 +254,8 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const ArtistsPlaylistContainer = styled(ViewGap)(({ theme }) => ({
-  paddingBottom: Platform.OS === 'android' ? theme.designSystem.size.spacing.xxl : getSpacing(14),
+  paddingBottom:
+    Platform.OS === 'android' ? theme.designSystem.size.spacing['2xl'] : getSpacing(14),
 }))
 
 const TitleContainer = styled.View({

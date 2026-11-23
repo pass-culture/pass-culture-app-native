@@ -31,7 +31,7 @@ export const BottomBanner = ({ text, ...props }: Props) => {
 const Container = styled(ViewGap)<{ paddingBottom: number; paddingVertical: number }>(
   ({ paddingBottom, paddingVertical, theme }) => ({
     borderTopColor: theme.designSystem.color.border.subtle,
-    borderTopWidth: theme.designSystem.size.spacing.xxs,
+    borderTopWidth: theme.designSystem.size.spacing['2xs'],
     paddingVertical,
     paddingHorizontal: theme.designSystem.size.spacing.xl,
     flexDirection: 'row',

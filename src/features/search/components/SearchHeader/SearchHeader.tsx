@@ -114,8 +114,8 @@ const StyledView = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  width: theme.designSystem.size.spacing.xxxl,
-  height: theme.designSystem.size.spacing.xxxl,
+  width: theme.designSystem.size.spacing['3xl'],
+  height: theme.designSystem.size.spacing['3xl'],
 }))
 
 const RowContainer = styled(Animated.View)(({ theme }) => ({

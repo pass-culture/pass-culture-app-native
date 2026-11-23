@@ -86,7 +86,7 @@ const BottomBanner = styled.View(({ theme }) => {
   return {
     paddingHorizontal: theme.designSystem.size.spacing.l,
     paddingVertical: theme.designSystem.size.spacing.s,
-    height: theme.designSystem.size.spacing.xxxl,
+    height: theme.designSystem.size.spacing['3xl'],
     gap: theme.designSystem.size.spacing.s,
     backgroundColor: theme.designSystem.color.background.warning,
     borderBottomLeftRadius: BORDER_RADIUS,
@@ -119,7 +119,7 @@ const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightEleme
 
     return {
       alignItems: 'flex-end',
-      marginVertical: theme.designSystem.size.spacing.xxs,
+      marginVertical: theme.designSystem.size.spacing['2xs'],
       justifyContent,
     }
   }
@@ -134,7 +134,7 @@ const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: str
   ({ theme, shouldFixHeight, bottomBannerText }) => {
     const OFFER_CARD_PADDING = theme.designSystem.size.spacing.l
     const BORDER_RADIUS = theme.designSystem.size.borderRadius.l
-    const BORDER_WIDTH = theme.designSystem.size.spacing.xxs
+    const BORDER_WIDTH = theme.designSystem.size.spacing['2xs']
 
     return {
       backgroundColor: theme.designSystem.color.background.default,

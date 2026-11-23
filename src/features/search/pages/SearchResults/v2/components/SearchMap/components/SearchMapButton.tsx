@@ -83,8 +83,8 @@ const Container = styledButton(Touchable)({
 const SeeMapIcon = styled(Map).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,
   size: theme.designSystem.size.icon.m,
-  height: theme.designSystem.size.spacing.xxxxl,
-  width: theme.designSystem.size.spacing.xxxxl,
+  height: theme.designSystem.size.spacing['4xl'],
+  width: theme.designSystem.size.spacing['4xl'],
 }))``
 
 const TextContainer = styled.View(({ theme }) => ({

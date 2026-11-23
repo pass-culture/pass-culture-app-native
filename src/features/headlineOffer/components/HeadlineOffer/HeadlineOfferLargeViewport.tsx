@@ -41,7 +41,7 @@ export const HeadlineOfferLargeViewport: FunctionComponent<HeadlineOfferData> = 
 
 const Container = styled.View(({ theme }) => ({
   justifyContent: 'center',
-  padding: theme.designSystem.size.spacing.xxl,
+  padding: theme.designSystem.size.spacing['2xl'],
   height: '100%',
 }))
 

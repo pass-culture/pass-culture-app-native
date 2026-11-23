@@ -132,7 +132,7 @@ const Sheet = styled.View(({ theme }) => ({
 
 const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
   paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
 

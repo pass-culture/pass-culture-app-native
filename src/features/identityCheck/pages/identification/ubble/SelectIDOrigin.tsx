@@ -56,15 +56,15 @@ const SelectIDOriginContent: FunctionComponent = () => {
 }
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const SeparatorContainer = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xxl,
+  marginVertical: theme.designSystem.size.spacing['2xl'],
 }))
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xs,
-  marginVertical: theme.designSystem.size.spacing.xxl,
+  marginVertical: theme.designSystem.size.spacing['2xl'],
 }))
 
 const StyledIconContainer = styled.View({

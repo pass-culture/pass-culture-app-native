@@ -69,11 +69,11 @@ const StyledView = styled(View)<{
 }>(({ size, isFocused, isError, isDisabled, isHover, theme }) => {
   const heights = SIZE_TO_HEIGHT(theme)
   const borderWidth = isFocused
-    ? theme.designSystem.size.spacing.xxs
+    ? theme.designSystem.size.spacing['2xs']
     : getSpacing(BORDER_FOCUS_INCREASE)
   const horizontalPadding = isFocused
-    ? theme.designSystem.size.spacing.xxs
-    : theme.designSystem.size.spacing.xxs + BORDER_FOCUS_INCREASE
+    ? theme.designSystem.size.spacing['2xs']
+    : theme.designSystem.size.spacing['2xs'] + BORDER_FOCUS_INCREASE
 
   const baseBorderColor = getBorderColor(theme, isFocused, isDisabled, isError)
 

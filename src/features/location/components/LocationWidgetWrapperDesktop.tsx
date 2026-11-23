@@ -63,7 +63,7 @@ const WidgetContainer = styled.View({
 const LocationButton = styledButton(Touchable)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  height: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing['2xl'],
   flexShrink: 1,
 }))
 

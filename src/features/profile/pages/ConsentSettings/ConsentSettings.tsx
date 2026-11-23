@@ -264,5 +264,5 @@ const ModalContainer = styled(ViewGap)({
 
 const StyledBodyAccentXsWithMargin = styled(StyledBodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))

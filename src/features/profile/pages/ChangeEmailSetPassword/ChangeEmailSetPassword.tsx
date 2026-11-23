@@ -122,5 +122,5 @@ const StyledView = styled.View<{ paddingBottom: number }>(({ paddingBottom }) =>
 }))
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginTop: theme.designSystem.size.spacing['3xl'],
 }))

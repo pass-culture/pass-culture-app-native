@@ -71,7 +71,7 @@ const StyledView = styled(View)<{
 
   const borderWidth = isFocus
     ? getSpacing(0.25 + BORDER_FOCUS_INCREASE)
-    : theme.designSystem.size.spacing.xxs
+    : theme.designSystem.size.spacing['2xs']
   const horizontalPadding = isFocus ? 4 : 4 + BORDER_FOCUS_INCREASE
   const tallHorizontalPadding = isFocus ? 3 : 3 + BORDER_FOCUS_INCREASE
 

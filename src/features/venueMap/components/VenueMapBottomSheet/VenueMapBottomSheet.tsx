@@ -46,7 +46,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     const selectedPlace = usePlace()
     const selectedLocationMode = useLocationMode()
     const { designSystem } = useTheme()
-    const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing.xxxxl
+    const VENUE_THUMBNAIL_SIZE = designSystem.size.spacing['4xl']
 
     const distanceToVenue = getDistance(
       {

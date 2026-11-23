@@ -85,7 +85,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
   )
 }
 const Placeholder = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing['3xl'],
 }))
 
 const Container = styled.View(({ theme }) => ({

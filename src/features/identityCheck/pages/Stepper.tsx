@@ -171,7 +171,7 @@ const TitleContainer = styled.View(({ theme }) => ({
 const MainContainer = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingHorizontal: theme.designSystem.size.spacing.xl,
-    paddingBottom: theme.designSystem.size.spacing.xxxl,
+    paddingBottom: theme.designSystem.size.spacing['3xl'],
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
@@ -210,7 +210,7 @@ const StyledErrorMessage = ({ errorMessage }: { errorMessage: string }) => (
 )
 const SubtitleContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 
 const ErrorMessageContainer = styled(Typo.Body)(({ theme }) => ({

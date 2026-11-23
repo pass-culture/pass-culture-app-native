@@ -78,7 +78,7 @@ export const TicketDisplay: FC<TicketContentProps> = ({
 }
 
 const FullContainerStrokedLine = styled.View(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing['2xl'],
   backgroundColor: theme.designSystem.color.background.default,
   justifyContent: 'center',
 }))
@@ -94,7 +94,7 @@ const ContainerStrokedLine = styled.View(({ theme }) => ({
 const ContentBlock = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   gap: theme.designSystem.size.spacing.xl,
-  paddingHorizontal: theme.designSystem.size.spacing.xxl,
+  paddingHorizontal: theme.designSystem.size.spacing['2xl'],
   borderColor: theme.designSystem.color.border.subtle,
   borderLeftWidth: 1,
   borderRightWidth: 1,
@@ -121,7 +121,7 @@ const TopBlock = styled(ContentBlock)(({ theme }) => ({
 
 const MiddleBlock = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  height: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing['3xl'],
   /*
     On React Native, combining borderRadius with asymmetric borderWidth (e.g. top: 1, bottom: 0) causes a phantom hairline to appear on the side with width 0.
     Using uniform borderWidth on TopBlock/BottomBlock avoids this, then MiddleBlock overlaps by 1px to hide the now-visible inner borders.

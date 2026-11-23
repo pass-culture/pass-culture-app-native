@@ -120,7 +120,7 @@ const Container = styled.View<{ headerHeight: number }>(({ theme, headerHeight }
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left', theme }) => {
-    const BACK_BUTTON_MAX_SIZE = theme.designSystem.size.spacing.xxxl
+    const BACK_BUTTON_MAX_SIZE = theme.designSystem.size.spacing['3xl']
     const isLeftComponent = positionInHeader === 'left'
     const marginHorizontal = theme.designSystem.size.spacing.s
     return {

@@ -112,13 +112,13 @@ const StyledWrapper = styled.View<{ headerHeight: number }>(
       return {
         flexDirection: 'row',
         paddingHorizontal: getSpacing(16),
-        paddingTop: designSystem.size.spacing.xxxxl + headerHeight,
-        paddingBottom: designSystem.size.spacing.xxxxl,
+        paddingTop: designSystem.size.spacing['4xl'] + headerHeight,
+        paddingBottom: designSystem.size.spacing['4xl'],
         gap: getSpacing(16),
       }
     }
     return {
-      gap: designSystem.size.spacing.xxl,
+      gap: designSystem.size.spacing['2xl'],
     }
   }
 )

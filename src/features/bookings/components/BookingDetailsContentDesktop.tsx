@@ -24,7 +24,7 @@ export const BookingDetailsContentDesktop = ({
 
 const LeftBlock = styled.View(({ theme }) => ({
   maxWidth: MAX_WIDTH_BLOCKS,
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))
 
 const StyledContainer = styled.View({
@@ -41,5 +41,5 @@ const RightBlock = styled.View<{
   marginTop: headerImageHeight - getSpacing(24),
   maxWidth: MAX_WIDTH_BLOCKS,
   gap: theme.designSystem.size.spacing.l,
-  paddingTop: theme.designSystem.size.spacing.xxxl,
+  paddingTop: theme.designSystem.size.spacing['3xl'],
 }))

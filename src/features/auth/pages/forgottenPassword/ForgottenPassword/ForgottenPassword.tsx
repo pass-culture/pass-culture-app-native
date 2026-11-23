@@ -68,10 +68,10 @@ export const ForgottenPassword = () => {
 }
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['2xl'],
 }))
 
 const Container = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))

@@ -53,7 +53,7 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   paddingLeft: theme.designSystem.size.spacing.l,
   paddingRight: theme.designSystem.size.spacing.l,
   columnGap: theme.designSystem.size.spacing.xs,
-  height: theme.designSystem.size.spacing.xxl,
+  height: theme.designSystem.size.spacing['2xl'],
   backgroundColor: isSelected
     ? theme.designSystem.color.background.subtle
     : theme.designSystem.color.background.default,
@@ -65,6 +65,6 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   ...customFocusOutline({ theme }),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default }),
   '&:focus-visible': {
-    paddingVertical: theme.designSystem.size.spacing.xxs,
+    paddingVertical: theme.designSystem.size.spacing['2xs'],
   },
 }))

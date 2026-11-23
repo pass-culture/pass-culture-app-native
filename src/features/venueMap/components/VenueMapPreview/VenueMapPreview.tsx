@@ -42,7 +42,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
       <StyledVenueInfoHeader
         title={venueName}
         subtitle={address}
-        imageSize={designSystem.size.image.xxs}
+        imageSize={designSystem.size.image['2xs']}
         showArrow={withRightArrow}
         imageURL={bannerUrl}
       />

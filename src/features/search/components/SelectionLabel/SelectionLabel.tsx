@@ -42,7 +42,7 @@ const ValidateWhite = styled(Validate).attrs(({ theme }) => ({
 }))``
 
 const IconContainer = styled.View(({ theme }) => ({
-  width: theme.designSystem.size.spacing.xxl,
+  width: theme.designSystem.size.spacing['2xl'],
   paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 

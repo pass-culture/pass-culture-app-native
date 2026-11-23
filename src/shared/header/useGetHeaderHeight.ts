@@ -4,7 +4,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const useGetHeaderHeightDS = () => {
   const { designSystem } = useTheme()
-  return designSystem.size.spacing.xxxxl
+  return designSystem.size.spacing['4xl']
 }
 
 export const useGetHeaderHeight = () => {

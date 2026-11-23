@@ -22,7 +22,7 @@ export const RightButtonText: FunctionComponent<HeaderIconProps> = ({ onClose, w
 }
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing['3xl'],
   justifyContent: 'center',
   alignItems: 'center',
 }))

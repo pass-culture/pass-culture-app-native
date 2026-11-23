@@ -29,7 +29,7 @@ export const NumberOfResults: React.FC<{ nbFavorites: number; tab?: Tab }> = ({
 const Container = styled.View<{ hasTab?: boolean }>(({ theme, hasTab }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
   marginBottom: hasTab ? theme.designSystem.size.spacing.xl : theme.designSystem.size.spacing.l,
-  marginTop: hasTab ? theme.designSystem.size.spacing.xxl : undefined,
+  marginTop: hasTab ? theme.designSystem.size.spacing['2xl'] : undefined,
 }))
 
 const Caption = styled(Typo.BodyAccentS).attrs(() => setTextSemantic('h2'))(({ theme }) => ({

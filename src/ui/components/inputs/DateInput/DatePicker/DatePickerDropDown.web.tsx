@@ -37,6 +37,6 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
 
 const InputErrorContainer = styled.View<{ errorMessage: boolean }>(({ theme, errorMessage }) => ({
   marginBottom: errorMessage
-    ? theme.designSystem.size.spacing.xxxl
+    ? theme.designSystem.size.spacing['3xl']
     : theme.designSystem.size.spacing.l,
 }))

@@ -87,7 +87,7 @@ const ContainerNoOffer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   flexShrink: 0,
   ...(theme.isMobileViewport && {
-    marginTop: -(theme.tabBar.height + theme.designSystem.size.spacing.xxxl),
+    marginTop: -(theme.tabBar.height + theme.designSystem.size.spacing['3xl']),
   }),
 }))
 

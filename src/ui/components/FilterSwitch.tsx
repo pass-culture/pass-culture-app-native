@@ -30,8 +30,8 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
   const { designSystem } = useTheme()
 
-  const TOGGLE_SIZE = designSystem.size.spacing.xxl
-  const TOGGLE_PATH_START = designSystem.size.spacing.xxs
+  const TOGGLE_SIZE = designSystem.size.spacing['2xl']
+  const TOGGLE_PATH_START = designSystem.size.spacing['2xs']
   const TOGGLE_PATH_END = TOGGLE_SIZE - TOGGLE_PATH_START
 
   const translateX = animatedValue.interpolate({
@@ -105,7 +105,7 @@ const StyledBackgroundColor = styled.View<{
   backgroundColor: getBackgroundColor(theme, active),
   width: toggleSize * 2,
   height: toggleSize + theme.designSystem.size.spacing.xs,
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
+  borderRadius: theme.designSystem.size.borderRadius['2xl'],
   justifyContent: 'center',
 }))
 
@@ -117,7 +117,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean; toggleSize: numb
     width: toggleSize,
     height: toggleSize,
     backgroundColor: theme.designSystem.color.background.default,
-    borderRadius: theme.designSystem.size.borderRadius.xxl,
+    borderRadius: theme.designSystem.size.borderRadius['2xl'],
     alignItems: 'center',
     justifyContent: 'center',
   })

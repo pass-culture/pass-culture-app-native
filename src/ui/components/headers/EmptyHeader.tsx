@@ -16,7 +16,7 @@ export const EmptyHeader = ({ onGoBack }: Props) => {
   const { designSystem } = useTheme()
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...homeNavigationConfig)
-  const HEADER_HEIGHT = designSystem.size.spacing.xxxxl
+  const HEADER_HEIGHT = designSystem.size.spacing['4xl']
 
   return (
     <React.Fragment>

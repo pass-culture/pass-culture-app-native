@@ -75,7 +75,7 @@ const InformationText = styled(Typo.Body)({
 })
 
 const FirstInformationText = styled(InformationText)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxxl,
+  marginTop: theme.designSystem.size.spacing['3xl'],
 }))
 
 const SecondInformationText = styled(InformationText)(({ theme }) => ({

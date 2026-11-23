@@ -67,7 +67,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       <OfferImageHeaderWrapper
         imageHeight={imageDimensions.backgroundHeight}
         imageUrl={placeholderImage}
-        paddingTop={designSystem.size.spacing.xxl * 4}>
+        paddingTop={designSystem.size.spacing['2xl'] * 4}>
         {children}
       </OfferImageHeaderWrapper>
     )

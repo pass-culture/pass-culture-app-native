@@ -133,7 +133,7 @@ export const Ticket = ({
               venue={booking.stock.offer.venue}
               address={displayVenueAddress ? booking.stock.offer.address : undefined}
               offerId={offer.id}
-              thumbnailSize={designSystem.size.image.xxs}
+              thumbnailSize={designSystem.size.image['2xs']}
               addressLabel={venueBlockAddress?.label ?? undefined}
               onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
             />

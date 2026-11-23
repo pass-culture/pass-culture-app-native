@@ -74,7 +74,7 @@ export const BookingDetailsContentMobile = ({
 const MAX_CONTENT_WIDTH = getSpacing(100)
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xxl,
+  marginVertical: theme.designSystem.size.spacing['2xl'],
   height: theme.designSystem.size.spacing.s,
 }))
 
@@ -102,5 +102,5 @@ const BookingDetailsCancelButtonContainer = styled(Container)<{ paddingBottom: n
 )
 
 const ErrorBannerContainer = styled(Container)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxl,
+  marginTop: theme.designSystem.size.spacing['2xl'],
 }))

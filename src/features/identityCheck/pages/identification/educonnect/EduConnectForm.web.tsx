@@ -57,7 +57,7 @@ export const EduConnectForm = () => {
 }
 
 const Container = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.xxl,
+  marginBottom: theme.designSystem.size.spacing['2xl'],
 }))
 const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
@@ -66,7 +66,7 @@ const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs
 
 const Center = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  padding: theme.designSystem.size.spacing.xxl,
+  padding: theme.designSystem.size.spacing['2xl'],
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

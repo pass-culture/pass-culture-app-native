@@ -7,7 +7,7 @@ export const SetContainer: FunctionComponent<{ children: React.ReactNode }> = ({
   const { designSystem } = useTheme()
   const marginTop = useMobileFontScaleToDisplay({
     default: 0,
-    at200PercentZoom: designSystem.size.spacing.xxxl,
+    at200PercentZoom: designSystem.size.spacing['3xl'],
   })
   return <Container marginTop={marginTop}>{children}</Container>
 }

@@ -95,5 +95,5 @@ const BlackView = styled.View(({ theme }) => ({
 
 const SeeOfferButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingLeft: theme.designSystem.size.spacing.xxxl,
+  paddingLeft: theme.designSystem.size.spacing['3xl'],
 }))

@@ -53,7 +53,7 @@ export const LocationWidgetBadge = () => {
 }
 const Container = styled.View<{ highlighted: boolean }>(({ theme, highlighted }) => ({
   flexDirection: 'row',
-  minHeight: theme.designSystem.size.spacing.xxl,
+  minHeight: theme.designSystem.size.spacing['2xl'],
   borderRadius: theme.designSystem.size.borderRadius.l,
   paddingHorizontal: theme.designSystem.size.spacing.s,
   borderWidth: 1,

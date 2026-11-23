@@ -26,7 +26,7 @@ const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   width: theme.appContentWidth - getSpacing(24),
-  paddingVertical: theme.designSystem.size.spacing.xxs,
+  paddingVertical: theme.designSystem.size.spacing['2xs'],
 }))
 
 const IconWrapper = styled.View(({ theme }) => ({

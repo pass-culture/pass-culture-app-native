@@ -73,7 +73,9 @@ export const ImagesCarouselModal = ({
     getAccessibilityTitleLabel(progressValue.value)
   )
 
-  const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : designSystem.size.spacing.xxxxl
+  const CAROUSEL_ITEM_PADDING = isDesktopViewport
+    ? getSpacing(20)
+    : designSystem.size.spacing['4xl']
 
   const handleCloseModal = () => {
     hideModal()
@@ -163,8 +165,8 @@ export const ImagesCarouselModal = ({
   ])
 
   const MODAL_PADDING = {
-    x: designSystem.size.spacing.xxxl,
-    y: designSystem.size.spacing.xxxl,
+    x: designSystem.size.spacing['3xl'],
+    y: designSystem.size.spacing['3xl'],
   }
 
   const desktopConstraints = useMemo(
@@ -174,7 +176,7 @@ export const ImagesCarouselModal = ({
     }),
     [windowWidth, MODAL_PADDING.x, MODAL_PADDING.y, windowHeight]
   )
-  const MODAL_HEADER_HEIGHT = designSystem.size.spacing.xxl
+  const MODAL_HEADER_HEIGHT = designSystem.size.spacing['2xl']
 
   return (
     <AppModal

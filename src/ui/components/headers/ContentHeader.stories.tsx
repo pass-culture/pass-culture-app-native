@@ -58,5 +58,5 @@ const Container = styled.View({ height: 400 })
 const Content = styled.View(({ theme }) => ({
   height: 200,
   backgroundColor: 'blue',
-  marginBottom: theme.designSystem.size.spacing.xxxl,
+  marginBottom: theme.designSystem.size.spacing['3xl'],
 }))

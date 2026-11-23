@@ -95,7 +95,7 @@ const Container = styled.View({
 const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColor, theme }) => ({
   width: 32,
   height: 32,
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
+  borderRadius: theme.designSystem.size.borderRadius['2xl'],
   backgroundColor,
   zIndex: theme.zIndex.progressbarIcon,
   position: 'absolute',

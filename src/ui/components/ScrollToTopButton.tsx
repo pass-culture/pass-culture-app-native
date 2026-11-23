@@ -36,8 +36,8 @@ const StyledView = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
-  height: theme.designSystem.size.spacing.xxxl,
-  width: theme.designSystem.size.spacing.xxxl,
+  height: theme.designSystem.size.spacing['3xl'],
+  width: theme.designSystem.size.spacing['3xl'],
 }))
 
 const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({

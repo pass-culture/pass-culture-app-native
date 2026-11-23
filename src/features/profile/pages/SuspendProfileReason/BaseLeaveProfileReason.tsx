@@ -74,7 +74,7 @@ export const BaseLeaveProfileReason = ({
 }
 
 const ContentContainer = styled(ViewGap)(({ theme }) => ({
-  paddingBottom: theme.designSystem.size.spacing.xxl,
+  paddingBottom: theme.designSystem.size.spacing['2xl'],
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',

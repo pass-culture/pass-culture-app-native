@@ -112,8 +112,8 @@ const Title = styled(Typo.Title3)(({ theme }) => ({
   maxWidth: '100%',
   paddingLeft: theme.designSystem.size.spacing.xs,
   paddingRight: theme.designSystem.size.spacing.xs,
-  paddingTop: theme.designSystem.size.spacing.xxs,
-  paddingBottom: theme.designSystem.size.spacing.xxs,
+  paddingTop: theme.designSystem.size.spacing['2xs'],
+  paddingBottom: theme.designSystem.size.spacing['2xs'],
 }))
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
@@ -123,7 +123,7 @@ const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xs,
   maxWidth: '100%',
   paddingHorizontal: theme.designSystem.size.spacing.xs,
-  paddingVertical: theme.designSystem.size.spacing.xxs,
+  paddingVertical: theme.designSystem.size.spacing['2xs'],
 }))
 
 const SubscribeButtonContainer = styled.View({
