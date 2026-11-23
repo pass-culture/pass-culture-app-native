@@ -51,9 +51,7 @@ export const AnimatedFavoriteIcon: React.FC<AnimatedFavoriteIconProps> = ({
         return () => cancelAnimationFrame(frameId)
       }
 
-      if (!isFavorited) {
-        lottieRef.current?.reset()
-      }
+      lottieRef.current?.reset()
 
       return undefined
     },
